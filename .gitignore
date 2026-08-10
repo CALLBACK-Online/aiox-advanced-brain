@@ -37,6 +37,7 @@ cursos/_notas-pessoais/**
 /scripts/
 /docs/
 /dev/
+/.github/
 
 # IDE runtime projections
 .claude/

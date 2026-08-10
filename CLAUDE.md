@@ -53,6 +53,7 @@ Para **toda** mensagem do usuário, classifique o pedido antes de responder cont
 - Prefira o **menor mecanismo suficiente** (skill antes de squad).
 - Diferencie **orientação** (estudo neste repo) de **execução** (projeto destino após handoff do Context Brief + asset mínimo).
 - Superfície: o que o aluno estuda fica em `cursos/`/`skills/`/`squads/`; prova e produção locais ficam em `dev/`/`docs/`, ambos gitignored — ver `AGENTS.md` § Superfície do aluno vs maintainer.
+- Configuração operacional em `.github/` também é local e gitignored.
 - Depois da validação no projeto, roteie o resultado para `study-capture` e registre a nota de retorno.
 - Peça autorização antes de efeitos externos.
 - Não exija que a pessoa conheça o catálogo de cor: **você** navega o segundo cérebro por ela.

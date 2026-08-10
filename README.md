@@ -433,8 +433,7 @@ Aula por squad: pasta [`cursos/AIOX-Advanced-Squads/aulas/`](cursos/AIOX-Advance
 ├── catalog.json
 ├── package.json
 ├── AGENTS.md / CLAUDE.md
-├── CHANGELOG.md · NOTICE.md · LICENSE
-└── .github/workflows/
+└── CHANGELOG.md · NOTICE.md · LICENSE
 ```
 
 ---

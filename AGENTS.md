@@ -281,6 +281,7 @@ skill operacional local **`course-library-ops`** em `dev/ops/course-library-ops/
 ### O que não versionar / não inventar
 
 - Projeções de IDE: `.claude/`, `.codex/`, `.agents/` (distribuição canônica em `skills/` e `squads/`).
+- Configuração operacional local: `.github/`.
 - Um runtime AIOX completo “escondido” aqui — não existe neste pacote.
 
 ---
