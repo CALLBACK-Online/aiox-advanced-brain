@@ -24,11 +24,13 @@ Overrides locais (se existirem): `AGENTS.local.md` / `CLAUDE.local.md` — não 
 | `README.md` | Guia humano do aluno e inventário | Onboarding, FAQ, “o que tem aqui?” |
 | `catalog.json` | Manifesto: skills, squads, maturidade, aliases | Confirmar existência e maturidade |
 | `cursos/README.md` | Hub das trilhas | Escolher curso / ordem de estudo |
-| `cursos/AIOX-Fundamentos-de-Arquitetura/` | Curso **base técnica** (arquitetura, dados, integração, fan-out/fan-in, operação, segurança, agentes) | Termo técnico, leitura de diagrama ou decisão de arquitetura |
-| `cursos/AIOX-Fundamentos-de-Arquitetura/AGENT-GUIDE.md` | Índice curto para agentes ensinarem o curso | Localizar rapidamente a aula certa por intenção |
+| `cursos/Introducao-a-Arquitetura-de-Sistemas/` | Curso **base técnica** (arquitetura, dados, integração, fan-out/fan-in, operação, segurança, agentes) | Termo técnico, leitura de diagrama ou decisão de arquitetura |
+| `cursos/Introducao-a-Arquitetura-de-Sistemas/AGENT-GUIDE.md` | Índice curto para agentes ensinarem o curso | Localizar rapidamente a aula certa por intenção |
 | `cursos/AIOX-Fundamentals/` | Curso **AIOX Core básico** (instalação, anatomia, 12 agents, contexto, story e validação) | “Como instalar?”, “qual agent uso?”, primeiro ciclo AIOX |
 | `cursos/AIOX-Fundamentals/AGENT-GUIDE.md` | Roteador pedagógico do Fundamentals | Localizar a aula do Core sem confundir com arquitetura ou Advanced |
 | `cursos/AIOX Advanced/` | Curso **método** (mindset, SDC, determinismo, design, deploy) | “Como o AIOX funciona?” |
+| `cursos/AIOX-Design/` | Curso **design system / contrato visual** para IA (`DESIGN.md`, taxonomia, variantes) | UI com agentes, deriva visual, DESIGN.md |
+| `cursos/AIOX-Design/AGENT-GUIDE.md` | Índice curto para agentes ensinarem design AIOX | Roteamento por intenção de UI/DS |
 | `00-HOME.md` | Dashboard do vault Obsidian (Graph colorido) | Onboarding visual do segundo cérebro |
 | `cursos/MOC-*.md` | Hubs de conexão cursos × skills × squads | “Como isso se liga no grafo?” |
 | `cursos/Obsidian-IA/` | Mini-curso **Obsidian + IA** (vault, Context Brief, execução, retorno) | “Como integro o segundo cérebro ao trabalho com AIOX?” |
@@ -70,7 +72,7 @@ Se o pedido misturar estudo e execução, **ensine o mínimo necessário**, mont
 ## Algoritmo universal (toda conversa neste repo)
 
 1. **Classificar o pedido**
-   - Conceito técnico geral / arquitetura de sistemas → `cursos/AIOX-Fundamentos-de-Arquitetura/AGENT-GUIDE.md`.
+   - Conceito técnico geral / arquitetura de sistemas → `cursos/Introducao-a-Arquitetura-de-Sistemas/AGENT-GUIDE.md`.
    - Instalação, anatomia ou uso básico do `aiox-core` e seus 12 agents → `cursos/AIOX-Fundamentals/AGENT-GUIDE.md`.
    - Método, operação e linguagem específica do AIOX → curso AIOX Advanced.
    - Vault / Obsidian / MOC / notas de aula / “segundo cérebro” → `skills/aiox-brain/` e skills irmãs (abaixo).
@@ -103,7 +105,7 @@ Se o pedido misturar estudo e execução, **ensine o mínimo necessário**, mont
 
 ### Como ensinar com este material
 
-- **Ancore no arquivo**: cite path relativo (`cursos/AIOX-Fundamentos-de-Arquitetura/aulas/…`, `cursos/AIOX Advanced/lessons/…`, `aulas/…`).
+- **Ancore no arquivo**: cite path relativo (`cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/…`, `cursos/AIOX Advanced/lessons/…`, `aulas/…`).
 - **Uma porta de entrada por vez**: README do curso → módulo → aula; não jogue o grafo inteiro.
 - **Wikilinks**: o curso método foi feito para Obsidian; se a pessoa estudar no GitHub, traduza wikilinks em paths.
 - **Conecte método ↔ operação**: quando ensinar um conceito do Advanced, mostre a ponte no curso de Squads (e vice-versa). Ver `cursos/README.md` e pastas `ponte/`.
@@ -145,9 +147,10 @@ Isto **não** é o vault pessoal mentelendaria: sem paths de máquina, sem curad
 ### Ordem de estudo padrão (se a pessoa não souber por onde ir)
 
 1. Se o gargalo for vault/Obsidian/agent de estudo: `cursos/Obsidian-IA/README.md`.
-2. `cursos/AIOX-Fundamentos-de-Arquitetura/README.md` — base técnica; completo para iniciantes ou seletivo pelo mapa de termos.
+2. `cursos/Introducao-a-Arquitetura-de-Sistemas/README.md` — base técnica; completo para iniciantes ou seletivo pelo mapa de termos.
 3. `cursos/AIOX-Fundamentals/README.md` — Core, instalação, agents e primeiro ciclo com evidência.
 4. `cursos/AIOX Advanced/README.md` — Rota Essencial.
+4b. `cursos/AIOX-Design/README.md` — se a dor for UI/contrato visual (pode ser seletivo).
 5. `cursos/AIOX-Advanced-Squads/aulas/00-como-usar-este-curso.md`.
 6. Mapa de decisão + 1 squad alinhado à dor real dela.
 7. Volta ao Advanced no projeto integrador / capstone quando for consolidar.
@@ -221,7 +224,7 @@ Tabela ampliada: `cursos/AIOX-Advanced-Squads/Guia-de-execucao.md`.
 ## Regras de biblioteca (não negociáveis)
 
 - Preserve `skills/` e `squads/` como fontes canônicas deste acervo.
-- Preserve `cursos/AIOX-Fundamentos-de-Arquitetura/`, `cursos/AIOX Advanced/` e `cursos/AIOX-Advanced-Squads/` como unidades autocontidas (links de cada curso resolvem **dentro da própria pasta do curso**).
+- Preserve `cursos/Introducao-a-Arquitetura-de-Sistemas/`, `cursos/AIOX-Fundamentals/`, `cursos/AIOX Advanced/`, `cursos/AIOX-Design/` e `cursos/AIOX-Advanced-Squads/` como unidades autocontidas (links de cada curso resolvem **dentro da própria pasta do curso**).
 - Links e dependências documentais resolvem **dentro deste repositório**.
 - **Nunca** commit paths absolutos de máquina (`/Users/…`, `/home/…`, `C:\Users\…`).
 - **Não** importe componentes multi-tenant exclusivos do AIOX Enterprise.
@@ -268,7 +271,7 @@ Tabela ampliada: `cursos/AIOX-Advanced-Squads/Guia-de-execucao.md`.
 
 - Hub humano: `README.md`
 - Hub de cursos: `cursos/README.md`
-- Fundamentos técnicos: `cursos/AIOX-Fundamentos-de-Arquitetura/AGENT-GUIDE.md`
+- Fundamentos técnicos: `cursos/Introducao-a-Arquitetura-de-Sistemas/AGENT-GUIDE.md`
 - AIOX Core básico: `cursos/AIOX-Fundamentals/AGENT-GUIDE.md`
 - Método: `cursos/AIOX Advanced/README.md`
 - Squads (alunos): `cursos/AIOX-Advanced-Squads/README.md`

@@ -25,13 +25,13 @@ track: complete
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curriculum_role: applied-extension
-foundation_owner: cursos/AIOX-Fundamentos-de-Arquitetura/aulas/11-workflow-pipeline-batch-stream.md
+foundation_owner: cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/11-workflow-pipeline-batch-stream.md
 curated_at: '2026-08-09'
 ---
 
 # Workflow pronto vs comando manual: bicicleta com rodinha
 
-> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/AIOX-Fundamentos-de-Arquitetura/aulas/11-workflow-pipeline-batch-stream.md`.
+> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/11-workflow-pipeline-batch-stream.md`.
 
 ← [[51-mapear-entidades-antes-do-squad|Mapear entidades antes do Squad: 5 perguntas + ciclo de vida]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[31-brownfield-discovery|Brownfield Discovery: entrar num projeto que já existe]]
 

@@ -24,7 +24,7 @@ Abra o arquivo `README.md` dessa pasta no explorer do repositório (não é wiki
 | M6 — Brownfield | `aulas/03-code-anatomist.md`, `aulas/04-domain-decoder.md` |
 | M7 — Criar Squad | `aulas/23-squad-creator.md`, `aulas/24-squad-creator-pro.md` |
 | M8 — Research | `aulas/02-research.md` |
-| M9 — Design System | `aulas/14-design-system.md`, `aulas/15-design-ops.md` |
+| M9 — Design System | Trilha `cursos/AIOX-Design/` → depois `aulas/14-design-system.md`, `aulas/15-design-ops.md` |
 | M11 — Produtivização | `aulas/19-copy.md`, `aulas/20-sales.md`, `aulas/21-hormozi.md` |
 
 ## Mapa aula → arquivo do curso Squads

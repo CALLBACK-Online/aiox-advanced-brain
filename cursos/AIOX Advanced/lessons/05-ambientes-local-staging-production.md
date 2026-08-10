@@ -528,6 +528,31 @@ Sem telemetria, a separação vira estética. Estas perguntas separam setup vivo
 
 ---
 
+## Prática: mapeie os três ambientes do teu projeto
+
+Você vai produzir uma ficha com Local, Staging e Production de um projeto real teu, incluindo o banco e o dono do deploy de cada ambiente.
+
+**Exemplo preenchido: micro-SaaS de agendamento com Supabase + Vercel**
+
+- **Local**: máquina do operador com Docker Desktop aberto e banco em container descartável; é onde a migration nova quebra de graça.
+- **Staging**: Supabase Branch isolado + Vercel preview; recebe a migration validada no Local antes de qualquer usuário real ver.
+- **Production**: banco principal isolado; só recebe mudança promovida pelo @devops depois de lint, types, tests e build passarem.
+- **Gap encontrado**: o founder publica direto do laptop; primeira correção é atribuir o push ao @devops e documentar o caminho de rollback.
+
+> **Teste rápido**: se alguma linha da ficha ficou em branco (banco compartilhado, Staging inexistente, deploy sem dono), você achou o gap; ficha completa sem gap é setup pronto.
+
+---
+
+## Portão da aula
+
+*Gate*
+
+Ambientes só protegem quando você sabe apontar, no teu projeto, onde cada erro pode acontecer.
+
+> **Portão da aula**: Você só passa desta aula quando consegue nomear Local, Staging e Production do teu projeto, o banco de cada um e quem tem autoridade de push, sem consultar ninguém.
+
+---
+
 ## Glossário sem jargão
 
 Tradução dos termos para quem está vendo a separação de ambientes pela primeira vez.

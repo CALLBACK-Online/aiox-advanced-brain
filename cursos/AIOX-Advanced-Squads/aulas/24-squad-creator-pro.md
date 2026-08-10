@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `34-…; 55-triagem-de-squad-novo` — criar com profundidade.
+Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `34-squad-creator-passo-a-passo; 55-triagem-de-squad-novo` — criar com profundidade.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 

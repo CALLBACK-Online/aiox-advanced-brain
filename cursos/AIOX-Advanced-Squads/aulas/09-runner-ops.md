@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `28-taxonomia-…; 30-runner-executavel-deterministico` — runner determinístico.
+Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `28-taxonomia-task-skill-agent-workflow-runner; 30-runner-executavel-deterministico` — runner determinístico.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 

@@ -14,8 +14,6 @@ maturity: study
 
 # Captura sem poluir o canônico
 
-> [[00-HOME]] · [[cursos/Obsidian-IA/README|Obsidian-IA]] · [[cursos/entradas/README|entradas]] · [[notas/README|notas]]
-
 [← Agent como professor](03-agent-como-professor.md) · [⌂ Curso](../README.md) · [→ MOCs e hubs](05-mocs-e-hubs.md)
 
 ## Resultado
@@ -59,7 +57,7 @@ Depois de operar no projeto, capture também **resultado → decisão → aprend
 
 ## Prática
 
-1. Escolha **uma** aula que você já leu (Advanced ou Squads).
+1. Escolha **uma** aula que você já leu em qualquer uma das cinco etapas da jornada.
 2. Crie uma nota em `notas/inbox/` (ou peça ao agent com `study-capture`).
 3. Linke a fonte com path ou wikilink.
 

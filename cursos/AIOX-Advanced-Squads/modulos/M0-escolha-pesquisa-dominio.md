@@ -29,4 +29,4 @@ Para cada squad do módulo: briefing preenchido, rota justificada, artefato de p
 
 ## Navegação
 
-[⌂ Curso](../README.md)
+[⌂ Curso](../README.md) · [→ M1 Autonomia e operações](M1-autonomia-operacoes.md)

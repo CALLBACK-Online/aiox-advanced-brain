@@ -1,12 +1,12 @@
 ---
 type: course-outline
 course: aiox-design
-status: draft
+status: canonical
 canonical_scope: cursos/AIOX-Design
 parent_brief: COURSE-BRIEF.md
 lessons_planned: 10
 modules_planned: 4
-tags: [curso, design, draft, outline]
+tags: [curso, design, outline]
 ---
 
 # Course outline — AIOX Design
@@ -15,7 +15,7 @@ Brief: [`COURSE-BRIEF.md`](COURSE-BRIEF.md).
 
 Convenções:
 
-- **Slug de arquivo** previsto em `aulas/` (materialização futura).
+- **Slug de arquivo** materializado em `aulas/` (canônico).
 - **Seed** = origem no acervo (curar, não copiar cegamente).
 - **Resultado** = objetivo verificável (rubrica teach #1).
 - **Exercício** = prática mínima (teach #3).
@@ -284,14 +284,14 @@ Pré-leitura opcional no Advanced: `03-claude-md-leis-da-fisica` (por que contra
 
 Ao escrever cada `.md` em `aulas/`:
 
-- [ ] Frontmatter (`type`, `course`, `lesson_position`, `module`, `status: draft→canonical`)
-- [ ] “Ao final você consegue…”
-- [ ] Mapa Mermaid ou tabela de decisão (1 por aula)
-- [ ] Exercício com portão
-- [ ] Âncora `skills/` ou `squads/` ou seed declarado
-- [ ] Navegação prev/next/módulo/README **dentro** do curso
-- [ ] Sem path absoluto de máquina
-- [ ] Termos novos no glossário do curso
+- [x] Frontmatter (`type`, `course`, `lesson_position`, `module`, `status: canonical`)
+- [x] Resultado verificável (“Ao final você consegue…”)
+- [x] Mapa Mermaid ou tabela de decisão (1 por aula)
+- [x] Exercício com portão
+- [x] Âncora `skills/` ou `squads/` ou seed declarado
+- [x] Navegação prev/next/módulo/README **dentro** do curso
+- [x] Sem path absoluto de máquina
+- [x] Termos no [Glossário](Glossario.md) do curso
 
 ---
 

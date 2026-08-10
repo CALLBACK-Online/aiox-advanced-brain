@@ -26,13 +26,13 @@ track: complete
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curriculum_role: applied-extension
-foundation_owner: cursos/AIOX-Fundamentos-de-Arquitetura/aulas/07-json-yaml-markdown-contratos.md
+foundation_owner: cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/07-json-yaml-markdown-contratos.md
 curated_at: '2026-08-09'
 ---
 
 # YAML, Markdown, JSON: o sweet spot para LLM
 
-> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/AIOX-Fundamentos-de-Arquitetura/aulas/07-json-yaml-markdown-contratos.md`.
+> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/07-json-yaml-markdown-contratos.md`.
 
 Para navegar o course-brain com grafo e [[Wikilink|wikilinks]], o ambiente recomendado é o [[Obsidian]] (vault na raiz ou em `cursos/`).
 

@@ -20,11 +20,11 @@ Extrair regras de negócio, taxonomias e decisões escondidas no código — dom
 
 ## Como é usado
 
-Use **Domain Decoder** como a ferramenta, superfície ou artefato definido acima, respeitando seu escopo, suas dependências e a evidência que ele consegue produzir.
+Use **Domain Decoder** quando um sistema brownfield precisa ser entendido pelo domínio antes de qualquer mudança: o decoder roda as 9 fases do code-anatomist e extrai as camadas do sistema — arquitetura, domínio, dados, API, dependências e infra — formalizando as regras de negócio escondidas no código.
 
-**Exemplo prático:** Na aula [[38-code-anatomy-domain-decoder]], o operador inclui **Domain Decoder** no fluxo apenas quando a capacidade descrita é necessária, configura o mínimo e verifica o resultado no ambiente correto.
+**Exemplo prático:** na aula [[38-code-anatomy-domain-decoder]], um sistema legado sem documentação que será reescrito ou integrado passa pelo decoder completo e sai como "o laudo do engenheiro": a anatomia mapeada e a regra de negócio formalizada, não uma impressão da fachada. Neste acervo, o domínio vive na skill/squad `code-anatomist`; para regras de domínio brownfield, `decoder-chief` → squad `domain-decoder`.
 
-**Não confunda:** **Domain Decoder** não resolve sozinho o processo: ainda são necessários contexto, configuração, validação e um responsável pela decisão.
+**Não confunda:** decoder não é leitura rápida de código: um script trivial de 20 linhas não pede as 9 fases; um legado que trava decisão cara de reverter, sim. E o decoder responde pelo domínio — a regra que move o código — não pela estrutura de pastas.
 
 **Frequência nos cursos:** **25** menções (AIOX Advanced: 9 · AIOX Advanced Squads: 16).
 

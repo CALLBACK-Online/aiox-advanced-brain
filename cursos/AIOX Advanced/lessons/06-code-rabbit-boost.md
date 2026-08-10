@@ -570,6 +570,32 @@ coderabbit_integration:
 
 ---
 
+## Prática: audite o gate de revisão do teu pipeline
+
+Você vai produzir uma auditoria dos três portões do Code Rabbit no teu projeto, provando em qual gate cada achado está sendo filtrado.
+
+**Exemplo preenchido: projeto AIOX com bootstrap rodado na semana passada**
+
+- **Core-config**: bloco coderabbit_integration encontrado com enable: false; instalado no bootstrap, nunca ativado. Primeiro ajuste: virar true.
+- **Gate Dev (~30%)**: template de Story sem a chamada de revisão na tarefa do @dev; achados de lint chegando crus no QA.
+- **Gate Review (~60%)**: o @qa aciona o reviewer manualmente; funciona, mas depende de memória, não de fluxo.
+- **Gate PR (~90%)**: setup-github nunca rodou; PR sem webhook do Code Rabbit e merge sem bloqueio por severidade high.
+- **Decisão**: enable: true no core-config, integrar o template de Story, rodar setup-github e abrir um PR de teste pra ver o reviewer comentar no CI/CD.
+
+> **Teste rápido**: abra o último PR do projeto; se não há comentário do Code Rabbit nem bloqueio por severidade, o gate final está desligado e a auditoria reprova.
+
+---
+
+## Portão da aula
+
+*Gate*
+
+Confiança na entrega é função dos portões atravessados, e você precisa saber prová-los no teu projeto.
+
+> **Portão da aula**: Você só passa desta aula quando consegue abrir o teu projeto e provar, com o core-config e um PR real, em quais dos três gates o Code Rabbit está rodando.
+
+---
+
 ## Navegação
 
 ← [[49-apply-qa-fixes-loop|Apply QA Fixes Loop: QA volta para Dev sem perder estado]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[19-ciclo-do-repositorio|Ciclo do repositório: Detect Repo, GitHub, CodeRabbit, CI/CD]]

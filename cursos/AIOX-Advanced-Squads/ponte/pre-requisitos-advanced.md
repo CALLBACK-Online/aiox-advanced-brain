@@ -42,8 +42,8 @@ Pasta do método no repositório (abra no explorer; cada curso é isolado para l
 | db-sage | `53-brownfield-enhancement` |
 | clickup-ops-squad | `24-entidade-como-unidade-de-processo` |
 | brand | `12-repertorio-vs-tecnica` |
-| design-system | `41-design-system-e-decisao`, `42-…`, `43-design-md-novo-contrato` |
-| design-ops | `32-design-system-greenfield-brownfield`, `41-…` |
+| design-system | Trilha `cursos/AIOX-Design/` (01–04, 09) ou `41-…`, `42-…`, `43-…` |
+| design-ops | Trilha `cursos/AIOX-Design/` (05, 07–09) ou `32-…`, `41-…` |
 | storytelling | `12-repertorio-vs-tecnica` |
 | slides-creator | `18-yaml-markdown-json-sweet-spot` |
 | conteudo | (nenhum rígido; Advanced M0 ajuda) |

@@ -20,11 +20,11 @@ Motor Google citado no roteamento multi-modelo (three-brain) para tarefas e revi
 
 ## Como é usado
 
-Use **Gemini** como a ferramenta, superfície ou artefato definido acima, respeitando seu escopo, suas dependências e a evidência que ele consegue produzir.
+Use **Gemini** como o cérebro de pesquisa no routing multi-modelo do AIOX: cada tarefa vai para o modelo com melhor fitness — Codex para QA, Gemini para research com citações e grounding, Claude para orquestração e o resto. Um segundo modelo também entra como revisor externo, evitando a autorrevisão de quem gerou o código.
 
-**Exemplo prático:** Na aula [[60-routing-modelos]], o operador inclui **Gemini** no fluxo apenas quando a capacidade descrita é necessária, configura o mínimo e verifica o resultado no ambiente correto.
+**Exemplo prático:** na aula [[60-routing-modelos]], a tabela de routing declara a linha "Research → Gemini-class, fallback Claude long, evidência: citações/fontes": a escolha do modelo vem com fallback e métrica, e uma tarefa de pesquisa que sai sem fontes citadas falhou no critério, não importa o modelo.
 
-**Não confunda:** **Gemini** não resolve sozinho o processo: ainda são necessários contexto, configuração, validação e um responsável pela decisão.
+**Não confunda:** incluir Gemini não é colecionar assinaturas de modelo: sem tabela de routing, fallback e evidência esperada por tipo de tarefa, trocar de modelo é "opinião de stand-up", não roteamento por fitness.
 
 **Frequência nos cursos:** **28** menções (AIOX Advanced: 28 · AIOX Advanced Squads: 0).
 

@@ -30,6 +30,12 @@ Projeto Integrador com brief, PRD curto, uma a três Stories, QG, URL ou bloquei
 
 Eu recupero os conceitos no [[avaliacoes/Quiz MC - Capstone|Quiz do MC]] e confiro se consigo produzir a evidência sem seguir uma receita cega.
 
+## O que o Capstone diagnostica
+
+Se eu ainda não fecho a evidência, meu gargalo continua sendo método. Se eu fecho o ciclo de forma consistente, mas perco tempo remontando contexto, integrações, governança e monitoramento entre projetos, meu gargalo já é operacional.
+
+Nesse segundo caso, o próximo passo não é acumular mais aulas. É comparar a operação que mantenho sozinho com a infraestrutura mantida do **AIOX Enterprise** em [[JORNADA-AIOX|Fundamentals, Advanced ou Enterprise?]].
+
 ## Navegação
 
 ← [[modulos/Módulo 12 - Deploy Profissional|M12]] · ↑ [[cursos/AIOX Advanced/README|Curso]] · → [[Projeto Integrador]]

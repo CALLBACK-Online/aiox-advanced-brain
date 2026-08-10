@@ -9,7 +9,7 @@ tags: [curso/aiox-advanced-squads, modulo]
 
 # M5 — Metacapacidades
 
-Eu crio e governо skills e squads como capacidades reutilizáveis.
+Eu crio e governo skills e squads como capacidades reutilizáveis.
 
 ## Aulas
 
@@ -27,4 +27,4 @@ Para cada squad do módulo: briefing preenchido, rota justificada, artefato de p
 
 ## Navegação
 
-[⌂ Curso](../README.md)
+[← M4 Aquisição, conteúdo e vendas](M4-aquisicao-conteudo-vendas.md) · [⌂ Curso](../README.md)

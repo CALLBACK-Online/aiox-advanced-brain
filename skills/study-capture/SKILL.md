@@ -81,10 +81,15 @@ Se o insight pede execução:
 
 ```text
 Captura: {nota}
+Fontes sintetizadas: {1–3 paths + por que importam}
+Context Brief: {cópia preenchida de cursos/Obsidian-IA/templates/context-brief.md}
 Operação sugerida: skill `{x}` ou squad `{y}`
 Maturidade: consultar catalog.json
-Copiar para o projeto: só quando for executar
+Handoff: Context Brief + menor asset necessário
+Retorno planejado: {resultado + decisão + evidência + aprendizado}
 ```
+
+Não pule da captura direto para a execução. Passe por `aiox-brain`, complete o Context Brief e só então entregue o briefing à skill/squad do projeto.
 
 ### 5. Retorno de execução
 
@@ -153,6 +158,6 @@ tags: [estudo, aiox]
 |--------------------|-------|
 | Organizar vários insights em hub | `course-moc` |
 | Voltar a navegar o curso | `obsidian-course-vault` |
-| Executar no projeto | skill/squad do domínio · `aiox-squads` |
+| Preparar execução no projeto | `aiox-brain` → Context Brief → skill/squad do domínio |
 | Registrar uma execução concluída | `study-capture` no formato Retorno de execução |
 | Visão geral do cérebro | `aiox-brain` |

@@ -2,20 +2,21 @@
 type: course-brief
 course: aiox-design
 course_slug: aiox-design
-status: draft
+status: canonical
 created_date: "2026-08-10"
+materialized_date: "2026-08-10"
 instructor: "Equipe AIOX"
 canonical_scope: cursos/AIOX-Design
 sharing_boundary: cursos
 source: curadoria de cursos/AIOX Advanced/lessons (M6/M9) + squads design-* + skills design-*
-tags: [curso, design, design-system, draft, layer/curso]
+tags: [curso, design, design-system, layer/curso]
 ---
 
 # COURSE BRIEF — AIOX Design
 
 > Design system e contrato visual para humanos e agentes — sem virar curso de Figma nem runbook de squad.
 
-**Estado:** rascunho curricular (brief + outline). **Aulas e validador ainda não materializados.**
+**Estado:** materializado (aulas + quizzes + validador). Brief permanece como contrato curricular.
 
 Outline detalhado: [`course-outline.md`](course-outline.md).
 
@@ -125,7 +126,7 @@ Fund. Arquitetura          →  opcional: contratos, fronteiras (não bloqueia)
 
 **Opcional**
 
-- Fundamentos de Arquitetura: aula de contratos JSON/YAML/Markdown (`07-…`) se a pessoa não entende “contrato de arquivo”.
+- Introdução à Arquitetura de Sistemas: aula de contratos JSON/YAML/Markdown (`07-…`) se a pessoa não entende “contrato de arquivo”.
 
 ---
 
@@ -209,7 +210,7 @@ Cada aula **deve** ter:
 | Capstone | Ver rubrica em outline: contrato mínimo + 1 componente + rota de operação |
 | Métrica de curso | 100% aulas com objetivo + exercício + âncora; 0 paths de máquina; validate verde quando scaffold existir |
 
-**Aprovação humana do brief:** pendente (status `draft`).
+**Aprovação curricular:** materializado em 10 aulas + validador (status `canonical`).
 
 ---
 
@@ -248,14 +249,14 @@ Não apagar M9 no dia 1. Pontes bidirecionais primeiro (`ponte/` nos dois cursos
 
 ---
 
-## 14. Decisão pedida ao revisor
+## 14. Decisões fechadas (materialização)
 
-- [ ] Aprovar slug `aiox-design` e pasta `cursos/AIOX-Design/`
-- [ ] Aprovar 10 aulas / 4 módulos (ou cortar aulas 05 e 08 se quiser MVP de 8)
-- [ ] Confirmar que capstone **não** exige Storybook rodando (aceita plano de variantes documentado) — recomendado para self-paced no vault
-- [ ] Autorizar scaffold (passo 2) após este draft
+- [x] Slug `aiox-design` e pasta `cursos/AIOX-Design/`
+- [x] **10 aulas** / 4 módulos (inclui 05 anti-drift e 08 portão visual)
+- [x] Capstone **documental** — Storybook rodando = bônus, não obrigatório
+- [x] Scaffold completo: README, aulas, quizzes, `_tools/validate_course.py`, hook em `npm run validate`
 
-**Recomendação do brief:** MVP **10 aulas** com capstone documental (Storybook “como provaria”); quem tiver ambiente roda o stack na prática.
+**Currículo shipped:** 10 aulas com capstone documental (Storybook “como provaria”); quem tiver ambiente roda o stack na prática.
 
 ---
 

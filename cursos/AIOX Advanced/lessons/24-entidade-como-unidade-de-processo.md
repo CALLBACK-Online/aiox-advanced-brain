@@ -26,13 +26,13 @@ track: essential
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curriculum_role: applied-extension
-foundation_owner: cursos/AIOX-Fundamentos-de-Arquitetura/aulas/04-estado-entidade-ciclo-de-vida.md
+foundation_owner: cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/04-estado-entidade-ciclo-de-vida.md
 curated_at: '2026-08-09'
 ---
 
 # [[Entidade]] como unidade de processo: nasce, vive, morre
 
-> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/AIOX-Fundamentos-de-Arquitetura/aulas/04-estado-entidade-ciclo-de-vida.md`.
+> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/04-estado-entidade-ciclo-de-vida.md`.
 
 Escrita concorrente em entidade compartilhada: desenhe [[OCC]] (optimistic concurrency) ou trava explícita — multi-agent sem isso corrompe estado.
 

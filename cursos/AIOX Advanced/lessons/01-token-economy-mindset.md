@@ -544,6 +544,32 @@ motivo: "economizar token aqui custa mais do que usar bem"
 
 ---
 
+## Prática: monte o orçamento de tokens da tua semana
+
+Você vai produzir um orçamento de uma semana classificando cada tarefa de IA como moeda ou dólar e travando o modelo certo antes de abrir o terminal.
+
+**Exemplo preenchido: semana de um operador construindo um SaaS com AIOX**
+
+- **Tarefas da semana**: 1 PRD de feature nova, 1 benchmark de concorrentes, 20 formatações de conteúdo, 5 conversões de planilha.
+- **Classificação**: PRD e benchmark são dólar: Opus, sem dó. Formatações e conversões são moeda: Haiku, sem culpa.
+- **Custo estimado**: ~US$ 30 de Opus nas duas tarefas estratégicas + centavos de Haiku no mecânico. Valor da hora do operador: R$ 400.
+- **Teto de decisão**: se o PRD destrava uma oferta de R$ 50k, o token pagou 250x. Rebaixar modelo aqui é perder dólar pra salvar moeda.
+- **Revisão**: checagem de ROI marcada pra 30 dias: o gasto virou skill, workflow ou sistema reutilizável, ou só evaporou?
+
+> **Teste rápido**: se toda tarefa estratégica da lista está com o melhor modelo e toda mecânica está com o barato, o orçamento passou; um único PRD em Haiku reprova a semana inteira.
+
+---
+
+## Portão da aula
+
+*Gate*
+
+O critério não é decorar a regra moedas-vs-dólares, é aplicá-la numa decisão real de gasto.
+
+> **Portão da aula**: Você só passa desta aula quando consegue pegar uma tarefa real da tua semana, classificá-la como moeda ou dólar e justificar o modelo escolhido pelo valor da tua hora, não pelo preço do token.
+
+---
+
 ## Navegação
 
 ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[08-principio-processo-certo|Respeite o processo: dê comando, não converse]]

@@ -6,15 +6,27 @@ status: canonical
 tags: [curso/obsidian-ia, segundo-cerebro, context-brief]
 ---
 
-# Context Brief — {missão}
+# Template canônico de Context Brief
 
-> Copie este template para `notas/inbox/` ou para o vault pessoal indicado. Não preencha o arquivo canônico.
+Este arquivo pertence ao curso. Não o copie inteiro: o frontmatter acima identifica a fonte canônica. Crie uma nota em `notas/inbox/` — depois do primeiro uso descrito em `notas/README.md` — ou no vault pessoal indicado e copie somente o bloco abaixo.
+
+## Template copiável
+
+```markdown
+---
+type: context-brief
+status: draft
+created: YYYY-MM-DD
+tags: [aiox, context-brief]
+---
+
+# Context Brief — {missão}
 
 ## Missão
 
 **Transformação observável:** {o que precisa mudar}
 
-**Projeto de destino:** {nome ou identificador não sensível; sem path absoluto}
+**Projeto de destino:** {próximo curso/aula ou projeto não sensível; sem path absoluto}
 
 ## Contexto recuperado
 
@@ -32,16 +44,16 @@ Inclua somente contexto relevante. O agent do projeto pode não ter acesso ao va
 
 ## Mecanismo escolhido
 
-- Tipo: {skill | squad | prompt genérico confirmado}
-- Asset: `{id ou path relativo}`
-- Maturidade: {portable | runtime-aiox | study | partial}
+- Tipo: {curso/aula | skill | squad | prompt genérico confirmado}
+- Destino ou asset: `{id ou path relativo}`
+- Maturidade: {não se aplica | portable | runtime-aiox | study | partial}
 - Por que serve: {sinais objetivos}
 - Por que não o vizinho: {fronteira}
 
 ## Handoff ao projeto
 
 - Contexto transferido: {este briefing + anexos mínimos}
-- Asset a copiar: {somente se necessário e com destino confirmado}
+- Asset a copiar: {nenhum na rota de estudo; somente se necessário e com destino confirmado na rota operacional}
 - Runtime disponível: {Codex | Claude Code | outro}
 - Superfície de ativação confirmada: {skill, agent, comando ou prompt genérico}
 - Permissões ou credenciais necessárias: {nenhuma ou listar sem valores}
@@ -63,3 +75,4 @@ Inclua somente contexto relevante. O agent do projeto pode não ter acesso ao va
 - Decisão final: {mantida, alterada ou descartada}
 - Aprendizado reutilizável: {1–3 frases}
 - Próximo passo: {uma ação}
+```

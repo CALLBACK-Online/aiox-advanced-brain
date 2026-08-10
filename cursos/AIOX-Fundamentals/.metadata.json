@@ -20,5 +20,6 @@
     "approval_source": "apps/aiox-design-system/current/course-manifest.yaml#aiox-fundamentals"
   },
   "generator": "Course Architect",
-  "quality_gate": "PASS"
+  "quality_gate": "PASS",
+  "validation_report": "validation-report.md"
 }

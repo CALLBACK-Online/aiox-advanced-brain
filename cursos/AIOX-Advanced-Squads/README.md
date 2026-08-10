@@ -45,6 +45,14 @@ Ao concluir, você consegue transformar uma missão em quatro decisões explíci
 3. o modo de ativação no **seu** projeto (depois de copiar `squads/{nome}`);
 4. a evidência que prova que o squad entregou valor.
 
+## O próximo gargalo
+
+Uma execução validada prova que você sabe operar um squad. Antes de buscar mais infraestrutura, repita a missão e confirme que o método se sustenta.
+
+Quando vários squads, projetos e fontes de contexto começam a exigir montagem e manutenção recorrentes, o problema muda: deixa de ser escolher o especialista e passa a ser governar a operação. Esse é o momento de comparar o acervo adaptável do Advanced com o ambiente mantido do **AIOX Enterprise**.
+
+[Veja o diagnóstico completo da jornada](../../JORNADA-AIOX.md).
+
 ## Como este acervo se relaciona com o curso
 
 Este repositório é **biblioteca de distribuição**, não runtime:

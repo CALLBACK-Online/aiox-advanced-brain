@@ -6,7 +6,7 @@ status: canonical
 canonical_scope: cursos/Obsidian-IA
 sharing_boundary: cursos
 source: skills/aiox-brain + vault de estudo
-source_version: 1.1.0
+source_version: 1.2.0
 curriculum_modules: 1
 lessons: 8
 tags: [curso, obsidian, ia, segundo-cerebro, aiox, layer/curso]
@@ -14,13 +14,13 @@ tags: [curso, obsidian, ia, segundo-cerebro, aiox, layer/curso]
 
 # Obsidian + IA
 
-> Do vault à execução: recuperar contexto, operar no projeto AIOX e devolver aprendizado ao segundo cérebro.
+> Do vault à próxima decisão: recuperar contexto, estudar com intenção e, quando houver base operacional, executar no projeto AIOX.
 
-Mini-curso **prático** (cerca de **90–120 minutos**, mais o tempo da missão real) para integrar este repositório ao trabalho com AIOX como segundo cérebro de estudo usando **Obsidian** e um **agent** (Claude Code, Codex ou genérico).
+Mini-curso **prático** (cerca de **90–120 minutos**) para usar este repositório como segundo cérebro de estudo com **Obsidian** e um **agent** (Claude Code, Codex ou genérico). Ele abre a jornada e volta a ser usado nas etapas seguintes.
 
 ## Para quem
 
-- Aluno do AIOX Advanced que quer estudar no Obsidian de verdade.
+- Aluno em qualquer etapa da jornada AIOX que quer estudar no Obsidian de verdade.
 - Quem já clona o `aiox-advanced-brain` e se perde entre GitHub, aulas e “onde anoto?”.
 - Quem quer combinar **navegação humana** (grafo) com **condução por agent** (professor-especialista).
 
@@ -32,13 +32,13 @@ Ao terminar você consegue:
 2. Usar wikilinks, backlinks e Graph sem medo.
 3. Pedir ao agent para ensinar, capturar e mapear — sem reescrever aulas oficiais.
 4. Transformar conhecimento recuperado em um **Context Brief** verificável.
-5. Levar o briefing e o menor asset necessário ao projeto AIOX e executar uma missão real.
-6. Devolver resultado, decisão e aprendizado ao segundo cérebro.
+5. Encaminhar o briefing para a próxima aula/curso ou, quando já houver base operacional, para o projeto AIOX.
+6. Devolver resultado, decisão e aprendizado ao segundo cérebro depois de cada ciclo.
 
 ## Não é
 
 - Curso completo de plugins premium do Obsidian.
-- Substituição do AIOX Advanced (método) ou do curso de Squads (operação).
+- Substituição de Introdução à Arquitetura de Sistemas, AIOX Fundamentals, AIOX Advanced ou do curso de Squads.
 - Tutorial do vault pessoal mentelendaria (paths de máquina / vida / livros).
 - Sincronização automática entre vault e projeto: a ponte ensinada é manual, mínima e reproduzível.
 
@@ -71,24 +71,33 @@ Entre cursos, os paths monoespaçados apontam para o hub: `cursos/README.md`.
 ## Ordem com as outras trilhas
 
 ```text
-Obsidian + IA (este mini)     ← pode vir primeiro se o vault for o gargalo
+Obsidian + IA (este mini) — estudar o acervo
         ↓
-AIOX Advanced (método)
+Introdução à Arquitetura de Sistemas — entender sistemas
         ↓
-AIOX Advanced Squads (operação)
+AIOX Fundamentals — instalar e operar o Core
+        ↓
+AIOX Advanced — aplicar o método
+        ↓
+AIOX Advanced Squads — operar os especialistas
 ```
 
-Ou encaixe este mini **em paralelo** à Rota Essencial do Advanced, quando o aluno reclamar de “não sei estudar isso no Obsidian”.
+Quem já domina Obsidian pode validar o gate de entrada e seguir. Reabra este mini **em paralelo** às outras etapas sempre que captura, MOC, Context Brief ou retorno ao vault virarem gargalo.
 
 ## Evidência de conclusão
 
-Você “passou” no mini-curso se entregar:
+O primeiro gate, suficiente para seguir a **Introdução à Arquitetura de Sistemas**, exige:
 
-- 1 captura pessoal ligada a uma aula real;
-- 1 MOC com pelo menos 5 links úteis;
+- 1 captura pessoal ligada a uma aula real **ou** 1 MOC quando houver pelo menos 5 conexões úteis;
+- 1 Context Brief de estudo com fontes, próxima trilha e critério de compreensão.
+
+Depois de AIOX Fundamentals ou Advanced, volte para o gate operacional:
+
 - 1 Context Brief com fontes, missão, asset e critério de aceite;
 - 1 artefato executado no projeto AIOX com evidência de validação;
 - 1 nota de retorno com resultado, decisão e aprendizado reutilizável.
+
+Para conferir os conceitos das 8 aulas, feche com o [Quiz final](avaliacoes/Quiz-final.md).
 
 ## Validação
 

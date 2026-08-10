@@ -15,6 +15,7 @@ As notas em [[cursos/entradas/README|cursos/entradas/]] ligam cada skill de dom√
 - [[skills/course-moc/SKILL|course-moc]]
 - [[skills/obsidian-course-vault/SKILL|obsidian-course-vault]]
 - [[skills/study-capture/SKILL|study-capture]]
+- [[skills/teach/SKILL|teach]]
 
 ## Agentes orbitais AIOX
 - [[skills/aiox-analyst/SKILL|aiox-analyst]]

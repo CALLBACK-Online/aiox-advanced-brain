@@ -20,11 +20,11 @@ Label de maturidade: ler anatomia, agentes e tasks; orientar — sem prometer ex
 
 ## Como é usado
 
-Use **Study** para definir quem faz o quê, com qual limite, entrada e saída, dentro do processo.
+Use **Study** como label de maturidade no `catalog.json` deste acervo: um squad ou skill marcado `study` serve para ler a anatomia — agentes, tasks, workflows, config — e orientar a execução, sem prometer que roda autônomo no "laptop nu", fora do runtime completo.
 
-**Exemplo prático:** na aula [[28-taxonomia-task-skill-agent-workflow-runner]], atribua **Study** a uma responsabilidade concreta, declare o que ele pode tocar e confira o artefato devolvido antes do handoff.
+**Exemplo prático:** na aula [[33-anatomia-de-um-squad]], uma resposta roteada declara a maturidade no cabeçalho ("Maturidade: study"): o operador estuda o `config.yaml` e os agentes do squad neste repositório, mas a execução real acontece no projeto destino, com as dependências que o squad exige instaladas.
 
-**Não confunda:** não use **Study** como persona decorativa: papel sem autoridade, tarefa e evidência não coordena execução.
+**Não confunda:** `study` não é squad quebrado nem rascunho: é a promessa honesta do que este acervo entrega para aquele item — anatomia legível e orientação. Prometer execução autônoma para um item `study` é inflar maturidade.
 
 **Frequência nos cursos:** **5** menções (AIOX Advanced: 0 · AIOX Advanced Squads: 5).
 

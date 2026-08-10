@@ -71,6 +71,7 @@ Notas **leves** (não são runtime). Ligam skill ↔ squad ↔ aula sem poluir a
 - [[cursos/entradas/skill-storytelling|storytelling]]
 - [[cursos/entradas/skill-study-capture|study-capture]]
 - [[cursos/entradas/skill-survey-intel|survey-intel]]
+- [[cursos/entradas/skill-teach|teach]]
 - [[cursos/entradas/skill-tech-research|tech-research]]
 - [[cursos/entradas/skill-tech-search|tech-search]]
 - [[cursos/entradas/skill-telegram|telegram]]

@@ -25,13 +25,13 @@ track: essential
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curriculum_role: applied-extension
-foundation_owner: cursos/AIOX-Fundamentos-de-Arquitetura/aulas/24-capstone-arquitetura-agentic.md
+foundation_owner: cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/24-capstone-arquitetura-agentic.md
 curated_at: '2026-08-09'
 ---
 
 # Prontidão de produção: checklist final
 
-> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/AIOX-Fundamentos-de-Arquitetura/aulas/24-capstone-arquitetura-agentic.md`.
+> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/24-capstone-arquitetura-agentic.md`.
 
 Checklist [[Reality-First]]: além do build, rode [[Smoke test]] e [[Health check]] no ambiente real; sem isso não há prontidão.
 

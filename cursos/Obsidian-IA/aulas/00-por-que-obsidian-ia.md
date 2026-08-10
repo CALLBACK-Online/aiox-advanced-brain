@@ -14,8 +14,6 @@ maturity: study
 
 # Por que Obsidian + IA neste acervo
 
-> [[00-HOME]] · [[cursos/Obsidian-IA/README|Obsidian-IA]] · [[cursos/entradas/README|entradas]] · [[notas/README|notas]]
-
 [⌂ Curso](../README.md) · [→ Abrir o vault](01-abrir-o-vault.md)
 
 ## Resultado
@@ -32,7 +30,7 @@ Entender o papel de **três superfícies** e por que misturá-las sem método ge
 
 **Use** este mini-curso se o gargalo for estudar e organizar o material AIOX com IA.
 
-**Não use** como substituto do método SDC ou do curso de squads: aqui o foco é **vault + agent de estudo**.
+**Não use** como substituto de Arquitetura, AIOX Fundamentals, do método Advanced ou do curso de Squads: aqui o foco é **recuperar contexto, fazer handoff controlado e devolver aprendizado**.
 
 ## Conceito-chave
 
@@ -41,6 +39,8 @@ Este repositório é um **segundo cérebro educacional**, não o monorepo AIOX e
 ```text
 Estudar → Capturar → Context Brief → Executar no projeto → Evidência → Devolver aprendizado
 ```
+
+Na primeira passagem, antes de você operar o Core, “executar” significa cumprir uma missão de estudo e preparar o handoff para **Fundamentos de Arquitetura**. Depois de Fundamentals ou Advanced, o mesmo loop chega a um projeto real.
 
 ## Anti-padrões comuns
 

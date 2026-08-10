@@ -36,13 +36,13 @@ Contrato visual, taxonomia de componentes e Storybook cobrindo responsividade, d
 
 Eu recupero os conceitos no [[avaliacoes/Quiz M9 - Design System|Quiz do M9]] e confiro se consigo produzir a evidência sem seguir uma receita cega.
 
-## Trilha de squads (ponte)
+## Trilha de design (ponte)
 
-> **Depois deste módulo no método**, aprofunde a operação dos squads no curso irmão.
+> **Trilha dedicada (default para dor de UI):** `cursos/AIOX-Design/` — contrato, taxonomia, variantes e skill vs squad (10 aulas).
 >
-> Construir vs governar: `aulas/14-design-system.md` e `aulas/15-design-ops.md` no curso Squads. Pacotes: `squads/design-system/`, `squads/design-ops/`.
+> **Depois do critério**, aprofunde a operação no curso Squads: `aulas/14-design-system.md` e `aulas/15-design-ops.md`. Pacotes: `squads/design-system/`, `squads/design-ops/`.
 >
-> Índice da trilha: `ponte/trilha-squads.md` · Hub: `cursos/README.md` · Pasta do curso: `cursos/AIOX-Advanced-Squads/`
+> Índice squads: `ponte/trilha-squads.md` · Hub: `cursos/README.md` · Design: `cursos/AIOX-Design/README.md`
 
 ## Navegação
 

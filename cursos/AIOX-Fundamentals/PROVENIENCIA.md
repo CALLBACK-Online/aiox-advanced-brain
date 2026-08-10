@@ -35,7 +35,7 @@ Todo o conteúdo operacional foi conferido contra o snapshot rastreado do AIOX C
 
 ## Fronteiras com outras trilhas
 
-- **Fundamentos de Arquitetura:** vocabulário universal para entender sistemas.
+- **Introdução à Arquitetura de Sistemas:** vocabulário universal para entender sistemas.
 - **AIOX Fundamentals:** instalação e operação básica do `aiox-core`.
 - **AIOX Advanced:** método, SDC aprofundado, determinismo, design e deploy.
 - **AIOX Advanced Squads:** escolha e operação dos especialistas empacotados.

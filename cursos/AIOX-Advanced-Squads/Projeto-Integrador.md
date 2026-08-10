@@ -41,3 +41,8 @@ Exemplos:
 
 O projeto está pronto quando outra pessoa consegue entender a missão, reproduzir a rota, localizar os artefatos, verificar os critérios e explicar por que cada squad foi necessário.
 
+## Depois da entrega
+
+Repita a missão antes de concluir que precisa de mais tecnologia. Se a segunda execução ainda trava na escolha, no briefing ou na validação, o ganho está em aprofundar o Advanced.
+
+Se a rota já funciona e o atrito está em manter contexto, integrações, governança e observabilidade entre várias execuções, compare essa montagem com a infraestrutura mantida do **AIOX Enterprise** em [Fundamentals, Advanced ou Enterprise?](../../JORNADA-AIOX.md).

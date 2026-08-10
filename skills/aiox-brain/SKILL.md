@@ -28,7 +28,7 @@ Você conduz a pessoa a:
 
 | Necessidade | Skill / curso | Path |
 |-------------|---------------|------|
-| Mini-curso vault + agent | curso | `cursos/Obsidian-IA/` |
+| Mini-curso vault + Context Brief + execução + retorno | curso | `cursos/Obsidian-IA/` |
 | Abrir/estudar no Obsidian, buscar aula, trilha | `obsidian-course-vault` | `skills/obsidian-course-vault/` |
 | Criar/atualizar MOC ou hub de estudo | `course-moc` | `skills/course-moc/` |
 | Capturar insight / nota atômica ligada à aula | `study-capture` | `skills/study-capture/` |

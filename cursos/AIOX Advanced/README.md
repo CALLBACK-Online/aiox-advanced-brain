@@ -31,8 +31,9 @@ tags: [curso, aiox-advanced, course-brain, layer/curso]
 ## Cursos neste acervo
 
 - **Este curso:** AIOX Advanced (método, SDC, mindset).
-- **Base técnica:** `cursos/AIOX-Fundamentos-de-Arquitetura/` — arquitetura de sistemas e vocabulário técnico.
+- **Base técnica:** `cursos/Introducao-a-Arquitetura-de-Sistemas/` — arquitetura de sistemas e vocabulário técnico.
 - **Curso irmão:** `cursos/AIOX-Advanced-Squads/` — 25 aulas (intro + um squad por aula).
+- **Design (trilha dedicada):** `cursos/AIOX-Design/` — contrato visual, DESIGN.md, taxonomia e variantes.
 - **Hub das trilhas:** `cursos/README.md`
 - **Ponte base → método:** [[ponte/pre-requisitos-arquitetura|Pré-requisitos de arquitetura]]
 - **Ponte método → squads:** [[ponte/trilha-squads|Trilha de squads]]
@@ -86,6 +87,15 @@ Eu sigo os MOCs dos módulos. Eles preservam todas as aulas e separam conteúdo 
 ## Avaliação e conclusão
 
 Eu uso os [[Assessments|quizzes]] para recuperação ativa e entrego o [[Projeto Integrador]] conforme a [[Rubrica]]. A aprovação exige 80 pontos e nenhuma falha crítica de funcionamento ou segurança.
+
+## Depois do Advanced
+
+O Capstone também diagnostica o próximo gargalo:
+
+- se eu ainda não entrego a fatia de ponta a ponta com segurança, aprofundo o método e opero os squads deste acervo;
+- se eu já entrego, mas cada projeto exige remontar contexto, integrações, governança e observabilidade, avalio o **AIOX Enterprise** como ambiente de produção mantido.
+
+O Enterprise não substitui a competência construída aqui. Ele passa a fazer sentido quando essa competência já existe e o custo está em integrar e sustentar a operação. [Compare Fundamentals, Advanced e Enterprise](../../JORNADA-AIOX.md).
 
 ## Todas as aulas
 

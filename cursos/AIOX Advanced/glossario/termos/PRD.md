@@ -20,11 +20,11 @@ Product Requirements Document: a planta da obra. Trava stack, limites, integraç
 
 ## Como é usado
 
-Use **PRD** quando uma decisão de interface ou de entrega precisar ficar explícita, reutilizável e revisável.
+Use **PRD** para fechar o pipeline canônico antes de qualquer código: depois de Auto-Clarify, Tech Research, Spy/Bench e Code Anatomy, o PRD trava stack, limites e integrações, declara o que fica de fora (Won't do MoSCoW) e fecha em épicos e stories prontas para o time executar.
 
-**Exemplo prático:** na aula [[46-etapas-de-desenvolvimento]], aplique **PRD** a uma tela ou Story concreta, registre a variante escolhida e confira o resultado no artefato visual ou no gate.
+**Exemplo prático:** na aula [[40-pipeline-canonico-prd]], projeto novo não começa com o agente codando: três ou mais Tech Researchs rodam em paralelo, o Spy/Bench compara concorrentes, a Code Anatomy lê o que já existe e só então o PRD fecha em épicos, stories e critérios de aceite. Quando o validate dá FAIL, o retorno é ao PRD — não à conversa.
 
-**Não confunda:** não confunda **PRD** com estética sem contrato: o uso precisa deixar uma decisão e um critério de revisão.
+**Não confunda:** PRD não é Story nem backlog solto: é a planta da obra que os gera. Documento que não diz o que fica de fora nem fecha em stories com aceite testável é wishlist, não PRD.
 
 **Frequência nos cursos:** **301** menções (AIOX Advanced: 301 · AIOX Advanced Squads: 0).
 

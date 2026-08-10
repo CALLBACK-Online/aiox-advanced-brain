@@ -22,14 +22,14 @@
     "modules": 14,
     "quizzes": 14,
     "questions": 62,
-    "wikilinks": 2884,
+    "wikilinks": 2894,
     "unresolved_links_inside_cursos": 0,
     "ambiguous_links_inside_cursos": 0,
     "links_outside_course": 0
   },
   "supplemental_courses": [
     {
-      "path": "cursos/AIOX-Fundamentos-de-Arquitetura",
+      "path": "cursos/Introducao-a-Arquitetura-de-Sistemas",
       "source_repository": "this-library",
       "source_assets": "AIOX Advanced foundations + primary technical sources",
       "created_at": "2026-08-10",
@@ -40,7 +40,7 @@
       "questions": 32,
       "unresolved_links": 0,
       "links_outside_course": 0,
-      "agent_guide": "cursos/AIOX-Fundamentos-de-Arquitetura/AGENT-GUIDE.md"
+      "agent_guide": "cursos/Introducao-a-Arquitetura-de-Sistemas/AGENT-GUIDE.md"
     },
     {
       "path": "cursos/AIOX-Fundamentals",
@@ -87,7 +87,7 @@
       "path": "cursos/Obsidian-IA",
       "source_repository": "this-library",
       "created_at": "2026-08-10",
-      "markdown_files": 9,
+      "markdown_files": 11,
       "lessons": 8,
       "kind": "mini-course",
       "title": "Obsidian + IA",
@@ -938,15 +938,15 @@
       "bridge_to_squads": "cursos/AIOX Advanced/ponte/trilha-squads.md",
       "hub": "cursos/README.md"
     },
-    "aiox-fundamentos-arquitetura": {
-      "path": "cursos/AIOX-Fundamentos-de-Arquitetura",
+    "introducao-arquitetura-sistemas": {
+      "path": "cursos/Introducao-a-Arquitetura-de-Sistemas",
       "lessons": 24,
       "modules": 8,
       "quizzes": 8,
       "questions": 32,
       "hub": "cursos/README.md",
-      "agent_guide": "cursos/AIOX-Fundamentos-de-Arquitetura/AGENT-GUIDE.md",
-      "bridge_to_advanced": "cursos/AIOX-Fundamentos-de-Arquitetura/PROVENIENCIA.md"
+      "agent_guide": "cursos/Introducao-a-Arquitetura-de-Sistemas/AGENT-GUIDE.md",
+      "bridge_to_advanced": "cursos/Introducao-a-Arquitetura-de-Sistemas/PROVENIENCIA.md"
     },
     "aiox-fundamentals": {
       "path": "cursos/AIOX-Fundamentals",
@@ -958,7 +958,7 @@
       "hub": "cursos/README.md",
       "agent_guide": "cursos/AIOX-Fundamentals/AGENT-GUIDE.md",
       "source_manifest": "cursos/AIOX-Fundamentals/sources/SOURCE-MANIFEST.yaml",
-      "prerequisite": "cursos/AIOX-Fundamentos-de-Arquitetura/README.md",
+      "prerequisite": "cursos/Introducao-a-Arquitetura-de-Sistemas/README.md",
       "next_course": "cursos/AIOX Advanced/README.md"
     },
     "aiox-advanced-squads": {

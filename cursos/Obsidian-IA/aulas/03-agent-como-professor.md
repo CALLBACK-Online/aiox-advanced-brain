@@ -14,8 +14,6 @@ maturity: study
 
 # O agent como professor-especialista
 
-> [[00-HOME]] · [[cursos/Obsidian-IA/README|Obsidian-IA]] · [[cursos/entradas/README|entradas]] · [[notas/README|notas]]
-
 [← Wikilinks e grafo](02-wikilinks-e-grafo.md) · [⌂ Curso](../README.md) · [→ Captura sem poluir](04-captura-sem-poluir.md)
 
 ## Resultado
@@ -43,8 +41,8 @@ Arquivos de bootstrap (na raiz do repo): `AGENTS.md`, `CLAUDE.md`.
 ## Prompts que funcionam
 
 ```text
-Estou no aiox-advanced-brain. Me ensine o próximo passo da Rota Essencial
-com 1 aula e 1 exercício — sem listar as 75 aulas.
+Estou no aiox-advanced-brain. Descubra minha etapa na jornada canônica e me
+ensine o próximo passo com 1 aula e 1 exercício — sem despejar o catálogo.
 ```
 
 ```text

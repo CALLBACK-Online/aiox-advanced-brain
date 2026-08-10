@@ -20,11 +20,11 @@ Open Source Intelligence: reunir evidência de fontes públicas. Parte do resear
 
 ## Como é usado
 
-Use **OSINT** para investigar o alvo definido no briefing e transformar sinais em uma conclusão rastreável.
+Use **OSINT** dentro do research multi-fonte: evidência de fontes públicas — docs, repositórios, changelogs, fóruns, sinais de mercado — entra no dossiê com citação, data e a separação explícita entre fato observado e inferência.
 
-**Exemplo prático:** comece pela pergunta da aula [[36-tech-research-multi-fonte]], delimite o alvo, compare as evidências encontradas e registre a recomendação com as fontes ou critérios usados.
+**Exemplo prático:** na aula [[36-tech-research-multi-fonte]], as fontes públicas entram como OSINT ético no dossiê de Tech Research: cada achado citado e datado. No [[37-spy-bench-comparativo]], os sinais públicos sobre o concorrente alimentam o spy que precede o benchmark — sem acesso indevido e sem achismo sem fonte.
 
-**Não confunda:** não trate **OSINT** como uma opinião rápida: a saída precisa mostrar o que foi observado e como a conclusão foi obtida.
+**Não confunda:** OSINT não é espionagem nem opinião rápida: só vale fonte pública, com ética e rastreio de citação. Achado sem fonte datada não entra no dossiê — e inferência apresentada como fato contamina a conclusão.
 
 **Frequência nos cursos:** **2** menções (AIOX Advanced: 2 · AIOX Advanced Squads: 0).
 

@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `41-design-system-e-decisao; 42-…; 43-design-md-novo-contrato` — DS como decisão.
+Antes de operar este squad, faça a trilha **AIOX Design** (`cursos/AIOX-Design/`, no mínimo aulas 01–04 e 09) ou revise no **AIOX Advanced** (`lessons/`): `41-design-system-e-decisao`, `42-design-atomico-brad-frost`, `43-design-md-novo-contrato` — DS como decisão.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 

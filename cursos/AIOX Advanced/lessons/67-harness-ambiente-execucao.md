@@ -25,13 +25,13 @@ track: complete
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curriculum_role: applied-extension
-foundation_owner: cursos/AIOX-Fundamentos-de-Arquitetura/aulas/17-runtime-harness-ambiente-container.md
+foundation_owner: cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/17-runtime-harness-ambiente-container.md
 curated_at: '2026-08-09'
 ---
 
 # [[Harness]]: ambiente de execução do agente fora do Claude Code
 
-> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/AIOX-Fundamentos-de-Arquitetura/aulas/17-runtime-harness-ambiente-container.md`.
+> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/17-runtime-harness-ambiente-container.md`.
 
 No ecossistema AIOX completo, orquestração profunda pode depender de [[SYNAPSE]] e de [[Runtime AIOX]] — fora do lab só Claude Code.
 

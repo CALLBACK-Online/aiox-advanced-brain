@@ -43,6 +43,7 @@ REQUIRED_ROOT_FILES = [
     "deviations.yaml",
     "gap-analysis.md",
     "reformed-brief-validation-report.md",
+    "validation-report.md",
     "FONTES.md",
     "PROVENIENCIA.md",
     "sources/SOURCE-MANIFEST.yaml",

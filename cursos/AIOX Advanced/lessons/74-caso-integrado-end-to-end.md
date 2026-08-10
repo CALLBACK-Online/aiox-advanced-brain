@@ -422,6 +422,35 @@ antes (repo, Supabase, Vercel, CI se já tiver). Depois: timer. Sem pausa de
 
 ---
 
+## Prática: conduza um wedge do briefing ao ROI no seu projeto real
+
+Você vai produzir um mini-caso end-to-end no seu projeto de verdade: os 7 artefatos do capstone encadeados sob timer, fechados em um one-pager de case.
+
+**Exemplo preenchido: automatizar o follow-up de propostas paradas**
+
+- **Wedge (0–5)**: "Vendedor cola a lista de propostas paradas → sistema devolve follow-up pronto por proposta". Evidência: frase única no topo do one-pager — se precisou de parágrafo, corte agora.
+- **Brief + PRD curto (5–15)**: dor ("40 min/dia caçando proposta parada"), outcome, fluxo, fora de escopo. Evidência: PRD de 1 página do wedge, sem épico (etapas em `lessons/46-etapas-de-desenvolvimento.md`).
+- **Stories com aceite (15–25)**: 2 stories — (1) ingestão da lista, (2) geração do follow-up — marcadas ready. Evidência: cada aceite responde "como eu provo que fechou?" (formato em `lessons/47-ciclo-de-vida-do-story.md`).
+- **Build (25–65)**: implementar só o que está ready, commits pequenos; se atrasar, mate story — não qualidade. Evidência: diff/PR apontável em 5 segundos.
+- **QG (65–80)**: rodar o gate; loop curto de fix se vier vermelho. Evidência: veredito PASS/WAIVED com motivo escrito — nunca PASS mentiroso (critérios em `lessons/48-quality-gate-completo.md`).
+- **Deploy + smoke (80–88)**: preview/prod combinado + smoke mínimo (submit → resultado). Evidência: URL colada no case — ou bloqueio documentado com 1 causa e plano (`lessons/71-vercel-deploy.md`).
+- **ROI + retro (88–90)**: conta feia e honesta: (tempo poupado × frequência × custo/hora) − custo de rodar (base em `lessons/64-vender-pela-dor-e-roi.md`). Evidência: ROI com premissa explícita + 1 frase de retro de processo.
+- **One-pager de case (pós-bip)**: wedge, links dos 7 artefatos, URL, ROI e retro em uma página arquivada. Evidência: outra pessoa entende a corrida sem te perguntar nada.
+
+> **Teste rápido**: Se em qualquer minuto da corrida você aponta o artefato da fase atual em 5 segundos, o processo aguentou o timer.
+
+---
+
+## Portão da aula
+
+*Gate*
+
+O capstone só conta com a prova completa nas mãos, não com corrida "quase" fechada.
+
+> **Portão da aula**: Você só passa do capstone quando consegue apresentar os 7 artefatos da sua corrida — do brief ao ROI com premissa — com URL ou bloqueio documentado, sem nenhuma fase pulada em silêncio.
+
+---
+
 ## Glossário sem jargão de vaidade
 
 - **Caso E2E**: Exercício ponta a ponta com artefatos, evidência e chegada mensurável.

@@ -38,6 +38,7 @@ Assim só entra a camada de conhecimento: cursos, READMEs, entradas, skills, not
 
 ## Entradas
 
+- [[JORNADA-AIOX|Fundamentals, Advanced ou Enterprise?]]
 - [[cursos/README|Hub de trilhas]]
 - [[cursos/MOC-Acervo-AIOX|MOC · Acervo]]
 - [[cursos/MOC-Skills|MOC · Skills]]
@@ -45,18 +46,30 @@ Assim só entra a camada de conhecimento: cursos, READMEs, entradas, skills, not
 - [[cursos/AIOX Advanced/MOC-Todas-Aulas|MOC · Todas as aulas (método)]]
 - [[cursos/entradas/README|entradas skill/squad]]
 - [[cursos/Obsidian-IA/README|Mini-curso Obsidian + IA]]
-- [[cursos/AIOX-Fundamentos-de-Arquitetura/README|Fundamentos de Arquitetura de Sistemas]]
+- [[cursos/Introducao-a-Arquitetura-de-Sistemas/README|Introdução à Arquitetura de Sistemas]]
 - [[cursos/AIOX-Fundamentals/README|AIOX Fundamentals — Core básico]]
 - [[cursos/AIOX Advanced/README|AIOX Advanced (método)]]
+- [[cursos/AIOX-Design/README|AIOX Design (contrato visual / DS)]]
 - [[cursos/AIOX-Advanced-Squads/README|AIOX Advanced Squads]]
 - [[notas/README|notas — anotações dos alunos]]
 - [[AGENTS|Contrato dos agents]]
 - [[README|README do repositório]]
 
+## Jornada de aprendizagem
+
+1. [[cursos/Obsidian-IA/README|Obsidian + IA]] — estudar o acervo.
+2. [[cursos/Introducao-a-Arquitetura-de-Sistemas/README|Introdução à Arquitetura de Sistemas]] — entender sistemas.
+3. [[cursos/AIOX-Fundamentals/README|AIOX Fundamentals]] — instalar e operar o Core.
+4. [[cursos/AIOX Advanced/README|AIOX Advanced]] — aplicar o método.
+5. [[cursos/AIOX-Advanced-Squads/README|AIOX Advanced Squads]] — operar os especialistas.
+
+Arquitetura e AIOX Fundamentals são etapas diferentes: linguagem técnica universal primeiro; framework AIOX depois.
+
 ## Loop
 
 ```text
-Estudar (cursos/) → Anotar (notas/) → Skill/Squad → Projeto real → Evidência
+Recuperar fontes → Captura/MOC → Context Brief → Projeto real
+→ Validação → Retorno em notas/retornos/
 ```
 
 ## Skills de vault

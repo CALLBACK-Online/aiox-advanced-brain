@@ -2,12 +2,14 @@
 
 ## 0.6.0 — 2026-08-10
 
-- Adiciona **AIOX Fundamentals** como trilha própria entre Fundamentos de Arquitetura e AIOX Advanced: 3 módulos, 12 aulas, 3 quizzes, projeto final e guia para agents.
+- Adiciona **AIOX Fundamentals** como trilha própria entre Introdução à Arquitetura de Sistemas e AIOX Advanced: 3 módulos, 12 aulas, 3 quizzes, projeto final e guia para agents.
 - Rastreia o curso no AIOX Core 5.2.9 por commit e hashes; cobre instalação, anatomia, os 12 agents, contexto, story, autoridade, gates e handoff.
+- Adiciona **AIOX Design** (`cursos/AIOX-Design/`): trilha de contrato visual e design system para IA — 10 aulas, 4 módulos, 3 quizzes (12 questões balanceadas), capstone, pontes com Advanced M9 e Squads 13–15, validador no `npm run validate`.
 
 ### Added
 
-- Curso `cursos/AIOX-Fundamentos-de-Arquitetura/`: 24 aulas, 8 módulos, 8 quizzes, 32 questões, glossário, mapa de termos, projeto integrador e guia para agents.
+- Curso `cursos/AIOX-Design/`: DESIGN.md, taxonomia atômica, stack canônica, variantes, portão vs craft, skill vs squad; seeds curados do Advanced M6/M9.
+- Curso `cursos/Introducao-a-Arquitetura-de-Sistemas/`: 24 aulas, 8 módulos, 8 quizzes, 32 questões, glossário, mapa de termos, projeto integrador e guia para agents.
 - Cobertura introdutória de componentes, dados, contratos, comunicação assíncrona, workflow/pipeline, concorrência, fan-out/fan-in, escala, confiabilidade, observabilidade, runtime, deploy, segurança e sistemas com agentes.
 - Validador próprio do curso e integração ao bootstrap de Claude Code/Codex, hub de trilhas e catálogo.
 
@@ -16,8 +18,14 @@
 - Fundamentos antes dispersos no AIOX Advanced passam a ter fonte curricular canônica no novo curso; as aulas antigas permanecem como extensões aplicadas ao método AIOX, preservando o grafo existente.
 - Mini-curso Obsidian + IA agora fecha o loop **estudo → Context Brief → execução no projeto → retorno ao segundo cérebro**, com template copiável, capstone operacional e validação estrutural do contrato.
 - Skills de vault passam a orientar handoff mínimo, evidência e captura pós-execução sem transferir vault, secrets ou logs brutos.
+- Hardening 1.2 do mini-curso: Context Brief obrigatório no bridge, captura/MOC por menor mecanismo, bootstrap de `notas/`, template pessoal com `status: draft`, navegação autocontida e validator comportamental sincronizado ao catálogo e aos bootstraps.
+- READMEs, Capstones e projetos finais passam a diagnosticar o próximo passo entre Fundamentals, Advanced e Enterprise sem inserir promoção nas aulas técnicas.
 
 ## 0.5.1 — 2026-08-10
+
+### Changed
+
+- Curso de arquitetura renomeado de `AIOX-Fundamentos-de-Arquitetura` para **`Introducao-a-Arquitetura-de-Sistemas`** (título: **Introdução à Arquitetura de Sistemas**), sem prefixo AIOX — evita confusão com AIOX Fundamentals e deixa claro que a trilha é sobre arquitetura de sistemas em geral.
 
 ### Added
 

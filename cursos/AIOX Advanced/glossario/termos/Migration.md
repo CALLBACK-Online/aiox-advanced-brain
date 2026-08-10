@@ -20,11 +20,11 @@ Mudança versionada de schema de banco. No AIOX, migration é artefato revisáve
 
 ## Como é usado
 
-Use **Migration** ao modelar, alterar ou verificar a parte de dados/infra descrita na definição, sempre com ambiente e risco explícitos.
+Use **Migration** para toda mudança de schema ou policy: um arquivo versionado no repositório, revisável em PR e repetível entre ambientes (local → staging → production), com plano de rollback pensado antes de aplicar.
 
-**Exemplo prático:** na aula [[70-supabase-via-data-engineer]], aplique **Migration** a um caso de dados, execute a verificação em staging e registre contagem, política, log ou migration como evidência.
+**Exemplo prático:** na aula [[70-supabase-via-data-engineer]], criar uma nova entidade passa pelo @data-engineer como schema + RLS + migration num arquivo versionado; mudança em produção exige migration + plano de rollback + janela — nunca "SQL herói" direto no dashboard.
 
-**Não confunda:** não confunda **Migration** com uma alteração manual sem rastreio: a mudança precisa ser reproduzível e revisável.
+**Não confunda:** migration não é ALTER TABLE rodado à mão no dashboard: tabela criada "no calor do PR" sem migration file é o anti-padrão que a aula lista. Se a mudança não está num arquivo reproduzível no repo, ela não existe para o processo.
 
 **Frequência nos cursos:** **66** menções (AIOX Advanced: 59 · AIOX Advanced Squads: 7).
 

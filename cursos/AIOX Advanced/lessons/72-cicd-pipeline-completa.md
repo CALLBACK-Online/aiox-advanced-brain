@@ -25,13 +25,13 @@ track: complete
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curriculum_role: applied-extension
-foundation_owner: cursos/AIOX-Fundamentos-de-Arquitetura/aulas/18-cicd-deploy-rollback.md
+foundation_owner: cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/18-cicd-deploy-rollback.md
 curated_at: '2026-08-09'
 ---
 
 # [[CI-CD|CI/CD]] Pipeline completa: GitHub Actions + Quality Gate pré-[[Merge|merge]]
 
-> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/AIOX-Fundamentos-de-Arquitetura/aulas/18-cicd-deploy-rollback.md`.
+> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/18-cicd-deploy-rollback.md`.
 
 ← [[71-vercel-deploy|Vercel Deploy: do localhost ao mundo]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[73-prontidao-de-producao|Prontidão de produção: checklist final]]
 

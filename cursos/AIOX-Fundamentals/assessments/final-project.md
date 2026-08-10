@@ -64,3 +64,7 @@ Uma parada segura bem documentada pode atender ao projeto melhor que uma mutaç�
 ## Avaliação
 
 Use a [rubrica](final-project-rubric.md). Aprovação: 14 de 20 pontos, sem nota zero em autoridade/segurança ou evidência.
+
+## Próximo passo
+
+Se você foi aprovado e consegue repetir o ciclo sem seguir a receita, avance para o [AIOX Advanced](../../AIOX%20Advanced/README.md). Se contexto, roteamento ou evidência ainda dependem de assistência, revise o módulo correspondente e execute outra mudança pequena antes de avançar.

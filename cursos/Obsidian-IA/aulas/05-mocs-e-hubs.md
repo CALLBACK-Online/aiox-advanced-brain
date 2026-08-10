@@ -14,8 +14,6 @@ maturity: study
 
 # MOCs e hubs de estudo
 
-> [[00-HOME]] · [[cursos/Obsidian-IA/README|Obsidian-IA]] · [[cursos/entradas/README|entradas]] · [[notas/README|notas]]
-
 [← Captura sem poluir](04-captura-sem-poluir.md) · [⌂ Curso](../README.md) · [→ Context Brief](06-do-estudo-a-execucao.md)
 
 ## Resultado
@@ -38,10 +36,11 @@ Destino pessoal: `notas/MOCs/MOC - {Tema}.md`.
 
 ## Tipos úteis
 
-1. Por **módulo** do Advanced
-2. Por **dor** (“agente em loop”, “design system drift”)
-3. Por **squad** (aula + pré-req + skill)
-4. Trilha personalizada de 5–12 passos
+1. Por **etapa da jornada** (Obsidian, Arquitetura, Core, método ou Squads)
+2. Por **módulo** de um curso
+3. Por **dor** (“agente em loop”, “design system drift”)
+4. Por **squad** (aula + pré-requisito + skill)
+5. Trilha personalizada de 5–12 passos
 
 ## Esqueleto
 

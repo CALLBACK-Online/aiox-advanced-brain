@@ -14,13 +14,19 @@ aliases: [MOC Acervo, Mapa do acervo]
 - `squads/` — pacotes
 - [[notas/README|notas/]] — anotações dos alunos
 
-## Trilhas
+## Jornada canônica
 
-- [[cursos/AIOX Advanced/README|AIOX Advanced]] — método
-- [[cursos/AIOX-Fundamentos-de-Arquitetura/README|Fundamentos de Arquitetura de Sistemas]] — linguagem técnica
-- [[cursos/AIOX-Fundamentals/README|AIOX Fundamentals]] — instalação + operação do Core
-- [[cursos/AIOX-Advanced-Squads/README|AIOX Advanced Squads]] — operação
-- [[cursos/Obsidian-IA/README|Obsidian + IA]] — vault + agent
+1. [[cursos/Obsidian-IA/README|Obsidian + IA]] — como estudar o acervo e fechar o loop captura/MOC → Context Brief → execução no projeto → validação → retorno
+2. [[cursos/Introducao-a-Arquitetura-de-Sistemas/README|Introdução à Arquitetura de Sistemas]] — como entender sistemas
+3. [[cursos/AIOX-Fundamentals/README|AIOX Fundamentals]] — como instalar e operar o Core
+4. [[cursos/AIOX Advanced/README|AIOX Advanced]] — como aplicar o método
+5. [[cursos/AIOX-Advanced-Squads/README|AIOX Advanced Squads]] — como operar os especialistas
+
+```text
+estudar → entender → operar o Core → aplicar o método → operar especialistas
+```
+
+Especialização lateral após o M9 do Advanced: [[cursos/AIOX-Design/README|AIOX Design]] — contrato visual e design system para IA.
 
 ## Mapas
 

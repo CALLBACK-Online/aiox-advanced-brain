@@ -8,14 +8,12 @@ Análise dos grupos WhatsApp **AIOX Cohort Advanced T1 e T2**.
 |---------|----------|
 | **[CATALOG.md](./CATALOG.md)** | **Onde está X? Qual a última versão?** |
 | [FINDABILITY.md](./FINDABILITY.md) | Por que a turma se perde + regras da casa |
-| [catalog.yaml](./catalog.yaml) | Índice machine-readable (bots/tooling) |
 | [FAQ-cohort.md](./FAQ-cohort.md) | 10+ padrões de dúvida (inclui findability) |
 | [SYNTHESIS.md](./SYNTHESIS.md) | Mapa de calor + quotes Alan |
-| [materials/](./materials/) | Guias copiados do grupo |
 
 ## Aula dedicada
 
-- `lessons/75-faq-cohort-campo/` — FAQ de campo + §00 findability
+- `lessons/75-faq-cohort-campo.md` — FAQ de campo + §00 findability
 
 ## Aulas com seção `cohort-campo`
 
@@ -37,4 +35,4 @@ Não suba o histórico do grupo.
 Ao postar pack novo: nome com data (pack-2026-08-09.zip) + 1 linha do que mudou.
 ```
 
-Fontes locais: `~/Downloads/WhatsApp Chat - AIOX Cohort Advanced - *`
+Fontes: exports dos grupos de WhatsApp da turma (T1/T2) — não versionados neste repositório.

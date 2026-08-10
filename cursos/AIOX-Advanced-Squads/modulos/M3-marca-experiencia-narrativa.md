@@ -29,4 +29,4 @@ Para cada squad do módulo: briefing preenchido, rota justificada, artefato de p
 
 ## Navegação
 
-[⌂ Curso](../README.md)
+[← M2 Dados e materialização](M2-dados-materializacao.md) · [⌂ Curso](../README.md) · [→ M4 Aquisição, conteúdo e vendas](M4-aquisicao-conteudo-vendas.md)

@@ -14,8 +14,6 @@ maturity: study
 
 # Wikilinks, backlinks e Graph
 
-> [[00-HOME]] · [[cursos/Obsidian-IA/README|Obsidian-IA]] · [[cursos/entradas/README|entradas]] · [[notas/README|notas]]
-
 [← Abrir o vault](01-abrir-o-vault.md) · [⌂ Curso](../README.md) · [→ Agent como professor](03-agent-como-professor.md)
 
 ## Resultado
@@ -24,7 +22,7 @@ Ler e criar `[[wikilinks]]`, usar backlinks e abrir o Graph view com intenção.
 
 ## Quando usar — e quando não usar
 
-**Use** para estudar o curso método e montar seus próprios hubs.
+**Use** para estudar qualquer etapa da jornada e montar seus próprios hubs.
 
 **Não** force wikilink para fora da pasta do curso canônico se isso quebrar o validador — cada curso é autocontido.
 
@@ -51,6 +49,7 @@ Fora do Obsidian (GitHub, agent), traduza wikilink → **path relativo**.
 | Azul | `cursos/AIOX Advanced` — método |
 | Roxo | `cursos/AIOX-Advanced-Squads` — aulas de squad |
 | Ciano | `cursos/Obsidian-IA` — este mini |
+| Azul-base | `cursos/AIOX-Fundamentos-de-Arquitetura` e `cursos/AIOX-Fundamentals` — base técnica e Core |
 | Verde | `skills/` |
 | Laranja | `squads/` |
 | Âmbar | `notas/` |
@@ -67,7 +66,7 @@ Para ver **skills e squads** no mesmo Graph, abra a **raiz do repositório** com
 
 Perguntas boas no Graph:
 
-1. O cluster azul (método) e o roxo (squads) aparecem separados?
+1. Os cinco cursos da jornada aparecem ligados pelos hubs, com método e squads em clusters separados?
 2. Os hubs rosa puxam arestas para verde/laranja?
 3. Quais pastas ainda são só órfãs?
 

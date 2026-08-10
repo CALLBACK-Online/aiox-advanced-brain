@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `32-design-system-greenfield-brownfield; 41-…` — DS vivo e governança.
+Antes de operar este squad, faça a trilha **AIOX Design** (`cursos/AIOX-Design/`, aulas 05, 07–09) ou revise no **AIOX Advanced** (`lessons/`): `32-design-system-greenfield-brownfield`, `41-design-system-e-decisao` — DS vivo e governança.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 

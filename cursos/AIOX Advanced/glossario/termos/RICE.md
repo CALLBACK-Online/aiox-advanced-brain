@@ -20,11 +20,11 @@ Priorização por Reach, Impact, Confidence, Effort. Complementa MoSCoW com scor
 
 ## Como é usado
 
-Use **RICE** para tomar a decisão de produto descrita acima antes de ampliar o escopo ou iniciar implementação.
+Use **RICE** quando a fila de iniciativas precisa de um score comparável: Reach × Impact × Confidence ÷ Effort dá um número por iniciativa, calculado antes da decisão. Ele complementa o MoSCoW: o MoSCoW corta escopo (Must/Won't); o RICE ordena a fila do que sobrou.
 
-**Exemplo prático:** na aula [[46-etapas-de-desenvolvimento]], compare as opções com o critério declarado, registre o que entra e o que fica fora e ligue a escolha a uma métrica de valor.
+**Exemplo prático:** na aula [[46-etapas-de-desenvolvimento]], o fechamento do PRD declara Must versus Won't pelo MoSCoW e, havendo fila de iniciativas concorrendo, cada uma recebe seu score RICE — a ordem de execução sai do número, não de "quem gritou mais alto na reunião".
 
-**Não confunda:** não use **RICE** como justificativa posterior: o critério deve aparecer antes da decisão.
+**Não confunda:** não use **RICE** como justificativa posterior: calcular o score depois de já ter escolhido é teatro de priorização. O critério aparece antes; a decisão herda o número, não o contrário.
 
 **Frequência nos cursos:** **3** menções (AIOX Advanced: 3 · AIOX Advanced Squads: 0).
 

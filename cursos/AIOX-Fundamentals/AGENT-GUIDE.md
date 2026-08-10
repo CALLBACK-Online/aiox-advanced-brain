@@ -7,7 +7,7 @@ canonical_scope: cursos/AIOX-Fundamentals
 
 # Guia do agent-professor — AIOX Fundamentals
 
-Use este guia para ensinar instalação e operação básica do `aiox-core`. Este curso não é Fundamentos de Arquitetura, AIOX Advanced nem o curso de Squads.
+Use este guia para ensinar instalação e operação básica do `aiox-core`. Este curso não é Introdução à Arquitetura de Sistemas, AIOX Advanced nem o curso de Squads.
 
 ## Roteamento por intenção
 
@@ -37,7 +37,7 @@ Use este guia para ensinar instalação e operação básica do `aiox-core`. Est
 
 ## Fronteiras
 
-- Termo técnico geral ou leitura de sistemas → `cursos/AIOX-Fundamentos-de-Arquitetura/`.
+- Termo técnico geral ou leitura de sistemas → `cursos/Introducao-a-Arquitetura-de-Sistemas/`.
 - Método aprofundado, determinismo, design e deploy → `cursos/AIOX Advanced/`.
 - Escolha e operação de squads empacotados → `cursos/AIOX-Advanced-Squads/`.
 

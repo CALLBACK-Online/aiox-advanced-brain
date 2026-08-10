@@ -25,13 +25,13 @@ track: complete
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curriculum_role: applied-extension
-foundation_owner: cursos/AIOX-Fundamentos-de-Arquitetura/aulas/12-concorrencia-paralelismo-fanout-fanin.md
+foundation_owner: cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/12-concorrencia-paralelismo-fanout-fanin.md
 curated_at: '2026-08-09'
 ---
 
 # [[Ralph]]: [[Paralelização|paralelização]] de múltiplos agentes
 
-> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/AIOX-Fundamentos-de-Arquitetura/aulas/12-concorrencia-paralelismo-fanout-fanin.md`.
+> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/12-concorrencia-paralelismo-fanout-fanin.md`.
 
 ← [[57-storybook-para-variantes|Storybook para derivar e testar variantes (a11y, dark mode, responsivo)]] · ↑ [[modulos/Módulo 10 - Escala e Tokens|M10]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[59-quando-paralelizar-vs-sequencial|Quando paralelizar vs sequencial: decisão antes do speedup]]
 

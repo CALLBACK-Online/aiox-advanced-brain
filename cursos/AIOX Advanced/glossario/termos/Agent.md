@@ -20,11 +20,11 @@ IA com persona genérica, para raciocínio aberto e linguagem.
 
 ## Como é usado
 
-Use **Agent** para raciocínio aberto, síntese e linguagem quando ainda existe ambiguidade que não cabe em uma regra fixa.
+Use **Agent** para raciocínio aberto, síntese e linguagem quando ainda existe ambiguidade que não cabe em uma regra fixa. Na aula [[15-quatro-executores]], é um dos quatro executores (humano, agent, clone, worker): a task é a unidade; o agent é o executor escolhido quando ela exige julgamento contextual.
 
-**Exemplo prático:** peça a um Agent para comparar duas hipóteses de produto e explicitar as premissas. Depois, transforme a decisão repetível em Task, Skill, Workflow ou Runner.
+**Exemplo prático:** "resumir 40 entrevistas e extrair padrões" vai para um Agent; "renomear 200 arquivos por regex" vai para um worker. Quando o julgamento do Agent se torna repetível, ele desce a taxonomia e vira Task, Skill, Workflow ou Runner.
 
-**Não confunda:** o Agent produz julgamento contextual; um Worker ou Runner executa passos mecânicos.
+**Não confunda:** o Agent produz julgamento contextual; um Worker ou Runner executa passos mecânicos, baratos e confiáveis. Jogar toda task num agent por reflexo — "IA pra tudo" — é a dor que a aula nomeia.
 
 **Frequência nos cursos:** **440** menções (AIOX Advanced: 373 · AIOX Advanced Squads: 67).
 

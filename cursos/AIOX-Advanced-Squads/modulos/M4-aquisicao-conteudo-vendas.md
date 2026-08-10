@@ -28,4 +28,4 @@ Para cada squad do módulo: briefing preenchido, rota justificada, artefato de p
 
 ## Navegação
 
-[⌂ Curso](../README.md)
+[← M3 Marca, experiência e narrativa](M3-marca-experiencia-narrativa.md) · [⌂ Curso](../README.md) · [→ M5 Metacapacidades](M5-metacapacidades.md)

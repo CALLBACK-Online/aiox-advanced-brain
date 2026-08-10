@@ -15,7 +15,7 @@ tags: [curso/aiox-advanced-squads, intro, layer/curso, curso/squads, squad/como-
 
 # Como usar este curso e o acervo
 
-> Vault: [[squads/como-usar-este-curso/README|como-usar-este-curso]] · [[skills/como-usar-este-curso/SKILL|como-usar-este-curso skill]] (se existir) · [[cursos/MOC-Squads]]
+> Vault: [[cursos/MOC-Squads]] · [[cursos/MOC-Acervo-AIOX]]
 
 [↑ Curso](../README.md) · [Guia de execução](../Guia-de-execucao.md) · [Mapa de decisão](../Mapa-de-decisao.md) · [→ Advisory Board](01-advisory-board.md)
 

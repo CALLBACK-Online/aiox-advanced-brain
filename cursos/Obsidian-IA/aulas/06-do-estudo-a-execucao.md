@@ -14,13 +14,11 @@ maturity: study
 
 # Context Brief: do estudo à execução
 
-> [[00-HOME]] · [[cursos/Obsidian-IA/README|Obsidian-IA]] · [[cursos/entradas/README|entradas]] · [[notas/README|notas]]
-
 [← MOCs e hubs](05-mocs-e-hubs.md) · [⌂ Curso](../README.md) · [→ Estudo → execução → memória](07-pratica-integrada.md)
 
 ## Resultado
 
-Transformar conhecimento recuperado no vault em um **Context Brief**, levar somente o contexto e o asset necessários ao projeto AIOX e preparar o retorno ao segundo cérebro.
+Transformar conhecimento recuperado no vault em um **Context Brief** para a próxima etapa de estudo ou, quando já houver base operacional, para um projeto AIOX.
 
 ## Quando usar — e quando não usar
 
@@ -44,11 +42,15 @@ O projeto não precisa acessar todo o vault, e o vault não precisa virar parte 
 ## Menor mecanismo suficiente
 
 ```text
-Dúvida conceitual     → aula (Advanced)
+Dúvida sobre sistemas → Fundamentos de Arquitetura
+Dúvida sobre o Core   → AIOX Fundamentals
+Dúvida sobre método   → AIOX Advanced
 Organizar estudo      → aiox-brain / course-moc / study-capture
 Tarefa estreita       → skills/<nome>
 Missão multi-agente   → squads/<nome> + curso Squads + agent-router
 ```
+
+Na **primeira passagem**, escolha curso/aula como mecanismo e use o briefing para estudar. No **retorno operacional**, escolha skill/squad e faça handoff ao projeto. Exigir um asset executável antes de Fundamentals inverteria os pré-requisitos da jornada.
 
 ## Loop operacional
 
@@ -66,14 +68,14 @@ Para squads em linguagem natural: curso `cursos/AIOX-Advanced-Squads/` + `AGENT-
 
 ## Context Brief
 
-Use o [template canônico](../templates/context-brief.md). Ele deve responder:
+Use o [template canônico](../templates/context-brief.md) e copie somente o bloco marcado como **Template copiável** para sua nota pessoal. Ele deve responder:
 
 ```text
 Missão: qual transformação observável precisa acontecer?
 Fontes: quais aulas/notas sustentam a decisão e por quê?
 Restrições: o que deve ser preservado ou evitado?
-Mecanismo: qual skill/squad, maturidade e fronteira?
-Handoff: o que vai para o projeto e o que fica no vault?
+Mecanismo: qual curso/aula ou skill/squad, maturidade e fronteira?
+Handoff: o que vai para a próxima etapa ou projeto e o que fica no vault?
 Aceite: como saber que a missão terminou?
 Evidência: qual artefato ou validação provará a execução?
 Retorno: o que será registrado no segundo cérebro depois?
@@ -81,14 +83,15 @@ Retorno: o que será registrado no segundo cérebro depois?
 
 O briefing é copiável para qualquer runtime. Paths do vault servem como proveniência; o conteúdo necessário deve estar resumido no próprio briefing, porque o agent do projeto pode não enxergar este repositório.
 
-## Handoff seguro ao projeto
+## Handoff seguro à próxima etapa
 
-1. Confirme que o asset citado existe e leia sua maturidade.
-2. Descubra no projeto de destino onde aquele runtime carrega skills ou squads; não invente o diretório.
-3. Copie somente `skills/<nome>/` ou `squads/<id>/` quando necessário.
-4. Entregue o Context Brief ao agent do projeto.
-5. Exija artefato + validação; uma conversa concluída não é evidência.
-6. Não transfira `notas/`, secrets, logs brutos nem o vault inteiro.
+1. Se a missão é de **estudo**, confirme o curso/aula, leve a síntese e defina como demonstrará compreensão.
+2. Se a missão é **operacional**, confirme que o asset existe e leia sua maturidade.
+3. Descubra no projeto de destino onde o runtime carrega skills ou squads; não invente o diretório.
+4. Copie somente `skills/<nome>/` ou `squads/<id>/` quando necessário.
+5. Entregue o Context Brief ao agent da próxima etapa ou do projeto.
+6. Exija artefato + validação; uma conversa concluída não é evidência.
+7. Não transfira `notas/`, secrets, logs brutos nem o vault inteiro.
 
 ## Runtime honesto
 
@@ -96,16 +99,16 @@ Só use `$skill`, `@agent`, `*comando`, `/comando` se existirem no ambiente de d
 
 ## Prática
 
-Pegue uma missão real da sua captura ou MOC e preencha uma cópia do template:
+Pegue uma missão real da sua captura ou MOC e preencha o bloco copiável do template em uma nota pessoal:
 
 ```text
 Missão: …
 Fontes recuperadas: …
 Decisões e restrições: …
-Skill ou squad: …
-Maturidade: …
+Curso/aula ou skill/squad: …
+Maturidade: … (use “não se aplica” para rota de estudo)
 Por que não o vizinho: …
-O que copio para o projeto: …
+O que levo para a próxima etapa ou projeto: …
 Critérios de aceite: …
 Evidência que vou exigir: …
 Retorno que vou capturar: …
@@ -113,4 +116,4 @@ Retorno que vou capturar: …
 
 ## Evidência de conclusão
 
-Context Brief preenchido com pelo menos uma fonte real, um asset existente com maturidade confirmada, aceite verificável e retorno planejado.
+Context Brief preenchido com pelo menos uma fonte real, um destino existente, aceite verificável e retorno planejado. Na rota operacional, inclua também asset e maturidade confirmados.

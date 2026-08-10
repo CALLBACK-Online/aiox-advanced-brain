@@ -83,8 +83,16 @@ Cada aula segue Goal → Position → Steps, inclui um exercício executável e 
 
 Este curso ensina fundamentos do framework open source. Não substitui a trilha AIOX Advanced, não promete domínio de uma IDE específica e não inclui recursos comerciais do AIOX Pro.
 
-Também não substitui **Fundamentos de Arquitetura**. Arquitetura ensina a ler sistemas em geral; este curso ensina a instalar e operar o `aiox-core`.
+Também não substitui **Introdução à Arquitetura de Sistemas**. Arquitetura ensina a ler sistemas em geral; este curso ensina a instalar e operar o `aiox-core`.
 
 ## Posição no acervo
 
-`Obsidian + IA → Fundamentos de Arquitetura → AIOX Fundamentals → AIOX Advanced → AIOX Advanced Squads`
+`Obsidian + IA → Introdução à Arquitetura de Sistemas → AIOX Fundamentals → AIOX Advanced → AIOX Advanced Squads`
+
+## Próximo passo
+
+Não avance apenas porque terminou as 12 aulas. Vá para o **AIOX Advanced** quando conseguir instalar ou auditar o Core, escolher o mecanismo correto e fechar uma mudança local com evidência reproduzível.
+
+Se ainda precisa seguir a receita para concluir esse ciclo, repita o [projeto final](assessments/final-project.md) com uma segunda mudança pequena. Se já consegue explicar cada decisão sem depender da receita, o Advanced passa a aprofundar o que hoje ainda é improvisado.
+
+[Veja a jornada completa: Fundamentals, Advanced e Enterprise](../../JORNADA-AIOX.md).

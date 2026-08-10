@@ -32,6 +32,16 @@ notas/
 5. Para operar, gere um Context Brief a partir de `cursos/Obsidian-IA/templates/context-brief.md`
 6. Depois da execução no projeto, registre em `notas/retornos/` resultado, evidência, decisão e aprendizado reutilizável
 
+## Primeiro uso
+
+As pastas pessoais são gitignored e, por isso, não existem em um clone limpo. Crie-as pelo Explorer do Obsidian ou, na raiz do repositório, execute:
+
+```bash
+mkdir -p notas/inbox notas/notes notas/MOCs notas/cards notas/retornos notas/attachments
+```
+
+Depois disso, `.obsidian/app.json` direciona novas notas para `notas/inbox/` e anexos para `notas/attachments/`.
+
 ## Config do vault
 
 Novas notas do Obsidian apontam para `notas/inbox` (ver `.obsidian/app.json`).
