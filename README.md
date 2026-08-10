@@ -67,7 +67,7 @@ Estudar (Obsidian)  →  Escolher skill/squad  →  Copiar ao projeto  →  Exec
 | **Skills** | **66** em [`skills/`](skills/): base AIOX, entradas de squad, roteador `aiox-squads` e 4 de vault de estudo |
 | **Squads** | **24** canônicos em [`squads/`](squads/) |
 | **Curso método** | [AIOX Advanced](cursos/AIOX%20Advanced/README.md) — **75 aulas**, **14 módulos**, **14 quizzes**, **62 questões** |
-| **Grafo** | **2.004** wikilinks internos no curso principal |
+| **Grafo** | **2.614** wikilinks internos no curso principal |
 | **Curso squads** | [AIOX Advanced Squads](cursos/AIOX-Advanced-Squads/README.md) — **25 aulas** (intro + 1 por squad), **6 módulos**, **6 quizzes**, **24 questões** |
 | **Mini Obsidian+IA** | [Obsidian + IA](cursos/Obsidian-IA/README.md) — **8 aulas**, ~60–90 min, vault + agent + captura |
 | **Operação** | Mapas de decisão, briefings copiáveis, exemplos de ativação, exercícios, critérios de evidência |

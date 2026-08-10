@@ -10,7 +10,7 @@
 - Wiring em `AGENTS.md` / `CLAUDE.md` / README para curadoria de estudo sem poluir o canônico.
 - Layout vault: pasta `cursos/` (minúsculo, alinhado a `skills/`/`squads/`), pasta `notas/` para anotações dos alunos, Graph limpo (orphans off).
 - **Vault Obsidian personalizado:** tema padrão, `.obsidian/graph.json` com grupos de cores (cursos/skills/squads), snippet CSS próprio, `00-HOME.md` + MOCs de conexão.
-- Glossário ampliado para 235 arquivos Markdown e **2.004 wikilinks** verificados no curso principal.
+- Glossário ampliado para 298 arquivos Markdown e **2.614 wikilinks** verificados no curso principal.
 
 ## 0.5.0 — 2026-08-10
 
