@@ -18,8 +18,6 @@ tags: [curso/aiox-design, lesson, layer/curso]
 
 [⌂ Curso](../README.md) · [↑ M2](../modulos/M2.md) · [← Anterior](09-tokens-componentes-anti-drift.md) · [Próxima →](11-storybook-fonte-da-verdade.md)
 
-[⌂ Curso](../README.md) · [↑ M1](../modulos/M1.md) · [← Anterior](08-design-md-contrato.md) · [Próxima →](09-tokens-componentes-anti-drift.md)
-
 ## Resultado
 
 Você classifica elementos de interface por nível de composição e identifica onde uma mudança deve ser feita para propagar sem duplicação.
@@ -93,5 +91,3 @@ Mapa da tela por níveis, com uma decisão REUSE/ADAPT/CREATE defendida por resp
 ## Navegação
 
 [⌂ Curso](../README.md) · [↑ M2](../modulos/M2.md) · [← Anterior](09-tokens-componentes-anti-drift.md) · [Próxima →](11-storybook-fonte-da-verdade.md)
-
-[⌂ Curso](../README.md) · [↑ M1](../modulos/M1.md) · [← Anterior](08-design-md-contrato.md) · [Próxima →](09-tokens-componentes-anti-drift.md)

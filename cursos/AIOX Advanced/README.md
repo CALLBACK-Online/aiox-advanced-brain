@@ -13,7 +13,7 @@ synced_at: 2026-08-10
 curriculum_modules: 6
 lessons: 28
 quizzes: 6
-questions: 24
+questions: 48
 tags: [curso, aiox-advanced, metodo, sdc, determinismo, layer/curso]
 ---
 
@@ -23,9 +23,9 @@ tags: [curso, aiox-advanced, metodo, sdc, determinismo, layer/curso]
 
 O Advanced volta a ter uma promessa única. Ele ensina **como conduzir o trabalho com AIOX**. Construção de capacidades agentic, design e monetização possuem cursos próprios.
 
-**Aulas ativas:** 28 · **Módulos:** 5 + Capstone · **Quizzes:** 6 · **Questões:** 24
+**Aulas ativas:** 28 · **Módulos:** 5 + Capstone · **Quizzes:** 6 · **Questões:** 48
 
-- Avaliações: [[Assessments|6 checkpoints e 24 questões]]
+- Avaliações: [[Assessments|6 checkpoints e 48 questões]]
 - Conclusão: [[Projeto Integrador]] · [[Rubrica]]
 - Dúvidas de campo: [[support/README|Central de suporte]]
 - Histórico: [[archive/README|Arquivo curricular da edição de 75 aulas]]

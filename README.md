@@ -89,12 +89,12 @@ Na jornada educacional, [Introdução à Arquitetura de Sistemas](cursos/Introdu
 |--------|----------------------------------------|
 | **Skills** | **67** em [`skills/`](skills/): base AIOX, entradas de squad, roteador `aiox-squads` e skills de vault/ensino |
 | **Squads** | **24** canônicos em [`squads/`](squads/) |
-| **Curso método** | [AIOX Advanced](cursos/AIOX%20Advanced/README.md) — **28 aulas**, **6 módulos**, **6 quizzes**, **24 questões** |
+| **Curso método** | [AIOX Advanced](cursos/AIOX%20Advanced/README.md) — **28 aulas**, **6 módulos**, **6 quizzes**, **48 questões** |
 | **Curso Agent Engineering** | [AIOX Agent Engineering](cursos/AIOX-Agent-Engineering/README.md) — **28 aulas**, **7 módulos**, **6 quizzes**, **24 questões**, capstone |
 | **Grafo** | Milhares de wikilinks entre cursos, conceitos, skills e squads |
 | **Curso arquitetura** | [Introdução à Arquitetura de Sistemas](cursos/Introducao-a-Arquitetura-de-Sistemas/README.md) — **24 aulas**, **8 módulos**, **8 quizzes**, **32 questões** |
 | **Curso AIOX Fundamentals** | [AIOX Fundamentals](cursos/AIOX-Fundamentals/README.md) — **12 aulas**, **3 módulos**, **3 quizzes**, **15 questões**, projeto final |
-| **Curso design** | [AIOX Design](cursos/AIOX-Design/README.md) — **10 aulas**, **4 módulos**, **3 quizzes**, **12 questões**, capstone |
+| **Curso design** | [AIOX Design](cursos/AIOX-Design/README.md) — **20 aulas**, **6 módulos**, **5 quizzes**, **20 questões**, capstone Storybook |
 | **Curso Productização** | [AIOX Productização](cursos/AIOX-Productizacao/README.md) — **6 aulas**, **3 módulos**, **2 quizzes**, **8 questões**, capstone |
 | **Curso squads** | [AIOX Advanced Squads](cursos/AIOX-Advanced-Squads/README.md) — **25 aulas** (intro + 1 por squad), **6 módulos**, **6 quizzes**, **24 questões** |
 | **Mini Obsidian+IA** | [Obsidian + IA](cursos/Obsidian-IA/README.md) — **8 aulas**, ~90–120 min, gate de estudo na entrada + missão operacional depois do Core |
@@ -258,7 +258,7 @@ Especializações laterais acionadas pelo gargalo do quarto degrau: **Agent Engi
 | **AIOX Advanced** | Mindset, contexto, SDC, determinismo e brownfield | [cursos/AIOX Advanced/README.md](cursos/AIOX%20Advanced/README.md) |
 | **AIOX Advanced Squads** | Quando usar cada squad, briefing, ativação, evidência | [cursos/AIOX-Advanced-Squads/README.md](cursos/AIOX-Advanced-Squads/README.md) · [Mapa de decisão](cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md) |
 | **AIOX Agent Engineering (especialização lateral)** | Taxonomia, research, criação de squads, orquestração, harness e produção | [cursos/AIOX-Agent-Engineering/README.md](cursos/AIOX-Agent-Engineering/README.md) |
-| **AIOX Design (especialização lateral)** | Contrato visual, DESIGN.md, taxonomia, variantes, skill vs squad | [cursos/AIOX-Design/README.md](cursos/AIOX-Design/README.md) — entre quando a missão for visual |
+| **AIOX Design (especialização lateral)** | Repertório, contrato visual, Storybook, governança e qualidade de interface | [cursos/AIOX-Design/README.md](cursos/AIOX-Design/README.md) — entre quando a missão for visual |
 | **AIOX Productização (especialização lateral)** | Wedge, oferta, ROI, distribuição, formato e estágio de monetização | [cursos/AIOX-Productizacao/README.md](cursos/AIOX-Productizacao/README.md) — exige capacidade comprovada |
 
 Arquitetura e AIOX Fundamentals não são sinônimos: uma cria linguagem técnica universal; o outro ensina a operação básica do `aiox-core`.
@@ -410,7 +410,7 @@ Aula por squad: pasta [`cursos/AIOX-Advanced-Squads/aulas/`](cursos/AIOX-Advance
 │   ├── AIOX-Fundamentals/      # AIOX Core básico (12 aulas)
 │   ├── AIOX Advanced/         # Método (28 aulas ativas)
 │   ├── AIOX-Agent-Engineering/ # Capacidades agentic (28 aulas)
-│   ├── AIOX-Design/           # Contrato visual (10 aulas)
+│   ├── AIOX-Design/           # Contrato visual (20 aulas, Storybook)
 │   ├── AIOX-Productizacao/    # Oferta e mercado (6 aulas)
 │   ├── AIOX-Advanced-Squads/  # Operação + agent-router
 │   ├── Obsidian-IA/           # Vault + Context Brief + execução + retorno

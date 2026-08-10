@@ -15,7 +15,7 @@ tags: [curso/aiox-design, lesson, layer/curso]
 
 # Ciclo screenshot → comparação → correção
 
-[⌂ Curso](../README.md) · [↑ M4](../modulos/M5.md) · [← Anterior](16-ds-multi-produto.md) · [Próxima →](18-portao-qualidade-visual.md)
+[⌂ Curso](../README.md) · [↑ M4](../modulos/M4.md) · [← Anterior](16-ds-multi-produto.md) · [Próxima →](18-portao-qualidade-visual.md)
 
 ## Resultado
 
@@ -46,13 +46,38 @@ Gerar ou alterar UI → screenshot → comparar com referência/contrato
 
 Sem comparação, “fica bonito” é opinião. Com screenshot + critério, o agente e o humano fecham o loop.
 
+## Captura reproduzível
+
+Fixe antes de capturar:
+
+- viewport e escala do dispositivo;
+- tema;
+- dados e estado;
+- fontes carregadas;
+- animações desativadas ou estabilizadas;
+- rota e versão do componente;
+- baseline aprovado.
+
+Playwright, Chromatic ou outra ferramenta podem automatizar a superfície. O contrato de captura importa mais que a marca da ferramenta.
+
+### Classifique antes de corrigir
+
+| Tipo | Exemplo | Ação |
+|---|---|---|
+| regressão | token mudou sem intenção | corrigir e recapturar |
+| mudança intencional | nova hierarquia aprovada | registrar e atualizar baseline |
+| ruído | antialiasing, fonte ou timing | estabilizar ambiente/tolerância |
+| lacuna de contrato | não há baseline do erro | adicionar caso antes de aprovar |
+
+Nunca atualize o baseline apenas para o teste ficar verde. Primeiro prove por que a mudança é válida. E não use screenshot como único juiz: uma imagem idêntica ainda pode falhar em teclado, semântica ou leitor de tela.
+
 ## Âncora no acervo
 
 Aula 18 (portão). `impeccable` só depois de conformidade.
 
 ## Prática
 
-Faça **um** ciclo completo em um botão ou card: print antes/depois + 1 linha do que mudou no contrato ou na tela.
+Faça um ciclo com dois estados e dois viewports: matriz de render, baseline, candidata, findings classificados, uma correção e nova captura.
 
 ## Pergunte ao seu agente
 
@@ -62,8 +87,8 @@ Com estes dois screenshots e o DESIGN.md, liste diffs e diga se o patch é na te
 
 ## Evidência de conclusão
 
-Par antes/depois + classificação do patch.
+Matriz de render + antes/depois de pelo menos uma correção + decisão registrada sobre o baseline.
 
 ## Navegação
 
-[⌂ Curso](../README.md) · [↑ M4](../modulos/M5.md) · [← Anterior](16-ds-multi-produto.md) · [Próxima →](18-portao-qualidade-visual.md)
+[⌂ Curso](../README.md) · [↑ M4](../modulos/M4.md) · [← Anterior](16-ds-multi-produto.md) · [Próxima →](18-portao-qualidade-visual.md)

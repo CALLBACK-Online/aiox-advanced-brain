@@ -34,18 +34,18 @@ Se o YAML não fecha, volte ao brand squad ou complete repertório (Pinterest/re
 
 ## O que este curso faz com o handoff
 
-1. Promove decisões a **tokens** e proibições no DESIGN.md.  
-2. Classifica componentes na taxonomia.  
-3. Materializa prova no Storybook (meta da expansão curricular — ver `CURRICULUM-EXPANSION.md`).  
+1. Promove decisões a **tokens** e proibições no DESIGN.md.
+2. Classifica componentes na taxonomia.
+3. Materializa prova no Storybook (meta da expansão curricular — ver `CURRICULUM-EXPANSION.md`).
 4. Define governança: quem altera token vs quem só compõe tela.
 
 ## O que **não** misturar
 
-- Vender “design system” como SaaS sem Decision Pack → `cursos/AIOX-Productizacao/`.  
-- Orquestração/harness → Agent Engineering.  
+- Vender “design system” como SaaS sem Decision Pack → `cursos/AIOX-Productizacao/`.
+- Orquestração/harness → Agent Engineering.
 - Brand book sem tokens → ainda não é contrato legível por agente.
 
 ## Expansão
 
-A recuperação completa do processo Brand Book → DS das lives está planejada em  
+A recuperação completa do processo Brand Book → DS das lives está planejada em
 [`CURRICULUM-EXPANSION.md`](../CURRICULUM-EXPANSION.md) (módulos M0–M2 + capstone executável).

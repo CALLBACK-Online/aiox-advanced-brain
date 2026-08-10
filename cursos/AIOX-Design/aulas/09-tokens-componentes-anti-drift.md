@@ -18,8 +18,6 @@ tags: [curso/aiox-design, lesson, layer/curso]
 
 [⌂ Curso](../README.md) · [↑ M2](../modulos/M2.md) · [← Anterior](08-design-md-contrato.md) · [Próxima →](10-taxonomia-atomica.md)
 
-[⌂ Curso](../README.md) · [↑ M1](../modulos/M1.md) · [← Anterior](10-taxonomia-atomica.md) · [Próxima →](12-stack-tailwind-shadcn-storybook.md)
-
 ## Resultado
 
 Você completa o contrato com tokens semânticos, estados de componente e uma definição operacional de **drift** — o que medir e o que fazer.
@@ -93,5 +91,3 @@ DESIGN.md atualizado + lista de 3 drifts com ação.
 ## Navegação
 
 [⌂ Curso](../README.md) · [↑ M2](../modulos/M2.md) · [← Anterior](08-design-md-contrato.md) · [Próxima →](10-taxonomia-atomica.md)
-
-[⌂ Curso](../README.md) · [↑ M1](../modulos/M1.md) · [← Anterior](10-taxonomia-atomica.md) · [Próxima →](12-stack-tailwind-shadcn-storybook.md)

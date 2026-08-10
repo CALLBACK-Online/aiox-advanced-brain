@@ -18,8 +18,6 @@ tags: [curso/aiox-design, lesson, layer/curso]
 
 [⌂ Curso](../README.md) · [↑ M3](../modulos/M3.md) · [← Anterior](13-storybook-install-e-stories.md) · [Próxima →](15-governanca-e-permissoes.md)
 
-[⌂ Curso](../README.md) · [↑ M2](../modulos/M2.md) · [← Anterior](12-stack-tailwind-shadcn-storybook.md) · [Próxima →](18-portao-qualidade-visual.md)
-
 ## Resultado
 
 Você define a matriz mínima de variantes de um componente (estado × tema × breakpoint × a11y) e o que conta como “provado”.
@@ -57,7 +55,7 @@ Se só existe “Button default no desktop claro”, você não tem componente �
 | Breakpoint | mobile + desktop (ou “só desktop” justificado) |
 | a11y | contraste do par de cores; foco visível; nome acessível |
 
-Storybook (quando existir) materializa isso. **Neste curso**, a matriz documentada já conta como evidência se você não tiver Storybook rodando.
+Storybook materializa isso. A matriz documentada é o plano desta aula; no capstone, os estados críticos precisam estar renderizados em stories.
 
 
 ## Âncora no acervo
@@ -90,5 +88,3 @@ Matriz preenchida com pelo menos 2 estados e 1 eixo tema ou breakpoint + 1 nota 
 ## Navegação
 
 [⌂ Curso](../README.md) · [↑ M3](../modulos/M3.md) · [← Anterior](13-storybook-install-e-stories.md) · [Próxima →](15-governanca-e-permissoes.md)
-
-[⌂ Curso](../README.md) · [↑ M2](../modulos/M2.md) · [← Anterior](12-stack-tailwind-shadcn-storybook.md) · [Próxima →](18-portao-qualidade-visual.md)

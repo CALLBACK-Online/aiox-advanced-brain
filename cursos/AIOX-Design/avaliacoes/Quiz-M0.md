@@ -11,39 +11,39 @@ questions: 4
 
 ### 1. O que melhor define design system neste curso?
 
-A. Preferência estética da semana  
-B. Decisão visual registrada e herdável (token/componente/regra)  
-C. Qualquer uso de Tailwind  
-D. Um PDF de brand sem tokens  
+A. Decisão visual registrada e herdável (token/componente/regra)
+B. Preferência estética da semana
+C. Qualquer uso de Tailwind
+D. Um PDF de brand sem tokens
 
 ### 2. Repertório de referências deve vir:
 
-A. Depois que a IA gerar 20 telas  
-B. Só no Figma da agência  
-C. Antes de pedir UI à IA  
-D. Nunca — a IA inventa melhor  
+A. Depois que a IA gerar 20 telas
+B. Antes de pedir UI à IA
+C. Só no Figma da agência
+D. Nunca — a IA inventa melhor
 
 ### 3. Greenfield de DS sugere primeiro:
 
-A. Contrato mínimo cedo  
-B. Migrar 40 telas no dia 1  
-C. Ignorar tokens  
-D. Forkar shadcn sem decisão  
+A. Migrar 40 telas no dia 1
+B. Ignorar tokens
+C. Contrato mínimo cedo
+D. Forkar shadcn sem decisão
 
 ### 4. Pasta de referências sem notas de proibição:
 
-A. Já é design system  
-B. Substitui DESIGN.md  
-C. É suficiente para produção  
-D. Ainda arrisca AI-look genérico  
+A. Já é design system
+B. Substitui DESIGN.md
+C. É suficiente para produção
+D. Ainda arrisca AI-look genérico
 
 <details>
 <summary>Gabarito comentado</summary>
 
-1. **C.**  
-2. **C.**  
-3. **A.**  
-4. **D.**  
+1. **A.**
+2. **B.**
+3. **C.**
+4. **D.**
 
 </details>
 

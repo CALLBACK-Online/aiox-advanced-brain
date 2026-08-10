@@ -1,7 +1,7 @@
 ---
 type: curriculum-plan
 course: aiox-design
-status: approved-direction
+status: materialized-v2
 canonical_scope: cursos/AIOX-Design
 source: re-análise de transcricoes T1-aula-04 + T2-Aula3 + compressão do curso 10-aulas
 updated: "2026-08-10"
@@ -17,25 +17,25 @@ tags: [curso, design, curriculum, expansion]
 | Fonte | Escala |
 |-------|--------|
 | T1 aula 04 + T2 aula 03 (transcrições sinkra-hub) | ~**84.6k** palavras combinadas |
-| 10 aulas atuais em `aulas/` | ~**4.0k** palavras |
+| 10 aulas da v1 auditada | ~**4.0k** palavras |
 | Capstone live (T1-04) | “tema de casa” = **Storybook + design system materializado** (transcrição ~L3827+) |
-| Capstone atual | Storybook = **bônus, não obrigatório** (`Rubrica.md`, aula 10, COURSE-BRIEF §14) |
+| Capstone da v1 auditada | Storybook = **bônus, não obrigatório** |
 
 Compressão ~20× só seria aceitável se os **resultados de aprendizagem** e o **portão de entrega** tivessem sido preservados. Não foram: o curso ensina a *falar* o contrato; a live exigia *rodar* o sistema de componentes.
 
 ### Processos das lives **ausentes ou rasos** no curso 10-aulas
 
-1. Construção de repertório e coleta de referências  
-2. Pinterest / referências **antes** de pedir UI à IA  
-3. Tema visual **vs** design system  
-4. Estratégia top-down **vs** bottom-up  
-5. Brand Book → contrato visual (tokens/componentes)  
-6. Cloud Design / Lovable / exploração controlada (não “prompt solto”)  
-7. Storybook como **fonte de verdade** e contrato vivo  
-8. Governança e separação de permissões (quem mexe no DS)  
-9. DS compartilhado entre vários produtos  
-10. Ciclo visual: screenshot → comparação → correção  
-11. Uso de IA para **reduzir** aparência genérica produzida pela própria IA  
+1. Construção de repertório e coleta de referências
+2. Pinterest / referências **antes** de pedir UI à IA
+3. Tema visual **vs** design system
+4. Estratégia top-down **vs** bottom-up
+5. Brand Book → contrato visual (tokens/componentes)
+6. Cloud Design / Lovable / exploração controlada (não “prompt solto”)
+7. Storybook como **fonte de verdade** e contrato vivo
+8. Governança e separação de permissões (quem mexe no DS)
+9. DS compartilhado entre vários produtos
+10. Ciclo visual: screenshot → comparação → correção
+11. Uso de IA para **reduzir** aparência genérica produzida pela própria IA
 
 ---
 
@@ -66,13 +66,13 @@ Total planejado: **18–20** aulas (ajustar na materialização sem cair abaixo 
 
 Ao concluir a versão expandida, a pessoa ainda faz o brief v1 **e**:
 
-1. Monta repertório de referências **antes** de gerar UI.  
-2. Distingue tema visual de design system com critério.  
-3. Escolhe top-down ou bottom-up e justifica.  
-4. Traduz Brand Book (ou brand pack) em tokens + proibições no DESIGN.md.  
-5. Instala e usa Storybook como SoT no **seu** repo (não só descreve).  
-6. Define quem pode alterar tokens vs telas (governança).  
-7. Deriva um segundo produto a partir de base compartilhada sem fork de tokens.  
+1. Monta repertório de referências **antes** de gerar UI.
+2. Distingue tema visual de design system com critério.
+3. Escolhe top-down ou bottom-up e justifica.
+4. Traduz Brand Book (ou brand pack) em tokens + proibições no DESIGN.md.
+5. Instala e usa Storybook como SoT no **seu** repo (não só descreve).
+6. Define quem pode alterar tokens vs telas (governança).
+7. Deriva um segundo produto a partir de base compartilhada sem fork de tokens.
 8. Fecha um ciclo visual de correção (screenshot / diff / patch no contrato ou componente).
 
 ### Capstone — Definition of Done **corrigida**
@@ -126,21 +126,21 @@ Síntese em aulas + `casos-live-cohort.md` — **nunca** transcrição integral 
 
 ## 5. Sequência de implementação
 
-1. Congelar este documento como direção (`status: approved-direction`).  
-2. Reescrever `COURSE-BRIEF.md` (objetivos, capstone executável, 6 módulos, ~18–20 aulas).  
-3. Escrever `course-outline.md` v2 com slugs e evidências por aula.  
-4. Materializar módulos em lotes (M0–M1 → validate → M2–M3 → M4–M5).  
-5. Inverter Rubrica/aula 10: Storybook **obrigatório**.  
-6. Adicionar `casos-live-cohort.md` + ponte Brand Book.  
+1. Congelar este documento como direção (`status: materialized-v2`).
+2. Reescrever `COURSE-BRIEF.md` (objetivos, capstone executável, 6 módulos, ~18–20 aulas).
+3. Escrever `course-outline.md` v2 com slugs e evidências por aula.
+4. Materializar módulos em lotes (M0–M1 → validate → M2–M3 → M4–M5).
+5. Inverter Rubrica/capstone: Storybook **obrigatório**.
+6. Adicionar `casos-live-cohort.md` + ponte Brand Book.
 7. Atualizar hub, AE não mexe, Productização em paralelo (só casos, sem expansão 20 aulas).
 
 ---
 
 ## 6. O que **não** fazer
 
-- Tratar Design como “10 aulas + anexo de casos” e dar por fechado.  
-- Manter capstone documental como Done padrão.  
-- Misturar branding estratégico (squad brand) com construção de tokens neste curso sem fronteira.  
+- Tratar Design como “10 aulas + anexo de casos” e dar por fechado.
+- Manter capstone documental como Done padrão.
+- Misturar branding estratégico (squad brand) com construção de tokens neste curso sem fronteira.
 - Importar 84k palavras de VTT para o vault.
 
 ---
@@ -155,4 +155,14 @@ Síntese em aulas + `casos-live-cohort.md` — **nunca** transcrição integral 
 | Design: só `casos-live` basta | **Rejeitado** — expansão 18–20 aulas |
 | Storybook rebaixado = redução de outcome | **Aceito** — corrigir no capstone v2 |
 
-[README atual](README.md) · [Brief v1](COURSE-BRIEF.md) · Hub: `cursos/README.md`
+[README atual](README.md) · [Brief v2](COURSE-BRIEF.md) · Hub: `cursos/README.md`
+
+
+---
+
+## 8. Materialização v2 (teach)
+
+- **20 aulas** em progressão M0–M5; 10 legadas reposicionadas; 10 novas de processo live.
+- Capstone e rubrica: Storybook **obrigatório**.
+- Quizzes M0–M4 (20 questões, gabarito balanceado).
+- Skill teach: uma competência/aula, prática, evidência, nav interna, validate verde.

@@ -18,8 +18,6 @@ tags: [curso/aiox-design, lesson, layer/curso]
 
 [⌂ Curso](../README.md) · [↑ M3](../modulos/M3.md) · [← Anterior](11-storybook-fonte-da-verdade.md) · [Próxima →](13-storybook-install-e-stories.md)
 
-[⌂ Curso](../README.md) · [↑ M2](../modulos/M2.md) · [← Anterior](09-tokens-componentes-anti-drift.md) · [Próxima →](14-storybook-variantes.md)
-
 ## Resultado
 
 Você justifica por que essa stack ajuda **agentes** a gerar UI coerente — e nomeia dois casos em que outra stack é aceitável.
@@ -87,5 +85,3 @@ Parágrafo de decisão de stack assinado (você) com trade-off explícito.
 ## Navegação
 
 [⌂ Curso](../README.md) · [↑ M3](../modulos/M3.md) · [← Anterior](11-storybook-fonte-da-verdade.md) · [Próxima →](13-storybook-install-e-stories.md)
-
-[⌂ Curso](../README.md) · [↑ M2](../modulos/M2.md) · [← Anterior](09-tokens-componentes-anti-drift.md) · [Próxima →](14-storybook-variantes.md)

@@ -17,9 +17,9 @@ tags: [curso/aiox-advanced, validacao]
 ## Estrutura ativa
 
 - 28 aulas.
-- 5 módulos + Capstone.
-- 6 quizzes, 24 questões comentadas.
-- Gabarito equilibrado: A 6, B 6, C 6, D 6.
+- 6 módulos: 5 de conteúdo + Capstone.
+- 6 quizzes, 48 questões comentadas.
+- Gabarito equilibrado: A 12, B 12, C 12, D 12.
 - Projeto integrador com nota de corte 80.
 
 ## Rastreabilidade

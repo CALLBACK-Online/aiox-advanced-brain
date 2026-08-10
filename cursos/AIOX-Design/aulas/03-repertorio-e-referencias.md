@@ -55,13 +55,39 @@ Sem repertório, o prompt é “faz uma tela moderna”. Com repertório, o prom
 
 Nas aulas de Design do Advanced, o fluxo recomendado a quem está de primeira viagem era: pesquisar referências e cores → criar pastas de referência → **depois** gerar. Pedir “bonito” sem pasta de referência era o caminho mais rápido para o genérico.
 
+## Protocolo 12–3–1
+
+Um banco de referências útil não é uma pasta de imagens favoritas. Cada item precisa responder **o que observar**, **por que serve ao problema** e **o que não copiar**.
+
+1. Colete **12 referências** de produtos, editoriais, sinalização, arquitetura ou outras superfícies pertinentes.
+2. Extraia **3 padrões recorrentes** que apoiam a intenção do produto.
+3. Escreva **1 direção provisória** em critérios observáveis.
+
+| Campo por referência | Exemplo |
+|---|---|
+| Sinal útil | hierarquia tipográfica muito clara |
+| Decisão transferível | título domina; metadado recua sem perder contraste |
+| Anti-cópia | não reproduzir layout ou ilustração literalmente |
+| Hipótese | menos superfícies elevadas melhora a leitura de dados |
+
+“Interface premium” não é uma direção. “Alta densidade com leitura calma, uma cor de ação, superfícies planas e dados alinhados” já permite gerar e revisar.
+
+### Diversidade deliberada
+
+Se todas as referências vêm do mesmo template ou produto, o repertório apenas confirma uma resposta pronta. Inclua pelo menos:
+
+- duas referências do mesmo domínio;
+- duas de outro domínio com problema de informação parecido;
+- uma referência que você rejeita, com motivo;
+- uma referência fora de software para ampliar composição, ritmo ou materialidade.
+
 ## Âncora no acervo
 
 Repertório alimenta o contrato (`DESIGN.md`) e o Brand Book. Marca estratégica: `squads/brand/`. Tradução visual: este curso e `ponte/brand-book-para-contrato.md`.
 
 ## Prática
 
-Crie uma pasta `repertorio/` (no seu projeto ou em `notas/`) com **8 referências** e, para cada uma, uma linha: *ritmo / densidade / o que NÃO copiar*.
+Crie uma pasta `repertorio/` (no seu projeto ou em `notas/`) com **12 referências** e, para cada uma, uma linha: *sinal útil / decisão transferível / o que NÃO copiar*. Feche com três padrões e uma direção provisória.
 
 ## Pergunte ao seu agente
 
@@ -71,7 +97,7 @@ Vou descrever 8 referências visuais. Ajude a extrair padrões reutilizáveis (h
 
 ## Evidência de conclusão
 
-Pasta com 8 referências + notas de padrão/proibição. Você passou se consegue gerar um prompt de UI **sem** a palavra “moderno” genérica.
+Pasta com 12 referências + síntese 3–1. Você passou se outra pessoa consegue remover as imagens e ainda entender a direção pelas anotações.
 
 ## Navegação
 

@@ -52,10 +52,32 @@ Ferramentas tipo Cloud Design / Lovable / geradores HTML servem para **explorar*
 
 ## Reduzir genérico com IA
 
-1. Repertório + proibições no prompt.  
-2. “Use **apenas** tokens/componentes do contrato”.  
-3. Screenshot → diff com a referência (aula 17).  
+1. Repertório + proibições no prompt.
+2. “Use **apenas** tokens/componentes do contrato”.
+3. Screenshot → diff com a referência (aula 17).
 4. Corrigir o **contrato** se o padrão for legítimo e recorrente.
+
+## Explorar sem entrar em variação infinita
+
+Todas as alternativas devem manter intenção, conteúdo essencial, restrições e breakpoint. O que varia é a **hipótese visual**. Caso conteúdo e funcionalidade também mudem, você deixa de comparar direções.
+
+Gere no máximo três alternativas:
+
+1. **Conservadora:** próxima ao padrão consolidado e de baixo risco.
+2. **Distintiva:** reforça uma assinatura coerente com a marca.
+3. **Contraste:** testa uma hipótese oposta para revelar preferências ocultas.
+
+Compare-as pela mesma grade:
+
+| Critério | Pergunta |
+|---|---|
+| Adequação | serve ao usuário e à tarefa? |
+| Coerência | parece pertencer à marca e ao produto? |
+| Clareza | a hierarquia é compreendida rapidamente? |
+| Implementabilidade | cabe no stack e no prazo? |
+| Diferenciação | evita a média genérica sem virar ruído? |
+
+Feche com um decision record: alternativa escolhida, evidências, riscos, decisões abertas e condição objetiva para reabrir a direção.
 
 ## Âncora no acervo
 
@@ -63,7 +85,7 @@ Ferramentas tipo Cloud Design / Lovable / geradores HTML servem para **explorar*
 
 ## Prática
 
-Pegue uma tela “AI-slop” e liste 5 violações. Para cada uma: corrigir UI vs atualizar contrato.
+Gere ou selecione três alternativas da mesma tela. Preencha a grade, escolha uma e liste cinco violações da direção nas opções descartadas. Para cada uma: corrigir UI vs atualizar contrato.
 
 ## Pergunte ao seu agente
 
@@ -73,7 +95,7 @@ Revise esta UI contra o repertório e proibições anexados. Separe genérico vs
 
 ## Evidência de conclusão
 
-5 violações classificadas + 1 prompt restritivo reutilizável.
+Três alternativas comparáveis + grade + decision record + um prompt restritivo reutilizável.
 
 ## Navegação
 

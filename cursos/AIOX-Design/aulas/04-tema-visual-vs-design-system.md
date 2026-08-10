@@ -48,13 +48,35 @@ Tema sem sistema = cada tela redecide. Sistema sem tema = catálogo sem intenç�
 
 ## Quando o “tema” vira dívida
 
-- Três landings com a mesma cor “primary” em hex diferentes.  
-- Dark mode só em uma página.  
+- Três landings com a mesma cor “primary” em hex diferentes.
+- Dark mode só em uma página.
 - Card de pricing reinventado a cada prompt.
 
 ## Caso rápido
 
 Um “tema roxo moderno” no Lovable não é DS. Vira DS quando primary, radius, Button e proibições existem no contrato e no Storybook.
+
+## Quatro objetos que costumam ser confundidos
+
+| Objeto | Contém | Não garante |
+|---|---|---|
+| Tema | cores, tipografia, radius, sombra | comportamento e estados |
+| UI kit | peças desenhadas e composições | código, ownership ou mudança segura |
+| Biblioteca | componentes reutilizáveis implementados | intenção coerente e governança |
+| Design system | contrato, tokens, catálogo, uso e mudança | qualidade automática sem operação |
+
+Um kit comprado pode acelerar a biblioteca, mas não decide a semântica do produto. Dark mode normalmente é um conjunto de valores dentro do mesmo contrato, não um segundo design system.
+
+### Teste dos quatro verbos
+
+Para saber o que você realmente tem, verifique se a equipe consegue:
+
+1. **decidir** — explicar por que a regra existe;
+2. **encontrar** — localizar o componente canônico;
+3. **provar** — mostrar estados e conformidade;
+4. **mudar** — evoluir sem quebrar consumidores silenciosamente.
+
+Se o time apenas aplica cores, há tema. Se encontra componentes, mas ninguém sabe como alterar ou depreciar, há biblioteca. O sistema surge quando os quatro verbos se conectam.
 
 ## Âncora no acervo
 
@@ -62,7 +84,7 @@ Um “tema roxo moderno” no Lovable não é DS. Vira DS quando primary, radius
 
 ## Prática
 
-Pegue uma UI gerada “por tema” e liste: (1) o que é tema de campanha, (2) o que deveria ser token, (3) o que deveria ser componente.
+Pegue uma UI gerada “por tema”, classifique pelo teste dos quatro verbos e liste: (1) o que é campanha, (2) o que deveria ser token, (3) o que deveria ser componente, (4) qual é o próximo incremento suficiente.
 
 ## Pergunte ao seu agente
 
@@ -72,7 +94,7 @@ Classifique os elementos desta tela em tema pontual vs candidato a design system
 
 ## Evidência de conclusão
 
-Tabela com ≥6 elementos classificados. Passou se nenhum “hex solto recorrente” ficou só como tema.
+Tabela com ≥6 elementos + diagnóstico tema/UI kit/biblioteca/DS. Passou se nenhum “hex solto recorrente” ficou só como tema e o próximo incremento não exige transformação desnecessária.
 
 ## Navegação
 

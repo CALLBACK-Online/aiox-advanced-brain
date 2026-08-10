@@ -3,266 +3,60 @@ type: course-brief
 course: aiox-design
 course_slug: aiox-design
 status: canonical
-created_date: "2026-08-10"
+version: "2.0.0"
 materialized_date: "2026-08-10"
-instructor: "Equipe AIOX"
 canonical_scope: cursos/AIOX-Design
-sharing_boundary: cursos
-source: curadoria dos seeds de design da edição 1 do AIOX Advanced + squads design-* + skills design-*
 tags: [curso, design, design-system, layer/curso]
 ---
 
-# COURSE BRIEF — AIOX Design
+# COURSE BRIEF — AIOX Design v2
 
-> Design system e contrato visual para humanos e agentes — sem virar curso de Figma nem runbook de squad.
+> Repertório → contrato → Storybook executável. Uma competência por aula (teach).
 
-**Estado:** materializado como **v1 documental** (10 aulas + quizzes + validador).
+**Estado:** materializado **v2** — 20 aulas, 6 módulos, 5 quizzes, capstone com Storybook **obrigatório**.
 
-**Direção seguinte (aprovada):** expansão para ~18–20 aulas e capstone **executável** (Storybook obrigatório) — ver [`CURRICULUM-EXPANSION.md`](CURRICULUM-EXPANSION.md). A v1 **não** encerra o outcome das lives de Design System.
-
-Outline detalhado: [`course-outline.md`](course-outline.md).
-
----
-
-## 1. Basic info
+## Basic info
 
 | Campo | Valor |
 |-------|--------|
-| **Título** | AIOX Design |
-| **Subtítulo** | Do gosto por tela ao contrato que a IA lê antes de gerar interface |
-| **Slug** | `aiox-design` |
-| **Pasta prevista** | `cursos/AIOX-Design/` |
-| **Duração estimada** | 3h30–4h15 (leitura + exercícios + capstone), sem contar operação real de squad |
-| **Categoria** | Design system · UI com agentes · contrato de produto |
-| **Tipo** | Misto (critério + artefato + ponte operacional) |
-| **Nível** | Intermediário (assume que a pessoa já gera UI com IA e sofre deriva) |
-| **Formato** | Self-paced Markdown (Obsidian / GitHub), autocontido em `cursos/AIOX-Design/` |
+| Título | AIOX Design |
+| Slug | `aiox-design` |
+| Aulas / módulos / quizzes | 20 / 6 / 5 (20 questões) |
+| Capstone | DESIGN.md + catálogo + **Storybook local** + ciclo visual |
+| Nível | Intermediário |
 
----
-
-## 2. Problema que o curso resolve
-
-### Dor superficial
-
-“A IA gera telas diferentes a cada prompt; parece AI slop; não sei se preciso de design system.”
-
-### Dor real
-
-Não existe **decisão visual registrada** (token + regra + componente). Cada geração **redecide** cor, espaço e hierarquia. Retrabalho infinito; marca incoerente; QA visual impossível.
-
-### Dor profunda
-
-A pessoa controla código e processo (CLAUDE.md, stories, gates), mas o **visual fica fora do método** — o agente inventa estética no gosto.
-
-### Antes → depois
-
-| Antes | Depois |
-|-------|--------|
-| Pede tela; aceita o que vier; corrige pixel a pixel | Decide uma vez; grava em `DESIGN.md`; próxima tela **herda** |
-| “Design system” = pasta de componentes soltos | DS = **decisão de arquitetura** + taxonomia + prova de variantes |
-| Confunde squad design-system com “aprender design” | Sabe **julgar** o contrato e **quando** chamar squad/skill |
-
----
-
-## 3. Público-alvo (ICP)
-
-- Builders e devs que usam Claude Code / Codex / agentes para UI.
-- PMs / founders técnicos que fecham interface com IA e precisam de coerência.
-- Alunos do **AIOX Advanced** que dominam o SDC (ou travaram em UI) e querem trilha dedicada.
-- Quem vai operar `squads/design-system` ou `design-ops` e precisa do **critério**, não só do `@design-chief`.
-
-**Não é o público primário:** designer de produto que só quer portfólio Figma sem agentes; curso de acessibilidade WCAG completo; certificação de design system enterprise genérico.
-
----
-
-## 4. Objetivos de aprendizagem (curso)
-
-Ao concluir, a pessoa consegue:
-
-1. **Explicar** por que design system no AIOX é decisão registrada (token + regra), não estética por reflexo.
-2. **Distinguir** greenfield vs brownfield de DS e escolher a porta de entrada correta.
-3. **Redigir ou auditar** um `DESIGN.md` mínimo que um agente leia **antes** de gerar tela (par de CLAUDE.md / AGENTS.md).
-4. **Classificar** UI na taxonomia atômica (átomo → página) e aplicar REUSE > ADAPT > CREATE no visual.
-5. **Justificar** a stack canônica Tailwind + ShadCN + Storybook *para IA* (não por moda).
-6. **Definir** variantes e portões (a11y, dark, responsivo) como evidência, não como “depois a gente vê”.
-7. **Roteirizar** skill isolada vs `design-system` vs `design-ops` vs `brand` vs craft (`impeccable`) com anti-escopo claro.
-8. **Entregar** um capstone: briefing de tela → contrato + 1 componente com variantes prováveis/descritas.
-
-Bloom dominante: **Apply** e **Evaluate** (não só remember).
-
----
-
-## 5. Fronteiras (anti-escopo)
-
-| Este curso ensina | Este curso **não** ensina |
-|-------------------|---------------------------|
-| Critério e contrato visual AIOX | Figma avançado, brand book completo de agência |
-| `DESIGN.md`, tokens, taxonomia, Storybook como prova | SDC inteiro, runtime e produtivização (Advanced, Agent Engineering e Productização) |
-| Quando chamar cada skill/squad de design | Runbook completo de 100+ tasks do squad (→ curso Squads) |
-| Anti-deriva e anti-AI-look no nível de **decisão** | Polimento craft pixel a pixel (`impeccable` pós-gate) |
-| Ponte para Fundamentos (contratos/formatos) se útil | Arquitetura de sistemas genérica (filas, RLS, fan-out) |
-
-### Separação de cursos
+## Progressão pedagógica
 
 ```text
-AIOX Advanced (método)     →  story, gates, “UI sem contrato é risco” (ponte fina)
-AIOX Design (este)         →  julgamento + artefato visual legível por IA     ← DONO
-AIOX Advanced Squads 13–15 →  ativar brand / design-system / design-ops
-skills/design-*            →  procedimento no projeto destino (após copiar)
-Fund. Arquitetura          →  opcional: contratos, fronteiras (não bloqueia)
+M0 decisão+repertório → M1 direção visual/marca → M2 contrato
+  → M3 materialização Storybook → M4 governança → M5 capstone
 ```
 
----
+Aulas legadas da v1 foram **reposicionadas** (não descartadas): 01, 02, 08–10, 12, 14, 18–20.
+Novas (processos de live): 03–07, 11, 13, 15–17.
 
-## 6. Pré-requisitos
+## Objetivos (v2)
 
-**Mínimo**
+Além de decidir e escrever DESIGN.md, a pessoa:
 
-- Já gerou UI (ou pediu UI) com LLM pelo menos uma vez.
-- Conforto lendo Markdown e paths de repositório.
+1. monta repertório antes da IA;
+2. distingue tema vs DS e top-down vs bottom-up;
+3. traduz Brand Book em tokens (sem roubar brand estratégico);
+4. trata Storybook como SoT e **roda** stories;
+5. governa multi-produto e fecha ciclo screenshot→fix;
+6. entrega capstone executável (não só documental).
 
-**Recomendado (não bloqueante)**
+## Capstone DoD
 
-- AIOX Advanced: `02-aiox-nao-e-ferramenta`, `03-claude-md-leis-da-fisica`, `08-principio-processo-certo`.
-- Noção de que existe `skills/` e `squads/` neste acervo (`catalog.json`).
+Ver [Rubrica](Rubrica.md): Storybook obrigatório; bloqueio de ambiente ≠ aprovação.
 
-**Opcional**
+## Fontes
 
-- Introdução à Arquitetura de Sistemas: aula de contratos JSON/YAML/Markdown (`07-…`) se a pessoa não entende “contrato de arquivo”.
+Lives T1-04 / T2-03 (síntese); seeds Advanced 32, 41–43, 56–57; skills/squads design-*.
+Sem dump de VTT no canônico — ver [casos-live-cohort.md](casos-live-cohort.md) e [CURRICULUM-EXPANSION.md](CURRICULUM-EXPANSION.md).
 
----
+## Anti-escopo
 
-## 7. Estrutura curricular (resumo)
+Figma bootcamp; brand estratégico; Productização; AE; runbook completo de squads.
 
-| Módulo | Nome | Aulas | ~Tempo | Evidência do módulo |
-|--------|------|------:|-------:|---------------------|
-| **M0** | Decisão, não estética | 2 | 45–55 min | Lista de decisões visuais → token vs pontual |
-| **M1** | Contrato e taxonomia | 3 | 70–85 min | Rascunho de `DESIGN.md` + mapa átomo→organismo |
-| **M2** | Stack e prova | 3 | 55–70 min | Checklist de variantes + escolha de stack justificada |
-| **M3** | Operação e fechamento | 2 | 40–50 min | Rota skill/squad + capstone |
-
-**Totais planejados:** 4 módulos · **10 aulas** · **3 quizzes** (M0–M2) · **1 capstone** (M3) · **1 rubrica**.
-
-Detalhe aula a aula: [`course-outline.md`](course-outline.md).
-
----
-
-## 8. Fontes seed (acervo existente — não inventar asset)
-
-### Aulas método (AIOX Advanced) — conteúdo a **curar/derivar** (cursos autocontidos)
-
-| Seed | Uso no AIOX Design |
-|------|--------------------|
-| `lessons/41-design-system-e-decisao.md` | Aula 01 |
-| `lessons/32-design-system-greenfield-brownfield.md` | Aula 02 |
-| `lessons/43-design-md-novo-contrato.md` | Aula 03 |
-| `lessons/42-design-atomico-brad-frost.md` | Aula 04 |
-| `lessons/56-tailwind-shadcn-storybook.md` | Aula 06 |
-| `lessons/57-storybook-para-variantes.md` | Aula 07 |
-| `conceitos/DESIGN md.md` | Conceito âncora / glossário |
-| `avaliacoes/Quiz M9 - Design System.md` | Base para quizzes (adaptar) |
-
-### Operação (não copiar runbook; **ponte**)
-
-| Asset | Path |
-|-------|------|
-| Aula squad design-system | `cursos/AIOX-Advanced-Squads/aulas/14-design-system.md` |
-| Aula squad design-ops | `cursos/AIOX-Advanced-Squads/aulas/15-design-ops.md` |
-| Aula squad brand | `cursos/AIOX-Advanced-Squads/aulas/13-brand.md` |
-| Pacotes | `squads/design-system/`, `squads/design-ops/`, `squads/brand/` |
-
-### Skills (âncora de acervo; maturidade em `catalog.json`)
-
-| Skill | Maturidade (snapshot) | Papel na trilha |
-|-------|----------------------|-----------------|
-| `design-md` | portable | Contrato / lint de DESIGN.md |
-| `design-system` | study | Construir biblioteca |
-| `design-ops` | study | Governar no tempo |
-| `design-chief` | (catalog) | Orquestrador design |
-| `aiox-ux-designer` | (catalog) | UX de build |
-| `impeccable` | portable | Craft **pós**-gate (anti-escopo parcial) |
-| `brand` | study | Marca (fronteira com M3) |
-
-**Regra de materialização:** aulas do AIOX Design vivem **dentro** de `cursos/AIOX-Design/`; texto derivado dos seeds Advanced; links internos do curso resolvem na própria pasta; assets `skills/` e `squads/` citados em monoespaçado (padrão biblioteca).
-
----
-
-## 9. Voice e didática (rubrica teach)
-
-Cada aula **deve** ter:
-
-1. **Objetivo verificável** — “Ao final você consegue…” (não “falaremos sobre”).
-2. **Ancoragem no acervo** — path real `skills/…`, `squads/…` ou aula irmã.
-3. **Exercício ou portão** — prática curta com critério de “passou”.
-4. **Navegação** — módulo · anterior · próxima · README (dentro do curso).
-5. **Ponte método ↔ operação** — onde couber, bloco “Depois desta aula”.
-6. **Termo no glossário** — token, DESIGN.md, átomo, variante, drift, etc.
-
-**Tom:** direto, em português; analogia concreta; anti-hype; anti-receita cega de “só use ShadCN”.
-
-**Relação prática/teoria:** ~65/35.
-
----
-
-## 10. Avaliação e sucesso
-
-| Artefato | Critério |
-|----------|----------|
-| Quizzes M0–M2 | Recuperação ativa; gabarito balanceado A/B/C/D se no padrão do acervo |
-| Capstone | Ver rubrica em outline: contrato mínimo + 1 componente + rota de operação |
-| Métrica de curso | 100% aulas com objetivo + exercício + âncora; 0 paths de máquina; validate verde quando scaffold existir |
-
-**Aprovação curricular:** materializado em 10 aulas + validador (status `canonical`).
-
----
-
-## 11. Relação com o Advanced após a edição 2.0
-
-| AIOX Advanced | AIOX Design |
-|---------------|-------------|
-| Dono do método, SDC e quality gate geral | Dono do contrato, julgamento e gate visual |
-| Mantém os seeds da edição 1 em `archive/migrated/` | Mantém a progressão canônica em 10 aulas |
-
-A migração preserva rastreabilidade sem duplicar a progressão ativa.
-
----
-
-## 12. Riscos e restrições
-
-| Risco | Mitigação |
-|-------|-----------|
-| Duplicar Squads 14–15 | Aula 09 só **roteamento**; runbook fica no curso Squads |
-| Virar tutorial Tailwind | Stack é **meio** de prova para IA; critério em M0–M1 |
-| Copiar 6 aulas Advanced sem curadoria | Outline exige exercício novo + âncora skill/squad por aula |
-| Squad maturity `study` | Declarar maturidade; não prometer run autônomo |
-| Curso autocontido vs wikilink cross-course | Paths monoespaçados + pontes; validar com `_tools` no scaffold |
-
----
-
-## 13. Estado de implementação
-
-- [x] Brief e outline aprovados.
-- [x] 10 aulas, 4 módulos, quizzes, pontes e rubrica materializados.
-- [x] Hub, catálogo, MOCs e squads alinhados.
-- [x] Seeds migrados do Advanced ativo para o arquivo histórico.
-- [x] Validador integrado a `npm run validate`.
-
----
-
-## 14. Decisões fechadas (materialização)
-
-- [x] Slug `aiox-design` e pasta `cursos/AIOX-Design/`
-- [x] **10 aulas** / 4 módulos (inclui 05 anti-drift e 08 portão visual)
-- [x] Capstone **documental** — Storybook rodando = bônus, não obrigatório
-- [x] Scaffold completo: README, aulas, quizzes, `_tools/validate_course.py`, hook em `npm run validate`
-
-**Currículo shipped:** 10 aulas com capstone documental (Storybook “como provaria”); quem tiver ambiente roda o stack na prática.
-
----
-
-## Navegação
-
-- Outline: [`course-outline.md`](course-outline.md)
-- Hub de trilhas (quando publicado): `cursos/README.md`
-- Seeds método (arquivo histórico): `cursos/AIOX Advanced/archive/migrated/modulos/Módulo 9 - Design System.md`
-- Operação: `cursos/AIOX-Advanced-Squads/aulas/14-design-system.md`
+[README](README.md) · [Outline](course-outline.md)

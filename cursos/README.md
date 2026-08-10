@@ -32,7 +32,7 @@ No GitHub ou em editores genéricos os arquivos abrem, mas o grafo de ~2.000 lin
 | **AIOX Advanced** | Método: mindset, contexto, SDC, determinismo e brownfield | `cursos/AIOX Advanced/README.md` |
 | **AIOX Advanced Squads** | Operação: um squad por aula, briefing e evidência | `cursos/AIOX-Advanced-Squads/README.md` |
 | **AIOX Agent Engineering (lateral)** | Projetar, construir, orquestrar e operar capacidades agentic | `cursos/AIOX-Agent-Engineering/README.md` |
-| **AIOX Design (lateral)** | Contrato visual e design system para IA (`DESIGN.md`, taxonomia, variantes) | `cursos/AIOX-Design/README.md` |
+| **AIOX Design (lateral)** | Repertório → contrato → Storybook → governança e prova visual | `cursos/AIOX-Design/README.md` |
 | **AIOX Productização (lateral)** | Capacidade comprovada → oferta, distribuição, formato e monetização | `cursos/AIOX-Productizacao/README.md` |
 
 ## Jornada canônica
@@ -42,7 +42,7 @@ No GitHub ou em editores genéricos os arquivos abrem, mas o grafo de ~2.000 lin
 1. **Obsidian + IA** — faça o onboarding completo se o vault for novo; quem já domina Obsidian pode usar a evidência de entrada como diagnóstico.
 2. **Introdução à Arquitetura de Sistemas** — faça completo se os termos técnicos ainda travam; use o mapa de termos para revisão seletiva.
 3. **AIOX Fundamentals** — instale/audite o Core, conheça os agents e conclua o primeiro ciclo local.
-4. **AIOX Advanced — 28 aulas / 5 módulos + Capstone** para dominar método, contexto, SDC, determinismo e brownfield.
+4. **AIOX Advanced — 28 aulas / 6 módulos (5 de conteúdo + Capstone)** para dominar método, contexto, SDC, determinismo e brownfield.
 5. **AIOX Advanced Squads** — comece pela aula 00, escolha pelo mapa de decisão e prove uma execução real com briefing, artefatos e validação.
 
 As especializações laterais aprofundam o quarto degrau; não viram etapas obrigatórias nem substituem Squads: **Agent Engineering** para construir ou colocar uma capacidade em produção, **Design** para contrato visual e **Productização** quando já existe capacidade comprovada. Entre nelas pelo gargalo e volte à missão que será operada com especialistas.

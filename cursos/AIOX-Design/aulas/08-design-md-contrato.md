@@ -18,8 +18,6 @@ tags: [curso/aiox-design, lesson, layer/curso]
 
 [⌂ Curso](../README.md) · [↑ M2](../modulos/M2.md) · [← Anterior](07-anti-ai-look-e-exploracao.md) · [Próxima →](09-tokens-componentes-anti-drift.md)
 
-[⌂ Curso](../README.md) · [↑ M1](../modulos/M1.md) · [← Anterior](02-design-system-greenfield-brownfield.md) · [Próxima →](10-taxonomia-atomica.md)
-
 ## Resultado
 
 Você escreve um DESIGN.md mínimo que um agente consegue ler **antes** de gerar UI: princípios, tokens base, componentes canônicos e proibições.
@@ -93,5 +91,3 @@ Arquivo DESIGN.md com as cinco seções mínimas e Button descrito.
 ## Navegação
 
 [⌂ Curso](../README.md) · [↑ M2](../modulos/M2.md) · [← Anterior](07-anti-ai-look-e-exploracao.md) · [Próxima →](09-tokens-componentes-anti-drift.md)
-
-[⌂ Curso](../README.md) · [↑ M1](../modulos/M1.md) · [← Anterior](02-design-system-greenfield-brownfield.md) · [Próxima →](10-taxonomia-atomica.md)

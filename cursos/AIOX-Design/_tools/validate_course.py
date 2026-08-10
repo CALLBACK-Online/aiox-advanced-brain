@@ -2,6 +2,7 @@
 """Valida estrutura, pedagogia e links do curso AIOX Design (v2 — 20 aulas)."""
 from __future__ import annotations
 
+import json
 import re
 import sys
 from collections import Counter
@@ -155,6 +156,17 @@ if answer_pos and (max(answer_pos.values()) - min(answer_pos.values()) > 1):
 for filename in REQUIRED_ROOT:
     if not (COURSE / filename).exists():
         errors.append(f"arquivo obrigatório ausente: {filename}")
+
+catalog = json.loads((COURSE.parents[1] / "catalog.json").read_text(encoding="utf-8"))
+catalog_course = catalog.get("courses", {}).get(COURSE_ID, {})
+for key, expected in {
+    "lessons": 20,
+    "modules": 6,
+    "quizzes": 5,
+    "questions": 20,
+}.items():
+    if catalog_course.get(key) != expected:
+        errors.append(f"catalog.json: courses.{COURSE_ID}.{key} != {expected}")
 
 cap = COURSE / "aulas" / "20-capstone-ds-storybook-executavel.md"
 if cap.exists():

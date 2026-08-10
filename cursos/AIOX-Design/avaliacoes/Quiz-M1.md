@@ -11,39 +11,39 @@ questions: 4
 
 ### 1. Tema visual pontual difere de DS porque:
 
-A. É sempre melhor  
-B. Pode ser campanha sem herança obrigatória  
-C. Nunca usa cor  
-D. É o mesmo que Storybook  
+A. É sempre melhor
+B. Pode ser campanha sem herança obrigatória
+C. Nunca usa cor
+D. É o mesmo que Storybook
 
 ### 2. Bottom-up é mais adequado quando:
 
-A. Não existe UI legada  
-B. Só há logo  
-C. Há muitas telas inconsistentes a inventariar  
-D. O time odeia tokens  
+A. Não existe UI legada
+B. Só há logo
+C. Há muitas telas inconsistentes a inventariar
+D. O time odeia tokens
 
 ### 3. Traduzir Brand Book em tokens é papel de:
 
-A. AIOX Design (este curso)  
-B. Somente deploy  
-C. Agent Engineering  
-D. Só copy squad  
+A. Somente deploy
+B. Agent Engineering
+C. Só copy squad
+D. AIOX Design (este curso)
 
 ### 4. Posicionamento e voz de marca estratégicos ficam em:
 
-A. Storybook only  
-B. CI/CD  
-C. DESIGN.md hex soltos  
-D. squad brand / aula brand  
+A. squad brand / aula brand
+B. Storybook only
+C. CI/CD
+D. DESIGN.md hex soltos
 
 <details>
 <summary>Gabarito comentado</summary>
 
-1. **B.**  
-2. **C.**  
-3. **A.**  
-4. **D.**  
+1. **B.**
+2. **C.**
+3. **D.**
+4. **A.**
 
 </details>
 

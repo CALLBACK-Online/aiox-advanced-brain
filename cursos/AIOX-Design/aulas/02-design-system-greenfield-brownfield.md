@@ -18,8 +18,6 @@ tags: [curso/aiox-design, lesson, layer/curso]
 
 [⌂ Curso](../README.md) · [↑ M0](../modulos/M0.md) · [← Anterior](01-design-system-e-decisao.md) · [Próxima →](03-repertorio-e-referencias.md)
 
-[⌂ Curso](../README.md) · [↑ M0](../modulos/M0.md) · [← Anterior](01-design-system-e-decisao.md) · [Próxima →](08-design-md-contrato.md)
-
 ## Resultado
 
 Você classifica o contexto do produto (greenfield DS, brownfield com padrão implícito, brownfield com DS legado) e nomeia a **primeira ação** correta — sem reescrever tudo por impulso.
@@ -90,5 +88,3 @@ Classificação + primeira ação + anti-escopo da semana, em texto curto reutil
 ## Navegação
 
 [⌂ Curso](../README.md) · [↑ M0](../modulos/M0.md) · [← Anterior](01-design-system-e-decisao.md) · [Próxima →](03-repertorio-e-referencias.md)
-
-[⌂ Curso](../README.md) · [↑ M0](../modulos/M0.md) · [← Anterior](01-design-system-e-decisao.md) · [Próxima →](08-design-md-contrato.md)

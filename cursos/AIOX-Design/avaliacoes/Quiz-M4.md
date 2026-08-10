@@ -11,39 +11,39 @@ questions: 4
 
 ### 1. Quem deve poder inventar token na página de feature?
 
-A. Qualquer agente  
-B. Ninguém — token entra pelo DS  
-C. Só o estagiário  
-D. O CI  
+A. Ninguém — token entra pelo DS
+B. Qualquer agente
+C. Só o estagiário
+D. O CI
 
 ### 2. DS multi-produto saudável usa:
 
-A. Fork completo por app  
-B. Hex diferentes por humor  
-C. Base compartilhada + overrides controlados  
-D. Um Figma sem código  
+A. Fork completo por app
+B. Base compartilhada + overrides controlados
+C. Hex diferentes por humor
+D. Um Figma sem código
 
 ### 3. Ciclo screenshot→comparação→correção serve para:
 
-A. Substituir o contrato  
-B. Evitar diff  
-C. Gerar mais AI-slop  
-D. Fechar o loop visual com critério  
+A. Substituir o contrato
+B. Evitar diff
+C. Fechar o loop visual com critério
+D. Gerar mais AI-slop
 
 ### 4. Hex de primary fora do token, com token existente:
 
-A. Bloqueia / falha de conformidade  
-B. É só polish  
-C. É waiver automático  
-D. É irrelevante  
+A. É só polish
+B. É waiver automático
+C. É irrelevante
+D. Bloqueia / falha de conformidade
 
 <details>
 <summary>Gabarito comentado</summary>
 
-1. **B.**  
-2. **C.**  
-3. **D.**  
-4. **A.**  
+1. **A.**
+2. **B.**
+3. **C.**
+4. **D.**
 
 </details>
 
@@ -51,4 +51,4 @@ D. É irrelevante
 
 Aplique a ideia deste quiz no seu produto em 10 minutos e registre uma decisão.
 
-[Módulo M4](../modulos/M5.md) · [Próximo módulo](../modulos/M5.md)
+[Módulo M4](../modulos/M4.md) · [Próximo módulo](../modulos/M5.md)

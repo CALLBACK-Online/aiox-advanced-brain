@@ -39,19 +39,46 @@ flowchart LR
 
 ## A mudança de pergunta
 
-Sem Storybook: “onde está o Button certo?”.  
+Sem Storybook: “onde está o Button certo?”.
 Com Storybook como **fonte da verdade (SoT)**: “o que está no catálogo é o que a IA e o humano podem usar”.
 
 ## O que o Storybook prova
 
-- Componente existe e renderiza.  
-- Variantes nomeadas (não “versão do prompt de ontem”).  
-- Documentação viva (não README morto).  
+- Componente existe e renderiza.
+- Variantes nomeadas (não “versão do prompt de ontem”).
+- Documentação viva (não README morto).
 - Base para a11y e regressão (próximas aulas).
 
 ## Regra de ouro (live)
 
 Nas aulas ao vivo: alterar o DS **no Storybook/contrato**; telas **consomem**. Se a tela inventa um Button, o sistema perdeu.
+
+## O contrato de publicação
+
+Storybook deixa de ser vitrine quando responde, para humanos e agentes:
+
+- qual componente é canônico;
+- qual API pública está suportada;
+- quais variantes e estados existem;
+- quais tokens são consumidos;
+- quais requisitos de acessibilidade foram provados;
+- quem mantém a peça;
+- qual alternativa substitui uma opção depreciada.
+
+### Estados de catálogo
+
+| Estado | Significado | Pode entrar em código novo? |
+|---|---|---|
+| experimental | hipótese em validação | apenas com autorização explícita |
+| canonical | caminho padrão suportado | sim |
+| deprecated | existe, mas tem substituto | não |
+| internal | detalhe de composição | não como API pública |
+
+Um componente pode funcionar no código e ainda não estar publicado como capacidade segura de reuso. Para promover a `canonical`, exija responsabilidade clara, API mínima, stories críticas, acessibilidade básica e owner.
+
+### Falha de sincronização
+
+Se a story não representa o componente real, ela não é documentação: é drift. Código, contrato e catálogo devem mudar no mesmo ciclo ou declarar explicitamente uma transição.
 
 ## Âncora no acervo
 
@@ -59,7 +86,7 @@ Nas aulas ao vivo: alterar o DS **no Storybook/contrato**; telas **consomem**. S
 
 ## Prática
 
-Escreva a política em 4 linhas: (1) o que é SoT, (2) o que um agente pode criar, (3) o que precisa de PR no DS, (4) o que é proibido.
+Escreva a política em 4 linhas e publique o contrato de um componente: responsabilidade, owner, status, props públicas, tokens, stories obrigatórias e critério de promoção.
 
 ## Pergunte ao seu agente
 
@@ -69,7 +96,7 @@ Redija uma policy de 10 linhas: Storybook é SoT. Inclua o que fazer se faltar c
 
 ## Evidência de conclusão
 
-Policy SoT assinada (você). Passou se proíbe “componente só na página”.
+Policy SoT + contrato de publicação de um componente. Passou se proíbe “componente só na página” e diferencia experimental de canônico.
 
 ## Navegação
 

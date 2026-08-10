@@ -18,8 +18,6 @@ tags: [curso/aiox-design, lesson, layer/curso]
 
 [⌂ Curso](../README.md) · [↑ M5](../modulos/M5.md) · [← Anterior](18-portao-qualidade-visual.md) · [Próxima →](20-capstone-ds-storybook-executavel.md)
 
-[⌂ Curso](../README.md) · [↑ M3](../modulos/M3.md) · [← Anterior](18-portao-qualidade-visual.md) · [Próxima →](20-capstone-ds-storybook-executavel.md)
-
 ## Resultado
 
 Você escolhe, para missões reais, entre skill isolada, `design-system`, `design-ops`, `brand` ou sequência — com anti-escopo e maturidade declarada.
@@ -94,5 +92,3 @@ Tabela 5 missões → mecanismo → evidência → anti-escopo.
 ## Navegação
 
 [⌂ Curso](../README.md) · [↑ M5](../modulos/M5.md) · [← Anterior](18-portao-qualidade-visual.md) · [Próxima →](20-capstone-ds-storybook-executavel.md)
-
-[⌂ Curso](../README.md) · [↑ M3](../modulos/M3.md) · [← Anterior](18-portao-qualidade-visual.md) · [Próxima →](20-capstone-ds-storybook-executavel.md)

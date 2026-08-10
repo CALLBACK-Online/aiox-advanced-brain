@@ -16,9 +16,7 @@ tags: [curso/aiox-design, lesson, layer/curso]
 
 # Portão de qualidade visual (antes do craft)
 
-[⌂ Curso](../README.md) · [↑ M4](../modulos/M5.md) · [← Anterior](17-ciclo-screenshot-correcao.md) · [Próxima →](19-skill-vs-squad-design.md)
-
-[⌂ Curso](../README.md) · [↑ M2](../modulos/M2.md) · [← Anterior](14-storybook-variantes.md) · [Próxima →](19-skill-vs-squad-design.md)
+[⌂ Curso](../README.md) · [↑ M4](../modulos/M4.md) · [← Anterior](17-ciclo-screenshot-correcao.md) · [Próxima →](19-skill-vs-squad-design.md)
 
 ## Resultado
 
@@ -85,6 +83,4 @@ Três findings classificados + a frase de ouro reescrita com suas palavras.
 
 ## Navegação
 
-[⌂ Curso](../README.md) · [↑ M4](../modulos/M5.md) · [← Anterior](17-ciclo-screenshot-correcao.md) · [Próxima →](19-skill-vs-squad-design.md)
-
-[⌂ Curso](../README.md) · [↑ M2](../modulos/M2.md) · [← Anterior](14-storybook-variantes.md) · [Próxima →](19-skill-vs-squad-design.md)
+[⌂ Curso](../README.md) · [↑ M4](../modulos/M4.md) · [← Anterior](17-ciclo-screenshot-correcao.md) · [Próxima →](19-skill-vs-squad-design.md)
