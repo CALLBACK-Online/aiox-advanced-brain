@@ -183,17 +183,18 @@
   },
   "active": "dfc34c375a1af4b5",
   "lastOpenFiles": [
+    "dev/selftest.py",
     "cursos/AIOX-Design/COURSE-BRIEF.md",
+    "cursos/_leak_test/x.py",
+    "cursos/_leak_test",
+    "dev/__pycache__/validate.cpython-314.pyc",
+    "dev/__pycache__",
+    "dev/lib/__pycache__/manifest.cpython-314.pyc",
+    "dev/lib/__pycache__/quizzes.cpython-314.pyc",
+    "dev/lib/__pycache__/frontmatter.cpython-314.pyc",
+    "dev/lib/manifest.py",
     "cursos/_tools_test_leak/evil.py",
     "cursos/_tools_test_leak",
-    "dev/courses/aiox-enterprise/__pycache__/checks.cpython-314.pyc",
-    "dev/courses/aiox-enterprise/__pycache__",
-    "dev/courses/obsidian-ia/__pycache__/checks.cpython-314.pyc",
-    "dev/courses/obsidian-ia/__pycache__",
-    "dev/courses/aiox-advanced-squads/__pycache__/checks.cpython-314.pyc",
-    "dev/courses/aiox-advanced-squads/__pycache__",
-    "dev/courses/aiox-productizacao/__pycache__/checks.cpython-314.pyc",
-    "dev/courses/aiox-productizacao/__pycache__",
     "dev/README.md",
     "docs/producao-cursos/README.md",
     "docs/producao-cursos/aiox-productizacao/COURSE-BRIEF.md",
@@ -217,7 +218,6 @@
     "cursos/AIOX-Enterprise/modulos/01-da-competencia-ao-gargalo.md",
     "cursos/AIOX-Enterprise/aulas/06-o-primeiro-passo-se-houver-fit.md",
     "cursos/AIOX-Enterprise/aulas/05-prontidao-evidencia-antes-de-pressa.md",
-    "cursos/AIOX-Enterprise/aulas/04-o-que-voce-deixa-de-reconstruir.md",
-    "cursos/AIOX-Enterprise/aulas/03-quando-os-squads-operam-como-sistema.md"
+    "cursos/AIOX-Enterprise/aulas/04-o-que-voce-deixa-de-reconstruir.md"
   ]
 }
