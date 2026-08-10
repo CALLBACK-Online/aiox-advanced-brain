@@ -18,7 +18,7 @@ maturity: study
 
 ## Resultado
 
-Montar um **Mapa de Conteúdo (MOC)** útil — hub de navegação, não resumo infinito.
+Ao final desta aula você consegue **montar um MOC** (Mapa de Conteúdo) com propósito, seções e ≥5 destinos reais — hub de navegação, não resumo infinito.
 
 ## Quando usar — e quando não usar
 
@@ -69,3 +69,6 @@ Crie um MOC com **no mínimo 5** destinos reais (aulas ou notas suas) sobre um t
 ## Evidência de conclusão
 
 Arquivo de MOC aberto no Obsidian com seções Entrada + Fundamentos + Evidência.
+
+## Navegação
+[← Anterior](04-captura-sem-poluir.md) · [↑ Curso](../README.md) · [Próxima →](06-do-estudo-a-execucao.md)

@@ -18,7 +18,7 @@ maturity: study
 
 ## Resultado
 
-Ler e criar `[[wikilinks]]`, usar backlinks e abrir o Graph view com intenção.
+Ao final desta aula você consegue **ler e criar** `[[wikilinks]]`, **usar backlinks** e **abrir o Graph** com uma intenção clara (não só “explorar”).
 
 ## Quando usar — e quando não usar
 
@@ -80,3 +80,6 @@ Perguntas boas no Graph:
 ## Evidência de conclusão
 
 Você descreve as cores que viu e 1 conexão curso ↔ skill ou curso ↔ squad.
+
+## Navegação
+[← Anterior](01-abrir-o-vault.md) · [↑ Curso](../README.md) · [Próxima →](03-agent-como-professor.md)

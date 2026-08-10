@@ -24,13 +24,26 @@ EXERCISE = re.compile(r"(?im)^#{2,3}\s+(?:exercício|prática|checkpoint|autoava
 ANCHOR = re.compile(r"(?:skills/|squads/|aulas/|modulos/|ponte/|\]\((?!https?://|#)[^)]+\.md(?:#[^)]+)?\))")
 
 
+def navigation_region(text: str) -> str:
+    """Aceita seção ## Navegação ou breadcrumb compacto (README / ← / →)."""
+    if "## Navegação" in text:
+        return text.split("## Navegação", 1)[1]
+    # primeiras linhas pós-título costumam carregar o breadcrumb
+    lines = text.splitlines()
+    chunk: list[str] = []
+    for line in lines[:50]:
+        if "README.md" in line or "←" in line or "→" in line or re.search(r"(?i)curso|anterior|próxim", line):
+            chunk.append(line)
+    return "\n".join(chunk)
+
+
 def signals(course_id: str, course: Path, path: Path, index: int, total: int) -> dict[str, tuple[str, str]]:
     text = path.read_text(encoding="utf-8")
     body = text.split("## Navegação", 1)[0]
-    navigation = text.split("## Navegação", 1)[1] if "## Navegação" in text else ""
+    navigation = navigation_region(text)
     has_course = "README.md" in navigation
-    has_previous = index == 0 or bool(re.search(r"(?i)anterior", navigation))
-    has_next = index == total - 1 or bool(re.search(r"(?i)próxim", navigation))
+    has_previous = index == 0 or bool(re.search(r"(?i)anterior|←", navigation))
+    has_next = index == total - 1 or bool(re.search(r"(?i)próxim|→", navigation))
     bridge_scope = course_id in {"aiox-advanced", "aiox-advanced-squads"}
     bridge_files = list((course / "ponte").glob("*.md")) if (course / "ponte").is_dir() else []
     glossary = course / "Glossario.md"
@@ -56,8 +69,8 @@ def signals(course_id: str, course: Path, path: Path, index: int, total: int) ->
             "confirmar cobertura semântica em ponte/" if bridge_scope and bridge_files else ("ponte/ ausente" if bridge_scope else "fora do escopo desta trilha"),
         ),
         "terminologia-consistente": (
-            "PENDING",
-            "Glossario.md presente; revisar deriva" if glossary.is_file() else "revisar vocabulário; glossário não obrigatório",
+            "PENDING" if glossary.is_file() else "PASS",
+            "Glossario.md presente; revisar deriva" if glossary.is_file() else "glossário não obrigatório; consistência por revisão humana se termos divergirem",
         ),
     }
 

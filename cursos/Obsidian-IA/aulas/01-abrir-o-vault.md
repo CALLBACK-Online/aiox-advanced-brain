@@ -18,7 +18,7 @@ maturity: study
 
 ## Resultado
 
-Escolher a **raiz do vault** certa e abrir o arquivo de entrada sem se perder.
+Ao final desta aula você consegue **escolher a raiz do vault** adequada e **abrir o arquivo de entrada** sem se perder.
 
 ## Quando usar — e quando não usar
 
@@ -63,3 +63,6 @@ Com o agent no repo, a skill `obsidian-course-vault` formaliza esse onboarding.
 ## Evidência de conclusão
 
 Screenshot mental (ou nota): “Minha root padrão é ___ porque ___.”
+
+## Navegação
+[← Anterior](00-por-que-obsidian-ia.md) · [↑ Curso](../README.md) · [Próxima →](02-wikilinks-e-grafo.md)

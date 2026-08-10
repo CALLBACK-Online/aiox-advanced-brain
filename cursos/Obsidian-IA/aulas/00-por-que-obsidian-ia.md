@@ -18,7 +18,7 @@ maturity: study
 
 ## Resultado
 
-Entender o papel de **três superfícies** e por que misturá-las sem método gera caos:
+Ao final desta aula você consegue **nomear e distinguir** as **três superfícies** (Obsidian, agent, projeto) e explicar por que misturá-las sem método gera caos:
 
 | Superfície | Função |
 |------------|--------|
@@ -56,3 +56,6 @@ Em uma frase, escreva: *“Meu gargalo hoje é ___ (navegar / capturar / executa
 ## Evidência de conclusão
 
 Você sabe explicar, sem ler, a diferença entre as três superfícies da tabela acima.
+
+## Navegação
+[↑ Curso](../README.md) · [Próxima →](01-abrir-o-vault.md)

@@ -18,7 +18,7 @@ maturity: study
 
 ## Resultado
 
-Transformar conhecimento recuperado no vault em um **Context Brief** para a próxima etapa de estudo ou, quando já houver base operacional, para um projeto AIOX.
+Ao final desta aula você consegue **preencher um Context Brief** a partir de 1–3 fontes do vault, para a próxima etapa de estudo ou — com base operacional — para um projeto AIOX.
 
 ## Quando usar — e quando não usar
 
@@ -116,3 +116,6 @@ Retorno que vou capturar: …
 ## Evidência de conclusão
 
 Context Brief preenchido com pelo menos uma fonte real, um destino existente, aceite verificável e retorno planejado. Na rota operacional, inclua também asset e maturidade confirmados.
+
+## Navegação
+[← Anterior](05-mocs-e-hubs.md) · [↑ Curso](../README.md) · [Próxima →](07-pratica-integrada.md)

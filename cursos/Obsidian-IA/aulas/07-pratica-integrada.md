@@ -18,7 +18,7 @@ maturity: study
 
 ## Resultado
 
-Completar um gate de estudo que prepara Introdução à Arquitetura de Sistemas e, numa segunda passagem, **concluir o mini-curso** com o loop operacional completo em um projeto AIOX.
+Ao final desta aula você consegue **completar o gate preparatório** (modo A → Arquitetura) e, com base/projeto seguro, **fechar o capstone operacional** (modo B: Brief → execução → retorno) deste mini-curso.
 
 ## Quando usar — e quando não usar
 
@@ -123,3 +123,6 @@ Na primeira passagem, execute o modo A. Depois de AIOX Fundamentals ou Advanced,
 3. As 28 aulas ativas do AIOX Advanced (`cursos/AIOX Advanced/`).
 4. Aula 00 do curso de Squads (`cursos/AIOX-Advanced-Squads/`).
 5. Repetir o loop Context Brief → execução → retorno em cada missão que exigir contexto do acervo.
+
+## Navegação
+[← Anterior](06-do-estudo-a-execucao.md) · [↑ Curso](../README.md)

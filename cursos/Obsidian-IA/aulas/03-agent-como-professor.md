@@ -18,7 +18,7 @@ maturity: study
 
 ## Resultado
 
-Usar o agent como **condutor do segundo cérebro**, não como autocomplete de opinião.
+Ao final desta aula você consegue **formular um pedido** ao agent como condutor do segundo cérebro (path + próximo passo + evidência), não como autocomplete de opinião.
 
 ## Quando usar — e quando não usar
 
@@ -76,3 +76,6 @@ Faça **uma** pergunta real ao agent sobre uma dúvida sua do AIOX. Exija na res
 ## Evidência de conclusão
 
 Cole (na sua nota pessoal) a resposta do agent com pelo menos um path relativo válido.
+
+## Navegação
+[← Anterior](02-wikilinks-e-grafo.md) · [↑ Curso](../README.md) · [Próxima →](04-captura-sem-poluir.md)

@@ -18,13 +18,13 @@ maturity: study
 
 ## Resultado
 
-Capturar aprendizado em espaço **pessoal**, sempre ligado à aula canônica.
+Ao final desta aula você consegue **gravar um insight** em espaço pessoal (`notas/…`) ligado a uma aula canônica, sem editar o oficial.
 
 ## Quando usar — e quando não usar
 
 **Use** depois de cada bloco de estudo de 25–50 minutos.
 
-**Não** edite `aulas/` ou `aulas/` oficiais para “ficar do seu jeito”.
+**Não** edite pastas canônicas (`aulas/`, `modulos/`, quizzes oficiais) para “ficar do seu jeito”.
 
 ## Onde gravar
 
@@ -64,3 +64,6 @@ Depois de operar no projeto, capture também **resultado → decisão → aprend
 ## Evidência de conclusão
 
 Existe um arquivo de captura com fonte + insight + próximo passo.
+
+## Navegação
+[← Anterior](03-agent-como-professor.md) · [↑ Curso](../README.md) · [Próxima →](05-mocs-e-hubs.md)
