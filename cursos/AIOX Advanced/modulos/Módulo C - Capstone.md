@@ -34,7 +34,7 @@ Eu recupero os conceitos no [[avaliacoes/Quiz MC - Capstone|Quiz do MC]] e confi
 
 Se eu ainda não fecho a evidência, meu gargalo continua sendo método. Se eu fecho o ciclo de forma consistente, mas perco tempo remontando contexto, integrações, governança e monitoramento entre projetos, meu gargalo já é operacional.
 
-Nesse segundo caso, o próximo passo não é acumular mais aulas. É comparar a operação que mantenho sozinho com a infraestrutura mantida do **AIOX Enterprise** em [[JORNADA-AIOX|Fundamentals, Advanced ou Enterprise?]].
+Nesse segundo caso, o próximo passo não é acumular mais aulas. É comparar a operação que mantenho sozinho com a infraestrutura mantida do **AIOX Enterprise** em `JORNADA-AIOX.md` (raiz do repositório; Fundamentals, Advanced ou Enterprise?).
 
 ## Navegação
 

@@ -93,7 +93,7 @@ Depois da entrega, eu respondo com evidência:
 2. contexto, integrações e gates continuam fáceis de manter quando o número de projetos cresce?
 3. meu próximo ganho depende de aprender o método ou de operar sobre uma base já integrada?
 
-Se o limite ainda é competência, volto às aulas e aos squads. Se a entrega funciona, mas a manutenção da base virou o custo dominante, comparo o Advanced com o **AIOX Enterprise** em [[JORNADA-AIOX|Fundamentals, Advanced ou Enterprise?]].
+Se o limite ainda é competência, volto às aulas e aos squads. Se a entrega funciona, mas a manutenção da base virou o custo dominante, comparo o Advanced com o **AIOX Enterprise** em `JORNADA-AIOX.md` (raiz do repositório; Fundamentals, Advanced ou Enterprise?).
 
 ## Navegação
 
