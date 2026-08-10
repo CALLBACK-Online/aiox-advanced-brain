@@ -8,6 +8,22 @@
     "source_assets_clean_at_import": true,
     "import_date": "2026-08-10"
   },
+  "course": {
+    "path": "Cursos/AIOX Advanced",
+    "source_repository": "mentelendaria",
+    "source_path": "Cursos/AIOX Advanced",
+    "source_git_status_at_import": "untracked",
+    "import_date": "2026-08-10",
+    "markdown_files": 190,
+    "lessons": 75,
+    "modules": 14,
+    "quizzes": 14,
+    "questions": 62,
+    "wikilinks": 1624,
+    "unresolved_links_inside_cursos": 0,
+    "ambiguous_links_inside_cursos": 0,
+    "links_outside_course": 0
+  },
   "skills": [
     "aiox-analyst",
     "aiox-architect",

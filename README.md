@@ -1,11 +1,12 @@
-# AIOX Advanced — Skills e Squads
+# AIOX Advanced — Curso, Skills e Squads
 
-Biblioteca local criada a partir das skills e squads citados nos grupos AIOX Advanced e encontrados no `sinkra-hub`.
+Biblioteca educacional que reúne o curso AIOX Advanced do `mentelendaria` e as skills e squads citados nos grupos da turma e encontrados no `sinkra-hub`.
 
 ## Conteúdo
 
 - **43 skills** em `.claude/skills/`.
 - **25 squads** em `squads/`.
+- **Curso completo** em `Cursos/AIOX Advanced/`: 75 aulas, 14 módulos, 14 quizzes e 62 questões curadas.
 - Inventário das conversas em `docs/whatsapp-inventory.md`.
 - Resultado do cruzamento em `docs/search-results.md`.
 - Proveniência e regras de atualização em `docs/source-and-update-policy.md`.
@@ -15,6 +16,7 @@ Biblioteca local criada a partir das skills e squads citados nos grupos AIOX Adv
 ```text
 .
 ├── .claude/skills/       # Skills canônicas
+├── Cursos/AIOX Advanced/ # Aulas e materiais compartilháveis com os alunos
 ├── squads/               # Squads canônicos e sucessores atuais
 ├── docs/                 # Inventário, cruzamento e limitações
 ├── scripts/              # Validação local
@@ -35,7 +37,7 @@ Arquivos em `_archive`, `outputs`, `artifacts`, `.state`, `.synapse`, `__pycache
 
 ## Uso
 
-Esta é uma biblioteca-fonte. Algumas skills e squads esperam o runtime completo AIOX/SINKRA e podem referenciar `.aiox-core`, `workspace`, apps ou scripts que não pertencem a este recorte. Consulte `docs/runtime-dependencies.md` antes de tentar executá-los isoladamente.
+O curso é autocontido em `Cursos/AIOX Advanced/`: seus links não dependem de notas fora de `Cursos`, permitindo compartilhar a pasta com os alunos. Algumas skills e squads esperam o runtime completo AIOX/SINKRA e podem referenciar `.aiox-core`, `workspace`, apps ou scripts que não pertencem a este recorte. Consulte `docs/runtime-dependencies.md` antes de tentar executá-los isoladamente.
 
 Validação:
 

@@ -1,6 +1,6 @@
 # Proveniência e política de atualização
 
-## Fonte
+## Fonte das skills e squads
 
 - Repositório: `sinkra-hub`
 - Branch no momento da importação: `oalanicolas`
@@ -8,12 +8,22 @@
 - Data da importação: 10/08/2026
 - Estado das pastas importadas: limpo no Git; mudanças existentes em outras áreas do `sinkra-hub` não foram copiadas.
 
+## Fonte do curso
+
+- Vault: `mentelendaria`
+- Pasta: `Cursos/AIOX Advanced`
+- Data da importação: 10/08/2026
+- Estado na importação: pasta ainda não rastreada pelo Git do vault; a cópia registra o conteúdo existente no working tree nessa data.
+- Destino preservado: `Cursos/AIOX Advanced`, necessário para a resolução dos wikilinks e para o compartilhamento isolado da pasta `Cursos`.
+
 ## Regras da cópia
 
 - Skills vieram de `.claude/skills/{nome}`.
 - Squads vieram de `squads/{nome}`.
 - A estrutura relativa foi preservada para manter o máximo possível de referências internas.
 - Nenhum arquivo do `sinkra-hub` foi alterado.
+- O curso foi copiado sem alterar o vault `mentelendaria`.
+- Caches, arquivos `.env`, bytecode Python e `.DS_Store` não foram importados.
 
 ## Exclusões deliberadas
 
@@ -27,11 +37,20 @@
 
 ## Atualizações futuras
 
-Ao atualizar um asset:
+Ao atualizar uma skill ou squad:
 
 1. confirmar o novo commit-fonte;
 2. verificar se a pasta-fonte está limpa no Git;
 3. reaplicar as exclusões;
 4. atualizar `catalog.json` e `docs/search-results.md`;
 5. executar `npm run validate`;
+6. revisar o diff antes de qualquer commit.
+
+Ao atualizar o curso:
+
+1. copiar apenas `Cursos/AIOX Advanced` do vault;
+2. manter o mesmo caminho relativo no destino;
+3. reaplicar as exclusões de caches, segredos e arquivos locais;
+4. atualizar os números do curso em `catalog.json`;
+5. executar `npm run validate` e exigir zero links não resolvidos, ambíguos ou externos à pasta do curso;
 6. revisar o diff antes de qualquer commit.
