@@ -12,6 +12,10 @@ source_version: 1.0.0
 ---
 # Squad Creator passo a passo: criar um squad do zero
 
+## Resultado
+
+Ao final desta aula você consegue **classificar e usar** o conceito de **Squad Creator passo a passo: criar um squad do zero** no desenho de uma capacidade agentic, com fronteira clara do que não entra.
+
 
 ## Conceitos
 

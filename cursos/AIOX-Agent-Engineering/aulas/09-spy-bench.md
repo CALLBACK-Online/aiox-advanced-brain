@@ -12,6 +12,10 @@ source_version: 1.0.0
 ---
 # Spy/Bench: comparação profunda entre dois projetos
 
+## Resultado
+
+Ao final desta aula você consegue **classificar e usar** o conceito de **Spy/Bench: comparação profunda entre dois projetos** no desenho de uma capacidade agentic, com fronteira clara do que não entra.
+
 
 ## Mapa desta aula
 

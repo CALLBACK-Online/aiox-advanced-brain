@@ -30,5 +30,13 @@ canonical_scope: cursos/AIOX-Design
 | **UI kit** | Pacote de peças visuais prontas sem regra de uso — aparência sem contrato |
 | **Biblioteca (de componentes)** | Código reutilizável de componentes; vira DS quando carrega tokens e regras |
 | **Decision record** | Registro curto de uma decisão visual: alternativas comparadas, escolha e porquê |
+| **Contrato de publicação** | O que o catálogo declara por componente: status, API pública, variantes, tokens, a11y e owner |
+| **Estados de catálogo** | `experimental` / `canonical` / `deprecated` / `internal` — visão mínima do ciclo CANDIDATE→…→DEPRECATED do squad design-system |
+| **RACI** | Matriz de autoridade: Responsável, Aprovador, Consultado, Informado |
+| **Mini-RFC** | Proposta curta de mudança no DS: problema, proposta, evidência, owner, versão, migração, rollback |
+| **Foundations** | Camada base compartilhada do DS multi-produto (= core); tema e extensão derivam dela |
+| **Matriz de render** | Tabela estado × viewport/tema com a captura provada de cada célula |
+| **Baseline (visual)** | Captura aprovada que serve de referência na comparação de regressão |
+| **Waiver** | Exceção registrada a um portão: finding aceito temporariamente com dono e prazo |
 
 [⌂ Curso](README.md)

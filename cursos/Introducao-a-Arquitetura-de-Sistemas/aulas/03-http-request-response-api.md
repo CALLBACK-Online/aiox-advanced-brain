@@ -82,4 +82,15 @@ Contrato que outra pessoa consegue consumir sem adivinhar método, payload, suce
 
 Fontes: [MDN — Overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview) e [OpenAPI Specification](https://spec.openapis.org/oas/latest.html).
 
-[Anterior](02-cliente-servidor-frontend-backend.md) · [Quiz M1](../avaliacoes/Quiz-M1-ler-o-mapa.md) · [Próxima: estado](04-estado-entidade-ciclo-de-vida.md)
+
+## Âncora no acervo
+
+- [Glossário](../Glossario.md)
+- [Mapa de termos](../Mapa-de-termos.md)
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M1](../modulos/M1-ler-o-mapa.md)
+- Anterior: [02-cliente-servidor-frontend-backend.md](02-cliente-servidor-frontend-backend.md)
+- Próxima: [04-estado-entidade-ciclo-de-vida.md](04-estado-entidade-ciclo-de-vida.md)

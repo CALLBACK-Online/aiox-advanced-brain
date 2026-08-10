@@ -77,7 +77,7 @@ Aula 18 (portão). `impeccable` só depois de conformidade.
 
 ## Prática
 
-Faça um ciclo com dois estados e dois viewports: matriz de render, baseline, candidata, findings classificados, uma correção e nova captura.
+Faça um ciclo com dois estados e dois viewports: matriz de render (a tabela estado × viewport com a captura de cada célula), baseline (a captura aprovada como referência), candidata, findings classificados, uma correção e nova captura.
 
 ## Pergunte ao seu agente
 

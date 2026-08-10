@@ -31,6 +31,10 @@ curated_at: '2026-08-09'
 
 # [[Goal vs Loop]]
 
+## Resultado
+
+Ao final desta aula você consegue aplicar o núcleo de **Goal vs Loop** em uma decisão real do seu fluxo AIOX, com critério verificável.
+
 > **Nota deste acervo:** comandos e squads de produção de curso (`course-creator`) vivem no monorepo `../upstream-monorepo`. Este repositório traz o curso materializado e a biblioteca de skills/squads citados na turma.
 
 ## Conceitos

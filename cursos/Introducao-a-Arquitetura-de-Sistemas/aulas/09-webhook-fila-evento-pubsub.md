@@ -68,4 +68,15 @@ Diagrama em que cada mensagem tem produtor, destino, durabilidade, consumidor, p
 
 Fontes: [Azure — Background jobs](https://learn.microsoft.com/en-us/azure/architecture/best-practices/background-jobs) e [Microservices architecture](https://learn.microsoft.com/en-us/azure/architecture/microservices/).
 
-[Anterior](08-sincrono-assincrono.md) · [Quiz M3](../avaliacoes/Quiz-M3-contratos-e-comunicacao.md) · [Próxima: executores](10-processo-task-job-worker-runner.md)
+
+## Âncora no acervo
+
+- [Glossário](../Glossario.md)
+- [Mapa de termos](../Mapa-de-termos.md)
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M3](../modulos/M3-contratos-e-comunicacao.md)
+- Anterior: [08-sincrono-assincrono.md](08-sincrono-assincrono.md)
+- Próxima: [10-processo-task-job-worker-runner.md](10-processo-task-job-worker-runner.md)

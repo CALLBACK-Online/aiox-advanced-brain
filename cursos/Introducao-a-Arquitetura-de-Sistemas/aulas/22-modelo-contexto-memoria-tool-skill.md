@@ -66,4 +66,9 @@ Diagrama em que toda capacidade e todo estado têm uma camada responsável; voc�
 
 Fontes: [Anthropic — Building effective agents](https://www.anthropic.com/engineering/building-effective-agents), [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/agents/) e [MCP](https://modelcontextprotocol.io/specification/2025-06-18/server/index). Proveniência: [mapeamento](../PROVENIENCIA.md).
 
-[Anterior](21-monolito-modulos-microsservicos.md) · [Próxima: orquestração agentic](23-orquestrador-squad-human-in-loop.md)
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M8](../modulos/M8-sistemas-com-agentes.md)
+- Anterior: [21-monolito-modulos-microsservicos.md](21-monolito-modulos-microsservicos.md)
+- Próxima: [23-orquestrador-squad-human-in-loop.md](23-orquestrador-squad-human-in-loop.md)

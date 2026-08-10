@@ -12,6 +12,10 @@ source_version: 1.0.0
 ---
 # Pasta OS: curadoria local de open-source para o agente
 
+## Resultado
+
+Ao final desta aula você consegue **classificar e usar** o conceito de **Pasta OS: curadoria local de open-source para o agente** no desenho de uma capacidade agentic, com fronteira clara do que não entra.
+
 
 ## Mapa desta aula
 

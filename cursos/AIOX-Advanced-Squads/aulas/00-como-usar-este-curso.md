@@ -92,3 +92,9 @@ Não há monorepo enterprise multi-tenant aqui. Comandos e paths de runtime vale
 ## Prática
 
 Pegue uma missão da sua semana. Usando só o Mapa de decisão, escolha um squad. Escreva em 5 linhas por que **não** é o vizinho confuso (ex.: Research vs Advisory, Design System vs Design Ops).
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [Início](../modulos/M0-escolha-pesquisa-dominio.md)
+- Próxima: [01-advisory-board.md](01-advisory-board.md)

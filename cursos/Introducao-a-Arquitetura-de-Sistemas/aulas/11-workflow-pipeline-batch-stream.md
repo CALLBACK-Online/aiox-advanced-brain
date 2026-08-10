@@ -72,4 +72,9 @@ Diagrama em que cada etapa tem entrada, saída, executor, estado e critério de 
 
 Fonte: [Azure Architecture Center — Architecture styles](https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/). Proveniência: [mapeamento](../PROVENIENCIA.md).
 
-[Anterior](10-processo-task-job-worker-runner.md) · [Próxima: fan-out e fan-in](12-concorrencia-paralelismo-fanout-fanin.md)
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M4](../modulos/M4-execucao-e-orquestracao.md)
+- Anterior: [10-processo-task-job-worker-runner.md](10-processo-task-job-worker-runner.md)
+- Próxima: [12-concorrencia-paralelismo-fanout-fanin.md](12-concorrencia-paralelismo-fanout-fanin.md)

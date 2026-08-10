@@ -10,7 +10,6 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
-import re
 import shutil
 import sys
 from datetime import date
@@ -22,7 +21,7 @@ from course_common import (
     resolve_course,
     validate_approval_artifacts,
 )
-from scaffold_course import PROFILES, read_template, replace_tokens, validate_spec
+from scaffold_course import PROFILES, read_template, render_lesson, validate_spec
 
 
 def load_plan(path: Path) -> dict:
@@ -88,23 +87,23 @@ def add_lesson_stub(course: Path, spec: dict, change: dict) -> Path:
     if target is None:
         raise SystemExit(f"{lesson_id}: ausente no course-spec.json")
     template_name, _ = PROFILES[spec["profile"]]
-    text = read_template(template_name)
     scope = spec["path"]
-    text = replace_tokens(
-        text,
-        {
-            "slug": spec["course_id"],
-            "lesson-id": lesson_id,
-            "Título": target["title"],
-            "scope": scope,
-            "Nome-Do-Curso": Path(scope).name,
-        },
+    positioned = []
+    for path in sorted((course / "aulas").glob("*.md")):
+        prefix, separator, _ = path.name.partition("-")
+        if separator and prefix.isdigit():
+            positioned.append((int(prefix), path.name))
+    previous_path = next((name for pos, name in reversed(positioned) if pos < position), None)
+    next_path = next((name for pos, name in positioned if pos > position), None)
+    text = render_lesson(
+        read_template(template_name),
+        spec,
+        scope,
+        {**target, "module": module},
+        position,
+        previous_path,
+        next_path,
     )
-    text = re.sub(r"(?m)^lesson_position:\s*\d+", f"lesson_position: {position}", text)
-    text = re.sub(r"(?m)^module:\s*M(?:\d+|C)", f"module: {module}", text)
-    if "lesson_id:" in text:
-        text = re.sub(r"(?m)^lesson_id:\s*.+$", f"lesson_id: {lesson_id}", text)
-    text = re.sub(r"(?m)^# .+$", f"# {target['title']}", text, count=1)
     if "_DRAFT_" not in text:
         text = text.rstrip() + "\n\n> _DRAFT_ stub de upgrade — preencher conteúdo.\n"
     dest.parent.mkdir(parents=True, exist_ok=True)

@@ -73,4 +73,15 @@ Inventário em que todo dado tem dono, persistência e custo de perda; nenhum ca
 
 Fonte: [Redis — Client-side caching](https://redis.io/docs/latest/develop/reference/client-side-caching/).
 
-[Anterior](05-banco-schema-indice-transacao.md) · [Quiz M2](../avaliacoes/Quiz-M2-dados-e-estado.md) · [Próxima: contratos](07-json-yaml-markdown-contratos.md)
+
+## Âncora no acervo
+
+- [Glossário](../Glossario.md)
+- [Mapa de termos](../Mapa-de-termos.md)
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M2](../modulos/M2-dados-e-estado.md)
+- Anterior: [05-banco-schema-indice-transacao.md](05-banco-schema-indice-transacao.md)
+- Próxima: [07-json-yaml-markdown-contratos.md](07-json-yaml-markdown-contratos.md)

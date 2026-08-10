@@ -12,6 +12,10 @@ source_version: 1.0.0
 ---
 # pipeline canônico: do nada ao PRD com stories prontas
 
+## Resultado
+
+Ao final desta aula você consegue **classificar e usar** o conceito de **Pipeline canônico: do nada ao PRD com stories prontas** no desenho de uma capacidade agentic, com fronteira clara do que não entra.
+
 No fechamento do PRD, deixe explícito o que é Must versus Won't (MoSCoW) e, se houver fila de iniciativas, o score RICE.
 
 

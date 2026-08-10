@@ -68,4 +68,9 @@ Runbook no qual toda versão é identificável, o deploy tem gate e smoke, e rol
 
 Fontes: [GitHub — Continuous integration](https://docs.github.com/en/actions/get-started/continuous-integration) e [Deployment environments](https://docs.github.com/en/actions/concepts/workflows-and-actions/deployment-environments). Proveniência: [mapeamento](../PROVENIENCIA.md).
 
-[Anterior](17-runtime-harness-ambiente-container.md) · [Quiz M6](../avaliacoes/Quiz-M6-operacao-e-observabilidade.md) · [Próxima: segurança](19-autenticacao-autorizacao-secrets.md)
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M6](../modulos/M6-operacao-e-observabilidade.md)
+- Anterior: [17-runtime-harness-ambiente-container.md](17-runtime-harness-ambiente-container.md)
+- Próxima: [19-autenticacao-autorizacao-secrets.md](19-autenticacao-autorizacao-secrets.md)

@@ -30,6 +30,14 @@ curated_at: '2026-08-09'
 
 # Respeite o processo: dê comando, não converse
 
+## Resultado
+
+Ao final desta aula você consegue aplicar o núcleo de **Respeite o processo: dê comando, não converse** em uma decisão real do seu fluxo AIOX, com critério verificável.
+
+## Prática
+
+Escreva em 5 linhas: situação atual → decisão → evidência que provaria que a aula foi aplicada.
+
 ## Conceitos
 
 - [[Goal vs Loop]]

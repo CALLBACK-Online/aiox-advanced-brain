@@ -67,4 +67,15 @@ Política finita em que cada tentativa tem motivo, limite e sinal; o sistema pro
 
 Fonte: [Azure — Transient fault handling](https://learn.microsoft.com/en-us/azure/architecture/best-practices/transient-faults).
 
-[Anterior](13-escala-load-balancing.md) · [Próxima: idempotência](15-idempotencia-deduplicacao-circuit-breaker.md)
+
+## Âncora no acervo
+
+- [Glossário](../Glossario.md)
+- [Mapa de termos](../Mapa-de-termos.md)
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M5](../modulos/M5-escala-e-confiabilidade.md)
+- Anterior: [13-escala-load-balancing.md](13-escala-load-balancing.md)
+- Próxima: [15-idempotencia-deduplicacao-circuit-breaker.md](15-idempotencia-deduplicacao-circuit-breaker.md)

@@ -64,4 +64,15 @@ Decisão de capacidade ligada a uma métrica e a um gargalo, com critério de en
 
 Fontes: [Azure — Scale out](https://learn.microsoft.com/en-us/azure/architecture/guide/design-principles/scale-out) e [Load balancing](https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/load-balancing-overview).
 
-[Anterior](12-concorrencia-paralelismo-fanout-fanin.md) · [Próxima: falhas transitórias](14-timeout-retry-backoff-rate-limit.md)
+
+## Âncora no acervo
+
+- [Glossário](../Glossario.md)
+- [Mapa de termos](../Mapa-de-termos.md)
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M5](../modulos/M5-escala-e-confiabilidade.md)
+- Anterior: [12-concorrencia-paralelismo-fanout-fanin.md](12-concorrencia-paralelismo-fanout-fanin.md)
+- Próxima: [14-timeout-retry-backoff-rate-limit.md](14-timeout-retry-backoff-rate-limit.md)

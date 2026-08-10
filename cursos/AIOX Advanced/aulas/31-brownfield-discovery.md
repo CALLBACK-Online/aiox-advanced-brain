@@ -30,6 +30,10 @@ curated_at: '2026-08-09'
 
 # [[Brownfield Discovery]]: entrar num projeto que já existe
 
+## Resultado
+
+Ao final desta aula você consegue aplicar o núcleo de **Brownfield Discovery: entrar num projeto que já existe** em uma decisão real do seu fluxo AIOX, com critério verificável.
+
 ## Conceitos
 
 - [[Brownfield Discovery]]

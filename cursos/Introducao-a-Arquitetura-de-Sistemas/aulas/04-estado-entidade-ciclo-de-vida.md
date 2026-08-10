@@ -73,4 +73,9 @@ Máquina de estados em que cada transição possui evento, regra e resultado; ou
 
 Fonte: [PostgreSQL — Tutorial](https://www.postgresql.org/docs/current/tutorial.html). Proveniência: [mapeamento curricular](../PROVENIENCIA.md).
 
-[Anterior](03-http-request-response-api.md) · [Próxima: banco](05-banco-schema-indice-transacao.md)
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M2](../modulos/M2-dados-e-estado.md)
+- Anterior: [03-http-request-response-api.md](03-http-request-response-api.md)
+- Próxima: [05-banco-schema-indice-transacao.md](05-banco-schema-indice-transacao.md)

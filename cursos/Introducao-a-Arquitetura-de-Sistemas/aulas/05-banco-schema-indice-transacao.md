@@ -71,4 +71,15 @@ Modelo em que integridade não depende apenas da interface, cada índice respond
 
 Fontes: [PostgreSQL Tutorial](https://www.postgresql.org/docs/current/tutorial.html) e [Indexes](https://www.postgresql.org/docs/current/indexes.html).
 
-[Anterior](04-estado-entidade-ciclo-de-vida.md) · [Próxima: cache e arquivos](06-cache-arquivos-object-storage.md)
+
+## Âncora no acervo
+
+- [Glossário](../Glossario.md)
+- [Mapa de termos](../Mapa-de-termos.md)
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M2](../modulos/M2-dados-e-estado.md)
+- Anterior: [04-estado-entidade-ciclo-de-vida.md](04-estado-entidade-ciclo-de-vida.md)
+- Próxima: [06-cache-arquivos-object-storage.md](06-cache-arquivos-object-storage.md)

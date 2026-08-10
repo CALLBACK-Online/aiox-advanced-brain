@@ -31,6 +31,10 @@ curated_at: '2026-08-09'
 
 # Otimização do CLAUDE.md: 40% mais magro, mesma capacidade
 
+## Resultado
+
+Ao final desta aula você consegue aplicar o núcleo de **Otimização do CLAUDE.md: 40% mais magro, mesma capacidade** em uma decisão real do seu fluxo AIOX, com critério verificável.
+
 ## Conceitos
 
 - [[CLAUDE md|CLAUDE.md]]

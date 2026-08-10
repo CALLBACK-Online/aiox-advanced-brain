@@ -67,4 +67,15 @@ Plano de observabilidade no qual cada sinal responde uma pergunta e permite loca
 
 Fontes: [OpenTelemetry — Signals](https://opentelemetry.io/docs/concepts/signals/) e [Kubernetes — Probes](https://kubernetes.io/docs/concepts/workloads/pods/probes/).
 
-[Anterior](15-idempotencia-deduplicacao-circuit-breaker.md) · [Próxima: runtime](17-runtime-harness-ambiente-container.md)
+
+## Âncora no acervo
+
+- [Glossário](../Glossario.md)
+- [Mapa de termos](../Mapa-de-termos.md)
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M6](../modulos/M6-operacao-e-observabilidade.md)
+- Anterior: [15-idempotencia-deduplicacao-circuit-breaker.md](15-idempotencia-deduplicacao-circuit-breaker.md)
+- Próxima: [17-runtime-harness-ambiente-container.md](17-runtime-harness-ambiente-container.md)

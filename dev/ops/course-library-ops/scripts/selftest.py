@@ -36,6 +36,13 @@ def approve(path: Path) -> None:
     path.write_text(text, encoding="utf-8")
 
 
+def complete_approved_artifact(path: Path) -> None:
+    text = path.read_text(encoding="utf-8")
+    text = text.replace('created_date: "YYYY-MM-DD"', 'created_date: "2026-08-10"')
+    text = text.replace("_DRAFT_", "conteúdo aprovado do selftest")
+    path.write_text(text, encoding="utf-8")
+
+
 def main() -> int:
     with tempfile.TemporaryDirectory(prefix="course-library-ops-") as temp:
         root = Path(temp)
@@ -77,17 +84,6 @@ def main() -> int:
         )
         approve(bastidor / "COURSE-BRIEF.md")
         approve(bastidor / "course-outline.md")
-        spec = json.loads(spec_path.read_text(encoding="utf-8"))
-        spec["modules"] = [
-            {
-                "id": "M0",
-                "title": "Decisão inicial",
-                "evidence": "Artefato verificável",
-                "quiz": False,
-                "lessons": [{"id": "primeira-decisao", "title": "Primeira decisão", "reading_minutes": 10}],
-            }
-        ]
-        spec_path.write_text(json.dumps(spec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         brief = bastidor / "COURSE-BRIEF.md"
         outline = bastidor / "course-outline.md"
         brief.write_text(
@@ -104,6 +100,37 @@ def main() -> int:
             ),
             encoding="utf-8",
         )
+        run(
+            sys.executable,
+            str(SCRIPTS / "check_approvals.py"),
+            "--spec",
+            str(spec_path),
+            "--repo-root",
+            str(root),
+            expected=1,
+        )
+        complete_approved_artifact(brief)
+        complete_approved_artifact(outline)
+        run(
+            sys.executable,
+            str(SCRIPTS / "check_approvals.py"),
+            "--spec",
+            str(spec_path),
+            "--repo-root",
+            str(root),
+            expected=1,
+        )
+        spec = json.loads(spec_path.read_text(encoding="utf-8"))
+        spec["modules"] = [
+            {
+                "id": "M0",
+                "title": "Decisão inicial",
+                "evidence": "Artefato verificável",
+                "quiz": False,
+                "lessons": [{"id": "primeira-decisao", "title": "Primeira decisão", "reading_minutes": 10}],
+            }
+        ]
+        spec_path.write_text(json.dumps(spec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         run(sys.executable, str(SCRIPTS / "check_approvals.py"), "--spec", str(spec_path), "--repo-root", str(root))
         run(sys.executable, str(SCRIPTS / "scaffold_course.py"), "--spec", str(spec_path), "--repo-root", str(root))
         run(sys.executable, "dev/validate.py", "--course", "aiox-exemplo", cwd=root, expected=1)
@@ -218,7 +245,11 @@ def main() -> int:
             "--repo-root",
             str(root),
         )
-        spec["modules"][0]["lessons"] = [spec["modules"][0]["lessons"][1]]
+        added_lesson = root / "cursos/AIOX-Exemplo/aulas/02-segunda-decisao.md"
+        added_text = added_lesson.read_text(encoding="utf-8")
+        if "[← Anterior](01-primeira-decisao.md)" not in added_text or "-stub.md" in added_text:
+            raise SystemExit("selftest: stub adicionado não resolveu navegação real")
+        spec["modules"][0]["lessons"] = [spec["modules"][0]["lessons"][0]]
         spec_path.write_text(json.dumps(spec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         run(
             sys.executable,
@@ -235,7 +266,7 @@ def main() -> int:
         )
         plan = json.loads(plan_path.read_text(encoding="utf-8"))
         for change in plan["changes"]:
-            if change["lesson_id"] == "primeira-decisao":
+            if change["lesson_id"] == "segunda-decisao":
                 change["status"] = "approved"
         plan_path.write_text(json.dumps(plan, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         run(
@@ -244,12 +275,12 @@ def main() -> int:
             "--course",
             "aiox-exemplo",
             "--archive",
-            "primeira-decisao",
+            "segunda-decisao",
             "--repo-root",
             str(root),
         )
-        archived = list((bastidor / "archive" / "upgraded").rglob("01-primeira-decisao.md"))
-        if len(archived) != 1 or (root / "cursos/AIOX-Exemplo/aulas/01-primeira-decisao.md").exists():
+        archived = list((bastidor / "archive" / "upgraded").rglob("02-segunda-decisao.md"))
+        if len(archived) != 1 or added_lesson.exists():
             raise SystemExit("selftest: archive recuperável não preservou o contrato")
         run(
             sys.executable,

@@ -68,4 +68,15 @@ Mapa em que existe um dono da resposta final, nenhuma ação sensível escapa de
 
 Fontes: [OpenAI — Agent orchestration](https://openai.github.io/openai-agents-python/multi_agent/), [Guardrails](https://openai.github.io/openai-agents-python/guardrails/) e [Anthropic — Trustworthy agents](https://www.anthropic.com/research/trustworthy-agents).
 
-[Anterior](22-modelo-contexto-memoria-tool-skill.md) · [Próxima: capstone](24-capstone-arquitetura-agentic.md)
+
+## Âncora no acervo
+
+- [Glossário](../Glossario.md)
+- [Mapa de termos](../Mapa-de-termos.md)
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M8](../modulos/M8-sistemas-com-agentes.md)
+- Anterior: [22-modelo-contexto-memoria-tool-skill.md](22-modelo-contexto-memoria-tool-skill.md)
+- Próxima: [24-capstone-arquitetura-agentic.md](24-capstone-arquitetura-agentic.md)

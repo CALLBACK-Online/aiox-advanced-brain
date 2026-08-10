@@ -30,6 +30,10 @@ curated_at: '2026-08-09'
 
 # Repertório vence técnica
 
+## Resultado
+
+Ao final desta aula você consegue aplicar o núcleo de **Repertório vence técnica** em uma decisão real do seu fluxo AIOX, com critério verificável.
+
 ## Conceitos
 
 - [[Repertório vs Técnica]]

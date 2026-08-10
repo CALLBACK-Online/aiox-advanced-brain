@@ -76,6 +76,8 @@ Storybook deixa de ser vitrine quando responde, para humanos e agentes:
 
 Um componente pode funcionar no código e ainda não estar publicado como capacidade segura de reuso. Para promover a `canonical`, exija responsabilidade clara, API mínima, stories críticas, acessibilidade básica e owner.
 
+No squad `design-system` deste acervo o mesmo ciclo aparece expandido como CANDIDATE → EXPERIMENTAL → STABLE → CANONICAL → DEPRECATED (`squads/design-system/tasks/ds-critical-eye-decide.md`); a tabela acima é a visão mínima desse ciclo, com `internal` cobrindo peças fora da API pública.
+
 ### Falha de sincronização
 
 Se a story não representa o componente real, ela não é documentação: é drift. Código, contrato e catálogo devem mudar no mesmo ciclo ou declarar explicitamente uma transição.

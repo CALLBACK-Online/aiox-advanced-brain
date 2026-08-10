@@ -12,6 +12,10 @@ source_version: 1.0.0
 ---
 # Runner: o executável determinístico do Workflow
 
+## Resultado
+
+Ao final desta aula você consegue **classificar e usar** o conceito de **Runner: o executável determinístico do Workflow** no desenho de uma capacidade agentic, com fronteira clara do que não entra.
+
 
 ## Conceitos
 

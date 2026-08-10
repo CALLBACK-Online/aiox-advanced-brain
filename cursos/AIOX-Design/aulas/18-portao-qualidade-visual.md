@@ -20,7 +20,7 @@ tags: [curso/aiox-design, lesson, layer/curso]
 
 ## Resultado
 
-Você separa o que **bloqueia** “pronto”, o que pode **waiver**, e o que é só **polish** — e coloca `impeccable` depois da conformidade.
+Você separa o que **bloqueia** “pronto”, o que pode receber **waiver** (exceção registrada com dono e prazo), e o que é só **polish** — e coloca `impeccable` depois da conformidade.
 
 ## Mapa visual
 

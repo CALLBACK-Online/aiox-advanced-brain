@@ -71,4 +71,15 @@ Tabela de operações com modo justificado e, para cada fluxo assíncrono, um co
 
 Fontes: [MDN HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview) e [Azure — Background jobs](https://learn.microsoft.com/en-us/azure/architecture/best-practices/background-jobs).
 
-[Anterior](07-json-yaml-markdown-contratos.md) · [Próxima: filas e eventos](09-webhook-fila-evento-pubsub.md)
+
+## Âncora no acervo
+
+- [Glossário](../Glossario.md)
+- [Mapa de termos](../Mapa-de-termos.md)
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M3](../modulos/M3-contratos-e-comunicacao.md)
+- Anterior: [07-json-yaml-markdown-contratos.md](07-json-yaml-markdown-contratos.md)
+- Próxima: [09-webhook-fila-evento-pubsub.md](09-webhook-fila-evento-pubsub.md)

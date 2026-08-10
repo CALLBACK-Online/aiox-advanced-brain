@@ -68,4 +68,15 @@ Mapa de propagação do tenant e testes que provam negação cruzada em todas as
 
 Fonte: [Supabase — Row Level Security](https://supabase.com/docs/guides/database/postgres/row-level-security).
 
-[Anterior](19-autenticacao-autorizacao-secrets.md) · [Próxima: estilos arquiteturais](21-monolito-modulos-microsservicos.md)
+
+## Âncora no acervo
+
+- [Glossário](../Glossario.md)
+- [Mapa de termos](../Mapa-de-termos.md)
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M7](../modulos/M7-seguranca-e-fronteiras.md)
+- Anterior: [19-autenticacao-autorizacao-secrets.md](19-autenticacao-autorizacao-secrets.md)
+- Próxima: [21-monolito-modulos-microsservicos.md](21-monolito-modulos-microsservicos.md)

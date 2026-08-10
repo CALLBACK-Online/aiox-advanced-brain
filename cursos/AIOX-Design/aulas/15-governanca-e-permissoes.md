@@ -83,7 +83,7 @@ Agentes seguem a mesma separação: conseguir editar o arquivo não significa te
 
 ## Prática
 
-Escreva RACI para novo token, novo átomo, nova página e exceção de campanha. Depois produza um mini-RFC de alteração do `Button` com versão, migração e rollback.
+Escreva um RACI — quem é **R**esponsável, quem **A**prova, quem é **C**onsultado e quem é apenas **I**nformado — para novo token, novo átomo, nova página e exceção de campanha. Depois produza um mini-RFC (o formato de 7 itens da seção acima) de alteração do `Button` com versão, migração e rollback.
 
 ## Pergunte ao seu agente
 

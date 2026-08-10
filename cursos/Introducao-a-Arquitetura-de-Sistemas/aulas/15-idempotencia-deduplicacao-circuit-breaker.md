@@ -63,4 +63,15 @@ Teste de cenário demonstrando que duas entregas produzem um efeito e que uma de
 
 Fonte: [Azure — Circuit Breaker](https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker).
 
-[Anterior](14-timeout-retry-backoff-rate-limit.md) · [Quiz M5](../avaliacoes/Quiz-M5-escala-e-confiabilidade.md) · [Próxima: observabilidade](16-logs-metricas-traces-health-checks.md)
+
+## Âncora no acervo
+
+- [Glossário](../Glossario.md)
+- [Mapa de termos](../Mapa-de-termos.md)
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M5](../modulos/M5-escala-e-confiabilidade.md)
+- Anterior: [14-timeout-retry-backoff-rate-limit.md](14-timeout-retry-backoff-rate-limit.md)
+- Próxima: [16-logs-metricas-traces-health-checks.md](16-logs-metricas-traces-health-checks.md)

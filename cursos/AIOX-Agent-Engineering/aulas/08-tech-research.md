@@ -12,6 +12,10 @@ source_version: 1.0.0
 ---
 # Tech Research: pesquisa profunda multi-fonte
 
+## Resultado
+
+Ao final desta aula você consegue **classificar e usar** o conceito de **Tech Research: pesquisa profunda multi-fonte** no desenho de uma capacidade agentic, com fronteira clara do que não entra.
+
 Fontes públicas e rastreáveis entram como OSINT ético: cite, date e separe fato de inferência no dossiê de Tech Research.
 
 

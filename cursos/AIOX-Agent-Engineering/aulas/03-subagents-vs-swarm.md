@@ -12,6 +12,10 @@ source_version: 1.0.0
 ---
 # Sub-agents versus Swarm-agents: isolado ou em rede
 
+## Resultado
+
+Ao final desta aula você consegue **classificar e usar** o conceito de **Sub-agents versus Swarm-agents: isolado ou em rede** no desenho de uma capacidade agentic, com fronteira clara do que não entra.
+
 
 ## Mapa desta aula
 

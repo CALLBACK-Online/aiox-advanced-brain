@@ -30,6 +30,10 @@ curated_at: '2026-08-09'
 
 # core-config: as leis sociais do projeto
 
+## Resultado
+
+Ao final desta aula você consegue aplicar o núcleo de **core-config: as leis sociais do projeto** em uma decisão real do seu fluxo AIOX, com critério verificável.
+
 ## Conceitos
 
 - [[CLAUDE md|CLAUDE.md]]

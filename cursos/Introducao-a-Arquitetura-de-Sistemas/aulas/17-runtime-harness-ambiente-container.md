@@ -68,4 +68,9 @@ Outra pessoa consegue reproduzir a execução ou apontar exatamente qual depend�
 
 Fontes: [Docker — What is a container?](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/) e [Anthropic — Trustworthy agents](https://www.anthropic.com/research/trustworthy-agents). Proveniência: [mapeamento](../PROVENIENCIA.md).
 
-[Anterior](16-logs-metricas-traces-health-checks.md) · [Próxima: CI/CD](18-cicd-deploy-rollback.md)
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M6](../modulos/M6-operacao-e-observabilidade.md)
+- Anterior: [16-logs-metricas-traces-health-checks.md](16-logs-metricas-traces-health-checks.md)
+- Próxima: [18-cicd-deploy-rollback.md](18-cicd-deploy-rollback.md)

@@ -80,4 +80,9 @@ Plano no qual cada ramo tem dono e escopo, nenhuma colisão fica implícita e o 
 
 Fontes: [Azure — Scale out](https://learn.microsoft.com/en-us/azure/architecture/guide/design-principles/scale-out) e [OpenAI Agents SDK — orchestration](https://openai.github.io/openai-agents-python/multi_agent/). Proveniência: [mapeamento](../PROVENIENCIA.md).
 
-[Anterior](11-workflow-pipeline-batch-stream.md) · [Quiz M4](../avaliacoes/Quiz-M4-execucao-e-orquestracao.md) · [Próxima: escala](13-escala-load-balancing.md)
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M4](../modulos/M4-execucao-e-orquestracao.md)
+- Anterior: [11-workflow-pipeline-batch-stream.md](11-workflow-pipeline-batch-stream.md)
+- Próxima: [13-escala-load-balancing.md](13-escala-load-balancing.md)

@@ -62,4 +62,15 @@ Matriz de acesso aplicada no backend/banco e inventário de secrets sem valores,
 
 Fontes: [Supabase Auth](https://supabase.com/docs/guides/auth) e [OWASP — Secrets Management](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html).
 
-[Anterior](18-cicd-deploy-rollback.md) · [Próxima: isolamento](20-multitenancy-isolamento-rls.md)
+
+## Âncora no acervo
+
+- [Glossário](../Glossario.md)
+- [Mapa de termos](../Mapa-de-termos.md)
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M7](../modulos/M7-seguranca-e-fronteiras.md)
+- Anterior: [18-cicd-deploy-rollback.md](18-cicd-deploy-rollback.md)
+- Próxima: [20-multitenancy-isolamento-rls.md](20-multitenancy-isolamento-rls.md)

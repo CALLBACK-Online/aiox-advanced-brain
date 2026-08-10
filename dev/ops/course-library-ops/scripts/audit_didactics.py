@@ -19,26 +19,46 @@ DIMENSIONS = (
     "ponte-metodo-operacao",
     "terminologia-consistente",
 )
-OBJECTIVE = re.compile(r"(?im)(^#{2,3}\s+(?:objetivo|resultado|o que você consegue)|ao final.{0,80}(?:consegue|será capaz))")
-EXERCISE = re.compile(r"(?im)^#{2,3}\s+(?:exercício|prática|checkpoint|autoavaliação|portão|evidência)")
-ANCHOR = re.compile(r"(?:skills/|squads/|aulas/|modulos/|ponte/|\]\((?!https?://|#)[^)]+\.md(?:#[^)]+)?\))")
+OBJECTIVE = re.compile(
+    r"(?im)("
+    r"^#{2,3}\s+(?:objetivo|resultado|o que você consegue|onde você chega|o que você sai sabendo|o caminho da aula)"
+    r"|ao final.{0,100}(?:consegue|será capaz|vai conseguir)"
+    r"|no fim desta aula"
+    r")"
+)
+EXERCISE = re.compile(
+    r"(?im)^#{2,3}\s+(?:exercício|prática|checkpoint|autoavaliação|portão|evidência|recuperação sem ia)"
+)
+ANCHOR = re.compile(
+    r"(?:skills/|squads/|aulas/|modulos/|ponte/|\]\((?!https?://|#)[^)]+\.md(?:#[^)]+)?\)|\[\[[^\]]+\]\])"
+)
 
 
 # Heading real de navegação (linha própria). A string "## Navegação" pode
 # aparecer em código inline/tabela no meio da aula — não usar split ingênuo.
 _NAV_HEADING = re.compile(r"(?m)^##\s+Navegação\s*$")
+_NAV_LINE = re.compile(
+    r"(?i)README|←|→|curso|anterior|próxim|modulo|módulo|modulos/|\[\["
+)
 
 
 def navigation_region(text: str) -> str:
-    """Aceita seção ## Navegação ou breadcrumb compacto (README / ← / →)."""
+    """Aceita seção ## Navegação, breadcrumb no topo, ou bloco de nav no fim do arquivo."""
     parts = _NAV_HEADING.split(text, maxsplit=1)
     if len(parts) == 2:
         return parts[1]
-    # primeiras linhas pós-título costumam carregar o breadcrumb
     lines = text.splitlines()
     chunk: list[str] = []
-    for line in lines[:50]:
-        if "README.md" in line or "←" in line or "→" in line or re.search(r"(?i)curso|anterior|próxim", line):
+    indices = list(range(min(60, len(lines))))
+    if len(lines) > 60:
+        indices.extend(range(max(0, len(lines) - 45), len(lines)))
+    seen: set[int] = set()
+    for i in indices:
+        if i in seen:
+            continue
+        seen.add(i)
+        line = lines[i]
+        if _NAV_LINE.search(line):
             chunk.append(line)
     return "\n".join(chunk)
 
@@ -47,16 +67,37 @@ def signals(course_id: str, course: Path, path: Path, index: int, total: int) ->
     text = path.read_text(encoding="utf-8")
     body = _NAV_HEADING.split(text, maxsplit=1)[0]
     navigation = navigation_region(text)
-    has_course = "README.md" in navigation
-    has_module = not (course / "modulos").is_dir() or bool(
-        re.search(r"\]\(\.\./modulos/[^)]+\.md(?:#[^)]+)?\)", navigation)
+    has_course = bool(
+        re.search(r"README\.md", navigation)
+        or re.search(r"\[\[.*README", navigation)
+        or re.search(r"\]\(\.\./(?:\.\./)*README\.md\)", navigation)
     )
-    has_previous = index == 0 or bool(re.search(r"(?i)anterior|←", navigation))
-    has_next = index == total - 1 or bool(re.search(r"(?i)próxim|→", navigation))
+    has_modules_dir = (course / "modulos").is_dir()
+    has_module = (not has_modules_dir) or bool(
+        re.search(r"\]\(\.\./(?:\.\./)*modulos/[^)]+\.md", navigation)
+        or re.search(r"\[\[modulos/", navigation)
+        or re.search(r"(?i)\bM\d\b|módulo|modulo", navigation)
+    )
+    has_previous = index == 0 or bool(re.search(r"(?i)anterior|←|↑", navigation))
+    has_next = index == total - 1 or bool(
+        re.search(r"(?i)próxim|→|continue no|continue para|próximo módulo", navigation)
+    )
     bridge_dir = course / "ponte"
     bridge_required = course_id in {"aiox-advanced", "aiox-advanced-squads"} or bridge_dir.is_dir()
     bridge_files = list(bridge_dir.glob("*.md")) if bridge_dir.is_dir() else []
-    glossary = course / "Glossario.md"
+    glossary = next(
+        (
+            candidate
+            for candidate in (
+                course / "Glossario.md",
+                course / "Glossário.md",
+                *sorted(course.glob("Glossário*.md")),
+                *sorted(course.glob("Glossario*.md")),
+            )
+            if candidate.is_file()
+        ),
+        None,
+    )
     return {
         "objetivo-verificavel": (
             "PENDING" if OBJECTIVE.search(body) else "FAIL",
@@ -84,8 +125,8 @@ def signals(course_id: str, course: Path, path: Path, index: int, total: int) ->
         ),
         "terminologia-consistente": (
             "PENDING",
-            "Glossario.md presente; revisar deriva"
-            if glossary.is_file()
+            "Glossario presente; revisar deriva"
+            if glossary is not None
             else "revisar vocabulário; glossário não obrigatório",
         ),
     }

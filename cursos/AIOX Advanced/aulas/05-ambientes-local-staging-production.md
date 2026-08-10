@@ -30,6 +30,10 @@ curated_at: '2026-08-09'
 
 # Local, Staging, Production
 
+## Resultado
+
+Ao final desta aula você consegue aplicar o núcleo de **Local, Staging, Production** em uma decisão real do seu fluxo AIOX, com critério verificável.
+
 ## Conceitos
 
 - [[Local Staging Production]]

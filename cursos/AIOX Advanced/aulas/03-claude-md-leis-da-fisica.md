@@ -30,6 +30,10 @@ curated_at: '2026-08-09'
 
 # [[CLAUDE md|CLAUDE.md]] é a lei da física do seu projeto
 
+## Resultado
+
+Ao final desta aula você consegue aplicar o núcleo de **CLAUDE.md é a lei da física do seu projeto** em uma decisão real do seu fluxo AIOX, com critério verificável.
+
 ## Conceitos
 
 - [[CLAUDE md|CLAUDE.md]]

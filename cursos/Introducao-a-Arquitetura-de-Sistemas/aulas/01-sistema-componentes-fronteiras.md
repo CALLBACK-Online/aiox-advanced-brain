@@ -79,4 +79,14 @@ Diagrama com fronteira visível, componentes nomeados por responsabilidade e dep
 
 Fonte: [Azure Architecture Center — Architecture styles](https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/).
 
-[Curso](../README.md) · [Próxima: cliente e servidor](02-cliente-servidor-frontend-backend.md)
+
+## Âncora no acervo
+
+- [Glossário](../Glossario.md)
+- [Mapa de termos](../Mapa-de-termos.md)
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M1](../modulos/M1-ler-o-mapa.md)
+- Próxima: [02-cliente-servidor-frontend-backend.md](02-cliente-servidor-frontend-backend.md)

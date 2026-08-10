@@ -52,6 +52,8 @@ Vários apps (ou módulos) da mesma empresa: cada um “tem seu DS” → tokens
 2. **Semântica de marca/tema:** `color.action`, `font.display`, radius e assinatura que variam sem mudar a responsabilidade.
 3. **Extensão de produto:** componentes ou padrões que só fazem sentido em um domínio.
 
+As duas listas nomeiam as **mesmas camadas**: base = foundations (core), derivados = semântica de marca/tema, extensão = override de produto. O mapa **core → tema → produto** da evidência final usa exatamente essa equivalência.
+
 Tokens semânticos protegem consumidores. `color.action` pode resolver para valores diferentes por marca; `Button` continua expressando a mesma função. Compartilhar valores brutos espalhados acopla produtos ao detalhe errado.
 
 ### Quando promover uma extensão ao core

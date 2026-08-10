@@ -31,6 +31,10 @@ curated_at: '2026-08-09'
 
 # Nao delegue o pensar: repertorio contra zumbi
 
+## Resultado
+
+Ao final desta aula você consegue aplicar o núcleo de **Nao delegue o pensar: repertorio contra zumbi** em uma decisão real do seu fluxo AIOX, com critério verificável.
+
 ## Conceitos
 
 - [[Quatro Executores]]

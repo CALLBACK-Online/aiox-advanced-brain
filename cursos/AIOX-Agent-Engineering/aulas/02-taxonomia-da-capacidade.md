@@ -12,6 +12,10 @@ source_version: 1.0.0
 ---
 # Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner
 
+## Resultado
+
+Ao final desta aula você consegue **classificar e usar** o conceito de **Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner** no desenho de uma capacidade agentic, com fronteira clara do que não entra.
+
 
 ## Conceitos
 

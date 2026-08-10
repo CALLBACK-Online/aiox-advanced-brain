@@ -30,6 +30,10 @@ curated_at: '2026-08-09'
 
 # Método S2S: converter sinais em sistemas
 
+## Resultado
+
+Ao final desta aula você consegue aplicar o núcleo de **Método S2S: converter sinais em sistemas** em uma decisão real do seu fluxo AIOX, com critério verificável.
+
 ## Conceitos
 
 - [[Método S2S]]

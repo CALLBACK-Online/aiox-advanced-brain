@@ -12,6 +12,10 @@ source_version: 1.0.0
 ---
 # Code Anatomy: engenharia reversa de código com /code-anatomist
 
+## Resultado
+
+Ao final desta aula você consegue **classificar e usar** o conceito de **Code Anatomy: engenharia reversa de código com /code-anatomist** no desenho de uma capacidade agentic, com fronteira clara do que não entra.
+
 
 ## Conceitos
 

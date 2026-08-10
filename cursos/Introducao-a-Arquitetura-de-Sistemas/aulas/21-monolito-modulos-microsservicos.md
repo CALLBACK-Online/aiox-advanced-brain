@@ -67,4 +67,15 @@ Decisão arquitetural com alternativa simples, custo distribuído explícito e g
 
 Fontes: [Azure — Architecture styles](https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/) e [Microservices](https://learn.microsoft.com/en-us/azure/architecture/microservices/).
 
-[Anterior](20-multitenancy-isolamento-rls.md) · [Quiz M7](../avaliacoes/Quiz-M7-seguranca-e-fronteiras.md) · [Próxima: agentes](22-modelo-contexto-memoria-tool-skill.md)
+
+## Âncora no acervo
+
+- [Glossário](../Glossario.md)
+- [Mapa de termos](../Mapa-de-termos.md)
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M7](../modulos/M7-seguranca-e-fronteiras.md)
+- Anterior: [20-multitenancy-isolamento-rls.md](20-multitenancy-isolamento-rls.md)
+- Próxima: [22-modelo-contexto-memoria-tool-skill.md](22-modelo-contexto-memoria-tool-skill.md)

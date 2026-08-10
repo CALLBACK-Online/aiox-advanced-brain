@@ -76,4 +76,15 @@ Fluxo no qual cada regra importante tem um lado responsável e nenhuma credencia
 
 Fonte: [MDN — Client-server overview](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/First_steps/Client-Server_overview).
 
-[Anterior](01-sistema-componentes-fronteiras.md) · [Próxima: HTTP e API](03-http-request-response-api.md)
+
+## Âncora no acervo
+
+- [Glossário](../Glossario.md)
+- [Mapa de termos](../Mapa-de-termos.md)
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M1](../modulos/M1-ler-o-mapa.md)
+- Anterior: [01-sistema-componentes-fronteiras.md](01-sistema-componentes-fronteiras.md)
+- Próxima: [03-http-request-response-api.md](03-http-request-response-api.md)

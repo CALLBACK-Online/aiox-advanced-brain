@@ -89,4 +89,8 @@ Fontes consolidadas: [Fontes técnicas primárias](../FONTES.md). Proveniência:
 
 Leve o diagrama, os três trade-offs e as dúvidas abertas para `cursos/AIOX-Fundamentals/README.md`. A próxima etapa não reensina arquitetura: ela mostra onde contexto, agents, tasks, workflows e gates vivem no `aiox-core`.
 
-[Anterior](23-orquestrador-squad-human-in-loop.md) · [Quiz M8](../avaliacoes/Quiz-M8-sistemas-com-agentes.md) · [Projeto Integrador](../Projeto-Integrador.md)
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M8](../modulos/M8-sistemas-com-agentes.md)
+- Anterior: [23-orquestrador-squad-human-in-loop.md](23-orquestrador-squad-human-in-loop.md)

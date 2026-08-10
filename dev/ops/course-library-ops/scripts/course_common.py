@@ -10,6 +10,12 @@ from pathlib import Path
 PLACEHOLDER = re.compile(r"(?:_DRAFT_|\bTODO\b|REPLACE|PENDING|<[^>]+>)", re.IGNORECASE)
 APPROVAL_FIELDS = ("approved_by", "approval_date", "approved_artifact", "approval_scope")
 
+# Marcadores inequívocos de scaffold; texto aprovado não pode conservá-los.
+SCAFFOLD_MARKERS = re.compile(
+    r"(?:_DRAFT_|REPLACE_ME|REPLACE-ME|YYYY-MM-DD|<\s*(?:slug|Título|Nome-Do-Curso|lesson-id|creation-mode)\s*>)",
+    re.IGNORECASE,
+)
+
 
 def find_root(start: Path) -> Path:
     for candidate in (start.resolve(), *start.resolve().parents):
@@ -39,6 +45,10 @@ def scalar_frontmatter(path: Path) -> dict[str, str]:
         key, value = line.split(":", 1)
         fields[key.strip()] = value.strip().strip("'\"")
     return fields
+
+
+def unresolved_scaffold_markers(text: str) -> list[str]:
+    return sorted({match.group(0) for match in SCAFFOLD_MARKERS.finditer(text)})
 
 
 def validate_approval_artifacts(root: Path, spec: dict) -> dict[str, Path]:
@@ -75,7 +85,14 @@ def validate_approval_artifacts(root: Path, spec: dict) -> dict[str, Path]:
             date.fromisoformat(fields["approval_date"])
         except ValueError as exc:
             raise SystemExit(f"{relative}: approval_date deve ser YYYY-MM-DD") from exc
+        markers = unresolved_scaffold_markers(path.read_text(encoding="utf-8"))
+        if markers:
+            raise SystemExit(f"{relative}: artefato aprovado ainda contém scaffold: {markers}")
         resolved[gate] = path
+
+    spec_markers = unresolved_scaffold_markers(json.dumps(spec, ensure_ascii=False))
+    if spec_markers:
+        raise SystemExit(f"course-spec aprovado ainda contém scaffold: {spec_markers}")
     return resolved
 
 
@@ -160,13 +177,6 @@ def normalize_creation_mode(value: str) -> str:
 
 def bastidor_dir(root: Path, course_id: str) -> Path:
     return root / "docs" / "producao-cursos" / course_id
-
-
-# Marcadores de scaffold (não confundir com "TODO" em prosa didática).
-SCAFFOLD_MARKERS = re.compile(
-    r"(?:_DRAFT_|REPLACE_ME|REPLACE-ME|<\s*(?:slug|Título|Nome-Do-Curso|lesson-id|creation-mode)\s*>)",
-    re.IGNORECASE,
-)
 
 
 def count_placeholders(course: Path) -> int:

@@ -74,4 +74,15 @@ Ficha de execução que permite matar um worker e responder onde o trabalho fico
 
 Fontes: [Azure — Background jobs](https://learn.microsoft.com/en-us/azure/architecture/best-practices/background-jobs) e [Docker — containers](https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/).
 
-[Anterior](09-webhook-fila-evento-pubsub.md) · [Próxima: workflow e pipeline](11-workflow-pipeline-batch-stream.md)
+
+## Âncora no acervo
+
+- [Glossário](../Glossario.md)
+- [Mapa de termos](../Mapa-de-termos.md)
+
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M4](../modulos/M4-execucao-e-orquestracao.md)
+- Anterior: [09-webhook-fila-evento-pubsub.md](09-webhook-fila-evento-pubsub.md)
+- Próxima: [11-workflow-pipeline-batch-stream.md](11-workflow-pipeline-batch-stream.md)

@@ -12,6 +12,10 @@ source_version: 1.0.0
 ---
 # Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só
 
+## Resultado
+
+Ao final desta aula você consegue **classificar e usar** o conceito de **Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só** no desenho de uma capacidade agentic, com fronteira clara do que não entra.
+
 
 ## Conceitos
 

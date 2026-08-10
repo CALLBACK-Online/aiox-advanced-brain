@@ -66,4 +66,9 @@ Tabela formato × consumidor × validação × fonte canônica; outra pessoa sab
 
 Fontes: [OpenAPI Specification](https://spec.openapis.org/oas/latest.html) e [MCP primitives](https://modelcontextprotocol.io/specification/2025-06-18/server/index). Proveniência: [mapeamento](../PROVENIENCIA.md).
 
-[Anterior](06-cache-arquivos-object-storage.md) · [Próxima: síncrono e assíncrono](08-sincrono-assincrono.md)
+## Navegação
+
+- Curso: [README](../README.md)
+- Módulo: [M3](../modulos/M3-contratos-e-comunicacao.md)
+- Anterior: [06-cache-arquivos-object-storage.md](06-cache-arquivos-object-storage.md)
+- Próxima: [08-sincrono-assincrono.md](08-sincrono-assincrono.md)

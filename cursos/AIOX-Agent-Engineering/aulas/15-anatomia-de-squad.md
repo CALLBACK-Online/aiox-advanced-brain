@@ -12,6 +12,10 @@ source_version: 1.0.0
 ---
 # Anatomia de um Squad AIOX
 
+## Resultado
+
+Ao final desta aula você consegue **classificar e usar** o conceito de **Anatomia de um Squad AIOX** no desenho de uma capacidade agentic, com fronteira clara do que não entra.
+
 
 ## Conceitos
 
