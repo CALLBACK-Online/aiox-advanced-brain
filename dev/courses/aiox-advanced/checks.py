@@ -54,7 +54,6 @@ def run(ctx: Context) -> str | None:
         "Módulo 4 - Método e Brownfield", "Módulo C - Capstone",
     }
     WIKILINK = re.compile(r"!?\[\[([^\]]+)\]\]")
-    ABSOLUTE_PATH = re.compile(r"(?:/Users/[A-Za-z0-9._-]+/|/home/[A-Za-z0-9._-]+/|[A-Za-z]:[\\/]Users[\\/])")
 
 
     def frontmatter(path: Path) -> tuple[dict, str]:
@@ -144,7 +143,7 @@ def run(ctx: Context) -> str | None:
 
     for source in all_markdown:
         text = source.read_text(encoding="utf-8")
-        if ABSOLUTE_PATH.search(text):
+        if has_absolute_machine_path(text):
             errors.append(f"{source.relative_to(COURSE)}: path absoluto")
         for raw in WIKILINK.findall(text):
             target = raw.split("|", 1)[0].split("#", 1)[0].strip().lstrip("/")

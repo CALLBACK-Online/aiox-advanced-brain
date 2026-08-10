@@ -20,6 +20,7 @@
   "scripts": {
     "validate": "python3 dev/validate.py",
     "validate:courses": "python3 dev/validate.py --only-courses",
+    "selftest": "python3 dev/selftest.py",
     "smoke:routing:runtimes": "node dev/courses/aiox-advanced-squads/smoke-agent-runtimes.mjs"
   }
 }

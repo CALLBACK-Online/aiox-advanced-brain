@@ -5,6 +5,8 @@ Carregado por dev/validate.py. Preferir lib.* para utilitários novos.
 from __future__ import annotations
 
 from lib.context import Context
+from lib.links import has_absolute_machine_path, scan_course_markdown
+from lib.frontmatter import parse_frontmatter
 
 
 def run(ctx: Context) -> str | None:
@@ -15,11 +17,6 @@ def run(ctx: Context) -> str | None:
     from collections import Counter, defaultdict
     from pathlib import Path
     from urllib.parse import unquote
-
-    try:
-        import yaml
-    except ImportError:
-        yaml = None  # type: ignore
 
     ROOT = ctx.root
     COURSE = ctx.course
@@ -112,22 +109,12 @@ def run(ctx: Context) -> str | None:
         "PROVENIENCIA.md",
         "Projeto-Integrador.md",
     ]
-    LINK = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
-    ABSOLUTE_PATH = re.compile(
-        r"(?:/Users/[A-Za-z0-9._-]+/|/home/[A-Za-z0-9._-]+/|[A-Za-z]:[\\/]Users[\\/])"
-    )
     ANSWER = re.compile(r"^\d+\.\s+\*\*([ABCD])\.\*\*", re.M)
 
 
     def frontmatter(text: str) -> dict[str, str]:
-        match = re.match(r"^---\n(.*?)\n---\n", text, re.S)
-        data: dict[str, str] = {}
-        if match:
-            for line in match.group(1).splitlines():
-                if ":" in line and not line.startswith((" ", "-")):
-                    key, value = line.split(":", 1)
-                    data[key.strip()] = value.strip().strip("'\"")
-        return data
+        return parse_frontmatter(text)
+
 
 
     errors = ctx.errors  # shared list
@@ -239,22 +226,7 @@ def run(ctx: Context) -> str | None:
         if not (COURSE / filename).is_file():
             errors.append(f"arquivo obrigatório ausente: {filename}")
 
-    for path in COURSE.rglob("*.md"):
-        text = path.read_text(encoding="utf-8")
-        if ABSOLUTE_PATH.search(text):
-            errors.append(f"{path.relative_to(COURSE)}: path absoluto")
-        for raw in LINK.findall(text):
-            target = raw.split("#", 1)[0].strip()
-            if not target or target.startswith(("http://", "https://", "mailto:")):
-                continue
-            resolved = (path.parent / unquote(target)).resolve()
-            try:
-                resolved.relative_to(COURSE.resolve())
-            except ValueError:
-                errors.append(f"{path.relative_to(COURSE)}: link fora do curso: {raw}")
-                continue
-            if not resolved.exists():
-                errors.append(f"{path.relative_to(COURSE)}: link quebrado: {raw}")
+    scan_course_markdown(COURSE, errors=errors, require_in_course=True)
 
     readme = (COURSE / "README.md").read_text(encoding="utf-8")
     project = (COURSE / "Projeto-Integrador.md").read_text(encoding="utf-8")
@@ -304,8 +276,7 @@ def run(ctx: Context) -> str | None:
     ):
         errors.append("package.json: validador do curso ausente de npm run validate")
 
-    # Detail line if checks set local counters commonly named
-    detail_parts = []
-    for name in ("lesson_files", "lessons", "module_files", "modules", "quiz_files", "quizzes"):
-        pass
-    return None
+    return (
+        f"{len(lessons)} aulas, {len(modules)} módulos, {len(quizzes)} quizzes, "
+        f"{question_total} questões; gabarito {dict(sorted(answers.items()))}"
+    )

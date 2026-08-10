@@ -16,11 +16,6 @@ def run(ctx: Context) -> str | None:
     from pathlib import Path
     from urllib.parse import unquote
 
-    try:
-        import yaml
-    except ImportError:
-        yaml = None  # type: ignore
-
     ROOT = ctx.root
     COURSE = ctx.course
     VAULT = ctx.root

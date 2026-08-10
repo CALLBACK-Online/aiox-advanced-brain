@@ -5,9 +5,9 @@ Fora do npm pack. Contrato: `AGENTS.md` § Superfície do aluno vs maintainer.
 ```bash
 npm run validate                              # surface → cursos → journey → routing
 npm run validate:courses                      # só os 9 cursos
+npm run selftest                              # suite + contrato no-yaml
 python3 dev/validate.py --course aiox-design  # um curso
 python3 dev/validate.py --list
-# um curso via npm:
 npm run validate -- --course aiox-design
 ```
 

@@ -16,11 +16,6 @@ def run(ctx: Context) -> str | None:
     from pathlib import Path
     from urllib.parse import unquote
 
-    try:
-        import yaml
-    except ImportError:
-        yaml = None  # type: ignore
-
     ROOT = ctx.root
     COURSE = ctx.course
     VAULT = ctx.root
@@ -135,9 +130,8 @@ def run(ctx: Context) -> str | None:
     errors = ctx.errors  # shared list
     curriculum_path = COURSE / "curriculum.yaml"
     if not curriculum_path.exists():
-        print("Erros: 1")
-        print("ERROR curriculum.yaml ausente")
-        return None  # was sys.exit — harness aggregates ctx.errors
+        errors.append("curriculum.yaml ausente")
+        return "curriculum ausente"
     curriculum = parse_curriculum(curriculum_path)
     if len(curriculum) != 7:
         errors.append(f"curriculum.yaml: esperadas 7 aulas; encontradas {len(curriculum)}")

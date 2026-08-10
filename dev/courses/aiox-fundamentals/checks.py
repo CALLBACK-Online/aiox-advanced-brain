@@ -5,6 +5,8 @@ Carregado por dev/validate.py. Preferir lib.* para utilitários novos.
 from __future__ import annotations
 
 from lib.context import Context
+from lib.links import has_absolute_machine_path, scan_course_markdown
+from lib.frontmatter import parse_frontmatter
 
 
 def run(ctx: Context) -> str | None:
@@ -15,11 +17,6 @@ def run(ctx: Context) -> str | None:
     from collections import Counter, defaultdict
     from pathlib import Path
     from urllib.parse import unquote
-
-    try:
-        import yaml
-    except ImportError:
-        yaml = None  # type: ignore
 
     ROOT = ctx.root
     COURSE = ctx.course
@@ -86,23 +83,11 @@ def run(ctx: Context) -> str | None:
         "@squad-creator",
         "@ux-design-expert",
     ]
-    LINK = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
-    ABSOLUTE_PATH = re.compile(
-        r"(?:/Users/[A-Za-z0-9._-]+/|/home/[A-Za-z0-9._-]+/|[A-Za-z]:[\\/]Users[\\/][A-Za-z0-9._-]+[\\/])"
-    )
 
 
     def frontmatter(text: str) -> dict[str, str]:
-        match = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
-        if not match:
-            return {}
-        data: dict[str, str] = {}
-        for line in match.group(1).splitlines():
-            if ":" not in line or line.startswith((" ", "-")):
-                continue
-            key, value = line.split(":", 1)
-            data[key.strip()] = value.strip().strip("'\"")
-        return data
+        return parse_frontmatter(text)
+
 
 
     errors = ctx.errors  # shared list
@@ -173,27 +158,13 @@ def run(ctx: Context) -> str | None:
     if len(re.findall(r'^    sha256: "[0-9a-f]{64}"$', manifest, re.MULTILINE)) != 32:
         errors.append("SOURCE-MANIFEST.yaml: hashes ausentes ou inválidos")
 
-    for path in COURSE.rglob("*"):
-        if not path.is_file() or path.suffix not in {".md", ".yaml", ".json"}:
-            continue
-        text = path.read_text(encoding="utf-8")
-        relative = path.relative_to(COURSE)
-        if ABSOLUTE_PATH.search(text):
-            errors.append(f"{relative}: path absoluto específico de máquina")
-        if path.suffix != ".md":
-            continue
-        for raw_target in LINK.findall(text):
-            target = raw_target.split("#", 1)[0].strip()
-            if not target or target.startswith(("http://", "https://", "mailto:")):
-                continue
-            resolved = (path.parent / unquote(target)).resolve()
-            if not resolved.is_relative_to(COURSE.resolve()):
-                errors.append(f"{relative}: link sai do curso -> {target}")
-            elif not resolved.exists():
-                errors.append(f"{relative}: link não resolve -> {target}")
-
-    # Detail line if checks set local counters commonly named
-    detail_parts = []
-    for name in ("lesson_files", "lessons", "module_files", "modules", "quiz_files", "quizzes"):
-        pass
-    return None
+    scan_course_markdown(
+        COURSE,
+        errors=errors,
+        require_in_course=True,
+        suffixes={".md", ".yaml", ".json"},
+    )
+    return (
+        f"{len(lesson_files)} aulas, {len(quiz_files)} quizzes, "
+        f"{question_count} questões"
+    )
