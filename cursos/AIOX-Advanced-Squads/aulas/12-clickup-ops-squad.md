@@ -134,8 +134,14 @@ Leia squads/clickup-ops-squad/config.yaml e adote a persona de clickup-chief.
 
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Você tem um SOP de publicação de conteúdo já validado e quer vê-lo virar estrutura ClickUp — mas nesta prática, **sem tocar no workspace**. Peça ao squad o plano completo que `materialize-process` executaria via `materialization-pipeline`: quais Lists e fields seriam provisionados, quais automações seriam ativadas e em que ordem. O plano é o entregável; a execução só acontece com autorização explícita.
+
+**Saída esperada:** um plano de materialização com o mapa SOP→estrutura (Space, Lists, fields, automações) etapa por etapa — na ordem das tasks `mapped-atm-*`, como `mapped-atm-provision-lists` —, cada item marcado como criação ou alteração, e os pontos que exigiriam autorização antes de qualquer chamada à API.
+
+**Erro comum neste squad:** deixar o agente "só criar rapidinho" a estrutura no workspace real durante o rascunho — efeito externo sem autorização. Detecte cedo declarando no briefing que a missão termina no plano e conferindo que nenhuma task `mapped-atm-*` foi executada.
+
+> **Teste rápido**: abra o ClickUp depois da prática; se algo novo apareceu lá, você falhou o exercício.

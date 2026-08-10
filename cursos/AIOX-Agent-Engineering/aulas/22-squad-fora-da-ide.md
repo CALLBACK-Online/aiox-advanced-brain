@@ -3,16 +3,15 @@ type: lesson
 course: aiox-agent-engineering
 title: "Extrair Squad do Claude Code para API própria"
 lesson_position: 22
-module: M5
+module: M4
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 68
-source_path: "cursos/AIOX Advanced/lessons/68-squad-fora-do-claude-code.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/68-squad-fora-do-claude-code.md"
 source_version: 1.0.0
 ---
 # Extrair Squad do Claude Code para API própria
 
-← Harness: ambiente de execução do agente fora do Claude Code · ↑ M11 · ⌂ Curso · → Escada Progressiva: Script → Squad → Workflow → Runner → API → App → SaaS
 
 ## Mapa desta aula
 
@@ -129,11 +128,11 @@ Personas, skills, gates, estado, tools — com Harness por baixo.
 
 Extrair squad = empacotar o que no Claude Code parece "mágica de sessão":
 
-1. **Personas / órbitas** — quem decide o quê.  
-2. **Skills / workflows** — o ritual, não só o texto.  
-3. **Gates** — o que bloqueia avanço sem evidência.  
-4. **Estado** — story/job/entity com máquina de estados.  
-5. **Tools** — capacidades como serviços remotos.  
+1. **Personas / órbitas** — quem decide o quê.
+2. **Skills / workflows** — o ritual, não só o texto.
+3. **Gates** — o que bloqueia avanço sem evidência.
+4. **Estado** — story/job/entity com máquina de estados.
+5. **Tools** — capacidades como serviços remotos.
 6. **Núcleo** — regras (o equivalente a CLAUDE.md/core-config) versionadas.
 
 Por baixo: o **harness** da aula 67. Por cima: **contrato de API**. No meio:
@@ -173,16 +172,16 @@ Input, auth, idempotência, status, webhooks, erros.
 
 Contrato mínimo de squad-as-API (ajuste nomes, não pule ideias):
 
-- **POST /jobs** — cria execução (payload versionado, idempotency-key).  
-- **GET /jobs/:id** — status: queued | running | succeeded | failed | cancelled.  
-- **POST /jobs/:id/cancel** — kill switch por job.  
+- **POST /jobs** — cria execução (payload versionado, idempotency-key).
+- **GET /jobs/:id** — status: queued | running | succeeded | failed | cancelled.
+- **POST /jobs/:id/cancel** — kill switch por job.
 - (Opcional cedo) **webhook** — notifica terminal states.
 
 Em cada job:
-- **auth** — quem pode disparar (tenant, role).  
-- **input schema** — JSON schema / validação rígida.  
-- **output schema** — o que "sucesso" significa.  
-- **erros** — classes (validação, tool, model, timeout, budget).  
+- **auth** — quem pode disparar (tenant, role).
+- **input schema** — JSON schema / validação rígida.
+- **output schema** — o que "sucesso" significa.
+- **erros** — classes (validação, tool, model, timeout, budget).
 - **QG** — gate que pode falhar o job sem "quase ok".
 
 Síncrono só pra jobs curtos e baratos. Squad de verdade quase sempre é
@@ -207,13 +206,13 @@ Secrets no laptop, MCP local, falta de fila, sem tenant isolation.
 
 Checklist de bloqueios (marque os teus com honestidade brutal):
 
-- **Instabilidade no lab** — falha > limiar aceitável; extrair multiplica o caos.  
-- **Tools locais** — arquivos, browser, MCP só na tua máquina.  
-- **Estado implícito** — "a conversa lembra"; API não tem chat eterno.  
-- **Secrets** — chaves no env local, sem vault/rotação.  
-- **Sem isolamento** — mesmo store/vector/db pra clientes diferentes.  
-- **Sem custo** — tokens ilimitados por request.  
-- **Sem dono de QG** — ninguém define o que é PASS em produção.  
+- **Instabilidade no lab** — falha > limiar aceitável; extrair multiplica o caos.
+- **Tools locais** — arquivos, browser, MCP só na tua máquina.
+- **Estado implícito** — "a conversa lembra"; API não tem chat eterno.
+- **Secrets** — chaves no env local, sem vault/rotação.
+- **Sem isolamento** — mesmo store/vector/db pra clientes diferentes.
+- **Sem custo** — tokens ilimitados por request.
+- **Sem dono de QG** — ninguém define o que é PASS em produção.
 - **Núcleo podre** — regras só na cabeça, não versionadas.
 
 Bloqueio listado é plano. Bloqueio ignorado é incidente com timestamp.
@@ -237,9 +236,9 @@ Do ritual manual no CC ao POST /jobs com QG.
 Squad de research semanal: estável no Claude Code, 1 operador, sexta de manhã.
 Cliente pediu self-serve pro time interno.
 
-Fase 0 — **não codar**:  
-- Taxa de sucesso 4/5 últimas semanas.  
-- Tools: 2 APIs + 1 que lia pasta local (bloqueio).  
+Fase 0 — **não codar**:
+- Taxa de sucesso 4/5 últimas semanas.
+- Tools: 2 APIs + 1 que lia pasta local (bloqueio).
 - Output: pacote markdown + scores.
 
 Fase 1 — **congelar contratos**: schema de input (tema, fontes, prazo) e
@@ -379,4 +378,4 @@ Adaptação autocontida da aula 68 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](21-harness.md) · [Curso](../README.md) · [Próxima aula →](23-escada-progressiva.md)
+[← Aula anterior](21-harness.md) · [↑ M4](../modulos/M4-runtime-fora-da-ide.md) · [Curso](../README.md) · [Próxima aula →](23-escada-progressiva.md)

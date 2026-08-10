@@ -3,16 +3,15 @@ type: lesson
 course: aiox-agent-engineering
 title: "Anatomia de um Squad AIOX"
 lesson_position: 15
-module: M3
+module: M2
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 33
-source_path: "cursos/AIOX Advanced/lessons/33-anatomia-de-um-squad.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/33-anatomia-de-um-squad.md"
 source_version: 1.0.0
 ---
 # Anatomia de um Squad AIOX
 
-← REUSE > ADAPT > CREATE: a heurística antes de criar nada · ↑ M7 · ⌂ Curso · → Squad Creator passo a passo: criar um squad do zero
 
 ## Conceitos
 
@@ -195,7 +194,7 @@ A confusão mais comum: tratar as pastas como o squad e o config como detalhe. �
 
 ## A anatomia existe de verdade no AIOX
 
-> **Nota deste acervo (AIOX Advanced library):** o exemplo canônico apontável aqui é `squads/squad-creator/`. O monorepo fonte `../upstream-monorepo` também contém `squads/course-creator/` e dezenas de outros squads não empacotados neste repositório educacional.
+> **Nota deste acervo:** o exemplo canônico apontável aqui é `squads/squad-creator/`. Assets não presentes nesta biblioteca não devem ser usados como dependência do curso.
 
 
 A anatomia não é teoria. Todo squad em squads/ no repositório AIOX tem o mesmo esqueleto. Estes dois casos mostram a estrutura real: o config.yaml que declara e as pastas que dão corpo ao squad.
@@ -498,4 +497,4 @@ Adaptação autocontida da aula 33 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](14-triagem-de-squad.md) · [Curso](../README.md) · [Próxima aula →](16-squad-creator.md)
+[← Aula anterior](14-triagem-de-squad.md) · [↑ M2](../modulos/M2-construcao-de-capacidade.md) · [Curso](../README.md) · [Próxima aula →](16-squad-creator.md)

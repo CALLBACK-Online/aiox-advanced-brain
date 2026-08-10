@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+"""Valida a edição 2.0 do AIOX Advanced e sua migração curricular."""
 from __future__ import annotations
 
 import re
@@ -7,182 +9,155 @@ from pathlib import Path
 
 import yaml
 
-
 COURSE = Path(__file__).resolve().parents[1]
 VAULT = COURSE.parents[1]
-COURSES = VAULT / "cursos"
-WIKILINK = re.compile(r"!?(?:\[\[)([^\]]+)(?:\]\])")
-
-
-def normalized_target(raw: str) -> str:
-    target = raw.split("|", 1)[0].split("#", 1)[0].split("^", 1)[0].strip()
-    return target.lstrip("/")
-
-
-course_files = [path for path in COURSES.rglob("*") if path.is_file()]
-by_stem: dict[str, list[Path]] = defaultdict(list)
-by_suffix: dict[str, list[Path]] = defaultdict(list)
-by_exact: dict[str, list[Path]] = defaultdict(list)
-
-for path in course_files:
-    relative = path.relative_to(VAULT)
-    exact_parts = relative.as_posix().split("/")
-    by_exact[path.name].append(path)
-    for index in range(len(exact_parts)):
-        by_exact["/".join(exact_parts[index:])].append(path)
-    if path.suffix == ".md":
-        by_stem[path.stem].append(path)
-        no_suffix_parts = relative.with_suffix("").as_posix().split("/")
-        for index in range(len(no_suffix_parts)):
-            by_suffix["/".join(no_suffix_parts[index:])].append(path)
-
-unresolved = []
-ambiguous = []
-outside_course = []
-wikilinks = 0
-
-for source in sorted(COURSE.rglob("*.md")):
-    text = source.read_text(encoding="utf-8")
-    for line_number, raw in enumerate(text.splitlines(), 1):
-        for match in WIKILINK.finditer(raw):
-            wikilinks += 1
-            target = normalized_target(match.group(1))
-            if not target:
-                continue
-            if Path(target).suffix:
-                candidates = by_exact.get(target, [])
-                if not candidates:
-                    candidates = by_stem.get(target, [])
-            elif "/" in target:
-                candidates = by_suffix.get(target, [])
-            else:
-                candidates = by_stem.get(target, [])
-            unique = sorted(set(candidates))
-            if not unique:
-                unresolved.append((source, line_number, target))
-            elif len(unique) > 1:
-                exact_course = [path for path in unique if path.is_relative_to(COURSE)]
-                if len(exact_course) != 1:
-                    ambiguous.append((source, line_number, target, unique))
-            resolved = [path for path in unique if path.is_relative_to(COURSE)]
-            if unique and not resolved:
-                outside_course.append((source, line_number, target, unique[0]))
-
-lesson_files = sorted((COURSE / "lessons").glob("*.md"))
-metadata_errors = []
-lesson_tracks = Counter()
-lesson_modules = Counter()
-for path in lesson_files:
-    text = path.read_text(encoding="utf-8")
-    match = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
-    data = yaml.safe_load(match.group(1)) if match else {}
-    for field in ("module", "sequence", "track", "status", "canonical_scope"):
-        if not data.get(field):
-            metadata_errors.append((path, field))
-    if data.get("manual") is not True:
-        metadata_errors.append((path, "manual=true"))
-    if "⌂ [[cursos/AIOX Advanced/README|Curso]]" not in text:
-        metadata_errors.append((path, "navegação editorial"))
-    lesson_tracks[data.get("track")] += 1
-    lesson_modules[data.get("module")] += 1
-
-expected_tracks = {"essential": 32, "complete": 38, "legacy": 4, "support": 1}
-if dict(lesson_tracks) != expected_tracks:
-    metadata_errors.append((COURSE / "README.md", f"trilhas={dict(lesson_tracks)}"))
-
-expected_curriculum_modules = {f"M{index}" for index in range(13)} | {"MC"}
-expected_lesson_modules = expected_curriculum_modules | {"SUP"}
-if set(lesson_modules) != expected_lesson_modules:
-    metadata_errors.append(
-        (COURSE / "README.md", f"módulos de aula={sorted(lesson_modules)}")
-    )
-
-module_files = sorted((COURSE / "modulos").glob("*.md"))
-module_ids = set()
-for path in module_files:
-    text = path.read_text(encoding="utf-8")
-    match = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
-    data = yaml.safe_load(match.group(1)) if match else {}
-    module_ids.add(data.get("module"))
-    for field in ("module", "sequence", "status", "canonical_scope", "source_version"):
-        if data.get(field) is None:
-            metadata_errors.append((path, field))
-    if "## Rota Essencial" not in text or "## Evidência de conclusão" not in text:
-        metadata_errors.append((path, "estrutura pedagógica"))
-    if "## Checkpoint" not in text or "## Navegação" not in text:
-        metadata_errors.append((path, "checkpoint/navegação"))
-
-if module_ids != expected_curriculum_modules:
-    metadata_errors.append((COURSE / "README.md", f"MOCs={sorted(module_ids)}"))
-
-quiz_files = sorted((COURSE / "avaliacoes").glob("Quiz *.md"))
-quiz_modules = set()
-question_texts = []
-answer_positions = Counter()
-question_total = 0
-for path in quiz_files:
-    text = path.read_text(encoding="utf-8")
-    match = re.match(r"^---\n(.*?)\n---\n", text, re.DOTALL)
-    data = yaml.safe_load(match.group(1)) if match else {}
-    quiz_modules.add(data.get("module"))
-    questions = re.findall(r"(?m)^### \d+\. (.+)$", text)
-    answers = re.findall(r"(?m)^\*\*\d+\. ([A-D])\*\*", text)
-    question_total += len(questions)
-    question_texts.extend(re.sub(r"\s+", " ", item.lower()).strip() for item in questions)
-    answer_positions.update(answers)
-    if data.get("question_count") != len(questions) or len(answers) != len(questions):
-        metadata_errors.append((path, "contagem de questões/gabarito"))
-    if data.get("passing_score") != 80:
-        metadata_errors.append((path, "passing_score=80"))
-    if "Em uma situação real do seu projeto, o próximo passo correto" in text:
-        metadata_errors.append((path, "pergunta genérica residual"))
-
-duplicate_questions = [
-    question for question, count in Counter(question_texts).items() if count > 1
+COURSE_ID = "aiox-advanced"
+SCOPE = "cursos/AIOX Advanced"
+EXPECTED_SEQUENCE = [
+    "01-token-economy-mindset", "08-principio-processo-certo",
+    "12-repertorio-vs-tecnica", "13-pensamento-estruturado-antes-do-terminal",
+    "26-nao-delegar-pensar", "03-claude-md-leis-da-fisica",
+    "05-ambientes-local-staging-production", "15-quatro-executores",
+    "16-janela-de-contexto", "17-engenharia-de-contexto",
+    "18-yaml-markdown-json-sweet-spot", "25-core-config-leis-sociais",
+    "27-otimizacao-claude-md", "06-code-rabbit-boost", "19-ciclo-do-repositorio",
+    "46-etapas-de-desenvolvimento", "48-quality-gate-completo",
+    "49-apply-qa-fixes-loop", "11-goal-vs-loop", "20-determinismo-progressivo",
+    "21-deterministico-primeiro-llm-onde-gera-ouro", "50-rider-modo-elicitacao",
+    "23-o-que-e-um-squad", "24-entidade-como-unidade-de-processo",
+    "31-brownfield-discovery", "53-brownfield-enhancement", "44-metodo-s2s",
+    "74-caso-integrado-end-to-end",
 ]
-if quiz_modules != expected_curriculum_modules:
-    metadata_errors.append((COURSE / "Assessments.md", f"quizzes={sorted(quiz_modules)}"))
-if duplicate_questions:
-    metadata_errors.append((COURSE / "Assessments.md", "questões duplicadas"))
+EXPECTED_MODULE_COUNTS = {"M0": 5, "M1": 8, "M2": 5, "M3": 4, "M4": 4, "MC": 2}
+EXPECTED_MODULE_FILES = {
+    "Módulo 0 - Mindset e Princípios", "Módulo 1 - Sistema e Contexto",
+    "Módulo 2 - SDC e Qualidade", "Módulo 3 - Determinismo e Comando",
+    "Módulo 4 - Método e Brownfield", "Módulo C - Capstone",
+}
+WIKILINK = re.compile(r"!?\[\[([^\]]+)\]\]")
+ABSOLUTE_PATH = re.compile(r"(?:/Users/[A-Za-z0-9._-]+/|/home/[A-Za-z0-9._-]+/|[A-Za-z]:[\\/]Users[\\/])")
+
+
+def frontmatter(path: Path) -> tuple[dict, str]:
+    text = path.read_text(encoding="utf-8")
+    match = re.match(r"^---\n(.*?)\n---\n", text, re.S)
+    return (yaml.safe_load(match.group(1)) or {}, text) if match else ({}, text)
+
+
+errors: list[str] = []
+lessons = list((COURSE / "lessons").glob("*.md"))
+lesson_records: list[tuple[int, str]] = []
+module_counts: Counter[str] = Counter()
+
+if len(lessons) != 28:
+    errors.append(f"esperadas 28 aulas ativas; encontradas {len(lessons)}")
+
+for path in lessons:
+    data, text = frontmatter(path)
+    for field in ("module", "sequence", "track", "status", "canonical_scope"):
+        if data.get(field) is None:
+            errors.append(f"{path.name}: falta {field}")
+    if data.get("course") != COURSE_ID or data.get("track") != "core":
+        errors.append(f"{path.name}: course/track inválido")
+    if data.get("status") != "canonical" or data.get("canonical_scope") != SCOPE:
+        errors.append(f"{path.name}: status/scope inválido")
+    if data.get("manual") is not True:
+        errors.append(f"{path.name}: manual=true ausente")
+    if "⌂ [[cursos/AIOX Advanced/README|Curso]]" not in text:
+        errors.append(f"{path.name}: navegação editorial ausente")
+    sequence = int(data.get("sequence") or 0)
+    lesson_records.append((sequence, path.stem))
+    module_counts[data.get("module")] += 1
+
+actual_sequence = [stem for _, stem in sorted(lesson_records)]
+if actual_sequence != EXPECTED_SEQUENCE:
+    errors.append(f"sequência ativa divergente: {actual_sequence}")
+if dict(module_counts) != EXPECTED_MODULE_COUNTS:
+    errors.append(f"distribuição por módulo divergente: {dict(module_counts)}")
+
+module_files = list((COURSE / "modulos").glob("*.md"))
+if {path.stem for path in module_files} != EXPECTED_MODULE_FILES:
+    errors.append(f"MOCs ativos divergentes: {[path.stem for path in module_files]}")
+for path in module_files:
+    data, text = frontmatter(path)
+    if data.get("course") != COURSE_ID or data.get("module") not in EXPECTED_MODULE_COUNTS:
+        errors.append(f"{path.name}: frontmatter de módulo inválido")
+    for section in ("## Resultado", "## Evidência de conclusão", "## Checkpoint", "## Navegação"):
+        if section not in text:
+            errors.append(f"{path.name}: falta {section}")
+
+quiz_files = list((COURSE / "avaliacoes").glob("Quiz *.md"))
+question_total = 0
+answer_positions: Counter[str] = Counter()
+quiz_modules: set[str] = set()
+for path in quiz_files:
+    data, text = frontmatter(path)
+    quiz_modules.add(data.get("module"))
+    questions = re.findall(r"^### \d+\.", text, re.M)
+    answers = re.findall(r"\*\*\d+\. ([A-D])\*\*", text)
+    question_total += len(questions)
+    answer_positions.update(answers)
+    if data.get("type") != "quiz" or data.get("course") != COURSE_ID:
+        errors.append(f"{path.name}: frontmatter de quiz inválido")
+    if data.get("question_count") != 8 or len(questions) != 8 or len(answers) != 8:
+        errors.append(f"{path.name}: contagem de questões/gabarito inválida")
+    if data.get("passing_score") != 80 or "## Transferência" not in text:
+        errors.append(f"{path.name}: gate pedagógico inválido")
+
+if len(quiz_files) != 6 or quiz_modules != set(EXPECTED_MODULE_COUNTS):
+    errors.append(f"quizzes ativos divergentes: {len(quiz_files)} / {sorted(quiz_modules)}")
+if question_total != 48:
+    errors.append(f"esperadas 48 questões; encontradas {question_total}")
 if answer_positions and max(answer_positions.values()) - min(answer_positions.values()) > 1:
-    metadata_errors.append(
-        (COURSE / "Assessments.md", f"gabarito desbalanceado={dict(answer_positions)}")
-    )
+    errors.append(f"gabarito desbalanceado: {dict(answer_positions)}")
 
-print(f"arquivos Markdown no curso: {len(list(COURSE.rglob('*.md')))}")
-print(f"aulas: {len(lesson_files)}")
-print(f"módulos curriculares: {len(module_files)}")
-print(f"quizzes: {len(quiz_files)}")
-print(f"questões curadas: {question_total}")
-print(f"gabarito por posição: {dict(sorted(answer_positions.items()))}")
-print(f"trilhas: {dict(sorted(lesson_tracks.items()))}")
-print(f"wikilinks verificados: {wikilinks}")
-print(f"links não resolvidos dentro de /cursos: {len(unresolved)}")
-print(f"links ambíguos dentro de /cursos: {len(ambiguous)}")
-print(f"links fora da pasta do curso: {len(outside_course)}")
-print(f"erros de metadados/navegação: {len(metadata_errors)}")
+migrated = list((COURSE / "archive/migrated/lessons").glob("*.md"))
+legacy = list((COURSE / "archive/legacy/lessons").glob("*.md"))
+if len(migrated) != 42:
+    errors.append(f"esperadas 42 aulas migradas; encontradas {len(migrated)}")
+if len(legacy) != 4:
+    errors.append(f"esperadas 4 aulas legacy; encontradas {len(legacy)}")
+if not (COURSE / "support/75-faq-cohort-campo.md").exists():
+    errors.append("FAQ de campo ausente em support/")
 
-for source, line_number, target in unresolved:
-    print(f"UNRESOLVED {source.relative_to(VAULT)}:{line_number} -> {target}")
-for source, line_number, target, candidates in ambiguous:
-    paths = ", ".join(str(path.relative_to(VAULT)) for path in candidates)
-    print(f"AMBIGUOUS {source.relative_to(VAULT)}:{line_number} -> {target}: {paths}")
-for source, line_number, target, resolved in outside_course:
-    print(
-        f"OUTSIDE_COURSE {source.relative_to(VAULT)}:{line_number} -> "
-        f"{target}: {resolved.relative_to(VAULT)}"
-    )
-for path, field in metadata_errors:
-    print(f"METADATA {path.relative_to(VAULT)} -> {field}")
+all_markdown = list(COURSE.rglob("*.md"))
+by_stem: dict[str, list[Path]] = defaultdict(list)
+for path in all_markdown:
+    by_stem[path.stem].append(path)
 
-if (
-    unresolved
-    or ambiguous
-    or outside_course
-    or metadata_errors
-    or len(lesson_files) != 75
-    or len(module_files) != 14
-    or len(quiz_files) != 14
-    or question_total != 62
-):
+for source in all_markdown:
+    text = source.read_text(encoding="utf-8")
+    if ABSOLUTE_PATH.search(text):
+        errors.append(f"{source.relative_to(COURSE)}: path absoluto")
+    for raw in WIKILINK.findall(text):
+        target = raw.split("|", 1)[0].split("#", 1)[0].strip().lstrip("/")
+        if not target:
+            continue
+        if target.startswith("cursos/") and source.is_relative_to(COURSE / "glossario/termos"):
+            external = VAULT / (target if target.endswith(".md") else f"{target}.md")
+            if external.exists():
+                continue
+        course_prefix = "cursos/AIOX Advanced/"
+        local_target = target[len(course_prefix):] if target.startswith(course_prefix) else target
+        direct = COURSE / (local_target if local_target.endswith(".md") else f"{local_target}.md")
+        if direct.exists():
+            continue
+        candidates = by_stem.get(Path(target).stem, [])
+        active = [path for path in candidates if "archive" not in path.parts]
+        if len(active) == 1 or (not active and len(candidates) == 1):
+            continue
+        if not candidates:
+            errors.append(f"{source.relative_to(COURSE)}: wikilink não resolvido: {target}")
+        else:
+            errors.append(f"{source.relative_to(COURSE)}: wikilink ambíguo: {target}")
+
+if errors:
+    print("AIOX Advanced: FALHA")
+    for error in errors:
+        print(f"  - {error}")
     sys.exit(1)
+
+print(
+    "AIOX Advanced: 28 aulas ativas, 6 módulos, 6 quizzes, "
+    f"{question_total} questões; arquivo 42+4+1; gabarito {dict(sorted(answer_positions.items()))}; erros: 0"
+)

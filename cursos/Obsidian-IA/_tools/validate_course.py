@@ -37,7 +37,7 @@ REQUIRED_TEMPLATE_SECTIONS = [
     "## Contexto recuperado",
     "## Decisões e restrições",
     "## Mecanismo escolhido",
-    "## Handoff ao projeto",
+    "## Handoff à próxima etapa",
     "## Critérios de aceite",
     "## Evidência esperada",
     "## Retorno ao segundo cérebro",
@@ -47,7 +47,7 @@ REQUIRED_TEMPLATE_FIELDS = [
     "## Template copiável",
     "status: draft",
     "**Transformação observável:**",
-    "**Projeto de destino:**",
+    "**Destino:**",
     "- Fonte:",
     "- Decisão já tomada:",
     "- Maturidade:",
@@ -65,7 +65,7 @@ REQUIRED_CAPSTONE_STEPS = [
     "4. **Context Brief**",
     "5. **Roteamento**",
     "6. **Handoff**",
-    "7. **Execução**",
+    "7. **Execução no projeto**",
     "8. **Validação**",
     "9. **Retorno**",
 ]
@@ -115,6 +115,8 @@ def require_in_order(text: str, tokens: list[str], label: str, errors: list[str]
 
 errors: list[str] = []
 lesson_files = sorted((COURSE / "aulas").glob("*.md"))
+quiz_files = sorted((COURSE / "avaliacoes").glob("Quiz-*.md"))
+question_count = 0
 
 if len(lesson_files) != 8:
     errors.append(f"esperadas 8 aulas; encontradas {len(lesson_files)}")
@@ -140,11 +142,40 @@ for position, path in enumerate(lesson_files):
 if actual_ids != EXPECTED:
     errors.append(f"ordem/ids divergentes: {actual_ids}")
 
+for path in quiz_files:
+    text = path.read_text(encoding="utf-8")
+    data = frontmatter(text)
+    questions = len(re.findall(r"^### \d+\.", text, re.MULTILINE))
+    question_count += questions
+    if data.get("type") != "course-quiz" or data.get("course") != "obsidian-ia":
+        errors.append(f"{path.relative_to(COURSE)}: frontmatter inválido")
+    if data.get("status") != "canonical":
+        errors.append(f"{path.relative_to(COURSE)}: status deve ser canonical")
+    if data.get("question_count") != str(questions):
+        errors.append(
+            f"{path.relative_to(COURSE)}: question_count={data.get('question_count')!r}; "
+            f"encontradas {questions}"
+        )
+
 capstone = COURSE / "aulas" / "07-pratica-integrada.md"
 if capstone.exists():
     capstone_body = capstone.read_text(encoding="utf-8")
     require_tokens(capstone_body, REQUIRED_CAPSTONE_SECTIONS, capstone.name, errors)
     require_in_order(capstone_body, REQUIRED_CAPSTONE_STEPS, capstone.name, errors)
+    require_tokens(
+        capstone_body,
+        [
+            "O modo A é apenas o gate preparatório",
+            "A conclusão do mini-curso exige todos os itens abaixo",
+            "Menor asset necessário disponível no projeto real",
+            "Artefato produzido no projeto real",
+            "Conclusão do mini-curso:",
+            "artefato validado no projeto",
+            "nota de retorno",
+        ],
+        capstone.name,
+        errors,
+    )
 
 operation_lesson = COURSE / "aulas" / "06-do-estudo-a-execucao.md"
 if operation_lesson.exists():
@@ -228,6 +259,16 @@ else:
         errors.append(
             f"catalog.json: lessons Obsidian-IA={course_record.get('lessons')}; "
             f"encontradas {len(lesson_files)}"
+        )
+    if course_record.get("quizzes") != len(quiz_files):
+        errors.append(
+            f"catalog.json: quizzes Obsidian-IA={course_record.get('quizzes')}; "
+            f"encontrados {len(quiz_files)}"
+        )
+    if course_record.get("questions") != question_count:
+        errors.append(
+            f"catalog.json: questions Obsidian-IA={course_record.get('questions')}; "
+            f"encontradas {question_count}"
         )
 
 readme = COURSE / "README.md"

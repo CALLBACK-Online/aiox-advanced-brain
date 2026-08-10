@@ -9,12 +9,12 @@ canonical_scope: cursos/AIOX-Agent-Engineering
 
 ## Roteamento por intenção
 
-- Unidade de execução, entidade, workflow ou runner → M1.
-- Incerteza, prior art, research ou engenharia reversa → M2.
-- Criar ou adaptar squad → M3.
-- Paralelismo, routing ou waves → M4.
-- Harness, API ou execução fora da IDE → M5.
-- Banco, deploy, CI/CD ou readiness → M6.
+- Pipeline, unidade de execução, entidade, workflow ou runner → M0.
+- Incerteza, prior art, research ou engenharia reversa → M1.
+- Criar, reutilizar ou adaptar capacidade/squad → M2.
+- Paralelismo, routing ou waves → M3.
+- Harness, API ou execução fora da IDE → M4.
+- Banco, deploy, CI/CD ou readiness → M5.
 
 ## Contrato de ensino
 
@@ -27,10 +27,12 @@ canonical_scope: cursos/AIOX-Agent-Engineering
 ## Fronteiras
 
 - Método e SDC → `cursos/AIOX Advanced/`.
-- Base técnica → `cursos/AIOX-Fundamentos-de-Arquitetura/`.
+- Base técnica → `cursos/Introducao-a-Arquitetura-de-Sistemas/`.
 - Primeiro ciclo → `cursos/AIOX-Fundamentals/`.
 - Design → `cursos/AIOX-Design/`.
 - Oferta e monetização → `cursos/AIOX-Productizacao/`.
+- Fronteira AE × Productização (1 página) → `cursos/MOC-Agent-Engineering-vs-Productizacao.md`.
+- Ponte de saída → `ponte/saida-para-productizacao.md`.
 - Escolha de squad pronto → `cursos/AIOX-Advanced-Squads/`.
 
 ## Formato mínimo

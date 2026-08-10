@@ -3,18 +3,17 @@ type: lesson
 course: aiox-agent-engineering
 title: "Quando paralelizar vs sequencial: decisão antes do speedup"
 lesson_position: 18
-module: M4
+module: M3
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 59
-source_path: "cursos/AIOX Advanced/lessons/59-quando-paralelizar-vs-sequencial.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/59-quando-paralelizar-vs-sequencial.md"
 source_version: 1.0.0
 ---
 # Quando paralelizar vs sequencial: decisão antes do speedup
 
 > **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/12-concorrencia-paralelismo-fanout-fanin.md`.
 
-← Ralph: paralelização de múltiplos agentes · ↑ M10 · ⌂ Curso · → Routing de modelos: Codex para QA, Gemini para pesquisa, Claude para o resto
 
 ## Mapa desta aula
 
@@ -380,4 +379,4 @@ Adaptação autocontida da aula 59 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](17-ralph.md) · [Curso](../README.md) · [Próxima aula →](19-routing-de-modelos.md)
+[← Aula anterior](17-ralph.md) · [↑ M3](../modulos/M3-orquestracao-e-escala.md) · [Curso](../README.md) · [Próxima aula →](19-routing-de-modelos.md)

@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `M11 produtivização (recomendado)` — oferta e dor.
+Antes de operar este squad, use `cursos/AIOX-Productizacao/` para decidir wedge, oferta e dor/ROI. Copy começa depois dessa decisão.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -133,10 +133,22 @@ Leia squads/copy/config.yaml e adote a persona de copy-chief.
 - premissas e limites declarados;
 - próximo passo ou handoff para outro squad/skill, se couber.
 
+## O que muda no AIOX Enterprise
+
+Aqui, a qualidade da peça depende do contexto que você montar no briefing. No Enterprise, o Copy Squad lê primeiro oferta, marca, movimento e processo comercial do workspace. Sem o brief de campanha obrigatório, a produção fica bloqueada.
+
+**O ganho prático:** a copy não começa de um prompt vazio nem avança com uma promessa sem base. A mesma verdade comercial acompanha anúncios, páginas, e-mails e handoffs, com um gate que protege a campanha da pressa.
+
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Sua página de captura converte 1,8% com tráfego pago frio e a promessa atual — “o método completo” — não fala com dor nenhuma. A missão: reescrever a landing page com **um** ângulo dominante (dor de tempo, não de dinheiro), extraído de `avatar-research`, e só considerar a peça pronta depois de passá-la por `audit-landing-page`. Headline, lead e CTA devem derivar do mesmo ângulo, sem misturar promessas.
+
+**Saída esperada:** uma landing page completa em markdown com o ângulo declarado no topo do documento, headline com 3 variações que atacam a mesma dor e o relatório do audit anexado, com score e pendências resolvidas.
+
+**Erro comum neste squad:** misturar dois ângulos na mesma peça (“economize tempo E multiplique receita”) — ela fica média em tudo e não converte em nada. Detecte cedo: se headline e primeiro parágrafo não couberem na mesma frase de dor, o ângulo já se partiu.
+
+> **Teste rápido**: leia só a headline e o CTA — se os dois apontam para a mesma promessa específica, o ângulo sobreviveu.

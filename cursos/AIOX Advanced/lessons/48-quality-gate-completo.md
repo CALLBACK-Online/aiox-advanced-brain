@@ -19,9 +19,9 @@ bloom: apply
 reading_minutes: 15
 has_mermaid_map: true
 map_source: auto-decision_graph
-module: M3
-sequence: M3.3
-track: essential
+module: M2
+sequence: 17
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
@@ -30,8 +30,6 @@ curated_at: '2026-08-09'
 # [[Quality Gate]]: QA + Apply QA Fixes + CodeRabbit
 
 O QG materializa [[No-self-review]]: findings de outro motor/pessoa antes de [[PASS]] / [[FAIL]] / [[CONCERNS]] / [[WAIVED]].
-
-← [[47-ciclo-de-vida-do-story|Ciclo de vida do Story: draft → ready → in progress → in review → done]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[49-apply-qa-fixes-loop|Apply QA Fixes Loop: QA volta para Dev sem perder estado]]
 
 ## Mapa desta aula
 
@@ -407,6 +405,10 @@ A IA é a seta. O X é seu — inclusive **segurar o merge** quando o vermelho m
 
 ---
 
+## Operar isto na prática
+
+Esta aula é pré-requisito no curso de squads — quando a missão for real, siga para: Research: `cursos/AIOX-Advanced-Squads/aulas/02-research.md` · AIOX SOP: `cursos/AIOX-Advanced-Squads/aulas/07-aiox-sop.md` · Design System: `cursos/AIOX-Advanced-Squads/aulas/14-design-system.md` · Design Ops: `cursos/AIOX-Advanced-Squads/aulas/15-design-ops.md`
+
 ## Navegação
 
-← [[47-ciclo-de-vida-do-story|Ciclo de vida do Story: draft → ready → in progress → in review → done]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[49-apply-qa-fixes-loop|Apply QA Fixes Loop: QA volta para Dev sem perder estado]]
+← [[lessons/46-etapas-de-desenvolvimento|Briefing, PRD, Stories: as 3 etapas antes do código]] · ↑ [[modulos/Módulo 2 - SDC e Qualidade|M2 — SDC e qualidade]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/49-apply-qa-fixes-loop|Apply QA Fixes Loop: QA volta para Dev sem perder estado]]

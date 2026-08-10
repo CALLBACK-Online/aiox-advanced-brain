@@ -3,16 +3,15 @@ type: lesson
 course: aiox-agent-engineering
 title: "Wave Execute: orquestração avançada com waves paralelas"
 lesson_position: 20
-module: M4
+module: M3
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 61
-source_path: "cursos/AIOX Advanced/lessons/61-wave-execute.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/61-wave-execute.md"
 source_version: 1.0.0
 ---
 # Wave Execute: orquestração avançada com waves paralelas
 
-← Routing de modelos: Codex para QA, Gemini para pesquisa, Claude para o resto · ↑ M10 · ⌂ Curso · → Service-as-Software: a era do serviço produtivado
 
 ## Mapa desta aula
 
@@ -381,4 +380,4 @@ Adaptação autocontida da aula 61 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](19-routing-de-modelos.md) · [Curso](../README.md) · [Próxima aula →](21-harness.md)
+[← Aula anterior](19-routing-de-modelos.md) · [↑ M3](../modulos/M3-orquestracao-e-escala.md) · [Curso](../README.md) · [Próxima aula →](21-harness.md)

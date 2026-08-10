@@ -132,10 +132,22 @@ Leia squads/storytelling/config.yaml e adote a persona de blake-snyder.
 - premissas e limites declarados;
 - próximo passo ou handoff para outro squad/skill, se couber.
 
+## O que muda no AIOX Enterprise
+
+Neste acervo, a qualidade da narrativa depende do briefing que você entregar. No Enterprise, o Storytelling valida o contexto antes da saída final. Para isso, consulta ICP, marca, posicionamento, oferta, provas e preço registrados no workspace.
+
+**O ganho prático:** a história deixa de ser apenas bem contada e passa a ser fiel ao negócio que precisa sustentá-la. O squad continua produzindo narrativa, mas não precisa inventar a verdade comercial no prompt.
+
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Escolha um caso real que você conta mal: aquele projeto que quase falhou e virou o melhor resultado do ano, hoje narrado como lista de fatos. A missão é transformá-lo no arco de abertura de uma palestra de 15 minutos. Estruture com `apply-story-circle` (partida, caos, retorno transformado) e valide a espinha dorsal com `diagnose-story-grid` antes de polir frase por frase.
+
+**Saída esperada:** um roteiro narrativo com (1) protagonista e desejo declarados no primeiro parágrafo, (2) um ponto de virada explícito — o momento em que a abordagem antiga morreu — e (3) resolução que muda o que a audiência deve fazer, não só o que ela sabe.
+
+**Erro comum neste squad:** cronologia disfarçada de história — "primeiro fizemos X, depois Y" sem tensão. Detecte cedo: se nenhum trecho do rascunho pudesse ter dado errado (nenhum risco, nenhuma escolha custosa), não há arco; volte ao diagnóstico antes de escrever mais.
+
+> **Teste rápido**: conte a história em 30 segundos para alguém de fora — se a pessoa não perguntar "e aí, o que aconteceu?", a tensão ainda não existe.

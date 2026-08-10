@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `11-goal-vs-loop; 14-anatomia-do-agente; 29-sub-agents-vs-swarm-agents` — autonomia e loops.
+Antes de operar este squad, revise `11-goal-vs-loop`, `20-determinismo-progressivo` e `21-deterministico-primeiro-llm-onde-gera-ouro` no **AIOX Advanced**. Para aprofundar composição de agents, use `cursos/AIOX-Agent-Engineering/aulas/03-subagents-vs-swarm.md`.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -134,8 +134,14 @@ Leia squads/agent-autonomy/config.yaml e adote a persona de autonomy-chief.
 
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Pegue um agente seu que já falhou de verdade — ficou em loop, pediu confirmação a cada passo ou “concluiu” sem terminar. Rode `audit-agent` para medir a autonomia atual e, sobre o pior sintoma, rode `diagnose-autonomy-failure` até chegar a uma causa raiz acionável: prompt, tools, critério de parada ou contexto. Só depois considere `optimize-agent` — otimizar sem diagnóstico é chute.
+
+**Saída esperada:** relatório de auditoria com (1) nível de autonomia medido com evidência de sessões reais, não impressão, (2) causa raiz do loop apontando o componente específico (goal, tool, critério de parada), (3) prescrição de correção acompanhada de um teste que provaria a melhora.
+
+**Erro comum neste squad:** tratar o sintoma em vez da causa — reescrever o prompt inteiro quando o problema era um critério de parada ausente ou uma tool que falha em silêncio. Detecte cedo: se o diagnóstico não cita nenhum trecho de transcript ou log do agente, ele foi feito de ouvido.
+
+> **Teste rápido**: reproduza o loop original depois da correção; se você não sabe como reproduzi-lo, também não sabe se consertou.

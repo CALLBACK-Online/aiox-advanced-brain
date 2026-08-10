@@ -135,8 +135,14 @@ Leia squads/claude-code-mastery/config.yaml e adote a persona de claude-mastery-
 
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Pegue um projeto real seu que roda Claude Code “pelado” — sem CLAUDE.md, sem hooks, permissões no padrão. Rode `audit-setup` para fotografar o estado atual e depois o workflow `wf-project-setup` para montar a configuração mínima: CLAUDE.md enxuto, permissões deliberadas e um hook que resolva uma dor real (ex.: lint após edição). Resista à tentação de instalar tudo; cada item precisa de justificativa.
+
+**Saída esperada:** projeto configurado com (1) CLAUDE.md curto onde cada linha muda comportamento — nada de manifesto genérico, (2) permissões que você consegue justificar uma a uma, (3) pelo menos um hook testado com evidência de disparo real.
+
+**Erro comum neste squad:** o CLAUDE.md-catálogo — despejar convenções, arquitetura e wishlist no arquivo até o agente ignorar tudo. Detecte cedo: se o CLAUDE.md passa de uma tela ou contém instruções que nunca mudaram uma resposta, rode `audit-settings` e corte.
+
+> **Teste rápido**: abra uma sessão nova no projeto e verifique se o agente obedece duas regras do CLAUDE.md sem você lembrá-lo; se não obedece, a configuração é decorativa.

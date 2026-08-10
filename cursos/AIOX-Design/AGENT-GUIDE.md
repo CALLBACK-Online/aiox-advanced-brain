@@ -29,15 +29,15 @@ Evidência: {o que a pessoa deve mostrar}
 
 | Intenção | Aula |
 |----------|------|
-| IA inventa cor/layout | `aulas/01-design-system-e-decisao.md`, `03-design-md-contrato.md` |
-| Legado visual bagunçado | `aulas/02-design-system-greenfield-brownfield.md`, `05-tokens-componentes-anti-drift.md` |
-| Como escrever DESIGN.md | `aulas/03-design-md-contrato.md` |
-| Nomear componentes | `aulas/04-taxonomia-atomica.md` |
-| Stack Tailwind/ShadCN | `aulas/06-stack-tailwind-shadcn-storybook.md` |
-| Variantes / a11y | `aulas/07-storybook-variantes.md` |
-| Review de PR de UI | `aulas/08-portao-qualidade-visual.md` |
-| Qual squad/skill | `aulas/09-skill-vs-squad-design.md` |
-| Fechar ciclo | `aulas/10-capstone-contrato-e-componente.md` |
+| IA inventa cor/layout | `aulas/01-design-system-e-decisao.md`, `08-design-md-contrato.md` |
+| Legado visual bagunçado | `aulas/02-design-system-greenfield-brownfield.md`, `09-tokens-componentes-anti-drift.md` |
+| Como escrever DESIGN.md | `aulas/08-design-md-contrato.md` |
+| Nomear componentes | `aulas/10-taxonomia-atomica.md` |
+| Stack Tailwind/ShadCN | `aulas/12-stack-tailwind-shadcn-storybook.md` |
+| Variantes / a11y | `aulas/14-storybook-variantes.md` |
+| Review de PR de UI | `aulas/18-portao-qualidade-visual.md` |
+| Qual squad/skill | `aulas/19-skill-vs-squad-design.md` |
+| Fechar ciclo | `aulas/20-capstone-ds-storybook-executavel.md` |
 
 ## Falhas seguras
 

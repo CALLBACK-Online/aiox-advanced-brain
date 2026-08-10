@@ -20,6 +20,12 @@ Ao concluir o curso, o aluno consegue:
 - conduzir uma mudança pelo ciclo de story, implementação, QA e fechamento;
 - validar o resultado com gates, autoridade correta e evidência reproduzível.
 
+## Contrato de entrada e saída
+
+**Entrada recomendada:** arquitetura explicável ou diagnóstico equivalente vindo de `cursos/Introducao-a-Arquitetura-de-Sistemas/README.md`. Se API, estado, fila, worker, runtime ou autorização ainda forem caixas-pretas, volte à base técnica; este curso não substitui essa linguagem.
+
+**Saída para o Advanced:** context pack + story + evidências + handoff do primeiro ciclo local. Você avança quando instala ou audita o Core, escolhe o agent correto e consegue provar a conclusão sem depender da conversa original.
+
 ## Estrutura
 
 1. **Fundamentos** — o que é AIOX, CLI First, arquitetura e first-value.
@@ -95,4 +101,4 @@ Não avance apenas porque terminou as 12 aulas. Vá para o **AIOX Advanced** qua
 
 Se ainda precisa seguir a receita para concluir esse ciclo, repita o [projeto final](assessments/final-project.md) com uma segunda mudança pequena. Se já consegue explicar cada decisão sem depender da receita, o Advanced passa a aprofundar o que hoje ainda é improvisado.
 
-[Veja a jornada completa: Fundamentals, Advanced e Enterprise](../../JORNADA-AIOX.md).
+Jornada completa (Fundamentals, Advanced e Enterprise): arquivo `JORNADA-AIOX.md` na raiz do repositório.

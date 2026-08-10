@@ -8,7 +8,7 @@ materialized_date: "2026-08-10"
 instructor: "Equipe AIOX"
 canonical_scope: cursos/AIOX-Design
 sharing_boundary: cursos
-source: curadoria de cursos/AIOX Advanced/lessons (M6/M9) + squads design-* + skills design-*
+source: curadoria dos seeds de design da edição 1 do AIOX Advanced + squads design-* + skills design-*
 tags: [curso, design, design-system, layer/curso]
 ---
 
@@ -16,7 +16,9 @@ tags: [curso, design, design-system, layer/curso]
 
 > Design system e contrato visual para humanos e agentes — sem virar curso de Figma nem runbook de squad.
 
-**Estado:** materializado (aulas + quizzes + validador). Brief permanece como contrato curricular.
+**Estado:** materializado como **v1 documental** (10 aulas + quizzes + validador).
+
+**Direção seguinte (aprovada):** expansão para ~18–20 aulas e capstone **executável** (Storybook obrigatório) — ver [`CURRICULUM-EXPANSION.md`](CURRICULUM-EXPANSION.md). A v1 **não** encerra o outcome das lives de Design System.
 
 Outline detalhado: [`course-outline.md`](course-outline.md).
 
@@ -66,7 +68,7 @@ A pessoa controla código e processo (CLAUDE.md, stories, gates), mas o **visual
 
 - Builders e devs que usam Claude Code / Codex / agentes para UI.
 - PMs / founders técnicos que fecham interface com IA e precisam de coerência.
-- Alunos do **AIOX Advanced** que chegaram em M9 (ou travaram em UI) e querem trilha dedicada.
+- Alunos do **AIOX Advanced** que dominam o SDC (ou travaram em UI) e querem trilha dedicada.
 - Quem vai operar `squads/design-system` ou `design-ops` e precisa do **critério**, não só do `@design-chief`.
 
 **Não é o público primário:** designer de produto que só quer portfólio Figma sem agentes; curso de acessibilidade WCAG completo; certificação de design system enterprise genérico.
@@ -95,7 +97,7 @@ Bloom dominante: **Apply** e **Evaluate** (não só remember).
 | Este curso ensina | Este curso **não** ensina |
 |-------------------|---------------------------|
 | Critério e contrato visual AIOX | Figma avançado, brand book completo de agência |
-| `DESIGN.md`, tokens, taxonomia, Storybook como prova | SDC inteiro, deploy, produtivização (Advanced M0–M12) |
+| `DESIGN.md`, tokens, taxonomia, Storybook como prova | SDC inteiro, runtime e produtivização (Advanced, Agent Engineering e Productização) |
 | Quando chamar cada skill/squad de design | Runbook completo de 100+ tasks do squad (→ curso Squads) |
 | Anti-deriva e anti-AI-look no nível de **decisão** | Polimento craft pixel a pixel (`impeccable` pós-gate) |
 | Ponte para Fundamentos (contratos/formatos) se útil | Arquitetura de sistemas genérica (filas, RLS, fan-out) |
@@ -214,15 +216,14 @@ Cada aula **deve** ter:
 
 ---
 
-## 11. Relação com o Advanced após o launch
+## 11. Relação com o Advanced após a edição 2.0
 
-| Fase | Advanced M9 | AIOX Design |
-|------|-------------|-------------|
-| **Agora (só brief)** | Dono atual do conteúdo | Draft |
-| **Materialização** | Mantém seeds; adiciona ponte “trilha completa → AIOX Design” | Dono pedagógico do design |
-| **Estabilização (opcional)** | Essencial: 1 aula ponte + link; Completa design pode encolher | Curso default para quem sofre com UI |
+| AIOX Advanced | AIOX Design |
+|---------------|-------------|
+| Dono do método, SDC e quality gate geral | Dono do contrato, julgamento e gate visual |
+| Mantém os seeds da edição 1 em `archive/migrated/` | Mantém a progressão canônica em 10 aulas |
 
-Não apagar M9 no dia 1. Pontes bidirecionais primeiro (`ponte/` nos dois cursos).
+A migração preserva rastreabilidade sem duplicar a progressão ativa.
 
 ---
 
@@ -238,14 +239,13 @@ Não apagar M9 no dia 1. Pontes bidirecionais primeiro (`ponte/` nos dois cursos
 
 ---
 
-## 13. Ordem de implementação (pós-aprovação do brief)
+## 13. Estado de implementação
 
-1. Aprovar este brief + outline (humano).
-2. Scaffold: `README`, `modulos/`, `aulas/00–09`, `avaliacoes/`, `ponte/`, `Rubrica.md`, `_tools/validate_course.py`, hook em `npm run validate`.
-3. Materializar M0–M1 (aulas 01–05) → validate.
-4. Materializar M2–M3 (06–10) + quizzes → validate.
-5. Atualizar `cursos/README.md`, Advanced M9, Squads pré-reqs, MOCs.
-6. (Opcional) enxugar Essencial do Advanced.
+- [x] Brief e outline aprovados.
+- [x] 10 aulas, 4 módulos, quizzes, pontes e rubrica materializados.
+- [x] Hub, catálogo, MOCs e squads alinhados.
+- [x] Seeds migrados do Advanced ativo para o arquivo histórico.
+- [x] Validador integrado a `npm run validate`.
 
 ---
 
@@ -264,5 +264,5 @@ Não apagar M9 no dia 1. Pontes bidirecionais primeiro (`ponte/` nos dois cursos
 
 - Outline: [`course-outline.md`](course-outline.md)
 - Hub de trilhas (quando publicado): `cursos/README.md`
-- Seeds método: `cursos/AIOX Advanced/modulos/Módulo 9 - Design System.md`
+- Seeds método (arquivo histórico): `cursos/AIOX Advanced/archive/migrated/modulos/Módulo 9 - Design System.md`
 - Operação: `cursos/AIOX-Advanced-Squads/aulas/14-design-system.md`

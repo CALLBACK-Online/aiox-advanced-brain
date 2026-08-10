@@ -9,6 +9,7 @@ status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
 source_refs: [azure-background-jobs, azure-microservices]
+reading_minutes: 5
 ---
 
 # Webhook, fila, evento e pub/sub

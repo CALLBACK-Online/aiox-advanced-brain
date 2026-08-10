@@ -25,6 +25,7 @@ Ao receber uma dúvida técnica, ensine o modelo mental antes de sugerir tecnolo
 7. Faça uma pergunta de cenário e dê feedback sobre a resposta.
 8. Feche com uma evidência pequena: diagrama, tabela de decisão ou explicação em voz própria.
 9. Para afirmações técnicas, use as [fontes primárias](FONTES.md); não invente comportamento de runtime.
+10. Quando o aluno concluir o projeto com a rubrica, encaminhe para `cursos/AIOX-Fundamentals/README.md`; não pule direto para Advanced sem verificar se ele já opera o Core.
 
 ## Formato mínimo
 

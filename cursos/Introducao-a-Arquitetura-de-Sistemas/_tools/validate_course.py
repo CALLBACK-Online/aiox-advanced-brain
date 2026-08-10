@@ -104,6 +104,10 @@ for position, path in enumerate(lesson_files, start=1):
     for section in REQUIRED_SECTIONS:
         if section not in text:
             errors.append(f"{path.name}: falta {section}")
+    adapted_from = data.get("adapted_from", "")
+    for source_path in adapted_from.split(" + ") if adapted_from else []:
+        if not (ROOT / source_path).is_file():
+            errors.append(f"{path.name}: adapted_from não resolve: {source_path}")
 
 if actual_ids != EXPECTED_LESSONS:
     errors.append(f"ordem/ids divergentes: {actual_ids}")

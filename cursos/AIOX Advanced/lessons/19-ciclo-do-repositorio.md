@@ -21,17 +21,15 @@ bloom: apply
 reading_minutes: 13
 has_mermaid_map: true
 map_source: handcrafted
-module: M3
-sequence: M3.5
-track: complete
+module: M2
+sequence: 15
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Ciclo do repositório: Detect Repo, GitHub, CodeRabbit, CI/CD
-
-← [[06-code-rabbit-boost|Code Rabbit Boost]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[20-determinismo-progressivo|Determinismo Progressivo: 30, 60, 90]]
 
 ## Conceitos
 
@@ -475,9 +473,12 @@ Os termos desta aula em uma frase cada.
 
 ***
 
-
 ---
+
+## Operar isto na prática
+
+Esta aula é pré-requisito no curso de squads — quando a missão for real, siga para: AIOX SOP: `cursos/AIOX-Advanced-Squads/aulas/07-aiox-sop.md` · Design Ops: `cursos/AIOX-Advanced-Squads/aulas/15-design-ops.md`
 
 ## Navegação
 
-← [[06-code-rabbit-boost|Code Rabbit Boost]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[20-determinismo-progressivo|Determinismo Progressivo: 30, 60, 90]]
+← [[lessons/06-code-rabbit-boost|Code Rabbit Boost]] · ↑ [[modulos/Módulo 2 - SDC e Qualidade|M2 — SDC e qualidade]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/46-etapas-de-desenvolvimento|Briefing, PRD, Stories: as 3 etapas antes do código]]

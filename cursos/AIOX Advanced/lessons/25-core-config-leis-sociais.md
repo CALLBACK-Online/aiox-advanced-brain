@@ -21,16 +21,14 @@ reading_minutes: 21
 has_mermaid_map: true
 map_source: auto-decision_graph
 module: M1
-sequence: M1.3
-track: complete
+sequence: 12
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # core-config: as leis sociais do projeto
-
-← [[03-claude-md-leis-da-fisica|CLAUDE.md é a lei da física do seu projeto]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[45-doze-agentes-orbitais|Os 12 agentes orbitais do AIOX]]
 
 ## Conceitos
 
@@ -624,6 +622,16 @@ lei_social:
 
 ---
 
+## Portão da aula
+
+*Gate*
+
+O critério que prova que a lei social saiu do papel e virou governo vivo no seu projeto.
+
+> **Portão da aula**: Você só passa quando consegue pegar uma regra real do seu projeto e dizer, sem consultar a aula, em qual arquivo ela mora (core-config, Constitution ou CLAUDE.md), qual gate falha quando alguém a ignora e como seria o waiver honesto, com dono e prazo.
+
+---
+
 ## Glossario sem jargao
 
 Traducao dos termos para alguem que esta vendo as leis sociais do projeto pela primeira vez.
@@ -642,9 +650,8 @@ Traducao dos termos para alguem que esta vendo as leis sociais do projeto pela p
 
 ***
 
-
 ---
 
 ## Navegação
 
-← [[03-claude-md-leis-da-fisica|CLAUDE.md é a lei da física do seu projeto]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[45-doze-agentes-orbitais|Os 12 agentes orbitais do AIOX]]
+← [[lessons/18-yaml-markdown-json-sweet-spot|YAML, Markdown, JSON: o sweet spot para LLM]] · ↑ [[modulos/Módulo 1 - Sistema e Contexto|M1 — Sistema e contexto]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/27-otimizacao-claude-md|Otimização do CLAUDE.md: 40% mais magro, mesma capacidade]]

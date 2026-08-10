@@ -3,16 +3,15 @@ type: lesson
 course: aiox-agent-engineering
 title: "Pasta OS: curadoria local de open-source para o agente"
 lesson_position: 11
-module: M2
+module: M1
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 39
-source_path: "cursos/AIOX Advanced/lessons/39-pasta-os-curadoria-local.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/39-pasta-os-curadoria-local.md"
 source_version: 1.0.0
 ---
 # Pasta OS: curadoria local de open-source para o agente
 
-← Code Anatomy: engenharia reversa de código com /code-anatomist · ↑ M8 · ⌂ Curso · → Pipeline canônico: do nada ao PRD com stories prontas
 
 ## Mapa desta aula
 
@@ -480,4 +479,4 @@ Adaptação autocontida da aula 39 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](10-code-anatomy-e-domain-decoder.md) · [Curso](../README.md) · [Próxima aula →](12-research-ao-prd.md)
+[← Aula anterior](10-code-anatomy-e-domain-decoder.md) · [↑ M1](../modulos/M1-discovery-e-research.md) · [Curso](../README.md) · [Próxima aula →](12-research-ao-prd.md)

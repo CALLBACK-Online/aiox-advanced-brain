@@ -8,8 +8,9 @@ sequence: M8.3
 status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
-adapted_from: cursos/AIOX Advanced/lessons/73-prontidao-de-producao.md
+adapted_from: cursos/AIOX Advanced/archive/migrated/lessons/73-prontidao-de-producao.md
 source_refs: [all-course-sources]
+reading_minutes: 5
 ---
 
 # Capstone: desenhar e defender uma arquitetura agentic
@@ -83,5 +84,9 @@ Faça uma revisão adversarial desta arquitetura. Primeiro reconstrua o fluxo em
 Arquitetura com pelo menos 16/20 na rubrica, três trade-offs explícitos e nenhuma caixa que o autor seja incapaz de explicar. A entrega deve sobreviver a uma revisão adversarial sem depender de “a IA recomendou”.
 
 Fontes consolidadas: [Fontes técnicas primárias](../FONTES.md). Proveniência: [mapeamento curricular](../PROVENIENCIA.md).
+
+## Handoff para AIOX Fundamentals
+
+Leve o diagrama, os três trade-offs e as dúvidas abertas para `cursos/AIOX-Fundamentals/README.md`. A próxima etapa não reensina arquitetura: ela mostra onde contexto, agents, tasks, workflows e gates vivem no `aiox-core`.
 
 [Anterior](23-orquestrador-squad-human-in-loop.md) · [Quiz M8](../avaliacoes/Quiz-M8-sistemas-com-agentes.md) · [Projeto Integrador](../Projeto-Integrador.md)

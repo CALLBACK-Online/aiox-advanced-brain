@@ -26,7 +26,7 @@ maturity: study
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `Rota Essencial M0–M1 (recomendado)` — método antes de calendário.
+Antes de operar este squad, revise M0–M1 do **AIOX Advanced ativo** — método e contexto antes de calendário.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -133,10 +133,22 @@ Leia squads/conteudo/config.yaml e adote a persona de content-chief.
 - premissas e limites declarados;
 - próximo passo ou handoff para outro squad/skill, se couber.
 
+## O que muda no AIOX Enterprise
+
+Neste acervo, você entrega ao squad o contexto de marca e estratégia a cada missão. No Enterprise, o Conteúdo lê identidade, estratégia e direção tática do workspace. Carrosséis, reels e textos retornam à camada operacional do negócio.
+
+**O ganho prático:** o calendário deixa de ser uma sequência de peças avulsas. Cada conteúdo nasce da mesma estratégia e volta para um histórico operacional que pode alimentar os próximos ciclos de copy, marca e distribuição.
+
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Planeje duas semanas de conteúdo para um perfil real no Instagram — por exemplo, uma consultoria que posta "quando dá" e sem funil. A missão: sair do improviso para um calendário com pilares definidos, misturando carrossel, Reels e Stories com intenção (atrair, nutrir, converter). Estruture com `plan-calendar` e prepare os ganchos das peças principais com `create-hook-batch`.
+
+**Saída esperada:** um calendário de 14 dias com (1) cada peça amarrada a um pilar e a uma etapa do funil, (2) formato e gancho definidos por post — não "post sobre X" — e (3) pelo menos duas variações de hook para as peças de maior aposta.
+
+**Erro comum neste squad:** gerar volume sem estratégia — 14 posts que não conversam entre si nem com o posicionamento. Detecte cedo: se você não consegue dizer qual pilar e qual etapa do funil cada peça atende, o calendário é uma lista, não um plano; volte à estratégia antes de escrever legendas.
+
+> **Teste rápido**: aponte para qualquer dia do calendário e responda "por que esta peça, neste dia, para quem?" — sem resposta, o planejamento não terminou.

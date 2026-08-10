@@ -20,9 +20,9 @@ bloom: apply
 reading_minutes: 10
 has_mermaid_map: true
 map_source: auto-decision_graph
-module: M2
-sequence: M2.5
-track: complete
+module: M1
+sequence: 11
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curriculum_role: applied-extension
@@ -35,8 +35,6 @@ curated_at: '2026-08-09'
 > **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/07-json-yaml-markdown-contratos.md`.
 
 Para navegar o course-brain com grafo e [[Wikilink|wikilinks]], o ambiente recomendado é o [[Obsidian]] (vault na raiz ou em `cursos/`).
-
-← [[27-otimizacao-claude-md|Otimização do CLAUDE.md: 40% mais magro, mesma capacidade]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[46-etapas-de-desenvolvimento|Briefing, PRD, Stories: as 3 etapas antes do código]]
 
 ## Conceitos
 
@@ -444,6 +442,10 @@ Os termos desta aula em uma frase cada.
 
 ---
 
+## Operar isto na prática
+
+Esta aula é pré-requisito no curso de squads — quando a missão for real, siga para: Slides Creator: `cursos/AIOX-Advanced-Squads/aulas/17-slides-creator.md`
+
 ## Navegação
 
-← [[27-otimizacao-claude-md|Otimização do CLAUDE.md: 40% mais magro, mesma capacidade]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[46-etapas-de-desenvolvimento|Briefing, PRD, Stories: as 3 etapas antes do código]]
+← [[lessons/17-engenharia-de-contexto|Engenharia de contexto: limpar comandos, skills e MCPs]] · ↑ [[modulos/Módulo 1 - Sistema e Contexto|M1 — Sistema e contexto]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/25-core-config-leis-sociais|core-config: as leis sociais do projeto]]

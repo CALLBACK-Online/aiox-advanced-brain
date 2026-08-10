@@ -133,10 +133,22 @@ Leia squads/brand/config.yaml e adote a persona de brand-chief.
 - premissas e limites declarados;
 - próximo passo ou handoff para outro squad/skill, se couber.
 
+## O que muda no AIOX Enterprise
+
+Aqui você monta o briefing e produz os artefatos de marca no destino. No Enterprise, o Brand Squad parte do contexto real do negócio. Antes do registro na camada tática do workspace, valida o namespace da marca.
+
+**O ganho prático:** posicionamento, voz e decisões de marca deixam de ser anexos dispersos. Copy, conteúdo e design podem partir da mesma fonte, reduzindo versões conflitantes conforme a operação cresce.
+
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Pegue uma marca real que você acompanha — por exemplo, uma escola de tecnologia que virou "mais uma plataforma de cursos com IA" e perdeu diferenciação. A missão: reposicioná-la contra os dois concorrentes diretos, saindo de atributos genéricos ("qualidade", "inovação") para uma posição defensável. Comece pelo diagnóstico com a task `brand-diagnosis` e conduza a narrativa com o workflow `wf-brand-positioning-narrative`.
+
+**Saída esperada:** um documento de posicionamento com (1) declaração de posicionamento em uma frase, testável contra concorrentes nomeados, (2) pelo menos um eixo de diferenciação que os vizinhos não ocupam e (3) narrativa que copy e conteúdo consigam reutilizar sem reinterpretar.
+
+**Erro comum neste squad:** pular o diagnóstico e ir direto para slogan e estética — o resultado fica bonito e igual a todo mundo. Detecte cedo: se a primeira entrega já vem com tagline e paleta antes de qualquer análise de concorrentes, pare e volte para `brand-diagnosis`.
+
+> **Teste rápido**: troque o nome da marca pelo do concorrente na declaração final — se a frase continuar fazendo sentido, a posição não é defensável.

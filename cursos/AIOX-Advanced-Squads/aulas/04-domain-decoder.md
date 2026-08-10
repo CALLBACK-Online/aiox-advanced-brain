@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `38-code-anatomy-domain-decoder` — regras de domínio no código.
+Antes de operar este squad, revise `31-brownfield-discovery` e `53-brownfield-enhancement` no **AIOX Advanced**. Para aprofundar regras de domínio no código, use `cursos/AIOX-Agent-Engineering/aulas/10-code-anatomy-e-domain-decoder.md`.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -135,8 +135,14 @@ Leia squads/domain-decoder/config.yaml e adote a persona de decoder-chief.
 
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Escolha um módulo de negócio cujo comportamento só o código conhece — cálculo de desconto, elegibilidade, comissão. Rode o workflow `wf-extract-rules` sobre esse módulo e depois `classify-rules` para separar regra de negócio, regra técnica e acidente histórico. A missão vale quando um gestor não-técnico consegue ler o catálogo e apontar quais regras estão erradas.
+
+**Saída esperada:** catálogo de regras onde (1) cada regra está escrita em linguagem de negócio, não em pseudocódigo, (2) cada regra referencia o trecho de código de origem, (3) todas estão classificadas: negócio, técnica ou suspeita de bug/legado.
+
+**Erro comum neste squad:** parafrasear o código em vez de extrair a regra — “se status == 3 e valor > X, aplica flag” não é regra de negócio, é tradução literal. Detecte cedo: se as regras mencionam nomes de variáveis ou códigos mágicos, mande reescrever com `express-rules` antes de seguir.
+
+> **Teste rápido**: mostre três regras do catálogo a alguém do negócio; se você precisar explicar alguma, ela ainda está em dialeto de código.

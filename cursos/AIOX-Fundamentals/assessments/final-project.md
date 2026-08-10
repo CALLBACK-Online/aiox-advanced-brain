@@ -67,4 +67,4 @@ Use a [rubrica](final-project-rubric.md). Aprovação: 14 de 20 pontos, sem nota
 
 ## Próximo passo
 
-Se você foi aprovado e consegue repetir o ciclo sem seguir a receita, avance para o [AIOX Advanced](../../AIOX%20Advanced/README.md). Se contexto, roteamento ou evidência ainda dependem de assistência, revise o módulo correspondente e execute outra mudança pequena antes de avançar.
+Se você foi aprovado e consegue repetir o ciclo sem seguir a receita, avance para o curso **AIOX Advanced** (`cursos/AIOX Advanced/README.md`). Se contexto, roteamento ou evidência ainda dependem de assistência, revise o módulo correspondente e execute outra mudança pequena antes de avançar.

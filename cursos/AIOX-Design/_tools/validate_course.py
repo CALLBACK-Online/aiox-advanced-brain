@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Valida estrutura, pedagogia e links do curso AIOX Design."""
+"""Valida estrutura, pedagogia e links do curso AIOX Design (v2 — 20 aulas)."""
 from __future__ import annotations
 
 import re
@@ -14,26 +14,46 @@ SCOPE = "cursos/AIOX-Design"
 EXPECTED_LESSONS = [
     "design-system-e-decisao",
     "design-system-greenfield-brownfield",
+    "repertorio-e-referencias",
+    "tema-visual-vs-design-system",
+    "top-down-vs-bottom-up",
+    "brand-book-para-tokens",
+    "anti-ai-look-e-exploracao",
     "design-md-contrato",
-    "taxonomia-atomica",
     "tokens-componentes-anti-drift",
+    "taxonomia-atomica",
+    "storybook-fonte-da-verdade",
     "stack-tailwind-shadcn-storybook",
+    "storybook-install-e-stories",
     "storybook-variantes",
+    "governanca-e-permissoes",
+    "ds-multi-produto",
+    "ciclo-screenshot-correcao",
     "portao-qualidade-visual",
     "skill-vs-squad-design",
-    "capstone-contrato-e-componente",
+    "capstone-ds-storybook-executavel",
 ]
 MODULE_OF = {
     1: "M0",
     2: "M0",
-    3: "M1",
+    3: "M0",
     4: "M1",
     5: "M1",
-    6: "M2",
+    6: "M1",
     7: "M2",
     8: "M2",
-    9: "M3",
-    10: "M3",
+    9: "M2",
+    10: "M2",
+    11: "M3",
+    12: "M3",
+    13: "M3",
+    14: "M3",
+    15: "M4",
+    16: "M4",
+    17: "M4",
+    18: "M4",
+    19: "M5",
+    20: "M5",
 }
 REQUIRED_SECTIONS = [
     "## Resultado",
@@ -53,6 +73,7 @@ REQUIRED_ROOT = [
     "Projeto-Integrador.md",
     "COURSE-BRIEF.md",
     "course-outline.md",
+    "CURRICULUM-EXPANSION.md",
 ]
 LINK = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
 ABSOLUTE_PATH = re.compile(
@@ -65,12 +86,12 @@ lesson_files = sorted((COURSE / "aulas").glob("*.md"))
 module_files = sorted((COURSE / "modulos").glob("*.md"))
 quiz_files = sorted((COURSE / "avaliacoes").glob("Quiz-M*.md"))
 
-if len(lesson_files) != 10:
-    errors.append(f"esperadas 10 aulas; encontradas {len(lesson_files)}")
-if len(module_files) != 4:
-    errors.append(f"esperados 4 módulos; encontrados {len(module_files)}")
-if len(quiz_files) != 3:
-    errors.append(f"esperados 3 quizzes; encontrados {len(quiz_files)}")
+if len(lesson_files) != 20:
+    errors.append(f"esperadas 20 aulas; encontradas {len(lesson_files)}")
+if len(module_files) != 6:
+    errors.append(f"esperados 6 módulos; encontrados {len(module_files)}")
+if len(quiz_files) != 5:
+    errors.append(f"esperados 5 quizzes; encontrados {len(quiz_files)}")
 
 actual_ids: list[str] = []
 for path in lesson_files:
@@ -126,14 +147,20 @@ for path in quiz_files:
     for ans in GABARITO_ANS.findall(text):
         answer_pos[ans] += 1
 
-if q_total != 12:
-    errors.append(f"esperadas 12 questões; {q_total}")
+if q_total != 20:
+    errors.append(f"esperadas 20 questões; {q_total}")
 if answer_pos and (max(answer_pos.values()) - min(answer_pos.values()) > 1):
     errors.append(f"gabarito desbalanceado: {dict(answer_pos)}")
 
 for filename in REQUIRED_ROOT:
     if not (COURSE / filename).exists():
         errors.append(f"arquivo obrigatório ausente: {filename}")
+
+cap = COURSE / "aulas" / "20-capstone-ds-storybook-executavel.md"
+if cap.exists():
+    ct = cap.read_text(encoding="utf-8")
+    if not re.search(r"Storybook.*obrigat", ct, re.I):
+        errors.append("capstone: Storybook deve ser obrigatório")
 
 for path in COURSE.rglob("*.md"):
     text = path.read_text(encoding="utf-8")
@@ -159,6 +186,6 @@ if errors:
     sys.exit(1)
 
 print(
-    f"AIOX Design: 10 aulas, 4 módulos, 3 quizzes, {q_total} questões; "
+    f"AIOX Design: 20 aulas, 6 módulos, 5 quizzes, {q_total} questões; "
     f"gabarito {dict(sorted(answer_pos.items()))}; erros: 0"
 )

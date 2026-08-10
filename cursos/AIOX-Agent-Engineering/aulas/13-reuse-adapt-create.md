@@ -3,16 +3,15 @@ type: lesson
 course: aiox-agent-engineering
 title: "REUSE > ADAPT > CREATE: a heurística antes de criar nada"
 lesson_position: 13
-module: M3
+module: M2
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 54
-source_path: "cursos/AIOX Advanced/lessons/54-reuse-adapt-create-heuristica.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/54-reuse-adapt-create-heuristica.md"
 source_version: 1.0.0
 ---
 # REUSE > ADAPT > CREATE: a heurística antes de criar nada
 
-← Design System: greenfield versus brownfield · ↑ M7 · ⌂ Curso · → Anatomia de um Squad AIOX
 
 ## Mapa desta aula
 
@@ -392,4 +391,4 @@ Adaptação autocontida da aula 54 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](12-research-ao-prd.md) · [Curso](../README.md) · [Próxima aula →](14-triagem-de-squad.md)
+[← Aula anterior](12-research-ao-prd.md) · [↑ M2](../modulos/M2-construcao-de-capacidade.md) · [Curso](../README.md) · [Próxima aula →](14-triagem-de-squad.md)

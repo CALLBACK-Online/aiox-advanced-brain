@@ -21,9 +21,9 @@ bloom: apply
 reading_minutes: 10
 has_mermaid_map: true
 map_source: auto-decision_graph
-module: M2
-sequence: M2.2
-track: complete
+module: M1
+sequence: 9
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curriculum_role: applied-extension
@@ -34,8 +34,6 @@ curated_at: '2026-08-09'
 # Janela de contexto: o limite real e a degradação acima de 40K
 
 > **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/22-modelo-contexto-memoria-tool-skill.md`.
-
-← [[05-ambientes-local-staging-production|Local, Staging, Production]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[17-engenharia-de-contexto|Engenharia de contexto: limpar comandos, skills e MCPs]]
 
 ## Conceitos
 
@@ -459,9 +457,8 @@ Os termos desta aula em uma frase cada.
 
 ***
 
-
 ---
 
 ## Navegação
 
-← [[05-ambientes-local-staging-production|Local, Staging, Production]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[17-engenharia-de-contexto|Engenharia de contexto: limpar comandos, skills e MCPs]]
+← [[lessons/15-quatro-executores|4 executores: humano, agent, clone, worker]] · ↑ [[modulos/Módulo 1 - Sistema e Contexto|M1 — Sistema e contexto]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/17-engenharia-de-contexto|Engenharia de contexto: limpar comandos, skills e MCPs]]

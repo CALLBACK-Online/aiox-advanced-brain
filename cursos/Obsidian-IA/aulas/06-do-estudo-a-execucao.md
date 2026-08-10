@@ -29,11 +29,10 @@ Transformar conhecimento recuperado no vault em um **Context Brief** para a pró
 ## Arquitetura da integração
 
 ```text
-Segundo cérebro                    Projeto AIOX
-cursos + notas + MOCs              código + runtime + validação
-        │                                     │
-        └──── Context Brief + asset ─────────→│
-        │←── resultado + decisão + evidência ─┘
+Segundo cérebro ── Context Brief de estudo ──→ próxima trilha
+        │
+        └──── Context Brief + asset ─────────→ projeto AIOX
+        ←──── resultado + decisão + evidência ┘
         └──── nota de retorno
 ```
 
@@ -42,7 +41,7 @@ O projeto não precisa acessar todo o vault, e o vault não precisa virar parte 
 ## Menor mecanismo suficiente
 
 ```text
-Dúvida sobre sistemas → Fundamentos de Arquitetura
+Dúvida sobre sistemas → Introdução à Arquitetura de Sistemas
 Dúvida sobre o Core   → AIOX Fundamentals
 Dúvida sobre método   → AIOX Advanced
 Organizar estudo      → aiox-brain / course-moc / study-capture

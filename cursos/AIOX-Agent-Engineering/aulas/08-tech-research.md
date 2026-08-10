@@ -3,18 +3,17 @@ type: lesson
 course: aiox-agent-engineering
 title: "Tech Research: pesquisa profunda multi-fonte"
 lesson_position: 8
-module: M2
+module: M1
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 36
-source_path: "cursos/AIOX Advanced/lessons/36-tech-research-multi-fonte.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/36-tech-research-multi-fonte.md"
 source_version: 1.0.0
 ---
 # Tech Research: pesquisa profunda multi-fonte
 
 Fontes públicas e rastreáveis entram como OSINT ético: cite, date e separe fato de inferência no dossiê de Tech Research.
 
-← Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só · ↑ M8 · ⌂ Curso · → Spy/Bench: comparação profunda entre dois projetos
 
 ## Mapa desta aula
 
@@ -483,4 +482,4 @@ Adaptação autocontida da aula 36 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](07-mesa-redonda-e-advisory-board.md) · [Curso](../README.md) · [Próxima aula →](09-spy-bench.md)
+[← Aula anterior](07-mesa-redonda-e-advisory-board.md) · [↑ M1](../modulos/M1-discovery-e-research.md) · [Curso](../README.md) · [Próxima aula →](09-spy-bench.md)

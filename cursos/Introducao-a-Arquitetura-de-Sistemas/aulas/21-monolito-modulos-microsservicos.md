@@ -9,6 +9,7 @@ status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
 source_refs: [azure-architecture-styles, azure-microservices]
+reading_minutes: 5
 ---
 
 # Monólito, módulos, microsserviços e acoplamento

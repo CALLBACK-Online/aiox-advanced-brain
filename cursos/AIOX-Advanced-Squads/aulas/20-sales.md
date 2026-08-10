@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `64-vender-pela-dor-e-roi` — venda pela dor e ROI.
+Antes de operar este squad, revise `24-entidade-como-unidade-de-processo` no **AIOX Advanced**. Para dor, ROI e estágio comercial, use `cursos/AIOX-Productizacao/aulas/02-dor-e-roi.md`, `03-distribuicao-vs-produto.md` e `05-estagios-de-monetizacao.md`.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -135,8 +135,14 @@ Leia squads/sales/config.yaml e adote a persona de sales-chief.
 
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Você vende uma mentoria B2B de R$ 24 mil e hoje o “funil” é responder WhatsApp quando aparece lead. A missão: desenhar o funil completo desse produto — da prospecção ao fechamento — começando por `qualify-prospect` para definir critérios objetivos de entrada e usando `diagnose-deal` como rito padrão para toda oportunidade parada. Cada etapa precisa de critério de saída explícito e dono nomeado.
+
+**Saída esperada:** um documento de funil com etapas nomeadas e critérios de entrada/saída, roteiro de qualificação com perguntas e desqualificadores, e sequência de follow-up mapeada etapa a etapa.
+
+**Erro comum neste squad:** pular a qualificação e tratar todo lead como oportunidade — o pipeline incha e a taxa de fechamento despenca. Detecte cedo contando oportunidades sem próximo passo agendado: mais que zero já é sintoma.
+
+> **Teste rápido**: pegue uma oportunidade qualquer do funil desenhado — se você não sabe dizer a etapa e o próximo passo dela, o desenho falhou.

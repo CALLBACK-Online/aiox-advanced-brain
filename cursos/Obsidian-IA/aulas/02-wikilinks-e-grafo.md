@@ -49,7 +49,7 @@ Fora do Obsidian (GitHub, agent), traduza wikilink → **path relativo**.
 | Azul | `cursos/AIOX Advanced` — método |
 | Roxo | `cursos/AIOX-Advanced-Squads` — aulas de squad |
 | Ciano | `cursos/Obsidian-IA` — este mini |
-| Azul-base | `cursos/AIOX-Fundamentos-de-Arquitetura` e `cursos/AIOX-Fundamentals` — base técnica e Core |
+| Azul-base | `cursos/Introducao-a-Arquitetura-de-Sistemas` e `cursos/AIOX-Fundamentals` — base técnica e Core |
 | Verde | `skills/` |
 | Laranja | `squads/` |
 | Âmbar | `notas/` |

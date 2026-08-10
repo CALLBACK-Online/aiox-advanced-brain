@@ -8,8 +8,9 @@ sequence: M8.1
 status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
-adapted_from: cursos/AIOX Advanced/lessons/14-anatomia-do-agente.md + 16-janela-de-contexto.md
+adapted_from: cursos/AIOX Advanced/archive/migrated/lessons/14-anatomia-do-agente.md + cursos/AIOX Advanced/lessons/16-janela-de-contexto.md
 source_refs: [anthropic-effective-agents, openai-agents, mcp]
+reading_minutes: 5
 ---
 
 # Modelo, contexto, memória, tool e skill

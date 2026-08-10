@@ -133,10 +133,22 @@ Leia squads/data/config.yaml e adote a persona de data-chief.
 - premissas e limites declarados;
 - próximo passo ou handoff para outro squad/skill, se couber.
 
+## O que muda no AIOX Enterprise
+
+Neste acervo, você prepara a análise e entrega o artefato no projeto escolhido. No Enterprise, o Data Squad consome o contexto real do negócio e registra análises canônicas no espaço estratégico de analytics do workspace.
+
+**O ganho prático:** a métrica deixa de ser uma resposta isolada. Ela passa a compor a memória estratégica que sustenta novas decisões e pode ser revisitada sem refazer toda a investigação.
+
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+A diretoria afirma que "o churn aumentou", mas ninguém sabe se o problema é geral ou concentrado nas turmas recentes. Rode o workflow `cohorts-diagnostic` para separar o efeito por coorte de entrada e use `analyze-cohort` para comparar a retenção das últimas quatro coortes com a base histórica antes de aceitar qualquer narrativa.
+
+**Saída esperada:** um diagnóstico com curva de retenção por coorte, a coorte (ou o comportamento transversal) responsável pela queda identificada com números, e uma recomendação acionável com as premissas de dados declaradas.
+
+**Erro comum neste squad:** responder com a métrica agregada sem segmentar — a média esconde que uma única coorte puxa tudo para baixo. Detecte cedo exigindo o corte por coorte no primeiro artefato intermediário, antes de qualquer dashboard.
+
+> **Teste rápido**: se a resposta cabe em um número único sem dizer de qual coorte e período ele veio, a análise não terminou.

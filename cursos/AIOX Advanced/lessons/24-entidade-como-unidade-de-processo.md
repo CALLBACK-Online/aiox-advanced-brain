@@ -20,9 +20,9 @@ bloom: analyze
 reading_minutes: 12
 has_mermaid_map: true
 map_source: auto-decision_graph
-module: M5
-sequence: M5.2
-track: essential
+module: M4
+sequence: 24
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curriculum_role: applied-extension
@@ -35,8 +35,6 @@ curated_at: '2026-08-09'
 > **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/04-estado-entidade-ciclo-de-vida.md`.
 
 Escrita concorrente em entidade compartilhada: desenhe [[OCC]] (optimistic concurrency) ou trava explícita — multi-agent sem isso corrompe estado.
-
-← [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]]
 
 ## Conceitos
 
@@ -444,6 +442,10 @@ Os termos desta aula em uma frase cada.
 
 ---
 
+## Operar isto na prática
+
+Esta aula é pré-requisito no curso de squads — quando a missão for real, siga para: AIOX SOP: `cursos/AIOX-Advanced-Squads/aulas/07-aiox-sop.md` · ClickUp Ops: `cursos/AIOX-Advanced-Squads/aulas/12-clickup-ops-squad.md` · Sales: `cursos/AIOX-Advanced-Squads/aulas/20-sales.md` · Squad Creator: `cursos/AIOX-Advanced-Squads/aulas/23-squad-creator.md`
+
 ## Navegação
 
-← [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]]
+← [[lessons/23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]] · ↑ [[modulos/Módulo 4 - Método e Brownfield|M4 — Método e brownfield]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/31-brownfield-discovery|Brownfield Discovery: entrar num projeto que já existe]]

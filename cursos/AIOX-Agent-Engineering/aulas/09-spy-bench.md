@@ -3,16 +3,15 @@ type: lesson
 course: aiox-agent-engineering
 title: "Spy/Bench: comparação profunda entre dois projetos"
 lesson_position: 9
-module: M2
+module: M1
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 37
-source_path: "cursos/AIOX Advanced/lessons/37-spy-bench-comparativo.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/37-spy-bench-comparativo.md"
 source_version: 1.0.0
 ---
 # Spy/Bench: comparação profunda entre dois projetos
 
-← Tech Research: pesquisa profunda multi-fonte · ↑ M8 · ⌂ Curso · → Code Anatomy: engenharia reversa de código com /code-anatomist
 
 ## Mapa desta aula
 
@@ -483,4 +482,4 @@ Adaptação autocontida da aula 37 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](08-tech-research.md) · [Curso](../README.md) · [Próxima aula →](10-code-anatomy-e-domain-decoder.md)
+[← Aula anterior](08-tech-research.md) · [↑ M1](../modulos/M1-discovery-e-research.md) · [Curso](../README.md) · [Próxima aula →](10-code-anatomy-e-domain-decoder.md)

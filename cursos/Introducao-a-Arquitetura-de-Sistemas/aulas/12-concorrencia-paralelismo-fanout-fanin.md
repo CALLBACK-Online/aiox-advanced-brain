@@ -8,8 +8,9 @@ sequence: M4.3
 status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
-adapted_from: cursos/AIOX Advanced/lessons/58-ralph-paralelizacao.md + 59-quando-paralelizar-vs-sequencial.md
+adapted_from: cursos/AIOX Advanced/archive/migrated/lessons/58-ralph-paralelizacao.md + cursos/AIOX Advanced/archive/migrated/lessons/59-quando-paralelizar-vs-sequencial.md
 source_refs: [azure-scale-out, openai-agent-orchestration]
+reading_minutes: 5
 ---
 
 # Concorrência, paralelismo, fan-out e fan-in

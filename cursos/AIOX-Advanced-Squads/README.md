@@ -34,6 +34,8 @@ Este curso ensina a **usar os 24 squads** publicados neste acervo (`squads/`). C
 
 Curso método: pasta `cursos/AIOX Advanced/`. Ponte: [Pré-requisitos no AIOX Advanced](ponte/pre-requisitos-advanced.md). Hub: `cursos/README.md`.
 
+**Entrada esperada:** mission brief, critérios de aceite e domínio da taxonomia agent/task/skill/workflow/squad. Este curso não reensina instalação do Core nem o método; ele transforma essas bases em operação especializada.
+
 Comece por [00 — Como usar este curso](aulas/00-como-usar-este-curso.md).
 
 ## Resultado do curso
@@ -45,13 +47,21 @@ Ao concluir, você consegue transformar uma missão em quatro decisões explíci
 3. o modo de ativação no **seu** projeto (depois de copiar `squads/{nome}`);
 4. a evidência que prova que o squad entregou valor.
 
+**Saída da jornada:** routing decision + briefings + artefatos + validation report + retrospectiva. Esse pacote prova que o método aprendido no Advanced virou operação especializada reproduzível; ele é a base para repetir a missão ou governá-la como operação recorrente.
+
 ## O próximo gargalo
 
 Uma execução validada prova que você sabe operar um squad. Antes de buscar mais infraestrutura, repita a missão e confirme que o método se sustenta.
 
-Quando vários squads, projetos e fontes de contexto começam a exigir montagem e manutenção recorrentes, o problema muda: deixa de ser escolher o especialista e passa a ser governar a operação. Esse é o momento de comparar o acervo adaptável do Advanced com o ambiente mantido do **AIOX Enterprise**.
+Quando vários squads, projetos e fontes de contexto exigem montagem e manutenção recorrentes, o problema muda. O desafio deixa de ser escolher o especialista e passa a ser governar a operação. Esse é o momento de comparar o acervo adaptável do Advanced com o ambiente mantido do **AIOX Enterprise**.
 
-[Veja o diagnóstico completo da jornada](../../JORNADA-AIOX.md).
+Diagnóstico completo da jornada: `JORNADA-AIOX.md` na raiz do repositório.
+
+### Como ler a sinalização Enterprise nas aulas
+
+As aulas dos squads que possuem uma conexão real com o workspace incluem a seção **O que muda no AIOX Enterprise**. Ela mostra o ganho operacional específico da integração. Também explica qual contexto o squad consome, onde o resultado continua e o que deixa de ser reconstruído manualmente.
+
+A seção só aparece quando essa conexão existe no sistema de produção. Nos demais squads, o curso preserva o escopo do acervo em vez de prometer uma integração inexistente.
 
 ## Como este acervo se relaciona com o curso
 

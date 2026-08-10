@@ -1,18 +1,20 @@
 ---
 type: lesson
 course: aiox-productizacao
+lesson_id: estagios-de-monetizacao
 title: "Três estágios de monetização: interno → cliente → produto"
 lesson_position: 5
 module: M2
+reading_minutes: 25
 status: canonical
 canonical_scope: cursos/AIOX-Productizacao
+curriculum_role: canonical-owner
 source_lesson_id: 66
-source_path: "cursos/AIOX Advanced/lessons/66-tres-estagios-de-monetizacao.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/66-tres-estagios-de-monetizacao.md"
 source_version: 1.0.0
 ---
 # Três estágios de monetização: interno → cliente → produto
 
-← Três caminhos de produto: Consultoria → App Web → SaaS · ↑ M11 · ⌂ Curso · → Harness: ambiente de execução do agente fora do Claude Code
 
 ## Mapa desta aula
 
@@ -168,19 +170,19 @@ O que cada cor sinaliza nesta aula
 
 Você está no estágio da evidência, não do slide.
 
-**Interno — prova mínima**  
-- Fluxo roda ≥14 dias no teu próprio uso ou operação.  
-- Métrica de tempo/qualidade antes vs depois.  
+**Interno — prova mínima**
+- Fluxo roda ≥14 dias no teu próprio uso ou operação.
+- Métrica de tempo/qualidade antes vs depois.
 - Falhas conhecidas documentadas (não "funciona no meu notebook" mudo).
 
-**Cliente — prova mínima**  
-- Pelo menos 1 pagante (piloto conta se há dinheiro ou contrato claro).  
-- ROI ou critério de sucesso acordado por escrito.  
+**Cliente — prova mínima**
+- Pelo menos 1 pagante (piloto conta se há dinheiro ou contrato claro).
+- ROI ou critério de sucesso acordado por escrito.
 - Case com número (mesmo que N=1).
 
-**Produto — prova mínima**  
-- Oferta empacotada (preço, escopo, onboarding).  
-- ≥2 compradores independentes no mesmo pacote (ou fila real com conversão).  
+**Produto — prova mínima**
+- Oferta empacotada (preço, escopo, onboarding).
+- ≥2 compradores independentes no mesmo pacote (ou fila real com conversão).
 - Suporte e isolamento não dependem de herói não documentado.
 
 Se a "prova" é só feeling, você está no estágio de torcida — não de monetização.
@@ -197,20 +199,20 @@ Se a "prova" é só feeling, você está no estágio de torcida — não de mone
 
 Subir com prova. Descer com coragem.
 
-**Interno → Cliente**  
-- Métrica interna estável o bastante pra prometer.  
-- Oferta de piloto com critério de sucesso e preço (mesmo simbólico).  
+**Interno → Cliente**
+- Métrica interna estável o bastante pra prometer.
+- Oferta de piloto com critério de sucesso e preço (mesmo simbólico).
 - Dono de entrega (você ou squad) com capacidade real.
 
-**Cliente → Produto**  
-- 2–3 entregas parecidas (repetição).  
-- Tempo/custo por cliente conhecido.  
+**Cliente → Produto**
+- 2–3 entregas parecidas (repetição).
+- Tempo/custo por cliente conhecido.
 - Empacotamento que remove herói (onboarding, docs, automação mínima).
 
-**Vetos de vaidade**  
-- Pricing page sem um pagante.  
-- Multi-tier sem um tier que vende.  
-- "Launch" sem dogfood.  
+**Vetos de vaidade**
+- Pricing page sem um pagante.
+- Multi-tier sem um tier que vende.
+- "Launch" sem dogfood.
 - Case inventado ou anônimo sem número.
 
 Descer de estágio não é humilhação — é realismo que salva caixa.
@@ -371,10 +373,22 @@ A IA é a seta. O X é seu — inclusive **admitir em qual degrau** você está.
 
 ---
 
+## Pergunte ao seu agente
+
+```text
+Use esta aula para classificar meu estágio pela evidência mais fraca que
+ainda falta. Diferencie uso interno, cliente pagante e produto repetível.
+Entregue: estágio atual, prova existente, prova ausente, veto e próximo gate.
+```
+
+## Evidência de conclusão
+
+Registre estágio, prova, veto e próximo gate no [Decision Pack](../templates/decision-pack.md). Um nome, login ou landing page não contam como prova de produto.
+
 ## Origem curricular
 
 Adaptação autocontida da aula 66 do AIOX Advanced. A fonte histórica permanece registrada em `source_path`; este curso é o dono da progressão atual.
 
 ## Navegação
 
-[← Aula anterior](04-caminhos-de-produto.md) · [Curso](../README.md)
+[← Aula anterior](04-caminhos-de-produto.md) · [M2](../modulos/M2-distribuicao-formato-monetizacao.md) · [Curso](../README.md) · [Capstone →](06-capstone-decisao-de-productizacao.md)

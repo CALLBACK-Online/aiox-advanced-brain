@@ -10,13 +10,14 @@ aliases: [MOC Acervo, Mapa do acervo]
 ## Pastas
 
 - [[cursos/README|cursos/]] — canônico
+- [[cursos/COMO-ESTUDAR|Como estudar]] — diagnóstico, rota e evidência por caso
 - [[skills/aiox-brain/SKILL|skills/]] — procedimentos
 - `squads/` — pacotes
 - [[notas/README|notas/]] — anotações dos alunos
 
 ## Jornada canônica
 
-1. [[cursos/Obsidian-IA/README|Obsidian + IA]] — como estudar o acervo e fechar o loop captura/MOC → Context Brief → execução no projeto → validação → retorno
+1. [[cursos/Obsidian-IA/README|Obsidian + IA]] — como estudar o acervo; primeiro prepara a próxima trilha com Context Brief, depois volta para execução → validação → retorno
 2. [[cursos/Introducao-a-Arquitetura-de-Sistemas/README|Introdução à Arquitetura de Sistemas]] — como entender sistemas
 3. [[cursos/AIOX-Fundamentals/README|AIOX Fundamentals]] — como instalar e operar o Core
 4. [[cursos/AIOX Advanced/README|AIOX Advanced]] — como aplicar o método
@@ -26,7 +27,12 @@ aliases: [MOC Acervo, Mapa do acervo]
 estudar → entender → operar o Core → aplicar o método → operar especialistas
 ```
 
-Especialização lateral após o M9 do Advanced: [[cursos/AIOX-Design/README|AIOX Design]] — contrato visual e design system para IA.
+Especializações laterais:
+
+- [[cursos/AIOX-Agent-Engineering/README|AIOX Agent Engineering]] — capacidade agentic até produção
+- [[cursos/AIOX-Design/README|AIOX Design]] — contrato visual / design system quando a missão for visual
+- [[cursos/AIOX-Productizacao/README|AIOX Productização]] — oferta, distribuição e monetização
+- [[cursos/MOC-Agent-Engineering-vs-Productizacao|MOC · AE × Productização]] — fronteira em uma página
 
 ## Mapas
 

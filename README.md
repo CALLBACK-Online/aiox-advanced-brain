@@ -13,7 +13,8 @@
 | **Tipo** | Biblioteca de **distribuição e estudo** — não é o runtime AIOX completo |
 
 ```text
-Estudar → Capturar → Context Brief → Executar no projeto → Validar → Devolver aprendizado
+Entrada: estudar → capturar/MOC → Context Brief → próxima trilha
+Depois do Core: Context Brief + asset → executar no projeto → validar → devolver aprendizado
 ```
 
 ---
@@ -71,12 +72,12 @@ Você não escolhe pelo nome “mais avançado”. Escolhe pelo gargalo que prec
 | Seu gargalo | Próxima etapa | Você avança quando… |
 |-------------|---------------|---------------------|
 | Ainda não instalou nem operou o Core com segurança | **AIOX Fundamentals** | Conclui o primeiro ciclo AIOX local com evidência |
-| Opera o básico, mas ainda não constrói de ponta a ponta | **AIOX Advanced** | Transforma intenção em sistema operável, com gates e deploy |
-| Já constrói, mas a operação é fragmentada e difícil de manter | **AIOX Enterprise** | Contexto, execução e evolução deixam de depender de uma montagem dispersa |
+| Opera o básico, mas ainda não conduz o método de ponta a ponta | **AIOX Advanced** | Transforma intenção em sistema entregue, com SDC, gates e evidência |
+| Já constrói, mas a operação é fragmentada e difícil de manter | **AIOX Enterprise** | Opera contexto, execução e evolução sobre uma base integrada e mantida |
 
 **Fundamentos dá a base operacional. Advanced dá profundidade ao método. Enterprise dá o ambiente de produção.**
 
-Se a linguagem técnica ainda parece uma caixa-preta, faça antes a trilha opcional de [Introdução à Arquitetura de Sistemas](cursos/Introducao-a-Arquitetura-de-Sistemas/README.md).
+Na jornada educacional, [Introdução à Arquitetura de Sistemas](cursos/Introducao-a-Arquitetura-de-Sistemas/README.md) vem antes do Fundamentals. Quem já domina a base pode usar o projeto integrador como diagnóstico e encurtar o estudo, sem confundir os dois cursos.
 
 [Compare as três etapas e veja se o seu gargalo já é de operação →](JORNADA-AIOX.md)
 
@@ -88,15 +89,17 @@ Se a linguagem técnica ainda parece uma caixa-preta, faça antes a trilha opcio
 |--------|----------------------------------------|
 | **Skills** | **67** em [`skills/`](skills/): base AIOX, entradas de squad, roteador `aiox-squads` e skills de vault/ensino |
 | **Squads** | **24** canônicos em [`squads/`](squads/) |
-| **Curso método** | [AIOX Advanced](cursos/AIOX%20Advanced/README.md) — **75 aulas**, **14 módulos**, **14 quizzes**, **62 questões** |
-| **Grafo** | **2.894** wikilinks internos no curso principal |
+| **Curso método** | [AIOX Advanced](cursos/AIOX%20Advanced/README.md) — **28 aulas**, **6 módulos**, **6 quizzes**, **24 questões** |
+| **Curso Agent Engineering** | [AIOX Agent Engineering](cursos/AIOX-Agent-Engineering/README.md) — **28 aulas**, **7 módulos**, **6 quizzes**, **24 questões**, capstone |
+| **Grafo** | Milhares de wikilinks entre cursos, conceitos, skills e squads |
 | **Curso arquitetura** | [Introdução à Arquitetura de Sistemas](cursos/Introducao-a-Arquitetura-de-Sistemas/README.md) — **24 aulas**, **8 módulos**, **8 quizzes**, **32 questões** |
 | **Curso AIOX Fundamentals** | [AIOX Fundamentals](cursos/AIOX-Fundamentals/README.md) — **12 aulas**, **3 módulos**, **3 quizzes**, **15 questões**, projeto final |
 | **Curso design** | [AIOX Design](cursos/AIOX-Design/README.md) — **10 aulas**, **4 módulos**, **3 quizzes**, **12 questões**, capstone |
+| **Curso Productização** | [AIOX Productização](cursos/AIOX-Productizacao/README.md) — **6 aulas**, **3 módulos**, **2 quizzes**, **8 questões**, capstone |
 | **Curso squads** | [AIOX Advanced Squads](cursos/AIOX-Advanced-Squads/README.md) — **25 aulas** (intro + 1 por squad), **6 módulos**, **6 quizzes**, **24 questões** |
-| **Mini Obsidian+IA** | [Obsidian + IA](cursos/Obsidian-IA/README.md) — **8 aulas**, ~90–120 min + missão real, vault + Context Brief + execução + retorno |
+| **Mini Obsidian+IA** | [Obsidian + IA](cursos/Obsidian-IA/README.md) — **8 aulas**, ~90–120 min, gate de estudo na entrada + missão operacional depois do Core |
 | **Operação** | Mapas de decisão, briefings copiáveis, exemplos de ativação, exercícios, critérios de evidência |
-| **Agents (versionados)** | [AGENTS.md](AGENTS.md) · [CLAUDE.md](CLAUDE.md) · [guia de arquitetura](cursos/Introducao-a-Arquitetura-de-Sistemas/AGENT-GUIDE.md) · [guia do Core](cursos/AIOX-Fundamentals/AGENT-GUIDE.md) · [guia de design](cursos/AIOX-Design/AGENT-GUIDE.md) · [guia de squads](cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md) |
+| **Agents (versionados)** | [AGENTS.md](AGENTS.md) · [CLAUDE.md](CLAUDE.md) · [guia de arquitetura](cursos/Introducao-a-Arquitetura-de-Sistemas/AGENT-GUIDE.md) · [guia do Core](cursos/AIOX-Fundamentals/AGENT-GUIDE.md) · [guia de Agent Engineering](cursos/AIOX-Agent-Engineering/AGENT-GUIDE.md) · [guia de design](cursos/AIOX-Design/AGENT-GUIDE.md) · [guia de Productização](cursos/AIOX-Productizacao/AGENT-GUIDE.md) · [guia de squads](cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md) |
 | **Manifesto** | [`catalog.json`](catalog.json) — contagens, maturidade, aliases, proveniência |
 
 **Integridade do curso (última hardening registrada):** 0 links quebrados / ambíguos / para fora de `cursos/`; sem paths absolutos de máquina na distribuição pública.
@@ -109,7 +112,7 @@ Se a linguagem técnica ainda parece uma caixa-preta, faça antes a trilha opcio
 |-----|------|
 | 0–2 | [Baixe](#baixar-o-material) o repositório (Git ou ZIP). |
 | 2–5 | Abra a raiz como **vault no Obsidian** e entre por [00-HOME.md](00-HOME.md). |
-| 5–8 | Abra o [hub das trilhas](cursos/README.md) e identifique seu ponto de entrada. |
+| 5–8 | Abra [Como estudar — trilhas por caso](cursos/COMO-ESTUDAR.md) e identifique seu ponto de entrada. |
 | 8–12 | Se termos técnicos travam, comece por [Introdução à Arquitetura de Sistemas](cursos/Introducao-a-Arquitetura-de-Sistemas/README.md); se quer instalar e conhecer os agents, abra [AIOX Fundamentals](cursos/AIOX-Fundamentals/README.md). |
 | 12–15 | Leia o resultado, escopo e primeira aula da trilha escolhida; registre a evidência pedida pela aula. |
 
@@ -166,7 +169,9 @@ Os cursos usam **Markdown + wikilinks** (`[[Nome da nota]]`) — o formato nativ
 | Vault | Quando usar |
 |-------|-------------|
 | `cursos/AIOX Advanced/` | **Padrão recomendado** — estudar o método com grafo limpo (~2.000 links) |
+| `cursos/AIOX-Agent-Engineering/` | Construir e operar capacidades agentic próprias |
 | `cursos/AIOX-Design/` | Contrato visual e design system para IA |
+| `cursos/AIOX-Productizacao/` | Transformar capacidade comprovada em oferta e experimento de mercado |
 | `cursos/Introducao-a-Arquitetura-de-Sistemas/` | Aprender vocabulário e arquitetura de sistemas |
 | `cursos/AIOX-Fundamentals/` | Instalar e operar o AIOX Core do zero ao primeiro ciclo |
 | `cursos/AIOX-Advanced-Squads/` | Estudar o curso 1:1 dos squads |
@@ -238,23 +243,23 @@ Introdução à Arquitetura de Sistemas
         ↓
 AIOX Fundamentals (Core, instalação e agents)
         ↓
-AIOX Advanced (Rota Essencial)
+AIOX Advanced (28 aulas de método)
         ↓
-AIOX Advanced Squads — aula 00
-        ↓
-Módulos de squads conforme a missão
-        ↓
-Capstone / Projeto Integrador (método + squads escolhidos)
+AIOX Advanced Squads (operar os especialistas)
 ```
+
+Especializações laterais acionadas pelo gargalo do quarto degrau: **Agent Engineering**, **Design** e **Productização**. Elas aprofundam a missão; não alteram a ordem das cinco etapas.
 
 | Trilha | Para quê | Comece em |
 |--------|----------|-----------|
 | **Obsidian + IA** | Navegar o vault, capturar e preparar um Context Brief para a próxima etapa | [cursos/Obsidian-IA/README.md](cursos/Obsidian-IA/README.md) |
 | **Introdução à Arquitetura de Sistemas** | Ler sistemas, dados, contratos, fan-out/fan-in, confiabilidade, operação, segurança e agentes | [cursos/Introducao-a-Arquitetura-de-Sistemas/README.md](cursos/Introducao-a-Arquitetura-de-Sistemas/README.md) |
 | **AIOX Fundamentals** | Instalar o Core, conhecer os 12 agents, escolher contexto e fechar a primeira story com evidência | [cursos/AIOX-Fundamentals/README.md](cursos/AIOX-Fundamentals/README.md) |
-| **AIOX Advanced** | Mindset, SDC, taxonomia, determinismo, design system, deploy | [cursos/AIOX Advanced/README.md](cursos/AIOX%20Advanced/README.md) — use a **Rota Essencial** na 1ª passagem |
-| **AIOX Design (especialização lateral)** | Contrato visual, DESIGN.md, taxonomia, variantes, skill vs squad | [cursos/AIOX-Design/README.md](cursos/AIOX-Design/README.md) — entre após M9 quando a missão for visual |
+| **AIOX Advanced** | Mindset, contexto, SDC, determinismo e brownfield | [cursos/AIOX Advanced/README.md](cursos/AIOX%20Advanced/README.md) |
 | **AIOX Advanced Squads** | Quando usar cada squad, briefing, ativação, evidência | [cursos/AIOX-Advanced-Squads/README.md](cursos/AIOX-Advanced-Squads/README.md) · [Mapa de decisão](cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md) |
+| **AIOX Agent Engineering (especialização lateral)** | Taxonomia, research, criação de squads, orquestração, harness e produção | [cursos/AIOX-Agent-Engineering/README.md](cursos/AIOX-Agent-Engineering/README.md) |
+| **AIOX Design (especialização lateral)** | Contrato visual, DESIGN.md, taxonomia, variantes, skill vs squad | [cursos/AIOX-Design/README.md](cursos/AIOX-Design/README.md) — entre quando a missão for visual |
+| **AIOX Productização (especialização lateral)** | Wedge, oferta, ROI, distribuição, formato e estágio de monetização | [cursos/AIOX-Productizacao/README.md](cursos/AIOX-Productizacao/README.md) — exige capacidade comprovada |
 
 Arquitetura e AIOX Fundamentals não são sinônimos: uma cria linguagem técnica universal; o outro ensina a operação básica do `aiox-core`.
 
@@ -403,7 +408,10 @@ Aula por squad: pasta [`cursos/AIOX-Advanced-Squads/aulas/`](cursos/AIOX-Advance
 │   ├── README.md
 │   ├── Introducao-a-Arquitetura-de-Sistemas/ # Base técnica (24 aulas)
 │   ├── AIOX-Fundamentals/      # AIOX Core básico (12 aulas)
-│   ├── AIOX Advanced/         # Método (75 aulas)
+│   ├── AIOX Advanced/         # Método (28 aulas ativas)
+│   ├── AIOX-Agent-Engineering/ # Capacidades agentic (28 aulas)
+│   ├── AIOX-Design/           # Contrato visual (10 aulas)
+│   ├── AIOX-Productizacao/    # Oferta e mercado (6 aulas)
 │   ├── AIOX-Advanced-Squads/  # Operação + agent-router
 │   ├── Obsidian-IA/           # Vault + Context Brief + execução + retorno
 │   └── MOC-*.md               # Hubs do Graph
@@ -431,7 +439,6 @@ Inventário canônico = lista `skills` em `catalog.json`. Abaixo, o “use quand
 - [`course-moc`](skills/course-moc/SKILL.md) — Mapas de conteúdo / hubs (LYT-light). **Use quando:** “como se conecta X e Y?” ou índice por dor/módulo.
 - [`study-capture`](skills/study-capture/SKILL.md) — Captura pessoal ligada à aula. **Use quando:** anotar aprendizado sem editar o canônico (`notas/`).
 - [`teach`](skills/teach/SKILL.md) — Melhoria didática do canônico (rubrica + validação). **Use quando:** “melhorar os cursos”, revisar didática de aula, criar exercício/quiz, padronizar navegação.
-- [`teach`](skills/teach/SKILL.md) — Melhoria didática segura do material canônico. **Use quando:** revisar aulas, exercícios, quizzes ou navegação entre cursos com validação estrutural.
 
 ### Agentes fundamentais do AIOX
 
@@ -574,13 +581,13 @@ Não. Este acervo permite estudar o método e adaptar assets ao seu projeto. O E
 Vá para o **AIOX Advanced** quando já conseguir instalar o Core, escolher o mecanismo correto e fechar uma story local com evidência reproduzível.
 
 **Qual é o próximo passo depois do Advanced?**
-Há duas respostas. Se ainda consolida o método, conclua a Rota Essencial, o Capstone e opere um squad real. Se já entrega e o gargalo virou operação, avalie o **AIOX Enterprise**.
+Avance para **Advanced Squads** para operar um especialista publicado. Se a missão revelar uma lacuna, aprofunde-a com **Agent Engineering**, **Design** ou **Productização** e retome a execução. Se a competência já existe e o gargalo virou sustentar a base integrada, avalie o **AIOX Enterprise**.
 
 **O Enterprise substitui o Advanced?**
 Não. O Advanced constrói a competência do operador. O Enterprise oferece o ambiente mantido para aplicar essa competência com ativos de produção, governança e evolução contínua.
 
 **O que eu ganho a mais ao entrar no AIOX Enterprise?**
-Você deixa de remontar e manter sozinho toda a base operacional. O Enterprise reúne repositório privado, Dashboard Enterprise, squads de produção, workspace, integrações disponíveis, monitoramento, auditoria, atualizações contínuas e acompanhamento.
+Você passa de uma base montada e mantida por você para uma operação integrada e mantida. O Enterprise reúne repositório privado, Dashboard Enterprise, squads de produção, workspace, integrações disponíveis, monitoramento, auditoria, atualizações contínuas e acompanhamento.
 
 **Como sei se chegou a hora do Enterprise?**
 Quando você já entrega com o Advanced, mas remontar contexto, integrações, gates e monitoramento virou parte relevante do custo de cada projeto. O sinal não é querer mais conteúdo; é precisar sustentar a operação com menos fragmentação.

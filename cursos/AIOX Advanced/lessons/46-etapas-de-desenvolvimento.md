@@ -19,9 +19,9 @@ bloom: apply
 reading_minutes: 14
 has_mermaid_map: true
 map_source: auto-decision_graph
-module: M3
-sequence: M3.1
-track: essential
+module: M2
+sequence: 16
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
@@ -30,8 +30,6 @@ curated_at: '2026-08-09'
 # Briefing, [[PRD]], Stories: as 3 etapas antes do código
 
 Priorização no PRD: use [[MoSCoW]] (Must/Should/Could/Won't) e, quando precisar de score comparável, [[RICE]] (Reach, Impact, Confidence, Effort).
-
-← [[18-yaml-markdown-json-sweet-spot|YAML, Markdown, JSON: o sweet spot para LLM]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[47-ciclo-de-vida-do-story|Ciclo de vida do Story: draft → ready → in progress → in review → done]]
 
 ## Mapa desta aula
 
@@ -398,6 +396,10 @@ A IA é a seta. O X é seu — inclusive **não soltar a seta** antes da planta.
 
 ---
 
+## Operar isto na prática
+
+Esta aula é pré-requisito no curso de squads — quando a missão for real, siga para: Data: `cursos/AIOX-Advanced-Squads/aulas/10-data.md`
+
 ## Navegação
 
-← [[18-yaml-markdown-json-sweet-spot|YAML, Markdown, JSON: o sweet spot para LLM]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[47-ciclo-de-vida-do-story|Ciclo de vida do Story: draft → ready → in progress → in review → done]]
+← [[lessons/19-ciclo-do-repositorio|Ciclo do repositório: Detect Repo, GitHub, CodeRabbit, CI/CD]] · ↑ [[modulos/Módulo 2 - SDC e Qualidade|M2 — SDC e qualidade]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/48-quality-gate-completo|Quality Gate: QA + Apply QA Fixes + CodeRabbit]]

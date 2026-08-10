@@ -3,16 +3,15 @@ type: lesson
 course: aiox-agent-engineering
 title: "Escada Progressiva: Script → Squad → Workflow → Runner → API → App → SaaS"
 lesson_position: 23
-module: M5
+module: M4
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 69
-source_path: "cursos/AIOX Advanced/lessons/69-escada-progressiva-script-a-saas.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/69-escada-progressiva-script-a-saas.md"
 source_version: 1.0.0
 ---
 # Escada Progressiva: Script → Squad → Workflow → Runner → API → App → SaaS
 
-← Extrair Squad do Claude Code para API própria · ↑ M12 · ⌂ Curso · → Supabase: setup via @data-engineer
 
 ## Mapa desta aula
 
@@ -132,9 +131,10 @@ Sete degraus batizados. Cada um com o que prova e o que não prova.
 Eu chamo de **escada progressiva** pra colar na cabeça: não é roadmap de
 marketing. É mapa de maturidade do que você já industrializou.
 
-Prior-art: Service-as-Software (62), distribuição vs produto (63), monetização
-(66), harness (67). Aqui a gente **amarra o degrau** — onde você pisa agora e
-o que justifica o próximo.
+Prior-art comercial (fora deste curso): `cursos/AIOX-Productizacao/`
+(Service-as-Software, distribuição, estágios de monetização). Prior-art
+técnica neste curso: harness (aula 21). Aqui a gente **amarra o degrau
+técnico** — onde você pisa agora e o que justifica o próximo.
 
 A regra de ouro: **só sobe quando o degrau atual entediou de tão estável.**
 Se ainda dói, se ainda depende de você, se ainda quebra em silêncio — você
@@ -377,4 +377,4 @@ Adaptação autocontida da aula 69 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](22-squad-fora-da-ide.md) · [Curso](../README.md) · [Próxima aula →](24-supabase-via-data-engineer.md)
+[← Aula anterior](22-squad-fora-da-ide.md) · [↑ M4](../modulos/M4-runtime-fora-da-ide.md) · [Curso](../README.md) · [Próxima aula →](24-supabase-via-data-engineer.md)

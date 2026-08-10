@@ -26,7 +26,7 @@ maturity: study
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `36-tech-research-multi-fonte; 37-spy-bench-comparativo` — pesquisa com evidência.
+Antes de operar este squad, revise `13-pensamento-estruturado-antes-do-terminal` e `48-quality-gate-completo` no **AIOX Advanced**. Para aprofundar pesquisa e benchmark, use `cursos/AIOX-Agent-Engineering/aulas/08-tech-research.md` e `09-spy-bench.md`.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -135,8 +135,14 @@ Leia squads/research/config.yaml e adote a persona de research-chief.
 
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Escolha uma decisão de compra ou de stack que hoje você resolveria “no feeling” — por exemplo, qual entre três ferramentas de automação adotar. Rode o workflow `wf-competitive-intel` para levantar as três candidatas em múltiplas fontes e feche com `bench-gap-analysis` comparando cada uma contra o seu caso de uso real. Toda afirmação relevante precisa apontar para fonte primária, não para memória do modelo.
+
+**Saída esperada:** relatório comparativo com (1) matriz de critérios pesados pelo seu caso de uso, (2) cada célula relevante rastreável a uma fonte com URL e data, (3) gaps declarados onde não houve evidência — em vez de chute preenchendo o vazio.
+
+**Erro comum neste squad:** aceitar síntese sem fonte — o agente “sabe” a resposta e devolve um comparativo plausível sem nenhuma evidência coletada. Detecte cedo: peça as fontes das três primeiras afirmações; se alguma vier sem URL ou com fonte genérica, o discovery não aconteceu.
+
+> **Teste rápido**: escolha uma linha aleatória da matriz e verifique a fonte em menos de um minuto; se não conseguir, a evidência é decorativa.

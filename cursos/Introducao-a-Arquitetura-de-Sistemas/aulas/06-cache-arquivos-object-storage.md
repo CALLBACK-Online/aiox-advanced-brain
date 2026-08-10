@@ -9,6 +9,7 @@ status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
 source_refs: [redis-cache]
+reading_minutes: 5
 ---
 
 # Cache, arquivos e object storage

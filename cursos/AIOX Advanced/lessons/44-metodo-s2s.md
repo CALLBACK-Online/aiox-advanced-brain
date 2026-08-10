@@ -21,16 +21,14 @@ reading_minutes: 22
 has_mermaid_map: true
 map_source: handcrafted
 module: MC
-sequence: MC.1
-track: essential
+sequence: 27
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Método S2S: converter sinais em sistemas
-
-← [[73-prontidao-de-producao|Prontidão de produção: checklist final]] · ↑ [[modulos/Módulo C - Capstone|MC]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[74-caso-integrado-end-to-end|Caso integrado end-to-end: do briefing ao deploy em 90 minutos]]
 
 ## Conceitos
 
@@ -592,9 +590,8 @@ Tradução dos termos técnicos para alguém que está vendo o Método S2S pela 
 
 ***
 
-
 ---
 
 ## Navegação
 
-← [[73-prontidao-de-producao|Prontidão de produção: checklist final]] · ↑ [[modulos/Módulo C - Capstone|MC]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[74-caso-integrado-end-to-end|Caso integrado end-to-end: do briefing ao deploy em 90 minutos]]
+← [[lessons/53-brownfield-enhancement|Brownfield Enhancement: como adicionar feature em código legado]] · ↑ [[modulos/Módulo C - Capstone|MC — Capstone]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/74-caso-integrado-end-to-end|Caso integrado end-to-end: do briefing ao deploy em 90 minutos]]

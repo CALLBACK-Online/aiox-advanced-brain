@@ -7,48 +7,48 @@ canonical_scope: cursos/AIOX-Design
 questions: 4
 ---
 
-# Quiz M2 — Stack e prova
+# Quiz M2 — Contrato e catálogo
 
-### 1. Stack canônica ajuda a IA principalmente porque:
+### 1. DESIGN.md existe para:
 
-A. Elimina a necessidade de DESIGN.md  
-B. Oferece utilitários/componentes/catálogo previsíveis alinháveis a tokens  
-C. Garante pixel-perfect automático  
-D. Substitui testes de acessibilidade
+A. Substituir testes  
+B. Ser lido antes de gerar tela (contrato visual)  
+C. Hospedar vídeos  
+D. Guardar secrets  
 
-### 2. Matriz mínima de variantes de um Button deve incluir pelo menos:
+### 2. Drift visual é:
 
-A. Estados relevantes e pelo menos um eixo tema ou breakpoint + nota a11y  
-B. Só o happy path desktop light  
-C. Todas as cores do material design  
-D. Apenas hover em desktop
+A. Polish intencional documentado  
+B. Atualizar o contrato de propósito  
+C. UI fora do contrato sem atualizar o contrato  
+D. Instalar Storybook  
 
-### 3. Hex de primary hardcoded no JSX, com token existente no DESIGN.md:
+### 3. AI-look se reduz principalmente com:
 
-A. É só polish para o impeccable  
-B. É waiver automático  
-C. Bloqueia / é falha de conformidade  
-D. É irrelevante se a tela ficou bonita
+A. Mais gradientes  
+B. Mais modelos ao mesmo tempo  
+C. Exploração sem limite  
+D. Repertório + proibições + contrato  
 
-### 4. O papel típico de impeccable neste curso:
+### 4. Átomo na taxonomia é:
 
-A. Substituir o DESIGN.md  
-B. Ser o primeiro passo antes do contrato  
-C. Governar brand book  
-D. Craft depois do portão de conformidade
+A. Peça indivisível reutilizável (ex. Button)  
+B. Uma página inteira  
+C. Um monorepo  
+D. Um PDF  
 
 <details>
 <summary>Gabarito comentado</summary>
 
-1. **B.** Previsibilidade para o agente.  
-2. **A.** Happy path único não prova componente.  
-3. **C.** Viola token = bloqueia.  
-4. **D.** Craft pós-gate.
+1. **B.**  
+2. **C.**  
+3. **D.**  
+4. **A.**  
 
 </details>
 
 ## Transferência
 
-Classifique um finding real de UI sua em bloqueia / waiver / polish.
+Aplique a ideia deste quiz no seu produto em 10 minutos e registre uma decisão.
 
 [Módulo M2](../modulos/M2.md) · [Próximo módulo](../modulos/M3.md)

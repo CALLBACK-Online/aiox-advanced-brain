@@ -9,12 +9,14 @@ tags: [layer/curso, hub]
 
 Hub das trilhas educacionais deste repositório. Cada curso é **autocontido** (links internos resolvem dentro da própria pasta). Entre cursos, use os caminhos monoespaçados ou abra pelo arquivo indicado.
 
+**Não sabe qual rota seguir?** Abra [Como estudar o acervo — trilhas por caso](COMO-ESTUDAR.md).
+
 ## Navegação recomendada: Obsidian
 
 Os cursos usam Markdown com **wikilinks entre notas**. A forma recomendada de estudar é abrir esta pasta (ou um curso específico) como **vault no [Obsidian](https://obsidian.md)**:
 
 1. Instale o Obsidian.
-2. **Open folder as vault** → para o **Graph colorido completo** (cursos + skills + squads), abra a **raiz do repositório**. Alternativas: `cursos/`, `cursos/Introducao-a-Arquitetura-de-Sistemas/`, `cursos/AIOX-Fundamentals/`, `cursos/AIOX Advanced/`, `cursos/AIOX-Design/`, `cursos/AIOX-Advanced-Squads/` ou `cursos/Obsidian-IA/`.
+2. **Open folder as vault** → para o **Graph colorido completo** (cursos + skills + squads), abra a **raiz do repositório**. Alternativas: `cursos/`, `cursos/Introducao-a-Arquitetura-de-Sistemas/`, `cursos/AIOX-Fundamentals/`, `cursos/AIOX Advanced/`, `cursos/AIOX-Agent-Engineering/`, `cursos/AIOX-Design/`, `cursos/AIOX-Productizacao/`, `cursos/AIOX-Advanced-Squads/` ou `cursos/Obsidian-IA/`.
 3. Comece por `00-HOME.md` (raiz) ou pelo `README.md` do curso; use Graph view com as cores do acervo.
 4. Mapas: `cursos/MOC-Acervo-AIOX.md`, `cursos/MOC-Skills.md`, `cursos/MOC-Squads.md`.
 
@@ -27,22 +29,25 @@ No GitHub ou em editores genéricos os arquivos abrem, mas o grafo de ~2.000 lin
 | **Obsidian + IA** | Mini: vault, captura, Context Brief, execução no projeto e retorno | `cursos/Obsidian-IA/README.md` |
 | **Introdução à Arquitetura de Sistemas** | Base técnica: componentes, dados, comunicação, fan-out/fan-in, escala, operação, segurança e agentes | `cursos/Introducao-a-Arquitetura-de-Sistemas/README.md` |
 | **AIOX Fundamentals** | Core: instalação, anatomia, 12 agents, contexto, story e validação básica | `cursos/AIOX-Fundamentals/README.md` |
-| **AIOX Advanced** | Método: mindset, SDC, taxonomia, determinismo, deploy | `cursos/AIOX Advanced/README.md` |
-| **AIOX Design** | Contrato visual e design system para IA (`DESIGN.md`, taxonomia, variantes) | `cursos/AIOX-Design/README.md` |
+| **AIOX Advanced** | Método: mindset, contexto, SDC, determinismo e brownfield | `cursos/AIOX Advanced/README.md` |
 | **AIOX Advanced Squads** | Operação: um squad por aula, briefing e evidência | `cursos/AIOX-Advanced-Squads/README.md` |
+| **AIOX Agent Engineering (lateral)** | Projetar, construir, orquestrar e operar capacidades agentic | `cursos/AIOX-Agent-Engineering/README.md` |
+| **AIOX Design (lateral)** | Contrato visual e design system para IA (`DESIGN.md`, taxonomia, variantes) | `cursos/AIOX-Design/README.md` |
+| **AIOX Productização (lateral)** | Capacidade comprovada → oferta, distribuição, formato e monetização | `cursos/AIOX-Productizacao/README.md` |
 
 ## Jornada canônica
 
-`estudar o acervo → entender sistemas → operar o Core → aplicar o método → operar especialistas`
+`estudar o acervo → entender sistemas → operar o Core → aplicar o método → operar os especialistas`
 
 1. **Obsidian + IA** — faça o onboarding completo se o vault for novo; quem já domina Obsidian pode usar a evidência de entrada como diagnóstico.
 2. **Introdução à Arquitetura de Sistemas** — faça completo se os termos técnicos ainda travam; use o mapa de termos para revisão seletiva.
 3. **AIOX Fundamentals** — instale/audite o Core, conheça os agents e conclua o primeiro ciclo local.
-4. **AIOX Advanced — Rota Essencial até M12** (ou, no mínimo, M1 + M5 + M7 antes da primeira missão com squad).
-5. **AIOX Advanced Squads — aula 00**, módulo alinhado à missão e uma execução com evidência.
-6. Voltar ao **Capstone / Projeto Integrador do Advanced** para consolidar método + especialistas.
+4. **AIOX Advanced — 28 aulas / 5 módulos + Capstone** para dominar método, contexto, SDC, determinismo e brownfield.
+5. **AIOX Advanced Squads** — comece pela aula 00, escolha pelo mapa de decisão e prove uma execução real com briefing, artefatos e validação.
 
-**Especialização lateral:** AIOX Design entra após M9 quando a missão envolver UI, `DESIGN.md` ou deriva visual; ele prepara especialmente as aulas 13–15 de Squads, mas não substitui nenhuma das cinco etapas canônicas.
+As especializações laterais aprofundam o quarto degrau; não viram etapas obrigatórias nem substituem Squads: **Agent Engineering** para construir ou colocar uma capacidade em produção, **Design** para contrato visual e **Productização** quando já existe capacidade comprovada. Entre nelas pelo gargalo e volte à missão que será operada com especialistas.
+
+**Fronteira Agent Engineering × Productização (1 página):** `cursos/MOC-Agent-Engineering-vs-Productizacao.md` — o que não misturar entre capacidade técnica e mercado.
 
 Diagnósticos permitem pular conteúdo já dominado; não mudam a responsabilidade de cada etapa nem fazem Arquitetura e AIOX Fundamentals virarem o mesmo curso.
 
@@ -53,7 +58,7 @@ Há três momentos na jornada de produto:
 `AIOX Fundamentals → AIOX Advanced → AIOX Enterprise`
 
 - **Fundamentals:** concluir o primeiro ciclo no Core com evidência.
-- **Advanced:** transformar intenção em sistema operável, com método, squads e gates.
+- **Advanced:** transformar intenção em sistema entregue, com método, contexto, SDC e gates.
 - **Enterprise:** operar com infraestrutura proprietária mantida quando integrar e sustentar a base de produção já virou o gargalo.
 
 Os cursos deste acervo desenvolvem as duas primeiras capacidades. O Enterprise não é um curso com mais módulos: é o próximo contexto operacional para quem já constrói e precisa reduzir fragmentação, governar a execução e acompanhar a evolução do sistema.
@@ -64,27 +69,26 @@ Os cursos deste acervo desenvolvem as duas primeiras capacidades. O Enterprise n
 
 | De → para | Você avança quando… | Artefato que atravessa a ponte |
 |-----------|----------------------|-------------------------------|
-| Obsidian + IA → Arquitetura | localiza uma fonte, registra aprendizado e prepara uma missão de estudo | captura + MOC + Context Brief de estudo |
-| Arquitetura → AIOX Fundamentals | explica o fluxo, o estado, as falhas e os trade-offs de um sistema pequeno | arquitetura explicável + dúvidas abertas |
+| Obsidian + IA → Introdução à Arquitetura | localiza uma fonte, registra aprendizado e prepara uma missão de estudo | captura ou MOC justificado + Context Brief de estudo |
+| Introdução à Arquitetura → AIOX Fundamentals | explica o fluxo, o estado, as falhas e os trade-offs de um sistema pequeno | arquitetura explicável + dúvidas abertas |
 | AIOX Fundamentals → Advanced | instala/audita o Core, escolhe o agent e fecha uma story local | context pack + story + evidências + handoff |
 | Advanced → Advanced Squads | domina taxonomia, briefing, gates e fronteiras de execução | mission brief + critérios de aceite |
-| Advanced Squads → Capstone Advanced | escolhe e opera especialistas sem confundir orientação com runtime | routing decision + artefatos + validation report |
+| Advanced → Agent Engineering | domina o método e precisa construir/orquestrar uma capacidade própria | capability brief + caso representativo + critérios de operação |
+| Advanced → AIOX Design | possui uma story visual e precisa impedir deriva | briefing de interface + estados + aceite visual |
+| Agent Engineering → Productização | a capacidade executa e produz valor observável | contrato de execução + evidência + limitações |
+| Advanced Squads → operação recorrente | escolhe e opera especialistas sem confundir orientação com runtime | routing decision + artefatos + validation report + retrospectiva reutilizável |
 
-## Matriz método → squads
+## Matriz método → especialização → operação
 
-| Tema no AIOX Advanced | Aulas do método (pasta `lessons/`) | Aulas no curso Squads (`aulas/`) |
-|----------------------|-------------------------------------|----------------------------------|
-| O que é squad / anatomia | `23-…`, `28-…`, `33-…` | `00-como-usar-este-curso.md` + todas |
-| Criar squad | `34-…`, `51-…`, `55-…` | `23-squad-creator.md`, `24-squad-creator-pro.md` |
-| Research | `36-…`, `37-…`, `40-…` | `02-research.md` |
-| Brownfield / código | `31-…`, `38-…`, `53-…` | `03-code-anatomist.md`, `04-domain-decoder.md` |
-| Design system | `32-…`, `41-…`–`43-…` (ponte) | **Curso `AIOX-Design/`** + `14-design-system.md`, `15-design-ops.md` |
-| Runner / taxonomia | `28-…`–`30-…` | `09-runner-ops.md` |
-| Mesa-redonda / decisão | `35-…` | `01-advisory-board.md` |
-| Oferta / ROI | `62-…`, `64-…` | `19-copy.md`, `20-sales.md`, `21-hormozi.md` |
-| Skills lifecycle | `28-…` | `22-skill-creator-ops.md` |
+| Tema | Dono curricular | Operação publicada |
+|------|-----------------|--------------------|
+| Método, SDC, determinismo, brownfield | `AIOX Advanced/` | Capstone do próprio curso |
+| Taxonomia, research, criação, routing, harness e produção | `AIOX-Agent-Engineering/` | Squads 01–09 e 22–24, conforme a missão |
+| Contrato visual, taxonomia, variantes e quality gate visual | `AIOX-Design/` | Squads 13–15 |
+| Oferta, ROI, distribuição e monetização | `AIOX-Productizacao/` | Squads 19–21, quando maturidade e briefing permitirem |
+| Catálogo e uso dos 24 squads | `AIOX-Advanced-Squads/` | Asset correspondente em `squads/` |
 
-Sequência de pré-requisitos: `cursos/Obsidian-IA/README.md` → `cursos/Introducao-a-Arquitetura-de-Sistemas/README.md` → `cursos/AIOX-Fundamentals/README.md` → `cursos/AIOX Advanced/README.md` → `cursos/AIOX-Advanced-Squads/README.md`.
+Pré-requisitos comuns: `cursos/Obsidian-IA/README.md` → `cursos/Introducao-a-Arquitetura-de-Sistemas/README.md` → `cursos/AIOX-Fundamentals/README.md` → `cursos/AIOX Advanced/README.md` → `cursos/AIOX-Advanced-Squads/README.md`. Agent Engineering, Design e Productização são aprofundamentos laterais acionados pelo gargalo.
 
 Matriz completa e pontes:  
 `cursos/AIOX Advanced/ponte/pre-requisitos-arquitetura.md` · `cursos/AIOX Advanced/ponte/trilha-squads.md` · `cursos/AIOX-Advanced-Squads/ponte/pre-requisitos-advanced.md`

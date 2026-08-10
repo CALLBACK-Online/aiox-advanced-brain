@@ -8,8 +8,9 @@ sequence: M6.2
 status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
-adapted_from: cursos/AIOX Advanced/lessons/67-harness-ambiente-execucao.md
+adapted_from: cursos/AIOX Advanced/archive/migrated/lessons/67-harness-ambiente-execucao.md
 source_refs: [docker-container, anthropic-trustworthy-agents]
+reading_minutes: 5
 ---
 
 # Runtime, harness, ambiente e container

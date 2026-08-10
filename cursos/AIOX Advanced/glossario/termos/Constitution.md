@@ -38,5 +38,5 @@ Use **Constitution** para tirar regras permanentes da memória frágil da conver
 - [[Artigo]]
 - [[Amarra]]
 - [[CLAUDE md]]
-- [[AGENTS.md]]
+- `AGENTS.md`
 - [[Glossário AIOX Advanced]]

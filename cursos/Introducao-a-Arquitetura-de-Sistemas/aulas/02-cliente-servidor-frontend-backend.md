@@ -9,6 +9,7 @@ status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
 source_refs: [mdn-client-server]
+reading_minutes: 5
 ---
 
 # Cliente, servidor, frontend e backend

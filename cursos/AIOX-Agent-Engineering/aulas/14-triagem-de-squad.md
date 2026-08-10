@@ -3,16 +3,15 @@ type: lesson
 course: aiox-agent-engineering
 title: "Triagem de Squad novo: fase-zero de prior-art + research loop"
 lesson_position: 14
-module: M3
+module: M2
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 55
-source_path: "cursos/AIOX Advanced/lessons/55-triagem-de-squad-novo.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/55-triagem-de-squad-novo.md"
 source_version: 1.0.0
 ---
 # Triagem de Squad novo: fase-zero de prior-art + research loop
 
-← Squad Creator passo a passo: criar um squad do zero · ↑ M7 · ⌂ Curso · → Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só
 
 ## Mapa desta aula
 
@@ -213,7 +212,7 @@ Loop curto (cabe em 45–90 min pra maioria dos temas):
 2. **Síntese** — 5–10 bullets: o que existe, o que cobre, o que falta, riscos.
 3. **Decisão** — REUSE / ADAPT / CREATE / NÃO-SQUAD com uma frase verificável.
 
-Turismo: 20 abas, zero parágrafo, creator no dia seguinte.  
+Turismo: 20 abas, zero parágrafo, creator no dia seguinte.
 Pesquisa: 6 fontes, um quadro de síntese, veredito no mesmo dia.
 
 Cara, o research loop não é proibir velocidade. É proibir **velocidade burra**.
@@ -382,7 +381,7 @@ Buscar. Sintetizar. Decidir. Creator é prêmio de gap real — não reflexo de 
 
 A IA é a seta. O X é seu — inclusive fechar a porta do scaffold com elegância.
 
-> **Trilha M4 neste bloco**: Rider (50) → entidades (51) → modos de execução (52) → brownfield (53) → R>A>C (54) → triagem (55). Daqui o curso segue pra UI/design system e paralelização.
+> **Trilha M2 neste curso**: REUSE > ADAPT > CREATE → triagem → anatomia → construção. Daqui a progressão segue para orquestração e escala; design visual pertence ao AIOX Design.
 
 > **GATE-MODULE (auto)**: GPS Goal/Position/Steps presentes · caso + do/dont · decisão · prática com evidência · glossário. Alvo DL ≥70 atingido na construção enrich-W2.
 
@@ -397,4 +396,4 @@ Adaptação autocontida da aula 55 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](13-reuse-adapt-create.md) · [Curso](../README.md) · [Próxima aula →](15-anatomia-de-squad.md)
+[← Aula anterior](13-reuse-adapt-create.md) · [↑ M2](../modulos/M2-construcao-de-capacidade.md) · [Curso](../README.md) · [Próxima aula →](15-anatomia-de-squad.md)

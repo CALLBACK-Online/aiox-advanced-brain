@@ -35,7 +35,7 @@ Use **Codex** como superfície de execução quando a missão precisar ler e alt
 
 ## Ver também
 
-- [[AGENTS.md]]
+- `AGENTS.md`
 - [[Claude Code]]
 - [[Harness]]
 - [[Glossário AIOX Advanced]]

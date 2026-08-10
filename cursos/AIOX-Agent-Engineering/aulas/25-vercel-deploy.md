@@ -3,18 +3,17 @@ type: lesson
 course: aiox-agent-engineering
 title: "Vercel Deploy: do localhost ao mundo"
 lesson_position: 25
-module: M6
+module: M5
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 71
-source_path: "cursos/AIOX Advanced/lessons/71-vercel-deploy.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/71-vercel-deploy.md"
 source_version: 1.0.0
 ---
 # Vercel Deploy: do localhost ao mundo
 
 > **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/18-cicd-deploy-rollback.md`.
 
-← Supabase: setup via @data-engineer · ↑ M12 · ⌂ Curso · → CI/CD Pipeline completa: GitHub Actions + Quality Gate pré-merge
 
 ## Mapa desta aula
 
@@ -405,4 +404,4 @@ Adaptação autocontida da aula 71 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](24-supabase-via-data-engineer.md) · [Curso](../README.md) · [Próxima aula →](26-cicd.md)
+[← Aula anterior](24-supabase-via-data-engineer.md) · [↑ M5](../modulos/M5-producao.md) · [Curso](../README.md) · [Próxima aula →](26-cicd.md)

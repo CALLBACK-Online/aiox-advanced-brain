@@ -18,19 +18,19 @@ maturity: study
 
 ## Resultado
 
-Fechar o mini-curso com um gate de estudo que prepara Fundamentos de Arquitetura e, numa segunda passagem, com o loop operacional completo em um projeto AIOX.
+Completar um gate de estudo que prepara Introdução à Arquitetura de Sistemas e, numa segunda passagem, **concluir o mini-curso** com o loop operacional completo em um projeto AIOX.
 
 ## Quando usar — e quando não usar
 
-**Use** como capstone de entrada deste mini (30–45 min) e revisite depois de Fundamentals ou Advanced para a consolidação operacional (45–90 min).
+**Use** o modo A como gate preparatório (30–45 min). Depois de Fundamentals ou Advanced, use o modo B como capstone obrigatório para concluir o mini-curso (45–90 min).
 
 **Não** escolha uma missão destrutiva, longa ou com efeito externo. O alvo é aprender o loop com uma transformação local, reversível e verificável.
 
-## Missão capstone
+## Gate preparatório e missão capstone
 
-Escolha o modo compatível com sua etapa:
+Comece pelo modo compatível com sua etapa. O modo A libera a próxima trilha, mas **não conclui o mini-curso**; a conclusão exige o modo B:
 
-- **Modo A — entrada na jornada:** uma dúvida real sobre um sistema; o destino é Fundamentos de Arquitetura e a evidência é uma explicação, um diagrama ou uma decisão comparada.
+- **Modo A — entrada na jornada:** uma dúvida real sobre um sistema; o destino é Introdução à Arquitetura de Sistemas e a evidência é uma explicação, um diagrama ou uma decisão comparada.
 - **Modo B — consolidação operacional:** uma dor real e um projeto sob seu controle; o destino é uma skill/squad e a evidência é um artefato validado.
 
 Exemplos do modo B:
@@ -39,15 +39,15 @@ Exemplos do modo B:
 - Corrigir uma lacuna documental usando fontes do AIOX.
 - Aplicar uma skill portátil em uma tarefa local e validar a saída.
 
-### Passos
+### Passos obrigatórios do capstone operacional
 
-1. **Missão** — descreva uma transformação de estudo ou de projeto pequena e observável.
+1. **Missão** — descreva uma transformação de projeto pequena e observável.
 2. **Vault** — recupere 1–3 fontes canônicas relacionadas à missão.
 3. **Captura ou MOC** — use uma captura para 1–4 fontes; crie MOC somente quando houver pelo menos 5 conexões úteis ou uma dor recorrente.
 4. **Context Brief** — copie apenas o bloco **Template copiável** do [template](../templates/context-brief.md) para sua nota pessoal e preencha-o.
-5. **Roteamento** — no modo A, confirme curso/aula; no modo B, confirme existência, maturidade e fronteira da skill ou squad.
-6. **Handoff** — leve à próxima etapa somente o briefing e, no modo B, o asset necessário.
-7. **Execução** — cumpra a missão de estudo ou peça ao agent do projeto para cumprir o briefing.
+5. **Roteamento** — confirme existência, maturidade e fronteira da skill ou squad.
+6. **Handoff** — leve ao projeto somente o briefing e o menor asset necessário.
+7. **Execução no projeto** — peça ao agent do projeto para cumprir o briefing no runtime real.
 8. **Validação** — rode o gate proporcional à missão e guarde a evidência.
 9. **Retorno** — registre resultado, decisão e aprendizado em `notas/retornos/` ou no vault pessoal.
 
@@ -58,11 +58,11 @@ O briefing entregue à próxima etapa precisa conter:
 - missão e resultado observável;
 - fontes recuperadas com path e síntese relevante;
 - decisões, restrições e fora de escopo;
-- curso/aula ou skill/squad, maturidade quando aplicável e justificativa;
+- skill/squad, maturidade e justificativa;
 - critérios de aceite e evidência esperada;
 - retorno que será capturado depois da execução.
 
-## Execução no projeto AIOX — somente modo B
+## Execução no projeto AIOX — obrigatória para conclusão
 
 No projeto de destino:
 
@@ -94,31 +94,32 @@ Não cole logs completos, secrets ou dados privados. A memória útil é a decis
 
 ## Definition of Done
 
-> No modo A, o aluno encontra e compreende a próxima fonte sem depender de catálogo despejado. No modo B, também executa uma missão no projeto AIOX e devolve o aprendizado ao vault.
+> A conclusão do mini-curso exige todos os itens abaixo. O modo A é apenas o gate preparatório para quem ainda não tem base ou projeto seguro.
 
 ## Checklist de evidência
 
 - [ ] Captura com path de fonte **ou** MOC justificado pela quantidade de conexões
 - [ ] Context Brief completo e sem informação privada
-- [ ] Curso/aula existente ou skill/squad existente com maturidade e fronteira confirmadas
-- [ ] Evidência de compreensão no modo A ou artefato produzido no projeto real no modo B
+- [ ] Skill/squad existente com maturidade e fronteira confirmadas
+- [ ] Menor asset necessário disponível no projeto real
+- [ ] Artefato produzido no projeto real
 - [ ] Critérios de aceite atendidos
 - [ ] Evidência de validação registrada
 - [ ] Nota de retorno ligada ao briefing e ao artefato
 
 ## Prática
 
-Na primeira passagem, execute o modo A. Depois de AIOX Fundamentals ou Advanced, volte e execute o modo B. Falta de projeto seguro não bloqueia o gate de entrada; apenas deixa a consolidação operacional pendente.
+Na primeira passagem, execute o modo A. Depois de AIOX Fundamentals ou Advanced, volte e execute o modo B. Falta de projeto seguro não bloqueia o gate de entrada, mas a conclusão do mini-curso permanece pendente até o capstone operacional.
 
 ## Evidência de conclusão
 
-- **Gate de entrada:** 1 captura ou MOC + 1 Context Brief de estudo + 1 evidência de compreensão.
-- **Gate operacional:** o pacote anterior + 1 artefato validado no projeto + 1 nota de retorno.
+- **Gate de entrada (não é conclusão):** 1 captura ou MOC + 1 Context Brief de estudo + 1 evidência de compreensão.
+- **Conclusão do mini-curso:** 1 captura ou MOC + 1 Context Brief operacional + menor asset necessário + 1 artefato validado no projeto + 1 nota de retorno.
 
 ## Depois deste mini
 
-1. Fundamentos de Arquitetura (`cursos/AIOX-Fundamentos-de-Arquitetura/`).
+1. Introdução à Arquitetura de Sistemas (`cursos/Introducao-a-Arquitetura-de-Sistemas/`).
 2. AIOX Fundamentals (`cursos/AIOX-Fundamentals/`).
-3. Rota Essencial do AIOX Advanced (`cursos/AIOX Advanced/`).
+3. As 28 aulas ativas do AIOX Advanced (`cursos/AIOX Advanced/`).
 4. Aula 00 do curso de Squads (`cursos/AIOX-Advanced-Squads/`).
 5. Repetir o loop Context Brief → execução → retorno em cada missão que exigir contexto do acervo.

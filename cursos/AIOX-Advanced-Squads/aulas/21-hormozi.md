@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `62-service-as-software; 64-vender-pela-dor-e-roi` — oferta e escala.
+Antes de operar este squad, revise `13-pensamento-estruturado-antes-do-terminal` no **AIOX Advanced**. Para oferta e formato, use `cursos/AIOX-Productizacao/aulas/01-service-as-software.md`, `02-dor-e-roi.md` e `04-caminhos-de-produto.md`.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -133,10 +133,22 @@ Leia squads/hormozi/config.yaml e adote a persona de hormozi-chief.
 - premissas e limites declarados;
 - próximo passo ou handoff para outro squad/skill, se couber.
 
+## O que muda no AIOX Enterprise
+
+Neste acervo, você informa mercado, oferta e restrições no briefing. No Enterprise, o Hormozi Squad consome do workspace o contexto canônico de produto, oferta, prova e preço depois da validação de prontidão.
+
+**O ganho prático:** os métodos deixam de operar sobre um exemplo abstrato. A análise parte da economia e das evidências da oferta real, sem conceder ao squad autoridade para alterar sozinho a fonte de verdade.
+
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Um estúdio de pilates fatura R$ 40 mil/mês vendendo aulas avulsas e compete por preço com a academia da esquina. A missão: reconstruir a oferta como Grand Slam rodando `wf-grand-slam-offer` de ponta a ponta — value equation, stack, garantia e nome — e fechar com `create-pricing-strategy` para sair da guerra de preço sem perder a base atual.
+
+**Saída esperada:** um documento de oferta com a value equation preenchida a partir da dor real do avatar, stack de entregáveis com valor percebido atribuído item a item, e garantia + preço que sustentem cobrar 3–5x o pacote atual.
+
+**Erro comum neste squad:** inflar o bonus stack com itens que ninguém pediu — a lista cresce, o valor percebido não. Detecte cedo perguntando, item a item, “isso remove um obstáculo do avatar?”; se a resposta é não, corte antes de precificar.
+
+> **Teste rápido**: tampe o preço e leia a oferta — se um estranho não pergunta “onde eu assino?”, ela ainda não é grand slam.

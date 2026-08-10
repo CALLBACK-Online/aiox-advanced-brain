@@ -3,20 +3,19 @@ type: lesson
 course: aiox-agent-engineering
 title: "Harness: ambiente de execução do agente fora do Claude Code"
 lesson_position: 21
-module: M5
+module: M4
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 67
-source_path: "cursos/AIOX Advanced/lessons/67-harness-ambiente-execucao.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/67-harness-ambiente-execucao.md"
 source_version: 1.0.0
 ---
 # Harness: ambiente de execução do agente fora do Claude Code
 
 > **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/17-runtime-harness-ambiente-container.md`.
 
-No ecossistema AIOX completo, orquestração profunda pode depender de SYNAPSE e de Runtime AIOX — fora do lab só Claude Code.
+Em um projeto real, orquestração profunda depende do runtime e dos serviços realmente disponíveis. Este curso não presume infraestrutura externa à biblioteca.
 
-← Três estágios de monetização: interno → cliente → produto · ↑ M11 · ⌂ Curso · → Extrair Squad do Claude Code para API própria
 
 ## Mapa desta aula
 
@@ -138,8 +137,10 @@ Claude Code continua sendo o lugar de **forjar e dogfood**. Harness é o lugar
 de **servir**. Confundir os dois é como confundir bancada de laboratório com
 linha de produção.
 
-Prior-art: estágios de monetização (66) te dizem quando alguém depende do
-valor. Esta aula te diz **onde** esse valor precisa morar tecnicamente.
+Prior-art comercial: estágios de monetização em
+`cursos/AIOX-Productizacao/aulas/05-estagios-de-monetizacao.md` dizem
+**quando** alguém depende do valor. Esta aula diz **onde** esse valor precisa
+morar tecnicamente (runtime fora do chat).
 
 - **5**: caixas mínimas
 - **1**: critério de saída
@@ -175,10 +176,10 @@ Se falta uma, ainda é demo reforçada.
 
 Desenha e decora:
 
-1. **Runtime** — processo/worker que executa o agente sem IDE.  
-2. **Auth & secrets** — identidade do chamador e segredos fora do laptop.  
-3. **Tools** — capacidades como serviços (APIs), não arquivos no Desktop.  
-4. **Logs / observabilidade** — traces, prompts/respostas redacted, erros.  
+1. **Runtime** — processo/worker que executa o agente sem IDE.
+2. **Auth & secrets** — identidade do chamador e segredos fora do laptop.
+3. **Tools** — capacidades como serviços (APIs), não arquivos no Desktop.
+4. **Logs / observabilidade** — traces, prompts/respostas redacted, erros.
 5. **Budget & limites** — teto de tokens, timeout, retries, kill switch.
 
 Opcional cedo, obrigatório cedo demais pra muitos: fila/job queue, multi-tenant
@@ -206,11 +207,11 @@ Não é preconceito contra o lab. É critério de promoção.
 
 Sinais fortes de que o lab não basta:
 
-- **Cliente depende** — SLA, uptime, horário que você dorme.  
-- **Multi-user** — mais de um operador/cliente no mesmo fluxo.  
-- **Dados sensíveis** — compliance, isolamento, auditoria.  
-- **Custo imprevisível** — loops, jobs longos, sem caps.  
-- **Tools locais** — MCP/arquivos que só existem na tua máquina.  
+- **Cliente depende** — SLA, uptime, horário que você dorme.
+- **Multi-user** — mais de um operador/cliente no mesmo fluxo.
+- **Dados sensíveis** — compliance, isolamento, auditoria.
+- **Custo imprevisível** — loops, jobs longos, sem caps.
+- **Tools locais** — MCP/arquivos que só existem na tua máquina.
 - **Agendamento** — precisa rodar sozinho (cron, webhook, fila).
 
 Sinais de que **ainda pode ficar no CC**:
@@ -242,10 +243,10 @@ prompt. Quebrou no primeiro feriado.
 
 Tentativa 2 — harness mínimo:
 
-1. **Runtime** — worker em container.  
-2. **Auth** — API key do helpdesk + secrets no vault.  
-3. **Tools** — APIs do helpdesk (não browser local).  
-4. **Logs** — job_id, duração, erro, tokens.  
+1. **Runtime** — worker em container.
+2. **Auth** — API key do helpdesk + secrets no vault.
+3. **Tools** — APIs do helpdesk (não browser local).
+4. **Logs** — job_id, duração, erro, tokens.
 5. **Budget** — max tokens/job + timeout 90s + dead-letter.
 
 O agente não ficou "mais inteligente". Ficou **operável**. E operável é o
@@ -375,4 +376,4 @@ Adaptação autocontida da aula 67 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](20-wave-execute.md) · [Curso](../README.md) · [Próxima aula →](22-squad-fora-da-ide.md)
+[← Aula anterior](20-wave-execute.md) · [↑ M4](../modulos/M4-runtime-fora-da-ide.md) · [Curso](../README.md) · [Próxima aula →](22-squad-fora-da-ide.md)

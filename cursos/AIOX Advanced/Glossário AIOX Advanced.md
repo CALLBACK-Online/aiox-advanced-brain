@@ -21,7 +21,7 @@ freq_meta:
 
 Termos e conceitos do curso **AIOX Advanced** (course-brain), com **frequência de menção** nos dois cursos do acervo.
 
-Inventário: **22 conceitos canônicos** + **158 termos** de referência (P0+P1+P2).
+Inventário: **22 conceitos canônicos** + **200 termos** de referência (P0+P1+P2).
 
 ## Como estudar cada termo
 
@@ -75,16 +75,16 @@ Os exemplos são operacionais: não servem apenas para ilustrar vocabulário. Ao
 28. [[Greenfield]] — **155×** (A155 · S0)
 29. [[Done]] — **151×** (A151 · S0)
 30. [[Draft]] — **146×** (A146 · S0)
-31. [[Persona]] — **125×** (A100 · S25)
-32. [[ROI]] — **119×** (A118 · S1)
-33. [[SaaS]] — **116×** (A114 · S2)
-34. [[Prior-art]] — **114×** (A113 · S1)
-35. [[Spy]] — **110×** (A110 · S0)
-36. [[Tech Research]] — **110×** (A110 · S0)
-37. [[Claude Code]] — **108×** (A85 · S23)
-38. [[CI-CD|CI/CD]] — **103×** (A103 · S0)
-39. [[Memória]] — **102×** (A100 · S2)
-40. [[Épico]] — **102×** (A102 · S0)
+31. [[CoreConfig]] — **130×** (A130 · S0)
+32. [[Persona]] — **125×** (A100 · S25)
+33. [[ROI]] — **119×** (A118 · S1)
+34. [[SaaS]] — **116×** (A114 · S2)
+35. [[Prior-art]] — **114×** (A113 · S1)
+36. [[Spy]] — **110×** (A110 · S0)
+37. [[Tech Research]] — **110×** (A110 · S0)
+38. [[Schema]] — **109×** (A96 · S13)
+39. [[Claude Code]] — **108×** (A85 · S23)
+40. [[Rider]] — **104×** (A104 · S0)
 
 ## Conceitos canônicos
 
@@ -138,8 +138,8 @@ Os exemplos são operacionais: não servem apenas para ilustrar vocabulário. Ao
 - [[Agent Teams]] — Times de agentes com papéis coordenados (não um monólogo). Exige ownership, handoff e gates — não 'mais prompts'. · **`2`×** (A2/S0)
 - [[Agent tool]] — O mecanismo que spawna um sub-agent em sessão isolada. Um filho por chamada, sem cross-talk. · **`20`×** (A20/S0)
 - [[Agente]] — A peça que decide e improvisa diante do contexto. Dispara o Runner, mas nunca é substituído por ele. · **`1220`×** (A1115/S105)
-- [[AGENTS.md]] — Documento de regras permanentes para manter consistência entre sessões e ferramentas. · **`39`×** (A39/S0)
-- [[AGENTS.md (Codex - OpenAI)]] — Arquivo equivalente no Codex. Diferente do Claude Code, no Codex você · **`2`×** (A2/S0)
+- `AGENTS.md` — Documento de regras permanentes para manter consistência entre sessões e ferramentas. · **`39`×** (A39/S0)
+- `AGENTS.md` no Codex — Arquivo equivalente no Codex. Diferente do Claude Code, no Codex você · **`2`×** (A2/S0)
 - [[agents-]] — A pasta dos especialistas que pensam e decidem dentro do domínio. Disparam tasks, não as executam diretamente. · **`33`×** (A33/S0)
 - [[Amarra]] — Onde a regra vive no sistema: Constitution, gate, frontmatter ou hook. Nunca so na sua memoria. · **`32`×** (A32/S0)
 - [[Anatomia]] — As camadas extraídas do sistema: arquitetura, domínio, dados, API, dependências e infra, mapeadas em vez de supostas. · **`196`×** (A167/S29)
@@ -271,6 +271,53 @@ Os exemplos são operacionais: não servem apenas para ilustrar vocabulário. Ao
 - [[Worker]] — Executor focado em trabalho mecânico/repetível na taxonomia dos Quatro Executores. Diferente do Agent (raciocínio abe… · **`79`×** (A78/S1)
 - [[Workflow]] — Sequência orquestrada de tasks/agentes para um resultado. Pode virar Runner quando o processo precisa repetir com mín… · **`455`×** (A346/S109)
 - [[Épico]] — Fatia grande de valor no PRD. Agrupa Stories relacionadas; o SM quebra o épico em unidades executáveis com aceite tes… · **`102`×** (A102/S0)
+
+## Termos adicionados na auditoria de cobertura
+
+Entradas incluídas após a revisão de lacunas técnicas. Os termos foram separados quando descrevem contratos, mecanismos ou artefatos diferentes; sinônimos continuam agrupados na mesma nota.
+
+- [[Acessibilidade]] — Práticas e critérios para que pessoas com diferentes capacidades consigam perceber, operar e compreender uma interface. · **44×** (A44/S0)
+- [[Autenticação e Autorização]] — Autenticação confirma quem é o solicitante; autorização define o que essa identidade pode fazer. · **22×** (A15/S7)
+- [[Backup restore]] — Estratégia de cópia e restauração de dados, com ponto de recuperação, procedimento testado e expectativa de perda aceitável. · **18×** (A17/S1)
+- [[Canary release]] — Liberação gradual para uma pequena parcela de tráfego antes de ampliar a exposição. · **9×** (A9/S0)
+- [[Compaction]] — Compactação do contexto que preserva decisões e fatos úteis, removendo detalhes redundantes para manter a sessão operável. · **3×** (A3/S0)
+- [[Composição]] — Montagem de componentes menores em uma interface ou artefato maior, mantendo contrato, hierarquia e comportamento coerentes. · **21×** (A20/S1)
+- [[Concorrência]] — Execução de trabalhos sobrepostos no tempo, com coordenação suficiente para evitar conflito e preservar o resultado. · **3×** (A3/S0)
+- [[Context bloat]] — Crescimento excessivo do contexto com informação redundante, ruído ou artefatos que reduzem a capacidade de decisão. · **5×** (A5/S0)
+- [[Contrato de API]] — Acordo explícito sobre endpoints, entradas, saídas, erros, autenticação e compatibilidade entre consumidor e provedor. · **5×** (A5/S0)
+- [[CoreConfig]] — Configuração central que define identidade, caminhos, capacidades e defaults usados para inicializar ou operar o Core. · **130×** (A130/S0)
+- [[Coverage scoring]] — Pontuação de cobertura usada para verificar se uma pesquisa, auditoria ou decisão examinou as áreas relevantes. · **10×** (A10/S0)
+- [[Cross-reference]] — Referência cruzada que conecta um termo a aulas, conceitos, artefatos ou decisões relacionadas. · **27×** (A27/S0)
+- [[DAG]] — Grafo acíclico direcionado que representa dependências sem permitir ciclos; útil para ordenar etapas e paralelizar o que é independente. · **6×** (A6/S0)
+- [[Data contract]] — Contrato de dados entre produtor e consumidor, especificando campos, tipos, semântica, regras e evolução compatível. · **1×** (A1/S0)
+- [[Decision log]] — Registro curto de uma decisão, suas alternativas, justificativa, impacto e condição de revisão. · **32×** (A6/S26)
+- [[Definition of Done]] — Critério compartilhado que define quando uma entrega está realmente concluída, validada e pronta para ser aceita. · **32×** (A32/S0)
+- [[Design token]] — Valor nomeado e reutilizável de design, como cor, espaçamento ou tipografia, que mantém consistência entre componentes e superfícies. · **1×** (A1/S0)
+- [[Fan-in Fan-out]] — Fan-out distribui uma entrada entre vários trabalhos; fan-in reúne os resultados para produzir uma saída consolidada. · **91×** (A91/S0)
+- [[Feature flag]] — Chave de configuração que permite ativar, desativar ou limitar uma funcionalidade sem necessariamente publicar novo código. · **3×** (A3/S0)
+- [[Generic prompt]] — Instrução portátil para orientar uma execução quando não há comando ou runtime específico disponível. · **27×** (A0/S27)
+- [[Headless]] — Execução sem interface gráfica ou interação visual, controlada por comandos, API ou automação. · **8×** (A0/S8)
+- [[Idempotência]] — Propriedade de uma operação que pode ser repetida sem produzir efeitos adicionais indevidos depois da primeira aplicação. · **5×** (A4/S1)
+- [[Job]] — Unidade de trabalho executável, normalmente com entrada, estado, saída e possibilidade de acompanhamento. · **77×** (A77/S0)
+- [[Job queue]] — Fila que armazena jobs pendentes para processamento por workers, desacoplando quem publica do momento da execução. · **9×** (A9/S0)
+- [[Materialização]] — Transformação de uma intenção, regra ou decisão em um artefato concreto que pode ser usado e validado. · **65×** (A31/S34)
+- [[On-call]] — Responsabilidade de estar disponível para responder a incidentes dentro de uma janela e de um acordo definidos. · **9×** (A9/S0)
+- [[Orquestrador]] — Componente ou agente que coordena etapas, dependências, roteamento, paralelismo e consolidação de um fluxo. · **74×** (A23/S51)
+- [[Production readiness]] — Avaliação de prontidão para produção, cobrindo operação, observabilidade, segurança, recuperação e suporte. · **1×** (A1/S0)
+- [[Pub-Sub]] — Padrão de publicação e assinatura em que produtores enviam eventos a um tópico e consumidores recebem sem acoplamento direto. · **1×** (A1/S0)
+- [[Registry]] — Catálogo autoritativo que registra assets disponíveis, metadados, aliases, maturidade ou localização. · **5×** (A2/S3)
+- [[Release]] — Pacote ou evento controlado de disponibilização de uma versão para um ambiente ou grupo de usuários. · **16×** (A16/S0)
+- [[Render-contract]] — Contrato que define como um componente ou artefato deve ser renderizado, incluindo props, estados, variantes e composição. · **57×** (A57/S0)
+- [[Rider]] — Documento ou instrução complementar que acompanha uma execução para registrar contexto, restrições, decisões e evidências. · **104×** (A104/S0)
+- [[Rollback]] — Reversão controlada para uma versão ou estado anterior quando a mudança atual apresenta risco ou falha. · **43×** (A41/S2)
+- [[Roteamento de squad]] — Processo de escolher o squad adequado a partir da dor, sinais, anti-sinais, maturidade e briefing. · **46×** (A15/S31)
+- [[Schema]] — Estrutura formal que descreve campos, tipos, restrições e relações esperadas em dados ou contratos. · **109×** (A96/S13)
+- [[Service role]] — Identidade técnica com permissões elevadas para operações de serviço; deve ser protegida e usada apenas na fronteira adequada. · **24×** (A24/S0)
+- [[Speedup wall-clock]] — Redução do tempo real decorrido obtida ao executar trabalho em paralelo, considerando coordenação e gargalos. · **47×** (A47/S0)
+- [[Stop rule]] — Regra explícita que encerra uma busca, iteração ou execução quando a evidência suficiente ou um limite foi atingido. · **25×** (A25/S0)
+- [[Tenant isolation]] — Separação de dados, operações e permissões entre tenants para impedir acesso cruzado. · **3×** (A3/S0)
+- [[Variant matrix]] — Matriz que cruza componentes, estados, variantes e contextos para tornar a cobertura visual verificável. · **0×** (A0/S0)
+- [[YAML Markdown JSON]] — Três formatos recorrentes do acervo: YAML para configuração, Markdown para conteúdo e JSON para dados estruturados. · **14×** (A14/S0)
 
 ## Navegação
 

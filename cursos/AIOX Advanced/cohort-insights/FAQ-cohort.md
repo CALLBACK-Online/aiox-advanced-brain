@@ -60,7 +60,14 @@ Perguntas condensadas dos grupos WhatsApp. Respostas no espírito do que Alan e 
 ### 7. Design system em vários produtos da mesma empresa
 **Padrão:** base compartilhada + derivados; DESIGN.md/Storybook como contrato; não reinventar tokens em cada app.
 
-**Aulas:** 41–43, 56–57.
+**Aulas:** 41–43, 56–57 · trilha dedicada: `cursos/AIOX-Design/`.
+
+---
+
+### 7b. Já automatizei / montei algo — como monetizo ou viro SaaS?
+**Padrão:** isso **não** é FAQ de setup. Capacidade com evidência → Decision Pack (wedge, ROI, canal, formato, estágio). Uso interno ≠ produto. Não abrir hormozi/copy antes do pack.
+
+**Curso:** `cursos/AIOX-Productizacao/` · FAQ: `FAQ-campo-cohort.md` · personas: `personas-capstone.md`.
 
 ---
 

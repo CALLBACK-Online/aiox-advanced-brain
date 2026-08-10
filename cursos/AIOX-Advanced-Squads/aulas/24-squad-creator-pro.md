@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `34-squad-creator-passo-a-passo; 55-triagem-de-squad-novo` — criar com profundidade.
+Antes de operar este squad, revise `20-determinismo-progressivo` e `23-o-que-e-um-squad` no **AIOX Advanced**. Para criar com profundidade, use `cursos/AIOX-Agent-Engineering/aulas/14-triagem-de-squad.md` a `16-squad-creator.md` e `27-prontidao-de-producao.md`.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -132,10 +132,22 @@ Leia squads/squad-creator-pro/config.yaml e adote a persona de squad-chief.
 - premissas e limites declarados;
 - próximo passo ou handoff para outro squad/skill, se couber.
 
+## O que muda no AIOX Enterprise
+
+Neste acervo, o modo Pro aprofunda DNA, contratos e gates do squad que você está construindo. No Enterprise, o fluxo lê os artefatos, templates e domínios do workspace. Assim, endurece os contratos e prepara o handoff correto quando o squad precisar de integração controlada.
+
+**O ganho prático:** a sofisticação não fica apenas dentro do squad. Ela considera, desde a criação, como contexto, artefatos e autoridade circularão na operação — sem permitir escrita direta e silenciosa nos dados do negócio.
+
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Um consultor sênior de precificação sai da empresa em 60 dias e nada do critério de decisão dele está documentado. A missão: clonar essa expertise rodando `wf-extract-dna` sobre fontes reais (gravações de calls, propostas, decisões passadas) e montar o clone com `wf-clone-mind`, submetendo o resultado ao gate de fidelidade antes de qualquer uso em produção.
+
+**Saída esperada:** um pacote de clone com DNA extraído em camadas (voz e raciocínio) e fontes rastreáveis, score de `wf-fidelity-score` acima do limiar definido no briefing e parecer de revisão comparando saídas do clone com decisões reais do especialista.
+
+**Erro comum neste squad:** extrair de fontes rasas (uma entrevista, dois posts) e obter um clone que imita o vocabulário mas erra as decisões. Detecte cedo: se a avaliação de fontes reprovar em volume ou diversidade, pare antes de montar o clone.
+
+> **Teste rápido**: dê ao clone um caso que o especialista já resolveu — vocabulário parecido com decisão diferente é reprovação.

@@ -21,8 +21,8 @@ reading_minutes: 10
 has_mermaid_map: true
 map_source: auto-decision_graph
 module: M0
-sequence: M0.4
-track: complete
+sequence: 4
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
@@ -31,8 +31,6 @@ curated_at: '2026-08-09'
 # Desenhe fora da ferramenta antes de codar
 
 Incerteza técnica? Abra um [[Spike]] time-boxado antes de comprometer a Story — e registre a decisão em [[ADR]] se o trade-off for permanente.
-
-← [[12-repertorio-vs-tecnica|Repertório vence técnica]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[26-nao-delegar-pensar|Nao delegue o pensar: repertorio contra zumbi]]
 
 ## Conceitos
 
@@ -454,6 +452,10 @@ Os termos desta aula em uma frase cada.
 
 ---
 
+## Operar isto na prática
+
+Esta aula é pré-requisito no curso de squads — quando a missão for real, siga para: Research: `cursos/AIOX-Advanced-Squads/aulas/02-research.md` · Design System: `cursos/AIOX-Advanced-Squads/aulas/14-design-system.md` · Hormozi: `cursos/AIOX-Advanced-Squads/aulas/21-hormozi.md`
+
 ## Navegação
 
-← [[12-repertorio-vs-tecnica|Repertório vence técnica]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[26-nao-delegar-pensar|Nao delegue o pensar: repertorio contra zumbi]]
+← [[lessons/12-repertorio-vs-tecnica|Repertório vence técnica]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0 — Mindset e princípios]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/26-nao-delegar-pensar|Nao delegue o pensar: repertorio contra zumbi]]

@@ -21,16 +21,14 @@ reading_minutes: 20
 has_mermaid_map: true
 map_source: auto-decision_graph
 module: M0
-sequence: M0.3
-track: complete
+sequence: 3
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Repertório vence técnica
-
-← [[08-principio-processo-certo|Respeite o processo: dê comando, não converse]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[13-pensamento-estruturado-antes-do-terminal|Desenhe fora da ferramenta antes de codar]]
 
 ## Conceitos
 
@@ -598,9 +596,12 @@ Os termos centrais com definição operacional. Use como referência rápida em 
 
 ***
 
-
 ---
+
+## Operar isto na prática
+
+Esta aula é pré-requisito no curso de squads — quando a missão for real, siga para: Brand: `cursos/AIOX-Advanced-Squads/aulas/13-brand.md` · Storytelling: `cursos/AIOX-Advanced-Squads/aulas/16-storytelling.md`
 
 ## Navegação
 
-← [[08-principio-processo-certo|Respeite o processo: dê comando, não converse]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[13-pensamento-estruturado-antes-do-terminal|Desenhe fora da ferramenta antes de codar]]
+← [[lessons/08-principio-processo-certo|Respeite o processo: dê comando, não converse]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0 — Mindset e princípios]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/13-pensamento-estruturado-antes-do-terminal|Desenhe fora da ferramenta antes de codar]]

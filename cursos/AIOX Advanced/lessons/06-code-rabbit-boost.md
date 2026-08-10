@@ -20,9 +20,9 @@ tags:
 reading_minutes: 28
 has_mermaid_map: true
 map_source: auto-decision_graph
-module: M3
-sequence: M3.C1
-track: complete
+module: M2
+sequence: 14
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
@@ -30,8 +30,6 @@ bloom: apply
 ---
 
 # Code Rabbit Boost
-
-← [[49-apply-qa-fixes-loop|Apply QA Fixes Loop: QA volta para Dev sem perder estado]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[19-ciclo-do-repositorio|Ciclo do repositório: Detect Repo, GitHub, CodeRabbit, CI/CD]]
 
 ## Conceitos
 
@@ -567,7 +565,6 @@ coderabbit_integration:
 
 ***
 
-
 ---
 
 ## Prática: audite o gate de revisão do teu pipeline
@@ -598,4 +595,4 @@ Confiança na entrega é função dos portões atravessados, e você precisa sab
 
 ## Navegação
 
-← [[49-apply-qa-fixes-loop|Apply QA Fixes Loop: QA volta para Dev sem perder estado]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[19-ciclo-do-repositorio|Ciclo do repositório: Detect Repo, GitHub, CodeRabbit, CI/CD]]
+← [[lessons/27-otimizacao-claude-md|Otimização do CLAUDE.md: 40% mais magro, mesma capacidade]] · ↑ [[modulos/Módulo 2 - SDC e Qualidade|M2 — SDC e qualidade]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/19-ciclo-do-repositorio|Ciclo do repositório: Detect Repo, GitHub, CodeRabbit, CI/CD]]

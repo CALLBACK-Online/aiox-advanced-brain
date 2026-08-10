@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `35-mesa-redonda-advisory-board` — decisão com múltiplas perspectivas.
+Antes de operar este squad, revise `26-nao-delegar-pensar` no **AIOX Advanced**. Para aprofundar a dinâmica de múltiplas perspectivas, use `cursos/AIOX-Agent-Engineering/aulas/07-mesa-redonda-e-advisory-board.md`.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -133,10 +133,22 @@ Leia squads/advisory-board/config.yaml e adote a persona de board-chair.
 - premissas e limites declarados;
 - próximo passo ou handoff para outro squad/skill, se couber.
 
+## O que muda no AIOX Enterprise
+
+Neste acervo, você prepara o contexto da decisão e conduz a mesa. No Enterprise, o Advisory Board recebe identidade, estratégia e contexto tático do workspace estruturado; atas e recomendações retornam à camada operacional do negócio.
+
+**O ganho prático:** você não precisa recontar a empresa a cada reunião. A decisão nasce ligada ao histórico real e permanece disponível para os próximos squads, em vez de terminar esquecida no chat.
+
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Pegue uma decisão real que está parada há mais de duas semanas — por exemplo, descontinuar uma oferta que ainda gera receita mas trava o roadmap. Formule-a como issue única, rode a task `issue-processing` para clarificar o problema antes de qualquer opinião e depois conduza o workflow `wf-board-meeting` exigindo uma rodada explícita de `devils-advocate`. A missão termina quando existir recomendação com dissenso registrado, não quando todos concordarem.
+
+**Saída esperada:** ata de deliberação com (1) a issue reformulada após `issue-processing` — diferente da formulação original, (2) pelo menos duas posições contrárias atribuídas a conselheiros nomeados, (3) recomendação final com condições de reversão.
+
+**Erro comum neste squad:** groupthink disfarçado — todos os conselheiros convergem na primeira rodada e a mesa vira eco da sua opinião inicial. Detecte cedo: se ninguém contradisse ninguém até a metade da sessão, pare e force o `devils-advocate` antes de continuar.
+
+> **Teste rápido**: se a ata não contém nenhum argumento que te deixou desconfortável, a mesa não deliberou — reforce o dissenso e rode de novo.

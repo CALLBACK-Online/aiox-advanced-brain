@@ -1,18 +1,20 @@
 ---
 type: lesson
 course: aiox-productizacao
+lesson_id: caminhos-de-produto
 title: "Três caminhos de produto: Consultoria → App Web → SaaS"
 lesson_position: 4
 module: M2
+reading_minutes: 25
 status: canonical
 canonical_scope: cursos/AIOX-Productizacao
+curriculum_role: canonical-owner
 source_lesson_id: 65
-source_path: "cursos/AIOX Advanced/lessons/65-tres-caminhos-de-produto.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/65-tres-caminhos-de-produto.md"
 source_version: 1.0.0
 ---
 # Três caminhos de produto: Consultoria → App Web → SaaS
 
-← Vender pela DOR e ROI, não pela tecnologia · ↑ M11 · ⌂ Curso · → Três estágios de monetização: interno → cliente → produto
 
 ## Mapa desta aula
 
@@ -169,19 +171,19 @@ O que cada cor sinaliza nesta aula
 
 Margem, escala, risco e tipo de problema de cada caminho.
 
-**Consultoria**  
-+ validação rápida de dor, cash cedo, aprendizado  
-− escala linear com sua agenda, difícil de "pausar"  
+**Consultoria**
++ validação rápida de dor, cash cedo, aprendizado
+− escala linear com sua agenda, difícil de "pausar"
 Jogo: excelência de entrega e documentação de padrões.
 
-**App web**  
-+ produto reutilizável, ICP claro, ainda cabe high-touch  
-− precisa de UX, onboarding e suporte mínimo  
+**App web**
++ produto reutilizável, ICP claro, ainda cabe high-touch
+− precisa de UX, onboarding e suporte mínimo
 Jogo: repetir o mesmo entregável sem reescrever o monstro.
 
-**SaaS**  
-+ escala não-linear, valuation de produto, canais amplos  
-− custo de multi-tenant, suporte, billing, reliability  
+**SaaS**
++ escala não-linear, valuation de produto, canais amplos
+− custo de multi-tenant, suporte, billing, reliability
 Jogo: automação e isolamento — não herói por cliente.
 
 Nenhum caminho é "mais maduro" em abstrato. Maduro é **alinhar** caminho,
@@ -361,10 +363,23 @@ A IA é a seta. O X é seu — inclusive **em qual pista** você corre este trim
 
 ---
 
+## Pergunte ao seu agente
+
+```text
+Use esta aula para confrontar minha escolha entre consultoria, app e SaaS.
+Avalie repetição, variabilidade, demanda, margem, onboarding e suporte.
+Recomende uma pista para os próximos 90 dias, uma alternativa recusada e
+o gatilho mensurável que permitiria revisar a decisão.
+```
+
+## Evidência de conclusão
+
+Registre formato atual, evidências, alternativa recusada, três cortes e gatilho de revisão no [Decision Pack](../templates/decision-pack.md).
+
 ## Origem curricular
 
 Adaptação autocontida da aula 65 do AIOX Advanced. A fonte histórica permanece registrada em `source_path`; este curso é o dono da progressão atual.
 
 ## Navegação
 
-[← Aula anterior](03-distribuicao-vs-produto.md) · [Curso](../README.md) · [Próxima aula →](05-estagios-de-monetizacao.md)
+[← Aula anterior](03-distribuicao-vs-produto.md) · [M2](../modulos/M2-distribuicao-formato-monetizacao.md) · [Curso](../README.md) · [Próxima aula →](05-estagios-de-monetizacao.md)

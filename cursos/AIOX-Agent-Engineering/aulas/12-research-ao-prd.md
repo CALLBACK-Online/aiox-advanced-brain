@@ -3,18 +3,17 @@ type: lesson
 course: aiox-agent-engineering
 title: "Pipeline canônico: do nada ao PRD com stories prontas"
 lesson_position: 12
-module: M2
+module: M1
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 40
-source_path: "cursos/AIOX Advanced/lessons/40-pipeline-canonico-prd.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/40-pipeline-canonico-prd.md"
 source_version: 1.0.0
 ---
 # pipeline canônico: do nada ao PRD com stories prontas
 
 No fechamento do PRD, deixe explícito o que é Must versus Won't (MoSCoW) e, se houver fila de iniciativas, o score RICE.
 
-← Pasta OS: curadoria local de open-source para o agente · ↑ M8 · ⌂ Curso · → Design system é decisão, não estética
 
 ## Conceitos
 
@@ -488,4 +487,4 @@ Adaptação autocontida da aula 40 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](11-pasta-os.md) · [Curso](../README.md) · [Próxima aula →](13-reuse-adapt-create.md)
+[← Aula anterior](11-pasta-os.md) · [↑ M1](../modulos/M1-discovery-e-research.md) · [Curso](../README.md) · [Próxima aula →](13-reuse-adapt-create.md)

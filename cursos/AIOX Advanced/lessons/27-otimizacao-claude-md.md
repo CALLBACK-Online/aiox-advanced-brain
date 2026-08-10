@@ -21,17 +21,15 @@ bloom: apply
 reading_minutes: 18
 has_mermaid_map: true
 map_source: auto-decision_graph
-module: M2
-sequence: M2.4
-track: complete
+module: M1
+sequence: 13
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Otimização do CLAUDE.md: 40% mais magro, mesma capacidade
-
-← [[17-engenharia-de-contexto|Engenharia de contexto: limpar comandos, skills e MCPs]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[18-yaml-markdown-json-sweet-spot|YAML, Markdown, JSON: o sweet spot para LLM]]
 
 ## Conceitos
 
@@ -504,9 +502,8 @@ Tradução dos termos para quem está otimizando um CLAUDE.md pela primeira vez.
 
 ***
 
-
 ---
 
 ## Navegação
 
-← [[17-engenharia-de-contexto|Engenharia de contexto: limpar comandos, skills e MCPs]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[18-yaml-markdown-json-sweet-spot|YAML, Markdown, JSON: o sweet spot para LLM]]
+← [[lessons/25-core-config-leis-sociais|core-config: as leis sociais do projeto]] · ↑ [[modulos/Módulo 1 - Sistema e Contexto|M1 — Sistema e contexto]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/06-code-rabbit-boost|Code Rabbit Boost]]

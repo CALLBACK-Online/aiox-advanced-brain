@@ -9,6 +9,7 @@ status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
 source_refs: [opentelemetry-signals, kubernetes-probes]
+reading_minutes: 5
 ---
 
 # Logs, métricas, traces e health checks

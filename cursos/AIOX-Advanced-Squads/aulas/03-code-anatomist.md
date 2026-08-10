@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `31-brownfield-discovery; 38-code-anatomy-domain-decoder` — engenharia reversa de sistema.
+Antes de operar este squad, revise `31-brownfield-discovery` e `53-brownfield-enhancement` no **AIOX Advanced**. Para aprofundar engenharia reversa, use `cursos/AIOX-Agent-Engineering/aulas/10-code-anatomy-e-domain-decoder.md`.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -135,8 +135,14 @@ Leia squads/code-anatomist/config.yaml e adote a persona de decoder-chief.
 
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Pegue um repositório real que você **não** escreveu — um open-source que você usa ou um legado da empresa — e peça o mapa completo do sistema. Rode `characterize-legacy` para o diagnóstico inicial de saúde e depois `map-domain` para levantar módulos, fronteiras e fluxos de dados. O objetivo não é opinar sobre o código: é produzir um mapa que um dev novo usaria na primeira semana.
+
+**Saída esperada:** dossiê de anatomia com (1) módulos e dependências entre eles enumerados, (2) pontos de entrada (APIs, jobs, CLIs) com caminho de arquivo para cada um, (3) riscos e áreas sem teste marcados explicitamente.
+
+**Erro comum neste squad:** descrever a arquitetura *idealizada* — a que a documentação promete — em vez da real. Detecte cedo: peça o caminho de arquivo de três afirmações do mapa; se alguma não apontar para código existente, o mapa está sendo inventado.
+
+> **Teste rápido**: abra dois arquivos citados no dossiê e confirme que fazem o que o mapa diz; um mapa que não sobrevive a essa amostragem não é anatomia, é ficção.

@@ -1,41 +1,32 @@
 ---
-type: course-module
+type: module
 course: aiox-advanced
 module: MC
-sequence: 13
+sequence: 5
 status: canonical
 canonical_scope: cursos/AIOX Advanced
-source_version: 1.0.0
-tags: [curso/aiox-advanced, modulo]
+source_version: 2.0.0
 ---
 
-# Capstone — Método S2S e caso integrado
-
-Eu comprimo o curso em uma corrida real: sinal, pesquisa, PRD, Stories, build, gate, deploy e ROI.
+# Capstone — Sinais em sistema entregue
 
 ## Resultado
 
-Uma fatia vertical entregue em 90 minutos, com evidência honesta do começo ao fim.
+Integrar mindset, contexto, SDC, determinismo e método em uma fatia funcional de ponta a ponta.
 
-## Rota Essencial
+## Aulas
 
-1. [[44-metodo-s2s|Método S2S: converter sinais em sistemas]]
-2. [[74-caso-integrado-end-to-end|Caso integrado end-to-end: do briefing ao deploy em 90 minutos]]
+1. [[lessons/44-metodo-s2s|Método S2S]]
+2. [[lessons/74-caso-integrado-end-to-end|Caso integrado end-to-end]]
 
 ## Evidência de conclusão
 
-Projeto Integrador com brief, PRD curto, uma a três Stories, QG, URL ou bloqueio diagnosticado, ROI e retrospectiva.
+Artefato operável, decision log, quality gate e demonstração reproduzível conforme [[Projeto Integrador]] e [[Rubrica]].
 
 ## Checkpoint
 
-Eu recupero os conceitos no [[avaliacoes/Quiz MC - Capstone|Quiz do MC]] e confiro se consigo produzir a evidência sem seguir uma receita cega.
-
-## O que o Capstone diagnostica
-
-Se eu ainda não fecho a evidência, meu gargalo continua sendo método. Se eu fecho o ciclo de forma consistente, mas perco tempo remontando contexto, integrações, governança e monitoramento entre projetos, meu gargalo já é operacional.
-
-Nesse segundo caso, o próximo passo não é acumular mais aulas. É comparar a operação que mantenho sozinho com a infraestrutura mantida do **AIOX Enterprise** em `JORNADA-AIOX.md` (raiz do repositório; Fundamentals, Advanced ou Enterprise?).
+[[avaliacoes/Quiz MC - Capstone|Quiz MC]]
 
 ## Navegação
 
-← [[modulos/Módulo 12 - Deploy Profissional|M12]] · ↑ [[cursos/AIOX Advanced/README|Curso]] · → [[Projeto Integrador]]
+← [[modulos/Módulo 4 - Método e Brownfield|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · fim

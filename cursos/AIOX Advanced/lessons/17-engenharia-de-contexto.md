@@ -21,17 +21,15 @@ bloom: apply
 reading_minutes: 12
 has_mermaid_map: true
 map_source: auto-decision_graph
-module: M2
-sequence: M2.3
-track: essential
+module: M1
+sequence: 10
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Engenharia de contexto: limpar comandos, skills e MCPs
-
-← [[16-janela-de-contexto|Janela de contexto: o limite real e a degradação acima de 40K]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[27-otimizacao-claude-md|Otimização do CLAUDE.md: 40% mais magro, mesma capacidade]]
 
 ## Conceitos
 
@@ -487,9 +485,8 @@ Os termos desta aula em uma frase cada.
 
 ***
 
-
 ---
 
 ## Navegação
 
-← [[16-janela-de-contexto|Janela de contexto: o limite real e a degradação acima de 40K]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[27-otimizacao-claude-md|Otimização do CLAUDE.md: 40% mais magro, mesma capacidade]]
+← [[lessons/16-janela-de-contexto|Janela de contexto: o limite real e a degradação acima de 40K]] · ↑ [[modulos/Módulo 1 - Sistema e Contexto|M1 — Sistema e contexto]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/18-yaml-markdown-json-sweet-spot|YAML, Markdown, JSON: o sweet spot para LLM]]

@@ -1,18 +1,20 @@
 ---
 type: lesson
 course: aiox-productizacao
+lesson_id: distribuicao-vs-produto
 title: "Distribuição > Produto (10/90)"
 lesson_position: 3
 module: M2
+reading_minutes: 25
 status: canonical
 canonical_scope: cursos/AIOX-Productizacao
+curriculum_role: canonical-owner
 source_lesson_id: 63
-source_path: "cursos/AIOX Advanced/lessons/63-distribuicao-vs-produto.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/63-distribuicao-vs-produto.md"
 source_version: 1.0.0
 ---
 # Distribuição > Produto (10/90)
 
-← Service-as-Software: a era do serviço produtivado · ↑ M11 · ⌂ Curso · → Vender pela DOR e ROI, não pela tecnologia
 
 ## Mapa desta aula
 
@@ -359,10 +361,23 @@ A IA é a seta. O X é seu — inclusive **sair do repo** e falar com humano.
 
 ---
 
+## Pergunte ao seu agente
+
+```text
+Use esta aula e o template experimento-distribuicao.md. Transforme minha
+ideia de divulgação em uma hipótese com um público, um canal, uma mensagem,
+uma ação e uma métrica. Exija kill threshold e prazo máximo de 14 dias.
+Não recomende construir feature antes do teste.
+```
+
+## Evidência de conclusão
+
+Preencha o [Experimento de distribuição](../templates/experimento-distribuicao.md) com um canal prioritário, volume, cadência, métricas e kill threshold definidos antes da execução.
+
 ## Origem curricular
 
 Adaptação autocontida da aula 63 do AIOX Advanced. A fonte histórica permanece registrada em `source_path`; este curso é o dono da progressão atual.
 
 ## Navegação
 
-[← Aula anterior](02-dor-e-roi.md) · [Curso](../README.md) · [Próxima aula →](04-caminhos-de-produto.md)
+[← Aula anterior](02-dor-e-roi.md) · [M2](../modulos/M2-distribuicao-formato-monetizacao.md) · [Curso](../README.md) · [Próxima aula →](04-caminhos-de-produto.md)

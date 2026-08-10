@@ -6,7 +6,8 @@ lesson_position: 28
 module: MC
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
-source_version: 1.0.0
+source_version: 1.1.0
+source: synthesis
 ---
 
 # Capstone: capacidade agentic em produção
@@ -19,9 +20,9 @@ Você integra as decisões do curso em uma capacidade executável, auditável e 
 
 ```mermaid
 flowchart LR
-  R["Research"] --> C["Contrato"]
-  C --> B["Build"]
-  B --> O["Orquestração"]
+  R["Research"] --> P["PRD"]
+  P --> C["Capacidade"]
+  C --> O["Orquestração"]
   O --> H["Harness/API"]
   H --> P["Produção"]
   P --> E["Evidência"]
@@ -33,7 +34,7 @@ Use para uma missão real, pequena o suficiente para ser concluída e importante
 
 ## Prática
 
-Execute o [Projeto Integrador](../Projeto-Integrador.md). Registre cada gate antes de avançar e interrompa efeitos externos até obter autorização.
+Execute a cadeia **Research → PRD → capacidade → orquestração → harness/API → deploy → evidências** do [Projeto Integrador](../Projeto-Integrador.md). Registre cada gate antes de avançar e interrompa efeitos externos até obter autorização.
 
 ## Pergunte ao seu agente
 
@@ -47,4 +48,4 @@ Pacote completo avaliado com pelo menos 80/100 e sem risco crítico omitido.
 
 ## Navegação
 
-[← Aula anterior](27-prontidao-de-producao.md) · [Curso](../README.md) · [Projeto](../Projeto-Integrador.md)
+[← Aula anterior](27-prontidao-de-producao.md) · [↑ MC](../modulos/MC-capstone.md) · [Curso](../README.md) · [Projeto](../Projeto-Integrador.md)

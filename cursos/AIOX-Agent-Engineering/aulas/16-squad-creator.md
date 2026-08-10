@@ -3,16 +3,15 @@ type: lesson
 course: aiox-agent-engineering
 title: "Squad Creator passo a passo: criar um squad do zero"
 lesson_position: 16
-module: M3
+module: M2
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 34
-source_path: "cursos/AIOX Advanced/lessons/34-squad-creator-passo-a-passo.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/34-squad-creator-passo-a-passo.md"
 source_version: 1.0.0
 ---
 # Squad Creator passo a passo: criar um squad do zero
 
-← Anatomia de um Squad AIOX · ↑ M7 · ⌂ Curso · → Triagem de Squad novo: fase-zero de prior-art + research loop
 
 ## Conceitos
 
@@ -504,4 +503,4 @@ Adaptação autocontida da aula 34 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](15-anatomia-de-squad.md) · [Curso](../README.md) · [Próxima aula →](17-ralph.md)
+[← Aula anterior](15-anatomia-de-squad.md) · [↑ M2](../modulos/M2-construcao-de-capacidade.md) · [Curso](../README.md) · [Próxima aula →](17-ralph.md)

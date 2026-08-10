@@ -30,7 +30,7 @@ Escolher a **raiz do vault** certa e abrir o arquivo de entrada sem se perder.
 
 | Vault root | Quando |
 |------------|--------|
-| `cursos/AIOX-Fundamentos-de-Arquitetura/` | Entender sistemas e linguagem técnica |
+| `cursos/Introducao-a-Arquitetura-de-Sistemas/` | Entender sistemas e linguagem técnica |
 | `cursos/AIOX-Fundamentals/` | Instalar e operar o Core |
 | `cursos/AIOX Advanced/` | Estudar o método (grafo grande) |
 | `cursos/AIOX-Advanced-Squads/` | Operação 1:1 dos squads |
@@ -45,7 +45,7 @@ Para filtros coloridos (azul/roxo/verde/laranja) e hubs `00-HOME` / MOCs, use a 
 ## Mapa mental do acervo
 
 - Hub: `cursos/README.md` (path no repo; entre cursos use monoespaçado).
-- Base técnica: pasta `cursos/AIOX-Fundamentos-de-Arquitetura/`.
+- Base técnica: pasta `cursos/Introducao-a-Arquitetura-de-Sistemas/`.
 - Core: pasta `cursos/AIOX-Fundamentals/`.
 - Método: pasta `cursos/AIOX Advanced/`.
 - Squads: pasta `cursos/AIOX-Advanced-Squads/`.

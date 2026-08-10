@@ -22,16 +22,14 @@ reading_minutes: 10
 has_mermaid_map: true
 map_source: handcrafted
 module: M1
-sequence: M1.6
-track: complete
+sequence: 8
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # 4 executores: [[Humano]], [[Agent]], [[Clone]], [[Worker]]
-
-← [[14-anatomia-do-agente|Anatomia de um agente: persona, skills, autoridade, memória]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[05-ambientes-local-staging-production|Local, Staging, Production]]
 
 ## Conceitos
 
@@ -484,9 +482,8 @@ Os termos desta aula em uma frase cada.
 
 ***
 
-
 ---
 
 ## Navegação
 
-← [[14-anatomia-do-agente|Anatomia de um agente: persona, skills, autoridade, memória]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[05-ambientes-local-staging-production|Local, Staging, Production]]
+← [[lessons/05-ambientes-local-staging-production|Local, Staging, Production]] · ↑ [[modulos/Módulo 1 - Sistema e Contexto|M1 — Sistema e contexto]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/16-janela-de-contexto|Janela de contexto: o limite real e a degradação acima de 40K]]

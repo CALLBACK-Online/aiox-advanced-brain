@@ -9,21 +9,21 @@ canonical_scope: cursos/AIOX-Agent-Engineering
 
 ## Checkpoints
 
-- [M1](modulos/M1-arquitetura-da-capacidade.md) → mapa de entidade, unidade de execução e contrato.
-- [M2](modulos/M2-discovery-e-research.md) → dossiê de decisão e PRD executável.
-- [M3](modulos/M3-construcao-de-squads.md) → capability contract e squad mínimo.
-- [M4](modulos/M4-orquestracao-e-escala.md) → DAG, routing e limites de concorrência.
-- [M5](modulos/M5-runtime-fora-da-ide.md) → contrato de harness/API e smoke local.
-- [M6](modulos/M6-producao.md) → deploy ou bloqueio diagnosticado, rollback e readiness.
+- [M0](modulos/M0-arquitetura-da-capacidade.md) → arquitetura operacional da capacidade.
+- [M1](modulos/M1-discovery-e-research.md) → dossiê de pesquisa que termina em PRD executável.
+- [M2](modulos/M2-construcao-de-capacidade.md) → squad mínimo capaz de executar uma unidade real de processo.
+- [M3](modulos/M3-orquestracao-e-escala.md) → plano com dependências, routing e wall-clock observáveis.
+- [M4](modulos/M4-runtime-fora-da-ide.md) → capacidade acessível por runner, API ou harness reproduzível.
+- [M5](modulos/M5-producao.md) → URL funcional, pipeline e checklist de prontidão; ou bloqueio externo comprovado.
 
 ## Quizzes
 
-- [Quiz M1](avaliacoes/Quiz-M1.md)
-- [Quiz M2](avaliacoes/Quiz-M2.md)
-- [Quiz M3](avaliacoes/Quiz-M3.md)
-- [Quiz M4](avaliacoes/Quiz-M4.md)
-- [Quiz M5](avaliacoes/Quiz-M5.md)
-- [Quiz M6](avaliacoes/Quiz-M6.md)
+- [Quiz M0](avaliacoes/Quiz-M0-arquitetura-da-capacidade.md)
+- [Quiz M1](avaliacoes/Quiz-M1-discovery-e-research.md)
+- [Quiz M2](avaliacoes/Quiz-M2-construcao-de-capacidade.md)
+- [Quiz M3](avaliacoes/Quiz-M3-orquestracao-e-escala.md)
+- [Quiz M4](avaliacoes/Quiz-M4-runtime-fora-da-ide.md)
+- [Quiz M5](avaliacoes/Quiz-M5-producao.md)
 
 ## Aprovação
 

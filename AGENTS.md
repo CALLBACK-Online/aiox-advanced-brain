@@ -22,15 +22,21 @@ Overrides locais (se existirem): `AGENTS.local.md` / `CLAUDE.local.md` — não 
 | Caminho | O que é | Quando abrir |
 |---------|---------|--------------|
 | `README.md` | Guia humano do aluno e inventário | Onboarding, FAQ, “o que tem aqui?” |
+| `JORNADA-AIOX.md` | Comparação entre Fundamentals, Advanced e Enterprise | Escolher etapa, próximo passo ou entender o que entra a mais no Enterprise |
 | `catalog.json` | Manifesto: skills, squads, maturidade, aliases | Confirmar existência e maturidade |
 | `cursos/README.md` | Hub das trilhas | Escolher curso / ordem de estudo |
+| `cursos/COMO-ESTUDAR.md` | Diagnóstico e trilhas por caso | “Como devo estudar diante do meu nível ou objetivo?” |
 | `cursos/Introducao-a-Arquitetura-de-Sistemas/` | Curso **base técnica** (arquitetura, dados, integração, fan-out/fan-in, operação, segurança, agentes) | Termo técnico, leitura de diagrama ou decisão de arquitetura |
 | `cursos/Introducao-a-Arquitetura-de-Sistemas/AGENT-GUIDE.md` | Índice curto para agentes ensinarem o curso | Localizar rapidamente a aula certa por intenção |
 | `cursos/AIOX-Fundamentals/` | Curso **AIOX Core básico** (instalação, anatomia, 12 agents, contexto, story e validação) | “Como instalar?”, “qual agent uso?”, primeiro ciclo AIOX |
 | `cursos/AIOX-Fundamentals/AGENT-GUIDE.md` | Roteador pedagógico do Fundamentals | Localizar a aula do Core sem confundir com arquitetura ou Advanced |
-| `cursos/AIOX Advanced/` | Curso **método** (mindset, SDC, determinismo, design, deploy) | “Como o AIOX funciona?” |
+| `cursos/AIOX Advanced/` | Curso **método** (mindset, contexto, SDC, determinismo, brownfield) | “Como conduzo o trabalho com AIOX?” |
+| `cursos/AIOX-Agent-Engineering/` | Curso de **engenharia de agentes** (capacidades, workflows, runners, orquestração e produção) | Construir ou operar capacidade agentic própria |
+| `cursos/AIOX-Agent-Engineering/AGENT-GUIDE.md` | Roteador pedagógico de Agent Engineering | Distinguir engenharia, design, productização e uso de squad pronto |
 | `cursos/AIOX-Design/` | Curso **design system / contrato visual** para IA (`DESIGN.md`, taxonomia, variantes) | UI com agentes, deriva visual, DESIGN.md |
 | `cursos/AIOX-Design/AGENT-GUIDE.md` | Índice curto para agentes ensinarem design AIOX | Roteamento por intenção de UI/DS |
+| `cursos/AIOX-Productizacao/` | Curso de **oferta, distribuição, formato e monetização** | Transformar capacidade comprovada em teste de mercado |
+| `cursos/AIOX-Productizacao/AGENT-GUIDE.md` | Roteador pedagógico de Productização | Wedge, dor/ROI, distribuição, consultoria vs app vs SaaS e estágio |
 | `00-HOME.md` | Dashboard do vault Obsidian (Graph colorido) | Onboarding visual do segundo cérebro |
 | `cursos/MOC-*.md` | Hubs de conexão cursos × skills × squads | “Como isso se liga no grafo?” |
 | `cursos/Obsidian-IA/` | Mini-curso **Obsidian + IA** (vault, Context Brief, execução, retorno) | “Como integro o segundo cérebro ao trabalho com AIOX?” |
@@ -59,7 +65,7 @@ Escolha o papel dominante e declare-o se ajudar a pessoa:
 | Papel | Quando | Comportamento |
 |-------|--------|----------------|
 | **Professor** | Dúvida conceitual, “não entendi”, revisão de trilha | Explica com material do curso; cita aula/módulo; propõe próximo passo de estudo |
-| **Orientador de trilha** | “Por onde começo?”, “estou perdido” | Usa `cursos/README.md` + rotas Essencial/Completa; não despeja 75 aulas de uma vez |
+| **Orientador de trilha** | “Por onde começo?”, “estou perdido” | Usa `cursos/README.md`; preserva as cinco etapas e aciona especializações laterais só pelo gargalo |
 | **Curador do vault de estudo** | Obsidian, MOC, notas, “segundo cérebro” | Skills `aiox-brain` → `obsidian-course-vault` / `course-moc` / `study-capture`; não poluir canônico |
 | **Roteador de missão** | Dor/objetivo operacional | Menor mecanismo suficiente: skill → squad → sequência; usa `agent-router.json` quando for squad |
 | **Especialista de domínio** | Skill/squad já escolhido | Abre `SKILL.md` ou aula + `config.yaml`; conduz briefing → execução → evidência |
@@ -72,9 +78,13 @@ Se o pedido misturar estudo e execução, **ensine o mínimo necessário**, mont
 ## Algoritmo universal (toda conversa neste repo)
 
 1. **Classificar o pedido**
+   - Diferença, próximo passo ou fit entre Fundamentals, Advanced e Enterprise → `JORNADA-AIOX.md`.
    - Conceito técnico geral / arquitetura de sistemas → `cursos/Introducao-a-Arquitetura-de-Sistemas/AGENT-GUIDE.md`.
    - Instalação, anatomia ou uso básico do `aiox-core` e seus 12 agents → `cursos/AIOX-Fundamentals/AGENT-GUIDE.md`.
-   - Método, operação e linguagem específica do AIOX → curso AIOX Advanced.
+   - Método, contexto, SDC e determinismo no AIOX → curso AIOX Advanced.
+   - Construção de agents, squads, workflows, runners, harness ou produção → `cursos/AIOX-Agent-Engineering/AGENT-GUIDE.md`.
+   - UI, `DESIGN.md`, design system ou deriva visual → `cursos/AIOX-Design/AGENT-GUIDE.md`.
+   - Oferta, ROI, distribuição ou monetização de capacidade comprovada → `cursos/AIOX-Productizacao/AGENT-GUIDE.md`.
    - Vault / Obsidian / MOC / notas de aula / “segundo cérebro” → `skills/aiox-brain/` e skills irmãs (abaixo).
    - Escolha ou uso de squad → `AGENT-GUIDE.md` + `agent-router.json`.
    - Tarefa estreita com skill óbvia → `skills/<nome>/SKILL.md`.
@@ -146,14 +156,13 @@ Isto **não** é o vault pessoal mentelendaria: sem paths de máquina, sem curad
 
 ### Ordem de estudo padrão (se a pessoa não souber por onde ir)
 
-1. Se o gargalo for vault/Obsidian/agent de estudo: `cursos/Obsidian-IA/README.md`.
+1. `cursos/Obsidian-IA/README.md` — gate de estudo; quem já domina o vault pode usar a evidência de entrada como diagnóstico.
 2. `cursos/Introducao-a-Arquitetura-de-Sistemas/README.md` — base técnica; completo para iniciantes ou seletivo pelo mapa de termos.
 3. `cursos/AIOX-Fundamentals/README.md` — Core, instalação, agents e primeiro ciclo com evidência.
-4. `cursos/AIOX Advanced/README.md` — Rota Essencial.
-4b. `cursos/AIOX-Design/README.md` — se a dor for UI/contrato visual (pode ser seletivo).
-5. `cursos/AIOX-Advanced-Squads/aulas/00-como-usar-este-curso.md`.
-6. Mapa de decisão + 1 squad alinhado à dor real dela.
-7. Volta ao Advanced no projeto integrador / capstone quando for consolidar.
+4. `cursos/AIOX Advanced/README.md` — 28 aulas do método.
+5. `cursos/AIOX-Advanced-Squads/aulas/00-como-usar-este-curso.md` — operação dos especialistas publicados.
+6. Mapa de decisão + 1 squad alinhado à dor real.
+7. Agent Engineering, Design e Productização entram como aprofundamentos laterais quando a missão revelar esse gargalo; não substituem a quinta etapa.
 
 ### Tom
 
@@ -224,7 +233,7 @@ Tabela ampliada: `cursos/AIOX-Advanced-Squads/Guia-de-execucao.md`.
 ## Regras de biblioteca (não negociáveis)
 
 - Preserve `skills/` e `squads/` como fontes canônicas deste acervo.
-- Preserve `cursos/Introducao-a-Arquitetura-de-Sistemas/`, `cursos/AIOX-Fundamentals/`, `cursos/AIOX Advanced/`, `cursos/AIOX-Design/` e `cursos/AIOX-Advanced-Squads/` como unidades autocontidas (links de cada curso resolvem **dentro da própria pasta do curso**).
+- Preserve `cursos/Introducao-a-Arquitetura-de-Sistemas/`, `cursos/AIOX-Fundamentals/`, `cursos/AIOX Advanced/`, `cursos/AIOX-Agent-Engineering/`, `cursos/AIOX-Design/`, `cursos/AIOX-Productizacao/` e `cursos/AIOX-Advanced-Squads/` como unidades autocontidas (links de cada curso resolvem **dentro da própria pasta do curso**).
 - Links e dependências documentais resolvem **dentro deste repositório**.
 - **Nunca** commit paths absolutos de máquina (`/Users/…`, `/home/…`, `C:\Users\…`).
 - **Não** importe componentes multi-tenant exclusivos do AIOX Enterprise.
@@ -270,10 +279,15 @@ Tabela ampliada: `cursos/AIOX-Advanced-Squads/Guia-de-execucao.md`.
 ## Referências rápidas
 
 - Hub humano: `README.md`
+- Jornada de produto: `JORNADA-AIOX.md`
 - Hub de cursos: `cursos/README.md`
 - Fundamentos técnicos: `cursos/Introducao-a-Arquitetura-de-Sistemas/AGENT-GUIDE.md`
 - AIOX Core básico: `cursos/AIOX-Fundamentals/AGENT-GUIDE.md`
 - Método: `cursos/AIOX Advanced/README.md`
+- Engenharia de agentes: `cursos/AIOX-Agent-Engineering/AGENT-GUIDE.md`
+- Design: `cursos/AIOX-Design/AGENT-GUIDE.md`
+- Productização: `cursos/AIOX-Productizacao/AGENT-GUIDE.md`
+- Fronteira AE × Productização: `cursos/MOC-Agent-Engineering-vs-Productizacao.md`
 - Squads (alunos): `cursos/AIOX-Advanced-Squads/README.md`
 - Squads (agents): `cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md`
 - Router: `cursos/AIOX-Advanced-Squads/agent-router.json`

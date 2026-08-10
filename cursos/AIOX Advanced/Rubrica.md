@@ -2,51 +2,51 @@
 type: assessment-rubric
 course: aiox-advanced
 status: canonical
-source_version: 1.0.0
+source_version: 2.0.0
 canonical_scope: cursos/AIOX Advanced
 tags: [curso/aiox-advanced, avaliacao]
 ---
 
 # Rubrica — Projeto Integrador
 
-Eu avalio evidência, não eloquência. Cada critério vale 20 pontos. A entrega passa com 80 pontos e não pode zerar segurança ou funcionamento.
+Cada critério vale 20 pontos. Aprovação: 80 pontos e nenhum zero em funcionamento ou segurança.
 
-## 1. Problema e valor — 20 pontos
+## 1. Problema e foco
 
-- **0:** problema indefinido.
-- **10:** problema real, mas sem baseline ou resultado mensurável.
-- **20:** problema, usuário, baseline, resultado e anti-escopo estão explícitos.
+- **0:** intenção genérica.
+- **10:** problema real, sem baseline ou anti-escopo.
+- **20:** usuário, dor, baseline, resultado e corte explícitos.
 
-## 2. Arquitetura operacional — 20 pontos
+## 2. Sistema e contexto
 
-- **0:** prompt ou automação isolada.
-- **10:** processo existe, mas autoridade, estados ou artefatos são ambíguos.
-- **20:** entidade, estados, agentes, autoridade, contexto e artefatos formam um sistema coerente.
+- **0:** prompt isolado.
+- **10:** processo existe, mas fontes, autoridade ou ambientes são ambíguos.
+- **20:** leis, fontes, executores, ambiente e contratos formam um sistema coerente.
 
-## 3. Execução e qualidade — 20 pontos
+## 3. SDC e qualidade
 
 - **0:** não há prova de execução.
-- **10:** funciona uma vez, sem ciclo ou gate reproduzível.
-- **20:** Story, critérios de aceite, Quality Gate e correções estão registrados.
+- **10:** funciona uma vez, sem gate reproduzível.
+- **20:** briefing, stories, aceite, quality gate e correções estão registrados.
 
-## 4. Entrega e segurança — 20 pontos
+## 4. Determinismo e segurança
 
-- **0:** não funciona ou expõe risco crítico.
-- **10:** funciona, mas não há smoke test, rollback ou limites documentados.
-- **20:** entrega acessível, smoke aprovado, segurança mínima, rollback e limitações explícitas.
+- **0:** autonomia sem limites ou risco crítico.
+- **10:** há controles, mas estado, parada ou escalonamento são frágeis.
+- **20:** determinismo, estado, stop condition, intervenção e limites estão explícitos.
 
-## 5. Aprendizado e alavancagem — 20 pontos
+## 5. Evidência e aprendizado
 
-- **0:** não compara resultado com estado anterior.
-- **10:** apresenta percepção qualitativa sem medida confiável.
-- **20:** demonstra before/after, registra ROI com premissa explícita, identifica o novo gargalo e toma uma decisão de evolução.
+- **0:** sem demonstração reproduzível.
+- **10:** artefato existe, mas decisões e before/after são fracos.
+- **20:** resultado, decision log, limitações e comparação com baseline sustentam o próximo passo.
 
 ## Resultado
 
-- **90–100:** sistema pronto para operação real.
+- **90–100:** método dominado e transferível.
 - **80–89:** aprovado; ajustes não críticos registrados.
-- **60–79:** refazer os gates fracos.
-- **Abaixo de 60:** retornar ao problema e à arquitetura.
+- **60–79:** refazer gates fracos.
+- **Abaixo de 60:** voltar ao problema e ao contrato do sistema.
 
 ## Navegação
 

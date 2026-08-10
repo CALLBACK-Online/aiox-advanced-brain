@@ -17,9 +17,15 @@ Vault de **estudo AIOX** neste repositório. Não assume plugins pagos. Não con
 
 | Raiz | Quando |
 |------|--------|
-| `cursos/AIOX Advanced/` | Foco no método (grafo ~1.6k links) |
+| `cursos/Obsidian-IA/` | Aprender o vault e preparar Context Brief |
+| `cursos/Introducao-a-Arquitetura-de-Sistemas/` | Entender sistemas e vocabulário técnico |
+| `cursos/AIOX-Fundamentals/` | Instalar e operar o Core |
+| `cursos/AIOX Advanced/` | Foco no método (grafo com milhares de links) |
+| `cursos/AIOX-Agent-Engineering/` | Aprofundar capacidades agentic |
+| `cursos/AIOX-Design/` | Aprofundar contrato visual |
+| `cursos/AIOX-Productizacao/` | Aprofundar oferta e mercado |
 | `cursos/AIOX-Advanced-Squads/` | Foco em squads 1:1 |
-| `cursos/` | Ver as duas trilhas (hub) |
+| `cursos/` | Ver a jornada completa (hub) |
 | Raiz do repo | Estudo + `skills/` + `squads/` (índice mais pesado) |
 
 Instruções humanas: `README.md` (seção Obsidian) e `cursos/README.md`.
@@ -29,7 +35,7 @@ Instruções humanas: `README.md` (seção Obsidian) e `cursos/README.md`.
 1. Confirmar que a pessoa tem o material clonado/extraído.
 2. Indicar **Open folder as vault** na raiz escolhida.
 3. Abrir o `README.md` do curso.
-4. Sugerir Rota Essencial (método) ou aula `00-como-usar-este-curso` (squads).
+4. Sugerir a entrada da etapa atual; no método, a sequência ativa de 28 aulas; em Squads, aula `00-como-usar-este-curso`.
 5. Explicar: agent ensina/roteia; Obsidian navega o grafo.
 
 ## Localizar material
@@ -39,6 +45,11 @@ Sempre paths relativos ao repo:
 ```text
 cursos/AIOX Advanced/lessons/
 cursos/AIOX Advanced/modulos/
+cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/
+cursos/AIOX-Fundamentals/lessons/
+cursos/AIOX-Agent-Engineering/aulas/
+cursos/AIOX-Design/aulas/
+cursos/AIOX-Productizacao/aulas/
 cursos/AIOX-Advanced-Squads/aulas/
 cursos/AIOX-Advanced-Squads/modulos/
 cursos/README.md
@@ -85,6 +96,6 @@ Depois: {study-capture | course-moc | aiox-brain → Context Brief → skill/squ
 
 ```text
 Arquivo: {path relativo}
-Curso: {Advanced | Squads}
+Curso: {Obsidian + IA | Introdução à Arquitetura | Fundamentals | Advanced | Squads}
 Ligue com: {1–2 vizinhos úteis}
 ```

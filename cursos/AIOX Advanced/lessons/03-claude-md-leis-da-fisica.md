@@ -21,16 +21,14 @@ reading_minutes: 22
 has_mermaid_map: true
 map_source: auto-decision_graph
 module: M1
-sequence: M1.2
-track: essential
+sequence: 6
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[CLAUDE md|CLAUDE.md]] é a lei da física do seu projeto
-
-← [[02-aiox-nao-e-ferramenta|AIOX não é ferramenta]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[25-core-config-leis-sociais|core-config: as leis sociais do projeto]]
 
 ## Conceitos
 
@@ -597,9 +595,8 @@ Sem checagem, o CLAUDE.md vira decoração. Estas métricas separam lei viva de 
 
 ***
 
-
 ---
 
 ## Navegação
 
-← [[02-aiox-nao-e-ferramenta|AIOX não é ferramenta]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[25-core-config-leis-sociais|core-config: as leis sociais do projeto]]
+← [[lessons/26-nao-delegar-pensar|Nao delegue o pensar: repertorio contra zumbi]] · ↑ [[modulos/Módulo 1 - Sistema e Contexto|M1 — Sistema e contexto]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/05-ambientes-local-staging-production|Local, Staging, Production]]

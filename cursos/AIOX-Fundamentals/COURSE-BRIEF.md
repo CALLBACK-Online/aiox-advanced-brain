@@ -43,7 +43,7 @@ aiox-fundamentals
 
 **Nível:** Iniciante.
 
-**Pré-requisitos:** computador com Node.js 18+, npm 9+, Git e uma IDE/CLI suportada. Não exige experiência profissional em programação.
+**Pré-requisitos:** computador com Node.js 18+, npm 9+, Git e uma IDE/CLI suportada. Não exige experiência profissional em programação. Introdução à Arquitetura de Sistemas é a base recomendada; o aluno pode usar seu projeto integrador como diagnóstico e revisar apenas as lacunas.
 
 ## 2️⃣ Público-alvo (ICP)
 

@@ -1,18 +1,20 @@
 ---
 type: lesson
 course: aiox-productizacao
+lesson_id: dor-e-roi
 title: "Vender pela DOR e ROI, não pela tecnologia"
 lesson_position: 2
 module: M1
+reading_minutes: 25
 status: canonical
 canonical_scope: cursos/AIOX-Productizacao
+curriculum_role: canonical-owner
 source_lesson_id: 64
-source_path: "cursos/AIOX Advanced/lessons/64-vender-pela-dor-e-roi.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/64-vender-pela-dor-e-roi.md"
 source_version: 1.0.0
 ---
 # Vender pela dor e ROI, não pela tecnologia
 
-← Distribuição > Produto (10/90) · ↑ M11 · ⌂ Curso · → Três caminhos de produto: Consultoria → App Web → SaaS
 
 ## Mapa desta aula
 
@@ -169,19 +171,19 @@ O que cada cor sinaliza nesta aula
 
 Cada bloco tem regra. Sem regra, vira slide de evento.
 
-**1. Dor (custo atual)**  
+**1. Dor (custo atual)**
 Transforme adjetivo em conta. "Caótico" vira: 12h/semana de triagem × R$80/h
 × 4 = R$3.840/mês. Se não tem dado, use faixa e diga a premissa.
 
-**2. Mecanismo (como)**  
+**2. Mecanismo (como)**
 Uma ou duas frases: o que o sistema faz no fluxo do comprador. "Consolida
 três fontes e gera rascunho revisável em 20 min" — não "orquestra 12 agentes".
 
-**3. ROI (delta)**  
+**3. ROI (delta)**
 Custo atual − custo novo − preço = delta. Use **conservador**. Mostre
 premissas. CFO respeita humildade com número; detesta milagre.
 
-**4. Prova**  
+**4. Prova**
 Caso com antes/depois, piloto pago, ou proxy forte (interno dogfood com
 métrica). "Vários clientes" sem número é fumaça.
 
@@ -238,13 +240,13 @@ Template de corte em 3 passadas:
 
 Mesmo produto. Outra ordem. Outro resultado.
 
-**Antes (tech-first):**  
+**Antes (tech-first):**
 "Plataforma multi-agente com Claude, RAG e pipeline ETL para operações de
 conteúdo. 12 agentes orbitais. Integração com Notion e analytics."
 
 Resultado: "interessante" e silêncio.
 
-**Depois (dor → ROI):**  
+**Depois (dor → ROI):**
 "Seu time gasta ~8h/semana montando o relatório de performance (≈R$2.5k/mês
 em custo interno). A gente consolida as três fontes e entrega rascunho
 revisável em 20 minutos. Piloto de 30 dias: se não cortar pelo menos 50% do
@@ -373,10 +375,22 @@ A IA é a seta. O X é seu — inclusive **o que você escolhe dizer primeiro**.
 
 ---
 
+## Pergunte ao seu agente
+
+```text
+Use esta aula e o template oferta-uma-pagina.md. Audite cada número do meu
+pitch: indique fonte, fórmula e premissa. Marque como hipótese tudo que não
+for demonstrável. Depois reescreva a promessa sem mencionar a stack.
+```
+
+## Evidência de conclusão
+
+Entregue a [Oferta de uma página](../templates/oferta-uma-pagina.md) com baseline ou plano de medição, mecanismo, promessa, prova, premissas de ROI e anti-escopo.
+
 ## Origem curricular
 
 Adaptação autocontida da aula 64 do AIOX Advanced. A fonte histórica permanece registrada em `source_path`; este curso é o dono da progressão atual.
 
 ## Navegação
 
-[← Aula anterior](01-service-as-software.md) · [Curso](../README.md) · [Próxima aula →](03-distribuicao-vs-produto.md)
+[← Aula anterior](01-service-as-software.md) · [M1](../modulos/M1-oferta-antes-do-produto.md) · [Curso](../README.md) · [Próxima aula →](03-distribuicao-vs-produto.md)

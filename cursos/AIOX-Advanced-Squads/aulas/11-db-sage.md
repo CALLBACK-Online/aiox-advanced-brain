@@ -135,8 +135,14 @@ Leia squads/db-sage/config.yaml e adote a persona de db-sage.
 
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+O produto precisa de uma tabela `organizations` com isolamento por tenant em um Supabase que já tem dados de produção. Siga o `modify-schema-workflow` para gerar e aplicar a migration com segurança e feche com `db-rls-audit` para provar que nenhuma linha vaza entre tenants.
+
+**Saída esperada:** arquivo de migration versionado e idempotente, saída limpa do dry-run (`db-dry-run`, BEGIN…ROLLBACK) e relatório do audit de RLS mostrando as policies ativas e o resultado dos testes de isolamento.
+
+**Erro comum neste squad:** criar a tabela com RLS habilitado mas sem policy — tudo funciona com a service role e quebra silenciosamente para o usuário final. Detecte cedo testando a query com o papel do usuário comum (não o admin) logo após o dry-run.
+
+> **Teste rápido**: consegue apontar a linha do relatório que prova que o tenant A não lê dados do tenant B? Sem ela, a missão não está feita.

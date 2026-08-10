@@ -1,20 +1,19 @@
 ---
 type: lesson
 course: aiox-agent-engineering
-title: "Routing de modelos: Codex para QA, Gemini para pesquisa, Claude para o resto"
+title: "Routing de modelos: fitness, custo, qualidade e fallback"
 lesson_position: 19
-module: M4
+module: M3
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 60
-source_path: "cursos/AIOX Advanced/lessons/60-routing-modelos.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/60-routing-modelos.md"
 source_version: 1.0.0
 ---
-# Routing de modelos: Codex para QA, Gemini para pesquisa, Claude para o resto
+# Routing de modelos: fitness, custo, qualidade e fallback
 
 Política canônica: Model routing + Three-brain (motores diferentes) e No-self-review — quem implementa não é o único a validar.
 
-← Quando paralelizar vs sequencial: decisão antes do speedup · ↑ M10 · ⌂ Curso · → Wave Execute: orquestração avançada com waves paralelas
 
 ## Mapa desta aula
 
@@ -38,7 +37,7 @@ Decisão-chave da aula — Qual é o tipo e o risco da task?
 flowchart TB
   Q["Qual é o tipo e o risco da task?"]
   B0["Research multi-fonte<br/>Modelo de research/contexto longo + obr…"]
-  B1["Implementar feature<br/>Núcleo AIOX (Claude-class) + QG depois."]
+  B1["Implementar feature<br/>Modelo forte em código + QG independente."]
   B2["QA / review de diff<br/>Reviewer forte (Codex-class ou Claude Q…"]
   B3["Bulk mecânico<br/>Modelo fast/cheap; upgrade só se QG fal…"]
   B4["Decisão irreversível<br/>Modelo forte + humano no loop; nunca só…"]
@@ -61,7 +60,7 @@ classDef core fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#e2e8f0
 
 **Objetivos de aprendizagem:**
 - Definir uma política de routing por tipo de tarefa com critérios explícitos. _(apply)_
-- Justificar escolha de modelos (Claude/Codex/Gemini ou equivalentes) por fitness, não moda. _(evaluate)_
+- Justificar a escolha de cada modelo por fitness, não por marca ou moda. _(evaluate)_
 - Calcular trade-off custo × qualidade × latência em um fluxo real. _(analyze)_
 - Medir e ajustar a política após uma semana de uso com evidência. _(evaluate)_
 
@@ -132,12 +131,12 @@ temperatura/tools) a partir do **tipo de tarefa** e do **risco**.
 
 Exemplo didático da trilha (ajuste aos teus contratos reais):
 
-- **Pesquisa multi-fonte / síntese larga** → modelo forte em contexto longo
-  e grounding (ex.: Gemini ou equivalente de research).
-- **QA / review de diff / achar bug** → modelo afiado em código e crítica
-  (ex.: Codex/GPT-class reviewer ou Claude com prompt de QG).
-- **Orquestração, escrita de story, raciocínio de produto, default AIOX**
-  → Claude (ou o núcleo da tua stack) com agentes e skills.
+- **Pesquisa multi-fonte / síntese larga** → modelo forte em contexto longo,
+  grounding e citações verificáveis.
+- **QA / review de diff / achar bug** → reviewer forte em código e crítica,
+  preferencialmente independente de quem implementou.
+- **Orquestração, escrita de story e implementação** → modelo principal da
+  stack com tools e contratos necessários para a tarefa.
 - **Bulk mecânico** (rename, format, checklist) → modelo barato/rápido.
 
 Os nomes mudam. A **política** permanece: fitness por tarefa + fallback +
@@ -181,8 +180,9 @@ O que cada cor sinaliza nesta aula
 
 Realidade do grupo Advanced — não é slide, é cicatriz.
 
-Número que circulou no ensino de campo: Model routing bem feito ≈ **40–60%** de
-redução de custo (Haiku para explorar, Sonnet para implementar, Opus para raciocinar).
+O ensino de campo registrou redução material de custo ao separar exploração,
+implementação e raciocínio. O percentual não é universal: deve ser medido no
+próprio workload antes de virar promessa.
 
 Mais o hábito do Alan: modelos baratos de contexto grande em subagente de leitura;
 modelo top no ouro. A cohort discutiu Max semanal vs API — a resposta estrutural
@@ -209,11 +209,11 @@ Política mínima (versionada no repo, não no Slack):
 
 | Task type        | Modelo default     | Fallback        | Gate              |
 |------------------|--------------------|-----------------|-------------------|
-| Research         | Gemini-class       | Claude long     | citações/fontes   |
-| Implementação    | Claude Sonnet/Opus | —               | testes + QG       |
-| QA / review      | Codex/reviewer     | Claude QG       | checklist severo  |
-| Bulk / format    | fast/cheap         | Sonnet          | diff mecânico     |
-| Decisão produto  | Claude + humano    | roundtable      | aceite explícito  |
+| Research         | contexto longo + grounding | segundo modelo apto | citações/fontes |
+| Implementação    | forte em código + tools | modelo principal | testes + QG |
+| QA / review      | reviewer independente | segundo reviewer | checklist severo |
+| Bulk / format    | fast/cheap | modelo principal | diff mecânico |
+| Decisão produto  | raciocínio forte + humano | roundtable | aceite explícito |
 
 **Fallback** é parte da política. Sem fallback, o primeiro 429 ou FAIL
 vira improviso. Improviso não escala.
@@ -252,7 +252,7 @@ Intervenção em uma semana:
 2. Bulk/format → modelo fast (queda enorme de $).
 3. Research multi-PDF → modelo de contexto longo dedicado.
 4. QG de PR crítico → reviewer forte + checklist.
-5. Default de orquestração AIOX → Claude com skills.
+5. Default de orquestração → modelo principal com skills e tools confirmadas.
 
 Resultado: pass rate de QG estável, fatura ~metade, menos 429 no paralelo.
 
@@ -393,4 +393,4 @@ Adaptação autocontida da aula 60 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](18-paralelo-vs-sequencial.md) · [Curso](../README.md) · [Próxima aula →](20-wave-execute.md)
+[← Aula anterior](18-paralelo-vs-sequencial.md) · [↑ M3](../modulos/M3-orquestracao-e-escala.md) · [Curso](../README.md) · [Próxima aula →](20-wave-execute.md)

@@ -3,18 +3,17 @@ type: lesson
 course: aiox-agent-engineering
 title: "Ralph: paralelização de múltiplos agentes"
 lesson_position: 17
-module: M4
+module: M3
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 58
-source_path: "cursos/AIOX Advanced/lessons/58-ralph-paralelizacao.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/58-ralph-paralelizacao.md"
 source_version: 1.0.0
 ---
 # Ralph: paralelização de múltiplos agentes
 
 > **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/12-concorrencia-paralelismo-fanout-fanin.md`.
 
-← Storybook para derivar e testar variantes (a11y, dark mode, responsivo) · ↑ M10 · ⌂ Curso · → Quando paralelizar vs sequencial: decisão antes do speedup
 
 ## Mapa desta aula
 
@@ -390,4 +389,4 @@ Adaptação autocontida da aula 58 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](16-squad-creator.md) · [Curso](../README.md) · [Próxima aula →](18-paralelo-vs-sequencial.md)
+[← Aula anterior](16-squad-creator.md) · [↑ M3](../modulos/M3-orquestracao-e-escala.md) · [Curso](../README.md) · [Próxima aula →](18-paralelo-vs-sequencial.md)

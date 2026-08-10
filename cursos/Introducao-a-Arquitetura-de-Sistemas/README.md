@@ -11,7 +11,7 @@ curriculum_modules: 8
 lessons: 24
 quizzes: 8
 questions: 32
-tags: [curso, arquitetura, sistemas, ia, fundamentos]
+tags: [curso, arquitetura, sistemas, ia, fundamentos, layer/curso]
 ---
 
 # Introdução à Arquitetura de Sistemas
@@ -60,6 +60,10 @@ Ao concluir, você consegue:
 ## Como estudar
 
 Cada aula ensina uma decisão pequena. Leia o mapa, faça a prática e mostre sua resposta ao agente para receber feedback imediato. O curso funciona em Markdown, GitHub ou Obsidian.
+
+**Entrada recomendada:** ter concluído o gate de estudo de Obsidian + IA (`cursos/Obsidian-IA/README.md`) ou conseguir localizar, capturar e explicar uma fonte sem depender do agent para navegar.
+
+**Saída para a próxima etapa:** leve ao AIOX Fundamentals sua arquitetura explicável, os trade-offs defendidos e as dúvidas ainda abertas. Aqui você prova que entende o sistema; no próximo curso aprenderá a operar o Core.
 
 Rota padrão:
 
@@ -152,7 +156,7 @@ python3 "cursos/Introducao-a-Arquitetura-de-Sistemas/_tools/validate_course.py"
 ## Ordem com as outras trilhas
 
 ```text
-Obsidian + IA (opcional) → Introdução à Arquitetura de Sistemas → AIOX Fundamentals → AIOX Advanced → Squads
+Obsidian + IA → Introdução à Arquitetura de Sistemas → AIOX Fundamentals → AIOX Advanced → AIOX Advanced Squads
 ```
 
-Alunos experientes podem usar o diagnóstico e entrar direto no AIOX Fundamentals; quem já opera o Core pode seguir ao Advanced. Hub geral: `cursos/README.md`.
+Alunos experientes podem usar o diagnóstico e entrar direto no AIOX Fundamentals; quem já opera o Core pode seguir ao Advanced. Próximo curso canônico: `cursos/AIOX-Fundamentals/README.md`. Hub geral: `cursos/README.md`.

@@ -40,7 +40,7 @@ Este repositório é um **segundo cérebro educacional**, não o monorepo AIOX e
 Estudar → Capturar → Context Brief → Executar no projeto → Evidência → Devolver aprendizado
 ```
 
-Na primeira passagem, antes de você operar o Core, “executar” significa cumprir uma missão de estudo e preparar o handoff para **Fundamentos de Arquitetura**. Depois de Fundamentals ou Advanced, o mesmo loop chega a um projeto real.
+Na primeira passagem, antes de você operar o Core, “executar” significa cumprir uma missão de estudo e preparar o handoff para **Introdução à Arquitetura de Sistemas**. Depois de Fundamentals ou Advanced, o mesmo loop chega a um projeto real.
 
 ## Anti-padrões comuns
 

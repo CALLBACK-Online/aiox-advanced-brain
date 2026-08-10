@@ -46,7 +46,7 @@ M0 Decisão          M1 Contrato + taxonomia     M2 Stack + prova        M3 Oper
 | Campo | Conteúdo |
 |-------|----------|
 | **Arquivo** | `aulas/01-design-system-e-decisao.md` |
-| **Seed** | `cursos/AIOX Advanced/lessons/41-design-system-e-decisao.md` |
+| **Seed** | `cursos/AIOX Advanced/archive/migrated/lessons/41-design-system-e-decisao.md` |
 | **~min** | 20–25 |
 | **Bloom** | understand → apply |
 | **Resultado** | Diante de 5 escolhas visuais de um produto fictício, marca quais viram **token/regra** e quais ficam **pontuais**, com uma frase de critério cada. |
@@ -61,7 +61,7 @@ M0 Decisão          M1 Contrato + taxonomia     M2 Stack + prova        M3 Oper
 | Campo | Conteúdo |
 |-------|----------|
 | **Arquivo** | `aulas/02-design-system-greenfield-brownfield.md` |
-| **Seed** | `cursos/AIOX Advanced/lessons/32-design-system-greenfield-brownfield.md` |
+| **Seed** | `cursos/AIOX Advanced/archive/migrated/lessons/32-design-system-greenfield-brownfield.md` |
 | **~min** | 20–25 |
 | **Bloom** | apply |
 | **Resultado** | Classifica **um** produto real (ou o do aluno) como greenfield DS, brownfield com DS implícito, ou brownfield com DS legado — e nomeia a **primeira ação** de cada caso. |
@@ -85,8 +85,8 @@ M0 Decisão          M1 Contrato + taxonomia     M2 Stack + prova        M3 Oper
 
 | Campo | Conteúdo |
 |-------|----------|
-| **Arquivo** | `aulas/03-design-md-contrato.md` |
-| **Seed** | `cursos/AIOX Advanced/lessons/43-design-md-novo-contrato.md` + `cursos/AIOX Advanced/conceitos/DESIGN md.md` |
+| **Arquivo** | `aulas/08-design-md-contrato.md` |
+| **Seed** | `cursos/AIOX Advanced/archive/migrated/lessons/43-design-md-novo-contrato.md` + `cursos/AIOX Advanced/conceitos/DESIGN md.md` |
 | **~min** | 25–30 |
 | **Bloom** | apply |
 | **Resultado** | Escreve um **DESIGN.md mínimo** (seções: princípios, tokens base, componentes canônicos, o que é proibido, como a IA deve ler). |
@@ -100,8 +100,8 @@ M0 Decisão          M1 Contrato + taxonomia     M2 Stack + prova        M3 Oper
 
 | Campo | Conteúdo |
 |-------|----------|
-| **Arquivo** | `aulas/04-taxonomia-atomica.md` |
-| **Seed** | `cursos/AIOX Advanced/lessons/42-design-atomico-brad-frost.md` |
+| **Arquivo** | `aulas/10-taxonomia-atomica.md` |
+| **Seed** | `cursos/AIOX Advanced/archive/migrated/lessons/42-design-atomico-brad-frost.md` |
 | **~min** | 25–30 |
 | **Bloom** | apply |
 | **Resultado** | Classifica 8 elementos de uma UI (lista fornecida na aula) em átomo / molécula / organismo / template / página e aponta 1 erro comum de granularidade. |
@@ -115,7 +115,7 @@ M0 Decisão          M1 Contrato + taxonomia     M2 Stack + prova        M3 Oper
 
 | Campo | Conteúdo |
 |-------|----------|
-| **Arquivo** | `aulas/05-tokens-componentes-anti-drift.md` |
+| **Arquivo** | `aulas/09-tokens-componentes-anti-drift.md` |
 | **Seed** | Síntese nova (não há aula Advanced 1:1); puxar trechos de 41/43 + práticas `design-ops` |
 | **~min** | 20–25 |
 | **Bloom** | apply / evaluate |
@@ -140,8 +140,8 @@ M0 Decisão          M1 Contrato + taxonomia     M2 Stack + prova        M3 Oper
 
 | Campo | Conteúdo |
 |-------|----------|
-| **Arquivo** | `aulas/06-stack-tailwind-shadcn-storybook.md` |
-| **Seed** | `cursos/AIOX Advanced/lessons/56-tailwind-shadcn-storybook.md` |
+| **Arquivo** | `aulas/12-stack-tailwind-shadcn-storybook.md` |
+| **Seed** | `cursos/AIOX Advanced/archive/migrated/lessons/56-tailwind-shadcn-storybook.md` |
 | **~min** | 20–25 |
 | **Bloom** | understand → evaluate |
 | **Resultado** | Escreve um parágrafo “por que esta stack **para agentes**” e lista 2 casos em que **outra** stack seria aceitável (com trade-off). |
@@ -155,8 +155,8 @@ M0 Decisão          M1 Contrato + taxonomia     M2 Stack + prova        M3 Oper
 
 | Campo | Conteúdo |
 |-------|----------|
-| **Arquivo** | `aulas/07-storybook-variantes.md` |
-| **Seed** | `cursos/AIOX Advanced/lessons/57-storybook-para-variantes.md` |
+| **Arquivo** | `aulas/14-storybook-variantes.md` |
+| **Seed** | `cursos/AIOX Advanced/archive/migrated/lessons/57-storybook-para-variantes.md` |
 | **~min** | 20–25 |
 | **Bloom** | apply |
 | **Resultado** | Para o Button (ou componente do capstone), define a **matriz mínima de variantes** (estado × tema × breakpoint × a11y) e o que conta como “provado”. |
@@ -170,7 +170,7 @@ M0 Decisão          M1 Contrato + taxonomia     M2 Stack + prova        M3 Oper
 
 | Campo | Conteúdo |
 |-------|----------|
-| **Arquivo** | `aulas/08-portao-qualidade-visual.md` |
+| **Arquivo** | `aulas/18-portao-qualidade-visual.md` |
 | **Seed** | Síntese nova + fronteira com `skills/impeccable` e design-ops |
 | **~min** | 15–20 |
 | **Bloom** | evaluate |
@@ -195,7 +195,7 @@ M0 Decisão          M1 Contrato + taxonomia     M2 Stack + prova        M3 Oper
 
 | Campo | Conteúdo |
 |-------|----------|
-| **Arquivo** | `aulas/09-skill-vs-squad-design.md` |
+| **Arquivo** | `aulas/19-skill-vs-squad-design.md` |
 | **Seed** | `cursos/AIOX-Advanced-Squads/aulas/13-brand.md`, `14-design-system.md`, `15-design-ops.md` + `catalog.json` (maturidade) |
 | **~min** | 20–25 |
 | **Bloom** | evaluate |
@@ -210,7 +210,7 @@ M0 Decisão          M1 Contrato + taxonomia     M2 Stack + prova        M3 Oper
 
 | Campo | Conteúdo |
 |-------|----------|
-| **Arquivo** | `aulas/10-capstone-contrato-e-componente.md` |
+| **Arquivo** | `aulas/20-capstone-ds-storybook-executavel.md` |
 | **Seed** | Integra 01–09; alinhado a evidência M9 Advanced (contrato + variantes) |
 | **~min** | 30–40 |
 | **Bloom** | create / evaluate |
@@ -219,7 +219,7 @@ M0 Decisão          M1 Contrato + taxonomia     M2 Stack + prova        M3 Oper
 | **Exercício** | = o capstone. |
 | **Portão** | Rubrica ≥ 80 e zero falha crítica (sem contrato ou sem anti-escopo de operação). |
 | **Âncora** | Tudo que foi citado no curso; opcional: copiar skill `design-md` no projeto destino. |
-| **Ponte** | Volta ao Advanced Capstone / Projeto Integrador com UI sob contrato; ou Squads 14–15 se for executar de verdade. |
+| **Ponte** | Leve a UI sob contrato para a missão em andamento; opere os Squads 14–15 quando precisar executar ou governar o sistema de design. |
 
 ---
 

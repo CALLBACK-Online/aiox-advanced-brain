@@ -3,7 +3,7 @@ type: bridge
 course: aiox-advanced
 status: canonical
 canonical_scope: cursos/AIOX Advanced
-title: Pré-requisitos de arquitetura
+title: Pré-requisitos de arquitetura e Core
 ---
 
 # Ponte — arquitetura → AIOX Fundamentals → AIOX Advanced
@@ -25,7 +25,7 @@ Ela cobre instalação, anatomia do `aiox-core`, os 12 agents e o primeiro ciclo
 
 ## Quando fazer a base antes
 
-Use a trilha de Fundamentos primeiro se você ainda confunde dois ou mais destes pares:
+Use a trilha de Introdução à Arquitetura primeiro se você ainda confunde dois ou mais destes pares:
 
 - frontend × backend;
 - estado × evento;
@@ -38,26 +38,26 @@ Use a trilha de Fundamentos primeiro se você ainda confunde dois ou mais destes
 - runtime × harness;
 - deploy × release × rollback.
 
-Se já consegue explicar os pares com um exemplo próprio, avance para o AIOX Fundamentals. Se também já instala o Core, escolhe agents e fecha uma story com evidência, pode entrar direto na Rota Essencial.
+Se já consegue explicar os pares com um exemplo próprio, avance para o AIOX Fundamentals. Se também já instala o Core, escolhe agents e fecha uma story com evidência, pode entrar direto nas 28 aulas ativas do Advanced.
 
 ## O que foi reaproveitado e reposicionado
 
 | Extensão aplicada no Advanced | Base canônica no novo curso |
 |---|---|
-| [[14-anatomia-do-agente|Anatomia de um agente]] e [[16-janela-de-contexto|Janela de contexto]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/22-modelo-contexto-memoria-tool-skill.md` |
+| [[archive/migrated/lessons/14-anatomia-do-agente|Anatomia de um agente (histórico)]] e [[16-janela-de-contexto|Janela de contexto]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/22-modelo-contexto-memoria-tool-skill.md` |
 | [[18-yaml-markdown-json-sweet-spot|YAML, Markdown e JSON para LLM]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/07-json-yaml-markdown-contratos.md` |
 | [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/04-estado-entidade-ciclo-de-vida.md` |
-| [[52-workflow-vs-comando-manual|Workflow vs comando manual]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/11-workflow-pipeline-batch-stream.md` |
-| [[58-ralph-paralelizacao|Ralph e paralelização]] e [[59-quando-paralelizar-vs-sequencial|Paralelizar vs sequencial]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/12-concorrencia-paralelismo-fanout-fanin.md` |
-| [[67-harness-ambiente-execucao|Harness do agente]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/17-runtime-harness-ambiente-container.md` |
-| [[71-vercel-deploy|Deploy na Vercel]] e [[72-cicd-pipeline-completa|CI/CD completa]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/18-cicd-deploy-rollback.md` |
-| [[73-prontidao-de-producao|Prontidão de produção]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/24-capstone-arquitetura-agentic.md` |
+| [[archive/migrated/lessons/52-workflow-vs-comando-manual|Workflow vs comando manual (histórico)]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/11-workflow-pipeline-batch-stream.md` |
+| [[archive/migrated/lessons/58-ralph-paralelizacao|Ralph e paralelização (histórico)]] e [[archive/migrated/lessons/59-quando-paralelizar-vs-sequencial|Paralelizar vs sequencial (histórico)]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/12-concorrencia-paralelismo-fanout-fanin.md` |
+| [[archive/migrated/lessons/67-harness-ambiente-execucao|Harness do agente (histórico)]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/17-runtime-harness-ambiente-container.md` |
+| [[archive/migrated/lessons/71-vercel-deploy|Deploy na Vercel (histórico)]] e [[archive/migrated/lessons/72-cicd-pipeline-completa|CI/CD completa (histórico)]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/18-cicd-deploy-rollback.md` |
+| [[archive/migrated/lessons/73-prontidao-de-producao|Prontidão de produção (histórico)]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/24-capstone-arquitetura-agentic.md` |
 
-“Base canônica” significa: o novo curso ensina o conceito sem exigir AIOX. A aula antiga permanece porque mostra como o conceito muda uma decisão real dentro do AIOX.
+“Base canônica” significa: o novo curso ensina o conceito sem exigir AIOX. As aulas redistribuídas permanecem no arquivo histórico do Advanced e, quando aplicável, ganharam progressão própria em Agent Engineering.
 
 ## Rota mínima de nivelamento
 
-Para entrar no Advanced sem fazer as 24 aulas, estude estas seis no curso de Fundamentos:
+Para entrar no Advanced sem fazer as 24 aulas, estude estas seis na Introdução à Arquitetura de Sistemas:
 
 1. `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/01-sistema-componentes-fronteiras.md`
 2. `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/04-estado-entidade-ciclo-de-vida.md`

@@ -16,7 +16,9 @@ tags: [curso/aiox-design, lesson, layer/curso]
 
 # Greenfield vs brownfield de design system
 
-[⌂ Curso](../README.md) · [↑ M0](../modulos/M0.md) · [← Anterior](01-design-system-e-decisao.md) · [Próxima →](03-design-md-contrato.md)
+[⌂ Curso](../README.md) · [↑ M0](../modulos/M0.md) · [← Anterior](01-design-system-e-decisao.md) · [Próxima →](03-repertorio-e-referencias.md)
+
+[⌂ Curso](../README.md) · [↑ M0](../modulos/M0.md) · [← Anterior](01-design-system-e-decisao.md) · [Próxima →](08-design-md-contrato.md)
 
 ## Resultado
 
@@ -40,7 +42,7 @@ flowchart TD
 
 **Use** antes de “padronizar tudo” ou instalar um kit visual no legado.
 
-**Não use** para descoberta de **código de negócio** (isso é brownfield de domínio/código — Advanced M6 / code-anatomist). Aqui o objeto é **interface e tokens**.
+**Não use** para descoberta de **código de negócio** (isso é brownfield de domínio/código — Advanced M4 / code-anatomist). Aqui o objeto é **interface e tokens**.
 
 ## Três portas
 
@@ -87,4 +89,6 @@ Classificação + primeira ação + anti-escopo da semana, em texto curto reutil
 
 ## Navegação
 
-[⌂ Curso](../README.md) · [↑ M0](../modulos/M0.md) · [← Anterior](01-design-system-e-decisao.md) · [Próxima →](03-design-md-contrato.md)
+[⌂ Curso](../README.md) · [↑ M0](../modulos/M0.md) · [← Anterior](01-design-system-e-decisao.md) · [Próxima →](03-repertorio-e-referencias.md)
+
+[⌂ Curso](../README.md) · [↑ M0](../modulos/M0.md) · [← Anterior](01-design-system-e-decisao.md) · [Próxima →](08-design-md-contrato.md)

@@ -1,7 +1,7 @@
 ---
 name: course-moc
 description: >
-  Cria e atualiza Mapas de Conteúdo (MOCs/hubs) para estudar o AIOX Advanced:
+  Cria e atualiza Mapas de Conteúdo (MOCs/hubs) para estudar o acervo AIOX:
   por módulo, por tema, por dor ou por squad. Use quando o usuário pedir MOC,
   mapa mental do curso, hub de navegação, índice por tema, “como se conecta X e Y”,
   ou organizar o grafo de estudo sem alterar as aulas canônicas.
@@ -27,10 +27,11 @@ Padrão de nome: `MOC - {Tema}.md` ou `hub-{slug}.md`.
 
 ## Tipos de MOC úteis aqui
 
-1. **Por módulo** — ex.: “M5 Determinismo” → aulas + glossário + quiz.
-2. **Por dor** — ex.: “Agente em loop” → aulas método + squad `agent-autonomy`.
-3. **Por squad** — aula do curso Squads + pré-req Advanced + skill de entrada.
-4. **Trilha personalizada** — 5–12 links ordenados para o objetivo da pessoa.
+1. **Por etapa da jornada** — Obsidian, Arquitetura, Core, método ou Squads.
+2. **Por módulo** — ex.: “M3 Determinismo e Comando” → aulas + glossário + quiz.
+3. **Por dor** — ex.: “Agente em loop” → aulas método + squad `agent-autonomy`.
+4. **Por squad** — aula do curso Squads + pré-req Advanced + skill de entrada.
+5. **Trilha personalizada** — 5–12 links ordenados para o objetivo da pessoa.
 
 ## Algoritmo
 
@@ -73,7 +74,12 @@ Se o vault for só `cursos/AIOX Advanced/`, use wikilinks pelo título da nota. 
 ## Fontes canônicas para montar hubs
 
 - `cursos/README.md` — matriz método ↔ squads
+- `cursos/Introducao-a-Arquitetura-de-Sistemas/README.md` — base técnica
+- `cursos/AIOX-Fundamentals/README.md` — Core e primeiro ciclo
 - `cursos/AIOX Advanced/README.md` — módulos e rotas
+- `cursos/AIOX-Agent-Engineering/README.md` — capacidade agentic (lateral)
+- `cursos/AIOX-Design/README.md` — contrato visual (lateral)
+- `cursos/AIOX-Productizacao/README.md` — oferta e mercado (lateral)
 - `cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md`
 - `cursos/AIOX-Advanced-Squads/agent-router.json` — sinais por squad
 - `catalog.json` — existência e maturidade

@@ -3,18 +3,17 @@ type: lesson
 course: aiox-agent-engineering
 title: "CI/CD Pipeline completa: GitHub Actions + Quality Gate pré-merge"
 lesson_position: 26
-module: M6
+module: M5
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 72
-source_path: "cursos/AIOX Advanced/lessons/72-cicd-pipeline-completa.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/72-cicd-pipeline-completa.md"
 source_version: 1.0.0
 ---
 # CI/CD Pipeline completa: GitHub Actions + Quality Gate pré-merge
 
 > **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/18-cicd-deploy-rollback.md`.
 
-← Vercel Deploy: do localhost ao mundo · ↑ M12 · ⌂ Curso · → Prontidão de produção: checklist final
 
 ## Mapa desta aula
 
@@ -414,4 +413,4 @@ Adaptação autocontida da aula 72 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](25-vercel-deploy.md) · [Curso](../README.md) · [Próxima aula →](27-prontidao-de-producao.md)
+[← Aula anterior](25-vercel-deploy.md) · [↑ M5](../modulos/M5-producao.md) · [Curso](../README.md) · [Próxima aula →](27-prontidao-de-producao.md)

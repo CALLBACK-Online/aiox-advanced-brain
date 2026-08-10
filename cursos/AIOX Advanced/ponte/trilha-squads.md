@@ -16,16 +16,17 @@ Este curso ensina o **método**. O catálogo operacional de squads vive no curso
 
 Abra o arquivo `README.md` dessa pasta no explorer do repositório (não é wikilink: cada curso é isolado para compartilhamento).
 
-## Depois de quais módulos ir ao curso de Squads
+## Como o Advanced prepara a entrada em Squads
 
-| Você terminou no Advanced… | Abra no curso Squads… |
-|----------------------------|------------------------|
-| M5 — Arquitetura / taxonomia | `aulas/00-como-usar-este-curso.md` e mapa de decisão |
-| M6 — Brownfield | `aulas/03-code-anatomist.md`, `aulas/04-domain-decoder.md` |
-| M7 — Criar Squad | `aulas/23-squad-creator.md`, `aulas/24-squad-creator-pro.md` |
-| M8 — Research | `aulas/02-research.md` |
-| M9 — Design System | Trilha `cursos/AIOX-Design/` → depois `aulas/14-design-system.md`, `aulas/15-design-ops.md` |
-| M11 — Produtivização | `aulas/19-copy.md`, `aulas/20-sales.md`, `aulas/21-hormozi.md` |
+Na jornada canônica, conclua a sequência ativa e o Capstone do Advanced antes da aula 00 de Squads. O `mission brief`, os critérios de aceite e as evidências atravessam esta ponte; não leve apenas uma intenção solta.
+
+| Seu gargalo | Preparação | Abra no curso Squads… |
+|--------------|------------|------------------------|
+| Escolher um especialista publicado | Advanced completo + Capstone | `aulas/00-como-usar-este-curso.md` e mapa de decisão |
+| Brownfield / código | Advanced M4 | `aulas/03-code-anatomist.md`, `aulas/04-domain-decoder.md` |
+| Research ou criar squad | `cursos/AIOX-Agent-Engineering/` M1 para research; M2 para construção | `aulas/02-research.md`, `23-squad-creator.md`, `24-squad-creator-pro.md` |
+| Design system | `cursos/AIOX-Design/` | `aulas/14-design-system.md`, `aulas/15-design-ops.md` |
+| Copy, sales ou oferta | `cursos/AIOX-Productizacao/` quando a oferta ainda não está decidida | `aulas/19-copy.md`, `aulas/20-sales.md`, `aulas/21-hormozi.md` |
 
 ## Mapa aula → arquivo do curso Squads
 

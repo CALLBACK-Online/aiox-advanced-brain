@@ -22,17 +22,15 @@ bloom: analyze
 reading_minutes: 11
 has_mermaid_map: true
 map_source: handcrafted
-module: M5
-sequence: M5.1
-track: essential
+module: M4
+sequence: 23
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # O que é um Squad (e por que ele vem antes do App)
-
-← [[22-pipeline-etl-com-agentes|Pipeline ETL com agentes: hierarquia de camadas]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]]
 
 ## Conceitos
 
@@ -463,9 +461,12 @@ Os termos desta aula em uma frase cada.
 
 ***
 
-
 ---
+
+## Operar isto na prática
+
+Esta aula é pré-requisito no curso de squads — quando a missão for real, siga para: Skill Creator Ops: `cursos/AIOX-Advanced-Squads/aulas/22-skill-creator-ops.md` · Squad Creator: `cursos/AIOX-Advanced-Squads/aulas/23-squad-creator.md` · Squad Creator Pro: `cursos/AIOX-Advanced-Squads/aulas/24-squad-creator-pro.md`
 
 ## Navegação
 
-← [[22-pipeline-etl-com-agentes|Pipeline ETL com agentes: hierarquia de camadas]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]]
+← [[lessons/50-rider-modo-elicitacao|Rider: quando o operador é o piloto]] · ↑ [[modulos/Módulo 4 - Método e Brownfield|M4 — Método e brownfield]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]]

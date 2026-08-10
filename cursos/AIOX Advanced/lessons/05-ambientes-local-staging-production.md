@@ -20,17 +20,15 @@ bloom: evaluate
 reading_minutes: 19
 has_mermaid_map: true
 map_source: auto-decision_graph
-module: M2
-sequence: M2.1
-track: essential
+module: M1
+sequence: 7
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Local, Staging, Production
-
-← [[15-quatro-executores|4 executores: humano, agent, clone, worker]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[16-janela-de-contexto|Janela de contexto: o limite real e a degradação acima de 40K]]
 
 ## Conceitos
 
@@ -588,9 +586,8 @@ production:
 
 ***
 
-
 ---
 
 ## Navegação
 
-← [[15-quatro-executores|4 executores: humano, agent, clone, worker]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[16-janela-de-contexto|Janela de contexto: o limite real e a degradação acima de 40K]]
+← [[lessons/03-claude-md-leis-da-fisica|CLAUDE.md é a lei da física do seu projeto]] · ↑ [[modulos/Módulo 1 - Sistema e Contexto|M1 — Sistema e contexto]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/15-quatro-executores|4 executores: humano, agent, clone, worker]]

@@ -9,6 +9,7 @@ status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
 source_refs: [azure-transient-faults]
+reading_minutes: 5
 ---
 
 # Timeout, retry, backoff e rate limit

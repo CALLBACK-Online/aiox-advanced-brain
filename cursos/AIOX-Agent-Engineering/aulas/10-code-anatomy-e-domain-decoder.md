@@ -3,16 +3,15 @@ type: lesson
 course: aiox-agent-engineering
 title: "Code Anatomy: engenharia reversa de código com /code-anatomist"
 lesson_position: 10
-module: M2
+module: M1
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 38
-source_path: "cursos/AIOX Advanced/lessons/38-code-anatomy-domain-decoder.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/38-code-anatomy-domain-decoder.md"
 source_version: 1.0.0
 ---
 # Code Anatomy: engenharia reversa de código com /code-anatomist
 
-← Spy/Bench: comparação profunda entre dois projetos · ↑ M8 · ⌂ Curso · → Pasta OS: curadoria local de open-source para o agente
 
 ## Conceitos
 
@@ -487,4 +486,4 @@ Adaptação autocontida da aula 38 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](09-spy-bench.md) · [Curso](../README.md) · [Próxima aula →](11-pasta-os.md)
+[← Aula anterior](09-spy-bench.md) · [↑ M1](../modulos/M1-discovery-e-research.md) · [Curso](../README.md) · [Próxima aula →](11-pasta-os.md)

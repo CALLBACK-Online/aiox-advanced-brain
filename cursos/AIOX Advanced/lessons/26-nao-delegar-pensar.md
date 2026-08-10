@@ -22,16 +22,14 @@ reading_minutes: 21
 has_mermaid_map: true
 map_source: auto-decision_graph
 module: M0
-sequence: M0.5
-track: complete
+sequence: 5
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Nao delegue o pensar: repertorio contra zumbi
-
-← [[13-pensamento-estruturado-antes-do-terminal|Desenhe fora da ferramenta antes de codar]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[02-aiox-nao-e-ferramenta|AIOX não é ferramenta]]
 
 ## Conceitos
 
@@ -535,6 +533,16 @@ Nao-delegar-o-pensar nao quer dizer fazer tudo na mao. Quer dizer escolher consc
 
 ---
 
+## Portão da aula
+
+*Gate*
+
+O critério que separa operador de zumbi antes da próxima delegação.
+
+> **Portão da aula**: Você só passa quando consegue pegar uma tarefa real que ia soltar para a IA e apontar o que é decisão sua, o que é execução da IA, onde a amarra vive (Constitution, gate, frontmatter ou hook) e qual prova mostra que ficou certo sem reabrir o chat.
+
+---
+
 ## Glossario sem jargao
 
 Traducao dos termos pra quem esta vendo a tese pela primeira vez.
@@ -552,9 +560,12 @@ Traducao dos termos pra quem esta vendo a tese pela primeira vez.
 
 ***
 
-
 ---
+
+## Operar isto na prática
+
+Esta aula é pré-requisito no curso de squads — quando a missão for real, siga para: Advisory Board: `cursos/AIOX-Advanced-Squads/aulas/01-advisory-board.md`
 
 ## Navegação
 
-← [[13-pensamento-estruturado-antes-do-terminal|Desenhe fora da ferramenta antes de codar]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[02-aiox-nao-e-ferramenta|AIOX não é ferramenta]]
+← [[lessons/13-pensamento-estruturado-antes-do-terminal|Desenhe fora da ferramenta antes de codar]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0 — Mindset e princípios]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/03-claude-md-leis-da-fisica|CLAUDE.md é a lei da física do seu projeto]]

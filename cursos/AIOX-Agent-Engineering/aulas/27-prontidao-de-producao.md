@@ -3,11 +3,11 @@ type: lesson
 course: aiox-agent-engineering
 title: "Prontidão de produção: checklist final"
 lesson_position: 27
-module: M6
+module: M5
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 73
-source_path: "cursos/AIOX Advanced/lessons/73-prontidao-de-producao.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/73-prontidao-de-producao.md"
 source_version: 1.0.0
 ---
 # Prontidão de produção: checklist final
@@ -16,7 +16,6 @@ source_version: 1.0.0
 
 Checklist Reality-First: além do build, rode Smoke test e Health check no ambiente real; sem isso não há prontidão.
 
-← CI/CD Pipeline completa: GitHub Actions + Quality Gate pré-merge · ↑ M12 · ⌂ Curso · → Método S2S: converter sinais em sistemas
 
 ## Mapa desta aula
 
@@ -403,4 +402,4 @@ Adaptação autocontida da aula 73 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](26-cicd.md) · [Curso](../README.md)
+[← Aula anterior](26-cicd.md) · [↑ M5](../modulos/M5-producao.md) · [Curso](../README.md) · [Próxima aula →](28-capstone-capacidade-em-producao.md)

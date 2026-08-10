@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `33-anatomia-de-um-squad; 34-squad-creator-passo-a-passo; 55-triagem-de-squad-novo` — criar capacidade.
+Antes de operar este squad, revise `23-o-que-e-um-squad` e `24-entidade-como-unidade-de-processo` no **AIOX Advanced**. Para construir a capacidade, use `cursos/AIOX-Agent-Engineering/aulas/13-reuse-adapt-create.md` a `16-squad-creator.md`.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -133,10 +133,22 @@ Leia squads/squad-creator/config.yaml e adote a persona de squad-chief.
 - premissas e limites declarados;
 - próximo passo ou handoff para outro squad/skill, se couber.
 
+## O que muda no AIOX Enterprise
+
+Aqui você cria o squad a partir do briefing e valida sua estrutura no projeto de destino. No Enterprise, o Squad Creator também lê templates, domínios e contratos do workspace antes do scaffolding, sem escrever diretamente nos dados do negócio.
+
+**O ganho prático:** o novo squad não nasce como uma ilha. Ele já pode ser desenhado para conversar com o ecossistema existente e encaminhar à governança qualquer integração que exija autoridade maior.
+
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+A operação precisa de uma capacidade de “suporte técnico N2” que nenhum squad do ecossistema cobre por inteiro. A missão: rodar `create-squad-discover` primeiro e respeitar o veredito na ordem REUSE → ADAPT → CREATE — só avance para o scaffold via `wf-create-squad` se o discovery provar que não há prior art aproveitável nem squad vizinho que resolva com ajustes.
+
+**Saída esperada:** o artefato de discovery com o veredito documentado e o prior art comparado; se o veredito for CREATE, o pacote novo com config.yaml, agentes e tasks gerados pelo scaffold e validação estrutural aprovada antes de publicar.
+
+**Erro comum neste squad:** pular o discovery e criar um duplicado do que já existe com outro nome — o ecossistema fragmenta e a manutenção dobra. Detecte cedo: se o documento de discovery não lista os squads vizinhos comparados, a triagem não aconteceu.
+
+> **Teste rápido**: você consegue apontar no discovery por que REUSE e ADAPT foram descartados antes do CREATE?

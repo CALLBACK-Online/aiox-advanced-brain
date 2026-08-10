@@ -5,7 +5,7 @@ aliases: [MOC Aulas Advanced, Todas as aulas]
 
 # MOC — Todas as aulas (AIOX Advanced)
 
-> Spine do Graph do **método**. Hubs fora desta pasta em monoespaçado (validador autocontido).
+> Mapa histórico da edição de 75 aulas. A progressão ativa de 28 aulas está no README do curso; os demais nós resolvem para o arquivo curricular.
 
 Curso: abra `cursos/AIOX Advanced/README.md` · mapa: [[Mapa do AIOX]]
 
@@ -14,21 +14,13 @@ Hubs do vault (paths): `00-HOME.md` · `cursos/MOC-Acervo-AIOX.md` · `cursos/en
 ## Módulos
 
 - [[Módulo 0 - Mindset e Princípios]]
-- [[Módulo 1 - Sistema AIOX]]
-- [[Módulo 10 - Escala e Tokens]]
-- [[Módulo 11 - Produtivização]]
-- [[Módulo 12 - Deploy Profissional]]
-- [[Módulo 2 - Setup e Contexto]]
-- [[Módulo 3 - Ciclo SDC]]
-- [[Módulo 4 - Determinismo e Comando]]
-- [[Módulo 5 - Arquitetura AIOX]]
-- [[Módulo 6 - Brownfield e Greenfield]]
-- [[Módulo 7 - Criar Squad]]
-- [[Módulo 8 - Pipeline de Research]]
-- [[Módulo 9 - Design System]]
+- [[Módulo 1 - Sistema e Contexto]]
+- [[Módulo 2 - SDC e Qualidade]]
+- [[Módulo 3 - Determinismo e Comando]]
+- [[Módulo 4 - Método e Brownfield]]
 - [[Módulo C - Capstone]]
 
-## Aulas (75)
+## Acervo histórico (75)
 
 - [[01-token-economy-mindset]]
 - [[02-aiox-nao-e-ferramenta]]
@@ -110,4 +102,3 @@ Hubs do vault (paths): `00-HOME.md` · `cursos/MOC-Acervo-AIOX.md` · `cursos/en
 
 - Operação: pasta `cursos/AIOX-Advanced-Squads/`
 - Pontes skill/squad: `cursos/entradas/`
-

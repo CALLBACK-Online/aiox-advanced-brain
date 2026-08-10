@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, faça a trilha **AIOX Design** (`cursos/AIOX-Design/`, aulas 05, 07–09) ou revise no **AIOX Advanced** (`lessons/`): `32-design-system-greenfield-brownfield`, `41-design-system-e-decisao` — DS vivo e governança.
+Antes de operar este squad, revise `19-ciclo-do-repositorio` e `48-quality-gate-completo` no **AIOX Advanced** e faça no **AIOX Design** as aulas 05 e 07–09.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -133,10 +133,22 @@ Leia squads/design-ops/config.yaml e adote a persona de design-chief.
 - premissas e limites declarados;
 - próximo passo ou handoff para outro squad/skill, se couber.
 
+## O que muda no AIOX Enterprise
+
+Aqui você aprende a governar a evolução do design system no projeto de destino. No Enterprise, o Design Ops lê o contexto canônico do negócio e a biblioteca ativa. Qualquer mudança no workspace segue um handoff explícito para a governança responsável.
+
+**O ganho prático:** a evolução visual continua conectada à empresa sem transformar cada ajuste em uma alteração informal da fonte de verdade. Contexto para decidir e autoridade para mudar permanecem separados.
+
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Pegue um design system que já roda em produção há alguns meses — o seu ou o construído na aula anterior. A missão é uma auditoria de governança: medir o drift (valores hardcoded que voltaram a aparecer fora dos tokens) e o estado de acessibilidade. Rode o workflow `audit-only` para o retrato geral e aprofunde com `a11y-audit` nos componentes mais usados. Aqui você não constrói nada novo: mede, prioriza e devolve um plano.
+
+**Saída esperada:** um relatório de auditoria com (1) inventário de violações de token com arquivo e linha, (2) matriz de contraste dos pares texto/fundo reprovados com o valor medido e (3) backlog priorizado de correções — sem nenhum componente novo criado.
+
+**Erro comum neste squad:** escorregar de governar para reconstruir — a auditoria vira refactor não pedido. Detecte cedo: se aparecer código de componente novo no meio da auditoria, a fronteira foi cruzada; registre o achado e devolva a construção ao squad Design System.
+
+> **Teste rápido**: se a entrega contém mais código novo do que evidência medida, você rodou o squad errado.

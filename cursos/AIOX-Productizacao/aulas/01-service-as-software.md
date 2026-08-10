@@ -1,18 +1,24 @@
 ---
 type: lesson
 course: aiox-productizacao
+lesson_id: service-as-software
 title: "Service-as-Software: a era do serviço produtivado"
 lesson_position: 1
 module: M1
+reading_minutes: 25
 status: canonical
 canonical_scope: cursos/AIOX-Productizacao
+curriculum_role: canonical-owner
 source_lesson_id: 62
-source_path: "cursos/AIOX Advanced/lessons/62-service-as-software.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/62-service-as-software.md"
 source_version: 1.0.0
 ---
 # Service-as-Software: a era do serviço produtivado
 
-← Wave Execute: orquestração avançada com waves paralelas · ↑ M11 · ⌂ Curso · → Distribuição > Produto (10/90)
+
+## Caso de campo (live)
+
+Nas aulas ao vivo do Advanced, a ênfase comercial se deslocou do “ter um SaaS com login” para o **serviço que entrega resultado** — muita gente não mora no app; quer o outcome. Use o [Caso 1 — era do serviço](../casos-live-cohort.md) como anti-padrão: não confunda dashboard com wedge.
 
 ## Mapa desta aula
 
@@ -395,10 +401,23 @@ A IA é a seta. O X é seu — inclusive escolher **o que merece** virar softwar
 
 ---
 
+## Pergunte ao seu agente
+
+```text
+Use esta aula e o template wedge-card.md. Critique meu recorte sem ampliar
+o escopo. Separe fatos, hipóteses e desconhecidos. Aponte o job menos
+repetível, o limite de pronto mais fraco e três cortes que eu ainda evito.
+Não invente demanda nem números.
+```
+
+## Evidência de conclusão
+
+Preencha o [Wedge card](../templates/wedge-card.md). Você passa quando há um cliente, um job, uma fronteira de pronto, um resultado observável e três itens fora do escopo.
+
 ## Origem curricular
 
 Adaptação autocontida da aula 62 do AIOX Advanced. A fonte histórica permanece registrada em `source_path`; este curso é o dono da progressão atual.
 
 ## Navegação
 
-[Curso](../README.md) · [Próxima aula →](02-dor-e-roi.md)
+[M1](../modulos/M1-oferta-antes-do-produto.md) · [Curso](../README.md) · [Próxima aula →](02-dor-e-roi.md)

@@ -34,11 +34,14 @@ Use este guia para ensinar instalação e operação básica do `aiox-core`. Est
 4. Não instale AIOX dentro deste acervo; a prática acontece no projeto do aluno.
 5. Efeito externo, credencial ou ação destrutiva exige autorização.
 6. Feche com uma evidência verificável.
+7. Depois do projeto final aprovado, encaminhe para `cursos/AIOX Advanced/README.md`; antes disso, não trate familiaridade com os nomes dos agents como domínio do Core.
 
 ## Fronteiras
 
 - Termo técnico geral ou leitura de sistemas → `cursos/Introducao-a-Arquitetura-de-Sistemas/`.
-- Método aprofundado, determinismo, design e deploy → `cursos/AIOX Advanced/`.
+- Método aprofundado, contexto, SDC, determinismo e brownfield → `cursos/AIOX Advanced/`.
+- Agents, runners, harness e deploy → `cursos/AIOX-Agent-Engineering/`.
+- Contrato e qualidade visual → `cursos/AIOX-Design/`.
 - Escolha e operação de squads empacotados → `cursos/AIOX-Advanced-Squads/`.
 
 ## Formato mínimo

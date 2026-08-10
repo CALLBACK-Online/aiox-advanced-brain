@@ -43,6 +43,8 @@ O projeto está pronto quando outra pessoa consegue entender a missão, reproduz
 
 ## Depois da entrega
 
+Preserve `mission-brief.md`, `routing-decision.md`, os artefatos, `validation-report.md` e `retrospective.md` como pacote reproduzível. Esse pacote fecha a jornada pedagógica: o Advanced já provou o método; este curso prova a operação dos especialistas.
+
 Repita a missão antes de concluir que precisa de mais tecnologia. Se a segunda execução ainda trava na escolha, no briefing ou na validação, o ganho está em aprofundar o Advanced.
 
-Se a rota já funciona e o atrito está em manter contexto, integrações, governança e observabilidade entre várias execuções, compare essa montagem com a infraestrutura mantida do **AIOX Enterprise** em [Fundamentals, Advanced ou Enterprise?](../../JORNADA-AIOX.md).
+Se a rota já funciona e o atrito está em manter contexto, integrações, governança e observabilidade entre várias execuções, compare essa montagem com a infraestrutura mantida do **AIOX Enterprise** em `JORNADA-AIOX.md` (raiz do repositório; Fundamentals, Advanced ou Enterprise?).

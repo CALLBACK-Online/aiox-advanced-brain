@@ -133,10 +133,22 @@ Leia squads/slides-creator/config.yaml e adote a persona de slide-chief.
 - premissas e limites declarados;
 - próximo passo ou handoff para outro squad/skill, se couber.
 
+## O que muda no AIOX Enterprise
+
+Aqui você fornece conteúdo, referências e restrições para construir o deck. No Enterprise, o Slides Creator consome o contexto de marca do workspace. O operador controla a prontidão, o handoff e o destino de renderização de cada implantação.
+
+**O ganho prático:** o deck não precisa reaprender a identidade visual nem depender de uma entrega genérica. A narrativa chega ao aplicativo de destino já orientada pela marca que a empresa mantém.
+
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Monte o deck de 10 slides que apresenta o resultado do trimestre à diretoria, com uma decisão pedida: aprovar o orçamento do próximo ciclo. Rode o workflow `generate-presentation` do briefing à renderização, estruturando o argumento com `apply-scqa` e exigindo que cada slide passe pelos gates de QA do pacote antes de considerar pronto.
+
+**Saída esperada:** um deck com (1) action titles que afirmam a conclusão de cada slide (não rótulos como "Resultados"), (2) densidade dentro do limite validado — nada de parágrafos em slide — e (3) relatório de QA anexo mostrando quais validações rodaram e o que foi corrigido.
+
+**Erro comum neste squad:** aceitar o deck "bonito" sem rodar o QA — títulos-rótulo e slides lotados passam despercebidos porque o visual distrai. Detecte cedo: leia apenas os títulos em sequência; se eles não contarem o argumento completo sozinhos, o deck reprova antes de qualquer ajuste visual.
+
+> **Teste rápido**: alguém que leia só os action titles consegue reproduzir sua recomendação? Se não, volte ao gate `validate-action-title`.

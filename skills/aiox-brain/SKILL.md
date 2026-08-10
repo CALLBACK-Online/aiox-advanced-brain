@@ -29,6 +29,13 @@ Você conduz a pessoa a:
 | Necessidade | Skill / curso | Path |
 |-------------|---------------|------|
 | Mini-curso vault + Context Brief + execução + retorno | curso | `cursos/Obsidian-IA/` |
+| Entender sistemas | curso | `cursos/Introducao-a-Arquitetura-de-Sistemas/` |
+| Instalar e operar o Core | curso | `cursos/AIOX-Fundamentals/` |
+| Aplicar o método | curso | `cursos/AIOX Advanced/` |
+| Construir capacidade agentic própria | especialização lateral | `cursos/AIOX-Agent-Engineering/` |
+| Estabelecer contrato visual | especialização lateral | `cursos/AIOX-Design/` |
+| Transformar capacidade em oferta | especialização lateral | `cursos/AIOX-Productizacao/` |
+| Operar especialistas | curso | `cursos/AIOX-Advanced-Squads/` |
 | Abrir/estudar no Obsidian, buscar aula, trilha | `obsidian-course-vault` | `skills/obsidian-course-vault/` |
 | Criar/atualizar MOC ou hub de estudo | `course-moc` | `skills/course-moc/` |
 | Capturar insight / nota atômica ligada à aula | `study-capture` | `skills/study-capture/` |
@@ -40,7 +47,7 @@ Detalhe: [references/brain-map.md](references/brain-map.md).
 
 ## Algoritmo
 
-1. Classificar o pedido: **estudar** · **organizar vault** · **capturar** · **mapear** · **preparar handoff** · **retornar aprendizado**.
+1. Classificar o pedido e a etapa: **estudar o acervo** · **entender sistemas** · **operar o Core** · **aplicar o método** · **operar especialistas** · **retornar aprendizado**.
 2. Se for vault de estudo: preferir a skill da tabela acima (menor mecanismo).
 3. Se for operar AIOX: recuperar 1–3 fontes, montar o Context Brief e confirmar asset + maturidade.
 4. Fazer handoff do briefing e do menor asset necessário; a execução pertence à skill/squad do domínio no projeto.

@@ -37,7 +37,9 @@ Todo o conteúdo operacional foi conferido contra o snapshot rastreado do AIOX C
 
 - **Introdução à Arquitetura de Sistemas:** vocabulário universal para entender sistemas.
 - **AIOX Fundamentals:** instalação e operação básica do `aiox-core`.
-- **AIOX Advanced:** método, SDC aprofundado, determinismo, design e deploy.
+- **AIOX Advanced:** método, contexto, SDC aprofundado, determinismo e brownfield.
+- **AIOX Agent Engineering:** agents, workflows, runners, harness e produção.
+- **AIOX Design:** contrato e qualidade visual.
 - **AIOX Advanced Squads:** escolha e operação dos especialistas empacotados.
 
 O Fundamentals não absorve arquitetura geral, especialização Advanced nem o curso operacional de squads.

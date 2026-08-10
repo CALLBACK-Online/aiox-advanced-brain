@@ -14,18 +14,18 @@ O **AIOX Advanced** ensina o método (SDC, contexto, gates). **AIOX Design** ens
 
 ## Mínimo recomendado
 
-| Prioridade | Aulas Advanced (`cursos/AIOX Advanced/lessons/`) |
+| Prioridade | Aulas Advanced ativas (`cursos/AIOX Advanced/lessons/`) |
 |------------|--------------------------------------------------|
-| Essencial | `02-aiox-nao-e-ferramenta`, `03-claude-md-leis-da-fisica`, `08-principio-processo-certo` |
-| Útil | `54-reuse-adapt-create-heuristica` (mesma heurística no visual) |
+| Essencial | `03-claude-md-leis-da-fisica`, `08-principio-processo-certo`, `46-etapas-de-desenvolvimento` |
+| Útil | `31-brownfield-discovery` quando a interface já existe |
 
 ## Seeds históricos no Advanced (agora com trilha dedicada)
 
 O conteúdo de design também vive como seed em:
 
-- `41-design-system-e-decisao`, `43-design-md-novo-contrato` (essential M9)
-- `32-…`, `42-…`, `56-…`, `57-…` (complete)
+- `41-design-system-e-decisao`, `43-design-md-novo-contrato`
+- `32-…`, `42-…`, `56-…`, `57-…`
 
-**Trilha default para dor de UI:** este curso (`cursos/AIOX-Design/`), não só o M9.
+Esses seeds estão preservados em `cursos/AIOX Advanced/archive/migrated/lessons/`. **A trilha canônica para dor de UI é este curso.**
 
 Hub: `cursos/README.md`

@@ -10,7 +10,7 @@ tags: [curso/aiox-advanced-squads, ponte]
 
 [⌂ Curso](../README.md) · [Guia de execução](../Guia-de-execucao.md)
 
-O curso **AIOX Advanced** ensina o método (SDC, taxonomia, determinismo, gates). Este curso ensina a **operar cada squad**.
+O curso **AIOX Advanced** ensina método, SDC, determinismo e gates. **Agent Engineering** aprofunda a construção das capacidades. Este curso ensina a **escolher e operar cada squad publicado**.
 
 Pasta do método no repositório (abra no explorer; cada curso é isolado para links):
 
@@ -20,45 +20,44 @@ Pasta do método no repositório (abra no explorer; cada curso é isolado para l
 
 | Prioridade | Aulas do Advanced (`lessons/`) | Por quê |
 |------------|--------------------------------|---------|
-| Essencial | `02-aiox-nao-e-ferramenta`, `08-principio-processo-certo` | Método ≠ conversa solta |
-| Essencial | `14-anatomia-do-agente`, `28-taxonomia-task-skill-agent-workflow-runner` | Vocabulário de squad |
-| Essencial | `33-anatomia-de-um-squad` | Anatomia real |
-| Recomendado | Rota Essencial completa do Advanced | Menos retrabalho |
+| Essencial | `08-principio-processo-certo`, `23-o-que-e-um-squad` | Método ≠ conversa solta; squad ≠ resposta para tudo |
+| Essencial | `46-etapas-de-desenvolvimento`, `48-quality-gate-completo` | Briefing e evidência antes da ativação |
+| Gate canônico | 28 aulas ativas + Capstone do Advanced | Método transferível antes da operação especializada |
 
 ## Pré-requisito por squad
 
 | Squad | Aulas Advanced (`lessons/`) |
 |-------|----------------------------|
-| advisory-board | `35-mesa-redonda-advisory-board` |
-| research | `36-tech-research-multi-fonte`, `37-spy-bench-comparativo` |
-| code-anatomist | `31-brownfield-discovery`, `38-code-anatomy-domain-decoder` |
-| domain-decoder | `38-code-anatomy-domain-decoder` |
-| agent-autonomy | `11-goal-vs-loop`, `14-anatomia-do-agente`, `29-sub-agents-vs-swarm-agents` |
+| advisory-board | Agent Engineering M1 |
+| research | Agent Engineering M1 |
+| code-anatomist | Advanced `31-brownfield-discovery` + Agent Engineering M1 |
+| domain-decoder | Agent Engineering M1 |
+| agent-autonomy | Advanced `11-goal-vs-loop` + Agent Engineering M0/M3 |
 | claude-code-mastery | `03-claude-md-leis-da-fisica`, `17-engenharia-de-contexto` |
-| aiox-sop | `28-taxonomia-task-skill-agent-workflow-runner` |
-| etl-ops | `22-pipeline-etl-com-agentes` |
-| runner-ops | `28-…`, `30-runner-executavel-deterministico` |
+| aiox-sop | Agent Engineering M0 |
+| etl-ops | Agent Engineering M0 |
+| runner-ops | Agent Engineering M0/M4 |
 | data | `46-etapas-de-desenvolvimento` (contexto de evidência) |
 | db-sage | `53-brownfield-enhancement` |
 | clickup-ops-squad | `24-entidade-como-unidade-de-processo` |
 | brand | `12-repertorio-vs-tecnica` |
-| design-system | Trilha `cursos/AIOX-Design/` (01–04, 09) ou `41-…`, `42-…`, `43-…` |
-| design-ops | Trilha `cursos/AIOX-Design/` (05, 07–09) ou `32-…`, `41-…` |
+| design-system | Trilha `cursos/AIOX-Design/` (01–04, 09) |
+| design-ops | Trilha `cursos/AIOX-Design/` (05, 07–09) |
 | storytelling | `12-repertorio-vs-tecnica` |
 | slides-creator | `18-yaml-markdown-json-sweet-spot` |
 | conteudo | (nenhum rígido; Advanced M0 ajuda) |
-| copy | (nenhum rígido; Advanced M11 ajuda) |
-| sales | `64-vender-pela-dor-e-roi` |
-| hormozi | `62-service-as-software`, `64-vender-pela-dor-e-roi` |
-| skill-creator-ops | `28-taxonomia-task-skill-agent-workflow-runner` |
-| squad-creator | `33-…`, `34-squad-creator-passo-a-passo`, `55-triagem-de-squad-novo` |
-| squad-creator-pro | `34-…`, `55-…` |
+| copy | Trilha `cursos/AIOX-Productizacao/` (oferta/ROI) antes se a mensagem ainda não tem wedge |
+| sales | `cursos/AIOX-Productizacao/` (aulas 02, 03, 05) — Decision Pack antes de operar vendas |
+| hormozi | `cursos/AIOX-Productizacao/` (aulas 01–02, 04) — Service-as-Software + dor/ROI + formato |
+| skill-creator-ops | Agent Engineering M0/M2 |
+| squad-creator | Agent Engineering M2 |
+| squad-creator-pro | Agent Engineering M2–M3 |
 
 ## Ordem sugerida
 
-1. Advanced (Essencial ou M1+M5+M7).
-2. Este curso: `aulas/00-como-usar-este-curso.md`.
-3. Módulos M0–M5 deste curso conforme a missão.
-4. Capstone / Projeto Integrador do Advanced com squads já escolhidos.
+1. Advanced: sequência ativa + Capstone.
+2. Aprofundamento lateral somente se o briefing revelar essa lacuna.
+3. Este curso: `aulas/00-como-usar-este-curso.md` + mapa de decisão.
+4. Aula do squad escolhido e projeto integrador deste curso.
 
 Hub: `cursos/README.md`

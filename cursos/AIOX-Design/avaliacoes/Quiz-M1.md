@@ -7,48 +7,48 @@ canonical_scope: cursos/AIOX-Design
 questions: 4
 ---
 
-# Quiz M1 — Contrato e taxonomia
+# Quiz M1 — Direção visual e marca
 
-### 1. DESIGN.md no AIOX é principalmente:
+### 1. Tema visual pontual difere de DS porque:
 
-A. Log de commits de CSS  
-B. Contrato visual lido pela IA antes de gerar tela  
-C. Substituto de CLAUDE.md  
-D. Export automático do Figma sem regras
+A. É sempre melhor  
+B. Pode ser campanha sem herança obrigatória  
+C. Nunca usa cor  
+D. É o mesmo que Storybook  
 
-### 2. Qual conjunto forma a ideia dos "três contratos"?
+### 2. Bottom-up é mais adequado quando:
 
-A. CLAUDE.md / AGENTS.md / DESIGN.md  
-B. package.json / tsconfig / eslint  
-C. README / LICENSE / CHANGELOG  
-D. PRD / ADR / RFC apenas
+A. Não existe UI legada  
+B. Só há logo  
+C. Há muitas telas inconsistentes a inventariar  
+D. O time odeia tokens  
 
-### 3. Button + Label formando um SearchField é tipicamente:
+### 3. Traduzir Brand Book em tokens é papel de:
 
-A. Página  
-B. Template  
-C. Molécula  
-D. Dependência externa
+A. AIOX Design (este curso)  
+B. Somente deploy  
+C. Agent Engineering  
+D. Só copy squad  
 
-### 4. Drift visual é:
+### 4. Posicionamento e voz de marca estratégicos ficam em:
 
-A. Melhorar animação já conforme o contrato  
-B. Atualizar o DESIGN.md de propósito com a equipe  
-C. Usar Storybook  
-D. UI fora do contrato sem atualizar o contrato
+A. Storybook only  
+B. CI/CD  
+C. DESIGN.md hex soltos  
+D. squad brand / aula brand  
 
 <details>
 <summary>Gabarito comentado</summary>
 
-1. **B.** Terceiro contrato do visual.  
-2. **A.** Comportamento, papéis, visual.  
-3. **C.** Átomos cooperando = molécula.  
-4. **D.** Drift = fuga sem atualizar contrato.
+1. **B.**  
+2. **C.**  
+3. **A.**  
+4. **D.**  
 
 </details>
 
 ## Transferência
 
-Abra (ou crie) seu DESIGN.md e adicione uma proibição que teria evitado a última UI "estranha" da IA.
+Aplique a ideia deste quiz no seu produto em 10 minutos e registre uma decisão.
 
 [Módulo M1](../modulos/M1.md) · [Próximo módulo](../modulos/M2.md)

@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, faça a trilha **AIOX Design** (`cursos/AIOX-Design/`, no mínimo aulas 01–04 e 09) ou revise no **AIOX Advanced** (`lessons/`): `41-design-system-e-decisao`, `42-design-atomico-brad-frost`, `43-design-md-novo-contrato` — DS como decisão.
+Antes de operar este squad, revise método e gates no **AIOX Advanced** (`13-pensamento-estruturado-antes-do-terminal`, `48-quality-gate-completo`) e faça no **AIOX Design** ao menos as aulas 01–04 e 09.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -133,10 +133,22 @@ Leia squads/design-system/config.yaml e adote a persona de design-chief.
 - premissas e limites declarados;
 - próximo passo ou handoff para outro squad/skill, se couber.
 
+## O que muda no AIOX Enterprise
+
+Neste acervo, você leva ao squad o contexto visual que conseguir reunir. No Enterprise, o Design System pode consumir o contexto de marca do workspace. Também lê os tokens visuais sociais e os padrões de interface de marketing, depois da validação de prontidão.
+
+**O ganho prático:** o trabalho não começa por uma paleta genérica nem por referências soltas. Componentes e decisões visuais partem de uma verdade de marca já organizada para aquela empresa e aplicação.
+
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Escolha um produto seu (ou um projeto de estudo) em que cor, espaçamento e tipografia vivem hardcoded nos componentes. A missão é construir a primeira camada de foundations: extrair os valores reais do código com `ds-extract-tokens` e consolidá-los em tokens nomeados rodando o workflow `foundations-pipeline`. O objetivo não é redesenhar o produto — é dar nome e fonte única ao que já existe.
+
+**Saída esperada:** um arquivo de tokens (cor, tipografia, espaçamento) com (1) nomes semânticos em vez de valores brutos (`color.action.primary`, não `blue-500`), (2) cada token rastreável a um uso real no código de origem e (3) pelo menos um componente refatorado consumindo os tokens como prova de adoção.
+
+**Erro comum neste squad:** inventar uma paleta "ideal" no vácuo em vez de partir do que o produto já usa — nasce um DS paralelo que ninguém adota. Detecte cedo: se os tokens propostos não baterem com nenhum valor encontrado na extração, o squad está desenhando, não sistematizando.
+
+> **Teste rápido**: pergunte de qualquer token "de onde veio este valor?" — se a resposta não apontar para o produto real, refaça a extração.

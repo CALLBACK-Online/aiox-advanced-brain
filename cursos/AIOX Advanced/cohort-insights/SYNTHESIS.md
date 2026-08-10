@@ -85,6 +85,27 @@
 
 ---
 
+## 3b. Gap comercial (oferta / monetização) — 2026-08-10
+
+A mineração inicial priorizou **órbita de agente + token + setup**. Releitura T1+T2 mostra um segundo cluster, menor em volume mas críticoamente **sem dono** no Advanced puro:
+
+| Padrão de campo (anonimizado) | Frequência relativa | Curso dono |
+|------------------------------|---------------------|------------|
+| “Automatizei a empresa — já é produto?” | T2 explícito; T1 implícito em CRMs/vitrines | **AIOX Productização** (estágio interno) |
+| “Alguém já está monetizando com AIOX?” | T2 pergunta direta | Productização 01–02 |
+| Primeiro sistema = vitrine / portfólio | T1 | Productização 01, 04 |
+| Serviços/mentoria densos → “quero productizar” | T1+T2 | Productização 01–04 + Squads 19–21 *depois* |
+| Canal = só rede social; dúvida de discovery | T2 (indexação LLM) | Productização 03 |
+| Pulo para copy/hormozi sem wedge | zips ×N no WhatsApp | Productização antes de Squads comerciais |
+
+**Implicação:** não inflar Advanced M11 com marketing. O dono canônico é
+`cursos/AIOX-Productizacao/` — FAQ de campo: `FAQ-campo-cohort.md` · personas: `personas-capstone.md` · fronteira AE: `cursos/MOC-Agent-Engineering-vs-Productizacao.md`.
+
+**Anexos ainda opcionais para curadoria futura (não ingeridos como PDF no canônico):**
+proposta comercial IA; framework conhecimento→mentoria (T1); `arquitetura_marca_distribuicao.pdf` / brand-book (T2). Preferir bullets anonimizados a dumps.
+
+---
+
 ## 4. Materiais da cohort ingeridos
 
 Ver `cohort-insights/materials/`:

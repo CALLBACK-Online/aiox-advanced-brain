@@ -9,6 +9,7 @@ status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
 source_refs: [openai-orchestration, openai-guardrails, anthropic-trustworthy-agents]
+reading_minutes: 5
 ---
 
 # Orquestrador, squad, human-in-the-loop e quality gate

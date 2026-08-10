@@ -20,17 +20,15 @@ bloom: apply
 reading_minutes: 23
 has_mermaid_map: true
 map_source: auto-decision_graph
-module: M6
-sequence: M6.2
-track: essential
+module: M4
+sequence: 25
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Brownfield Discovery]]: entrar num projeto que já existe
-
-← [[52-workflow-vs-comando-manual|Workflow pronto vs comando manual: bicicleta com rodinha]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[53-brownfield-enhancement|Brownfield Enhancement: como adicionar feature em código legado]]
 
 ## Conceitos
 
@@ -493,9 +491,12 @@ Tradução dos termos para alguém que está vendo a distinção greenfield vers
 
 ***
 
-
 ---
+
+## Operar isto na prática
+
+Esta aula é pré-requisito no curso de squads — quando a missão for real, siga para: Code Anatomist: `cursos/AIOX-Advanced-Squads/aulas/03-code-anatomist.md` · Domain Decoder: `cursos/AIOX-Advanced-Squads/aulas/04-domain-decoder.md`
 
 ## Navegação
 
-← [[52-workflow-vs-comando-manual|Workflow pronto vs comando manual: bicicleta com rodinha]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[53-brownfield-enhancement|Brownfield Enhancement: como adicionar feature em código legado]]
+← [[lessons/24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]] · ↑ [[modulos/Módulo 4 - Método e Brownfield|M4 — Método e brownfield]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/53-brownfield-enhancement|Brownfield Enhancement: como adicionar feature em código legado]]

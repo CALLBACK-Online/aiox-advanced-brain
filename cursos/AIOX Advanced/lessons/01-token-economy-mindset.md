@@ -21,8 +21,8 @@ reading_minutes: 20
 has_mermaid_map: true
 map_source: auto-decision_graph
 module: M0
-sequence: M0.1
-track: essential
+sequence: 1
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
@@ -541,7 +541,6 @@ motivo: "economizar token aqui custa mais do que usar bem"
 
 ***
 
-
 ---
 
 ## Prática: monte o orçamento de tokens da tua semana
@@ -572,4 +571,4 @@ O critério não é decorar a regra moedas-vs-dólares, é aplicá-la numa decis
 
 ## Navegação
 
-↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[08-principio-processo-certo|Respeite o processo: dê comando, não converse]]
+← início · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0 — Mindset e princípios]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/08-principio-processo-certo|Respeite o processo: dê comando, não converse]]

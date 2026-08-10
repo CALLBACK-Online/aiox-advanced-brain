@@ -26,14 +26,14 @@ tags: [aiox, context-brief]
 
 **Transformação observável:** {o que precisa mudar}
 
-**Projeto de destino:** {próximo curso/aula ou projeto não sensível; sem path absoluto}
+**Destino:** {próximo curso/aula ou projeto não sensível; sem path absoluto}
 
 ## Contexto recuperado
 
 - Fonte: `cursos/…/….md` — {qual decisão ou restrição esta fonte sustenta}
 - Nota/MOC pessoal: {link ou nome} — {síntese necessária para executar}
 
-Inclua somente contexto relevante. O agent do projeto pode não ter acesso ao vault, então não dependa apenas dos links.
+Inclua somente contexto relevante. O agent da próxima etapa ou do projeto pode não ter acesso ao vault, então não dependa apenas dos links.
 
 ## Decisões e restrições
 
@@ -50,12 +50,12 @@ Inclua somente contexto relevante. O agent do projeto pode não ter acesso ao va
 - Por que serve: {sinais objetivos}
 - Por que não o vizinho: {fronteira}
 
-## Handoff ao projeto
+## Handoff à próxima etapa
 
 - Contexto transferido: {este briefing + anexos mínimos}
 - Asset a copiar: {nenhum na rota de estudo; somente se necessário e com destino confirmado na rota operacional}
-- Runtime disponível: {Codex | Claude Code | outro}
-- Superfície de ativação confirmada: {skill, agent, comando ou prompt genérico}
+- Runtime disponível: {não se aplica | Codex | Claude Code | outro}
+- Superfície de ativação confirmada: {não se aplica | skill | agent | comando | prompt genérico}
 - Permissões ou credenciais necessárias: {nenhuma ou listar sem valores}
 
 ## Critérios de aceite

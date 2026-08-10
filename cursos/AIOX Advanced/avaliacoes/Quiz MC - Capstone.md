@@ -1,66 +1,66 @@
 ---
-type: module-quiz
+type: quiz
 course: aiox-advanced
 module: MC
+question_count: 8
+passing_score: 80
 status: canonical
 canonical_scope: cursos/AIOX Advanced
-passing_score: 80
-question_count: 4
-source_version: 1.0.0
-tags: [curso/aiox-advanced, avaliacao, quiz]
 ---
+# Quiz MC — Capstone
 
-# Quiz MC — Método S2S e caso integrado
+### 1. O que transforma sinais em sistema?
+A. Coleta ilimitada
+B. Síntese em decisão, contrato, execução e evidência
+C. Um prompt único
+D. Um relatório sem ação
 
-Eu respondo sem consultar as aulas. Depois abro o gabarito, explico cada erro com minhas palavras e volto à evidência do módulo. Minha referência de domínio é 80%.
+### 2. Qual é a melhor fatia de capstone?
+A. A menor vertical que prova valor de ponta a ponta
+B. Toda a visão futura
+C. Apenas a interface
+D. Apenas a arquitetura
 
-## Questões
+### 3. O que deve constar no decision log?
+A. Só a decisão final
+B. Conversas completas
+C. Alternativas, evidências, trade-offs e gatilho de revisão
+D. Apenas o autor
 
-### 1. Método S2S em essência:
+### 4. Qual falha impede aprovação?
+A. Escopo pequeno
+B. Uma limitação documentada
+C. Um trade-off consciente
+D. Ausência de demonstração reproduzível do resultado
 
-- A. Só copiar concorrente
-- B. Pular pesquisa
-- C. Começar pelo deploy
-- D. Classificar sinal → escolher motor → comparar → provar sistema
+### 5. A mesma fricção lenta apareceu pela terceira vez no seu fluxo de trabalho. Qual rota do Método S2S usar?
+A. Rota Inspiração: buscar uma referência externa forte primeiro
+B. Rota Insight: formalizar uma regra mental em SE/ENTÃO/NUNCA
+C. Rota Dor: parar de remendar caso isolado e converter a fricção em processo
+D. Construir a automação imediatamente, antes que a dor cresça
 
-### 2. No capstone de 90 minutos, o escopo correto é:
+### 6. Você construiu a skill e ela funciona. Quando o ciclo S2S termina de verdade?
+A. Quando a skill roda sem erro
+B. Quando o re-bench prova melhoria contra a referência e o aprendizado vira mecanismo registrado
+C. Quando alguém elogia o resultado
+D. Quando não aparecem mais bugs por uma semana
 
-- A. Reescrever o produto inteiro
-- B. Fatia vertical mínima com brief→stories→QG→deploy→ROI
-- C. Só desenhar slides
-- D. Ignorar aceite
+### 7. Capstone de 90 minutos, minuto 40: você está codando sem nenhuma story com aceite. O que o playbook manda?
+A. Continuar: parar agora desperdiça o tempo restante
+B. Cortar o Quality Gate para compensar o atraso
+C. Recomeçar o briefing do zero
+D. Parar, fechar uma story com aceite e só então voltar ao Dev
 
-### 3. ROI da sessão capstone deve ser:
+### 8. Minuto 70 do capstone: o build estourou o tempo previsto. O que cortar?
+A. O escopo — nunca o Quality Gate: done sem gate é mentira
+B. O Quality Gate, para garantir o deploy no prazo
+C. O smoke test depois do deploy
+D. Nada: estenda o timer e termine o produto
 
-- A. Adjetivo vago ('melhorou muito')
-- B. Omitido
-- C. Número (horas/R$) da fatia entregue
-- D. Só likes no grupo
+<details><summary>Gabarito</summary>
 
-### 4. No minuto 40 do capstone, você tem código, mas nenhuma Story com aceite testável. Qual é a decisão correta?
-
-- A. Parar, cortar para uma Story, definir o aceite e retomar sem eliminar o Quality Gate
-- B. Continuar codando para recuperar o tempo
-- C. Pular direto para o deploy
-- D. Declarar o código atual como protótipo aprovado
-
-<details>
-<summary>Gabarito comentado</summary>
-
-**1. D** — Sinal em sistema com prova.
-
-**2. B** — Maestria sob pressão com wedge real.
-
-**3. C** — Prova mensurável fecha o ciclo.
-
-**4. A** — Sob pressão, eu corto escopo; não corto aceite nem invento PASS.
-
+**1. B** · **2. A** · **3. C** · **4. D** · **5. C** · **6. B** · **7. D** · **8. A**
 </details>
 
 ## Transferência
-
-Eu produzo esta evidência no meu projeto: Projeto Integrador com brief, PRD curto, uma a três Stories, QG, URL ou bloqueio diagnosticado, ROI e retrospectiva.
-
-## Navegação
-
-↑ [[modulos/Módulo C - Capstone|MC]] · [[Assessments|Todas as avaliações]]
+Defina a fatia vertical e o pacote de evidência do seu capstone.

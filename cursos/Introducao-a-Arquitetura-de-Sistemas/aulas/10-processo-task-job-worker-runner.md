@@ -9,6 +9,7 @@ status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
 source_refs: [azure-background-jobs, docker-container]
+reading_minutes: 5
 ---
 
 # Processo, task, job, worker e runner

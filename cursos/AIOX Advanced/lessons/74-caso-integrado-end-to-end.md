@@ -20,16 +20,14 @@ reading_minutes: 18
 has_mermaid_map: true
 map_source: auto-decision_graph
 module: MC
-sequence: MC.2
-track: essential
+sequence: 28
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Caso integrado end-to-end: do briefing ao deploy em 90 minutos
-
-← [[44-metodo-s2s|Método S2S: converter sinais em sistemas]] · ↑ [[modulos/Módulo C - Capstone|MC]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[75-faq-cohort-campo|FAQ de campo: o que a turma Advanced realmente pergunta]]
 
 ## Mapa desta aula
 
@@ -203,11 +201,11 @@ Realidade do grupo Advanced — cicatriz, não slide.
 O capstone não é inventado no vácuo. As falhas que a turma Advanced já
 colecionou viram o script do timer:
 
-- setup/PRO que não traz [[Squad|squad]]  
-- story sem ready  
-- paralelo que multiplica token  
-- QG com status mentiroso  
-- deploy sem env  
+- setup/PRO que não traz [[Squad|squad]]
+- story sem ready
+- paralelo que multiplica token
+- QG com status mentiroso
+- deploy sem env
 
 Em 90 minutos você prova o sistema inteiro — e prova que leu o grupo, não só o
 PDF. Brief → PRD → stories → build → QG → ship → ROI em uma linha.
@@ -476,9 +474,8 @@ seu — inclusive apertar o cronômetro de novo na semana que vem.
 
 ***
 
-
 ---
 
 ## Navegação
 
-← [[44-metodo-s2s|Método S2S: converter sinais em sistemas]] · ↑ [[modulos/Módulo C - Capstone|MC]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[75-faq-cohort-campo|FAQ de campo: o que a turma Advanced realmente pergunta]]
+← [[lessons/44-metodo-s2s|Método S2S: converter sinais em sistemas]] · ↑ [[modulos/Módulo C - Capstone|MC — Capstone]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · fim

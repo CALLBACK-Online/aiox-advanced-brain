@@ -20,17 +20,15 @@ bloom: understand
 reading_minutes: 10
 has_mermaid_map: true
 map_source: handcrafted
-module: M4
-sequence: M4.1
-track: essential
+module: M3
+sequence: 20
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Determinismo Progressivo: 30, 60, 90
-
-← [[19-ciclo-do-repositorio|Ciclo do repositório: Detect Repo, GitHub, CodeRabbit, CI/CD]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro, LLM só onde gera ouro]]
 
 ## Conceitos
 
@@ -452,9 +450,12 @@ Os termos desta aula em uma frase cada.
 
 ***
 
-
 ---
+
+## Operar isto na prática
+
+Esta aula é pré-requisito no curso de squads — quando a missão for real, siga para: Agent Autonomy: `cursos/AIOX-Advanced-Squads/aulas/05-agent-autonomy.md` · ETL Ops: `cursos/AIOX-Advanced-Squads/aulas/08-etl-ops.md` · Runner Ops: `cursos/AIOX-Advanced-Squads/aulas/09-runner-ops.md` · Squad Creator Pro: `cursos/AIOX-Advanced-Squads/aulas/24-squad-creator-pro.md`
 
 ## Navegação
 
-← [[19-ciclo-do-repositorio|Ciclo do repositório: Detect Repo, GitHub, CodeRabbit, CI/CD]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro, LLM só onde gera ouro]]
+← [[lessons/11-goal-vs-loop|Goal vs Loop]] · ↑ [[modulos/Módulo 3 - Determinismo e Comando|M3 — Determinismo e comando]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro, LLM só onde gera ouro]]

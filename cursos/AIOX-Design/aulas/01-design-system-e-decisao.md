@@ -18,6 +18,8 @@ tags: [curso/aiox-design, lesson, layer/curso]
 
 [⌂ Curso](../README.md) · [↑ M0](../modulos/M0.md) · [Próxima →](02-design-system-greenfield-brownfield.md)
 
+[⌂ Curso](../README.md) · [↑ M0](../modulos/M0.md) · [Próxima →](02-design-system-greenfield-brownfield.md)
+
 ## Resultado
 
 Você separa uma escolha visual pontual de uma decisão que precisa virar token, componente ou regra reutilizável.
@@ -82,5 +84,7 @@ Vou listar cinco escolhas visuais. Classifique cada uma como decisão local, tok
 Lista classificada com pelo menos duas decisões globais justificadas e uma escolha mantida conscientemente como local.
 
 ## Navegação
+
+[⌂ Curso](../README.md) · [↑ M0](../modulos/M0.md) · [Próxima →](02-design-system-greenfield-brownfield.md)
 
 [⌂ Curso](../README.md) · [↑ M0](../modulos/M0.md) · [Próxima →](02-design-system-greenfield-brownfield.md)

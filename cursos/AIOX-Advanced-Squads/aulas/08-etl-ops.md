@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `22-pipeline-etl-com-agentes` — pipelines com agentes.
+Antes de operar este squad, revise `20-determinismo-progressivo` e `21-deterministico-primeiro-llm-onde-gera-ouro` no **AIOX Advanced**. Para o padrão ETL, use `cursos/AIOX-Agent-Engineering/aulas/01-pipeline-etl-com-agentes.md`.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -132,10 +132,22 @@ Leia squads/etl-ops/config.yaml e adote a persona de etl-chief.
 - premissas e limites declarados;
 - próximo passo ou handoff para outro squad/skill, se couber.
 
+## O que muda no AIOX Enterprise
+
+Aqui você aprende a operar o fluxo de extração e escolher onde persistir a saída. No Enterprise, o ETL ancora os dados no workspace do negócio. Eles podem vir de documentos, transcrições e Google Drive. A promoção para a fonte canônica passa por um handoff de governança.
+
+**O ganho prático:** a extração não termina em uma pasta de resultados. Ela vira contexto estruturado para outros squads trabalharem com os mesmos dados, sem uma nova coleta a cada missão.
+
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Você tem um episódio de podcast de 2 horas em que um convidado descreveu toda a estratégia de aquisição da empresa — e ninguém nunca mais vai ouvir de novo. Rode `extract-podcast` para obter a transcrição diarizada por falante e deixe o workflow `etl-pipeline` conduzir extração, estruturação e transform até virar conhecimento navegável.
+
+**Saída esperada:** transcrição em JSON+MD com falantes identificados e relatório de confiança, mais o pacote estruturado da fase de transform — cada afirmação rastreável ao trecho de origem.
+
+**Erro comum neste squad:** pular direto para o resumo sem validar a extração — se a diarização trocou os falantes, todo o downstream herda o erro. Detecte cedo conferindo o confidence report e uma amostra da transcrição antes da fase de transform.
+
+> **Teste rápido**: escolha uma frase qualquer do resumo final e localize-a na transcrição; se não conseguir, o pipeline inventou.

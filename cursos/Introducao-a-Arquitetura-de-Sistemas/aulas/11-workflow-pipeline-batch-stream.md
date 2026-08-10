@@ -8,8 +8,9 @@ sequence: M4.2
 status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
-adapted_from: cursos/AIOX Advanced/lessons/52-workflow-vs-comando-manual.md
+adapted_from: cursos/AIOX Advanced/archive/migrated/lessons/52-workflow-vs-comando-manual.md
 source_refs: [azure-architecture-styles]
+reading_minutes: 5
 ---
 
 # Workflow, pipeline, batch e stream

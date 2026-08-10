@@ -38,3 +38,7 @@ arquitetura.md
 ## Portão
 
 Passe a entrega pela [Rubrica](Rubrica.md). Depois peça ao agente uma revisão adversarial: ele deve encontrar acoplamentos, estado sem dono, efeitos duplicáveis, ausência de evidência e tecnologia sem necessidade.
+
+## Passagem para a próxima etapa
+
+Anexe à entrega as dúvidas que permaneceram abertas e use esse pacote como contexto inicial em `cursos/AIOX-Fundamentals/README.md`. O gate deste curso prova compreensão do sistema; não prova ainda instalação ou operação do Core.

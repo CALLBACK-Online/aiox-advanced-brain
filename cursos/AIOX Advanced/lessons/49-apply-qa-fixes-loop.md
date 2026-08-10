@@ -19,9 +19,9 @@ bloom: analyze
 reading_minutes: 14
 has_mermaid_map: true
 map_source: auto-decision_graph
-module: M3
-sequence: M3.4
-track: complete
+module: M2
+sequence: 18
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
@@ -30,8 +30,6 @@ curated_at: '2026-08-09'
 # [[Apply QA Fixes]] Loop: QA volta para Dev sem perder estado
 
 Loop de correção: [[Apply QA Fixes]] e, quando o projeto tiver multi-engine, [[Self-heal]] com circuit breaker — sem autoaprovar.
-
-← [[48-quality-gate-completo|Quality Gate: QA + Apply QA Fixes + CodeRabbit]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[06-code-rabbit-boost|Code Rabbit Boost]]
 
 ## Mapa desta aula
 
@@ -393,4 +391,4 @@ A IA é a seta. O X é seu — inclusive **não abrir limbo** só pra board fica
 
 ## Navegação
 
-← [[48-quality-gate-completo|Quality Gate: QA + Apply QA Fixes + CodeRabbit]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[06-code-rabbit-boost|Code Rabbit Boost]]
+← [[lessons/48-quality-gate-completo|Quality Gate: QA + Apply QA Fixes + CodeRabbit]] · ↑ [[modulos/Módulo 2 - SDC e Qualidade|M2 — SDC e qualidade]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/11-goal-vs-loop|Goal vs Loop]]

@@ -3,16 +3,15 @@ type: lesson
 course: aiox-agent-engineering
 title: "Supabase: setup via @data-engineer"
 lesson_position: 24
-module: M6
+module: M5
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 70
-source_path: "cursos/AIOX Advanced/lessons/70-supabase-via-data-engineer.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/70-supabase-via-data-engineer.md"
 source_version: 1.0.0
 ---
 # Supabase: setup via @data-engineer
 
-← Escada Progressiva: Script → Squad → Workflow → Runner → API → App → SaaS · ↑ M12 · ⌂ Curso · → Vercel Deploy: do localhost ao mundo
 
 ## Mapa desta aula
 
@@ -401,4 +400,4 @@ Adaptação autocontida da aula 70 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](23-escada-progressiva.md) · [Curso](../README.md) · [Próxima aula →](25-vercel-deploy.md)
+[← Aula anterior](23-escada-progressiva.md) · [↑ M5](../modulos/M5-producao.md) · [Curso](../README.md) · [Próxima aula →](25-vercel-deploy.md)

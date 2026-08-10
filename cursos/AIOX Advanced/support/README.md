@@ -19,10 +19,11 @@ Eu uso esta página quando a execução trava. Primeiro identifico o tipo de pro
 
 - **O agente se perdeu:** [[Engenharia de Contexto]], [[Goal vs Loop]].
 - **A entrega ficou inconsistente:** [[Determinismo Progressivo]], [[Quality Gate]].
-- **Não sei qual peça criar:** [[Taxonomia AIOX]], [[Runner]], [[Squad]].
+- **Não sei qual peça criar:** use `cursos/AIOX-Agent-Engineering/AGENT-GUIDE.md`.
 - **O projeto existente é confuso:** [[Brownfield Discovery]].
-- **A interface deriva:** [[DESIGN md|DESIGN.md]].
-- **Funciona localmente, mas não publica:** [[Local Staging Production]], [[73-prontidao-de-producao]].
+- **A interface deriva:** use `cursos/AIOX-Design/AGENT-GUIDE.md`.
+- **Funciona localmente, mas não publica:** use Agent Engineering M4–M5.
+- **Funciona, mas não sei vender:** use `cursos/AIOX-Productizacao/AGENT-GUIDE.md`.
 
 ## Regra de escalada
 

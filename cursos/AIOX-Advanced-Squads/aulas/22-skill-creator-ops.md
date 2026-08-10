@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `28-taxonomia-task-skill-agent-workflow-runner` — skill como primitivo.
+Antes de operar este squad, revise `23-o-que-e-um-squad` no **AIOX Advanced**. Para skill como primitivo, use `cursos/AIOX-Agent-Engineering/aulas/02-taxonomia-da-capacidade.md`, `13-reuse-adapt-create.md` e `14-triagem-de-squad.md`.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -134,8 +134,14 @@ Leia squads/skill-creator-ops/config.yaml e adote a persona de skill-ops-chief.
 
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Seu projeto acumulou 14 skills em `.claude/skills/` e ninguém sabe quais ainda funcionam. A missão: auditar o ciclo de vida do conjunto rodando `audit-registry` para levantar o inventário completo e depois `validate-skill` nas cinco mais usadas, registrando por skill um veredito: manter, migrar ou aposentar.
+
+**Saída esperada:** um relatório de auditoria com inventário e status por skill (ativa, obsoleta, quebrada), resultado de validação com pendências objetivas e o veredito registrado skill a skill, com justificativa.
+
+**Erro comum neste squad:** validar só o SKILL.md e nunca executar a skill — ela “passa” na leitura e quebra no primeiro uso real. Detecte cedo exigindo uma execução de teste registrada antes de marcar qualquer skill como ativa.
+
+> **Teste rápido**: sorteie uma skill marcada como “ativa” no relatório — deve existir evidência de execução, não só frontmatter válido.

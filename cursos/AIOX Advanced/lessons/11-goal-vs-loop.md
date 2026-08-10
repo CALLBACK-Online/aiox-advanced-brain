@@ -21,18 +21,15 @@ bloom: apply
 reading_minutes: 44
 has_mermaid_map: true
 map_source: handcrafted
-module: M4
-sequence: M4.3
-track: essential
+module: M3
+sequence: 19
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Goal vs Loop]]
-
-← [[21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro, LLM só onde gera ouro]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[50-rider-modo-elicitacao|Rider: quando o operador é o piloto]]
-
 
 > **Nota deste acervo:** comandos e squads de produção de curso (`course-creator`) vivem no monorepo `../upstream-monorepo`. Este repositório traz o curso materializado e a biblioteca de skills/squads citados na turma.
 
@@ -1003,9 +1000,12 @@ A anatomia de um goal verificável, para o aluno converter meta fraca em contrat
 
 ***
 
-
 ---
+
+## Operar isto na prática
+
+Esta aula é pré-requisito no curso de squads — quando a missão for real, siga para: Agent Autonomy: `cursos/AIOX-Advanced-Squads/aulas/05-agent-autonomy.md`
 
 ## Navegação
 
-← [[21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro, LLM só onde gera ouro]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[50-rider-modo-elicitacao|Rider: quando o operador é o piloto]]
+← [[lessons/49-apply-qa-fixes-loop|Apply QA Fixes Loop: QA volta para Dev sem perder estado]] · ↑ [[modulos/Módulo 3 - Determinismo e Comando|M3 — Determinismo e comando]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/20-determinismo-progressivo|Determinismo Progressivo: 30, 60, 90]]

@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `28-taxonomia-task-skill-agent-workflow-runner` — processo e taxonomia.
+Antes de operar este squad, revise `19-ciclo-do-repositorio`, `24-entidade-como-unidade-de-processo` e `48-quality-gate-completo` no **AIOX Advanced**. Para taxonomia e workflow, use `cursos/AIOX-Agent-Engineering/aulas/02-taxonomia-da-capacidade.md` e `06-workflow-vs-comando.md`.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -132,10 +132,22 @@ Leia squads/aiox-sop/config.yaml e adote a persona de sop-chief.
 - premissas e limites declarados;
 - próximo passo ou handoff para outro squad/skill, se couber.
 
+## O que muda no AIOX Enterprise
+
+Neste acervo, o resultado é um SOP portátil que você instala e mantém no projeto de destino. No Enterprise, a fábrica também pode consumir o contexto operacional canônico de um negócio. Depois do gate de prontidão, publica a versão legível por máquina no namespace de SOPs desse workspace.
+
+**O ganho prático:** o processo deixa de ser um documento solto. Ele passa a viver junto da operação que descreve, com contexto e governança para ser reutilizado sem reconstrução manual.
+
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+O processo de onboarding de cliente da sua operação existe só na cabeça de uma pessoa. Rode `structured-interview` com quem executa hoje para extrair o passo a passo real, deixe o `sop-extractor` estruturar o rascunho e passe o resultado por `audit-sop` antes de considerar o documento pronto. Nada de escrever o SOP "de memória": a entrevista é a fonte.
+
+**Saída esperada:** um SOP em Markdown com passos numerados e executáveis, dono e gatilho declarados por etapa, e critérios de aceite que permitem a outra pessoa rodar o processo sem perguntar nada.
+
+**Erro comum neste squad:** documentar o processo idealizado em vez do praticado — o SOP descreve o que "deveria" acontecer e ninguém segue. Detecte cedo pedindo a quem executa que aponte, passo a passo, onde o rascunho diverge da rotina real antes do audit.
+
+> **Teste rápido**: se alguém que nunca executou o processo não consegue completá-lo só lendo o SOP, a missão não está feita.

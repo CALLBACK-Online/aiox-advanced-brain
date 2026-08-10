@@ -2,13 +2,13 @@
 type: course-brief
 course: aiox-productizacao
 course_slug: aiox-productizacao
-status: draft
-materialization_state: partial
+status: canonical
+materialization_state: complete
 created_date: "2026-08-10"
 instructor: "Equipe AIOX"
 canonical_scope: cursos/AIOX-Productizacao
 sharing_boundary: cursos
-source: curadoria das aulas 62–66 do AIOX Advanced
+source: curadoria das aulas 62–66 do AIOX Advanced (hoje em archive/migrated + aulas canônicas neste curso)
 tags: [curso, productizacao, service-as-software, distribuicao, monetizacao, layer/curso]
 ---
 
@@ -16,7 +16,9 @@ tags: [curso, productizacao, service-as-software, distribuicao, monetizacao, lay
 
 > Da capacidade que funciona à oferta que alguém entende, testa e paga — sem construir SaaS antes da prova.
 
-**Estado:** brief para aprovação. As cinco aulas-seed já possuem uma primeira materialização; este documento define a fronteira curricular e os gates necessários antes da publicação.
+**Estado:** aprovado e **materializado** (`status: canonical`). Seeds 62–66 → 5 aulas + capstone + 2 quizzes + templates + validador.
+
+Hub do aluno: [`README.md`](README.md) · Ponte AE: [`ponte/agent-engineering.md`](ponte/agent-engineering.md)
 
 ## 1. Decisão curricular
 
@@ -151,7 +153,7 @@ Bloom dominante: **Analyze → Evaluate → Create**.
 1. [Service-as-Software: a era do serviço produtivado](aulas/01-service-as-software.md)
 2. [Vender pela dor e ROI, não pela tecnologia](aulas/02-dor-e-roi.md)
 
-**Quiz M1:** 4 questões de cenário.  
+**Quiz M1:** 4 questões de cenário.
 **Evidência:** one-pager da oferta + tabela de premissas de ROI.
 
 ### M2 — Distribuição, formato e monetização
@@ -162,7 +164,7 @@ Bloom dominante: **Analyze → Evaluate → Create**.
 4. [Três caminhos: Consultoria → App Web → SaaS](aulas/04-caminhos-de-produto.md)
 5. [Três estágios: interno → cliente → produto](aulas/05-estagios-de-monetizacao.md)
 
-**Quiz M2:** 4 questões de cenário.  
+**Quiz M2:** 4 questões de cenário.
 **Evidência:** plano de experimento + cartão de caminho + cartão de estágio.
 
 ### Ordem adaptada
@@ -179,7 +181,7 @@ Oferta vem antes de canal; canal vem antes de software mais pesado.
 
 ## 9. Capstone — Productization Decision Pack
 
-O aluno escolhe uma capacidade real e entrega um pacote único com seis partes:
+O aluno escolhe uma capacidade real e entrega um pacote único com sete partes:
 
 1. **Wedge card** — cliente, dor, job repetível, entrada, saída e limite.
 2. **Oferta de uma página** — dor → mecanismo → promessa → prova → anti-escopo.
@@ -187,6 +189,7 @@ O aluno escolhe uma capacidade real e entrega um pacote único com seis partes:
 4. **Experimento de distribuição** — canal, público, mensagem, ação, prazo e métrica.
 5. **Decisão de formato** — consultoria, app ou SaaS agora; alternativa recusada e gatilho de revisão.
 6. **Cartão de estágio** — interno, cliente ou produto; prova atual, veto e próximo gate.
+7. **Registro epistemológico** — fatos, hipóteses e desconhecidos com fonte ou teste correspondente.
 
 ### Gate de aprovação
 
@@ -252,20 +255,19 @@ Anti-sinais que devem permanecer em Agent Engineering:
 
 ## 13. Fontes e propriedade curricular
 
-| Aula nova | Seed no AIOX Advanced |
-|-----------|-----------------------|
-| 01 — Service-as-Software | `cursos/AIOX Advanced/lessons/62-service-as-software.md` |
-| 02 — Dor e ROI | `cursos/AIOX Advanced/lessons/64-vender-pela-dor-e-roi.md` |
-| 03 — Distribuição | `cursos/AIOX Advanced/lessons/63-distribuicao-vs-produto.md` |
-| 04 — Caminhos de produto | `cursos/AIOX Advanced/lessons/65-tres-caminhos-de-produto.md` |
-| 05 — Estágios de monetização | `cursos/AIOX Advanced/lessons/66-tres-estagios-de-monetizacao.md` |
+| Aula canônica (este curso) | Seed histórico (Advanced) |
+|----------------------------|---------------------------|
+| `aulas/01-service-as-software.md` | archive `…/62-service-as-software.md` (ex-M11) |
+| `aulas/02-dor-e-roi.md` | archive `…/64-vender-pela-dor-e-roi.md` |
+| `aulas/03-distribuicao-vs-produto.md` | archive `…/63-distribuicao-vs-produto.md` |
+| `aulas/04-caminhos-de-produto.md` | archive `…/65-tres-caminhos-de-produto.md` |
+| `aulas/05-estagios-de-monetizacao.md` | archive `…/66-tres-estagios-de-monetizacao.md` |
+| `aulas/06-capstone-decisao-de-productizacao.md` | síntese nova (Decision Pack) |
 
-Após estabilização:
+**Dono canônico dos conceitos comerciais:** este curso.
 
-- AIOX Productização torna-se o dono canônico dos conceitos comerciais.
-- As aulas 62–66 permanecem no Advanced como extensões aplicadas/ponte, preservando paths e wikilinks.
-- Agent Engineering não duplica as cinco aulas; recebe apenas uma ponte na saída da capacidade técnica.
-- O módulo M11 do Advanced separa claramente 62–66 (estratégia comercial) de 67–68 (engenharia/runtime).
+**Agent Engineering** não duplica 62–66; só entrega a capacidade + evidência (ponte de saída).
+**67–69** (harness, extrair squad, escada script→SaaS técnica) permanecem engenharia/runtime — **não** misturar neste mini-curso.
 
 ## 14. Pontes operacionais
 
@@ -289,31 +291,30 @@ O curso não simula ativação desses assets nem transforma o capstone em opera�
 
 ## 16. Métricas de sucesso curricular
 
-- 100% das aulas com objetivo, prática, portão e evidência.
-- 5/5 aulas com origem rastreada nas seeds 62–66.
-- 0 conteúdo comercial duplicado em Agent Engineering.
-- 2 quizzes, 8 questões, gabarito balanceado A/B/C/D.
+- 100% das aulas com objetivo, prática, portão e evidência (quando o validador/pedagogia exigir).
+- 5/5 seeds 62–66 mapeadas + 1 capstone de integração.
+- 0 conteúdo comercial no núcleo de Agent Engineering.
+- 2 quizzes, 8 questões (padrão do acervo: gabarito balanceado).
 - 1 capstone com rubrica e decisão go/no-go.
-- 100% dos links resolvendo dentro de `cursos/AIOX-Productizacao/`.
-- Bootstrap em `AGENTS.md` e `CLAUDE.md` roteando perguntas comerciais ao curso.
-- `npm run validate` verde antes de publicar.
+- Links do curso resolvem dentro de `cursos/AIOX-Productizacao/`.
+- Hub / agents apontam perguntas comerciais para este curso.
 
-## 17. Sequência para finalizar a materialização
+## 17. Materialização (estado)
 
-1. Aprovar este brief e a ordem adaptada das aulas.
-2. Criar `README.md`, módulos M1/M2, quizzes, rubrica, projeto e `AGENT-GUIDE.md`.
-3. Curar as cinco aulas: remover navegação herdada de M11 e adicionar prompts/evidências do novo curso.
-4. Criar validador próprio e integrar em `npm run validate`.
-5. Marcar 62–66 no Advanced como `applied-extension` com owner em AIOX Productização.
-6. Remover 62–66 do outline de Agent Engineering e adicionar ponte de saída.
-7. Atualizar hub, catálogo, MOCs e pacote; validar.
+| Item | Estado |
+|------|--------|
+| README, M1/M2/MC, 6 aulas, 2 quizzes, rubrica, projeto | feito |
+| Templates (wedge, oferta, experimento, decision pack) | feito |
+| `AGENT-GUIDE.md`, pontes AE + squads comerciais | feito |
+| `_tools/validate_course.py` | feito |
+| Seeds 62–66 arquivadas no Advanced (`archive/migrated/`) | feito |
 
-## 18. Decisões pedidas ao revisor
+## 18. Decisões fechadas
 
-- [ ] Aprovar o nome **AIOX Productização** e o slug `aiox-productizacao`.
-- [ ] Aprovar o formato de mini-curso: 2 módulos, 5 aulas, 2 quizzes e 1 capstone.
-- [ ] Aprovar a ordem adaptada 62 → 64 → 63 → 65 → 66.
-- [ ] Confirmar que conversa/experimento real é requisito de conclusão.
-- [ ] Confirmar que as aulas 62–66 saem do escopo de Agent Engineering.
+- [x] Nome **AIOX Productização** · slug `aiox-productizacao`
+- [x] Mini-curso: 2 módulos + capstone · 5 aulas seed + 1 capstone · 2 quizzes
+- [x] Ordem adaptada **62 → 64 → 63 → 65 → 66** (oferta antes de canal; canal antes de software pesado)
+- [x] Conversa/experimento real como requisito de **conclusão** (quiz sozinho não fecha)
+- [x] 62–66 **fora** do núcleo Agent Engineering; 67–69 ficam na engenharia/runtime
 
-**Recomendação do brief:** aprovar o mini-curso com cinco aulas. O recorte é pequeno, coerente e fecha numa decisão real; adicionar conteúdo genérico de marketing diluiria a proposta.
+**Regra de ouro:** se a pergunta é “como o agente funciona e prova entrega?”, é AE. Se é “para quem, por quanto e por qual canal?”, é Productização.

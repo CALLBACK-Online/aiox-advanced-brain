@@ -9,6 +9,7 @@ status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
 source_refs: [mdn-http, azure-background-jobs]
+reading_minutes: 5
 ---
 
 # Comunicação síncrona e assíncrona

@@ -9,6 +9,7 @@ status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
 source_refs: [postgresql-tutorial, postgresql-indexes]
+reading_minutes: 5
 ---
 
 # Banco, schema, índice e transação

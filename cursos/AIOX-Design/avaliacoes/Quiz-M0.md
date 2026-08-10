@@ -7,48 +7,48 @@ canonical_scope: cursos/AIOX-Design
 questions: 4
 ---
 
-# Quiz M0 — Decisão, não estética
+# Quiz M0 — Decisão e repertório
 
-### 1. O que melhor define design system no AIOX?
+### 1. O que melhor define design system neste curso?
 
-A. Uma pasta de screenshots no Figma  
-B. Decisões visuais registradas (token + regra) que as telas herdam  
-C. Um plugin de animação  
-D. Qualquer uso de Tailwind
+A. Preferência estética da semana  
+B. Decisão visual registrada e herdável (token/componente/regra)  
+C. Qualquer uso de Tailwind  
+D. Um PDF de brand sem tokens  
 
-### 2. Uma cor de CTA que aparece em quase todas as telas deve:
+### 2. Repertório de referências deve vir:
 
-A. Ficar só no prompt da vez  
-B. Ser decidida pelo designer em cada PR sem registro  
-C. Virar token/regra no contrato  
-D. Ser sempre gerada aleatoriamente pela IA
+A. Depois que a IA gerar 20 telas  
+B. Só no Figma da agência  
+C. Antes de pedir UI à IA  
+D. Nunca — a IA inventa melhor  
 
-### 3. Brownfield com UI sem tokens nomeados — primeira ação típica:
+### 3. Greenfield de DS sugere primeiro:
 
-A. Inventariar padrões reais nas telas  
-B. Reescrever todo o front em um fim de semana  
-C. Ignorar UI e só fazer backend  
-D. Apagar o Storybook
+A. Contrato mínimo cedo  
+B. Migrar 40 telas no dia 1  
+C. Ignorar tokens  
+D. Forkar shadcn sem decisão  
 
-### 4. Qual NÃO é objetivo da aula de greenfield/brownfield de DS?
+### 4. Pasta de referências sem notas de proibição:
 
-A. Classificar a porta de entrada  
-B. Nomear a primeira ação  
-C. Evitar reescrita total por impulso  
-D. Substituir discovery de regras de negócio no código
+A. Já é design system  
+B. Substitui DESIGN.md  
+C. É suficiente para produção  
+D. Ainda arrisca AI-look genérico  
 
 <details>
 <summary>Gabarito comentado</summary>
 
-1. **B.** Decisão registrada, não moodboard.  
-2. **C.** Recorrência/marca → token.  
-3. **A.** Inventário antes de reescrita.  
-4. **D.** DS visual ≠ domain decoder.
+1. **C.**  
+2. **C.**  
+3. **A.**  
+4. **D.**  
 
 </details>
 
 ## Transferência
 
-Liste 3 decisões visuais do seu produto e marque token vs pontual em 10 minutos.
+Aplique a ideia deste quiz no seu produto em 10 minutos e registre uma decisão.
 
 [Módulo M0](../modulos/M0.md) · [Próximo módulo](../modulos/M1.md)

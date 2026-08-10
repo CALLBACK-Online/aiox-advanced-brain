@@ -26,7 +26,7 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `28-taxonomia-task-skill-agent-workflow-runner; 30-runner-executavel-deterministico` — runner determinístico.
+Antes de operar este squad, revise `20-determinismo-progressivo` e `21-deterministico-primeiro-llm-onde-gera-ouro` no **AIOX Advanced**. Para implementação de runner, use `cursos/AIOX-Agent-Engineering/aulas/04-runner-deterministico.md`.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
@@ -134,8 +134,14 @@ Leia squads/runner-ops/config.yaml e adote a persona de runner-chief.
 
 ## Limites neste acervo
 
-Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integração multi-tenant enterprise que foi deliberadamente removida deste acervo.
+Este repositório **não** é o monorepo de produção. Alguns fluxos esperam runtime AIOX, tools ou credenciais no **seu** projeto. Estude a anatomia aqui; execute com dependências resolvidas no destino. Não invente integrações que este pacote não oferece; confira dependências e maturidade no projeto de destino.
 
 ## Prática
 
-Descreva uma missão real em 5 linhas. Explique por que **este** squad e não o vizinho do mesmo módulo. Escreva o briefing copiável preenchido e a lista de evidências que você exigiria antes de dar a missão como “feita”.
+Toda segunda-feira alguém abre a IDE só para rodar o mesmo fluxo de consolidação de relatórios — humano nenhum decide nada no meio. Use `create-runner` para transformar esse fluxo em um runner determinístico headless e finalize com `register-runner` para que ele entre no registry e passe a ser governado pelo squad.
+
+**Saída esperada:** um runner executável fora da IDE com fases e estado declarados, aprovado por `validate-runner`, com entrada no `runner-registry.yaml` e log de execução que permite reconstruir cada fase sem repetir a rodada.
+
+**Erro comum neste squad:** criar o runner e nunca registrá-lo — ele roda órfão, sem monitoramento nem governança, e ninguém percebe quando quebra. Detecte cedo conferindo se o runner aparece no registry antes do primeiro agendamento recorrente.
+
+> **Teste rápido**: rode o runner duas vezes com a mesma entrada; se as saídas divergirem, ele não é determinístico e não está pronto.

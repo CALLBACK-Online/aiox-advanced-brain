@@ -7,7 +7,7 @@ canonical_scope: cursos/AIOX-Design
 
 # Projeto integrador / Capstone
 
-Siga a [aula 10](aulas/10-capstone-contrato-e-componente.md) e a [Rubrica](Rubrica.md).
+Siga a [aula 10](aulas/20-capstone-ds-storybook-executavel.md) e a [Rubrica](Rubrica.md).
 
 Entregue em `notas/` (não edite aulas canônicas):
 

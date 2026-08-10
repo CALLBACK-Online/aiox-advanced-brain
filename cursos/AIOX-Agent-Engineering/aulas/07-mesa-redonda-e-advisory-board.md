@@ -3,16 +3,15 @@ type: lesson
 course: aiox-agent-engineering
 title: "Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só"
 lesson_position: 7
-module: M2
+module: M1
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 35
-source_path: "cursos/AIOX Advanced/lessons/35-mesa-redonda-advisory-board.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/lessons/35-mesa-redonda-advisory-board.md"
 source_version: 1.0.0
 ---
 # Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só
 
-← Triagem de Squad novo: fase-zero de prior-art + research loop · ↑ M7 · ⌂ Curso · → Tech Research: pesquisa profunda multi-fonte
 
 ## Conceitos
 
@@ -484,4 +483,4 @@ Adaptação autocontida da aula 35 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](06-pipeline-etl-com-agentes.md) · [Curso](../README.md) · [Próxima aula →](08-tech-research.md)
+[← Aula anterior](06-workflow-vs-comando.md) · [↑ M1](../modulos/M1-discovery-e-research.md) · [Curso](../README.md) · [Próxima aula →](08-tech-research.md)

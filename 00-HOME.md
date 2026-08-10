@@ -40,6 +40,7 @@ Assim só entra a camada de conhecimento: cursos, READMEs, entradas, skills, not
 
 - [[JORNADA-AIOX|Fundamentals, Advanced ou Enterprise?]]
 - [[cursos/README|Hub de trilhas]]
+- [[cursos/COMO-ESTUDAR|Como estudar · trilhas por caso]]
 - [[cursos/MOC-Acervo-AIOX|MOC · Acervo]]
 - [[cursos/MOC-Skills|MOC · Skills]]
 - [[cursos/MOC-Squads|MOC · Squads]]
@@ -49,8 +50,17 @@ Assim só entra a camada de conhecimento: cursos, READMEs, entradas, skills, not
 - [[cursos/Introducao-a-Arquitetura-de-Sistemas/README|Introdução à Arquitetura de Sistemas]]
 - [[cursos/AIOX-Fundamentals/README|AIOX Fundamentals — Core básico]]
 - [[cursos/AIOX Advanced/README|AIOX Advanced (método)]]
-- [[cursos/AIOX-Design/README|AIOX Design (contrato visual / DS)]]
 - [[cursos/AIOX-Advanced-Squads/README|AIOX Advanced Squads]]
+
+### Especializações laterais do Advanced
+
+- [[cursos/AIOX-Agent-Engineering/README|AIOX Agent Engineering]]
+- [[cursos/AIOX-Design/README|AIOX Design (contrato visual / DS)]]
+- [[cursos/AIOX-Productizacao/README|AIOX Productização (oferta / mercado)]]
+- [[cursos/MOC-Agent-Engineering-vs-Productizacao|MOC · AE × Productização]]
+
+### Apoio do vault
+
 - [[notas/README|notas — anotações dos alunos]]
 - [[AGENTS|Contrato dos agents]]
 - [[README|README do repositório]]
@@ -65,11 +75,13 @@ Assim só entra a camada de conhecimento: cursos, READMEs, entradas, skills, not
 
 Arquitetura e AIOX Fundamentals são etapas diferentes: linguagem técnica universal primeiro; framework AIOX depois.
 
+Depois do Advanced, avance para Squads. Se a missão revelar uma lacuna específica, insira [[cursos/AIOX-Agent-Engineering/README|Agent Engineering]] para construir capacidades, [[cursos/AIOX-Design/README|Design]] para interface ou [[cursos/AIOX-Productizacao/README|Productização]] para mercado; depois retome a operação do especialista.
+
 ## Loop
 
 ```text
-Recuperar fontes → Captura/MOC → Context Brief → Projeto real
-→ Validação → Retorno em notas/retornos/
+Entrada: recuperar fontes → Captura/MOC → Context Brief → próxima trilha
+Operação: Context Brief + asset → projeto real → validação → notas/retornos/
 ```
 
 ## Skills de vault

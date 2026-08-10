@@ -19,17 +19,15 @@ bloom: analyze
 reading_minutes: 14
 has_mermaid_map: true
 map_source: auto-decision_graph
-module: M4
-sequence: M4.4
-track: complete
+module: M3
+sequence: 22
+track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Rider: quando o operador é o piloto
-
-← [[11-goal-vs-loop|Goal vs Loop]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[22-pipeline-etl-com-agentes|Pipeline ETL com agentes: hierarquia de camadas]]
 
 ## Mapa desta aula
 
@@ -401,9 +399,8 @@ A IA é a seta. O X é seu — inclusive puxar o freio no precipício e soltar n
 
 ***
 
-
 ---
 
 ## Navegação
 
-← [[11-goal-vs-loop|Goal vs Loop]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[22-pipeline-etl-com-agentes|Pipeline ETL com agentes: hierarquia de camadas]]
+← [[lessons/21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro, LLM só onde gera ouro]] · ↑ [[modulos/Módulo 3 - Determinismo e Comando|M3 — Determinismo e comando]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[lessons/23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]]
