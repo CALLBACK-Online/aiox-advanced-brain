@@ -30,6 +30,8 @@ curated_at: '2026-08-09'
 
 # [[Pipeline canônico|pipeline canônico]]: do nada ao [[PRD]] com stories prontas
 
+No fechamento do PRD, deixe explícito o que é Must versus Won't ([[MoSCoW]]) e, se houver fila de iniciativas, o score [[RICE]].
+
 ← [[39-pasta-os-curadoria-local|Pasta OS: curadoria local de open-source para o agente]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[41-design-system-e-decisao|Design system é decisão, não estética]]
 
 ## Conceitos
@@ -495,7 +497,6 @@ Tradução dos termos para alguém que está vendo a sequência pesquisar antes 
 > **Portão da aula**: A aula só está no padrão quando o aluno nomeia as fases do pipeline canônico (Auto-Clarify, Tech Research, Spy/Bench, Code Anatomy e PRD), distingue pesquisar antes em paralelo (fundar em repertório) de codar primeiro (fundar no escuro), e consegue apontar, para um projeto novo real, por onde o pipeline começa e quais três Tech Researchs ele dispararia em paralelo antes de mandar o agente codar.
 
 ***
-
 
 ---
 

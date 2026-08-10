@@ -14,11 +14,13 @@ sequence: M4.4
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, hormozi]
+tags: [curso/aiox-advanced-squads, squad, hormozi, layer/curso, curso/squads, squad/hormozi]
 maturity: partial
 ---
 
 # Hormozi — oferta, leads e escala $100M
+
+> Vault: [[squads/hormozi/README|hormozi]] · [[skills/hormozi/SKILL|hormozi]] · [[cursos/MOC-Squads]]
 
 [← Sales](20-sales.md) · [↑ M4](../modulos/M4-aquisicao-conteudo-vendas.md) · [⌂ Curso](../README.md) · [→ Skill Creator Ops](22-skill-creator-ops.md)
 

@@ -14,11 +14,13 @@ sequence: M1.5
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, runner-ops]
+tags: [curso/aiox-advanced-squads, squad, runner-ops, layer/curso, curso/squads, squad/runner-ops]
 maturity: partial
 ---
 
 # Runner Ops — runners headless e governança
+
+> Vault: [[squads/runner-ops/README|runner-ops]] · [[skills/runner-ops/SKILL|runner-ops]] · [[cursos/MOC-Squads]]
 
 [← ETL Ops](08-etl-ops.md) · [↑ M1](../modulos/M1-autonomia-operacoes.md) · [⌂ Curso](../README.md) · [→ Data](10-data.md)
 

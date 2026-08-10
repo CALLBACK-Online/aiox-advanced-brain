@@ -14,11 +14,13 @@ sequence: M2.1
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, data]
+tags: [curso/aiox-advanced-squads, squad, data, layer/curso, curso/squads, squad/data]
 maturity: partial
 ---
 
 # Data — analytics e decisões com dados
+
+> Vault: [[squads/data/README|data]] · [[skills/data/SKILL|data]] · [[cursos/MOC-Squads]]
 
 [← Runner Ops](09-runner-ops.md) · [↑ M2](../modulos/M2-dados-materializacao.md) · [⌂ Curso](../README.md) · [→ DB Sage](11-db-sage.md)
 

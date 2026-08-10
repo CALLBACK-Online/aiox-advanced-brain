@@ -16,7 +16,15 @@ freq:
 ---
 # Worker
 
-Executor focado em trabalho mecânico/repetível na taxonomia dos Quatro Executores. Diferente do Agent (raciocínio aberto) e do Humano (decisão final).
+Executor focado em trabalho mecânico e repetível na taxonomia dos Quatro Executores. Recebe limites claros, transforma uma entrada e devolve uma saída; não assume decisão aberta nem decisão final.
+
+## Como é usado
+
+Use **Worker** para delegar uma operação previsível e delimitada, como varrer arquivos, normalizar dados ou repetir uma validação, deixando exceções e decisões novas para um Agent ou Humano.
+
+**Exemplo prático:** nas aulas [[15-quatro-executores]] e [[30-runner-executavel-deterministico]], entregue ao **Worker** uma pasta e regras de normalização; ele processa os arquivos, produz o relatório e encaminha casos fora do padrão para revisão.
+
+**Não confunda:** **Worker** não escolhe o escopo nem resolve ambiguidade de negócio: ele executa o procedimento delimitado; Agent raciocina sobre exceções e Humano mantém a decisão final.
 
 **Frequência nos cursos:** **79** menções (AIOX Advanced: 78 · AIOX Advanced Squads: 1).
 

@@ -14,11 +14,13 @@ sequence: M1.3
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, aiox-sop]
+tags: [curso/aiox-advanced-squads, squad, aiox-sop, layer/curso, curso/squads, squad/aiox-sop]
 maturity: partial
 ---
 
 # AIOX SOP — processos repetíveis e auditáveis
+
+> Vault: [[squads/aiox-sop/README|aiox-sop]] · [[skills/aiox-sop/SKILL|aiox-sop]] · [[cursos/MOC-Squads]]
 
 [← Claude Code Mastery](06-claude-code-mastery.md) · [↑ M1](../modulos/M1-autonomia-operacoes.md) · [⌂ Curso](../README.md) · [→ ETL Ops](08-etl-ops.md)
 

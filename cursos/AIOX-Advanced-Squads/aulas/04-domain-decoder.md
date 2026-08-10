@@ -14,11 +14,13 @@ sequence: M0.4
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, domain-decoder]
+tags: [curso/aiox-advanced-squads, squad, domain-decoder, layer/curso, curso/squads, squad/domain-decoder]
 maturity: partial
 ---
 
 # Domain Decoder — regras de negócio no código
+
+> Vault: [[squads/domain-decoder/README|domain-decoder]] · [[skills/domain-decoder/SKILL|domain-decoder]] · [[cursos/MOC-Squads]]
 
 [← Code Anatomist](03-code-anatomist.md) · [↑ M0](../modulos/M0-escolha-pesquisa-dominio.md) · [⌂ Curso](../README.md) · [→ Agent Autonomy](05-agent-autonomy.md)
 

@@ -1,0 +1,113 @@
+---
+tags: [hub, layer/curso, curso/metodo]
+aliases: [MOC Aulas Advanced, Todas as aulas]
+---
+
+# MOC — Todas as aulas (AIOX Advanced)
+
+> Spine do Graph do **método**. Hubs fora desta pasta em monoespaçado (validador autocontido).
+
+Curso: abra `cursos/AIOX Advanced/README.md` · mapa: [[Mapa do AIOX]]
+
+Hubs do vault (paths): `00-HOME.md` · `cursos/MOC-Acervo-AIOX.md` · `cursos/entradas/` · `cursos/MOC-Squads.md`
+
+## Módulos
+
+- [[Módulo 0 - Mindset e Princípios]]
+- [[Módulo 1 - Sistema AIOX]]
+- [[Módulo 10 - Escala e Tokens]]
+- [[Módulo 11 - Produtivização]]
+- [[Módulo 12 - Deploy Profissional]]
+- [[Módulo 2 - Setup e Contexto]]
+- [[Módulo 3 - Ciclo SDC]]
+- [[Módulo 4 - Determinismo e Comando]]
+- [[Módulo 5 - Arquitetura AIOX]]
+- [[Módulo 6 - Brownfield e Greenfield]]
+- [[Módulo 7 - Criar Squad]]
+- [[Módulo 8 - Pipeline de Research]]
+- [[Módulo 9 - Design System]]
+- [[Módulo C - Capstone]]
+
+## Aulas (75)
+
+- [[01-token-economy-mindset]]
+- [[02-aiox-nao-e-ferramenta]]
+- [[03-claude-md-leis-da-fisica]]
+- [[04-agentes-orbitais-aiox]]
+- [[05-ambientes-local-staging-production]]
+- [[06-code-rabbit-boost]]
+- [[07-etapas-de-desenvolvimento-aiox]]
+- [[08-principio-processo-certo]]
+- [[09-conceito-determinismo-progressivo]]
+- [[10-processo-ciclo-do-story]]
+- [[11-goal-vs-loop]]
+- [[12-repertorio-vs-tecnica]]
+- [[13-pensamento-estruturado-antes-do-terminal]]
+- [[14-anatomia-do-agente]]
+- [[15-quatro-executores]]
+- [[16-janela-de-contexto]]
+- [[17-engenharia-de-contexto]]
+- [[18-yaml-markdown-json-sweet-spot]]
+- [[19-ciclo-do-repositorio]]
+- [[20-determinismo-progressivo]]
+- [[21-deterministico-primeiro-llm-onde-gera-ouro]]
+- [[22-pipeline-etl-com-agentes]]
+- [[23-o-que-e-um-squad]]
+- [[24-entidade-como-unidade-de-processo]]
+- [[25-core-config-leis-sociais]]
+- [[26-nao-delegar-pensar]]
+- [[27-otimizacao-claude-md]]
+- [[28-taxonomia-task-skill-agent-workflow-runner]]
+- [[29-sub-agents-vs-swarm-agents]]
+- [[30-runner-executavel-deterministico]]
+- [[31-brownfield-discovery]]
+- [[32-design-system-greenfield-brownfield]]
+- [[33-anatomia-de-um-squad]]
+- [[34-squad-creator-passo-a-passo]]
+- [[35-mesa-redonda-advisory-board]]
+- [[36-tech-research-multi-fonte]]
+- [[37-spy-bench-comparativo]]
+- [[38-code-anatomy-domain-decoder]]
+- [[39-pasta-os-curadoria-local]]
+- [[40-pipeline-canonico-prd]]
+- [[41-design-system-e-decisao]]
+- [[42-design-atomico-brad-frost]]
+- [[43-design-md-novo-contrato]]
+- [[44-metodo-s2s]]
+- [[45-doze-agentes-orbitais]]
+- [[46-etapas-de-desenvolvimento]]
+- [[47-ciclo-de-vida-do-story]]
+- [[48-quality-gate-completo]]
+- [[49-apply-qa-fixes-loop]]
+- [[50-rider-modo-elicitacao]]
+- [[51-mapear-entidades-antes-do-squad]]
+- [[52-workflow-vs-comando-manual]]
+- [[53-brownfield-enhancement]]
+- [[54-reuse-adapt-create-heuristica]]
+- [[55-triagem-de-squad-novo]]
+- [[56-tailwind-shadcn-storybook]]
+- [[57-storybook-para-variantes]]
+- [[58-ralph-paralelizacao]]
+- [[59-quando-paralelizar-vs-sequencial]]
+- [[60-routing-modelos]]
+- [[61-wave-execute]]
+- [[62-service-as-software]]
+- [[63-distribuicao-vs-produto]]
+- [[64-vender-pela-dor-e-roi]]
+- [[65-tres-caminhos-de-produto]]
+- [[66-tres-estagios-de-monetizacao]]
+- [[67-harness-ambiente-execucao]]
+- [[68-squad-fora-do-claude-code]]
+- [[69-escada-progressiva-script-a-saas]]
+- [[70-supabase-via-data-engineer]]
+- [[71-vercel-deploy]]
+- [[72-cicd-pipeline-completa]]
+- [[73-prontidao-de-producao]]
+- [[74-caso-integrado-end-to-end]]
+- [[75-faq-cohort-campo]]
+
+## Depois do método
+
+- Operação: pasta `cursos/AIOX-Advanced-Squads/`
+- Pontes skill/squad: `cursos/entradas/`
+

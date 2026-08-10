@@ -16,7 +16,15 @@ freq:
 ---
 # Addon sem gate
 
-Ferramenta de a11y/visual instalada mas que não bloqueia nem gera ticket.
+Addon de acessibilidade ou inspeção visual instalado, mas sem contrato que bloqueie o fluxo ou gere ticket quando encontra um problema.
+
+## Como é usado
+
+Use **Addon sem gate** para identificar o anti-padrão: o Storybook alerta, mas o fluxo não bloqueia o merge nem cria ticket.
+
+**Exemplo prático:** na aula [[57-storybook-para-variantes]], uma violação de contraste só deixa de ser ruído quando bloqueia o PR ou abre ticket com dono e prazo.
+
+**Não confunda:** addon instalado não é qualidade garantida: sem um gate que bloqueie ou gere ticket, o alerta é ruído decorativo que todo mundo aprende a ignorar.
 
 **Frequência nos cursos:** **2** menções (AIOX Advanced: 2 · AIOX Advanced Squads: 0).
 

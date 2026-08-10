@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/etl-ops]
+---
+
 # ETL Operations Squad
 
 Squad operacional para execucao de pipelines ETL usando `services/etl/` (v2.6.0).
@@ -101,3 +105,14 @@ node services/etl/bin/ebook-to-markdown.js <epub-file>
 - Unidirectional flow
 - Checkpoint coverage
 - Zero time gaps in handoffs
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-etl-ops|entrada · etl-ops]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/08-etl-ops|08-etl-ops]]
+- Skill: [[skills/etl-ops/SKILL|etl-ops]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

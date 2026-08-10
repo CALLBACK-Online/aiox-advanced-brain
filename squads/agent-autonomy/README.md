@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/agent-autonomy]
+---
+
 # Agent Autonomy Squad
 
 Squad para auditar, criar, diagnosticar e otimizar agentes autônomos. Baseado em 14 elite minds da pesquisa e prática de agentes de IA.
@@ -141,3 +145,14 @@ type: Expert Squad
 result: PASS
 fixes_applied: config consolidation, ARCHITECTURE.md, output_examples (4 agents)
 ```
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-agent-autonomy|entrada · agent-autonomy]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/05-agent-autonomy|05-agent-autonomy]]
+- Skill: [[skills/agent-autonomy/SKILL|agent-autonomy]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

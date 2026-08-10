@@ -14,11 +14,13 @@ sequence: M3.3
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, design-ops]
+tags: [curso/aiox-advanced-squads, squad, design-ops, layer/curso, curso/squads, squad/design-ops]
 maturity: partial
 ---
 
 # Design Ops — governar o design system no tempo
+
+> Vault: [[squads/design-ops/README|design-ops]] · [[skills/design-ops/SKILL|design-ops]] · [[cursos/MOC-Squads]]
 
 [← Design System](14-design-system.md) · [↑ M3](../modulos/M3-marca-experiencia-narrativa.md) · [⌂ Curso](../README.md) · [→ Storytelling](16-storytelling.md)
 

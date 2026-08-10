@@ -11,7 +11,7 @@ source_version: 1.0.0
 source_status: ready_to_ship
 synced_at: 2026-08-09
 curriculum_modules: 14
-tags: [curso, aiox-advanced, course-brain]
+tags: [curso, aiox-advanced, course-brain, layer/curso]
 ---
 
 # AIOX Advanced
@@ -31,11 +31,13 @@ tags: [curso, aiox-advanced, course-brain]
 ## Cursos neste acervo
 
 - **Este curso:** AIOX Advanced (método, SDC, mindset).
+- **Base técnica:** `cursos/AIOX-Fundamentos-de-Arquitetura/` — arquitetura de sistemas e vocabulário técnico.
 - **Curso irmão:** `cursos/AIOX-Advanced-Squads/` — 25 aulas (intro + um squad por aula).
 - **Hub das trilhas:** `cursos/README.md`
+- **Ponte base → método:** [[ponte/pre-requisitos-arquitetura|Pré-requisitos de arquitetura]]
 - **Ponte método → squads:** [[ponte/trilha-squads|Trilha de squads]]
 
-Ordem sugerida: Rota Essencial daqui → aula 00 do curso Squads → módulos de squads conforme a missão → Capstone.
+Ordem sugerida: Fundamentos (completo ou nivelamento pela ponte) → Rota Essencial daqui → aula 00 do curso Squads → módulos de squads conforme a missão → Capstone.
 
 ## Comece aqui
 

@@ -17,16 +17,16 @@ updated: '2026-08-10'
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 freq:
-  aiox_advanced: 33
+  aiox_advanced: 34
   aiox_advanced_squads: 0
-  total: 33
+  total: 34
   counted_at: '2026-08-10'
 ---
 # Brownfield Discovery
 
 Ritual de decifrar um projeto que já existe antes de propor mudança.
 
-**Frequência nos cursos:** **33** menções (AIOX Advanced: 33 · AIOX Advanced Squads: 0).
+**Frequência nos cursos:** **34** menções (AIOX Advanced: 34 · AIOX Advanced Squads: 0).
 
 ## Onde aparece (AIOX Advanced)
 

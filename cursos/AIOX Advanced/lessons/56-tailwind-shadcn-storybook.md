@@ -27,15 +27,41 @@ canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
-# Tailwind + ShadCN + [[Storybook]]: stack canonical para IA
+# Tailwind + ShadCN + Storybook: stack canônica para IA
 
-← [[42-design-atomico-brad-frost|Design atomico: a interface se monta de peca pequena pra peca grande]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[43-design-md-novo-contrato|DESIGN.md: o novo contrato que a IA lê antes de gerar tela]]
+← [[55-triagem-de-squad-novo|Triagem de squad novo]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[57-storybook-para-variantes|Storybook para variantes]]
 
 ## Mapa desta aula
 
-Decisão-chave da aula — Qual é o estado da stack visual do projeto agora?
+Decis[[modulos/Módulo 9 - Design System|M9]]tack visual do projeto agora?
 
 ```mermaid
+%%{init: {
+  "theme": "dark",
+  "flowchart": {
+    "curve": "basis",
+    "nodeSpacing": 22,
+    "rankSpacing": 36,
+    "padding": 8,
+    "htmlLabels": true,
+    "useMaxWidth[[cursos/AIOX Advanced/README|Curso]]  "fontSize": "14px"
+  }
+}}%%
+flowchart TB
+  Q["Qual é o estado da stack visual do projeto agora?"]
+  B0["Greenfield UI<br/>Instalar stack canonical na ordem token…"]
+  B1["DS legado no código<br/>Mapear → adaptar → documentar stories. …"]
+  B2["Só Tailwind[[43-design-md-novo-contrato|DESIGN.md: o novo contrato que a IA lê antes de gerar tela]]ma (tokens + 3–5 primitives).…"]
+  B4["Drift visual já dói<br/>Congelar inventário → consolidar 1 comp…"]
+  Q --> B0
+  B0 --> B1
+  B1 --> B2
+  B2 --> B3
+  B3 --> B4
+classDef core fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#e2e8f0
+  classDef step fill:#0f172a,stroke:#6366f1,stroke-width:1.5px,color:#f1f5f9
+  classDef gate fill:#312e81,stroke:#a5b4fc,stroke-width:2px,color:#e2e8f0
+  classDef good fill:#14532d,stroke:#4ade80,stroke-wi```mermaid
 %%{init: {
   "theme": "dark",
   "flowchart": {
@@ -68,31 +94,7 @@ classDef core fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#e2e8f0
   classDef good fill:#14532d,stroke:#4ade80,stroke-width:1.5px,color:#ecfdf5
   classDef bad fill:#450a0a,stroke:#f87171,stroke-width:1.5px,color:#fef2f2
   classDef warn fill:#422006,stroke:#fbbf24,stroke-width:1.5px,color:#fffbeb
-```
-
-> Leia o diagrama antes do texto longo. Depois volte e confira.
-
-> Tokens, componentes e museu vivo: a stack que a IA reusa em vez de inventar botão novo a cada prompt.
-
-**Objetivos de aprendizagem:**
-- Justificar Tailwind+ShadCN+Storybook como stack canonical para geração por IA. _(understand)_
-- Desenhar a ordem de setup: tokens → primitives ShadCN → stories → [[DESIGN md|DESIGN.md]]. _(apply)_
-- Ligar DESIGN.md e Storybook como contrato antes de gerar qualquer tela. _(apply)_
-- Diagnosticar stack legada e escolher adaptar, mapear ou canonicalizar sem jogar fora. _(analyze)_
-
----
-
-## O que você consegue no fim desta aula
-
-*G · Destino*
-
-Destino claro antes de qualquer install de UI.
-
-Ao final desta aula você vai conseguir três coisas concretas:
-
-1. Explicar **por que** Tailwind + ShadCN + Storybook é stack canonical pra IA — sem virar fanboy de lib.
-2. Montar (ou auditar) a **ordem mínima**: tokens → primitives → stories → DESIGN.md.
-3. Olhar um prompt de "faz a tela X" e **recusar** se o contrato visual não existe.
+```ntrato visual não existe.
 
 Se você sair daqui ainda pedindo "UI bonita" sem catálogo, a aula falhou.
 Criatividade no produto. Determinismo no botão.
@@ -143,12 +145,12 @@ Beleza. A partir daqui a gente troca inventário mental por **catálogo no repo*
 
 *S · Rota*
 
-Tailwind fala, ShadCN compõe, Storybook prova.
+Tailwind fala, ShadCN compõe, Storybook prova. Regressão visual em escala: [[Chromatic]] (ou equivalente) sobre o mesmo catálogo.
 
 A stack canonical não é religião de framework. É **redução de graus de
 liberdade** onde a alucinação visual custa caro.
 
-1. **Tailwind** — linguagem de utilitários estável. O modelo já "pensa" em
+1. **Tailwind** — linguagem de utilitários está[[DESIGN md|DESIGN.md]]" em
    classes; tokens semânticos viram restrição, não decoração.
 2. **ShadCN** — componentes **no teu código** (não black-box npm opaco).
    Você copia, adapta, versiona. A IA edita o mesmo arquivo que o humano.
@@ -240,9 +242,7 @@ Lei: **criatividade no fluxo de produto; determinismo no átomo visual.**
 
 ## Ordem de setup que evita retrabalho
 
-Tokens primeiro. Feature depois. Sempre.
-
-Ordem que eu uso — e que a IA respeita quando você exige:
+Tokens primeiro. Feature [[Design System]]Ordem que eu uso — e que a IA respeita quando você exige:
 
 1. **Tokens** — cor, type, space, radius, shadow. Nomes semânticos
    (`bg-primary`, não `#3B82F6` espalhado).
@@ -385,7 +385,7 @@ Vamos lá. Sem isso a aula vira podcast de preferência de CSS. Cronometra.
 - **Stack canonical**: Conjunto padrão (Tailwind+ShadCN+Storybook) que reduz graus de liberdade da geração por IA.
 - **Token semântico**: Nome de design com significado (primary, muted) em vez de valor cru espalhado.
 - **Primitive**: Componente base reutilizável (Button, Input) no catálogo do repo.
-- **SoT visual**: Source of Truth — Storybook + DESIGN.md como verdade compartilhada humano/IA.
+- **SoT visual**: Source of Truth — Storybook [[Brownfield Discovery|brownfield]]ada humano/IA.
 - **CSS one-off**: Estilo local que foge do catálogo e cria drift silencioso.
 
 ---
@@ -404,9 +404,22 @@ A IA é a seta. O X é seu — inclusive decidir **o que** pode ser inventado.
 
 ***
 
-
 ---
 
 ## Navegação
 
 ← [[42-design-atomico-brad-frost|Design atomico: a interface se monta de peca pequena pra peca grande]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[43-design-md-novo-contrato|DESIGN.md: o novo contrato que a IA lê antes de gerar tela]]
+`components/ui``bg-primary``#3B82F6````mermaid
+%%{init: {"theme": "dark", "flowchart": {"useMaxWidth": true, "htmlLabels": true, "nodeSpacing": 22, "rankSpacing": 36, "padding": 8}}}%%
+flowchart TB
+  Q["Qual é o estado da stack visual do projeto agora?"]
+  B0["Greenfield UI<br/>Instalar stack canonical na ordem tokens→ShadCN→Storyb…"]
+  B1["DS legado no código<br/>Mapear → adaptar → documentar stories. Não jogar fora."]
+  B2["Só Tailwind solto<br/>ShadCN mínimo + 5 stories base + DESIGN.md."]
+  B3["CRUD minúsculo<br/>Stack mínima (tokens + 3–5 primitives). Sem ritual de …"]
+  B4["Drift visual já dói<br/>Congelar inventário → consolidar 1 component → stories…"]
+  Q --> B0
+  B0 --> B1
+  B1 --> B2
+  B2 --> B3
+  B3 --> B4

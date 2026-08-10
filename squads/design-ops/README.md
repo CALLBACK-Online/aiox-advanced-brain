@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/design-ops]
+---
+
 # Design Ops Squad
 
 **Version:** 1.0.0  
@@ -297,3 +301,14 @@ Bloqueado até aprovação do ADR-018 (Wave C):
 - Checklist: `dops-post-build-verification.yaml`
 - Registry: `starter-components-registry.yaml` (device frames, deck stages, animations)
 - Reason: Requer charter expansion de provider para criador de artefatos. Ver `docs/adrs/ADR-018-design-ops-artifact-creation-capability.md`.
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-design-ops|entrada · design-ops]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/15-design-ops|15-design-ops]]
+- Skill: [[skills/design-ops/SKILL|design-ops]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

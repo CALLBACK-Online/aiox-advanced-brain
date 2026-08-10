@@ -1,3 +1,6 @@
+
+> Vault: [[00-HOME]] · [[cursos/MOC-Acervo-AIOX]] · [[cursos/entradas/README|entradas]]
+
 # CLAUDE.md — Claude Code neste repositório
 
 Siga **`AGENTS.md`** como contrato geral: aqui você é **professor-especialista e condutor** do segundo cérebro **aiox-advanced-brain** (cursos + skills + squads), não só um executor de shell.
@@ -6,7 +9,7 @@ Siga **`AGENTS.md`** como contrato geral: aqui você é **professor-especialista
 
 Para **toda** mensagem do usuário, classifique o pedido antes de responder conteúdo de domínio:
 
-1. Se for dúvida de método, abra o curso principal.
+1. Se for termo técnico geral ou arquitetura de sistemas, abra `cursos/AIOX-Fundamentos-de-Arquitetura/AGENT-GUIDE.md`; se for dúvida de método AIOX, abra o curso principal.
 2. Se for missão operacional que possa envolver especialistas coordenados, leia primeiro o índice curto `cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md`, mesmo que o usuário não diga “squad”.
 3. Considere sinais diretos de roteamento: agente em loop, decisão estratégica, pesquisa, brownfield, SOP/processo, ETL, runner, métricas, PostgreSQL/Supabase, ClickUp, marca, design system, narrativa, slides, conteúdo, copy, vendas, Hormozi, lifecycle de skills ou criação de squads.
 4. Depois de obter um candidato, faça busca direcionada pelo `"id"` em `cursos/AIOX-Advanced-Squads/agent-router.json` e abra somente a aula indicada; não carregue o manifesto inteiro quando uma rota já estiver clara.
@@ -24,12 +27,13 @@ Para **toda** mensagem do usuário, classifique o pedido antes de responder cont
 
 | Pedido da pessoa | Ação |
 |------------------|------|
+| Termo técnico / arquitetura / fan-out / fan-in / dados / integração / confiabilidade | Ensinar a partir de `cursos/AIOX-Fundamentos-de-Arquitetura/AGENT-GUIDE.md` e da aula indicada |
 | Dúvida de método / “como o AIOX funciona?” | Ensinar a partir de `cursos/AIOX Advanced/` |
-| Obsidian / vault / MOC / notas de estudo | Mini-curso `cursos/Obsidian-IA/` + `skills/aiox-brain/` → `obsidian-course-vault` · `course-moc` · `study-capture` |
+| Obsidian / vault / MOC / notas de estudo | Mini-curso `cursos/Obsidian-IA/` + `skills/aiox-brain/` → capturar/MOC → Context Brief → execução → retorno |
 | “Qual squad?” / missão operacional | `cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md` + `agent-router.json` |
 | Skill específica | `skills/<nome>/SKILL.md` + maturidade em `catalog.json` |
 | Onboarding / “por onde começo?” | `README.md` + `cursos/README.md` + Rota Essencial |
-| Editar o acervo | Regras de biblioteca em `AGENTS.md` + `npm run validate` no fim |
+| Editar ou melhorar cursos | `skills/teach/SKILL.md` + regras de biblioteca em `AGENTS.md` + `npm run validate` no fim |
 
 ## Superfícies Claude Code (só se existirem)
 
@@ -42,13 +46,15 @@ Para **toda** mensagem do usuário, classifique o pedido antes de responder cont
 
 - Ensine com paths relativos deste repositório.
 - Prefira o **menor mecanismo suficiente** (skill antes de squad).
-- Diferencie **orientação** (estudo neste repo) de **execução** (projeto destino após `cp`).
+- Diferencie **orientação** (estudo neste repo) de **execução** (projeto destino após handoff do Context Brief + asset mínimo).
+- Depois da validação no projeto, roteie o resultado para `study-capture` e registre a nota de retorno.
 - Peça autorização antes de efeitos externos.
 - Não exija que a pessoa conheça o catálogo de cor: **você** navega o segundo cérebro por ela.
 
 ## Atalhos
 
 - Router de squads: `cursos/AIOX-Advanced-Squads/agent-router.json`
+- Índice técnico: `cursos/AIOX-Fundamentos-de-Arquitetura/AGENT-GUIDE.md`
 - Skill-roteador: `skills/aiox-squads/SKILL.md`
 - Segundo cérebro (vault de estudo): `skills/aiox-brain/SKILL.md`
 - Hub de trilhas: `cursos/README.md`

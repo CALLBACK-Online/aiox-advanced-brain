@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/aiox-sop]
+---
+
 # SOP Factory
 
 Enterprise-aware SOP creation and audit squad that remains portable when shared.
@@ -71,3 +75,14 @@ To check local_docs-backed readiness for a real business:
 ```
 
 `enterprise` is only proven by the canonical marker `<private enterprise distribution-only: enterprise-runtime.capability.yaml>`. Without that proof, the access tier stays fail-closed.
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-aiox-sop|entrada · aiox-sop]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/07-aiox-sop|07-aiox-sop]]
+- Skill: [[skills/aiox-sop/SKILL|aiox-sop]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

@@ -14,11 +14,13 @@ sequence: M3.4
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, storytelling]
+tags: [curso/aiox-advanced-squads, squad, storytelling, layer/curso, curso/squads, squad/storytelling]
 maturity: partial
 ---
 
 # Storytelling — arco, tensão e memorabilidade
+
+> Vault: [[squads/storytelling/README|storytelling]] · [[skills/storytelling/SKILL|storytelling]] · [[cursos/MOC-Squads]]
 
 [← Design Ops](15-design-ops.md) · [↑ M3](../modulos/M3-marca-experiencia-narrativa.md) · [⌂ Curso](../README.md) · [→ Slides Creator](17-slides-creator.md)
 

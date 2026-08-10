@@ -14,11 +14,13 @@ sequence: M1.1
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, agent-autonomy]
+tags: [curso/aiox-advanced-squads, squad, agent-autonomy, layer/curso, curso/squads, squad/agent-autonomy]
 maturity: partial
 ---
 
 # Agent Autonomy — auditar e elevar autonomia
+
+> Vault: [[squads/agent-autonomy/README|agent-autonomy]] · [[skills/agent-autonomy/SKILL|agent-autonomy]] · [[cursos/MOC-Squads]]
 
 [← Domain Decoder](04-domain-decoder.md) · [↑ M1](../modulos/M1-autonomia-operacoes.md) · [⌂ Curso](../README.md) · [→ Claude Code Mastery](06-claude-code-mastery.md)
 

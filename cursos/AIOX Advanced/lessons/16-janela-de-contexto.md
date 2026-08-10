@@ -26,10 +26,14 @@ sequence: M2.2
 track: complete
 status: canonical
 canonical_scope: cursos/AIOX Advanced
+curriculum_role: applied-extension
+foundation_owner: cursos/AIOX-Fundamentos-de-Arquitetura/aulas/22-modelo-contexto-memoria-tool-skill.md
 curated_at: '2026-08-09'
 ---
 
 # Janela de contexto: o limite real e a degradação acima de 40K
+
+> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/AIOX-Fundamentos-de-Arquitetura/aulas/22-modelo-contexto-memoria-tool-skill.md`.
 
 ← [[05-ambientes-local-staging-production|Local, Staging, Production]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[17-engenharia-de-contexto|Engenharia de contexto: limpar comandos, skills e MCPs]]
 

@@ -14,11 +14,13 @@ sequence: M4.3
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, sales]
+tags: [curso/aiox-advanced-squads, squad, sales, layer/curso, curso/squads, squad/sales]
 maturity: partial
 ---
 
 # Sales — funil completo de vendas
+
+> Vault: [[squads/sales/README|sales]] · [[skills/sales/SKILL|sales]] · [[cursos/MOC-Squads]]
 
 [← Copy](19-copy.md) · [↑ M4](../modulos/M4-aquisicao-conteudo-vendas.md) · [⌂ Curso](../README.md) · [→ Hormozi](21-hormozi.md)
 

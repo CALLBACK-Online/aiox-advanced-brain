@@ -9,7 +9,7 @@ source: squads/ + skills/ + catalog.json
 source_version: 1.2.0
 curriculum_modules: 6
 lessons: 25
-tags: [curso, aiox-advanced, squads]
+tags: [curso, aiox-advanced, squads, layer/curso]
 ---
 
 # AIOX Advanced Squads

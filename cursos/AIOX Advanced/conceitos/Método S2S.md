@@ -18,16 +18,16 @@ updated: '2026-08-10'
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 freq:
-  aiox_advanced: 88
+  aiox_advanced: 89
   aiox_advanced_squads: 0
-  total: 88
+  total: 89
   counted_at: '2026-08-10'
 ---
 # Método S2S
 
 Converter sinais (dor, insight, oportunidade) em sistemas operáveis.
 
-**Frequência nos cursos:** **88** menções (AIOX Advanced: 88 · AIOX Advanced Squads: 0).
+**Frequência nos cursos:** **89** menções (AIOX Advanced: 89 · AIOX Advanced Squads: 0).
 
 ## Onde aparece (AIOX Advanced)
 

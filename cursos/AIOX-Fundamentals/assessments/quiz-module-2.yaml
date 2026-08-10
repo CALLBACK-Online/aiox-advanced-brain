@@ -1,0 +1,51 @@
+assessment_id: quiz-sinais-e-contexto
+course: aiox-fundamentals
+module: sinais-e-contexto
+title: "Quiz: Sinais e contexto"
+passing_score: 70
+questions:
+  - question_id: m2-q1
+    prompt: "Qual é o primeiro passo ao entrar num repositório desconhecido?"
+    options:
+      a: "Executar a mudança pedida."
+      b: "Ler instruções, artefatos de produto, código relacionado e estado atual."
+      c: "Criar um squad."
+      d: "Fazer push para obter CI."
+    correct: b
+    rationale: "A rota depende das regras e do estado local."
+  - question_id: m2-q2
+    prompt: "Quem é responsável por preparar uma story detalhada?"
+    options:
+      a: "@pm"
+      b: "@sm"
+      c: "@dev"
+      d: "@qa"
+    correct: b
+    rationale: "PM estrutura produto/epic; SM prepara stories; PO valida."
+  - question_id: m2-q3
+    prompt: "Quem possui autoridade exclusiva sobre push e PR no core?"
+    options:
+      a: "@dev"
+      b: "@sm"
+      c: "@devops"
+      d: "@aiox-master"
+    correct: c
+    rationale: "Operações remotas de repositório pertencem ao DevOps."
+  - question_id: m2-q4
+    prompt: "Quando uma task é preferível a um squad?"
+    options:
+      a: "Quando há um objetivo único, passos conhecidos e um artefato claro."
+      b: "Sempre que houver mais de um arquivo."
+      c: "Quando se deseja parecer completo."
+      d: "Somente em greenfield."
+    correct: a
+    rationale: "O AIOX seleciona o menor mecanismo suficiente."
+  - question_id: m2-q5
+    prompt: "O que muda primeiro numa rota brownfield?"
+    options:
+      a: "Elimina-se a necessidade de story."
+      b: "Descoberta, compatibilidade e regressão ganham peso."
+      c: "A arquitetura existente é ignorada."
+      d: "O agent pode sobrescrever configuração."
+    correct: b
+    rationale: "Um sistema existente traz usuários, dados, contratos e convenções."

@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/clickup-ops-squad]
+---
+
 # ClickUp Ops — Mission Materializer
 
 **Command:** `/clickup-ops`
@@ -33,3 +37,14 @@
 
 - **Modes:** CRIAR, RESOLVER, GERENCIAR, ENTENDER, VALIDAR, CONFIGURAR, PLANEJAR, EXPLORAR
 - **Composition:** Full AIOX hierarchy (Tokens → Atoms → Molecules → Organisms → Instances)
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-clickup-ops-squad|entrada · clickup-ops-squad]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/12-clickup-ops-squad|12-clickup-ops-squad]]
+- Skill: [[skills/clickup-ops-squad/SKILL|clickup-ops-squad]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

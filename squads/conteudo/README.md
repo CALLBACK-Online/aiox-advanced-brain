@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/conteudo]
+---
+
 # Squad Conteudo v2.2.0
 
 Squad de criacao de conteudo Instagram (carrosseis, Reels, Stories, campanhas, pesquisa de concorrentes, multiplicar conteudo) baseado em 3 sistemas proprietarios.
@@ -344,3 +348,14 @@ BRIEFING -> CONFIGURACAO -> HEADLINES -> ARGUMENTACAO -> CTA -> VALIDACAO -> ENT
 5. 3 opcoes de CTA, usuario seleciona
 6. Oraculo (score >= 80%), reescreve se reprovar
 7. Post formatado + caption + sugestoes de repurpose
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-conteudo|entrada · conteudo]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/18-conteudo|18-conteudo]]
+- Skill: [[skills/conteudo/SKILL|conteudo]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

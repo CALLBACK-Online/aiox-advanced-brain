@@ -14,11 +14,13 @@ sequence: M5.3
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, squad-creator-pro]
+tags: [curso/aiox-advanced-squads, squad, squad-creator-pro, layer/curso, curso/squads, squad/squad-creator-pro]
 maturity: partial
 ---
 
 # Squad Creator Pro — DNA, mentes e gates avançados
+
+> Vault: [[squads/squad-creator-pro/README|squad-creator-pro]] · [[skills/squad-creator-pro/SKILL|squad-creator-pro]] · [[cursos/MOC-Squads]]
 
 [← Squad Creator](23-squad-creator.md) · [↑ M5](../modulos/M5-metacapacidades.md) · [⌂ Curso](../README.md)
 

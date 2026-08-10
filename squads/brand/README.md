@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/brand]
+---
+
 # Brand Squad
 
 > Brasil-first para Naming, Branding e Ativação de Marca.
@@ -187,3 +191,14 @@ squads/brand/
 ├── config.yaml
 └── README.md
 ```
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-brand|entrada · brand]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/13-brand|13-brand]]
+- Skill: [[skills/brand/SKILL|brand]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

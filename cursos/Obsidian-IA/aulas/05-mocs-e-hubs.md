@@ -14,7 +14,9 @@ maturity: study
 
 # MOCs e hubs de estudo
 
-[← Captura sem poluir](04-captura-sem-poluir.md) · [⌂ Curso](../README.md) · [→ Do estudo à execução](06-do-estudo-a-execucao.md)
+> [[00-HOME]] · [[cursos/Obsidian-IA/README|Obsidian-IA]] · [[cursos/entradas/README|entradas]] · [[notas/README|notas]]
+
+[← Captura sem poluir](04-captura-sem-poluir.md) · [⌂ Curso](../README.md) · [→ Context Brief](06-do-estudo-a-execucao.md)
 
 ## Resultado
 

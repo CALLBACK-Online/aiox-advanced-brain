@@ -14,11 +14,13 @@ sequence: M0.1
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, advisory-board]
+tags: [curso/aiox-advanced-squads, squad, advisory-board, layer/curso, curso/squads, squad/advisory-board]
 maturity: partial
 ---
 
 # Advisory Board — decisões sem groupthink
+
+> Vault: [[squads/advisory-board/README|advisory-board]] · [[skills/advisory-board/SKILL|advisory-board]] · [[cursos/MOC-Squads]]
 
 [← Como usar este curso](00-como-usar-este-curso.md) · [↑ M0](../modulos/M0-escolha-pesquisa-dominio.md) · [⌂ Curso](../README.md) · [→ Research](02-research.md)
 

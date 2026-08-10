@@ -14,6 +14,8 @@ maturity: study
 
 # Por que Obsidian + IA neste acervo
 
+> [[00-HOME]] · [[cursos/Obsidian-IA/README|Obsidian-IA]] · [[cursos/entradas/README|entradas]] · [[notas/README|notas]]
+
 [⌂ Curso](../README.md) · [→ Abrir o vault](01-abrir-o-vault.md)
 
 ## Resultado
@@ -34,10 +36,10 @@ Entender o papel de **três superfícies** e por que misturá-las sem método ge
 
 ## Conceito-chave
 
-Este repositório é um **segundo cérebro educacional**, não o monorepo AIOX e não o vault pessoal de vida/livros.
+Este repositório é um **segundo cérebro educacional**, não o monorepo AIOX e não o vault pessoal de vida/livros. Integrar não significa fundir esses espaços: significa transportar contexto suficiente para executar e devolver o aprendizado.
 
 ```text
-Estudar (Obsidian) → Capturar (notas pessoais) → Escolher skill/squad → Copiar → Executar → Evidência
+Estudar → Capturar → Context Brief → Executar no projeto → Evidência → Devolver aprendizado
 ```
 
 ## Anti-padrões comuns

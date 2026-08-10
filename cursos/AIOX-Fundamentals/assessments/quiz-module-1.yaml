@@ -1,0 +1,51 @@
+assessment_id: quiz-fundamentos
+course: aiox-fundamentals
+module: fundamentos
+title: "Quiz: Fundamentos"
+passing_score: 70
+questions:
+  - question_id: m1-q1
+    prompt: "Qual definição separa corretamente AIOX, modelo e IDE?"
+    options:
+      a: "AIOX é o modelo; a IDE é o framework."
+      b: "AIOX é o framework operacional; o modelo raciocina; a IDE é a superfície."
+      c: "AIOX e IDE são o mesmo produto."
+      d: "O modelo guarda os artefatos do projeto."
+    correct: b
+    rationale: "O core organiza papéis, assets, contexto e gates; não substitui modelo nem interface."
+  - question_id: m1-q2
+    prompt: "O que CLI First exige?"
+    options:
+      a: "Proibir interfaces visuais."
+      b: "Executar tudo sem confirmação."
+      c: "Manter lógica, estado e validação reproduzíveis por arquivos e comandos."
+      d: "Usar somente Bash."
+    correct: c
+    rationale: "CLI First é um princípio de operação auditável, não rejeição de UI."
+  - question_id: m1-q3
+    prompt: "Qual peça define papel, foco, limites e comandos?"
+    options:
+      a: "Agent"
+      b: "Template"
+      c: "Checklist"
+      d: "Script de build"
+    correct: a
+    rationale: "A definição do agent concentra identidade operacional, autoridade e dependências."
+  - question_id: m1-q4
+    prompt: "Qual rota é apropriada para instalar AIOX num projeto existente?"
+    options:
+      a: "npx aiox-core@latest init"
+      b: "npx aiox-core@latest install"
+      c: "npm publish"
+      d: "git reset --hard"
+    correct: b
+    rationale: "Install é a rota brownfield; init cria um projeto novo."
+  - question_id: m1-q5
+    prompt: "Qual evidência representa first-value?"
+    options:
+      a: "O diretório foi criado."
+      b: "O terminal não mostrou erro."
+      c: "Um agent foi ativado, leu contexto e produziu output útil."
+      d: "O pacote apareceu no cache do npm."
+    correct: c
+    rationale: "Instalação é meio; first-value exige uso funcional confirmado."

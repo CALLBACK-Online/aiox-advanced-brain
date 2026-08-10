@@ -14,11 +14,13 @@ sequence: M4.2
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, copy]
+tags: [curso/aiox-advanced-squads, squad, copy, layer/curso, curso/squads, squad/copy]
 maturity: partial
 ---
 
 # Copy — peças de alta conversão
+
+> Vault: [[squads/copy/README|copy]] · [[skills/copy/SKILL|copy]] · [[cursos/MOC-Squads]]
 
 [← Conteúdo](18-conteudo.md) · [↑ M4](../modulos/M4-aquisicao-conteudo-vendas.md) · [⌂ Curso](../README.md) · [→ Sales](20-sales.md)
 

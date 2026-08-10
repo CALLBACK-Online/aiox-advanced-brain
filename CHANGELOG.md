@@ -1,5 +1,22 @@
 # Changelog — AIOX Advanced library
 
+## 0.6.0 — 2026-08-10
+
+- Adiciona **AIOX Fundamentals** como trilha própria entre Fundamentos de Arquitetura e AIOX Advanced: 3 módulos, 12 aulas, 3 quizzes, projeto final e guia para agents.
+- Rastreia o curso no AIOX Core 5.2.9 por commit e hashes; cobre instalação, anatomia, os 12 agents, contexto, story, autoridade, gates e handoff.
+
+### Added
+
+- Curso `cursos/AIOX-Fundamentos-de-Arquitetura/`: 24 aulas, 8 módulos, 8 quizzes, 32 questões, glossário, mapa de termos, projeto integrador e guia para agents.
+- Cobertura introdutória de componentes, dados, contratos, comunicação assíncrona, workflow/pipeline, concorrência, fan-out/fan-in, escala, confiabilidade, observabilidade, runtime, deploy, segurança e sistemas com agentes.
+- Validador próprio do curso e integração ao bootstrap de Claude Code/Codex, hub de trilhas e catálogo.
+
+### Changed
+
+- Fundamentos antes dispersos no AIOX Advanced passam a ter fonte curricular canônica no novo curso; as aulas antigas permanecem como extensões aplicadas ao método AIOX, preservando o grafo existente.
+- Mini-curso Obsidian + IA agora fecha o loop **estudo → Context Brief → execução no projeto → retorno ao segundo cérebro**, com template copiável, capstone operacional e validação estrutural do contrato.
+- Skills de vault passam a orientar handoff mínimo, evidência e captura pós-execução sem transferir vault, secrets ou logs brutos.
+
 ## 0.5.1 — 2026-08-10
 
 ### Added
@@ -10,7 +27,9 @@
 - Wiring em `AGENTS.md` / `CLAUDE.md` / README para curadoria de estudo sem poluir o canônico.
 - Layout vault: pasta `cursos/` (minúsculo, alinhado a `skills/`/`squads/`), pasta `notas/` para anotações dos alunos, Graph limpo (orphans off).
 - **Vault Obsidian personalizado:** tema padrão, `.obsidian/graph.json` com grupos de cores (cursos/skills/squads), snippet CSS próprio, `00-HOME.md` + MOCs de conexão.
-- Glossário ampliado para 298 arquivos Markdown e **2.614 wikilinks** verificados no curso principal.
+- Glossário ampliado (158 termos + 22 conceitos) com frequência A/S; P0–P2 de vocabulário e wikilinks nas aulas-chave.
+- Curso principal: **~299** Markdown e **2.742 wikilinks** verificados (`catalog.json`).
+- Pontes de Graph `cursos/entradas/` (skill ↔ squad ↔ aula) ligadas aos MOCs; 14 termos de freq 0 ancorados no corpo das aulas.
 
 ## 0.5.0 — 2026-08-10
 

@@ -1,3 +1,6 @@
+
+> Vault: [[00-HOME]] · [[cursos/MOC-Acervo-AIOX]] · [[cursos/entradas/README|entradas]]
+
 # AIOX Advanced Brain
 
 > **Segundo cérebro educacional do AIOX Advanced** — curso, skills e squads para estudar o método e aplicar em projetos reais.
@@ -5,12 +8,12 @@
 | | |
 |---|---|
 | **Repositório** | [github.com/oalanicolas/aiox-advanced-brain](https://github.com/oalanicolas/aiox-advanced-brain) |
-| **Pacote** | `aiox-advanced-brain` · **v0.5.1** (`catalog.json`) |
+| **Pacote** | `aiox-advanced-brain` · **v0.6.0** (`catalog.json`) |
 | **Licença** | [MIT](LICENSE) (empacotamento e material original; “minds” de terceiros permanecem dos autores) |
 | **Tipo** | Biblioteca de **distribuição e estudo** — não é o runtime AIOX completo |
 
 ```text
-Estudar (Obsidian)  →  Escolher skill/squad  →  Copiar ao projeto  →  Executar com agent  →  Exigir evidência
+Estudar → Capturar → Context Brief → Executar no projeto → Validar → Devolver aprendizado
 ```
 
 ---
@@ -18,22 +21,23 @@ Estudar (Obsidian)  →  Escolher skill/squad  →  Copiar ao projeto  →  Exec
 ## Sumário
 
 1. [O que é (e o que não é)](#o-que-é-e-o-que-não-é)
-2. [O que está incluído](#o-que-está-incluído)
-3. [Primeiros 15 minutos](#primeiros-15-minutos)
-4. [Baixar o material](#baixar-o-material)
-5. [Navegar com o Obsidian](#navegar-o-conteúdo-com-o-obsidian) (inclui [segundo cérebro](#usar-este-repositório-como-segundo-cérebro))
-6. [Trilhas de estudo](#trilhas-de-estudo)
-7. [Copiar skills e squads para o projeto](#copiar-skills-e-squads-para-o-projeto)
-8. [Maturidade (leia antes de executar)](#maturidade-leia-antes-de-executar)
-9. [Skill ou squad?](#skill-ou-squad)
-10. [Usar com Claude Code, Codex ou outro agent](#usar-com-claude-code-codex-ou-outro-agent)
-11. [Missões frequentes](#missões-frequentes)
-12. [Estrutura do repositório](#estrutura-do-repositório)
-13. [Guia das 66 skills](#guia-das-66-skills)
-14. [Guia dos 24 squads](#guia-dos-24-squads)
-15. [Nomes legados e aliases](#nomes-legados-e-aliases)
-16. [FAQ](#faq)
-17. [Documentação e licença](#documentação-e-licença)
+2. [Fundamentals, Advanced ou Enterprise?](#fundamentals-advanced-ou-enterprise)
+3. [O que está incluído](#o-que-está-incluído)
+4. [Primeiros 15 minutos](#primeiros-15-minutos)
+5. [Baixar o material](#baixar-o-material)
+6. [Navegar com o Obsidian](#navegar-o-conteúdo-com-o-obsidian) (inclui [segundo cérebro](#usar-este-repositório-como-segundo-cérebro))
+7. [Trilhas de estudo](#trilhas-de-estudo)
+8. [Copiar skills e squads para o projeto](#copiar-skills-e-squads-para-o-projeto)
+9. [Maturidade (leia antes de executar)](#maturidade-leia-antes-de-executar)
+10. [Skill ou squad?](#skill-ou-squad)
+11. [Usar com Claude Code, Codex ou outro agent](#usar-com-claude-code-codex-ou-outro-agent)
+12. [Missões frequentes](#missões-frequentes)
+13. [Estrutura do repositório](#estrutura-do-repositório)
+14. [Guia das 67 skills](#guia-das-67-skills)
+15. [Guia dos 24 squads](#guia-dos-24-squads)
+16. [Nomes legados e aliases](#nomes-legados-e-aliases)
+17. [FAQ](#faq)
+18. [Documentação e licença](#documentação-e-licença)
 
 ---
 
@@ -41,9 +45,9 @@ Estudar (Obsidian)  →  Escolher skill/squad  →  Copiar ao projeto  →  Exec
 
 ### É
 
-- O **acervo da turma**: método + operação em um único repositório.
+- O **acervo da turma**: fundamentos técnicos + AIOX Core + método + operação em um único repositório.
 - Um **vault de curso** (Markdown + wikilinks) pensado para o [Obsidian](https://obsidian.md).
-- Uma **biblioteca de assets**: **66** skills e **24** squads para copiar para o *seu* projeto (inclui skills de vault de estudo).
+- Uma **biblioteca de assets**: **67** skills e **24** squads para copiar para o *seu* projeto (inclui skills de vault de estudo).
 - Um **roteador para agents**: mapa de decisão, `AGENT-GUIDE.md` e `agent-router.json` para escolher o squad certo a partir de linguagem natural.
 - Material com **gates e evidência** — o curso termina no artefato que funciona, não no consumo de aulas.
 
@@ -60,18 +64,35 @@ Estudar (Obsidian)  →  Escolher skill/squad  →  Copiar ao projeto  →  Exec
 
 ---
 
+## Fundamentals, Advanced ou Enterprise?
+
+| Etapa | Foco | Entrega |
+|-------|------|---------|
+| **Fundamentos de Arquitetura** | Entender sistemas e linguagem técnica | Base para ler, desenhar e questionar arquiteturas |
+| **AIOX Fundamentals** | Instalar e operar o `aiox-core`; conhecer agents, contexto, story e gates | Primeiro ciclo AIOX local com evidência |
+| **AIOX Advanced** | Aprender o método e construir | Sistema operável com agentes, squads, gates e evidência |
+| **AIOX Enterprise** | Operar com infraestrutura proprietária mantida | Cockpit, squads de produção, workspace, integrações, governança e acompanhamento contínuo |
+
+Em uma frase: **Arquitetura ensina a entender sistemas; Fundamentals ensina a operar o Core; Advanced ensina o método; Enterprise entrega o ambiente para operar em produção.**
+
+[Veja a comparação completa, o próximo passo após cada etapa e o que entra a mais no Enterprise →](JORNADA-AIOX.md)
+
+---
+
 ## O que está incluído
 
-| Camada | Conteúdo (fonte: `catalog.json` v0.5.1) |
+| Camada | Conteúdo (fonte: `catalog.json` v0.6.0) |
 |--------|----------------------------------------|
-| **Skills** | **66** em [`skills/`](skills/): base AIOX, entradas de squad, roteador `aiox-squads` e 4 de vault de estudo |
+| **Skills** | **67** em [`skills/`](skills/): base AIOX, entradas de squad, roteador `aiox-squads` e skills de vault/ensino |
 | **Squads** | **24** canônicos em [`squads/`](squads/) |
 | **Curso método** | [AIOX Advanced](cursos/AIOX%20Advanced/README.md) — **75 aulas**, **14 módulos**, **14 quizzes**, **62 questões** |
-| **Grafo** | **2.614** wikilinks internos no curso principal |
+| **Grafo** | **2.884** wikilinks internos no curso principal |
+| **Curso arquitetura** | [Fundamentos de Arquitetura de Sistemas](cursos/AIOX-Fundamentos-de-Arquitetura/README.md) — **24 aulas**, **8 módulos**, **8 quizzes**, **32 questões** |
+| **Curso AIOX Fundamentals** | [AIOX Fundamentals](cursos/AIOX-Fundamentals/README.md) — **12 aulas**, **3 módulos**, **3 quizzes**, **15 questões**, projeto final |
 | **Curso squads** | [AIOX Advanced Squads](cursos/AIOX-Advanced-Squads/README.md) — **25 aulas** (intro + 1 por squad), **6 módulos**, **6 quizzes**, **24 questões** |
-| **Mini Obsidian+IA** | [Obsidian + IA](cursos/Obsidian-IA/README.md) — **8 aulas**, ~60–90 min, vault + agent + captura |
+| **Mini Obsidian+IA** | [Obsidian + IA](cursos/Obsidian-IA/README.md) — **8 aulas**, ~90–120 min + missão real, vault + Context Brief + execução + retorno |
 | **Operação** | Mapas de decisão, briefings copiáveis, exemplos de ativação, exercícios, critérios de evidência |
-| **Agents (versionados)** | [AGENTS.md](AGENTS.md) (professor-especialista do segundo cérebro) · [CLAUDE.md](CLAUDE.md) · [AGENT-GUIDE](cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md) · [agent-router.json](cursos/AIOX-Advanced-Squads/agent-router.json) |
+| **Agents (versionados)** | [AGENTS.md](AGENTS.md) · [CLAUDE.md](CLAUDE.md) · [guia de arquitetura](cursos/AIOX-Fundamentos-de-Arquitetura/AGENT-GUIDE.md) · [guia do Core](cursos/AIOX-Fundamentals/AGENT-GUIDE.md) · [guia de squads](cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md) |
 | **Manifesto** | [`catalog.json`](catalog.json) — contagens, maturidade, aliases, proveniência |
 
 **Integridade do curso (última hardening registrada):** 0 links quebrados / ambíguos / para fora de `cursos/`; sem paths absolutos de máquina na distribuição pública.
@@ -83,10 +104,10 @@ Estudar (Obsidian)  →  Escolher skill/squad  →  Copiar ao projeto  →  Exec
 | Min | Faça |
 |-----|------|
 | 0–2 | [Baixe](#baixar-o-material) o repositório (Git ou ZIP). |
-| 2–5 | Abra `cursos/AIOX Advanced/` como **vault no Obsidian**. |
-| 5–10 | Leia o [README do curso](cursos/AIOX%20Advanced/README.md) e entre na **Rota Essencial** (32 aulas → sistema entregue). |
-| 10–12 | Abra o [hub das trilhas](cursos/README.md) e o [Mapa de decisão dos squads](cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md). |
-| 12–15 | Na pasta aberta pelo agent, use o [prompt de roteamento](#prompt-pronto) e peça o squad certo para uma missão real sua. |
+| 2–5 | Abra a raiz como **vault no Obsidian** e entre por [00-HOME.md](00-HOME.md). |
+| 5–8 | Abra o [hub das trilhas](cursos/README.md) e identifique seu ponto de entrada. |
+| 8–12 | Se termos técnicos travam, comece por [Arquitetura](cursos/AIOX-Fundamentos-de-Arquitetura/README.md); se quer instalar e conhecer os agents, abra [AIOX Fundamentals](cursos/AIOX-Fundamentals/README.md). |
+| 12–15 | Leia o resultado, escopo e primeira aula da trilha escolhida; registre a evidência pedida pela aula. |
 
 Se só tiver a pasta `cursos/`, o conteúdo pedagógico já é navegável — abra-a no Obsidian da mesma forma.
 
@@ -141,8 +162,10 @@ Os cursos usam **Markdown + wikilinks** (`[[Nome da nota]]`) — o formato nativ
 | Vault | Quando usar |
 |-------|-------------|
 | `cursos/AIOX Advanced/` | **Padrão recomendado** — estudar o método com grafo limpo (~2.000 links) |
+| `cursos/AIOX-Fundamentos-de-Arquitetura/` | Aprender vocabulário e arquitetura de sistemas |
+| `cursos/AIOX-Fundamentals/` | Instalar e operar o AIOX Core do zero ao primeiro ciclo |
 | `cursos/AIOX-Advanced-Squads/` | Estudar o curso 1:1 dos squads |
-| `cursos/` | Hub das duas trilhas |
+| `cursos/` | Hub de todas as trilhas |
 | Raiz do repositório | Estudo + `skills/` + `squads/` no mesmo vault (índice mais pesado) |
 
 5. Abra o `README.md` do curso e navegue pelos links.
@@ -188,10 +211,12 @@ O acervo já é um vault de estudo. Para o agent **cuidar do grafo de aprendizad
 | [`obsidian-course-vault`](skills/obsidian-course-vault/SKILL.md) | Abrir vault, achar aula, trilha no Obsidian |
 | [`course-moc`](skills/course-moc/SKILL.md) | Mapas de conteúdo / hubs (LYT-light) |
 | [`study-capture`](skills/study-capture/SKILL.md) | Capturar insight **sem** editar aulas canônicas |
+| [`teach`](skills/teach/SKILL.md) | Melhorar as aulas canônicas com rubrica didática + validação |
 
 - **Canônico:** `cursos/**/lessons/`, `aulas/`, `modulos/` — material da turma.
 - **Pessoal:** `notas/` (só o README é versionado; suas notas ficam no clone).
-- **Operação AIOX:** continue com `skills/` + `squads/` e o [roteador de squads](cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md).
+- **Operação AIOX:** gere um [Context Brief](cursos/Obsidian-IA/templates/context-brief.md), leve o menor asset ao projeto, execute, valide e devolva o aprendizado a `notas/retornos/`.
+- **Roteamento:** continue com `skills/` + `squads/` e o [roteador de squads](cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md).
 
 Isto **não** substitui um vault de vida/livros pessoal: é o segundo cérebro do **método e da operação AIOX**.
 
@@ -202,6 +227,12 @@ Isto **não** substitui um vault de vida/livros pessoal: é o segundo cérebro d
 Ordem sugerida (detalhe no [hub `cursos/`](cursos/README.md)):
 
 ```text
+Obsidian + IA (opcional, para estudar o acervo)
+        ↓
+Fundamentos de Arquitetura de Sistemas
+        ↓
+AIOX Fundamentals (Core, instalação e agents)
+        ↓
 AIOX Advanced (Rota Essencial)
         ↓
 AIOX Advanced Squads — aula 00
@@ -213,6 +244,8 @@ Capstone / Projeto Integrador (método + squads escolhidos)
 
 | Trilha | Para quê | Comece em |
 |--------|----------|-----------|
+| **Fundamentos de Arquitetura de Sistemas** | Ler sistemas, dados, contratos, fan-out/fan-in, confiabilidade, operação, segurança e agentes | [cursos/AIOX-Fundamentos-de-Arquitetura/README.md](cursos/AIOX-Fundamentos-de-Arquitetura/README.md) |
+| **AIOX Fundamentals** | Instalar o Core, conhecer os 12 agents, escolher contexto e fechar a primeira story com evidência | [cursos/AIOX-Fundamentals/README.md](cursos/AIOX-Fundamentals/README.md) |
 | **AIOX Advanced** | Mindset, SDC, taxonomia, determinismo, design system, deploy | [cursos/AIOX Advanced/README.md](cursos/AIOX%20Advanced/README.md) — use a **Rota Essencial** na 1ª passagem |
 | **AIOX Advanced Squads** | Quando usar cada squad, briefing, ativação, evidência | [cursos/AIOX-Advanced-Squads/README.md](cursos/AIOX-Advanced-Squads/README.md) · [Mapa de decisão](cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md) |
 
@@ -255,11 +288,11 @@ Nem todo asset roda “do zero” neste repositório. A fonte de verdade é `cat
 | `partial` | Parte roda; outras etapas pedem monorepo / infra no destino | Enumerar o que falta no projeto antes de executar |
 | `runtime-aiox` | Exige AIOX completo (`.aiox-core`, SYNAPSE, etc.) | Usar no ambiente AIOX; aqui serve principalmente para estudo do procedimento |
 
-### Snapshot real do catálogo (v0.5.1)
+### Snapshot real do catálogo (v0.6.0)
 
 | Tipo | Distribuição de maturidade |
 |------|----------------------------|
-| **66 skills** | ver `skill_meta` em `catalog.json` (`portable` / `study` / `runtime-aiox` / camada `second-brain`) |
+| **67 skills** | ver `skill_meta` em `catalog.json` (`portable` / `study` / `runtime-aiox` / camada `second-brain`) |
 | **24 squads** | ~3 `study` · ~21 `partial` |
 
 **Skills portáteis (bom ponto de partida sem runtime AIOX):**
@@ -359,6 +392,8 @@ Aula por squad: pasta [`cursos/AIOX-Advanced-Squads/aulas/`](cursos/AIOX-Advance
 ├── 00-HOME.md                 # Dashboard do vault Obsidian
 ├── cursos/                    # Trilhas canônicas (minúsculo)
 │   ├── README.md
+│   ├── AIOX-Fundamentos-de-Arquitetura/ # Base técnica (24 aulas)
+│   ├── AIOX-Fundamentals/      # AIOX Core básico (12 aulas)
 │   ├── AIOX Advanced/         # Método (75 aulas)
 │   ├── AIOX-Advanced-Squads/  # Operação + agent-router
 │   ├── Obsidian-IA/           # Mini vault + agent
@@ -376,7 +411,7 @@ Aula por squad: pasta [`cursos/AIOX-Advanced-Squads/aulas/`](cursos/AIOX-Advance
 
 ---
 
-## Guia das 66 skills
+## Guia das 67 skills
 
 Inventário canônico = lista `skills` em `catalog.json`. Abaixo, o “use quando” de cada uma.
 
@@ -386,6 +421,8 @@ Inventário canônico = lista `skills` em `catalog.json`. Abaixo, o “use quand
 - [`obsidian-course-vault`](skills/obsidian-course-vault/SKILL.md) — Operar `cursos/` no Obsidian. **Use quando:** abrir vault, achar aula, Graph, trilha.
 - [`course-moc`](skills/course-moc/SKILL.md) — Mapas de conteúdo / hubs (LYT-light). **Use quando:** “como se conecta X e Y?” ou índice por dor/módulo.
 - [`study-capture`](skills/study-capture/SKILL.md) — Captura pessoal ligada à aula. **Use quando:** anotar aprendizado sem editar o canônico (`notas/`).
+- [`teach`](skills/teach/SKILL.md) — Melhoria didática do canônico (rubrica + validação). **Use quando:** “melhorar os cursos”, revisar didática de aula, criar exercício/quiz, padronizar navegação.
+- [`teach`](skills/teach/SKILL.md) — Melhoria didática segura do material canônico. **Use quando:** revisar aulas, exercícios, quizzes ou navegação entre cursos com validação estrutural.
 
 ### Agentes fundamentais do AIOX
 
@@ -522,7 +559,16 @@ Fonte completa: `catalog.json` → `aliases`, `renames`, `related_current_assets
 ## FAQ
 
 **Preciso do AIOX Enterprise para usar isto?**
-Não. Isto é biblioteca educacional. Enterprise multi-tenant não está no pacote.
+Não. Este repositório é uma biblioteca educacional para estudar e aplicar o método no seu próprio projeto. O Enterprise é o próximo nível de operação e seus componentes proprietários não estão empacotados aqui.
+
+**Qual é o próximo passo depois do Fundamentals?**
+Vá para o **AIOX Advanced** quando já conseguir ler o desenho básico de um sistema e discutir trade-offs. Se a linguagem técnica ainda trava, conclua primeiro o projeto integrador de Fundamentals.
+
+**Qual é o próximo passo depois do Advanced?**
+Se ainda está consolidando o método, conclua a Rota Essencial, o Capstone e opere um squad em um projeto real. Se já constrói e agora precisa de infraestrutura pronta, governança, ativos de produção e evolução contínua, avalie o **AIOX Enterprise**.
+
+**O que eu ganho a mais ao entrar no AIOX Enterprise?**
+Você deixa de receber apenas formação e assets para adaptar e passa a acessar uma operação mantida: repositório privado, cockpit e dashboard, squads de produção, workspace estruturado, integrações, monitoramento, auditoria, atualizações contínuas, acompanhamento ao vivo e comunidade exclusiva. Veja a [comparação completa](JORNADA-AIOX.md) e confirme as condições na [página oficial](https://lp.aioxsquad.ai/enterprise).
 
 **Por que copiar skills em vez de rodar daqui?**
 Porque o destino canônico é o *seu* projeto/IDE. Este repo é fonte de distribuição; a execução usa o harness do projeto.
@@ -530,8 +576,8 @@ Porque o destino canônico é o *seu* projeto/IDE. Este repo é fonte de distrib
 **Obsidian é obrigatório?**
 Não, mas é a forma recomendada de navegar o grafo de wikilinks. No GitHub os arquivos abrem; o segundo cérebro funciona de verdade no vault.
 
-**Qual a diferença entre os dois cursos?**
-Advanced = **método** (como pensar e operar AIOX). Advanced Squads = **operação de cada squad** (quando usar, briefing, evidência).
+**Qual a diferença entre os cursos?**
+Fundamentos de Arquitetura = **linguagem técnica universal**. AIOX Fundamentals = **instalação e operação básica do `aiox-core`**, incluindo os 12 agents. Advanced = **método aprofundado**. Advanced Squads = **operação de cada squad**. Obsidian + IA ensina a navegar e capturar conhecimento no vault.
 
 **Posso pedir ao agent “roda o squad X” sem copiar?**
 O agent pode **orientar** lendo a aula e o `config.yaml`. Execução real exige o asset no projeto (e runtime compatível). Maturidade `study`/`partial` limita o que é seguro prometer.
@@ -540,7 +586,7 @@ O agent pode **orientar** lendo a aula e o `config.yaml`. Execução real exige 
 Skill = procedimento de deck. Squad = time coordenado (narrativa, visual, QA). Nomes deliberadamente próximos; veja aliases.
 
 **Os números do README mudaram?**
-Confie em `catalog.json` (`library_version`, `counts`, `course`, `supplemental_courses`). Este README acompanha **0.5.1**.
+Confie em `catalog.json` (`library_version`, `counts`, `course`, `supplemental_courses`). Este README acompanha **0.6.0**.
 
 **Posso redistribuir o link do repositório?**
 Siga [NOTICE.md](NOTICE.md) e o combinado da turma. Frameworks/“minds” de terceiros são estudo metodológico — respeite direitos das obras originais.
@@ -551,6 +597,7 @@ Siga [NOTICE.md](NOTICE.md) e o combinado da turma. Frameworks/“minds” de te
 
 | Documento | Função |
 |-----------|--------|
+| [JORNADA-AIOX.md](JORNADA-AIOX.md) | Diferenças e próximos passos entre Fundamentals, Advanced e Enterprise |
 | [cursos/README.md](cursos/README.md) | Hub das trilhas |
 | [NOTICE.md](NOTICE.md) | Proveniência e o que **não** está no pacote |
 | [CHANGELOG.md](CHANGELOG.md) | Histórico da biblioteca |

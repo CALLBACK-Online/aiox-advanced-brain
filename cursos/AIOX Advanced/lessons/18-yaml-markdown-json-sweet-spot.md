@@ -25,10 +25,16 @@ sequence: M2.5
 track: complete
 status: canonical
 canonical_scope: cursos/AIOX Advanced
+curriculum_role: applied-extension
+foundation_owner: cursos/AIOX-Fundamentos-de-Arquitetura/aulas/07-json-yaml-markdown-contratos.md
 curated_at: '2026-08-09'
 ---
 
 # YAML, Markdown, JSON: o sweet spot para LLM
+
+> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/AIOX-Fundamentos-de-Arquitetura/aulas/07-json-yaml-markdown-contratos.md`.
+
+Para navegar o course-brain com grafo e [[Wikilink|wikilinks]], o ambiente recomendado é o [[Obsidian]] (vault na raiz ou em `cursos/`).
 
 ← [[27-otimizacao-claude-md|Otimização do CLAUDE.md: 40% mais magro, mesma capacidade]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[46-etapas-de-desenvolvimento|Briefing, PRD, Stories: as 3 etapas antes do código]]
 
@@ -435,7 +441,6 @@ Os termos desta aula em uma frase cada.
 > **Próxima aula**: Você escolhe o formato certo para cada artefato. Com o setup operacional fechado (janela, faxina e formato), M3 entra no ciclo SDC: como o trabalho de fato roda no AIOX.
 
 ***
-
 
 ---
 

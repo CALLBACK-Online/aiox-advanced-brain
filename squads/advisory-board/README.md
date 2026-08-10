@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/advisory-board]
+---
+
 # Advisory Board Squad
 
 **Personal Board of Directors for Strategic Decisions**
@@ -208,3 +212,14 @@ Cada sessão gera:
 ---
 
 *Advisory Board Squad v1.0 | Based on DNA Mental™ alan_nicolas*
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-advisory-board|entrada · advisory-board]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/01-advisory-board|01-advisory-board]]
+- Skill: [[skills/advisory-board/SKILL|advisory-board]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

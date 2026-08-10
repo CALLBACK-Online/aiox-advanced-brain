@@ -9,16 +9,24 @@ updated: '2026-08-10'
 status: reference
 canonical_scope: cursos/AIOX Advanced
 freq:
-  aiox_advanced: 105
+  aiox_advanced: 100
   aiox_advanced_squads: 2
-  total: 107
+  total: 102
   counted_at: '2026-08-10'
 ---
 # Memória
 
-Camada 4 da anatomia: o que o agente carrega entre turnos (histórico, padrões, contexto do squad). Sem memória, recomeça do zero.
+Camada 4 da anatomia do agente: fatos, padrões e contexto que atravessam turnos ou handoffs. Ela evita que o agente recomece do zero, mas precisa de uma fonte confiável e atualização.
 
-**Frequência nos cursos:** **107** menções (AIOX Advanced: 105 · AIOX Advanced Squads: 2).
+## Como é usado
+
+Use **Memória** para persistir decisões, restrições e contexto que o próximo turno ou agente precisa recuperar sem repetir toda a investigação.
+
+**Exemplo prático:** na aula [[14-anatomia-do-agente]], depois de decidir a estratégia de migração, registre a decisão, as restrições e as pendências no artefato de handoff; o próximo agente lê esse contexto antes de continuar.
+
+**Não confunda:** **Memória** não é a janela inteira de contexto nem substitui a fonte de verdade; informação antiga ou não registrada pode induzir o próximo turno ao erro.
+
+**Frequência nos cursos:** **102** menções (AIOX Advanced: 100 · AIOX Advanced Squads: 2).
 
 ## Aulas
 

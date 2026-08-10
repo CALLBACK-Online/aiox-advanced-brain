@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/runner-ops]
+---
+
 # Runner-Ops Squad
 
 Squad dedicado ao lifecycle management de pipeline runners headless no AIOX platform.
@@ -93,3 +97,14 @@ Os scripts do squad existem para tornar o pack instalavel e operacional sem depe
 
 - Epic 101: Runner Excellence (integration stories)
 - Epic 104: Runner-Ops Squad Creation (this squad)
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-runner-ops|entrada · runner-ops]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/09-runner-ops|09-runner-ops]]
+- Skill: [[skills/runner-ops/SKILL|runner-ops]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

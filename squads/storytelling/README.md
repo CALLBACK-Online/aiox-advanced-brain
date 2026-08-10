@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/storytelling]
+---
+
 # Storytelling Squad
 
 **Version:** 1.0.0
@@ -135,3 +139,14 @@ storytelling/
 
 _Version: 1.0.0_
 _Compatible with: AIOX-FULLSTACK v4+_
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-storytelling|entrada · storytelling]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/16-storytelling|16-storytelling]]
+- Skill: [[skills/storytelling/SKILL|storytelling]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

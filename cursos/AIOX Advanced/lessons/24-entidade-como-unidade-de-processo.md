@@ -25,10 +25,16 @@ sequence: M5.2
 track: essential
 status: canonical
 canonical_scope: cursos/AIOX Advanced
+curriculum_role: applied-extension
+foundation_owner: cursos/AIOX-Fundamentos-de-Arquitetura/aulas/04-estado-entidade-ciclo-de-vida.md
 curated_at: '2026-08-09'
 ---
 
 # [[Entidade]] como unidade de processo: nasce, vive, morre
+
+> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/AIOX-Fundamentos-de-Arquitetura/aulas/04-estado-entidade-ciclo-de-vida.md`.
+
+Escrita concorrente em entidade compartilhada: desenhe [[OCC]] (optimistic concurrency) ou trava explícita — multi-agent sem isso corrompe estado.
 
 ← [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]]
 
@@ -435,7 +441,6 @@ Os termos desta aula em uma frase cada.
 > **Próxima aula**: Você modela entidade pelo ciclo de vida. A seguir, a taxonomia que organiza tudo no AIOX: Task, Skill, Agent, Workflow e [[Runner]], e por que confundir dois níveis trava a operação.
 
 ***
-
 
 ---
 

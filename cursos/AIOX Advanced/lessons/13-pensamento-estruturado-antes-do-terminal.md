@@ -30,6 +30,8 @@ curated_at: '2026-08-09'
 
 # Desenhe fora da ferramenta antes de codar
 
+Incerteza técnica? Abra um [[Spike]] time-boxado antes de comprometer a Story — e registre a decisão em [[ADR]] se o trade-off for permanente.
+
 ← [[12-repertorio-vs-tecnica|Repertório vence técnica]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[26-nao-delegar-pensar|Nao delegue o pensar: repertorio contra zumbi]]
 
 ## Conceitos
@@ -449,7 +451,6 @@ Os termos desta aula em uma frase cada.
 > **Próxima aula**: Você já sabe diagnosticar repertório e desenhar antes de codar. A partir de M1, você monta o sistema AIOX em si: agentes, executores e a anatomia do que você vai conduzir.
 
 ***
-
 
 ---
 

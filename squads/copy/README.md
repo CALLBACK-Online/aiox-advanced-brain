@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/copy]
+---
+
 # Copy - Elite Copywriting Squad v4.0
 
 **Command:** `/copy`
@@ -834,3 +838,14 @@ Quando ativado:
 *Research-First Methodology*
 *Compatible with: AIOX-FULLSTACK v4+*
 *Last Updated: 2026-02-06*
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-copy|entrada · copy]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/19-copy|19-copy]]
+- Skill: [[skills/copy/SKILL|copy]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

@@ -9,16 +9,24 @@ updated: '2026-08-10'
 status: reference
 canonical_scope: cursos/AIOX Advanced
 freq:
-  aiox_advanced: 46
+  aiox_advanced: 48
   aiox_advanced_squads: 0
-  total: 46
+  total: 48
   counted_at: '2026-08-10'
 ---
 # Finding
 
-Achado concreto do Quality Gate ou revisão (o que falhou, onde, severidade). Alimenta o loop Apply QA Fixes.
+Achado concreto do Quality Gate ou da revisão: descreve o que falhou, onde, com qual impacto e severidade. Alimenta o loop Apply QA Fixes.
 
-**Frequência nos cursos:** **46** menções (AIOX Advanced: 46 · AIOX Advanced Squads: 0).
+## Como é usado
+
+Use **Finding** para registrar uma divergência contra um critério, com localização, impacto, severidade e evidência que permitam reproduzi-la.
+
+**Exemplo prático:** em vez de “a tela está ruim”, escreva: “o botão de exportação não tem loading em `components/ExportButton.tsx`, P1, reproduzível ao clicar duas vezes”.
+
+**Não confunda:** sugestão vaga ou preferência visual não é **Finding**; o achado precisa apontar critério, impacto e próximo passo.
+
+**Frequência nos cursos:** **48** menções (AIOX Advanced: 48 · AIOX Advanced Squads: 0).
 
 ## Aulas
 

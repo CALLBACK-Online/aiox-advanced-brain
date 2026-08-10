@@ -14,11 +14,13 @@ sequence: M0.2
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, research]
+tags: [curso/aiox-advanced-squads, squad, research, layer/curso, curso/squads, squad/research]
 maturity: study
 ---
 
 # Research — inteligência e discovery multi-fonte
+
+> Vault: [[squads/research/README|research]] · [[skills/research/SKILL|research]] · [[cursos/MOC-Squads]]
 
 [← Advisory Board](01-advisory-board.md) · [↑ M0](../modulos/M0-escolha-pesquisa-dominio.md) · [⌂ Curso](../README.md) · [→ Code Anatomist](03-code-anatomist.md)
 

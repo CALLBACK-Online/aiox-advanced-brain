@@ -18,16 +18,16 @@ updated: '2026-08-10'
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 freq:
-  aiox_advanced: 94
+  aiox_advanced: 98
   aiox_advanced_squads: 0
-  total: 94
+  total: 98
   counted_at: '2026-08-10'
 ---
 # Quality Gate
 
 Portão que só deixa passar o que tem qualidade suficiente.
 
-**Frequência nos cursos:** **94** menções (AIOX Advanced: 94 · AIOX Advanced Squads: 0).
+**Frequência nos cursos:** **98** menções (AIOX Advanced: 98 · AIOX Advanced Squads: 0).
 
 ## Onde aparece (AIOX Advanced)
 

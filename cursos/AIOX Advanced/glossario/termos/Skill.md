@@ -9,16 +9,24 @@ updated: '2026-08-10'
 status: reference
 canonical_scope: cursos/AIOX Advanced
 freq:
-  aiox_advanced: 398
-  aiox_advanced_squads: 201
-  total: 599
+  aiox_advanced: 401
+  aiox_advanced_squads: 227
+  total: 628
   counted_at: '2026-08-10'
 ---
 # Skill
 
 Procedimento especializado invocável (SKILL.md + recursos). Um objetivo claro; menor que um Squad e diferente de Task e Agent.
 
-**Frequência nos cursos:** **599** menções (AIOX Advanced: 398 · AIOX Advanced Squads: 201).
+## Como é usado
+
+Use quando o objetivo for único e existir um procedimento especializado que possa ser invocado com recursos e critérios próprios.
+
+**Exemplo prático:** uma Skill de pesquisa recebe a pergunta, consulta as fontes, sintetiza o resultado e entrega um dossier; o Agent decide quando acioná-la.
+
+**Não confunda:** Skill não é sinônimo de Agent: ela descreve o procedimento, enquanto o Agent conduz o raciocínio.
+
+**Frequência nos cursos:** **628** menções (AIOX Advanced: 401 · AIOX Advanced Squads: 227).
 
 ## Aulas
 

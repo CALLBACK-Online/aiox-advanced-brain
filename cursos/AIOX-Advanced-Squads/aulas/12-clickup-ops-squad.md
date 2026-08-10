@@ -14,11 +14,13 @@ sequence: M2.3
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, clickup-ops-squad]
+tags: [curso/aiox-advanced-squads, squad, clickup-ops-squad, layer/curso, curso/squads, squad/clickup-ops-squad]
 maturity: partial
 ---
 
 # ClickUp Ops — materializar processo no ClickUp
+
+> Vault: [[squads/clickup-ops-squad/README|clickup-ops-squad]] · [[skills/clickup-ops-squad/SKILL|clickup-ops-squad]] · [[cursos/MOC-Squads]]
 
 [← DB Sage](11-db-sage.md) · [↑ M2](../modulos/M2-dados-materializacao.md) · [⌂ Curso](../README.md) · [→ Brand](13-brand.md)
 

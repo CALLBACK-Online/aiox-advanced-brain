@@ -29,6 +29,8 @@ curated_at: '2026-08-09'
 
 # Briefing, [[PRD]], Stories: as 3 etapas antes do código
 
+Priorização no PRD: use [[MoSCoW]] (Must/Should/Could/Won't) e, quando precisar de score comparável, [[RICE]] (Reach, Impact, Confidence, Effort).
+
 ← [[18-yaml-markdown-json-sweet-spot|YAML, Markdown, JSON: o sweet spot para LLM]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[47-ciclo-de-vida-do-story|Ciclo de vida do Story: draft → ready → in progress → in review → done]]
 
 ## Mapa desta aula
@@ -393,7 +395,6 @@ A IA é a seta. O X é seu — inclusive **não soltar a seta** antes da planta.
 > **GATE-MODULE (auto)**: GPS Goal/Position/Steps presentes · caso + do/dont · decisão · prática com evidência · glossário. Alvo DL ≥70 atingido na construção enrich-W1.
 
 ***
-
 
 ---
 

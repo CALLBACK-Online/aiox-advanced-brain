@@ -29,12 +29,13 @@ curated_at: '2026-08-09'
 
 # [[Tech Research]]: pesquisa profunda multi-fonte
 
+Fontes públicas e rastreáveis entram como [[OSINT]] ético: cite, date e separe fato de inferência no dossiê de [[Tech Research]].
+
 ← [[35-mesa-redonda-advisory-board|Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[37-spy-bench-comparativo|Spy/Bench: comparação profunda entre dois projetos]]
 
 ## Mapa desta aula
 
 > **Neste acervo:** skill `tech-research` (e `tech-search` para perguntas delimitadas). Pipeline completo e bench: squad `research`.
-
 
 Decisão-chave da aula — O resultado desta pesquisa vai sustentar uma decisão que import…
 
@@ -490,7 +491,6 @@ Tradução dos termos para alguém que está vendo a distinção busca rasa vers
 > **Portão da aula**: A aula só está no padrão quando o aluno nomeia o que distingue pesquisa profunda multi-fonte de busca rasa, distingue varrer em ondas com cobertura medida (multi-wave e coverage scoring) de aceitar a primeira página, e consegue apontar, para um tema real, se ele exige tech-research completo (decisão que pesa, via /tech-research com cross-reference e citação) ou uma busca rápida (fato trivial) antes de abrir o buscador.
 
 ***
-
 
 ---
 

@@ -16,7 +16,15 @@ freq:
 ---
 # Story Development Cycle
 
-Nome completo do SDC. Método AIOX para levar uma Story do rascunho ao Done com validação, implementação, quality gate e fechamento.
+Nome por extenso de SDC: método AIOX para levar uma Story do rascunho ao Done com validação, implementação, quality gate, evidência e fechamento.
+
+## Como é usado
+
+Use **Story Development Cycle** em documentação, onboarding ou decision log quando precisar explicar o ciclo completo da Story. Descreva o estado atual, o dono da próxima transição, o critério e a prova esperada.
+
+**Exemplo prático:** na aula [[47-ciclo-de-vida-do-story]], registre uma Story como `draft`, valide-a para `ready`, acompanhe `in progress` e `in review` com QG e findings e só marque `done` quando o aceite tiver evidência.
+
+**Não confunda:** **Story Development Cycle** não é a Story individual, o status `done` ou um gate isolado. É o método que coordena essas etapas; o veredito de cada gate continua precisando dizer o que passou, falhou ou ficou pendente.
 
 **Frequência nos cursos:** **5** menções (AIOX Advanced: 5 · AIOX Advanced Squads: 0).
 

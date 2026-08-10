@@ -16,7 +16,15 @@ freq:
 ---
 # /tech-research
 
-A skill do AIOX que faz pesquisa profunda em 7 moléculas e 11 átomos: clarifica, varre em multi-wave, pontua cobertura, cruza modelos e verifica citações.
+A skill do AIOX para pesquisa profunda: clarifica a pergunta, busca em ondas, mede cobertura, cruza modelos e verifica citações antes de recomendar um caminho.
+
+## Como é usado
+
+Use **/tech-research** quando uma decisão exigir mais que busca simples: clarifique a pergunta, pesquise em ondas, meça cobertura, cruze modelos e verifique citações.
+
+**Exemplo prático:** na aula [[36-tech-research-multi-fonte]], acione **/tech-research** para escolher uma tecnologia; o relatório com fontes citadas e pontuação de cobertura sustenta a decisão, não a memória do modelo.
+
+**Não confunda:** **/tech-research** não é "perguntar ao chat": a diferença está no processo — varredura multi-wave, cruzamento entre modelos e citações verificadas — que transforma opinião em evidência rastreável.
 
 **Frequência nos cursos:** **69** menções (AIOX Advanced: 69 · AIOX Advanced Squads: 0).
 

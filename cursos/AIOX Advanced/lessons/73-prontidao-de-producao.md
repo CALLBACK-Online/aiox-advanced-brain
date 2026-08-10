@@ -24,10 +24,16 @@ sequence: M12.5
 track: essential
 status: canonical
 canonical_scope: cursos/AIOX Advanced
+curriculum_role: applied-extension
+foundation_owner: cursos/AIOX-Fundamentos-de-Arquitetura/aulas/24-capstone-arquitetura-agentic.md
 curated_at: '2026-08-09'
 ---
 
 # Prontidão de produção: checklist final
+
+> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/AIOX-Fundamentos-de-Arquitetura/aulas/24-capstone-arquitetura-agentic.md`.
+
+Checklist [[Reality-First]]: além do build, rode [[Smoke test]] e [[Health check]] no ambiente real; sem isso não há prontidão.
 
 ← [[72-cicd-pipeline-completa|CI/CD Pipeline completa: GitHub Actions + Quality Gate pré-merge]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[44-metodo-s2s|Método S2S: converter sinais em sistemas]]
 
@@ -407,7 +413,6 @@ A IA é a seta. O X é seu — inclusive dizer NO-GO.
 > **GATE-MODULE (auto)**: GPS Goal/Position/Steps presentes · caso + do/dont · decisão 5 branches · prática com evidência · glossário. Alvo DL ≥70 atingido na construção enrich-W5.
 
 ***
-
 
 ---
 

@@ -1,0 +1,26 @@
+schema_version: "1.0"
+course_slug: aiox-fundamentals
+deviations:
+  - id: DEV-AIOX-FUND-001
+    gate: market-research
+    decision: skipped
+    reason: >-
+      O pedido exige atualização técnica baseada no repositório canônico local.
+      Benchmark competitivo e pesquisa de preço ampliariam o escopo sem melhorar
+      a exatidão do conteúdo fundamental.
+    mitigation:
+      - snapshot do AIOX Core com commit e hashes
+      - análise de lacunas do curso legado
+      - escopo comercial marcado como não definido
+    approved_by: user_request
+    date: "2026-08-10"
+  - id: DEV-AIOX-FUND-002
+    gate: human-curriculum-approval
+    decision: inherited
+    reason: >-
+      A arquitetura Fundamentos, Sinais e contexto, Validação básica já está
+      registrada para aiox-fundamentals no manifesto canônico do catálogo.
+      O pedido do usuário autorizou a atualização brownfield.
+    evidence: apps/aiox-design-system/current/course-manifest.yaml#aiox-fundamentals
+    approved_by: canonical_manifest_and_user_request
+    date: "2026-08-10"

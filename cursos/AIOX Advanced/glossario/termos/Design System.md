@@ -9,16 +9,24 @@ updated: '2026-08-10'
 status: reference
 canonical_scope: cursos/AIOX Advanced
 freq:
-  aiox_advanced: 135
+  aiox_advanced: 140
   aiox_advanced_squads: 25
-  total: 160
+  total: 165
   counted_at: '2026-08-10'
 ---
 # Design System
 
-Decisões reutilizáveis de interface (tokens, componentes, contratos) — não só estética. A IA lê o DESIGN.md antes de gerar tela.
+Conjunto versionado de decisões reutilizáveis de interface — tokens, componentes, variantes e contratos de uso. A IA consulta o `DESIGN.md` antes de gerar ou alterar uma tela.
 
-**Frequência nos cursos:** **160** menções (AIOX Advanced: 135 · AIOX Advanced Squads: 25).
+## Como é usado
+
+Use **Design System** sempre que duas ou mais telas precisarem compartilhar comportamento visual ou quando uma nova decisão de UI tiver de ser repetida e revisada.
+
+**Exemplo prático:** se dashboard e detalhe usam o mesmo botão de confirmação, reutilize o componente, tokens e variante documentados; se o estado “carregando” faltar, adicione essa variante ao **Design System** antes de copiá-la nas duas telas.
+
+**Não confunda:** **Design System** não é galeria de telas nem só biblioteca de componentes; ele também registra decisões, restrições e a forma correta de combinar as peças.
+
+**Frequência nos cursos:** **165** menções (AIOX Advanced: 140 · AIOX Advanced Squads: 25).
 
 ## Aulas
 

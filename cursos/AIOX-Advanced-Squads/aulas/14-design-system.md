@@ -14,11 +14,13 @@ sequence: M3.2
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, design-system]
+tags: [curso/aiox-advanced-squads, squad, design-system, layer/curso, curso/squads, squad/design-system]
 maturity: partial
 ---
 
 # Design System — construir a biblioteca visual
+
+> Vault: [[squads/design-system/README|design-system]] · [[skills/design-system/SKILL|design-system]] · [[cursos/MOC-Squads]]
 
 [← Brand](13-brand.md) · [↑ M3](../modulos/M3-marca-experiencia-narrativa.md) · [⌂ Curso](../README.md) · [→ Design Ops](15-design-ops.md)
 

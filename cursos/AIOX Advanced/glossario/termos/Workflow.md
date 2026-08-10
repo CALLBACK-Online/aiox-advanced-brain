@@ -16,7 +16,15 @@ freq:
 ---
 # Workflow
 
-Sequência orquestrada de tasks/agentes para um resultado. Pode virar Runner quando o processo precisa repetir com mínimo de improvisação.
+Sequência orquestrada de tasks e agentes que leva uma entrada a um resultado. Quando o caminho estabiliza, pode virar um Runner.
+
+## Como é usado
+
+Use **Workflow** para desenhar ordem, responsáveis, entradas, saídas e gates antes de automatizar a execução.
+
+**Exemplo prático:** modele “validar Story → desenvolver → revisar → corrigir → fechar”; depois de provar o caminho e suas exceções, transforme-o em Runner.
+
+**Não confunda:** **Workflow** descreve e coordena o processo; **Runner** executa o caminho provado. Workflow não é Task isolada nem comando pontual.
 
 **Frequência nos cursos:** **455** menções (AIOX Advanced: 346 · AIOX Advanced Squads: 109).
 

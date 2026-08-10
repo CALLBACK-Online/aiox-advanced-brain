@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/squad-creator]
+---
+
 # Squad Creator
 
 > **Crie squads de alta qualidade baseados em elite minds reais.**
@@ -1174,3 +1178,14 @@ Tasks de execução e validação referenciadas explicitamente pelo squad:
 _Versão: 6.0.0_
 _Compatível com: AIOX v5+_
 _Última Atualização: 2026-04-04_
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-squad-creator|entrada · squad-creator]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/23-squad-creator|23-squad-creator]]
+- Skill: [[skills/squad-creator/SKILL|squad-creator]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

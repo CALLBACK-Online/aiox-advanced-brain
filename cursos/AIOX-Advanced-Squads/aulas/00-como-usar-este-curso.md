@@ -10,10 +10,12 @@ status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 12
 maturity: study
-tags: [curso/aiox-advanced-squads, intro]
+tags: [curso/aiox-advanced-squads, intro, layer/curso, curso/squads, squad/como-usar-este-curso]
 ---
 
 # Como usar este curso e o acervo
+
+> Vault: [[squads/como-usar-este-curso/README|como-usar-este-curso]] · [[skills/como-usar-este-curso/SKILL|como-usar-este-curso skill]] (se existir) · [[cursos/MOC-Squads]]
 
 [↑ Curso](../README.md) · [Guia de execução](../Guia-de-execucao.md) · [Mapa de decisão](../Mapa-de-decisao.md) · [→ Advisory Board](01-advisory-board.md)
 

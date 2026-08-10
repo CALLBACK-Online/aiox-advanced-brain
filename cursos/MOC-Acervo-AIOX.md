@@ -1,5 +1,5 @@
 ---
-tags: [hub, aiox-brain, moc]
+tags: [hub, aiox-brain, moc, layer/curso]
 aliases: [MOC Acervo, Mapa do acervo]
 ---
 
@@ -17,6 +17,8 @@ aliases: [MOC Acervo, Mapa do acervo]
 ## Trilhas
 
 - [[cursos/AIOX Advanced/README|AIOX Advanced]] — método
+- [[cursos/AIOX-Fundamentos-de-Arquitetura/README|Fundamentos de Arquitetura de Sistemas]] — linguagem técnica
+- [[cursos/AIOX-Fundamentals/README|AIOX Fundamentals]] — instalação + operação do Core
 - [[cursos/AIOX-Advanced-Squads/README|AIOX Advanced Squads]] — operação
 - [[cursos/Obsidian-IA/README|Obsidian + IA]] — vault + agent
 
@@ -24,6 +26,7 @@ aliases: [MOC Acervo, Mapa do acervo]
 
 - [[cursos/MOC-Skills|MOC · Skills]]
 - [[cursos/MOC-Squads|MOC · Squads]]
+- [[cursos/entradas/README|entradas]] — pontes skill ↔ squad ↔ aula (Graph)
 - [[00-HOME|Home]]
 
 ## Evidência

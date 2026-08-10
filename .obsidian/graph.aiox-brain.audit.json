@@ -1,6 +1,6 @@
 {
   "collapse-filter": false,
-  "search": "",
+  "search": "-path:.obsidian -path:node_modules -path:scripts -path:docs -path:tasks -path:agents -path:workflows -path:templates -path:checklists -path:data -path:references -path:assets -file:.yaml -file:.yml -file:.json -file:.css -file:.js -file:.cjs -file:.mjs -file:.sh -file:.py -file:CHANGELOG -file:ATTRIBUTION",
   "showTags": true,
   "showAttachments": false,
   "hideUnresolved": true,
@@ -15,10 +15,38 @@
       }
     },
     {
+      "query": "tag:#layer/skill",
+      "color": {
+        "a": 1,
+        "rgb": 7457838
+      }
+    },
+    {
+      "query": "tag:#layer/squad",
+      "color": {
+        "a": 1,
+        "rgb": 36095
+      }
+    },
+    {
+      "query": "tag:#layer/nota",
+      "color": {
+        "a": 1,
+        "rgb": 1033457
+      }
+    },
+    {
+      "query": "tag:#layer/curso",
+      "color": {
+        "a": 1,
+        "rgb": 14391348
+      }
+    },
+    {
       "query": "path:skills",
       "color": {
         "a": 1,
-        "rgb": 7055360
+        "rgb": 7457838
       }
     },
     {
@@ -32,7 +60,14 @@
       "query": "path:notas",
       "color": {
         "a": 1,
-        "rgb": 508415
+        "rgb": 1033457
+      }
+    },
+    {
+      "query": "path:entradas",
+      "color": {
+        "a": 1,
+        "rgb": 6336039
       }
     },
     {
@@ -53,7 +88,7 @@
       "query": "path:\"cursos/AIOX Advanced\"",
       "color": {
         "a": 1,
-        "rgb": 16091980
+        "rgb": 14391348
       }
     },
     {
@@ -68,12 +103,12 @@
   "showArrow": false,
   "textFadeMultiplier": -0.8,
   "nodeSizeMultiplier": 1.05,
-  "lineSizeMultiplier": 1.1,
+  "lineSizeMultiplier": 1.15,
   "collapse-forces": false,
-  "centerStrength": 0.32,
-  "repelStrength": 15,
+  "centerStrength": 0.28,
+  "repelStrength": 16,
   "linkStrength": 1,
-  "linkDistance": 130,
-  "scale": 0.12,
+  "linkDistance": 120,
+  "scale": 0.15,
   "close": false
 }

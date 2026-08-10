@@ -18,16 +18,16 @@ updated: '2026-08-10'
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 freq:
-  aiox_advanced: 194
+  aiox_advanced: 195
   aiox_advanced_squads: 0
-  total: 194
+  total: 195
   counted_at: '2026-08-10'
 ---
 # CodeRabbit
 
 Camada de revisão automatizada de código que reforça quality gates antes do merge.
 
-**Frequência nos cursos:** **194** menções (AIOX Advanced: 194 · AIOX Advanced Squads: 0).
+**Frequência nos cursos:** **195** menções (AIOX Advanced: 195 · AIOX Advanced Squads: 0).
 
 ## Onde aparece (AIOX Advanced)
 

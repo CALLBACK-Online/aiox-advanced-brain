@@ -29,6 +29,8 @@ curated_at: '2026-08-09'
 
 # Routing de modelos: Codex para QA, [[Gemini]] para pesquisa, Claude para o resto
 
+Política canônica: [[Model routing]] + [[Three-brain]] (motores diferentes) e [[No-self-review]] — quem implementa não é o único a validar.
+
 ← [[59-quando-paralelizar-vs-sequencial|Quando paralelizar vs sequencial: decisão antes do speedup]] · ↑ [[modulos/Módulo 10 - Escala e Tokens|M10]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[61-wave-execute|Wave Execute: orquestração avançada com waves paralelas]]
 
 ## Mapa desta aula
@@ -399,7 +401,6 @@ A IA é a seta. O X é seu — inclusive **qual cérebro** segura a ferramenta.
 > **GATE-MODULE (auto)**: GPS Goal/Position/Steps presentes · caso + do/dont · decisão · prática com evidência · glossário. Alvo DL ≥70 atingido na construção enrich-W3.
 
 ***
-
 
 ---
 

@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/db-sage]
+---
+
 # 🗄️ DB Sage - Database Architect & Operations Engineer
 
 **Version:** 1.1.0
@@ -329,3 +333,14 @@ Use `*squad-integration` to analyze a squad's data needs and design the integrat
 **Maintained By:** AIOX Team
 **Last Updated:** 2026-01-22
 **Independence:** Requires PostgreSQL/Supabase
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-db-sage|entrada · db-sage]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/11-db-sage|11-db-sage]]
+- Skill: [[skills/db-sage/SKILL|db-sage]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

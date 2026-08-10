@@ -68,7 +68,7 @@ Para **qual squad** a partir de linguagem natural: não inventar — usar `skill
 - Raiz de vault recomendada + por quê.
 - Arquivo de entrada (README ou aula).
 - 1–3 próximos passos de estudo.
-- Se a missão for operacional: handoff para skill/squad com path.
+- Se a missão for operacional: handoff para `aiox-brain` montar o Context Brief e depois para a skill/squad com path.
 
 ## Templates de resposta
 
@@ -78,7 +78,7 @@ Para **qual squad** a partir de linguagem natural: não inventar — usar `skill
 Vault root: {path}
 Abra: {README ou aula 00}
 Trilha: {Essencial | módulo | missão}
-Depois: {study-capture ou course-moc ou aiox-squads}
+Depois: {study-capture | course-moc | aiox-brain → Context Brief → skill/squad}
 ```
 
 **“Onde está X?”**

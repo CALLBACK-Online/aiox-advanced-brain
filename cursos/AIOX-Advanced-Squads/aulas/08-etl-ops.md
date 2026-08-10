@@ -14,11 +14,13 @@ sequence: M1.4
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, etl-ops]
+tags: [curso/aiox-advanced-squads, squad, etl-ops, layer/curso, curso/squads, squad/etl-ops]
 maturity: partial
 ---
 
 # ETL Ops — extrair, transformar e carregar
+
+> Vault: [[squads/etl-ops/README|etl-ops]] · [[skills/etl-ops/SKILL|etl-ops]] · [[cursos/MOC-Squads]]
 
 [← AIOX SOP](07-aiox-sop.md) · [↑ M1](../modulos/M1-autonomia-operacoes.md) · [⌂ Curso](../README.md) · [→ Runner Ops](09-runner-ops.md)
 

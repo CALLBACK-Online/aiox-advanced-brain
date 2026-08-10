@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/slides-creator]
+---
+
 # Slide Creator Squad
 
 ## Overview
@@ -220,3 +224,14 @@ squads/aiox-squad/scripts/aiox-validate.sh --squad slides-creator --no-remediati
 
 _Version: 9.0.0_
 _Compatible with: AIOX v4+_
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-slides-creator|entrada · slides-creator]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/17-slides-creator|17-slides-creator]]
+- Skill: [[skills/slides-creator/SKILL|slides-creator]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

@@ -16,7 +16,15 @@ freq:
 ---
 # Atomizar
 
-Extrair os primitivos (tokens, componentes atômicos) de uma UI existente, sem reescrever por cima.
+Extrair de uma UI existente os primitivos que se repetem — tokens, estados e componentes atômicos — para torná-los reutilizáveis sem apagar o comportamento original.
+
+## Como é usado
+
+Use **Atomizar** ao analisar uma tela ou fluxo já existente: identifique padrões repetidos, nomeie seus tokens e componentes e só depois componha novas telas com essas peças.
+
+**Exemplo prático:** uma área de conta repete três estilos de botão e dois campos de formulário; extraia cor, espaçamento e estados para tokens e componentes, documente as variantes no Storybook e confira se a tela continua igual.
+
+**Não confunda:** **Atomizar** não é quebrar um arquivo em dezenas de componentes sem reuso nem é refazer a interface por preferência visual. A extração deve nascer de padrões observados e preservar o contrato da UI.
 
 **Frequência nos cursos:** **20** menções (AIOX Advanced: 20 · AIOX Advanced Squads: 0).
 

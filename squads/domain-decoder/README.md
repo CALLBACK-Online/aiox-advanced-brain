@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/domain-decoder]
+---
+
 # Domain Decoder Squad
 
 Squad especializado em **decodificação de domínio a partir de código brownfield** — extrai regras de negócio, taxonomia e modelo de negócio de sistemas legados, atuais e open-source.
@@ -212,3 +216,14 @@ O deliverable principal é o **Rule Catalog** contendo:
 *Domain Decoder Squad v2.0.0*
 *Created: 2026-02-18*
 *Squad Creator: AIOX Squad Architect*
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-domain-decoder|entrada · domain-decoder]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/04-domain-decoder|04-domain-decoder]]
+- Skill: [[skills/domain-decoder/SKILL|domain-decoder]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

@@ -14,6 +14,8 @@ maturity: study
 
 # Wikilinks, backlinks e Graph
 
+> [[00-HOME]] · [[cursos/Obsidian-IA/README|Obsidian-IA]] · [[cursos/entradas/README|entradas]] · [[notas/README|notas]]
+
 [← Abrir o vault](01-abrir-o-vault.md) · [⌂ Curso](../README.md) · [→ Agent como professor](03-agent-como-professor.md)
 
 ## Resultado

@@ -14,11 +14,13 @@ sequence: M2.2
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, db-sage]
+tags: [curso/aiox-advanced-squads, squad, db-sage, layer/curso, curso/squads, squad/db-sage]
 maturity: partial
 ---
 
 # DB Sage — PostgreSQL e Supabase com autoridade
+
+> Vault: [[squads/db-sage/README|db-sage]] · [[skills/db-sage/SKILL|db-sage]] · [[cursos/MOC-Squads]]
 
 [← Data](10-data.md) · [↑ M2](../modulos/M2-dados-materializacao.md) · [⌂ Curso](../README.md) · [→ ClickUp Ops](12-clickup-ops-squad.md)
 

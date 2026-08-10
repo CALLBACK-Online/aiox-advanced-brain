@@ -24,10 +24,16 @@ sequence: M11.6
 track: complete
 status: canonical
 canonical_scope: cursos/AIOX Advanced
+curriculum_role: applied-extension
+foundation_owner: cursos/AIOX-Fundamentos-de-Arquitetura/aulas/17-runtime-harness-ambiente-container.md
 curated_at: '2026-08-09'
 ---
 
 # [[Harness]]: ambiente de execução do agente fora do Claude Code
+
+> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/AIOX-Fundamentos-de-Arquitetura/aulas/17-runtime-harness-ambiente-container.md`.
+
+No ecossistema AIOX completo, orquestração profunda pode depender de [[SYNAPSE]] e de [[Runtime AIOX]] — fora do lab só Claude Code.
 
 ← [[66-tres-estagios-de-monetizacao|Três estágios de monetização: interno → cliente → produto]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[68-squad-fora-do-claude-code|Extrair Squad do Claude Code para API própria]]
 
@@ -379,7 +385,6 @@ A IA é a seta. O X é seu — inclusive **onde** o agente tem permissão de viv
 > **GATE-MODULE (auto)**: GPS Goal/Position/Steps presentes · caso + do/dont · decisão · prática com evidência · glossário. Alvo DL ≥70 atingido na construção enrich-W4.
 
 ***
-
 
 ---
 

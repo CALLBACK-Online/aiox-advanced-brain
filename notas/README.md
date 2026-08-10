@@ -1,7 +1,10 @@
 ---
-tags: [hub, notas, estudo]
+tags: [hub, notas, estudo, layer/nota]
 aliases: [Notas, Anotações dos alunos]
 ---
+
+> Vault: [[00-HOME]] · [[cursos/MOC-Acervo-AIOX]] · [[cursos/entradas/README|entradas]]
+
 
 # notas — anotações dos alunos
 
@@ -17,6 +20,7 @@ notas/
   aulas/     # uma nota por aula (opcional)
   MOCs/      # seus mapas de conteúdo
   cards/     # progressive summary / revisão
+  retornos/  # resultado + decisão + aprendizado de execuções
 ```
 
 ## Como usar
@@ -25,6 +29,8 @@ notas/
 2. Capture aqui com a skill `study-capture` ou à mão
 3. Linke sempre a fonte, ex.: `cursos/AIOX Advanced/lessons/…` ou wikilink da aula
 4. Organize com `course-moc` se o tema crescer
+5. Para operar, gere um Context Brief a partir de `cursos/Obsidian-IA/templates/context-brief.md`
+6. Depois da execução no projeto, registre em `notas/retornos/` resultado, evidência, decisão e aprendizado reutilizável
 
 ## Config do vault
 

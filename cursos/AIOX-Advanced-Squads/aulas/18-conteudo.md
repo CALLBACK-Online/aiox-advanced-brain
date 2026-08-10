@@ -14,11 +14,13 @@ sequence: M4.1
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, conteudo]
+tags: [curso/aiox-advanced-squads, squad, conteudo, layer/curso, curso/squads, squad/conteudo]
 maturity: study
 ---
 
 # Conteúdo — Instagram e calendário social
+
+> Vault: [[squads/conteudo/README|conteudo]] · [[skills/conteudo/SKILL|conteudo]] · [[cursos/MOC-Squads]]
 
 [← Slides Creator](17-slides-creator.md) · [↑ M4](../modulos/M4-aquisicao-conteudo-vendas.md) · [⌂ Curso](../README.md) · [→ Copy](19-copy.md)
 

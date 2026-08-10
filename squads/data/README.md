@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/data]
+---
+
 # Data Intelligence Squad
 
 > Squad de analytics orientado por especialistas, organizado em 3 tiers e operando em modo `local`.
@@ -241,3 +245,14 @@ Ele deve responder rapidamente:
 - quais regras de manutenção não podem ser quebradas
 
 Se o README não ajuda nessas 5 perguntas, ele está errado.
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-data|entrada · data]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/10-data|10-data]]
+- Skill: [[skills/data/SKILL|data]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

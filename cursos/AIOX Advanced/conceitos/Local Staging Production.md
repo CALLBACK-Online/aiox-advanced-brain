@@ -17,16 +17,16 @@ updated: '2026-08-10'
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 freq:
-  aiox_advanced: 25
+  aiox_advanced: 12
   aiox_advanced_squads: 0
-  total: 25
+  total: 12
   counted_at: '2026-08-10'
 ---
 # Local Staging Production
 
 Três ambientes: local (exploração), staging (validação com gates), production (o que importa de verdade).
 
-**Frequência nos cursos:** **25** menções (AIOX Advanced: 25 · AIOX Advanced Squads: 0).
+**Frequência nos cursos:** **12** menções (AIOX Advanced: 12 · AIOX Advanced Squads: 0).
 
 ## Onde aparece (AIOX Advanced)
 

@@ -16,7 +16,15 @@ freq:
 ---
 # Auto-Clarify
 
-A fase em que o agente arranca as ambiguidades do projeto antes de pesquisar qualquer coisa.
+A fase do pipeline que arranca ambiguidades do projeto antes de qualquer pesquisa, convertendo um pedido vago em perguntas e premissas explícitas.
+
+## Como é usado
+
+Use **Auto-Clarify** antes de pesquisar para separar o que já está decidido, o que falta perguntar e quais restrições precisam entrar no briefing.
+
+**Exemplo prático:** diante de “quero automatizar o suporte”, explicite público, canal, SLA, dados permitidos e non-goals; só depois dispare Tech Research e feche o PRD.
+
+**Não confunda:** **Auto-Clarify** não é pesquisa, comparação ou recomendação; sua saída é um briefing menos ambíguo, que torna essas fases possíveis.
 
 **Frequência nos cursos:** **44** menções (AIOX Advanced: 44 · AIOX Advanced Squads: 0).
 

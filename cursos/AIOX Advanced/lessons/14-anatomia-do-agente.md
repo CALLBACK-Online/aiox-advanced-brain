@@ -27,10 +27,14 @@ sequence: M1.5
 track: essential
 status: canonical
 canonical_scope: cursos/AIOX Advanced
+curriculum_role: applied-extension
+foundation_owner: cursos/AIOX-Fundamentos-de-Arquitetura/aulas/22-modelo-contexto-memoria-tool-skill.md
 curated_at: '2026-08-09'
 ---
 
 # Anatomia de um agente: [[Persona]], skills, [[Autoridade]], [[Memória]]
+
+> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/AIOX-Fundamentos-de-Arquitetura/aulas/22-modelo-contexto-memoria-tool-skill.md`.
 
 ← [[45-doze-agentes-orbitais|Os 12 agentes orbitais do AIOX]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[15-quatro-executores|4 executores: humano, agent, clone, worker]]
 

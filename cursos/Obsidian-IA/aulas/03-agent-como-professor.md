@@ -14,6 +14,8 @@ maturity: study
 
 # O agent como professor-especialista
 
+> [[00-HOME]] · [[cursos/Obsidian-IA/README|Obsidian-IA]] · [[cursos/entradas/README|entradas]] · [[notas/README|notas]]
+
 [← Wikilinks e grafo](02-wikilinks-e-grafo.md) · [⌂ Curso](../README.md) · [→ Captura sem poluir](04-captura-sem-poluir.md)
 
 ## Resultado
@@ -53,6 +55,12 @@ Quero estudar design system: monte um caminho de 3 aulas e diga se preciso de sq
 ```text
 Consulte o agent-router dos squads e diga qual squad serve para:
 "meu agente entra em loop e depende de mim".
+```
+
+```text
+Recupere de 1 a 3 fontes reais deste vault para a missão abaixo e monte um
+Context Brief. Não execute aqui: prepare o handoff mínimo para o projeto.
+Missão: {transformação observável}
 ```
 
 ## Superfícies (lembrete)

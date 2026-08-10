@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "library_version": "0.5.1",
+  "library_version": "0.6.0",
   "source": {
     "repository": "upstream-monorepo",
     "path_relative": "../upstream-monorepo",
@@ -17,17 +17,50 @@
     "source_path": "cursos/AIOX Advanced",
     "source_git_status_at_import": "untracked",
     "import_date": "2026-08-10",
-    "markdown_files": 298,
+    "markdown_files": 300,
     "lessons": 75,
     "modules": 14,
     "quizzes": 14,
     "questions": 62,
-    "wikilinks": 2614,
+    "wikilinks": 2884,
     "unresolved_links_inside_cursos": 0,
     "ambiguous_links_inside_cursos": 0,
     "links_outside_course": 0
   },
   "supplemental_courses": [
+    {
+      "path": "cursos/AIOX-Fundamentos-de-Arquitetura",
+      "source_repository": "this-library",
+      "source_assets": "AIOX Advanced foundations + primary technical sources",
+      "created_at": "2026-08-10",
+      "markdown_files": 49,
+      "lessons": 24,
+      "modules": 8,
+      "quizzes": 8,
+      "questions": 32,
+      "unresolved_links": 0,
+      "links_outside_course": 0,
+      "agent_guide": "cursos/AIOX-Fundamentos-de-Arquitetura/AGENT-GUIDE.md"
+    },
+    {
+      "path": "cursos/AIOX-Fundamentals",
+      "source_repository": "SynkraAI/aiox-core",
+      "source_commit": "a68bd88f45e560f606e9bdc8a0f663570bdcef88",
+      "source_package": "@aiox-squads/core",
+      "source_package_version": "5.2.9",
+      "source_design": "COURSE-BRIEF.md + curriculum.yaml",
+      "created_at": "2026-08-10",
+      "markdown_files": 23,
+      "lessons": 12,
+      "modules": 3,
+      "quizzes": 3,
+      "questions": 15,
+      "duration_minutes": 465,
+      "unresolved_links": 0,
+      "links_outside_course": 0,
+      "agent_guide": "cursos/AIOX-Fundamentals/AGENT-GUIDE.md",
+      "source_manifest": "cursos/AIOX-Fundamentals/sources/SOURCE-MANIFEST.yaml"
+    },
     {
       "path": "cursos/AIOX-Advanced-Squads",
       "source_repository": "this-library",
@@ -63,7 +96,7 @@
     }
   ],
   "counts": {
-    "skills": 66,
+    "skills": 67,
     "squads": 24
   },
   "maturity_labels": {
@@ -133,6 +166,7 @@
     "storytelling",
     "study-capture",
     "survey-intel",
+    "teach",
     "tech-research",
     "tech-search",
     "telegram",
@@ -369,6 +403,11 @@
       "scope": "course-vault"
     },
     "study-capture": {
+      "maturity": "portable",
+      "layer": "second-brain",
+      "scope": "course-vault"
+    },
+    "teach": {
       "maturity": "portable",
       "layer": "second-brain",
       "scope": "course-vault"
@@ -894,8 +933,33 @@
     "aiox-advanced": {
       "path": "cursos/AIOX Advanced",
       "lessons": 75,
+      "foundation_prerequisites": "cursos/AIOX Advanced/ponte/pre-requisitos-arquitetura.md",
+      "core_prerequisite": "cursos/AIOX-Fundamentals/README.md",
       "bridge_to_squads": "cursos/AIOX Advanced/ponte/trilha-squads.md",
       "hub": "cursos/README.md"
+    },
+    "aiox-fundamentos-arquitetura": {
+      "path": "cursos/AIOX-Fundamentos-de-Arquitetura",
+      "lessons": 24,
+      "modules": 8,
+      "quizzes": 8,
+      "questions": 32,
+      "hub": "cursos/README.md",
+      "agent_guide": "cursos/AIOX-Fundamentos-de-Arquitetura/AGENT-GUIDE.md",
+      "bridge_to_advanced": "cursos/AIOX-Fundamentos-de-Arquitetura/PROVENIENCIA.md"
+    },
+    "aiox-fundamentals": {
+      "path": "cursos/AIOX-Fundamentals",
+      "lessons": 12,
+      "modules": 3,
+      "quizzes": 3,
+      "questions": 15,
+      "duration_minutes": 465,
+      "hub": "cursos/README.md",
+      "agent_guide": "cursos/AIOX-Fundamentals/AGENT-GUIDE.md",
+      "source_manifest": "cursos/AIOX-Fundamentals/sources/SOURCE-MANIFEST.yaml",
+      "prerequisite": "cursos/AIOX-Fundamentos-de-Arquitetura/README.md",
+      "next_course": "cursos/AIOX Advanced/README.md"
     },
     "aiox-advanced-squads": {
       "path": "cursos/AIOX-Advanced-Squads",
@@ -909,7 +973,7 @@
       "path": "cursos/Obsidian-IA",
       "lessons": 8,
       "kind": "mini",
-      "duration_minutes": "60-90",
+      "duration_minutes": "90-120",
       "hub": "cursos/README.md",
       "skills": [
         "aiox-brain",

@@ -24,10 +24,14 @@ sequence: M10.2
 track: essential
 status: canonical
 canonical_scope: cursos/AIOX Advanced
+curriculum_role: applied-extension
+foundation_owner: cursos/AIOX-Fundamentos-de-Arquitetura/aulas/12-concorrencia-paralelismo-fanout-fanin.md
 curated_at: '2026-08-09'
 ---
 
 # Quando [[Paralelização|paralelizar]] vs sequencial: decisão antes do speedup
+
+> **Papel curricular:** extensão aplicada ao AIOX. Base técnica canônica: `cursos/AIOX-Fundamentos-de-Arquitetura/aulas/12-concorrencia-paralelismo-fanout-fanin.md`.
 
 ← [[58-ralph-paralelizacao|Ralph: paralelização de múltiplos agentes]] · ↑ [[modulos/Módulo 10 - Escala e Tokens|M10]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[60-routing-modelos|Routing de modelos: Codex para QA, Gemini para pesquisa, Claude para o resto]]
 

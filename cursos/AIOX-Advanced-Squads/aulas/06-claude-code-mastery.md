@@ -14,11 +14,13 @@ sequence: M1.2
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, claude-code-mastery]
+tags: [curso/aiox-advanced-squads, squad, claude-code-mastery, layer/curso, curso/squads, squad/claude-code-mastery]
 maturity: study
 ---
 
 # Claude Code Mastery — ambiente Claude Code
+
+> Vault: [[squads/claude-code-mastery/README|claude-code-mastery]] · [[skills/claude-code-mastery/SKILL|claude-code-mastery]] · [[cursos/MOC-Squads]]
 
 [← Agent Autonomy](05-agent-autonomy.md) · [↑ M1](../modulos/M1-autonomia-operacoes.md) · [⌂ Curso](../README.md) · [→ AIOX SOP](07-aiox-sop.md)
 

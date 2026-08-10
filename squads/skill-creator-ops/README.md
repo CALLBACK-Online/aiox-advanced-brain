@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/skill-creator-ops]
+---
+
 # Skill Creator Ops — Skill Lifecycle Operations
 
 **Command:** `/skill-creator-ops`
@@ -57,3 +61,14 @@ Auxiliary flows: migrate-to-47, deprecate, retire, lifecycle-audit.
 - **Tier:** Core
 - **Modes:** CRIAR, VALIDAR, CONFIGURAR
 - **Evidence hierarchy:** source code of Anthropic's production prompt is ground truth; documentation is narrative about it. When the two disagree, the system prompt wins.
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-skill-creator-ops|entrada · skill-creator-ops]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/22-skill-creator-ops|22-skill-creator-ops]]
+- Skill: [[skills/skill-creator-ops/SKILL|skill-creator-ops]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

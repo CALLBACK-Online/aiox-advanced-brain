@@ -14,6 +14,8 @@ maturity: study
 
 # Abrir o vault e o mapa
 
+> [[00-HOME]] · [[cursos/Obsidian-IA/README|Obsidian-IA]] · [[cursos/entradas/README|entradas]] · [[notas/README|notas]]
+
 [← Por que Obsidian + IA](00-por-que-obsidian-ia.md) · [⌂ Curso](../README.md) · [→ Wikilinks e grafo](02-wikilinks-e-grafo.md)
 
 ## Resultado

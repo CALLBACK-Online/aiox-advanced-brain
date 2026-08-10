@@ -1,0 +1,51 @@
+assessment_id: quiz-validacao-basica
+course: aiox-fundamentals
+module: validacao-basica
+title: "Quiz: Validação básica"
+passing_score: 70
+questions:
+  - question_id: m3-q1
+    prompt: "Quais são as três camadas de qualidade usadas no curso?"
+    options:
+      a: "Prompt, resposta e resumo."
+      b: "Validação local, automação de integração e revisão independente."
+      c: "Lint, lint e lint."
+      d: "Dev, DevOps e deploy."
+    correct: b
+    rationale: "As camadas cobrem riscos complementares."
+  - question_id: m3-q2
+    prompt: "O que doctor prova?"
+    options:
+      a: "Que toda feature funciona."
+      b: "Que o usuário aprovou a UX."
+      c: "A saúde diagnosticada da instalação AIOX."
+      d: "Que o deploy terminou."
+    correct: c
+    rationale: "Doctor não substitui testes nem critérios de negócio."
+  - question_id: m3-q3
+    prompt: "Qual combinação autoriza uma ação?"
+    options:
+      a: "Capacidade técnica apenas."
+      b: "Modo auto apenas."
+      c: "Capacidade, autorização do escopo e autoridade de papel."
+      d: "Pedido implícito e pressa."
+    correct: c
+    rationale: "Ferramenta disponível não equivale a permissão operacional."
+  - question_id: m3-q4
+    prompt: "Qual sequência básica está correta?"
+    options:
+      a: "Dev → SM → PM → QA"
+      b: "SM prepara → PO valida → Dev implementa → QA revisa"
+      c: "QA implementa → Dev aprova → PO testa"
+      d: "DevOps cria story → Dev faz push → SM revisa"
+    correct: b
+    rationale: "A sequência preserva autoridade e handoffs."
+  - question_id: m3-q5
+    prompt: "O que torna um handoff reproduzível?"
+    options:
+      a: "Dizer apenas 'continue'."
+      b: "Anexar uma captura sem contexto."
+      c: "Registrar missão, decisões, arquivos, validadores, pendências e próximo passo."
+      d: "Copiar toda a conversa."
+    correct: c
+    rationale: "O próximo executor precisa reconstruir o estado sem depender do chat."

@@ -14,11 +14,13 @@ sequence: M0.3
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, code-anatomist]
+tags: [curso/aiox-advanced-squads, squad, code-anatomist, layer/curso, curso/squads, squad/code-anatomist]
 maturity: partial
 ---
 
 # Code Anatomist — engenharia reversa completa
+
+> Vault: [[squads/code-anatomist/README|code-anatomist]] · [[skills/code-anatomist/SKILL|code-anatomist]] · [[cursos/MOC-Squads]]
 
 [← Research](02-research.md) · [↑ M0](../modulos/M0-escolha-pesquisa-dominio.md) · [⌂ Curso](../README.md) · [→ Domain Decoder](04-domain-decoder.md)
 

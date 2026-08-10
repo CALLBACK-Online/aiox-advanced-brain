@@ -1,10 +1,10 @@
 ---
 name: study-capture
 description: >
-  Captura aprendizado do curso AIOX em notas pessoais ligadas às aulas canônicas
-  (insight, pergunta, card, próximo passo) sem editar o material oficial. Use quando
-  o usuário quiser anotar o que aprendeu, fazer resumo progressivo, zettel de uma
-  aula, diary de estudo, ou “salvar isso no meu segundo cérebro” a partir do acervo.
+  Captura aprendizado do curso e retorno de execuções AIOX em notas pessoais ligadas
+  às fontes canônicas (insight, pergunta, card, resultado, decisão, evidência e próximo
+  passo) sem editar o material oficial. Use para resumo progressivo, zettel de aula,
+  diary de estudo, “salvar isso no meu segundo cérebro” ou fechar o loop após operar.
 ---
 
 # Study Capture — captura sem poluir o canônico
@@ -30,6 +30,7 @@ notas/
   notes/                    # notas destiladas
   MOCs/                     # hubs pessoais (ver course-moc)
   cards/                    # flashcards / progressive summary
+  retornos/                 # resultado + decisão + aprendizado de execuções
 ```
 
 ## Quando usar
@@ -38,6 +39,7 @@ notas/
 - “Resume esta aula em camadas”
 - “Cria uma nota ligada à aula X”
 - “Quero levar isso pro meu Obsidian”
+- “Registra o que esta execução ensinou”
 
 ## Quando **não** usar
 
@@ -84,14 +86,33 @@ Maturidade: consultar catalog.json
 Copiar para o projeto: só quando for executar
 ```
 
+### 5. Retorno de execução
+
+Use depois de uma missão executada e validada no projeto:
+
+```markdown
+# Retorno — {missão}
+- data: YYYY-MM-DD
+- Context Brief: {nome ou link}
+- projeto: {identificador não sensível}
+- resultado: {o que mudou}
+- evidência: {artefato + validação}
+- decisão: {mantida, alterada ou descartada}
+- aprendizado reutilizável: {1–3 frases}
+- próximo passo: {1 ação}
+```
+
+Destile o resultado. Não copie logs completos, secrets, dados privados ou transcrições do agent.
+
 ## Algoritmo
 
-1. Identificar a **fonte canônica** (path real).
-2. Extrair **uma** transformação desejada (não resumo de 10 páginas sem pedido).
-3. Escolher formato (inbox / atômica / progressive / bridge).
+1. Identificar a **fonte canônica** ou o Context Brief (path real).
+2. Extrair **uma** transformação ou aprendizado desejado (não resumo de 10 páginas sem pedido).
+3. Escolher formato (inbox / atômica / progressive / bridge / retorno).
 4. Gravar **somente** no espaço pessoal acordado.
 5. Ligar com wikilink ou path de volta à aula.
-6. Oferecer 1 próximo passo (releitura, exercício da aula, MOC, skill).
+6. Se for retorno, ligar também o artefato e a evidência da execução sem expor conteúdo privado.
+7. Oferecer 1 próximo passo (releitura, exercício, MOC, skill ou nova missão).
 
 ## Template de nota atômica
 
@@ -122,6 +143,7 @@ tags: [estudo, aiox]
 - Não commitar dumps pessoais no repositório público.
 - Não usar paths absolutos de máquina.
 - Não copiar livros/transcrições integrais.
+- Não copiar secrets, dumps de terminal ou dados privados do projeto.
 - Não “melhorar” o canônico disfarçado de nota.
 - Português (ou idioma da pessoa); tom de estudo, não de marketing.
 
@@ -132,4 +154,5 @@ tags: [estudo, aiox]
 | Organizar vários insights em hub | `course-moc` |
 | Voltar a navegar o curso | `obsidian-course-vault` |
 | Executar no projeto | skill/squad do domínio · `aiox-squads` |
+| Registrar uma execução concluída | `study-capture` no formato Retorno de execução |
 | Visão geral do cérebro | `aiox-brain` |

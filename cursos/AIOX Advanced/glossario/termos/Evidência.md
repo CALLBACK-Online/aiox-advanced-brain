@@ -9,16 +9,24 @@ updated: '2026-08-10'
 status: reference
 canonical_scope: cursos/AIOX Advanced
 freq:
-  aiox_advanced: 541
+  aiox_advanced: 548
   aiox_advanced_squads: 124
-  total: 665
+  total: 672
   counted_at: '2026-08-10'
 ---
 # Evidência
 
 Prova observável de que o passo ou a Story entregou valor (artefato, gate, smoke, ROI). O curso não termina no consumo — termina na evidência.
 
-**Frequência nos cursos:** **665** menções (AIOX Advanced: 541 · AIOX Advanced Squads: 124).
+## Como é usado
+
+Use **Evidência** para transformar uma afirmação de conclusão em algo que outra pessoa possa observar e conferir.
+
+**Exemplo prático:** anexe ao close da Story o teste executado, screenshot, URL, log, diff ou métrica que prova o aceite — não apenas “funciona aqui”.
+
+**Não confunda:** evidência é o registro do resultado; a narrativa do agente, sozinha, não é prova.
+
+**Frequência nos cursos:** **672** menções (AIOX Advanced: 548 · AIOX Advanced Squads: 124).
 
 ## Aulas
 

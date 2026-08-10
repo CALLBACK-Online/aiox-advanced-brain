@@ -29,6 +29,8 @@ curated_at: '2026-08-09'
 
 # [[Quality Gate]]: QA + Apply QA Fixes + CodeRabbit
 
+O QG materializa [[No-self-review]]: findings de outro motor/pessoa antes de [[PASS]] / [[FAIL]] / [[CONCERNS]] / [[WAIVED]].
+
 ← [[47-ciclo-de-vida-do-story|Ciclo de vida do Story: draft → ready → in progress → in review → done]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[49-apply-qa-fixes-loop|Apply QA Fixes Loop: QA volta para Dev sem perder estado]]
 
 ## Mapa desta aula
@@ -402,7 +404,6 @@ A IA é a seta. O X é seu — inclusive **segurar o merge** quando o vermelho m
 > **GATE-MODULE (auto)**: GPS Goal/Position/Steps presentes · caso + do/dont · decisão · prática com evidência · glossário. Alvo DL ≥70 atingido na construção enrich-W1.
 
 ***
-
 
 ---
 

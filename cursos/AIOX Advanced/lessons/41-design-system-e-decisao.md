@@ -30,6 +30,8 @@ curated_at: '2026-08-09'
 
 # [[Design System]] é decisão, não estética
 
+Depois do contrato e do gate de conformidade, a camada [[Impeccable]] sobe hierarquia, ritmo e acabamento — polish com critério, não mais CSS solto.
+
 ← [[40-pipeline-canonico-prd|Pipeline canônico: do nada ao PRD com stories prontas]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[42-design-atomico-brad-frost|Design atomico: a interface se monta de peca pequena pra peca grande]]
 
 ## Conceitos
@@ -516,7 +518,6 @@ Tradução dos termos para alguém que está vendo a diferença decidir uma vez 
 > **Portão da aula**: A aula só está no padrão quando o aluno nomeia as peças do design system (decisão, token, regra e herança), distingue decidir uma vez e registrar (fundar em decisão de arquitetura) de pintar no gosto tela a tela (fundar na estética por reflexo), e consegue apontar, para uma escolha visual recorrente real, se ela vira token no design system ou fica decisão pontual antes de pintar a próxima tela.
 
 ***
-
 
 ---
 

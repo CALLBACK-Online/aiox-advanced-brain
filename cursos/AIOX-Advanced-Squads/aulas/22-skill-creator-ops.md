@@ -14,11 +14,13 @@ sequence: M5.1
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, skill-creator-ops]
+tags: [curso/aiox-advanced-squads, squad, skill-creator-ops, layer/curso, curso/squads, squad/skill-creator-ops]
 maturity: partial
 ---
 
 # Skill Creator Ops — ciclo de vida de skills
+
+> Vault: [[squads/skill-creator-ops/README|skill-creator-ops]] · [[skills/skill-creator-ops/SKILL|skill-creator-ops]] · [[cursos/MOC-Squads]]
 
 [← Hormozi](21-hormozi.md) · [↑ M5](../modulos/M5-metacapacidades.md) · [⌂ Curso](../README.md) · [→ Squad Creator](23-squad-creator.md)
 

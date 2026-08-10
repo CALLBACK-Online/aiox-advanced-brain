@@ -18,16 +18,16 @@ updated: '2026-08-10'
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 freq:
-  aiox_advanced: 277
+  aiox_advanced: 276
   aiox_advanced_squads: 0
-  total: 277
+  total: 276
   counted_at: '2026-08-10'
 ---
 # DESIGN.md
 
 Contrato que a IA lê antes de gerar interface: tokens, componentes e decisões de design system.
 
-**Frequência nos cursos:** **277** menções (AIOX Advanced: 277 · AIOX Advanced Squads: 0).
+**Frequência nos cursos:** **276** menções (AIOX Advanced: 276 · AIOX Advanced Squads: 0).
 
 ## Onde aparece (AIOX Advanced)
 

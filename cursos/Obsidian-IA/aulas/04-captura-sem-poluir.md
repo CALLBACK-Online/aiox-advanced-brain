@@ -14,6 +14,8 @@ maturity: study
 
 # Captura sem poluir o canônico
 
+> [[00-HOME]] · [[cursos/Obsidian-IA/README|Obsidian-IA]] · [[cursos/entradas/README|entradas]] · [[notas/README|notas]]
+
 [← Agent como professor](03-agent-como-professor.md) · [⌂ Curso](../README.md) · [→ MOCs e hubs](05-mocs-e-hubs.md)
 
 ## Resultado
@@ -32,6 +34,7 @@ Capturar aprendizado em espaço **pessoal**, sempre ligado à aula canônica.
 |---------|-----|
 | `notas/inbox/` | Captura rápida (local, gitignored) |
 | `notas/notes/` | Notas destiladas |
+| `notas/retornos/` | Resultado e aprendizado devolvidos depois de uma execução |
 | Vault pessoal | Depois de destilar, se quiser PARA/LYT da sua vida |
 
 Skill: `study-capture` no repositório (`skills/study-capture/SKILL.md`).
@@ -51,6 +54,8 @@ Skill: `study-capture` no repositório (`skills/study-capture/SKILL.md`).
 1. Highlight — ideia bruta da aula
 2. Suas palavras — o que muda no seu trabalho
 3. Card — pergunta + resposta para revisar
+
+Depois de operar no projeto, capture também **resultado → decisão → aprendizado reutilizável** em `notas/retornos/`. Esse retorno fecha o loop; log bruto de terminal não é memória.
 
 ## Prática
 

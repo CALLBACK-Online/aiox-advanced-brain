@@ -6,17 +6,17 @@ status: canonical
 canonical_scope: cursos/Obsidian-IA
 sharing_boundary: cursos
 source: skills/aiox-brain + vault de estudo
-source_version: 1.0.0
+source_version: 1.1.0
 curriculum_modules: 1
 lessons: 8
-tags: [curso, obsidian, ia, segundo-cerebro, aiox]
+tags: [curso, obsidian, ia, segundo-cerebro, aiox, layer/curso]
 ---
 
 # Obsidian + IA
 
-> Do vault ao agent: estudar o AIOX com grafo, captura e execução sem bagunçar o canônico.
+> Do vault à execução: recuperar contexto, operar no projeto AIOX e devolver aprendizado ao segundo cérebro.
 
-Mini-curso **prático** (cerca de **60–90 minutos**) para usar este repositório como segundo cérebro de estudo com **Obsidian** e um **agent** (Claude Code, Codex ou genérico).
+Mini-curso **prático** (cerca de **90–120 minutos**, mais o tempo da missão real) para integrar este repositório ao trabalho com AIOX como segundo cérebro de estudo usando **Obsidian** e um **agent** (Claude Code, Codex ou genérico).
 
 ## Para quem
 
@@ -31,17 +31,20 @@ Ao terminar você consegue:
 1. Abrir o vault certo e achar qualquer aula em menos de um minuto.
 2. Usar wikilinks, backlinks e Graph sem medo.
 3. Pedir ao agent para ensinar, capturar e mapear — sem reescrever aulas oficiais.
-4. Fechar o loop: estudo → nota → skill/squad → projeto real.
+4. Transformar conhecimento recuperado em um **Context Brief** verificável.
+5. Levar o briefing e o menor asset necessário ao projeto AIOX e executar uma missão real.
+6. Devolver resultado, decisão e aprendizado ao segundo cérebro.
 
 ## Não é
 
 - Curso completo de plugins premium do Obsidian.
 - Substituição do AIOX Advanced (método) ou do curso de Squads (operação).
 - Tutorial do vault pessoal mentelendaria (paths de máquina / vida / livros).
+- Sincronização automática entre vault e projeto: a ponte ensinada é manual, mínima e reproduzível.
 
 ## Como estudar
 
-1. Abra **esta pasta** (`cursos/Obsidian-IA/`) ou `cursos/` como vault no Obsidian.
+1. Abra a **raiz do repositório** como vault para acessar cursos, notas, skills e squads no mesmo Graph.
 2. Siga as aulas em ordem (00 → 07).
 3. Faça os exercícios curtos; use as skills de vault quando o agent estiver no repo.
 
@@ -62,8 +65,8 @@ Entre cursos, os paths monoespaçados apontam para o hub: `cursos/README.md`.
 3. [O agent como professor-especialista](aulas/03-agent-como-professor.md)
 4. [Captura sem poluir o canônico](aulas/04-captura-sem-poluir.md)
 5. [MOCs e hubs de estudo](aulas/05-mocs-e-hubs.md)
-6. [Do estudo à execução](aulas/06-do-estudo-a-execucao.md)
-7. [Prática integrada](aulas/07-pratica-integrada.md)
+6. [Context Brief: do estudo à execução](aulas/06-do-estudo-a-execucao.md)
+7. [Prática integrada: estudo → execução → memória](aulas/07-pratica-integrada.md)
 
 ## Ordem com as outras trilhas
 
@@ -83,7 +86,9 @@ Você “passou” no mini-curso se entregar:
 
 - 1 captura pessoal ligada a uma aula real;
 - 1 MOC com pelo menos 5 links úteis;
-- 1 frase de missão + squad ou skill escolhido (sem inventar comando).
+- 1 Context Brief com fontes, missão, asset e critério de aceite;
+- 1 artefato executado no projeto AIOX com evidência de validação;
+- 1 nota de retorno com resultado, decisão e aprendizado reutilizável.
 
 ## Validação
 

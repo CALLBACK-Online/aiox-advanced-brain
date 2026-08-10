@@ -27,15 +27,45 @@ canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
-# [[Storybook]] para derivar e testar variantes (a11y, dark mode, responsivo)
+# Storybook para derivar e testar variantes (a11y, dark mode, responsivo)
 
-← [[43-design-md-novo-contrato|DESIGN.md: o novo contrato que a IA lê antes de gerar tela]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[58-ralph-paralelizacao|Ralph: paralelização de múltiplos agentes]]
+← [[56-tailwind-shadcn-storybook|Tailwind + ShadCN + Storybook]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[58-ralph-paralelizacao|Ralph: paralelização]]
 
 ## Mapa desta aula
 
-Decisão-chave da aula — O que a mudança de UI pode quebrar de verdade?
+> Gate visual: quando o catálogo cresce, [[Chromatic]] (ou similar) impede drift de pixels entre PRs.
+
+Decisão-chave da aula — o que quebra de verdade?
 
 ```mermaid
+%%{init: {
+  "theme": "dark",
+  "flowchart": {
+    "curve": "basis",
+    "nodeSpacing": 22,
+    "rankSpacing": 36,
+    "padding": 8,
+    "htmlLabels": true,
+    "useMaxWidth": true
+  },
+ [[cursos/AIOX Advanced/README|Curso]]"14px"
+  }
+}}%%
+flowchart TB
+  Q["O que a mudança de UI pode quebrar de verdade?"]
+  B0["Fluxo crítico<br/>Estados completos + a11y foco/nome + da…"]
+  B1["Só visual de marketing<br/>Viewports + dark se tema global; a11y d…"]
+  B2["Formulário<br/>Error/Empty/Loa[[58-ralph-paralelizacao|Ralph: paralelização de múltiplos agentes]]ressão com o caso exato ant…"]
+  B4["Explosão combinatorial<br/>Cenários nomeados de produto — não 2^n …"]
+  Q --> B0
+  B0 --> B1
+  B1 --> B2
+  B2 --> B3
+  B3 --> B4
+classDef core fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#e2e8f0
+  classDef step fill:#0f172a,stroke:#6366f1,stroke-width:1.5px,color:#f1f5f9
+  classDef gate fill:#312e81,stroke:#a5b4fc,stroke-width:2px,color:#e2e8f0
+  classDef good fill:#14532d,stro```mermaid
 %%{init: {
   "theme": "dark",
   "flowchart": {
@@ -68,33 +98,7 @@ classDef core fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#e2e8f0
   classDef good fill:#14532d,stroke:#4ade80,stroke-width:1.5px,color:#ecfdf5
   classDef bad fill:#450a0a,stroke:#f87171,stroke-width:1.5px,color:#fef2f2
   classDef warn fill:#422006,stroke:#fbbf24,stroke-width:1.5px,color:#fffbeb
-```
-
-> Leia o diagrama antes do texto longo. Depois volte e confira.
-
-> Museu vivo vira QA em massa: estados, temas e viewports antes do bug em produção.
-
-**Objetivos de aprendizagem:**
-- Desenhar a matriz de variantes de um componente (estado, tema, viewport, a11y). _(apply)_
-- Configurar stories que cubram dark mode, responsivo e checagens a11y básicas. _(apply)_
-- Usar Storybook como bateria de QA visual/comportamental antes do merge. _(apply)_
-- Priorizar correções a partir de falhas de variante por impacto e frequência. _(analyze)_
-
----
-
-## O que você consegue no fim desta aula
-
-*G · Destino*
-
-Destino claro antes de qualquer addons de Storybook.
-
-Ao final desta aula você vai conseguir três coisas concretas:
-
-1. Desenhar a **matriz de variantes** de um componente sem virar combinatorial explosion.
-2. Olhar um PR de UI e dizer **quais stories faltam** pra provar a mudança.
-3. Priorizar bug de variante: o que quebra a11y/dark/mobile sobe na fila.
-
-Se você sair daqui com Storybook só no happy path light desktop, a aula falhou.
+```book só no happy path light desktop, a aula falhou.
 Happy path é demo. Variante é engenharia.
 
 - **Objetivos da aula** (Matriz de eixos (não lista infinita); Stories que provam tema/viewport/a11y; Priorizar falha de variante)
@@ -270,8 +274,7 @@ Custo de não escrever: ticket P1 e desculpa em público.
 Então o que acontece se você só snapshot visual? Você congela o default
 e deixa o comportamento acessível no escuro.
 
-Checklist de review que eu coloco no PR de UI:
-- [ ] Stories novas/alteradas listadas no body do PR
+Checklist de review que eu coloco no PR de UI[[Quality Gate]]novas/alteradas listadas no body do PR
 - [ ] Dark rodado no componente tocado
 - [ ] a11y addon sem critical aberto (ou waiver escrito)
 - [ ] Viewport mobile se o fluxo é mobile-first ou misto
@@ -397,9 +400,22 @@ barata de verdade antes da produção.
 
 ***
 
-
 ---
 
 ## Navegação
 
 ← [[43-design-md-novo-contrato|DESIGN.md: o novo contrato que a IA lê antes de gerar tela]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[58-ralph-paralelizacao|Ralph: paralelização de múltiplos agentes]]
+[[DESIGN md|DESIGN.md]]`CheckoutSubmitLoading``FormErrorMobileDark````mermaid
+%%{init: {"theme": "dark", "flowchart": {"useMaxWidth": true, "htmlLabels": true, "nodeSpacing": 22, "rankSpacing": 36, "padding": 8}}}%%
+flowchart TB
+  Q["O que a mudança de UI pode quebrar de verdade?"]
+  B0["Fluxo crítico<br/>Estados completos + a11y foco/nome + dark + mobile."]
+  B1["Só visual de marketing<br/>Viewports + dark se tema global; a11y de heading/contr…"]
+  B2["Formulário<br/>Error/Empty/Loading + teclado + mobile."]
+  B3["Já quebrou em prod<br/>Story de regressão com o caso exato antes do fix."]
+  B4["Explosão combinatorial<br/>Cenários nomeados de produto — não 2^n stories."]
+  Q --> B0
+  B0 --> B1
+  B1 --> B2
+  B2 --> B3
+  B3 --> B4

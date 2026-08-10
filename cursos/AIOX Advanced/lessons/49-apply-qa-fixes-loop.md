@@ -29,6 +29,8 @@ curated_at: '2026-08-09'
 
 # [[Apply QA Fixes]] Loop: QA volta para Dev sem perder estado
 
+Loop de correção: [[Apply QA Fixes]] e, quando o projeto tiver multi-engine, [[Self-heal]] com circuit breaker — sem autoaprovar.
+
 ← [[48-quality-gate-completo|Quality Gate: QA + Apply QA Fixes + CodeRabbit]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[06-code-rabbit-boost|Code Rabbit Boost]]
 
 ## Mapa desta aula
@@ -386,7 +388,6 @@ A IA é a seta. O X é seu — inclusive **não abrir limbo** só pra board fica
 > **GATE-MODULE (auto)**: GPS Goal/Position/Steps presentes · caso + do/dont · decisão · prática com evidência · glossário. Alvo DL ≥70 atingido na construção enrich-W1.
 
 ***
-
 
 ---
 

@@ -1,11 +1,13 @@
 ---
-tags: [hub, aiox-brain, moc]
+tags: [hub, aiox-brain, moc, layer/curso]
 aliases: [MOC Skills]
 ---
 
 # MOC — Skills
 
-Home: [[00-HOME]] · Acervo: [[cursos/MOC-Acervo-AIOX]] · Squads: [[cursos/MOC-Squads]]
+Home: [[00-HOME]] · Acervo: [[cursos/MOC-Acervo-AIOX]] · Squads: [[cursos/MOC-Squads]] · Pontes: [[cursos/entradas/README|entradas]]
+
+As notas em [[cursos/entradas/README|cursos/entradas/]] ligam cada skill de domínio a squad + aula (Graph), sem poluir o `SKILL.md` de runtime.
 
 ## Vault / segundo cérebro
 - [[skills/aiox-brain/SKILL|aiox-brain]]

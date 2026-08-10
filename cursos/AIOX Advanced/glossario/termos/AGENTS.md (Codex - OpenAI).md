@@ -9,18 +9,24 @@ updated: '2026-08-10'
 status: reference
 canonical_scope: cursos/AIOX Advanced
 freq:
-  aiox_advanced: 3
+  aiox_advanced: 2
   aiox_advanced_squads: 0
-  total: 3
+  total: 2
   counted_at: '2026-08-10'
 ---
 # AGENTS.md (Codex / OpenAI)
 
-Arquivo equivalente no Codex. Diferente do Claude Code, no Codex você
-praticamente só tem esse arquivo: não há CoreConfig nem skills no mesmo
-formato. Tudo que você quer impor ao agente entra ali.
+Arquivo de instruções do projeto para o Codex. No contexto da aula, ele concentra em um único contrato as leis, restrições e convenções que o agente deve aplicar.
 
-**Frequência nos cursos:** **3** menções (AIOX Advanced: 3 · AIOX Advanced Squads: 0).
+## Como é usado
+
+Use **AGENTS.md (Codex / OpenAI)** ao portar o método para o Codex: reúna nele as leis, restrições e convenções que o agente deve aplicar.
+
+**Exemplo prático:** na aula [[03-claude-md-leis-da-fisica]], ao levar o projeto para o Codex, reescreva no **AGENTS.md** as leis que estavam no `CLAUDE.md` e valide a sessão contra esse contrato.
+
+**Não confunda:** **AGENTS.md (Codex / OpenAI)** é o equivalente funcional do CLAUDE.md, não uma cópia: sem skills e hooks para complementar, ele precisa ser mais autocontido do que o arquivo do Claude Code.
+
+**Frequência nos cursos:** **2** menções (AIOX Advanced: 2 · AIOX Advanced Squads: 0).
 
 ## Aulas
 

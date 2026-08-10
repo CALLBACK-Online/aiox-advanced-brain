@@ -14,11 +14,13 @@ sequence: M5.2
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, squad-creator]
+tags: [curso/aiox-advanced-squads, squad, squad-creator, layer/curso, curso/squads, squad/squad-creator]
 maturity: partial
 ---
 
 # Squad Creator — criar uma capacidade organizacional
+
+> Vault: [[squads/squad-creator/README|squad-creator]] · [[skills/squad-creator/SKILL|squad-creator]] · [[cursos/MOC-Squads]]
 
 [← Skill Creator Ops](22-skill-creator-ops.md) · [↑ M5](../modulos/M5-metacapacidades.md) · [⌂ Curso](../README.md) · [→ Squad Creator Pro](24-squad-creator-pro.md)
 

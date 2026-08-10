@@ -1,0 +1,24 @@
+{
+  "course_slug": "aiox-fundamentals",
+  "title": "AIOX Fundamentals",
+  "version": "2.0.0",
+  "language": "pt-BR",
+  "creation_mode": "brownfield",
+  "status": "validated",
+  "updated_at": "2026-08-10",
+  "source": {
+    "repository": "SynkraAI/aiox-core",
+    "commit": "a68bd88f45e560f606e9bdc8a0f663570bdcef88",
+    "package": "@aiox-squads/core",
+    "package_version": "5.2.9",
+    "snapshot_manifest": "sources/SOURCE-MANIFEST.yaml"
+  },
+  "curriculum": {
+    "modules": 3,
+    "lessons": 12,
+    "estimated_hours": 7.75,
+    "approval_source": "apps/aiox-design-system/current/course-manifest.yaml#aiox-fundamentals"
+  },
+  "generator": "Course Architect",
+  "quality_gate": "PASS"
+}

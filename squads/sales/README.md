@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/sales]
+---
+
 # Squad Sales - Elite Sales Methodology Agents
 
 Squad de vendas baseado em **elite minds reais** com frameworks documentados. Cobre o funil completo: diagnostico, qualificacao, negociacao, prospecting, closing e escala.
@@ -157,3 +161,14 @@ squad-sales/
 | Modo de criação | YOLO |
 | Score de validação | 7.9/10 (PASS) |
 | Total de linhas | 15,768 |
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-sales|entrada · sales]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/20-sales|20-sales]]
+- Skill: [[skills/sales/SKILL|sales]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

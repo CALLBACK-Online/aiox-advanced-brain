@@ -29,6 +29,8 @@ curated_at: '2026-08-09'
 
 # Ciclo de vida do Story: [[Draft]] → [[Ready]] → in progress → in review → [[Done]]
 
+Ao fechar a Story, atualize [[File List]] e o [[Development Log]] do épico — memória que o próximo agent consegue ler.
+
 ← [[46-etapas-de-desenvolvimento|Briefing, PRD, Stories: as 3 etapas antes do código]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[48-quality-gate-completo|Quality Gate: QA + Apply QA Fixes + CodeRabbit]]
 
 ## Mapa desta aula
@@ -390,7 +392,6 @@ A IA é a seta. O X é seu — inclusive **passar o bastão** sem sumir com o co
 > **GATE-MODULE (auto)**: GPS Goal/Position/Steps presentes · caso + do/dont · decisão · prática com evidência · glossário. Alvo DL ≥70 atingido na construção enrich-W1.
 
 ***
-
 
 ---
 

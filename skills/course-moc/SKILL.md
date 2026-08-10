@@ -39,7 +39,7 @@ Padrão de nome: `MOC - {Tema}.md` ou `hub-{slug}.md`.
 3. Coletar 5–15 destinos reais (paths ou wikilinks que resolvem no vault escolhido).
 4. Agrupar em seções (Fundamentos → Prática → Operação → Evidência).
 5. Para cada link: meia linha de “por que está aqui”.
-6. Fechar com **próximo passo** e, se couber, skill/squad de execução.
+6. Fechar com **próximo passo** e, se couber, Context Brief + skill/squad de execução.
 7. Não duplicar o README do curso; o MOC é recorte intencional.
 
 ## Template
@@ -58,6 +58,7 @@ Padrão de nome: `MOC - {Tema}.md` ou `hub-{slug}.md`.
 ## Prática / operação
 - [[…]] — …
 - Squad/skill: `{id}` → `skills/…` ou `squads/…`
+- Context Brief: `cursos/Obsidian-IA/templates/context-brief.md`
 
 ## Evidência de que “entendi”
 - [ ] {explicar X}
@@ -82,4 +83,4 @@ Se o vault for só `cursos/AIOX Advanced/`, use wikilinks pelo título da nota. 
 - Não inventar aulas; verificar que o arquivo existe.
 - Não mover arquivos canônicos para “ficar mais LYT”.
 - Preferir atualizar MOC pessoal a editar índices oficiais.
-- Se o mapa for de **operação multi-agente**, depois do MOC ofereça `aiox-squads`.
+- Se o mapa alimentar uma operação, passe por `aiox-brain` para preparar o Context Brief antes de `aiox-squads` ou da skill do domínio.

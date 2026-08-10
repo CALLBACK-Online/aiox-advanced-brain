@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/squad-creator-pro]
+---
+
 # Squad Creator
 
 > **Crie squads de alta qualidade baseados em elite minds reais.**
@@ -1059,3 +1063,14 @@ docs/
 _Versão: 2.9.0_
 _Compatível com: AIOX-FULLSTACK v5+_
 _Última Atualização: 2026-02-05_
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-squad-creator-pro|entrada · squad-creator-pro]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/24-squad-creator-pro|24-squad-creator-pro]]
+- Skill: [[skills/squad-creator-pro/SKILL|squad-creator-pro]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

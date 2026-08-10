@@ -1,5 +1,5 @@
 ---
-tags: [hub, aiox-brain, home]
+tags: [hub, aiox-brain, home, layer/curso]
 aliases: [Home, Início, AIOX Brain Home]
 ---
 
@@ -28,8 +28,13 @@ aliases: [Home, Início, AIOX Brain Home]
 Se o Graph voltar cinza:
 
 ```bash
-cp .obsidian/graph.aiox-brain.json .obsidian/graph.json
+cp .obsidian/graph.LOCKED.json .obsidian/graph.json
+# ou: cp .obsidian/graph.aiox-brain.json .obsidian/graph.json
 ```
+
+O Graph **esconde** `tasks/`, `agents/`, `workflows/` (milhares de arquivos internos dos squads).
+Assim só entra a camada de conhecimento: cursos, READMEs, entradas, skills, notas.
+
 
 ## Entradas
 
@@ -37,7 +42,11 @@ cp .obsidian/graph.aiox-brain.json .obsidian/graph.json
 - [[cursos/MOC-Acervo-AIOX|MOC · Acervo]]
 - [[cursos/MOC-Skills|MOC · Skills]]
 - [[cursos/MOC-Squads|MOC · Squads]]
+- [[cursos/AIOX Advanced/MOC-Todas-Aulas|MOC · Todas as aulas (método)]]
+- [[cursos/entradas/README|entradas skill/squad]]
 - [[cursos/Obsidian-IA/README|Mini-curso Obsidian + IA]]
+- [[cursos/AIOX-Fundamentos-de-Arquitetura/README|Fundamentos de Arquitetura de Sistemas]]
+- [[cursos/AIOX-Fundamentals/README|AIOX Fundamentals — Core básico]]
 - [[cursos/AIOX Advanced/README|AIOX Advanced (método)]]
 - [[cursos/AIOX-Advanced-Squads/README|AIOX Advanced Squads]]
 - [[notas/README|notas — anotações dos alunos]]
@@ -58,7 +67,24 @@ Estudar (cursos/) → Anotar (notas/) → Skill/Squad → Projeto real → Evid�
 - [[skills/study-capture/SKILL|study-capture]]
 - [[skills/aiox-squads/SKILL|aiox-squads]]
 
+## Pontes skill (Graph)
+
+Notas leves em `cursos/entradas/skill-*.md` (tag `#layer/skill`) ligam skill ↔ squad ↔ aula **sem** poluir o `SKILL.md` de runtime.
+
 ## Captura
 
 Novas notas do Obsidian → `notas/inbox/`.
 Não reescreva aulas em `cursos/`.
+
+## Cores sumiram no Graph?
+
+O Obsidian **apaga os grupos de cor** se você editar o painel ou se a aba Graph sobrescrever o arquivo.
+
+```bash
+# 1) Feche a aba Graph no Obsidian
+# 2) No terminal, na raiz do repo:
+bash .obsidian/RESTORE-GRAPH.sh
+# 3) Reabra o Graph
+```
+
+Confira em **Grupos**: `path:skills` (verde), `path:squads` (laranja), `path:notas` (âmbar), `path:cursos/...` (azul/roxo), `tag:#hub` (rosa).

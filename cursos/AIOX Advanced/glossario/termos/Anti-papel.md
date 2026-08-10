@@ -16,7 +16,15 @@ freq:
 ---
 # Anti-papel
 
-O que o agente explicitamente NÃO faz — tão importante quanto o papel.
+Limite explícito do agente: o que ele não decide, não executa ou não pode tocar. O anti-papel evita sobreposição e torna o handoff verificável.
+
+## Como é usado
+
+Use **Anti-papel** ao escrever o contrato de um agente, principalmente quando outros agentes poderiam assumir a mesma tarefa. Declare as fronteiras negativas junto do papel e da autoridade concedida.
+
+**Exemplo prático:** o agente de pesquisa pode coletar fontes e entregar um briefing, mas seu anti-papel diz que ele não edita arquivos nem aprova a arquitetura. A decisão passa ao responsável seguinte com o briefing anexado.
+
+**Não confunda:** **Anti-papel** não é uma persona negativa nem uma lista genérica de “boas práticas”. É uma restrição operacional: deixa claro onde a responsabilidade termina e por que outro agente assume a próxima ação.
 
 **Frequência nos cursos:** **12** menções (AIOX Advanced: 12 · AIOX Advanced Squads: 0).
 

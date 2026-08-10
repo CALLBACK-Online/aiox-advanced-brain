@@ -1,0 +1,345 @@
+course_id: aiox-fundamentals
+title: "AIOX Fundamentals"
+slug: aiox-fundamentals
+version: "2.0.0"
+created_at: "2026-08-10"
+updated_at: "2026-08-10"
+
+instructor:
+  name: "Equipe AIOX"
+  source: Generic
+  bio: >-
+    Voz editorial do AIOX Squad, derivada do contexto institucional canônico
+    e sem emulação de uma pessoa específica.
+
+metadata:
+  mode: legacy
+  total_duration_hours: 7.75
+  content_duration_hours: 6
+  assessment_duration_hours: 1.75
+  num_modules: 3
+  num_lessons: 12
+  knowledge_level: beginner
+  target_audience: >-
+    Criadores técnicos e não técnicos que precisam de uma base mental e
+    operacional para trabalhar com o framework AIOX.
+  pedagogical_framework: backward_design_microlearning_bloom
+  lesson_framework: gps_didatica_lendaria
+  teaching_style: practical
+  language: pt-BR
+  source_commit: a68bd88f45e560f606e9bdc8a0f663570bdcef88
+  source_package: "@aiox-squads/core@5.2.9"
+
+learning_objectives:
+  - "Explicar o framework AIOX, CLI First e o modelo de duas fases."
+  - "Instalar o core, ativar um agent e confirmar first-value."
+  - "Selecionar agent, task, skill, workflow ou squad de forma proporcional."
+  - "Aplicar o ciclo story-driven com papéis e handoffs explícitos."
+  - "Avaliar entregas por gates, diagnósticos e evidência reproduzível."
+
+prerequisites:
+  - "Computador com acesso ao terminal"
+  - "Node.js 18 ou superior"
+  - "npm 9 ou superior"
+  - "Git"
+  - "Uma IDE ou CLI suportada pelo AIOX"
+
+modules:
+  - module_id: 1
+    id: fundamentos
+    module_number: "Módulo 1"
+    module_title: "Fundamentos"
+    module_description: >-
+      Construir o modelo mental do AIOX e chegar ao primeiro resultado útil.
+    duration_minutes: 120
+    module_objectives:
+      - "Explicar a proposta e a prioridade CLI First."
+      - "Reconhecer os componentes do framework."
+      - "Instalar e validar first-value."
+    lessons:
+      - lesson_id: o-que-e-aiox
+        lesson_number: "Aula 1.1"
+        lesson_title: "O que é AIOX"
+        lesson_description: "Framework, problema que resolve e limite do que ele não é."
+        file_path: "lessons/01-fundamentos/1.1-o-que-e-aiox.md"
+        duration_minutes: 30
+        learning_objectives:
+          - "Definir AIOX como framework de orquestração."
+          - "Distinguir framework, modelo de IA e interface."
+        bloom_level: remember
+        prerequisites: ["Nenhum"]
+        key_concepts: ["orquestração", "framework", "criador"]
+        activities:
+          - type: exercise
+            description: "Classificar exemplos como modelo, interface ou framework."
+      - lesson_id: cli-first-e-duas-fases
+        lesson_number: "Aula 1.2"
+        lesson_title: "CLI First e as duas fases"
+        lesson_description: "Por que a execução nasce na CLI e como planejamento vira contexto de engenharia."
+        file_path: "lessons/01-fundamentos/1.2-cli-first-e-duas-fases.md"
+        duration_minutes: 30
+        learning_objectives:
+          - "Explicar CLI First sem interpretar como rejeição de UI."
+          - "Relacionar planejamento agêntico e desenvolvimento contextualizado."
+        bloom_level: understand
+        prerequisites: [o-que-e-aiox]
+        key_concepts: ["CLI First", "planejamento", "contexto"]
+        activities:
+          - type: exercise
+            description: "Transformar um pedido vago em contexto de planejamento e execução."
+      - lesson_id: anatomia-do-framework
+        lesson_number: "Aula 1.3"
+        lesson_title: "Anatomia do framework"
+        lesson_description: "Agents, tasks, templates, checklists, workflows e configuração."
+        file_path: "lessons/01-fundamentos/1.3-anatomia-do-framework.md"
+        duration_minutes: 30
+        learning_objectives:
+          - "Identificar as peças principais do AIOX."
+          - "Traçar o fluxo de contexto entre configuração e execução."
+        bloom_level: understand
+        prerequisites: [cli-first-e-duas-fases]
+        key_concepts: ["agent", "task", "workflow"]
+        activities:
+          - type: exercise
+            description: "Montar um mapa simples dos componentes do checkout local."
+      - lesson_id: instalacao-e-primeiro-valor
+        lesson_number: "Aula 1.4"
+        lesson_title: "Instalação e primeiro valor"
+        lesson_description: "Instalação greenfield/brownfield, ativação por IDE e diagnóstico inicial."
+        file_path: "lessons/01-fundamentos/1.4-instalacao-e-primeiro-valor.md"
+        duration_minutes: 30
+        learning_objectives:
+          - "Executar a instalação adequada ao tipo de projeto."
+          - "Ativar um agent e verificar um output útil."
+        bloom_level: apply
+        prerequisites: [anatomia-do-framework]
+        key_concepts: ["instalação", "ativação", "first-value"]
+        activities:
+          - type: exercise
+            description: "Instalar ou auditar AIOX e registrar evidência do first-value."
+
+  - module_id: 2
+    id: sinais-e-contexto
+    module_number: "Módulo 2"
+    module_title: "Sinais e contexto"
+    module_description: >-
+      Ler o ambiente antes de delegar e selecionar a menor rota suficiente.
+    duration_minutes: 120
+    module_objectives:
+      - "Localizar as fontes de contexto e suas precedências."
+      - "Escolher agents e unidades de execução."
+      - "Diferenciar rotas greenfield e brownfield."
+    lessons:
+      - lesson_id: ler-o-contexto-antes-de-agir
+        lesson_number: "Aula 2.1"
+        lesson_title: "Ler o contexto antes de agir"
+        lesson_description: "AGENTS.md, configuração, docs, stories e evidência do repositório."
+        file_path: "lessons/02-sinais-e-contexto/2.1-ler-o-contexto-antes-de-agir.md"
+        duration_minutes: 30
+        learning_objectives:
+          - "Priorizar fontes de contexto locais."
+          - "Montar um context pack mínimo para uma tarefa."
+        bloom_level: apply
+        prerequisites: [instalacao-e-primeiro-valor]
+        key_concepts: ["contexto", "precedência", "fonte da verdade"]
+        activities:
+          - type: exercise
+            description: "Criar um mapa de contexto para uma alteração pequena."
+      - lesson_id: escolher-o-agente-certo
+        lesson_number: "Aula 2.2"
+        lesson_title: "Escolher o agent certo"
+        lesson_description: "Papéis core, autoridade e sinais de seleção."
+        file_path: "lessons/02-sinais-e-contexto/2.2-escolher-o-agente-certo.md"
+        duration_minutes: 30
+        learning_objectives:
+          - "Relacionar tipo de trabalho ao agent responsável."
+          - "Evitar delegação por familiaridade ou nome aproximado."
+        bloom_level: apply
+        prerequisites: [ler-o-contexto-antes-de-agir]
+        key_concepts: ["papel", "autoridade", "seleção"]
+        activities:
+          - type: exercise
+            description: "Roteirizar seis cenários para os agents corretos."
+      - lesson_id: task-skill-workflow-ou-squad
+        lesson_number: "Aula 2.3"
+        lesson_title: "Task, skill, workflow ou squad"
+        lesson_description: "Granularidade, reuso e composição sem criar complexidade fantasma."
+        file_path: "lessons/02-sinais-e-contexto/2.3-task-skill-workflow-ou-squad.md"
+        duration_minutes: 30
+        learning_objectives:
+          - "Comparar as unidades de execução do AIOX."
+          - "Selecionar a menor unidade suficiente para um caso."
+        bloom_level: analyze
+        prerequisites: [escolher-o-agente-certo]
+        key_concepts: ["task-first", "composição", "squad"]
+        activities:
+          - type: exercise
+            description: "Classificar uma lista de necessidades por granularidade."
+      - lesson_id: greenfield-brownfield-e-story
+        lesson_number: "Aula 2.4"
+        lesson_title: "Greenfield, brownfield e story"
+        lesson_description: "Como o estado do projeto muda descoberta, risco e documentação."
+        file_path: "lessons/02-sinais-e-contexto/2.4-greenfield-brownfield-e-story.md"
+        duration_minutes: 30
+        learning_objectives:
+          - "Distinguir rotas greenfield e brownfield."
+          - "Formular uma story com critérios verificáveis."
+        bloom_level: analyze
+        prerequisites: [task-skill-workflow-ou-squad]
+        key_concepts: ["greenfield", "brownfield", "story"]
+        activities:
+          - type: exercise
+            description: "Converter uma solicitação em story com critérios e file scope."
+
+  - module_id: 3
+    id: validacao-basica
+    module_number: "Módulo 3"
+    module_title: "Validação básica"
+    module_description: >-
+      Fechar o ciclo com qualidade, autoridade e evidência reproduzível.
+    duration_minutes: 120
+    module_objectives:
+      - "Aplicar gates proporcionais ao risco."
+      - "Respeitar autoridade e permissões."
+      - "Produzir handoff reproduzível."
+    lessons:
+      - lesson_id: qualidade-em-tres-camadas
+        lesson_number: "Aula 3.1"
+        lesson_title: "Qualidade em três camadas"
+        lesson_description: "Checks locais, automação de PR e revisão humana."
+        file_path: "lessons/03-validacao-basica/3.1-qualidade-em-tres-camadas.md"
+        duration_minutes: 30
+        learning_objectives:
+          - "Explicar as três camadas de quality gate."
+          - "Escolher verificações proporcionais à mudança."
+        bloom_level: understand
+        prerequisites: [greenfield-brownfield-e-story]
+        key_concepts: ["gate", "automação", "revisão"]
+        activities:
+          - type: exercise
+            description: "Montar uma matriz de gates para três níveis de risco."
+      - lesson_id: autoridade-e-permissoes
+        lesson_number: "Aula 3.2"
+        lesson_title: "Autoridade e permissões"
+        lesson_description: "Modos de permissão, operações destrutivas e limites de papel."
+        file_path: "lessons/03-validacao-basica/3.2-autoridade-e-permissoes.md"
+        duration_minutes: 30
+        learning_objectives:
+          - "Classificar operações por risco e autoridade."
+          - "Selecionar um modo de permissão adequado."
+        bloom_level: apply
+        prerequisites: [qualidade-em-tres-camadas]
+        key_concepts: ["permissão", "autoridade", "risco"]
+        activities:
+          - type: exercise
+            description: "Classificar comandos como seguros, mutáveis ou destrutivos."
+      - lesson_id: ciclo-da-story-na-pratica
+        lesson_number: "Aula 3.3"
+        lesson_title: "Ciclo da story na prática"
+        lesson_description: "SM, PO, Dev e QA do draft ao fechamento."
+        file_path: "lessons/03-validacao-basica/3.3-ciclo-da-story-na-pratica.md"
+        duration_minutes: 30
+        learning_objectives:
+          - "Sequenciar as fases do Story Development Cycle."
+          - "Identificar handoffs e condições de bloqueio."
+        bloom_level: apply
+        prerequisites: [autoridade-e-permissoes]
+        key_concepts: ["story", "handoff", "QA"]
+        activities:
+          - type: exercise
+            description: "Simular o ciclo de uma correção pequena."
+      - lesson_id: evidencia-doctor-e-handoff
+        lesson_number: "Aula 3.4"
+        lesson_title: "Evidência, doctor e handoff"
+        lesson_description: "Como provar estado, registrar limitações e entregar continuidade."
+        file_path: "lessons/03-validacao-basica/3.4-evidencia-doctor-e-handoff.md"
+        duration_minutes: 30
+        learning_objectives:
+          - "Produzir evidência reproduzível de uma entrega."
+          - "Construir um handoff que outra pessoa consiga retomar."
+        bloom_level: evaluate
+        prerequisites: [ciclo-da-story-na-pratica]
+        key_concepts: ["evidência", "doctor", "handoff"]
+        activities:
+          - type: project
+            description: "Preparar o pacote de evidências do projeto final."
+
+assessments:
+  - assessment_id: quiz-fundamentos
+    type: quiz
+    title: "Quiz: Fundamentos"
+    module: fundamentos
+    file_path: "assessments/quiz-module-1.yaml"
+    duration_minutes: 15
+    num_questions: 5
+    passing_score: 70
+  - assessment_id: quiz-sinais-e-contexto
+    type: quiz
+    title: "Quiz: Sinais e contexto"
+    module: sinais-e-contexto
+    file_path: "assessments/quiz-module-2.yaml"
+    duration_minutes: 15
+    num_questions: 5
+    passing_score: 70
+  - assessment_id: quiz-validacao-basica
+    type: quiz
+    title: "Quiz: Validação básica"
+    module: validacao-basica
+    file_path: "assessments/quiz-module-3.yaml"
+    duration_minutes: 15
+    num_questions: 5
+    passing_score: 70
+  - assessment_id: projeto-primeiro-ciclo-aiox
+    type: project
+    title: "Primeiro ciclo AIOX com evidência"
+    module: final
+    file_path: "assessments/final-project.md"
+    duration_minutes: 60
+    deliverable: "Story pequena, rota de execução, validações e handoff."
+
+resources:
+  readings:
+    - title: "AIOX Core README"
+      source_path: "README.md"
+      manifest: "sources/SOURCE-MANIFEST.yaml"
+      type: documentation
+    - title: "Getting Started"
+      source_path: "docs/getting-started.md"
+      manifest: "sources/SOURCE-MANIFEST.yaml"
+      type: documentation
+    - title: "AIOX User Guide"
+      source_path: "docs/guides/user-guide.md"
+      manifest: "sources/SOURCE-MANIFEST.yaml"
+      type: documentation
+    - title: "Story Development Cycle"
+      source_path: "docs/aiox-workflows/story-development-cycle-workflow.md"
+      manifest: "sources/SOURCE-MANIFEST.yaml"
+      type: documentation
+
+validation:
+  alignment_score: 98
+  completeness_score: 100
+  cognitive_load_balanced: true
+  duration_realistic: true
+
+tags: [aiox, orquestracao, agentes, cli-first, story-driven]
+categories: [Technology, AI Orchestration]
+
+distribution:
+  platforms: [internal, custom]
+  status: ready
+  publish_date: null
+  price: null
+  currency: BRL
+
+version_history:
+  - version: "1.0.0"
+    date: "2024-12-30"
+    changes: "Curso legado AIOS com 19 módulos e 73 aulas."
+    author: "Course Architect"
+  - version: "2.0.0"
+    date: "2026-08-10"
+    changes: >-
+      Reconstruído como AIOX Fundamentals, alinhado ao AIOX Core 5.2.9,
+      com slugs limpos, avaliações e rastreabilidade por commit.
+    author: "Course Architect"

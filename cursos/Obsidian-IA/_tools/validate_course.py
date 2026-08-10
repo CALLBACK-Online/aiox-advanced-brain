@@ -24,6 +24,22 @@ REQUIRED_SECTIONS = [
     "## Prática",
     "## Evidência de conclusão",
 ]
+REQUIRED_CAPSTONE_SECTIONS = [
+    "## Context Brief",
+    "## Execução no projeto AIOX",
+    "## Retorno ao segundo cérebro",
+    "## Definition of Done",
+]
+REQUIRED_TEMPLATE_SECTIONS = [
+    "## Missão",
+    "## Contexto recuperado",
+    "## Decisões e restrições",
+    "## Mecanismo escolhido",
+    "## Handoff ao projeto",
+    "## Critérios de aceite",
+    "## Evidência esperada",
+    "## Retorno ao segundo cérebro",
+]
 LINK = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
 
 
@@ -67,6 +83,22 @@ for position, path in enumerate(lesson_files):
 if actual_ids != EXPECTED:
     errors.append(f"ordem/ids divergentes: {actual_ids}")
 
+capstone = COURSE / "aulas" / "07-pratica-integrada.md"
+if capstone.exists():
+    capstone_body = capstone.read_text(encoding="utf-8")
+    for section in REQUIRED_CAPSTONE_SECTIONS:
+        if section not in capstone_body:
+            errors.append(f"{capstone.name}: falta contrato operacional {section}")
+
+context_brief = COURSE / "templates" / "context-brief.md"
+if not context_brief.exists():
+    errors.append("template Context Brief ausente")
+else:
+    template_body = context_brief.read_text(encoding="utf-8")
+    for section in REQUIRED_TEMPLATE_SECTIONS:
+        if section not in template_body:
+            errors.append(f"templates/context-brief.md: falta {section}")
+
 readme = COURSE / "README.md"
 if not readme.exists():
     errors.append("README.md ausente")
@@ -74,6 +106,9 @@ else:
     body = readme.read_text(encoding="utf-8")
     if "Obsidian + IA" not in body:
         errors.append("README.md sem título esperado")
+    for promise in ("Context Brief", "projeto AIOX", "nota de retorno"):
+        if promise not in body:
+            errors.append(f"README.md sem promessa operacional: {promise}")
 
 for path in COURSE.rglob("*.md"):
     text = path.read_text(encoding="utf-8")

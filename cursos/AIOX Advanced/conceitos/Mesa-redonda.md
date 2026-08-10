@@ -18,16 +18,16 @@ updated: '2026-08-10'
 status: canonical
 canonical_scope: cursos/AIOX Advanced
 freq:
-  aiox_advanced: 65
+  aiox_advanced: 54
   aiox_advanced_squads: 0
-  total: 65
+  total: 54
   counted_at: '2026-08-10'
 ---
 # Mesa-redonda
 
 Decidir com múltiplos clones/lentes em paralelo em vez de um único prompt monólogo.
 
-**Frequência nos cursos:** **65** menções (AIOX Advanced: 65 · AIOX Advanced Squads: 0).
+**Frequência nos cursos:** **54** menções (AIOX Advanced: 54 · AIOX Advanced Squads: 0).
 
 ## Onde aparece (AIOX Advanced)
 

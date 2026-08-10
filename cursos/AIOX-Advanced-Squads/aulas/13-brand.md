@@ -14,11 +14,13 @@ sequence: M3.1
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, brand]
+tags: [curso/aiox-advanced-squads, squad, brand, layer/curso, curso/squads, squad/brand]
 maturity: partial
 ---
 
 # Brand — fundamentos, posicionamento e ativação
+
+> Vault: [[squads/brand/README|brand]] · [[skills/brand/SKILL|brand]] · [[cursos/MOC-Squads]]
 
 [← ClickUp Ops](12-clickup-ops-squad.md) · [↑ M3](../modulos/M3-marca-experiencia-narrativa.md) · [⌂ Curso](../README.md) · [→ Design System](14-design-system.md)
 

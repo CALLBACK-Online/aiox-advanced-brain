@@ -1,5 +1,5 @@
 ---
-tags: [hub, aiox-brain, moc]
+tags: [hub, aiox-brain, moc, layer/curso]
 aliases: [MOC Squads]
 ---
 
@@ -37,3 +37,8 @@ Curso: [[cursos/AIOX-Advanced-Squads/README|AIOX Advanced Squads]]
 ## Roteamento
 
 [[skills/aiox-squads/SKILL|aiox-squads]] + `cursos/AIOX-Advanced-Squads/agent-router.json`
+
+## Links de vault
+
+Cada `squads/<id>/README.md` tem bloco **Vault (Obsidian)** (aula + skill + este MOC) e tags `#layer/squad` · `#squad/<id>`.
+

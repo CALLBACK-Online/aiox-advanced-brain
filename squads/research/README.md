@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/research]
+---
+
 # Squad: Research
 
 Unified research operations: deep technical research, competitive intelligence, marketing deep-dives, product discovery, and A-vs-B benchmarking. Renamed from `spy` 2026-05-16, absorbed `/tech-research` skill v2.0.0.
@@ -122,3 +126,14 @@ Primary output path:
 ---
 
 *Research Squad v3.0 - 2026-03-27*
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-research|entrada · research]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/02-research|02-research]]
+- Skill: [[skills/research/SKILL|research]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

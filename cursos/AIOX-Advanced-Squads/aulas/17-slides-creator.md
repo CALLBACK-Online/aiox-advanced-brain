@@ -14,11 +14,13 @@ sequence: M3.5
 status: canonical
 canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
-tags: [curso/aiox-advanced-squads, squad, slides-creator]
+tags: [curso/aiox-advanced-squads, squad, slides-creator, layer/curso, curso/squads, squad/slides-creator]
 maturity: partial
 ---
 
 # Slides Creator — decks com narrativa e QA
+
+> Vault: [[squads/slides-creator/README|slides-creator]] · [[skills/slides-creator/SKILL|slides-creator]] · [[cursos/MOC-Squads]]
 
 [← Storytelling](16-storytelling.md) · [↑ M3](../modulos/M3-marca-experiencia-narrativa.md) · [⌂ Curso](../README.md) · [→ Conteúdo](18-conteudo.md)
 

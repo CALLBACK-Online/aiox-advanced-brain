@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/design-system]
+---
+
 # Design System Squad
 
 **Version:** 4.2.0  
@@ -172,3 +176,14 @@ Quando dois artefatos conflitam, prevalece a fonte de maior precedência. Confli
 - Cross-domain requests are routed to specialized squads instead of being executed here.
 - `apps/aiox-design-starter` is a first-class runtime target of this squad.
 - `apps/aiox-brandbook` is the canonical provider implementation currently observed in the repo.
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-design-system|entrada · design-system]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/14-design-system|14-design-system]]
+- Skill: [[skills/design-system/SKILL|design-system]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]

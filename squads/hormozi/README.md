@@ -1,3 +1,7 @@
+---
+tags: [layer/squad, squad/hormozi]
+---
+
 # Hormozi Squad — The $100M Mind System
 
 > "An army of specialized Alex Hormozis, each mastering a specific domain, working in coordination to create offers, leads, ads, copy, and strategies that make people feel stupid saying no."
@@ -309,3 +313,14 @@ docs/projects/hormozi-squad/
 
 
 <\!-- Criado com Squad Creator do AIOXPRO por @oalanicolas e @pedrovalerio | 2026-02-10 -->
+
+## Vault (Obsidian)
+
+- Ponte: [[cursos/entradas/squad-hormozi|entrada · hormozi]]
+
+Camada leve para o Graph — não altera a execução do squad.
+
+- Aula: [[cursos/AIOX-Advanced-Squads/aulas/21-hormozi|21-hormozi]]
+- Skill: [[skills/hormozi/SKILL|hormozi]]
+- Mapa: [[cursos/MOC-Squads|MOC · Squads]]
+- Home: [[00-HOME]]
