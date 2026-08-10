@@ -136,6 +136,15 @@ def main() -> int:
         run(sys.executable, "dev/validate.py", "--course", "aiox-exemplo", cwd=root, expected=1)
         run(
             sys.executable,
+            str(SCRIPTS / "audit_vault_links.py"),
+            "--course",
+            "aiox-exemplo",
+            "--repo-root",
+            str(root),
+            expected=0,
+        )
+        run(
+            sys.executable,
             str(SCRIPTS / "audit_didactics.py"),
             "--course",
             "aiox-exemplo",

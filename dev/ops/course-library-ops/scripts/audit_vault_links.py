@@ -44,11 +44,18 @@ PLACEHOLDER_WIKI = re.compile(
 )
 
 
-def iter_markdown(vault: Path, *, include_notas: bool = False) -> list[Path]:
+def iter_markdown(
+    vault: Path,
+    *,
+    include_notas: bool = False,
+    include_archive: bool = False,
+) -> list[Path]:
     files: list[Path] = []
     skip = set(SKIP_DIRS)
     if not include_notas:
         skip.add("notas")
+    if not include_archive:
+        skip.add("archive")
     for path in vault.rglob("*.md"):
         if any(part in skip for part in path.parts):
             continue
@@ -56,13 +63,41 @@ def iter_markdown(vault: Path, *, include_notas: bool = False) -> list[Path]:
     return sorted(files)
 
 
+def _path_score(path: Path, *, source: Path | None = None, vault: Path | None = None) -> tuple:
+    """Menor score = melhor: fora de archive, perto da fonte, path curto."""
+    parts = path.parts
+    archive = 1 if "archive" in parts else 0
+    same_dir = 0
+    same_course = 0
+    if source is not None:
+        same_dir = 0 if path.parent == source.parent else 1
+        # course folder: cursos/<Nome>/...
+        try:
+            s_parts = source.relative_to(vault).parts if vault else source.parts
+            p_parts = path.relative_to(vault).parts if vault else path.parts
+            if len(s_parts) >= 2 and len(p_parts) >= 2 and s_parts[0] == "cursos" and p_parts[0] == "cursos":
+                same_course = 0 if s_parts[1] == p_parts[1] else 1
+            else:
+                same_course = 0
+        except ValueError:
+            same_course = 1
+    return (archive, same_dir, same_course, len(parts), str(path))
+
+
 def build_stem_index(files: list[Path], vault: Path) -> tuple[dict[str, list[Path]], dict[str, Path]]:
-    """stem -> all paths; stem -> preferred path (first by path sort)."""
+    """stem -> all paths; stem -> preferred global path (não-archive primeiro)."""
     by_stem: dict[str, list[Path]] = defaultdict(list)
     for path in files:
         by_stem[path.stem].append(path)
-    preferred = {stem: paths[0] for stem, paths in by_stem.items()}
+    preferred = {
+        stem: sorted(paths, key=lambda p: _path_score(p, vault=vault))[0]
+        for stem, paths in by_stem.items()
+    }
     return by_stem, preferred
+
+
+def prefer_among(paths: list[Path], source: Path, vault: Path) -> Path:
+    return sorted(paths, key=lambda p: _path_score(p, source=source, vault=vault))[0]
 
 
 def parse_wikilink(raw: str) -> str:
@@ -80,30 +115,35 @@ def resolve_wikilink(
     """Return (status, resolved_path). status: ok|collision|missing|empty."""
     if not target:
         return "empty", None
-    # Path-like wikilink
+    # Path-like wikilink (Obsidian também aceita path no vault)
     if "/" in target or target.endswith(".md"):
-        candidate = (source.parent / target).resolve() if not target.startswith("/") else (vault / target.lstrip("/")).resolve()
-        # also try relative to vault root
-        alt = (vault / target).resolve()
-        for cand in (candidate, alt):
+        rel = target if target.endswith(".md") else f"{target}.md"
+        candidates = [
+            (source.parent / target).resolve(),
+            (source.parent / rel).resolve(),
+            (vault / target).resolve(),
+            (vault / rel).resolve(),
+        ]
+        for cand in candidates:
             try:
                 cand.relative_to(vault.resolve())
             except ValueError:
                 continue
-            if cand.exists():
+            if cand.exists() and cand.is_file():
                 return "ok", cand
             if cand.with_suffix(".md").exists():
                 return "ok", cand.with_suffix(".md")
-        # fall through to stem of last segment
         stem = Path(target).stem
     else:
         stem = target
     paths = by_stem.get(stem, [])
     if not paths:
         return "missing", None
+    chosen = prefer_among(paths, source, vault)
     if len(paths) > 1:
-        return "collision", preferred.get(stem)
-    return "ok", paths[0]
+        # ainda ok se preferência contextual for estável; marcar collision para auditoria
+        return "collision", chosen
+    return "ok", chosen
 
 
 def resolve_md_link(raw: str, source: Path, vault: Path) -> tuple[str, Path | None]:
@@ -128,8 +168,13 @@ def analyze_vault(
     *,
     course_filter: Path | None = None,
     include_notas: bool = False,
+    include_archive: bool = False,
 ) -> dict:
-    files = iter_markdown(vault, include_notas=include_notas)
+    files = iter_markdown(
+        vault,
+        include_notas=include_notas,
+        include_archive=include_archive,
+    )
     if course_filter is not None:
         course_resolved = course_filter.resolve()
         prefix = str(course_resolved) + "/"
@@ -176,21 +221,29 @@ def analyze_vault(
                 wiki_missing.append((rel, raw_w))
             elif status == "collision":
                 wiki_collision.append((rel, raw_w))
+                if dest is not None:
+                    key = dest.relative_to(vault).as_posix()
+                    inbound[key] += 1
+                    outbound[rel] += 1
             elif status == "ok" and dest is not None:
                 key = dest.relative_to(vault).as_posix()
                 inbound[key] += 1
                 outbound[rel] += 1
 
-    # orphans among sources (no inbound from analyzed edges; self-links count)
+    # orphans among sources (no inbound); archive/ é esperado ficar isolado
     orphans: list[str] = []
+    orphans_archive: list[str] = []
     for source in sources:
         key = source.relative_to(vault).as_posix()
         if inbound[key] == 0:
-            # hubs often linked only from outside course when filtered — still flag
-            orphans.append(key)
+            if "/archive/" in key or key.startswith("archive/"):
+                orphans_archive.append(key)
+            else:
+                orphans.append(key)
 
     return {
         "vault": vault.as_posix(),
+        "include_archive": include_archive,
         "files_indexed": len(files),
         "files_scanned": len(sources),
         "stem_collisions": len(collisions),
@@ -200,8 +253,12 @@ def analyze_vault(
         "wiki_missing": wiki_missing,
         "wiki_collision": wiki_collision,
         "orphans": orphans,
+        "orphans_archive": orphans_archive,
         "top_hubs": inbound.most_common(15),
-        "by_stem_sample": {k: [p.relative_to(vault).as_posix() for p in v[:5]] for k, v in list(collisions.items())[:15]},
+        "by_stem_sample": {
+            k: [p.relative_to(vault).as_posix() for p in sorted(v, key=lambda p: _path_score(p, vault=vault))[:5]]
+            for k, v in list(collisions.items())[:15]
+        },
     }
 
 
@@ -229,7 +286,7 @@ def render_markdown(report: dict, *, title: str) -> str:
 
 Data: {date.today().isoformat()}  
 Vault: `{report['vault']}`  
-Índice (md no vault útil): **{report['files_indexed']}** · Escaneados: **{report['files_scanned']}**
+Índice (md no vault útil): **{report['files_indexed']}** · Escaneados: **{report['files_scanned']}** · Archive: **{'incluído' if report['include_archive'] else 'excluído'}**
 
 Lente: skill **obsidian-course-vault** / Obsidian Graph — wikilink resolve por **stem**;
 markdown relativo por path. Skip: `.git`, `dev/`, `docs/`, `node_modules`, …
@@ -243,7 +300,8 @@ markdown relativo por path. Skip: `.git`, `dev/`, `docs/`, `node_modules`, …
 | Wikilinks não resolvidos | {len(report['wiki_missing'])} |
 | Wikilinks com colisão de stem | {len(report['wiki_collision'])} |
 | Stems colidentes no índice | {report['stem_collisions']} |
-| Órfãos (0 inbound no grafo analisado) | {len(report['orphans'])} |
+| Órfãos ativos (0 inbound, fora de archive/) | {len(report['orphans'])} |
+| Órfãos em archive/ (esperado) | {len(report.get('orphans_archive') or [])} |
 
 ## Markdown quebrados
 
@@ -299,6 +357,11 @@ def main() -> int:
         action="store_true",
         help="incluir pasta notas/ (gitignored; default off)",
     )
+    parser.add_argument(
+        "--include-archive",
+        action="store_true",
+        help="incluir pastas archive/ (default off)",
+    )
     parser.add_argument("--write", action="store_true", help="grava no bastidor")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
@@ -311,7 +374,10 @@ def main() -> int:
         course_id, course_path = resolve_course(root, course_id)
 
     report = analyze_vault(
-        vault, course_filter=course_path, include_notas=args.include_notas
+        vault,
+        course_filter=course_path,
+        include_notas=args.include_notas,
+        include_archive=args.include_archive,
     )
     title = f"Vault link audit — {course_id}" if course_id else "Vault link audit — acervo"
     md = render_markdown(report, title=title)

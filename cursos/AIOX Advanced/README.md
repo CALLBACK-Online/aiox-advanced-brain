@@ -27,6 +27,7 @@ O Advanced volta a ter uma promessa única. Ele ensina **como conduzir o trabalh
 
 - Avaliações: [[Assessments|6 checkpoints e 48 questões]]
 - Conclusão: [[Projeto Integrador]] · [[Rubrica]]
+- Mapa histórico (75 aulas): [[MOC-Todas-Aulas]]
 - Dúvidas de campo: [[support/README|Central de suporte]]
 - Histórico: [[archive/README|Arquivo curricular da edição de 75 aulas]]
 
