@@ -10,7 +10,7 @@ estimated_time: 2-4 hours
 source: "$100M Retention Playbook - Step 1 Churn Checklist"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

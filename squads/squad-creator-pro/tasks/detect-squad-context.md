@@ -21,9 +21,9 @@ outputs:
 
 elicit: false
 ---
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: detect-squad-context
   task_name: Detect Squad Context
   status: pending
@@ -41,7 +41,7 @@ sinkra_task_metadata:
   - Inventory agents, tasks, workflows, templates, data, checklists, scripts
   - Detect brownfield vs greenfield state
   - Identify dependencies and cross-squad references
-  - Assess SINKRA compliance level (Tier 1/2/3)
+  - Assess AIOX compliance level (Tier 1/2/3)
   acceptance_criteria:
   - Context report accurately reflects current squad state
   - Brownfield/greenfield classification is correct
@@ -53,11 +53,11 @@ sinkra_task_metadata:
   coherence_threshold: 0.95
   error_behavior: raise
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Tactical
   atomic_layer: Atom
   executor: Agent
@@ -65,7 +65,7 @@ sinkra_contract:
   post_condition: "context_report generated with complete squad state assessment."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Task: Detect Squad Context
@@ -86,4 +86,4 @@ Preflight task for squad creation and upgrade workflows. Detects existing squad 
 2. Glob agents, tasks, workflows, templates, data, checklists, scripts
 3. Classify: brownfield (config exists + tasks > 0) vs greenfield
 4. Detect dependencies from `composition_mapping` and `squad-io.yaml`
-5. Assess SINKRA tier from structure completeness
+5. Assess AIOX tier from structure completeness

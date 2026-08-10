@@ -128,13 +128,13 @@ Gerar JSON intermediario:
 
 - `squads/design/checklists/token-mapping-checklist.md`
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - f1_ingest_figma_tokens_artifact

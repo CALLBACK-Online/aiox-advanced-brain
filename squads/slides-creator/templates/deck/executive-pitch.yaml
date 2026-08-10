@@ -9,7 +9,6 @@ family: pitch
 
 summary:
   pick_for: >-
-    Pitch para tomador de decisao senior (C-level, board, investidor) com 15-30min.
     Objetivo: convencer de uma DECISAO especifica (aprovar, investir, mudar direcao).
     Funciona quando audiencia ja conhece contexto e precisa de prova + recomendacao.
   skip_if: >-
@@ -107,8 +106,8 @@ source_provenance:
     - "Y Combinator demo day pitch structure"
     - "McKinsey consulting deck conventions"
   bench_ref:
-    - "/Users/alan/Code/bench/ppt-master/examples/ppt169_顶级咨询风_重庆市区域报告_ppt169_20251213/"
-    - "/Users/alan/Code/bench/ppt-master/examples/ppt169_麦肯锡风_kimsoong_customer_loyalty/"
+    - "<bench-root>/ppt-master/examples/ppt169_顶级咨询风_重庆市区域报告_ppt169_20251213/"
+    - "<bench-root>/ppt-master/examples/ppt169_麦肯锡风_kimsoong_customer_loyalty/"
   author: "slides-creator squad — MSN-2026-SLIDES-NARRATIVE-DESIGN"
   date_created: "2026-05-17"
 

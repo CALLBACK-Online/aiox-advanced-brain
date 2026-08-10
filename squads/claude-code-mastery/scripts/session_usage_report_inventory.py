@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Workspace inventory and git-history helpers for the session usage report.
+LocalDocs inventory and git-history helpers for the session usage report.
 """
 import os
 import subprocess
@@ -27,8 +27,8 @@ def get_recent_commits(repo_path, days):
             categories["SDC (Story/Epic)"] += 1
         elif "squad" in message:
             categories["Squad"] += 1
-        elif "sinkra" in message:
-            categories["SINKRA"] += 1
+        elif "aiox" in message:
+            categories["AIOX"] += 1
         elif "synapse" in message:
             categories["Synapse"] += 1
         elif "heuristic" in message:

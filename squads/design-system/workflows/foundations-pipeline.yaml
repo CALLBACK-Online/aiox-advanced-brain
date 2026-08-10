@@ -79,7 +79,7 @@ workflow:
       blocking: false
       notes: |
         Generates tokens-runtime.json optimized for LLM context injection.
-        Falls back to SINKRA defaults if brand tokens not yet extracted.
+        Falls back to AIOX defaults if brand tokens not yet extracted.
       next: step-4-qa-foundations
     - step: step-4-qa-foundations
       id: step-4-qa-foundations
@@ -193,7 +193,7 @@ workflow:
       agent: Claude (moderator)
       action: critical-eye-report-review
       notes: |
-        Report generated at workspace/businesses/{bu}/L2-tactical/design/critical-eye-report.yaml
+        Report generated at docs/tactical/design/critical-eye-report.yaml
         by Step 13 script. This step reviews the report for completeness.
       next: step-15-critical-eye-gate
     - step: critical_eye_gate
@@ -328,13 +328,13 @@ steps:
     inputs:
       bu: "{{business_slug}}"
     outputs:
-      tokens_runtime: "workspace/businesses/{{business_slug}}/L2-tactical/design/tokens-runtime.json"
+      tokens_runtime: "docs/tactical/design/tokens-runtime.json"
     blocking: false
     error_handling:
       strategy: fail
     notes: |
       Generates tokens-runtime.json optimized for LLM context injection.
-      Falls back to SINKRA defaults if brand tokens not yet extracted.
+      Falls back to AIOX defaults if brand tokens not yet extracted.
   - id: step_4_qa_foundations
     name: QA Gate — Foundations
     phase: 1
@@ -422,7 +422,7 @@ steps:
     inputs:
       bu: "{{business_slug}}"
     outputs:
-      component_index: "workspace/businesses/{{business_slug}}/L2-tactical/design/component-index.json"
+      component_index: "docs/tactical/design/component-index.json"
     error_handling:
       strategy: fail
   - id: step_11_validate_ai_readiness
@@ -449,7 +449,7 @@ steps:
     inputs:
       bu: "{{business_slug}}"
     outputs:
-      storybook_stories: "workspace/businesses/{{business_slug}}/L2-tactical/design/storybook/"
+      storybook_stories: "docs/tactical/design/storybook/"
     blocking: false
     error_handling:
       strategy: warn
@@ -465,7 +465,7 @@ steps:
     inputs:
       bu: "{{business_slug}}"
     outputs:
-      critical_eye_report: "workspace/businesses/{{business_slug}}/L2-tactical/design/critical-eye-report.yaml"
+      critical_eye_report: "docs/tactical/design/critical-eye-report.yaml"
     blocking: true
     gate:
       min_score: 80
@@ -490,7 +490,7 @@ steps:
       strategy: warn
     notes: |
       Reviews the generated critical-eye-report.yaml for completeness.
-      Report stored per brand at workspace/businesses/{bu}/L2-tactical/design/.
+      Report stored per brand at docs/tactical/design/.
   - id: step_15_critical_eye_gate
     name: "Step 15 — Critical Eye exit gate"
     phase: 6

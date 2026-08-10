@@ -6,7 +6,7 @@
 **Orchestrator:** Sigil (config-engineer)
 **Purpose:** Configure Claude Code settings for a project by analyzing project needs and generating a tailored `.claude/settings.json` with appropriate permissions, deny rules, and MCP server configuration.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: configure-claude-code
 atomic_layer: Atom

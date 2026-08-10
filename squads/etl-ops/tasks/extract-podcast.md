@@ -1,6 +1,6 @@
 # Extract Podcast Interview
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 executor: etl-chief
@@ -127,7 +127,7 @@ First transcript creates ground truth via full LLM agent pass. Subsequent transc
 
 | Mode | Output Path |
 |------|-------------|
-| Single (with slug) | `workspace/businesses/{slug}/etl/runs/{run_id}/` |
+| Single (with slug) | `docs/etl/runs/{run_id}/` |
 | Single (no slug) | `outputs/etl/{run_id}/` |
 | Batch channel | `outputs/youtube/{channel-slug}/diarized/` |
 

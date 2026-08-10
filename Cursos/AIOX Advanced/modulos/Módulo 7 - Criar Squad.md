@@ -36,6 +36,14 @@ Estrutura do Squad, entidade central, papéis, tasks, critérios de aceite e uma
 
 Eu recupero os conceitos no [[avaliacoes/Quiz M7 - Criar Squad|Quiz do M7]] e confiro se consigo produzir a evidência sem seguir uma receita cega.
 
+## Trilha de squads (ponte)
+
+> **Depois deste módulo no método**, aprofunde a operação dos squads no curso irmão.
+>
+> Anatomia e criação: no curso Squads use `aulas/23-squad-creator.md` e `aulas/24-squad-creator-pro.md`. Pacotes em `squads/squad-creator/` e `squads/squad-creator-pro/`.
+>
+> Índice da trilha: `ponte/trilha-squads.md` · Hub: `Cursos/README.md` · Pasta do curso: `Cursos/AIOX-Advanced-Squads/`
+
 ## Navegação
 
 ← [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 8 - Pipeline de Research|M8]]

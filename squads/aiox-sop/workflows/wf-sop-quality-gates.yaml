@@ -1,5 +1,5 @@
 # Managed by materialize-map.py
-# Source: .aiox/squad-runtime/sinkra-squad/aiox-sop/map/20260329-190639-claude-opus/quality_gates.yaml
+# Source: .aiox/squad-runtime/aiox-squad/aiox-sop/map/20260329-190639-claude-opus/quality_gates.yaml
 # Category: governance
 
 metadata:
@@ -12,7 +12,7 @@ metadata:
   agent: quality-gatekeeper
   checkpoint: META_AXIOMAS
   version: 2.0.0
-  methodology: 'SINKRA Quality Gates — Preventive + Reactive + Axiomatic. Mandamento
+  methodology: 'AIOX Quality Gates — Preventive + Reactive + Axiomatic. Mandamento
     5 enforced: every gate has numeric threshold. Designed for production operation.'
   total_gates: 12
   gate_types_summary:
@@ -99,7 +99,7 @@ quality_gates:
   threshold_numeric: 0
   threshold_unit: validation error count (0 = pass)
   criteria:
-  - Output JSON do T2.2 Agent passa validacao formal contra SINKRA JSON Schema
+  - Output JSON do T2.2 Agent passa validacao formal contra AIOX JSON Schema
   - Todos campos obrigatorios mapeados ou explicitamente null
   - Nenhum campo com tipo incompativel
   on_pass: Prosseguir para T2.4 (confidence scoring)
@@ -196,7 +196,7 @@ quality_gates:
   criteria:
   - Clarity score integrado
   - Completeness score normalizado 0-5
-  - SINKRA adherence integrado
+  - AIOX adherence integrado
   - Composite = weighted average
   - Tier calculado e logado
   on_pass_tier_a: Route direto para wf_format_conversion. Skip T6.4 Human sign-off.
@@ -379,7 +379,7 @@ quality_gates:
   position: Processo completo — Phase 6 checkpoint + revisao periodica
   type: axiomatic
   executor: Clone (quality-gatekeeper scoring) + Human (Process Owner validation)
-  accountable_human: Process Owner / SINKRA Chief
+  accountable_human: Process Owner / AIOX Chief
   threshold: compliance_score >= 80/100 AND truthfulness >= 7.0 AND all_dimensions_pass
     AND mandamentos_all_pass
   threshold_numeric: 80
@@ -399,7 +399,6 @@ quality_gates:
   on_pass: 'Processo APPROVED. Phase 7 desbloqueada. Proximo review: 90 dias.'
   on_fail_veto: VETO ABSOLUTO. Redesign obrigatorio.
   on_fail_review: Correcao especifica por dimensao. Re-submeter Phase 6.
-  escalation_path: Process Owner -> C-Level se VETO
   veto_power: true
   mandamentos_enforced:
   - 1

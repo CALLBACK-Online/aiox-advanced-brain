@@ -32,14 +32,10 @@ const fs = require('fs').promises;
 const path = require('path');
 const yaml = require('js-yaml');
 const {
-  detectEnvironmentContract,
-  detectProPack,
-} = require('./detect-environment-contract.cjs');
-const {
   readActiveSquadRecord,
   readStateWithLegacyFallback,
   resolveRuntimeRoot,
-  toWorkspaceRelative,
+  toProjectRelative,
   writeActiveSquad,
 } = require('./lib/squad-runtime-paths.cjs');
 
@@ -60,7 +56,7 @@ try {
 
 const SQUADS_PATH = './squads';
 const REGISTRY_PATH_ENV = 'AIOX_ECOSYSTEM_REGISTRY_PATH';
-const DEFAULT_REGISTRY_REL_PATH = path.join('squads', 'sinkra-squad', 'data', 'ecosystem-registry.yaml');
+const DEFAULT_REGISTRY_REL_PATH = path.join('squads', 'aiox-squad', 'data', 'ecosystem-registry.yaml');
 const DEFAULT_TIMEOUT_MS = 5000;
 const TIMEOUT_ENV = 'AIOX_SQUAD_GREETING_TIMEOUT_MS';
 const TIMEOUT_MS = (() => {
@@ -87,7 +83,24 @@ const PLAN_SQUAD_WORKFLOW = 'plan-squad';
 const RUNTIME_TEST_SLUG_PATTERNS = [/^sc_rt_/i];
 
 async function detectProMode() {
-  return detectProPack();
+  const configPath = path.join(process.cwd(), 'squads', 'squad-creator-pro', 'config.yaml');
+  try {
+    const content = await fs.readFile(configPath, 'utf8');
+    const config = yaml.load(content) || {};
+    const requiredDirectories = ['agents', 'tasks', 'workflows'];
+    await Promise.all(
+      requiredDirectories.map((directory) =>
+        fs.access(path.join(process.cwd(), 'squads', 'squad-creator-pro', directory)),
+      ),
+    );
+    return {
+      pro_mode: true,
+      version: config.version || config.metadata?.version || 'unknown',
+      evidence_paths: ['squads/squad-creator-pro/config.yaml'],
+    };
+  } catch {
+    return { pro_mode: false, evidence_paths: [] };
+  }
 }
 
 function isRuntimeTestSlug(slug) {
@@ -413,7 +426,7 @@ function buildSquadCreatorRuntimeSection(summary) {
   }
 
   if (candidate.sourcePath) {
-    lines.push(`- Runtime File: \`${toWorkspaceRelative(candidate.sourcePath)}\``);
+    lines.push(`- Runtime File: \`${toProjectRelative(candidate.sourcePath)}\``);
   }
 
   return lines.join('\n');
@@ -898,15 +911,7 @@ async function generateSquadGreeting(squadName, agentName) {
     const agentDef = await loadSquadAgent(squadName, agentName);
 
     // Deterministic pro detection (filesystem check, not LLM-driven)
-    const environmentContract = await detectEnvironmentContract({ squad: squadName });
-    const proDetection = {
-      ...await detectProMode(),
-      access_tier: environmentContract.access_tier,
-      runtime_mode: environmentContract.runtime_mode,
-      source_of_truth: environmentContract.source_of_truth,
-      reason: environmentContract.reason,
-      evidence_paths: environmentContract.evidence_paths,
-    };
+    const proDetection = await detectProMode();
 
     // Build greeting parts
     const parts = [];
@@ -1040,7 +1045,7 @@ function buildProCommandsSection(detection) {
    - \`*create-pipeline\` — Generate pipeline code scaffolding
    - \`*create-squad-smart\` — Create squad with context detection (greenfield/resume routing)
    - \`*brownfield-upgrade\` — Upgrade existing squad with safe brownfield workflow
-   - \`*create-from-sop {business}\` — Load canonical workspace SOPs and derive squad creation inputs
+   - \`*create-from-sop {business}\` — Load canonical project context SOPs and derive squad creation inputs
 
   **Mind Cloning (Pro Only)**
    - \`*clone-mind\` — Clone expert mind (Voice DNA + Thinking DNA)

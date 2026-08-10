@@ -14,7 +14,7 @@ output_dir: "squads/clickup-ops-squad/output/visual-extractions/"
 
 ## Description
 
-Extrai estrutura de workspace ClickUp a partir de **vídeos de demonstração** ou **screenshots**
+Extrai estrutura de local_docs ClickUp a partir de **vídeos de demonstração** ou **screenshots**
 usando o mega-prompt de extração visual+verbal. O output alimenta o pipeline de análise
 como evidência técnica classificada em 4 níveis de verdade.
 
@@ -28,11 +28,11 @@ em workspaces ClickUp sem acesso direto à API.
 
 | Cenário | Usar Visual Extraction? |
 |---------|------------------------|
-| Onboarding de cliente com workspace existente não documentado | SIM — reverter estrutura sem acesso API |
-| Workspace sem credenciais de API disponíveis | SIM — única forma de extrair |
+| Onboarding de cliente com docs/project existente não documentado | SIM — reverter estrutura sem acesso API |
+| LocalDocs sem credenciais de API disponíveis | SIM — única forma de extrair |
 | Vídeo de demonstração/treinamento com estrutura visível | SIM — capturar evidências |
 | Análise competitiva de workspaces ClickUp públicos | SIM |
-| Workspace com acesso API disponível | NÃO — usar `audit-structure` via API diretamente |
+| LocalDocs com acesso API disponível | NÃO — usar `audit-structure` via API diretamente |
 | Screenshot parcial de uma única tela | OPCIONAL — limitado, use para seletores |
 
 ---
@@ -41,7 +41,7 @@ em workspaces ClickUp sem acesso direto à API.
 
 | Input | Obrigatoriedade | Descrição |
 |-------|----------------|-----------|
-| Vídeo ou screenshot do workspace | OBRIGATÓRIO | Fonte de extração |
+| Vídeo ou screenshot de docs/project | OBRIGATÓRIO | Fonte de extração |
 | `visual-extraction-prompt.md` | OBRIGATÓRIO | Mega-prompt de instruções de captura |
 | `visual-output-schema.json` | OBRIGATÓRIO | Schema de validação do output |
 
@@ -57,14 +57,14 @@ squads/clickup-ops-squad/templates/visual-extraction-prompt.md
 ```
 
 O prompt define 7 categorias de captura:
-- **A** — Estrutura do Workspace (Spaces, Folders, Lists, hierarquia)
+- **A** — Estrutura de docs/project (Spaces, Folders, Lists, hierarquia)
 - **B** — Custom Fields (nome, tipo, opções, UUIDs)
 - **C** — Status Workflows (nomes, cores, grupos, ordem)
 - **D** — Views (tipo, configuração, filtros, agrupamentos)
 - **E** — Task Content (campos preenchidos, relacionamentos, checklists)
 - **E.2** — View Layout Blueprint (colunas, frozen, scroll, campos ocultos)
 - **F** — Automações e Integrações
-- **G** — Configurações de Workspace (ClickApps, permissões, settings)
+- **G** — Configurações de LocalDocs (ClickApps, permissões, settings)
 
 ### Step 2 — Executar Extração
 
@@ -124,9 +124,9 @@ O output extraído pode ser usado para:
 
 | Uso | Como |
 |-----|------|
-| Criar tokenization de workspace cliente | Alimentar `clickup-tokenization.yaml` com IDs descobertos |
+| Criar tokenization de local_docs cliente | Alimentar `clickup-tokenization.yaml` com IDs descobertos |
 | Mapear estrutura para materialização | Input para `materialize-process` |
-| Identificar gaps vs SINKRA | Input para `audit-structure` |
+| Identificar gaps vs AIOX | Input para `audit-structure` |
 | Identificar seletores DOM faltantes | Extrair seletores de screenshots para `selectors/*.json` |
 
 ---

@@ -32,7 +32,7 @@ domain: Operational
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Operational`
 atomic_layer: Atom
 Input: request::install_skills_prepare
@@ -40,7 +40,7 @@ Output: artifact::install_skills_prepare
 pre_condition: contexto mínimo carregado e rota validada
 post_condition: decisão registrada com artefato persistido ou handoff emitido
 performance: registrar evidências, falhas e próximo passo sem erro silencioso
-Completion Criteria: contrato mínimo SINKRA explícito e saída rastreável produzida
+Completion Criteria: contrato mínimo AIOX explícito e saída rastreável produzida
 ========
 Input: request::install_skills_prepare
 Output: artifact::install_skills_prepare
@@ -206,8 +206,8 @@ Criar a árvore de diretórios de destino para cada IDE detectada.
 ```yaml
 directory_creation:
   destination_map:
-    claude_code: ".claude/skills/{slashPrefix}/{agent}/SKILL.md"
-    codex: ".agents/skills/{slashPrefix}/"
+    claude_code: "skills/{slashPrefix}/{agent}/SKILL.md"
+    codex: "skills/{slashPrefix}/"
     gemini: ".gemini/agents/{slashPrefix}/"
     antigravity: ".agents/workflows/{slashPrefix}/"
     cursor: ".cursor/rules/"
@@ -274,7 +274,7 @@ output:
     detected_ides:
       - ide: "claude_code"
         config_dir: ".claude/"
-        target_dir: ".claude/skills/{slashPrefix}/"
+        target_dir: "skills/{slashPrefix}/"
     squad_metadata:
       name: "{pack.name}"
       version: "{pack.version}"
@@ -283,8 +283,8 @@ output:
         - id: "{agent-id}"
           source: "squads/{squad_name}/agents/{agent-id}.md"
     directories_created:
-      - ".claude/skills/{slashPrefix}/"
-      - ".agents/skills/{slashPrefix}/"
+      - "skills/{slashPrefix}/"
+      - "skills/{slashPrefix}/"
     conflicts:
       - agent_id: "{agent-id}"
         ide: "{ide-name}"

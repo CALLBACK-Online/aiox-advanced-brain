@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 # ═══════════════════════════════════════════════════════════════════════════════
 # VALIDATE-SQUAD.SH - Hybrid Squad Validation Script
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -37,15 +38,15 @@ export LC_NUMERIC=C
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SQUAD_CREATOR_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
-WORKSPACE_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
-SQUADS_DIR="$WORKSPACE_ROOT/squads"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+SQUADS_DIR="$PROJECT_ROOT/squads"
 RUNTIME_STATE_HELPER="$SCRIPT_DIR/lib/validate-runtime-state.cjs"
-C_LEVEL_WORKSPACE_DIR="$SQUADS_DIR/c-level"
-WORKFLOW_CONTRACT_VALIDATOR="$WORKSPACE_ROOT/infrastructure/scripts/squads/validate_workflow_contracts.cjs"
+C_LEVEL_REMOVED_DIR="$SQUADS_DIR/__c-level-removed__"
+WORKFLOW_CONTRACT_VALIDATOR="$PROJECT_ROOT/infrastructure/scripts/squads/validate_workflow_contracts.cjs"
 # ── Bootstrap all shared libs (runner-lib v2 + validator-lib) ──
-RUNNER_LIB_DIR="$WORKSPACE_ROOT/infrastructure/scripts/runner-lib"
+RUNNER_LIB_DIR="$PROJECT_ROOT/infrastructure/scripts/runner-lib"
 source "$RUNNER_LIB_DIR/pipeline-bootstrap.sh"
-OUTPUTS_ROOT="$(resolve_outputs_root "$WORKSPACE_ROOT")"
+OUTPUTS_ROOT="$(resolve_outputs_root "$PROJECT_ROOT")"
 HAS_RUNTIME_LIB="${RUNNER_LIB_RUNTIME:-false}"
 HAS_METRICS_LIB="${RUNNER_LIB_METRICS:-false}"
 
@@ -99,9 +100,9 @@ apply_runtime_selection "$SELECTED_RUNTIME"
 REQUESTED_RUNTIME="$SELECTED_RUNTIME"
 
 # LLM runtime config (used by runtime.sh run_llm_prompt)
-LLM_TIMEOUT_SECONDS="${SINKRA_LLM_TIMEOUT:-3600}"
-RETRY_MAX_ATTEMPTS="${SINKRA_RETRY_MAX_ATTEMPTS:-2}"
-RETRY_BASE_DELAY_SECONDS="${SINKRA_RETRY_BASE_DELAY:-3}"
+LLM_TIMEOUT_SECONDS="${AIOX_LLM_TIMEOUT:-3600}"
+RETRY_MAX_ATTEMPTS="${AIOX_RETRY_MAX_ATTEMPTS:-2}"
+RETRY_BASE_DELAY_SECONDS="${AIOX_RETRY_BASE_DELAY:-3}"
 export LLM_TIMEOUT_SECONDS RETRY_MAX_ATTEMPTS RETRY_BASE_DELAY_SECONDS SELECTED_RUNTIME
 
 # Guards integrados em run_llm_prompt() (Story 101.12 AC8)
@@ -758,7 +759,7 @@ SQUAD_DIR="$SQUADS_DIR/$SQUAD_NAME"
 # Initialize progress log and metrics
 PROGRESS_LOG="$OUTPUTS_ROOT/squad-validations/$SQUAD_NAME/progress.txt"
 METRICS_FILE="$OUTPUTS_ROOT/squad-validations/$SQUAD_NAME/metrics.jsonl"
-MAX_COST="${SINKRA_MAX_COST:-5.00}"
+MAX_COST="${AIOX_MAX_COST:-5.00}"
 export METRICS_FILE MAX_COST
 mkdir -p "$(dirname "$PROGRESS_LOG")"
 VALIDATION_STATE_FILE="$OUTPUTS_ROOT/squad-validations/$SQUAD_NAME/validation-state.json"
@@ -1440,7 +1441,7 @@ count_declared_output_files() {
   local output_root=""
   output_root=$(extract_declared_output_root) || return 1
 
-  local absolute_root="$WORKSPACE_ROOT/$output_root"
+  local absolute_root="$PROJECT_ROOT/$output_root"
   [[ ! -d "$absolute_root" ]] && return 1
 
   find "$absolute_root" -type f 2>/dev/null | wc -l | tr -d ' '
@@ -1450,7 +1451,7 @@ count_usage_evidence_output_files() {
   local output_root=""
   output_root=$(extract_declared_output_root) || return 1
 
-  local absolute_root="$WORKSPACE_ROOT/$output_root"
+  local absolute_root="$PROJECT_ROOT/$output_root"
   [[ ! -d "$absolute_root" ]] && return 1
 
   find "$absolute_root" -type f \
@@ -1472,17 +1473,17 @@ extract_config_scalar() {
   ' "$SQUAD_DIR/config.yaml" 2>/dev/null || true
 }
 
-extract_workspace_integration_level() {
+extract_local project docs_level() {
   awk '
     BEGIN { in_ws=0 }
-    /^workspace_integration_level:[[:space:]]*/ {
-      gsub(/^workspace_integration_level:[[:space:]]*/, "", $0);
+    /^local project docs_level:[[:space:]]*/ {
+      gsub(/^local project docs_level:[[:space:]]*/, "", $0);
       gsub(/["'\'']/, "", $0);
       gsub(/[[:space:]]/, "", $0);
       print $0;
       exit;
     }
-    /^workspace_integration:[[:space:]]*$/ { in_ws=1; next }
+    /^local project docs:[[:space:]]*$/ { in_ws=1; next }
     in_ws && /^[^[:space:]]/ { in_ws=0 }
     in_ws && /^[[:space:]]*level:[[:space:]]*/ {
       gsub(/^[[:space:]]*level:[[:space:]]*/, "", $0);
@@ -1533,7 +1534,7 @@ count_contract_test_files() {
     test_count=$(find "$SQUAD_DIR/tests" -type f \( -name "*.bats" -o -name "*.cjs" -o -name "*.js" -o -name "*.mjs" \) 2>/dev/null | wc -l | tr -d ' ')
   fi
 
-  infra_count=$(find "$WORKSPACE_ROOT/infrastructure/scripts/squads" -type f \
+  infra_count=$(find "$PROJECT_ROOT/infrastructure/scripts/squads" -type f \
     \( -name "*${slug_hyphen}*.cjs" -o -name "*${slug_hyphen}*.js" -o -name "*${slug_hyphen}*.mjs" \
        -o -name "*${slug_underscore}*.cjs" -o -name "*${slug_underscore}*.js" -o -name "*${slug_underscore}*.mjs" \) \
     2>/dev/null | wc -l | tr -d ' ')
@@ -1545,7 +1546,7 @@ count_operational_story_files() {
   local roots=()
   local count=0
 
-  [[ -d "$WORKSPACE_ROOT/docs/stories" ]] && roots+=("$WORKSPACE_ROOT/docs/stories")
+  [[ -d "$PROJECT_ROOT/docs/stories" ]] && roots+=("$PROJECT_ROOT/docs/stories")
   [[ -d "$SQUAD_DIR/docs/stories" ]] && roots+=("$SQUAD_DIR/docs/stories")
 
   if [[ ${#roots[@]} -eq 0 ]]; then
@@ -1702,19 +1703,19 @@ check_structure() {
     fi
   fi
 
-  # 1.3 Workspace integration governance
-  log_subsection "1.3 Workspace Integration Governance"
-  local workspace_level=""
-  workspace_level=$(awk '
+  # 1.3 local project docs governance
+  log_subsection "1.3 local project docs Governance"
+  local scope_level=""
+  scope_level=$(awk '
     BEGIN { in_ws=0 }
-    /^workspace_integration_level:[[:space:]]*/ {
-      gsub(/^workspace_integration_level:[[:space:]]*/, "", $0);
+    /^local project docs_level:[[:space:]]*/ {
+      gsub(/^local project docs_level:[[:space:]]*/, "", $0);
       gsub(/["'\'']/, "", $0);
       gsub(/[[:space:]]/, "", $0);
       print $0;
       exit;
     }
-    /^workspace_integration:[[:space:]]*$/ { in_ws=1; next }
+    /^local project docs:[[:space:]]*$/ { in_ws=1; next }
     in_ws && /^[^[:space:]]/ { in_ws=0 }
     in_ws && /^[[:space:]]*level:[[:space:]]*/ {
       gsub(/^[[:space:]]*level:[[:space:]]*/, "", $0);
@@ -1725,21 +1726,21 @@ check_structure() {
     }
   ' "$SQUAD_DIR/config.yaml" 2>/dev/null || true)
 
-  case "$workspace_level" in
-    none|read_only|controlled_runtime_consumer|workspace_first)
-      log_pass "workspace integration level declared: $workspace_level"
+  case "$scope_level" in
+    none|read_only  # enterprise levels removed in aiox-advanced-brain)
+      log_pass "local project docs level declared: $scope_level"
       ;;
     "")
-      log_fail "config.yaml missing workspace integration level (workspace_integration.level)"
+      log_fail "config.yaml missing local project docs level (local project docs.level)"
       tier1_fail=$((tier1_fail + 1))
       ;;
     *)
-      log_fail "invalid workspace integration level: '$workspace_level'"
+      log_fail "invalid local project docs level: '$scope_level'"
       tier1_fail=$((tier1_fail + 1))
       ;;
   esac
 
-  if [[ -n "$workspace_level" && "$workspace_level" != "none" ]]; then
+  if [[ -n "$scope_level" && "$scope_level" != "none" ]]; then
     # Build list of existing paths to search (avoid rg exit 2 on missing files)
     local ws_search_paths=()
     [[ -d "$SQUAD_DIR/agents" ]] && ws_search_paths+=("$SQUAD_DIR/agents")
@@ -1747,19 +1748,18 @@ check_structure() {
     [[ -d "$SQUAD_DIR/workflows" ]] && ws_search_paths+=("$SQUAD_DIR/workflows")
     [[ -f "$SQUAD_DIR/config.yaml" ]] && ws_search_paths+=("$SQUAD_DIR/config.yaml")
 
-    if [[ ${#ws_search_paths[@]} -gt 0 ]] && grep -rn "workspace/" "${ws_search_paths[@]}" >/dev/null 2>&1; then
-      log_pass "workspace references found for integration level '$workspace_level'"
+    if [[ ${#ws_search_paths[@]} -gt 0 ]] && grep -rn "docs/" "${ws_search_paths[@]}" >/dev/null 2>&1; then
+      log_pass "docs references found for integration level '$scope_level'"
     else
-      log_fail "workspace integration level '$workspace_level' declared but no workspace paths found"
+      log_fail "local project docs level '$scope_level' declared but no project docs paths found"
       tier1_fail=$((tier1_fail + 1))
     fi
   fi
 
-  if [[ "$workspace_level" == "controlled_runtime_consumer" || "$workspace_level" == "workspace_first" ]]; then
-    if [[ -d "$C_LEVEL_WORKSPACE_DIR" ]]; then
-      log_pass "workspace governance squad present for level '$workspace_level'"
+  if [[ "$scope_level" == "none" || "$scope_level" == "local" ]]; then
+    if [[ -d "$C_LEVEL_REMOVED_DIR" ]]; then
+      log_pass "project context governance squad present for level '$scope_level'"
     else
-      log_fail "workspace level '$workspace_level' requires workspace governance squad (squads/c-level) to exist"
       tier1_fail=$((tier1_fail + 1))
     fi
     # Build list of existing paths (README.md may not exist yet)
@@ -1769,30 +1769,29 @@ check_structure() {
     [[ -d "$SQUAD_DIR/workflows" ]] && coo_search_paths+=("$SQUAD_DIR/workflows")
     [[ -f "$SQUAD_DIR/config.yaml" ]] && coo_search_paths+=("$SQUAD_DIR/config.yaml")
 
-    if [[ ${#coo_search_paths[@]} -gt 0 ]] && grep -rn -E "@coo|COO|c-level|workspace-chief|readiness_owner|workspace-handoff\\.yaml|handoff.*workspace" \
       "${coo_search_paths[@]}" >/dev/null 2>&1; then
-      log_pass "workspace write integration delegates to workspace governance"
+      log_pass "docs write integration delegates to project context governance"
     else
-      log_fail "workspace level '$workspace_level' requires explicit COO/workspace governance handoff"
+      log_fail "docs scope level '$scope_level' requires explicit COO/project context governance handoff"
       tier1_fail=$((tier1_fail + 1))
     fi
   fi
 
-  if [[ "$workspace_level" == "workspace_first" ]]; then
+  if [[ "$scope_level" == "local" ]]; then
     local bootstrap_count=0
     local essentials_count=0
-    bootstrap_count=$(find "$SQUAD_DIR/scripts" -maxdepth 1 -type f -name "bootstrap-*-workspace.sh" 2>/dev/null | wc -l | tr -d ' ')
+    bootstrap_count=$(find "$SQUAD_DIR/scripts" -maxdepth 1 -type f -name "bootstrap-project-context.sh" 2>/dev/null | wc -l | tr -d ' ')
     essentials_count=$(find "$SQUAD_DIR/scripts" -maxdepth 1 -type f -name "validate-*-essentials.sh" 2>/dev/null | wc -l | tr -d ' ')
     if [[ "$bootstrap_count" -gt 0 ]]; then
-      log_pass "workspace_first has bootstrap script"
+      log_pass "local has bootstrap script"
     else
-      log_fail "workspace_first requires scripts/bootstrap-*-workspace.sh"
+      log_fail "local requires scripts/bootstrap-project-context.sh"
       tier1_fail=$((tier1_fail + 1))
     fi
     if [[ "$essentials_count" -gt 0 ]]; then
-      log_pass "workspace_first has essentials validator script"
+      log_pass "local has essentials validator script"
     else
-      log_fail "workspace_first requires scripts/validate-*-essentials.sh"
+      log_fail "local requires scripts/validate-*-essentials.sh"
       tier1_fail=$((tier1_fail + 1))
     fi
   fi
@@ -2512,8 +2511,8 @@ check_output_path_governance() {
   #   Hierarchy: Bloquear > Alertar > Documentar
   #
   # 3 checks, escalating severity:
-  #   OPG-001 (BLOCKING): Task declares canonical_workspace but path is .aiox/squad-runtime/
-  #   OPG-002 (BLOCKING): Squad declares workspace integration but 0 tasks use workspace/
+  #   OPG-001 (BLOCKING): Task declares canonical_project but path is .aiox/squad-runtime/
+  #   OPG-002 (BLOCKING): Squad declares local project docs but 0 tasks use outputs/
   #   OPG-003 (WARNING):  Task has HIGH-VALUE signals + runtime path (heuristic)
   # ═══════════════════════════════════════════════════════════════════════════
   local opg_fail=0
@@ -2525,44 +2524,44 @@ check_output_path_governance() {
   fi
 
   # ─── GUARDRAIL 1: Declaration contradiction (BLOCKING - PV004) ───
-  # If task explicitly declares output_persistence: canonical_workspace
+  # If task explicitly declares output_persistence: canonical_project
   # but path points to .aiox/squad-runtime/, this is a structural contradiction.
   # "Se o caminho errado e possivel, o processo esta errado."
   for task_file in "$SQUAD_DIR/tasks"/*.md; do
     [[ -f "$task_file" ]] || continue
     local task_name=$(basename "$task_file")
 
-    # Check if task declares canonical_workspace
-    local declares_canonical=$(grep -iE "output_persistence.*canonical_workspace|persistence.*canonical" "$task_file" 2>/dev/null || true)
+    # Check if task declares canonical_project
+    local declares_canonical=$(grep -iE "output_persistence.*canonical_project|persistence.*canonical" "$task_file" 2>/dev/null || true)
     local has_runtime_path=$(grep -iE "path:.*\\.aiox/squad-runtime/" "$task_file" 2>/dev/null || true)
 
     if [[ -n "$declares_canonical" && -n "$has_runtime_path" ]]; then
-      log_fail "OPG-001: Task $task_name declares output_persistence=canonical_workspace but path uses .aiox/squad-runtime/. PV004 VETO: structural contradiction. Fix path to workspace/businesses/{business}/"
+      log_fail "OPG-001: Task $task_name declares output_persistence=canonical_project but path uses .aiox/squad-runtime/. PV004 VETO: structural contradiction. Fix path to docs/"
       opg_fail=$((opg_fail + 1))
     fi
 
-    # Inverse check: declares transient but path is workspace/
+    # Inverse check: declares transient but path is outputs/
     local declares_transient=$(grep -iE "output_persistence.*transient_output|persistence.*transient" "$task_file" 2>/dev/null || true)
-    local has_workspace_path=$(grep -iE "path:.*workspace/businesses" "$task_file" 2>/dev/null || true)
+    local has_project_path=$(grep -iE "path:.*docs/project" "$task_file" 2>/dev/null || true)
 
-    if [[ -n "$declares_transient" && -n "$has_workspace_path" ]]; then
-      log_warn "OPG-001b: Task $task_name declares output_persistence=transient_output but path uses workspace/. Verify classification."
+    if [[ -n "$declares_transient" && -n "$has_project_path" ]]; then
+      log_warn "OPG-001b: Task $task_name declares output_persistence=transient_output but path uses outputs/. Verify classification."
       opg_warnings=$((opg_warnings + 1))
     fi
   done
 
   # ─── GUARDRAIL 2: Integration level contradiction (BLOCKING - PV004) ───
-  # If config.yaml declares controlled_runtime_consumer or workspace_first
-  # but ALL tasks output to .aiox/squad-runtime/ and ZERO to workspace/, the squad
+  # If config.yaml declares none or local
+  # but ALL tasks output to .aiox/squad-runtime/ and ZERO to docs/, the squad
   # contradicts its own declared integration level.
   if [[ -f "$SQUAD_DIR/config.yaml" ]]; then
     local ws_level=$(grep -E "^\s+level:" "$SQUAD_DIR/config.yaml" 2>/dev/null | head -1 | sed 's/.*level:[[:space:]]*//' | tr -d '"' || true)
-    if [[ "$ws_level" == "controlled_runtime_consumer" || "$ws_level" == "workspace_first" ]]; then
-      local tasks_using_workspace=$(grep -rlE "path:.*workspace/" "$SQUAD_DIR/tasks/" 2>/dev/null | wc -l | tr -d ' ')
+    if [[ "$ws_level" == "none" || "$ws_level" == "local" ]]; then
+      local tasks_using_project=$(grep -rlE "path:.*outputs/" "$SQUAD_DIR/tasks/" 2>/dev/null | wc -l | tr -d ' ')
       local tasks_using_runtime=$(grep -rlE "path:.*\\.aiox/squad-runtime/" "$SQUAD_DIR/tasks/" 2>/dev/null | wc -l | tr -d ' ')
 
-      if [[ "$tasks_using_runtime" -gt 0 && "$tasks_using_workspace" -eq 0 ]]; then
-        log_fail "OPG-002: Squad declares workspace_integration.level=$ws_level but ALL task outputs ($tasks_using_runtime) go to .aiox/squad-runtime/, ZERO to workspace/. PV004 VETO: integration level contradicts task paths."
+      if [[ "$tasks_using_runtime" -gt 0 && "$tasks_using_project" -eq 0 ]]; then
+        log_fail "OPG-002: Squad declares local project docs.level=$ws_level but ALL task outputs ($tasks_using_runtime) go to .aiox/squad-runtime/, ZERO to docs/. PV004 VETO: integration level contradicts task paths."
         opg_fail=$((opg_fail + 1))
       fi
     fi
@@ -2592,7 +2591,7 @@ check_output_path_governance() {
 
     # No declaration, check signal words
     if grep -qiE "$high_value_signals" "$task_file" 2>/dev/null; then
-      log_warn "OPG-003: Task $task_name has output path in .aiox/squad-runtime/ with HIGH-VALUE signal words but no output_persistence declaration. Classify as canonical_workspace or transient_output."
+      log_warn "OPG-003: Task $task_name has output path in .aiox/squad-runtime/ with HIGH-VALUE signal words but no output_persistence declaration. Classify as canonical_project or transient_output."
       opg_warnings=$((opg_warnings + 1))
     fi
   done
@@ -2616,18 +2615,18 @@ check_production() {
   log_section "PHASE 5: Production Validation (Bash)"
   local prod_score=0
   local manifest_type=""
-  local workspace_level=""
+  local scope_level=""
   local runtime_evidence_optional=false
   local direct_runtime_evidence=false
   local contract_test_files=0
   local operational_story_files=0
 
   manifest_type=$(extract_config_scalar "type")
-  workspace_level=$(extract_workspace_integration_level)
+  scope_level=$(extract_local project docs_level)
   contract_test_files=$(count_contract_test_files 2>/dev/null || echo 0)
   operational_story_files=$(count_operational_story_files 2>/dev/null || echo 0)
 
-  if [[ "$manifest_type" == "specialist" && "$workspace_level" == "none" ]]; then
+  if [[ "$manifest_type" == "specialist" && "$scope_level" == "none" ]]; then
     runtime_evidence_optional=true
   fi
 
@@ -2663,7 +2662,7 @@ check_production() {
 
   if [ "$has_runtime_evidence" = false ]; then
     if [ "$runtime_evidence_optional" = true ]; then
-      log_info "Runtime evidence optional for type='$manifest_type' with workspace_integration.level='$workspace_level'"
+      log_info "Runtime evidence optional for type='$manifest_type' with local project docs.level='$scope_level'"
     else
       log_warn "No runtime evidence found in .aiox/squad-runtime for squad '$SQUAD_NAME'"
     fi
@@ -2918,7 +2917,7 @@ Score each dimension 0-10. Be STRICT — a score of 7+ means production-ready qu
 
 For security findings (SEC-*), evaluate if they are FALSE_POSITIVE (e.g., book excerpts mentioning \"secret\", example patterns) or REAL threats.
 
-For squad agnosticism, check if the squad contains business-specific data (company names, real pricing, personal names, specific product references) that should live in workspace/ instead.
+For squad agnosticism, check if the squad contains business-specific data (company names, real pricing, personal names, specific product references) that should live in docs/ instead.
 
 ## Required JSON Response:
 {
@@ -3261,7 +3260,7 @@ calculate_final_score() {
   else
     local config_score=0
     local config_missing=""
-    local workspace_level=""
+    local scope_level=""
     local output_root=""
     local config_total=8
 
@@ -3291,8 +3290,8 @@ calculate_final_score() {
       config_missing="${config_missing}tested_flag, "
     fi
 
-    workspace_level=$(extract_workspace_integration_level)
-    [[ -n "$workspace_level" ]] && config_score=$((config_score + 1)) || config_missing="${config_missing}workspace_integration.level, "
+    scope_level=$(extract_local project docs_level)
+    [[ -n "$scope_level" ]] && config_score=$((config_score + 1)) || config_missing="${config_missing}local project docs.level, "
 
     output_root=$(extract_declared_output_root 2>/dev/null || true)
     [[ -n "$output_root" ]] && config_score=$((config_score + 1)) || config_missing="${config_missing}declared_output_root, "
@@ -4226,7 +4225,7 @@ main() {
     local TOTAL_MINUTES=$((TOTAL_DURATION / 60))
     local TOTAL_SECONDS=$((TOTAL_DURATION % 60))
 
-    # ─── Save reports to disk (like sinkra-validate.sh) ─────────────
+    # ─── Save reports to disk (like aiox-validate.sh) ─────────────
     local REPORT_DIR="$OUTPUTS_ROOT/squad-validations/$SQUAD_NAME/$(date +%Y%m%d-%H%M%S)"
     mkdir -p "$REPORT_DIR"
 

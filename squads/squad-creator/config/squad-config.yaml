@@ -8,12 +8,12 @@ squad_config:
   description: Tools and agents to create custom AIOX squads
 
   # =========================================
-  # SINKRA v1.2 — BU Mapping
+  # AIOX v1.2 — BU Mapping
   # =========================================
   bu_mapping:
     id: hub-framework
-    name: SINKRA Hub Framework
-    business_slug: sinkra-hub
+    name: AIOX platform Framework
+    business_slug: upstream monorepo
     heads:
       - human: oalanicolas
         role: Framework Owner

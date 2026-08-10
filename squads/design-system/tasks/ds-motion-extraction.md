@@ -182,13 +182,13 @@ cdp.send('Animation.resolveAnimation', { animationId }); // Get RemoteObject
 ## Process Guards
 - **On Fail:** Stop execution, capture evidence, and return remediation steps before proceeding.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: page-composer
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_motion_extraction_artifact

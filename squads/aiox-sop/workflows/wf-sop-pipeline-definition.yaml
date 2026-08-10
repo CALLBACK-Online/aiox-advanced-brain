@@ -1,5 +1,5 @@
 # Managed by materialize-map.py
-# Source: .aiox/squad-runtime/sinkra-squad/aiox-sop/map/20260329-190639-claude-opus/workflow_definition.yaml
+# Source: .aiox/squad-runtime/aiox-squad/aiox-sop/map/20260329-190639-claude-opus/workflow_definition.yaml
 # Category: workflow
 
 metadata:
@@ -11,7 +11,7 @@ metadata:
   agent: composition-engineer
   checkpoint: PV_PM_001
   version: 2.0.0
-  methodology: SINKRA Workflow Composition — Atoms to Organisms, Guardrail-enforced
+  methodology: AIOX Workflow Composition — Atoms to Organisms, Guardrail-enforced
 workflow_definition:
   template_id: TPL_AIOX_SOP_PIPELINE
   template_name: AIOX SOP Transformation Pipeline
@@ -175,13 +175,13 @@ workflow_definition:
       task_id: T2.2
       executor_type: Agent
       role: Schema Mapper (Claude API via Gateway AI)
-      action: Mapear Markdown para schema SINKRA estruturado via Claude API com prompt
+      action: Mapear Markdown para schema AIOX estruturado via Claude API com prompt
         calibrado
       inputs:
       - Normalized Markdown text
-      - SINKRA schema definition (from token-registry)
+      - AIOX schema definition (from token-registry)
       outputs:
-      - SINKRA Schema JSON
+      - AIOX Schema JSON
       - Extraction confidence metadata
       - Field coverage report
       sla_minutes: 15
@@ -189,10 +189,10 @@ workflow_definition:
         pre_conditions:
         - Markdown content available
         - Gateway AI (OpenClaw) accessible
-        - SINKRA schema loaded
+        - AIOX schema loaded
         post_conditions:
         - Output is valid JSON
-        - All mandatory SINKRA fields mapped (or explicitly null)
+        - All mandatory AIOX fields mapped (or explicitly null)
         - Output schema validated against JSON schema
         error_handling:
           strategy: retry
@@ -203,9 +203,9 @@ workflow_definition:
       task_id: T2.3
       executor_type: Worker
       role: Schema Validator (jsonschema library)
-      action: Validar JSON extraído contra schema SINKRA formal (ajv/jsonschema)
+      action: Validar JSON extraído contra schema AIOX formal (ajv/jsonschema)
       inputs:
-      - SINKRA Schema JSON from T2.2
+      - AIOX Schema JSON from T2.2
       outputs:
       - Schema validation result (pass/fail)
       - Validation errors list
@@ -213,7 +213,7 @@ workflow_definition:
       guardrails:
         pre_conditions:
         - JSON payload received from T2.2
-        - SINKRA JSON schema definition loaded
+        - AIOX JSON schema definition loaded
         post_conditions:
         - Validation result logged
         - Error list empty if pass
@@ -234,7 +234,7 @@ workflow_definition:
       role: Confidence Scorer (Node.js script)
       action: Calcular score de confiança da extração via fórmula determinística
       inputs:
-      - Validated SINKRA Schema JSON
+      - Validated AIOX Schema JSON
       - Field coverage report from T2.2
       outputs:
       - Extraction confidence score (0-100)
@@ -260,18 +260,18 @@ workflow_definition:
       task_id: T3_PARALLEL_GROUP
       executor_type: System
       action: 'Executar avaliações de qualidade em paralelo: T3.1 (Clareza - Clone),
-        T3.2 (Completude - Worker), T3.3 (Aderência SINKRA - Clone)'
+        T3.2 (Completude - Worker), T3.3 (Aderência AIOX - Clone)'
       parallel: true
       parallel_tasks:
       - T3.1
       - T3.2
       - T3.3
       inputs:
-      - Validated SINKRA Schema JSON
+      - Validated AIOX Schema JSON
       outputs:
       - Clarity score (0-5)
       - Completeness score (0-100)
-      - SINKRA adherence check result
+      - AIOX adherence check result
       sla_minutes: 8
       guardrails:
         pre_conditions:
@@ -292,10 +292,10 @@ workflow_definition:
       role: Gap Analyzer (Claude API via Gateway AI)
       action: Identificar lacunas e gerar recomendações de melhoria baseadas nos scores
       inputs:
-      - Validated SINKRA Schema JSON
+      - Validated AIOX Schema JSON
       - Clarity score
       - Completeness score
-      - SINKRA adherence result
+      - AIOX adherence result
       outputs:
       - Recommendations JSON (array of actionable items)
       - Gap severity classification
@@ -322,7 +322,7 @@ workflow_definition:
       inputs:
       - Clarity score
       - Completeness score
-      - SINKRA adherence result
+      - AIOX adherence result
       - Recommendations JSON
       outputs:
       - Quality Analysis Report JSON
@@ -454,7 +454,7 @@ workflow_definition:
       - T4.3
       - T4.4
       inputs:
-      - Validated SINKRA Schema JSON
+      - Validated AIOX Schema JSON
       outputs:
       - JSON-LD with @context
       - Vector embeddings (1536-dim)
@@ -463,7 +463,7 @@ workflow_definition:
       sla_minutes: 30
       guardrails:
         pre_conditions:
-        - SINKRA Schema JSON available and validated
+        - AIOX Schema JSON available and validated
         - Gateway AI accessible
         - Cache layer available (Redis/Supabase pgvector)
         post_conditions:
@@ -488,7 +488,7 @@ workflow_definition:
       - T5.2
       - T5.3
       inputs:
-      - Validated SINKRA Schema JSON
+      - Validated AIOX Schema JSON
       outputs:
       - Executive Summary Markdown
       - Operational Guide Markdown
@@ -496,7 +496,7 @@ workflow_definition:
       sla_minutes: 30
       guardrails:
         pre_conditions:
-        - SINKRA Schema JSON available
+        - AIOX Schema JSON available
         - Gateway AI accessible
         - Document templates loaded
         post_conditions:
@@ -590,7 +590,7 @@ workflow_definition:
       inputs:
       - All generated artifacts (JSON-LD, embeddings, GraphML, tokens, MD files, PDFs,
         Notion pages)
-      - SINKRA Schema JSON (source of truth)
+      - AIOX Schema JSON (source of truth)
       outputs:
       - Coherence validation result (pass/fail)
       - Discrepancy report (if failed)

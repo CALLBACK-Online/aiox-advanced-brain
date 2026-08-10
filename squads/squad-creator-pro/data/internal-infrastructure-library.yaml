@@ -4,27 +4,27 @@ maintainer: "squad-chief"
 policy: "internal-first"
 
 description: >
-  Catalogo de capacidades internas disponiveis no workspace para ser consultado
+  Catalogo de capacidades internas disponiveis no project docs para ser consultado
   antes de qualquer descoberta externa.
 
 internal_assets:
   design_system_native:
     type: domain
-    path: "workspace/domains/design-system"
+    path: "docs/domains/design-system"
     service_catalog: "services/design-system/catalog.yaml"
     provides:
       - capability: ds_token_catalog
-        primary_tool: "workspace/domains/design-system/metadata/tokens/index.json"
+        primary_tool: "docs/design-system/domains/metadata/tokens/index.json"
       - capability: ds_component_catalog
-        primary_tool: "workspace/domains/design-system/metadata/components.json"
+        primary_tool: "docs/design-system/domains/metadata/components.json"
       - capability: ds_guidelines_catalog
-        primary_tool: "workspace/domains/design-system/metadata/guidelines/usage.json"
+        primary_tool: "docs/design-system/domains/metadata/guidelines/usage.json"
       - capability: ds_mcp_runtime
-        primary_tool: "workspace/domains/design-system/mcp/server.ts"
+        primary_tool: "docs/design-system/domains/mcp/server.ts"
       - capability: ds_registry_queries
-        primary_tool: "workspace/domains/design-system/mcp/handlers/registry.ts"
+        primary_tool: "docs/design-system/domains/mcp/handlers/registry.ts"
       - capability: ds_context_contract
-        primary_tool: "workspace/domains/design-system/context.yaml"
+        primary_tool: "docs/design-system/domains/context.yaml"
 
   design_system_ops:
     type: scripts

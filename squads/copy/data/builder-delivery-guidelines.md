@@ -44,11 +44,11 @@ builder_handoff:
   page_type: "sales-page"
   section_contract: "data/page-section-contract.md"
   proof_sources:
-    - "workspace/businesses/{business}/L3-product/{product}/proof.yaml"
-    - "workspace/businesses/{business}/L3-product/{product}/testimonials.yaml"
+    - "docs/execution/{product}/proof.yaml"
+    - "docs/execution/{product}/testimonials.yaml"
   required_assets_missing: []
   notes:
-    - "Use existing brand tokens from workspace/businesses/{business}/L2-tactical/brand/"
+    - "Use existing brand tokens from docs/tactical/brand/"
 ```
 
 ## When Not to Use

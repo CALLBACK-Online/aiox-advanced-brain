@@ -1,6 +1,6 @@
 # Motion Quality Checklist
 
-**Purpose:** QA gate para motion artifacts antes de promover ao workspace
+**Purpose:** QA gate para motion artifacts antes de promover a docs/project
 **Agent:** Brad Frost (Design System Architect)
 **Standard:** WCAG 2.2 AA + Kinetic Design System v1 + Val Head 5-Purpose Framework
 **Applies to:** Motion tokens, primitives, compositions, choreographies, page choreography
@@ -159,7 +159,7 @@ Each checkbox item = 1 point.
 
 | Grade | Score | Condition |
 |-------|-------|-----------|
-| PASS | >= 80% (20+) AND zero BLOCK failures | Proceed to workspace promotion |
+| PASS | >= 80% (20+) AND zero BLOCK failures | Proceed to docs promotion |
 | CONDITIONAL | >= 60% (15-19) OR BLOCK failures pending | Fix BLOCK items, re-check |
 | FAIL | < 60% (14-) | Major rework required |
 

@@ -10,7 +10,7 @@
   ],
   "commands": [
     {
-      "command": "node squads/aiox-sop/scripts/resolve-environment-contract.cjs --format=json",
+      "command": "npm run validate",
       "status": "pass",
       "result": {
         "access_tier": "pro",

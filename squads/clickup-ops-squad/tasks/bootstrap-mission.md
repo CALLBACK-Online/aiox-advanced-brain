@@ -14,7 +14,7 @@ architecture: "Clean — List única dentro de Ops Folder"
 
 ## Description
 
-Setup one-time da infraestrutura ClickUp para suportar Missions SINKRA.
+Setup one-time da infraestrutura ClickUp para suportar Missions AIOX.
 Cria a List "Missions" dentro do Folder de Ops, Task Types (Mission, Gate),
 Custom Fields e Automações base.
 **Idempotente:** re-executar valida/corrige sem duplicar.
@@ -39,7 +39,7 @@ Custom Fields e Automações base.
 ## Pre-Conditions
 
 - [ ] API client `services/clickup/` operacional
-- [ ] Workspace ID configurado (lookup from tokenization.yaml)
+- [ ] LocalDocs ID configurado (lookup from tokenization.yaml)
 - [ ] Ops Folder existe no ClickUp
 - [ ] `mission-clickup-spec.yaml` disponível em `squads/clickup-ops-squad/data/`
 - [ ] Task Type IDs registrados em `clickup-tokenization.yaml`: Mission (`custom_item_id` do spoke), Gate (`custom_item_id` do spoke). Estes IDs devem existir antes da materialização — `materialize-mission.js` usa o campo `custom_item` da API para atribuir Task Types programaticamente.
@@ -109,12 +109,12 @@ implementation: playwright  # Task Types são UI-only no ClickUp
 action: create_custom_fields
 list_id: "{from step 2}"
 fields:
-  # Universal (verificar se já existe no workspace)
+  # Universal (verificar se já existe no project docs)
   - name: "Task Status"
     type: dropdown
     options: ["To Do", "In Progress", "Review", "Done", "Blocked"]
     scope: universal
-    note: "Se já existe em outro lugar do workspace, reutilizar"
+    note: "Se já existe em outro lugar de docs/project, reutilizar"
 
   # Mission-level
   - name: "Mission ID"
@@ -214,7 +214,7 @@ implementation: playwright
 
 ```yaml
 action: update_registry
-file: "squads/sinkra-squad/data/clickup-tokenization.yaml"
+file: "squads/aiox-squad/data/clickup-tokenization.yaml"
 section: "missions"
 register:
   folder_id: "{Ops folder_id}"

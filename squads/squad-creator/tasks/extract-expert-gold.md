@@ -422,7 +422,7 @@ report:
 | Extract without checking existing refs | Produces duplicates, misses what's truly new | ALWAYS run Phase 0 first |
 | Single analyst extraction | Misses insights outside one framework | Minimum 3 analysts per squad |
 | Skip gold filter (Phase 2) | Floods reference files with noise | Phase 2 is mandatory |
-| Write business-specific data to squad | Violates squad agnosticism | Generalize or route to workspace/ |
+| Write business-specific data to squad | Violates squad agnosticism | Generalize or route to docs/ |
 | Overwrite existing reference sections | Loses previously extracted knowledge | Append-only merge strategy |
 | Skip confidence markers | Agents can't assess reliability of data | Every insight needs [DOC]/[REP]/[INF] |
 

@@ -37,8 +37,8 @@ O Squad Creator gerencia os squads da sua instalação AIOX. Use o comando `*ref
 Todo squad criado deve declarar no `config.yaml`:
 
 ```yaml
-workspace_integration:
-  level: "<none|read_only|controlled_runtime_consumer|workspace_first>"
+local project docs:
+  level: "<none|read_only  # enterprise levels removed in aiox-advanced-brain>"
   rationale: "Por que esse nível é necessário"
   read_paths: []
   write_paths: []
@@ -46,9 +46,8 @@ workspace_integration:
 ```
 
 Regras mínimas:
-- `read_only|controlled_runtime_consumer|workspace_first`: precisa ter referências explícitas a `workspace/`.
-- `controlled_runtime_consumer|workspace_first`: só são válidos quando `squads/c-level/` existe no repo.
-- `workspace_first`: precisa de `scripts/bootstrap-*-workspace.sh` e `scripts/validate-*-essentials.sh`.
+- `read_only|none|local`: precisa ter referências explícitas a `docs/` (substituto local; outputs/ é private enterprise distribution).
+- `local`: precisa de `scripts/bootstrap-project-context.sh` e `scripts/validate-*-essentials.sh`.
 
 ---
 

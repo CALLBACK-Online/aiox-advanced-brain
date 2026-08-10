@@ -1,0 +1,86 @@
+{
+  "$id": "aiox://slide-creator/wireframes/incident-timeline.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "The deck needs ordered phases or milestones with ownership/status.",
+  "properties": {
+    "corrective_action": {
+      "type": "string"
+    },
+    "event_1": {
+      "type": "string"
+    },
+    "event_2": {
+      "type": "string"
+    },
+    "event_3": {
+      "type": "string"
+    },
+    "event_4": {
+      "type": "string"
+    },
+    "event_5": {
+      "type": "string"
+    },
+    "impact_1": {
+      "type": "string"
+    },
+    "impact_2": {
+      "type": "string"
+    },
+    "impact_3": {
+      "type": "string"
+    },
+    "impact_4": {
+      "type": "string"
+    },
+    "impact_5": {
+      "type": "string"
+    },
+    "incident_summary": {
+      "type": "string"
+    },
+    "time_1": {
+      "type": "string"
+    },
+    "time_2": {
+      "type": "string"
+    },
+    "time_3": {
+      "type": "string"
+    },
+    "time_4": {
+      "type": "string"
+    },
+    "time_5": {
+      "type": "string"
+    }
+  },
+  "title": "incident-timeline",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "roadmap_vertical",
+    "slot_count": 17,
+    "warnings": [
+      "incident_summary",
+      "time_1",
+      "event_1",
+      "impact_1",
+      "time_2",
+      "event_2",
+      "impact_2",
+      "time_3",
+      "event_3",
+      "impact_3",
+      "time_4",
+      "event_4",
+      "impact_4",
+      "time_5",
+      "event_5",
+      "impact_5",
+      "corrective_action"
+    ],
+    "wireframe_ref": "templates/wireframes/incident-timeline.html"
+  }
+}

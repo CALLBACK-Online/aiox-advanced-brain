@@ -7,7 +7,7 @@
 **Mode:** Interactive (elicit: true)
 **Quality Standard:** Team topology tested with dry-run, all agents load successfully
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: create-team-topology
 atomic_layer: Atom

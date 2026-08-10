@@ -7,7 +7,7 @@
 **Mode:** Interactive (elicit: true)
 **Quality Standard:** No existing workflow disrupted, deny rules protect critical paths, conventions documented
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: brownfield-setup
 atomic_layer: Atom

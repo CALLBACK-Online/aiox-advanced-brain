@@ -33,26 +33,22 @@ activation-instructions:
   - CRITICAL: DO NOT load data files during activation - only on command
 
 command_loader:
-  "*workspace-preflight":
-    description: "Run ETL workspace bootstrap + essentials validation"
+  "*project-preflight":
+    description: "Run ETL local docs bootstrap + essentials validation"
     requires:
-      - "scripts/bootstrap-etl-workspace.sh"
-      - "scripts/validate-etl-essentials.sh"
     output_format: "PASS/FAIL preflight report"
 
-  "*workspace-context":
-    description: "Load workspace context and output route policy for ETL"
+  "*project context":
+    description: "Load project context and output route policy for ETL"
     requires:
-      - "tasks/load-workspace-context.md"
-      - "scripts/validate-etl-essentials.sh"
+      - "tasks/load-project context.md"
       - "data/process.schema.json"
-    output_format: "workspace context snapshot"
+    output_format: "project context snapshot"
 
   "*process":
     description: "Execute ETL process (extract, transform, or both)"
     requires:
-      - "tasks/load-workspace-context.md"
-      - "scripts/validate-etl-essentials.sh"
+      - "tasks/load-project context.md"
       - "tasks/process.md"
       - "data/routing-profiles.yaml"
       - "data/checkpoints.yaml"
@@ -129,13 +125,13 @@ CRITICAL_LOADER_RULE: |
   - Do NOT improvise the workflow
 
   BEFORE final delivery in *process:
-  - Run workspace preflight: bash squads/etl-ops/scripts/validate-etl-essentials.sh
+  - Run project preflight before ETL execution.
   - Run local quality gate: npm run validate:etl-ops
   - If it fails, set status=vetoed and report drift
 
 dependencies:
   tasks:
-    - "load-workspace-context.md"
+    - "load-project context.md"
     - "process.md"
   data:
     - "routing-profiles.yaml"
@@ -174,7 +170,7 @@ persona:
   role: "ETL Pipeline Orchestrator - analyzes requests and routes to the right tool"
   style: "Direct, operational, zero fluff. Diagnose > Route > Execute > Validate."
   identity: "Operational coordinator that reads routing-profiles.yaml to decide which tool runs"
-  focus: "Get data from source to destination with maximum quality, minimum waste, and workspace-first governance"
+  focus: "Get data from source to destination with maximum quality, minimum waste, and local governance"
 
 # ==============================================================================
 # LEVEL 2: OPERATIONAL FRAMEWORKS
@@ -182,7 +178,7 @@ persona:
 
 core_principles:
   - "CONTRACTS ARE SOURCE OF TRUTH: routing-profiles.yaml decides tools, checkpoints.yaml decides gates"
-  - "WORKSPACE-FIRST: when business_slug exists, write canonical artifacts in workspace/businesses/{slug}/etl/"
+  - "local: when business_slug exists, write canonical artifacts in docs/etl/"
   - "VERIFY BEFORE EXECUTING: Check source exists and is accessible before running any pipeline"
   - "RIGHT TOOL FOR THE JOB: Each source type has a specific tool - never use generic when specific exists"
   - "DETERMINISM FIRST: Script > Query > Regex > LLM. LLM is last resort."
@@ -233,15 +229,14 @@ orchestration_flow:
     checkpoint: "Envelope valid, artifacts persisted if requested"
 
 commands:
-  - name: workspace-preflight
+  - name: project-preflight
     visibility: [full, quick]
-    description: "Run bootstrap + validate-etl-essentials before ETL execution"
     loader: null
 
-  - name: workspace-context
+  - name: project context
     visibility: [full, quick]
-    description: "Load workspace context snapshot and resolve output route"
-    loader: "tasks/load-workspace-context.md"
+    description: "Load project context snapshot and resolve output route"
+    loader: "tasks/load-project context.md"
 
   - name: process
     visibility: [full, quick]

@@ -31,7 +31,7 @@ merged_from:
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Tactical`
 atomic_layer: Atom
 Input: request::create_squad_discover
@@ -49,7 +49,7 @@ error_handling: escalate to squad-chief on failure, persist error contextcheckpo
 
 ## Purpose
 
-Validate that a proposed squad domain is viable, check for existing squads that may overlap, assess workspace domain alignment, define the basic squad structure (name, prefix, entry agent), select the best squad archetype from `squad-type-definitions.yaml`, choose between operational and expert template approaches, and produce an initial agent roster with tier assignments and use case coverage. Type selection is the natural output of discovery -- once you know the domain, the type follows.
+Validate that a proposed squad domain is viable, check for existing squads that may overlap, assess local domain alignment, define the basic squad structure (name, prefix, entry agent), select the best squad archetype from `squad-type-definitions.yaml`, choose between operational and expert template approaches, and produce an initial agent roster with tier assignments and use case coverage. Type selection is the natural output of discovery -- once you know the domain, the type follows.
 
 ## Non-Negotiable Prior-Art Gate
 
@@ -75,7 +75,7 @@ prior_art_search:
     - registry_check:
         files:
           - "squads/squad-registry.yaml"
-          - "squads/sinkra-squad/data/ecosystem-registry.yaml"
+          - "squads/aiox-squad/data/ecosystem-registry.yaml"
           - "squads/squad-creator/data/squad-creator-infrastructure-map.yaml"
   required_output:
     status: "PASS | FAIL"
@@ -136,27 +136,27 @@ inputs:
 
 ## Workflow / Steps
 
-### Step 0.0: Workspace Domain Awareness
+### Step 0.0: Local Domain Awareness
 
 ```yaml
-workspace_domain_check:
+project_domain_check:
   read_files:
-    - "workspace/_system/config.yaml"
-    - "workspace/businesses/"
+    - "docs/config.yaml"
+    - "docs/"
 
   checks:
-    - product_alignment: "Squad serve qual produto em workspace/businesses/{bu}/L3-product/?"
-    - provider_overlap: "Squad usa providers ja declarados em workspace.yaml?"
+    - product_alignment: "Squad serve qual produto em docs/execution/?"
+    - provider_overlap: "Squad usa providers ja declarados em project-context.yaml?"
 
   output:
-    workspace_context:
+    project context:
       domain_match: "exact | partial | none"
       related_products: ["list"]
       available_providers: ["list"]
       existing_squads_for_domain: ["list"]
 
   behavior:
-    domain_exists: "Informar ao usuario que o dominio ja tem definicoes no workspace. Squad deve alinhar com entities.yaml e workflows.yaml do dominio."
+    domain_exists: "Informar ao usuario que o dominio ja tem definicoes no project docs. Squad deve alinhar com entities.yaml e workflows.yaml do dominio."
 ```
 
 ### Step 0.1: Validate Domain Viability
@@ -223,7 +223,7 @@ existing_squad_check:
   search_paths:
     - "squads/{similar_names}/"
     - "squads/*/{domain}*"
-    - ".claude/skills/*/{domain}*/SKILL.md"
+    - "skills/*/{domain}*/SKILL.md"
 
   analysis:
     - existing_coverage: "What does existing squad cover?"
@@ -262,7 +262,7 @@ pack_structure_elicitation:
   derived:
     - pack_path: "squads/{squad_name}/"
     - outputs_path: ".aiox/squad-runtime/create-squad/{squad_name}/"
-    - skill_surface_path: ".claude/skills/{PackTitle}/"
+    - skill_surface_path: "skills/{PackTitle}/"
 
   pattern_library:
     - prefix: "2-letter code (e.g., CP for Copy)"
@@ -393,7 +393,7 @@ discover_output:
   slash_prefix: "{prefix}"
   pattern_prefix: "{PREFIX}"
   mode: "incremental | yolo"
-  workspace_context:
+  project context:
     domain_match: "exact | partial | none"
     related_products: ["list"]
   # Type selection outputs
@@ -414,7 +414,7 @@ discover_output:
 - [ ] No duplicate squad exists (or user confirmed extend/override)
 - [ ] Squad name defined in kebab-case
 - [ ] Entry agent ID defined
-- [ ] Workspace domain awareness completed
+- [ ] Local domain awareness completed
 - [ ] Native scope gate evaluated
 - [ ] Squad type selected from `squad-type-definitions.yaml`
 - [ ] Template approach defined (operational, expert_template, or hybrid)

@@ -57,20 +57,6 @@ settings:
     max_shared_files: 3
     max_product_files: 4
 
-workspace_integration:
-  level: controlled_runtime_consumer
-  rationale: >-
-    Hormozi depende de contexto canônico de produto, oferta, prova e pricing
-    no workspace, mas não define seus próprios gates. O COO resolve readiness
-    e o squad consome esse contrato antes de output final.
-  read_paths:
-    - workspace/_system/config.yaml
-    - workspace/businesses/
-  write_paths: []
-  readiness_owner: workspace-chief
-  readiness_resolver: squads/hormozi/scripts/resolve-readiness.cjs
-
-# MMOS Integration
 mmos_integration:
   enabled: true
   log_source: true
@@ -100,7 +86,7 @@ agents:
     role: "Human approval, business context and final go/no-go"
     tier: human
     executor_profile:
-      sinkra_type: Human
+      executor_type: Human
       human_in_the_loop: true
       output_schema: hormozi-approval-brief
 
@@ -109,7 +95,7 @@ agents:
     role: "Agent runtime for orchestration and non-clone decision glue"
     tier: agent
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: hormozi-strategy-decision
 
@@ -118,7 +104,7 @@ agents:
     role: "Worker for deterministic validation, calculations and packaging"
     tier: worker
     executor_profile:
-      sinkra_type: Worker
+      executor_type: Worker
       human_in_the_loop: true
       output_schema: hormozi-runtime-report
 
@@ -132,7 +118,7 @@ agents:
       - prompts/Hormozi/08_INDUSTRY_ADAPTATION.md
       - artifacts/mental_models.yaml
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: clone-structured-output
       story_role: reviewer
@@ -151,7 +137,7 @@ agents:
       - prompts/Hormozi/02_VALUE_EQUATION_ENGINE.md
       - prompts/Hormozi/03_OFFER_CREATION_SYSTEM.md
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: clone-structured-output
       story_role: executor
@@ -168,7 +154,7 @@ agents:
       - prompts/leads.md
       - sources/01 Livros/Livro 100M Leads/
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: clone-structured-output
       story_role: executor
@@ -185,7 +171,7 @@ agents:
       - prompts/money.md
       - sources/01 Livros/Livro 100m Modelos/
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: clone-structured-output
       story_role: executor
@@ -203,7 +189,7 @@ agents:
       - prompts/hooks.md
       - sources/02 Playbooks/Hooks/
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: clone-structured-output
       story_role: executor
@@ -220,7 +206,7 @@ agents:
       - prompts/ads.md
       - sources/02 Playbooks/Ads/
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: clone-structured-output
       story_role: executor
@@ -237,7 +223,7 @@ agents:
       - sources/02 Playbooks/Pricing/
       - sources/02 Playbooks/Price Raise/
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: clone-structured-output
       story_role: executor
@@ -254,7 +240,7 @@ agents:
       - sources/02 Playbooks/Copy/
       - sources/03 Programas/Blueprint $100M Money Models/
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: clone-structured-output
       story_role: executor
@@ -270,7 +256,7 @@ agents:
     primary_sources:
       - sources/02 Playbooks/Launch/
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: clone-structured-output
       story_role: executor
@@ -288,7 +274,7 @@ agents:
       - sources/02 Playbooks/Lead Nurture/
       - sources/02 Playbooks/Lifetime Value/
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: clone-structured-output
       story_role: executor
@@ -306,7 +292,7 @@ agents:
       - artifacts/cognitive_architecture.yaml
       - artifacts/belief-system.yaml
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: clone-structured-output
       story_role: consultant
@@ -324,7 +310,7 @@ agents:
       - sources/02 Playbooks/Ofertas/
       - sources/02 Playbooks/Prova/
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: clone-structured-output
       story_role: executor
@@ -340,7 +326,7 @@ agents:
     primary_sources:
       - sources/02 Playbooks/Fechamento/
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: clone-structured-output
       story_role: executor
@@ -356,7 +342,7 @@ agents:
     primary_sources:
       - sources/02 Playbooks/Scaling Roadmap/
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: clone-structured-output
       story_role: executor
@@ -372,7 +358,7 @@ agents:
     primary_sources:
       - sources/02 Playbooks/Workshops/
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: clone-structured-output
       story_role: executor
@@ -388,7 +374,7 @@ agents:
     primary_sources:
       - sources/01 Livros/Livro 100M Leads/Postar Conteudo Gratuito Parte I.md
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: clone-structured-output
       story_role: executor
@@ -596,13 +582,13 @@ composition_mapping:
     source: "templates/"
   instances:
     description: "Execuções persistidas em outputs e artefatos de campanha"
-    persistence: ".aiox/squad-runtime/sinkra-squad/hormozi/"
+    persistence: ".aiox/squad-runtime/aiox-squad/hormozi/"
     lifecycle: [draft, validated, approved, delivered, archived]
 
 
 # Criado com Squad Creator do AIOXPRO por @oalanicolas e @pedrovalerio | 2026-02-10
 
-# SINKRA v3.1 (Story 54.11)
+# AIOX v3.1 (Story 54.11)
 bu_mapping: "hub-framework"
 artifact_contracts:
   - artifact_id: "offer-analysis"

@@ -52,7 +52,7 @@ async function invoke(promptText, options = {}) {
       headers: {
         "Authorization": bearerToken,
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://sinkra.ai",
+        "HTTP-Referer": "https://aiox.ai",
         "X-Title": "extract-from-url",
       },
       body,

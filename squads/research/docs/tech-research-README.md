@@ -3,7 +3,7 @@
 **Version:** 3.2
 **Last Updated:** 2026-05-06
 **Epic:** TECH-RESEARCH-001
-**Skill Path:** `.claude/skills/tech-research/`
+**Skill Path:** `skills/tech-research/`
 
 ---
 
@@ -143,7 +143,7 @@ dev.to, medium.com, marktechpost.com, hashnode.dev, hackernoon.com, freecodecamp
 ## File Structure
 
 ```
-.claude/skills/tech-research/
+skills/tech-research/
 +-- SKILL.md                     # Main workflow definition (v3, ~1000 lines)
 +-- config.yaml                  # Token budgets + iteration params
 +-- README.md                    # This file
@@ -198,7 +198,7 @@ The skill analyzes your query before asking questions:
 
 ### Tuning Token Budgets
 
-Edit `.claude/skills/tech-research/config.yaml`:
+Edit `skills/tech-research/config.yaml`:
 
 ```yaml
 tokens:
@@ -388,4 +388,4 @@ Architecture doc: `docs/research/2026-02-08-open-source-deep-research-multi-agen
 - **Epic:** `docs/projects/aiox-skills/epics/tech-research-v2/epic.md`
 - **Baseline Report:** `docs/research/tech-research-v1-baseline.md`
 - **Spike Report:** `docs/research/tech-research-v2-spike.md`
-- **Skill Definition:** `.claude/skills/tech-research/SKILL.md`
+- **Skill Definition:** `skills/tech-research/SKILL.md`

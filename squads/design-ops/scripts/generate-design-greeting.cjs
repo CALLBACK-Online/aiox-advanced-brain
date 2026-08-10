@@ -162,7 +162,7 @@ function generateGreeting() {
         '',
         `- Inicialize com: \`${DEFAULT_SESSION_COMMAND}\` ou \`node squads/design-ops/scripts/set-active-context.cjs --app=<id>\``,
         '- Depois rode `*show-context` para validar o contexto ativo.',
-        `- Runtime path: \`${runtimePaths.toWorkspaceRelative(sessionPath)}\``,
+        `- Runtime path: \`${runtimePaths.toProjectRelative(sessionPath)}\``,
       ]
         .filter(Boolean)
         .join('\n');

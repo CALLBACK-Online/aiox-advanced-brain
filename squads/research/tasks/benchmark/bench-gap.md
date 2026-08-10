@@ -11,7 +11,7 @@ type: molecule
 description: "Composed router for type-specific gap analysis atoms (llm, product, company, technology)"
 ```
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

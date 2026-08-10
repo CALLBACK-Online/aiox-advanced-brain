@@ -40,20 +40,12 @@ inputs:
       type: string
     - name: target_audience
       type: string
-workspace_contract:
-  required_preflight:
-    - bash squads/brand/scripts/bootstrap-brand-workspace.sh {{brand_name}}
-    - bash squads/brand/scripts/validate-brand-essentials.sh
-    - node workspace/scripts/resolve-squad-workspace-readiness.cjs --squad=brand --business={{brand_name}} --context-type=brand
-  context_task: load-workspace-context
-  canonical_template_namespace: brand
-  canonical_output_policy: template-first
 phases:
-  - id: workspace_context
-    name: Workspace preflight and context load
+  - id: project context
+    name: Project preflight and context load
     executor: brand-chief
     tasks:
-      - task: load-workspace-context.md
+      - task: load-project context.md
         inputs:
           - brand_name
   - id: naming
@@ -67,26 +59,26 @@ phases:
           - business_context
           - target_market
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/naming-shortlist.md
+      - docs/tactical/brand/naming/naming-shortlist.md
   - id: domain
     name: Domain and legal pre-check
     executor: domain-scout
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/naming-shortlist.md
+      - docs/tactical/brand/naming/naming-shortlist.md
     tasks:
       - task: domain-check.md
         inputs:
           - brand_name
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/domain-legal-report.md
+      - docs/tactical/brand/naming/domain-legal-report.md
   - id: br_strategy
     name: Brasil core strategy
     executor: brand-strategist
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/naming-shortlist.md
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/domain-legal-report.md
+      - docs/tactical/brand/naming/naming-shortlist.md
+      - docs/tactical/brand/naming/domain-legal-report.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/foundations/br-strategy-report.md
+      - docs/tactical/brand/foundations/br-strategy-report.md
   - id: cbbe
     name: CBBE diagnosis
     executor: keller-brand-equity
@@ -98,42 +90,42 @@ phases:
           - category
           - target_market
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/foundations/cbbe-report.md
+      - docs/tactical/brand/foundations/cbbe-report.md
   - id: aaker
     name: Brand identity architecture
     executor: aaker-brand-identity
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/foundations/cbbe-report.md
+      - docs/tactical/brand/foundations/cbbe-report.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/foundations/identity-architecture.md
+      - docs/tactical/brand/foundations/identity-architecture.md
   - id: sharp
     name: Growth science
     executor: sharp-brand-science
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/foundations/identity-architecture.md
+      - docs/tactical/brand/foundations/identity-architecture.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/foundations/growth-availability-plan.md
+      - docs/tactical/brand/foundations/growth-availability-plan.md
   - id: neumeier
     name: Differentiation
     executor: neumeier-differentiation
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/foundations/growth-availability-plan.md
+      - docs/tactical/brand/foundations/growth-availability-plan.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/onlyness-statement.md
+      - docs/tactical/brand/positioning/onlyness-statement.md
   - id: ries
     name: Positioning
     executor: ries-positioning
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/onlyness-statement.md
+      - docs/tactical/brand/positioning/onlyness-statement.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/positioning-statement.md
+      - docs/tactical/brand/positioning/positioning-statement.md
   - id: archetype
     name: Archetype system
     executor: archetype-consultant
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/positioning-statement.md
+      - docs/tactical/brand/positioning/positioning-statement.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/narrative/archetype-profile.md
+      - docs/tactical/brand/narrative/archetype-profile.md
   - id: storybrand
     name: Narrative system
     executor: storybrand-narrator
@@ -144,30 +136,30 @@ phases:
           - primary_offer
           - target_audience
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/narrative/archetype-profile.md
+      - docs/tactical/brand/narrative/archetype-profile.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/narrative/messaging-framework.md
+      - docs/tactical/brand/narrative/messaging-framework.md
   - id: wheeler
     name: Identity rollout
     executor: wheeler-brand-design
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/narrative/messaging-framework.md
+      - docs/tactical/brand/narrative/messaging-framework.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/identity-system-plan.md
+      - docs/tactical/brand/activation/identity-system-plan.md
   - id: yohn
     name: Culture alignment
     executor: yohn-brand-culture
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/identity-system-plan.md
+      - docs/tactical/brand/activation/identity-system-plan.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/culture-alignment-plan.md
+      - docs/tactical/brand/activation/culture-alignment-plan.md
   - id: heyward
     name: Startup/DTC layer
     executor: heyward-dtc-brand
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/culture-alignment-plan.md
+      - docs/tactical/brand/activation/culture-alignment-plan.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/dtc-playbook.md
+      - docs/tactical/brand/activation/dtc-playbook.md
   - id: miller
     name: SMB/B2B layer
     executor: miller-sticky-brand
@@ -177,28 +169,28 @@ phases:
           - brand_name
           - business_stage
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/dtc-playbook.md
+      - docs/tactical/brand/activation/dtc-playbook.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/activation-system-report.md
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/activation-30-60-90.md
+      - docs/tactical/brand/activation/activation-system-report.md
+      - docs/tactical/brand/activation/activation-30-60-90.md
 outputs:
-  base_path: workspace/businesses/{{brand_name}}/L2-tactical/brand/
+  base_path: docs/tactical/brand/
   artifacts:
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/naming-shortlist.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/domain-legal-report.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/foundations/br-strategy-report.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/foundations/cbbe-report.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/foundations/identity-architecture.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/foundations/growth-availability-plan.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/onlyness-statement.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/positioning-statement.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/narrative/archetype-profile.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/narrative/messaging-framework.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/identity-system-plan.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/culture-alignment-plan.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/dtc-playbook.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/activation-system-report.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/activation-30-60-90.md
+    - docs/tactical/brand/naming/naming-shortlist.md
+    - docs/tactical/brand/naming/domain-legal-report.md
+    - docs/tactical/brand/foundations/br-strategy-report.md
+    - docs/tactical/brand/foundations/cbbe-report.md
+    - docs/tactical/brand/foundations/identity-architecture.md
+    - docs/tactical/brand/foundations/growth-availability-plan.md
+    - docs/tactical/brand/positioning/onlyness-statement.md
+    - docs/tactical/brand/positioning/positioning-statement.md
+    - docs/tactical/brand/narrative/archetype-profile.md
+    - docs/tactical/brand/narrative/messaging-framework.md
+    - docs/tactical/brand/activation/identity-system-plan.md
+    - docs/tactical/brand/activation/culture-alignment-plan.md
+    - docs/tactical/brand/activation/dtc-playbook.md
+    - docs/tactical/brand/activation/activation-system-report.md
+    - docs/tactical/brand/activation/activation-30-60-90.md
 final_output:
   format: markdown
   includes:
@@ -215,12 +207,12 @@ workflow:
   description: "Ativação máxima: executa todos os especialistas do squad em sequência"
   type: legacy
   sequence:
-    - step: workspace-context
-      id: workspace-context
+    - step: project context
+      id: project context
       phase: 1
-      phase_name: Workspace preflight and context load
+      phase_name: Project preflight and context load
       agent: brand-chief
-      action: execute_workspace-preflight-and-context-load
+      action: execute_project-preflight-and-context-load
       next: naming
     - step: naming
       id: naming
@@ -229,7 +221,7 @@ workflow:
       agent: naming-strategist
       action: execute_snp-naming
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/naming-shortlist.md
+        - docs/tactical/brand/naming/naming-shortlist.md
       next: domain
     - step: domain
       id: domain
@@ -238,7 +230,7 @@ workflow:
       agent: domain-scout
       action: execute_domain-and-legal-pre-check
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/domain-legal-report.md
+        - docs/tactical/brand/naming/domain-legal-report.md
       next: br-strategy
     - step: br-strategy
       id: br-strategy
@@ -247,7 +239,7 @@ workflow:
       agent: brand-strategist
       action: execute_brasil-core-strategy
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/foundations/br-strategy-report.md
+        - docs/tactical/brand/foundations/br-strategy-report.md
       next: cbbe
     - step: cbbe
       id: cbbe
@@ -256,7 +248,7 @@ workflow:
       agent: keller-brand-equity
       action: execute_cbbe-diagnosis
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/foundations/cbbe-report.md
+        - docs/tactical/brand/foundations/cbbe-report.md
       next: aaker
     - step: aaker
       id: aaker
@@ -265,7 +257,7 @@ workflow:
       agent: aaker-brand-identity
       action: execute_brand-identity-architecture
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/foundations/identity-architecture.md
+        - docs/tactical/brand/foundations/identity-architecture.md
       next: sharp
     - step: sharp
       id: sharp
@@ -274,7 +266,7 @@ workflow:
       agent: sharp-brand-science
       action: execute_growth-science
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/foundations/growth-availability-plan.md
+        - docs/tactical/brand/foundations/growth-availability-plan.md
       next: neumeier
     - step: neumeier
       id: neumeier
@@ -283,7 +275,7 @@ workflow:
       agent: neumeier-differentiation
       action: execute_differentiation
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/onlyness-statement.md
+        - docs/tactical/brand/positioning/onlyness-statement.md
       next: ries
     - step: ries
       id: ries
@@ -292,7 +284,7 @@ workflow:
       agent: ries-positioning
       action: execute_positioning
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/positioning-statement.md
+        - docs/tactical/brand/positioning/positioning-statement.md
       next: archetype
     - step: archetype
       id: archetype
@@ -301,7 +293,7 @@ workflow:
       agent: archetype-consultant
       action: execute_archetype-system
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/narrative/archetype-profile.md
+        - docs/tactical/brand/narrative/archetype-profile.md
       next: storybrand
     - step: storybrand
       id: storybrand
@@ -310,7 +302,7 @@ workflow:
       agent: storybrand-narrator
       action: execute_narrative-system
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/narrative/messaging-framework.md
+        - docs/tactical/brand/narrative/messaging-framework.md
       next: wheeler
     - step: wheeler
       id: wheeler
@@ -319,7 +311,7 @@ workflow:
       agent: wheeler-brand-design
       action: execute_identity-rollout
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/identity-system-plan.md
+        - docs/tactical/brand/activation/identity-system-plan.md
       next: yohn
     - step: yohn
       id: yohn
@@ -328,7 +320,7 @@ workflow:
       agent: yohn-brand-culture
       action: execute_culture-alignment
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/culture-alignment-plan.md
+        - docs/tactical/brand/activation/culture-alignment-plan.md
       next: heyward
     - step: heyward
       id: heyward
@@ -337,7 +329,7 @@ workflow:
       agent: heyward-dtc-brand
       action: execute_startup-dtc-layer
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/dtc-playbook.md
+        - docs/tactical/brand/activation/dtc-playbook.md
       next: miller
     - step: miller
       id: miller
@@ -346,8 +338,8 @@ workflow:
       agent: miller-sticky-brand
       action: execute_smb-b2b-layer
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/activation-system-report.md
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/activation-30-60-90.md
+        - docs/tactical/brand/activation/activation-system-report.md
+        - docs/tactical/brand/activation/activation-30-60-90.md
     - workflow_end:
         id: complete
         action: workflow_complete

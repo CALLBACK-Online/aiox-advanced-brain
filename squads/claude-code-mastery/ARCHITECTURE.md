@@ -77,7 +77,7 @@ This squad bridges Claude Code native features with the AIOX meta-framework.
 | AIOX Concept | Claude Code Equivalent | Bridge Agent |
 |---|---|---|
 | Agents (`@dev`, `@qa`, etc.) | Subagents (`.claude/agents/*.md`) | Nexus |
-| Tasks (`.aiox-core/development/tasks/`) | Skills (`.claude/skills/*/SKILL.md`) | Anvil |
+| Tasks (`.aiox-core/development/tasks/`) | Skills (`skills/*/SKILL.md`) | Anvil |
 | Workflows (multi-step sequences) | Multi-step sessions / command chains | Conduit |
 | `core-config.yaml` | `.claude/settings.json` hierarchy | Sigil |
 | Python hooks (`.aiox-core/monitor/hooks/`) | Native hooks (command/http/prompt/agent) | Latch |
@@ -90,7 +90,7 @@ This squad bridges Claude Code native features with the AIOX meta-framework.
 
 2. AIOX tasks map to Claude Code skills. Anvil provides `*convert-task-to-skill` to automate the translation from task YAML to SKILL.md format.
 
-   This mapping is not limited to `.claude/skills/` in the current project. Claude Code discovers skills from managed, user, project, plugin, bundled, explicit `--add-dir`, and feature-gated MCP surfaces. Skills with `paths:` stay conditional until matching files are touched; they do not join the active pool up front.
+   This mapping is not limited to `skills/` in the current project. Claude Code discovers skills from managed, user, project, plugin, bundled, explicit `--add-dir`, and feature-gated MCP surfaces. Skills with `paths:` stay conditional until matching files are touched; they do not join the active pool up front.
 
 3. AIOX workflows map to multi-step Claude Code sessions. Conduit designs integration patterns that compose skills, commands, and hooks into coherent workflows.
 
@@ -106,11 +106,11 @@ This squad bridges Claude Code native features with the AIOX meta-framework.
 
 | Surface | Discovery | Activation Model |
 |---|---|---|
-| Managed skills | Policy-managed `.claude/skills/` | Always available unless locked by policy |
-| User skills | `~/.claude/skills/` | Always available |
-| Project skills | `.claude/skills/` in cwd chain | Always available or conditional via `paths:` |
+| Managed skills | Policy-managed `skills/` | Always available unless locked by policy |
+| User skills | `~/skills/` | Always available |
+| Project skills | `skills/` in cwd chain | Always available or conditional via `paths:` |
 | Additional dirs | `--add-dir <path>` | Explicit opt-in skill roots |
-| Project slash skills | `.claude/skills/` | Loaded as first-class project skills |
+| Project slash skills | `skills/` | Loaded as first-class project skills |
 | Plugin skills | `<plugin>/skills/<name>/SKILL.md` | Namespaced slash skills |
 | Bundled skills | Claude Code built-ins | Always available unless slash commands are disabled |
 | MCP skills | `skill://` resources | Feature-gated and treated as remote/untrusted |
@@ -148,7 +148,7 @@ The squad now treats Claude Code as a runtime, not as a prompt shell.
 | **MCP Integration** | stdio, HTTP Streamable, SSE transports; 200+ servers; Tool Search | Piper | Conduit (project) |
 | **Subagents & Teams** | Agent tool, Agent Teams, worktree isolation, parallel execution | Nexus | Latch (hooks for teams) |
 | **Settings & Permissions** | 5-layer hierarchy, allow/ask/deny rules, sandbox, managed policies | Sigil | Conduit (project setup) |
-| **Skills & Plugins** | SKILL.md, conditional `paths:`, project `.claude/skills/`, plugin/bundled/MCP skills, hot reload, marketplace | Anvil | Sigil (config) |
+| **Skills & Plugins** | SKILL.md, conditional `paths:`, project `skills/`, plugin/bundled/MCP skills, hot reload, marketplace | Anvil | Sigil (config) |
 | **Project Integration** | CLAUDE.md, .claude/rules/, CI/CD headless, brownfield, git workflow | Conduit | Sigil (settings) |
 | **Roadmap & Updates** | Changelog, feature radar, version tracking, plan-first methodology | Vigil | Conduit (adoption) |
 

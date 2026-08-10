@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: an-extract-dna-source-assessment
   task_name: Extract DNA -- Source Assessment
   status: pending
@@ -21,11 +21,11 @@ sinkra_task_metadata:
   accountability_scope: review_only
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Tactical
   atomic_layer: Atom
   executor: Agent
@@ -33,7 +33,7 @@ sinkra_contract:
   post_condition: "source_map e curadoria_score prontos para extração."
   performance: "bloquear extração se a cobertura mínima não existir."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 # Task: Extract DNA -- Source Assessment
 

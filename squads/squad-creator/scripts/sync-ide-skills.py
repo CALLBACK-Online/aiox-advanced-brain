@@ -52,7 +52,7 @@ DEFAULT_CONFIG = {
             "source": "squads/*/agents/",
             "destinations": {
                 "claude": {
-                    "path": ".claude/skills/{squad_alias}/{agent}/SKILL.md",
+                    "path": "skills/{squad_alias}/{agent}/SKILL.md",
                     "format": "md"
                 },
                 "cursor": {
@@ -72,7 +72,7 @@ DEFAULT_CONFIG = {
                     "format": "md"
                 },
                 "codex": {
-                    "path": ".agents/skills/{squad_alias}/",
+                    "path": "skills/{squad_alias}/",
                     "format": "md"
                 }
             }
@@ -379,7 +379,7 @@ def get_destination_path(
 
     if ide == "claude":
         name_without_ext = Path(filename).stem
-        # Depth-2 flat naming: .claude/skills/{prefix}-{name}/SKILL.md
+        # Depth-2 flat naming: skills/{prefix}-{name}/SKILL.md
         # Scanner only reads depth-2 (loadSkillsDir.ts:424). Depth-3+ is invisible.
         # Naming: avoid duplication (e.g. copy-chief not copy-copy-chief)
         if name_without_ext.startswith(squad_alias.lower().replace(' ', '-') + '-') or name_without_ext == squad_alias.lower():

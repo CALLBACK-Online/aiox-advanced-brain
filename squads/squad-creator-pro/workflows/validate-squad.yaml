@@ -214,12 +214,12 @@ workflow:
               command: Check name, version, description, entry_agent
               severity: BLOCKING
             - id: T1-WSP-001
-              name: workspace_integration level declared
-              command: Check workspace_integration.level or workspace_integration_level is present
+              name: local project docs level declared
+              command: Check local project docs.level or local project docs_level is present
               severity: BLOCKING
             - id: T1-WSP-002
-              name: workspace_integration level valid
-              command: Check level in [none, read_only, controlled_runtime_consumer, workspace_first]
+              name: local project docs level valid
+              command: Check level in [none, read_only (enterprise levels removed in aiox-advanced-brain)]
               severity: BLOCKING
             - id: T1-ENT-001
               name: Entry agent exists
@@ -285,13 +285,13 @@ workflow:
               threshold: ">= 0.50"
               severity: WARNING
             - id: T2-WSP-001
-              name: Workspace references when required
-              metric: workspace refs in tasks/workflows/config when level != none
+              name: LocalDocs references when required
+              metric: local_docs refs in tasks/workflows/config when level != none
               threshold: ">= 1"
               severity: BLOCKING
             - id: T2-WSP-002
-              name: Workspace-first scripts present when required
-              metric: bootstrap + essentials validator scripts when level == workspace_first
+              name: local scripts present when required
+              metric: bootstrap + essentials validator scripts when level == local
               threshold: both present
               severity: BLOCKING
       output:

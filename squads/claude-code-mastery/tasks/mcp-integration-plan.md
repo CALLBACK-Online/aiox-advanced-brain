@@ -6,7 +6,7 @@
 **Owner:** Conduit (project-integrator)
 **Purpose:** Plan MCP server integration for a project by analyzing needs, mapping capabilities to available servers, estimating context budget impact, and prioritizing by ROI under the current Claude Code MCP ownership and policy model.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: mcp-integration-plan
 atomic_layer: Atom

@@ -162,13 +162,13 @@ Para cada componente adaptado:
 
 - `squads/design/checklists/component-adaptation-checklist.md`
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - f2_adapt_shadcn_components_artifact

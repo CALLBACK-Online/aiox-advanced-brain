@@ -172,7 +172,7 @@ composed:
   characteristics:
     - "Orchestrator that delegates to 2+ sub-tasks (atoms) without direct execution"
     - "No direct execution — routing + coordination + state aggregation only"
-    - "Functions as Molecule-level orchestrator in SINKRA hierarchy"
+    - "Functions as Molecule-level orchestrator in AIOX hierarchy"
     - "Invokes atom sequences via workflow phases"
     - "Holds atomic_layer: Atom for backwards compatibility"
 
@@ -198,7 +198,7 @@ composed:
     - "Tasks that coordinate 2+ sub-tasks into a unified outcome"
     - "Pipeline and workflow phase management"
 
-  sinkra_mapping: |
+  aiox_mapping: |
     Composed tasks function as Molecule-level orchestrators. They hold
     atomic_layer: Atom for backwards compatibility but semantically
     operate at the Molecule level.

@@ -967,7 +967,7 @@ Rule: Spend time proportional to impact potential
 **Projeto 1: Setup do RMBC 2.0 AI Pipeline**
 - Segunda: Criar Claude Project para Brief Generation. Upload template dos 25 pontos
 - Terça: Criar Claude Project para VSSL Generation. Upload outline + exemplos
-- Quarta: Criar Perplexity workspace para ingredient research
+- Quarta: Criar Perplexity local_docs para ingredient research
 - Quinta: Testar pipeline completo com um produto/cliente
 - Sexta: Refinar prompts baseado nos resultados
 - **Resultado:** Pipeline AI funcional que gera copy em horas em vez de dias

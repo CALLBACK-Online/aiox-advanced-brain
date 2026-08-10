@@ -27,15 +27,12 @@ Review an epic that includes UI/frontend work to validate it correctly reference
 
 The task resolves DS configuration through the squad-local BU/app resolver:
 
-- `workspace/_system/config.yaml` — declares whether the BU DS is `configured`, `not_configured`, or `not_applicable`
-- `workspace/businesses/{bu}/design-system/config.yaml` — canonical DS config for configured BUs
-- `node squads/design-system/scripts/design-system/resolve_business_design_system.cjs` — deterministic resolver used by the design squad
+- `docs/config.yaml` — declares whether the BU DS is `configured`, `not_configured`, or `not_applicable`
+- `docs/design-system/config.yaml` — canonical DS config for configured BUs
 - `node squads/design-system/scripts/load-context.cjs --task=epic-ds-review ...` — task-level loader that wraps the resolver and expands app/theme paths
 
 **Resolution order:**
 
-1. **Resolve from `business_slug`** — If `business_slug` is provided, call `resolve_business_design_system.cjs --bu={slug}`
-2. **Resolve from `app_id`** — If `app_id` is provided, call `resolve_business_design_system.cjs --app={id}`
 3. **Legacy fallback from `codebase_path`** — If no BU/app is available, scan heuristically from the target codebase path
 
 **What the resolver provides for configured BUs:**
@@ -63,13 +60,13 @@ The task resolves DS configuration through the squad-local BU/app resolver:
 
 **If resolver returns `not_applicable`:** skip DS review and do not ask for DS creation.
 
-**If resolver returns `not_configured`:** stop the epic review and return a remediation note to configure `workspace/businesses/{bu}/design-system/config.yaml`.
+**If resolver returns `not_configured`:** stop the epic review and return a remediation note to configure `docs/design-system/config.yaml`.
 
 ## Inputs
 
 - `epic_path`: Path to the EPIC.md file (required)
-- `business_slug`: Business unit slug matching `workspace/_system/config.yaml` → `businesses.{slug}` (optional — preferred)
-- `app_id`: App identifier declared inside `workspace/businesses/{bu}/design-system/config.yaml` (optional — auto-resolves all paths)
+- `business_slug`: Business unit slug matching `docs/config.yaml` → `businesses.{slug}` (optional — preferred)
+- `app_id`: App identifier declared inside `docs/design-system/config.yaml` (optional — auto-resolves all paths)
 - `codebase_path`: Path to the target app's component directory (optional legacy fallback if `business_slug`/`app_id` are unavailable)
 - `reference_path`: Path to reference implementation being ported (optional)
 - `mode`: Execution mode — `yolo` | `interactive` | `preflight` (default: `interactive`)
@@ -260,13 +257,13 @@ Non-auto-fixable items (require @pm decision):
 - [ ] Review report written to epic directory
 - [ ] Next action communicated to appropriate agent (@pm or @sm)
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - epic_ds_review_artifact

@@ -265,7 +265,7 @@ def build_contract(folder: Path) -> dict[str, Any]:
         criteria = list(kind["criteria"])
 
     return {
-        "schema": "sinkra.research-local-contract.v1",
+        "schema": "aiox.research-local-contract.v1",
         "generated_at": today(),
         "generator": "tech-research/research_contract.py",
         "derived_from_research": True,

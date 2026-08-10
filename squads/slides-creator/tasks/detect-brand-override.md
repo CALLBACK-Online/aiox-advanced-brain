@@ -1,8 +1,8 @@
 # Task: Detect Brand Override
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Operational -->
+<!-- AIOX Domain: Operational -->
 
 ## Metadata
 | Campo | Valor |
@@ -13,7 +13,7 @@
 | session | SESSION-SPEC |
 | duration | <1s |
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml
@@ -53,7 +53,7 @@ Outputs:
       override_slug: "string | null"
       source_checked:
         - "palette-registry.overrides[slug == project_slug]"
-        - "workspace/businesses/{client_slug}/L2-tactical/brand/brand-platform.yaml"
+        - "docs/tactical/brand/brand-platform.yaml"
       action_required: "register | resolve | null"
 ```
 
@@ -76,7 +76,7 @@ Acceptance_criteria:
   - "override_exists is boolean (never null)"
   - "When override_exists==true, override_slug references a valid palette-registry entry"
   - "action_required ∈ {register, resolve, null}"
-  - "source_checked enumerates both palette-registry AND L2-tactical/brand/brand-platform.yaml"
+  - "source_checked enumerates both palette-registry AND tactical/brand/brand-platform.yaml"
   - "Decision is deterministic for same input (no LLM call)"
 ```
 

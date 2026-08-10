@@ -290,7 +290,7 @@ async function fetchOpenRouterModels(env) {
   const response = await fetch(OPENROUTER_MODELS_ENDPOINT, {
     headers: {
       "Authorization": `Bearer ${env.OPENROUTER_API_KEY}`,
-      "HTTP-Referer": "https://sinkra.ai",
+      "HTTP-Referer": "https://aiox.ai",
       "X-Title": "design-md-model-benchmark",
     },
   });

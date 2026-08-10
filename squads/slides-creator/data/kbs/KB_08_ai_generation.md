@@ -154,7 +154,7 @@ Sempre detalhar:
 ```
 top-down view / bird's eye view
   Uso: Overview, organização espacial, patterns
-  Exemplo: "top-down view of organized workspace"
+  Exemplo: "top-down view of organized local_docs"
 
 eye-level / straight-on
   Uso: Neutro, jornalístico, documental
@@ -227,8 +227,8 @@ traditional executive boardroom
   "traditional executive boardroom with dark walnut wood paneling,
    large rectangular table (seats 16), leather chairs, subtle brass accents"
 
-tech startup workspace
-  "open-plan tech startup workspace with exposed brick walls,
+tech startup local_docs
+  "open-plan tech startup local_docs with exposed brick walls,
    industrial-style lighting, collaborative zones with whiteboards,
    standing desks, casual breakout areas"
 
@@ -561,7 +561,7 @@ suggestion), landline desk phone (corded, 1990s style), fax machine, overhead
 fluorescent lighting (harsh and flat), overall color treatment (complete
 desaturation, shades of gray #808080 to #D3D3D3), slightly faded appearance
 suggesting past, RIGHT SIDE (40% of width): vibrant full-color modern digital
-workspace, elements include floating cloud storage icons (3D isometric cubes
+local_docs, elements include floating cloud storage icons (3D isometric cubes
 with cloud symbol), holographic interface screens (semi-transparent displays
 showing abstract colorful data visualizations), wireless devices (sleek laptop,
 tablet, smartphone arranged on clean desk), AI assistant symbol (abstract
@@ -706,7 +706,6 @@ environment, --v 6.0
 #### Leadership Team - Executive Portrait
 
 ```
-Environmental group portrait of C-level executive leadership team, 6 individuals
 total composed in asymmetric staggered formation (not traditional straight line),
 POSITIONING: back row 3 people standing (positions: left 1.5m from center, center,
 right 1.2m from center), front row 3 people in varied poses (left person seated
@@ -843,7 +842,7 @@ corporate aesthetic, suitable for business presentation, --ar 1:1 --stylize 50
 #### Escritório Corporativo Genérico
 
 ```
-modern corporate office interior, open floor plan workspace, natural daylight
+modern corporate office interior, open floor plan local_docs, natural daylight
 from floor-to-ceiling windows (no direct sun, diffused overcast light), no
 people visible (empty space or people completely out of frame), color palette
 (white walls #FFFFFF, light wood floors #D4C5B0, navy blue #003B5C accent

@@ -1,6 +1,6 @@
 # Task: Emit Bench Output Dash
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 

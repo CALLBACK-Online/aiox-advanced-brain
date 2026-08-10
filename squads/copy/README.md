@@ -290,32 +290,6 @@ O sub-modulo Brunson adiciona capacidades de funnel building:
 
 ---
 
-## Workspace Integration Governance
-
-O squad `copy` opera em `workspace_first`.
-
-Antes de qualquer execução:
-
-```bash
-bash squads/copy/scripts/bootstrap-copy-workspace.sh
-bash squads/copy/scripts/validate-copy-essentials.sh
-```
-
-Ordem de leitura de dados (obrigatória):
-
-1. `workspace/businesses/{slug}/L1-strategy/offerbook.yaml`
-2. `workspace/businesses/{slug}/L3-product/{product}/offerbook.yaml` quando houver produto alvo
-3. `workspace/businesses/{slug}/L2-tactical/brand/*`
-4. `workspace/businesses/{slug}/L2-tactical/movement/*` quando a mensagem depender de narrativa identitária
-5. `workspace/businesses/{slug}/L3-product/{product}/sales-process.yaml` quando o deliverable depender do funil
-6. `workspace/_templates/business-template/L1-strategy/*` e `workspace/_templates/business-template/L2-tactical/*` como fallback estrutural
-
-Comando recomendado no início do trabalho:
-
-- `*workspace-context` para consolidar contexto antes de `*diagnose`.
-
----
-
 ## Comandos do Copy Chief
 
 ### Workflow Commands
@@ -323,7 +297,7 @@ Comando recomendado no início do trabalho:
 | Comando | Descricao |
 |---------|-----------|
 | `*help` | Ver todos os comandos |
-| `*workspace-context` | Carregar e validar contexto do workspace |
+| `*project context` | Carregar e validar contexto de docs/project |
 | `*diagnose` | Iniciar diagnostico Tier 0 |
 | `*diagnose-awareness` | Schwartz: identificar nivel de consciencia |
 | `*diagnose-sophistication` | Schwartz: identificar estagio de sofisticacao |
@@ -819,9 +793,9 @@ Quando ativado:
 ```
 @copy-chief
 
-*workspace-context
+*project context
 
-[Carrega governanca + templates + contexto do workspace]
+[Carrega governanca + templates + contexto de docs/project]
 
 *diagnose
 

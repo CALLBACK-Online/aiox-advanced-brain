@@ -2,7 +2,7 @@
 
 > Compiled from 3 rules in composition-rules/
 > Generated: 2026-04-17
-> Compiler: compile-rules.cjs (SINKRA rule-compiler)
+> Compiler: compile-rules.cjs (AIOX rule-compiler)
 
 ---
 
@@ -58,7 +58,7 @@ Prefer composable sub-components over monolithic config objects.
 - Each sub-component is independently testable and replaceable
 - Consumer controls which features are included (no dead config)
 - Tree-shaking eliminates unused sub-components
-- Follows @sinkra/ds-core patterns: Table, Dialog, Sheet all use composition
+- Follows @aiox/ds-core patterns: Table, Dialog, Sheet all use composition
 - Config objects create coupling between unrelated concerns
 
 ---
@@ -111,7 +111,7 @@ function Select({
 
 - Uncontrolled mode reduces boilerplate for simple forms
 - Controlled mode enables complex form logic (validation, dependent fields)
-- @sinkra/ds-core Select, Input, Tabs all follow this dual-mode pattern
+- @aiox/ds-core Select, Input, Tabs all follow this dual-mode pattern
 - Radix UI primitives use this exact pattern internally
 
 ---
@@ -123,7 +123,7 @@ function Select({
 
 # Slot Pattern (asSlot)
 
-Use the `asSlot` utility from @sinkra/ds-core to allow a component to render
+Use the `asSlot` utility from @aiox/ds-core to allow a component to render
 as a different element while preserving its styles and behavior.
 
 ## Incorrect
@@ -137,7 +137,7 @@ as a different element while preserving its styles and behavior.
 ## Correct
 
 ```tsx
-import { Button, asSlot } from '@sinkra/ds-core';
+import { Button, asSlot } from '@aiox/ds-core';
 import Link from 'next/link';
 
 // Button renders as Next.js Link, preserving button styles
@@ -151,6 +151,6 @@ import Link from 'next/link';
 - `asSlot` (Radix pattern) is type-safe without complex generics
 - Child element receives all parent styles and behavior
 - Works with Next.js Link, React Router Link, or any element
-- @sinkra/ds-core exposes `asSlot` as a utility
+- @aiox/ds-core exposes `asSlot` as a utility
 
 ---

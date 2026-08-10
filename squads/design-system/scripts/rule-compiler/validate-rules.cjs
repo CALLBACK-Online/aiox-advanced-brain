@@ -5,7 +5,7 @@
  * Validates rule .md files for completeness and correctness.
  * Checks frontmatter fields, code example presence, and file naming.
  *
- * Adapted from v0 react-best-practices-build/validate.ts for SINKRA format.
+ * Adapted from v0 react-best-practices-build/validate.ts for AIOX format.
  * Source: B04 ABSORB verdict (COMPARE pipeline, 2026-04-16)
  *
  * Usage:

@@ -839,7 +839,6 @@ REGULAR (response < 4 hours):
 Pre-launch:
 | Meeting | Frequency | Participants | Duration | Output |
 |---------|-----------|-------------|----------|--------|
-| SteerCo | Weekly | C-level + PO | 30min | Strategic decisions |
 | War Room | Daily (last week) | Leaders | 15min | Status + blockers |
 | Deep Dive | 2x/week | By area | 60min | Specific problems |
 | All Hands | Weekly | Everyone | 30min | General alignment |
@@ -1728,7 +1727,6 @@ output_examples:
 - [ ] War room operations defined (roles, channels, escalation)
 - [ ] Contingency plan for top 5 failure scenarios
 - [ ] Post-mortem template ready for after launch
-
 
 
 <\!-- Criado com Squad Creator do AIOXPRO por @oalanicolas e @pedrovalerio | 2026-02-10 -->

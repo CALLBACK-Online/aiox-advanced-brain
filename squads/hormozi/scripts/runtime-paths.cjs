@@ -2,15 +2,15 @@
 
 const path = require('path');
 
-const WORKSPACE_ROOT = path.resolve(__dirname, '..', '..', '..');
-const DEFAULT_RUNTIME_ROOT = path.join(WORKSPACE_ROOT, '.aiox', 'squad-runtime');
+const PROJECT_ROOT = path.resolve(__dirname, '..', '..', '..');
+const DEFAULT_RUNTIME_ROOT = path.join(PROJECT_ROOT, '.aiox', 'squad-runtime');
 
 function toPosix(value) {
   return value.split(path.sep).join('/');
 }
 
-function toWorkspaceRelative(targetPath) {
-  const relative = path.relative(WORKSPACE_ROOT, targetPath);
+function toProjectRelative(targetPath) {
+  const relative = path.relative(PROJECT_ROOT, targetPath);
   if (!relative) return '.';
   if (relative.startsWith('..') || path.isAbsolute(relative)) {
     return toPosix(path.resolve(targetPath));
@@ -22,7 +22,7 @@ function resolveRuntimeRoot() {
   const override = (process.env.AIOX_RUNTIME_ROOT || '').trim();
   if (!override) return DEFAULT_RUNTIME_ROOT;
   if (path.isAbsolute(override)) return override;
-  return path.resolve(WORKSPACE_ROOT, override);
+  return path.resolve(PROJECT_ROOT, override);
 }
 
 function getHormoziRuntimeRoot() {
@@ -35,10 +35,10 @@ function getHormoziSessionContextPath() {
 
 module.exports = {
   DEFAULT_RUNTIME_ROOT,
-  WORKSPACE_ROOT,
+  PROJECT_ROOT,
   getHormoziRuntimeRoot,
   getHormoziSessionContextPath,
   resolveRuntimeRoot,
   toPosix,
-  toWorkspaceRelative,
+  toProjectRelative,
 };

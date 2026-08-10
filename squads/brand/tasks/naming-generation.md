@@ -11,11 +11,11 @@ estimated_duration: "20-40 min"
 ```
 
 **Responsible Executor:** Agent (@naming-strategist)  
-**Dependencies:** depends_on: `[load-workspace-context]` · enables: `[domain-check]` · workflow: `wf-naming-to-domain`
+**Dependencies:** depends_on: `[load-project context]` · enables: `[domain-check]` · workflow: `wf-naming-to-domain`
 
 ## Prerequisites
 
-- **Context Gate (mandatory):** Brand workspace context must be loaded before execution. Run `load-workspace-context` first. If `workspace/businesses/{brand_name}/L2-tactical/brand/` does not exist, HALT and suggest workspace setup.
+- **Context Gate (mandatory):** Brand project context must be loaded before execution. Run `load-project context` first. If `docs/tactical/brand/` does not exist, HALT and suggest local_docs setup.
 - **Vocabulary:** Consult `data/brand-mappings.yaml` for canonical naming terminology.
 
 ## Objective
@@ -40,7 +40,7 @@ Gerar shortlist de nomes com metodologia SNP (Igor Pinterich), aplicando valida�
 
 | Artifact | Location | Description |
 |---|---|---|
-| `naming-shortlist.md` | `workspace/businesses/{brand_name}/L2-tactical/brand/naming/naming-shortlist.md` | Top candidatos priorizados pelo funil SNP com score e rationale |
+| `naming-shortlist.md` | `docs/tactical/brand/naming/naming-shortlist.md` | Top candidatos priorizados pelo funil SNP com score e rationale |
 
 ## Execution Steps (SNP)
 

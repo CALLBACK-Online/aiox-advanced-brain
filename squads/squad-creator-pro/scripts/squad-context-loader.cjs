@@ -22,7 +22,7 @@ const {
   getCanonicalStatePath,
   readActiveSquad: readActiveSquadFromRuntime,
   readStateWithLegacyFallback,
-  toWorkspaceRelative,
+  toRepoRelative,
 } = require(path.resolve(__dirname, '..', '..', 'squad-creator', 'scripts', 'lib', 'squad-runtime-paths.cjs'));
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -169,7 +169,7 @@ Output: JSON context to stdout
   });
   const statePath = stateLookup.path || getStatePath(slug);
   if (!stateLookup.state) {
-    outputError('STATE_NOT_FOUND', `State file not found: ${toWorkspaceRelative(statePath)}`, {
+    outputError('STATE_NOT_FOUND', `State file not found: ${toRepoRelative(statePath)}`, {
       hint: `Run: node squad-state-manager.cjs init ${slug}`
     });
     process.exit(1);
@@ -178,7 +178,7 @@ Output: JSON context to stdout
   const state = stateLookup.state;
   if (state.__corrupted) {
     outputError('CORRUPTED_STATE', `Corrupted state.json for ${slug}`, {
-      path: toWorkspaceRelative(statePath),
+      path: toRepoRelative(statePath),
       hint: 'Delete and re-init.'
     });
     process.exit(1);
@@ -198,7 +198,7 @@ Output: JSON context to stdout
     current_phase: state.current_phase || 'unknown',
     checkpoint_status: state.checkpoint_status || 'unknown',
     output_dir: `squads/${slug}/`,
-    state_file: toWorkspaceRelative(getStatePath(slug)),
+    state_file: toRepoRelative(getStatePath(slug)),
     state_source: stateLookup.source || 'canonical',
     completed_outputs: completedOutputs,
     agent_history: state.agent_history || [],

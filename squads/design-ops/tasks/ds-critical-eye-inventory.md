@@ -20,10 +20,10 @@ This is Step 1 of the Critical Eye workflow — the foundation that all subseque
 
 ## Prerequisites
 
-- `workspace/ui/pattern-catalog.json` exists and contains at least 1 variant
+- `docs/design-system/ui/pattern-catalog.json` exists and contains at least 1 variant
 - `squads/design-system/data/critical-eye-scoring-rules.yaml` loaded (for category definitions)
-- `workspace/ui/registry.json` accessible (for cross-reference)
-- `workspace/domains/design-system/metadata/components.json` accessible
+- `docs/design-system/ui/registry.json` accessible (for cross-reference)
+- `docs/design-system/domains/metadata/components.json` accessible
 
 ## Workflow
 
@@ -110,13 +110,13 @@ This is Step 1 of the Critical Eye workflow — the foundation that all subseque
 
 - `squads/design/checklists/ds-critical-eye-review-checklist.md`
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_critical_eye_inventory_artifact

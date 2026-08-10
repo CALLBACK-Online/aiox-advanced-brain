@@ -39,8 +39,8 @@ class TestShortName(unittest.TestCase):
     """Unit tests for short_name()."""
 
     def test_oalanicolas_prefix(self):
-        path = "/tmp/.claude/projects/-Users-userA-Code-sinkra-hub"
-        self.assertEqual(short_name(path), "sinkra-hub")
+        path = "/tmp/.claude/projects/-Users-userA-Code-upstream monorepo"
+        self.assertEqual(short_name(path), "upstream monorepo")
 
     def test_alan_prefix(self):
         path = "/tmp/.claude/projects/-Users-userB-Code-aiox-stage"
@@ -103,12 +103,12 @@ class TestAnalyzeSession(unittest.TestCase):
     def test_extracts_slash_commands(self):
         entries = [
             {"message": {"content": "invoking <command-name>commit</command-name> now"}},
-            {"message": {"content": "<command-name>sinkra-squad:sinkra-chief</command-name>"}},
+            {"message": {"content": "<command-name>aiox-squad:aiox-chief</command-name>"}},
         ]
         path = self._write_jsonl("commands.jsonl", entries)
         result = analyze_session(path)
         self.assertEqual(result["slash_commands"]["/commit"], 1)
-        self.assertEqual(result["slash_commands"]["/sinkra-squad:sinkra-chief"], 1)
+        self.assertEqual(result["slash_commands"]["/aiox-squad:aiox-chief"], 1)
 
     def test_ignores_builtin_commands(self):
         entries = [
@@ -150,14 +150,14 @@ class TestAnalyzeSession(unittest.TestCase):
     def test_extracts_shell_runners(self):
         entries = [
             {"message": {"content": [
-                {"type": "tool_use", "name": "Bash", "input": {"command": "bash sinkra-map.sh --all"}},
+                {"type": "tool_use", "name": "Bash", "input": {"command": "bash aiox-map.sh --all"}},
                 {"type": "tool_use", "name": "Bash", "input": {"command": "/path/to/validate-squad.sh config.yaml"}},
                 {"type": "tool_use", "name": "Bash", "input": {"command": "npm run build"}},
             ]}}
         ]
         path = self._write_jsonl("runners.jsonl", entries)
         result = analyze_session(path)
-        self.assertEqual(result["shell_runners"]["sinkra-map.sh"], 1)
+        self.assertEqual(result["shell_runners"]["aiox-map.sh"], 1)
         self.assertEqual(result["shell_runners"]["validate-squad.sh"], 1)
         self.assertNotIn("build", result["shell_runners"])
 
@@ -407,7 +407,7 @@ class TestGetRecentCommits(unittest.TestCase):
             def5678 docs(epic-71): add stories
             ghi9012 fix: correct RLS policy
             jkl3456 chore: squad validation
-            mno7890 fix(sinkra): add tokens
+            mno7890 fix(aiox): add tokens
             pqr1234 feat(synapse): scanner
             stu5678 fix(yaml): duplicate keys
             vwx9012 feat: migrate AN_KE_115 to structure
@@ -416,7 +416,7 @@ class TestGetRecentCommits(unittest.TestCase):
             result = get_recent_commits("/fake/repo", 14)
         self.assertEqual(result["SDC (Story/Epic)"], 2)
         self.assertEqual(result["Squad"], 1)
-        self.assertEqual(result["SINKRA"], 1)
+        self.assertEqual(result["AIOX"], 1)
         self.assertEqual(result["Synapse"], 1)
         self.assertEqual(result["CI/Infra"], 1)
         self.assertEqual(result["MMOS/Minds"], 1)
@@ -445,7 +445,7 @@ class TestDiscoverInventory(unittest.TestCase):
                 f.write("# placeholder")
 
     def test_discovers_skills(self):
-        self._make_dirs(".claude/skills/commit", ".claude/skills/handoff", ".claude/skills/deploy")
+        self._make_dirs("skills/commit", "skills/handoff", "skills/deploy")
         inv = discover_inventory(self.tmpdir)
         self.assertEqual(sorted(inv["skills"]), ["commit", "deploy", "handoff"])
 
@@ -456,9 +456,9 @@ class TestDiscoverInventory(unittest.TestCase):
 
     def test_discovers_skill_groups(self):
         self._make_files(
-            ".claude/skills/copy-copy-chief/SKILL.md",
-            ".claude/skills/copy-gary-halbert/SKILL.md",
-            ".claude/skills/hormozi-hormozi-chief/SKILL.md",
+            "skills/copy-copy-chief/SKILL.md",
+            "skills/copy-gary-halbert/SKILL.md",
+            "skills/hormozi-hormozi-chief/SKILL.md",
         )
         inv = discover_inventory(self.tmpdir)
         self.assertEqual(inv["skill_groups"]["copy"], 2)
@@ -476,8 +476,8 @@ class TestDiscoverInventory(unittest.TestCase):
         self.assertEqual(inv["agents"], ["dev"])
 
     def test_ignores_files_in_skills_dir(self):
-        self._make_files(".claude/skills/registry.yaml")
-        self._make_dirs(".claude/skills/commit")
+        self._make_files("skills/registry.yaml")
+        self._make_dirs("skills/commit")
         inv = discover_inventory(self.tmpdir)
         self.assertEqual(inv["skills"], ["commit"])
 
@@ -1378,9 +1378,9 @@ class TestFormatMarkdown(unittest.TestCase):
     def test_unused_skills_section(self):
         tmpdir = tempfile.mkdtemp()
         try:
-            os.makedirs(os.path.join(tmpdir, ".claude/skills/commit"), exist_ok=True)
-            os.makedirs(os.path.join(tmpdir, ".claude/skills/roundtable"), exist_ok=True)
-            os.makedirs(os.path.join(tmpdir, ".claude/skills/tribunal"), exist_ok=True)
+            os.makedirs(os.path.join(tmpdir, "skills/commit"), exist_ok=True)
+            os.makedirs(os.path.join(tmpdir, "skills/roundtable"), exist_ok=True)
+            os.makedirs(os.path.join(tmpdir, "skills/tribunal"), exist_ok=True)
             md = format_markdown(self._make_data(), 14, {"test": tmpdir})
             self.assertIn("## Skills NUNCA Usados (test)", md)
             self.assertIn("- `roundtable`", md)
@@ -1724,7 +1724,7 @@ class TestEdgeCases(unittest.TestCase):
         entries = [
             {"message": {"content": [
                 {"type": "tool_use", "name": "Bash", "input": {
-                    "command": "squads/sinkra-squad/scripts/sinkra-map.sh --verbose"
+                    "command": "squads/aiox-squad/scripts/aiox-map.sh --verbose"
                 }},
             ]}}
         ]
@@ -1733,7 +1733,7 @@ class TestEdgeCases(unittest.TestCase):
             for e in entries:
                 f.write(json.dumps(e) + "\n")
         result = analyze_session(path)
-        self.assertEqual(result["shell_runners"]["sinkra-map.sh"], 1)
+        self.assertEqual(result["shell_runners"]["aiox-map.sh"], 1)
 
     def test_skill_with_missing_skill_field(self):
         entries = [
@@ -1890,8 +1890,8 @@ class TestCLIWithRepo(unittest.TestCase):
             os.makedirs(proj_dir)
             # Create a fake repo with skills
             repo_dir = os.path.join(tmpdir, "repo")
-            os.makedirs(os.path.join(repo_dir, ".claude/skills/commit"), exist_ok=True)
-            os.makedirs(os.path.join(repo_dir, ".claude/skills/unused-skill"), exist_ok=True)
+            os.makedirs(os.path.join(repo_dir, "skills/commit"), exist_ok=True)
+            os.makedirs(os.path.join(repo_dir, "skills/unused-skill"), exist_ok=True)
 
             script = os.path.join(os.path.dirname(__file__), "session-usage-report.py")
             result = subprocess.run(

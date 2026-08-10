@@ -174,7 +174,7 @@ decisão: → consultar hybrid_flows.mission_bootstrap
 | `comment.*` | 3 ops | api (exceto threads) |
 | `attachment.*` | 6 ops | api (exceto upload) |
 | `doc.*` | 7 ops | api (exceto edit_rich) |
-| `workspace.*` | 4 ops | api |
+| `local_docs.*` | 4 ops | api |
 | `sprint.*` | 6 ops | api |
 | `sync.*` | 3 ops | api |
 | `data.*` | 4 ops | api |

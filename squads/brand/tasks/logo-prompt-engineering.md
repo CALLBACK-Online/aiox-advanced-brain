@@ -39,7 +39,7 @@ Traduzir as direções conceituais estratégicas em prompts SCDS prontos para ge
 
 | Artifact | Location | Description |
 |---|---|---|
-| `logo-prompt-brief.yaml` | `workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-prompt-brief.yaml` | Prompts SCDS prontos para geração |
+| `logo-prompt-brief.yaml` | `docs/tactical/brand/logo/logo-prompt-brief.yaml` | Prompts SCDS prontos para geração |
 
 ## Execution Steps
 
@@ -144,8 +144,8 @@ task: logo-generate
 squad: design
 protocol: cross-squad
 pass:
-  - prompt_brief: "workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-prompt-brief.yaml"
-  - output_dir: "workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/generations"
+  - prompt_brief: "docs/tactical/brand/logo/logo-prompt-brief.yaml"
+  - output_dir: "docs/tactical/brand/logo/generations"
   - brand_name: "{{brand_name}}"
   - guidelines: "squads/design/data/gemini-logo-guidelines.yaml"
 ```

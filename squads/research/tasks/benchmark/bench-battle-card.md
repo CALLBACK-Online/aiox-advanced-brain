@@ -11,7 +11,7 @@ type: atom
 description: "1-page quick comparison for decision makers"
 ```
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Strategic`
 

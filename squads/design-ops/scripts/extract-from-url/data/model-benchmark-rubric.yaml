@@ -57,7 +57,7 @@ blockers:
     description: "DESIGN.md is too large for downstream use and likely includes copied payloads."
 
 non_blocking_environment_failures:
-  - "npm-duplicate-workspace"
+  - "npm-duplicate-local_docs"
 
 thresholds:
   max_design_md_bytes: 250000

@@ -23,7 +23,7 @@ Checklist:
 ---
 
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 atomic_layer: Molecule

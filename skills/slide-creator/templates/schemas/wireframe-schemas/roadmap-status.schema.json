@@ -1,0 +1,86 @@
+{
+  "$id": "aiox://slide-creator/wireframes/roadmap-status.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "The deck needs ordered phases or milestones with ownership/status.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "blocked_1": {
+      "type": "string"
+    },
+    "blocked_1_reason": {
+      "type": "string"
+    },
+    "blocked_2": {
+      "type": "string"
+    },
+    "blocked_2_reason": {
+      "type": "string"
+    },
+    "done_1": {
+      "type": "string"
+    },
+    "done_1_evidence": {
+      "type": "string"
+    },
+    "done_2": {
+      "type": "string"
+    },
+    "done_2_evidence": {
+      "type": "string"
+    },
+    "on_track_1": {
+      "type": "string"
+    },
+    "on_track_1_owner": {
+      "type": "string"
+    },
+    "on_track_2": {
+      "type": "string"
+    },
+    "on_track_2_owner": {
+      "type": "string"
+    },
+    "risk_1": {
+      "type": "string"
+    },
+    "risk_1_owner": {
+      "type": "string"
+    },
+    "risk_2": {
+      "type": "string"
+    },
+    "risk_2_owner": {
+      "type": "string"
+    }
+  },
+  "title": "roadmap-status",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "roadmap_vertical",
+    "slot_count": 17,
+    "warnings": [
+      "action_title",
+      "on_track_1",
+      "on_track_1_owner",
+      "on_track_2",
+      "on_track_2_owner",
+      "risk_1",
+      "risk_1_owner",
+      "risk_2",
+      "risk_2_owner",
+      "blocked_1",
+      "blocked_1_reason",
+      "blocked_2",
+      "blocked_2_reason",
+      "done_1",
+      "done_1_evidence",
+      "done_2",
+      "done_2_evidence"
+    ],
+    "wireframe_ref": "templates/wireframes/roadmap-status.html"
+  }
+}

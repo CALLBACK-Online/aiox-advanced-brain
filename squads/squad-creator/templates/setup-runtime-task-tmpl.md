@@ -308,7 +308,7 @@ slack:
   troubleshooting:
     - "URL invalida - verifique se copiou a URL completa"
     - "Canal arquivado - verifique se o canal ainda existe"
-    - "App desinstalado - reinstale o App no workspace"
+    - "App desinstalado - reinstale o App no project docs"
 ```
 
 ### Typeform API
@@ -324,7 +324,7 @@ typeform:
     3. Crie um novo token com escopos:
        - forms:read
        - forms:write
-       - workspaces:read
+       - forms:read
     4. Copie o token
 
   env_vars:
@@ -333,8 +333,8 @@ typeform:
       format: "^tfp_[a-zA-Z0-9_]+"
       mask: true
 
-    - name: "TYPEFORM_WORKSPACE_ID"
-      prompt: "ID do Workspace (opcional):"
+    - name: "TYPEFORM_ACCOUNT_ID"
+      prompt: "ID de docs/project (opcional):"
       required: false
 
   validation:

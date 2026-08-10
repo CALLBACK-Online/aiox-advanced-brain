@@ -1,6 +1,6 @@
 # ETL Extract Keyframes
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 executor: etl-extractor
@@ -47,7 +47,7 @@ Extract representative keyframes from video files using scene detection, interva
   "strategy": "scene_detection",
   "constraints": {
     "business_slug": "acme",
-    "workspace_mode": "auto"
+    "context_mode": "auto"
   }
 }
 ```
@@ -130,12 +130,11 @@ Combines scene detection with structural similarity filtering.
 
 ## Execution Flow
 
-### Phase 0: Workspace preflight
+### Phase 0: Project preflight
 
-- Run `bash squads/etl-ops/scripts/validate-etl-essentials.sh`
-- Load `tasks/load-workspace-context.md`
+- Load `tasks/load-project context.md`
 - Resolve output root:
-  - canonical: `workspace/businesses/{business_slug}/etl/keyframes/{run_id}/`
+  - canonical: `docs/etl/keyframes/{run_id}/`
   - custom: `docs/etl/{business_slug}/`
   - legacy: caller-provided output path
 
@@ -246,7 +245,7 @@ Create `index.json` with metadata for each keyframe:
 Canonical output suggestion:
 
 ```
-workspace/businesses/{business_slug}/etl/keyframes/{run_id}/
+docs/etl/keyframes/{run_id}/
 ├── keyframes/
 ├── index.json
 └── scenes.csv

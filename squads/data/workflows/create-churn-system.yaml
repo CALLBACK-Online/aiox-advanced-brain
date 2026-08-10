@@ -49,22 +49,6 @@ workflow:
     - Playbooks by signal type
     - Escalation paths
 
-workspace_execution_contract:
-  preflight:
-    - "*workspace-preflight (executa bootstrap-data-workspace.sh + validate-data-essentials.sh)"
-    - "*workspace-context {slug}"
-    - "Confirmar templates necessários em workspace/_templates/analytics/"
-  output_routing:
-    canonical:
-      - "workspace/businesses/{slug}/analytics/churn-alert.yaml"
-      - "workspace/businesses/{slug}/analytics/health-score-report.yaml"
-      - "workspace/businesses/{slug}/analytics/executive-report.yaml"
-    custom:
-      - "docs/data/{slug}/create-churn-system-{date}.md"
-  hard_rules:
-    - "Proibido gravar em workspace/businesses/{slug}/analytics/ sem template correspondente em workspace/_templates/analytics/."
-    - "Relatórios em docs/data/{slug}/ são complementares e não substituem artefatos canônicos."
-
 notes: |
   ## Objetivo
   Identificar clientes em risco antes do churn e acionar intervenção apropriada.

@@ -24,7 +24,7 @@ threshold:
 priority:
   - route_priority
 permission:
-  - workspace_read_scope
+  - project_read_scope
 taxonomy:
   - base_governance_token
 behavior:

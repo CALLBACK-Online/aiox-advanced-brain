@@ -1,8 +1,8 @@
 quality_gates:
   version: "1.0.0"
   squad: design-ops
-  mode: workspace-first
-  source_of_truth: workspace/businesses/{business}/L2-tactical/design/
+  mode: local
+  source_of_truth: docs/tactical/design/
   checklist_refs:
     - squads/design-ops/checklists/ds-core-accessibility-minimum.yaml
     - squads/design-ops/checklists/dops-accessibility-wcag-aa.yaml
@@ -22,7 +22,7 @@ quality_gates:
     DOPS-GATE-001:
       phase: contracts
       threshold: 1
-      rule: "validate_workspace_contracts_strict == 1"
+      rule: "validate_project context contracts_strict == 1"
       veto: true
     DOPS-GATE-002:
       phase: yaml

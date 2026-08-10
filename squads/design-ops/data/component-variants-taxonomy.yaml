@@ -6,13 +6,13 @@ purpose: |
   Canonical taxonomy of component variants extracted from 9 reference DS.
   Used by tasks `ds-build-component`, `ds-compose-molecule`,
   `f3-derive-components`, `f2-adapt-shadcn-components` to know WHICH variants
-  to generate when building components for sinkra-hub apps.
+  to generate when building components for upstream monorepo apps.
 
   Without this taxonomy, each agent invents variants ad-hoc — leading to
   inconsistent button APIs cross-app (one app has `solid/outline`,
   another has `primary/secondary`, another has `default/destructive`).
 
-  This file declares the canonical sinkra-hub variants per component,
+  This file declares the canonical upstream monorepo variants per component,
   with cross-DS frequency analysis as evidence.
 
 method: |
@@ -52,29 +52,29 @@ button:
     "filled bg + brand color":
       synonyms: ["default", "filled", "solid", "primary", "contained"]
       frequency: 9       # all 9 DS have this concept
-      sinkra_canonical: "primary"
+      aiox_canonical: "primary"
     "transparent bg + border":
       synonyms: ["outline", "outlined", "secondary (carbon)", "tertiary (heroui)"]
       frequency: 8
-      sinkra_canonical: "outline"
+      aiox_canonical: "outline"
     "transparent bg + no border + bg-on-hover":
       synonyms: ["ghost", "subtle (fluent/chakra/mantine)", "transparent (mantine)", "plain (chakra/polaris)", "text (mui/ant)"]
       frequency: 9       # different names, same concept
-      sinkra_canonical: "ghost"
+      aiox_canonical: "ghost"
     "filled bg + secondary brand":
       synonyms: ["secondary", "default (ant/mantine)", "tertiary (heroui — soft variant)"]
       frequency: 7
-      sinkra_canonical: "secondary"
+      aiox_canonical: "secondary"
     "destructive intent":
       synonyms: ["destructive (shadcn)", "danger (carbon/heroui/fluent — when destructive)", "warning"]
       frequency: 7        # shadcn/heroui/carbon/ant (flag)/fluent (theming)/polaris (theming)/mui (color)
-      sinkra_canonical: "destructive"
+      aiox_canonical: "destructive"
     "navigation-style underline":
       synonyms: ["link (shadcn/ant)", "plain underline (polaris monochromePlain)"]
       frequency: 4        # less universal
-      sinkra_canonical: "link"
+      aiox_canonical: "link"
 
-  sinkra_canonical_variants:
+  aiox_canonical_variants:
     primary:
       description: "Filled background with primary brand color. Default action emphasis."
       use_when: "Most prominent CTA. ONE per view typically."
@@ -160,13 +160,13 @@ button:
     - name: "dashed (ant)"
       reason: "Ant-specific aesthetic; not present elsewhere"
     - name: "danger--primary/ghost/tertiary (carbon)"
-      reason: "Carbon's matrix of danger × kind. Sinkra uses single 'destructive' + theming"
+      reason: "Carbon's matrix of danger × kind. AIOX uses single 'destructive' + theming"
     - name: "monochromePlain (polaris)"
       reason: "Polaris-specific; equivalent to ghost in practice"
     - name: "tertiary (heroui)"
-      reason: "Subset of secondary in sinkra naming"
+      reason: "Subset of secondary in aiox naming"
 
-  sinkra_canonical_sizes:
+  aiox_canonical_sizes:
     description: "4-step + icon variants. Mantine/shadcn alignment."
     sizes:
       sm:
@@ -200,9 +200,9 @@ button:
     mui:       ["small", "medium", "large"]      # 3
     ant:       ["small", "middle", "large"]      # 3
     polaris:   ["micro", "slim", "medium", "large"]  # 4
-    sinkra:    ["sm", "md", "lg", "icon"]        # 4 — pragmatic
+    aiox:    ["sm", "md", "lg", "icon"]        # 4 — pragmatic
 
-  sinkra_canonical_states:
+  aiox_canonical_states:
     description: "States that EVERY button MUST handle"
     required:
       default: "rest state"
@@ -234,21 +234,21 @@ input:
     "border around input":
       synonyms: ["default (shadcn)", "outlined (mui/ant)", "outline (chakra/fluent)", "bordered (heroui)"]
       frequency: 9
-      sinkra_canonical: "outline"
+      aiox_canonical: "outline"
     "filled bg, no border":
       synonyms: ["filled (mantine/mui/chakra/ant)", "subtle (chakra)", "filled-darker (fluent)", "flat (heroui)"]
       frequency: 7
-      sinkra_canonical: "filled"
+      aiox_canonical: "filled"
     "underline only":
       synonyms: ["flushed (chakra)", "underline (fluent)", "underlined (ant/heroui)", "standard (mui)"]
       frequency: 6
-      sinkra_canonical: "underlined"
+      aiox_canonical: "underlined"
     "no chrome (text only)":
       synonyms: ["unstyled (mantine)", "borderless (ant)"]
       frequency: 2
-      sinkra_canonical: null  # excluded — uncommon
+      aiox_canonical: null  # excluded — uncommon
 
-  sinkra_canonical_variants:
+  aiox_canonical_variants:
     outline:
       description: "Border around input. Standard form field."
       is_default: true
@@ -269,7 +269,7 @@ input:
         border-bottom: "{semantic.color.input}"
         border-bottom-focus: "{semantic.color.ring}"
 
-  sinkra_canonical_sizes:
+  aiox_canonical_sizes:
     sm:
       height: "2rem"     # 32px
       use_when: "Compact forms, table inline edit"
@@ -281,7 +281,7 @@ input:
       height: "2.5rem"   # 40px
       use_when: "Hero search, primary CTA fields"
 
-  sinkra_canonical_states:
+  aiox_canonical_states:
     default: "rest"
     hover: "border slightly darker"
     focus-visible: "ring-2 ring-{ring}"
@@ -308,17 +308,17 @@ card:
     "shadow elevation":
       synonyms: ["elevated (chakra)", "shadow (heroui)", "elevation (mui)", "filled (fluent)", "default (shadcn)"]
       frequency: 9
-      sinkra_canonical: "elevated"
+      aiox_canonical: "elevated"
     "border, no shadow":
       synonyms: ["outline (chakra/fluent)", "bordered (heroui)", "outlined (mui)", "default (mantine withBorder)"]
       frequency: 8
-      sinkra_canonical: "outlined"
+      aiox_canonical: "outlined"
     "subtle bg, no border, no shadow":
       synonyms: ["subtle (chakra/fluent)", "flat (heroui)", "subdued (polaris)", "borderless (ant)"]
       frequency: 7
-      sinkra_canonical: "subtle"
+      aiox_canonical: "subtle"
 
-  sinkra_canonical_variants:
+  aiox_canonical_variants:
     elevated:
       description: "White bg + shadow. Default Material-influenced."
       is_default: true
@@ -339,7 +339,7 @@ card:
         border: "transparent"
         shadow: "none"
 
-  sinkra_canonical_states:
+  aiox_canonical_states:
     default: "rest"
     hover: "shadow-md (only if interactive — onClick/asLink)"
     focus-visible: "ring-2 (only if interactive)"
@@ -363,17 +363,17 @@ dialog:
     "blocking modal":
       synonyms: ["modal (default)", "transactional (carbon)", "default (most)"]
       frequency: 9
-      sinkra_canonical: "modal"
+      aiox_canonical: "modal"
     "confirmation":
       synonyms: ["alert-dialog (shadcn/chakra/mui)", "alert (fluent)", "confirm (ant)", "danger (carbon)"]
       frequency: 8
-      sinkra_canonical: "alert"
+      aiox_canonical: "alert"
     "non-modal popup":
       synonyms: ["non-modal (fluent)", "passive (carbon)"]
       frequency: 2
-      sinkra_canonical: null  # excluded — composed via Popover instead
+      aiox_canonical: null  # excluded — composed via Popover instead
 
-  sinkra_canonical_variants:
+  aiox_canonical_variants:
     modal:
       description: "Standard blocking modal. Backdrop + escape-to-close."
       is_default: true
@@ -391,7 +391,7 @@ dialog:
         confirm-button-variant: "primary"
         cancel-button-variant: "outline"
 
-  sinkra_canonical_sizes:
+  aiox_canonical_sizes:
     sm:
       max-width: "30rem"   # 480px — alert
     md:
@@ -406,7 +406,7 @@ dialog:
       max-height: "100vh"
       use_when: "Mobile or full-screen takeover"
 
-  sinkra_canonical_states:
+  aiox_canonical_states:
     closed: "display:none / unmounted"
     open: "rendered + animation in"
     closing: "animation out"

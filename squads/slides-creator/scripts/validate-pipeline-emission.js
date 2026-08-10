@@ -36,12 +36,12 @@ const VALID_EVENTS = new Set([
 ]);
 
 function parseArgs(argv) {
-  const args = { workspace: process.env.CLAUDE_PROJECT_DIR || process.cwd() };
+  const args = { local_docs: process.env.CLAUDE_PROJECT_DIR || process.cwd() };
   for (let i = 2; i < argv.length; i++) {
     const key = argv[i];
     const val = argv[i + 1];
     if (key === '--run-id') { args.runId = val; i++; }
-    else if (key === '--workspace') { args.workspace = val; i++; }
+    else if (key === '--local_docs') { args.local_docs = val; i++; }
     else if (key === '--strict') { args.strict = true; }
     else if (key === '--json') { args.json = true; }
     else if (key === '--help' || key === '-h') { args.help = true; }
@@ -66,8 +66,8 @@ Exit: 0 pass | 1 fail | 2 error
 `);
 }
 
-function listRunDirs(workspace) {
-  const root = path.join(workspace, 'outputs', 'slides-creator');
+function listRunDirs(local_docs) {
+  const root = path.join(local_docs, 'outputs', 'slides-creator');
   if (!fs.existsSync(root)) return [];
   return fs.readdirSync(root, { withFileTypes: true })
     .filter(d => d.isDirectory())
@@ -148,14 +148,14 @@ function main() {
 
   let runDirs;
   if (args.runId) {
-    const single = path.join(args.workspace, 'outputs', 'slides-creator', args.runId);
+    const single = path.join(args.local_docs, 'outputs', 'slides-creator', args.runId);
     if (!fs.existsSync(single)) {
       process.stderr.write(`ERROR: run dir not found: ${single}\n`);
       process.exit(2);
     }
     runDirs = [single];
   } else {
-    runDirs = listRunDirs(args.workspace);
+    runDirs = listRunDirs(args.local_docs);
   }
 
   const results = runDirs.map(validateRun);

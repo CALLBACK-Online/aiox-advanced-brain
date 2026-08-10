@@ -10,7 +10,7 @@ estimated_time: 60-90min
 source: "$100M Launch Playbook - Framework E.V.E.N.T.O"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom

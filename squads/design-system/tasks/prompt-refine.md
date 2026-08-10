@@ -145,13 +145,13 @@ pass:
   - improvement_summary: "{summary}"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - prompt_refine_artifact

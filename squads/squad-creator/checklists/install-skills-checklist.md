@@ -52,7 +52,7 @@ ide_checks:
     check: "IDE command directory exists or can be created"
     type: blocking
     paths:
-      claude-code: ".claude/skills/{prefix}-{agent}/"
+      claude-code: "skills/{prefix}-{agent}/"
       cursor: ".cursor/commands/{squad-name}/"
       windsurf: ".windsurf/commands/{squad-name}/"
 
@@ -60,7 +60,7 @@ ide_checks:
     check: "IDE skill directory exists or can be created"
     type: recommended
     paths:
-      claude-code: ".claude/skills/{prefix}-{agent}/"
+      claude-code: "skills/{prefix}-{agent}/"
 ```
 
 ---
@@ -72,17 +72,17 @@ conflict_checks:
   - id: no-command-name-collision
     check: "No existing command files will be overwritten without confirmation"
     type: blocking
-    validation: "For each agent, .claude/skills/{prefix}-{agent}/SKILL.md does not exist OR user confirms overwrite"
+    validation: "For each agent, skills/{prefix}-{agent}/SKILL.md does not exist OR user confirms overwrite"
 
   - id: no-slash-prefix-collision
     check: "Squad slashPrefix does not collide with existing squads"
     type: blocking
-    validation: "No other squad in .claude/skills/ uses same prefix"
+    validation: "No other squad in skills/ uses same prefix"
 
   - id: no-skill-collision
     check: "No existing skill will be overwritten without confirmation"
     type: recommended
-    validation: "For each skill, .claude/skills/{prefix}-{skill}/SKILL.md does not exist OR user confirms"
+    validation: "For each skill, skills/{prefix}-{skill}/SKILL.md does not exist OR user confirms"
 ```
 
 ---
@@ -94,12 +94,12 @@ command_file_checks:
   - id: chief-command-written
     check: "Entry agent (chief) slash skill written to IDE activation directory"
     type: blocking
-    validation: ".claude/skills/{prefix}-{agent}/{entry-agent}/SKILL.md exists"
+    validation: "skills/{prefix}-{agent}/{entry-agent}/SKILL.md exists"
 
   - id: all-agents-written
     check: "All squad agents have corresponding slash skills"
     type: recommended
-    validation: "For each agent in agents/, a skill file exists in .claude/skills/{prefix}-{agent}/{agent}/SKILL.md"
+    validation: "For each agent in agents/, a skill file exists in skills/{prefix}-{agent}/{agent}/SKILL.md"
 
   - id: command-format-valid
     check: "Command files follow IDE-specific format requirements"
@@ -124,7 +124,7 @@ skill_checks:
   - id: skills-index-updated
     check: "Skills index file reflects newly installed commands"
     type: recommended
-    validation: ".claude/skills/ index includes new squad entries"
+    validation: "skills/ index includes new squad entries"
 
   - id: skill-activation-works
     check: "Skill can be activated via /{squad-name}:{agent-name} syntax"
@@ -134,7 +134,7 @@ skill_checks:
   - id: codex-skill-synced
     check: "Codex skill file created if .codex/ directory exists"
     type: recommended
-    validation: ".agents/skills/{entry-agent}/SKILL.md exists (if .codex/ present)"
+    validation: "skills/{entry-agent}/SKILL.md exists (if .codex/ present)"
 ```
 
 ---

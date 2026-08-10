@@ -36,16 +36,16 @@ logging:
   error_handling:
     on_extract_fail: preserve_partial_artifacts
     on_transform_fail: block_delivery
-    on_workspace_route_blocked: emit_review_handoff
+    on_project_route_blocked: emit_review_handoff
 
-sinkra:
+aiox:
   hierarchy_mapping:
     Token: "Critérios declarativos de roteamento, ownership, thresholds e modos"
     Atom: "Task unitária de ETL"
     Molecule: "Subfluxo recorrente de preflight, extract, transform ou deliver"
     Organism: "Pipeline ETL completo por tipo de source"
     Template: "Schema, contract ou envelope reutilizável"
-    Instance: "Run real persistido em workspace ou outputs/etl"
+    Instance: "Run real persistido em docs/ ou outputs/etl"
   governance_tokens:
     - type: Accountability
       rule: "Toda execução tem steward humano ou chief responsável"
@@ -60,7 +60,7 @@ sinkra:
     - "Cada task unitária declara executor, input, output e critérios de completion"
     - "Workflows persistem envelope e checkpoints em fluxo unidirecional"
     - "Handoffs interdomínio usam artifact tipado"
-    - "Saídas canônicas preferem workspace quando há business_slug válido"
+    - "Saídas canônicas preferem docs/ quando há business_slug válido"
 
 squad:
   name: etl-ops
@@ -74,46 +74,6 @@ metadata:
   version: "1.0.0"
   score: 3.8
 
-workspace_integration:
-  level: workspace_first
-  rationale: >-
-    ETL-OPS extrai dados de múltiplas fontes e deve ancorar saídas canônicas
-    no workspace quando houver contexto de negócio, mantendo fallback legado
-    em outputs/etl para execuções sem slug. A promoção final depende de
-    `workspace-handoff.yaml` validado pelo COO/workspace governance.
-  readiness_owner: COO
-  readiness_handoff: workspace-handoff.yaml
-  handoff:
-    target: workspace-chief
-    condition: "Quando squad é instalado em ambiente com workspace/ ativo"
-    contract: "ETL-OPS declara write_paths; workspace-chief valida e integra"
-  read_paths:
-    - workspace/businesses/
-    - workspace/domains/
-    - workspace/_templates/
-    - docs/
-    - squads/etl-ops/data/
-    - services/etl/
-  write_paths:
-    - workspace/businesses/
-    - workspace/_templates/etl/
-    - outputs/etl/
-    - docs/etl/
-  template_namespace: etl
-  canonical_outputs_root: workspace/businesses/{slug}/etl/
-  custom_outputs_root: docs/etl/{slug}/
-  legacy_outputs_root: outputs/etl/{run_id}/
-  bootstrap:
-    required: true
-    script: "scripts/bootstrap-etl-workspace.sh"
-  env_bootstrap:
-    optional: true
-    script: "scripts/etl-env-bootstrap.sh"
-  essentials_validation:
-    required: true
-    script: "scripts/validate-etl-essentials.sh"
-
-# Infrastructure Reference
 infrastructure:
   service_path: services/etl
   legacy_service_path: services/etl
@@ -209,7 +169,7 @@ agents:
     file: null
     role: "Steward humano para aprovação final e ownership de execução"
     executor_profile:
-      sinkra_type: Human
+      executor_type: Human
       human_in_the_loop: true
       output_schema: etl-governance-approval
 
@@ -217,7 +177,7 @@ agents:
     file: null
     role: "Clone de revisão para validação de fidelidade e contrato"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: etl-audit-review
 
@@ -225,7 +185,7 @@ agents:
     file: agents/etl-chief.md
     role: "Pipeline orchestrator - routing, quality validation, checkpoint management"
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: etl-routing-decision
       story_role: reviewer
@@ -238,7 +198,7 @@ agents:
     file: agents/etl-extractor.md
     role: "Data extraction - CLI execution, source fetching, file operations"
     executor_profile:
-      sinkra_type: Worker
+      executor_type: Worker
       human_in_the_loop: false
       output_schema: etl-extraction-envelope
       story_role: executor
@@ -251,7 +211,7 @@ agents:
     file: agents/etl-transformer.md
     role: "Data transformation - cleaning, enrichment, format conversion"
     executor_profile:
-      sinkra_type: Worker
+      executor_type: Worker
       human_in_the_loop: false
       output_schema: etl-transformation-envelope
       story_role: executor
@@ -289,7 +249,7 @@ composition_mapping:
   atoms:
     description: "Tasks unitárias do squad ETL-OPS"
     mapping:
-      - pattern: "tasks/load-workspace-context.md"
+      - pattern: "tasks/load-project context.md"
         role: preflight
       - pattern: "tasks/process.md"
         role: orchestrate
@@ -306,7 +266,7 @@ composition_mapping:
     description: "Combinações recorrentes de atoms"
     declared:
       - id: mol-preflight
-        atoms: [load-workspace-context, etl-env-bootstrap]
+        atoms: [load-project context, etl-env-bootstrap]
       - id: mol-extract-transform
         atoms: [process, enrich, compile, summarize-book]
       - id: mol-multimodal
@@ -328,15 +288,15 @@ composition_mapping:
     description: "Contracts, schemas e handoffs do ETL"
     source: "templates/"
   instances:
-    description: "Execuções reais persistidas em workspace e outputs/etl"
-    persistence: "outputs/etl/ | workspace/businesses/{slug}/etl/"
+    description: "Execuções reais persistidas em docs/ e outputs/etl"
+    persistence: "outputs/etl/ | docs/etl/"
     lifecycle: [draft, validated, approved, consumed, archived]
 
 # Task Catalog
 task_catalog:
   public_tasks:
-    - id: load-workspace-context
-      path: tasks/load-workspace-context.md
+    - id: load-project context
+      path: tasks/load-project context.md
       entrypoint: false
       modes: [single, batch, rag]
     - id: etl-env-bootstrap
@@ -390,7 +350,7 @@ heuristics:
     - "CHECKPOINT COVERAGE - validar entre cada fase"
     - "ZERO TIME GAPS - handoffs automaticos sem espera"
 
-# SINKRA v3.1 (Story 54.11 + Story 55.15 Hub upgrade)
+# AIOX v3.1 (Story 54.11 + Story 55.15 Hub upgrade)
 artifact_contracts:
   - artifact_id: "etl-pipeline-output"
     template_path: "data/output-contract.yaml"

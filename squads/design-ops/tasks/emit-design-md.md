@@ -13,19 +13,19 @@ Emit a spec-compliant `DESIGN.md` at the target location from real brand/token/c
 - `/design-system` Phase 0 detects the target app has no `DESIGN.md` and the user approves extraction.
 - Explicit operator request: *"emit a DESIGN.md for apps/{slug}"*.
 - New app scaffolding — as the final step after `tokens.json` + `globals.css` + `components.json` are in place.
-- Campaign kickoff with declared visual identity — emit at `workspace/businesses/{biz}/L4-operational/campaigns/{slug}/DESIGN.md`.
+- Campaign kickoff with declared visual identity — emit at `docs/operational/campaigns/{slug}/DESIGN.md`.
 
 ## Inputs (required)
 
 | Input | Source | Notes |
 |---|---|---|
-| Target path | Operator or inferred | `apps/{slug}/DESIGN.md` or `workspace/businesses/{biz}/L2-tactical/design/DESIGN.md` |
+| Target path | Operator or inferred | `apps/{slug}/DESIGN.md` or `docs/tactical/design/DESIGN.md` |
 | Token source | `src/design-system/tokens.json` OR `globals.css` OR `tailwind.config.*` | Primitive colors, spacing, radius, motion, type |
 | **Token defaults fallback** | `squads/design-ops/templates/ds-tokens-defaults-tmpl.yaml` | When app has no tokens yet (greenfield), use hydrated defaults (oklch, 5-step spacing, 8-step type) |
 | **Token justification reference** | `squads/design-ops/data/tier-1-token-defaults-justification.yaml` | To answer "why this value?" in the DESIGN.md prose |
 | Component inventory | `src/components/ui/` + `components.manifest.json` if present | Names, variants, tokens consumed |
 | Stack context | `package.json` + `components.json` | Framework, Tailwind version, shadcn baseColor |
-| Brand prose | `README.md` + workspace brandbook (if exists) | Overview, tone, casing discipline |
+| Brand prose | `README.md` + local_docs brandbook (if exists) | Overview, tone, casing discipline |
 
 ## Inputs (optional)
 
@@ -47,7 +47,7 @@ Emit a spec-compliant `DESIGN.md` at the target location from real brand/token/c
 2. Glob the app for token sources (`tokens.json`, `globals.css`, `tailwind.config.*`, `styles/**/*.css`). Report what was found.
 3. List `src/components/ui/**/*.tsx` and any `components.manifest.json`. Count atoms / molecules / organisms.
 4. Read the app's `README.md` for brand tone / positioning.
-5. Read the business brandbook at `workspace/businesses/{biz}/L2-tactical/design/DESIGN.md` if present — use as inheritance base.
+5. Read the business brandbook at `docs/tactical/design/DESIGN.md` if present — use as inheritance base.
 
 ### Phase 2 — Token extraction
 
@@ -74,7 +74,7 @@ For each of the 8 canonical sections, write 2–6 paragraphs describing the *why
 - Components: group inventory (actions, forms, surfaces, feedback, disclosure, navigation). No need to enumerate every variant — group them by family.
 - Do's and Don'ts: 8-12 entries each, concrete + brand-specific.
 
-### Phase 5 — Implementation section (Sinkra-Hub extension)
+### Phase 5 — Implementation section (AIOX-Hub extension)
 
 Write the `## Implementation` section with:
 
@@ -132,5 +132,5 @@ All three passed structural lint. Contrast warnings documented as brand decision
 
 - **Template:** `squads/design-ops/templates/DESIGN.md.tmpl` (front-matter scaffold)
 - **Upstream:** `squads/design-ops/tasks/ds-extract-tokens.md` (token extraction pre-step)
-- **Consumer:** `.claude/skills/design-system/SKILL.md` Phase 0 (reads output)
+- **Consumer:** `skills/design-system/SKILL.md` Phase 0 (reads output)
 - **Diff:** `npx @google/design.md diff` (regression detection between versions)

@@ -324,7 +324,7 @@ async function main() {
 
   // Write JSON
   const ROOT = process.cwd();
-  const outDir = path.join(ROOT, 'workspace', 'domains', 'design-system', 'extraction');
+  const outDir = path.join(ROOT, 'docs', 'project', 'domains', 'design-system', 'extraction');
   if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
   const outFile = path.join(outDir, 'figma-tokens-raw.json');
   fs.writeFileSync(outFile, JSON.stringify(output, null, 2));

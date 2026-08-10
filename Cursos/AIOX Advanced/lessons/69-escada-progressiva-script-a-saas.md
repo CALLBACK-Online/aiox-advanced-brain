@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: escada-progressiva-script-a-saas
 lesson_position: 69
 title: 'Escada Progressiva: Script → Squad → Workflow → Runner → API → App → SaaS'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/69-escada-progressiva-script-a-saas/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

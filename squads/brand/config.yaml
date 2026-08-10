@@ -32,33 +32,6 @@ veto_conditions_config:
   enforcement: "runtime"
   version: "1.0.0"
 
-workspace_integration:
-  level: workspace_first
-  rationale: >-
-    Brand squad precisa consumir contexto real do workspace e só pode gravar
-    artefatos canônicos quando existir template correspondente em
-    workspace/_templates/business-template/L2-tactical/brand. O COO valida readiness do namespace
-    antes de qualquer escrita final no workspace.
-  read_paths:
-    - workspace/businesses/
-    - workspace/_templates/business-template/
-    - docs/brand/
-  write_paths:
-    - workspace/businesses/
-    - docs/brand/
-  template_namespace: brand
-  canonical_outputs_root: workspace/businesses/{brand_name}/L2-tactical/brand/
-  custom_outputs_root: docs/brand/{brand_name}/
-  bootstrap:
-    required: true
-    script: "scripts/bootstrap-brand-workspace.sh"
-  essentials_validation:
-    required: true
-    script: "scripts/validate-brand-essentials.sh"
-  readiness_owner: workspace-chief
-  readiness_resolver: workspace/scripts/resolve-squad-workspace-readiness.cjs
-  readiness_context_type: brand
-
 methodologies:
   primary_brazil:
     naming:
@@ -218,7 +191,7 @@ agents_by_role:
   specialists:
     - id: naming-strategist
       executor_profile:
-        sinkra_type: Agent
+        executor_type: Agent
         human_in_the_loop: true
         output_schema: "deliverable definido pela task ativa"
         story_role: executor
@@ -232,7 +205,7 @@ agents_by_role:
 
     - id: brand-strategist
       executor_profile:
-        sinkra_type: Agent
+        executor_type: Agent
         human_in_the_loop: true
         output_schema: "deliverable definido pela task ativa"
         story_role: executor
@@ -246,7 +219,7 @@ agents_by_role:
 
     - id: domain-scout
       executor_profile:
-        sinkra_type: Agent
+        executor_type: Agent
         human_in_the_loop: true
         output_schema: "deliverable definido pela task ativa"
         story_role: executor
@@ -260,7 +233,7 @@ agents_by_role:
 
     - id: keller-brand-equity
       executor_profile:
-        sinkra_type: Agent
+        executor_type: Agent
         human_in_the_loop: true
         output_schema: "deliverable definido pela task ativa"
         story_role: executor
@@ -274,7 +247,7 @@ agents_by_role:
 
     - id: aaker-brand-identity
       executor_profile:
-        sinkra_type: Agent
+        executor_type: Agent
         human_in_the_loop: true
         output_schema: "deliverable definido pela task ativa"
         story_role: executor
@@ -288,7 +261,7 @@ agents_by_role:
 
     - id: sharp-brand-science
       executor_profile:
-        sinkra_type: Agent
+        executor_type: Agent
         human_in_the_loop: true
         output_schema: "deliverable definido pela task ativa"
         story_role: executor
@@ -302,7 +275,7 @@ agents_by_role:
 
     - id: neumeier-differentiation
       executor_profile:
-        sinkra_type: Agent
+        executor_type: Agent
         human_in_the_loop: true
         output_schema: "deliverable definido pela task ativa"
         story_role: executor
@@ -316,7 +289,7 @@ agents_by_role:
 
     - id: ries-positioning
       executor_profile:
-        sinkra_type: Agent
+        executor_type: Agent
         human_in_the_loop: true
         output_schema: "deliverable definido pela task ativa"
         story_role: executor
@@ -330,7 +303,7 @@ agents_by_role:
 
     - id: storybrand-narrator
       executor_profile:
-        sinkra_type: Agent
+        executor_type: Agent
         human_in_the_loop: true
         output_schema: "deliverable definido pela task ativa"
         story_role: executor
@@ -344,7 +317,7 @@ agents_by_role:
 
     - id: archetype-consultant
       executor_profile:
-        sinkra_type: Agent
+        executor_type: Agent
         human_in_the_loop: true
         output_schema: "deliverable definido pela task ativa"
         story_role: executor
@@ -358,7 +331,7 @@ agents_by_role:
 
     - id: wheeler-brand-design
       executor_profile:
-        sinkra_type: Agent
+        executor_type: Agent
         human_in_the_loop: true
         output_schema: "deliverable definido pela task ativa"
         story_role: executor
@@ -372,7 +345,7 @@ agents_by_role:
 
     - id: yohn-brand-culture
       executor_profile:
-        sinkra_type: Agent
+        executor_type: Agent
         human_in_the_loop: true
         output_schema: "deliverable definido pela task ativa"
         story_role: executor
@@ -386,7 +359,7 @@ agents_by_role:
 
     - id: heyward-dtc-brand
       executor_profile:
-        sinkra_type: Agent
+        executor_type: Agent
         human_in_the_loop: true
         output_schema: "deliverable definido pela task ativa"
         story_role: executor
@@ -400,7 +373,7 @@ agents_by_role:
 
     - id: miller-sticky-brand
       executor_profile:
-        sinkra_type: Agent
+        executor_type: Agent
         human_in_the_loop: true
         output_schema: "deliverable definido pela task ativa"
         story_role: executor
@@ -668,7 +641,7 @@ keywords:
   - mockups
   - brand-mockup
 
-# SINKRA v3.1 (Story 54.11)
+# AIOX v3.1 (Story 54.11)
 bu_mapping: "hub-framework"
 artifact_contracts:
   - artifact_id: "brand-strategy"

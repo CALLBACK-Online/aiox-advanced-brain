@@ -165,7 +165,7 @@ inputs:
     validation: Must be valid file path ending in .md
   business_slug:
     type: string
-    description: Business slug matching workspace/_system/config.yaml -> businesses.{slug}. Preferred.
+    description: Business slug matching docs/config.yaml -> businesses.{slug}. Preferred.
     required: false
     default: null
     examples:
@@ -173,7 +173,7 @@ inputs:
       - another_brand
   app_id:
     type: string
-    description: App identifier declared inside workspace/businesses/{bu}/design-system/config.yaml.
+    description: App identifier declared inside docs/design-system/config.yaml.
     required: false
     default: null
     examples:
@@ -207,13 +207,11 @@ steps:
     agent: design-chief
     command: "*resolve-ds {business_slug_or_app_id}"
     description: |
-      Resolve DS context through the canonical workspace resolver.
+      Resolve DS context through the canonical project context resolver.
       Resolution order:
-      1. If business_slug provided → run squads/design-system/scripts/design-system/resolve_business_design_system.cjs --bu={slug}
-      2. If app_id provided → resolve BU via squads/design-system/scripts/design-system/resolve_business_design_system.cjs --app={id}
       3. If no BU/app available → heuristic scan of codebase_path for common patterns
 
-      If the BU is configured, load workspace/businesses/{bu}/design-system/config.yaml and
+      If the BU is configured, load docs/design-system/config.yaml and
       resolve: source, themes, component_dirs, token_files, blueprint files, routing, framework,
       ui_primitives, and constraints.
 
@@ -280,7 +278,7 @@ steps:
     command: "*audit"
     description: |
       Scan the target codebase for all existing components across the resolved
-      component directories (from workspace/businesses/{bu}/design-system/config.yaml).
+      component directories (from docs/design-system/config.yaml).
       Build a full inventory with component names, paths, props, and variants.
     inputs:
       path: "{{step_0_resolve_config.app_root}}"
@@ -296,7 +294,7 @@ steps:
     command: "*tokenize"
     description: |
       Extract all available design tokens from the resolved token files
-      (from workspace/businesses/{bu}/design-system/config.yaml). Map CSS keyframes,
+      (from docs/design-system/config.yaml). Map CSS keyframes,
       transition classes, pattern classes, easing tokens, and duration tokens.
     inputs:
       files: "{{step_0_resolve_config.token_files}}"

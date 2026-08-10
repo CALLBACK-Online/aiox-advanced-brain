@@ -12,9 +12,9 @@
 #   Fluxo: SOPs (business) -> Tasks (squad) -> Agents (executores)
 #
 # PATHS CANONICOS:
-#   SOPs machine-readable: workspace/businesses/{business}/sops/
+#   SOPs machine-readable: docs/sops/
 #   SOPs humanos (markdown): docs/sops/
-#   Template: workspace/_templates/sops/sop.yaml
+#   Template: docs/templates/sops/sop.yaml
 # ============================================================================
 
 schema_version: "1.0.0"

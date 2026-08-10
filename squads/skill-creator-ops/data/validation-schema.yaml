@@ -31,7 +31,7 @@ required_frontmatter_fields:
 
   # FORBIDDEN in skills (Frontmatter Purity Rule):
   # - owner_squad (belongs in tasks only)
-  # - sinkra_tier (belongs in tasks only)
+  # - aiox_tier (belongs in tasks only)
   # - context (omit for inline; only 'fork' if user explicitly requests)
 
   - field: agent
@@ -79,7 +79,7 @@ optional_frontmatter_fields:
     type: string
     description: |
       Skill name or path that consumers should migrate to.
-      Required if status=deprecated. Format: 'skill-name' or '.claude/skills/skill-name'.
+      Required if status=deprecated. Format: 'skill-name' or 'skills/skill-name'.
 
   - field: retired_at
     type: string
@@ -117,7 +117,7 @@ checks:
 
   - id: CHK-05
     category: frontmatter
-    name: "sinkra_tier field valid"
+    name: "aiox_tier field valid"
     severity: blocking
 
   - id: CHK-06

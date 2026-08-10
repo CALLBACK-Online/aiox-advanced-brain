@@ -25,7 +25,7 @@ checks:
     status: "{PASS|FAIL}"
     value: "{owner_squad_value}"
 
-  - check: "sinkra_tier valid"
+  - check: "aiox_tier valid"
     status: "{PASS|FAIL}"
     value: "{tier_value}"
 

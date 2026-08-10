@@ -149,7 +149,6 @@ Target files:
 
 ## Validation After Approval
 
-- `node squads/squad-creator/scripts/detect-environment-contract.cjs --squad=aiox-sop --format=json`
 - `bash squads/squad-creator/scripts/validate-squad.sh aiox-sop --quick --json`
 - `node infrastructure/scripts/squads/validate_workflow_contracts.cjs --squads aiox-sop --strict --fail-on-warnings --json`
 - `node infrastructure/scripts/squads/check_doc_drift.cjs --squad aiox-sop --json`

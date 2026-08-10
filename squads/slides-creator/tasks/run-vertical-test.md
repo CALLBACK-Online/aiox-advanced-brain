@@ -1,8 +1,8 @@
 # Task: Run Vertical Test (2-Minute Title-Only Narrative)
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Operational -->
+<!-- AIOX Domain: Operational -->
 
 ## Metadata
 | Campo | Valor |
@@ -14,7 +14,7 @@
 | session | SESSION-QA   # cross-instance from SESSION-NARR — avoids self-validation blindspot |
 | duration | 2-5 min |
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml

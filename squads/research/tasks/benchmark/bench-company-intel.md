@@ -1,6 +1,6 @@
 # Task: Company Intelligence
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

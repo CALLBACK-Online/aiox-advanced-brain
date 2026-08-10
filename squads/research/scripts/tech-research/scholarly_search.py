@@ -107,12 +107,12 @@ def arxiv_search(query: str, max_results: int = 5) -> list[dict]:
 # ── PubMed ────────────────────────────────────────────────────────────────────
 
 ENTREZ_BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
-PUBMED_EMAIL = os.environ.get("PUBMED_EMAIL", "research@sinkra.ai")
+PUBMED_EMAIL = os.environ.get("PUBMED_EMAIL", "research@aiox.ai")
 NCBI_API_KEY: Optional[str] = os.environ.get("NCBI_API_KEY")
 
 
 def _pubmed_params(extra: dict) -> str:
-    params = {"tool": "sinkra-research", "email": PUBMED_EMAIL}
+    params = {"tool": "aiox-research", "email": PUBMED_EMAIL}
     if NCBI_API_KEY:
         params["api_key"] = NCBI_API_KEY
     params.update(extra)

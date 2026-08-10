@@ -2,7 +2,7 @@
 title: Children over Render Props
 impact: medium
 tags: [react, composition, patterns]
-sinkra_source: v0-react-best-practices
+aiox_source: v0-react-best-practices
 ---
 
 # Children over Render Props

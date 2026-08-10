@@ -70,7 +70,7 @@ const PACKAGES = [
       ['Planning worksheet', 'Architecture decision log', '1', 'Used to capture final decisions'],
     ],
     systems: [
-      ['Repository workspace', 'Read access', 'Project maintainer'],
+      ['Repository local_docs', 'Read access', 'Project maintainer'],
       ['Planning sheet / brief', 'Edit access', 'Copy Chief'],
     ],
     training: [
@@ -284,7 +284,7 @@ const PACKAGES = [
       ['Reference VSL set', 'Prior winning VSL examples', '1+', 'Used to seed structure and AI passes'],
     ],
     systems: [
-      ['Repository workspace', 'Read access', 'Project maintainer'],
+      ['Repository local_docs', 'Read access', 'Project maintainer'],
       ['Writing environment', 'Edit access', 'Copy Chief'],
       ['AI drafting tool', 'Operator access', 'Copy Chief'],
     ],
@@ -531,7 +531,7 @@ const PACKAGES = [
     systems: [
       ['Analytics platform', 'Read access', 'Performance Analyst'],
       ['Ad platform dashboard', 'Read access', 'Performance Analyst'],
-      ['Repository workspace', 'Read access', 'Project maintainer'],
+      ['Repository local_docs', 'Read access', 'Project maintainer'],
     ],
     training: [
       ['VSL diagnostic matrix review', 'Internal', 'Current'],
@@ -737,7 +737,7 @@ function parseArgs(argv) {
 
 function buildMlRoot(args) {
   if (args.business) {
-    return path.join('workspace', 'businesses', args.business, 'sops');
+    return path.join('docs', 'businesses', args.business, 'sops');
   }
 
   return path.join('squads', 'aiox-sop', 'docs', 'sops');
@@ -1234,7 +1234,7 @@ function renderMlYaml(pkg, gaps) {
     .map((phase, index) => {
       const stepId = `S${String(index + 1).padStart(3, '0')}`;
       const nextStep = index === pkg.phases.length - 1 ? 'END' : `S${String(index + 2).padStart(3, '0')}`;
-      const toolId = index < 2 ? 'source_reader' : 'manual_workspace';
+      const toolId = index < 2 ? 'source_reader' : 'manual_review';
       return [
         `    - id: "${stepId}"`,
         `      name: "${phase.title}"`,
@@ -1325,8 +1325,8 @@ function renderMlYaml(pkg, gaps) {
     '        type: "cli"',
     '        version: "1.0"',
     '        required: true',
-    '      - id: "manual_workspace"',
-    '        name: "Operator Workspace"',
+    '      - id: "manual_review"',
+    '        name: "Operator LocalDocs"',
     '        type: "manual"',
     '        version: "1.0"',
     '        required: true',

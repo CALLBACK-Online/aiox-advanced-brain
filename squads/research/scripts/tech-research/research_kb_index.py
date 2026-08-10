@@ -189,7 +189,7 @@ CATEGORY_RULES: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"(business|pricing|\boffer\b|hormozi|sales|lead[-_\s]?tool|b2b|\bgrant\b|omnichannel|helpdesk|market[-_\s]?analys|imobili)", re.IGNORECASE), "business"),
     (re.compile(r"(tailwind|shadcn|astro|next[-_\s]?js|react[-_\s]?first|cms[-_\s]?stack|stack[-_\s]?analys|\bv0\b|lovable|frontend[-_\s]?alternat)", re.IGNORECASE), "frontend"),
     # Knowledge / methodology last
-    (re.compile(r"(deep[-_\s]?research|research[-_\s]?pipeline|knowledge|vault|citation|methodology|token[-_\s]?hygiene|aios|sinkra[-_\s]?aiox|best[-_\s]?practices)", re.IGNORECASE), "knowledge"),
+    (re.compile(r"(deep[-_\s]?research|research[-_\s]?pipeline|knowledge|vault|citation|methodology|token[-_\s]?hygiene|aios|aiox[-_\s]?aiox|best[-_\s]?practices)", re.IGNORECASE), "knowledge"),
 ]
 
 

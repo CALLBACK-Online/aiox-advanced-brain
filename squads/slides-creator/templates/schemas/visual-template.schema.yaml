@@ -16,7 +16,7 @@ meta:
   consumer_tasks:
     - "tasks/select-chart-type.md (selects best chart per data shape)"
     - "tasks/compose-grid-layout.md (places visual within grid)"
-  inspired_by_bench: "/Users/alan/Code/bench/ppt-master/skills/ppt-master/templates/charts/charts_index.json"
+  inspired_by_bench: "<bench-root>/ppt-master/skills/ppt-master/templates/charts/charts_index.json"
 
 # ─────────────────────────────────────────────────────
 # VISUAL TEMPLATE SCHEMA

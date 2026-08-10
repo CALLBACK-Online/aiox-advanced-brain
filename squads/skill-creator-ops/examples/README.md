@@ -1,22 +1,22 @@
 # Skill-Creator-Ops Squad — Production Examples
 
-Outputs do squad `skill-creator-ops` são skills instaladas em `.claude/skills/` — governam lifecycle completo de skills.
+Outputs do squad `skill-creator-ops` são skills instaladas em `skills/` — governam lifecycle completo de skills.
 
 ## Onde os outputs reais vivem
 
 | Tipo | Localização |
 |---|---|
-| Skills instaladas | `.claude/skills/` |
-| Skill registry | `.claude/skills/skill-registry.yaml` |
+| Skills instaladas | `skills/` |
+| Skill registry | `skills/skill-registry.yaml` |
 | Validation reports (pontuais) | Gerados sob demanda |
-| Golden input/output tests | `.claude/skills/{skill}/tests/` quando aplicável |
+| Golden input/output tests | `skills/{skill}/tests/` quando aplicável |
 
 ## Evidência de uso
 
-- 80+ skills instaladas e ativas em `.claude/skills/`
+- 80+ skills instaladas e ativas em `skills/`
 - Skill lifecycle (init → develop → validate → test → package) executado em produção
 - Registry governance check integrado em pre-push
-- Phase 5 SINKRA Skills Compliance Roadmap implementado
+- Phase 5 AIOX Skills Compliance Roadmap implementado
 
 ## Tasks canônicas
 
@@ -27,4 +27,4 @@ Outputs do squad `skill-creator-ops` são skills instaladas em `.claude/skills/`
 
 ## Provenance
 
-Outputs vivem em `.claude/skills/` (skills ativas) e `.claude/skills/skill-registry.yaml` (registry canônico). Todas as skills listadas no registry foram processadas por este squad.
+Outputs vivem em `skills/` (skills ativas) e `skills/skill-registry.yaml` (registry canônico). Todas as skills listadas no registry foram processadas por este squad.

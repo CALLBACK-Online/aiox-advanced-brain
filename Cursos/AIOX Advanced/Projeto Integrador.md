@@ -47,7 +47,7 @@ Evidência: artefato do [[modulos/Módulo 0 - Mindset e Princípios|Módulo 0]].
 
 Eu defino entidade, estados, agentes, autoridade, contexto e formato dos artefatos.
 
-Evidências: saídas do [[modulos/Módulo 1 - Sistema AIOX|Módulo 1]], [[modulos/Módulo 2 - Setup e Contexto|Módulo 2]] e [[modulos/Módulo 5 - Arquitetura SINKRA|Módulo 5]].
+Evidências: saídas do [[modulos/Módulo 1 - Sistema AIOX|Módulo 1]], [[modulos/Módulo 2 - Setup e Contexto|Módulo 2]] e [[modulos/Módulo 5 - Arquitetura AIOX|Módulo 5]].
 
 ## Gate 3 — execução com qualidade
 

@@ -10,7 +10,7 @@ estimated_time: 45-60min
 source: "Systems and Automation Playbooks — Tier-Based Implementation"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

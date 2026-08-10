@@ -11,8 +11,8 @@ skill-ops-chief
 
 ## Steps
 
-1. Ler `.claude/skills/skill-registry.yaml`
-2. Listar todos diretórios em `.claude/skills/` que contêm `SKILL.md`
+1. Ler `skills/skill-registry.yaml`
+2. Listar todos diretórios em `skills/` que contêm `SKILL.md`
 3. Comparar:
    - Skills no filesystem mas não no registry → **ORPHAN**
    - Skills no registry mas não no filesystem → **PHANTOM**
@@ -22,7 +22,7 @@ skill-ops-chief
 
 ## Veto Conditions
 - skill-registry.yaml não existe → ABORT
-- .claude/skills/ não existe → ABORT
+- skills/ não existe → ABORT
 
 ## Output
 Relatório de auditoria com inconsistências e ações recomendadas.

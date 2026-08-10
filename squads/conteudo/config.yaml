@@ -14,21 +14,6 @@ language: pt-BR
 entry_agent: content-chief
 tested: true
 
-workspace_integration:
-  level: controlled_runtime_consumer
-  rationale: >-
-    Squad de conteudo le estrategia e ICP do negocio para producao de conteudo
-    alinhado ao posicionamento. Escreve artefatos de conteudo (carrosseis, reels,
-    copies) no workspace operacional do negocio.
-  read_paths:
-    - workspace/businesses/{slug}/L0-identity/
-    - workspace/businesses/{slug}/L1-strategy/
-    - workspace/businesses/{slug}/L2-tactical/
-  write_paths:
-    - workspace/businesses/{slug}/L4-operational/conteudo/
-  readiness_owner: workspace-chief
-  readiness_resolver: content-chief
-
 handoffs:
   - squad: copy
     agent: copy-chief

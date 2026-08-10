@@ -35,7 +35,7 @@ scoring_calibration:
 
 | Axis | Excluded Because |
 |---|---|
-| `sinkra_fit` | Framework-agnostic mandate |
+| `aiox_fit` | Framework-agnostic mandate |
 
 ---
 

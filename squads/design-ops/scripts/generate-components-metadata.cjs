@@ -29,10 +29,10 @@ function main() {
   const args = parseArgs(process.argv.slice(2));
   const contractsPath = path.join(
     ROOT,
-    'workspace',
+    'docs',
     'businesses',
     args.business,
-    'L2-tactical',
+    'tactical',
     'design',
     'component-contracts.yaml'
   );

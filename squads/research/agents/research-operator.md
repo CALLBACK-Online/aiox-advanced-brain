@@ -6,13 +6,13 @@ name: "Research Operator"
 role: "Human approval and strategic input"
 tier: human
 specialty: "Approval, scoping, executive decision"
-sinkra_type: Human
+executor_type: Human
 human_in_the_loop: true
 ```
 
 ## Purpose
 
-The Research Operator is the **Human executor** in the SINKRA Four-Executor model for the research squad. Responsible for strategic decisions, scope approval, and quality sign-off during benchmark and research pipelines.
+The Research Operator is the **Human executor** in the AIOX Four-Executor model for the research squad. Responsible for strategic decisions, scope approval, and quality sign-off during benchmark and research pipelines.
 
 ## Responsibilities
 
@@ -32,13 +32,13 @@ This agent activates when:
 
 | Field | Value |
 |-------|-------|
-| SINKRA Type | Human |
+| AIOX Type | Human |
 | Human-in-the-Loop | true |
 | Output Schema | competitive-brief |
 | Can Execute | false |
 | Can Review | competitive-intelligence, market-analysis |
 
-## SINKRA Mandamentos Compliance
+## AIOX Mandamentos Compliance
 
 - M1 (One Executor per Task): Human is assigned as executor for tasks requiring human judgment
 - M5 (Quality Gates): Human provides final approval gate for published benchmarks

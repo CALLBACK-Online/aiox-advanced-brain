@@ -939,7 +939,7 @@ Este squad requer:
 **Soluções:**
 1. Verifique se o arquivo do agent existe: `ls squads/squad-creator-pro/agents/squad-chief.md`
 2. Cheque sintaxe YAML: Garanta que o bloco YAML está formatado corretamente
-3. Verifique se o squad está sincronizado: Cheque se `.claude/skills/squad-creator/squad-chief/SKILL.md` existe
+3. Verifique se o squad está sincronizado: Cheque se `skills/squad-creator/squad-chief/SKILL.md` existe
 
 ---
 

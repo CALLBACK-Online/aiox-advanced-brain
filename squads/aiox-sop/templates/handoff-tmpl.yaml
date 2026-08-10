@@ -1,15 +1,15 @@
 # Managed by materialize-map.py
-# Source: .aiox/squad-runtime/sinkra-squad/aiox-sop/map/20260329-190639-claude-opus/phase-handoff.yaml
+# Source: .aiox/squad-runtime/aiox-squad/aiox-sop/map/20260329-190639-claude-opus/phase-handoff.yaml
 # Category: formalization
 
 handoff:
   from_phase: '8'
-  from_agent: sinkra-qa
+  from_agent: aiox-qa
   to_phase: '9'
   timestamp: '2026-03-30T09:00:00-03:00'
   artifacts_produced:
-  - file: sinkra_compliance_report.md
-    description: SINKRA v1.2 Map Readiness Compliance Report — 74.2/100 REVIEW, 5
+  - file: aiox_compliance_report.md
+    description: AIOX v1.2 Map Readiness Compliance Report — 74.2/100 REVIEW, 5
       applicable categories evaluated, 2 HIGH + 4 MEDIUM/LOW gaps documented with
       resolution paths
   - file: score_card.json
@@ -49,7 +49,7 @@ handoff:
   - Domain language inconsistency (PT-BR vs English) is cosmetic — no logic error
     — but materialization tooling should pick one standard to avoid field lookup failures.
   checkpoint:
-    id: SINKRA_QA_GATE
+    id: AIOX_QA_GATE
     verdict: REVIEW
     score: 74.2
     details:
@@ -64,8 +64,8 @@ handoff:
       mandamentos_pass: 9
       mandamentos_partial: 1
   next_agent_focus:
-  - 'Phase 9 (squad materializer / sinkra-chief): materialize the map into squads/aiox-sop/
-    directory structure following SINKRA squad pattern (config.yaml, agents/, tasks/,
+  - 'Phase 9 (squad materializer / aiox-chief): materialize the map into squads/aiox-sop/
+    directory structure following AIOX squad pattern (config.yaml, agents/, tasks/,
     workflows/, templates/, data/).'
   - 'CRITICAL pre-condition: Verify token_assignments.json is filled (9 token families)
     before generating squad files — token data drives Accountability token binding.'
@@ -77,7 +77,7 @@ handoff:
   - Materialize 27 task atoms as task markdown/YAML files in squads/aiox-sop/tasks/.
   - Materialize 2 Clone executor tasks (T3.1, T3.3) with human_review_trigger in task
     definition.
-  - 'Create squads/aiox-sop/config.yaml with SINKRA v3.1 fields: artifact_contracts,
+  - 'Create squads/aiox-sop/config.yaml with AIOX v3.1 fields: artifact_contracts,
     bu_mapping (single-BU), supported_modes.'
   - Corrective actions P1 (risk_register.json), P2 (scaling_strategy.md), P3 (baseline_kpis)
     can run in parallel — do NOT block Phase 9 on these.

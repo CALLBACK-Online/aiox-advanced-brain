@@ -11,7 +11,7 @@ estimated_duration: "15-30 min"
 ```
 
 **Responsible Executor:** Agent (@brand-chief)
-**Dependencies:** depends_on: `[load-workspace-context]` · enables: `[create-brand-story]` · workflow: `wf-brand-epic`
+**Dependencies:** depends_on: `[load-project context]` · enables: `[create-brand-story]` · workflow: `wf-brand-epic`
 
 ## Objective
 
@@ -26,7 +26,7 @@ Criar um epic formalizado para trabalho de brand usando agentes nativos do squad
 | `epic_name` | string | sim | Nome descritivo do epic |
 | `epic_goal` | string | sim | Objetivo em 1-2 frases |
 | `yaml_sources` | array | sim | YAMLs canonicos que sao fonte da verdade |
-| `brand_name` | string | sim | Slug do business em workspace/ |
+| `brand_name` | string | sim | Slug do business em docs/ |
 | `scope` | string | sim | Descricao do escopo (o que esta dentro e fora) |
 
 ---
@@ -51,10 +51,10 @@ Criar um epic formalizado para trabalho de brand usando agentes nativos do squad
 
 ## Steps
 
-### Step 1: Carregar contexto workspace
+### Step 1: Carregar contexto local_docs
 
 ```
-Executar load-workspace-context para brand_name
+Executar load-project context para brand_name
 Ler YAMLs canonicos listados em yaml_sources
 Mapear estado atual vs estado desejado
 ```

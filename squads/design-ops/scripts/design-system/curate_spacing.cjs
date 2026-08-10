@@ -15,7 +15,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.cwd();
-const EXTRACTION_DIR = path.join(ROOT, 'workspace', 'domains', 'design-system', 'extraction');
+const EXTRACTION_DIR = path.join(ROOT, 'docs', 'project', 'domains', 'design-system', 'extraction');
 const MERGED_PATH = path.join(EXTRACTION_DIR, 'all-pages-merged.json');
 const OUTPUT_DIR = path.join(EXTRACTION_DIR, 'curated');
 const OUTPUT_PATH = path.join(OUTPUT_DIR, 'curated-spacing.json');

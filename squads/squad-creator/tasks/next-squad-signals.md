@@ -28,7 +28,7 @@ domain: Tactical
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Tactical`
 atomic_layer: Atom
 Input: request::next_squad_signals
@@ -36,7 +36,7 @@ Output: artifact::next_squad_signals
 pre_condition: next-squad-registry completed com buckets CREATE/IMPROVE/FIX AND mode (quick/deep) definido
 post_condition: sinais de demanda coletados (deep) ou skip_reason emitido (quick), evidências separadas do scoring
 performance: < 15 min (Hybrid — deep scan) ou < 30s (quick skip), escalate se sinais conflitantes
-Completion Criteria: modo quick com skip explícito OR modo deep com sinais de workspace/git/runtime coletados
+Completion Criteria: modo quick com skip explícito OR modo deep com sinais de outputs/git/runtime coletados
 error_handling: escalate to squad-chief on failure, persist error context
 
 ## Inputs
@@ -54,7 +54,7 @@ Adicionar contexto de demanda real sem acoplar o fluxo rápido a scans pesados.
 ## Acceptance Criteria
 
 - [ ] Modo `quick` produz skip explícito
-- [ ] Modo `deep` coleta sinais de workspace, git e runtime
+- [ ] Modo `deep` coleta sinais de local_docs, git e runtime
 - [ ] Evidências ficam separadas do scoring
 
 ## Related Documents

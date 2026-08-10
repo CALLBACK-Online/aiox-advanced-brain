@@ -1,23 +1,23 @@
 # Data Squad Token Registry v1.0
 # Vocabulario controlado para executores de analytics/data
-# Referencia: SINKRA-v3.md, Capitulo 5 (9 familias de tokens)
+# Referencia: AIOX-v3.md, Capitulo 5 (9 familias de tokens)
 # Escopo: data squad (Tier 0/1/2 analytics clones)
 
 _dependents_declaration:
   registry_id: data-token-registry
   dag_role: leaf
   upstream:
-    - registry: "squads/sinkra-squad/data/token-registry.yaml"
+    - registry: "squads/aiox-squad/data/token-registry.yaml"
       field: "parent_registry"
   dependents:
     - "squads/data/data/composition-rules.yaml"
     - "squads/data/data/governance-rules-registry.yaml"
-  schema_ref: "squads/sinkra-squad/data/registry-base-schema.yaml"
+  schema_ref: "squads/aiox-squad/data/registry-base-schema.yaml"
 
 version: "1.0.0"
 squad: data
 description: |
-  Registry dos 9 tipos de tokens SINKRA aplicados ao dominio de Data Intelligence.
+  Registry dos 9 tipos de tokens AIOX aplicados ao dominio de Data Intelligence.
   Cobre Tier 0 (Fader, Ellis), Tier 1 (Mehta, Spinks, Kao) e Tier 2 (Kaushik).
   Tokens sao unidades parametricas indivisiveis. Um valor. Zero ambiguidade.
 
@@ -103,11 +103,11 @@ tokens:
       - { name: responsavel_type, id: TK-DATA-ACC-001, domain: "enum: Worker|Agent|Clone|Human", example: "Clone", note: "Clone = um dos 7 agents tier 0/1/2" }
       - { name: review_authority, id: TK-DATA-ACC-002, domain: "enum: data-chief|peer-clone|human", example: "data-chief" }
       - { name: sign_off_role, id: TK-DATA-ACC-003, domain: "enum: founder|coo|data-chief", example: "data-chief" }
-    validation: "Must match SINKRA responsavel_type canonical enum"
+    validation: "Must match AIOX responsavel_type canonical enum"
 
   Mode:
     family: operational
-    definition: "Modo de operacao de squad/task (SINKRA 8 modes subset supported by data)"
+    definition: "Modo de operacao de squad/task (AIOX 8 modes subset supported by data)"
     examples:
       - { name: mode, id: TK-DATA-MODE-001, domain: "enum: ENTENDER|RESOLVER|EXPLORAR|VALIDAR", example: "ENTENDER", note: "supported_modes do config.yaml" }
       - { name: ENTENDER, id: TK-DATA-MODE-002, purpose: "diagnose current state (cohorts, PMF score, health)" }

@@ -1,5 +1,5 @@
 # Managed by materialize-map.py
-# Source: .aiox/squad-runtime/sinkra-squad/aiox-sop/map/20260329-190639-claude-opus/infrastructure_connections.yaml
+# Source: .aiox/squad-runtime/aiox-squad/aiox-sop/map/20260329-190639-claude-opus/infrastructure_connections.yaml
 # Category: governance
 
 metadata:
@@ -11,8 +11,8 @@ metadata:
   generated_at: '2026-03-30T03:00:00-03:00'
   agent: infrastructure-mapper
   version: 1.0.0
-  methodology: SINKRA Infrastructure Mapping — Reuse-First, Incremental, Fiel ao Design
-  infra_map_consulted: squads/sinkra-squad/data/infrastructure-map.yaml
+  methodology: AIOX Infrastructure Mapping — Reuse-First, Incremental, Fiel ao Design
+  infra_map_consulted: squads/aiox-squad/data/infrastructure-map.yaml
   reuse_principle: NUNCA criar infraestrutura nova quando infraestrutura existente
     serve
 infrastructure:
@@ -21,13 +21,13 @@ infrastructure:
     workspace_id: '9007008605'
     target_space:
       space_id: '901310534476'
-      space_name: sinkra_ai
+      space_name: aiox_ai
       status: existing
       justification: Space dedicado a AI/automation — domínio correto para AIOX SOP
         Pipeline
     lists:
     - list_name: AIOX SOP Pipeline
-      space: sinkra_ai
+      space: aiox_ai
       status: new
       task_ids:
       - T1.1
@@ -35,7 +35,7 @@ infrastructure:
       - T6.4
       purpose: Tracking de SOPs em processamento — intake, rework, aprovação final
       justification: Nenhuma lista existente mapeia o workflow de SOP transformation.
-        sinkra_ai é o espaço correto por domínio.
+        aiox_ai é o espaço correto por domínio.
     custom_fields:
     - field_name: executor_type
       field_type: dropdown
@@ -67,8 +67,8 @@ infrastructure:
       - T6.5
       - T6.6
       status: existing
-      justification: Campo SINKRA obrigatório — já configurado no workspace per infrastructure-map.yaml
-        sinkra_required_fields
+      justification: Campo campo obrigatório do framework — já configurado no project docs per infrastructure-map.yaml
+        aiox_required_fields
     - field_name: phase
       field_type: number
       range: 1-9
@@ -95,8 +95,8 @@ infrastructure:
       - T6.5
       - T6.6
       status: existing
-      justification: Campo SINKRA obrigatório — já existe no workspace
-    - field_name: sinkra_primitive
+      justification: Campo campo obrigatório do framework — já existe no project docs
+    - field_name: framework_primitive
       field_type: dropdown
       values:
       - Token
@@ -119,7 +119,7 @@ infrastructure:
       - T3.4
       - T3.5
       status: existing
-      justification: Campo SINKRA obrigatório — já existe no workspace
+      justification: Campo campo obrigatório do framework — já existe no project docs
     - field_name: guardrail_status
       field_type: checkbox
       task_ids:
@@ -139,7 +139,7 @@ infrastructure:
       - T6.5
       - T6.6
       status: existing
-      justification: Campo SINKRA obrigatório — já existe no workspace
+      justification: Campo campo obrigatório do framework — já existe no project docs
     - field_name: quality_gate_result
       field_type: dropdown
       values:
@@ -153,7 +153,7 @@ infrastructure:
       - T6.3
       - T6.4
       status: existing
-      justification: Campo SINKRA obrigatório — já existe no workspace
+      justification: Campo campo obrigatório do framework — já existe no project docs
     - field_name: sop_id
       field_type: short_text
       format: SOP-YYYYMMDD-NNN
@@ -261,7 +261,7 @@ infrastructure:
         sop_id: text NOT NULL REFERENCES sop_catalog(sop_id)
         clarity_score: 'numeric(3,2) -- T3.1: 0-5'
         completeness_score: 'numeric(5,2) -- T3.2: 0-100'
-        sinkra_adherence: boolean -- T3.3
+        aiox_adherence: boolean -- T3.3
         recommendations: 'jsonb -- T3.4: [{issue, severity, fix_suggestion}]'
         tier: text NOT NULL -- A|B|C|D
         routing_decision: text -- direct|rework|escalate
@@ -401,7 +401,7 @@ infrastructure:
       - T3.5
       trigger: 'Event: T2.4 confidence_score >= 70'
       action: 'Parallel: T3.1 (OpenClaw/Clone clarity), T3.2 (completeness script),
-        T3.3 (SINKRA adherence/Agent) → Join → T3.4 gap analysis (OpenClaw) → T3.5
+        T3.3 (AIOX adherence/Agent) → Join → T3.4 gap analysis (OpenClaw) → T3.5
         report compiler → tier routing'
       status: new
       error_handler: true
@@ -520,8 +520,8 @@ infrastructure:
       model: sonnet
       tier: standard
       prompt_template: schema-mapper-sop-v1
-      input: Normalized Markdown + SINKRA schema definition
-      output: SINKRA Schema JSON
+      input: Normalized Markdown + AIOX schema definition
+      output: AIOX Schema JSON
       status: new_route
       platform_status: existing
     - route_name: /aiox-sop/clarity-evaluator
@@ -532,19 +532,19 @@ infrastructure:
       tier: quality
       prompt_template: clarity-evaluator-v1
       clone_persona: Process Documentation Expert
-      input: SINKRA Schema JSON
+      input: AIOX Schema JSON
       output: Clarity score 0-5 + justification
       status: new_route
       platform_status: existing
-    - route_name: /aiox-sop/sinkra-adherence-checker
+    - route_name: /aiox-sop/aiox-adherence-checker
       task_ids:
       - T3.3
       executor_type: Clone
       model: sonnet
       tier: standard
-      prompt_template: sinkra-adherence-v1
-      clone_persona: SINKRA Methodology Expert
-      input: SINKRA Schema JSON
+      prompt_template: aiox-adherence-v1
+      clone_persona: AIOX Methodology Expert
+      input: AIOX Schema JSON
       output: Adherence check result (boolean + findings)
       status: new_route
       platform_status: existing
@@ -555,7 +555,7 @@ infrastructure:
       model: sonnet
       tier: standard
       prompt_template: gap-analyzer-v1
-      input: SINKRA Schema JSON + all T3 scores
+      input: AIOX Schema JSON + all T3 scores
       output: Recommendations JSON [{issue, severity, fix_suggestion}]
       status: new_route
       platform_status: existing
@@ -566,7 +566,7 @@ infrastructure:
       model: sonnet
       tier: standard
       prompt_template: jsonld-converter-v1
-      input: SINKRA Schema JSON
+      input: AIOX Schema JSON
       output: JSON-LD with @context
       status: new_route
       platform_status: existing
@@ -577,7 +577,7 @@ infrastructure:
       model: text-embedding-3-small
       tier: budget
       tool: OpenAI Embeddings API via OpenClaw Gateway
-      input: SINKRA Schema JSON sections
+      input: AIOX Schema JSON sections
       output: Vector embeddings array (1536-dim)
       storage: Supabase pgvector (sop_artifacts table)
       status: new_route
@@ -589,7 +589,7 @@ infrastructure:
       model: sonnet
       tier: standard
       prompt_template: graphml-generator-v1
-      input: SINKRA Schema JSON (steps, dependencies)
+      input: AIOX Schema JSON (steps, dependencies)
       output: GraphML dependency graph (valid XML)
       status: new_route
       platform_status: existing
@@ -598,7 +598,7 @@ infrastructure:
       - T4.4
       executor_type: Worker
       tool: tiktoken Python script
-      input: SINKRA Schema JSON
+      input: AIOX Schema JSON
       output: Token sequences for fine-tuning
       status: new_route
       note: tiktoken is CPU-only — pode rodar como N8N Execute Command step, not requiring
@@ -611,7 +611,7 @@ infrastructure:
       model: opus
       tier: quality
       prompt_template: executive-summary-v1
-      input: SINKRA Schema JSON
+      input: AIOX Schema JSON
       output: Executive Summary Markdown (min 200w)
       status: new_route
       platform_status: existing
@@ -622,7 +622,7 @@ infrastructure:
       model: sonnet
       tier: standard
       prompt_template: operational-guide-v1
-      input: SINKRA Schema JSON
+      input: AIOX Schema JSON
       output: Operational Guide Markdown (min 500w)
       status: new_route
       platform_status: existing
@@ -633,7 +633,7 @@ infrastructure:
       model: sonnet
       tier: standard
       prompt_template: technical-reference-v1
-      input: SINKRA Schema JSON
+      input: AIOX Schema JSON
       output: Technical Reference Markdown (min 1000w)
       status: new_route
       platform_status: existing
@@ -706,7 +706,7 @@ summary:
   existing_resources_reused: 10
   new_resources_to_create: 37
   reuse_breakdown:
-    clickup_platform: REUSE — workspace + sinkra_ai space + 5 SINKRA required fields
+    clickup_platform: REUSE — local_docs + aiox_ai space + 5 AIOX required fields
     supabase_platform: REUSE — infrastructure exists, 5 new tables + 1 bucket + 2
       edge functions needed
     n8n_platform: REUSE — n8n.allfluence.ai exists, 11 new workflows needed

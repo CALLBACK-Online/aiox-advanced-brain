@@ -4,7 +4,7 @@ responsável: @copy-chief
 responsavel_type: Agent
 atomic_layer: Strategy
 Entrada: |
-  - product context loaded from workspace, user campaign objectives
+  - product context loaded from local_docs, user campaign objectives
 Saída: |
   - campaign-brief.yaml with all required fields populated
 Checklist:
@@ -74,12 +74,12 @@ Load from session context — DO NOT ask the user for data that already exists:
 
 ```yaml
 auto_fill_from:
-  icp: "workspace/businesses/{business}/L1-strategy/icp.yaml"
-  brandbook: "workspace/businesses/{business}/L2-tactical/brand/brandbook.yaml"
-  offerbook: "workspace/businesses/{business}/L3-product/{product}/offerbook.yaml"
-  proof: "workspace/businesses/{business}/L3-product/{product}/proof.yaml"
-  testimonials: "workspace/businesses/{business}/L3-product/{product}/testimonials.yaml"
-  pricing: "workspace/businesses/{business}/L1-strategy/pricing-strategy.yaml"
+  icp: "docs/strategy/icp.yaml"
+  brandbook: "docs/tactical/brand/brandbook.yaml"
+  offerbook: "docs/execution/{product}/offerbook.yaml"
+  proof: "docs/execution/{product}/proof.yaml"
+  testimonials: "docs/execution/{product}/testimonials.yaml"
+  pricing: "docs/strategy/pricing-strategy.yaml"
 ```
 
 ### Step 1: Campaign Identity (Elicit)
@@ -206,13 +206,12 @@ Preço carregado: {price} ({vagas} vagas)
 2. Auto-fill `source_of_truth` with canonical file paths
 3. Auto-fill `proof` section from loaded proof.yaml and testimonials.yaml
 4. Auto-fill `constraints.brand_constraints` from brandbook.yaml forbidden words
-5. Save to `workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/campaign-brief.yaml`
+5. Save to `docs/operational/campaigns/{campaign_slug}/campaign-brief.yaml`
 6. Update session context with campaign_slug via `set-active-context.cjs`
 7. Show confirmation with the gate status
 
 ### Step 8: Verify Gate
 
-Run `node squads/copy/scripts/check-copy-gate.cjs` and show result.
 
 If ALLOWED, show the now-unlocked creation commands.
 
@@ -220,7 +219,7 @@ If ALLOWED, show the now-unlocked creation commands.
 
 ## Output Contract
 
-File saved to: `workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/campaign-brief.yaml`
+File saved to: `docs/operational/campaigns/{campaign_slug}/campaign-brief.yaml`
 
 Session context updated with `campaign_slug`.
 

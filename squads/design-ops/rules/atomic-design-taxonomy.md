@@ -50,7 +50,7 @@ Do NOT load this rule for: pure copy work, pure brand work (logo/positioning), p
    → Defines WHERE other things go (named slots: header, rail, main,
      aside, actions), declares responsiveness and structure, but content
      inside is placeholder or structural variation?
-     YES → LAYOUT (workspace layout, article layout, PDP layout,
+     YES → LAYOUT (local_docs layout, article layout, PDP layout,
                    list-detail canonical layout)
                    ↳ this is what Brad Frost called "Template"
      NO → continue ↓
@@ -59,7 +59,7 @@ Do NOT load this rule for: pure copy work, pure brand work (logo/positioning), p
    → Final screen with realistic content, composes multiple organisms
      within a layout, a user would recognize it as "a real screen of
      the product"?
-     YES → PAGE (full Gmail workspace, Medium home,
+     YES → PAGE (full Gmail local_docs, Medium home,
                  Amazon PDP, full mobile compose screen)
      NO → revise. Probably mis-classified organism.
 
@@ -121,7 +121,7 @@ Atomic design as Brad Frost wrote it (2013/2016) is sound as a mental model but 
 ADR-052 chose **Path B (Atomic enriquecido)** to keep the familiar narrative while resolving the operational ambiguity through:
 
 1. The 5-question falsifiable rule (this rule)
-2. Renaming Templates → Layouts (slot-contract semantics, alignment with Material 3 canonical layouts, eliminates SINKRA collision with `Template` = process blueprint)
+2. Renaming Templates → Layouts (slot-contract semantics, alignment with Material 3 canonical layouts, eliminates AIOX collision with `Template` = process blueprint)
 3. Adding Patterns as a separate axis for cross-cutting guidance (empty/error/loading/onboarding) that has no home in canonical atomic design
 
 Without this rule, the original Gmail shell-as-organism regression recurs. With this rule, it is structurally prevented.

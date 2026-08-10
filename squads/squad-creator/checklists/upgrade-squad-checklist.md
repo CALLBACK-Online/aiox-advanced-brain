@@ -72,10 +72,10 @@ gap_checks:
     type: blocking
     validation: "All handoff_to, task references, template references resolve"
 
-  - id: workspace-integration-gap
-    check: "Workspace integration level assessed against current squad capabilities"
+  - id: local project docs-gap
+    check: "local project docs level assessed against current squad capabilities"
     type: recommended
-    validation: "workspace_integration.level is declared and rationale is present"
+    validation: "local project docs.level is declared and rationale is present"
 ```
 
 ---

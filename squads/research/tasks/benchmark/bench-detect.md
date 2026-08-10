@@ -11,7 +11,7 @@ type: atom
 description: "Auto-detect comparison type from subjects and load matching dimension pack"
 ```
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

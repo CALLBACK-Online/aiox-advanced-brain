@@ -1812,7 +1812,7 @@ ${(() => {
       </div>
       <div class="aiox-footer-col">
         <h4>Skill</h4>
-        <a href="https://github.com/SynkraAI/sinkra-hub" target="_blank" rel="noopener">github · sinkra-hub</a>
+        <a href="https://github.com/SynkraAI/upstream monorepo" target="_blank" rel="noopener">github · upstream monorepo</a>
         <a href="https://github.com/google-labs-code/design.md" target="_blank" rel="noopener">spec · @google/design.md</a>
         <a href="https://design.aioxsquad.ai/" target="_blank" rel="noopener">design.aioxsquad.ai</a>
       </div>

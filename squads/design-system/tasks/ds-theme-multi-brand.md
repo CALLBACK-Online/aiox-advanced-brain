@@ -89,13 +89,13 @@ Configure multi-brand token architecture enabling multiple brands to share the s
 ## Process Guards
 - **On Fail:** Stop execution, capture evidence, and return remediation steps before proceeding.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_theme_multi_brand_artifact

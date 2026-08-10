@@ -2,7 +2,7 @@
 title: Lift State Up
 impact: medium
 tags: [react, state, patterns]
-sinkra_source: v0-react-best-practices
+aiox_source: v0-react-best-practices
 ---
 
 # Lift State Up

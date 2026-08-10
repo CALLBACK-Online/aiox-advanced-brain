@@ -1,0 +1,94 @@
+{
+  "$id": "aiox://slide-creator/wireframes/risk-heatmap.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "Risks need severity, likelihood, mitigation, and owner.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "mitigation_1": {
+      "type": "string"
+    },
+    "mitigation_2": {
+      "type": "string"
+    },
+    "mitigation_3": {
+      "type": "string"
+    },
+    "mitigation_4": {
+      "type": "string"
+    },
+    "mitigation_5": {
+      "type": "string"
+    },
+    "mitigation_6": {
+      "type": "string"
+    },
+    "mitigation_7": {
+      "type": "string"
+    },
+    "mitigation_8": {
+      "type": "string"
+    },
+    "mitigation_9": {
+      "type": "string"
+    },
+    "risk_1": {
+      "type": "string"
+    },
+    "risk_2": {
+      "type": "string"
+    },
+    "risk_3": {
+      "type": "string"
+    },
+    "risk_4": {
+      "type": "string"
+    },
+    "risk_5": {
+      "type": "string"
+    },
+    "risk_6": {
+      "type": "string"
+    },
+    "risk_7": {
+      "type": "string"
+    },
+    "risk_8": {
+      "type": "string"
+    },
+    "risk_9": {
+      "type": "string"
+    }
+  },
+  "title": "risk-heatmap",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "risk_register_heatmap",
+    "slot_count": 19,
+    "warnings": [
+      "action_title",
+      "risk_1",
+      "mitigation_1",
+      "risk_2",
+      "mitigation_2",
+      "risk_3",
+      "mitigation_3",
+      "risk_4",
+      "mitigation_4",
+      "risk_5",
+      "mitigation_5",
+      "risk_6",
+      "mitigation_6",
+      "risk_7",
+      "mitigation_7",
+      "risk_8",
+      "mitigation_8",
+      "risk_9",
+      "mitigation_9"
+    ],
+    "wireframe_ref": "templates/wireframes/risk-heatmap.html"
+  }
+}

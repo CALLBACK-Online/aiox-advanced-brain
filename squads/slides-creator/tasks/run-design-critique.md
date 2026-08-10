@@ -1,6 +1,6 @@
 # Task: Run Design Critique (Phase P04.5)
 
-## SINKRA Validation Metadata
+## AIOX Validation Metadata
 
 ```yaml
 task: run-design-critique
@@ -25,9 +25,9 @@ Error_handling:
   strategy: fail fast with explicit handoff blocker
 ```
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Strategic -->
+<!-- AIOX Domain: Strategic -->
 
 ## Metadata
 
@@ -45,7 +45,7 @@ Error_handling:
 
 Sem critique loop dedicado, qa-inspector recebia draft DeckSpec e emitia verdict PASS/FAIL. Sem oportunidade de iteration estruturada com decisões registradas. Esta task abre janela formal entre draft e QA final onde @design-planner orquestra critique + reflection + routing.
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml

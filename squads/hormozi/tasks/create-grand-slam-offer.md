@@ -10,7 +10,7 @@ estimated_time: 45-60min
 source: "$100M Offers - Chapter 9: Problems & Solutions"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

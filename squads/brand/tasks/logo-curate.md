@@ -35,7 +35,7 @@ Apresentar as gerações de logo agrupadas por direção conceitual, coletar fee
 
 | Artifact | Location | Description |
 |---|---|---|
-| `curation-report.md` | `workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/curation-report.md` | Feedback + decisão de curação |
+| `curation-report.md` | `docs/tactical/brand/logo/curation-report.md` | Feedback + decisão de curação |
 
 ## Execution Steps
 
@@ -157,7 +157,7 @@ pass:
   - selected_images: ["{{img_1}}", "{{img_2}}"]
   - refinement_notes: "{{notes}}"
   - brand_name: "{{brand_name}}"
-  - prompt_brief: "workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-prompt-brief.yaml"
+  - prompt_brief: "docs/tactical/brand/logo/logo-prompt-brief.yaml"
 
 # Se ITERATE:
 to: wheeler-brand-design
@@ -175,6 +175,6 @@ pass:
   - what_worked: "{{positives}}"
   - what_to_avoid: "{{negatives}}"
   - iteration: {{iteration + 1}}
-  - logo_brief: "workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-brief.md"
+  - logo_brief: "docs/tactical/brand/logo/logo-brief.md"
   - brand_name: "{{brand_name}}"
 ```

@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: ciclo-de-vida-do-story
 lesson_position: 47
 title: 'Ciclo de vida do Story: draft → ready → in progress → in review → done'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/47-ciclo-de-vida-do-story/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

@@ -1,7 +1,7 @@
 version: "1.0"
 generated_at: "2026-04-10"
 generated_by: "design-chief"
-policy: "workspace-first"
+policy: "local"
 
 squad:
   name: design-ops
@@ -9,7 +9,7 @@ squad:
   budget_tier: low_cost
 
 use_cases:
-  - workspace-contract-validation
+  - project context contracts-validation
   - brandbook-extraction
   - metadata-manifest-governance
   - accessibility-gates
@@ -17,10 +17,10 @@ use_cases:
   - provider-self-healing
 
 capability_tools:
-  workspace_contract_validation:
+  project context contracts_validation:
     priority: high
     primary:
-      - script:validate-workspace-contracts.cjs
+      - script:validate-project context contracts.cjs
     fallback: []
 
   checklist_gate_validation:

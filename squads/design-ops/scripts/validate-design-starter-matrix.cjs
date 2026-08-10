@@ -43,7 +43,7 @@ function assertExists(targetPath, label) {
 }
 
 function canValidateSourceApp() {
-  return fs.existsSync(path.join(ROOT, 'workspace.yaml')) || fs.existsSync(path.join(ROOT, 'workspace', 'workspace.yaml'));
+  return fs.existsSync(path.join(ROOT, 'project-context.yaml')) || fs.existsSync(path.join(ROOT, 'docs', 'project', 'project-context.yaml'));
 }
 
 function validateStandaloneExport(starterAppAbs) {
@@ -68,11 +68,11 @@ function main() {
   if (canValidateSourceApp()) {
     runStep('Source App Build', 'npm', ['run', 'build'], {
       cwd: sourceAppAbs,
-      env: { WORKSPACE_ROOT: ROOT },
+      env: { PROJECT_ROOT: ROOT },
     });
   } else {
     process.stdout.write('== Source App Build ==\n');
-    process.stdout.write('SKIP: source app parity build requires workspace.yaml markers; starter validation continues\n');
+    process.stdout.write('SKIP: source app parity build requires project-context.yaml markers; starter validation continues\n');
   }
 
   runStep('Starter Lint', 'npm', ['run', 'lint'], { cwd: starterAppAbs });

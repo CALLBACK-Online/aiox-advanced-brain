@@ -32,7 +32,7 @@ def load_known_squads():
 
     # Try loading from ecosystem-registry.yaml (consolidated registry)
     script_dir = Path(__file__).parent
-    registry_path = script_dir / ".." / ".." / "sinkra-squad" / "data" / "ecosystem-registry.yaml"
+    registry_path = script_dir / ".." / ".." / "aiox-squad" / "data" / "ecosystem-registry.yaml"
 
     if registry_path.exists():
         try:

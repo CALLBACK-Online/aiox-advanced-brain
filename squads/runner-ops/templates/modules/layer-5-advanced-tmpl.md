@@ -143,7 +143,7 @@ exit 0
 source "$RUNNER_LIB_DIR/dispatch.sh"
 
 # Dispatch event to another squad
-dispatch_event "sinkra-squad" "runner-validation-complete" '{
+dispatch_event "aiox-squad" "runner-validation-complete" '{
   "runner": "copy-runner",
   "score": 92,
   "artifacts": ["outputs/runner-ops/validation/copy-runner-20260403.txt"]
@@ -170,7 +170,7 @@ dispatch_queue_status "runner-ops"
 **When to use dispatch:**
 - Runner completes and needs to trigger Squad Creator
 - Runner needs to notify monitoring system
-- Cross-squad handoffs defined in SINKRA pipeline
+- Cross-squad handoffs defined in AIOX pipeline
 
 ---
 

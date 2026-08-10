@@ -10,7 +10,7 @@ estimated_time: 1-2 hours
 source: "$100M Money Models - Seção 7 (Downsells)"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

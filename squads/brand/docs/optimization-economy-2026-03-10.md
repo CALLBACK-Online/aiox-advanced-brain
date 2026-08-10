@@ -6,15 +6,14 @@ Squad: `brand`
 ## Before -> After
 
 - workflows missing `COO` readiness in preflight: `8 -> 0`
-- workflows missing `validate-brand-essentials.sh`: `2 -> 0`
 - visual workflow runtime executor drift: `2 -> 0`
 - workflow contract validation warnings: `2 -> 0`
 - validate-squad result: `PASS -> PASS`
 
 ## Practical Savings
 
-- lower operator ambiguity during workspace-first execution
-- fewer false starts before canonical workspace writes
+- lower operator ambiguity during local execution
+- fewer false starts before canonical project context writes
 - no validator friction on cross-squad visual workflows
 - less manual interpretation of whether visual generation should route through
   `aiox-master` or the Design specialist

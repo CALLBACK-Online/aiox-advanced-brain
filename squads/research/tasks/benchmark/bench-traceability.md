@@ -1,6 +1,6 @@
 # Task: Command-Task-Artifact Traceability Map (Autonomous)
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

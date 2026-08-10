@@ -508,16 +508,16 @@ async function main() {
     // Recover origin args from the run's response headers (set by fetch.cjs
     // or local-source.cjs).
     const headers = JSON.parse(fs.readFileSync(path.join(resumeDir, "inputs", "response-headers.json"), "utf8"));
-    if (headers["x-sinkra-source"] === "local") {
+    if (headers["x-aiox-source"] === "local") {
       args.source = "local";
-      const projHint = headers["x-sinkra-project"];
+      const projHint = headers["x-aiox-project"];
       if (!args.project && projHint) args.project = projHint;
     }
     if (!args.url) {
       // Recover URL from a previously written prompt.txt if available
       // (preserves exact pseudo-URL identity used in the first run), else
       // fall back to a slug derived from the resume directory's parent name.
-      if (headers["x-sinkra-source"] === "local") {
+      if (headers["x-aiox-source"] === "local") {
         // The "company" component of the run path is `outputs/.../local-extracts/<company>/.run-...`
         // — use it directly so the synthesized pseudo-URL slugs back to the
         // same company dir on the next pipeline pass.
@@ -650,10 +650,10 @@ async function main() {
     // Recover responseStatus from header. Fall back to 200 for local-source
     // (which always returns 200) so downstream phases that branch on status
     // continue to behave correctly. Default to null when we genuinely don't know.
-    const rawStatus = Number(responseHeaders["x-sinkra-status"]);
+    const rawStatus = Number(responseHeaders["x-aiox-status"]);
     if (Number.isFinite(rawStatus) && rawStatus > 0) {
       responseStatus = rawStatus;
-    } else if (responseHeaders["x-sinkra-source"] === "local") {
+    } else if (responseHeaders["x-aiox-source"] === "local") {
       responseStatus = 200;
     } else {
       responseStatus = null;
@@ -674,7 +674,7 @@ async function main() {
   ) {
     html = fs.readFileSync(path.join(inputsDir, "page.html"), "utf8");
     responseHeaders = JSON.parse(fs.readFileSync(path.join(inputsDir, "response-headers.json"), "utf8"));
-    responseStatus = Number(responseHeaders["x-sinkra-status"] || 0) || null;
+    responseStatus = Number(responseHeaders["x-aiox-status"] || 0) || null;
     reuseTrace.fetch = "HIT";
     console.log(`[1/8] fetch — reused from ${path.basename(previousRun)}`);
   } else {
@@ -794,7 +794,7 @@ async function main() {
     console.log(`[2/8] collecting CSS + favicon + logo`);
     timer.start("phase_2_collect");
     ({ css, meta: cssMeta } = await collectCss(html, args.url, {
-      preferredFetchStrategy: responseHeaders?.["x-sinkra-fetch-strategy"] === "browser" ? "browser" : "auto",
+      preferredFetchStrategy: responseHeaders?.["x-aiox-fetch-strategy"] === "browser" ? "browser" : "auto",
     }));
     timer.end("phase_2_collect");
     fs.writeFileSync(path.join(inputsDir, "css-collected.css"), css);
@@ -836,7 +836,7 @@ async function main() {
     // Always emit structured diagnostic so operators understand WHY the gate
     // would fire (B1). Written even when --no-content-gate lets us continue.
     const { classifyResponse, extractSpaPayloads } = require("./lib/bot-diagnostic.cjs");
-    const diagnostic = classifyResponse({ html, headers: responseHeaders, status: responseStatus || Number(responseHeaders?.["x-sinkra-status"] || 0) || null });
+    const diagnostic = classifyResponse({ html, headers: responseHeaders, status: responseStatus || Number(responseHeaders?.["x-aiox-status"] || 0) || null });
 
     // B3: try SPA-shell payload extraction before hard-failing. Many "thin"
     // responses are real React/Vue apps shipping all design data inline.
@@ -2142,7 +2142,7 @@ async function main() {
 
   // B6: capture which fetch strategy worked (honest vs browser) so we can
   // query "which sites needed the bot-coherent header fallback?" across runs.
-  const fetchStrategy = (responseHeaders && responseHeaders["x-sinkra-fetch-strategy"]) || null;
+  const fetchStrategy = (responseHeaders && responseHeaders["x-aiox-fetch-strategy"]) || null;
 
   let telemetry = {
     schema_version: "1.0",

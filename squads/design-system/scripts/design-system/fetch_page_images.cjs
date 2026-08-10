@@ -30,8 +30,8 @@ if (!TOKEN || !FILE_ID) {
   process.exit(1);
 }
 
-const MANIFEST_PATH = path.join(ROOT, 'workspace', 'domains', 'design-system', 'extraction', 'batch-manifest.json');
-const IMAGES_DIR = path.join(ROOT, 'workspace', 'domains', 'design-system', 'extraction', 'images');
+const MANIFEST_PATH = path.join(ROOT, 'docs', 'project', 'domains', 'design-system', 'extraction', 'batch-manifest.json');
+const IMAGES_DIR = path.join(ROOT, 'docs', 'project', 'domains', 'design-system', 'extraction', 'images');
 
 function figmaGet(endpoint) {
   return new Promise((resolve, reject) => {

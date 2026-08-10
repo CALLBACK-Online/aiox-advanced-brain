@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: ciclo-do-repositorio
 lesson_position: 19
 title: 'Ciclo do repositório: Detect Repo, GitHub, CodeRabbit, CI/CD'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/19-ciclo-do-repositorio/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

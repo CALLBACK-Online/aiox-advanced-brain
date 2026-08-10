@@ -51,9 +51,9 @@ integrations:
   - service: "outputs/etl/"
     type: runtime
     purpose: "Persistência de runs ETL legados"
-  - service: "workspace/businesses/{slug}/etl/"
+  - service: "docs/etl/"
     type: canonical
-    purpose: "Persistência canônica em modo workspace-first"
+    purpose: "Persistência canônica em modo local"
 
 observability:
   checkpoint_policy: "always_active"

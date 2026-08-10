@@ -11,7 +11,7 @@ source: "Email Campaign SOP — Sequence Architecture"
 sop_reference: squads/hormozi/sops/email-campaign-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

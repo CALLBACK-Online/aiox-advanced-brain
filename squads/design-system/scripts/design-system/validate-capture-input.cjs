@@ -42,18 +42,18 @@ if (!bu) {
   process.exit(1)
 }
 
-// Check 2: business slug must exist in workspace/businesses/
+// Check 2: business slug must exist in docs/
 const ROOT = path.resolve(__dirname, '..', '..', '..', '..')
-const buPath = path.join(ROOT, 'workspace', 'businesses', bu)
+const buPath = path.join(ROOT, 'docs', 'project', 'businesses', bu)
 
 if (!fs.existsSync(buPath)) {
   console.error(`ERROR: Business '${bu}' not found at ${buPath}`)
-  console.error(`ACTION: Create the folder first: mkdir -p workspace/businesses/${bu}/L2-tactical/design`)
+  console.error(`ACTION: Create the folder first: mkdir -p docs/${bu}/tactical/design`)
   process.exit(1)
 }
 
 // Auto-create design folder if missing
-const designPath = path.join(buPath, 'L2-tactical', 'design')
+const designPath = path.join(buPath, 'tactical', 'design')
 if (!fs.existsSync(designPath)) {
   fs.mkdirSync(designPath, { recursive: true })
   console.log(`INFO: Created ${designPath}`)
@@ -221,7 +221,7 @@ if (source === 'prints') {
     console.error(`ERROR: Prints directory not found: ${printsDir}`)
     console.error('')
     console.error('ACTION: Either provide --prints-dir={path} or create the default directory:')
-    console.error(`  mkdir -p workspace/businesses/${bu}/L2-tactical/design/raw/`)
+    console.error(`  mkdir -p docs/${bu}/tactical/design/raw/`)
     console.error('')
     console.error('Then add screenshot images (.png, .jpg, .jpeg, .webp) to that folder.')
     console.error('These should be screenshots of the existing design system (colors, typography, components).')

@@ -1,5 +1,5 @@
 {
-  "schema": "sinkra.bench-intelligence-contract.v1",
+  "schema": "aiox.bench-intelligence-contract.v1",
   "updated_at": "2026-05-18",
   "reference_benchmark": "docs/bench/slides-creator-open-source-absorption/",
   "reference_benchmarks": [
@@ -158,7 +158,7 @@
       "id": "adoption_or_implementation_map",
       "description": "Mapa que transforma recomendação em adoção, implementação, playbook, waves ou acceptance plan.",
       "any_of": [
-        "deep/sinkra-adoption-map.md",
+        "deep/aiox-adoption-map.md",
         "deep/adoption-map.md",
         "deep/implementation-playbook.md",
         "deep/acceptance-test-plan.md"

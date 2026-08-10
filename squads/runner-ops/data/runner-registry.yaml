@@ -45,21 +45,21 @@ ecosystem_snapshot:
       type: pipeline
       integration_score: partial
       path: "squads/domain-decoder/scripts/decoder.sh"
-    - id: sinkra-map
-      squad: sinkra-squad
+    - id: aiox-map
+      squad: aiox-squad
       type: pipeline
       integration_score: partial
-      path: "squads/sinkra-squad/scripts/sinkra-map.sh"
-    - id: sinkra-validate
-      squad: sinkra-squad
+      path: "squads/aiox-squad/scripts/aiox-map.sh"
+    - id: aiox-validate
+      squad: aiox-squad
       type: validator
       integration_score: minimal
-      path: "squads/sinkra-squad/scripts/sinkra-validate.sh"
+      path: "squads/aiox-squad/scripts/aiox-validate.sh"
     - id: validate-skill
-      squad: sinkra-squad
+      squad: aiox-squad
       type: validator
       integration_score: minimal
-      path: "squads/sinkra-squad/scripts/validate-skill.sh"
+      path: "squads/aiox-squad/scripts/validate-skill.sh"
     - id: validate-squad
       squad: squad-creator
       type: validator

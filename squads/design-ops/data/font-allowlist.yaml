@@ -6,7 +6,7 @@
 # version: 1.0.0
 # authority: .claude/rules/design-absolute-bans.md § 1
 # created: 2026-05-19
-# source_bench: docs/bench/2026-05-18-impeccable-vs-sinkra-design-stack/
+# source_bench: docs/bench/2026-05-18-impeccable-vs-aiox-design-stack/
 # absorbed_from:
 #   - impeccable.style v3.1.1 — monoculture detector list
 #   - tasteskill.dev v2 — anti-Inter + concrete allowlist
@@ -17,7 +17,7 @@ purpose: "Cross-skill font policy consumed by /design-md (detection) and /slide-
 version: "1.0.0"
 authority: ".claude/rules/design-absolute-bans.md § 1"
 created: "2026-05-19"
-source_bench: "docs/bench/2026-05-18-impeccable-vs-sinkra-design-stack/"
+source_bench: "docs/bench/2026-05-18-impeccable-vs-aiox-design-stack/"
 absorbed_from:
   - "impeccable.style v3.1.1 — monoculture detector list"
   - "tasteskill.dev v2 — anti-Inter + concrete allowlist (Geist/Outfit/Cabinet Grotesk/Satoshi)"
@@ -78,7 +78,7 @@ allowed_serif:
   - family: "{custom_brand_serif}"
     use_cases: [brand_editorial]
     preferred_for: "Allowed when extracted/declared in brand DNA"
-    policy: "Any serif declared in workspace/businesses/{biz}/L2-tactical/brand/brand-context.yaml is allowed"
+    policy: "Any serif declared in docs/tactical/brand/brand-context.yaml is allowed"
 
 # ── blocked_monoculture ───────────────────────────────────────────────────────
 # AI-fingerprint signals. Detection MUST flag. Generation MUST refuse.
@@ -147,17 +147,17 @@ detection_rules:
 
 consumers:
   design_md: "squads/design-ops/scripts/extract-from-url/lib/font-allowlist-check.cjs (to create)"
-  slide_creator_cross_ref: ".claude/skills/slide-creator/data/palette-registry.yaml#font_policy"
-  slide_creator_validators: ".claude/skills/slide-creator/scripts/validate_design_100_runtime.py"
+  slide_creator_cross_ref: "skills/slide-creator/data/palette-registry.yaml#font_policy"
+  slide_creator_validators: "skills/slide-creator/scripts/validate_design_100_runtime.py"
   canonical_authority: ".claude/rules/design-absolute-bans.md §1"
 
 # ── override_policy ───────────────────────────────────────────────────────────
 # A specific business can override at:
-#   workspace/businesses/{biz}/L2-tactical/brand/brand-context.yaml#font_policy
+#   docs/tactical/brand/brand-context.yaml#font_policy
 # But override MUST cite an ADR justifying the exception.
 # No silent overrides.
 
 override_policy:
-  allowed_at: "workspace/businesses/{biz}/L2-tactical/brand/brand-context.yaml#font_policy"
+  allowed_at: "docs/tactical/brand/brand-context.yaml#font_policy"
   requires_adr: true
   silent_overrides_allowed: false

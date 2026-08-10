@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "sinkra/bench-output-dash",
+  "$id": "aiox/bench-output-dash",
   "title": "Bench Output Dash",
   "description": "Canonical disk projection consumed by apps/research/src/lib/bench-dashboard.server.ts. This is not the internal BenchDashboardData return shape. Emitted by bench-analyst as the final artifact of bench-comparison-pipeline. Companion: bench-metadata-canonical.yaml. YAML/JSONL files are audit sidecars; rendered values must be mirrored into JSON/MD/MMD artifacts.",
   "type": "object",

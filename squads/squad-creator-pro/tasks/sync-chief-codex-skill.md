@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: sync-chief-codex-skill
   task_name: /sync-chief-codex-skill Task
   status: pending
@@ -25,11 +25,11 @@ sinkra_task_metadata:
   coherence_threshold: 0.95
   error_behavior: raise
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Strategic
   atomic_layer: Atom
   executor: Worker
@@ -37,7 +37,7 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # /sync-chief-codex-skill Task
@@ -54,7 +54,7 @@ sinkra_contract:
 |----|-----------|-------|--------|
 | VETO-SCS-001 | Squad config.yaml must exist and be parseable before generating skill file | Validate squads/{squad_name}/config.yaml exists and YAML parses without error | VETO - BLOCK. Fix or create config.yaml before attempting skill sync. |
 | VETO-SCS-002 | Chief agent must be resolvable from config before writing skill file | Verify chief resolution chain (entry_agent, squad.entry_agent, tier_system.orchestrator, agents[]) returns a valid agent ID | VETO - BLOCK. Define entry_agent or orchestrator in config.yaml before proceeding. |
-| VETO-SCS-003 | Existing SKILL.md at target path must be backed up before overwrite | Check if .agents/skills/{chief_id}/SKILL.md already exists | VETO - BLOCK. Create backup of existing skill file before generating new version. |
+| VETO-SCS-003 | Existing SKILL.md at target path must be backed up before overwrite | Check if skills/{chief_id}/SKILL.md already exists | VETO - BLOCK. Create backup of existing skill file before generating new version. |
 
 ---
 
@@ -82,11 +82,11 @@ Generate or update the Codex skill for the squad chief so the orchestrator is im
    - first `agents[].id` that is orchestrator or ends with `-chief`
 3. Read chief agent file in `squads/{squad_name}/agents/`.
 4. Extract command set from chief YAML block.
-5. Write `.agents/skills/{chief_id}/SKILL.md`.
+5. Write `skills/{chief_id}/SKILL.md`.
 
 ## Required Output
 
-- `.agents/skills/{chief_id}/SKILL.md`
+- `skills/{chief_id}/SKILL.md`
 
 ## Blocking Rule
 

@@ -848,7 +848,6 @@ operational_frameworks:
           - "Day-to-day champion"
           - "End users"
         ideal:
-          - "C-level (strategic)"
           - "VP/Director (tactical)"
           - "Manager (operational)"
           - "Users (adoption)"

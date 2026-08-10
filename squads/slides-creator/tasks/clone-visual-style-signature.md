@@ -1,10 +1,10 @@
 # clone-visual-style-signature
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Tactical -->
+<!-- AIOX Domain: Tactical -->
 
-## SINKRA Validation Metadata
+## AIOX Validation Metadata
 
 ```yaml
 task: clone-visual-style-signature

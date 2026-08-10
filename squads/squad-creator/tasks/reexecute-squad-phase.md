@@ -35,7 +35,7 @@ Reexecution must preserve recoverability.
 ---
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Strategic`
 atomic_layer: Atom
 agent: squad-chief

@@ -23,7 +23,7 @@ workflow:
     - phase: batch-context
       id: batch-context
       agent: copy-chief
-      task_ref: tasks/load-workspace-context.md
+      task_ref: tasks/load-project context.md
       action: "Descobrir o lote de CPLs e preparar o contexto do lançamento"
       creates: cpl-batch-context
       on_complete: { trigger: batch-context_complete }

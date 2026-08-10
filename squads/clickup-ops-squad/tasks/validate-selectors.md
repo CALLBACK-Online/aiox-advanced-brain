@@ -15,7 +15,7 @@ frequencia: "Mensal (primeira semana) + antes de operações Playwright crítica
 ## Description
 
 Valida que os seletores DOM armazenados em `services/clickup/playwright/selectors/`
-ainda funcionam contra o workspace ClickUp real. O ClickUp ocasionalmente altera
+ainda funcionam contra o local_docs ClickUp real. O ClickUp ocasionalmente altera
 a estrutura DOM em updates — seletores quebrados causam falha silenciosa em scripts
 de automação, formulários e dashboards.
 
@@ -168,7 +168,7 @@ O arquivo `selector-validation-report.json` contém:
 
 - [ ] MCP Playwright disponível e autenticado no ClickUp
 - [ ] Arquivos `selectors/*.json` existem (verificar com `--summary`)
-- [ ] Workspace ClickUp acessível
+- [ ] LocalDocs ClickUp acessível
 
 ## Post-Conditions
 

@@ -10,8 +10,8 @@
 ## Princípio
 
 O `copy-chief` não inventa dados. Ele extrai de fontes canônicas do
-`workspace/businesses/{business}/` e da camada opcional de campanha em
-`workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/` (ADR-012).
+`docs/` e da camada opcional de campanha em
+`docs/operational/campaigns/{campaign_slug}/` (ADR-012).
 
 Se `campaign-brief.yaml` existir, ele governa a camada de campanha.
 Se não existir, o protocolo pode montar apenas um brief implícito para:
@@ -32,15 +32,15 @@ Estes arquivos definem quem somos e como falamos.
 
 | # | Arquivo | O que extrair | Obrigatório? |
 |---|---------|---------------|-------------|
-| 1 | `{business}/L1-strategy/icp.yaml` | ICP, dores, desejos, gatilhos, objeções | **SIM** |
-| 2 | `{business}/L1-strategy/offerbook.yaml` | índice/shared offer truth | **SIM** |
-| 3 | `{business}/L1-strategy/pricing-strategy.yaml` | preço, tiers, ROI, ancoragem | Recomendado |
-| 4 | `{business}/L2-tactical/brand/brandbook.yaml` | voice DNA, forbidden words, promessa, onlyness, signature phrases | **SIM** |
-| 5 | `{business}/L2-tactical/brand/strategic-positioning.yaml` | posicionamento, categoria, contraste competitivo | Recomendado |
-| 6 | `{business}/L0-identity/founder-dna.yaml` | origem, filosofia e linguagem do fundador | Recomendado |
-| 7 | `{business}/L2-tactical/movement/` | narrativa identitária, crenças, vocabulário, objeções culturais | Quando aplicável |
+| 1 | `{business}/strategy/icp.yaml` | ICP, dores, desejos, gatilhos, objeções | **SIM** |
+| 2 | `{business}/strategy/offerbook.yaml` | índice/shared offer truth | **SIM** |
+| 3 | `{business}/strategy/pricing-strategy.yaml` | preço, tiers, ROI, ancoragem | Recomendado |
+| 4 | `{business}/tactical/brand/brandbook.yaml` | voice DNA, forbidden words, promessa, onlyness, signature phrases | **SIM** |
+| 5 | `{business}/tactical/brand/strategic-positioning.yaml` | posicionamento, categoria, contraste competitivo | Recomendado |
+| 6 | `{business}/identity/founder-dna.yaml` | origem, filosofia e linguagem do fundador | Recomendado |
+| 7 | `{business}/tactical/movement/` | narrativa identitária, crenças, vocabulário, objeções culturais | Quando aplicável |
 
-**Path base:** `workspace/businesses/{business}/`
+**Path base:** `docs/`
 
 ---
 
@@ -65,10 +65,10 @@ Estes arquivos definem o recorte da campanha.
 
 | # | Arquivo | O que extrair | Obrigatório? |
 |---|---------|---------------|-------------|
-| 14 | `workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/campaign-brief.yaml` | objetivo, audiência, canais, constraints, success criteria | **SIM** para estratégico/high-ticket/FINAL |
-| 15 | `workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/message-architecture.yaml` | lógica de mensagem, promessa, mecanismo, prova | Recomendado; **SIM** para multi-asset/high-ticket |
-| 16 | `workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/copy/creative-brief.yaml` | ângulo, tom emocional, CTA, territórios criativos | Recomendado |
-| 17 | `workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/copy/assets/*.yaml` | briefing por deliverable | Quando existir |
+| 14 | `docs/operational/campaigns/{campaign_slug}/campaign-brief.yaml` | objetivo, audiência, canais, constraints, success criteria | **SIM** para estratégico/high-ticket/FINAL |
+| 15 | `docs/operational/campaigns/{campaign_slug}/message-architecture.yaml` | lógica de mensagem, promessa, mecanismo, prova | Recomendado; **SIM** para multi-asset/high-ticket |
+| 16 | `docs/operational/campaigns/{campaign_slug}/copy/creative-brief.yaml` | ângulo, tom emocional, CTA, territórios criativos | Recomendado |
+| 17 | `docs/operational/campaigns/{campaign_slug}/copy/assets/*.yaml` | briefing por deliverable | Quando existir |
 
 ---
 
@@ -76,11 +76,11 @@ Estes arquivos definem o recorte da campanha.
 
 | Estágio | Artefato primário | Fonte da verdade |
 |---|---|---|
-| Intake | `Campaign Brief` | `workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/campaign-brief.yaml` |
-| Brand/Product loading | `Business + Product truth` | `L1-strategy`, `L2-tactical/brand`, `L3-product/{product}` |
-| Message Strategy | `Message Architecture` | `workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/message-architecture.yaml` |
-| Creative Direction | `Creative Brief` | `workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/copy/creative-brief.yaml` |
-| Asset Planning | `Asset Briefs` | `workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/copy/assets/*.yaml` |
+| Intake | `Campaign Brief` | `docs/operational/campaigns/{campaign_slug}/campaign-brief.yaml` |
+| Brand/Product loading | `Business + Product truth` | `strategy`, `tactical/brand`, `L3-product/{product}` |
+| Message Strategy | `Message Architecture` | `docs/operational/campaigns/{campaign_slug}/message-architecture.yaml` |
+| Creative Direction | `Creative Brief` | `docs/operational/campaigns/{campaign_slug}/copy/creative-brief.yaml` |
+| Asset Planning | `Asset Briefs` | `docs/operational/campaigns/{campaign_slug}/copy/assets/*.yaml` |
 | Delivery | `Copy Deck / output final` | `outputs/copy/{business}/...` |
 | Review | checklists + truth upstream | `squads/copy/checklists/` + fontes carregadas |
 
@@ -119,14 +119,14 @@ BRIEF COMPLETO?
 
 **Carregar nesta ordem:**
 
-1. `workspace/businesses/{business}/L1-strategy/icp.yaml`
-2. `workspace/businesses/{business}/L2-tactical/brand/brandbook.yaml`
-3. `workspace/businesses/{business}/L3-product/{product}/offerbook.yaml`
-4. `workspace/businesses/{business}/L3-product/{product}/proof.yaml`
-5. `workspace/businesses/{business}/L3-product/{product}/testimonials.yaml`
-6. `workspace/businesses/{business}/L3-product/{product}/curriculum.yaml` se aplicável
-7. `workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/campaign-brief.yaml` se existir
-8. `workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/message-architecture.yaml` se existir
+1. `docs/strategy/icp.yaml`
+2. `docs/tactical/brand/brandbook.yaml`
+3. `docs/execution/{product}/offerbook.yaml`
+4. `docs/execution/{product}/proof.yaml`
+5. `docs/execution/{product}/testimonials.yaml`
+6. `docs/execution/{product}/curriculum.yaml` se aplicável
+7. `docs/operational/campaigns/{campaign_slug}/campaign-brief.yaml` se existir
+8. `docs/operational/campaigns/{campaign_slug}/message-architecture.yaml` se existir
 
 **Status operacional:**
 
@@ -137,9 +137,9 @@ BRIEF COMPLETO?
 
 ## Regra Final
 
-- Business truth vive em `L1-strategy` e `L2-tactical`
+- Business truth vive em `strategy` e `tactical`
 - Product truth vive em `L3-product/{product}`
-- Campaign truth vive em `L4-operational/campaigns/{campaign_slug}` (ADR-012)
+- Campaign truth vive em `operational/campaigns/{campaign_slug}` (ADR-012)
 - Delivery truth vive em `outputs/copy/{business}`
 
 Sem essa separação, a copy perde rastreabilidade.

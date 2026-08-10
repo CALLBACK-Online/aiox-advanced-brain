@@ -335,7 +335,7 @@ mockup_threshold:
   required:
     - logo_file:
         description: "Imagem do logo em pelo menos 1 variação (branca ou preta)"
-        check: "Existe arquivo de logo uploadável no workspace ou fornecido pelo usuário?"
+        check: "Existe arquivo de logo uploadável no project docs ou fornecido pelo usuário?"
         missing_action: "BLOQUEAR — sem logo não há mockup possível"
     - color_palette:
         description: "Paleta com HEX definidos (mín. cores primária + acento)"

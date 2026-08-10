@@ -7,7 +7,7 @@
 # authority: .claude/rules/design-absolute-bans.md §4
 # absorbed_from: impeccable.style v3.0 — register-aware vocabulary
 # created: 2026-05-19
-# source_bench: docs/bench/2026-05-18-impeccable-vs-sinkra-design-stack/
+# source_bench: docs/bench/2026-05-18-impeccable-vs-aiox-design-stack/
 #
 # Design has two registers. Each requires different vocabulary, typography,
 # layout, and motion intent. Both /design-md (extraction) and /slide-creator
@@ -19,7 +19,7 @@ version: "1.0.0"
 authority: ".claude/rules/design-absolute-bans.md §4"
 absorbed_from: "impeccable.style v3.0 — register-aware vocabulary"
 created: "2026-05-19"
-source_bench: "docs/bench/2026-05-18-impeccable-vs-sinkra-design-stack/"
+source_bench: "docs/bench/2026-05-18-impeccable-vs-aiox-design-stack/"
 
 # ── registers ─────────────────────────────────────────────────────────────────
 # The two canonical registers and their vocabularies.
@@ -116,16 +116,16 @@ inference_algorithm:
 mixed_surfaces:
   per_route_basis: "Web extraction emits register_map instead of single register"
   per_slide_basis: "Slide deck emits register at deck level + slide.register_override for outlier slides"
-  per_business_basis: "Workspace policy — see per_business_override section below"
+  per_business_basis: "Local docs policy — see per_business_override section below"
 
 # ── per_business_override ─────────────────────────────────────────────────────
-# When invoked from inside a workspace/businesses/{biz}/ context,
-# the per-business policy at L2-tactical/design/design-policy.yaml is authority.
+# When invoked from inside a docs/ context,
+# the per-business policy at tactical/design/design-policy.yaml is authority.
 # If design-policy.yaml exists for the business, it OVERRIDES inference.
 # Inference fallback only when the file is missing.
 
 per_business_override:
-  policy_path: "workspace/businesses/{biz}/L2-tactical/design/design-policy.yaml"
+  policy_path: "docs/tactical/design/design-policy.yaml"
   policy_schema_example:
     register:
       default: "brand | product"   # required
@@ -153,7 +153,7 @@ emission_format:
         - "route_pattern: /landing/* (brand)"
         - "hero_with_cta_narrative (brand)"
         - "italic_serif_hero (brand)"
-      register_authority: "inferred"          # OR workspace_policy | manual
+      register_authority: "inferred"          # OR project_policy | manual
       register_inferred_at: "2026-05-19T10:00:00Z"
     also_emit_in: "extraction-class.json"
     extraction_class_json_example:

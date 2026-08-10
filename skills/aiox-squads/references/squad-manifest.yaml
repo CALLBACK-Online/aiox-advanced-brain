@@ -1,0 +1,1326 @@
+schema_version: 1
+router_skill: aiox-squads
+course_root: Cursos/AIOX-Advanced-Squads
+agent_guide: Cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md
+decision_map: Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md
+execution_guide: Cursos/AIOX-Advanced-Squads/Guia-de-execucao.md
+intro_lesson: Cursos/AIOX-Advanced-Squads/aulas/00-como-usar-este-curso.md
+library_layout:
+  skills: skills/
+  squads: squads/
+  note: This repo is a distribution library, not a runnable monorepo runtime.
+runtime_surfaces:
+  claude_code:
+    skill_invoke: Skill name after install under .claude/skills/{name}/SKILL.md —
+      agent may load via skill tool or user types the skill name.
+    agent: '@agent-name only if your harness maps @ to agent files; otherwise open
+      agents/*.md path.'
+    task: '*command when the agent definition exposes commands; otherwise describe
+      the task by name from tasks/.'
+    slash_pack: /Prefix:... only if the project registered the pack; never invent.
+  codex:
+    skill_invoke: Project/global skills by name if configured; else attach SKILL.md
+      content.
+    agent: Instruct model to adopt persona from squads/{id}/agents/{entry}.md
+    task: Reference task file path; do not assume * prefix.
+    slash_pack: Not assumed.
+  generic:
+    skill_invoke: Paste or load SKILL.md / AGENT-GUIDE.md
+    agent: 'System prompt: adopt entry agent file'
+    task: Natural language task name from tasks/
+    slash_pack: N/A
+routing_procedure:
+- 1. Classify user intent (decide / research / reverse-engineer / build / sell / operate).
+- 2. Match intents[] and avoid_when in this manifest; if tie, open Mapa-de-decisao.md.
+- 3. Open the lesson file for the chosen squad.
+- 4. If squad not installed in the active project, follow if_not_installed before
+  executing.
+- 5. Build briefing from the lesson template; confirm external side effects.
+- 6. Activate via runtime-appropriate surface only.
+- 7. Require evidence checklist before claiming done.
+squads:
+- id: advisory-board
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/01-advisory-board.md
+  lesson_id: 01-advisory-board
+  maturity: partial
+  agents_count: 11
+  tasks_count: 8
+  workflows_count: 2
+  entry_agent: board-chair
+  skill_entries:
+  - advisory-board
+  intents:
+  - decisão
+  - board
+  - groupthink
+  - conselho
+  - mesa redonda
+  - trade-off estratégico
+  avoid_when: descoberta factual pura (use research) ou execução já decidida
+  install_path: squads/advisory-board/
+  activation:
+    claude_code:
+      skill: /advisory-board
+      agent: '@board-chair'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: advisory-board
+      prompt: Load squad at squads/advisory-board/ and adopt agent board-chair. Follow
+        config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "advisory-board". Read squads/advisory-board/config.yaml
+      and agents/board-chair.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/advisory-board/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['advisory-board'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/01-advisory-board.md for briefing
+    template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - advisory board
+  - advisory-board
+  signals:
+  - decisão
+  - board
+  - groupthink
+  - conselho
+  - mesa redonda
+  - trade-off estratégico
+  anti_signals:
+  - descoberta factual pura (use research) ou execução já decidida
+  squad_path: squads/advisory-board/
+  entry_agent_path: squads/advisory-board/agents/board-chair.md
+  lesson_rel: aulas/01-advisory-board.md
+  skill: advisory-board
+  skill_optional: true
+- id: research
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/02-research.md
+  lesson_id: 02-research
+  maturity: study
+  agents_count: 14
+  tasks_count: 65
+  workflows_count: 5
+  entry_agent: research-chief
+  skill_entries:
+  - research
+  intents:
+  - pesquisar
+  - benchmark
+  - concorrente
+  - tech research
+  - discovery
+  - evidência
+  - spy
+  avoid_when: deliberação política sem evidência (use advisory-board) ou reverse engineering
+    de código (code-anatomist)
+  install_path: squads/research/
+  activation:
+    claude_code:
+      skill: /research
+      agent: '@research-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: research
+      prompt: Load squad at squads/research/ and adopt agent research-chief. Follow
+        config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "research". Read squads/research/config.yaml
+      and agents/research-chief.md. Ask for a mission briefing if missing. Do not
+      invent CLI commands.
+  if_not_installed:
+  - Copy squads/research/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['research'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/02-research.md for briefing
+    template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - research
+  signals:
+  - pesquisar
+  - benchmark
+  - concorrente
+  - tech research
+  - discovery
+  - evidência
+  - spy
+  anti_signals:
+  - deliberação política sem evidência (use advisory-board) ou reverse engineering
+    de código (code-anatomist)
+  squad_path: squads/research/
+  entry_agent_path: squads/research/agents/research-chief.md
+  lesson_rel: aulas/02-research.md
+  skill: research
+  skill_optional: true
+- id: code-anatomist
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/03-code-anatomist.md
+  lesson_id: 03-code-anatomist
+  maturity: partial
+  agents_count: 12
+  tasks_count: 10
+  workflows_count: 3
+  entry_agent: decoder-chief
+  skill_entries:
+  - code-anatomist
+  intents:
+  - engenharia reversa
+  - mapear codebase
+  - arquitetura brownfield
+  - anatomia de código
+  avoid_when: só regras de domínio (domain-decoder) ou pesquisa de mercado (research)
+  install_path: squads/code-anatomist/
+  activation:
+    claude_code:
+      skill: /code-anatomist
+      agent: '@decoder-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: code-anatomist
+      prompt: Load squad at squads/code-anatomist/ and adopt agent decoder-chief.
+        Follow config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "code-anatomist". Read squads/code-anatomist/config.yaml
+      and agents/decoder-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/code-anatomist/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['code-anatomist'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/03-code-anatomist.md for briefing
+    template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - code anatomist
+  - code-anatomist
+  signals:
+  - engenharia reversa
+  - mapear codebase
+  - arquitetura brownfield
+  - anatomia de código
+  anti_signals:
+  - só regras de domínio (domain-decoder) ou pesquisa de mercado (research)
+  squad_path: squads/code-anatomist/
+  entry_agent_path: squads/code-anatomist/agents/decoder-chief.md
+  lesson_rel: aulas/03-code-anatomist.md
+  skill: code-anatomist
+  skill_optional: true
+- id: domain-decoder
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/04-domain-decoder.md
+  lesson_id: 04-domain-decoder
+  maturity: partial
+  agents_count: 8
+  tasks_count: 6
+  workflows_count: 2
+  entry_agent: decoder-chief
+  skill_entries:
+  - domain-decoder
+  - decoder-chief
+  intents:
+  - regras de negócio
+  - domínio no código
+  - taxonomia brownfield
+  - decoder
+  avoid_when: mapa arquitetural completo (code-anatomist)
+  install_path: squads/domain-decoder/
+  activation:
+    claude_code:
+      skill: /decoder-chief
+      agent: '@decoder-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: decoder-chief
+      prompt: Load squad at squads/domain-decoder/ and adopt agent decoder-chief.
+        Follow config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "domain-decoder". Read squads/domain-decoder/config.yaml
+      and agents/decoder-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/domain-decoder/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['decoder-chief'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/04-domain-decoder.md for briefing
+    template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - decoder-chief
+  - domain decoder
+  - domain-decoder
+  signals:
+  - regras de negócio
+  - domínio no código
+  - taxonomia brownfield
+  - decoder
+  anti_signals:
+  - mapa arquitetural completo (code-anatomist)
+  squad_path: squads/domain-decoder/
+  entry_agent_path: squads/domain-decoder/agents/decoder-chief.md
+  lesson_rel: aulas/04-domain-decoder.md
+  skill: domain-decoder
+  skill_optional: true
+- id: agent-autonomy
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/05-agent-autonomy.md
+  lesson_id: 05-agent-autonomy
+  maturity: partial
+  agents_count: 6
+  tasks_count: 7
+  workflows_count: 1
+  entry_agent: autonomy-chief
+  skill_entries:
+  - agent-autonomy
+  intents:
+  - loops
+  - agente depende de mim
+  - autonomia
+  - agente stuck
+  avoid_when: criar feature de produto ou configurar só Claude Code sem diagnóstico
+    de autonomia
+  install_path: squads/agent-autonomy/
+  activation:
+    claude_code:
+      skill: null
+      agent: '@autonomy-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: null
+      prompt: Load squad at squads/agent-autonomy/ and adopt agent autonomy-chief.
+        Follow config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "agent-autonomy". Read squads/agent-autonomy/config.yaml
+      and agents/autonomy-chief.md. Ask for a mission briefing if missing. Do not
+      invent CLI commands.
+  if_not_installed:
+  - Copy squads/agent-autonomy/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['(none — use agent file)'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/05-agent-autonomy.md for briefing
+    template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - agent autonomy
+  - agent-autonomy
+  signals:
+  - loops
+  - agente depende de mim
+  - autonomia
+  - agente stuck
+  anti_signals:
+  - criar feature de produto ou configurar só Claude Code sem diagnóstico de autonomia
+  squad_path: squads/agent-autonomy/
+  entry_agent_path: squads/agent-autonomy/agents/autonomy-chief.md
+  lesson_rel: aulas/05-agent-autonomy.md
+  skill: agent-autonomy
+  skill_optional: true
+- id: claude-code-mastery
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/06-claude-code-mastery.md
+  lesson_id: 06-claude-code-mastery
+  maturity: study
+  agents_count: 8
+  tasks_count: 31
+  workflows_count: 3
+  entry_agent: claude-mastery-chief
+  skill_entries:
+  - claude-code-mastery
+  intents:
+  - hooks
+  - mcp
+  - claude code
+  - subagentes
+  - skills claude
+  avoid_when: implementar regra de negócio de produto
+  install_path: squads/claude-code-mastery/
+  activation:
+    claude_code:
+      skill: /claude-code-mastery
+      agent: '@claude-mastery-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: claude-code-mastery
+      prompt: Load squad at squads/claude-code-mastery/ and adopt agent claude-mastery-chief.
+        Follow config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "claude-code-mastery". Read squads/claude-code-mastery/config.yaml
+      and agents/claude-mastery-chief.md. Ask for a mission briefing if missing. Do
+      not invent CLI commands.
+  if_not_installed:
+  - Copy squads/claude-code-mastery/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['claude-code-mastery'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/06-claude-code-mastery.md for
+    briefing template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - claude code mastery
+  - claude-code-mastery
+  signals:
+  - hooks
+  - mcp
+  - claude code
+  - subagentes
+  - skills claude
+  anti_signals:
+  - implementar regra de negócio de produto
+  squad_path: squads/claude-code-mastery/
+  entry_agent_path: squads/claude-code-mastery/agents/claude-mastery-chief.md
+  lesson_rel: aulas/06-claude-code-mastery.md
+  skill: claude-code-mastery
+  skill_optional: true
+- id: aiox-sop
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/07-aiox-sop.md
+  lesson_id: 07-aiox-sop
+  maturity: partial
+  agents_count: 6
+  tasks_count: 21
+  workflows_count: 5
+  entry_agent: sop-chief
+  skill_entries:
+  - aiox-sop
+  intents:
+  - sop
+  - procedimento
+  - processo documentado
+  - operacionalizar processo
+  avoid_when: copy/marketing ou analytics
+  install_path: squads/aiox-sop/
+  activation:
+    claude_code:
+      skill: null
+      agent: '@sop-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: null
+      prompt: Load squad at squads/aiox-sop/ and adopt agent sop-chief. Follow config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "aiox-sop". Read squads/aiox-sop/config.yaml
+      and agents/sop-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/aiox-sop/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['(none — use agent file)'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/07-aiox-sop.md for briefing
+    template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - aiox sop
+  - aiox-sop
+  signals:
+  - sop
+  - procedimento
+  - processo documentado
+  - operacionalizar processo
+  anti_signals:
+  - copy/marketing ou analytics
+  squad_path: squads/aiox-sop/
+  entry_agent_path: squads/aiox-sop/agents/sop-chief.md
+  lesson_rel: aulas/07-aiox-sop.md
+  skill: aiox-sop
+  skill_optional: true
+- id: etl-ops
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/08-etl-ops.md
+  lesson_id: 08-etl-ops
+  maturity: partial
+  agents_count: 4
+  tasks_count: 7
+  workflows_count: 2
+  entry_agent: etl-chief
+  skill_entries:
+  - etl-ops
+  intents:
+  - etl
+  - extrair dados
+  - pipeline de coleta
+  - transformar e carregar
+  avoid_when: dashboard de negócio (data) ou schema DB (db-sage)
+  install_path: squads/etl-ops/
+  activation:
+    claude_code:
+      skill: null
+      agent: '@etl-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: null
+      prompt: Load squad at squads/etl-ops/ and adopt agent etl-chief. Follow config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "etl-ops". Read squads/etl-ops/config.yaml
+      and agents/etl-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/etl-ops/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['(none — use agent file)'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/08-etl-ops.md for briefing template
+    and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - etl ops
+  - etl-ops
+  signals:
+  - etl
+  - extrair dados
+  - pipeline de coleta
+  - transformar e carregar
+  anti_signals:
+  - dashboard de negócio (data) ou schema DB (db-sage)
+  squad_path: squads/etl-ops/
+  entry_agent_path: squads/etl-ops/agents/etl-chief.md
+  lesson_rel: aulas/08-etl-ops.md
+  skill: etl-ops
+  skill_optional: true
+- id: runner-ops
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/09-runner-ops.md
+  lesson_id: 09-runner-ops
+  maturity: partial
+  agents_count: 5
+  tasks_count: 9
+  workflows_count: 0
+  entry_agent: runner-chief
+  skill_entries:
+  - runner-ops
+  intents:
+  - runner
+  - headless
+  - pipeline determinístico
+  - fora da ide
+  avoid_when: workflow só conceitual sem execução headless
+  install_path: squads/runner-ops/
+  activation:
+    claude_code:
+      skill: null
+      agent: '@runner-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: null
+      prompt: Load squad at squads/runner-ops/ and adopt agent runner-chief. Follow
+        config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "runner-ops". Read squads/runner-ops/config.yaml
+      and agents/runner-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/runner-ops/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['(none — use agent file)'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/09-runner-ops.md for briefing
+    template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - runner ops
+  - runner-ops
+  signals:
+  - runner
+  - headless
+  - pipeline determinístico
+  - fora da ide
+  anti_signals:
+  - workflow só conceitual sem execução headless
+  squad_path: squads/runner-ops/
+  entry_agent_path: squads/runner-ops/agents/runner-chief.md
+  lesson_rel: aulas/09-runner-ops.md
+  skill: runner-ops
+  skill_optional: true
+- id: data
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/10-data.md
+  lesson_id: 10-data
+  maturity: partial
+  agents_count: 7
+  tasks_count: 12
+  workflows_count: 7
+  entry_agent: data-chief
+  skill_entries:
+  - data
+  intents:
+  - métricas
+  - analytics
+  - coorte
+  - churn
+  - atribuição
+  - dashboard
+  avoid_when: ETL bruto (etl-ops) ou migrations (db-sage)
+  install_path: squads/data/
+  activation:
+    claude_code:
+      skill: /data
+      agent: '@data-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: data
+      prompt: Load squad at squads/data/ and adopt agent data-chief. Follow config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "data". Read squads/data/config.yaml
+      and agents/data-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/data/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['data'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/10-data.md for briefing template
+    and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - data
+  signals:
+  - métricas
+  - analytics
+  - coorte
+  - churn
+  - atribuição
+  - dashboard
+  anti_signals:
+  - ETL bruto (etl-ops) ou migrations (db-sage)
+  squad_path: squads/data/
+  entry_agent_path: squads/data/agents/data-chief.md
+  lesson_rel: aulas/10-data.md
+  skill: data
+  skill_optional: true
+- id: db-sage
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/11-db-sage.md
+  lesson_id: 11-db-sage
+  maturity: partial
+  agents_count: 1
+  tasks_count: 25
+  workflows_count: 7
+  entry_agent: db-sage
+  skill_entries:
+  - db-sage
+  intents:
+  - postgres
+  - supabase
+  - migration
+  - rls
+  - schema
+  - banco
+  avoid_when: métricas de negócio sem mudar schema (data)
+  install_path: squads/db-sage/
+  activation:
+    claude_code:
+      skill: /db-sage
+      agent: '@db-sage'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: db-sage
+      prompt: Load squad at squads/db-sage/ and adopt agent db-sage. Follow config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "db-sage". Read squads/db-sage/config.yaml
+      and agents/db-sage.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/db-sage/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['db-sage'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/11-db-sage.md for briefing template
+    and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - db sage
+  - db-sage
+  signals:
+  - postgres
+  - supabase
+  - migration
+  - rls
+  - schema
+  - banco
+  anti_signals:
+  - métricas de negócio sem mudar schema (data)
+  squad_path: squads/db-sage/
+  entry_agent_path: squads/db-sage/agents/db-sage.md
+  lesson_rel: aulas/11-db-sage.md
+  skill: db-sage
+  skill_optional: true
+- id: clickup-ops-squad
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/12-clickup-ops-squad.md
+  lesson_id: 12-clickup-ops-squad
+  maturity: partial
+  agents_count: 5
+  tasks_count: 30
+  workflows_count: 2
+  entry_agent: clickup-chief
+  skill_entries:
+  - clickup-ops-squad
+  intents:
+  - clickup
+  - materializar processo
+  - space list
+  - automação clickup
+  avoid_when: desenhar processo do zero (aiox-sop antes)
+  install_path: squads/clickup-ops-squad/
+  activation:
+    claude_code:
+      skill: null
+      agent: '@clickup-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: null
+      prompt: Load squad at squads/clickup-ops-squad/ and adopt agent clickup-chief.
+        Follow config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "clickup-ops-squad". Read squads/clickup-ops-squad/config.yaml
+      and agents/clickup-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/clickup-ops-squad/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['(none — use agent file)'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/12-clickup-ops-squad.md for
+    briefing template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - clickup ops squad
+  - clickup-ops-squad
+  signals:
+  - clickup
+  - materializar processo
+  - space list
+  - automação clickup
+  anti_signals:
+  - desenhar processo do zero (aiox-sop antes)
+  squad_path: squads/clickup-ops-squad/
+  entry_agent_path: squads/clickup-ops-squad/agents/clickup-chief.md
+  lesson_rel: aulas/12-clickup-ops-squad.md
+  skill: clickup-ops-squad
+  skill_optional: true
+- id: brand
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/13-brand.md
+  lesson_id: 13-brand
+  maturity: partial
+  agents_count: 16
+  tasks_count: 21
+  workflows_count: 9
+  entry_agent: brand-chief
+  skill_entries:
+  - brand
+  intents:
+  - marca
+  - naming
+  - posicionamento
+  - branding
+  avoid_when: UI components (design-system) ou QA visual (design-ops)
+  install_path: squads/brand/
+  activation:
+    claude_code:
+      skill: /brand
+      agent: '@brand-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: brand
+      prompt: Load squad at squads/brand/ and adopt agent brand-chief. Follow config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "brand". Read squads/brand/config.yaml
+      and agents/brand-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/brand/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['brand'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/13-brand.md for briefing template
+    and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - brand
+  signals:
+  - marca
+  - naming
+  - posicionamento
+  - branding
+  anti_signals:
+  - UI components (design-system) ou QA visual (design-ops)
+  squad_path: squads/brand/
+  entry_agent_path: squads/brand/agents/brand-chief.md
+  lesson_rel: aulas/13-brand.md
+  skill: brand
+  skill_optional: true
+- id: design-system
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/14-design-system.md
+  lesson_id: 14-design-system
+  maturity: partial
+  agents_count: 11
+  tasks_count: 108
+  workflows_count: 15
+  entry_agent: design-chief
+  skill_entries:
+  - design-system
+  - design-chief
+  intents:
+  - tokens
+  - componentes
+  - design system
+  - foundations
+  avoid_when: governança contínua (design-ops)
+  install_path: squads/design-system/
+  activation:
+    claude_code:
+      skill: /design-system
+      agent: '@design-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: design-system
+      prompt: Load squad at squads/design-system/ and adopt agent design-chief. Follow
+        config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "design-system". Read squads/design-system/config.yaml
+      and agents/design-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/design-system/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['design-system', 'design-chief'] into the IDE skills
+    path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/14-design-system.md for briefing
+    template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - design system
+  - design-chief
+  - design-system
+  signals:
+  - tokens
+  - componentes
+  - design system
+  - foundations
+  anti_signals:
+  - governança contínua (design-ops)
+  squad_path: squads/design-system/
+  entry_agent_path: squads/design-system/agents/design-chief.md
+  lesson_rel: aulas/14-design-system.md
+  skill: design-system
+  skill_optional: true
+- id: design-ops
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/15-design-ops.md
+  lesson_id: 15-design-ops
+  maturity: partial
+  agents_count: 2
+  tasks_count: 126
+  workflows_count: 23
+  entry_agent: design-chief
+  skill_entries:
+  - design-ops
+  - design-chief
+  - design-system
+  intents:
+  - storybook
+  - a11y
+  - regressão visual
+  - governar design system
+  - drift
+  avoid_when: criar DS do zero (design-system)
+  install_path: squads/design-ops/
+  activation:
+    claude_code:
+      skill: /design-chief
+      agent: '@design-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: design-chief
+      prompt: Load squad at squads/design-ops/ and adopt agent design-chief. Follow
+        config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "design-ops". Read squads/design-ops/config.yaml
+      and agents/design-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/design-ops/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['design-chief', 'design-system'] into the IDE skills
+    path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/15-design-ops.md for briefing
+    template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - design ops
+  - design-chief
+  - design-ops
+  - design-system
+  signals:
+  - storybook
+  - a11y
+  - regressão visual
+  - governar design system
+  - drift
+  anti_signals:
+  - criar DS do zero (design-system)
+  squad_path: squads/design-ops/
+  entry_agent_path: squads/design-ops/agents/design-chief.md
+  lesson_rel: aulas/15-design-ops.md
+  skill: design-ops
+  skill_optional: true
+- id: storytelling
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/16-storytelling.md
+  lesson_id: 16-storytelling
+  maturity: partial
+  agents_count: 13
+  tasks_count: 13
+  workflows_count: 1
+  entry_agent: story-chief
+  skill_entries:
+  - storytelling
+  intents:
+  - narrativa
+  - arco
+  - história
+  - storytelling
+  avoid_when: copy de conversão (copy) ou deck (slides-creator)
+  install_path: squads/storytelling/
+  activation:
+    claude_code:
+      skill: null
+      agent: '@story-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: null
+      prompt: Load squad at squads/storytelling/ and adopt agent story-chief. Follow
+        config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "storytelling". Read squads/storytelling/config.yaml
+      and agents/story-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/storytelling/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['(none — use agent file)'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/16-storytelling.md for briefing
+    template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - storytelling
+  signals:
+  - narrativa
+  - arco
+  - história
+  - storytelling
+  anti_signals:
+  - copy de conversão (copy) ou deck (slides-creator)
+  squad_path: squads/storytelling/
+  entry_agent_path: squads/storytelling/agents/story-chief.md
+  lesson_rel: aulas/16-storytelling.md
+  skill: storytelling
+  skill_optional: true
+- id: slides-creator
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/17-slides-creator.md
+  lesson_id: 17-slides-creator
+  maturity: partial
+  agents_count: 7
+  tasks_count: 53
+  workflows_count: 1
+  entry_agent: slide-chief
+  skill_entries:
+  - slides-creator
+  - slide-creator
+  intents:
+  - slides
+  - deck
+  - apresentação
+  - pitch deck
+  avoid_when: só texto de venda (copy)
+  install_path: squads/slides-creator/
+  activation:
+    claude_code:
+      skill: /slide-creator
+      agent: '@slide-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: slide-creator
+      prompt: Load squad at squads/slides-creator/ and adopt agent slide-chief. Follow
+        config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "slides-creator". Read squads/slides-creator/config.yaml
+      and agents/slide-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/slides-creator/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['slide-creator'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/17-slides-creator.md for briefing
+    template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - slide-creator
+  - slides creator
+  - slides-creator
+  signals:
+  - slides
+  - deck
+  - apresentação
+  - pitch deck
+  anti_signals:
+  - só texto de venda (copy)
+  squad_path: squads/slides-creator/
+  entry_agent_path: squads/slides-creator/agents/slide-chief.md
+  lesson_rel: aulas/17-slides-creator.md
+  skill: slides-creator
+  skill_optional: true
+- id: conteudo
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/18-conteudo.md
+  lesson_id: 18-conteudo
+  maturity: study
+  agents_count: 10
+  tasks_count: 28
+  workflows_count: 9
+  entry_agent: content-chief
+  skill_entries:
+  - conteudo
+  intents:
+  - instagram
+  - reels
+  - carrossel
+  - conteúdo social
+  - stories
+  avoid_when: funil B2B completo (sales)
+  install_path: squads/conteudo/
+  activation:
+    claude_code:
+      skill: /conteudo
+      agent: '@content-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: conteudo
+      prompt: Load squad at squads/conteudo/ and adopt agent content-chief. Follow
+        config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "conteudo". Read squads/conteudo/config.yaml
+      and agents/content-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/conteudo/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['conteudo'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/18-conteudo.md for briefing
+    template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - conteudo
+  signals:
+  - instagram
+  - reels
+  - carrossel
+  - conteúdo social
+  - stories
+  anti_signals:
+  - funil B2B completo (sales)
+  squad_path: squads/conteudo/
+  entry_agent_path: squads/conteudo/agents/content-chief.md
+  lesson_rel: aulas/18-conteudo.md
+  skill: conteudo
+  skill_optional: true
+- id: copy
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/19-copy.md
+  lesson_id: 19-copy
+  maturity: partial
+  agents_count: 27
+  tasks_count: 86
+  workflows_count: 18
+  entry_agent: copy-chief
+  skill_entries:
+  - copy
+  intents:
+  - copy
+  - conversão
+  - landing
+  - vsl
+  - email de vendas
+  avoid_when: posicionamento de marca inteiro (brand) ou negociação ao vivo (sales)
+  install_path: squads/copy/
+  activation:
+    claude_code:
+      skill: /copy
+      agent: '@copy-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: copy
+      prompt: Load squad at squads/copy/ and adopt agent copy-chief. Follow config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "copy". Read squads/copy/config.yaml
+      and agents/copy-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/copy/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['copy'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/19-copy.md for briefing template
+    and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - copy
+  signals:
+  - copy
+  - conversão
+  - landing
+  - vsl
+  - email de vendas
+  anti_signals:
+  - posicionamento de marca inteiro (brand) ou negociação ao vivo (sales)
+  squad_path: squads/copy/
+  entry_agent_path: squads/copy/agents/copy-chief.md
+  lesson_rel: aulas/19-copy.md
+  skill: copy
+  skill_optional: true
+- id: sales
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/20-sales.md
+  lesson_id: 20-sales
+  maturity: partial
+  agents_count: 9
+  tasks_count: 9
+  workflows_count: 0
+  entry_agent: sales-chief
+  skill_entries:
+  - sales
+  intents:
+  - vendas
+  - funil
+  - prospecção
+  - negociação
+  - fechamento
+  - qualificação
+  avoid_when: só landing (copy) ou oferta 100M completa (hormozi)
+  install_path: squads/sales/
+  activation:
+    claude_code:
+      skill: /sales
+      agent: '@sales-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: sales
+      prompt: Load squad at squads/sales/ and adopt agent sales-chief. Follow config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "sales". Read squads/sales/config.yaml
+      and agents/sales-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/sales/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['sales'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/20-sales.md for briefing template
+    and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - sales
+  signals:
+  - vendas
+  - funil
+  - prospecção
+  - negociação
+  - fechamento
+  - qualificação
+  anti_signals:
+  - só landing (copy) ou oferta 100M completa (hormozi)
+  squad_path: squads/sales/
+  entry_agent_path: squads/sales/agents/sales-chief.md
+  lesson_rel: aulas/20-sales.md
+  skill: sales
+  skill_optional: true
+- id: hormozi
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/21-hormozi.md
+  lesson_id: 21-hormozi
+  maturity: partial
+  agents_count: 16
+  tasks_count: 57
+  workflows_count: 10
+  entry_agent: hormozi-chief
+  skill_entries:
+  - hormozi
+  intents:
+  - oferta
+  - grand slam
+  - leads
+  - 100m
+  - money model
+  - lançamento
+  avoid_when: branding institucional (brand) ou research técnico (research)
+  install_path: squads/hormozi/
+  activation:
+    claude_code:
+      skill: /hormozi
+      agent: '@hormozi-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: hormozi
+      prompt: Load squad at squads/hormozi/ and adopt agent hormozi-chief. Follow
+        config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "hormozi". Read squads/hormozi/config.yaml
+      and agents/hormozi-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/hormozi/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['hormozi'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/21-hormozi.md for briefing template
+    and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - hormozi
+  signals:
+  - oferta
+  - grand slam
+  - leads
+  - 100m
+  - money model
+  - lançamento
+  anti_signals:
+  - branding institucional (brand) ou research técnico (research)
+  squad_path: squads/hormozi/
+  entry_agent_path: squads/hormozi/agents/hormozi-chief.md
+  lesson_rel: aulas/21-hormozi.md
+  skill: hormozi
+  skill_optional: true
+- id: skill-creator-ops
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/22-skill-creator-ops.md
+  lesson_id: 22-skill-creator-ops
+  maturity: partial
+  agents_count: 3
+  tasks_count: 9
+  workflows_count: 1
+  entry_agent: skill-ops-chief
+  skill_entries:
+  - skill-creator-ops
+  intents:
+  - criar skill
+  - validar skill
+  - lifecycle skill
+  - aposentar skill
+  avoid_when: criar squad multi-agente (squad-creator)
+  install_path: squads/skill-creator-ops/
+  activation:
+    claude_code:
+      skill: null
+      agent: '@skill-ops-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: null
+      prompt: Load squad at squads/skill-creator-ops/ and adopt agent skill-ops-chief.
+        Follow config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "skill-creator-ops". Read squads/skill-creator-ops/config.yaml
+      and agents/skill-ops-chief.md. Ask for a mission briefing if missing. Do not
+      invent CLI commands.
+  if_not_installed:
+  - Copy squads/skill-creator-ops/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['(none — use agent file)'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/22-skill-creator-ops.md for
+    briefing template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - skill creator ops
+  - skill-creator-ops
+  signals:
+  - criar skill
+  - validar skill
+  - lifecycle skill
+  - aposentar skill
+  anti_signals:
+  - criar squad multi-agente (squad-creator)
+  squad_path: squads/skill-creator-ops/
+  entry_agent_path: squads/skill-creator-ops/agents/skill-ops-chief.md
+  lesson_rel: aulas/22-skill-creator-ops.md
+  skill: skill-creator-ops
+  skill_optional: true
+- id: squad-creator
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/23-squad-creator.md
+  lesson_id: 23-squad-creator
+  maturity: partial
+  agents_count: 1
+  tasks_count: 150
+  workflows_count: 26
+  entry_agent: squad-chief
+  skill_entries:
+  - squad-creator
+  - squad-chief
+  intents:
+  - criar squad
+  - novo squad
+  - scaffold squad
+  avoid_when: só uma skill (skill-creator-ops); prior art resolve com REUSE
+  install_path: squads/squad-creator/
+  activation:
+    claude_code:
+      skill: /squad-chief
+      agent: '@squad-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: squad-chief
+      prompt: Load squad at squads/squad-creator/ and adopt agent squad-chief. Follow
+        config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "squad-creator". Read squads/squad-creator/config.yaml
+      and agents/squad-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/squad-creator/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['squad-chief'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/23-squad-creator.md for briefing
+    template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - squad creator
+  - squad-chief
+  - squad-creator
+  signals:
+  - criar squad
+  - novo squad
+  - scaffold squad
+  anti_signals:
+  - só uma skill (skill-creator-ops)
+  - prior art resolve com REUSE
+  squad_path: squads/squad-creator/
+  entry_agent_path: squads/squad-creator/agents/squad-chief.md
+  lesson_rel: aulas/23-squad-creator.md
+  skill: squad-creator
+  skill_optional: true
+- id: squad-creator-pro
+  lesson: Cursos/AIOX-Advanced-Squads/aulas/24-squad-creator-pro.md
+  lesson_id: 24-squad-creator-pro
+  maturity: partial
+  agents_count: 6
+  tasks_count: 219
+  workflows_count: 52
+  entry_agent: squad-chief
+  skill_entries:
+  - squad-creator-pro
+  - squad-chief
+  intents:
+  - dna mental
+  - clonar expertise
+  - squad avançado
+  - mental clone
+  avoid_when: scaffold simples (squad-creator primeiro)
+  install_path: squads/squad-creator-pro/
+  activation:
+    claude_code:
+      skill: /squad-chief
+      agent: '@squad-chief'
+      task_prefix: '*'
+      note: Slash de skill só existe se a skill estiver em .claude/skills do projeto.
+    codex:
+      skill: squad-chief
+      prompt: Load squad at squads/squad-creator-pro/ and adopt agent squad-chief.
+        Follow config.yaml.
+      note: Codex usa skills do projeto/config; não assume $skill nem /prefixo AIOX.
+    generic_prompt: You are operating the AIOX squad "squad-creator-pro". Read squads/squad-creator-pro/config.yaml
+      and agents/squad-chief.md. Ask for a mission briefing if missing. Do not invent
+      CLI commands.
+  if_not_installed:
+  - Copy squads/squad-creator-pro/ into the target project squads/ directory.
+  - Optionally copy skill(s) ['squad-chief'] into the IDE skills path.
+  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/24-squad-creator-pro.md for
+    briefing template and evidence checklist.
+  - Do not fabricate slash commands that are not registered in the runtime.
+  aliases:
+  - squad creator pro
+  - squad-chief
+  - squad-creator-pro
+  signals:
+  - dna mental
+  - clonar expertise
+  - squad avançado
+  - mental clone
+  anti_signals:
+  - scaffold simples (squad-creator primeiro)
+  squad_path: squads/squad-creator-pro/
+  entry_agent_path: squads/squad-creator-pro/agents/squad-chief.md
+  lesson_rel: aulas/24-squad-creator-pro.md
+  skill: squad-creator-pro
+  skill_optional: true

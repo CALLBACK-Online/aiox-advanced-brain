@@ -42,7 +42,7 @@ Walk the brief + DS context + prior art; surface every decision the brief did no
 2. **Classify Each Assumption**
    For every enumerated decision, classify per source:
    - **user-confirmed** — brief explicitly answered it
-   - **inferred-from-brand** — can be derived deterministically from `workspace/businesses/{business}/L2-tactical/brand/` or tokens
+   - **inferred-from-brand** — can be derived deterministically from `docs/tactical/brand/` or tokens
    - **inferred-from-system** — derivable from `@synkraai/ds-core` patterns or `ds-core-catalog`
    - **guess** — no deterministic source; agent is speculating
 
@@ -96,7 +96,7 @@ Walk the brief + DS context + prior art; surface every decision the brief did no
 - **Batch-confirming guesses** — each guess is its own decision. Mass confirmation invites missed specifics.
 - **Silent default back to DS token** — if you default to a token, the classification is `inferred-from-system`, not `guess`. Be honest about which bucket it's in.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Molecule (P03 of design-artifact-cycle)
@@ -120,4 +120,4 @@ performance:
 - Rule: `squads/design-ops/rules/design-exploration-cycle.md#3-vocalize`
 - Rule: `squads/design-ops/rules/design-system-fidelity.md#r4`
 - Protocol: `squads/design-ops/data/questions-intake-protocol-spec.yaml`
-- Skill: `.claude/skills/design-artifact-cycle/SKILL.md#phase-03`
+- Skill: `skills/design-artifact-cycle/SKILL.md#phase-03`

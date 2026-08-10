@@ -82,7 +82,7 @@ integrations:
     mode: read_only
     phases: [1, 2]
 
-  - name: git_clone_workspace
+  - name: git_clone_project
     connection: "../bench/{subject}/"
     endpoint: local-filesystem
     mode: read_write
@@ -113,7 +113,7 @@ task_mapping:
     phase: 0
 
   bench-inventory:
-    infra: [docs-bench-store, git_clone_workspace]
+    infra: [docs-bench-store, git_clone_project]
     automated: true
     executor: Agent (bench-analyst)
     phase: [1, 2]
@@ -284,7 +284,7 @@ task_mapping:
 
   # --- Benchmark Matrix Atoms ---
   bench-matrix-codebase:
-    infra: [docs-bench-store, git_clone_workspace]
+    infra: [docs-bench-store, git_clone_project]
     automated: true
     executor: Agent (bench-analyst)
     phase: 3
@@ -441,7 +441,7 @@ gaps:
     description: "bench-codebase-recon clones repos to ../bench/{subject}/ and now has infra entry, but clone retention/cleanup is still manual"
     impact: "Disk accumulation of cloned repositories over time if cleanup discipline drifts"
     severity: LOW
-    mitigation: "git_clone_workspace mapped in infra; benchmark-runtime should own periodic cleanup policy"
+    mitigation: "git_clone_project mapped in infra; benchmark-runtime should own periodic cleanup policy"
 
   - id: GAP-SPY-003
     area: "Monitoring"

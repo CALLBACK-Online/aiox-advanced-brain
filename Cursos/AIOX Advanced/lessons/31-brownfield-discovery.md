@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: brownfield-discovery
 lesson_position: 31
 title: 'Brownfield Discovery: entrar num projeto que já existe'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/31-brownfield-discovery/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -121,7 +121,7 @@ Antes de listar as fases do discovery, fixe a pergunta única: o código já exi
 
 1. **A pergunta aparece**: Uma frase separa começar do zero de entrar num código que já roda.
 2. **Cada peça mostra a cara**: Discovery decifra a estrutura real. Intervenção só vem depois de entender.
-3. **Vê o caso real**: /sinkra-map-process e code-anatomist são primitivos reais do AIOX, apontáveis no repo.
+3. **Vê o caso real**: /processo de mapeamento AIOX e code-anatomist são primitivos reais do AIOX, apontáveis no repo.
 4. **Decide**: Dado um projeto, você aponta se merece discovery completo antes de tocar no código.
 
 - **Objetivos da aula** (Nomear o que distingue brownfield de greenfield no AIOX.; Distinguir discovery (decifrar) de intervenção (propor mudança).; Escolher quando rodar discovery completo antes de tocar no código.; Explicar por que mapear a estrutura real evita refatorar no escuro.)
@@ -134,7 +134,7 @@ A distinção fica clara quando cada peça tem definição curta, exemplo real d
 
 - G **Pergunta antes do detalhe**: Primeiro o critério que separa, depois cada fase por dentro.
 - 1 **Analogia que ancora**: Greenfield é terreno baldio. Brownfield é casa habitada que pede planta antes da reforma.
-- 2 **Caso real**: /sinkra-map-process e code-anatomist são apontáveis no AIOX, não teoria.
+- 2 **Caso real**: /processo de mapeamento AIOX e code-anatomist são apontáveis no AIOX, não teoria.
 - 3 **Recap com decisão**: A aula fecha com o aluno decidindo se um projeto dele merece discovery completo.
 
 ---
@@ -213,7 +213,7 @@ Esta é a confusão mais cara do início de projeto. Os dois falam de construir 
 
 A distinção não é teoria. O discovery brownfield é apontável no framework. Estes dois casos mostram os primitivos reais do AIOX que decifram um código que você não escreveu.
 
-- **Onde o discovery vive no AIOX**: O AIOX tem dois primitivos de discovery: code-anatomist (9 fases de engenharia reversa de software) e /sinkra-map-process (7 fases de mapeamento de processo, iniciando em Discovery). O discovery não é abstração: tem skill, tem fases nomeadas e tem ordem de leitura. Players: code-anatomist, /sinkra-map-process, 9 fases reverse engineering, 7 fases process mapping, fase Discovery.
+- **Onde o discovery vive no AIOX**: O AIOX tem dois primitivos de discovery: code-anatomist (9 fases de engenharia reversa de software) e /processo de mapeamento AIOX (7 fases de mapeamento de processo, iniciando em Discovery). O discovery não é abstração: tem skill, tem fases nomeadas e tem ordem de leitura. Players: code-anatomist, /processo de mapeamento AIOX, 9 fases reverse engineering, 7 fases process mapping, fase Discovery.
 - **O que muda a decisão**: A pergunta não é se o projeto é importante. É se existe código ou processo herdado que você não escreveu. Brownfield com valor vivo pede discovery completo. Greenfield e legado abandonado, não.
 
 **Cada conceito num eixo**
@@ -221,14 +221,14 @@ A distinção não é teoria. O discovery brownfield é apontável no framework.
 A distinção vira sistema quando cada conceito tem definição, lar no framework e o tipo de projeto que resolve.
 
 - **Brownfield**: Código ou processo que já roda e você não escreveu. Tem decisões antigas embutidas.
-- **Discovery**: O ritual de decifrar a estrutura real. code-anatomist e /sinkra-map-process são os primitivos.
+- **Discovery**: O ritual de decifrar a estrutura real. code-anatomist e /processo de mapeamento AIOX são os primitivos.
 - **Mapa**: A estrutura real desenhada: arquitetura, domínio, dados, dependências.
 - **Intervenção**: A mudança proposta a partir do mapa, depois do discovery.
 
 **Colunas:** Conceito | Decifra ou muda? | Sinal de uso certo | Sinal de erro
 
 - Brownfield: Decifra ou muda? | Reconhecido como código herdado com decisões antigas. | Tratado como greenfield, reformado sem planta.
-- Discovery: Decifra ou muda? | code-anatomist ou /sinkra-map-process rodando antes da mudança. | Pulado por pressa, intervenção no escuro.
+- Discovery: Decifra ou muda? | code-anatomist ou /processo de mapeamento AIOX rodando antes da mudança. | Pulado por pressa, intervenção no escuro.
 - Mapa: Decifra ou muda? | Estrutura real desenhada fase a fase. | Estrutura suposta, baseada em palpite.
 - Intervenção: Decifra ou muda? | Mudança nascida do mapa, depois do discovery. | Mudança proposta antes de entender a estrutura.
 
@@ -241,13 +241,13 @@ O discovery não é uma metáfora de aula: o AIOX tem a skill code-anatomist, um
 - Prova: A skill code-anatomist (renomeada de domain-decoder, RT-DD-V2-001) existe no AIOX com 9 fases de reverse engineering documentadas.
 - Lição: Discovery é primitivo real: tem skill, tem fases nomeadas, tem ordem de leitura do código.
 
-### Caso: O /sinkra-map-process abre pela fase Discovery
+### Caso: O /processo de mapeamento AIOX abre pela fase Discovery
 
-Na visão de processo, o discovery é a primeira fase de um pipeline maior: /sinkra-map-process é um pipeline de 7 fases que começa exatamente em Discovery antes de qualquer arquitetura.
+Na visão de processo, o discovery é a primeira fase de um pipeline maior: /processo de mapeamento AIOX é um pipeline de 7 fases que começa exatamente em Discovery antes de qualquer arquitetura.
 
 - Começou como: Um processo recorrente brownfield que ninguém tinha mapeado nem decomposto em fases.
 - Virou: Um mapeamento de 7 fases iniciado pelo Discovery, que decifra o processo antes de desenhar a solução.
-- Prova: A skill /sinkra-map-process existe no AIOX com 7 fases: Discovery, Architecture, Executors, Workflows, Tasks, QA Gates, Infra.
+- Prova: A skill /processo de mapeamento AIOX existe no AIOX com 7 fases: Discovery, Architecture, Executors, Workflows, Tasks, QA Gates, Infra.
 - Lição: Discovery não é opcional: é a fase de entrada que sustenta todas as outras seis.
 
 ---
@@ -307,7 +307,7 @@ flowchart TB
 
 - **Brownfield vivo** — O código já roda em produção, sustenta valor e você não o escreveu.
   → _Discovery completo_
-  Ex.: Rode discovery completo via code-anatomist ou /sinkra-map-process antes de propor.
+  Ex.: Rode discovery completo via code-anatomist ou /processo de mapeamento AIOX antes de propor.
 - **Greenfield** — Você começa do zero, sem código herdado nem decisões antigas.
   → _Desenho direto_
   Ex.: Não precisa de discovery de legado. Desenhe livre a arquitetura.
@@ -339,7 +339,7 @@ Quando o brownfield é um software que já roda e você precisa entender a estru
 Quando o brownfield é um processo de negócio que existe mas ninguém mapeou.
 1. **Sinal: processo recorrente sem documentação formal.
 2. **Pergunta: você conhece as fases reais ou está adivinhando?
-3. **Ação: rodar /sinkra-map-process começando pela fase Discovery.
+3. **Ação: rodar /processo de mapeamento AIOX começando pela fase Discovery.
 4. **Resultado: processo decomposto em 7 fases a partir do discovery.
 
 #### Discovery focado para mudança pontual
@@ -356,7 +356,7 @@ Use quando o brownfield é software herdado e você precisa decifrar a estrutura
 
 **Discovery de processo**
 Use quando o brownfield é um processo recorrente sem mapa formal.
-- `/sinkra-map-process`: abre o pipeline de 7 fases pela fase Discovery.
+- `/processo de mapeamento AIOX`: abre o pipeline de 7 fases pela fase Discovery.
 - `fechar checkpoint`: validar o discovery antes de avançar para Architecture.
 
 **Discovery focado**
@@ -383,7 +383,7 @@ Visualizações rápidas para o aluno comparar greenfield, brownfield e patch, o
 Em dúvida, escolha a célula que melhor descreve o seu projeto.
 
 - **Código herdado vivo**: Discovery completo. code-anatomist antes de propor.
-- **Processo recorrente sem mapa**: /sinkra-map-process pela fase Discovery.
+- **Processo recorrente sem mapa**: /processo de mapeamento AIOX pela fase Discovery.
 - **Começando do zero**: Greenfield. Desenhe livre, sem discovery de legado.
 - **Mudança pontual conhecida**: Discovery focado só na região tocada.
 - **Legado que ninguém usa**: Avalie descarte ou isolamento, não discovery.
@@ -401,7 +401,7 @@ Cada peça do discovery tem uma anatomia mínima. Saber o que cada uma guarda aj
 - **Brownfield: o herdado**: Código ou processo que já roda e você não escreveu. Carrega decisões antigas embutidas.
 - **Discovery: o ritual**: As fases que decifram a estrutura real sem mudar nada. Leitura ordenada, não palpite.
 - **code-anatomist: a skill**: O pipeline de 9 fases de engenharia reversa de software, da arquitetura à infra.
-- **/sinkra-map-process: o mapa**: O pipeline de 7 fases que abre pela fase Discovery, com checkpoint antes de avançar.
+- **/processo de mapeamento AIOX: o mapa**: O pipeline de 7 fases que abre pela fase Discovery, com checkpoint antes de avançar.
 - **Intervenção: a mudança**: A proposta que nasce do mapa. Nunca vem antes do discovery, sempre depois.
 
 ---
@@ -447,7 +447,7 @@ discovery:
   projeto: "o que voce vai mexer?"
   herdado: "codigo ja roda e voce nao escreveu? sim | nao"
   peca: "discovery_completo | desenho_direto | discovery_focado"
-  ferramenta: "code_anatomist | sinkra_map_process | discovery_focado"
+  ferramenta: "code_anatomist | aiox_map_process | discovery_focado"
   gate: "por que nao a outra rota? (se discovery, quais camadas mapeia antes?)"
 
 ```
@@ -465,7 +465,7 @@ discovery:
 - 1. **Projeto**: Descreva em uma frase o projeto ou processo em que você vai mexer.
 - 2. **Herdado?**: Responda: o código já roda e você não o escreveu, ou começa do zero?
 - 3. **Peça**: Aponte discovery completo (brownfield vivo), desenho direto (greenfield) ou discovery focado (patch).
-- 4. **Ferramenta**: Diga como rodaria: code-anatomist para código, /sinkra-map-process para processo, discovery focado para patch.
+- 4. **Ferramenta**: Diga como rodaria: code-anatomist para código, /processo de mapeamento AIOX para processo, discovery focado para patch.
 - 5. **Gate**: Justifique por que não escolheu a outra rota. Para discovery, diga quais camadas vai mapear antes de propor.
 
 **Funcionou se:**
@@ -484,12 +484,12 @@ Tradução dos termos para alguém que está vendo a distinção greenfield vers
 - **Greenfield**: Projeto que começa do zero, sem código herdado nem decisões antigas. Liberdade total de arquitetura.
 - **Discovery**: O ritual de decifrar a estrutura real de um código herdado antes de propor mudança. Lê em fases ordenadas sem alterar nada.
 - **code-anatomist**: A skill do AIOX que faz engenharia reversa de software em 9 fases: arquitetura, domínio, dados, API, dependências, infra. Renomeada de domain-decoder.
-- **/sinkra-map-process**: O pipeline de 7 fases do AIOX para mapear processos recorrentes. Abre pela fase Discovery, com checkpoint antes de avançar.
+- **/processo de mapeamento AIOX**: O pipeline de 7 fases do AIOX para mapear processos recorrentes. Abre pela fase Discovery, com checkpoint antes de avançar.
 - **Mapa**: A estrutura real desenhada pelo discovery: arquitetura, domínio, dados e dependências. O artefato que sobrevive à leitura.
 - **Intervenção**: A mudança proposta a partir do mapa. Nasce do discovery, nunca antes dele.
 - **Refatorar no escuro**: O anti-padrão de mudar código herdado sem discovery. Quebra o que não foi entendido e descobre tarde demais.
 
-> **Portão da aula**: A aula só está no padrão quando o aluno nomeia o que distingue brownfield de greenfield, distingue o discovery (decifrar a estrutura real) da intervenção (propor mudança) e consegue apontar, para um projeto real, se ele exige discovery completo (brownfield vivo, via code-anatomist ou /sinkra-map-process) ou desenho direto (greenfield) antes de tocar em qualquer linha.
+> **Portão da aula**: A aula só está no padrão quando o aluno nomeia o que distingue brownfield de greenfield, distingue o discovery (decifrar a estrutura real) da intervenção (propor mudança) e consegue apontar, para um projeto real, se ele exige discovery completo (brownfield vivo, via code-anatomist ou /processo de mapeamento AIOX) ou desenho direto (greenfield) antes de tocar em qualquer linha.
 
 ***
 

@@ -46,10 +46,10 @@ if (!fs.existsSync(filePath)) {
 const REPO_ROOT = path.resolve(__dirname, '..', '..', '..', '..')
 const OUT_DIR = path.join(
   REPO_ROOT,
-  'workspace',
+  'docs',
   'businesses',
   bu,
-  'L2-tactical',
+  'tactical',
   'design',
   'storybook'
 )

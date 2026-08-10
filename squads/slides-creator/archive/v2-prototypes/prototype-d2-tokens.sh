@@ -22,8 +22,8 @@ set -euo pipefail
 
 # --- Configuration -----------------------------------------------------------
 
-# Sample brand palette (simulates W3C DTCG design tokens from workspace)
-# These would normally come from workspace/businesses/{brand}/tokens.json
+# Sample brand palette (simulates W3C DTCG design tokens from local_docs)
+# These would normally come from docs/tokens.json
 BRAND_PRIMARY="#4A90D9"
 BRAND_SECONDARY="#2ECC71"
 BRAND_ACCENT="#E74C3C"

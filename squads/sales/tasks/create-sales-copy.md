@@ -1072,7 +1072,7 @@ veto_conditions:
   - "Proposal sem ROI quantificado = BLOQUEAR Step 5 até ter métricas"
   - "Case study sem métricas before/after = INCOMPLETO"
   - "Enterprise copy com tom de infoproduto (hype, urgência artificial) = REESCREVER no tom correto"
-  - "Copy menciona business específico (nome de empresa, preço real, produto real) = MOVER dados para workspace/, manter template genérico no squad"
+  - "Copy menciona business específico (nome de empresa, preço real, produto real) = MOVER dados para outputs/, manter template genérico no squad"
   - "Email de VSL/Webinar com mais de 150 palavras = ENCURTAR"
   - "Offer stack sem ancoragem de preço (valor percebido vs preço real) = REFAZER"
 ```

@@ -356,7 +356,7 @@ function classifyLintResult(parsed, exit_code, stdout, stderr) {
 function lintFailureMetadata(stdout = "", stderr = "", exit_code = null) {
   const combined = `${stdout || ""}\n${stderr || ""}`;
   let failureKind = "lint-execution-error";
-  if (/EDUPLICATEWORKSPACE|duplicate workspace/i.test(combined)) failureKind = "npm-duplicate-workspace";
+  if (/duplicate outputs/i.test(combined)) failureKind = "npm-duplicate-local_docs";
   else if (/ETIMEDOUT|timed?\s*out|timeout/i.test(combined)) failureKind = "lint-timeout";
   else if (/ENOTFOUND|EAI_AGAIN|ECONNRESET|network/i.test(combined)) failureKind = "lint-network-error";
   else if (/npm ERR!|npm error/i.test(combined)) failureKind = "npm-execution-error";
@@ -413,7 +413,7 @@ function validateConsumerContract(designMd) {
   const errors = [];
   const warnings = [];
   const issue = (message) => ({
-    rule: "sinkra/consumer-contract",
+    rule: "aiox/consumer-contract",
     severity: "error",
     message,
   });

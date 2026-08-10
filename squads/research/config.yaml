@@ -74,22 +74,6 @@ mmos_integration:
   enabled: false
   fallback_behavior: "graceful"
 
-workspace_integration:
-  level: none
-  rationale: >-
-    Research não escreve artefatos canônicos em workspace. Publicações são
-    classificadas por tipo: deep-dives 1-player em docs/research/, comparativos
-    multi-player e benchmarks A-vs-B em docs/bench/, auditorias de framework
-    em docs/audits/. Dados efêmeros (raw API, transcripts, handoffs entre
-    skills) permanecem em outputs/research/.
-  read_paths: []
-  write_paths: []
-  readiness_owner: workspace-chief
-  readiness_resolver: null
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# AGENTS
-# ═══════════════════════════════════════════════════════════════════════════════
 agents:
   - id: research-operator
     name: "Research Operator"
@@ -97,7 +81,7 @@ agents:
     tier: human
     specialty: "Approval, scoping, executive decision"
     executor_profile:
-      sinkra_type: "Human"
+      executor_type: "Human"
       human_in_the_loop: true
       output_schema: research-brief
 
@@ -107,7 +91,7 @@ agents:
     tier: orchestrator
     specialty: "Research operations, competitive intelligence, mode dispatch"
     executor_profile:
-      sinkra_type: "Agent"
+      executor_type: "Agent"
       human_in_the_loop: true
       output_schema: benchmark-routing-decision
       story_role: "reviewer"
@@ -129,7 +113,7 @@ agents:
     tier: 1
     specialty: "Deep research, data validation, strategic insights"
     executor_profile:
-      sinkra_type: "Agent"
+      executor_type: "Agent"
       human_in_the_loop: true
       output_schema: deep-research-report
       story_role: "executor"
@@ -151,7 +135,7 @@ agents:
     tier: 1
     specialty: "Evidence-based research, COVERAGE_GATE compliance, CITATION_GATE verification, output-graded dossiers"
     executor_profile:
-      sinkra_type: "Agent"
+      executor_type: "Agent"
       human_in_the_loop: true
       output_schema: research-output.v2
       story_role: "executor"
@@ -164,7 +148,7 @@ agents:
         - product-discovery
         - evidence-graded-research
       core_replaces: null
-      absorbed_from: ".claude/skills/tech-research/ (v2.0.0)"
+      absorbed_from: "skills/tech-research/ (v2.0.0)"
       slash_alias: "/tech-research"
 
   - id: bench-analyst
@@ -173,7 +157,7 @@ agents:
     tier: 1
     specialty: "Universal comparative benchmarking across codebases, LLMs, products, companies, and technologies"
     executor_profile:
-      sinkra_type: "Agent"
+      executor_type: "Agent"
       human_in_the_loop: true
       output_schema: benchmark-analysis-report
       story_role: "executor"
@@ -191,11 +175,11 @@ agents:
 
   - id: benchmark-runtime
     name: "Benchmark Runtime"
-    role: "Worker for deterministic preparation, workspace setup and report publication"
+    role: "Worker for deterministic preparation, local_docs setup and report publication"
     tier: worker
     specialty: "Filesystem preparation, normalization, artifact persistence"
     executor_profile:
-      sinkra_type: "Worker"
+      executor_type: "Worker"
       human_in_the_loop: true
       output_schema: runtime-execution-report
 
@@ -205,7 +189,7 @@ agents:
     tier: clone
     specialty: "Pattern transfer, competitor modeling, reusable benchmark framing"
     executor_profile:
-      sinkra_type: "Clone"
+      executor_type: "Clone"
       human_in_the_loop: true
       output_schema: competitor-pattern-brief
 
@@ -219,7 +203,7 @@ agents:
     deprecated_at: "2026-05-19"
     redirect_to: research-chief
     executor_profile:
-      sinkra_type: "Agent"
+      executor_type: "Agent"
       human_in_the_loop: true
       output_schema: research-pipeline-report
 
@@ -231,7 +215,7 @@ agents:
     specialty: "Evidence-based medicine methodology"
     status: dormant
     executor_profile:
-      sinkra_type: "Agent"
+      executor_type: "Agent"
       human_in_the_loop: true
       output_schema: pico-question
 
@@ -242,7 +226,7 @@ agents:
     specialty: "Systematic review methodology"
     status: dormant
     executor_profile:
-      sinkra_type: "Agent"
+      executor_type: "Agent"
       human_in_the_loop: true
       output_schema: methodology-selection
 
@@ -253,7 +237,7 @@ agents:
     specialty: "Mixed methods research design"
     status: dormant
     executor_profile:
-      sinkra_type: "Agent"
+      executor_type: "Agent"
       human_in_the_loop: true
       output_schema: research-design
 
@@ -265,7 +249,7 @@ agents:
     specialty: "Engineering performance research"
     status: dormant
     executor_profile:
-      sinkra_type: "Agent"
+      executor_type: "Agent"
       human_in_the_loop: true
       output_schema: performance-assessment
 
@@ -276,7 +260,7 @@ agents:
     specialty: "Naturalistic decision making"
     status: dormant
     executor_profile:
-      sinkra_type: "Agent"
+      executor_type: "Agent"
       human_in_the_loop: true
       output_schema: decision-analysis
 
@@ -287,7 +271,7 @@ agents:
     specialty: "Strategic competitive intelligence"
     status: dormant
     executor_profile:
-      sinkra_type: "Agent"
+      executor_type: "Agent"
       human_in_the_loop: true
       output_schema: competitive-intel-brief
 
@@ -788,7 +772,7 @@ data:
 
   - id: token-registry
     name: "Token Registry"
-    description: "12 SINKRA tokens across 9 families governing benchmark and research"
+    description: "12 AIOX tokens across 9 families governing benchmark and research"
 
   - id: quality-gates
     name: "Quality Gates"
@@ -804,7 +788,7 @@ data:
 
   - id: deviation-registry
     name: "Deviation Registry"
-    description: "Formal deviation tracking from SINKRA methodology (Mandamento 7)"
+    description: "Formal deviation tracking from AIOX methodology (Mandamento 7)"
 
   - id: pipeline-execution-log
     name: "Pipeline Execution Log"
@@ -877,7 +861,7 @@ tags:
   - lean-startup
   - product-validation
 
-# SINKRA v3.1 (Story 54.11)
+# AIOX v3.1 (Story 54.11)
 bu_mapping: "hub-framework"
 
 process_token_contract:
@@ -885,7 +869,7 @@ process_token_contract:
   scope: "research-core"
   tokens_declared: 12
 
-sinkra:
+aiox:
   hierarchy_mapping:
     root: "research"
     atoms_count: 57

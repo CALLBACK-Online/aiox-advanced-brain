@@ -10,7 +10,7 @@ estimated_time: 30-45min
 source: remediation-generated
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Operational
 atomic_layer: Atom

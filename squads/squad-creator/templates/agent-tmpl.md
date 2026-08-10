@@ -64,7 +64,7 @@ Hands off to: `{workflow}` for {scenario}.
 
 ---
 
-## Configuration in config.yaml (SINKRA Extensions — AD-2)
+## Configuration in config.yaml (AIOX Extensions — AD-2)
 
 Fields that moved OUT of agent frontmatter go here:
 

@@ -16,7 +16,7 @@ topology:
   project_runtime:
     service_ref: service_catalog
     endpoint: ".claude/settings.json"
-    integration_type: workspace-config
+    integration_type: local_docs-config
 
 runtime_connections:
   - id: cli-to-settings

@@ -7,7 +7,7 @@ workflow:
   orchestrator: "@squad-chief"
   type: brownfield
   state_machine:
-    states: [init, discovery, baseline, upgrade-plan, workspace-governance, workspace-hardening, selective-rerun, optimization, integration, quality-gates, complete, failed]
+    states: [init, discovery, baseline, upgrade-plan, project context governance, project context hardening, selective-rerun, optimization, integration, quality-gates, complete, failed]
     transitions:
       - trigger: start
         source: init
@@ -26,21 +26,21 @@ workflow:
         dest: failed
       - trigger: upgrade_plan_complete
         source: upgrade-plan
-        dest: workspace-governance
+        dest: project context governance
       - trigger: upgrade_plan_failed
         source: upgrade-plan
         dest: failed
-      - trigger: workspace_governance_complete
-        source: workspace-governance
-        dest: workspace-hardening
-      - trigger: workspace_governance_failed
-        source: workspace-governance
+      - trigger: project context governance_complete
+        source: project context governance
+        dest: project context hardening
+      - trigger: project context governance_failed
+        source: project context governance
         dest: failed
-      - trigger: workspace_hardening_complete
-        source: workspace-hardening
+      - trigger: project context hardening_complete
+        source: project context hardening
         dest: selective-rerun
-      - trigger: workspace_hardening_failed
-        source: workspace-hardening
+      - trigger: project context hardening_failed
+        source: project context hardening
         dest: failed
       - trigger: selective_rerun_complete
         source: selective-rerun
@@ -86,20 +86,20 @@ workflow:
       task: upgrade-squad
       task_ref: upgrade-squad
       action: define_upgrade_plan
-    - phase: workspace-governance
-      id: workspace-governance
+    - phase: project context governance
+      id: project context governance
       agent: "@squad-chief"
       task: validate-squad
       task_ref: validate-squad
-      action: validate_workspace_governance
-      notes: Ensure upgraded squad declares valid workspace integration level and contract
-    - phase: workspace-hardening
-      id: workspace-hardening
+      action: validate_project context governance
+      notes: Ensure upgraded squad declares valid local project docs level and contract
+    - phase: project context hardening
+      id: project context hardening
       agent: "@squad-chief"
-      task: workspace-integration-hardening
-      task_ref: workspace-integration-hardening
-      action: harden_workspace_integration
-      notes: Enforce template-first pairing and apply workspace contract remediations when needed
+      task: local project docs-hardening
+      task_ref: local project docs-hardening
+      action: harden_local project docs
+      notes: Enforce template-first pairing and apply project context contracts remediations when needed
     - phase: selective-rerun
       id: selective-rerun
       agent: "@squad-chief"
@@ -127,17 +127,17 @@ workflow:
     - id: CP_RERUN
       phase: selective-rerun
       decision: APPROVE_RERUN
-    - id: CP_WORKSPACE
-      phase: workspace-governance
-      decision: WORKSPACE_GOVERNANCE_PASS
-    - id: CP_WORKSPACE_HARDENING
-      phase: workspace-hardening
-      decision: WORKSPACE_CONTRACT_VALID
+    - id: CP_PROJECT
+      phase: project context governance
+      decision: project context governance_PASS
+    - id: CP_project context hardening
+      phase: project context hardening
+      decision: project context contracts_VALID
     - id: CP_FINAL
       phase: quality-gates
       decision: PASS_OR_REVISE
   outputs:
     - .aiox/squad-runtime/squad-upgrade/{squad_name}/upgrade-report.yaml
     - .aiox/squad-runtime/squad-upgrade/{squad_name}/before-after-score.yaml
-    - .aiox/squad-runtime/squad-upgrade/{squad_name}/workspace-governance-report.yaml
-    - .aiox/squad-runtime/squad-upgrade/{squad_name}/workspace-hardening-final.yaml
+    - .aiox/squad-runtime/squad-upgrade/{squad_name}/project context governance-report.yaml
+    - .aiox/squad-runtime/squad-upgrade/{squad_name}/project context hardening-final.yaml

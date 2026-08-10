@@ -134,13 +134,13 @@ User can type `#yolo` to toggle to YOLO mode (process all sections at once).
 ## Process Guards
 - **On Fail:** Stop execution, capture evidence, and return remediation steps before proceeding.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - create_doc_artifact

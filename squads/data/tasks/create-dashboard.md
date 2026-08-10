@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: create-dashboard
   task_name: Create Dashboard
   status: active
@@ -34,11 +34,11 @@ sinkra_task_metadata:
   error_handling: "on failure, log to outputs/data/{slug}/errors.log and escalate to data-chief"
   output_path: "outputs/data/{slug}/dashboard-spec.yaml"
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Operational
   atomic_layer: Molecule
   executor: Clone
@@ -46,7 +46,7 @@ sinkra_contract:
   post_condition: "output generated, validated, ready for handoff"
   performance: "execute within SLA, log errors explicitly, escalate via handoff without silent failure"
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 # Create Dashboard Task
 
@@ -54,13 +54,13 @@ sinkra_contract:
 
 Criar dashboards efetivos que geram ação, não relatórios decorativos. Este task guia a implementação completa de dashboards usando a metodologia DMMM (Digital Marketing & Measurement Model) de Avinash Kaushik, aplicando o So What Test em cada métrica, seguindo princípios de design de dashboard, organizando métricas em hierarquia (acquisition, behavior, outcomes) e usando storytelling com dados para comunicar insights que movem o negócio.
 
-## Workspace Output Contract
+## Local Docs Output Contract
 
-- Preflight: `*workspace-preflight` + `*workspace-context {slug}`
-- Output canônico (template-first): `workspace/businesses/{slug}/analytics/executive-report.yaml`
-- Output canônico adicional: `workspace/businesses/{slug}/analytics/dmmm.yaml`
+- Preflight: `*project-preflight` + `*project context {slug}`
+- Output canônico (template-first): `docs/analytics/executive-report.yaml`
+- Output canônico adicional: `docs/analytics/dmmm.yaml`
 - Output custom (ad-hoc): `docs/data/{slug}/dashboard-spec-{date}.md`
-- Regra: escrita canônica só se existir template correspondente em `workspace/_templates/analytics/`
+- Regra: escrita canônica só se existir template correspondente em `docs/templates/analytics/`
 
 ---
 

@@ -46,32 +46,13 @@ workflow:
     - icp-deep-analysis.yaml
     - executive-summary.yaml
 
-workspace_execution_contract:
-  preflight:
-    - "*workspace-preflight (executa bootstrap-data-workspace.sh + validate-data-essentials.sh)"
-    - "*workspace-context {slug}"
-    - "Confirmar templates em squads/data/templates/cohorts/"
-  output_routing:
-    canonical:
-      - "workspace/businesses/{slug}/L1-strategy/analytics/cohorts/segmentation-rfm.yaml"
-      - "workspace/businesses/{slug}/L1-strategy/analytics/cohorts/learning-journey.yaml"
-      - "workspace/businesses/{slug}/L1-strategy/analytics/cohorts/community-health.yaml"
-      - "workspace/businesses/{slug}/L1-strategy/analytics/cohorts/student-health-score.yaml"
-      - "workspace/businesses/{slug}/L1-strategy/analytics/cohorts/icp-deep-analysis.yaml"
-      - "workspace/businesses/{slug}/L1-strategy/analytics/cohorts/executive-summary.yaml"
-    custom:
-      - "outputs/data/{slug}/cohorts-diagnostic-{date}.md"
-  hard_rules:
-    - "Proibido gravar em workspace/businesses/{slug}/L1-strategy/analytics/cohorts/ sem template correspondente em squads/data/templates/cohorts/."
-    - "Relatorios em outputs/data/{slug}/ sao complementares e nao substituem artefatos canonicos."
-
 governance:
   ownership:
     owner: data-chief
     owner_notes: |
       Original draft listed `marketing-lead` (executivo) and `narrative-strategist` (copy) as
       cross-squad collaborators; removed in upgrade Wave 1 because they did not exist in the squad
-      nor were declared as cross_squad_contracts. Re-introduce ONLY via workspace/_system/config.yaml
+      nor were declared as cross_squad_contracts. Re-introduce ONLY via docs/config.yaml
       cross_squad_contracts[] when the consuming squads are confirmed.
 
 specialist_execution:

@@ -3,7 +3,6 @@ workflow:
   name: Create Complete Squad
   version: "3.2"
   purpose: Orchestrate the complete creation of an AIOX squad from research to operational validation
-  description: Legacy phase-based orchestration for complete squad creation. Workspace integration ownership stays with COO/c-level.
   type: orchestration
   state_machine:
     states:
@@ -1776,7 +1775,7 @@ transitions:
     to: phase_5
     condition: integration_complete
     checkpoint_required: false
-    description: Dependencies wired, docs generated, COO workspace handoff prepared when needed
+    description: Dependencies wired, docs generated, COO local_docs handoff prepared when needed
   - from: phase_5
     to: phase_6
     condition: validation_passed AND axioma_score >= 7.0

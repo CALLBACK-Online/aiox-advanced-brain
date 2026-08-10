@@ -29,7 +29,7 @@ domain: Tactical
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Tactical`
 atomic_layer: Molecule
 Input: request::detect_operational_mode

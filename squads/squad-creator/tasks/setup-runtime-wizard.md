@@ -28,7 +28,7 @@ domain: Tactical
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Tactical`
 atomic_layer: Atom
 Input: request::setup_runtime_wizard

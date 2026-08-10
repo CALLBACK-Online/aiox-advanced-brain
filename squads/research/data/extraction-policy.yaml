@@ -5,7 +5,7 @@
 # of web content fails or yields insufficient quality. Consumed by:
 #   - squads/research/scripts/tech-research/extraction_escalator.py
 #   - squads/research/scripts/tech-research/output_validator.py (check_extraction_ladder)
-#   - .claude/skills/tech-research/SKILL.md Phase 1.5 (sources strategy)
+#   - skills/tech-research/SKILL.md Phase 1.5 (sources strategy)
 #
 # Rules (per story RA-F.3 and .claude/rules/extraction-no-fallbacks.md):
 #   - Ladder is ordered: each step tried IN ORDER on failure/low quality

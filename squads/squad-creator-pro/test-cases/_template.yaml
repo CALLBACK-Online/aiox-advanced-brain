@@ -10,7 +10,7 @@ test_case:
   version: "1.0"
   created: "2026-02-11"
   task_file: "tasks/{task-name}.md"
-  skill_file: ".claude/skills/{task-name}/SKILL.md"
+  skill_file: "skills/{task-name}/SKILL.md"
 
 # ============================================================================
 # INPUT

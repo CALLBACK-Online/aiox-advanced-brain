@@ -34,25 +34,13 @@ Isso é uma ponte operacional, não uma dependência de ownership.
 O ownership canônico já muda para `design-ops`; a extração física do restante
 do runtime pode acontecer em wave posterior.
 
-## Workspace-First Bridge
-
-O consumo canônico de contratos de design segue `workspace-first`:
-
-- `workspace/businesses/{business}/L2-tactical/design/tokens.yaml`
-- `workspace/businesses/{business}/L2-tactical/design/foundations.yaml`
-- `workspace/businesses/{business}/L2-tactical/design/component-contracts.yaml`
-- `workspace/businesses/{business}/L2-tactical/design/motion-primitives.yaml`
-
-Figma e Storybook são integrações opcionais e nunca substituem o contrato do
-workspace.
-
 ## Pipeline Strategy (MVP)
 
 Para capturar o ganho prático do modelo "constraint-first", o squad expõe um
 pipeline mínimo em `squads/design-ops/scripts/`:
 
 - `context-injector.cjs`: coleta contexto ativo + snippets curados legados
-- `resolve-workspace-contracts.cjs`: valida resolução dos contratos canônicos
+- `resolve-project context contracts.cjs`: valida resolução dos contratos canônicos
 - `autofix-deterministic.cjs`: aplica correções determinísticas e idempotentes
 - `run-minimal-pipeline.cjs`: gera relatório único para benchmark local
 

@@ -36,7 +36,7 @@ scoring_calibration:
 
 | Axis | Excluded Because |
 |---|---|
-| `sinkra_fit` | Framework-agnostic mandate per `.claude/rules/bench-weight-calibration.md` |
+| `aiox_fit` | Framework-agnostic mandate per `.claude/rules/bench-weight-calibration.md` |
 
 ## Caps & Field-Name Conventions
 

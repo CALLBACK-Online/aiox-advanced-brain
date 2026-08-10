@@ -25,9 +25,9 @@ outputs:
 
 elicit: true
 ---
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: etd-l4-card-generation
   task_name: 'ETD Phase 4: L4 Card Generation (Architecture + Failure Modes DUAL)'
   status: pending
@@ -59,11 +59,11 @@ sinkra_task_metadata:
   accountability_scope: review_only
   escalation_priority: high
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Operational
   atomic_layer: Atom
   executor: Agent
@@ -71,7 +71,7 @@ sinkra_contract:
   post_condition: "Decision Cards .md preenchidos junto ao map.yaml master global."
   performance: "Densa formatacao de Output; Nao resuma."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # ETD Phase 4: L4 Card Generation

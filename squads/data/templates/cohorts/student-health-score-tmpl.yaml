@@ -6,7 +6,7 @@ template_metadata:
   owner_agent: "nick-mehta"
   governance_owners:
     - "data-chief"
-  output_path: "workspace/businesses/{slug}/L1-strategy/analytics/cohorts/student-health-score.yaml"
+  output_path: "docs/strategy/analytics/cohorts/student-health-score.yaml"
   custom_fallback_path: "outputs/data/{slug}/student-health-score-{date}.md"
   contains_real_data: false
   pii_allowed: false

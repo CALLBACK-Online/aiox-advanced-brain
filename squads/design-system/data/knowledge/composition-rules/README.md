@@ -8,13 +8,13 @@ complementing the react-rules/ which define individual component patterns.
 - v0 Design Pipeline (Repo B), `composition-patterns/` directory
 - Absorbed via B02-03 ABSORB verdict (COMPARE pipeline, 2026-04-16)
 
-## Format (SINKRA-adapted frontmatter)
+## Format (AIOX-adapted frontmatter)
 ```yaml
 ---
 title: Pattern Name
 impact: high|medium|low
 tags: [composition, patterns, ...]
-sinkra_source: v0-composition-patterns
+aiox_source: v0-composition-patterns
 ---
 ```
 

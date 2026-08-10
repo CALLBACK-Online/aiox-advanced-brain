@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: o-que-e-um-squad
 lesson_position: 23
 title: O que é um Squad (e por que ele vem antes do App)
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/23-o-que-e-um-squad/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -32,7 +32,7 @@ curated_at: '2026-08-09'
 
 # O que é um Squad (e por que ele vem antes do App)
 
-← [[22-pipeline-etl-com-agentes|Pipeline ETL com agentes: hierarquia de camadas]] · ↑ [[modulos/Módulo 5 - Arquitetura SINKRA|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]]
+← [[22-pipeline-etl-com-agentes|Pipeline ETL com agentes: hierarquia de camadas]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]]
 
 ## Conceitos
 
@@ -120,7 +120,7 @@ mentira. Aqui a gente vira a ordem — processo primeiro.
 
 ## O que é um Squad
 
-*Conceito · M5 SINKRA · Por Alan Nicolas*
+*Conceito · M5 AIOX · Por Alan Nicolas*
 
 Squad não é uma pasta de agentes. É um time organizado por domínio, em três tiers, que existe para produzir uma saída concreta. Quem monta squad por enfeite acumula complexidade; quem monta por saída, vira produto.
 
@@ -128,7 +128,7 @@ Squad não é uma pasta de agentes. É um time organizado por domínio, em três
 - **antes do app**: o squad é quem produz o produto
 - **saída paga**: o teste de um squad que não é decorativo
 
-- **status**: aiox advanced · m5 sinkra
+- **status**: aiox advanced · m5 aiox
 - **meta**: principio=o-que-e-um-squad
 - **meta**: fonte=aula-03 + aula-06 + t2-aula-6
 - **ready**: tier before build
@@ -459,7 +459,7 @@ Os termos desta aula em uma frase cada.
 - **Tier operacional**: O nível que executa e entrega a saída.
 - **Squad decorativo**: Squad que existe mas não produz saída que alguém paga ou usa. Custa contexto e não retorna.
 
-> **Próxima aula**: Você sabe o que é um squad e seus tiers. A seguir, o conceito-âncora do SINKRA: a entidade como unidade de processo, que nasce, vive e morre.
+> **Próxima aula**: Você sabe o que é um squad e seus tiers. A seguir, o conceito-âncora do AIOX: a entidade como unidade de processo, que nasce, vive e morre.
 
 ***
 
@@ -468,4 +468,4 @@ Os termos desta aula em uma frase cada.
 
 ## Navegação
 
-← [[22-pipeline-etl-com-agentes|Pipeline ETL com agentes: hierarquia de camadas]] · ↑ [[modulos/Módulo 5 - Arquitetura SINKRA|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]]
+← [[22-pipeline-etl-com-agentes|Pipeline ETL com agentes: hierarquia de camadas]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]]

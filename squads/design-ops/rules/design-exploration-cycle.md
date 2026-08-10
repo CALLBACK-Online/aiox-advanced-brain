@@ -2,7 +2,7 @@
 
 Applies to any design artifact creation work orchestrated by `@design-chief` or consumed from the `design-ops` provider.
 
-Absorbed from `agenmod/claw-design` (2026-04-18), reshaped to fit the SINKRA Process-mode contract.
+Absorbed from `agenmod/claw-design` (2026-04-18), reshaped to fit the AIOX Process-mode contract.
 
 ## The Cycle (Seven Phases)
 
@@ -41,8 +41,8 @@ This gate supersedes the Wave B rule "N ≥ 3 mandatory for all kinds" and is ca
 ### 2. COLLECT — Read Existing Resources
 
 - Read every referenced file in `brief.existing_references`. All of them.
-- Resolve workspace contracts (`tokens.yaml`, `foundations.yaml`, `component-contracts.yaml`, `motion-primitives.yaml`) before writing code.
-- Inspect `@sinkra/ds-core` for components that already exist — REUSE > ADAPT > CREATE (IDS gate).
+- Resolve project context contracts (`tokens.yaml`, `foundations.yaml`, `component-contracts.yaml`, `motion-primitives.yaml`) before writing code.
+- Inspect `@aiox/ds-core` for components that already exist — REUSE > ADAPT > CREATE (IDS gate).
 - Search for similar prior art in `outputs/design-ops/{business}/components/` and `apps/aiox-design-starter/`.
 
 ### 3. VOCALIZE — Assumptions Before Code
@@ -104,14 +104,14 @@ This gate supersedes the Wave B rule "N ≥ 3 mandatory for all kinds" and is ca
 - **"We'll iterate on a single direction."** — Iteration converges; it does not diverge. If only one direction was explored, you iterated toward a local minimum of an unexplored space.
 - **"Verification is a final step."** — No; it is a phase boundary. Skipping verification between phases lets broken state propagate.
 
-## Binding to SINKRA Process Mode
+## Binding to AIOX Process Mode
 
 This cycle maps cleanly to `wf-provider-enrichment-from-external.yaml`:
 
 | Cycle Phase | Workflow Step |
 |-------------|---------------|
 | ASK         | step-1-intake (elicitation gate) |
-| COLLECT     | step-4-workspace-contracts (contracts gate) |
+| COLLECT     | step-4-project context contracts (contracts gate) |
 | VOCALIZE    | embedded in Step 0 of `ds-build-component.md` (assumption capture) |
 | BUILD       | step-2-divergent-exploration → step-5-build |
 | SHOW EARLY  | Before/After Visual Gate (§5a) — mandatory for any visual change |

@@ -54,7 +54,7 @@ try {
 }
 
 const ROOT = path.resolve(__dirname, '..', '..', '..', '..')
-const designPath = path.join(ROOT, 'workspace', 'businesses', bu, 'L2-tactical', 'design')
+const designPath = path.join(ROOT, 'docs', 'project', 'businesses', bu, 'tactical', 'design')
 const refPath = path.join(designPath, 'reference')
 
 // Create directories
@@ -324,9 +324,9 @@ const tokensNormalized = {
   radius: {},
   shadow: {},
   motion: {
-    'duration-normal': { value: '200ms', source: 'sinkra-default' },
-    'duration-fast': { value: '100ms', source: 'sinkra-default' },
-    'easing-standard': { value: 'cubic-bezier(0.4, 0, 0.2, 1)', source: 'sinkra-default' }
+    'duration-normal': { value: '200ms', source: 'aiox-default' },
+    'duration-fast': { value: '100ms', source: 'aiox-default' },
+    'easing-standard': { value: 'cubic-bezier(0.4, 0, 0.2, 1)', source: 'aiox-default' }
   }
 }
 
@@ -385,13 +385,13 @@ if (extractedData.spacing && extractedData.spacing.length > 0) {
     tokensNormalized.spacing[`extracted-${i}`] = { value: val, source: 'computed' }
   })
 } else {
-  // SINKRA defaults
+  // AIOX defaults
   tokensNormalized.spacing = {
-    'xs': { value: '0.25rem', source: 'sinkra-default' },
-    'sm': { value: '0.5rem', source: 'sinkra-default' },
-    'md': { value: '1rem', source: 'sinkra-default' },
-    'lg': { value: '1.5rem', source: 'sinkra-default' },
-    'xl': { value: '2rem', source: 'sinkra-default' }
+    'xs': { value: '0.25rem', source: 'aiox-default' },
+    'sm': { value: '0.5rem', source: 'aiox-default' },
+    'md': { value: '1rem', source: 'aiox-default' },
+    'lg': { value: '1.5rem', source: 'aiox-default' },
+    'xl': { value: '2rem', source: 'aiox-default' }
   }
 }
 
@@ -402,9 +402,9 @@ if (extractedData.radius && extractedData.radius.length > 0) {
   })
 } else {
   tokensNormalized.radius = {
-    'sm': { value: '0.375rem', source: 'sinkra-default' },
-    'md': { value: '0.5rem', source: 'sinkra-default' },
-    'lg': { value: '0.75rem', source: 'sinkra-default' }
+    'sm': { value: '0.375rem', source: 'aiox-default' },
+    'md': { value: '0.5rem', source: 'aiox-default' },
+    'lg': { value: '0.75rem', source: 'aiox-default' }
   }
 }
 
@@ -464,7 +464,7 @@ function printFallbackInstructions() {
   console.log('     copy(JSON.stringify(vars, null, 2));')
   console.log('')
   console.log('  4. Paste the JSON into a file named tokens-raw.json')
-  console.log(`  5. Save at: workspace/businesses/${bu}/L2-tactical/design/tokens-raw.json`)
-  console.log(`  6. Take screenshots and save to: workspace/businesses/${bu}/L2-tactical/design/reference/`)
+  console.log(`  5. Save at: docs/${bu}/tactical/design/tokens-raw.json`)
+  console.log(`  6. Take screenshots and save to: docs/${bu}/tactical/design/reference/`)
   console.log(`  7. Run: /capture-ds --source pasta --brand ${bu}`)
 }

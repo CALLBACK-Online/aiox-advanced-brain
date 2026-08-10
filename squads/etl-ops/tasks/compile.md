@@ -1,6 +1,6 @@
 # ETL Compile
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 executor: etl-transformer
@@ -39,7 +39,7 @@ Consolidate multiple extracted files (transcripts, markdown, text) into a single
   "output_file": "compiled_output.md",
   "constraints": {
     "business_slug": "acme",
-    "workspace_mode": "auto"
+    "context_mode": "auto"
   }
 }
 ```
@@ -76,14 +76,13 @@ Consolidate multiple extracted files (transcripts, markdown, text) into a single
 
 ## Execution Flow
 
-### Phase 0: Workspace preflight
+### Phase 0: Project preflight
 
-- Run `bash squads/etl-ops/scripts/validate-etl-essentials.sh`
-- Load `tasks/load-workspace-context.md`
+- Load `tasks/load-project context.md`
 - Resolve output root:
-  - canonical: `workspace/businesses/{business_slug}/etl/compiled/`
+  - canonical: `docs/etl/compiled/`
   - custom: `docs/etl/{business_slug}/`
-  - legacy: caller-provided path outside workspace
+  - legacy: caller-provided path outside local_docs
 
 ### Phase 1: Discovery
 
@@ -118,8 +117,8 @@ For each file in order:
 3. Write to `output_file`
 4. Calculate and report metrics
 
-When `workspace_mode=auto|canonical` and `business_slug` exists:
-- prefer `output_file = workspace/businesses/{business_slug}/etl/compiled/{name}.md`
+When `context_mode=auto|canonical` and `business_slug` exists:
+- prefer `output_file = docs/etl/compiled/{name}.md`
 
 ## Output Format
 

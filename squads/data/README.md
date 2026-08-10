@@ -1,12 +1,11 @@
 # Data Intelligence Squad
 
-> Squad de analytics orientado por especialistas, organizado em 3 tiers e operando em modo `workspace_first`.
+> Squad de analytics orientado por especialistas, organizado em 3 tiers e operando em modo `local`.
 
 **Slug:** `data`  
 **Entry agent:** `data-chief`  
 **Versão:** `2.0.0`  
-**Readiness owner:** `@coo`  
-**Governance handoff:** `squads/c-level`
+**Readiness owner:** `@human`
 
 ## Propósito
 
@@ -55,7 +54,7 @@ Use para transformar análise em relatório, priorização e ação.
 - `@data-chief`
   - roteia para o especialista correto
   - força sequência por tiers
-  - protege o contrato `workspace_first`
+  - protege o contrato `local`
 
 ## Quick Start
 
@@ -63,8 +62,8 @@ Use para transformar análise em relatório, priorização e ação.
 
 ```text
 /Data:agents:data-chief
-*workspace-preflight
-*workspace-context {slug}
+*project-preflight
+*project context {slug}
 ```
 
 ### Ativar especialistas diretamente
@@ -82,7 +81,7 @@ Use para transformar análise em relatório, priorização e ação.
 ### Tasks principais
 
 ```text
-/Data:tasks:load-workspace-context
+/Data:tasks:load-project context
 /Data:tasks:calculate-clv
 /Data:tasks:segment-rfm
 /Data:tasks:design-health-score
@@ -104,54 +103,6 @@ Use para transformar análise em relatório, priorização e ação.
 /Data:workflows:optimize-community-workflow
 /Data:workflows:cohorts-diagnostic
 ```
-
-## Workspace-First
-
-O squad declara `workspace_integration.level: workspace_first` em [config.yaml](squads/data/config.yaml).
-
-### Preflight obrigatório
-
-```bash
-bash squads/data/scripts/bootstrap-data-workspace.sh {slug}
-bash squads/data/scripts/validate-data-essentials.sh
-```
-
-Se o preflight falhar, a execução analítica deve parar.
-
-### Leituras canônicas
-
-- `workspace/businesses/{slug}/`
-- `workspace/domains/brand/`
-- `workspace/domains/content/`
-- `workspace/domains/movement/`
-- `workspace/_templates/analytics/`
-- `workspace/_templates/business-template/`
-- `docs/data/`
-
-### Escritas permitidas
-
-Canonical:
-
-- `workspace/businesses/{slug}/analytics/{artifact}.yaml`
-- `workspace/businesses/{slug}/analytics/cohorts/{artifact}.yaml`
-
-Condição:
-
-- o template correspondente precisa existir em `workspace/_templates/analytics/` ou `workspace/_templates/analytics/cohorts/`
-
-Custom:
-
-- `docs/data/{slug}/{artifact}.md`
-
-Use custom apenas para exploração, diagnóstico ad-hoc ou relatório fora do contrato canônico.
-
-### Governança de promoção canônica
-
-Antes de promover um artefato para `workspace/businesses/{slug}/analytics/`:
-
-- `*workspace-preflight` precisa ter passado
-- o template precisa existir
-- o handoff de governança para `@coo` / `squads/c-level` precisa estar explícito quando aplicável
 
 ## Inventário Real do Squad
 
@@ -183,7 +134,7 @@ Contagem atual baseada no conteúdo do diretório:
 - `define-north-star`
 - `design-health-score`
 - `design-learning-outcomes`
-- `load-workspace-context`
+- `load-project context`
 - `measure-community`
 - `predict-churn`
 - `run-growth-experiment`
@@ -262,7 +213,7 @@ squads/data/
 ├── outputs/
 ├── projects/
 ├── .backup/                     # transitório de manutenção, não canônico
-└── workspace-hardening-state.json
+└── local-hardening-state.json
 ```
 
 ## Regras de Manutenção
@@ -284,7 +235,7 @@ Este arquivo é o contrato de entrada do squad.
 Ele deve responder rapidamente:
 
 - o que o squad faz
-- como operar em `workspace_first`
+- como operar em `local`
 - quais assets existem de verdade
 - onde fica a base de conhecimento
 - quais regras de manutenção não podem ser quebradas

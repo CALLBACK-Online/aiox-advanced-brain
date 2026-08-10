@@ -5,13 +5,13 @@
 > Purpose: Keep WCAG governance always current and release-blocking when stale or incomplete.
 
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_govern_a11y_compliance_artifact

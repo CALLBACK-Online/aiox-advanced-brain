@@ -19,7 +19,7 @@ category: utility
 agent: squad-chief
 elicit: false
 autonomous: true
-description: "Gera ou atualiza .agents/skills/{chief_id}/SKILL.md a partir do chief do squad."
+description: "Gera ou atualiza skills/{chief_id}/SKILL.md a partir do chief do squad."
 worker_script: "scripts/sync-chief-codex-skill.js"
 accountability:
   human: squad-operator
@@ -29,15 +29,15 @@ domain: Operational
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Operational`
 atomic_layer: Atom
 Input: request::sync_chief_codex_skill
 Output: artifact::sync_chief_codex_skill
 pre_condition: squad_name fornecido AND config.yaml com entry_agent AND chief agent .md existe
-post_condition: .agents/skills/{chief_id}/SKILL.md gerado ou atualizado a partir do entry agent
+post_condition: skills/{chief_id}/SKILL.md gerado ou atualizado a partir do entry agent
 performance: deterministic Worker, < 30s, script-driven (sync-chief-codex-skill.js), fail-loud em parse error
-Completion Criteria: SKILL.md gerado em .agents/skills/{chief_id}/ AND chief ativável no Codex
+Completion Criteria: SKILL.md gerado em skills/{chief_id}/ AND chief ativável no Codex
 error_handling: fail-loud, persist evidence, escalate if unrecoverable
 
 ## Inputs
@@ -57,7 +57,7 @@ node squads/squad-creator/scripts/sync-chief-codex-skill.js --squad {squad_name}
 
 - [ ] `config.yaml` do squad parseia sem erro
 - [ ] Chief resolvido a partir de `entry_agent` ou fallback canônico
-- [ ] `.agents/skills/{chief_id}/SKILL.md` gerado
+- [ ] `skills/{chief_id}/SKILL.md` gerado
 - [ ] Skill aponta para o agent file real do chief
 
 ## Veto Conditions

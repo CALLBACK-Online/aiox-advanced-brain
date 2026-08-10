@@ -18,9 +18,9 @@ section that contains a markdown table with >= 2 rows, emits a structured matrix
       title: "Matriz: Fase do `/tech-research` x Prior-Art"
       section: "4. Matriz: ..."
       first_seen_in: "02-research-report.md"
-      columns: ["Fase Sinkra", "Melhor prior-art", "Visualização existente", "Gap para Sinkra"]
+      columns: ["Fase AIOX", "Melhor prior-art", "Visualização existente", "Gap para AIOX"]
       cells:
-        - { "Fase Sinkra": "Auto-Clarify", "Melhor prior-art": "fdarkaou/...", ... }
+        - { "Fase AIOX": "Auto-Clarify", "Melhor prior-art": "fdarkaou/...", ... }
   totals:
     total_matrices: N
     total_rows: N

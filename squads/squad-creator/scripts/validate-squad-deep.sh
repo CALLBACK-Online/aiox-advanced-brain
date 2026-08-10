@@ -26,8 +26,8 @@ export LC_NUMERIC=C
 # ═══════════════════════════════════════════════════════════════════════════════
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-WORKSPACE_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
-RUNNER_LIB_DIR="$WORKSPACE_ROOT/infrastructure/scripts/runner-lib"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+RUNNER_LIB_DIR="$PROJECT_ROOT/infrastructure/scripts/runner-lib"
 HAS_RUNNER_LIB="false"
 
 if [[ -f "$RUNNER_LIB_DIR/loader.sh" ]]; then

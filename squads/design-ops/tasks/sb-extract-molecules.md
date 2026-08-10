@@ -19,13 +19,13 @@
 | **acceptance_criteria** | 5 criteria |
 
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - sb_extract_molecules_artifact

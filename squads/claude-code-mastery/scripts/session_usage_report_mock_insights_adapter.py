@@ -222,7 +222,7 @@ def insight_sections(payload):
                 "feature": "Custom Skills",
                 "one_liner": "Empacotar workflows recorrentes.",
                 "why_for_you": "Seu histórico já mostra skills suficientemente estáveis para isso.",
-                "example_code": "Criar `.claude/skills/commit/SKILL.md` para o fluxo de commit.",
+                "example_code": "Criar `skills/commit/SKILL.md` para o fluxo de commit.",
             }
         ],
         "usage_patterns": [

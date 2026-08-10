@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: routing-modelos
 lesson_position: 60
 title: 'Routing de modelos: Codex para QA, Gemini para pesquisa, Claude para o resto'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/60-routing-modelos/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

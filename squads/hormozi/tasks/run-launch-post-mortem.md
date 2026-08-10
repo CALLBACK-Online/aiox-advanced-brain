@@ -10,7 +10,7 @@ estimated_time: 60-90min (facilitacao)
 source: "$100M Launch Playbook - Post-Mortem Framework"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom

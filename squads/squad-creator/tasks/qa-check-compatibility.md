@@ -31,7 +31,7 @@ domain: Operational
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Operational`
 atomic_layer: Atom
 Input: request::qa_check_compatibility
@@ -130,7 +130,7 @@ Check for governance framework required and recommended fields:
 
 | Check | Description |
 |-------|-------------|
-| IDE sync compatibility | Can slash skills be synced to `.claude/skills/{squad}/{agent}/SKILL.md` |
+| IDE sync compatibility | Can slash skills be synced to `skills/{squad}/{agent}/SKILL.md` |
 | Activation shortcut format | Follows `/{squad}:{agent}` pattern |
 | Template path resolution | Template paths resolve from squad root |
 

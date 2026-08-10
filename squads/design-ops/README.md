@@ -57,34 +57,34 @@ Mudanças que não devem mais acontecer lá:
 ## Consumer Contract Policy
 
 `design-pages` e `design-app` devem consumir contratos de design apenas via
-`workspace/`:
+`docs/` (substituto local; outputs/ é private enterprise distribution):
 
-- `workspace/businesses/{business}/L2-tactical/design/tokens.yaml`
-- `workspace/businesses/{business}/L2-tactical/design/foundations.yaml`
-- `workspace/businesses/{business}/L2-tactical/design/component-contracts.yaml`
-- `workspace/businesses/{business}/L2-tactical/design/motion-primitives.yaml`
+- `docs/tactical/design/tokens.yaml`
+- `docs/tactical/design/foundations.yaml`
+- `docs/tactical/design/component-contracts.yaml`
+- `docs/tactical/design/motion-primitives.yaml`
 
 Não é permitido fallback para `legacy_source` como fonte canônica de consumo.
 Storybook e Figma permanecem opcionais e nunca substituem os contratos do
-workspace.
+local_docs.
 
 ## Pipeline Mínimo (v0-like)
 
 O `design-ops` agora possui um pipeline mínimo para reduzir variabilidade na
 geração frontend sem depender de stack proprietária:
 
-- `context-injector.cjs`: injeta contexto curado (workspace + referências DS)
+- `context-injector.cjs`: injeta contexto curado (local_docs + referências DS)
 - `autofix-deterministic.cjs`: aplica autofix determinístico pós-geração
 - `run-minimal-pipeline.cjs`: orquestra contexto + autofix e salva relatório
-- `resolve-workspace-contracts.cjs`: inspeciona resolução dos contratos canônicos no workspace
-- `validate-workspace-contracts.cjs`: valida coerência dos contratos canônicos + catálogo core
+- `resolve-project context contracts.cjs`: inspeciona resolução dos contratos canônicos no project docs
+- `validate-project context contracts.cjs`: valida coerência dos contratos canônicos + catálogo core
 
 Comandos:
 
 ```bash
 node squads/design-ops/scripts/context-injector.cjs --business=aiox --format=markdown
-node squads/design-ops/scripts/resolve-workspace-contracts.cjs --business=aiox --format=yaml
-node squads/design-ops/scripts/validate-workspace-contracts.cjs --business=aiox --format=json --strict
+node squads/design-ops/scripts/resolve-project context contracts.cjs --business=aiox --format=yaml
+node squads/design-ops/scripts/validate-project context contracts.cjs --business=aiox --format=json --strict
 node squads/design-ops/scripts/sync-design-manifest.cjs
 node squads/design-ops/scripts/validate-design-manifest-drift.cjs
 node squads/design-ops/scripts/generate-components-metadata.cjs --business=aiox
@@ -101,16 +101,16 @@ node squads/design-ops/scripts/autofix-deterministic.cjs --target=apps/aiox-desi
 node squads/design-ops/scripts/run-minimal-pipeline.cjs --business=aiox --target=apps/aiox-design-starter/src --write
 ```
 
-Task/Workflow canônico para extração brandbook -> workspace:
+Task/Workflow canônico para extração brandbook -> local_docs:
 
-- Task: `squads/design-ops/tasks/dops-extract-brandbook-to-workspace-contracts.md`
-- Workflow: `squads/design-ops/workflows/wf-brandbook-workspace-extraction.yaml`
+- Task: `squads/design-ops/tasks/dops-extract-brandbook-to-project context contracts.md`
+- Workflow: `squads/design-ops/workflows/brownfield-complete.yaml`
 - Workflow: `squads/design-ops/workflows/wf-style-dictionary-token-pipeline.yaml`
 
-Pacote P1 migrado de `design-system` (adaptado para `workspace-first`):
+Pacote P1 migrado de `design-system` (adaptado para `local`):
 
 - Task: `squads/design-ops/tasks/dops-context-contract.md`
-- Workflow: `squads/design-ops/workflows/wf-dtcg-workspace-governance.yaml`
+- Workflow: `squads/design-ops/workflows/wf-dtcg-project context governance.yaml`
 - Data: `squads/design-ops/data/quality-gates.yaml`
 - Data: `squads/design-ops/data/token-registry.yaml`
 - Data: `squads/design-ops/data/design-tokens-spec.yaml`
@@ -125,7 +125,6 @@ Pacote P3 migrado (YOLO):
 
 - Runtime desacoplado para `design-ops`:
   - `squads/design-ops/scripts/runtime-paths.cjs`
-  - `squads/design-ops/scripts/resolve-business-design-system.cjs`
   - `squads/design-ops/scripts/load-context.cjs`
 - Governança de metadata/manifest:
   - `squads/design-ops/scripts/generate-components-metadata.cjs`
@@ -133,8 +132,8 @@ Pacote P3 migrado (YOLO):
   - `squads/design-ops/scripts/sync-design-manifest.cjs`
   - `squads/design-ops/scripts/validate-design-manifest-drift.cjs`
   - `squads/design-ops/workflows/wf-metadata-manifest-governance.yaml`
-- Ops audit workspace-first:
-  - `squads/design-ops/workflows/wf-ops-audit-workspace.yaml`
+- Ops audit local:
+  - `squads/design-ops/workflows/ops-audit.yaml`
 - Self-healing provider:
   - `squads/design-ops/workflows/wf-self-healing-provider.yaml`
 - Motion coverage gate:
@@ -190,9 +189,9 @@ Pacote Wave B.2.2 (deep dive verbatim — tool contracts + extended guardrails):
 
 Pacote Wave B.3 (Execution Skill — bridge governance → runtime):
 
-A Wave B.3 resolve o failure mode "mapa sem pipeline" identificado por `@sinkra-chief`. As Waves B–B.2.2 produziram 50 heurísticas + 17 arquivos de governance/contract sem executor. A Wave B.3 cria o executor.
+A Wave B.3 resolve o failure mode "mapa sem pipeline" identificado por `@aiox-chief`. As Waves B–B.2.2 produziram 50 heurísticas + 17 arquivos de governance/contract sem executor. A Wave B.3 cria o executor.
 
-- **Skill principal:** `.claude/skills/design-artifact-cycle/SKILL.md` — full Q→E→B→V lifecycle em 9 phases com gates blocking. Invocável via `/design-artifact-cycle --kind {kind} --business {slug} "{description}"`.
+- **Skill principal:** `skills/design-artifact-cycle/SKILL.md` — full Q→E→B→V lifecycle em 9 phases com gates blocking. Invocável via `/design-artifact-cycle --kind {kind} --business {slug} "{description}"`.
 
 - **Tasks (P01-P08):**
   - `tasks/dops-materialize-brief.md` (P01 ASK)
@@ -212,7 +211,7 @@ Comparison com skills irmãs:
 |-------|---------|---------|
 | `/design-artifact-cycle` | artifact | Entry point para execução design-ops |
 | `/full-sdc` | story | Paralelo — diferente unidade |
-| `/sinkra-map-process` | processo | Upstream — mapeia processos que consomem esta skill |
+| `/processo de mapeamento AIOX` | processo | Upstream — mapeia processos que consomem esta skill |
 | `/story-cycle` | story | Paralelo |
 
 Pacote Wave B.4 (UX Conversational — user-facing layer):
@@ -240,7 +239,7 @@ Arquitetura em 2 camadas:
 
 Arquivos Wave B.4:
 
-- **Skill user-facing:** `.claude/skills/claude-design/SKILL.md` — invocável via `/claude-design`. Conversa natural em PT-BR, entende "preciso de um botão primary pra AIOX" → traduz em brief + orquestra pipeline.
+- **Skill user-facing:** `skills/claude-design/SKILL.md` — invocável via `/claude-design`. Conversa natural em PT-BR, entende "preciso de um botão primary pra AIOX" → traduz em brief + orquestra pipeline.
 - **Persona spec:** `squads/design-ops/data/claude-design-persona.yaml` — voz, tom, vocabulário, frases proibidas, heurísticas de intent extraction, protocolo de elicitação ordenado.
 - **Translation table:** `squads/design-ops/data/user-terminology-translation.yaml` — ponte entre termos técnicos (success_criteria, compliance_score, BLOCKER) e linguagem de usuário (PT-BR).
 

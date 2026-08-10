@@ -4,7 +4,7 @@
 schema_version: "1.0.0"
 squad: "squad-creator"
 description: >
-  Registry of formalized deviations from SINKRA methodology.
+  Registry of formalized deviations from AIOX methodology.
   Every deviation must be documented here with justification,
   impact assessment, and resolution plan.
 
@@ -14,7 +14,7 @@ deviations:
     category: "executor_type"
     description: >
       Squad uses Hybrid executor type (31 tasks) combining AI-generates + human-validates.
-      This is not one of the 4 canonical SINKRA types (Human, Agent, Worker, Clone).
+      This is not one of the 4 canonical AIOX types (Human, Agent, Worker, Clone).
       Hybrid is a squad-scoped extension formalized in executor-matrix-framework.md.
     justification: >
       squad-creator is a meta-squad with many human-in-the-loop workflows (elicitation,
@@ -30,7 +30,7 @@ deviations:
     category: "executor_type"
     description: >
       Squad uses Composed executor type (15 tasks) for orchestrator tasks that
-      delegate to 2-6 sub-tasks. This is not one of the 4 canonical SINKRA types.
+      delegate to 2-6 sub-tasks. This is not one of the 4 canonical AIOX types.
       Composed tasks are now classified as atomic_layer: Molecule (not Atom).
     justification: >
       Composed captures the orchestrator pattern where a parent task coordinates
@@ -46,7 +46,7 @@ deviations:
     category: "field_naming"
     description: >
       139/140 tasks use 'Execution Type' in Task Anatomy table instead of the
-      canonical SINKRA field name 'responsavel_type'. The squad's internal template
+      canonical AIOX field name 'responsavel_type'. The squad's internal template
       (task-tmpl.md) standardizes on 'Execution Type'.
     justification: >
       'Execution Type' is more descriptive and consistent with the squad's template-driven

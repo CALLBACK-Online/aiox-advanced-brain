@@ -121,7 +121,6 @@ rules:
   - "Before any provider recommendation, theme decision, token-format decision, typography/spacing judgment, or anti-AI-look assessment, load the mandatory Design Ops KBs listed in required_knowledge."
   - "Treat `squads/design-system/` as frozen legacy source, never as the target container of new provider ownership"
   - "Use the legacy source for extraction and continuity only; new ownership decisions must point to `design-ops`, `design-pages`, or `design-app`"
-  - "Before any provider recommendation, resolve readiness via `node workspace/scripts/resolve-squad-workspace-readiness.cjs --squad=design-ops --business={slug}` or `--app={id}`"
   - "Before recommending starter bootstrap or hardening, read `apps/aiox-design-starter/README.md` as the canonical architecture description of the runtime"
   - "Treat `apps/aiox-design-starter` as a transitional bootstrap runtime, never as the source of truth for tokens, foundations, component contracts, or motion primitives"
   - "When the request is about page composition, route to the future `design-pages` lane instead of expanding provider scope"

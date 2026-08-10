@@ -1,6 +1,6 @@
 # Task: Compress Outline to Slide Functions
 
-## SINKRA Validation Metadata
+## AIOX Validation Metadata
 
 ```yaml
 task: compress-outline-to-slide-functions
@@ -25,9 +25,9 @@ Error_handling:
   strategy: fail fast with explicit handoff blocker
 ```
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Strategic -->
+<!-- AIOX Domain: Strategic -->
 
 ## Metadata
 
@@ -48,7 +48,7 @@ Error_handling:
 
 Lição empírica do webinar Primeiro Serviço de IA: outline de 27 tópicos virou deck de 27 slides ruim porque o pipeline traduziu tópico em slide literalmente. Esta task quebra essa tradução literal: outline → story_arc beats → slide_function_map entries, com **compressão editorial obrigatória**.
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml

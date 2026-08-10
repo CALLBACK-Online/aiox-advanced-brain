@@ -9,13 +9,13 @@
 ---
 
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Operational
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - focus_order_audit_artifact

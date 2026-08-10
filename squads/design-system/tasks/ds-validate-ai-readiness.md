@@ -10,8 +10,8 @@ Validate that the design system has all required artifacts for AI agent consumpt
 
 ## Prerequisites
 
-- MCP server exists at `workspace/domains/design-system/mcp/`
-- Metadata exists at `workspace/domains/design-system/metadata/`
+- MCP server exists at `docs/design-system/domains/mcp/`
+- Metadata exists at `docs/design-system/domains/metadata/`
 
 ## Workflow
 
@@ -68,13 +68,13 @@ Validate that the design system has all required artifacts for AI agent consumpt
 - **Dependencies:** depends_on: `[]` · enables: `[]` · workflow: `design-system`
 - **On Fail:** Stop execution, capture evidence, and return remediation steps before proceeding.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Operational
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_validate_ai_readiness_artifact

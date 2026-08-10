@@ -1,4 +1,4 @@
-# Bench Metadata Canonical Schema (SINKRA v1)
+# Bench Metadata Canonical Schema (AIOX v1)
 #
 # Source of truth for the vocabulary used in `docs/bench/{slug}/metadata.json`.
 # Squad: spy | Owner: bench-analyst
@@ -234,4 +234,4 @@ references:
   schema_doc: "docs/bench/_dash-schema.md"
   extractor: "scripts/bench-dash-output.cjs"
   handoff: "docs/sessions/2026-05/2026-05-11-bench-standardization-handoff.md"
-  sinkra_output: ".aiox/squad-runtime/sinkra-squad/spy/bench-dash-emission-quick-fix/sinkra-output-express.yaml"
+  aiox_output: ".aiox/squad-runtime/aiox-squad/spy/bench-dash-emission-quick-fix/aiox-output-express.yaml"

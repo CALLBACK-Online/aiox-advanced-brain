@@ -25,15 +25,15 @@ quality_policy:
   output_quality_min:
     threshold: 0.8
 workflow:
-  description: Workflow SINKRA-native de análise do ecossistema como Organism linear com checkpoints e journey log.
-  type: sinkra-native-meta-analysis
+  description: Workflow AIOX-native de análise do ecossistema como Organism linear com checkpoints e journey log.
+  type: aiox-native-meta-analysis
   id: wf-ecosystem-analysis
   name: Full Ecosystem Analysis
   version: 1.0.0
   orchestrator: kaizen-chief
   mode: autonomous
   estimated_duration: 10-20 minutes
-  sinkra:
+  aiox:
     organism_id: org-ecosystem-analysis
     organism_pattern: linear
     molecule_sequence: [mol-diagnosis, mol-governance, mol-optimization]
@@ -157,7 +157,7 @@ workflow:
       steps:
         - id: "0.1"
           name: Scan squad registry
-          action: Read squads/sinkra-squad/data/ecosystem-registry.yaml
+          action: Read squads/aiox-squad/data/ecosystem-registry.yaml
           output: squad_list
         - id: "0.2"
           name: Scan active squads

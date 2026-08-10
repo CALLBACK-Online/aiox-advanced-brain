@@ -22,4 +22,4 @@ Inclui: transcripts com diarização (Whisper + speaker attribution), índices d
 
 ## Provenance
 
-Outputs gerados antes da migração para SINKRA v3.1+. Mantidos como evidência de uso real do pipeline ETL em transcrição de interviews e extração de conteúdo de vídeo/áudio.
+Outputs gerados antes da migração para AIOX v3.1+. Mantidos como evidência de uso real do pipeline ETL em transcrição de interviews e extração de conteúdo de vídeo/áudio.

@@ -105,7 +105,7 @@ input_types:
   pdf:
     pattern: ".pdf file attachments"
     handling:
-      - "Invoke read_pdf skill (not present in current sinkra-hub stack; use external integration)"
+      - "Invoke read_pdf skill (not present in current upstream monorepo stack; use external integration)"
     read_only: true
     copy_into_project: "rendered pages can be used as reference images"
     source_citation: "external prompt line 32"

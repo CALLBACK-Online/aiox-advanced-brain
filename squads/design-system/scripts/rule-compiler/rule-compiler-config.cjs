@@ -4,7 +4,7 @@
  * Configuration for the rule compilation pipeline.
  * Maps rule source directories to compiled output paths.
  *
- * Adapted from v0 react-best-practices-build/config.ts for SINKRA format.
+ * Adapted from v0 react-best-practices-build/config.ts for AIOX format.
  * Source: B04 ABSORB verdict (COMPARE pipeline, 2026-04-16)
  */
 
@@ -40,7 +40,7 @@ module.exports = {
    * Frontmatter fields expected in each rule .md file.
    * Used by validate-rules.cjs to check completeness.
    */
-  requiredFrontmatter: ['title', 'impact', 'tags', 'sinkra_source'],
+  requiredFrontmatter: ['title', 'impact', 'tags', 'aiox_source'],
 
   /**
    * Impact levels (for sorting in compiled output).

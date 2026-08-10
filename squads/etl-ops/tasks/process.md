@@ -1,6 +1,6 @@
 # ETL Process
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 executor: etl-chief
@@ -22,7 +22,7 @@ Performance: bloquear source inválida, extração vazia ou contract drift
 | **execution_type** | `Hybrid` |
 | **input** | `process.schema.json` payload with `source`, `desired_output`, `mode`, `constraints` |
 | **output** | Contract envelope from `output-contract.yaml` |
-| **action_items** | 8-phase unidirectional flow with workspace preflight + veto conditions |
+| **action_items** | 8-phase unidirectional flow with project preflight + veto conditions |
 | **acceptance_criteria** | 14 measurable criteria |
 
 ## Purpose
@@ -46,27 +46,25 @@ Minimum input:
 }
 ```
 
-Workspace-aware optional constraints:
+LocalDocs-aware optional constraints:
 
 ```json
 {
   "constraints": {
     "business_slug": "acme",
-    "workspace_mode": "auto"
+    "context_mode": "auto"
   }
 }
 ```
 
 ## Execution Flow
 
-0. Workspace preflight (required)
+0. Project preflight (required)
 - If `constraints.business_slug` is present:
-  - `bash squads/etl-ops/scripts/bootstrap-etl-workspace.sh {business_slug}`
 - Always run:
-  - `bash squads/etl-ops/scripts/validate-etl-essentials.sh`
 - Always load:
-  - `tasks/load-workspace-context.md`
-- VETO if workspace route is `blocked`.
+  - `tasks/load-project context.md`
+- VETO if local_docs route is `blocked`.
 
 1. Diagnose
 - Detect source profile via `routing-profiles.yaml`.
@@ -107,15 +105,15 @@ Workspace-aware optional constraints:
 
 ## Output Routing Policy
 
-- `workspace_mode=auto` (default):
+- `context_mode=auto` (default):
   - with valid `business_slug` -> canonical path:
-    - `workspace/businesses/{business_slug}/etl/runs/{run_id}/`
+    - `docs/etl/runs/{run_id}/`
   - without slug -> legacy fallback:
     - `outputs/etl/{run_id}/`
-- `workspace_mode=canonical`:
+- `context_mode=canonical`:
   - requires valid `business_slug`, otherwise VETO.
-- `workspace_mode=legacy`:
-  - force `outputs/etl/{run_id}/` (no workspace write).
+- `context_mode=legacy`:
+  - force `outputs/etl/{run_id}/` (no project docs write).
 - Custom reports and notes can be written in:
   - `docs/etl/{business_slug|global}/`
 
@@ -151,7 +149,6 @@ Mandatory:
 Before marking the process as completed, run:
 
 ```bash
-bash squads/etl-ops/scripts/validate-etl-essentials.sh
 npm run validate:etl-ops
 ```
 
@@ -174,9 +171,8 @@ If the command reports WARN:
 6. Output follows `output-contract.yaml`.
 7. `batch` mode validates first item before full run.
 8. Execution includes per-phase checkpoint records.
-9. Workspace preflight runs before diagnose.
-10. `load-workspace-context` decides output route before extraction.
-11. Local quality gates (`validate-etl-essentials` + `validate:etl-ops`) pass before completion.
+9. Project preflight runs before diagnose.
+10. `load-project context` decides output route before extraction.
 12. `book_summary` only runs after manifest generation.
 13. `book_summary` emits `book_context` before chapter loop.
 14. Final book synthesis is derived from staged artifacts, not the raw full-book prompt.

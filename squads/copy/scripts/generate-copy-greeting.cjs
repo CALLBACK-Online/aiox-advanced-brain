@@ -36,7 +36,7 @@ const CREATION_COMMANDS = new Set([
 
 // Commands always available (diagnostic, navigation, quality)
 const ALWAYS_AVAILABLE_COMMANDS = new Set([
-  '*help', '*show-context', '*workspace-context',
+  '*help', '*show-context', '*project context',
   '*diagnose', '*diagnose-awareness', '*diagnose-sophistication',
   '*briefing', '*recommend',
   '*audit-copy', '*sugarman-check', '*review', '*evaluate-cpls',
@@ -200,7 +200,7 @@ function inferCopyNextAction(context) {
   }
 
   if (readinessStatus !== 'ready') {
-    return '*workspace-context';
+    return '*project context';
   }
 
   if (context.operational_brief?.final_allowed) {
@@ -234,7 +234,7 @@ function generateGreeting() {
         `- Inicialize com: \`${DEFAULT_SESSION_COMMAND}\``,
         '- Para trabalho estrategico ou FINAL, inclua `--campaign-slug=<slug>`.',
         '- Depois rode `*show-context` para conferir o preload canônico antes de escrever copy.',
-        `- Runtime path: \`${runtimePaths.toWorkspaceRelative(sessionPath)}\``,
+        `- Runtime path: \`${runtimePaths.toProjectRelative(sessionPath)}\``,
       ]
         .filter(Boolean)
         .join('\n');

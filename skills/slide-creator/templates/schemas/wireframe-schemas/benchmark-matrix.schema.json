@@ -1,0 +1,16 @@
+{
+  "$id": "aiox://slide-creator/wireframes/benchmark-matrix.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "Multiple players are compared across multiple dimensions.",
+  "properties": {},
+  "title": "benchmark-matrix",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "comparison_matrix",
+    "slot_count": 0,
+    "warnings": null,
+    "wireframe_ref": "templates/wireframes/benchmark-matrix.html"
+  }
+}

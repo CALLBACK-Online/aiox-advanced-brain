@@ -14,13 +14,13 @@
 - **consumed_by:** contrast-matrix, focus-order-audit, aria-audit
 
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Operational
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - a11y_audit_artifact

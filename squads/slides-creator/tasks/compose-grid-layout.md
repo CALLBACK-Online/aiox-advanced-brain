@@ -1,8 +1,8 @@
 # Task: Compose Grid Layout
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Tactical -->
+<!-- AIOX Domain: Tactical -->
 
 ## Metadata
 | Campo | Valor |
@@ -13,7 +13,7 @@
 | session | SESSION-SPEC |
 | duration | 1-3 min per slide |
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml

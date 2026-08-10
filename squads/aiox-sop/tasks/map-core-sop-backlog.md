@@ -14,7 +14,7 @@
 | **status** | `pending` |
 | **responsible_executor** | @sop-chief (orquestração) + @analyst (research context) |
 | **execution_type** | `Agent` |
-| **input** | Workspace businesses profiles, operations YAMLs, industry benchmarks |
+| **input** | LocalDocs businesses profiles, operations YAMLs, industry benchmarks |
 | **output** | sop-research-context.yaml + sop-backlog.yaml por business |
 | **action_items** | 7 fases |
 | **acceptance_criteria** | 8 critérios |
@@ -33,7 +33,7 @@
 
 ## Overview
 
-Task que analisa TODOS os businesses do workspace, categoriza por tipo de mercado/indústria, e gera para CADA business um backlog priorizado de SOPs core baseado na sua categoria. Cada business recebe um **research context** e um **backlog** salvos no seu próprio diretório de operations.
+Task que analisa TODOS os businesses de docs/project, categoriza por tipo de mercado/indústria, e gera para CADA business um backlog priorizado de SOPs core baseado na sua categoria. Cada business recebe um **research context** e um **backlog** salvos no seu próprio diretório de operations.
 
 **Conceito-chave (Ciclo 2 Pedro Valério):**
 - **Processos Burros:** repetitivos, determinísticos, sem singularidade. Worker executa 80%+. Horas para sincronizar. Invisíveis.
@@ -43,24 +43,24 @@ Esta task mapeia AMBOS para cada categoria, mas prioriza os **core** porque são
 
 **Princípio:** "Se eu consigo replicar teu processo core em dois dias, tua empresa não tem moat."
 
-**Onde vivem os outputs:** `workspace/businesses/{slug}/L1-strategy/` - cada business recebe seus próprios arquivos. O sop-chief lê esses arquivos via `workspace/businesses/` (já declarado nos read_paths do aiox-sop config.yaml) para saber quais SOPs básicas criar.
+**Onde vivem os outputs:** `docs/strategy/` - cada business recebe seus próprios arquivos. O sop-chief lê esses arquivos via `docs/` (já declarado nos read_paths do aiox-sop config.yaml) para saber quais SOPs básicas criar.
 
 ## Input
 
-- **workspace_businesses** (directory)
-  - Description: Diretório com todos os businesses do workspace
+- **project_businesses** (directory)
+  - Description: Diretório com todos os businesses de docs/project
   - Required: Yes
-  - Source: `workspace/businesses/*/L0-identity/company-dna.yaml`
+  - Source: `docs/*/identity/company-dna.yaml`
 
 - **operations_yamls** (directory)
   - Description: YAMLs operacionais de cada business (team-structure, pricing, KPIs)
   - Required: No (nem todos possuem)
-  - Source: `workspace/businesses/*/L1-strategy/`
+  - Source: `docs/*/strategy/`
 
 - **existing_sops** (directory)
   - Description: SOPs já criados para evitar duplicação
   - Required: No
-  - Source: `workspace/businesses/*/sops/`
+  - Source: `docs/*/sops/`
 
 - **industry_benchmarks** (research)
   - Description: Processos padrão por indústria (via pesquisa web ou knowledge base)
@@ -82,13 +82,13 @@ Esta task mapeia AMBOS para cada categoria, mas prioriza os **core** porque são
 
 - **sop-research-context.yaml** (por business)
   - Description: Research context com categoria do business, processos core e burros aplicáveis a ELE
-  - Destination: `workspace/businesses/{slug}/L1-strategy/sop-research-context.yaml`
+  - Destination: `docs/strategy/sop-research-context.yaml`
   - Format: YAML com categoria atribuída, processos core, processos burros, research gaps
   - Consumed by: sop-chief (contexto ao criar SOPs para este business)
 
 - **sop-backlog.yaml** (por business)
   - Description: Backlog priorizado de SOPs que ESTE business precisa
-  - Destination: `workspace/businesses/{slug}/L1-strategy/sop-backlog.yaml`
+  - Destination: `docs/strategy/sop-backlog.yaml`
   - Format: YAML com SOPs priorizados (P0-P3), executor dominante, complexidade
   - Consumed by: sop-chief (prioriza qual SOP criar primeiro), COO (diagnóstico)
 
@@ -96,13 +96,13 @@ Esta task mapeia AMBOS para cada categoria, mas prioriza os **core** porque são
 
 ### Fase 1: Inventário de Businesses
 
-Varrer `workspace/businesses/` e extrair dados de categorização de cada business.
+Varrer `docs/` e extrair dados de categorização de cada business.
 
 **Substeps:**
-- [ ] Ler `L0-identity/company-dna.yaml` de cada business
+- [ ] Ler `identity/company-dna.yaml` de cada business
 - [ ] Extrair: `industry`, `segment`, `business_model`, `revenue_range`, `team_size`, `stage`
 - [ ] Extrair: `pain_points`, `bottlenecks`, `operational_gaps` (se disponíveis)
-- [ ] Verificar existência de `L1-strategy/` e `sops/` em cada business
+- [ ] Verificar existência de `strategy/` e `sops/` em cada business
 - [ ] Gerar inventário completo em memória
 
 **Mapeamento de campos esperados no company-profile.yaml:**
@@ -121,7 +121,7 @@ stage: company.stage                # Ex: "SCALE", "GROWTH", "EARLY"
 
 Agrupar businesses por categoria de mercado usando taxonomia padronizada.
 
-**Categorias identificadas no workspace atual:**
+**Categorias identificadas no project docs atual:**
 
 | ID | Categoria | Slug | Businesses | Faturamento Range |
 |----|-----------|------|------------|-------------------|
@@ -258,14 +258,14 @@ Consolidar todos os processos (core + burros) em um backlog único priorizado.
 | **Frequência cross-business** | 30% | Quantos businesses se beneficiam |
 | **Impacto em receita** | 25% | Processo core = alto impacto |
 | **Complexidade de criação** | 20% | Menor complexidade = faster win |
-| **Dados disponíveis** | 15% | Quanto mais dados no workspace, mais fácil criar |
+| **Dados disponíveis** | 15% | Quanto mais dados no project docs, mais fácil criar |
 | **Urgência reportada** | 10% | Pain points explícitos nos profiles |
 
 **Níveis de prioridade:**
-- **P0 (Critical):** Processo core que aparece em 3+ businesses E tem dados no workspace
+- **P0 (Critical):** Processo core que aparece em 3+ businesses E tem dados no project docs
 - **P1 (High):** Processo core com 2+ businesses OU burro universal com 5+ businesses
 - **P2 (Medium):** Processo core single-business OU burro com 2-4 businesses
-- **P3 (Low):** Processo identificado por benchmark sem evidência no workspace
+- **P3 (Low):** Processo identificado por benchmark sem evidência no project docs
 
 **Substeps:**
 - [ ] Consolidar todos os processos mapeados (Fase 3 + Fase 4)
@@ -284,21 +284,21 @@ Gerar `squads/aiox-sop/data/category-map.yaml` com a base de conhecimento genér
 - [ ] Incluir SOPs mínimas que todo negócio daquele tipo precisa
 - [ ] Salvar em `squads/aiox-sop/data/category-map.yaml`
 
-#### 6b: Per-Business Outputs (workspace)
+#### 6b: Per-Business Outputs (local_docs)
 
-Para CADA business no workspace, gerar os dois arquivos de output.
+Para CADA business no project docs, gerar os dois arquivos de output.
 
 **Substeps:**
 - [ ] Para cada business: identificar sua(s) categoria(s) no category-map
 - [ ] Compilar processos core da(s) categoria(s) + processos burros universais
-- [ ] Gerar `workspace/businesses/{slug}/L1-strategy/sop-research-context.yaml`
-- [ ] Gerar `workspace/businesses/{slug}/L1-strategy/sop-backlog.yaml`
+- [ ] Gerar `docs/strategy/sop-research-context.yaml`
+- [ ] Gerar `docs/strategy/sop-backlog.yaml`
 - [ ] Incluir seção `research_gaps` com dados faltantes que precisam de pesquisa
 
 **Estrutura do sop-research-context.yaml (per-business):**
 
 ```yaml
-# workspace/businesses/{slug}/L1-strategy/sop-research-context.yaml
+# docs/strategy/sop-research-context.yaml
 business:
   slug: "brasil_em_dobro"
   name: "Brasil em Dobro"
@@ -340,13 +340,12 @@ dumb_processes:
 research_gaps:
   - field: "bottlenecks"
     status: "missing"
-    action: "Structured interview ou diagnóstico C-Level"
 ```
 
 **Estrutura do sop-backlog.yaml (per-business):**
 
 ```yaml
-# workspace/businesses/{slug}/L1-strategy/sop-backlog.yaml
+# docs/strategy/sop-backlog.yaml
 business:
   slug: "brasil_em_dobro"
   name: "Brasil em Dobro"
@@ -384,17 +383,17 @@ Gerar relatório consolidado com visão geral cross-business.
 - [ ] Compilar totais: categorias, businesses processados, processos core, processos burros
 - [ ] Gerar tabela de priorização top-20 (cross-business)
 - [ ] Incluir recomendações de próximos passos por categoria
-- [ ] Salvar em `workspace/businesses/_reports/sop-backlog-report.md`
+- [ ] Salvar em `docs/_reports/sop-backlog-report.md`
 
 ## Acceptance Criteria
 
-- [ ] **AC-01:** Todos os businesses do workspace foram inventariados (100% cobertura)
+- [ ] **AC-01:** Todos os businesses de docs/project foram inventariados (100% cobertura)
 - [ ] **AC-02:** Cada business está atribuído a pelo menos uma categoria
 - [ ] **AC-03:** Pelo menos 8 categorias mapeadas com processos core e burros
 - [ ] **AC-04:** Cada categoria tem pelo menos 3 processos core identificados
 - [ ] **AC-05:** `sop-research-context.yaml` gerado para cada business com dados suficientes
 - [ ] **AC-06:** `sop-backlog.yaml` gerado para cada business com pelo menos 5 SOPs priorizados
-- [ ] **AC-07:** category-map.yaml em `squads/aiox-sop/data/`, per-business outputs em `workspace/businesses/{slug}/L1-strategy/`
+- [ ] **AC-07:** category-map.yaml em `squads/aiox-sop/data/`, per-business outputs em `docs/strategy/`
 - [ ] **AC-08:** Relatório consolidado gerado com tabela de priorização top-20
 
 ## Quality Gate
@@ -438,7 +437,7 @@ quality_gate:
 
     - check: "output_location"
       type: "boolean"
-      field: "category_map_in_squad_data_AND_per_business_in_workspace"
+      field: "category_map_in_squad_data_AND_per_business_in_project"
       value: true
       operator: "=="
       weight: 10
@@ -455,19 +454,18 @@ quality_gate:
 
   pass_action:
     - "category-map.yaml publicado em squads/aiox-sop/data/"
-    - "Per-business backlog publicado em workspace/businesses/*/L1-strategy/"
-    - "sop-chief pode consumir category-map direto + per-business via *workspace-context {slug}"
+    - "Per-business backlog publicado em docs/*/strategy/"
+    - "sop-chief pode consumir category-map direto + per-business via *project context {slug}"
 
   fail_action:
     - "Listar businesses sem backlog"
-    - "Recomendar diagnóstico C-Level para businesses incompletos"
 ```
 
 ## Dependencies
 
 ### Depends On (Upstream)
 
-- `load-workspace-context` - Load Workspace Context
+- `load-project context` - Load project context
   - Required output: Business profiles carregados em memória
 
 ### Required By (Downstream)
@@ -501,11 +499,11 @@ Squad knowledge base (estático):
 - **category-map.yaml**: `squads/aiox-sop/data/` - Mapeamento categorias → SOPs mínimas por tipo de negócio
 
 Per-business (dinâmico):
-- **sop-research-context.yaml**: `workspace/businesses/{slug}/L1-strategy/` - Categoria, processos core, processos burros, research gaps
-- **sop-backlog.yaml**: `workspace/businesses/{slug}/L1-strategy/` - Backlog priorizado de SOPs a criar
+- **sop-research-context.yaml**: `docs/strategy/` - Categoria, processos core, processos burros, research gaps
+- **sop-backlog.yaml**: `docs/strategy/` - Backlog priorizado de SOPs a criar
 
 Cross-business:
-- **sop-backlog-report.md**: `workspace/businesses/_reports/` - Relatório executivo consolidado
+- **sop-backlog-report.md**: `docs/_reports/` - Relatório executivo consolidado
 
 ## Error Handling
 
@@ -532,10 +530,9 @@ Cross-business:
 
 ## Integration
 
-- **C-Level Squad:** Diagnóstico de operations alimenta esta task. `*diagnose-business` identifica gaps operacionais que viram SOPs. COO lê sop-backlog.yaml nos diagnósticos.
-- **SOP Chief:** Lê `workspace/businesses/{slug}/L1-strategy/sop-research-context.yaml` para saber quais SOPs básicas cada business precisa. Fonte primária de análise.
+- **SOP Chief:** Lê `docs/strategy/sop-research-context.yaml` para saber quais SOPs básicas cada business precisa. Fonte primária de análise.
 - **SOP Operations Suite:** Task `create-sop-operations-suite` consome sop-backlog.yaml para gerar SOPs a partir de YAMLs de operations.
-- **Imersão AIOX:** Os 17 businesses da imersão são o dataset primário. Cada CEO vê seu próprio backlog em seu workspace.
+- **Imersão AIOX:** Os 17 businesses da imersão são o dataset primário. Cada CEO vê seu próprio backlog em seu local_docs.
 
 ## Examples
 
@@ -554,15 +551,15 @@ Cross-business:
 # 47 processos core identificados
 # 10 processos burros universais
 # 1 category-map.yaml em squads/aiox-sop/data/ (knowledge base do squad)
-# 35 sop-research-context.yaml em workspace/businesses/*/L1-strategy/
-# 35 sop-backlog.yaml em workspace/businesses/*/L1-strategy/
-# Relatório consolidado em workspace/businesses/_reports/sop-backlog-report.md
+# 35 sop-research-context.yaml em docs/*/strategy/
+# 35 sop-backlog.yaml em docs/*/strategy/
+# Relatório consolidado em docs/_reports/sop-backlog-report.md
 ```
 
 ### Exemplo 2: Output per-business (Brasil em Dobro)
 
 ```yaml
-# workspace/businesses/brasil_em_dobro/L1-strategy/sop-research-context.yaml
+# docs/brasil_em_dobro/strategy/sop-research-context.yaml
 business:
   slug: "brasil_em_dobro"
   name: "Brasil em Dobro"
@@ -587,7 +584,7 @@ core_processes:
 ### Exemplo 3: Backlog per-business (Eu Médico Residente)
 
 ```yaml
-# workspace/businesses/eu_medico_residente/L1-strategy/sop-backlog.yaml
+# docs/eu_medico_residente/strategy/sop-backlog.yaml
 business:
   slug: "eu_medico_residente"
   name: "Eu Médico Residente"
@@ -616,10 +613,10 @@ backlog:
 
 ## Notes
 
-- **Separação squad vs workspace:** `category-map.yaml` é knowledge base estática do squad em `squads/aiox-sop/data/` (genérico por indústria, raramente muda). Outputs per-business vivem em `workspace/businesses/{slug}/L1-strategy/` (específicos, dinâmicos). O sop-chief consome ambos via seus read_paths declarados no config.yaml.
-- **Enrichment opcional:** Se web research estiver disponível (Firecrawl, EXA), usar para validar processos core contra benchmarks da indústria. Sem research, usar apenas dados do workspace.
+- **Separação squad vs local_docs:** `category-map.yaml` é knowledge base estática do squad em `squads/aiox-sop/data/` (genérico por indústria, raramente muda). Outputs per-business vivem em `docs/strategy/` (específicos, dinâmicos). O sop-chief consome ambos via seus read_paths declarados no config.yaml.
+- **Enrichment opcional:** Se web research estiver disponível (Firecrawl, EXA), usar para validar processos core contra benchmarks da indústria. Sem research, usar apenas dados de docs/project.
 - **Evolução incremental:** O backlog é vivo. Conforme businesses preenchem mais dados, re-executar para atualizar.
-- **Conexão com Ciclo 2:** Esta task operacionaliza o conceito de "processos burros vs core" apresentado no Ciclo 2 da Imersão AIOX (Pedro Valério). Os CEOs veem seu próprio backlog no workspace.
+- **Conexão com Ciclo 2:** Esta task operacionaliza o conceito de "processos burros vs core" apresentado no Ciclo 2 da Imersão AIOX (Pedro Valério). Os CEOs veem seu próprio backlog no project docs.
 
 ## Validation Checklist (HO-TP-001)
 

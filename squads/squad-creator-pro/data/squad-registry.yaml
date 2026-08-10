@@ -4,7 +4,7 @@
 
 metadata:
   deprecated: true
-  replaced_by: "squads/sinkra-squad/data/ecosystem-registry.yaml"
+  replaced_by: "squads/aiox-squad/data/ecosystem-registry.yaml"
   deprecation_date: "2026-03-26"
   removal_date: "2026-04-25"
   grace_period: "30d"
@@ -575,18 +575,17 @@ squads:
       can_review: []
     aggregated_work_contexts:
     - general
-  workspace-governance-legacy:
-    path: squads/c-level/_archive/workspace-governance-merged/
+  project context governance-legacy:
     version: 1.1.0
-    description: 'Legacy workspace governance squad - Gestão de workspace, businesses, diagnósticos
+    description: 'Legacy enterprise context governance (not packaged) - multi-business project docs, diagnósticos
       e operações.
 
       Responsável por elicitação profunda, geração de documentos de referência,
 
-      e organização completa do workspace com visão executiva.
+      e organização completa de docs/project com visão executiva.
 
 
-      Suporta múltiplos negócios (businesses) dentro de um único workspace.
+      Suporta múltiplos negócios (businesses) dentro de um único projeto.
 
       '
     slashPrefix: ''
@@ -600,7 +599,7 @@ squads:
     agent_names:
     - cio-engineer
     - cmo-architect
-    - workspace-chief
+    - none
     - cto-architect
     - caio-architect
     - vision-strategist
@@ -611,7 +610,7 @@ squads:
     highlights: []
     example_use: ''
     executor_capable_agents:
-    - id: workspace-chief
+    - id: none
       story_role: executor
       fw_type: Agent
       work_contexts:
@@ -963,8 +962,6 @@ squads:
       can_review: []
     aggregated_work_contexts:
     - general
-  c-level:
-    path: squads/c-level/
     version: unknown
     description: ''
     slashPrefix: ''
@@ -995,17 +992,17 @@ squads:
       story_role: executor
       fw_type: Agent
       work_contexts:
-      - workspace governance
+      - project context governance
       - squad coordination
       - operações
       - estrutura organizacional
       - handoff
       - elicitação
-      - 5-layer workspace
+      - local docs layout
       core_replaces: null
       can_review:
       - operations
-      - workspace-structure
+      - project-docs-structure
       - governance
       - process
     - id: vision-chief
@@ -1108,28 +1105,28 @@ squads:
       story_role: executor
       fw_type: Agent
       work_contexts:
-      - SINKRA governance
+      - AIOX governance
       - coerência documental
       - gap-zero enforcement
       - compliance
       - layer validation
-      - L0-L4
+      - local-docs-layout
       core_replaces: null
       can_review:
       - governance
       - document-compliance
-      - sinkra-standards
+      - aiox-standards
     aggregated_work_contexts:
-    - 5-layer workspace
+    - local docs layout
     - AI strategy
     - CI/CD
     - DRE
     - ICP
     - IRPF
-    - L0-L4
+    - local-docs-layout
     - LLM
     - M&A
-    - SINKRA governance
+    - AIOX governance
     - agent orchestration
     - arquitetura
     - bonificação
@@ -1173,7 +1170,7 @@ squads:
     - tech strategy
     - technology decisions
     - visão estratégica
-    - workspace governance
+    - project context governance
   claude-code-mastery:
     path: squads/claude-code-mastery/
     version: unknown
@@ -3697,18 +3694,18 @@ squads:
   project-ops:
     path: squads/project-ops/
     version: unknown
-    description: 'Squad responsável por MATERIALIZAR processos mapeados pelo SINKRA
+    description: 'Squad responsável por MATERIALIZAR processos mapeados pelo AIOX
       em estruturas
 
-      concretas no CRM do spoke via CRMAdapter. Consome composições SINKRA e cria
+      concretas no CRM do spoke via CRMAdapter. Consome composições AIOX e cria
 
       Projects, Boards, Tasks, Custom Fields, Automations, Views.
 
 
-      Pipeline: sinkra-squad (mapeia) → CSO (valida) → project-ops (materializa)
+      Pipeline: aiox-squad (mapeia) → CSO (valida) → project-ops (materializa)
 
 
-      Princípio: SINKRA define O QUÊ. Este squad executa O COMO via CRMAdapter.
+      Princípio: AIOX define O QUÊ. Este squad executa O COMO via CRMAdapter.
 
 
       Adapters disponíveis: ClickUp (referência), Linear, Jira, GitHub Projects, Notion
@@ -3791,7 +3788,7 @@ squads:
       - auditoria
       - validação
       - CRM
-      - SINKRA
+      - AIOX
       - coerência
       - tokenização
       - compliance
@@ -3799,7 +3796,7 @@ squads:
       can_review:
       - auditoria
       - CRM
-      - SINKRA
+      - AIOX
       - coerência
     executor_reviewers:
     - id: project-chief
@@ -3807,7 +3804,7 @@ squads:
       - CRM
       - materialização
       - estrutura
-      - SINKRA
+      - AIOX
     aggregated_work_contexts:
     - API
     - Boards
@@ -3817,7 +3814,7 @@ squads:
     - JavaScript
     - Playwright
     - Projects
-    - SINKRA
+    - AIOX
     - Tasks
     - UI
     - Views
@@ -3835,10 +3832,10 @@ squads:
     - services
     - tokenização
     - validação
-  sinkra-squad:
-    path: squads/sinkra-squad/
+  aiox-squad:
+    path: squads/aiox-squad/
     version: unknown
-    description: 'Squad que implementa a metodologia SINKRA para mapeamento de processos
+    description: 'Squad que implementa a metodologia AIOX para mapeamento de processos
       na era da
 
       sincronizacao Human-AI. Opera em DOIS modos:
@@ -3859,9 +3856,9 @@ squads:
       Outputs alimentam o Squad Creator (modo Process) ou clickup-ops-squad (modo
       Mission).
 
-      Pipeline Process: SINKRA (mapeia) -> Squad Creator (cria) -> Architect (desenvolve)
+      Pipeline Process: AIOX (mapeia) -> Squad Creator (cria) -> Architect (desenvolve)
 
-      Pipeline Mission: SINKRA (mapeia) -> clickup-ops-squad (materializa no ClickUp)
+      Pipeline Mission: AIOX (mapeia) -> clickup-ops-squad (materializa no ClickUp)
 
       '
     slashPrefix: ''
@@ -3876,11 +3873,11 @@ squads:
     - infrastructure-mapper
     - composition-engineer
     - executor-classifier
-    - sinkra-chief
+    - aiox-chief
     - quality-gatekeeper
     - architecture-designer
     - process-discoverer
-    - sinkra-qa
+    - aiox-qa
     has_readme: true
     has_changelog: false
     domain: _TO_BE_INFERRED_
@@ -3984,25 +3981,25 @@ squads:
       can_review:
       - infraestrutura
       - integração
-    - id: sinkra-qa
+    - id: aiox-qa
       story_role: executor
       fw_type: Agent
       work_contexts:
       - validação
       - compliance
-      - SINKRA
+      - AIOX
       - squad-outputs
       - auditoria
       - consistência
       core_replaces: '@analyst'
       can_review:
       - compliance
-      - SINKRA
+      - AIOX
       - validação
     executor_reviewers:
-    - id: sinkra-chief
+    - id: aiox-chief
       can_review:
-      - SINKRA
+      - AIOX
       - pipeline
       - processos
       - handoff
@@ -4018,7 +4015,7 @@ squads:
     - Molecule
     - Organism
     - RACI
-    - SINKRA
+    - AIOX
     - TO-BE
     - Template
     - Token

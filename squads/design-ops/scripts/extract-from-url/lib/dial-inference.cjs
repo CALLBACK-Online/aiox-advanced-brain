@@ -4,7 +4,7 @@
  * Dial Reverse-Inference for /design-md
  *
  * Authority: .claude/rules/design-absolute-bans.md + tasteskill.dev v2 Sections 1+6
- * Source bench: docs/bench/2026-05-18-impeccable-vs-sinkra-design-stack/
+ * Source bench: docs/bench/2026-05-18-impeccable-vs-aiox-design-stack/
  *
  * Reverse-engineers tasteskill dials (DESIGN_VARIANCE / MOTION_INTENSITY /
  * VISUAL_DENSITY) from extracted sidecars. Result is emitted as

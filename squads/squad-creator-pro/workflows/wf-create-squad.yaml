@@ -544,15 +544,14 @@ inputs:
       type: path
       description: Path to existing research if available
       example: docs/research/copywriting-research.md
-    - name: workspace_integration_level
+    - name: local project docs_level
       type: enum
       values:
         - none
         - read_only
-        - controlled_runtime_consumer
-        - workspace_first
+        - none
+        - local
       default: read_only
-      description: Override workspace integration level for generated squad (advanced levels require squads/c-level present)
 preconditions:
   system:
     - squad-chief agent is active
@@ -693,26 +692,19 @@ phases:
           - entry_agent: "Primary activation agent id (default: {squad_name}-chief)"
           - slash_prefix: camelCase
           - pattern_prefix: 2-letter code
-          - workspace_integration_level: none | read_only | controlled_runtime_consumer | workspace_first
+          - local project docs_level: none | read_only | none | local
         output:
           pack_config: Initial config.yaml content
-          workspace_integration_level: Selected level
+          local project docs_level: Selected level
       - id: step_0_4
-        name: Classify Workspace Integration
-        action: Define canonical workspace contract for generated squad
+        name: Classify local project docs
+        action: Define canonical project context contracts for generated squad
         rules:
-          - level_none: No workspace reads/writes required by squad behavior
-          - level_read_only: Reads workspace context/data but does not mutate it
-          - level_controlled_runtime_consumer: Consumes canonical workspace context via COO readiness gate before final output
-          - level_workspace_first: Squad bootstraps runtime from workspace and must validate essentials
+          - level_none: em docs/project reads/writes required by squad behavior
+          - level_read_only: Reads project context/data but does not mutate it
+          - level_none: Consumes canonical project context via quality readiness gate before final output
+          - level_local: Squad bootstraps runtime from local_docs and must validate essentials
         output:
-          workspace_contract:
-            level: none|read_only|controlled_runtime_consumer|workspace_first
-            rationale: Why this level is required
-            read_paths: list
-            write_paths: list
-            template_namespace: string|null
-            output_file: .aiox/squad-runtime/create-squad/{squad_name}/workspace-integration-level.yaml
     checkpoint:
       id: CP_PHASE_0
       name: Discovery Complete
@@ -720,7 +712,7 @@ phases:
       criteria:
         - viability_score: ">= 6"
         - squad_name: defined
-        - workspace_integration_level: defined
+        - local project docs_level: defined
         - no_duplicate: true
       on_fail:
         action: Present issues, suggest alternatives
@@ -1148,7 +1140,7 @@ phases:
           - agents_list
           - workflows_list
           - tasks_list
-          - workspace_integration_governance
+          - local project docs_governance
           - usage_examples
       - id: step_4_4
         name: Finalize config.yaml
@@ -1158,19 +1150,19 @@ phases:
           - all_components_listed: true
           - entry_agent_defined: true
           - version_correct: true
-          - workspace_integration_level_declared: true
-          - workspace_integration_level_valid_enum: true
-          - workspace_contract_paths_declared: true
-          - workspace_first_has_bootstrap_scripts: conditional
+          - local project docs_level_declared: true
+          - local project docs_level_valid_enum: true
+          - project context contracts_paths_declared: true
+          - local_has_bootstrap_scripts: conditional
       - id: step_4_5
-        name: Run Workspace Integration Governance Check
-        action: Validate workspace integration gates before final validation
+        name: Run local project docs Governance Check
+        action: Validate local project docs gates before final validation
         checks:
           - level_defined_and_valid: true
-          - if_level_not_none_workspace_paths_referenced: true
-          - if_workspace_first_bootstrap_and_essentials_scripts_exist: true
+          - if_level_not_none_project_paths_referenced: true
+          - if_local_bootstrap_and_essentials_scripts_exist: true
         output:
-          workspace_integration_governance: pass|fail
+          local project docs_governance: pass|fail
     checkpoint:
       id: CP_PHASE_4
       name: Integration Complete
@@ -1179,8 +1171,8 @@ phases:
         - all_dependencies_wired: true
         - readme_complete: true
         - config_valid: true
-        - workspace_contract_valid: true
-        - workspace_requirements_met: true
+        - project context contracts_valid: true
+        - project_requirements_met: true
   - id: phase_5
     name: VALIDATION
     purpose: Validate squad meets quality standards
@@ -1208,7 +1200,7 @@ phases:
           - tasks
           - documentation
           - integration
-          - workspace_governance
+          - project context governance
       - id: step_5_2
         name: Quality Dimensions Scoring
         action: Score squad against quality dimensions
@@ -1256,7 +1248,7 @@ phases:
         - checklist_pass: true
         - quality_score: ">= 7.0"
         - no_blocking_issues: true
-        - workspace_integration_governance_pass: true
+        - local project docs_governance_pass: true
       output:
         final_score: X/10
         status: PASS | FAIL
@@ -1501,9 +1493,9 @@ transitions:
     description: All agents pass SC_AGT_001, smoke tests pass
   - from: phase_4
     to: phase_5
-    condition: integration_complete AND workspace_integration_governance_passed
+    condition: integration_complete AND local project docs_governance_passed
     checkpoint_required: false
-    description: Dependencies wired, docs generated, workspace governance validated
+    description: Dependencies wired, docs generated, project context governance validated
   - from: phase_5
     to: phase_6
     condition: validation_passed AND axioma_score >= 7.0
@@ -1602,9 +1594,9 @@ outputs:
     - name: Session Report
       location: squads/{squad_name}/docs/creation-report.md
       description: Creation session documentation
-    - name: Workspace Integration Contract
-      location: .aiox/squad-runtime/create-squad/{squad_name}/workspace-integration-level.yaml
-      description: Canonical workspace integration level + rationale and path contract
+    - name: local project docs Contract
+      location: .aiox/squad-runtime/create-squad/{squad_name}/local project docs-level.yaml
+      description: Canonical local project docs level + rationale and path contract
 heuristics:
   - id: SC_SCP_001
     name: Scope Complexity Gate (PRD Gate)

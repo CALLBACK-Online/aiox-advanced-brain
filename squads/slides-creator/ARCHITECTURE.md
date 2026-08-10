@@ -179,7 +179,7 @@ Epic 8 closes the squad as an operational MVP handoff:
 3. MVP scope is frozen around the `ds` surface and the seven-phase deck
    pipeline
 4. Post-MVP follow-ups remain isolated from the operational backlog
-5. COO readiness is still required before publishing decks into the canonical
+5. quality readiness is still required before publishing decks into the canonical
    runtime surface
 
 ## Visual Engine Layer (v2 Upgrade)
@@ -227,14 +227,3 @@ now generate diagrams, infographics, and illustrations programmatically.
 | Presenter gate | fullscreen controls work with keyboard navigation |
 | QA gate | every dimension >= 7, composite >= 7.5, thumbnails exist, checklist passes, and killer items are zero |
 | Release gate | `release-summary.md` exists, `qa/report.json.next_target` is `slide-chief`, and human approvals are recorded when required |
-
-## Workspace Governance
-
-`slides-creator` operates as `controlled_runtime_consumer`:
-
-- reads brand context from workspace
-- does not mutate workspace directly during bootstrap
-- requires COO/c-level readiness before app-surface publication
-
-The app surface is outside `workspace/`, but the governance model still needs
-the COO gate because the deck is published into a canonical product surface.

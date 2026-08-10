@@ -1,8 +1,8 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: create-from-sop
-  task_name: Create Squad Artifacts From Workspace SOPs (Stub)
+  task_name: Create Squad Artifacts From LocalDocs SOPs (Stub)
   status: pending
   responsible_executor: '@pedro-valerio'
   execution_type: Agent
@@ -16,20 +16,20 @@ sinkra_task_metadata:
   - Executar os passos documentados no corpo da task
   acceptance_criteria:
   - Loader executado com `business` explicito e seletores explicitos
-  - Nenhuma fonte fora de `workspace/businesses/{slug}` foi considerada valida
-  - runtime_mode` validado como `full_workspace_mode
-  - source_of_truth` validado como `workspace_canonical
+  - Nenhuma fonte fora de `docs/project` foi considerada valida
+  - runtime_mode` validado como `none_mode
+  - source_of_truth` validado como `project_canonical
   - Cada processo executavel virou task candidate com executor + guardrails
-  output_persistence: canonical_workspace
+  output_persistence: canonical_project
   accountable_id: Human:Squad_Operator
   accountability_scope: review_only
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Strategic
   atomic_layer: Atom
   executor: Agent
@@ -37,13 +37,13 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
-# Task: Create Squad Artifacts From Workspace SOPs (Stub)
+# Task: Create Squad Artifacts From LocalDocs SOPs (Stub)
 
 **Task ID:** create-from-sop
-**Purpose:** Carregar SOPs YAML canonicos de `workspace/businesses/{slug}` e transformar em artefatos de criacao de squad
+**Purpose:** Carregar SOPs YAML canonicos de `docs/project` e transformar em artefatos de criacao de squad
 **Orchestrator:** @pedro-valerio
 **Mode:** Business-aware operationalization
 **Pattern:** SC-PV-SOP-001
@@ -58,10 +58,9 @@ sinkra_contract:
 | ID | Condition | Check | Result |
 |----|-----------|-------|--------|
 | VETO-CFS-001 | Business slug must be explicit | Verify `--business=<slug>` is present | VETO - BLOCK |
-| VETO-CFS-002 | Environment contract must resolve to `full_workspace_mode` | Run `load-business-sops.cjs` and verify `runtime_mode == full_workspace_mode` | VETO - BLOCK |
-| VETO-CFS-003 | Source of truth must be `workspace_canonical` | Verify loader output `source_of_truth == workspace_canonical` | VETO - BLOCK |
+| VETO-CFS-003 | Source of truth must be `project_canonical` | Verify loader output `source_of_truth == project_canonical` | VETO - BLOCK |
 | VETO-CFS-004 | User must explicitly define at least one SOP selector | Verify `--namespace=<dir>` and/or `--paths=<a,b>` is present | VETO - BLOCK |
-| VETO-CFS-005 | Every selector must resolve inside `workspace/businesses/{slug}` | Verify loader returns zero `missing_requested_sources` | VETO - BLOCK |
+| VETO-CFS-005 | Every selector must resolve inside `docs/project` | Verify loader returns zero `missing_requested_sources` | VETO - BLOCK |
 
 ## Checklist Reference
 
@@ -72,7 +71,7 @@ Before marking this task complete, verify against: `checklists/quality-gate-chec
 ## Command
 
 ```text
-*create-from-sop --business={slug} --namespace=L1-strategy [--namespace=L3-product/{product}] [--paths=L1-strategy/team-structure.yaml]
+*create-from-sop --business={slug} --namespace=strategy [--namespace=L3-product/{product}] [--paths=strategy/team-structure.yaml]
 ```
 
 ---
@@ -108,9 +107,9 @@ Step 3: create-from-sop-brief
 ## Acceptance Criteria
 
 - [ ] Loader executado com `business` explicito e seletores explicitos
-- [ ] Nenhuma fonte fora de `workspace/businesses/{slug}` foi considerada valida
-- [ ] `runtime_mode` validado como `full_workspace_mode`
-- [ ] `source_of_truth` validado como `workspace_canonical`
+- [ ] Nenhuma fonte fora de `docs/project` foi considerada valida
+- [ ] `runtime_mode` validado como `none_mode`
+- [ ] `source_of_truth` validado como `project_canonical`
 - [ ] Cada processo executavel virou task candidate com executor + guardrails
 - [ ] Contexto de suporte foi separado de processo executavel
 - [ ] Gaps ficaram marcados sem invencao

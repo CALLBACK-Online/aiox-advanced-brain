@@ -35,7 +35,7 @@ cc_native_fields:
       agent_tools: [Agent, TaskCreate, TaskStop, TaskUpdate, TaskGet, TaskList, TaskOutput]
       messaging: [SendMessage, SyntheticOutput]
       planning: [EnterPlanMode, ExitPlanMode]
-      workspace: [WebSearch, WebFetch, AskUserQuestion]
+      local_docs: [WebSearch, WebFetch, AskUserQuestion]
       mcp: ["mcp__*"]
 
   disallowedTools:
@@ -294,11 +294,11 @@ hook_lifecycle_events:
       use_for: "Telemetry, state init"
 
     - event: PreTaskExecution
-      when: "Before SINKRA task begins execution"
+      when: "Before AIOX task begins execution"
       use_for: "Pre-condition validation, context injection"
 
     - event: PostTaskExecution
-      when: "After SINKRA task completes"
+      when: "After AIOX task completes"
       use_for: "Artifact persistence, output validation"
 
     - event: PreHandoff

@@ -834,7 +834,7 @@ def build_default_narrative(summary, facet_summary, data=None):
             "feature": "Custom Skills",
             "one_liner": "Empacotar workflows recorrentes em comandos reutilizáveis.",
             "why_for_you": "O inventário mostra skills e slash commands recorrentes o suficiente para consolidar padrões e economizar contexto.",
-            "example_code": "Criar `.claude/skills/commit/SKILL.md` ou `.claude/skills/review/SKILL.md` com os passos obrigatórios.",
+            "example_code": "Criar `skills/commit/SKILL.md` ou `skills/review/SKILL.md` com os passos obrigatórios.",
         },
         {
             "feature": "Hooks",

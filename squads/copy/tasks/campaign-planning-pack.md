@@ -68,7 +68,7 @@ This task is the planning source of truth for campaign-level copy execution. It 
 
 ```yaml
 required:
-  - outputs/workspace-context/campaign-context-brief.yaml
+  - outputs/project context/campaign-context-brief.yaml
   - business_slug
   - product_slug
   - campaign_slug
@@ -171,7 +171,7 @@ Each asset brief should define:
 
 The planning pack is complete only when all required files exist inside:
 
-`workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/` (ADR-012)
+`docs/operational/campaigns/{campaign_slug}/` (ADR-012)
 
 Expected files:
 

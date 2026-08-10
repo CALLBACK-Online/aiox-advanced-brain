@@ -2,7 +2,7 @@
 # squad-io.yaml — copy-squad (Elite Copywriting Squad)
 # Version: 2.0.0
 # Generated: 2026-03-09
-# Author: CSO (Chief Sinkra Officer)
+# Author: CSO (Chief AIOX Officer)
 # Previous: v1 (19 lines, 5 required_inputs only)
 # ============================================================
 #
@@ -11,7 +11,7 @@
 # 58 templates, 14 workflows, 16 data files.
 #
 # Similar ao hormozi — é um squad de EXECUÇÃO que consome docs
-# do workspace como contexto mas não escreve de volta ao
+# de docs/project como contexto mas não escreve de volta ao
 # document-registry. Outputs são copy assets (sales pages,
 # emails, ads, VSLs, headlines, etc.)
 #
@@ -26,55 +26,55 @@ entry_agent: copy-chief
 pack_version: "4.0.0"
 
 # ============================================================
-# INPUTS — Workspace docs consumed as context
+# INPUTS — LocalDocs docs consumed as context
 # ============================================================
 
 inputs:
 
-  workspace:
-    - path: workspace/{spoke}/L0-identity/company-dna.yaml
+  local_docs:
+    - path: docs/identity/company-dna.yaml
       doc_id: L0-001
       min_state: POPULATED
       usage: reference
       consumed_by_agents: [copy-chief, stefan-georgi]
       rationale: "DNA do negócio para contexto de copy e messaging"
 
-    - path: workspace/{spoke}/L0-identity/founder-dna.yaml
+    - path: docs/identity/founder-dna.yaml
       doc_id: L0-002
       min_state: DRAFT
       usage: reference
       consumed_by_agents: [copy-chief, gary-bencivenga]
       rationale: "Credenciais do fundador para proof stacks e authority"
 
-    - path: workspace/{spoke}/L1-strategy/offerbook.yaml
+    - path: docs/strategy/offerbook.yaml
       doc_id: L1-001
       min_state: POPULATED
       usage: reference
       consumed_by_agents: [copy-chief, eugene-schwartz, todd-brown, stefan-georgi, jeff-walker]
       rationale: "Ofertas existentes — base para sales pages e funnels"
 
-    - path: workspace/{spoke}/L1-strategy/icp.yaml
+    - path: docs/strategy/icp.yaml
       doc_id: L1-002
       min_state: POPULATED
       usage: reference
       consumed_by_agents: [copy-chief, eugene-schwartz, dan-kennedy, gary-halbert, robert-collier]
       rationale: "ICP é a base de toda copy — avatar, dores, desejos"
 
-    - path: workspace/{spoke}/L1-strategy/pricing-strategy.yaml
+    - path: docs/strategy/pricing-strategy.yaml
       doc_id: L1-005
       min_state: DRAFT
       usage: reference
       consumed_by_agents: [copy-chief, stefan-georgi]
       rationale: "Pricing para calibrar value stacks e anchoring"
 
-    - path: workspace/{spoke}/L2-tactical/brand/brand-platform.yaml
+    - path: docs/tactical/brand/brand-platform.yaml
       doc_id: L2-001
       min_state: DRAFT
       usage: reference
       consumed_by_agents: [copy-chief, david-ogilvy, frank-kern]
       rationale: "Brand guidelines para tom de voz consistente"
 
-    - path: workspace/{spoke}/L2-tactical/brand/positioning.yaml
+    - path: docs/tactical/brand/positioning.yaml
       doc_id: L2-002
       min_state: DRAFT
       usage: reference
@@ -146,7 +146,7 @@ inputs:
 
 outputs:
 
-  workspace: []
+  local_docs: []
 
   artifacts:
     # Tier 0 - Diagnosis
@@ -286,7 +286,7 @@ agents:
     role: "Orquestrador — tier workflow, diagnóstico e delegação"
     is_lead: true
     tier: orchestrator
-    tasks: [load-workspace-context, blend, copy-debate, create-copywriter-agent, extract-communication-dna, create-offer, evaluate-offer]
+    tasks: [load-project context, blend, copy-debate, create-copywriter-agent, extract-communication-dna, create-offer, evaluate-offer]
     databases: [data/copywriting-kb.md, data/expert-clone-mapping.yaml]
 
   # Tier 0 — Foundation & Diagnosis

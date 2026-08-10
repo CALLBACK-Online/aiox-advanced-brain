@@ -1,6 +1,6 @@
 name: generate-presentation
 version: 4.1.0
-schema: sinkra-workflow-v1
+schema: aiox-workflow-v1
 orchestrator: slide-chief
 type: pipeline
 
@@ -8,9 +8,9 @@ metadata:
   owner_squad: slides-creator
   adr_ref: "docs/adrs/ADR-021-absorb-narrative-discipline-into-slides-creator.md"
   epic_ref: "docs/stories/epic-sc-narr/EPIC-SC-NARR.md"
-  source_mapping: ".aiox/squad-runtime/sinkra-squad/criacao-slides-ia/"
+  source_mapping: ".aiox/squad-runtime/aiox-squad/criacao-slides-ia/"
   mission_ref: "MSN-2026-SLIDES-NARRATIVE-DESIGN"
-  case_study_ref: ".aiox/squad-runtime/sinkra-squad/MSN-2026-SLIDES-NARRATIVE-DESIGN/case-study-primeiro-servico-ia.md"
+  case_study_ref: ".aiox/squad-runtime/aiox-squad/MSN-2026-SLIDES-NARRATIVE-DESIGN/case-study-primeiro-servico-ia.md"
   qa_rubric_ref: "data/qa-rubric.yaml v3.0.0"
   qa_routing_table_ref: "data/qa-routing-table.yaml"
   superseded:
@@ -20,7 +20,7 @@ metadata:
   changelog:
     "4.1.0":
       date: "2026-05-20"
-      driver: "/sinkra-upgrade-squad R2-01 + R2-02 + R2-05"
+      driver: "/aiox-upgrade-squad R2-01 + R2-02 + R2-05"
       changes:
         - "Added global.observability block declaring emit-pipeline-log emitter + ci_gate"
         - "Added phase_emit_matrix at file end — declarative emission for all 11 phases + 5 gates + 3 conditional events"

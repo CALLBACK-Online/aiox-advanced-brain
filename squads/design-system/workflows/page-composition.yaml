@@ -119,7 +119,7 @@ workflow:
         file: "{generated_file_path}"
       blocking: false
       notes: |
-        Deterministic fixes: wrong imports -> @sinkra/ds-core, hardcoded colors -> CSS vars.
+        Deterministic fixes: wrong imports -> @aiox/ds-core, hardcoded colors -> CSS vars.
         Iterates max 3x. Silent on success, explicit on persistent violations.
       next: step-9-validate-quality-gate
     - step: step-9-validate-quality-gate

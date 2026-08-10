@@ -250,12 +250,12 @@ validation_rules:
 # ─────────────────────────────────────────────────────
 example:
   deck_id: "primeiro-servico-ia-v3"
-  brand_ref: "workspace/businesses/aiox/L2-tactical/brand/"
+  brand_ref: "docs/aiox/tactical/brand/"
 
   visual_reference:
     type: composite
     paths:
-      - "workspace/businesses/aiox/L2-tactical/design/reference-decks/y-combinator-demo-day-2024.pdf"
+      - "docs/aiox/tactical/design/reference-decks/y-combinator-demo-day-2024.pdf"
       - "outputs/webinars/primeiro-servico-ia/draft-slides-aiox-v3-key.html"
     notes: "Editorial workshop vibe — Pentagram-esque, blocos de cor sólida, tipografia condensada protagonista. NÃO copiar layouts; adotar disciplina."
 
@@ -341,7 +341,7 @@ anti_patterns:
 # ═══════════════════════════════════════════════════════════════════════
 # TASTESKILL DIALS (ABSORB-1 — cross-fit absorption 2026-05-20)
 # ═══════════════════════════════════════════════════════════════════════
-# Source: tasteskill.dev v2 Sections 1+6, projected via .claude/skills/slide-creator/templates/runtime/design-direction-contract.yaml
+# Source: tasteskill.dev v2 Sections 1+6, projected via skills/slide-creator/templates/runtime/design-direction-contract.yaml
 # Promotes 3 dimensional dials (1-10 ordinal) that govern density/variance/motion intent.
 # Squad takes ownership as SoT after cross-fit absorption.
 tasteskill_dials:
@@ -435,5 +435,5 @@ tasteskill_dials:
       - "useful for: 1 cockpit-density slide in a brand pitch, 1 art-gallery slide in a dashboard review"
 
   cross_ref:
-    skill_canonical_origin: ".claude/skills/slide-creator/templates/runtime/design-direction-contract.yaml"
-    note: "Skill remains source for runtime tasteskill dials in standalone Codex mode; squad is SoT for SINKRA-integrated runs after this absorption."
+    skill_canonical_origin: "skills/slide-creator/templates/runtime/design-direction-contract.yaml"
+    note: "Skill remains source for runtime tasteskill dials in standalone Codex mode; squad is SoT for AIOX-integrated runs after this absorption."

@@ -21,11 +21,11 @@ advisory_mode:
   non_overridable_gates: [evidence_traceability]   # P1+P6 invariants never waivable
   overridable_with_deviation: [design_density, editable_pptx]
 
-# Cross-fit absorbed gates (2026-05-20) — projected from .claude/skills/slide-creator/templates/qa/visual-gates.yaml
+# Cross-fit absorbed gates (2026-05-20) — projected from skills/slide-creator/templates/qa/visual-gates.yaml
 cross_fit_absorbed_gates:
   authority: ".claude/rules/design-absolute-bans.md"
   absorbed_at: "2026-05-20"
-  source_canonical: ".claude/skills/slide-creator/templates/qa/visual-gates.yaml + copy-gates.yaml"
+  source_canonical: "skills/slide-creator/templates/qa/visual-gates.yaml + copy-gates.yaml"
   gates:
     - id: font_monoculture
       killer_item_ref: KI-12
@@ -43,4 +43,4 @@ cross_fit_absorbed_gates:
       killer_item_ref: KI-15
       score_weight: 15
       enforcement_point: P05
-  rationale: "Squad-side enforcement gate so SINKRA-integrated runs apply the same anti-AI-fingerprint refusal patterns as Codex/external runs via the skill."
+  rationale: "Squad-side enforcement gate so AIOX-integrated runs apply the same anti-AI-fingerprint refusal patterns as Codex/external runs via the skill."

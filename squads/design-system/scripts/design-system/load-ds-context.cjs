@@ -26,7 +26,7 @@ if (!bu) {
 const { spawnSync } = require('child_process')
 
 const ROOT = path.resolve(__dirname, '..', '..', '..', '..')
-const designPath = path.join(ROOT, 'workspace', 'businesses', bu, 'L2-tactical', 'design')
+const designPath = path.join(ROOT, 'docs', 'project', 'businesses', bu, 'tactical', 'design')
 
 // Load tokens-runtime.json
 let tokensRuntime = {}
@@ -71,7 +71,7 @@ if (hasSupabaseEnv && fs.existsSync(RETRIEVE_SCRIPT)) {
         componentIndex = ragResults.map(r => ({
           name: r.component_name,
           atomic_category: r.metadata?.atomic_category || 'unknown',
-          import_path: r.metadata?.import_path || '@sinkra/ds-core',
+          import_path: r.metadata?.import_path || '@aiox/ds-core',
           variants: r.metadata?.variants || [],
           when_to_use: r.content,
           when_not_to_use: '',
@@ -109,7 +109,7 @@ if (componentIndex.length === 0) {
       .map(c => ({
         name: c.name,
         atomic_category: c.atomic_category,
-        import_path: c.import_path || '@sinkra/ds-core',
+        import_path: c.import_path || '@aiox/ds-core',
         variants: c.variants || [],
         when_to_use: c.when_to_use,
         when_not_to_use: c.when_not_to_use,

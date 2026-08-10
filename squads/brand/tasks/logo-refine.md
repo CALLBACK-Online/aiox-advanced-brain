@@ -38,8 +38,8 @@ Aplicar o framework PRIO (Prompt Refinement & Iteration Optimization) no conceit
 
 | Artifact | Location | Description |
 |---|---|---|
-| Refined images | `workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/refinements/` | 5-8 variações refinadas |
-| Refinement log | `workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/refinement-log.yaml` | Log PRIO completo |
+| Refined images | `docs/tactical/brand/logo/refinements/` | 5-8 variações refinadas |
+| Refinement log | `docs/tactical/brand/logo/refinement-log.yaml` | Log PRIO completo |
 
 ## Execution Steps
 
@@ -146,11 +146,11 @@ task: logo-deliverable
 squad: brand
 protocol: cross-squad-return
 pass:
-  - refinements_dir: "workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/refinements/"
-  - refinement_log: "workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/refinement-log.yaml"
+  - refinements_dir: "docs/tactical/brand/logo/refinements/"
+  - refinement_log: "docs/tactical/brand/logo/refinement-log.yaml"
   - recommended_top_3: ["{{path_1}}", "{{path_2}}", "{{path_3}}"]
   - brand_name: "{{brand_name}}"
-  - logo_brief: "workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-brief.md"
-  - logo_concepts: "workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-concepts.md"
-  - curation_report: "workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/curation-report.md"
+  - logo_brief: "docs/tactical/brand/logo/logo-brief.md"
+  - logo_concepts: "docs/tactical/brand/logo/logo-concepts.md"
+  - curation_report: "docs/tactical/brand/logo/curation-report.md"
 ```

@@ -1,0 +1,4 @@
+interface:
+  display_name: "AIOX Squads"
+  short_description: "Escolha e opere os 24 squads AIOX"
+  default_prompt: "Use $aiox-squads para escolher o squad adequado e montar meu briefing de execução."

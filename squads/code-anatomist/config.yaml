@@ -2,7 +2,7 @@ pack:
   name: code-anatomist
   version: "3.0.0"
   entry_agent: decoder-chief
-  description: "Squad especializado em engenharia reversa completa de software — extrai arquitetura (C4/Arc42), domínio (DDD/SBVR), dados (ER/schema), API (OpenAPI), dependências e infraestrutura de qualquer codebase, com pipeline de 9 fases e mapeamento para SINKRA Tokens"
+  description: "Squad especializado em engenharia reversa completa de software — extrai arquitetura (C4/Arc42), domínio (DDD/SBVR), dados (ER/schema), API (OpenAPI), dependências e infraestrutura de qualquer codebase, com pipeline de 9 fases e mapeamento para AIOX Tokens"
   icon: "🧬"
 
 activation:
@@ -41,7 +41,7 @@ squad:
   name: code-anatomist
   title: "Code Anatomist Squad"
   version: "3.0.0"
-  description: "Squad especializado em engenharia reversa completa de software — extrai arquitetura (C4/Arc42), domínio (DDD/SBVR), dados (ER/schema), API (OpenAPI), dependências e infraestrutura de qualquer codebase, com pipeline de 9 fases e mapeamento para SINKRA Tokens"
+  description: "Squad especializado em engenharia reversa completa de software — extrai arquitetura (C4/Arc42), domínio (DDD/SBVR), dados (ER/schema), API (OpenAPI), dependências e infraestrutura de qualquer codebase, com pipeline de 9 fases e mapeamento para AIOX Tokens"
   domain: software-reverse-engineering
   author: "AIOX Squad Creator"
   score: 7.5
@@ -58,20 +58,13 @@ capabilities:
   - "Caracterização de código legado com testes de caracterização"
   - "Padronização de regras existentes (docs, spreadsheets, wiki)"
   - "Validação SBVR (45 itens) e qualidade de extração (54 itens)"
-  - "Mapeamento de regras extraídas para SINKRA Tokens"
+  - "Mapeamento de regras extraídas para AIOX Tokens"
   - "Architecture recovery and C4 diagramming (Arc42, Horseshoe Model)"
   - "Dependency graph extraction and module boundary detection"
   - "Data model extraction (ER diagrams, schema introspection)"
   - "API surface extraction (OpenAPI, GraphQL, gRPC contracts)"
   - "Infrastructure blueprint (Docker, CI/CD, env vars, deploy targets)"
   - "Conformance checking and architectural drift detection (Reflexion Models)"
-
-workspace_integration:
-  level: read_only
-  rationale: >-
-    Code Anatomist lê outputs/decoded/allfluence/ como baseline canônico
-    para operações de compare, audit e adopt (RT-ARCH-BRIDGE-001).
-    Self-extraction TTL: 90 dias. Re-extração obrigatória pós-Epic major.
 
 tier_system:
   orchestrator: decoder-chief
@@ -96,7 +89,7 @@ tier_system:
 agents:
   - id: decoder-chief
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -110,7 +103,7 @@ agents:
 
   - id: ronald-ross
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -124,7 +117,7 @@ agents:
 
   - id: eric-evans
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -138,7 +131,7 @@ agents:
 
   - id: michael-feathers
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -152,7 +145,7 @@ agents:
 
   - id: barbara-von-halle
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -166,7 +159,7 @@ agents:
 
   - id: james-taylor
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -180,7 +173,7 @@ agents:
 
   - id: martin-fowler
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -194,7 +187,7 @@ agents:
 
   - id: graham-witt
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -208,7 +201,7 @@ agents:
 
   - id: rick-kazman
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -222,7 +215,7 @@ agents:
 
   - id: simon-brown
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: false
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -236,7 +229,7 @@ agents:
 
   - id: gail-murphy
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -250,7 +243,7 @@ agents:
 
   - id: data-specialist
     executor_profile:
-      sinkra_type: Worker
+      executor_type: Worker
       human_in_the_loop: false
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -332,7 +325,7 @@ keywords:
   - Reflexion Models
   - ATAM
 
-# SINKRA v3.1
+# AIOX v3.1
 artifact_contracts:
   - artifact_id: "rule-catalog"
     template_path: "templates/rule-catalog-tmpl.md"
@@ -346,11 +339,11 @@ artifact_contracts:
   - artifact_id: "decision-model"
     template_path: "templates/decision-model-tmpl.yaml"
     lifecycle_states: [draft, validated, approved]
-  - artifact_id: "sinkra-token-map"
-    template_path: "templates/sinkra-token-map-tmpl.yaml"
+  - artifact_id: "aiox-token-map"
+    template_path: "templates/aiox-token-map-tmpl.yaml"
     lifecycle_states: [draft, validated, approved]
-  - artifact_id: "sinkra-composition-proposal"
-    template_path: "templates/sinkra-composition-proposal-tmpl.yaml"
+  - artifact_id: "aiox-composition-proposal"
+    template_path: "templates/aiox-composition-proposal-tmpl.yaml"
     lifecycle_states: [draft, validated, approved]
   - artifact_id: "scope-document"
     template_path: "templates/scope-document-tmpl.yaml"
@@ -385,8 +378,8 @@ artifact_contracts:
 
 bu_mapping: "hub-framework"
 
-# SINKRA v3.2 (RT-ARCH-BRIDGE-001 + SINKRA audit 2026-04-04)
-sinkra_tier: "Pro"
+# AIOX v3.2 (RT-ARCH-BRIDGE-001 + AIOX audit 2026-04-04)
+aiox_tier: "Pro"
 process_id: SP-CODE-ANATOMIST-001
 
 entity_bindings:
@@ -396,7 +389,7 @@ entity_bindings:
     - entity_ref: "outputs/decoded/{slug}/"
       role: "reader"
       description: "Reads extraction outputs as baseline for compare/audit/adopt operations"
-  domain_model_ref: "squads/sinkra-squad/data/domain-model.yaml"
+  domain_model_ref: "squads/aiox-squad/data/domain-model.yaml"
 
 supported_modes:
   - ENTENDER

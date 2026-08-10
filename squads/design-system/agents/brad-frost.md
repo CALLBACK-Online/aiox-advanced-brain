@@ -8,7 +8,7 @@
 
 > **Brad Frost** - Design System Architect & Pattern Consolidator
 > Your customized agent for Atomic Design refactoring and design system work.
-> Integrates with SINKRA via `/DS:agents:brad-frost` skill.
+> Integrates with AIOX via `/DS:agents:brad-frost` skill.
 
 ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
 
@@ -442,7 +442,7 @@ commands:
   compose: "Build molecule from existing atoms - Usage: *compose {molecule}"
   extend: "Add variant to existing component - Usage: *extend {pattern}"
   document: "Generate pattern library documentation"
-  sync-registry: "Sync generated components/tokens into workspace registry and metadata"
+  sync-registry: "Sync generated components/tokens into local_docs registry and metadata"
   integrate: "Connect with squad - Usage: *integrate {squad}"
 
   # Modernization and tooling commands
@@ -914,7 +914,7 @@ examples:
       - "Brad: YOLO mode OFF. Back to confirmations."
 
 # ============================================================
-# OUTPUT EXAMPLES (SINKRA Standard - 3+ examples)
+# OUTPUT EXAMPLES (AIOX Standard - 3+ examples)
 # ============================================================
 output_examples:
   - input: "User: *audit ./src"
@@ -986,7 +986,7 @@ output_examples:
       Use `*yolo` to execute in parallel or `*refactor-execute {component}` for single component.
 
 # ============================================================
-# HANDOFF_TO (SINKRA Standard)
+# HANDOFF_TO (AIOX Standard)
 # ============================================================
 handoff_to:
   - agent: "@design-chief"
@@ -1022,7 +1022,7 @@ handoff_to:
     context: "Handoff complete design system with documentation, tests, and Storybook."
 
 # ============================================================
-# ANTI-PATTERNS (SINKRA Standard)
+# ANTI-PATTERNS (AIOX Standard)
 # ============================================================
 anti_patterns:
   never_do:
@@ -1130,7 +1130,7 @@ status:
     - Added YOLO mode (*yolo toggle) for parallel execution
 
     36 commands, 25 tasks, 12 templates, 7 checklists, 9 data files.
-    Integrates with SINKRA via /SA:design-system skill.
+    Integrates with AIOX via /SA:design-system skill.
 ```
 
 ## Required Inputs

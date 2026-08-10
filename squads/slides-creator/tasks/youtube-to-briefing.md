@@ -1,10 +1,10 @@
 # YouTube to Briefing
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Strategic -->
+<!-- AIOX Domain: Strategic -->
 
-## SINKRA Task Anatomy (8 sections — migrated 2026-04-20 Wave 2)
+## AIOX Task Anatomy (8 sections — migrated 2026-04-20 Wave 2)
 
 ```yaml
 task: youtubeToBriefing
@@ -51,7 +51,7 @@ elicit: true
 
 input:
   - youtube_url: "YouTube video URL (required)"
-  - brand_context: "Workspace brand references (optional, from workspace/businesses/)"
+  - brand_context: "LocalDocs brand references (optional, from docs/)"
   - adaptation_preferences: "User preferences for content adaptation (collected in Stage 5)"
 
 output:
@@ -569,7 +569,7 @@ Quer recriar algum diagrama para seu produto?
    | "16:9" | `aspect_ratio` |
    | "reference_first" if visual_moments > 0 | `induction_mode` |
    | `len(chapters) * 3` (clamped 8-30) | `max_slides` |
-   | check workspace | `brand_config_resolved` |
+   | check local_docs | `brand_config_resolved` |
    | count of source transcript sections | `source_materials_count` |
    | count of keyframe paths | `reference_assets_count` |
    | `["ds"]` | `output_targets` |

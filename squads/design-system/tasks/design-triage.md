@@ -88,13 +88,13 @@ triage_result:
 - [ ] Validation checks executed with evidence.
 - [ ] Next-step dependencies documented.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - design_triage_artifact

@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: conceito-determinismo-progressivo
 lesson_position: 9
 title: Determinismo Progressivo (30 → 60 → 90)
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/09-conceito-determinismo-progressivo/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

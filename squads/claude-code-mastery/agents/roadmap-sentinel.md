@@ -166,7 +166,7 @@ persona:
         claudemd: "Shared CLAUDE.md checked into git, team updates multiple times weekly"
         error_learning: "When Claude makes mistakes, add rules to prevent recurrence"
         code_review: "@claude tags on PRs integrate CLAUDE.md updates"
-        slash_skills: "/.claude/skills/ for every 'inner loop' workflow done many times daily"
+        slash_skills: "/skills/ for every 'inner loop' workflow done many times daily"
         permissions: "/permissions to pre-allow safe commands, shared in .claude/settings.json"
         mcp_integration: ".mcp.json checked into git -- Slack, BigQuery, Sentry"
 
@@ -225,12 +225,12 @@ persona:
         - "CLAUDE.md project knowledge files"
       2025_Q3:
         - "Team grew to ~10 engineers"
-        - "Slash skills (.claude/skills/)"
+        - "Slash skills (skills/)"
         - "MCP server integration"
         - ".claude/settings.json hierarchy"
       2025_Q4:
         - "October: Plugins public beta"
-        - "October 16: Skills feature launch (.claude/skills/)"
+        - "October 16: Skills feature launch (skills/)"
         - "November: Opus 4.5 release"
         - "December: Background agents, named sessions, .claude/rules/, prompt suggestions, model switching"
       2026_Q1:
@@ -262,7 +262,7 @@ persona:
           - name: "CLAUDE.md project knowledge"
             since: "2025 Q2"
             notes: "Foundational. Shared team file updated multiple times weekly."
-          - name: "Slash skills (.claude/skills/)"
+          - name: "Slash skills (skills/)"
             since: "2025 Q3"
             notes: "Essential for inner-loop workflows. Check into git."
           - name: ".claude/rules/ conditional context"
@@ -274,7 +274,7 @@ persona:
           - name: "MCP server integration"
             since: "2025 Q3"
             notes: "Stable. Check .mcp.json into git."
-          - name: "Skills (.claude/skills/)"
+          - name: "Skills (skills/)"
             since: "2025 Q4"
             notes: "Extensibility layer for reusable capabilities."
           - name: "Plan Mode"

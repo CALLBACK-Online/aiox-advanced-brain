@@ -1,0 +1,138 @@
+# Palette & Font Registry — slide-creator
+#
+# title: Palette & Font Registry — slide-creator
+# purpose: Canonical color + font policy for deck rendering
+# version: 1.0.0
+# authority: .claude/rules/design-absolute-bans.md
+# created: 2026-05-19
+# source_canonical: squads/design-ops/data/font-allowlist.yaml
+# absorbed_from:
+#   - impeccable.style v3.1.1 (29-rule detector + 8 absolute bans)
+#   - tasteskill.dev v2 (anti-Inter / anti-Lila / dial-based composition)
+#
+# This file is the slide-creator-side projection of the canonical font policy at
+# squads/design-ops/data/font-allowlist.yaml. Sync drift triggers
+# validate:design-100-runtime.
+
+title: "Palette & Font Registry — slide-creator"
+purpose: "Canonical color + font policy for deck rendering"
+version: "1.0.0"
+authority: ".claude/rules/design-absolute-bans.md"
+created: "2026-05-19"
+source_canonical: "squads/design-ops/data/font-allowlist.yaml"
+absorbed_from:
+  - "impeccable.style v3.1.1 (29-rule detector + 8 absolute bans)"
+  - "tasteskill.dev v2 (anti-Inter / anti-Lila / dial-based composition)"
+
+# ── font_policy ───────────────────────────────────────────────────────────────
+
+font_policy:
+  font_allowlist:
+    sans:
+      - Geist
+      - Outfit
+      - Cabinet Grotesk
+      - Satoshi
+      - Inter   # ALLOWED ONLY in product/dashboard register, never brand/pitch/marketing
+    mono:
+      - Geist Mono
+      - JetBrains Mono
+      - IBM Plex Mono
+    serif: []
+    # Serif allowed only if extracted from brand DNA in
+    # docs/tactical/brand/
+
+  font_blocklist:
+    # AI-fingerprint signals. Detection MUST refuse deck render.
+    - family: Inter
+      block_in_registers: [brand, pitch, marketing, creative]
+      severity: P1
+      replacement: "Geist | Outfit | Cabinet Grotesk | Satoshi"
+    - family: Fraunces
+      block_as: italic_serif_hero
+      severity: P0
+      replacement: "Custom brand serif from tactical/brand/"
+    - family: Mona Sans
+      block_in_registers: [all]
+      severity: P1
+    - family: Plus Jakarta Sans
+      block_in_registers: [all]
+      severity: P1
+    - family: Space Grotesk
+      block_in_registers: [all]
+      severity: P1
+    - family: Recoleta
+      block_as: italic_serif_hero
+      severity: P0
+    - family: Instrument Sans
+      block_in_registers: [all]
+      severity: P1
+
+  font_pairing_recommendations:
+    # Recommended pairings per workflow_mode
+    brand_pitch_deck:
+      heading: "Cabinet Grotesk | Outfit"
+      body: "Satoshi | Outfit"
+      mono: "JetBrains Mono"
+      rationale: "Premium display + readable body + technical mono for data"
+    product_board_update:
+      heading: "Geist"
+      body: "Geist"
+      mono: "Geist Mono"
+      rationale: "Neutral sans family — design SERVES the product"
+    dashboard_review:
+      heading: "Geist"
+      body: "Geist"
+      mono: "Geist Mono"
+      rationale: "Technical UI: mono numbers, neutral hierarchy"
+    marketing_webinar:
+      heading: "Cabinet Grotesk | Outfit"
+      body: "Satoshi"
+      mono: "(not_used)"
+      rationale: "Strong display, no technical content"
+    educational_course:
+      heading: "Outfit"
+      body: "Outfit"
+      mono: "JetBrains Mono"
+      rationale: "Friendly + structured for cohort learning"
+
+# ── palette_policy ────────────────────────────────────────────────────────────
+# 4-step color strategy (from impeccable shared design laws)
+
+palette_policy:
+  color_strategies:
+    restrained:
+      description: "Tinted neutrals + one accent ≤10%. Product default."
+      accent_max_pct: 10
+      saturation_cap: 0.6
+    committed:
+      description: "One saturated color carries 30-60% of the surface. Brand default for identity-driven decks."
+      saturation_cap: 0.85
+    full_palette:
+      description: "3-4 named roles, each used deliberately. Brand campaigns + dashboards."
+      role_count: [3, 4]
+    drenched:
+      description: "The surface IS the color. Brand heroes, campaign pages."
+
+  # Lila ban (tasteskill absolute)
+  banned_palette_signatures:
+    - id: lila_ai_purple_blue
+      hue_range: [260, 280]
+      saturation_min: 0.7
+      detector: "AI Purple/Blue aesthetic — purple button glows, neon gradients"
+      replacement: "Zinc/Slate neutral + Emerald | Electric Blue | Deep Rose accent"
+      severity: P1
+
+  # Color tint mandate
+  neutral_tint_policy:
+    rule: "NEVER use #000 or #fff. Always tint to brand hue."
+    min_chroma: 0.005
+    max_chroma: 0.01
+    source: "shared design laws (impeccable)"
+
+# ── consumers ─────────────────────────────────────────────────────────────────
+# Loaded by:
+# - scripts/validate_design_100_runtime.py
+# - templates/runtime/design-direction-contract.yaml
+# - scripts/validate_design_capability.py
+# - render-lock.yaml validation

@@ -6,7 +6,7 @@
 **Owner:** Conduit (project-integrator)
 **Purpose:** Design custom Claude Code hooks for a project by identifying automation needs, choosing appropriate hook types and events, designing hook logic, and producing implementation-ready specifications aligned to the current runtime behavior.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: hook-designer
 atomic_layer: Atom

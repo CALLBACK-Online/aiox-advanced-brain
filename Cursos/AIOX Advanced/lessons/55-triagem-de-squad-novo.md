@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: triagem-de-squad-novo
 lesson_position: 55
 title: 'Triagem de Squad novo: fase-zero de prior-art + research loop'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/55-triagem-de-squad-novo/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -272,7 +272,6 @@ Fase-zero que faltou:
 Três meses de cultura duplicada teriam virado um PR de template.
 
 Então o que acontece no CREATE legítimo? Domínio novo (ex.: compliance de um
-setor), prior-art fraca, handoffs reais, recorrência semanal, dono C-level
 nomeado, entidade mapeada. Aí a fase-zero **aprova** o creator — com o mapa
 colado no scaffold.
 

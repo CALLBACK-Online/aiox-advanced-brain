@@ -149,7 +149,7 @@ Estes tasks so estao disponiveis quando `squads/squad-creator-pro/config.yaml` e
 | `squad-creator-pro/tasks/qualify-task.md` | - | Qualify task for model routing |
 | `squad-creator-pro/tasks/smoke-test-model-routing.md` | - | Smoke test model routing |
 | `squad-creator-pro/tasks/sync-chief-codex-skill.md` | - | Sync chief codex skill |
-| `squad-creator-pro/tasks/workspace-integration-hardening.md` | - | Workspace integration hardening |
+| `squad-creator-pro/tasks/local project docs-hardening.md` | - | local project docs hardening |
 
 ### Arquivos de Definicao do Agente
 
@@ -185,7 +185,7 @@ Estes tasks so estao disponiveis quando `squads/squad-creator-pro/config.yaml` e
 | `squad-creator-pro/workflows/wf-cross-provider-qualification.yaml` | Cross-provider qualification |
 | `squad-creator-pro/workflows/wf-model-tier-qualification.yaml` | Model tier qualification |
 | `squad-creator-pro/workflows/wf-optimize-squad.yaml` | Squad optimization workflow |
-| `squad-creator-pro/workflows/wf-workspace-integration-hardening.yaml` | Workspace integration hardening |
+| `squad-creator-pro/workflows/wf-local project docs-hardening.yaml` | local project docs hardening |
 | `squad-creator-pro/workflows/validate-squad.yaml` | Pro validate-squad override |
 
 ### Arquivos de Data/Knowledge
@@ -639,7 +639,7 @@ routing_triggers:
 | VETO-SQD-001 | Overwrite without confirmation | Squad directory already exists AND user has not explicitly confirmed overwrite | HALT pipeline at PHASE 0. Prompt user for confirmation or abort. | CRITICAL |
 | VETO-SQD-002 | Validation score below threshold | Quality score < 7.0 after fix_cycle exhausts max_retries (2) | Transition to failed state. No further automated recovery. Manual intervention required. | CRITICAL |
 | VETO-SQD-003 | Missing entry agent | config.yaml has no entry_agent field OR referenced agent file does not exist | HALT at PHASE 3 validation step. Cannot proceed to integration without a valid entry point. | CRITICAL |
-| VETO-SQD-004 | Missing workspace integration level | config.yaml has no workspace_integration.level field | HALT at PHASE 3 validation step. Every squad must declare its workspace integration level. | CRITICAL |
+| VETO-SQD-004 | Missing local project docs level | config.yaml has no local project docs.level field | HALT at PHASE 3 validation step. Every squad must declare its local project docs level. | CRITICAL |
 | VETO-SQD-005 | Smoke test failure | All 3 smoke test scenarios fail (activation, help, basic_task) | Transition to failed state via smoke_failed trigger. Squad is not safe to register. | CRITICAL |
 
 ### Template Enforcement Vetos

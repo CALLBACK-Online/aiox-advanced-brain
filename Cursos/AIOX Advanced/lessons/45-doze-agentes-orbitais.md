@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: doze-agentes-orbitais
 lesson_position: 45
 title: Os 12 agentes orbitais do AIOX
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/45-doze-agentes-orbitais/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

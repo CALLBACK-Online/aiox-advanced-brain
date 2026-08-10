@@ -59,7 +59,7 @@ formulario_minimo:
       maps_to: "task.list"
       type: "list_selector"
       required: true
-      validation: "List existente no workspace"
+      validation: "List existente no project docs"
 
     - order: 7
       name: "Contexto adicional (links, arquivos, referencias)"
@@ -486,7 +486,7 @@ operational_checklists:
 formula_1_3_5:
   description: |
     Framework central do Sistema Allfluence para implementar e otimizar
-    qualquer workspace ClickUp. Aplicavel tanto a setup inicial quanto
+    qualquer local_docs ClickUp. Aplicavel tanto a setup inicial quanto
     a melhorias incrementais.
   source: "Gestao ClickUp Cap 1.5.3 + Cap 9"
 
@@ -539,7 +539,7 @@ formula_1_3_5:
         name: "Build"
         description: "Construir o sistema no ClickUp"
         deliverables:
-          - "Workspace configurado conforme design"
+          - "LocalDocs configurado conforme design"
           - "Process Library completa"
           - "Templates criados e testados"
           - "Automações configuradas"
@@ -576,7 +576,7 @@ formula_1_3_5:
 
 implementation_3_phases:
   description: |
-    Framework de implementação de workspace em 3 fases com timeline semanal.
+    Framework de implementação de local_docs em 3 fases com timeline semanal.
     Complementa a Formula 1-3-5 com etapas taticas e sequência temporal.
     Cada fase tem prerequisito da anterior — não pular.
   source: "[SOURCE: 08_clickup_lendario.md, Framework de Implementação 3 Fases]"
@@ -602,13 +602,13 @@ implementation_3_phases:
       objetivo: "Configurar views filtradas e fluxo unidirecional. Time ve APENAS o que precisa."
       ações:
         - "Criar Spaces/Folders/Lists baseado no mapa da Fase 1"
-        - "Configurar My Tasks filtrado por pessoa — ninguém ve o workspace inteiro"
+        - "Configurar My Tasks filtrado por pessoa — ninguém ve o local_docs inteiro"
         - "Definir status workflows unidirecionais (no backward status)"
         - "Configurar Trocador de Corpos (PAT-01) nas esteiras"
         - "Desabilitar Multiple Assignees"
         - "Testar fluxo com 1-2 pessoas antes de lancar pra equipe"
-      output: "Workspace configurado com restricao cognitiva ativa"
-      anti_pattern: "Dar acesso total ao workspace e esperar que o time 'aprenda'"
+      output: "LocalDocs configurado com restricao cognitiva ativa"
+      anti_pattern: "Dar acesso total a docs/project e esperar que o time 'aprenda'"
       princípio: "Omitir arquitetura. Dar to-do list magica e cega (My Tasks filtrado)."
 
     - phase: 3
@@ -622,11 +622,11 @@ implementation_3_phases:
         - "Implementar ETL de Trends (PAT-02) e ETL de Comentarios (PAT-03)"
         - "Configurar alertas de due date e escalacao (AUT-05, AUT-06, AUT-07)"
         - "Testar cada automação com cenario real antes de ativar"
-      output: "Workspace com automações ativas, custom fields auto-preenchidos"
+      output: "LocalDocs com automações ativas, custom fields auto-preenchidos"
       anti_pattern: "Automatizar processo que ainda não rodou manual (ref: H-DES-02)"
       prerequisito: "Fase 2 completa e validada com o time por pelo menos 1 semana"
 
   regra_geral: |
     NAO pular fases. Dumping sem Cabresto = caos organizado.
     Cabresto sem ETL = funciona mas e manual. ETL sem Cabresto = automação
-    alimentando workspace que ninguém usa. A sequência importa.
+    alimentande docs/project que ninguém usa. A sequência importa.

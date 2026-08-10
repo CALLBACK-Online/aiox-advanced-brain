@@ -10,7 +10,7 @@ estimated_time: 1-2 hours
 source: "$100M Retention Playbook - Seção 10"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

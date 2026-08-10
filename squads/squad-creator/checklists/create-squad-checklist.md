@@ -63,7 +63,7 @@ discovery_checks:
   - id: config-created
     check: "config.yaml created with required fields"
     type: blocking
-    required_fields: ["name", "version", "author", "entry_agent", "slashPrefix", "workspace_integration.level"]
+    required_fields: ["name", "version", "author", "entry_agent", "slashPrefix", "local project docs.level"]
 ```
 
 ---
@@ -119,14 +119,14 @@ architecture_checks:
     type: blocking
     min: 3
 
-  - id: sinkra-creation-contract-designed
-    check: "SINKRA creation contract defined before scaffold"
+  - id: aiox-creation-contract-designed
+    check: "AIOX creation contract defined before scaffold"
     type: blocking
     required_fields:
       - artifact_contracts
       - bu_mapping
       - supported_modes
-      - workspace_integration.level
+      - local project docs.level
       - squad_io_contract
 ```
 
@@ -191,48 +191,45 @@ creation_checks:
 
 ```yaml
 integration_checks:
-  - id: workspace-integration-level-defined
-    check: "Workspace integration level is explicitly declared"
+  - id: local project docs-level-defined
+    check: "local project docs level is explicitly declared"
     type: blocking
-    validation: "config.yaml contains workspace_integration.level"
+    validation: "config.yaml contains local project docs.level"
 
-  - id: workspace-integration-level-valid
-    check: "Workspace integration level uses canonical enum"
+  - id: local project docs-level-valid
+    check: "local project docs level uses canonical enum"
     type: blocking
-    allowed: ["none", "read_only", "controlled_runtime_consumer", "workspace_first"]
+    allowed: ["none", "read_only", "none", "local"]
 
-  - id: workspace-contract-declared
-    check: "Workspace contract has rationale/read_paths/write_paths"
+  - id: project context contracts-declared
+    check: "project context contracts has rationale/read_paths/write_paths"
     type: blocking
-    validation: "workspace_integration.rationale/read_paths/write_paths defined"
+    validation: "local project docs.rationale/read_paths/write_paths defined"
 
-  - id: coo-handoff-required-for-workspace-write
-    check: "If workspace level is controlled_runtime_consumer or workspace_first, COO handoff is documented"
+  - id: coo-handoff-required-for-local_docs-write
+    check: "If docs scope level is none or local, human handoff is documented"
     type: blocking
-    conditional: "workspace_integration.level in [controlled_runtime_consumer, workspace_first]"
-    validation: ".aiox/squad-runtime/create-squad/{squad_slug}/workspace-handoff.yaml exists OR workflow docs reference COO handoff"
+    conditional: "local project docs.level in [none, local]"
+    validation: ".aiox/squad-runtime/create-squad/{squad_slug}/project-handoff.yaml exists OR workflow docs reference human handoff"
 
-  - id: c-level-presence-required-for-advanced-workspace-integration
-    check: "If workspace level is controlled_runtime_consumer or workspace_first, a workspace governance squad exists in repo (`squads/c-level/`)"
     type: blocking
-    conditional: "workspace_integration.level in [controlled_runtime_consumer, workspace_first]"
-    validation: "test -d squads/c-level"
+    conditional: "local project docs.level in [none, local]"
 
-  - id: workspace-first-requirements
-    check: "If level is workspace_first, bootstrap + essentials validator scripts exist"
+  - id: local-requirements
+    check: "If level is local, bootstrap + essentials validator scripts exist"
     type: blocking
-    conditional: "workspace_integration.level == workspace_first"
-    validation: "scripts/bootstrap-*-workspace.sh && scripts/validate-*-essentials.sh"
+    conditional: "local project docs.level == local"
+    validation: "scripts/bootstrap-project-context.sh && scripts/validate-*-essentials.sh"
 
   - id: output-path-governance
-    check: "Task outputs classified as HIGH-VALUE canonical go to workspace/, not .aiox/squad-runtime/"
+    check: "Task outputs classified as HIGH-VALUE canonical go to docs/, not .aiox/squad-runtime/"
     type: blocking
     validation: |
       For each task file in tasks/:
         1. Read output.path
         2. Classify output: HIGH-VALUE (session context, scores, health, maturity,
            onboarding flows, analytics) vs TRANSIENT (drafts, reports, intermediaries)
-        3. HIGH-VALUE outputs MUST point to workspace/businesses/{business}/ paths
+        3. HIGH-VALUE outputs MUST point to docs/ paths
         4. TRANSIENT outputs MAY point to .aiox/squad-runtime/{squad}/{business}/ paths
       Heuristics for HIGH-VALUE:
         - Loaded on agent boot (session context)
@@ -249,12 +246,12 @@ integration_checks:
   - id: chief-command-published
     check: "Chief slash skill exists after integration sync"
     type: blocking
-    validation: ".claude/skills/*/{entry_agent}/SKILL.md exists"
+    validation: "skills/*/{entry_agent}/SKILL.md exists"
 
   - id: chief-codex-skill-published
     check: "Chief Codex skill exists after integration sync"
     type: blocking
-    validation: ".agents/skills/{entry_agent}/SKILL.md exists"
+    validation: "skills/{entry_agent}/SKILL.md exists"
 
   - id: readme-complete
     check: "README.md has all required sections"

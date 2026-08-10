@@ -1,0 +1,219 @@
+---
+# ═══════════════════════════════════════════════════════════════════════
+# SOURCE-OF-TRUTH MANIFEST — slide-creator skill ↔ slides-creator squad
+# ═══════════════════════════════════════════════════════════════════════
+# Declares ownership per artifact category. Per-artifact SoT resolves drift
+# between the portable skill (skills/slide-creator) and the AIOX
+# squad (squads/slides-creator).
+#
+# Rule: artifacts marked sot: squad MUST be re-imported via copy (not duplicated
+#       independently). Artifacts marked sot: skill are owned by the skill and
+#       the squad MAY consume but not override.
+#
+# Resync policy: weekly cadence or on squad upgrade-wave completion.
+# ═══════════════════════════════════════════════════════════════════════
+
+schema_version: "1.0.0"
+skill: slide-creator
+related_squad: slides-creator
+last_updated: "2026-05-20"
+
+# ═══════════════════════════════════════════════════════════════════════
+# OWNERSHIP TABLE
+# ═══════════════════════════════════════════════════════════════════════
+ownership:
+
+  # ─── Squad-owned (skill consumes via copy/reference) ──────────────
+  archetypes:
+    sot: squad
+    canonical_path: squads/slides-creator/templates/slide-archetypes/
+    skill_copy: skills/slide-creator/templates/slide-archetypes/
+    resync_method: "cp squads/slides-creator/templates/slide-archetypes/*.md skills/slide-creator/templates/slide-archetypes/"
+    last_synced: "2026-05-20"
+    note: "7 McKinsey-grade archetypes (title, executive-summary, framework, data, timeline-roadmap, financial, appendix). Wave B absorption from squad."
+
+  invariants_p1_p7:
+    sot: squad
+    canonical_path: squads/slides-creator/data/principios-invioláveis.md
+    skill_ref: skills/slide-creator/references/principios-invioláveis.md
+    resync_method: "symbolic — skill references but does not duplicate"
+    note: "P1 Fidelidade aos dados, P2 Especificação obsessiva, P3 Pyramid+MECE, P4 Action titles, P5 Enumeração universal, P6 Citação APA, P7 Prompts IA completos"
+
+  ai_slop_blacklist:
+    sot: squad
+    canonical_path: squads/slides-creator/data/ai-slop-blacklist-2026.md
+    skill_ref: skills/slide-creator/references/ai-slop-blacklist.md
+    resync_method: "symbolic — skill references; design-direction-contract.yaml ai_fingerprint_score gate consumes"
+    note: "Pre-publish refusal: ai_slop_score > 60 emits warning + rebrief recommendation"
+
+  token_registry:
+    sot: squad
+    canonical_path: squads/slides-creator/data/token-registry.yaml
+    skill_ref: "(not required — skill is self-contained for tokens via theme-tokens)"
+    note: "9 canonical AIOX families + 33 task tokens. Skill operates with own theme-tokens; squad AIOX token registry is governance-side."
+
+  pipeline_execution_log_schema:
+    sot: squad
+    canonical_path: squads/slides-creator/data/pipeline-execution-log.yaml
+    skill_emission_guide: skills/slide-creator/references/pipeline-log-emission.md
+    emit_script: squads/slides-creator/scripts/emit-pipeline-log.js
+    note: "M10 observability. Skill emits to outputs/slides-creator/{run_id}/pipeline-execution-log.yaml using schema from squad."
+
+  composition_rules:
+    sot: squad
+    canonical_path: squads/slides-creator/data/composition-rules.yaml
+    skill_ref: "(not required for runtime; skill workflow is sufficient self-contained)"
+    note: "Meta-axioms (truth/completeness/coherence) — governance-side."
+
+  deviation_registry_schema:
+    sot: squad
+    canonical_path: squads/slides-creator/data/deviation-registry.yaml
+    skill_emission_guide: "When skill bypasses a gate, emit deviation record to outputs/slides-creator/{run_id}/deviations.yaml using this schema"
+    note: "Mandamento 7. Immutable, time-bounded, requires approver + mitigation."
+
+  domain_handoff_contracts:
+    sot: squad
+    canonical_path: squads/slides-creator/data/domain-handoff-contracts.yaml
+    note: "Mandamento 9. 5 inter-domain contracts (S→T, T→O, O→O-QA, T→S-feedback, O→S-escalation). Skill workflow respects these implicit transitions."
+
+  qa_rubric:
+    sot: squad
+    canonical_path: squads/slides-creator/data/qa-rubric.yaml
+    skill_local_rubric: skills/slide-creator/templates/qa/squad-quality-rubric.yaml
+    note: "Skill has local rubric for self-contained operation; squad rubric is canonical for AIOX validation. Reconcile drift quarterly."
+
+  # ─── Skill-owned (squad consumes if desired) ──────────────────────
+  wireframes:
+    sot: skill
+    canonical_path: skills/slide-creator/templates/wireframes/
+    count: 60
+    squad_consumer: "squad may import; not yet imported"
+    note: "60 HTML wireframes + 60 JSON schemas (persona-fit-matrix, sankey-flow, harvey-balls-table, financial-waterfall, ...). Exclusive to skill."
+
+  runtime_contracts:
+    sot: skill
+    canonical_path: skills/slide-creator/templates/runtime/
+    count: 31
+    note: "render-lock, edit-history, theme-runtime-snapshot, manuscript-pipeline, provider-routing (BYOK/Ollama/LM Studio), html-to-pptx, jobs.yaml. Exclusive to skill — execution SoT."
+
+  python_validators:
+    sot: skill
+    canonical_path: skills/slide-creator/scripts/
+    count: 17
+    note: "validate_design_100_runtime.py, validate_runtime_contracts.py, validate_deck_package.py, validate_rendered_eval.py, etc. Exclusive to skill — runtime validators."
+
+  # ABSORBED 2026-05-20 — these moved from skill-SoT to shared/squad-SoT
+  tasteskill_dials:
+    sot: shared
+    skill_path: skills/slide-creator/templates/runtime/design-direction-contract.yaml
+    squad_path: squads/slides-creator/data/design-direction.schema.yaml#tasteskill_dials
+    fields: [DESIGN_VARIANCE, MOTION_INTENSITY, VISUAL_DENSITY]
+    absorbed_at: "2026-05-20"
+    resolution: "Squad absorbed full schema + per_workflow_mode_defaults + consumption rules. Skill remains canonical for Codex/external standalone mode; squad is canonical for AIOX-integrated runs. Reconcile quarterly."
+
+  ai_fingerprint_gate:
+    sot: shared
+    skill_path: skills/slide-creator/templates/qa/visual-gates.yaml
+    squad_path: squads/slides-creator/data/qa-rubric.yaml#killer_items.KI-13-KI-14
+    note: "Pre-publish refusal pattern decomposed into KI-13 (eight_absolute_bans) + KI-14 (jane_doe_effect) on the squad side. Skill keeps composite ai_slop_score 0-100 gate; squad enforces per-component."
+
+  font_monoculture_gate:
+    sot: shared
+    skill_path: skills/slide-creator/templates/qa/visual-gates.yaml
+    squad_path: squads/slides-creator/data/qa-rubric.yaml#killer_items.KI-12
+    absorbed_at: "2026-05-20"
+    resolution: "Squad now enforces via KI-12 (score_weight: 20, enforcement_point: P04_5)"
+
+  eight_bans_gate:
+    sot: shared
+    skill_path: skills/slide-creator/templates/qa/visual-gates.yaml
+    squad_path: squads/slides-creator/data/qa-rubric.yaml#killer_items.KI-13
+    absorbed_at: "2026-05-20"
+    bans: [side_stripe_borders, gradient_text, glassmorphism_default, hero_metric_template, identical_card_grids, modal_first_thought, em_dashes, pure_black_white]
+    resolution: "Squad now enforces via KI-13 (score_weight: 25, enforcement_point: P04_5)"
+
+  jane_doe_gate:
+    sot: shared
+    skill_path: skills/slide-creator/templates/qa/copy-gates.yaml
+    squad_path: squads/slides-creator/data/qa-rubric.yaml#killer_items.KI-14
+    absorbed_at: "2026-05-20"
+    resolution: "Squad now enforces via KI-14 (score_weight: 20, enforcement_point: P04_5) with detection_regex per category"
+
+  persona_walkthrough_gate:
+    sot: shared
+    skill_path: skills/slide-creator/templates/qa/visual-gates.yaml
+    squad_path: squads/slides-creator/data/qa-rubric.yaml#killer_items.KI-15
+    absorbed_at: "2026-05-20"
+    resolution: "Squad now enforces via KI-15 (score_weight: 15, enforcement_point: P05)"
+
+  bento_archetypes:
+    sot: skill
+    canonical_path: skills/slide-creator/templates/visual/bento-archetypes.yaml
+    note: "5 named bento layouts. Exclusive to skill."
+
+  design_md_ingestion:
+    sot: skill
+    canonical_path: skills/slide-creator/templates/runtime/dial-inference.yaml
+    upstream: "outputs/design-ops/url-extracts/{company}/dial-inference.yaml"
+    note: "Consumes /design-md extraction output for brand-bound deck generation."
+
+  # ─── Co-owned (drift monitored) ───────────────────────────────────
+  palette_registry:
+    sot: squad
+    canonical_path: squads/slides-creator/data/palette-registry.yaml
+    note: "McKinsey canonical color palette + client brand overrides + WCAG verification. Skill consumes (not duplicates). Renamed 2026-05-20: previous skill file `data/palette-registry.yaml` was actually font policy — renamed to data/palette-and-font-policy.yaml to disambiguate."
+
+  font_policy:
+    sot: skill
+    canonical_path: skills/slide-creator/data/palette-and-font-policy.yaml
+    source_canonical_external: squads/design-ops/data/font-allowlist.yaml
+    absorbed_from:
+      - "impeccable.style v3.1.1 (29-rule detector + 8 absolute bans)"
+      - "tasteskill.dev v2 (anti-Inter / anti-Lila / dial-based composition)"
+    authority: ".claude/rules/design-absolute-bans.md"
+    note: "Font allowlist + blocklist + monoculture detection. Cross-fit absorption 2026-05-19. Squad design-ops owns canonical font-allowlist; slide-creator skill applies for deck rendering."
+
+  index_yaml:
+    sot: shared
+    skill_path: skills/slide-creator/templates/index.yaml
+    squad_path: squads/slides-creator/templates/index.yaml (data/template-registry.yaml authoritative)
+    drift_status: "skill v2 (58 wireframes) vs squad pilot (2 decks)"
+    resolution: "Skill v2 leads wireframe inventory; squad pilot remains for AIOX composition_mapping cross-ref"
+
+# ═══════════════════════════════════════════════════════════════════════
+# CONVERGENCE ROADMAP
+# ═══════════════════════════════════════════════════════════════════════
+convergence:
+  immediate_done:
+    - "[2026-05-20] Frontmatter Purity Rule applied (owner_squad removed from skill frontmatter)"
+    - "[2026-05-20] 7 McKinsey archetypes imported from squad to skill"
+    - "[2026-05-20] Pipeline log emission protocol documented"
+    - "[2026-05-20] SoT manifest authored (this file)"
+    - "[2026-05-20] Palette registry drift reconciled"
+    - "[2026-05-20] AI slop blacklist reference link (squad SoT)"
+    - "[2026-05-20] Principios invioláveis P1-P7 reference link (squad SoT)"
+
+  short_term:
+    - "[DONE 2026-05-20] Squad absorbed tasteskill_dials → data/design-direction.schema.yaml#tasteskill_dials (ABSORB-1)"
+    - "[DONE 2026-05-20] Squad absorbed font_monoculture, eight_bans, jane_doe, persona_walkthrough gates → KI-12..KI-15 in qa-rubric.yaml (ABSORB-2..5)"
+    - "[DONE 2026-05-20] Squad wired cross_fit_absorbed_gates block in quality-gates.yaml + token-registry.yaml#quality_gate (ABSORB-6)"
+    - "Skill implements ide-sync hook → auto-resync archetypes when squad changes them"
+    - "[DONE 2026-05-20] Pipeline log emission wired in skill workflow Phase 11 (Package) via references/pipeline-log-emission.md"
+
+  long_term:
+    - "Decide if skill becomes formal SoT for runtime contracts (Path A) OR converges back to squad (Path B)"
+    - "Move squad templates/index.yaml from pilot to v2 parity with skill"
+    - "Co-publish skill + squad as @aiox/slides-creator npm package with shared manifest"
+
+# ═══════════════════════════════════════════════════════════════════════
+# DRIFT MONITORING
+# ═══════════════════════════════════════════════════════════════════════
+drift_monitoring:
+  cadence: weekly
+  signals_to_watch:
+    - "palette-registry.yaml line count divergence > 10"
+    - "archetypes/ count mismatch (squad vs skill)"
+    - "index.yaml schema_version divergence > 1 minor"
+    - "squad-quality-rubric.yaml dimension count divergence"
+  responsible: slide-chief (squad) + skill operator (Codex/external)
+  alert_channel: ".aiox/squad-runtime/squad-validations/slides-creator/{date}/skill-vs-squad-map.md"

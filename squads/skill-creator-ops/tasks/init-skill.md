@@ -5,7 +5,7 @@ Criar scaffold de uma nova skill com template AllFluence completo.
 
 ## Inputs
 - `skill_name` (obrigatório): Nome kebab-case da skill (e.g., `my-new-skill`)
-- `skill_path` (opcional): Path destino (default: `.claude/skills/`)
+- `skill_path` (opcional): Path destino (default: `skills/`)
 
 ## Executor
 skill-ops-chief

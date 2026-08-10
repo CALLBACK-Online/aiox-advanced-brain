@@ -23,12 +23,12 @@ DEFAULT_SYNC_MAPPINGS = {
     "squad_agents": {
         "source": "squads/*/agents/",
         "destinations": {
-            "claude": {"path": ".claude/skills/{squad_alias}/{agent}/SKILL.md", "format": "md"},
+            "claude": {"path": "skills/{squad_alias}/{agent}/SKILL.md", "format": "md"},
             "cursor": {"path": ".cursor/rules/", "format": "mdc"},
             "windsurf": {"path": ".windsurf/commands/{squad_alias}/", "format": "md"},
             "gemini": {"path": ".gemini/agents/{squad_alias}/", "format": "md"},
             "antigravity": {"path": ".agents/workflows/{squad_alias}/", "format": "md"},
-            "codex": {"path": ".agents/skills/{squad_alias}/", "format": "md"},
+            "codex": {"path": "skills/{squad_alias}/", "format": "md"},
         },
     }
 }

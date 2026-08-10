@@ -48,7 +48,7 @@ agnosticism_exceptions:
     reason: >-
       Os agents do copy squad carregam provas, track record e referências reais
       dos copywriters para preservar fidelidade metodológica. Esses sinais não
-      representam acoplamento a um business do workspace.
+      representam acoplamento a um business de docs/project.
     approved_by: "squad-chief"
     approved_at: "2026-03-27"
   - scope: "authority/*.yaml"
@@ -77,8 +77,8 @@ agnosticism_exceptions:
 # ═══════════════════════════════════════════════════════════════════════════════
 # Changelog (2026-03-28) - Campaign Governance Sync
 #   - Importados gates, briefs, planning pack e workflow de produção do aiox-stage
-#   - Assets adaptados para o workspace L0-L4 do Sinkra Hub
-#   - Output de copy formalizado em workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/ + outputs/copy/{business}/ (ADR-012)
+#   - Assets adaptados para o local_docs local-docs do AIOX platform
+#   - Output de copy formalizado em docs/operational/campaigns/{campaign_slug}/ + outputs/copy/{business}/ (ADR-012)
 #
 # Changelog v4.0.0 (2026-02-06) - Config Sync Mega-Update
 #   - 139 orphan components registered (14 agents, 37 tasks, 30 checklists, 36 templates, 5 workflows, 31 research, 15 data)
@@ -191,7 +191,7 @@ agents:
     version: "3.0.0"
     file: "agents/copy-chief.md"
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: reviewer
@@ -208,7 +208,7 @@ agents:
     type: human
     file: "agents/launch-owner.md"
     executor_profile:
-      sinkra_type: Human
+      executor_type: Human
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: reviewer
@@ -224,7 +224,7 @@ agents:
     type: worker
     file: "agents/copy-ops-worker.md"
     executor_profile:
-      sinkra_type: Worker
+      executor_type: Worker
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -242,7 +242,7 @@ agents:
     specialty: "Auditoria científica, split tests, métricas"
     file: "agents/claude-hopkins.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: consultant
@@ -259,7 +259,7 @@ agents:
     specialty: "Diagnóstico de awareness, big ideas, breakthrough copy"
     file: "agents/eugene-schwartz.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: consultant
@@ -278,7 +278,7 @@ agents:
     specialty: "Cartas de vendas, headlines, storytelling emocional"
     file: "agents/gary-halbert.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -296,7 +296,7 @@ agents:
     specialty: "Bullets hipnóticos, fascinations, long-form"
     file: "agents/gary-bencivenga.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -313,7 +313,7 @@ agents:
     specialty: "Copy premium, research-based, branding"
     file: "agents/david-ogilvy.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -333,7 +333,7 @@ agents:
     note: "3Ms (NOT 4Ms): Message-Market-Media"
     file: "agents/dan-kennedy.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -350,7 +350,7 @@ agents:
     specialty: "E5 Method, diferenciação, mercados saturados"
     file: "agents/todd-brown.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -369,7 +369,7 @@ agents:
     specialty: "VSL scripts, video copy, Sellerator method"
     file: "agents/jon-benson.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -389,7 +389,7 @@ agents:
     note: "Primary evaluator for CPL analysis workflows"
     file: "agents/jeff-walker.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -407,7 +407,7 @@ agents:
     specialty: "Grand Slam Offers, value equation, pricing, value stacks"
     file: "agents/alex-hormozi.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -426,7 +426,7 @@ agents:
     note: "CRITICAL: 30 triggers (NOT 31). Apply AFTER writing copy."
     file: "agents/joe-sugarman.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: consultant
@@ -446,7 +446,7 @@ agents:
     specialty: "Entrar na conversa mental do prospect, cartas de vendas"
     file: "agents/robert-collier.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: consultant
@@ -464,7 +464,7 @@ agents:
     specialty: "Copy visceral, amplificacao emocional, health market"
     file: "agents/clayton-makepeace.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -482,7 +482,7 @@ agents:
     specialty: "Bullets 700-to-100, fascinations, long-form"
     file: "agents/parris-lampropoulos.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -499,7 +499,7 @@ agents:
     specialty: "Copy simplificada, conversacional, persuasiva"
     file: "agents/john-carlton.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -516,7 +516,7 @@ agents:
     specialty: "Magalogs, direct mail volume, magazine-format copy"
     file: "agents/jim-rutz.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -533,7 +533,7 @@ agents:
     specialty: "Direct mail, cartas de vendas, controles"
     file: "agents/david-deutsch.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -551,7 +551,7 @@ agents:
     specialty: "Intent-based branding, mass control, behavioral dynamic response"
     file: "agents/frank-kern.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -569,7 +569,7 @@ agents:
     specialty: "RMBC system, copy sistematizada, mecanismos"
     file: "agents/stefan-georgi.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -587,7 +587,7 @@ agents:
     specialty: "Funnels, book launches, free + shipping, value ladders"
     file: "agents/russell-brunson.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -605,7 +605,7 @@ agents:
     specialty: "Digital writing, one-person business, content systems"
     file: "agents/dan-koe.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -622,7 +622,7 @@ agents:
     specialty: "Email storytelling, autoresponder sequences, soap operas"
     file: "agents/andre-chaperon.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -639,7 +639,7 @@ agents:
     specialty: "Email diario, infotainment, personality-driven marketing"
     file: "agents/ben-settle.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -656,7 +656,7 @@ agents:
     specialty: "Email sequences, automation copy"
     file: "agents/ry-schwartz.md"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa e materializado via template, checklist ou handoff"
       story_role: executor
@@ -887,8 +887,8 @@ tasks:
   - id: copysearch
     name: "Pesquisa de Copy Competidora"
     category: research
-  - id: load-workspace-context
-    name: "Carregar Contexto do Workspace"
+  - id: load-project context
+    name: "Carregar Contexto de docs/project"
     category: research
 
   # Creation Tasks - Sales Pages & Funnels
@@ -1751,33 +1751,6 @@ tags:
   - tier-system
   - research-first
 
-workspace_integration:
-  level: workspace_first
-  rationale: >-
-    Copy squad deve ler primeiro a estrutura real de negócios do workspace
-    (offerbook, brand, movement e sales-process por business/produto) antes de
-    executar qualquer workflow. Qualquer mutação canônica em `workspace/`
-    permanece sob handoff explícito para a governança COO/workspace-chief.
-  read_paths:
-    - workspace/_templates/business-template/L1-strategy/
-    - workspace/_templates/business-template/L2-tactical/brand/
-    - workspace/_templates/business-template/L2-tactical/movement/
-    - workspace/businesses/
-  write_paths: []
-  template_namespace: business-template
-  owner: c-level/workspace-chief
-  execution_mode: handoff_only
-  readiness_owner: workspace-chief
-  bootstrap:
-    required: true
-    script: "scripts/bootstrap-copy-workspace.sh"
-  essentials_validation:
-    required: true
-    script: "scripts/validate-copy-essentials.sh"
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# YOLO MODE - Autonomous Workflow Execution (v2.0)
-# ═══════════════════════════════════════════════════════════════════════════════
 yolo_mode:
   enabled: true
   version: "2.0.0"
@@ -1791,15 +1764,12 @@ yolo_mode:
     checkpoint_human_review: false      # Pause for human review at checkpoints
     checkpoint_review_agent: "launch-owner"
     delivery_worker_agent: "copy-ops-worker"
-    workspace_preflight_required: true  # run bootstrap + essentials validator
+    project_preflight_required: true  # run bootstrap + essentials validator
 
   # Script Configuration
   script:
     entry_point: "scripts/copy.sh"
     usage: "./copy.sh <project-dir> [max-iterations]"
-    workspace_bootstrap: "scripts/bootstrap-copy-workspace.sh"
-    workspace_validator: "scripts/validate-copy-essentials.sh"
-    skip_preflight_env: "COPY_SKIP_WORKSPACE_CHECK=1"
 
   # File Structure
   paths:
@@ -1807,7 +1777,7 @@ yolo_mode:
     templates: "templates/"
     projects: "projects/"
     outputs: "outputs/"
-    workspace: "workspace/"
+    docs_root: "docs/"
 
   # State Management
   state:
@@ -2170,7 +2140,7 @@ yolo_mode:
 #   *sugarman-check  → 30 Triggers checklist
 # ═══════════════════════════════════════════════════════════════════════════════
 
-# SINKRA v3.1 (Story 54.11)
+# AIOX v3.1 (Story 54.11)
 bu_mapping: "hub-framework"
 artifact_contracts:
   - artifact_id: "copy-output"
@@ -2178,22 +2148,22 @@ artifact_contracts:
     lifecycle_states: [draft, validated, approved]
   # EPIC-120 / Story 120.3 / ADR-012 — cross-squad campaign contracts
   - artifact_id: "campaign-brief"
-    template_path: "../../workspace/_templates/business-template-v3/L4-operational/campaigns/_example/campaign-brief.yaml"
+    template_path: "../../docs/templates/business-template-v3/operational/campaigns/_example/campaign-brief.yaml"
     schema_path: "../../docs/schemas/campaign-brief-schema.yaml"
-    workspace_path_pattern: "workspace/businesses/{business}/L4-operational/campaigns/{campaign-slug}/campaign-brief.yaml"
+    docs_path_pattern: "docs/operational/campaigns/{campaign-slug}/campaign-brief.yaml"
     lifecycle_states: [draft, validated, approved, in_execution, completed]
     cross_squad: true
     adr: "ADR-012"
   - artifact_id: "message-architecture"
-    template_path: "../../workspace/_templates/business-template-v3/L4-operational/campaigns/_example/message-architecture.yaml"
+    template_path: "../../docs/templates/business-template-v3/operational/campaigns/_example/message-architecture.yaml"
     schema_path: "../../docs/schemas/message-architecture-schema.yaml"
-    workspace_path_pattern: "workspace/businesses/{business}/L4-operational/campaigns/{campaign-slug}/message-architecture.yaml"
+    docs_path_pattern: "docs/operational/campaigns/{campaign-slug}/message-architecture.yaml"
     lifecycle_states: [draft, validated, approved]
     cross_squad: true
     adr: "ADR-012"
   - artifact_id: "creative-brief"
-    template_path: "../../workspace/_templates/business-template-v3/L4-operational/campaigns/_example/copy/creative-brief.yaml"
-    workspace_path_pattern: "workspace/businesses/{business}/L4-operational/campaigns/{campaign-slug}/copy/creative-brief.yaml"
+    template_path: "../../docs/templates/business-template-v3/operational/campaigns/_example/copy/creative-brief.yaml"
+    docs_path_pattern: "docs/operational/campaigns/{campaign-slug}/copy/creative-brief.yaml"
     lifecycle_states: [draft, validated, approved]
     cross_squad: false
     adr: "ADR-012"
@@ -2218,7 +2188,7 @@ artifact_contracts:
       generic names (John Doe/Sarah Chen), startup-slop names (Acme/Nexus),
       fake numbers (99.99%, 50%, 10x), em-dashes, lorem ipsum. Blocks copy
       delivery when score > 60. Mirror of design-absolute-bans §5 Jane Doe.
-    cross_fit_pair: ".claude/skills/slide-creator/templates/qa/copy-gates.yaml#jane_doe_effect_gate"
+    cross_fit_pair: "skills/slide-creator/templates/qa/copy-gates.yaml#jane_doe_effect_gate"
 
 supported_modes:
   - CRIAR
@@ -2228,7 +2198,7 @@ supported_modes:
 # BEGIN MAP MATERIALIZATION: supported_domains
 materialized_supported_domains: [Strategic, Tactical, Operational]
 materialized_supported_domains_ptbr: [Estratégico, Tático, Operacional]
-# Source: .aiox/squad-runtime/sinkra-squad/copy/map/20260328-065841-gemini-gemini-3.1-pro-preview/domain_map.yaml
+# Source: .aiox/squad-runtime/aiox-squad/copy/map/20260328-065841-gemini-gemini-3.1-pro-preview/domain_map.yaml
 # END MAP MATERIALIZATION: supported_domains
 
 compositional_hierarchy:
@@ -2254,8 +2224,8 @@ compositional_hierarchy:
   rule: "Copy assets must compose only from the level immediately below."
 
 composition_mapping:
-  # SINKRA Compositional Hierarchy: Token > Atom > Molecule > Organism > Template > Instance
-  # Materialized by /sinkra-upgrade-squad on 2026-04-12
+  # AIOX Compositional Hierarchy: Token > Atom > Molecule > Organism > Template > Instance
+  # Materialized by /aiox-upgrade-squad on 2026-04-12
 
   tokens:
     source: "data/token-registry.yaml"
@@ -2271,7 +2241,7 @@ composition_mapping:
     # Categorized by executor type:
     clone_atoms: 51  # Expert craft tasks: create-*, write-*, vsl-script, rmbc-method, etc.
     agent_atoms: 31  # Analysis/orchestration tasks: audit-*, diagnose-*, blend, copy-debate, copysearch, extract-*, evaluate-offer, etc.
-    worker_atoms: 2  # Deterministic tasks: load-workspace-context, load-mmos-voice
+    worker_atoms: 2  # Deterministic tasks: load-project context, load-mmos-voice
     human_atoms: 3   # Approval tasks: review-copy, qa-gate, deliver
 
   molecules:
@@ -2280,7 +2250,7 @@ composition_mapping:
       - molecule_id: mol_intake
         name: "Intake & Contexto"
         domain: Strategic
-        atoms: [briefing, load-workspace-context]
+        atoms: [briefing, load-project context]
         produces: "contexto base resolvido (business, product, canal, objetivo)"
 
       - molecule_id: mol_tier0_diagnosis

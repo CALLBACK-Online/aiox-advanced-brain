@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Govern the lifecycle exit of a skill — transition from `active` through `deprecated` to `retired`. Without this task, skills accumulate in `.claude/skills/` and in the registry indefinitely, creating ghost entries with zero invocations and stale content.
+Govern the lifecycle exit of a skill — transition from `active` through `deprecated` to `retired`. Without this task, skills accumulate in `skills/` and in the registry indefinitely, creating ghost entries with zero invocations and stale content.
 
 ## Lifecycle states
 
@@ -12,7 +12,7 @@ active → deprecated → retired
 
 - **active** — skill is fully available and recommended.
 - **deprecated** — skill remains invocable but carries a warning. Router deprioritizes it. Not recommended for new use. Must have a migration target declared.
-- **retired** — skill is removed from the registry and from `.claude/skills/`. Its directory is archived under `outputs/skill-creator-ops/retired/<skill-name>/<timestamp>/` for audit.
+- **retired** — skill is removed from the registry and from `skills/`. Its directory is archived under `outputs/skill-creator-ops/retired/<skill-name>/<timestamp>/` for audit.
 
 Transitions are non-reversible in normal flow. Un-retiring a skill requires re-initialization via `init-skill.md` as a fresh artifact.
 
@@ -34,7 +34,7 @@ skill-ops-chief
 
 1. Locate skill directory. Verify `status: active` in frontmatter or registry.
 2. Update skill's frontmatter: set `status: deprecated`, add `deprecated_at: <ISO-8601>`, `migration_target: <target>`.
-3. Update `.claude/skills/skill-registry.yaml`: mark skill as deprecated, add the migration_target.
+3. Update `skills/skill-registry.yaml`: mark skill as deprecated, add the migration_target.
 4. Edit the skill's `description` to prepend: `[DEPRECATED — use <migration_target>]`.
 5. Log entry in `outputs/skill-creator-ops/lifecycle-log.yaml` with timestamp, action, rationale.
 
@@ -46,8 +46,8 @@ skill-ops-chief
    - If `force: true` → proceed, require `forced_by` and `forced_rationale` fields in the lifecycle log.
 3. Verify `migration_story_ref` points to a valid story in `docs/stories/`.
 4. Archive the skill directory to `outputs/skill-creator-ops/retired/<skill-name>/<timestamp>/`.
-5. Remove the skill directory from `.claude/skills/`.
-6. Remove entry from `.claude/skills/skill-registry.yaml`. Add it to the `retired` section of the registry with: `retired_at`, `migration_target`, `migration_story_ref`, `archive_path`.
+5. Remove the skill directory from `skills/`.
+6. Remove entry from `skills/skill-registry.yaml`. Add it to the `retired` section of the registry with: `retired_at`, `migration_target`, `migration_story_ref`, `archive_path`.
 7. Log entry in `outputs/skill-creator-ops/lifecycle-log.yaml`.
 
 ### C. Action = `revert-deprecation`
@@ -71,7 +71,7 @@ Only for emergencies where deprecation was in error (e.g. migration_target turne
 ## Outputs
 
 - Updated frontmatter on the skill file
-- Updated `.claude/skills/skill-registry.yaml`
+- Updated `skills/skill-registry.yaml`
 - Archive under `outputs/skill-creator-ops/retired/` (for retirement only)
 - Lifecycle log entry
 

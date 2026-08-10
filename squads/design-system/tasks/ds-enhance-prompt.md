@@ -72,7 +72,6 @@ dimensions:
 ```
 1. Verificar DS ativo:
    - Se *show-context retorna DS configurado: extrair tokens (accent, surfaces, text, fonts)
-   - Se --business fornecido: resolver via resolve_business_design_system.cjs
    - Se nenhum DS: sugerir *ds-generate-stitch-design-md ou *ds-setup-design-system
 
 2. Se DESIGN.md existe para o business:
@@ -205,13 +204,13 @@ A clean, minimal landing page with generous whitespace and high-contrast typogra
 - **Created:** 2026-03-20
 - **Tags:** prompt-engineering, enhancement, stitch, consistency
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_enhance_prompt_artifact

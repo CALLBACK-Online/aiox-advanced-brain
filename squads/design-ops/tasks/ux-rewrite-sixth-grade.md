@@ -81,13 +81,13 @@ Use this as a simplification gate for:
 - **Dependencies:** depends_on: `[]` · enables: `[]` · workflow: `design-system`
 - **On Fail:** Stop execution, capture evidence, and return remediation steps before proceeding.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ux_rewrite_sixth_grade_artifact

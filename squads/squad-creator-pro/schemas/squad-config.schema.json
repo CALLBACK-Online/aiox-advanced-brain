@@ -4,7 +4,13 @@
   "title": "AIOX Squad Config Pro Schema",
   "description": "Validates squad-creator-pro config.yaml — governance framework compliance. Extends base schema with pro-specific fields (features, pro_stats, enhances).",
   "type": "object",
-  "required": ["name", "version", "description", "type", "enhances"],
+  "required": [
+    "name",
+    "version",
+    "description",
+    "type",
+    "enhances"
+  ],
   "properties": {
     "name": {
       "type": "string",
@@ -18,7 +24,11 @@
     },
     "type": {
       "type": "string",
-      "enum": ["upgrade-pack", "standalone", "base"],
+      "enum": [
+        "upgrade-pack",
+        "standalone",
+        "base"
+      ],
       "description": "Squad type — upgrade-pack extends a base squad"
     },
     "enhances": {
@@ -44,27 +54,32 @@
       "description": "Feature manifest — pro capabilities grouped by domain",
       "additionalProperties": {
         "type": "object",
-        "required": ["description"],
+        "required": [
+          "description"
+        ],
         "properties": {
-          "description": { "type": "string" },
-          "agents": { "type": "array", "items": { "type": "string" } },
-          "tasks": { "type": "array", "items": { "type": "string" } },
-          "workflows": { "type": "array", "items": { "type": "string" } }
+          "description": {
+            "type": "string"
+          },
+          "agents": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "workflows": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         }
-      }
-    },
-    "workspace_integration": {
-      "type": "object",
-      "required": ["level"],
-      "properties": {
-        "level": {
-          "type": "string",
-          "enum": ["none", "read_only", "controlled_runtime_consumer", "workspace_first"]
-        },
-        "rationale": { "type": "string" },
-        "read_paths": { "type": "array", "items": { "type": "string" } },
-        "write_paths": { "type": "array", "items": { "type": "string" } },
-        "documents_owned": { "type": "array", "items": { "type": "string" } }
       }
     },
     "artifact_contracts": {
@@ -72,15 +87,31 @@
       "description": "Governance framework — artifacts produced by this squad",
       "items": {
         "type": "object",
-        "required": ["artifact_id", "template_path"],
+        "required": [
+          "artifact_id",
+          "template_path"
+        ],
         "properties": {
-          "artifact_id": { "type": "string" },
-          "template_path": { "type": "string" },
+          "artifact_id": {
+            "type": "string"
+          },
+          "template_path": {
+            "type": "string"
+          },
           "lifecycle_states": {
             "type": "array",
             "items": {
               "type": "string",
-              "enum": ["draft", "pending_validation", "validated", "approved", "rejected", "consumed", "superseded", "archived"]
+              "enum": [
+                "draft",
+                "pending_validation",
+                "validated",
+                "approved",
+                "rejected",
+                "consumed",
+                "superseded",
+                "archived"
+              ]
             }
           }
         }
@@ -89,55 +120,118 @@
     "artifact_lifecycle": {
       "type": "object",
       "properties": {
-        "tracking_enabled": { "type": "boolean" },
-        "state_persistence": { "type": "string" },
-        "transitions": { "type": "array", "items": { "type": "string" } }
+        "tracking_enabled": {
+          "type": "boolean"
+        },
+        "state_persistence": {
+          "type": "string"
+        },
+        "transitions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "instance_lifecycle": {
       "type": "object",
       "properties": {
-        "tracking_enabled": { "type": "boolean" },
-        "state_persistence": { "type": "string" },
-        "states": { "type": "array", "items": { "type": "string" } }
+        "tracking_enabled": {
+          "type": "boolean"
+        },
+        "state_persistence": {
+          "type": "string"
+        },
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "journey_log": {
       "type": "object",
       "properties": {
-        "enabled": { "type": "boolean" },
-        "template": { "type": "string" },
-        "persistence": { "type": "string" }
+        "enabled": {
+          "type": "boolean"
+        },
+        "template": {
+          "type": "string"
+        },
+        "persistence": {
+          "type": "string"
+        }
       }
     },
-    "bu_mapping": { "type": "string" },
+    "bu_mapping": {
+      "type": "string"
+    },
     "supported_modes": {
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["CRIAR", "PLANEJAR", "RESOLVER", "ENTENDER", "VALIDAR", "CONFIGURAR", "GERENCIAR", "EXPLORAR"]
+        "enum": [
+          "CRIAR",
+          "PLANEJAR",
+          "RESOLVER",
+          "ENTENDER",
+          "VALIDAR",
+          "CONFIGURAR",
+          "GERENCIAR",
+          "EXPLORAR"
+        ]
       }
     },
     "metadata": {
       "type": "object",
       "properties": {
-        "version": { "type": "string" },
-        "type": { "type": "string" },
-        "enhances": { "type": "string" },
-        "base_requirement": { "type": "string" },
+        "version": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "enhances": {
+          "type": "string"
+        },
+        "base_requirement": {
+          "type": "string"
+        },
         "pro_stats": {
           "type": "object",
           "properties": {
-            "agents": { "type": "integer" },
-            "tasks": { "type": "integer" },
-            "workflows": { "type": "integer" },
-            "configs": { "type": "integer" },
-            "checklists": { "type": "integer" },
-            "scripts": { "type": "integer" },
-            "test_scripts": { "type": "integer" },
-            "data_files": { "type": "integer" },
-            "minds": { "type": "integer" },
-            "test_cases": { "type": "integer" }
+            "agents": {
+              "type": "integer"
+            },
+            "tasks": {
+              "type": "integer"
+            },
+            "workflows": {
+              "type": "integer"
+            },
+            "configs": {
+              "type": "integer"
+            },
+            "checklists": {
+              "type": "integer"
+            },
+            "scripts": {
+              "type": "integer"
+            },
+            "test_scripts": {
+              "type": "integer"
+            },
+            "data_files": {
+              "type": "integer"
+            },
+            "minds": {
+              "type": "integer"
+            },
+            "test_cases": {
+              "type": "integer"
+            }
           }
         }
       }

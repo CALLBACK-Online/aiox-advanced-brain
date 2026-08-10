@@ -5,7 +5,7 @@
 - **Name:** [PROJECT_NAME]
 - **Description:** [Brief description]
 - **Type:** Monorepo
-- **Manager:** [Turborepo / Nx / Lerna / pnpm workspaces]
+- **Manager:** [Turborepo / Nx / Lerna / pnpm projects]
 - **Status:** [Development / Staging / Production]
 
 ## Package Structure
@@ -32,14 +32,14 @@ tooling/
 | Layer | Technology | Notes |
 |-------|-----------|-------|
 | Build | Turborepo | Task orchestration and caching |
-| Package Manager | pnpm | Workspace support, strict hoisting |
+| Package Manager | pnpm | LocalDocs support, strict hoisting |
 | Language | TypeScript | Shared tsconfig in tooling/ |
 | Linting | ESLint | Shared config across packages |
 | Testing | Jest | Shared config, per-package execution |
 
 ## Shared Dependencies
 
-### Internal Packages (workspace:*)
+### Internal Packages (local_docs:*)
 - `@[scope]/core` — Business logic, types, constants
 - `@[scope]/ui` — React components, design tokens
 - `@[scope]/utils` — Utility functions (date, string, validation)
@@ -92,7 +92,7 @@ pnpm --filter core test      # Unit tests
 ## Cross-Package Imports
 
 ```typescript
-// Correct: use workspace package name
+// Correct: use local_docs package name
 import { Button } from '@[scope]/ui';
 import { formatDate } from '@[scope]/utils';
 import type { User } from '@[scope]/core';
@@ -134,6 +134,6 @@ turbo run test --affected          # Test only affected packages
 - Always run `pnpm install` from the root (never inside a package)
 - Changes to shared packages may affect multiple apps — test broadly
 - Turbo caches builds; run `turbo run build --force` to bypass cache
-- When adding a new package, update `pnpm-workspace.yaml`
+- When adding a new package, update `pnpm-project-context.yaml`
 - CI should use `turbo run test --affected` for faster builds
 - Never put secrets in shared packages; keep them in app-level `.env`

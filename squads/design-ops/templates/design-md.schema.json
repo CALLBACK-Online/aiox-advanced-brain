@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://sinkra.dev/schemas/design-md.schema.json",
+  "$id": "https://aiox.dev/schemas/design-md.schema.json",
   "title": "DESIGN.md Frontmatter",
   "description": "JSON Schema for the YAML frontmatter of a design.md scaffold per ADR-022 (alias-preserved 5-layer token contract). Reference: apps/design/src/data/designs/anthropic/design.md (gold standard, 256 values). Schema versioning is git-tracked; the file name carries no version suffix.",
   "type": "object",

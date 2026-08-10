@@ -511,7 +511,7 @@ Upgrade de squad existente com analise profunda de gaps.
 
 #### `*create-from-sop`
 
-Carrega SOPs canônicos do workspace e deriva artefatos de criação de squad.
+Carrega SOPs canônicos de docs/project e deriva artefatos de criação de squad.
 
 ```bash
 *create-from-sop aiox --namespace=operations
@@ -521,14 +521,14 @@ Carrega SOPs canônicos do workspace e deriva artefatos de criação de squad.
 **Parâmetros:**
 | Param | Descrição | Default |
 |-------|-----------|---------|
-| `business` | Slug do business no workspace | (obrigatório) |
+| `business` | Slug do business no project docs | (obrigatório) |
 | `--namespace` | Diretório dentro do business | (obrigatório*) |
 | `--paths` | Arquivos SOP específicos | (obrigatório*) |
 
 *Pelo menos um seletor (`--namespace` ou `--paths`) é obrigatório.
 
 **Orquestrador:** @pedro-valerio
-**Requer:** `full_workspace_mode` + source `workspace_canonical`
+**Requer:** `none_mode` + source `project_canonical`
 
 ---
 
@@ -711,15 +711,15 @@ Executa o ciclo completo de otimização com um único gate humano.
 |-------|-----------|---------|
 | `squad_name` | Squad alvo da otimização | (obrigatorio) |
 | `--focus` | Escopo da otimização (`all`, `tasks`, `checklists`, `templates`, `agents`, `workflows`, `data`, `materials`) | `all` |
-| `--business {slug}` | Contexto explícito para tentar `full_workspace_mode` | (nenhum) |
-| `--product {slug}` | Contexto explícito de produto para `full_workspace_mode` | (nenhum) |
-| `--app {id}` | Contexto explícito de app para `full_workspace_mode` | (nenhum) |
+| `--business {slug}` | Contexto explícito para tentar `none_mode` | (nenhum) |
+| `--product {slug}` | Contexto explícito de produto para `none_mode` | (nenhum) |
+| `--app {id}` | Contexto explícito de app para `none_mode` | (nenhum) |
 | `--context-type {type}` | Override opcional do contexto enviado ao detector compartilhado | (nenhum) |
 | `--commit` | Cria commit após validação verde | `false` |
 | `--push` | Faz push após commit e opt-in explícito | `false` |
 
 **Fluxo:**
-- resolve `environment_contract` antes de qualquer path workspace-aware
+- resolve `environment_contract` antes de qualquer path path-aware
 - captura baseline repo-global sem short-circuit, registrando `npm run lint`, `npm run typecheck` e `npm test` mesmo quando um gate falha
 - preflight e baseline
 - scan profundo + plano
@@ -733,7 +733,7 @@ Executa o ciclo completo de otimização com um único gate humano.
 - Worker vs Hybrid vs Agent
 - validação final e commit opcional
 - split verdict entre `squad-local` e `repo-global`
-- reporting explícito de `portable_docs_mode` vs `full_workspace_mode`
+- reporting explícito de `portable_docs_mode` vs `none_mode`
 - sem `--business {slug}`, `--product {slug}` ou `--app {id}`, o detector permanece em `portable_docs_mode`
 - timeout ou saída parcial de `validate-squad.sh` viram `inconclusive` com fallback determinístico, nunca green implícito
 - `introduced` vs `pre-existing` vs `unrelated` vs `inconclusive` devem ser classificados comparando os gates finais com o baseline repo-global capturado no preflight

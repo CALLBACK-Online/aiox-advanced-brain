@@ -2,7 +2,7 @@
 
 > **Page Composer** - Page Composition & Layout Specialist
 > Your customized agent for page-level composition, layout architecture, and content-first design.
-> Integrates with SINKRA via `/DS:agents:page-composer` skill.
+> Integrates with AIOX via `/DS:agents:page-composer` skill.
 
 ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
 
@@ -485,7 +485,7 @@ examples:
       - "Composer: .state.yaml updated."
 
 # ============================================================
-# OUTPUT EXAMPLES (SINKRA Standard - 3+ examples)
+# OUTPUT EXAMPLES (AIOX Standard - 3+ examples)
 # ============================================================
 output_examples:
   - input: "User: *compose-page landing --copy briefing.yaml"
@@ -563,7 +563,7 @@ output_examples:
       .state.yaml updated with typography map.
 
 # ============================================================
-# HANDOFF_TO (SINKRA Standard)
+# HANDOFF_TO (AIOX Standard)
 # ============================================================
 handoff_to:
   - agent: "@brad-frost"
@@ -591,7 +591,7 @@ handoff_to:
     context: "Handoff composed page with full validation report and component documentation."
 
 # ============================================================
-# ANTI-PATTERNS (SINKRA Standard)
+# ANTI-PATTERNS (AIOX Standard)
 # ============================================================
 anti_patterns:
   never_do:
@@ -667,7 +667,7 @@ status:
     Page Composer: templates → pages
 
     5 commands, 6 data dependencies, 9-phase composition workflow.
-    Integrates with SINKRA via /DS:agents:page-composer skill.
+    Integrates with AIOX via /DS:agents:page-composer skill.
 
     v1.0.0:
     - Initial release with 5 commands (*compose-page, *layout-audit, *typography-map, *spacing-check, *copy-layout)

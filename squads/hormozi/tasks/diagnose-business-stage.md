@@ -10,7 +10,7 @@ estimated_time: 10-15min
 source: "$100M Offers - Chapter 10: The Sales-Fulfillment Continuum"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom

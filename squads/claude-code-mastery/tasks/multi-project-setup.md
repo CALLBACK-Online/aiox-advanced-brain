@@ -6,7 +6,7 @@
 **Owner:** Conduit (project-integrator)
 **Purpose:** Set up Claude Code for multiple related projects, configuring shared user settings, project-specific overrides, shared MCP servers, and cross-project rules.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: multi-project-setup
 atomic_layer: Atom
@@ -36,7 +36,7 @@ Performance:
 Completion Criteria:
 - All projects detected and mapped
 - Shared config generated without duplication
-- Project isolation verified per workspace
+- Project isolation verified per local_docs
 
 ---
 
@@ -90,7 +90,7 @@ Completion Criteria:
 | Field | Type | Source | Required | Validation |
 |-------|------|--------|----------|------------|
 | projects | object[] | User | Yes | Array of {path, name, type} for each project |
-| relationship | enum | User | Yes | `monorepo`, `polyrepo-shared-stack`, `polyrepo-independent`, `workspace` |
+| relationship | enum | User | Yes | `monorepo`, `polyrepo-shared-stack`, `polyrepo-independent`, `local_docs` |
 | shared_tools | string[] | User | No | Tools used across all projects (e.g., "eslint", "jest", "docker") |
 
 ---

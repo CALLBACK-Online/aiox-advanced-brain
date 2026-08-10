@@ -8,7 +8,7 @@ This folder stores sample outputs used for production-readiness validation.
 Canonical markdown publication lives in `../../../docs/sops/`.
 
 Canonical machine-readable publication lives in
-`../../../workspace/businesses/{business}/sops/`.
+`../../../docs/sops/`.
 
 Historical reference packages that are not part of the canonical runtime
 contract live in `../outputs/`.

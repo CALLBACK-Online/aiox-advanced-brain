@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: yaml-markdown-json-sweet-spot
 lesson_position: 18
 title: 'YAML, Markdown, JSON: o sweet spot para LLM'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/18-yaml-markdown-json-sweet-spot/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

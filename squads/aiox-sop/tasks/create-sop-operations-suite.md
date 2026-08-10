@@ -10,24 +10,21 @@ task:
   commands:
     - "*create-sop-operations-suite {slug}"
   requires:
-    - workspace-context loaded
-    - COO readiness = ready
+    - project context loaded
+    - quality readiness = ready
 ```
 
 ## Descrição
 
-Task que cria SOPs a partir dos YAMLs de operations preenchidos pelo C-Level. Consome dados canônicos do workspace e transforma cada YAML operacional em um SOP executável (human-readable e/ou ML-readable).
 
-**Trigger principal:** Diagnóstico C-Level identifica Operations < 70 e recomenda esta task.
 **Fluxo:** `*diagnose-business {slug}` → gap Operations → `*create-sop-operations-suite {slug}`
 
 **Guardian:** sop-chief (Deming)
 
 ## Pré-requisitos
 
-1. Business existe: `workspace/businesses/{slug}/` presente
+1. Business existe: `docs/` presente
 2. Pelo menos 1 YAML de operations preenchido (não apenas template)
-3. COO readiness = `ready` (via `resolve-squad-workspace-readiness.cjs`)
 
 ## Workflow
 
@@ -37,37 +34,36 @@ Task que cria SOPs a partir dos YAMLs de operations preenchidos pelo C-Level. Co
 environment:
   steps:
     - resolve_environment: "*environment"
-    - force_mode: "full_workspace_mode"  # Esta task REQUER workspace
-    - load_context: "*workspace-context {slug}"
-    - validate_readiness: "COO readiness must be 'ready'"
+    - force_mode: "none_mode"  # Esta task REQUER local_docs
+    - load_context: "*project context {slug}"
+    - validate_readiness: "quality readiness must be 'ready'"
 ```
 
-Se readiness != ready: HALT com "Readiness não confirmado pelo COO. Execute `*resolve-readiness aiox-sop` no C-Level primeiro."
 
 ### Fase 1: Inventário de Operations
 
-Listar arquivos em `workspace/businesses/{slug}/L1-strategy/`:
+Listar arquivos em `docs/strategy/`:
 
 ```yaml
 operations_inventory:
   files:
     - id: team-structure
-      path: "L1-strategy/team-structure.yaml"
+      path: "strategy/team-structure.yaml"
       sop_type: "Estrutura Organizacional"
       sop_id: "SOP-OPS-TEAM"
 
     - id: pricing-strategy
-      path: "L1-strategy/pricing-strategy.yaml"
+      path: "strategy/pricing-strategy.yaml"
       sop_type: "Decisões de Pricing"
       sop_id: "SOP-OPS-PRICING"
 
     - id: kpi-scorecards
-      path: "L1-strategy/kpi-scorecards.yaml"
+      path: "strategy/kpi-scorecards.yaml"
       sop_type: "Gestão de KPIs"
       sop_id: "SOP-OPS-KPI"
 
     - id: commission-design
-      path: "L1-strategy/commission-design.yaml"
+      path: "strategy/commission-design.yaml"
       sop_type: "Cálculo de Comissões"
       sop_id: "SOP-OPS-COMMISSION"
 ```
@@ -86,15 +82,15 @@ Para cada arquivo marcado como "process":
 generation:
   for_each: operations_inventory[status=process]
   steps:
-    - read_source: "Ler YAML completo do workspace"
+    - read_source: "Ler YAML completo de docs/project"
     - extract_fields: "Extrair campos preenchidos (ignorar FILL_THIS/null)"
     - route_to_creator: "@sop-creator *create-sop-human"
     - input_context:
         source_yaml: "{arquivo lido}"
         sop_type: "{tipo do SOP}"
         sop_id: "{ID do SOP}"
-        business_context: "{dados do workspace-context carregado}"
-    - output_path: "workspace/businesses/{slug}/sops/{sop_id}.md"
+        business_context: "{dados do project context carregado}"
+    - output_path: "docs/sops/{sop_id}.md"
 ```
 
 **Mapeamento Source → SOP:**
@@ -133,7 +129,7 @@ quality_gate:
     - sop_has_steps: "Passos numerados e acionáveis"
     - sop_has_owner: "Responsável definido"
     - sop_has_source: "Referência ao YAML fonte"
-    - sop_no_business_in_squad: "SOP está em workspace/, não em squads/"
+    - sop_no_business_in_squad: "SOP está em docs/, não em squads/"
   verdict: "PASS se 5/6 checks ok, FAIL se < 5"
 ```
 
@@ -143,7 +139,7 @@ Gerar relatório consolidado:
 
 ```yaml
 output:
-  path: "workspace/businesses/{slug}/sops/SOP-OPS-SUITE-REPORT.md"
+  path: "docs/sops/SOP-OPS-SUITE-REPORT.md"
   content: |
     # Operations SOP Suite: {business_name}
     **Gerado em:** {date}
@@ -156,14 +152,13 @@ output:
     | SOP-OPS-PRICING | Decisões de Pricing | pricing-strategy.yaml | SKIP (completude < 30%) | - |
 
     ## Próximos Passos
-    - SOPs com status SKIP: completar YAML fonte via C-Level `*elicit-operations {slug}`
     - SOPs gerados: auditar via `*audit-sop {path}`
 ```
 
 ## Validação da Task
 
-- [ ] Ambiente resolvido (full_workspace_mode)
-- [ ] Workspace context carregado
+- [ ] Ambiente resolvido (none_mode)
+- [ ] project context carregado
 - [ ] Readiness validado via COO
 - [ ] Inventário de operations completo
 - [ ] SOPs gerados para YAMLs com completude >= 30%

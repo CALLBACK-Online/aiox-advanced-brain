@@ -11,7 +11,7 @@ type: atom
 description: "Weighted multi-dimension quantitative scoring using dimension pack"
 ```
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

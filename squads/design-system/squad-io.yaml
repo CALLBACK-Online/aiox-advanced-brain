@@ -22,7 +22,7 @@ inputs:
 
   - id: brandbook-config
     description: "Spoke-level brandbook configuration (colors, typography, spacing)"
-    source: "workspace/{spoke}/brandbook/"
+    source: "docs/brandbook/"
     format: yaml
     required: false
 

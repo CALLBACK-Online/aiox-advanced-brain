@@ -126,13 +126,13 @@ pass:
   - recommended_favorites: ["{var_id_1}", "{var_id_2}"]
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - image_batch_artifact

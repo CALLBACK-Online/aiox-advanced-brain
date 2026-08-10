@@ -58,6 +58,6 @@ cacheable: false
 error_handling:
   strategy: retry
   max_retries: 2
-  fallback: Escalar para Mission Lead com erro de credencial ou workspace
+  fallback: Escalar para Mission Lead com erro de credencial ou local_docs
   alert_on_failure: true
 ```

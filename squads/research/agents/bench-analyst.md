@@ -93,7 +93,7 @@ core_principles:
   - "NO INVENTION: If data cannot be verified, report 'unverified' — never estimate or fabricate"
 
 output_contract:
-  description: "SINKRA canonical emission contract — added 2026-05-11 as part of bench-dash quick-fix"
+  description: "AIOX canonical emission contract — added 2026-05-11 as part of bench-dash quick-fix"
   primary_artifact: "docs/bench/{slug}/bench-output-dash.json"
   schema: "squads/research/data/bench-output-dash.schema.json"
   template: "squads/research/templates/bench-output-dash-tmpl.json"

@@ -26,7 +26,7 @@ Generate production-ready React TypeScript component from design tokens. Include
 - Reference: Read data/fluent2-design-principles.md for Fluent 2 component patterns
 - Reference: Read data/ds-reference-architectures.md for cross-system component patterns
 - **Variant Taxonomy (mandatory before scaffolding variants):** Read `data/component-variants-taxonomy.yaml`.
-  - Defines canonical Sinkra variants per component (Button, Input, Card, Dialog)
+  - Defines canonical AIOX variants per component (Button, Input, Card, Dialog)
   - Defines canonical sizes (sm/md/lg/icon for Button)
   - Defines required states (default/hover/focus-visible/active/disabled/loading)
   - Provides decision trees for which variant fits which use case
@@ -44,12 +44,12 @@ This task uses interactive elicitation to configure component.
    - Confirm token availability for this component
 
 2. **Configure Component Features**
-   - Variants needed — use **canonical Sinkra variants** from `data/component-variants-taxonomy.yaml`
+   - Variants needed — use **canonical AIOX variants** from `data/component-variants-taxonomy.yaml`
      - Button: primary | secondary | outline | ghost | destructive | link
      - Input: outline | filled | underlined
      - Card: elevated | outlined | subtle
      - Dialog: modal | alert
-   - Sizes needed — use **canonical Sinkra sizes** from same taxonomy
+   - Sizes needed — use **canonical AIOX sizes** from same taxonomy
      - Button: sm | md (default) | lg | icon
      - Input: sm | md (default) | lg
      - Dialog: sm | md (default) | lg | xl | full
@@ -377,13 +377,13 @@ Output includes additional features:
 ## Process Guards
 - **On Fail:** Stop execution, capture evidence, and return remediation steps before proceeding.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_build_component_artifact

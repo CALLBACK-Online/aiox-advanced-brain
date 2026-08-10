@@ -22,14 +22,14 @@ Checklist:
   - Reportar melhorias destrutivas para aprovacao humana
 ---
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Strategic
   pre_condition: "dados do ecossistema coletados e evidências mínimas carregadas antes da análise."
   performance: "registrar métricas, evidências e escalonamento sem falha silenciosa; bloquear publicação sem threshold mínimo."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 # Task: Self-Improvement (Meta-Análise)
 # ID: KZ-TP-006

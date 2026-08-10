@@ -1,10 +1,10 @@
 # Ingest Prior Deck
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Tactical -->
+<!-- AIOX Domain: Tactical -->
 
-## SINKRA Task Anatomy (8 sections — STORY-SWI-4)
+## AIOX Task Anatomy (8 sections — STORY-SWI-4)
 
 ```yaml
 task: ingestPriorDeck

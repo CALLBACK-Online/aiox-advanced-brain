@@ -110,6 +110,6 @@ If the rename MUST happen and concurrent writers can't be stopped:
 ## References
 
 - Session precedent: Redpine session 2026-04-19 — `(brandbook)` → `(app)` rename cycle
-- Related rule: `canonical-artifact-names.md` (CANP — CLI-enforced rename for workspace docs)
-- Related rule: `artifact-rename.md` (`npm run sinkra:rename-artifact` for multi-file artifact refs)
+- Related rule: `canonical-artifact-names.md` (CANP — CLI-enforced rename for local_docs docs)
+- Related rule: `artifact-rename.md` (`npm run aiox:rename-artifact` for multi-file artifact refs)
 - Heuristic: "If something keeps coming back, there's a writer you haven't accounted for."

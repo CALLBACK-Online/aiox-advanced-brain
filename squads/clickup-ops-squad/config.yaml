@@ -3,20 +3,20 @@ pack:
   version: "2.2.0"
   description: >-
     Squad responsável por materializar processos e Missions mapeados pelo
-    sinkra-squad no ClickUp. Consome composições SINKRA e cria Spaces, Folders,
-    Lists, Custom Fields, Automations, Views e Tasks. Pipeline: sinkra-squad
+    aiox-squad no ClickUp. Consome composições AIOX e cria Spaces, Folders,
+    Lists, Custom Fields, Automations, Views e Tasks. Pipeline: aiox-squad
     (mapeia) → CSO (valida) → clickup-ops-squad (materializa).
   icon: "📋"
 
 meta:
   name: clickup-ops-squad
-  display_name: ClickUp Operations — SINKRA Materializer
+  display_name: ClickUp Operations — AIOX Materializer
   version: 2.2.0
   domain: clickup-materialization
   status: active
   created: '2026-03-27'
 
-workspace_integration_level: none
+local project docs_level: none
 
 ide_sync:
   enabled: false
@@ -29,26 +29,26 @@ agents:
 - id: clickup-chief
   title: ClickUp Operations Orchestrator
   tier: 0
-  methodology: SINKRA
+  methodology: AIOX
   specialty: Mission materialization orchestration in ClickUp
   description: "Coordena materialização end-to-end, valida inputs, roteia para especialistas"
   executor_profile:
     story_role: "executor"
     can_execute: true
-    sinkra_type: Agent
+    executor_type: Agent
     human_in_the_loop: false
     output_schema: data/materialization-report-schema.yaml
-    work_contexts: [ClickUp, materialização, SINKRA, orquestração, estrutura, processos, validação]
-    can_review: [ClickUp, materialização, estrutura, SINKRA]
+    work_contexts: [ClickUp, materialização, AIOX, orquestração, estrutura, processos, validação]
+    can_review: [ClickUp, materialização, estrutura, AIOX]
 
 - id: materializer
   title: Structure Materializer
   tier: 1
-  methodology: SINKRA
+  methodology: AIOX
   specialty: ClickUp structure creation via API
   description: "Executa criação de Spaces, Folders, Lists, Custom Fields via API"
   executor_profile:
-    sinkra_type: Agent
+    executor_type: Agent
     human_in_the_loop: false
     story_role: executor
     can_execute: true
@@ -59,11 +59,11 @@ agents:
 - id: api-builder
   title: API Gap Filler
   tier: 1
-  methodology: SINKRA
+  methodology: AIOX
   specialty: ClickUp API function implementation
   description: "Implementa funções faltantes em services/clickup/ (createTask, createFolder, etc.)"
   executor_profile:
-    sinkra_type: Agent
+    executor_type: Agent
     human_in_the_loop: false
     story_role: executor
     can_execute: true
@@ -74,11 +74,11 @@ agents:
 - id: playwright-ops
   title: Playwright Automation Specialist
   tier: 1
-  methodology: SINKRA
+  methodology: AIOX
   specialty: UI-only ClickUp features via Playwright
   description: "Executa ações UI-only via MCP Playwright (automações, dashboards, forms)"
   executor_profile:
-    sinkra_type: Agent
+    executor_type: Agent
     human_in_the_loop: false
     story_role: executor
     can_execute: true
@@ -89,49 +89,49 @@ agents:
 - id: auditor
   title: ClickUp Structure Auditor
   tier: 2
-  methodology: SINKRA
+  methodology: AIOX
   specialty: ClickUp structure coherence validation
-  description: "Valida que estrutura ClickUp está coerente com tokenização SINKRA"
+  description: "Valida que estrutura ClickUp está coerente com tokenização AIOX"
   executor_profile:
-    sinkra_type: Agent
+    executor_type: Agent
     human_in_the_loop: false
     story_role: executor
     can_execute: true
     core_replaces: "@analyst"
-    work_contexts: [auditoria, validação, ClickUp, SINKRA, coerência, tokenização, compliance]
-    can_review: [auditoria, ClickUp, SINKRA, coerência]
+    work_contexts: [auditoria, validação, ClickUp, AIOX, coerência, tokenização, compliance]
+    can_review: [auditoria, ClickUp, AIOX, coerência]
 
 # Additional executor roles (non-agent)
 - id: mission-lead
   title: Mission Lead
-  methodology: SINKRA
+  methodology: AIOX
   specialty: Go/no-go, accountability and exception handling
   executor_profile:
     story_role: "executor"
     can_execute: true
-    sinkra_type: Human
+    executor_type: Human
     human_in_the_loop: true
     output_schema: data/approval-decision-schema.yaml
 
 - id: clickup-runner
   title: ClickUp Automation Runner
-  methodology: SINKRA
+  methodology: AIOX
   specialty: Deterministic API and automation execution
   executor_profile:
     story_role: "executor"
     can_execute: true
-    sinkra_type: Worker
+    executor_type: Worker
     human_in_the_loop: false
     output_schema: data/execution-log-schema.yaml
 
 - id: mission-quality-clone
   title: Mission Quality Clone
-  methodology: SINKRA
+  methodology: AIOX
   specialty: Preflight coherence and readiness review
   executor_profile:
     story_role: "executor"
     can_execute: true
-    sinkra_type: Clone
+    executor_type: Clone
     human_in_the_loop: true
     output_schema: data/preflight-review-schema.yaml
 
@@ -139,7 +139,7 @@ agents:
 # CAPABILITIES
 # ═══════════════════════════════════════════════════════════════════
 capabilities:
-- Receive mission-clickup-handoff.yaml from sinkra-squad
+- Receive mission-clickup-handoff.yaml from aiox-squad
 - Create ClickUp Space/Folder/Lists structure
 - Configure DAG View, Board, Dashboard views
 - materialize_full_process
@@ -184,7 +184,7 @@ tasks:
 
   - id: create-mission
     agent: clickup-chief
-    description: "Materializar Mission SINKRA específica (DAG → ClickUp Tasks + Dependencies + Gates)"
+    description: "Materializar Mission AIOX específica (DAG → ClickUp Tasks + Dependencies + Gates)"
     command: "*create-mission {handoff-path}"
     task_file: "tasks/create-mission.md"
     recipe: 5
@@ -192,7 +192,7 @@ tasks:
 
   - id: materialize-process
     agent: clickup-chief
-    description: "Orquestra materialização completa de processo SINKRA"
+    description: "Orquestra materialização completa de processo AIOX"
     task_file: "tasks/materialize-process.md"
 
   - id: fill-api-gaps
@@ -211,7 +211,7 @@ tasks:
 
   - id: audit-structure
     agent: auditor
-    description: "Valida coerência ClickUp ↔ SINKRA tokenization"
+    description: "Valida coerência ClickUp ↔ AIOX tokenization"
 
   - id: update-registry
     agent: materializer
@@ -252,11 +252,11 @@ artifact_contracts:
 # ═══════════════════════════════════════════════════════════════════
 dependencies:
   consumes:
-    - squads/sinkra-squad/data/clickup-tokenization.yaml
-    - squads/sinkra-squad/data/clickup-composition-rules.yaml
-    - squads/sinkra-squad/data/infrastructure-map.yaml
-    - squads/sinkra-squad/data/composition-rules.yaml
-    - squads/sinkra-squad/templates/mission-clickup-handoff-tmpl.yaml
+    - squads/aiox-squad/data/clickup-tokenization.yaml
+    - squads/aiox-squad/data/clickup-composition-rules.yaml
+    - squads/aiox-squad/data/infrastructure-map.yaml
+    - squads/aiox-squad/data/composition-rules.yaml
+    - squads/aiox-squad/templates/mission-clickup-handoff-tmpl.yaml
     - squads/clickup-ops-squad/data/mission-clickup-spec.yaml
   produces:
     - "ClickUp Spaces, Folders, Lists, Custom Fields, Views, Automations"
@@ -267,7 +267,7 @@ dependencies:
   playwright_mcp: "playwright (browser automation para UI-only features)"
 
 upstream:
-- squad: sinkra-squad
+- squad: aiox-squad
   mode: mission
   handoff_artifact: mission-clickup-handoff.yaml
   trigger: Phase 7 completion (mode=mission)
@@ -294,7 +294,7 @@ workflows:
     type: main
     description: "Pipeline completo de materialização"
     steps:
-      - validate_sinkra_composition
+      - validate_aiox_composition
       - check_api_readiness
       - create_structure
       - create_automations_playwright
@@ -303,7 +303,7 @@ workflows:
 
   - id: mission-materialization-pipeline
     type: mission
-    description: "Pipeline de materialização de Mission SINKRA (Receita 5)"
+    description: "Pipeline de materialização de Mission AIOX (Receita 5)"
     steps:
       - validate_mission_handoff
       - resolve_or_create_space_missions
@@ -338,39 +338,29 @@ logging:
   audit_trail: data/journey-log-policy.yaml
 
 # ═══════════════════════════════════════════════════════════════════
-# WORKSPACE INTEGRATION
-# ═══════════════════════════════════════════════════════════════════
-workspace_integration:
-  documents_owned: []
-  documents_consumed:
-    - "clickup-tokenization.yaml"
-    - "clickup-composition-rules.yaml"
-    - "infrastructure-map.yaml"
-
-# ═══════════════════════════════════════════════════════════════════
-# IO CONTRACT
+# local project docs
 # ═══════════════════════════════════════════════════════════════════
 io_contract:
   inputs:
     - id: process-artifacts
-      from: sinkra-squad
+      from: aiox-squad
       zone: source_of_truth
-      path_pattern: "workspace/{spoke}/L2-tactical/sinkra-processes/{processo}/"
-      never_reads_from: "squads/sinkra-squad/output/"
+      path_pattern: "docs/tactical/aiox-processes/{processo}/"
+      never_reads_from: "squads/aiox-squad/output/"
       description: "Artefatos de processo promovidos e aprovados — única fonte para materialização"
       required_state: POPULATED
 
     - id: mission-handoff
-      from: sinkra-squad
-      path: "squads/sinkra-squad/templates/mission-clickup-handoff-tmpl.yaml"
+      from: aiox-squad
+      path: "squads/aiox-squad/templates/mission-clickup-handoff-tmpl.yaml"
       description: "Template de handoff Mission → ClickUp"
 
     - id: framework-data
-      from: sinkra-squad
+      from: aiox-squad
       paths:
-        - "squads/sinkra-squad/data/clickup-tokenization.yaml"
-        - "squads/sinkra-squad/data/clickup-composition-rules.yaml"
-        - "squads/sinkra-squad/data/infrastructure-map.yaml"
+        - "squads/aiox-squad/data/clickup-tokenization.yaml"
+        - "squads/aiox-squad/data/clickup-composition-rules.yaml"
+        - "squads/aiox-squad/data/infrastructure-map.yaml"
 
   outputs:
     - id: clickup-materialization
@@ -379,7 +369,7 @@ io_contract:
       description: "Estruturas criadas no ClickUp — Spaces, Folders, Lists, Fields, Views"
 
     - id: tokenization-update
-      path: "squads/sinkra-squad/data/clickup-tokenization.yaml"
+      path: "squads/aiox-squad/data/clickup-tokenization.yaml"
       description: "Atualização do registry com IDs do ClickUp criados"
 
     - id: materialization-report
@@ -389,10 +379,10 @@ io_contract:
 
   governance:
     rule: "NUNCA materializar a partir de artefatos efêmeros (Zone 1). Sempre exigir promoção para Zone 2 antes."
-    escalation: "Se artefato não está em workspace/{spoke}/, escalar para sinkra-chief para promover primeiro."
+    escalation: "Se artefato não está em docs/, escalar para aiox-chief para promover primeiro."
 
 # ═══════════════════════════════════════════════════════════════════
-# SINKRA METADATA
+# AIOX METADATA
 # ═══════════════════════════════════════════════════════════════════
 supported_domains:
 - Strategic

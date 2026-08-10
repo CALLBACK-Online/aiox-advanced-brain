@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 /**
- * discover-context.cjs — Workspace discovery for copy squad
+ * discover-context.cjs — LocalDocs discovery for copy squad
  *
- * Lists available businesses, products, and campaigns from workspace.
+ * Lists available businesses, products, and campaigns from local_docs.
  * Used by set-active-context.cjs as fallback when args are omitted.
  *
  * Usage:
@@ -17,7 +17,7 @@ const path = require('path');
 
 const runtimePaths = require('./runtime-paths.cjs');
 
-const BUSINESSES_ROOT = path.join(runtimePaths.WORKSPACE_ROOT, 'workspace', 'businesses');
+const BUSINESSES_ROOT = path.join(runtimePaths.PROJECT_ROOT, 'docs', 'project');
 
 function listDirs(dirPath) {
   if (!fs.existsSync(dirPath)) return [];
@@ -41,8 +41,8 @@ function discoverProducts(business) {
 }
 
 function discoverCampaigns(business) {
-  // ADR-012: campanhas vivem em L4-operational/campaigns/
-  const campaignsDir = path.join(BUSINESSES_ROOT, business, 'L4-operational', 'campaigns');
+  // ADR-012: campanhas vivem em operational/campaigns/
+  const campaignsDir = path.join(BUSINESSES_ROOT, business, 'operational', 'campaigns');
   return listDirs(campaignsDir);
 }
 
@@ -68,8 +68,8 @@ function assessProductReadiness(business, product) {
 function assessBusinessReadiness(business) {
   const base = path.join(BUSINESSES_ROOT, business);
   const sharedFiles = [
-    { id: 'icp', path: 'L1-strategy/icp.yaml' },
-    { id: 'brandbook', path: 'L2-tactical/brand/brandbook.yaml' },
+    { id: 'icp', path: 'strategy/icp.yaml' },
+    { id: 'brandbook', path: 'tactical/brand/brandbook.yaml' },
   ];
 
   const found = sharedFiles.filter(f => fileExists(path.join(base, f.path)));
@@ -100,7 +100,7 @@ function discover(args) {
       result.auto_select = { business: businesses[0] };
       result.hint = `Único business encontrado. Use: --business=${businesses[0]}`;
     } else if (businesses.length === 0) {
-      result.hint = 'Nenhum business encontrado em workspace/businesses/. Execute *bootstrap primeiro.';
+      result.hint = 'Nenhum business encontrado em docs/. Execute *bootstrap primeiro.';
     } else {
       result.hint = `${businesses.length} businesses disponíveis. Especifique --business=<slug>.`;
     }
@@ -121,7 +121,7 @@ function discover(args) {
       result.auto_select = { business: args.business, product: products[0] };
       result.hint = `Único produto encontrado. Use: --product=${products[0]}`;
     } else if (products.length === 0) {
-      result.hint = 'Nenhum produto encontrado. Verifique workspace/businesses/{business}/L3-product/.';
+      result.hint = 'Nenhum produto encontrado. Verifique docs/execution/.';
     } else {
       result.hint = `${products.length} produtos disponíveis. Especifique --product=<slug>.`;
     }

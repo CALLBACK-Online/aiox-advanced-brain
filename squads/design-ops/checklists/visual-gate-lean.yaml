@@ -329,4 +329,4 @@ reference:
   legacy: "apps/{target}/legacy-static/"
   new: "apps/{target}/src/"
   workflow: "squads/design-ops/workflows/ds-static-to-dynamic-migration.yaml"
-  sinkra_map: ".aiox/squad-runtime/sinkra-squad/migracao-ds-estatico-para-dinamico-tokenizado/"
+  aiox_map: ".aiox/squad-runtime/aiox-squad/migracao-ds-estatico-para-dinamico-tokenizado/"

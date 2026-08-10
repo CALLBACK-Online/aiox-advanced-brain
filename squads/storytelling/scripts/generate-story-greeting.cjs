@@ -112,7 +112,7 @@ function generateGreeting() {
         '',
         `- Inicialize com: \`${DEFAULT_SESSION_COMMAND}\``,
         '- Depois rode `*show-context` para conferir o readiness do COO e as fontes canônicas.',
-        `- Runtime path: \`${runtimePaths.toWorkspaceRelative(sessionPath)}\``,
+        `- Runtime path: \`${runtimePaths.toProjectRelative(sessionPath)}\``,
         contextError ? `- Observação: \`${contextError}\`` : null,
       ]
         .filter(Boolean)

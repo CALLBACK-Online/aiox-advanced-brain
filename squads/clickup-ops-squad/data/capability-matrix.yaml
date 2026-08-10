@@ -2,7 +2,7 @@ _meta:
   description: "Operation → tool map (REST API or Playwright). Source of truth for the unified /clickup dispatcher routing."
   priority: "api > api+playwright > playwright"
   api_base: "services/clickup/"
-  playwright_base: ".claude/skills/clickup-playwright/skills/"
+  playwright_base: "skills/clickup-playwright/skills/"
   version: "2.0.0"
   updated_at: "2026-03-30"
   notes: "v2.0: Converted from JSON, fixed api_base path, added Mission/rendering/lifecycle ops, hybrid_flows, governance_refs."
@@ -256,7 +256,7 @@ operations:
     skill: cu-docs
     reason: "Edição rica (tabelas, embeds, formatting avançado) requer UI"
 
-  # ── Workspace ─────────────────────────────────────────────────────────────────
+  # ── LocalDocs ─────────────────────────────────────────────────────────────────
   workspace.discover:
     tool: api
     module: sprints.js
@@ -516,10 +516,10 @@ operations:
     skill: cu-settings-people
     reason: "Gerenciamento de users/roles requer UI"
 
-  settings.workspace:
+  settings.local_docs:
     tool: playwright
-    skill: cu-settings-workspace
-    reason: "Configuração de workspace requer UI"
+    skill: cu-settings-local_docs
+    reason: "Configuração de local_docs requer UI"
 
   settings.security:
     tool: playwright

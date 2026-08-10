@@ -2,7 +2,7 @@
 
 Applies when generating, modifying, or reviewing any visual artifact under `design-ops` or consuming squads.
 
-Absorbed from `agenmod/claw-design` (2026-04-18), reshaped to the SINKRA workspace-first contract and our layered stack.
+Absorbed from `agenmod/claw-design` (2026-04-18), reshaped to the AIOX local contract and our layered stack.
 
 ## The Fidelity Mandate
 
@@ -17,11 +17,11 @@ Pixel fidelity is the operating principle. A design system is not an aesthetic p
 
 - **NEVER** generate token values from memory. Read them from the canonical source every time.
 - Canonical sources (in priority order):
-  1. `workspace/businesses/{business}/L2-tactical/design/tokens.yaml`
-  2. `workspace/businesses/{business}/L2-tactical/design/foundations.yaml`
-  3. `@sinkra/tokens-base` (framework defaults)
-  4. `packages/tokens-base/tokens/` (source of truth for `@sinkra/tokens-base`)
-- **If the token does not exist in any source, STOP.** Do not invent. File a token request via `wf-brandbook-workspace-extraction` or ask the owner.
+  1. `docs/tactical/design/tokens.yaml`
+  2. `docs/tactical/design/foundations.yaml`
+  3. `@aiox/tokens-base` (framework defaults)
+  4. `packages/tokens-base/tokens/` (source of truth for `@aiox/tokens-base`)
+- **If the token does not exist in any source, STOP.** Do not invent. File a token request via `brownfield-complete` or ask the owner.
 
 ### R2 — Exact Values, Not Approximations
 
@@ -38,14 +38,14 @@ Pixel fidelity is the operating principle. A design system is not an aesthetic p
   2. `squads/design-ops/data/ds-core-catalog.yaml`
   3. `outputs/design-ops/{business}/components/`
   4. `apps/aiox-design-starter/src/`
-  5. Existing similar artifacts in the current business's workspace
+  5. Existing similar artifacts in the current business's local_docs
 - If a near-match exists: **REUSE > ADAPT > CREATE** (IDS gate). Creating a new component with a new name, while a near-match exists elsewhere, is a contract violation, not a creative decision.
 
 ### R4 — Context-First Mandate
 
 - *"Starting a design without context always leads to bad design."* (claw-design)
 - An artifact without a materialized brief (`templates/design-brief-intake-tmpl.yaml`) is not started — it is assumed. Stop, materialize the brief, then start.
-- If the brief is materialized but `contracts.tokens_source` does not resolve to an existing file, STOP. Do not default to `@sinkra/tokens-base` silently — surface the missing business contract.
+- If the brief is materialized but `contracts.tokens_source` does not resolve to an existing file, STOP. Do not default to `@aiox/tokens-base` silently — surface the missing business contract.
 
 ### R5 — Visual Vocabulary Matching
 
@@ -71,7 +71,7 @@ Pixel fidelity is the operating principle. A design system is not an aesthetic p
 ### R8 — Freeze on Handoff
 
 - When an artifact enters `POPULATED` state, its referenced token values are effectively frozen for that artifact's lifetime.
-- Subsequent token updates in the workspace do NOT retroactively rewrite the artifact's inlined values (for self-contained kinds). Reconciliation is a deliberate act, not a silent drift.
+- Subsequent token updates in local docs do NOT retroactively rewrite the artifact's inlined values (for self-contained kinds). Reconciliation is a deliberate act, not a silent drift.
 - For bundler-backed kinds, CSS variable cascade handles updates automatically — no freeze.
 
 ## Anti-Patterns
@@ -88,7 +88,7 @@ Pixel fidelity is the operating principle. A design system is not an aesthetic p
 ### Current (Wave B.2.1, advisory)
 
 - Manual review by `@design-chief` at routing and at handoff.
-- `validate-workspace-contracts.cjs` ensures contracts resolve.
+- `validate-project context contracts.cjs` ensures contracts resolve.
 - `validate-brandbook-contrast.cjs` ensures contrast ratios from actual token values.
 - `validate-token-pipeline.cjs` prevents token drift between source and build output.
 
@@ -98,7 +98,7 @@ Pixel fidelity is the operating principle. A design system is not an aesthetic p
   - Hardcoded colors not in `tokens.yaml`
   - Spacing outside the token scale
   - Font families not in `foundations.yaml`
-  - Radii outside `@sinkra/tokens-base`
+  - Radii outside `@aiox/tokens-base`
 - Fidelity score emitted to `outputs/design-ops/{business}/manifest.yaml`.
 
 ## Related

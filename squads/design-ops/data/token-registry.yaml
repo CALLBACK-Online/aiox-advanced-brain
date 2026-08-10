@@ -1,14 +1,14 @@
 meta:
   version: "1.0.0"
   squad: design-ops
-  source_of_truth: workspace
-  source_path_template: workspace/businesses/{business}/L2-tactical/design/tokens.yaml
+  source_of_truth: docs
+  source_path_template: docs/tactical/design/tokens.yaml
 
 registry_policy:
   owner: design-ops
   approver: design-chief
   change_control: pull_request_required
-  canonical_rule: never_override_workspace_contracts
+  canonical_rule: never_override_project context contracts
   review_sla_hours: 24
 
 families:
@@ -28,7 +28,7 @@ families:
     description: Charts e mapas
 
 required_contract_links:
-  - workspace/businesses/{business}/L2-tactical/design/tokens.yaml
-  - workspace/businesses/{business}/L2-tactical/design/foundations.yaml
-  - workspace/businesses/{business}/L2-tactical/design/component-contracts.yaml
-  - workspace/businesses/{business}/L2-tactical/design/motion-primitives.yaml
+  - docs/tactical/design/tokens.yaml
+  - docs/tactical/design/foundations.yaml
+  - docs/tactical/design/component-contracts.yaml
+  - docs/tactical/design/motion-primitives.yaml

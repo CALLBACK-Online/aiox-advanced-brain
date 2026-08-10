@@ -1,0 +1,16 @@
+{
+  "$id": "aiox://slide-creator/wireframes/mechanism-map.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "The deck must explain how a system creates the promised result.",
+  "properties": {},
+  "title": "mechanism-map",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "mechanism_layered_system",
+    "slot_count": 0,
+    "warnings": null,
+    "wireframe_ref": "templates/wireframes/mechanism-map.html"
+  }
+}

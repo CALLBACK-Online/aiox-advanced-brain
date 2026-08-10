@@ -7,7 +7,7 @@
 **Mode:** Interactive (elicit: true)
 **Quality Standard:** Agent file passes lint, loads correctly, and executes test prompt
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: create-agent-definition
 atomic_layer: Atom

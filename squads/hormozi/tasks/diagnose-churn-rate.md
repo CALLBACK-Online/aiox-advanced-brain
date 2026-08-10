@@ -10,7 +10,7 @@ estimated_time: 30-45 min
 source: "$100M Retention Playbook - Formulas Fundamentais"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom

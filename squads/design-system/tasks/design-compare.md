@@ -25,13 +25,13 @@ Compares a design reference (screenshot, Figma export, or image) against impleme
 
 **Solution:** Semantic token extraction + comparison with tolerance thresholds.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: page-composer
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - design_compare_artifact

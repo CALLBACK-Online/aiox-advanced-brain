@@ -1,6 +1,6 @@
 # Task: Deep Research — Publish
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 

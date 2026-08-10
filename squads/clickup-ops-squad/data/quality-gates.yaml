@@ -51,7 +51,7 @@ quality_gates:
   - approval_artifact_completeness_pct >= 100
   - execution_decision_valid_pct >= 100
   - approval_sla_hours <= 24
-  escalation_path: Mission Lead -> sinkra-squad
+  escalation_path: Mission Lead -> aiox-squad
   veto_power: true
   mandamento_enforced:
   - 1
@@ -175,7 +175,7 @@ quality_gates:
   - execution_log_schema_completeness_pct >= 100
   - report_contract_completeness_pct >= 100
   - followup_actions_presence_pct >= 100 quando degraded_mode = true
-  escalation_path: Mission Lead -> sinkra-squad
+  escalation_path: Mission Lead -> aiox-squad
   veto_power: false
   mandamento_enforced:
   - 3
@@ -197,7 +197,7 @@ quality_gates:
   - coherence_score >= 6.0
   - overall_meta_axiomas_score >= 7.0
   - compliance_score >= 80
-  escalation_path: Mission Lead -> sinkra-chief
+  escalation_path: Mission Lead -> aiox-chief
   veto_power: true
   mandamento_enforced:
   - 5

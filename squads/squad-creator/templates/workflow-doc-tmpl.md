@@ -70,7 +70,7 @@ O workflow **{{workflow_name}}** {{workflow_description}}. Este workflow automat
 | Arquivo | Propósito |
 |---------|-----------|
 | `{{squad_path}}/workflows/{{workflow_file}}.yaml` | Definição YAML do workflow |
-| `.claude/skills/{{squad_name}}/{{workflow_file}}/SKILL.md` | Slash skill Claude Code |
+| `skills/{{squad_name}}/{{workflow_file}}/SKILL.md` | Slash skill Claude Code |
 
 ### Tasks Executadas pelo Workflow
 

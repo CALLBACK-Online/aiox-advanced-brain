@@ -23,9 +23,9 @@ outputs:
 
 elicit: false
 ---
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: extract-implicit-synthesize
   task_name: Synthesize Output Report and Clone Guardrails
   status: pending
@@ -57,11 +57,11 @@ sinkra_task_metadata:
   accountability_scope: review_only
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Operational
   atomic_layer: Atom
   executor: Agent
@@ -69,7 +69,7 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Task: Synthesize Output Report and Clone Guardrails

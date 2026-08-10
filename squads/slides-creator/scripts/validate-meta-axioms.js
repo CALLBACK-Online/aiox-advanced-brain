@@ -104,7 +104,7 @@ function scoreTruth(squadPath) {
 function scoreCompleteness(squadPath) {
   const signals = [];
 
-  // Signal 1: 100% tasks declare 8 SINKRA mandatory fields (flat block OR sectional ### N format)
+  // Signal 1: 100% tasks declare 8 AIOX mandatory fields (flat block OR sectional ### N format)
   const taskFiles = listTaskFiles(squadPath);
   let fullCompliance = 0;
   // Each entry: list of acceptable patterns (any match = field present)
@@ -203,7 +203,7 @@ function scoreCoherence(squadPath) {
   let domainMismatches = 0;
   for (const f of listTaskFiles(squadPath)) {
     const content = safeRead(f) || '';
-    const html = content.match(/<!--\s*SINKRA Domain:\s*(\w+)/);
+    const html = content.match(/<!--\s*AIOX Domain:\s*(\w+)/);
     const standalone = content.match(/^Domain:\s*(\w+)/m);
     if (html && standalone && html[1] !== standalone[1]) domainMismatches++;
   }

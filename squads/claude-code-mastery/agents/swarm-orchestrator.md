@@ -1069,4 +1069,4 @@ This agent synthesizes research and patterns from:
 
 ---
 ---
-*AIOX Agent - Sinkra AIOX Swarm Orchestrator v1.0*
+*AIOX Agent - AIOX AIOX Swarm Orchestrator v1.0*

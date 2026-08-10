@@ -1,6 +1,6 @@
 # Task: Bench Report — Publish
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 

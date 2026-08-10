@@ -4,10 +4,29 @@
 node_modules/
 __pycache__/
 *.pyc
+*.bak
 .synapse/
+*.agents/
+.agents/
+.aiox/
+.sync-tmp/
 *.local.yaml
 *.local.yml
 coverage/
 outputs/
 artifacts/
 .state/
+
+# Overrides locais opcionais — AGENTS.md e CLAUDE.md canônicos SÃO versionados
+AGENTS.local.md
+CLAUDE.local.md
+
+# Local library tooling — never publish
+scripts/
+docs/
+
+# IDE runtime projections (this repo is a distribution library, not a live project)
+.claude/
+.codex/
+.agents/
+.aiox/

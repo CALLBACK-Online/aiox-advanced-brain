@@ -3,13 +3,13 @@
 > Establish DesignOps KPIs and measurement systems using Dave Malouf's three-layer Metrics Stack framework.
 
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - designops_metrics_setup_artifact

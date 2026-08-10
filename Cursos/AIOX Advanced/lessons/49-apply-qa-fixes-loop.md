@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: apply-qa-fixes-loop
 lesson_position: 49
 title: 'Apply QA Fixes Loop: QA volta para Dev sem perder estado'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/49-apply-qa-fixes-loop/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

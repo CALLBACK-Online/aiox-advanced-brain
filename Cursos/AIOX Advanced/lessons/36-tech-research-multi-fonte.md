@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: tech-research-multi-fonte
 lesson_position: 36
 title: 'Tech Research: pesquisa profunda multi-fonte'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/36-tech-research-multi-fonte/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -32,6 +32,9 @@ curated_at: '2026-08-09'
 ← [[35-mesa-redonda-advisory-board|Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[37-spy-bench-comparativo|Spy/Bench: comparação profunda entre dois projetos]]
 
 ## Mapa desta aula
+
+> **Neste acervo:** skill `tech-research` (e `tech-search` para perguntas delimitadas). Pipeline completo e bench: squad `research`.
+
 
 Decisão-chave da aula — O resultado desta pesquisa vai sustentar uma decisão que import…
 

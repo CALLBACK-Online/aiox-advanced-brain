@@ -2,7 +2,7 @@
 /**
  * refresh-sop-registry.cjs
  *
- * Scans workspace/businesses/{name}/sops/{file}.yaml and docs/sops/{file}.md
+ * Scans docs/sops/{file}.yaml and docs/sops/{file}.md
  * to populate squads/aiox-sop/data/sop-registry.yaml deterministically.
  *
  * Usage:
@@ -19,7 +19,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..', '..', '..');
 const REGISTRY_PATH = path.join(ROOT, 'squads', 'aiox-sop', 'data', 'sop-registry.yaml');
-const BUSINESSES_DIR = path.join(ROOT, 'workspace', 'businesses');
+const BUSINESSES_DIR = path.join(ROOT, 'docs', 'project', 'businesses');
 const SHARED_SOPS_DIR = path.join(ROOT, 'docs', 'sops');
 
 // ---------------------------------------------------------------------------
@@ -116,7 +116,7 @@ function scanBusinessSops() {
       sops.push({
         sop_id: sopId,
         process: processName,
-        file: `workspace/businesses/${biz}/sops/${file}`,
+        file: `docs/${biz}/sops/${file}`,
         status: meta.status || 'draft',
         squad_consumer: null,
         automatable: false,
@@ -236,9 +236,9 @@ function generateRegistryYaml(businesses, sharedSops, stats, totalSops) {
   lines.push('#   Fluxo: SOPs (business) -> Tasks (squad) -> Agents (executores)');
   lines.push('#');
   lines.push('# PATHS CANONICOS:');
-  lines.push('#   SOPs machine-readable: workspace/businesses/{business}/sops/');
+  lines.push('#   SOPs machine-readable: docs/sops/');
   lines.push('#   SOPs humanos (markdown): docs/sops/');
-  lines.push('#   Template: workspace/_templates/sops/sop.yaml');
+  lines.push('#   Template: docs/templates/sops/sop.yaml');
   lines.push('# ============================================================================');
   lines.push('');
   lines.push('schema_version: "1.0.0"');

@@ -45,7 +45,7 @@ Layered on top of `squads/design-ops/rules/v0-frontend-quality.md` (section "Con
 
 ### 7. Check Whether a Utility Already Exists Before Adding a Dependency
 
-- A new npm dependency for a two-line helper is a code smell. Search `packages/` and `@sinkra/*` for existing helpers.
+- A new npm dependency for a two-line helper is a code smell. Search `packages/` and `@aiox/*` for existing helpers.
 - `cn()`, `useIsMobile()`, `asSlot`, `ThemeProvider` all exist in `@synkraai/ds-core` — do not re-implement.
 
 ## Anti-Patterns

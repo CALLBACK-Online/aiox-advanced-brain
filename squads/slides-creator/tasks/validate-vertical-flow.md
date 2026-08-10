@@ -1,8 +1,8 @@
 # Task: Validate Vertical Flow (final 2-min test)
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Operational -->
+<!-- AIOX Domain: Operational -->
 
 ## Metadata
 | Campo | Valor |
@@ -14,7 +14,7 @@
 | session | SESSION-QA (fresh instance — isolated from P02 run) |
 | duration | 3-10 min |
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml

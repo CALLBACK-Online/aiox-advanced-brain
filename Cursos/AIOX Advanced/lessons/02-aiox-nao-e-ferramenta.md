@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: aiox-nao-e-ferramenta
 lesson_position: 2
 title: AIOX não é ferramenta
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/02-aiox-nao-e-ferramenta/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

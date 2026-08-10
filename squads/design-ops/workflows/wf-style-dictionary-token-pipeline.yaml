@@ -2,14 +2,14 @@ workflow:
   id: dops-style-dictionary-token-pipeline
   name: Style Dictionary Token Pipeline
   description: |
-    Build and validate token artifacts from the workspace canonical contracts.
+    Build and validate token artifacts from the project docs canonical contracts.
 
     Source-of-truth chain:
-      1. workspace/businesses/{biz}/L2-tactical/design/tokens.yaml  (instance)
+      1. docs/tactical/design/tokens.yaml  (instance)
       2. squads/design-ops/templates/ds-tokens-defaults-tmpl.yaml   (defaults — used to bootstrap (1) when missing)
       3. squads/design-ops/templates/ds-tokens-schema-tmpl.yaml      (contract — shape validation)
 
-    Generates outputs in workspace/businesses/{biz}/L2-tactical/design/build/:
+    Generates outputs in docs/tactical/design/build/:
       tokens.json (DTCG), tokens.css, globals.css (Tailwind v4), tokens.scss, tokens.ts
   version: 1.0.0
   type: sequential
@@ -26,7 +26,7 @@ workflow:
       phase: 1
       phase_name: Validar contratos canônicos
       agent: design-chief
-      action: node squads/design-ops/scripts/validate-workspace-contracts.cjs --business={business} --strict --format=json
+      action: node squads/design-ops/scripts/validate-project context contracts.cjs --business={business} --strict --format=json
       next: step-2-build-token-artifacts
     - step: step-2-build-token-artifacts
       id: step-2-build-token-artifacts
@@ -64,7 +64,7 @@ outputs:
 
 quality_gates:
   - id: DOPS-GATE-001
-    check: validate-workspace-contracts
+    check: validate-project context contracts
     blocking: true
   - id: DOPS-GATE-008
     check: validate-token-pipeline

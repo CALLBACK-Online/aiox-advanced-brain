@@ -36,15 +36,15 @@ brief:
   existing_references: []           # File paths, URLs, screenshots
 
 # =============================================================================
-# SECTION 3 — Contracts (WORKSPACE-FIRST)
+# SECTION 3 — Contracts (local)
 # =============================================================================
 contracts:
-  tokens_source: "workspace/businesses/{business}/L2-tactical/design/tokens.yaml"
-  foundations_source: "workspace/businesses/{business}/L2-tactical/design/foundations.yaml"
-  components_contract: "workspace/businesses/{business}/L2-tactical/design/component-contracts.yaml"
-  motion_primitives: "workspace/businesses/{business}/L2-tactical/design/motion-primitives.yaml"
-  ds_core: "@sinkra/ds-core"
-  tokens_base: "@sinkra/tokens-base"
+  tokens_source: "docs/tactical/design/tokens.yaml"
+  foundations_source: "docs/tactical/design/foundations.yaml"
+  components_contract: "docs/tactical/design/component-contracts.yaml"
+  motion_primitives: "docs/tactical/design/motion-primitives.yaml"
+  ds_core: "@aiox/ds-core"
+  tokens_base: "@aiox/tokens-base"
 
 # =============================================================================
 # SECTION 4 — Audience & Context of Use

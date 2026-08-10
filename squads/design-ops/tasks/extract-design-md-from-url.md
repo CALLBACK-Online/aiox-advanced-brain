@@ -10,7 +10,7 @@
 
 Extract a Google-spec `DESIGN.md` from any public URL using static HTML/CSS analysis plus a provider-agnostic LLM step. This task produces the evidence contract consumed by downstream UI generation, drift checks, design-gallery materialization, and Tailwind/gold-standard transformation workflows.
 
-The `.claude/skills/design-md/run.cjs` file is only a launcher. It delegates to the canonical runner in `squads/design-ops/scripts/extract-from-url/run.cjs` so `/design-md` cannot drift from `design-ops`.
+The `skills/design-md/run.cjs` file is only a launcher. It delegates to the canonical runner in `squads/design-ops/scripts/extract-from-url/run.cjs` so `/design-md` cannot drift from `design-ops`.
 
 ## Inputs
 
@@ -118,7 +118,7 @@ After the standard pipeline emits, the runtime appends two sidecars and exposes 
   ```yaml
   register: brand   # OR product
   register_confidence: 0.82
-  register_authority: inferred   # OR workspace_policy
+  register_authority: inferred   # OR project_policy
   ```
 
 ## Downstream Contract
@@ -195,13 +195,13 @@ node squads/design-ops/scripts/extract-from-url/run.cjs --url https://www.anthro
 Equivalent slash-skill launcher:
 
 ```bash
-node .claude/skills/design-md/run.cjs --url https://www.anthropic.com/
+node skills/design-md/run.cjs --url https://www.anthropic.com/
 ```
 
 Drift mode:
 
 ```bash
-node .claude/skills/design-md/run.cjs \
+node skills/design-md/run.cjs \
   --url https://brand.aioxsquad.ai/brandbook/guidelines \
   --compare apps/aiox-brandbook/DESIGN.md
 ```
@@ -226,7 +226,7 @@ node squads/design-ops/scripts/extract-from-url/scripts/backfill-quality-score.c
 ## Anti-Patterns
 
 - Do not add Playwright, Puppeteer, Hyperbrowser, or screenshot diffing to this extractor. Visual validation is downstream.
-- Do not maintain duplicate extractor logic under `.claude/skills/design-md/`.
+- Do not maintain duplicate extractor logic under `skills/design-md/`.
 - Do not fabricate fallback tokens. Emit extraction gaps when evidence is missing.
-- Do not write canonical business data to `workspace/` from this task.
+- Do not write canonical business data to `docs/` (substituto local; outputs/ é private enterprise distribution) from this task.
 - Do not bypass the content gate unless the operator explicitly passes `--no-content-gate`.

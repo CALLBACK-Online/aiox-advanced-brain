@@ -1,4 +1,4 @@
-# Design System Generation Context — @synkraai/ds-core + @sinkra/tokens-base
+# Design System Generation Context — @synkraai/ds-core + @aiox/tokens-base
 # This rule bridges the Design System Squad output to the code generation pipeline.
 # Without this file, Claude Code has ZERO awareness of our design system.
 # Applies to: any frontend/React/Next.js/dashboard code generation
@@ -8,10 +8,10 @@
 Before any code generation for a surface, read that surface's `DESIGN.md`:
 
 - **App UI:** `apps/{name}/DESIGN.md`
-- **Business canonical:** `workspace/businesses/{biz}/L2-tactical/design/DESIGN.md`
-- **Campaign:** `workspace/businesses/{biz}/L4-operational/campaigns/{slug}/DESIGN.md`
+- **Business canonical:** `docs/tactical/design/DESIGN.md`
+- **Campaign:** `docs/operational/campaigns/{slug}/DESIGN.md`
 
-The DESIGN.md is the **single source of truth** for that surface's tokens. It carries the YAML front matter (colors, typography, spacing, rounded, components) plus the `## Implementation` section (stack, Tailwind config, shadcn `components.json`, token→utility mapping). The rule below (`@synkraai/ds-core` + `@sinkra/tokens-base`) only applies once DESIGN.md has been consulted — the DS is the parent SOT, `@sinkra/*` packages are the shared base that each app overrides.
+The DESIGN.md is the **single source of truth** for that surface's tokens. It carries the YAML front matter (colors, typography, spacing, rounded, components) plus the `## Implementation` section (stack, Tailwind config, shadcn `components.json`, token→utility mapping). The rule below (`@synkraai/ds-core` + `@aiox/tokens-base`) only applies once DESIGN.md has been consulted — the DS is the parent SOT, `@aiox/*` packages are the shared base that each app overrides.
 
 If no DESIGN.md exists at the target path:
 
@@ -23,9 +23,9 @@ Lint target: `npx @google/design.md lint DESIGN.md` → 0 errors.
 
 ## CRITICAL: Use @synkraai/ds-core, NOT raw shadcn/ui
 
-When generating frontend code for ANY Sinkra Hub business (aiox, allfluence, academia-lendaria, bilhon):
+When generating frontend code for ANY AIOX platform business (aiox, allfluence, academia-lendaria, bilhon):
 - Import from `@synkraai/ds-core`, NEVER from individual shadcn packages
-- Use `@sinkra/tokens-base` values, NEVER hardcoded colors/spacing
+- Use `@aiox/tokens-base` values, NEVER hardcoded colors/spacing
 - Each business overrides tokens with branding — the base is neutral
 
 ## Available Components (@synkraai/ds-core)
@@ -87,7 +87,7 @@ import { Button } from "@/components/ui/button"  // NO
 import { Card } from "shadcn/ui"                  // NO
 ```
 
-## Design Tokens (@sinkra/tokens-base)
+## Design Tokens (@aiox/tokens-base)
 
 ### Colors (Semantic)
 - `success: #22C55E` | `warning: #F59E0B` | `error: #EF4444` | `info: #3B82F6`
@@ -134,7 +134,7 @@ import { Card } from "shadcn/ui"                  // NO
 
 Each business extends tokens-base with their own colors:
 ```tsx
-// workspace/businesses/{slug}/L2-tactical/brand/tokens.css
+// docs/tactical/brand/tokens.css
 :root {
   --primary: /* business brand color */;
   --accent: /* business accent */;

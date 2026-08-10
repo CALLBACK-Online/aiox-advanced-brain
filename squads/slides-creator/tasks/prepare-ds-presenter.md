@@ -1,10 +1,10 @@
 # Prepare ds Presenter
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Operational -->
+<!-- AIOX Domain: Operational -->
 
-## SINKRA Task Anatomy (8 sections — migrated 2026-04-20 Wave 2)
+## AIOX Task Anatomy (8 sections — migrated 2026-04-20 Wave 2)
 
 ```yaml
 task: prepareDsPresenter
@@ -31,7 +31,7 @@ Performance:
 Error_handling:
   strategy: record_blocked_status_continue_pipeline
   on_runtime_missing: emit_blocked_runtime_missing_status
-  blocker_reason: "{consumer_app} absent — handoff_only mode per config.yaml#workspace_integration"
+  blocker_reason: "{consumer_app} absent — handoff_only mode per config.yaml#local project docs"
   no_pipeline_halt: true
 ```
 
@@ -46,7 +46,7 @@ input:
   - deck_manifest: "deck-manifest.json"
   - template_refs: "template-selection-summary.md or equivalent registry bindings"
   - asset_refs: "asset-resolution.json with resolved or degraded visual assets"
-  - brand_context: "workspace tokens or deck-level CSS variable map"
+  - brand_context: "project tokens or deck-level CSS variable map"
   - presenter_reference: "ds slides route + preview/fullscreen runtime"
 output:
   - asset_resolution: "asset-resolution.json"

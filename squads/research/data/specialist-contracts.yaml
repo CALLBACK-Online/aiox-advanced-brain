@@ -1,6 +1,6 @@
 # specialist-contracts.yaml
 # Formal cross-agent I/O contracts for the 5 research specialists.
-# Story: RA-C.1 | 2026-05-19 | SINKRA v3.2
+# Story: RA-C.1 | 2026-05-19 | AIOX v3.2
 #
 # Design decisions (see story Decision Log):
 #   D1: available_tools: [] — forward-compat ADR-001 Wave 2 populates with adapters when shipped

@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: install-context-stack
   task_name: Install Context Stack (Orchestrator Stub)
   status: pending
@@ -15,7 +15,7 @@ sinkra_task_metadata:
   action_items:
   - Executar os passos documentados no corpo da task
   acceptance_criteria:
-  - Eligibility gate passou (workspace_integration.level >= controlled_runtime_consumer)
+  - Eligibility gate passou (local project docs.level >= none)
   - Audit identificou scripts existentes vs faltantes
   - Domain mapping definiu session schema adaptado ao squad
   - 5 scripts gerados (ou existentes preservados) em `squads/{squad}/scripts/
@@ -25,11 +25,11 @@ sinkra_task_metadata:
   accountability_scope: review_only
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Operational
   atomic_layer: Atom
   executor: Agent
@@ -37,13 +37,13 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Task: Install Context Stack (Orchestrator Stub)
 
 **Task ID:** install-context-stack
-**Purpose:** Instalar o stack completo de scripts de contexto em squads com workspace_integration.level >= controlled_runtime_consumer
+**Purpose:** Instalar o stack completo de scripts de contexto em squads com local project docs.level >= none
 **Orchestrator:** @squad-chief
 **Mode:** Audit + Implementation
 **Pattern:** HO-TP-001 (Task Anatomy Standard)
@@ -138,7 +138,7 @@ OUTPUT: 5 scripts + agent atualizado + config atualizado + validation report
 
 | ID | Condition | Sub-Task |
 |----|-----------|----------|
-| VETO-CS-001 | Squad sem workspace_integration ou level < controlled_runtime_consumer | ics-audit |
+| VETO-CS-001 | Squad sem local project docs ou level < none | ics-audit |
 | VETO-CS-002 | Script existente sobrescrito sem backup | ics-generate-scripts |
 | VETO-CS-003 | Script gerado depende de estado da LLM | ics-generate-scripts |
 | VETO-CS-004 | Session context salvo fora de .aiox/squad-runtime/ | ics-generate-scripts |
@@ -152,7 +152,7 @@ OUTPUT: 5 scripts + agent atualizado + config atualizado + validation report
 install_context_stack:
   squad_name: "{squad_name}"
   mode: "audit|apply"
-  workspace_level: "{level do config.yaml}"
+  scope_level: "{level do config.yaml}"
   scripts_inventory:
     existing: []
     generated: []
@@ -176,7 +176,7 @@ install_context_stack:
 
 ## Acceptance Criteria
 
-- [ ] Eligibility gate passou (workspace_integration.level >= controlled_runtime_consumer)
+- [ ] Eligibility gate passou (local project docs.level >= none)
 - [ ] Audit identificou scripts existentes vs faltantes
 - [ ] Domain mapping definiu session schema adaptado ao squad
 - [ ] 5 scripts gerados (ou existentes preservados) em `squads/{squad}/scripts/`

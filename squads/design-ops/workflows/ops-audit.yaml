@@ -146,7 +146,7 @@ workflow:
         - Wave execution plan (parallel where possible)
         - Success criteria with baselines and targets from metrics stack
         - Dependency map between stories
-        Format follows existing epic pattern (see epic-workspace-sophistication as reference).
+        Format follows existing epic pattern (see epic-docs-sophistication as reference).
       inputs:
         three_lenses: "{{step-5-three-lenses.three_lenses_report}}"
         metrics_stack: "{{step-6-metrics-stack.metrics_stack}}"

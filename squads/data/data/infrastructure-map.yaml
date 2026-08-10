@@ -16,28 +16,7 @@ description: "Mapa de infraestrutura suportando os 13 tasks / 7 workflows da squ
 # SCRIPTS (automation entrypoints)
 # ─────────────────────────────────────────────────────────────────────────────
 
-scripts:
-  - id: SCRIPT-DATA-001
-    name: bootstrap-data-workspace.sh
-    path: "squads/data/scripts/bootstrap-data-workspace.sh"
-    purpose: "Bootstrap workspace analytics dirs + seed templates for a business"
-    triggered_by: "squad activation (workspace_integration.bootstrap.required=true)"
-    inputs:
-      - business_slug
-    outputs:
-      - workspace/businesses/{slug}/L1-strategy/analytics/ directory tree
-    status: active
-
-  - id: SCRIPT-DATA-002
-    name: validate-data-essentials.sh
-    path: "squads/data/scripts/validate-data-essentials.sh"
-    purpose: "Validate minimum required artifacts exist for data ops in a business"
-    triggered_by: "workspace_integration.essentials_validation.required=true"
-    inputs:
-      - business_slug
-    outputs:
-      - validation report (pass|fail with gaps)
-    status: active
+scripts: []
 
 # ─────────────────────────────────────────────────────────────────────────────
 # TEMPLATES (artifact infrastructure)
@@ -47,9 +26,9 @@ templates:
   location: "squads/data/templates/"
   total_count: 16
   namespace: analytics
-  canonical_outputs_root: "workspace/businesses/{slug}/L1-strategy/analytics/"
+  outputs_root: "docs/strategy/analytics/"
   custom_outputs_root: "outputs/data/{slug}/"
-  governance: "document-registry.yaml per business binds templates to workspace layer"
+  governance: "document-registry.yaml per project binds templates to the project layer"
   categories:
     - cohort-analysis (retention curves, cohort matrix)
     - clv (customer lifetime value models)
@@ -78,7 +57,7 @@ checklists:
 # ─────────────────────────────────────────────────────────────────────────────
 
 task_infrastructure:
-  load-workspace-context:
+  load-project context:
     scripts: [SCRIPT-DATA-001]
     templates: []
     external_services: []
@@ -141,22 +120,7 @@ task_infrastructure:
     gap: "no-ab-test-platform-integration"
 
 # ─────────────────────────────────────────────────────────────────────────────
-# WORKSPACE INTEGRATION (from config.yaml)
-# ─────────────────────────────────────────────────────────────────────────────
-
-workspace_integration:
-  level: workspace_first
-  read_paths:
-    - workspace/businesses/
-    - workspace/_templates/business-template/
-    - workspace/_templates/business-template-v3/
-  write_paths:
-    - workspace/businesses/{slug}/L1-strategy/analytics/
-    - outputs/data/{slug}/
-  governance_handoff: "squads/c-level"
-
-# ─────────────────────────────────────────────────────────────────────────────
-# GAPS (infra debt — priorizar roadmap)
+# local project docs (from config.yaml)
 # ─────────────────────────────────────────────────────────────────────────────
 
 gaps:

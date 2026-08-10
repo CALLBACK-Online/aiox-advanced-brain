@@ -14,9 +14,9 @@ pack:
   author: AIOX Team
   slashPrefix: squadCreator
 
-sinkra_native: true
-sinkra_native_certified_at: "2026-04-04"
-sinkra_native_score: 9.5
+aiox_native: true
+aiox_native_certified_at: "2026-04-04"
+aiox_native_score: 9.5
 
 tested: true
 updated_at: "2026-04-04"
@@ -55,14 +55,14 @@ distribution_contract:
       description: "O squad gerado é o output primário — passa por validate-squad antes de publicar"
 
     - consumer: ide-sync
-      artifact: ".claude/skills/{squad}/"
+      artifact: "skills/{squad}/"
       trigger: "npm run ide:sync:hook após criação"
       description: "Skills publicadas no surface IDE para ativação via slash command"
 
   context_readers:
-    - squad: sinkra-squad
+    - squad: aiox-squad
       reads: [ecosystem-registry.yaml, config.yaml templates]
-      use_case: "Valida se squad já existe antes de recomendar criação via sinkra-output"
+      use_case: "Valida se squad já existe antes de recomendar criação via aiox-output"
     - squad: squad-creator-pro
       reads: [all base tasks, workflows, templates]
       use_case: "Overlay PRO estende o base — herda toda superfície do squad-creator"
@@ -75,20 +75,6 @@ distribution_contract:
     - squad: architect
       reads: [config.yaml, ARCHITECTURE.md]
       use_case: "Decisões de arquitetura de novos squads requerem validação do architect"
-
-workspace_integration:
-  level: read_only
-  rationale: >-
-    O squad-creator consome contexto do workspace para scaffolding e validacao,
-    mas nao executa integracoes de workspace. Integracao
-    controlled_runtime_consumer/workspace_first e ownership do squad c-level
-    via COO, com handoff explicito quando necessario.
-  read_paths:
-    - workspace/
-    - workspace/_templates/
-    - workspace/domains/
-  write_paths: []
-  template_namespace: squad-governance
 
 metadata:
   status: active
@@ -111,7 +97,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: squad-creation-decision
 
@@ -220,7 +206,7 @@ journey_log:
 
 bu_mapping: "hub-framework"
 supported_modes: [CRIAR, CONFIGURAR, VALIDAR, GERENCIAR, ENTENDER, EXPLORAR]
-sinkra_tier: "Enterprise"
+aiox_tier: "Enterprise"
 
 # Exceções de agnosticismo — diretórios/padrões com URLs legítimas
 agnosticism_exceptions:
@@ -294,13 +280,13 @@ entity_bindings:
       role: "creator"
       entity_type: derived
   entities_consumed:
-    - entity_ref: "SINKRA-ENT-001"
+    - entity_ref: "AIOX-ENT-001"
       name: "ProcessMapping"
       role: "reader"
-    - entity_ref: "SINKRA-ENT-002"
+    - entity_ref: "AIOX-ENT-002"
       name: "TokenRegistry"
       role: "reader"
-  domain_model_ref: "squads/sinkra-squad/data/domain-model.yaml"
+  domain_model_ref: "squads/aiox-squad/data/domain-model.yaml"
 
 activation:
   shortcuts:
@@ -314,8 +300,8 @@ process_token_contract:
   validation_script: "scripts/validate-tokens.sh"
   validation_trigger: "on_qa_after_creation"
 
-# SINKRA Composition Mapping (6-level hierarchy)
-# Maps squad components to SINKRA primitives explicitly
+# AIOX Composition Mapping (6-level hierarchy)
+# Maps squad components to AIOX primitives explicitly
 composition_mapping:
   tokens:
     source: "data/process-token-map.yaml"

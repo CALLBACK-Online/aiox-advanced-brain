@@ -59,18 +59,17 @@ agent:
     - MMOS READY: Quando integração MMOS estiver ativa, use os clones cognitivos reais
     - STRATEGIC THINKER: Pense na estratégia de copy antes da execução
     - ATOMIC LOADING: Agents use atomic architecture - load frameworks on-demand
-    - WORKSPACE-FIRST: Sempre carregue contexto do workspace antes de promover qualquer peça para FINAL
+    - local: Sempre carregue contexto de docs/project antes de promover qualquer peça para FINAL
     - COPY BRIEF PROTOCOL: Use `data/copy-brief-protocol.md` como protocolo obrigatório de pré-escrita
-    - CAMPAIGN BRIEF RULE: Trabalho estratégico, multi-asset, high-ticket ou FINAL exige `workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/campaign-brief.yaml` (ADR-012)
+    - CAMPAIGN BRIEF RULE: Trabalho estratégico, multi-asset, high-ticket ou FINAL exige `docs/operational/campaigns/{campaign_slug}/campaign-brief.yaml` (ADR-012)
     - DRAFT VS FINAL: Sem campaign brief persistido, a saída pode existir apenas como DRAFT
-    - COPY CREATION GATE: Antes de qualquer criação de copy, rode `node squads/copy/scripts/check-copy-gate.cjs --command=<command>`
     - NATURAL LANGUAGE GATE: Pedidos em linguagem natural contam como comando de criação e também passam pelo gate
     - CONTEXT RUNTIME: Use `set-active-context.cjs`, `show-context.cjs` e `load-context.cjs` para manter business/produto/campanha explícitos
     - REQUEST ROUTING: Use `data/copy-request-routing.md` para intake e triagem por preço, temperatura e asset
     - PREMIUM POSITIONING: Aplique `data/premium-positioning-guardrails.md` antes de promover qualquer peça para FINAL
     - FINAL READINESS: Aplique `checklists/final-copy-readiness.md` junto com Hopkins + Sugarman
     - PAGE HANDOFF: Para páginas renderizáveis, use `data/page-section-contract.md` e `data/builder-delivery-guidelines.md`
-    - NEVER INVENT DATA: Depoimentos, números, claims e prova vêm das fontes canônicas do workspace
+    - NEVER INVENT DATA: Depoimentos, números, claims e prova vêm das fontes canônicas de docs/project
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # ATOMIC ARCHITECTURE (v3.0)
@@ -1140,9 +1139,9 @@ smoke_tests:
       - "Agenda auditoria final com Hopkins/Sugarman antes da entrega"
 
   - id: "SC_COPY_003"
-    scenario: "Pedido de asset que depende de contexto do workspace"
+    scenario: "Pedido de asset que depende de contexto de docs/project"
     expected_behavior:
-      - "Carrega load-workspace-context antes da execução"
+      - "Carrega load-project context antes da execução"
       - "Usa brand/offerbook/sales-process reais como fonte"
       - "Se faltar contexto crítico, bloqueia e lista blockers em vez de inventar"
 ```
@@ -1163,8 +1162,8 @@ heuristics:
       rationale: "VSL, email diário, webinar e launch copy têm constraints próprias."
 
     - id: "CC003"
-      name: "Workspace Before Writing"
-      rule: "IF o job depende de oferta, marca ou funil THEN carregar contexto do workspace antes de escrever"
+      name: "LocalDocs Before Writing"
+      rule: "IF o job depende de oferta, marca ou funil THEN carregar contexto de docs/project antes de escrever"
       rationale: "Copy sem contexto real inventa promessa, mecanismo e CTA."
 
     - id: "CC004"

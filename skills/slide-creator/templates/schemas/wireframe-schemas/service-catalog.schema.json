@@ -1,0 +1,70 @@
+{
+  "$id": "aiox://slide-creator/wireframes/service-catalog.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "A proposal needs package tiers, plan comparison, or buying path.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "deliverable_1": {
+      "type": "string"
+    },
+    "deliverable_2": {
+      "type": "string"
+    },
+    "deliverable_3": {
+      "type": "string"
+    },
+    "deliverable_4": {
+      "type": "string"
+    },
+    "fit_1": {
+      "type": "string"
+    },
+    "fit_2": {
+      "type": "string"
+    },
+    "fit_3": {
+      "type": "string"
+    },
+    "fit_4": {
+      "type": "string"
+    },
+    "service_1": {
+      "type": "string"
+    },
+    "service_2": {
+      "type": "string"
+    },
+    "service_3": {
+      "type": "string"
+    },
+    "service_4": {
+      "type": "string"
+    }
+  },
+  "title": "service-catalog",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "pricing_tiers",
+    "slot_count": 13,
+    "warnings": [
+      "action_title",
+      "service_1",
+      "deliverable_1",
+      "fit_1",
+      "service_2",
+      "deliverable_2",
+      "fit_2",
+      "service_3",
+      "deliverable_3",
+      "fit_3",
+      "service_4",
+      "deliverable_4",
+      "fit_4"
+    ],
+    "wireframe_ref": "templates/wireframes/service-catalog.html"
+  }
+}

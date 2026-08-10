@@ -1,6 +1,6 @@
 # Runner-Ops Squad
 
-Squad dedicado ao lifecycle management de pipeline runners headless no SINKRA Hub.
+Squad dedicado ao lifecycle management de pipeline runners headless no AIOX platform.
 
 ## Activation
 
@@ -84,9 +84,9 @@ Os scripts do squad existem para tornar o pack instalavel e operacional sem depe
 | books.sh | books | partial |
 | copy.sh | copy | partial |
 | decoder.sh | domain-decoder | partial |
-| sinkra-map.sh | sinkra-squad | partial |
-| sinkra-validate.sh | sinkra-squad | minimal |
-| validate-skill.sh | sinkra-squad | minimal |
+| aiox-map.sh | aiox-squad | partial |
+| aiox-validate.sh | aiox-squad | minimal |
+| validate-skill.sh | aiox-squad | minimal |
 | validate-squad.sh | squad-creator | minimal |
 
 ## Related

@@ -11,13 +11,13 @@
 - **consumed_by:** bundle-audit, token-usage-analytics, dead-code-detection
 
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Operational
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_health_metrics_artifact

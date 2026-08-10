@@ -1,6 +1,6 @@
 # Token Registry — Copy Squad
 # Materializa a camada de tokens do contrato operacional do squad
-# Gerado na remediação P1 do audit SINKRA
+# Gerado na remediação P1 do audit AIOX
 
 meta:
   contract_source: "direct-squad-audit-p1-remediation"
@@ -264,7 +264,7 @@ tokens:
     token_value: handoff_ready
     domain: Operational
     produced_by: "copy-ops-worker"
-    consumed_by: ["workspace-handoff", "external-recipient"]
+    consumed_by: ["project-handoff", "external-recipient"]
     handoff_key: "delivery_manifest"
     persistence: artifact
     constraint: "TK-BEH-002"

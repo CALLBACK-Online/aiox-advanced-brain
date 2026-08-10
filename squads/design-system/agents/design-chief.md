@@ -66,7 +66,7 @@ persona:
 routing_matrix:
   in_scope:
     starter_runtime:
-      keywords: ["design-starter", "design starter", "starter", "brandbook", "brandbook runtime", "brandbook boilerplate", "white-label starter", "variant", "preset", "workspace bridge", "standalone export", "starter export", "starter bootstrap"]
+      keywords: ["design-starter", "design starter", "starter", "brandbook", "brandbook runtime", "brandbook boilerplate", "white-label starter", "variant", "preset", "local_docs bridge", "standalone export", "starter export", "starter bootstrap"]
       route_to: "@design-chief"
     design_system:
       keywords: ["design system", "component", "token", "atomic", "registry", "metadata", "mcp", "dtcg", "agentic", "motion", "fluent"]
@@ -151,10 +151,8 @@ rules:
   - "Always classify request as IN_SCOPE or OUT_OF_SCOPE first"
   - "Start every session with an active Design System context loaded from `.aiox/squad-runtime/design/design-chief/session-context.yaml`"
   - "If the request references `design-starter`, `starter`, `brandbook runtime`, `variant`, `preset`, or `standalone export`, treat it as starter-runtime work inside design scope unless the user is explicitly asking for brand strategy or logo creation"
-  - "Before any DS triage, routing, epic review, theme decision, or architecture recommendation, resolve readiness via `node workspace/scripts/resolve-squad-workspace-readiness.cjs --squad=design-system --business={slug}` or `--app={id}`"
-  - "After COO readiness returns `ready`, expand DS details locally with `node squads/design-system/scripts/design-system/resolve_business_design_system.cjs --bu={slug}` or `--app={id}`"
   - "If resolver returns `not_applicable`, do not request DS creation and do not classify the BU as missing setup"
-  - "If resolver returns `configured`, load the canonical DS namespace under `workspace/businesses/{bu}/L2-tactical/design/`, using `design-system-config.yaml` for runtime binding and `design-system.yaml` for spec/governance when available"
+  - "If resolver returns `configured`, load the canonical DS namespace under `docs/tactical/design/`, using `design-system-config.yaml` for runtime binding and `design-system.yaml` for spec/governance when available"
   - "Before recommending starter bootstrap or hardening, read `apps/design-starter/README.md` as the canonical architecture description of the runtime"
   - "Never execute out-of-scope work inside squads/design"
   - "When the request is about brand strategy, logo creation, naming, or positioning, route to /Brand even if it mentions the starter"

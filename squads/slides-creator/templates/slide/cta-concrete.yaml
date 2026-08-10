@@ -125,6 +125,6 @@ source_provenance:
     - "Dan Kennedy — Magnetic Marketing direct response CTAs"
     - "Y Combinator demo day closing slides"
   bench_ref:
-    - "/Users/alan/Code/bench/ppt-master/skills/ppt-master/templates/layouts/pitch-deck/ (closing slide patterns)"
+    - "<bench-root>/ppt-master/skills/ppt-master/templates/layouts/pitch-deck/ (closing slide patterns)"
   author: "slides-creator squad — MSN-2026-SLIDES-NARRATIVE-DESIGN"
   date_created: "2026-05-17"

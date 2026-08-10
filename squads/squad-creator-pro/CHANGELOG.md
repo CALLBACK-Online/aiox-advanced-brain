@@ -16,7 +16,7 @@ Based on Executor Decision Tree analysis (`*optimize squad-creator`), converted 
 **New Worker Scripts**
 - `sync-ide-skills.py` (430 lines) - Synchronizes squad components to IDE directories
   - 100% deterministic file operations (read, parse YAML, copy, symlink)
-  - Supports Claude slash skills (`.claude/skills/`) and Cursor (`.cursor/rules/` with MDC format)
+  - Supports Claude slash skills (`skills/`) and Cursor (`.cursor/rules/` with MDC format)
   - Flags: `--dry-run`, `--force`, `--ide`, `--verbose`
 
 - `validate-squad-structure.py` (535 lines) - Phases 0-2 of squad validation

@@ -1,5 +1,5 @@
 # Managed by materialize-map.py
-# Source: .aiox/squad-runtime/sinkra-squad/design-system/map/20260328-065055-gemini-gemini-3.1-pro-preview/infrastructure_connections.yaml
+# Source: .aiox/squad-runtime/aiox-squad/design-system/map/20260328-065055-gemini-gemini-3.1-pro-preview/infrastructure_connections.yaml
 # Category: governance
 
 infrastructure:
@@ -11,30 +11,30 @@ infrastructure:
       field_type: dropdown
       task_ids: []
       status: new
-      justification: Campo SINKRA obrigatório, não existente
+      justification: Campo campo obrigatório do framework, não existente
     - field_name: phase
       field_type: number
       task_ids: []
       status: new
-      justification: Campo SINKRA obrigatório, não existente
-    - field_name: sinkra_primitive
+      justification: Campo campo obrigatório do framework, não existente
+    - field_name: framework_primitive
       field_type: dropdown
       task_ids: []
       status: new
-      justification: Campo SINKRA obrigatório, não existente
+      justification: Campo campo obrigatório do framework, não existente
     - field_name: guardrail_status
       field_type: checkbox
       task_ids: []
       status: new
-      justification: Campo SINKRA obrigatório, não existente
+      justification: Campo campo obrigatório do framework, não existente
     - field_name: quality_gate_result
       field_type: dropdown
       task_ids: []
       status: new
-      justification: Campo SINKRA obrigatório, não existente
+      justification: Campo campo obrigatório do framework, não existente
   layer_2_automation:
     n8n:
-    - sinkra_task: atm_capturar_dados
+    - framework_task: atm_capturar_dados
       n8n_workflow_id: null
       n8n_workflow_name: atm_capturar_dados
       status: GAP
@@ -45,7 +45,7 @@ infrastructure:
         action: Implement logic for atm_capturar_dados
         error_handler: existing
         logging: existing
-    - sinkra_task: atm_enviar_kit_boas_vindas
+    - framework_task: atm_enviar_kit_boas_vindas
       n8n_workflow_id: null
       n8n_workflow_name: atm_enviar_kit_boas_vindas
       status: GAP
@@ -56,7 +56,7 @@ infrastructure:
         action: Implement logic for atm_enviar_kit_boas_vindas
         error_handler: existing
         logging: existing
-    - sinkra_task: atm_agendar_entrega
+    - framework_task: atm_agendar_entrega
       n8n_workflow_id: null
       n8n_workflow_name: atm_agendar_entrega
       status: GAP
@@ -67,7 +67,7 @@ infrastructure:
         action: Implement logic for atm_agendar_entrega
         error_handler: existing
         logging: existing
-    - sinkra_task: atm_agendar_boas_vindas
+    - framework_task: atm_agendar_boas_vindas
       n8n_workflow_id: null
       n8n_workflow_name: atm_agendar_boas_vindas
       status: GAP
@@ -78,7 +78,7 @@ infrastructure:
         action: Implement logic for atm_agendar_boas_vindas
         error_handler: existing
         logging: existing
-    - sinkra_task: atm_gerar_checklist_gestor
+    - framework_task: atm_gerar_checklist_gestor
       n8n_workflow_id: null
       n8n_workflow_name: atm_gerar_checklist_gestor
       status: GAP
@@ -89,7 +89,7 @@ infrastructure:
         action: Implement logic for atm_gerar_checklist_gestor
         error_handler: existing
         logging: existing
-    - sinkra_task: atm_agendar_treinamentos
+    - framework_task: atm_agendar_treinamentos
       n8n_workflow_id: null
       n8n_workflow_name: atm_agendar_treinamentos
       status: GAP
@@ -100,7 +100,7 @@ infrastructure:
         action: Implement logic for atm_agendar_treinamentos
         error_handler: existing
         logging: existing
-    - sinkra_task: atm_verificar_acessos
+    - framework_task: atm_verificar_acessos
       n8n_workflow_id: null
       n8n_workflow_name: atm_verificar_acessos
       status: GAP
@@ -111,7 +111,7 @@ infrastructure:
         action: Implement logic for atm_verificar_acessos
         error_handler: existing
         logging: existing
-    - sinkra_task: atm_verificar_equipamento
+    - framework_task: atm_verificar_equipamento
       n8n_workflow_id: null
       n8n_workflow_name: atm_verificar_equipamento
       status: GAP
@@ -122,7 +122,7 @@ infrastructure:
         action: Implement logic for atm_verificar_equipamento
         error_handler: existing
         logging: existing
-    - sinkra_task: atm_verificar_treinamentos
+    - framework_task: atm_verificar_treinamentos
       n8n_workflow_id: null
       n8n_workflow_name: atm_verificar_treinamentos
       status: GAP
@@ -137,7 +137,7 @@ infrastructure:
     custom_agents: []
   layer_4_database:
     supabase:
-    - sinkra_data: dadoscolaboradors
+    - aiox_data: dadoscolaboradors
       table: null
       status: GAP
       task_ids:
@@ -146,7 +146,7 @@ infrastructure:
         columns:
         - name: dados_colaborador
           type: JSON
-    - sinkra_data: dadosvalidadoss
+    - aiox_data: dadosvalidadoss
       table: null
       status: GAP
       task_ids:
@@ -155,7 +155,7 @@ infrastructure:
         columns:
         - name: dados_validados
           type: boolean
-    - sinkra_data: dadosparaprovisionamentos
+    - aiox_data: dadosparaprovisionamentos
       table: null
       status: GAP
       task_ids:
@@ -164,7 +164,7 @@ infrastructure:
         columns:
         - name: dados_para_provisionamento
           type: JSON
-    - sinkra_data: dadosequipamentos
+    - aiox_data: dadosequipamentos
       table: null
       status: GAP
       task_ids:
@@ -173,7 +173,7 @@ infrastructure:
         columns:
         - name: dados_equipamento
           type: JSON
-    - sinkra_data: emailboasvindasenviados
+    - aiox_data: emailboasvindasenviados
       table: null
       status: GAP
       task_ids:
@@ -182,7 +182,7 @@ infrastructure:
         columns:
         - name: email_boas_vindas_enviado
           type: boolean
-    - sinkra_data: contascriadass
+    - aiox_data: contascriadass
       table: null
       status: GAP
       task_ids:
@@ -191,7 +191,7 @@ infrastructure:
         columns:
         - name: contas_criadas
           type: JSON
-    - sinkra_data: identidadedigitals
+    - aiox_data: identidadedigitals
       table: null
       status: GAP
       task_ids:
@@ -200,7 +200,7 @@ infrastructure:
         columns:
         - name: identidade_digital
           type: JSON
-    - sinkra_data: acessosareaaprovadoss
+    - aiox_data: acessosareaaprovadoss
       table: null
       status: GAP
       task_ids:
@@ -209,7 +209,7 @@ infrastructure:
         columns:
         - name: acessos_area_aprovados
           type: boolean
-    - sinkra_data: equipamentoconfigurados
+    - aiox_data: equipamentoconfigurados
       table: null
       status: GAP
       task_ids:
@@ -218,7 +218,7 @@ infrastructure:
         columns:
         - name: equipamento_configurado
           type: boolean
-    - sinkra_data: entregaagendadas
+    - aiox_data: entregaagendadas
       table: null
       status: GAP
       task_ids:
@@ -227,7 +227,7 @@ infrastructure:
         columns:
         - name: entrega_agendada
           type: JSON
-    - sinkra_data: eventocalendarios
+    - aiox_data: eventocalendarios
       table: null
       status: GAP
       task_ids:
@@ -236,7 +236,7 @@ infrastructure:
         columns:
         - name: evento_calendario
           type: JSON
-    - sinkra_data: plano306090s
+    - aiox_data: plano306090s
       table: null
       status: GAP
       task_ids:
@@ -245,7 +245,7 @@ infrastructure:
         columns:
         - name: plano_30_60_90
           type: Markdown
-    - sinkra_data: planoparaavaliacoess
+    - aiox_data: planoparaavaliacoess
       table: null
       status: GAP
       task_ids:
@@ -254,7 +254,7 @@ infrastructure:
         columns:
         - name: plano_para_avaliacoes
           type: Markdown
-    - sinkra_data: mensagemslackenviadas
+    - aiox_data: mensagemslackenviadas
       table: null
       status: GAP
       task_ids:
@@ -263,7 +263,7 @@ infrastructure:
         columns:
         - name: mensagem_slack_enviada
           type: boolean
-    - sinkra_data: apresentacaoconcluidas
+    - aiox_data: apresentacaoconcluidas
       table: null
       status: GAP
       task_ids:
@@ -272,7 +272,7 @@ infrastructure:
         columns:
         - name: apresentacao_concluida
           type: boolean
-    - sinkra_data: treinamentosagendadoss
+    - aiox_data: treinamentosagendadoss
       table: null
       status: GAP
       task_ids:
@@ -281,7 +281,7 @@ infrastructure:
         columns:
         - name: treinamentos_agendados
           type: JSON
-    - sinkra_data: avaliacao30ds
+    - aiox_data: avaliacao30ds
       table: null
       status: GAP
       task_ids:
@@ -290,7 +290,7 @@ infrastructure:
         columns:
         - name: avaliacao_30d
           type: JSON
-    - sinkra_data: avaliacao60ds
+    - aiox_data: avaliacao60ds
       table: null
       status: GAP
       task_ids:
@@ -299,7 +299,7 @@ infrastructure:
         columns:
         - name: avaliacao_60d
           type: JSON
-    - sinkra_data: avaliacao90ds
+    - aiox_data: avaliacao90ds
       table: null
       status: GAP
       task_ids:
@@ -308,7 +308,7 @@ infrastructure:
         columns:
         - name: avaliacao_90d
           type: JSON
-    - sinkra_data: statusacessoss
+    - aiox_data: statusacessoss
       table: null
       status: GAP
       task_ids:
@@ -317,7 +317,7 @@ infrastructure:
         columns:
         - name: status_acessos
           type: boolean
-    - sinkra_data: statusequipamentos
+    - aiox_data: statusequipamentos
       table: null
       status: GAP
       task_ids:
@@ -326,7 +326,7 @@ infrastructure:
         columns:
         - name: status_equipamento
           type: boolean
-    - sinkra_data: statustreinamentoss
+    - aiox_data: statustreinamentoss
       table: null
       status: GAP
       task_ids:
@@ -335,7 +335,7 @@ infrastructure:
         columns:
         - name: status_treinamentos
           type: boolean
-    - sinkra_data: scorefinalonboardings
+    - aiox_data: scorefinalonboardings
       table: null
       status: GAP
       task_ids:
@@ -344,7 +344,7 @@ infrastructure:
         columns:
         - name: score_final_onboarding
           type: float
-    - sinkra_data: kpis_design_system
+    - aiox_data: kpis_design_system
       table: null
       status: GAP
       task_ids:

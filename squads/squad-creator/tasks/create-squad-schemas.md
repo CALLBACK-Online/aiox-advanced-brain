@@ -33,7 +33,7 @@ wave: 2
 concept: C5 (Schema Generation)
 ```
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Operational`
 atomic_layer: Atom
 Input: request::create_squad_schemas
@@ -41,7 +41,7 @@ Output: artifact::create_squad_schemas
 pre_condition: squad creation pipeline is in schema_generation phase
 post_condition: schemas/ directory populated with validated JSON Schema files
 performance: registrar evidências, falhas e próximo passo sem erro silencioso
-Completion Criteria: contrato mínimo SINKRA explícito e saída rastreável produzida
+Completion Criteria: contrato mínimo AIOX explícito e saída rastreável produzida
 
 ## Purpose
 

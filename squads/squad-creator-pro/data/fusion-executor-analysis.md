@@ -24,7 +24,7 @@
 |------|-------|-----------|-----------|
 | validate_inputs | Agent | **Worker** | Regex validation, file exists check - 100% determinístico |
 | validate_sources | Agent | **Worker** | `ls`, `test -d` - shell commands |
-| create_workspace | Agent | **Worker** | `mkdir -p` - puro shell |
+| create_staging_dir | Agent | **Worker** | `mkdir -p` - puro shell |
 | init_audit_log | Agent | **Worker** | Template interpolation - jinja/envsubst |
 | create_backup | Agent | **Worker** | `tar -czf` - puro shell |
 
@@ -47,10 +47,10 @@ validate_sources() {
     done
 }
 
-create_workspace() {
-    local workspace="/tmp/fusion-$1-$(date +%s)"
-    mkdir -p "$workspace"/{agents,tasks,skills,data,templates,checklists,workflows,_audit,_conflicts}
-    echo "$workspace"
+create_staging_dir() {
+    local staging_dir="/tmp/fusion-$1-$(date +%s)"
+    mkdir -p "$staging_dir"/{agents,tasks,skills,data,templates,checklists,workflows,_audit,_conflicts}
+    echo "$staging_dir"
 }
 
 create_backup() {
@@ -180,7 +180,7 @@ traffic:
 # Script: phase_2_dedup.sh
 
 detect_exact_duplicates() {
-    local workspace=$1
+    local staging_dir=$1
     shift
 
     # Listar todos agents de todos squads
@@ -331,12 +331,12 @@ collect_with_idempotency() {
 }
 
 verify_collection() {
-    local workspace=$1
+    local staging_dir=$1
     local expected_agents=$2
     local expected_tasks=$3
 
-    local actual_agents=$(find "$workspace/agents" -name '*.md' | wc -l)
-    local actual_tasks=$(find "$workspace/tasks" -name '*.md' | wc -l)
+    local actual_agents=$(find "$outputs/agents" -name '*.md' | wc -l)
+    local actual_tasks=$(find "$outputs/tasks" -name '*.md' | wc -l)
 
     if [[ $actual_agents -ne $expected_agents ]]; then
         echo "ERROR: Agent count mismatch. Expected: $expected_agents, Got: $actual_agents"
@@ -389,13 +389,13 @@ validate_agent_structure() {
 }
 
 validate_references() {
-    local workspace=$1
+    local staging_dir=$1
     local errors=0
 
     # Find all handoff_to references
-    grep -rh "handoff_to:" "$workspace" --include="*.md" | while read line; do
+    grep -rh "handoff_to:" "$staging_dir" --include="*.md" | while read line; do
         local target=$(echo "$line" | sed 's/.*handoff_to:\s*//' | tr -d '"' | tr -d "'")
-        if [[ ! -f "$workspace/agents/$target.md" ]]; then
+        if [[ ! -f "$outputs/agents/$target.md" ]]; then
             echo "BROKEN: handoff_to $target"
             ((errors++))
         fi
@@ -507,7 +507,7 @@ smoke_test_routing() {
 | confirm_cleanup | Agent | **Human** | ⚠️ Decisão destrutiva irreversível |
 | remove_sources | Agent | **Worker** | `rm -rf` (após confirmação) |
 | update_registry | Agent | **Worker** | Executar script |
-| cleanup_workspace | Agent | **Worker** | `rm -rf` |
+| cleanup_staging_dir | Agent | **Worker** | `rm -rf` |
 | log_cleanup | Agent | **Worker** | Append YAML |
 
 **Phase 8: 80% Worker, 20% Human**

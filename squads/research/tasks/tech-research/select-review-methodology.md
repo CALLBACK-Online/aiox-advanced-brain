@@ -5,7 +5,7 @@
 **Version:** 1.0
 **Last Updated:** 2026-03-06
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Strategic`
 task: selectReviewMethodology()

@@ -4,8 +4,8 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.cwd();
-const registryPath = path.join(ROOT, 'workspace/ui/registry.json');
-const outputPath = path.join(ROOT, 'workspace/domains/design-system/metadata/components.json');
+const registryPath = path.join(ROOT, 'docs/design-system/ui/registry.json');
+const outputPath = path.join(ROOT, 'docs/design-system/domains/metadata/components.json');
 
 const DEFAULTS_BY_COMPONENT = {
   button: {
@@ -96,7 +96,7 @@ function main() {
     version: '1.0.0',
     generatedAt: new Date().toISOString(),
     source: {
-      registry: 'workspace/ui/registry.json',
+      registry: 'docs/design-system/ui/registry.json',
       generator: 'squads/design-system/scripts/design-system/generate_components_metadata.cjs'
     },
     components,

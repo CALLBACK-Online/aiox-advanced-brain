@@ -11,7 +11,7 @@ estimated_duration: "10-25 min"
 ```
 
 **Responsible Executor:** Agent (@domain-scout)  
-**Dependencies:** depends_on: `[load-workspace-context, naming-generation]` · enables: `[wf-naming-to-domain]` · workflow: `wf-naming-to-domain`
+**Dependencies:** depends_on: `[load-project context, naming-generation]` · enables: `[wf-naming-to-domain]` · workflow: `wf-naming-to-domain`
 
 ## Objective
 
@@ -41,8 +41,8 @@ Defaults:
 
 | Artifact | Location | Description |
 |---|---|---|
-| `domain-legal-report.md` | `workspace/businesses/{brand_name}/L2-tactical/brand/naming/domain-legal-report.md` | Viabilidade digital + risco legal preliminar por candidato |
-| `domain-decision.yaml` | `workspace/businesses/{brand_name}/L2-tactical/brand/domain-decision.yaml` | Estrutura decisoria para consolidacao do nome/dominio escolhido |
+| `domain-legal-report.md` | `docs/tactical/brand/naming/domain-legal-report.md` | Viabilidade digital + risco legal preliminar por candidato |
+| `domain-decision.yaml` | `docs/tactical/brand/domain-decision.yaml` | Estrutura decisoria para consolidacao do nome/dominio escolhido |
 
 ## Execution Steps
 

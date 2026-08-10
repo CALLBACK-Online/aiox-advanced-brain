@@ -13,7 +13,7 @@ pack:
 
 entry_agent: claude-mastery-chief
 type: enablement
-workspace_integration_level: none
+local project docs_level: none
 
 domain_model:
   Strategic:
@@ -34,7 +34,7 @@ logging:
     on_threshold_breach: block_publish
     on_runtime_warning: notify_mastery_steward
 
-sinkra:
+aiox:
   hierarchy_mapping:
     Token: "Modes, thresholds, políticas de segurança e ownership do runtime Claude Code"
     Atom: "Tasks unitárias de auditar, configurar, integrar, atualizar, publicar e validar"
@@ -113,7 +113,7 @@ composition_mapping:
       - tasks/update-claude-code-mastery.md
       - tasks/validate-setup.md
       - tasks/worktree-strategy.md
-    sinkra_refs:
+    aiox_refs:
       accountability_token: TK-CCM-ACC-001
       token_registry: data/token-registry.yaml
   molecules:
@@ -121,7 +121,7 @@ composition_mapping:
       - workflows/wf-audit-complete.yaml
       - workflows/wf-knowledge-update.yaml
       - workflows/wf-project-setup.yaml
-    sinkra_refs:
+    aiox_refs:
       journey_log: data/journey-log-events.yaml
       state_machines:
         - workflows/wf-audit-complete.yaml
@@ -169,7 +169,7 @@ agents:
     file: agents/claude-mastery-chief.md
     tier: human
     executor_profile:
-      sinkra_type: Human
+      executor_type: Human
       human_in_the_loop: true
       output_schema: mastery-approval
       story_role: reviewer
@@ -184,7 +184,7 @@ agents:
     file: agents/roadmap-sentinel.md
     tier: reviewer
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: mastery-review-report
       story_role: reviewer
@@ -199,7 +199,7 @@ agents:
     file: agents/claude-mastery-chief.md
     tier: orchestrator
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: routing-decision
       story_role: reviewer
@@ -214,7 +214,7 @@ agents:
     file: agents/hooks-architect.md
     tier: specialist
     executor_profile:
-      sinkra_type: Worker
+      executor_type: Worker
       human_in_the_loop: true
       output_schema: hook-design-spec
       story_role: executor
@@ -229,7 +229,7 @@ agents:
     file: agents/mcp-integrator.md
     tier: specialist
     executor_profile:
-      sinkra_type: Worker
+      executor_type: Worker
       human_in_the_loop: true
       output_schema: mcp-integration-report
       story_role: executor
@@ -244,7 +244,7 @@ agents:
     file: agents/swarm-orchestrator.md
     tier: specialist
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: swarm-topology-report
       story_role: executor
@@ -259,7 +259,7 @@ agents:
     file: agents/config-engineer.md
     tier: specialist
     executor_profile:
-      sinkra_type: Worker
+      executor_type: Worker
       human_in_the_loop: true
       output_schema: claude-settings-plan
       story_role: executor
@@ -274,7 +274,7 @@ agents:
     file: agents/skill-craftsman.md
     tier: specialist
     executor_profile:
-      sinkra_type: Worker
+      executor_type: Worker
       human_in_the_loop: true
       output_schema: skill-definition
       story_role: executor
@@ -289,7 +289,7 @@ agents:
     file: agents/project-integrator.md
     tier: specialist
     executor_profile:
-      sinkra_type: Worker
+      executor_type: Worker
       human_in_the_loop: true
       output_schema: integration-plan
       story_role: executor
@@ -304,7 +304,7 @@ agents:
     file: agents/roadmap-sentinel.md
     tier: specialist
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: roadmap-delta-report
       story_role: executor
@@ -315,9 +315,9 @@ agents:
 
 status: active
 last_updated: "2026-04-03"
-sinkra_native: true
+aiox_native: true
 
-sinkra_refs:
+aiox_refs:
   token_registry: data/token-registry.yaml
   quality_gates: data/quality-gates.yaml
   journey_log_events: data/journey-log-events.yaml

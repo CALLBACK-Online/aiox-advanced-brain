@@ -91,7 +91,7 @@ Render the converged variant as a working skeleton — structural, interactive, 
 - **Skipping SHOW EARLY "to save time"** — then you save time running the wrong direction to completion. SHOW EARLY is the cheapest course correction in the cycle.
 - **Accepting vague approval** — "looks good" is not an APPROVE_DIRECTION; pin it to the specific framing.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Molecule (P05 of design-artifact-cycle)
@@ -115,4 +115,4 @@ performance:
 
 - Rule: `squads/design-ops/rules/design-exploration-cycle.md#5-show-early-feedback-before-polish`
 - Heuristic: HEUR-CLAW-004 in `design-heuristics-from-external-prompts.yaml`
-- Skill: `.claude/skills/design-artifact-cycle/SKILL.md#phase-05`
+- Skill: `skills/design-artifact-cycle/SKILL.md#phase-05`

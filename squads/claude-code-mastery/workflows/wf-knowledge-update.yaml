@@ -357,11 +357,11 @@ phases:
       - "  Apply section-specific edits (quick_reference, commands, output_examples)"
       - "  Preserve voice_dna, persona, and core_principles (do NOT modify)"
       - "  Update version comment if present"
-      - "Re-sync updated agents to .claude/skills/claude-code-mastery/"
+      - "Re-sync updated agents to skills/claude-code-mastery/"
     outputs:
       - agents_updated: "array of agent IDs"
       - agents_skipped: "array (optional updates deferred)"
-      - files_synced: "array of .claude/skills/ paths"
+      - files_synced: "array of skills/ paths"
     checkpoint:
       gate: "All critical/recommended agent updates applied"
       veto: "Modifying agent voice_dna or persona sections (preserve identity)"
@@ -406,7 +406,7 @@ completion_criteria:
   - "Knowledge base data files updated"
   - "Agent impact assessment completed"
   - "Critical/recommended agent file updates applied"
-  - "Agent files re-synced to .claude/skills/"
+  - "Agent files re-synced to skills/"
   - "Ecosystem update report saved to outputs/"
 
 # ────────────────────────────────────────────────────────────────────────────
@@ -435,7 +435,7 @@ changelog:
       - "Expanded scope from Claude Code-only to full Anthropic ecosystem"
       - "Added source_registry with 7 product areas and affects_agents mapping"
       - "Added Claude Desktop, Cowork, Agent SDK, Remote, API sources"
-      - "Added Phase 4 (Agent File Updates) — applies edits + re-syncs to .claude/skills/"
+      - "Added Phase 4 (Agent File Updates) — applies edits + re-syncs to skills/"
       - "Renamed Phase 4→5 (Summary) with ecosystem-wide report and expansion recommendations"
       - "Added cross-product delta analysis in Phase 1"
       - "Added new data files: ecosystem-products.yaml, agent-sdk-reference.yaml, model-catalog.yaml"

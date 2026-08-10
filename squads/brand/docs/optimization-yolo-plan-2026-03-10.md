@@ -6,14 +6,13 @@ Status: `executed`
 
 ## Wave 1: Foundation convergence
 
-Goal: align the canonical workspace contract everywhere it is executed.
+Goal: align the canonical project context contracts everywhere it is executed.
 
 Changes:
 
-- add `COO` readiness resolver to `workspace_contract.required_preflight` in
+- add `COO` readiness resolver to `project context contracts.required_preflight` in
   all 8 brand workflows
-- add `validate-brand-essentials.sh` to the 2 workflows that still skip it
-- preserve current `context_task: load-workspace-context`
+- preserve current `context_task: load-project context`
 
 Result:
 

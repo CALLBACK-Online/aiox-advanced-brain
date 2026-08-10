@@ -10,7 +10,7 @@
 # Phases:
 #   1. BLAST RADIUS MAPPING — grep exaustivo, contagem de arquivos
 #   2. RENAME ESTRUTURAL — git mv, config/squad yaml, scripts internos
-#   3. PROPAGAÇÃO — sed replace em mirrors, cross-squad, workspace, infra, apps
+#   3. PROPAGAÇÃO — sed replace em mirrors, cross-squad, local_docs, infra, apps
 #   4. VALIDAÇÃO — grep residual, validate-squad
 #
 # Exit codes:
@@ -117,13 +117,13 @@ TOTAL_GEMINI=$(count_refs "$OLD_NAME" "$ROOT/.gemini" 2>/dev/null || echo 0)
 TOTAL_AGENTS=$(count_refs "$OLD_NAME" "$ROOT/.agents" 2>/dev/null || echo 0)
 TOTAL_CURSOR=$(count_refs "$OLD_NAME" "$ROOT/.cursor" 2>/dev/null || echo 0)
 TOTAL_CROSSSQUAD=$(grep -r "squads/$OLD_NAME" $EXTENSIONS -l "$SQUADS_DIR" 2>/dev/null | grep -v "$SQUADS_DIR/$OLD_NAME" | wc -l | tr -d ' ')
-TOTAL_WORKSPACE=$(count_refs "$OLD_NAME" "$ROOT/workspace" 2>/dev/null || echo 0)
+TOTAL_PROJECT=$(count_refs "$OLD_NAME" "$ROOT/docs" 2>/dev/null || echo 0)
 TOTAL_INFRA=$(count_refs "$OLD_NAME" "$ROOT/infrastructure" 2>/dev/null || echo 0)
 TOTAL_APPS=$(count_refs "$OLD_NAME" "$ROOT/apps" 2>/dev/null || echo 0)
 TOTAL_DOCS=$(count_refs "squads/$OLD_NAME" "$ROOT/docs" 2>/dev/null || echo 0)
 TOTAL_CORE=$(count_refs "$OLD_NAME" "$ROOT/.aiox-core" 2>/dev/null || echo 0)
 
-GRAND_TOTAL=$((TOTAL_SQUAD + TOTAL_CLAUDE + TOTAL_CODEX + TOTAL_GEMINI + TOTAL_AGENTS + TOTAL_CURSOR + TOTAL_CROSSSQUAD + TOTAL_WORKSPACE + TOTAL_INFRA + TOTAL_APPS + TOTAL_DOCS + TOTAL_CORE))
+GRAND_TOTAL=$((TOTAL_SQUAD + TOTAL_CLAUDE + TOTAL_CODEX + TOTAL_GEMINI + TOTAL_AGENTS + TOTAL_CURSOR + TOTAL_CROSSSQUAD + TOTAL_PROJECT + TOTAL_INFRA + TOTAL_APPS + TOTAL_DOCS + TOTAL_CORE))
 
 echo ""
 echo -e "  ${BOLD}Blast Radius:${NC}"
@@ -137,7 +137,7 @@ printf "  │ %-27s │ %5s │\n" ".gemini/" "$TOTAL_GEMINI"
 printf "  │ %-27s │ %5s │\n" ".agents/" "$TOTAL_AGENTS"
 printf "  │ %-27s │ %5s │\n" ".cursor/rules/" "$TOTAL_CURSOR"
 printf "  │ %-27s │ %5s │\n" "squads/ (cross-squad)" "$TOTAL_CROSSSQUAD"
-printf "  │ %-27s │ %5s │\n" "workspace/" "$TOTAL_WORKSPACE"
+printf "  │ %-27s │ %5s │\n" "docs/" "$TOTAL_PROJECT"
 printf "  │ %-27s │ %5s │\n" "infrastructure/" "$TOTAL_INFRA"
 printf "  │ %-27s │ %5s │\n" "apps/" "$TOTAL_APPS"
 printf "  │ %-27s │ %5s │\n" "docs/" "$TOTAL_DOCS"
@@ -237,8 +237,8 @@ for mirror_dir in \
 done
 
 for mirror_dir in \
-  ".claude/skills/$OLD_NAME" \
-  ".agents/skills/$OLD_NAME"; do
+  "skills/$OLD_NAME" \
+  "skills/$OLD_NAME"; do
   if [ -d "$mirror_dir" ]; then
     new_mirror=$(echo "$mirror_dir" | sed "s|$OLD_NAME|$NEW_NAME|g")
     mv "$mirror_dir" "$new_mirror" 2>/dev/null && log_pass "Mirror dir: $(basename "$mirror_dir") → $(basename "$new_mirror")"
@@ -246,24 +246,24 @@ for mirror_dir in \
 done
 
 # Rename canonical open-runtime skill dirs (e.g., old-name-sub → new-name-sub)
-for d in .agents/skills/${OLD_NAME}-*; do
+for d in skills/${OLD_NAME}-*; do
   [ -d "$d" ] || continue
   newd=$(echo "$d" | sed "s|$OLD_NAME|$NEW_NAME|g")
   mv "$d" "$newd" 2>/dev/null && log_pass "Mirror dir: $(basename "$d") → $(basename "$newd")"
 done
 
-# 3c: Sed content in all mirrors (.codex/skills resolves via symlink — não renomear)
+# 3c: Sed content in all mirrors (skills resolves via symlink — não renomear)
 for dir in \
-  ".claude/skills/$NEW_NAME" \
+  "skills/$NEW_NAME" \
   ".claude/agents" \
   ".gemini/agents/$NEW_PASCAL" \
-  ".agents/skills/$NEW_NAME" \
+  "skills/$NEW_NAME" \
   ".agents/workflows/$NEW_PASCAL"; do
   sed_replace "$dir" "Mirror: $dir"
 done
 
 # Also sed in canonical individual skill dirs
-for d in .agents/skills/${NEW_NAME}-*; do
+for d in skills/${NEW_NAME}-*; do
   [ -d "$d" ] || continue
   sed_replace "$d" "Mirror: $d"
 done
@@ -275,16 +275,16 @@ for squad_dir in "$SQUADS_DIR"/*/; do
   sed_replace "$squad_dir" "Cross-squad: $squad_name"
 done
 
-# 3e: Workspace domain rename
-if [ -d "workspace/businesses/${OLD_NAME}" ]; then
-  mv "workspace/businesses/${OLD_NAME}" "workspace/businesses/${NEW_NAME}" 2>/dev/null
-  log_pass "Workspace domain renamed"
+# 3e: LocalDocs domain rename
+if [ -d "docs/${OLD_NAME}" ]; then
+  mv "docs/${OLD_NAME}" "docs/${NEW_NAME}" 2>/dev/null
+  log_pass "Docs domain renamed"
 fi
-if [ -f "workspace/config/mappings/${OLD_NAME}.clickup.yaml" ]; then
-  mv "workspace/config/mappings/${OLD_NAME}.clickup.yaml" "workspace/config/mappings/${NEW_NAME}.clickup.yaml" 2>/dev/null
-  log_pass "Workspace mapping renamed"
+if [ -f "docs/config/mappings/${OLD_NAME}.clickup.yaml" ]; then
+  mv "docs/config/mappings/${OLD_NAME}.clickup.yaml" "docs/config/mappings/${NEW_NAME}.clickup.yaml" 2>/dev/null
+  log_pass "Docs mapping renamed"
 fi
-sed_replace "workspace" "Workspace content"
+sed_replace "docs" "Docs content"
 
 # 3f: Cursor rules
 sed_replace ".cursor/rules" "Cursor rules"

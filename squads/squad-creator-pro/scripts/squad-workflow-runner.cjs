@@ -20,7 +20,7 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 const {
   readActiveSquad: readActiveSquadFromRuntime,
-  toWorkspaceRelative,
+  toRepoRelative,
 } = require(path.resolve(__dirname, '..', '..', 'squad-creator', 'scripts', 'lib', 'squad-runtime-paths.cjs'));
 
 const SCRIPTS_DIR = __dirname;
@@ -253,7 +253,7 @@ function buildEpicReadme(slug, prdPath, epic, storyArtifacts) {
     '```yaml',
     `epic_number: ${epic.number}`,
     `domain: ${slug}`,
-    `source_prd: ${toWorkspaceRelative(prdPath)}`,
+    `source_prd: ${toRepoRelative(prdPath)}`,
     'status: Draft',
     '```',
     '',
@@ -288,11 +288,11 @@ function buildStoryArtifact(slug, prdPath, epic, story) {
     `domain: ${slug}`,
     `epic_number: ${epic.number}`,
     `epic_title: ${epic.title}`,
-    `source_prd: ${toWorkspaceRelative(prdPath)}`,
+    `source_prd: ${toRepoRelative(prdPath)}`,
     '```',
     '',
     '## Context',
-    `Derived from Epic ${epic.number} in \`${toWorkspaceRelative(prdPath)}\`.`,
+    `Derived from Epic ${epic.number} in \`${toRepoRelative(prdPath)}\`.`,
     '',
     '## Scope',
     `- Implement the scope defined by Story ${story.number} in the source PRD.`,
@@ -333,7 +333,7 @@ function ensureEpicArtifacts(slug, prdPath, epicNumber, prdContent) {
         code: 'EPIC_NOT_FOUND',
         message: `Epic ${epicNumber} not found in PRD`,
         details: {
-          prd_path: toWorkspaceRelative(prdPath),
+          prd_path: toRepoRelative(prdPath),
           available_epics: epics.map(candidate => candidate.number),
         }
       }
@@ -350,18 +350,18 @@ function ensureEpicArtifacts(slug, prdPath, epicNumber, prdContent) {
   for (const storyArtifact of storyArtifacts) {
     const storyPath = path.join(epicDir, storyArtifact.fileName);
     fs.writeFileSync(storyPath, storyArtifact.content);
-    createdFiles.push(toWorkspaceRelative(storyPath));
+    createdFiles.push(toRepoRelative(storyPath));
   }
 
   const readmePath = path.join(epicDir, 'README.md');
   fs.writeFileSync(readmePath, buildEpicReadme(slug, prdPath, epic, storyArtifacts));
-  createdFiles.unshift(toWorkspaceRelative(readmePath));
+  createdFiles.unshift(toRepoRelative(readmePath));
 
   return {
     success: true,
     epic,
     epicDir,
-    epicDirRelative: toWorkspaceRelative(epicDir),
+    epicDirRelative: toRepoRelative(epicDir),
     totalEpics: epics.length,
     createdFiles,
     storyArtifacts,
@@ -433,7 +433,7 @@ function startEpicFlow(slug, options, prdPath, prdContent, metrics) {
   initArgs.push('--execution-model', 'epic');
   initArgs.push('--scope-type', 'epic_required');
   initArgs.push('--context-entrypoint', 'wf-context-aware-create-squad');
-  initArgs.push('--prd', toWorkspaceRelative(prdPath));
+  initArgs.push('--prd', toRepoRelative(prdPath));
   initArgs.push('--epic', String(epicNumber));
   initArgs.push('--total-epics', String(artifactResult.totalEpics));
   initArgs.push('--epic-title', artifactResult.epic.title);
@@ -471,7 +471,7 @@ function startEpicFlow(slug, options, prdPath, prdContent, metrics) {
     display_name: initResult.display_name || slugToDisplayName(slug),
     current_phase: 'story_ready',
     status: 'in_progress',
-    prd_path: toWorkspaceRelative(prdPath),
+    prd_path: toRepoRelative(prdPath),
     scope_metrics: metrics,
     epic: {
       number: artifactResult.epic.number,
@@ -502,7 +502,7 @@ function cmdStart(slug, options = {}) {
   if (requiresPrd && !prdContent) {
     outputError('PRD_REQUIRED', 'Large-scope squad creation requires a valid PRD before execution', {
       slug,
-      expected_prd: toWorkspaceRelative(prdPath),
+      expected_prd: toRepoRelative(prdPath),
       scope_metrics: metrics,
       handoff: `*plan-squad ${slug}`,
       no_partial_scaffold: true,
@@ -513,7 +513,7 @@ function cmdStart(slug, options = {}) {
   if (requiresPrd && epicNumber === null) {
     outputError('EPIC_REQUIRED', 'Large-scope PRD-backed squads must start epic by epic', {
       slug,
-      prd_path: toWorkspaceRelative(prdPath),
+      prd_path: toRepoRelative(prdPath),
       scope_metrics: metrics,
       handoff: `*create-squad ${slug} --epic=1`,
       no_partial_scaffold: true,
@@ -525,7 +525,7 @@ function cmdStart(slug, options = {}) {
     if (!prdContent) {
       outputError('PRD_REQUIRED', 'Epic execution requires a valid PRD', {
         slug,
-        expected_prd: toWorkspaceRelative(prdPath),
+        expected_prd: toRepoRelative(prdPath),
       });
       process.exit(1);
     }

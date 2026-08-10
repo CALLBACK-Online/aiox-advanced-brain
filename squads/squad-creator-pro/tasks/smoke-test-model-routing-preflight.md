@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: smoke-test-model-routing-preflight
   task_name: Smoke Test Model Routing -- Preflight
   status: pending
@@ -21,11 +21,11 @@ sinkra_task_metadata:
   accountability_scope: review_only
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Tactical
   atomic_layer: Atom
   executor: Worker
@@ -33,7 +33,7 @@ sinkra_contract:
   post_condition: "preflight artifact pronto para fases seguintes."
   performance: "bloquear o smoke test se o validator falhar."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 # Task: Smoke Test Model Routing -- Preflight
 

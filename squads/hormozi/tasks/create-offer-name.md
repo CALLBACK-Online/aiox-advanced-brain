@@ -11,7 +11,7 @@ source: "Naming Framework SOP — MAGIC Framework"
 sop_reference: squads/hormozi/sops/naming-framework-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

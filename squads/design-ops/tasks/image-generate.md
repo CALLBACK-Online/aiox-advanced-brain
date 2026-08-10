@@ -222,13 +222,13 @@ pass:
   - provider_used: "gemini-cli|openrouter"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - image_generate_artifact

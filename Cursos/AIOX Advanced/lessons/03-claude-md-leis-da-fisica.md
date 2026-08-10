@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: claude-md-leis-da-fisica
 lesson_position: 3
 title: CLAUDE.md é a lei da física do seu projeto
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/03-claude-md-leis-da-fisica/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -77,7 +77,7 @@ classDef core fill:#1e1b4b,stroke:#818cf8,stroke-width:2px,color:#e2e8f0
 
 **Objetivos de aprendizagem:**
 - Entender o [[CLAUDE md|CLAUDE.md]] como o conjunto de leis da física do seu projeto: gravidade que atrai e governa todos os outros agentes de IA. _(understand)_
-- Aplicar a única instalação correta do AIOX (npx) para que o CLAUDE.md já chegue sabendo o que é SINKRA, e não em modo white label. _(apply)_
+- Aplicar a única instalação correta do AIOX (npx) para que o CLAUDE.md já chegue sabendo o que é AIOX, e não em modo white label. _(apply)_
 - Reconhecer e aplicar o arquivo equivalente em cada ferramenta: AGENTS.md (Codex), GEMINI.md (Gemini CLI), RULES.md (Antigravity): como regras universais de cada IDE. _(apply)_
 - Avaliar quando seu CLAUDE.md ficou desatualizado em relação ao PRD/CoreConfig e está te puxando pra trás em vez de te puxar pra frente. _(evaluate)_
 
@@ -320,14 +320,14 @@ tem nada a ver com o seu negócio.
 
 A única forma certa é pegar o comando npx, colar no terminal e dar enter. Esse
 comando faz o setup completo: `.env`, `.gitignore`, `.claude/`, `core-config.yaml`,
-e escreve um CLAUDE.md que já chega sabendo o que é SINKRA, o que é AIOX, quais são
+e escreve um CLAUDE.md que já chega sabendo o que é AIOX, o que é AIOX, quais são
 os agentes que orbitam, quais são as leis físicas básicas. Você pode escolher os
 módulos no caminho (ETL? Slides? Brand?) e o instalador monta o CLAUDE.md de acordo.
 
 Houve um aluno que reclamou: com razão: que uma versão anterior do instalador
 sobrescrevia o CLAUDE.md existente. Eu já mudei o script, agora ele faz backup antes
 de tocar no arquivo. Mas a regra-mestra continua: se você não tem ali a informação
-do que é SINKRA, do que é o AIOX, de como os agentes se relacionam: vai começar a
+do que é AIOX, do que é o AIOX, de como os agentes se relacionam: vai começar a
 dar problema. A gravidade fica fraca, os agentes ficam confusos, o time perde tempo
 explicando o óbvio em cada nova conversa.
 
@@ -345,7 +345,7 @@ atrito silencioso do AIOX hoje.
 
 **Instalação que cria física AIOX**
 - Rodar o comando oficial de instalação.
-- Deixar o instalador escrever regras com SINKRA, AIOX e agentes.
+- Deixar o instalador escrever regras com AIOX, AIOX e agentes.
 - Fazer backup antes de alterar arquivo de regra.
 - Tratar atualização de CLAUDE.md como mudança arquitetural.
 
@@ -378,11 +378,11 @@ flowchart TB
 O aluno acha que instalou AIOX, mas o arquivo de leis ainda fala como projeto genérico.
 
 - Começou como: Instalação manual com CLAUDE.md genérico ou copiado.
-- Virou: Instalação oficial com leis, agentes e SINKRA já escritos no projeto.
+- Virou: Instalação oficial com leis, agentes e AIOX já escritos no projeto.
 - Prova: Quando CLAUDE.md, CoreConfig e PRD contam histórias diferentes, todo agente precisa ser reexplicado.
 - Lição: Lei da física errada não é detalhe; é gravidade puxando o sistema para o lado errado.
 
-### Caso: O CLAUDE.md do Sinkra Hub: lei viva, não white label
+### Caso: O CLAUDE.md do AIOX platform: lei viva, não white label
 
 Um repositório real onde o arquivo de leis governa 4 negócios e dezenas de [[Squad|squad]]s.
 
@@ -400,7 +400,7 @@ Antes de mexer no arquivo, descubra qual problema você está enfrentando.
 #### White Label
 O arquivo nunca foi adaptado ao projeto real.
 1. **Sinal: o arquivo fala do projeto exemplo, não do seu.
-2. **Pergunta: ele cita SINKRA, AIOX e seus agentes reais?
+2. **Pergunta: ele cita AIOX, AIOX e seus agentes reais?
 3. **Ação: reinstalar oficialmente ou reescrever do PRD.
 4. **Resultado: lei que representa o projeto de verdade.
 

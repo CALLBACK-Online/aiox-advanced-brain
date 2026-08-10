@@ -1,9 +1,9 @@
 template_name: "Design Tokens Schema (Hydrated Defaults)"
 template_version: "1.0.0"
 output_format: "yaml"
-destination: "workspace/businesses/{biz}/L2-tactical/design/tokens.yaml"
+destination: "docs/tactical/design/tokens.yaml"
 description: |
-  Hydrated DTCG token schema with justified default values for sinkra-hub
+  Hydrated DTCG token schema with justified default values for upstream monorepo
   business onboarding. Cross-validated against 8 reference DS:
   Polaris, Carbon, Primer, Mantine, ChakraUI, shadcn/ui, Ant Design,
   HeroUI. Replaces empty placeholder template (`tokens-schema-tmpl.yaml`).
@@ -85,7 +85,7 @@ layers:
         "$value": "oklch(0.205 0 0)"   # ~#27272a (neutral-800) — shadcn default
         "$description": |
           Primary brand hue. Default is shadcn-neutral (near-black) for safe fallback.
-          OVERRIDE per business in workspace/businesses/{biz}/L2-tactical/design/tokens.yaml.
+          OVERRIDE per business in docs/tactical/design/tokens.yaml.
           Examples: AIOS lime "oklch(0.85 0.18 130)", Bilhon orange "oklch(0.7 0.18 50)".
       accent-secondary:
         "$value": "oklch(0.97 0 0)"    # ~#f4f4f5 (neutral-100) — shadcn default
@@ -247,7 +247,7 @@ layers:
 
     duration:
       "$type": "duration"
-      "$description": "3-step pragmatic; Chakra 7-step is overkill for sinkra apps"
+      "$description": "3-step pragmatic; Chakra 7-step is overkill for aiox apps"
       instant:
         "$value": "0ms"
       fast:

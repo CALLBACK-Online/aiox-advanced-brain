@@ -12,7 +12,7 @@ workflow: bench-comparison-pipeline
 description: "Composed public stub for the full benchmark pipeline"
 ```
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

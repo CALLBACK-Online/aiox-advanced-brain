@@ -1,5 +1,5 @@
 # Managed by materialize-map.py
-# Source: .aiox/squad-runtime/sinkra-squad/aiox-sop/map/20260329-190639-claude-opus/task_definitions.yaml
+# Source: .aiox/squad-runtime/aiox-squad/aiox-sop/map/20260329-190639-claude-opus/task_definitions.yaml
 # Category: workflow
 
 metadata:
@@ -11,7 +11,7 @@ metadata:
   generated_at: '2026-03-29T23:45:00-03:00'
   agent: composition-engineer
   version: 1.0.0
-  methodology: SINKRA Task Anatomy — 8-Field Definition per Atom. Derived from workflow_definition.json
+  methodology: AIOX Task Anatomy — 8-Field Definition per Atom. Derived from workflow_definition.json
     (Phase 4) + executor_matrix.json (Phase 3). Zero invented fields.
   validation_status: PASS
   total_tasks: 27
@@ -96,7 +96,7 @@ tasks:
       validated_at: ISO8601 }'
   pre_conditions:
   - sop_payload_json is valid JSON
-  - SINKRA required fields schema is loaded in Edge Function
+  - AIOX required fields schema is loaded in Edge Function
   - Supabase sop_validation_log table is writable
   post_conditions:
     conditions:
@@ -236,20 +236,20 @@ tasks:
     tipo: String (UTF-8 Markdown)
     origem: T2.1
     obrigatorio: true
-  - campo: sinkra_schema_definition
+  - campo: aiox_schema_definition
     tipo: JSON Schema
-    origem: workspace/businesses/sinkra-hub/registries/tokens.json — loaded at runtime
+    origem: docs/upstream monorepo/registries/tokens.json — loaded at runtime
     obrigatorio: true
   - campo: validation_errors
     tipo: JSON (array of strings)
     origem: T2.3 (only on retry loops)
     obrigatorio: false
   saida:
-  - campo: sinkra_schema_json
+  - campo: aiox_schema_json
     tipo: JSON
     destino: T2.3 (Schema Validator)
     persistido: true
-    schema: SINKRA standard schema — all fields from token-registry
+    schema: AIOX standard schema — all fields from token-registry
   - campo: extraction_confidence_metadata
     tipo: JSON
     destino: T2.4 (Confidence Scorer)
@@ -263,13 +263,13 @@ tasks:
   pre_conditions:
   - normalized_markdown is non-empty (char_count >= 100)
   - Gateway AI (OpenClaw) is accessible and authenticated
-  - SINKRA schema definition loaded from token-registry
+  - AIOX schema definition loaded from token-registry
   - Retry count < 2 (if called from T2.3 feedback loop)
   post_conditions:
     conditions:
     - Output is valid JSON
-    - All mandatory SINKRA fields present (or explicitly null — not omitted)
-    - Output schema validated against SINKRA JSON schema
+    - All mandatory AIOX fields present (or explicitly null — not omitted)
+    - Output schema validated against AIOX JSON schema
     acceptance_criteria:
     - JSON parses without errors
     - 'Mandatory fields: sop_id, process_name, scope, steps[] are present'
@@ -287,7 +287,7 @@ tasks:
         schema mapping'
       alert: slack-qa
       alert_on_failure: true
-- task: validarSchemaSINKRA
+- task: validarSchemaAIOX
   task_id: T2.3
   task_name: Validate extracted schema
   atomic_layer: Atom
@@ -297,13 +297,13 @@ tasks:
   domain: Operational
   automation_decision: AUTOMATE
   entrada:
-  - campo: sinkra_schema_json
+  - campo: aiox_schema_json
     tipo: JSON
     origem: T2.2
     obrigatorio: true
-  - campo: sinkra_json_schema_definition
+  - campo: aiox_json_schema_definition
     tipo: JSON Schema (AJV format)
-    origem: squads/sinkra-squad/data/sinkra-schema.json — loaded at runtime
+    origem: squads/aiox-squad/data/aiox-schema.json — loaded at runtime
     obrigatorio: true
   saida:
   - campo: schema_validation_result
@@ -313,8 +313,8 @@ tasks:
     schema: '{ passed: bool, errors: ValidationError[], validated_at: ISO8601, retry_count:
       int }'
   pre_conditions:
-  - sinkra_schema_json received from T2.2
-  - SINKRA JSON schema definition loaded
+  - aiox_schema_json received from T2.2
+  - AIOX JSON schema definition loaded
   - retry_count tracked (max 2)
   post_conditions:
     conditions:
@@ -347,7 +347,7 @@ tasks:
   domain: Operational
   automation_decision: AUTOMATE
   entrada:
-  - campo: validated_sinkra_schema_json
+  - campo: validated_aiox_schema_json
     tipo: JSON
     origem: T2.3 (schema_validation_result.passed == true)
     obrigatorio: true
@@ -408,7 +408,7 @@ tasks:
     escalation_sla_minutes: 60
     action: manual_override_or_reject
   entrada:
-  - campo: validated_sinkra_schema_json
+  - campo: validated_aiox_schema_json
     tipo: JSON
     origem: T2.4 (confidence_score >= 70)
     obrigatorio: true
@@ -426,7 +426,7 @@ tasks:
       string[] }'
   pre_conditions:
   - confidence_score >= 70 (from T2.4)
-  - validated_sinkra_schema_json available
+  - validated_aiox_schema_json available
   - Pedro Valerio Clone is accessible (Gateway AI)
   - PV_BS_001 clarity rubric loaded
   post_conditions:
@@ -461,7 +461,7 @@ tasks:
   automation_decision: AUTOMATE
   parallel_group: pg_quality_grading
   entrada:
-  - campo: validated_sinkra_schema_json
+  - campo: validated_aiox_schema_json
     tipo: JSON
     origem: T2.4 (confidence_score >= 70)
     obrigatorio: true
@@ -477,8 +477,8 @@ tasks:
     schema: '{ score: float, total_required: int, present: int, missing: string[],
       partial: string[] }'
   pre_conditions:
-  - validated_sinkra_schema_json available
-  - SINKRA required fields checklist loaded (from token-registry)
+  - validated_aiox_schema_json available
+  - AIOX required fields checklist loaded (from token-registry)
   - confidence_score >= 70
   post_conditions:
     conditions:
@@ -500,12 +500,12 @@ tasks:
       fallback: Escalate to Quality Analyst for manual completeness check
       alert: slack-qa
       alert_on_failure: true
-- task: avaliarAderenciaSINKRA
+- task: avaliarAderenciaAIOX
   task_id: T3.3
-  task_name: Evaluate SINKRA adherence with heuristics
+  task_name: Evaluate AIOX adherence with heuristics
   atomic_layer: Atom
   responsavel_type: Clone
-  executor_role: SINKRA Compliance Assessor (Pedro Valerio mind clone)
+  executor_role: AIOX Compliance Assessor (Pedro Valerio mind clone)
   executor_source: squads/squad-creator-pro/minds/oalanicolas/
   workflow: wf_extraction_grading
   domain: Operational
@@ -518,21 +518,21 @@ tasks:
     escalation_sla_minutes: 60
     action: review_violation_and_approve_or_reject
   entrada:
-  - campo: validated_sinkra_schema_json
+  - campo: validated_aiox_schema_json
     tipo: JSON
     origem: T2.4 (confidence_score >= 70)
     obrigatorio: true
   saida:
-  - campo: sinkra_adherence_result
+  - campo: aiox_adherence_result
     tipo: JSON
     destino: T3.4 (Gap Analyzer) and T3.5 (Report Compiler)
     persistido: true
     schema: '{ overall_pass: bool, mandamentos_scores: object, violations: string[],
       veto_triggered: bool }'
   pre_conditions:
-  - validated_sinkra_schema_json available
+  - validated_aiox_schema_json available
   - Pedro Valerio Clone accessible (Gateway AI)
-  - SINKRA 10 Mandamentos definition loaded
+  - AIOX 10 Mandamentos definition loaded
   post_conditions:
     conditions:
     - All 10 Mandamentos evaluated individually
@@ -551,7 +551,7 @@ tasks:
     error_handling:
       strategy: retry
       max_retries: 2
-      fallback: Escalate to Quality Analyst for manual SINKRA compliance check
+      fallback: Escalate to Quality Analyst for manual AIOX compliance check
       alert: slack-qa
       alert_on_failure: true
 - task: identificarLacunasRecomendacoes
@@ -564,7 +564,7 @@ tasks:
   domain: Operational
   automation_decision: DELEGATE
   entrada:
-  - campo: validated_sinkra_schema_json
+  - campo: validated_aiox_schema_json
     tipo: JSON
     origem: T2.4
     obrigatorio: true
@@ -576,7 +576,7 @@ tasks:
     tipo: float
     origem: T3.2
     obrigatorio: true
-  - campo: sinkra_adherence_result
+  - campo: aiox_adherence_result
     tipo: JSON
     origem: T3.3
     obrigatorio: true
@@ -596,7 +596,7 @@ tasks:
   pre_conditions:
   - T3.1, T3.2, T3.3 all completed (all scores available)
   - Gateway AI (OpenClaw) accessible
-  - SINKRA gap taxonomy loaded
+  - AIOX gap taxonomy loaded
   post_conditions:
     conditions:
     - 'Each recommendation has: issue, severity, fix_suggestion, affected_field'
@@ -636,7 +636,7 @@ tasks:
     tipo: float
     origem: T3.2
     obrigatorio: true
-  - campo: sinkra_adherence_result
+  - campo: aiox_adherence_result
     tipo: JSON
     origem: T3.3
     obrigatorio: true
@@ -654,7 +654,7 @@ tasks:
     destino: T4.1-T4.4, T5.1-T5.3, T6.3 (multiple consumers)
     persistido: true
     schema: '{ sop_id, tier: ''A''|''B''|''C''|''D'', scores: { clarity, completeness,
-      sinkra_adherence, composite }, recommendations, generated_at }'
+      aiox_adherence, composite }, recommendations, generated_at }'
   - campo: tier_classification
     tipo: string ('A'|'B'|'C'|'D')
     destino: N8N routing decision
@@ -676,7 +676,7 @@ tasks:
     - tier assigned based on composite score
     - routing_decision emitted to N8N
     acceptance_criteria:
-    - 'Composite score formula: (clarity × 0.4) + (completeness/20 × 0.3) + (sinkra_adherence_score
+    - 'Composite score formula: (clarity × 0.4) + (completeness/20 × 0.3) + (aiox_adherence_score
       × 0.3)'
     - 'Tier A (composite >= 4.5): route to wf_format_conversion directly'
     - 'Tier B/C (composite 3.0-4.4): route to wf_rework_feedback'
@@ -818,7 +818,7 @@ tasks:
   automation_decision: AUTOMATE
   parallel_group: pg_ml_vs_docs
   entrada:
-  - campo: validated_sinkra_schema_json
+  - campo: validated_aiox_schema_json
     tipo: JSON
     origem: T2.4 (source of truth) — also gated by T3.5 tier routing
     obrigatorio: true
@@ -827,17 +827,17 @@ tasks:
     tipo: JSON-LD
     destino: T6.1 (coherence validation)
     persistido: true
-    schema: JSON-LD with @context, @type, and semantic links per SINKRA ontology
+    schema: JSON-LD with @context, @type, and semantic links per AIOX ontology
   pre_conditions:
   - Tier classification from T3.5 is 'A' OR rework cycle completed
-  - validated_sinkra_schema_json available
-  - SINKRA JSON-LD @context definition loaded
+  - validated_aiox_schema_json available
+  - AIOX JSON-LD @context definition loaded
   - JSON-LD template loaded
   post_conditions:
     conditions:
     - Output is valid JSON-LD (passes JSON-LD validator)
-    - '@context references SINKRA ontology URL'
-    - '@type mapped to SINKRA process taxonomy'
+    - '@context references AIOX ontology URL'
+    - '@type mapped to AIOX process taxonomy'
     acceptance_criteria:
     - JSON-LD validates against JSON-LD spec 1.1
     - All mandatory SOP fields present as JSON-LD properties
@@ -864,7 +864,7 @@ tasks:
   automation_decision: AUTOMATE
   parallel_group: pg_ml_vs_docs
   entrada:
-  - campo: validated_sinkra_schema_json
+  - campo: validated_aiox_schema_json
     tipo: JSON
     origem: T2.4
     obrigatorio: true
@@ -880,7 +880,7 @@ tasks:
     schema: '{ sop_id, model: string, dimensions: 1536, cache_hit: bool, generated_at:
       ISO8601 }'
   pre_conditions:
-  - validated_sinkra_schema_json available
+  - validated_aiox_schema_json available
   - Anthropic Embeddings API accessible and authenticated
   - Cache layer (Redis or file cache) available
   - Content hash computed for cache lookup
@@ -899,7 +899,7 @@ tasks:
     duration: < 1min (cached) / < 20min (uncached)
     cost: ~$0.10 per embedding (uncached) / $0 (cached)
     cacheable: true
-    cache_key: content_hash(sinkra_schema_json)
+    cache_key: content_hash(aiox_schema_json)
     sla_minutes: 20
     error_handling:
       strategy: retry
@@ -918,7 +918,7 @@ tasks:
   automation_decision: DELEGATE
   parallel_group: pg_ml_vs_docs
   entrada:
-  - campo: validated_sinkra_schema_json
+  - campo: validated_aiox_schema_json
     tipo: JSON
     origem: T2.4
     obrigatorio: true
@@ -934,7 +934,7 @@ tasks:
     schema: '{ node_count: int, edge_count: int, is_dag: bool, has_cycles: bool, critical_path:
       string[] }'
   pre_conditions:
-  - validated_sinkra_schema_json available
+  - validated_aiox_schema_json available
   - Gateway AI (OpenClaw) accessible
   - GraphML generator library available
   - SOP has at least 1 step with dependencies
@@ -971,7 +971,7 @@ tasks:
   automation_decision: AUTOMATE
   parallel_group: pg_ml_vs_docs
   entrada:
-  - campo: validated_sinkra_schema_json
+  - campo: validated_aiox_schema_json
     tipo: JSON
     origem: T2.4
     obrigatorio: true
@@ -987,7 +987,7 @@ tasks:
     schema: '{ token_count: int, model_target: string, special_tokens: string[], created_at:
       ISO8601 }'
   pre_conditions:
-  - validated_sinkra_schema_json available
+  - validated_aiox_schema_json available
   - tiktoken (or target tokenizer) installed
   - Target model tokenizer configured (e.g., cl100k_base for GPT-4)
   post_conditions:
@@ -1021,7 +1021,7 @@ tasks:
   automation_decision: DELEGATE
   parallel_group: pg_ml_vs_docs
   entrada:
-  - campo: validated_sinkra_schema_json
+  - campo: validated_aiox_schema_json
     tipo: JSON
     origem: T2.4
     obrigatorio: true
@@ -1035,10 +1035,9 @@ tasks:
     destino: T5.4 (Multi-Format Renderer)
     persistido: true
   pre_conditions:
-  - validated_sinkra_schema_json available
+  - validated_aiox_schema_json available
   - Gateway AI (OpenClaw) accessible
   - Executive summary template loaded
-  - 'Target audience: C-level / decision-makers'
   post_conditions:
     conditions:
     - Output is valid Markdown
@@ -1071,7 +1070,7 @@ tasks:
   automation_decision: DELEGATE
   parallel_group: pg_ml_vs_docs
   entrada:
-  - campo: validated_sinkra_schema_json
+  - campo: validated_aiox_schema_json
     tipo: JSON
     origem: T2.4
     obrigatorio: true
@@ -1085,7 +1084,7 @@ tasks:
     destino: T5.4 (Multi-Format Renderer)
     persistido: true
   pre_conditions:
-  - validated_sinkra_schema_json available
+  - validated_aiox_schema_json available
   - Gateway AI (OpenClaw) accessible
   - Operational guide template loaded
   - 'Target audience: process operators / frontline staff'
@@ -1121,7 +1120,7 @@ tasks:
   automation_decision: DELEGATE
   parallel_group: pg_ml_vs_docs
   entrada:
-  - campo: validated_sinkra_schema_json
+  - campo: validated_aiox_schema_json
     tipo: JSON
     origem: T2.4
     obrigatorio: true
@@ -1135,10 +1134,10 @@ tasks:
     destino: T5.4 (Multi-Format Renderer)
     persistido: true
   pre_conditions:
-  - validated_sinkra_schema_json available
+  - validated_aiox_schema_json available
   - Gateway AI (OpenClaw) accessible
   - Technical reference template loaded
-  - 'Target audience: architects, developers, SINKRA practitioners'
+  - 'Target audience: architects, developers, AIOX practitioners'
   post_conditions:
     conditions:
     - Output is valid Markdown
@@ -1149,7 +1148,7 @@ tasks:
     - Word count >= 1000 words
     - 'Sections: Schema Definition, Executor Matrix, Integration Points, Edge Cases,
       Version History'
-    - All SINKRA field names reference token-registry identifiers
+    - All AIOX field names reference token-registry identifiers
     - Completes within 10 minutes
   performance:
     duration: < 10min
@@ -1200,7 +1199,7 @@ tasks:
   pre_conditions:
   - executive_summary_md, operational_guide_md, technical_reference_md all available
   - pandoc installed (version >= 2.19)
-  - Notion API key configured and workspace accessible
+  - Notion API key configured and local_docs accessible
   - Output storage paths configured
   post_conditions:
     conditions:
@@ -1296,7 +1295,7 @@ tasks:
     obrigatorio: true
     detail: '{ json_ld, embeddings, graphml, tokens, html_files, notion_pages, pdf_files
       }'
-  - campo: sinkra_schema_json
+  - campo: aiox_schema_json
     tipo: JSON
     origem: T2.4 (source of truth)
     obrigatorio: true
@@ -1311,7 +1310,7 @@ tasks:
   - All T4 artifacts present in storage (json_ld, embeddings, graphml, tokens)
   - All T5 artifacts present in storage (html, pdf, notion)
   - Artifact manifest file available
-  - SINKRA schema source of truth accessible
+  - AIOX schema source of truth accessible
   post_conditions:
     conditions:
     - Validation result logged with all artifact counts

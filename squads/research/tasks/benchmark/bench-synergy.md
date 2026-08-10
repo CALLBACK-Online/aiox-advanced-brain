@@ -11,7 +11,7 @@ type: atom
 description: "Analyze synergy potential between two previously-benchmarked subjects (integration patterns, hybrid architecture, value equation)"
 ```
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 
@@ -68,7 +68,7 @@ and implementation roadmap.
 | `gap-analysis.json` | `docs/bench/{slug}/` | YES |
 | `comparison-matrix.json` | `docs/bench/{slug}/` | YES |
 | `executive-report.md` | `docs/bench/{slug}/` | YES |
-| Internal analyses | `outputs/decoded/`, `.aiox/squad-runtime/sinkra-squad/` | OPTIONAL |
+| Internal analyses | `outputs/decoded/`, `.aiox/squad-runtime/aiox-squad/` | OPTIONAL |
 
 ---
 

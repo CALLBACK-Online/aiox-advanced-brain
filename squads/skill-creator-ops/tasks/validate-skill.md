@@ -4,7 +4,7 @@
 Validar uma skill contra o checklist de qualidade AllFluence (12 checks).
 
 ## Inputs
-- `skill_path` (obrigatório): Path do diretório da skill (e.g., `.claude/skills/tech-search/`)
+- `skill_path` (obrigatório): Path do diretório da skill (e.g., `skills/tech-search/`)
 
 ## Executor
 skill-validator

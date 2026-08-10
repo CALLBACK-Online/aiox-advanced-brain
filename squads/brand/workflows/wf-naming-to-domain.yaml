@@ -33,20 +33,12 @@ inputs:
     - name: budget
       type: number
       default: 150
-workspace_contract:
-  required_preflight:
-    - bash squads/brand/scripts/bootstrap-brand-workspace.sh {{brand_name}}
-    - bash squads/brand/scripts/validate-brand-essentials.sh
-    - node workspace/scripts/resolve-squad-workspace-readiness.cjs --squad=brand --business={{brand_name}} --context-type=brand
-  context_task: load-workspace-context
-  canonical_template_namespace: brand
-  canonical_output_policy: template-first
 phases:
-  - id: workspace_context
-    name: Workspace preflight and context load
+  - id: project context
+    name: Project preflight and context load
     executor: brand-chief
     tasks:
-      - task: load-workspace-context.md
+      - task: load-project context.md
         inputs:
           - brand_name
   - id: naming
@@ -62,7 +54,7 @@ phases:
           - target_market
           - constraints
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/naming-shortlist.md
+      - docs/tactical/brand/naming/naming-shortlist.md
   - id: domain
     name: Domain + legal pre-check
     executor: domain-scout
@@ -74,26 +66,26 @@ phases:
           - names
           - budget
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/naming-shortlist.md
+      - docs/tactical/brand/naming/naming-shortlist.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/domain-legal-report.md
+      - docs/tactical/brand/naming/domain-legal-report.md
   - id: consolidation
     name: Final recommendation
     executor: brand-chief
     objective: Consolidar nome recomendado e próximos passos
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/naming-shortlist.md
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/domain-legal-report.md
+      - docs/tactical/brand/naming/naming-shortlist.md
+      - docs/tactical/brand/naming/domain-legal-report.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/naming-domain-recommendation.md
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/domain-decision.yaml
+      - docs/tactical/brand/naming/naming-domain-recommendation.md
+      - docs/tactical/brand/domain-decision.yaml
 outputs:
-  base_path: workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/
+  base_path: docs/tactical/brand/naming/
   artifacts:
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/naming-shortlist.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/domain-legal-report.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/naming-domain-recommendation.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/domain-decision.yaml
+    - docs/tactical/brand/naming/naming-shortlist.md
+    - docs/tactical/brand/naming/domain-legal-report.md
+    - docs/tactical/brand/naming/naming-domain-recommendation.md
+    - docs/tactical/brand/domain-decision.yaml
 final_output:
   format: markdown
   includes:
@@ -109,12 +101,12 @@ workflow:
   description: SNP naming + validação de domínio e risco legal básico
   type: legacy
   sequence:
-    - step: workspace-context
-      id: workspace-context
+    - step: project context
+      id: project context
       phase: 1
-      phase_name: Workspace preflight and context load
+      phase_name: Project preflight and context load
       agent: brand-chief
-      action: execute_workspace-preflight-and-context-load
+      action: execute_project-preflight-and-context-load
       next: naming
     - step: naming
       id: naming
@@ -123,7 +115,7 @@ workflow:
       agent: naming-strategist
       action: execute_naming-generation-snp
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/naming-shortlist.md
+        - docs/tactical/brand/naming/naming-shortlist.md
       next: domain
     - step: domain
       id: domain
@@ -132,7 +124,7 @@ workflow:
       agent: domain-scout
       action: execute_domain-legal-pre-check
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/domain-legal-report.md
+        - docs/tactical/brand/naming/domain-legal-report.md
       next: consolidation
     - step: consolidation
       id: consolidation
@@ -141,8 +133,8 @@ workflow:
       agent: brand-chief
       action: execute_final-recommendation
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/naming/naming-domain-recommendation.md
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/domain-decision.yaml
+        - docs/tactical/brand/naming/naming-domain-recommendation.md
+        - docs/tactical/brand/domain-decision.yaml
     - workflow_end:
         id: complete
         action: workflow_complete

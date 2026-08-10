@@ -3,7 +3,7 @@
 /**
  * Input Validator (deterministic worker)
  * Implementa IV-1, IV-2, IV-3
- * SINKRA Execution Type: Worker
+ * AIOX Execution Type: Worker
  */
 
 const fs = require('fs');

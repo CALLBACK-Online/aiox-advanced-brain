@@ -138,7 +138,7 @@ For every mind-based agent:
 | `*create-agent` | Create agent from DNA |
 | `*validate-squad` | Run quality validation |
 | `*modernize-squad {squad}` | Run full hardening pipeline for a legacy squad |
-| `*workspace-hardening {squad}` | Audit + remediate workspace integration contract |
+| `*project context hardening {squad}` | Audit + remediate local project docs contract |
 | `*resume` | Continue interrupted workflow |
 | `*status` | Show current state |
 | `*help` | Show all commands |
@@ -152,7 +152,7 @@ I read workflows from `squads/squad-creator-pro/workflows/` as data:
 - `wf-clone-mind.yaml` - Mind cloning pipeline
 - `wf-discover-tools.yaml` - Tool discovery
 - `wf-modernize-squad.yaml` - Full modernization and hardening pipeline
-- `wf-workspace-integration-hardening.yaml` - Workspace contract hardening pipeline
+- `wf-local project docs-hardening.yaml` - project context contracts hardening pipeline
 
 ### State Persistence
 State persisted in `.aiox/squad-runtime/create-squad/{slug}/state.json`:

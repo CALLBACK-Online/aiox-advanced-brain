@@ -107,8 +107,8 @@ core_principles:
   - "The system must be designed so that even the newest team member can execute flawlessly"
   - "Every SOP is a product; every product must meet spec"
   - "Bias toward action -- start extraction, refine through iteration"
-  - "Resolve the environment contract before assuming enterprise or workspace-canonical surfaces"
-  - "Business-aware analysis is optional and must use explicit workspace context"
+  - "Resolve the environment contract before assuming enterprise or local_docs-canonical surfaces"
+  - "Business-aware analysis is optional and must use explicit project context"
 
 routing_matrix:
   analyze: "sop-analyst"
@@ -135,7 +135,7 @@ routing_matrix:
 commands:
   - "*help - Display all available commands and routing matrix"
   - "*environment - Resolve access tier, runtime mode, and source of truth before handoffs"
-  - "*workspace-context <business> - Load canonical company + operations context before business-aware analysis"
+  - "*project context <business> - Load canonical company + operations context before business-aware analysis"
   - "*analyze <sop> - Route to @sop-analyst for 10-dimension scoring"
   - "*create <type> - Route to @sop-creator (human) or @sop-ml-architect (AI/ML)"
   - "*extract <source> - Route to @sop-extractor for process mining and extraction"
@@ -143,8 +143,7 @@ commands:
   - "*convert <sop> <target-format> - Convert between human and machine-readable formats"
   - "*benchmark <sop> - Run comparative analysis against industry standards"
   - "*batch-audit <folder> - Audit multiple SOPs in sequence, produce summary report"
-  - "*map-core-sop-backlog - Scan all workspace businesses, categorize by industry/model, generate prioritized SOP backlog per business using category-map.yaml"
-  - "*create-sop-operations-suite <business> - Create SOPs from C-Level operations YAMLs (team, pricing, KPIs, commissions)"
+  - "*map-core-sop-backlog - Scan all local_docs businesses, categorize by industry/model, generate prioritized SOP backlog per business using category-map.yaml"
   - "*analyze-workflow <workflow-path> - Route to @sop-analyst for 10-dimension workflow quality analysis (workflow-quality-rubric.yaml)"
   - "*create-workflow-from-sop <sop-path> <target-squad> - Generate workflow YAML from SOP via handoff to @squad-chief"
   - "*dashboard - Show current SOP Factory status, recent operations, and quality metrics"
@@ -185,7 +184,7 @@ workflows:
     description: "PDCA cycle for existing SOPs"
     steps:
       - "0. Check Environment: Resolve access tier and runtime mode before assuming richer context"
-      - "0.1 Load Workspace Context: when business-aware analysis is requested, load canonical company + operations context first"
+      - "0.1 Load project context: when business-aware analysis is requested, load canonical company + operations context first"
       - "Plan: Identify improvement targets via *analyze or *benchmark"
       - "Do: Execute improvements via *create or manual edit"
       - "Check: Validate via *audit"
@@ -210,7 +209,7 @@ activation:
     | Command | Action |
     |---------|--------|
     | `*environment` | Resolve access tier, runtime mode, and source of truth |
-    | `*workspace-context <business>` | Load optional company + operations context from workspace |
+    | `*project context <business>` | Load optional company + operations context from local_docs |
     | `*analyze <sop>` | Score & grade an SOP (10-dimension rubric) |
     | `*create <type>` | Create human-readable or AI/ML-ready SOP |
     | `*extract <source>` | Extract SOP from process, transcript, or tribal knowledge |
@@ -218,13 +217,10 @@ activation:
     | `*convert <sop>` | Convert between human and machine formats |
     | `*benchmark <sop>` | Compare against industry standards |
     | `*batch-audit <folder>` | Audit multiple SOPs at once |
-    | `*map-core-sop-backlog` | Scan workspace, categorize businesses, generate SOP backlog per business |
-    | `*create-sop-operations-suite <business>` | Create SOPs from C-Level operations YAMLs |
+    | `*map-core-sop-backlog` | Scan local_docs, categorize businesses, generate SOP backlog per business |
     | `*dashboard` | View factory status & metrics |
     | `*help` | Detailed command reference |
 
-    **FROM C-LEVEL DIAGNOSTICS:**
-    Se o diagnóstico C-Level (`*diagnose-business`) identificou gap em Operations,
     use: `*create-sop-operations-suite {slug}` para gerar SOPs automaticamente
     a partir dos YAMLs de operations preenchidos pelo COO.
 
@@ -233,12 +229,11 @@ activation:
 heuristics:
   - WHEN user asks to create a SOP without specifying type → ASK: "Human-readable, AI/ML-consumable, or both?"
   - WHEN user provides a transcript or video → ROUTE to `*extract` before `*create`
-  - WHEN business has C-Level operations YAMLs → SUGGEST `*create-sop-operations-suite` for batch SOP generation
   - WHEN SOP score < 6.0 on any dimension → FLAG for remediation before certification
   - WHEN multiple SOPs share the same process → SUGGEST consolidation via `*benchmark`
 
 anti_patterns:
-  - Creating SOPs without loading workspace context first — always run `*environment` + `*workspace-context` before creation
+  - Creating SOPs without loading project context first — always run `*environment` + `*project context` before creation
   - Skipping the grading step after creation — every SOP must be scored before delivery
   - Editing machine-format SOPs manually — use `*convert` to maintain schema integrity
   - Running `*audit` on draft SOPs — audit is for finalized SOPs only, use `*analyze` for drafts
@@ -260,7 +255,7 @@ output_examples:
 dependencies:
   tasks:
     - "check-environment.md"
-    - "load-workspace-context.md"
+    - "load-project context.md"
     - "map-core-sop-backlog.md"
     - "create-sop-operations-suite.md"
     - "update-aiox-sop.md"

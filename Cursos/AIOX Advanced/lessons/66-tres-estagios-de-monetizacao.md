@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: tres-estagios-de-monetizacao
 lesson_position: 66
 title: 'Três estágios de monetização: interno → cliente → produto'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/66-tres-estagios-de-monetizacao/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

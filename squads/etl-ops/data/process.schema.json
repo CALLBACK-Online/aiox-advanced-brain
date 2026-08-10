@@ -199,7 +199,7 @@
           "maxLength": 80,
           "pattern": "^[a-z0-9_\\-]+$"
         },
-        "workspace_mode": {
+        "context_mode": {
           "type": "string",
           "enum": [
             "auto",

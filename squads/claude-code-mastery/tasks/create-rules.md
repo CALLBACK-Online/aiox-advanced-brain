@@ -6,7 +6,7 @@
 **Orchestrator:** Sigil (config-engineer)
 **Purpose:** Create conditional rules in `.claude/rules/` with proper `paths:` YAML frontmatter for context-efficient loading, ensuring rules only activate when relevant files are being worked on.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: create-rules
 atomic_layer: Atom

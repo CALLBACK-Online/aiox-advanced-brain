@@ -17,18 +17,18 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Tuple
 
 
-WORKSPACE_ROOT = Path(__file__).resolve().parents[3]
-MEMORY_FILE = WORKSPACE_ROOT / ".claude" / "agent-memory" / "squad" / "MEMORY.md"
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+MEMORY_FILE = PROJECT_ROOT / ".claude" / "agent-memory" / "squad" / "MEMORY.md"
 
 
 def resolve_runtime_root() -> Path:
     override = os.getenv("AIOX_RUNTIME_ROOT", "").strip()
     if not override:
-        return WORKSPACE_ROOT / ".aiox" / "squad-runtime"
+        return PROJECT_ROOT / ".aiox" / "squad-runtime"
     candidate = Path(override)
     if candidate.is_absolute():
         return candidate
-    return (WORKSPACE_ROOT / candidate).resolve()
+    return (PROJECT_ROOT / candidate).resolve()
 
 
 def canonical_active_path() -> Path:

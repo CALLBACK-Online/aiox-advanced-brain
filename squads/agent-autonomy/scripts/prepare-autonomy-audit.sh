@@ -11,5 +11,5 @@ if [[ -z "$target" ]]; then
   exit 1
 fi
 
-mkdir -p "$OUTPUTS_ROOT/sinkra-squad/agent-autonomy"
+mkdir -p "$OUTPUTS_ROOT/aiox-squad/agent-autonomy"
 echo "audit_target=${target}"

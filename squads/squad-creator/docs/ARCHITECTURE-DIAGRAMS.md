@@ -872,7 +872,7 @@ graph TD
 
         PC --> PC1["34 tasks:<br/>an-extract-dna, an-extract-framework,<br/>an-assess-sources, an-clone-review,<br/>an-validate-clone, an-fidelity-score,<br/>pv-audit, pv-axioma-assessment,<br/>extract-voice-dna, extract-thinking-dna,<br/>collect-sources, auto-acquire-sources,<br/>squad-fusion, deep-research-pre-agent,<br/>..."]
 
-        PD --> PD1["15+ workflows:<br/>wf-create-squad.yaml<br/>wf-clone-mind.yaml<br/>wf-mind-research-loop.yaml<br/>wf-auto-acquire-sources.yaml<br/>wf-discover-tools.yaml<br/>wf-squad-fusion.yaml<br/>wf-research-then-create-agent.yaml<br/>wf-extraction-pipeline.yaml<br/>wf-context-aware-create-squad.yaml<br/>wf-brownfield-upgrade-squad.yaml<br/>wf-cross-provider-qualification.yaml<br/>wf-model-tier-qualification.yaml<br/>wf-optimize-squad.yaml<br/>wf-workspace-integration-hardening.yaml<br/>validate-squad.yaml"]
+        PD --> PD1["15+ workflows:<br/>wf-create-squad.yaml<br/>wf-clone-mind.yaml<br/>wf-mind-research-loop.yaml<br/>wf-auto-acquire-sources.yaml<br/>wf-discover-tools.yaml<br/>wf-squad-fusion.yaml<br/>wf-research-then-create-agent.yaml<br/>wf-extraction-pipeline.yaml<br/>wf-context-aware-create-squad.yaml<br/>wf-brownfield-upgrade-squad.yaml<br/>wf-cross-provider-qualification.yaml<br/>wf-model-tier-qualification.yaml<br/>wf-optimize-squad.yaml<br/>wf-local project docs-hardening.yaml<br/>validate-squad.yaml"]
     end
 ```
 

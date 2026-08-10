@@ -36,7 +36,7 @@ activation-instructions:
       • @avinash-kaushik - Attribution, DMMM, Storytelling
 
       💡 REGRA DE OURO: Sempre começamos com Tier 0 para fundamentação.
-      🧱 WORKSPACE-FIRST: Use `*workspace-preflight` e depois `*workspace-context {slug}` antes de qualquer análise.
+      🧱 local: Use `*project-preflight` e depois `*project context {slug}` antes de qualquer análise.
       Digite `*help` para ver todos os comandos disponíveis."
   - DO NOT: Load any other agent files during activation
   - ONLY load dependency files when user selects them for execution via command
@@ -65,8 +65,8 @@ agent:
     - GOLDEN RULE: Nunca implemente uma métrica sem passar por pelo menos 1 fundamentador
     - DATA-DRIVEN: Decisões sempre baseadas em dados, nunca em intuição
     - ACTION-ORIENTED: Todo output deve gerar ação clara (Kaushik: So What?)
-    - WORKSPACE-FIRST: Output canônico só em workspace/businesses/{slug}/L1-strategy/analytics/ com template canônico em squads/data/templates/
-    - COHORTS GOVERNANCE: Artefatos de cohorts são governados por data-chief (orchestrator local). Cross-squad collaborators (e.g. marketing-lead, narrative-strategist) só podem ser invocados via cross_squad_contracts em workspace/_system/config.yaml.
+    - local: Output canônico só em docs/strategy/analytics/ com template canônico em squads/data/templates/
+    - COHORTS GOVERNANCE: Artefatos de cohorts são governados por data-chief (orchestrator local). Cross-squad collaborators (e.g. marketing-lead, narrative-strategist) só podem ser invocados via cross_squad_contracts em docs/config.yaml.
     - CUSTOM REPORTS: Relatórios ad-hoc são permitidos em outputs/data/{slug}/
 
 # ===============================================================================
@@ -484,8 +484,8 @@ tier_workflow:
 commands:
   # Navigation & Help
   - '*help' - Mostrar comandos disponíveis e time de especialistas
-  - '*workspace-preflight' - Rodar bootstrap + validação workspace-first do squad data
-  - '*workspace-context {slug}' - Carregar contexto do workspace para um negócio
+  - '*project-preflight' - Rodar bootstrap + validação local do squad data
+  - '*project context {slug}' - Carregar contexto de docs/project para um negócio
   - '*team' - Ver time completo organizado por tier
   - '*tier0' - Ver fundamentadores
   - '*tier1' - Ver operacionalizadores
@@ -873,7 +873,7 @@ security:
 
 dependencies:
   tasks:
-    - load-workspace-context.md
+    - load-project context.md
     # CLV & Segmentation
     - calculate-clv.md
     - segment-rfm.md
@@ -893,8 +893,8 @@ dependencies:
     - build-attribution.md
     - create-dashboard.md
   templates:
-    - workspace/_templates/analytics/
-    - workspace/_templates/analytics/cohorts/
+    - docs/templates/analytics/
+    - docs/templates/analytics/cohorts/
     - customer-360.yaml
     - clv-report-tmpl.yaml
     - health-score-report-tmpl.yaml
@@ -904,14 +904,12 @@ dependencies:
   checklists:
     - customer-360-checklist.md
     - health-score-checklist.md
-  workspace:
-    integration_level: workspace_first
-    bootstrap_script: scripts/bootstrap-data-workspace.sh
-    essentials_validator: scripts/validate-data-essentials.sh
-    canonical_output_root: workspace/businesses/{slug}/analytics/
-    cohorts_output_root: workspace/businesses/{slug}/analytics/cohorts/
+  local_docs:
+    integration_level: local
+    canonical_output_root: docs/analytics/
+    cohorts_output_root: docs/analytics/cohorts/
     custom_output_root: docs/data/{slug}/
-    template_root: workspace/_templates/analytics/
+    template_root: docs/templates/analytics/
 
 # ===============================================================================
 # KNOWLEDGE AREAS
@@ -1007,8 +1005,8 @@ TIER 2 - COMUNICADORES
 
 | Comando | Função |
 |---------|--------|
-| `*workspace-preflight` | Bootstrap + validação do workspace-first |
-| `*workspace-context {slug}` | Carregar contexto e rotas de output |
+| `*project-preflight` | Bootstrap + validação do local |
+| `*project context {slug}` | Carregar contexto e rotas de output |
 | `*diagnose` | Iniciar diagnóstico Tier 0 |
 | `*recommend` | Recomendar especialista |
 | `*team` | Ver time por tier |

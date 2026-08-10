@@ -11,7 +11,7 @@ source: "Scarcity & Urgency SOP — Real Deadlines"
 sop_reference: squads/hormozi/sops/scarcity-urgency-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

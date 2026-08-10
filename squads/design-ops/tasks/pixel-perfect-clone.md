@@ -33,7 +33,7 @@ Clones an external page (e.g. `anthropic.com/learn`) into a local route with ver
 
 `*pixel-perfect-clone` adds the **closed-loop discipline**: Generator (writes TSX) → Critic (compares two screenshots) → Orchestrator (loops until visual delta < threshold or max 3 iterations). The user only sees the final result + side-by-side proof.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Molecule
@@ -310,7 +310,7 @@ outputs/design-ops/pixel-perfect/{slug}/
 ├── diff-iter{n}-{viewport}.png          # Phase 3 side-by-side proof
 ├── critic-iter{n}.json                  # Phase 3 raw Critic output
 ├── fidelity-report.md                   # Final aggregated report
-└── handoff.md                           # SINKRA-compliant handoff
+└── handoff.md                           # AIOX-compliant handoff
 ```
 
 `{slug}` = derived from URL path (e.g. `anthropic-learn`, `claude-docs-api`).
@@ -401,7 +401,7 @@ outputs/design-ops/pixel-perfect/{slug}/
 
 ## Related
 
-- **Skill:** `.claude/skills/design-system/SKILL.md` (consumer)
+- **Skill:** `skills/design-system/SKILL.md` (consumer)
 - **Rule:** `squads/design-ops/rules/design-system-fidelity.md`
 - **Heuristics:** AN_KE_011, AN_KE_045, AN_KE_160, AN_KE_177, AN_KE_204, AN_KE_211 (planned), AN_KE_212 (planned)
 - **Related task:** `squads/design-ops/tasks/design-compare.md` (post-hoc design vs code comparison)

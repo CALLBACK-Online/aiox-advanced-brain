@@ -27,9 +27,9 @@ outputs:
 
 elicit: true
 ---
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: extract-expert-gold
   task_name: Extract Expert Gold (Knowledge Enrichment Pipeline)
   status: pending
@@ -56,11 +56,11 @@ sinkra_task_metadata:
   accountability_scope: review_only
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Operational
   atomic_layer: Atom
   executor: Agent
@@ -68,7 +68,7 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Extract Expert Gold (Knowledge Enrichment Pipeline)
@@ -153,7 +153,7 @@ passing_threshold: "All checks pass"
 | Extract without checking existing refs | Produces duplicates | ALWAYS run Phase 0 first |
 | Single analyst extraction | Misses cross-framework insights | Minimum 3 analysts per squad |
 | Skip gold filter (Phase 2) | Floods reference files with noise | Phase 2 is mandatory |
-| Write business-specific data to squad | Violates squad agnosticism | Generalize or route to workspace/ |
+| Write business-specific data to squad | Violates squad agnosticism | Generalize or route to docs/ |
 | Overwrite existing reference sections | Loses previously extracted knowledge | Append-only merge strategy |
 | Skip confidence markers | Agents cannot assess reliability | Every insight needs [DOC]/[REP]/[INF] |
 

@@ -7,7 +7,7 @@ Outputs do squad `claude-code-mastery` são configurações de Claude Code, hook
 | Tipo | Localização |
 |---|---|
 | Hooks configurados | `.claude/hooks/` + `settings.json` |
-| Skills instaladas | `.claude/skills/` |
+| Skills instaladas | `skills/` |
 | Subagent definitions | `.claude/agents/` |
 | Slash commands | `.claude/commands/` |
 | MCP configs | `.mcp.json` |

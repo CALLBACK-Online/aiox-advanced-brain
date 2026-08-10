@@ -14,8 +14,8 @@ score: 90.7
 type: upgrade-pack
 enhances: squad-creator
 tested: true
-sinkra_native: true
-sinkra_certified_at: "2026-04-03"
+aiox_native: true
+aiox_certified_at: "2026-04-03"
 updated_at: "2026-03-27"
 
 # Identity-Bound Squad — PII allowed per ADR-SQUAD-PII-POLICY (2026-05-05)
@@ -25,9 +25,9 @@ identity_bound: true
 identity_source:
   type: mind
   refs:
-    - workspace/sinkra-hub/L0-identity/people/pedro-valerio.yaml
-    - workspace/sinkra-hub/L0-identity/people/thiago-finch.yaml
-    - workspace/sinkra-hub/L0-identity/people/alan-nicolas.yaml
+    - "upstream identity record: pedro-valerio"
+    - "upstream identity record: thiago-finch"
+    - "upstream identity record: alan-nicolas"
     - minds/pedro_valerio/
     - minds/thiago_finch/
     - minds/alan_nicolas/
@@ -125,10 +125,10 @@ features:
       - pv-axioma-assessment
       - pv-audit
       - pv-modernization-score
-      - workspace-integration-hardening
+      - local project docs-hardening
     workflows:
       - validate-squad
-      - wf-workspace-integration-hardening
+      - wf-local project docs-hardening
       - modules/module-discovery
       - modules/module-integration
       - modules/module-quality-gates
@@ -151,7 +151,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Human
+      executor_type: Human
       human_in_the_loop: true
       output_schema: "brief aprovado, escopo validado e decisão de publish registrada"
   - id: squad-chief
@@ -159,7 +159,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "plano de orquestração, handoff de fases e comando estruturado"
   - id: oalanicolas
@@ -167,7 +167,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "DNA extraído, heurísticas, frameworks e validação de fidelidade"
   - id: pedro-valerio
@@ -175,7 +175,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "workflow auditado, quality gates e parecer de processo"
   - id: thiago_finch
@@ -183,7 +183,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: "strategy brief, tese de posicionamento e narrativa operacional"
   - id: deterministic-runtime
@@ -191,7 +191,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Worker
+      executor_type: Worker
       human_in_the_loop: true
       output_schema: "artefato validado deterministicamente, score YAML e relatório de auditoria"
   - id: ecosystem-analyst
@@ -199,7 +199,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: false
       output_schema: "ecosystem topology report, gap analysis, cost breakdown e recomendações"
   - id: heuristic-ops
@@ -207,7 +207,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "heuristic inventory, conflict scan, merge candidates e promotion report"
 
@@ -268,7 +268,7 @@ artifact_contracts:
   - artifact_id: "pro-modernization-report"
     template_path: "templates/report-tmpl.yaml"
     lifecycle_states: [draft, pending_validation, validated, approved, rejected, archived]
-  - artifact_id: "pro-workspace-hardening-report"
+  - artifact_id: "pro-project context hardening-report"
     template_path: "templates/report-tmpl.yaml"
     lifecycle_states: [draft, pending_validation, validated, approved, rejected, archived]
   - artifact_id: "pro-squad-prd"
@@ -326,7 +326,7 @@ agnosticism_exceptions:
     approved_by: "oalanicolas"
     approved_at: "2026-04-12"
 
-# SINKRA Composition Mapping (6-level hierarchy — Pro overlay)
+# AIOX Composition Mapping (6-level hierarchy — Pro overlay)
 # Pro extends base composition via upgrade-pack pattern.
 # Base defines core Atoms/Molecules; Pro adds specialized ones.
 composition_mapping:
@@ -516,21 +516,6 @@ composition_mapping:
 bu_mapping: "hub-framework"
 supported_modes: [CRIAR, RESOLVER, VALIDAR, CONFIGURAR, GERENCIAR]
 
-workspace_integration:
-  level: read_only
-  rationale: >-
-    Pro orchestration reads workspace artifacts and hardens squad contracts, but
-    does not own workspace mutation. Any generated squad that requires
-    controlled runtime or workspace-first integration must hand off execution to
-    the COO/c-level contract.
-  read_paths:
-    - workspace/
-    - workspace/_templates/
-    - workspace/domains/
-  write_paths: []
-  documents_owned: []
-  template_namespace: squad-governance
-
 metadata:
   # MIGRATION-SCHEMA-001 backfill
   name: squad-creator-pro
@@ -544,7 +529,7 @@ metadata:
   #   scripts = operational scripts in scripts/ root only (excludes tests/ and cross-provider/)
   #   test_scripts = test files in scripts/tests/ (excludes __init__.py, conftest.py, __pycache__)
   #   cross_provider_scripts = cross-provider tooling in scripts/cross-provider/
-  #   Reconciled against disk on 2026-04-13 via /sinkra-upgrade-squad pipeline.
+  #   Reconciled against disk on 2026-04-13 via /aiox-upgrade-squad pipeline.
   #   Counts reflect the current overlay inventory on disk.
   pro_stats:
     agents: 4

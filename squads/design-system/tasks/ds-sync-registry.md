@@ -12,13 +12,13 @@ Garante que todos os artefatos dependentes permanecem sincronizados.
 
 **Princípio:** "Qualquer mudança estrutural requer sync de tudo que ficou ligado."
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_sync_registry_artifact
@@ -41,7 +41,7 @@ Antes de finalizar, executar protocolo:
 - `squads/design-system/protocols/ai-first-governance.md`
 
 Checklist mínimo:
-- [ ] Validou fontes canônicas (`workspace/system/*`, `workspace/ui/registry.json`, `workspace/domains/design-system/*`)
+- [ ] Validou fontes canônicas (`docs/design-system/system/*`, `docs/design-system/ui/registry.json`, `docs/design-system/domains/*`)
 - [ ] Classificou cada claim como `Implemented`, `Partially implemented` ou `Concept only`
 - [ ] Não há contradição entre relatório e artefatos reais
 - [ ] Itens não resolvidos foram explicitados
@@ -64,7 +64,7 @@ Execute esta task quando:
 
 ### 1. Registry (Obrigatório)
 
-**Arquivo:** `workspace/ui/registry.json`
+**Arquivo:** `docs/design-system/ui/registry.json`
 
 ```json
 {
@@ -84,7 +84,7 @@ Execute esta task quando:
 
 ### 2. AI Metadata (Obrigatório)
 
-**Arquivo:** `workspace/domains/design-system/metadata/components/[name].json`
+**Arquivo:** `docs/design-system/domains/metadata/components/[name].json`
 
 ```json
 {
@@ -236,8 +236,8 @@ Adicionada story "Loading State"
 on:
   push:
     paths:
-      - 'workspace/ui/components/**'
-      - 'workspace/system/**'
+      - 'docs/design-system/ui/components/**'
+      - 'docs/design-system/system/**'
 
 jobs:
   validate-sync:

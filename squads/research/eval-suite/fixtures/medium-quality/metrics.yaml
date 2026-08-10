@@ -1,4 +1,4 @@
-schema: sinkra.research-core.metrics.v1
+schema: aiox.research-core.metrics.v1
 workflow_version: tech-research-v2
 coverage_score: 88
 integrity_score: 92

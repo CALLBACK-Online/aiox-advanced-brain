@@ -79,7 +79,7 @@ mandamentos:
     name: "Melhoria continua: Optimize nunca para"
     rule: "O sistema deve ser auditado e melhorado continuamente. O ciclo Design-Build-Train-Launch-Optimize não tem fim."
     check: "Pelo menos 1 melhoria de processo implementada por mês"
-    violation: "Workspace estagnado por 30+ dias sem otimizacao"
+    violation: "LocalDocs estagnado por 30+ dias sem otimizacao"
     severity: low
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -185,7 +185,7 @@ heuristics:
       source: "Agente Config ClickUp: Heuristica da Automação Prematura"
       threshold: "processo estavel há >1 mês = candidato para automação"
     - id: H-DES-03
-      rule: "SE problema reportado no workspace ENTAO diagnosticar se e CONFIGURACAO (view/campo/filtro errado) ou COMPORTAMENTO (equipe não usa). Maioria pos-launch e comportamento"
+      rule: "SE problema reportado no project docs ENTAO diagnosticar se e CONFIGURACAO (view/campo/filtro errado) ou COMPORTAMENTO (equipe não usa). Maioria pos-launch e comportamento"
       source: "Agente Config ClickUp: Heuristica Config vs Comportamento"
       diagnostic: "config = ajustar sistema | comportamento = revisitar treinamento e mandamentos"
     - id: H-DES-04
@@ -193,7 +193,7 @@ heuristics:
       source: "Agente Config ClickUp: Heuristica da Escalabilidade"
       test: "'Se isso virar 50 unidades, ainda funciona?'"
     - id: H-DES-05
-      rule: "SE implementando workspace novo ENTAO seguir 3 fases: Dumping (Semana 1) → Engenharia do Cabresto (Semana 2) → Injecao ETL (Semana 3-4). NAO pular fases."
+      rule: "SE implementande docs/project novo ENTAO seguir 3 fases: Dumping (Semana 1) → Engenharia do Cabresto (Semana 2) → Injecao ETL (Semana 3-4). NAO pular fases."
       source: "[SOURCE: 08_clickup_lendario.md, Framework de Implementação 3 Fases]"
       reference: "pv-templates.yaml > implementation_3_phases"
     - id: H-DES-06
@@ -385,7 +385,7 @@ anti_patterns:
       name: "Comecar sem plano"
       how_it_happens: "Empolgacao inicial sem estratégia — configura ClickUp sem Design aprovado"
       how_to_avoid: "Fase 1 (Design) e obrigatória — mesmo que leve apenas 1 semana"
-      detection: "Workspace sem hierarquia documentada"
+      detection: "LocalDocs sem hierarquia documentada"
 
     - id: ERR-02
       name: "Não designar Arquiteto ClickUp"
@@ -403,7 +403,7 @@ anti_patterns:
       name: "Criar Spaces por cliente"
       how_it_happens: "Parece lógico no início ('1 cliente = 1 Space')"
       how_to_avoid: "Spaces por area da empresa; Folders por cliente dentro de Delivery"
-      detection: "Workspace com 10+ Spaces nomeados como clientes"
+      detection: "LocalDocs com 10+ Spaces nomeados como clientes"
 
     - id: ERR-05
       name: "Atribuir tarefas a multiplas pessoas"
@@ -441,7 +441,7 @@ anti_patterns:
       name: "Não fazer Daily Spot Check"
       how_it_happens: "Arquiteto ClickUp fica 'sem tempo'"
       how_to_avoid: "10-30 min reservados no calendario como tarefa nao-negociavel"
-      detection: "Workspace com tarefas atrasadas não detectadas por 7+ dias"
+      detection: "LocalDocs com tarefas atrasadas não detectadas por 7+ dias"
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # HEALTH SIGNALS (G9)
@@ -449,7 +449,7 @@ anti_patterns:
 
 health_signals:
   description: |
-    Sinais de saúde do workspace por timeframe. Complementa KPIs numericos
+    Sinais de saúde de docs/project por timeframe. Complementa KPIs numericos
     com indicadores qualitativos observaveis. Usado pelo Arquiteto ClickUp.
   source: "Gestao ClickUp Cap 10: Sinais de Funcionamento"
 

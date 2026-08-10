@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: ralph-paralelizacao
 lesson_position: 58
 title: 'Ralph: paralelização de múltiplos agentes'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/58-ralph-paralelizacao/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -255,7 +255,7 @@ morre, board permanece, resume funciona. Ralph sem resume é fogueira.
 Throughput fantasma e o fan-in que salvou o restante.
 
 Batch de sexta: seis stories "independentes". Quatro em pastas distintas —
-ok. Duas tocavam `[[Squad|squad]]s/*/config.yaml` e `.claude/skills/*/SKILL.md`.
+ok. Duas tocavam `[[Squad|squad]]s/*/config.yaml` e `skills/*/SKILL.md`.
 Spawnaram juntas porque "são stories diferentes".
 
 Resultado: três merges manuais, um AC sumido, duas horas "ganhas" no

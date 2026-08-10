@@ -1,6 +1,6 @@
 # ETL Summarize Book
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 executor: etl-transformer

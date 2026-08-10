@@ -1,0 +1,29 @@
+# AIOX Token Map Template
+# Produzido por: code-anatomist squad (task extract-rules)
+# Consumido por: aiox-squad (Wave 1 + Wave 4 do Epic 100)
+# Artifact ID: aiox-token-map
+# Lifecycle: draft → validated → approved
+
+token_map:
+  source_system: "{system_name}"
+  extraction_date: "{date}"
+  extracted_by: "{agent_id}"
+  tokens:
+    - token_id: "TK-{DOMAIN}-{NNN}"
+      source_rule_id: "RE-{DOMAIN}-{NNN}"
+      family: "{time|capacity|threshold|priority|permission|taxonomy|behavior|mode|accountability}"
+      name: "{descriptive_name}"
+      value: "{extracted_value}"
+      domain: "{finite_domain_definition}"
+      confidence: "{ALTA|MEDIA|BAIXA}"
+      traceability: "{code_file:line_number}"
+      notes: "{optional_notes}"
+  unmappable_rules:
+    - rule_id: "RE-{DOMAIN}-{NNN}"
+      reason: "{why_cannot_be_mapped_to_token}"
+      recommendation: "{atom|molecule|organism}"
+  summary:
+    total_rules_analyzed: 0
+    mapped_to_tokens: 0
+    unmappable: 0
+    mapping_coverage_pct: 0.0

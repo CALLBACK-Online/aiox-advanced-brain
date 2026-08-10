@@ -1,14 +1,14 @@
 metadata:
   version: "1.0.0"
   squad: design-ops
-  mode: workspace-first
-  description: Especificação semântica mínima para validação de tokens canônicos no workspace.
+  mode: local
+  description: Especificação semântica mínima para validação de tokens canônicos no project docs.
 
 source:
-  tokens_contract: workspace/businesses/{business}/L2-tactical/design/tokens.yaml
-  foundations_contract: workspace/businesses/{business}/L2-tactical/design/foundations.yaml
-  components_contract: workspace/businesses/{business}/L2-tactical/design/component-contracts.yaml
-  motion_contract: workspace/businesses/{business}/L2-tactical/design/motion-primitives.yaml
+  tokens_contract: docs/tactical/design/tokens.yaml
+  foundations_contract: docs/tactical/design/foundations.yaml
+  components_contract: docs/tactical/design/component-contracts.yaml
+  motion_contract: docs/tactical/design/motion-primitives.yaml
 
 naming:
   css_variable_prefix: --aiox-
@@ -48,7 +48,7 @@ required_semantic_roles:
 
 validation_rules:
   - id: DOPS-TOK-001
-    rule: todos_os_contratos_devem_ter_source_of_truth_workspace
+    rule: todos_os_contratos_devem_ter_source_of_truth_project
     blocking: true
   - id: DOPS-TOK-002
     rule: tokens_semanticos_obrigatorios_presentes

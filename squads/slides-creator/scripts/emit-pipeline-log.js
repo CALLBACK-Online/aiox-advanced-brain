@@ -11,7 +11,7 @@
  *     --run-id <id> \
  *     --event <event_type> \
  *     --payload '<json>' \
- *     [--workspace <path>]
+ *     [--local_docs <path>]
  *
  * Exit codes: 0 success | 1 invalid args | 2 IO error | 3 schema violation
  *
@@ -35,14 +35,14 @@ const VALID_EVENTS = [
 ];
 
 function parseArgs(argv) {
-  const args = { workspace: process.env.CLAUDE_PROJECT_DIR || process.cwd() };
+  const args = { local_docs: process.env.CLAUDE_PROJECT_DIR || process.cwd() };
   for (let i = 2; i < argv.length; i++) {
     const key = argv[i];
     const val = argv[i + 1];
     if (key === '--run-id') { args.runId = val; i++; }
     else if (key === '--event') { args.event = val; i++; }
     else if (key === '--payload') { args.payload = val; i++; }
-    else if (key === '--workspace') { args.workspace = val; i++; }
+    else if (key === '--local_docs') { args.local_docs = val; i++; }
     else if (key === '--dry-run') { args.dryRun = true; }
     else if (key === '--help' || key === '-h') { args.help = true; }
   }
@@ -53,7 +53,7 @@ function printHelp() {
   process.stdout.write(`emit-pipeline-log.js — M10 emission script
 
 Usage:
-  node emit-pipeline-log.js --run-id <id> --event <event> --payload '<json>' [--workspace <path>] [--dry-run]
+  node emit-pipeline-log.js --run-id <id> --event <event> --payload '<json>' [--local_docs <path>] [--dry-run]
 
 Events: ${VALID_EVENTS.join(' | ')}
 
@@ -179,7 +179,7 @@ function main() {
   };
 
   const logPath = path.join(
-    args.workspace,
+    args.local_docs,
     'outputs',
     'slides-creator',
     args.runId,

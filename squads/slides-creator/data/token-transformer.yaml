@@ -14,17 +14,17 @@ token_transformer:
 
   # ---------------------------------------------------------------------------
   # TOKEN SOURCE: W3C Design Tokens Community Group (DTCG) Format
-  # Tokens are loaded from workspace/businesses/{brand}/ directory.
+  # Tokens are loaded from docs/ directory.
   # ---------------------------------------------------------------------------
   token_source:
     description: >
       Design tokens follow the W3C DTCG specification (https://tr.designtokens.org/format/).
-      Each business in workspace/businesses/{brand}/ may provide tokens via:
+      Each business in docs/ may provide tokens via:
         1. design-system/config.yaml — points to token CSS files and palette definitions
         2. brand/branding-repository.yaml — contains hex palette under brand.colors
       The Token Transformer reads from these sources and normalizes into an internal
       DesignTokens object before converting to engine-specific formats.
-    base_path: "workspace/businesses/{brand}/"
+    base_path: "docs/"
     lookup_order:
       - path: "design-system/config.yaml"
         extract: "themes.{theme}.tokens"
@@ -34,7 +34,7 @@ token_transformer:
         extract: "brand.colors"
         format: yaml_palette
         description: "Fallback: YAML palette from brand repository"
-      - path: "L2-tactical/brand/brandbook.yaml"
+      - path: "tactical/brand/brandbook.yaml"
         extract: "visual_identity.colors"
         format: yaml_palette
         description: "Legacy fallback: color definitions derived from the canonical brandbook"
@@ -500,7 +500,7 @@ token_transformer:
     steps:
       - step: 1
         name: load_tokens
-        description: "Read design tokens from workspace/businesses/{brand}/ using lookup_order"
+        description: "Read design tokens from docs/ using lookup_order"
         input: "brand_id (string)"
         output: "raw_tokens (format-specific)"
         on_not_found: "Return empty DesignTokens (engines use defaults)"
@@ -556,7 +556,7 @@ token_transformer:
       rule: >
         This file (token-transformer.yaml) is brand-agnostic. It defines HOW
         to transform tokens, not WHICH tokens to use. Brand-specific data lives
-        exclusively in workspace/businesses/{brand}/.
+        exclusively in docs/.
       source: "AIOX squad agnosticism rule (NON-NEGOTIABLE)"
 
     performance:

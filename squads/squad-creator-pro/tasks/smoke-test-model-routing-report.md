@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: smoke-test-model-routing-report
   task_name: Smoke Test Model Routing -- Report
   status: pending
@@ -21,11 +21,11 @@ sinkra_task_metadata:
   accountability_scope: review_only
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Tactical
   atomic_layer: Atom
   executor: Worker
@@ -33,7 +33,7 @@ sinkra_contract:
   post_condition: "smoke test report pronto para decisão."
   performance: "não fechar sem evidência mínima de lookup, execução e comparação."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 # Task: Smoke Test Model Routing -- Report
 

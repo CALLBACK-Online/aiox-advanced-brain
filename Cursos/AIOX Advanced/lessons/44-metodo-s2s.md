@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: metodo-s2s
 lesson_position: 44
 title: 'Método S2S: converter sinais em sistemas'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/metodo-s2s/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -433,7 +433,7 @@ Estas são as rotas operacionais apresentadas aos alunos. Cada rota converte um 
 Rota para oportunidades externas com referência clara.
 - **Plan**: Benchmark, players, scorecard e definição do gap.
 - **Do**: Absorção controlada: contratos, integração e implementação.
-- **Check**: Smoke tests, auditoria SINKRA, QG findings e re-bench.
+- **Check**: Smoke tests, auditoria AIOX, QG findings e re-bench.
 - **Act**: ADR, learning log, deltas e fechamento do ciclo.
 
 **Dor → Pipeline · Insight → Heurística**

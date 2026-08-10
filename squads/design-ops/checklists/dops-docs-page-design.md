@@ -4,7 +4,7 @@
 > (PRD visualizado, spec arquitetural, guide, reference, runbook).
 >
 > **Canonical:** `dops-docs-page-design.yaml`
-> **Origem:** 7 iterações construindo `/sinkra-hub-prd` no `aiox-brandbook`
+> **Origem:** 7 iterações construindo `/upstream monorepo-prd` no `aiox-brandbook`
 > **Status:** active · advisory
 
 ---
@@ -208,8 +208,8 @@ apps/{app}/src/app/{route}/
 ## Referência visual
 
 - **Padrão de mercado**: `apps/anthropic-ds/src/pages/kits/docs/DocsLayout.tsx`
-- **Implementação canônica**: `apps/aiox-brandbook/src/app/sinkra-hub-prd/`
-- **HTML standalone (sem Next)**: `outputs/analysis/sinkra-hub-prd-v2.2-rich.html`
+- **Implementação canônica**: `apps/aiox-brandbook/src/app/upstream monorepo-prd/`
+- **HTML standalone (sem Next)**: `outputs/analysis/upstream monorepo-prd-v2.2-rich.html`
 
 ---
 

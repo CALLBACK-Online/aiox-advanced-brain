@@ -28,7 +28,7 @@ domain: Tactical
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Tactical`
 atomic_layer: Atom
 Input: request::upgrade_squad_gap

@@ -37,7 +37,7 @@ Atualizar o squad de brand com novos agentes, workflows, tasks ou correções se
 
 - Alterar metodologia de agente sem aprovação explícita
 - Remover agente sem justificativa documentada
-- Modificar workspace_contract sem validar downstream
+- Modificar project context contracts sem validar downstream
 
 ## Output
 

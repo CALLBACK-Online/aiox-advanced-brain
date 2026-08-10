@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: pasta-os-curadoria-local
 lesson_position: 39
 title: 'Pasta OS: curadoria local de open-source para o agente'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/39-pasta-os-curadoria-local/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

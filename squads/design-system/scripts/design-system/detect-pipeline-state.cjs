@@ -111,7 +111,7 @@ function detectStep0(designDir) {
 
 function detectStep4(designDir) {
   // tokens-normalized.json OR tokens-runtime.json (runtime implies normalization happened
-  // or SINKRA defaults were applied, which counts as F1 complete)
+  // or AIOX defaults were applied, which counts as F1 complete)
   const normalizedPath = path.join(designDir, 'tokens-normalized.json');
   const runtimePath = path.join(designDir, 'tokens-runtime.json');
   return fs.existsSync(normalizedPath) || fs.existsSync(runtimePath);
@@ -173,7 +173,7 @@ function detectStep15(designDir) {
 // --- Main Detection ---
 
 function detectPipelineState(bu) {
-  const designDir = path.join(ROOT, 'workspace', 'businesses', bu, 'L2-tactical', 'design');
+  const designDir = path.join(ROOT, 'docs', 'project', 'businesses', bu, 'tactical', 'design');
 
   const detectors = {
     0: () => detectStep0(designDir),
@@ -235,9 +235,9 @@ function main() {
   }
 
   // Validate business directory exists
-  const businessDir = path.join(ROOT, 'workspace', 'businesses', args.bu);
+  const businessDir = path.join(ROOT, 'docs', 'project', 'businesses', args.bu);
   if (!fs.existsSync(businessDir)) {
-    fail(`Business directory not found: workspace/businesses/${args.bu}`);
+    fail(`Business directory not found: docs/${args.bu}`);
   }
 
   const state = detectPipelineState(args.bu);

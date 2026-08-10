@@ -7,9 +7,9 @@ service_catalog:
     service_ref: "outputs/etl/"
     connection: "outputs/etl/"
     integration: "Persistência legada de runs ETL"
-  workspace_etl:
-    service_ref: "workspace/businesses/{slug}/etl/"
-    connection: "workspace/businesses/{slug}/etl/"
+  project_etl:
+    service_ref: "docs/etl/"
+    connection: "docs/etl/"
     integration: "Persistência canônica de runs ETL"
 
 integrations:
@@ -17,8 +17,8 @@ integrations:
     connection: "services/etl/"
     endpoint: local-service
     mode: read_write
-  - name: workspace_outputs
-    connection: "workspace/businesses/{slug}/etl/"
+  - name: project_outputs
+    connection: "docs/etl/"
     endpoint: filesystem
     mode: read_write
   - name: legacy_outputs

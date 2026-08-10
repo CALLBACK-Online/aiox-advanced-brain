@@ -28,7 +28,7 @@ domain: Strategic
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Strategic`
 atomic_layer: Atom
 Input: request::validate_squad_classify
@@ -191,7 +191,7 @@ bu_mapping_check:
   check: "config.yaml contains bu_mapping field"
   validation:
     - "bu_mapping references a valid BU from bu-map.yaml"
-    - "Referenced BU exists in workspace or data layer"
+    - "Referenced BU exists in local_docs or data layer"
   on_missing: "WARNING - bu_mapping not declared (recommended)"
 ```
 

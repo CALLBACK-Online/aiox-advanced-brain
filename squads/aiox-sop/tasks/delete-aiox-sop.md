@@ -28,11 +28,11 @@ Use this task when decommissioning the squad or removing obsolete surfaces. The 
 ## Guardrails
 
 - Review versioned artifacts separately from machine-local runtime state.
-- Do not treat `workspace/license/enterprise-runtime.capability.yaml` as a normal squad artifact without explicit workspace-owner review.
+- Do not treat `<private enterprise distribution-only: enterprise-runtime.capability.yaml>` as a normal squad artifact without explicit local_docs-owner review.
 - Archive or document any still-relevant operational projection before deletion.
 
 ## Acceptance Criteria
 
 - [ ] Versioned squad artifacts selected for deletion are explicit
-- [ ] Workspace-level enterprise capability artifacts are handled only with explicit workspace-owner review
+- [ ] LocalDocs-level enterprise capability artifacts are handled only with explicit local_docs-owner review
 - [ ] Retirement plan or archive note is produced before final deletion

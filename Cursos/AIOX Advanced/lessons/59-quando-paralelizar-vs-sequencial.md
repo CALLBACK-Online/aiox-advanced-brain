@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: quando-paralelizar-vs-sequencial
 lesson_position: 59
 title: 'Quando paralelizar vs sequencial: decisão antes do speedup'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/59-quando-paralelizar-vs-sequencial/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

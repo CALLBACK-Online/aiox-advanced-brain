@@ -10,7 +10,7 @@ estimated_time: 30-45min
 source: "$100M Launch Playbook - Valor Empilhado (E.V.E.N.T.O)"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

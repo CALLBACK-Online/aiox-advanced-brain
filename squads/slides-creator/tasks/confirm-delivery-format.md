@@ -1,10 +1,10 @@
 # confirm-delivery-format
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Operational -->
+<!-- AIOX Domain: Operational -->
 
-## SINKRA Validation Metadata
+## AIOX Validation Metadata
 
 ```yaml
 task: confirm-delivery-format

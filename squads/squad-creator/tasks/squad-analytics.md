@@ -13,7 +13,7 @@
 ---
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Tactical`
 atomic_layer: Atom
 agent: squad-chief

@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: taxonomia-task-skill-agent-workflow-runner
 lesson_position: 28
 title: 'Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/28-taxonomia-task-skill-agent-workflow-runner/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -31,7 +31,7 @@ curated_at: '2026-08-09'
 
 # Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner
 
-← [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]] · ↑ [[modulos/Módulo 5 - Arquitetura SINKRA|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[29-sub-agents-vs-swarm-agents|Sub-agents versus Swarm-agents: isolado ou em rede]]
+← [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[29-sub-agents-vs-swarm-agents|Sub-agents versus Swarm-agents: isolado ou em rede]]
 
 ## Conceitos
 
@@ -216,7 +216,7 @@ Esta é a confusão mais cara da escala. Skill e Agente parecem a mesma coisa po
 
 A taxonomia não é teoria. Cada primitivo é apontável no AIOX. Estes dois casos mostram a escala inteira rodando em squads/ e .claude/.
 
-- **Onde cada primitivo mora no repo**: Skills ficam em .claude/skills/. Agentes ficam em squads/{name}/agents/ e .aiox-core/development/agents/. Workflows ficam em squads/{name}/workflows/. Runners no runtime canônico em infrastructure/runner-lib. Tasks são as transformações de estado dentro das skills. Players: .claude/skills/, squads/*/agents/, squads/*/workflows/, infrastructure/runner-lib/, squads/*/tasks/.
+- **Onde cada primitivo mora no repo**: Skills ficam em skills/. Agentes ficam em squads/{name}/agents/ e .aiox-core/development/agents/. Workflows ficam em squads/{name}/workflows/. Runners no runtime canônico em infrastructure/runner-lib. Tasks são as transformações de estado dentro das skills. Players: skills/, squads/*/agents/, squads/*/workflows/, infrastructure/runner-lib/, squads/*/tasks/.
 - **O que muda a decisão**: A pergunta não é qual primitivo é mais poderoso. É qual é o menor que resolve. KISS manda escolher o nível mais baixo que entrega; subir na escala sem necessidade é overengineering.
 
 **Cada primitivo num eixo**
@@ -327,7 +327,7 @@ Cada primitivo tem um caminho típico de criação. Saber a rota evita pular ní
 Quando um como-fazer reusável aparece e precisa virar arquivo.
 1. **Sinal: uma sequência de tasks se repete em vários casos.
 2. **Pergunta: isso ensina a fazer ou decide algo?
-3. **Ação: escrever a receita em .claude/skills/ sem julgamento embutido.
+3. **Ação: escrever a receita em skills/ sem julgamento embutido.
 4. **Resultado: skill md reusável por qualquer agente.
 
 #### Persona que decide
@@ -352,7 +352,7 @@ Use quando uma capacidade ensinável e reusável se desenha.
 **Criar um Agente / Squad**
 Use quando o problema pede uma persona que decide entre skills.
 - `/squadCreator:squad-chief`: criar squad, agentes e workflows via scaffolding.
-- `/sinkra-validate-squad`: validar a estrutura do squad.
+- `/aiox-validate-squad`: validar a estrutura do squad.
 
 **Criar um Runner**
 Use quando um workflow provado precisa virar executável determinístico.
@@ -495,4 +495,4 @@ Tradução dos cinco termos para alguém que está vendo a taxonomia AIOX pela p
 
 ## Navegação
 
-← [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]] · ↑ [[modulos/Módulo 5 - Arquitetura SINKRA|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[29-sub-agents-vs-swarm-agents|Sub-agents versus Swarm-agents: isolado ou em rede]]
+← [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[29-sub-agents-vs-swarm-agents|Sub-agents versus Swarm-agents: isolado ou em rede]]

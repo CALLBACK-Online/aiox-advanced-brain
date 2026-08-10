@@ -16,11 +16,11 @@ project_types:
       - turbo.json
       - nx.json
       - lerna.json
-      - pnpm-workspace.yaml
+      - pnpm-project-context.yaml
     detection_patterns:
       - file: package.json
-        field: workspaces
-        description: "Has 'workspaces' field in root package.json"
+        field: projects
+        description: "Has 'projects' field in root package.json"
       - file: package.json
         field: "scripts.build"
         contains: "turbo"
@@ -221,8 +221,8 @@ project_types:
       - directory: src/
         description: "Rust source directory"
       - file: Cargo.toml
-        field: "[workspace]"
-        description: "Cargo workspace (monorepo)"
+        field: "[local_docs]"
+        description: "Cargo local_docs (monorepo)"
     recommended_claude_md_template: claude-md-rust.md
     recommended_rules:
       - name: unsafe-audit
@@ -307,7 +307,7 @@ project_types:
     detection_patterns:
       - directory: .aiox-core/
         description: "AIOX core framework directory"
-      - directory: .claude/skills/
+      - directory: skills/
         description: "AIOX skills for Claude"
       - file: .claude/settings.json
         contains: "AIOX"

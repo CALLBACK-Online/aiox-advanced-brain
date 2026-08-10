@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: nao-delegar-pensar
 lesson_position: 26
 title: 'Nao delegue o pensar: repertorio contra zumbi'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/26-nao-delegar-pensar/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

@@ -6,7 +6,7 @@ absorbed_from:
   - "tasteskill.dev v2 — Jane Doe Effect (Section 7)"
   - "impeccable.style v3.1.1 — em-dash ban (absolute ban #7)"
 created: "2026-05-19"
-source_bench: "docs/bench/2026-05-18-impeccable-vs-sinkra-design-stack/"
+source_bench: "docs/bench/2026-05-18-impeccable-vs-aiox-design-stack/"
 consumed_by:
   - "squads/copy/checklists/copy-quality-checklist.md"
   - "squads/copy/checklists/headline-quality-checklist.md"

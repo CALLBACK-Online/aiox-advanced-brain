@@ -33,7 +33,7 @@ wave: 2
 concept: C2 (Ralph Loop)
 ```
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Operational`
 atomic_layer: Atom
 Input: request::serialize_retry_state
@@ -41,7 +41,7 @@ Output: artifact::serialize_retry_state
 pre_condition: pipeline step has failed and retry is being evaluated
 post_condition: retry state file persisted at .aiox/squad-runtime/{squad}/retry-states/{step}.json
 performance: registrar evidências, falhas e próximo passo sem erro silencioso
-Completion Criteria: contrato mínimo SINKRA explícito e saída rastreável produzida
+Completion Criteria: contrato mínimo AIOX explícito e saída rastreável produzida
 
 ## Purpose
 

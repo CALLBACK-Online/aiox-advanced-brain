@@ -83,7 +83,7 @@
           "category": {
             "type": "string",
             "enum": ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
-            "description": "Categoria de captura conforme definido no prompt. A=Workspace Structure, B=Custom Fields, C=Status Workflows, D=Automations/Integrations, E=Views/Dashboards, F=Relationships/Navigation, G=Usage Patterns/Heuristics, H=Numeric Data/IDs, I=Templates/Checklists."
+            "description": "Categoria de captura conforme definido no prompt. A=LocalDocs Structure, B=Custom Fields, C=Status Workflows, D=Automations/Integrations, E=Views/Dashboards, F=Relationships/Navigation, G=Usage Patterns/Heuristics, H=Numeric Data/IDs, I=Templates/Checklists."
           },
           "content": {
             "type": "string",
@@ -473,7 +473,7 @@
         "segments_by_category": {
           "type": "object",
           "properties": {
-            "A": { "type": "integer", "minimum": 0, "description": "Workspace Structure" },
+            "A": { "type": "integer", "minimum": 0, "description": "LocalDocs Structure" },
             "B": { "type": "integer", "minimum": 0, "description": "Custom Fields" },
             "C": { "type": "integer", "minimum": 0, "description": "Status Workflows" },
             "D": { "type": "integer", "minimum": 0, "description": "Automations" },

@@ -1,10 +1,10 @@
 # Route Sources
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Tactical -->
+<!-- AIOX Domain: Tactical -->
 
-## SINKRA Task Anatomy (8 sections — STORY-SWI-3)
+## AIOX Task Anatomy (8 sections — STORY-SWI-3)
 
 ```yaml
 task: routeSources
@@ -24,8 +24,8 @@ Post_conditions:
   - each route has source_index, adapter_id, confidence, fallback, rationale
   - unmatched sources emit adapter_id: null with extraction_gap reason
 Acceptance_criteria:
-  - YouTube URLs route to @sinkra/etl#extractYouTube when confidence >= 0.6
-  - PDF/DOCX/XLSX/CSV/MD/TXT/PPTX local paths route to @sinkra/file-service when confidence >= 0.6
+  - YouTube URLs route to @aiox/etl#extractYouTube when confidence >= 0.6
+  - PDF/DOCX/XLSX/CSV/MD/TXT/PPTX local paths route to @aiox/file-service when confidence >= 0.6
   - arXiv sources route to research-adapters#arxiv when confidence >= 0.6
   - mixed source arrays are routed independently by source_index
   - unknown sources emit null + extraction_gap(no_rule_matched_min_confidence_0.6), never a hardcoded fallback
@@ -50,7 +50,7 @@ The task does not implement new routing logic. It converts normalized briefing s
 routes:
   - source_index: 0
     source: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-    adapter_id: "@sinkra/etl#extractYouTube"
+    adapter_id: "@aiox/etl#extractYouTube"
     confidence: 1
     fallback: null
     rationale: "top intent=video confidence=1 signals=youtube_url"

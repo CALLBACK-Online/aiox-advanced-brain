@@ -2,7 +2,7 @@ pack:
   name: design-ops
   version: "1.0.0"
   description: >-
-    Operations layer (Camada 3) do design system Sinkra Hub. Foco em
+    Operations layer (Camada 3) do design system AIOX platform. Foco em
     monitoring contínuo, lifecycle, audits, AI fingerprint detection,
     quality gates de Storybook (visual + a11y + coverage) e otimização
     recorrente de Chromatic. Build/create work fica em design-system
@@ -67,7 +67,7 @@ artifact_contracts:
 
   # ── Cross-fit bench absorption (2026-05-19) ───────────────────────────────
   # Outputs emitted by extract-from-url pipeline, consumed by downstream tasks.
-  # Authority: .claude/rules/design-absolute-bans.md + docs/bench/2026-05-18-impeccable-vs-sinkra-design-stack/
+  # Authority: .claude/rules/design-absolute-bans.md + docs/bench/2026-05-18-impeccable-vs-aiox-design-stack/
 
   - artifact_id: "ai-fingerprint-report"
     schema_ref: data/font-allowlist.yaml   # validation source (cross-fit data)
@@ -121,30 +121,6 @@ policies:
       `register:` in DESIGN.md frontmatter. Not emitted as standalone file —
       its OUTPUT lives inline in DESIGN.md frontmatter + briefing-normalized.
 
-workspace_integration:
-  level: controlled_runtime_consumer
-  rationale: >-
-    O provider consome contexto canônico do workspace e, nesta fase de
-    bootstrap, também referencia o legado congelado para extração controlada de
-    conhecimento.
-  read_paths:
-    - workspace/_system/config.yaml
-    - workspace/businesses/
-    - squads/design-system/
-  write_paths: []
-  readiness_owner: workspace-chief
-  readiness_resolver: workspace/scripts/resolve-squad-workspace-readiness.cjs
-  handoff_target: "@coo"
-  handoff_rationale: >-
-    Design-Ops é consumidor read-only; qualquer mutação em workspace/businesses/
-    é delegada ao c-level (COO) via handoff explícito.
-
-# NOTE: bloco `legacy_source` removido em 2026-06-02.
-# Ver ADR-DS-CONSOLIDATION D10/D11 e ADR-DS-ARCHITECTURE-3LAYERS:
-# `squads/design-system/` é Camada 2 SPECIALIST canonical (ativa), não legacy frozen.
-# `squads/design-ops/` é Camada 3 OPERATIONS — papéis distintos, ambos ativos.
-# Cross-squad collaboration acontece via design-chief orchestrator compartilhado.
-
 provider_scope:
   owns:
     - tokens
@@ -177,7 +153,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: design-routing-decision
   - id: dave-malouf
@@ -187,7 +163,7 @@ agents:
     executor_profile:
       story_role: "consultant"
       can_execute: false
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: designops-assessment
 
@@ -210,9 +186,9 @@ workflows:
     description: >-
       Migra DS estático (HTML + CSS tokens + kits JSX) para Next.js 16 + Tailwind v4 +
       shadcn/ui + TypeScript strict. Perfis lean (redpine-like) e full (aiox-brandbook-like).
-    sinkra_process_ref: .aiox/squad-runtime/sinkra-squad/migracao-ds-estatico-para-dinamico-tokenizado/
+    aiox_process_ref: .aiox/squad-runtime/aiox-squad/migracao-ds-estatico-para-dinamico-tokenizado/
     reference_execution: apps/anthropic-ds
-    sinkra_compliance_score: 87
+    aiox_compliance_score: 87
     tags: [design-system, migration, nextjs, tailwind-v4, shadcn, typescript]
 # --- /MIGRATION-SCHEMA-001 ---
 

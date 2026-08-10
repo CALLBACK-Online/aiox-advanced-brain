@@ -36,7 +36,7 @@ Behavior:
 Accountability:
   description: Accountability humana explícita por atom e gate.
 Mode:
-  description: Modos canônicos SINKRA suportados pelo squad.
+  description: Modos canônicos AIOX suportados pelo squad.
   allowed_values:
   - CRIAR
   - RESOLVER

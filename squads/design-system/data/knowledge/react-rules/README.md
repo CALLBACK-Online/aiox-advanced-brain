@@ -11,13 +11,13 @@ and page-composer agents for pattern enforcement.
 - v0 Design Pipeline (Repo B), `react-best-practices/` directory
 - Absorbed via B02-03 ABSORB verdict (COMPARE pipeline, 2026-04-16)
 
-## Format (SINKRA-adapted frontmatter)
+## Format (AIOX-adapted frontmatter)
 ```yaml
 ---
 title: Rule Name
 impact: high|medium|low
 tags: [react, patterns, ...]
-sinkra_source: v0-react-best-practices
+aiox_source: v0-react-best-practices
 ---
 ```
 

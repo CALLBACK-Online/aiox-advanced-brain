@@ -1,6 +1,6 @@
 # Task: Technology Evaluation
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

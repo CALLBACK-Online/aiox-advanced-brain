@@ -29,7 +29,7 @@ Reduce UI pattern redundancy by clustering similar patterns using intelligent al
 - pattern-inventory.json available
 - **Variant Taxonomy loaded:** `data/component-variants-taxonomy.yaml`
   - When consolidating button/input/card variant clusters, map clusters to
-    canonical Sinkra variants (do NOT invent new names)
+    canonical AIOX variants (do NOT invent new names)
   - Synonym groups in the taxonomy show which raw patterns collapse to
     which canonical variant (e.g., raw "filled/solid/contained/primary" → `primary`)
   - Use the taxonomy's frequency analysis (9 DS) to justify which variants
@@ -259,13 +259,13 @@ Brad: "Override recorded. Keeping both."
 - `squads/design/checklists/ds-pattern-audit-checklist.md`
 
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_consolidate_patterns_artifact

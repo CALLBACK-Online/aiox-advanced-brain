@@ -114,7 +114,7 @@ source_provenance:
     - "Barbara Minto — Pyramid Principle (MECE proof groupings)"
     - "Y Combinator traction slide conventions"
   bench_ref:
-    - "/Users/alan/Code/bench/ppt-master/skills/ppt-master/templates/layouts/google_style/03_content.svg"
-    - "/Users/alan/Code/bench/presenton/servers/nextjs/app/presentation-templates/neo-modern/TitleKpiSnapshotGrid.tsx (KPI grid inspiration)"
+    - "<bench-root>/ppt-master/skills/ppt-master/templates/layouts/google_style/03_content.svg"
+    - "<bench-root>/presenton/servers/nextjs/app/presentation-templates/neo-modern/TitleKpiSnapshotGrid.tsx (KPI grid inspiration)"
   author: "slides-creator squad — MSN-2026-SLIDES-NARRATIVE-DESIGN"
   date_created: "2026-05-17"

@@ -22,4 +22,4 @@ Inclui clientes/casos: `leidy-pertile`, e demais execuções do squad.
 
 ## Provenance
 
-Outputs gerados antes da migração para o formato SINKRA v3.1+. Mantidos como evidência de uso real do squad em cenários de copywriting de alta conversão.
+Outputs gerados antes da migração para o formato AIOX v3.1+. Mantidos como evidência de uso real do squad em cenários de copywriting de alta conversão.

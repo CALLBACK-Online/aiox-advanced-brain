@@ -6,7 +6,7 @@
 **Orchestrator:** Anvil (skill-craftsman)
 **Purpose:** Alinhar a doutrina de contexto da squad com o modelo real de memória do Claude Code, incluindo `MEMORY.md`, limites de budget, exclusão de estado derivável e comportamento append-only em modo assistant.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: align-memory-context
 atomic_layer: Atom

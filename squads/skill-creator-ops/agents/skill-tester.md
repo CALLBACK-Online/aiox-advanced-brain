@@ -73,7 +73,7 @@ tests/sandbox/skill-tests/{skill-name}/
 ```yaml
 # Skill Test Report
 skill: tech-search
-path: .claude/skills/tech-search/
+path: skills/tech-search/
 timestamp: 2026-03-29T18:00:00Z
 
 verdict: PASS

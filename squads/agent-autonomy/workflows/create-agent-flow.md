@@ -7,7 +7,7 @@
 - **description**: Fluxo completo de criação de agente autônomo — do requirement ao agente validado
 - **trigger**: `*create-flow <agent-name>`
 
-## SINKRA Controls
+## AIOX Controls
 
 Domain: `Tactical`
 fail_loud: true

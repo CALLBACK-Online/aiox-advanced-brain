@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: ics-audit
   task_name: ICS Phase 1 — Audit
   status: pending
@@ -19,18 +19,18 @@ sinkra_task_metadata:
   - 'Squad existe: `squads/{squad_name}/` presente'
   - config.yaml` existe e e parseavel
   - 'Referencia canonica acessivel: `squads/copy/scripts/`'
-  - Eligibility gate avaliou workspace_integration.level
+  - Eligibility gate avaliou local project docs.level
   - Config extract contem todos os campos requeridos
   output_persistence: transient_output
   accountable_id: Human:Squad_Operator
   accountability_scope: review_only
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Operational
   atomic_layer: Atom
   executor: Agent
@@ -38,7 +38,7 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Task: ICS Phase 1 — Audit
@@ -58,7 +58,7 @@ sinkra_contract:
 
 | ID | Condition | Check | Result |
 |----|-----------|-------|--------|
-| VETO-CS-001 | Squad sem workspace_integration ou level < controlled_runtime_consumer | Ler config.yaml | VETO - BLOCK. Squad nao precisa de context stack. |
+| VETO-CS-001 | Squad sem local project docs ou level < none | Ler config.yaml | VETO - BLOCK. Squad nao precisa de context stack. |
 | VETO-CS-002 | Script existente sobrescrito sem backup | Verificar se arquivo ja existe antes de Write() | VETO - BLOCK. Preservar scripts existentes. |
 
 ---
@@ -96,12 +96,12 @@ sinkra_contract:
 
 ## Eligibility Gate
 
-| workspace_integration.level | Elegivel? | Motivo |
+| local project docs.level | Elegivel? | Motivo |
 |----------------------------|-----------|--------|
-| `none` | NO | Squad nao interage com workspace |
+| `none` | NO | Squad nao interage com docs/project |
 | `read_only` | NO | Leitura pontual, sem sessao ativa |
-| `controlled_runtime_consumer` | YES | Consome workspace com sessao ativa |
-| `workspace_first` | YES | Workspace e fonte primaria |
+| `none` | YES | Consome local_docs com sessao ativa |
+| `local` | YES | LocalDocs e fonte primaria |
 
 Se o squad alvo tem level `none` ou `read_only`, esta task da VETO (VETO-CS-001) e sugere alternativa (greeting simples sem context stack).
 
@@ -119,11 +119,11 @@ files:
 extract:
   - name
   - entry_agent
-  - workspace_integration.level
-  - workspace_integration.read_paths
-  - workspace_integration.write_paths
-  - workspace_integration.readiness_context_type
-  - workspace_integration.canonical_outputs_root
+  - local project docs.level
+  - local project docs.read_paths
+  - local project docs.write_paths
+  - local project docs.readiness_context_type
+  - local project docs.outputs_root
 ```
 
 ### Step 1.2: Inventariar Scripts Existentes
@@ -139,10 +139,10 @@ check_scripts:
 output:
   existing: []    # scripts que ja existem (PRESERVAR, nao sobrescrever)
   missing: []     # scripts que precisam ser gerados
-  partial: []     # scripts com nome diferente (ex: load-workspace-context.cjs)
+  partial: []     # scripts com nome diferente (ex: load-project context.cjs)
 ```
 
-**Regra:** Se um script ja existe e funciona, NAO sobrescrever (VETO-CS-002). Se existe mas com nome diferente (ex: `load-workspace-context.cjs`), avaliar se pode ser adaptado ou se precisa de novo script que importa o existente (VETO-CS-005).
+**Regra:** Se um script ja existe e funciona, NAO sobrescrever (VETO-CS-002). Se existe mas com nome diferente (ex: `load-project context.cjs`), avaliar se pode ser adaptado ou se precisa de novo script que importa o existente (VETO-CS-005).
 
 ---
 
@@ -152,14 +152,13 @@ output:
 ics_audit:
   squad_name: "{squad_name}"
   eligible: true|false
-  workspace_level: "{level do config.yaml}"
+  scope_level: "{level do config.yaml}"
   config_extract:
     name: ""
     entry_agent: ""
     read_paths: []
     write_paths: []
-    readiness_context_type: ""
-    canonical_outputs_root: ""
+    outputs_root: ""
   scripts_inventory:
     existing: []
     missing: []
@@ -188,10 +187,10 @@ error_handling:
 
 ## Acceptance Criteria
 
-- [ ] Eligibility gate avaliou workspace_integration.level
+- [ ] Eligibility gate avaliou local project docs.level
 - [ ] Config extract contem todos os campos requeridos
 - [ ] Scripts inventory classifica cada script como existing/missing/partial
-- [ ] VETO-CS-001 bloqueia squads com level < controlled_runtime_consumer
+- [ ] VETO-CS-001 bloqueia squads com level < none
 
 ---
 

@@ -64,8 +64,8 @@ workflow:
 
            Para cada Quick Win, registrar:
              - target_type: squad | app | skill | agent | runner | rule | workflow | adr | doc
-             - target_path: caminho exato no hub (ex: `squads/sinkra-squad/`,
-               `.claude/skills/tech-research/`, `apps/squad-engine/`, etc.)
+             - target_path: caminho exato no hub (ex: `squads/aiox-squad/`,
+               `skills/tech-research/`, `apps/squad-engine/`, etc.)
              - evidence: § ou subseção de 02-research-report.md que ancora o QW
              - definition_of_done: critério verificável binário
              - action_owner: @pm | @dev | @architect | @qa | @devops

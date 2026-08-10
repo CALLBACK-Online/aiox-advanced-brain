@@ -1,6 +1,6 @@
 # Token Registry — Research Squad
-# 12 SINKRA tokens across 9 families governing benchmark and research
-# Version: 2.0.0 (enriched per sinkra-upgrade-squad)
+# 12 AIOX tokens across 9 families governing benchmark and research
+# Version: 2.0.0 (enriched per aiox-upgrade-squad)
 
 time:
   - benchmark_window
@@ -29,7 +29,7 @@ tokens:
   - token_name: benchmark_window
     family: Time
     semantic: "Janela temporal usada para recorte de evidências"
-    sinkra_refs:
+    aiox_refs:
       - composition_mapping.atoms.tasks/bench-detect.md
       - composition_mapping.molecules.mol-benchmark-core
     default_value: "30d"
@@ -41,7 +41,7 @@ tokens:
   - token_name: max_parallel_subjects
     family: Capacity
     semantic: "Número máximo de sujeitos processados em paralelo"
-    sinkra_refs:
+    aiox_refs:
       - composition_mapping.atoms.tasks/bench-inventory.md
     default_value: 2
     enforcement: strict
@@ -52,7 +52,7 @@ tokens:
   - token_name: benchmark_quality_gate
     family: Threshold
     semantic: "Threshold principal para benchmark aprovado"
-    sinkra_refs:
+    aiox_refs:
       - workflows/bench-comparison-pipeline.yaml → phase 9 scoring.pass_threshold
       - checklists/bench-quality-checklist.md → scoring
     default_value: 0.9
@@ -64,7 +64,7 @@ tokens:
   - token_name: subject_priority
     family: Priority
     semantic: "Prioridade relativa entre subjects e fontes"
-    sinkra_refs:
+    aiox_refs:
       - composition_mapping.atoms.tasks/bench-detect.md
     default_value: "equal"
     enforcement: advisory
@@ -75,7 +75,7 @@ tokens:
   - token_name: source_access_scope
     family: Permission
     semantic: "Escopo permitido de acesso a dados e repositórios"
-    sinkra_refs:
+    aiox_refs:
       - data/capability-tools.yaml
       - data/bench-data-sources.yaml
     default_value: "public"
@@ -87,7 +87,7 @@ tokens:
   - token_name: comparison_type
     family: Taxonomy
     semantic: "Tipo canônico de comparação benchmark"
-    sinkra_refs:
+    aiox_refs:
       - composition_mapping.atoms.tasks/bench-detect.md
       - workflows/bench-comparison-pipeline.yaml → type_routing
     default_value: "auto"
@@ -99,7 +99,7 @@ tokens:
   - token_name: fail_loud_publish
     family: Behavior
     semantic: "Comportamento de falha explícita na publicação"
-    sinkra_refs:
+    aiox_refs:
       - config.yaml → logging.error_behavior
     default_value: true
     enforcement: strict
@@ -110,7 +110,7 @@ tokens:
   - token_name: spy_operator_approval
     family: Accountability
     semantic: "Aprovação humana obrigatória para publicação crítica"
-    sinkra_refs:
+    aiox_refs:
       - agents/research-operator.md
       - data/quality-gates.yaml → governance
     default_value: true
@@ -122,7 +122,7 @@ tokens:
   - token_name: ENTENDER
     family: Mode
     semantic: "Modo de entendimento profundo"
-    sinkra_refs:
+    aiox_refs:
       - config.yaml → supported_modes
     default_value: null
     enforcement: advisory
@@ -133,7 +133,7 @@ tokens:
   - token_name: EXPLORAR
     family: Mode
     semantic: "Modo de exploração comparativa"
-    sinkra_refs:
+    aiox_refs:
       - config.yaml → supported_modes
       - workflows/bench-comparison-pipeline.yaml
     default_value: null
@@ -145,7 +145,7 @@ tokens:
   - token_name: VALIDAR
     family: Mode
     semantic: "Modo de validação rigorosa e quality gate"
-    sinkra_refs:
+    aiox_refs:
       - config.yaml → supported_modes
       - workflows/bench-comparison-pipeline.yaml → phase 9
     default_value: null
@@ -157,7 +157,7 @@ tokens:
   - token_name: benchmark_evidence_pack
     family: Behavior
     semantic: "Pacote rastreável de evidências por benchmark"
-    sinkra_refs:
+    aiox_refs:
       - data/quality-gates.yaml → governance.evidence_traceability
     default_value: null
     enforcement: strict
@@ -168,7 +168,7 @@ tokens:
   - token_name: report_release_gate
     family: Threshold
     semantic: "Gate final para relatório executivo"
-    sinkra_refs:
+    aiox_refs:
       - data/quality-gates.yaml → reporting.artifact_publish_success
     default_value: 1.0
     enforcement: veto

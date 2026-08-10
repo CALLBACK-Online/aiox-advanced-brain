@@ -31,7 +31,7 @@ domain: Tactical
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Tactical`
 atomic_layer: Atom
 Input: request::create_agent
@@ -128,7 +128,7 @@ curadoria_over_volume: "Menos mas melhor -- 400-800 focused lines > 1500 dispers
 | Agent File | `squads/{squad_name}/agents/{agent_id}.md` |
 | Updated README | `squads/{squad_name}/README.md` |
 | Updated Config | `squads/{squad_name}/config.yaml` |
-| Published Slash Skill | `.claude/skills/{slashPrefix}/{agent_id}/SKILL.md` |
+| Published Slash Skill | `skills/{slashPrefix}/{agent_id}/SKILL.md` |
 
 ## Error Handling
 

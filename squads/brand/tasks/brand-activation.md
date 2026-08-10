@@ -11,11 +11,11 @@ estimated_duration: "40-90 min"
 ```
 
 **Responsible Executor:** Agent (@miller-sticky-brand)  
-**Dependencies:** depends_on: `[load-workspace-context, positioning-narrative]` · enables: `[wf-brand-activation-system]` · workflow: `wf-brand-activation-system`
+**Dependencies:** depends_on: `[load-project context, positioning-narrative]` · enables: `[wf-brand-activation-system]` · workflow: `wf-brand-activation-system`
 
 ## Prerequisites
 
-- **Context Gate (mandatory):** Brand workspace context and positioning must be loaded. If positioning-narrative has not run, HALT and suggest running it first.
+- **Context Gate (mandatory):** Brand project context and positioning must be loaded. If positioning-narrative has not run, HALT and suggest running it first.
 
 ## Objective
 
@@ -35,9 +35,9 @@ Transformar estratégia em execução com sistema de identidade, cultura e plano
 
 | Artifact | Location | Description |
 |---|---|---|
-| `activation-30-60-90.md` | `workspace/businesses/{brand_name}/L2-tactical/brand/activation/activation-30-60-90.md` | Plano de ativacao com owners e marcos por janela |
-| `activation-system-report.md` | `workspace/businesses/{brand_name}/L2-tactical/brand/activation/activation-system-report.md` | Consolidado de implementacao (identidade + cultura + GTM) |
-| `logo-concept.yaml` | `workspace/businesses/{brand_name}/L2-tactical/brand/logo-concept.yaml` | Conceito simbolico inicial alinhado ao posicionamento |
+| `activation-30-60-90.md` | `docs/tactical/brand/activation/activation-30-60-90.md` | Plano de ativacao com owners e marcos por janela |
+| `activation-system-report.md` | `docs/tactical/brand/activation/activation-system-report.md` | Consolidado de implementacao (identidade + cultura + GTM) |
+| `logo-concept.yaml` | `docs/tactical/brand/logo-concept.yaml` | Conceito simbolico inicial alinhado ao posicionamento |
 
 ## Veto Conditions
 

@@ -30,7 +30,7 @@ The canonical operating sequence is:
 
 This operating model depends on the canonical layer separation defined in:
 
-- `workspace/domains/content/copy-information-architecture.yaml`
+- `docs/domains/content/copy-information-architecture.yaml`
 
 ## Canonical Artifact Taxonomy
 
@@ -147,19 +147,19 @@ Use it to track:
 
 | Stage | Primary artifact | Owner | Canonical path | Source of truth | Fallback |
 |---|---|---|---|---|---|
-| Intake and Context Loading | `Campaign Brief` | copy | `workspace/businesses/{business}/copy/{campaign_slug}/campaign-brief.yaml` | campaign scope, objective, audience, channels, constraints | implicit runtime brief only for small or exploratory `DRAFT` work |
-| Message Strategy | `Message Architecture` | copy + traffic | `workspace/businesses/{business}/copy/{campaign_slug}/message-architecture.yaml` | campaign message logic, promise, proof hierarchy, language controls | may be compressed for light campaigns, not for strategic `FINAL` work |
-| Creative Direction | `Creative Brief` | copy | `workspace/businesses/{business}/copy/{campaign_slug}/creative-brief.yaml` | angle, emotional posture, mandatory proof, CTA direction | may be merged into asset planning for simple work |
-| Asset Planning | `Asset Brief` | copy | `workspace/businesses/{business}/copy/{campaign_slug}/assets/asset-brief-*.yaml` | one deliverable spec per asset | may be implicit for one small asset |
+| Intake and Context Loading | `Campaign Brief` | copy | `docs/copy/{campaign_slug}/campaign-brief.yaml` | campaign scope, objective, audience, channels, constraints | implicit runtime brief only for small or exploratory `DRAFT` work |
+| Message Strategy | `Message Architecture` | copy + traffic | `docs/copy/{campaign_slug}/message-architecture.yaml` | campaign message logic, promise, proof hierarchy, language controls | may be compressed for light campaigns, not for strategic `FINAL` work |
+| Creative Direction | `Creative Brief` | copy | `docs/copy/{campaign_slug}/creative-brief.yaml` | angle, emotional posture, mandatory proof, CTA direction | may be merged into asset planning for simple work |
+| Asset Planning | `Asset Brief` | copy | `docs/copy/{campaign_slug}/assets/asset-brief-*.yaml` | one deliverable spec per asset | may be implicit for one small asset |
 | Writing and Delivery | `Copy Deck` | copy | `outputs/copy/{business}/...` | actual written copy and handoff state | no fallback |
 | Review Gates | checklist state | copy + reviewers | `squads/copy/checklists/` + proof/brand/product files | approval truth comes from gates plus upstream facts | no fallback |
 | Validation Loop | test / iteration notes | copy + traffic + media | channel-specific runtime evidence | live performance, qualitative feedback, next-version decisions | channel dependent |
 
 ## Durable Truth Layers
 
-- `workspace/businesses/{business}/L0-identity/`, `workspace/businesses/{business}/L1-strategy/` and `workspace/businesses/{business}/L2-tactical/brand/` remain the source of truth for identity, positioning, and language rules.
-- `workspace/businesses/{business}/L3-product/{product}/` remains the source of truth for offer design, proof, testimonials, and reusable narrative.
-- `workspace/businesses/{business}/copy/{campaign_slug}/` becomes the source of truth for campaign-specific planning.
+- `docs/identity/`, `docs/strategy/` and `docs/tactical/brand/` remain the source of truth for identity, positioning, and language rules.
+- `docs/execution/{product}/` remains the source of truth for offer design, proof, testimonials, and reusable narrative.
+- `docs/copy/{campaign_slug}/` becomes the source of truth for campaign-specific planning.
 - `outputs/copy/{business}/` is the source of truth for executable copy artifacts.
 
 ### Stage 1: Intake and Context Loading
@@ -173,7 +173,7 @@ Supporting references:
 
 Source of truth:
 
-- `workspace/businesses/{business}/copy/{campaign_slug}/campaign-brief.yaml`
+- `docs/copy/{campaign_slug}/campaign-brief.yaml`
 - upstream brand and product files loaded by `copy-brief-protocol`
 
 Rule:
@@ -192,7 +192,7 @@ Supporting references:
 
 Source of truth:
 
-- `workspace/businesses/{business}/copy/{campaign_slug}/message-architecture.yaml`
+- `docs/copy/{campaign_slug}/message-architecture.yaml`
 - brand and product truth remain upstream dependencies
 
 ### Stage 3: Creative Direction
@@ -203,7 +203,7 @@ This stage converts strategy into angle, posture, and execution constraints.
 
 Source of truth:
 
-- `workspace/businesses/{business}/copy/{campaign_slug}/creative-brief.yaml`
+- `docs/copy/{campaign_slug}/creative-brief.yaml`
 
 ### Stage 4: Asset Planning
 
@@ -213,7 +213,7 @@ Use one `Asset Brief` per page, sequence, script, ad system, or other deliverabl
 
 Source of truth:
 
-- `workspace/businesses/{business}/copy/{campaign_slug}/assets/asset-brief-*.yaml`
+- `docs/copy/{campaign_slug}/assets/asset-brief-*.yaml`
 
 ### Stage 5: Writing and Delivery
 

@@ -17,6 +17,6 @@
   },
   "model_used": "mock/claude-sonnet-4-5",
   "timestamp": "20260519T194320Z",
-  "research_dir": "/Users/alan/Code/sinkra-hub/squads/research/eval-suite/fixtures/medium-quality",
+  "research_dir": "<upstream monorepo-root>/squads/research/eval-suite/fixtures/medium-quality",
   "rubric_version": "1.0"
 }

@@ -73,7 +73,7 @@ def _extract_reference(description: str) -> str | None:
     # Look for capitalized proper noun(s) at end of sentence
     nouns = re.findall(r"\b([A-Z][a-zA-Z]+(?:/[A-Za-z0-9-]+)?)\b", description)
     # Filter common stopwords/section names
-    blacklist = {"Para", "Esta", "É", "Cogpit", "Sinkra"}
+    blacklist = {"Para", "Esta", "É", "Cogpit", "AIOX"}
     candidates = [n for n in nouns if n not in blacklist and len(n) > 2]
     return candidates[0] if candidates else None
 

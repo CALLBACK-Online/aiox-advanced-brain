@@ -129,7 +129,7 @@ O agente **@squad-chief (Squad Architect)** é o **Master Orchestrator** do squa
 | `squads/squad-creator-pro/tasks/deep-research-pre-agent.md` | - | Deep research before agent creation |
 | `squads/squad-creator-pro/tasks/qa-after-creation.md` | - | QA após criação |
 | `squads/squad-creator-pro/tasks/install-skills.md` | `*install` | Instalar skills no IDE |
-| `squads/squad-creator-pro/tasks/sync-ide-skills.md` | `*sync` | Sync squad slash skills to .claude/skills/ |
+| `squads/squad-creator-pro/tasks/sync-ide-skills.md` | `*sync` | Sync squad slash skills to skills/ |
 | `squads/squad-creator-pro/tasks/migrate-workflows-to-yaml.md` | - | Migrate MD workflows to YAML |
 | `squads/squad-creator-pro/tasks/squad-fusion.md` | `*fusion` | Merge squads |
 | `squads/squad-creator-pro/tasks/extract-sop.md` | - | Extract SOP from transcript |
@@ -145,7 +145,7 @@ O agente **@squad-chief (Squad Architect)** é o **Master Orchestrator** do squa
 | Arquivo | Propósito |
 |---------|-----------|
 | `squads/squad-creator-pro/agents/squad-chief.md` | Definição core do agente (1329 linhas) |
-| `.claude/skills/squad-creator/squad-chief/SKILL.md` | Slash skill Claude Code para ativar |
+| `skills/squad-creator/squad-chief/SKILL.md` | Slash skill Claude Code para ativar |
 
 ### Arquivos de Workflows
 
@@ -460,7 +460,7 @@ flowchart TB
 | Comando | Task/Workflow | Operação |
 |---------|---------------|----------|
 | `*guide` | inline | Interactive onboarding guide |
-| `*sync` | `sync-ide-skills.md` | Sync to .claude/skills/ |
+| `*sync` | `sync-ide-skills.md` | Sync to skills/ |
 | `*optimize` | `optimize.md` | Optimize squad/task |
 | `*upgrade-squad` | `upgrade-squad.md` | Upgrade to current standards |
 | `*help` | inline | Show all commands |

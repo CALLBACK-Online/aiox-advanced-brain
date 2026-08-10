@@ -7,7 +7,7 @@ services:
     kind: filesystem
     service_ref: "outputs/etl/"
     owner: etl-ops
-  workspace-etl-store:
+  docs-etl-store:
     kind: filesystem
-    service_ref: "workspace/businesses/{slug}/etl/"
+    service_ref: "docs/etl/"
     owner: hub-framework

@@ -28,7 +28,7 @@ domain: Operational
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Operational`
 atomic_layer: Atom
 Input: request::detect_operational_mode_outputs
@@ -81,7 +81,7 @@ output_signal:
 ## Veto Conditions
 
 - `mode_report` input is missing or has no `primary_mode` field -> BLOCK
-- Output path classification references directories outside `outputs/` and `workspace/` -> BLOCK
+- Output path classification references directories outside `outputs/` and `docs/` (substituto local; outputs/ é private enterprise distribution) -> BLOCK
 
 ## Acceptance Criteria
 

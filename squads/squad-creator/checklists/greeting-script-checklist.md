@@ -25,7 +25,7 @@
 ## 3. Data Collection (collectContext)
 
 - [ ] Lê config.yaml do squad
-- [ ] Lê fontes de contexto relevantes (runtime, workspace, backlog, diagnósticos)
+- [ ] Lê fontes de contexto relevantes (runtime, local_docs, backlog, diagnósticos)
 - [ ] Não depende de estado da LLM
 - [ ] Falha silenciosamente se arquivo não existe (retorna null, não crash)
 - [ ] Usa loadYaml com try/catch

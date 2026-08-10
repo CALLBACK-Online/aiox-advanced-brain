@@ -122,10 +122,10 @@ workflow:
       phase: 1
       phase_name: Initialization
       agent: "@squad-chief"
-      action: execute_setup-workspace-e-valida-o-inicial
+      action: execute_setup-local_docs-e-valida-o-inicial
       task_ref: squad-fusion-initialize
       outputs:
-        - workspace_path
+        - project_path
         - backup_path
         - fusion_id
         - audit_log_path
@@ -174,7 +174,7 @@ workflow:
       action: execute_coletar-componentes-e-materializar-estrutura
       task_ref: squad-fusion-structure
       outputs:
-        - workspace_contents
+        - project_contents
         - conflicts_resolved
         - provenance_map
         - squad_path
@@ -247,9 +247,9 @@ config:
         - phase_3_scope
         - phase_5_validation
   paths:
-    workspace: /tmp/fusion-{target_name}-{timestamp}
+    local_docs: /tmp/fusion-{target_name}-{timestamp}
     backup: backups/squads/pre-fusion-{timestamp}
-    audit_log: "{workspace}/fusion-audit.yaml"
+    audit_log: "{local_docs}/fusion-audit.yaml"
   quality_thresholds:
     min_agent_lines: 300
     min_task_lines: 100
@@ -289,7 +289,7 @@ anti_patterns:
 phases:
   - id: phase_0_init
     name: Initialization
-    description: Setup workspace e validação inicial
+    description: Setup local_docs e validação inicial
     pattern: Pre-flight checks
     rollback: Trivial - nada modificado ainda
     inputs:
@@ -331,21 +331,21 @@ phases:
               ABORT("Squad não existe: {squad}")
             if not exists("squads/{squad}/agents") and not exists("squads/{squad}/skills"):
               WARN("Squad sem agents nem skills: {squad}")
-      - id: create_workspace
-        action: Criar workspace isolado
+      - id: create_project
+        action: Criar local_docs isolado
         commands:
-          - mkdir -p {workspace}/agents
-          - mkdir -p {workspace}/tasks
-          - mkdir -p {workspace}/skills
-          - mkdir -p {workspace}/data
-          - mkdir -p {workspace}/templates
-          - mkdir -p {workspace}/checklists
-          - mkdir -p {workspace}/workflows
-          - mkdir -p {workspace}/_audit
-          - mkdir -p {workspace}/_conflicts
+          - mkdir -p {local_docs}/agents
+          - mkdir -p {local_docs}/tasks
+          - mkdir -p {local_docs}/skills
+          - mkdir -p {local_docs}/data
+          - mkdir -p {local_docs}/templates
+          - mkdir -p {local_docs}/checklists
+          - mkdir -p {local_docs}/workflows
+          - mkdir -p {local_docs}/_audit
+          - mkdir -p {local_docs}/_conflicts
       - id: init_audit_log
         action: Inicializar log de auditoria
-        creates: "{workspace}/fusion-audit.yaml"
+        creates: "{local_docs}/fusion-audit.yaml"
         template: |
           # Fusion Audit Log
           # Gerado automaticamente - NÃO EDITAR MANUALMENTE
@@ -366,14 +366,14 @@ phases:
             tar -czf {backup_path}/{squad}.tar.gz squads/{squad}
         rationale: Permite rollback completo até o final
     output:
-      workspace_path: string
+      project_path: string
       backup_path: string
       fusion_id: string
       audit_log_path: string
     quality_gate:
       name: Init Gate
       checks:
-        - Workspace criado com todas subpastas
+        - LocalDocs criado com todas subpastas
         - Backup de todos squads fonte existe
         - Audit log inicializado
       veto_on: Qualquer check falhar
@@ -810,9 +810,9 @@ phases:
       excluded_components: list[{name, reason}]
   - id: phase_4_structure
     name: Structure (ETL Extract + Load)
-    description: Coletar componentes para workspace e materializar estrutura final
+    description: Coletar componentes para docs/ e materializar estrutura final
     pattern: ETL Extract + Idempotency + Exactly-Once
-    rollback: Deletar workspace e recomeçar
+    rollback: Deletar local_docs e recomeçar
     critical_rule: |
       🚨 IDEMPOTENCY: Rodar esta fase 2x deve dar o mesmo resultado
 
@@ -827,14 +827,14 @@ phases:
         executor: Worker
         command_per_agent: |
           source="squads/{source_squad}/agents/{agent}.md"
-          dest="{workspace}/agents/{agent}.md"
+          dest="{local_docs}/agents/{agent}.md"
 
           if [ -f "$dest" ]; then
             if diff -q "$source" "$dest" > /dev/null; then
               echo "SKIP: {agent} já existe (idêntico)"
             else
               echo "CONFLICT: {agent} existe com conteúdo diferente"
-              mv "$dest" "{workspace}/_conflicts/{agent}-{source_squad}.md"
+              mv "$dest" "{local_docs}/_conflicts/{agent}-{source_squad}.md"
               cp "$source" "$dest"
             fi
           else
@@ -849,7 +849,7 @@ phases:
           for squad in {source_squads}:
             find squads/{squad} -path '*/tasks/*.md' -type f | while read task; do
               name=$(basename "$task")
-              dest="{workspace}/tasks/$name"
+              dest="{local_docs}/tasks/$name"
               # Mesmo padrão de idempotency
               ...
             done
@@ -859,7 +859,7 @@ phases:
         command: |
           for squad in {source_squads}:
             if [ -d "squads/{squad}/skills" ]; then
-              cp -rn squads/{squad}/skills/* {workspace}/skills/ 2>/dev/null || true
+              cp -rn squads/{squad}/skills/* {local_docs}/skills/ 2>/dev/null || true
             fi
       - id: collect_data
         action: Copiar data e knowledge bases
@@ -868,7 +868,7 @@ phases:
           for squad in {source_squads}:
             find squads/{squad}/data squads/{squad}/knowledge -name '*.md' -type f 2>/dev/null | while read file; do
               name=$(basename "$file")
-              cp -n "$file" "{workspace}/data/$name" 2>/dev/null || echo "SKIP: $name exists"
+              cp -n "$file" "{local_docs}/data/$name" 2>/dev/null || echo "SKIP: $name exists"
             done
       - id: collect_templates
         action: Copiar templates
@@ -877,7 +877,7 @@ phases:
           for squad in {source_squads}:
             find squads/{squad} -path '*/templates/*.md' -type f 2>/dev/null | while read file; do
               name=$(basename "$file")
-              cp -n "$file" "{workspace}/templates/$name" 2>/dev/null || echo "SKIP: $name exists"
+              cp -n "$file" "{local_docs}/templates/$name" 2>/dev/null || echo "SKIP: $name exists"
             done
       - id: collect_checklists
         action: Copiar checklists
@@ -886,7 +886,7 @@ phases:
           for squad in {source_squads}:
             find squads/{squad} -path '*/checklists/*.md' -type f 2>/dev/null | while read file; do
               name=$(basename "$file")
-              cp -n "$file" "{workspace}/checklists/$name" 2>/dev/null || echo "SKIP: $name exists"
+              cp -n "$file" "{local_docs}/checklists/$name" 2>/dev/null || echo "SKIP: $name exists"
             done
       - id: collect_workflows
         action: Copiar workflows
@@ -895,7 +895,7 @@ phases:
           for squad in {source_squads}:
             find squads/{squad} -path '*/workflows/*.yaml' -o -path '*/workflows/*.md' -type f 2>/dev/null | while read file; do
               name=$(basename "$file")
-              cp -n "$file" "{workspace}/workflows/$name" 2>/dev/null || echo "SKIP: $name exists"
+              cp -n "$file" "{local_docs}/workflows/$name" 2>/dev/null || echo "SKIP: $name exists"
             done
       - id: handle_conflicts
         action: Listar conflitos para resolução
@@ -904,28 +904,28 @@ phases:
           - Listar: Worker (ls)
           - Resolver: Agent decide ou Human aprova
         command: |
-          ls {workspace}/_conflicts/ 2>/dev/null | wc -l
+          ls {local_docs}/_conflicts/ 2>/dev/null | wc -l
         if_conflicts: Apresentar ao humano para resolução
       - id: verify_collection
         action: Verificar contagens pós-coleta
         executor: Worker
         command: |
-          echo "=== WORKSPACE CONTENTS ===" && \
-          echo "Agents: $(find {workspace}/agents -name '*.md' | wc -l)" && \
-          echo "Tasks: $(find {workspace}/tasks -name '*.md' | wc -l)" && \
-          echo "Skills: $(find {workspace}/skills -name 'SKILL.md' | wc -l)" && \
-          echo "Data: $(find {workspace}/data -name '*.md' | wc -l)" && \
-          echo "Templates: $(find {workspace}/templates -name '*.md' | wc -l)" && \
-          echo "Checklists: $(find {workspace}/checklists -name '*.md' | wc -l)" && \
-          echo "Workflows: $(find {workspace}/workflows -name '*.yaml' -o -name '*.md' | wc -l)" && \
-          echo "Conflicts: $(find {workspace}/_conflicts -name '*.md' | wc -l)"
+          echo "=== STAGING CONTENTS ===" && \
+          echo "Agents: $(find {local_docs}/agents -name '*.md' | wc -l)" && \
+          echo "Tasks: $(find {local_docs}/tasks -name '*.md' | wc -l)" && \
+          echo "Skills: $(find {local_docs}/skills -name 'SKILL.md' | wc -l)" && \
+          echo "Data: $(find {local_docs}/data -name '*.md' | wc -l)" && \
+          echo "Templates: $(find {local_docs}/templates -name '*.md' | wc -l)" && \
+          echo "Checklists: $(find {local_docs}/checklists -name '*.md' | wc -l)" && \
+          echo "Workflows: $(find {local_docs}/workflows -name '*.yaml' -o -name '*.md' | wc -l)" && \
+          echo "Conflicts: $(find {local_docs}/_conflicts -name '*.md' | wc -l)"
       - id: reconciliation
         action: "Reconciliação: comparar esperado vs coletado"
         executor: Worker
         rationale: "Pattern: ETL Reconciliation"
         check: |
           expected_agents = len(final_components.agents)
-          collected_agents = count({workspace}/agents/*.md)
+          collected_agents = count({local_docs}/agents/*.md)
           if expected_agents != collected_agents:
             ALERT("Discrepância: esperado {expected}, coletado {collected}")
       - id: log_collection
@@ -933,7 +933,7 @@ phases:
         executor: Worker
         audit_event:
           type: collection_complete
-          collected: workspace_contents
+          collected: project_contents
           conflicts: conflict_count
           timestamp: "{now}"
     quality_gate:
@@ -944,7 +944,7 @@ phases:
         - Todos arquivos copiados são válidos (não vazios)
       veto_on: Discrepância não explicada OU conflito não resolvido
     output:
-      workspace_contents:
+      project_contents:
         agents: number
         tasks: number
         skills: number
@@ -983,11 +983,11 @@ phases:
           - uses referencia data existente
         command: |
           # Extrair todas referências
-          grep -rh "handoff_to\|depends_on\|uses" {workspace} --include="*.md" | \
+          grep -rh "handoff_to\|depends_on\|uses" {local_docs} --include="*.md" | \
           # Verificar se targets existem
           while read ref; do
             target=$(echo "$ref" | extract_target)
-            if ! exists("{workspace}/*/$target*"); then
+            if ! exists("{local_docs}/*/$target*"); then
               echo "BROKEN REF: $ref"
             fi
           done
@@ -998,7 +998,7 @@ phases:
           - name: Agent Lines
             rule: Agents >= 300 linhas (exceto orchestrators)
             command: |
-              for agent in {workspace}/agents/*.md; do
+              for agent in {local_docs}/agents/*.md; do
                 lines=$(wc -l < "$agent")
                 if [ $lines -lt 300 ]; then
                   echo "WARN: $(basename $agent) tem apenas $lines linhas"
@@ -1009,7 +1009,7 @@ phases:
           - name: Required Sections
             rule: Agents têm voice_dna, output_examples, anti_patterns
             command: |
-              for agent in {workspace}/agents/*.md; do
+              for agent in {local_docs}/agents/*.md; do
                 if ! grep -q "voice_dna" "$agent"; then
                   echo "MISSING voice_dna: $(basename $agent)"
                 fi
@@ -1092,7 +1092,7 @@ phases:
     name: Structure Creation Detail (merged into phase_4_structure)
     description: Detalhes da criacao de estrutura final -- agora parte de phase_4_structure
     pattern: ETL Load + Expand-Contract
-    rollback: Deletar squads/{target_name} e workspace permanece intacto
+    rollback: Deletar squads/{target_name} e local_docs permanece intacto
     steps:
       - id: create_target_directory
         action: Criar estrutura de diretórios
@@ -1106,17 +1106,17 @@ phases:
           mkdir -p squads/{target_name}/checklists
           mkdir -p squads/{target_name}/workflows
       - id: move_components
-        action: Mover componentes do workspace para destino
+        action: Mover componentes de docs/project para destino
         executor: Worker
         rationale: Move (não copy) para garantir exactly-once
         command: |
-          mv {workspace}/agents/* squads/{target_name}/agents/ 2>/dev/null || true
-          mv {workspace}/tasks/* squads/{target_name}/tasks/ 2>/dev/null || true
-          mv {workspace}/skills/* squads/{target_name}/skills/ 2>/dev/null || true
-          mv {workspace}/data/* squads/{target_name}/data/ 2>/dev/null || true
-          mv {workspace}/templates/* squads/{target_name}/templates/ 2>/dev/null || true
-          mv {workspace}/checklists/* squads/{target_name}/checklists/ 2>/dev/null || true
-          mv {workspace}/workflows/* squads/{target_name}/workflows/ 2>/dev/null || true
+          mv {local_docs}/agents/* squads/{target_name}/agents/ 2>/dev/null || true
+          mv {local_docs}/tasks/* squads/{target_name}/tasks/ 2>/dev/null || true
+          mv {local_docs}/skills/* squads/{target_name}/skills/ 2>/dev/null || true
+          mv {local_docs}/data/* squads/{target_name}/data/ 2>/dev/null || true
+          mv {local_docs}/templates/* squads/{target_name}/templates/ 2>/dev/null || true
+          mv {local_docs}/checklists/* squads/{target_name}/checklists/ 2>/dev/null || true
+          mv {local_docs}/workflows/* squads/{target_name}/workflows/ 2>/dev/null || true
       - id: define_tiers
         action: Organizar agents em tiers baseado em função
         executor: Agent
@@ -1126,7 +1126,7 @@ phases:
           - Tier 1: Especialistas de Plataforma (execução especializada)
           - Tier 2: Execução/Operação (trabalho do dia-a-dia)
         prompt: |
-          Analise os agents coletados em {workspace}/agents/ e organize em tiers.
+          Analise os agents coletados em {local_docs}/agents/ e organize em tiers.
 
           Para cada agent:
           1. Leia o arquivo completo
@@ -1159,7 +1159,7 @@ phases:
           - Qual agent usar para Google Ads?
           - Qual agent usar para scaling?
         prompt: |
-          Analise os agents em {workspace}/agents/ e crie regras de routing.
+          Analise os agents em {local_docs}/agents/ e crie regras de routing.
 
           Para cada agent:
           1. Identifique suas especialidades
@@ -1351,8 +1351,8 @@ phases:
         action: Mover audit log para destino
         executor: Worker
         command: |
-          mv {workspace}/fusion-audit.yaml squads/{target_name}/fusion-audit.yaml
-          mv {workspace}/_audit/* squads/{target_name}/_audit/ 2>/dev/null || true
+          mv {local_docs}/fusion-audit.yaml squads/{target_name}/fusion-audit.yaml
+          mv {local_docs}/_audit/* squads/{target_name}/_audit/ 2>/dev/null || true
       - id: final_count_verification
         action: Verificação final de contagem
         executor: Worker
@@ -1591,10 +1591,10 @@ phases:
         action: Atualizar ecosystem-registry.yaml
         executor: Worker
         command: Execute *refresh-registry
-      - id: cleanup_workspace
-        action: Remover workspace temporário
+      - id: cleanup_project
+        action: Remover local_docs temporário
         executor: Worker
-        command: rm -rf {workspace}
+        command: rm -rf {local_docs}
       - id: log_cleanup
         action: Registrar no audit log final
         executor: Worker
@@ -1634,7 +1634,7 @@ heuristics:
   - id: H_FUSION_005
     name: Validate Before Load
     rule: Nunca criar estrutura final sem validação
-    rationale: Erros são mais fáceis de corrigir no workspace
+    rationale: Erros são mais fáceis de corrigir no project docs
     applies_to:
       - phase_5
   - id: H_FUSION_006
@@ -1658,11 +1658,11 @@ heuristics:
       - all
 quick_reference:
   phases_summary:
-    - "Phase 0: Init - Setup workspace e backup"
+    - "Phase 0: Init - Setup local_docs e backup"
     - "Phase 1: Discovery - Inventário COMPLETO"
     - "Phase 2: Deduplication - Resolver duplicatas"
     - "Phase 3: Scope - Filtrar por domínio"
-    - "Phase 4: Collection - Copiar para workspace"
+    - "Phase 4: Collection - Copiar para docs/"
     - "Phase 5: Validation - Quality gates"
     - "Phase 6: Structure - Criar squad final"
     - "Phase 7: Integration - Testar funcionamento"
@@ -1680,9 +1680,9 @@ quick_reference:
       - Before Phase 8 (cleanup)
   rollback_points:
     - "Phase 0-3: Trivial (apenas análise)"
-    - "Phase 4: Delete workspace, retry"
+    - "Phase 4: Delete local_docs, retry"
     - "Phase 5: Fix issues, re-validate"
-    - "Phase 6: Delete target squad, workspace intact"
+    - "Phase 6: Delete target squad, local_docs intact"
     - "Phase 7: Keep sources, don't cleanup"
     - "Phase 7.5: Re-sync commands from squads/"
     - "Phase 8: Restore from backup"

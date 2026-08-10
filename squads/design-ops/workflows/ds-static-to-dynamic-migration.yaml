@@ -12,7 +12,7 @@ workflow:
     outcomes between brands while preserving the common backbone, now also across frameworks.
   type: sequential-with-branches
   archetype_ref: squads/design-ops/data/ds-archetype.yaml
-  sinkra_process_ref: .aiox/squad-runtime/sinkra-squad/migracao-ds-estatico-para-dinamico-tokenizado/sinkra-output.yaml
+  aiox_process_ref: .aiox/squad-runtime/aiox-squad/migracao-ds-estatico-para-dinamico-tokenizado/aiox-output.yaml
   reference_implementations:
     lean: apps/redpine-ds
     full: apps/aiox-brandbook
@@ -566,12 +566,12 @@ metadata:
   version_history:
     - version: 1.0.0
       date: "2026-04-19"
-      note: "Initial from SINKRA map — 6 organisms, hardcoded 24 primitives, 3 surface names"
+      note: "Initial from AIOX map — 6 organisms, hardcoded 24 primitives, 3 surface names"
     - version: 2.0.0
       date: "2026-04-19"
       note: "Added Organism 0 Brand Discovery; promoted archetype to data/ds-archetype.yaml; kit surfaces now derived (not hardcoded); specialized primitives require discovery evidence + approval"
-  source_map: .aiox/squad-runtime/sinkra-squad/migracao-ds-estatico-para-dinamico-tokenizado/
-  sinkra_compliance_score: 87
+  source_map: .aiox/squad-runtime/aiox-squad/migracao-ds-estatico-para-dinamico-tokenizado/
+  aiox_compliance_score: 87
   reference_execution: apps/anthropic-ds
   tags:
     - design-system

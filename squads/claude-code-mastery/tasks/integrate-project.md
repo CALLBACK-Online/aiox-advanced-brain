@@ -7,7 +7,7 @@
 **Mode:** Interactive (elicit: true)
 **Quality Standard:** Integration passes smoke test, all config files valid, CLAUDE.md under 200 lines
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: integrate-project
 atomic_layer: Atom

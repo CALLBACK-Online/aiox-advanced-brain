@@ -1,6 +1,6 @@
 # Deviation Registry — squad-creator-pro
 # Mandamento 7: "Desvios formalizados — todo desvio de processo deve ser documentado"
-# Reference: squads/sinkra-squad/data/deviation-registry.yaml (canonical schema)
+# Reference: squads/aiox-squad/data/deviation-registry.yaml (canonical schema)
 #
 # Usage: When a checkpoint returns REVIEW (not APPROVE) and the pipeline continues
 # with Human approval, the deviation MUST be logged here before advancing.

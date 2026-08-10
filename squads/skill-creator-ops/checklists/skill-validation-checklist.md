@@ -17,7 +17,7 @@ Reference: `data/validation-schema.yaml` for full field definitions and `data/an
   - If `status=deprecated`: `deprecated_at` and `migration_target` required
   - If `status=retired`: `retired_at` and `migration_story_ref` required
 
-Notes on frontmatter purity: `owner_squad`, `sinkra_tier`, `context` are NOT required in the skill's own SKILL.md frontmatter — those fields live at the task/squad level per the Frontmatter Purity Rule. Treat their presence as informational, never as required schema.
+Notes on frontmatter purity: `owner_squad`, `aiox_tier`, `context` are NOT required in the skill's own SKILL.md frontmatter — those fields live at the task/squad level per the Frontmatter Purity Rule. Treat their presence as informational, never as required schema.
 
 ### Structure (4 checks)
 
@@ -31,7 +31,7 @@ Notes on frontmatter purity: `owner_squad`, `sinkra_tier`, `context` are NOT req
 
 ### Registry (2 checks)
 
-- [ ] Skill registered in `.claude/skills/skill-registry.yaml`
+- [ ] Skill registered in `skills/skill-registry.yaml`
 - [ ] Version in SKILL.md matches version in registry
 
 ## Prompt-quality checks (4 — advisory, weighted)

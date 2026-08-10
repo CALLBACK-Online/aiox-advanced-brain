@@ -138,13 +138,11 @@ Publications go to `docs/{research,bench,audits}/`; ephemeral execution data
 |----------|---------------------|
 | brand-chief | Competitive positioning |
 | hormozi-chief | Market analysis before offer design |
-| c-level (vision-chief) | Strategic decision support |
 | copy-chief | Swipe files → copy frameworks |
 
 ## Boundary
 
 - **In scope:** Research (deep, market, tech), competitive intelligence, benchmarking, evidence-based analysis, bias detection, decision support
-- **Out of scope:** Creative execution (@copy, @brand), strategic decision making (@c-level consumes spy outputs), product strategy (@hormozi consumes spy outputs)
 
 ## Tasks Canônicas (59 total)
 

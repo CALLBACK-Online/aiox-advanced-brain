@@ -11,7 +11,7 @@ source: "Pricing Framework SOP — Value-Based Pricing"
 sop_reference: squads/hormozi/sops/pricing-framework-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

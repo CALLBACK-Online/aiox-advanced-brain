@@ -11,7 +11,7 @@ source: "Marketing Machine SOP — Core Four Integration"
 sop_reference: squads/hormozi/sops/marketing-machine-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom

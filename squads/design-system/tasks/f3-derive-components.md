@@ -143,13 +143,13 @@ Log de mudancas por componente (apenas componentes que foram alterados).
 
 - `squads/design/checklists/component-adaptation-checklist.md`
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - f3_derive_components_artifact

@@ -33,7 +33,7 @@ domain: Operational
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Operational`
 atomic_layer: Atom
 Input: request::install_skills_write
@@ -41,7 +41,7 @@ Output: artifact::install_skills_write
 pre_condition: contexto mínimo carregado e rota validada
 post_condition: decisão registrada com artefato persistido ou handoff emitido
 performance: registrar evidências, falhas e próximo passo sem erro silencioso
-Completion Criteria: contrato mínimo SINKRA explícito e saída rastreável produzida
+Completion Criteria: contrato mínimo AIOX explícito e saída rastreável produzida
 ========
 Input: request::install_skills_write
 Output: artifact::install_skills_write

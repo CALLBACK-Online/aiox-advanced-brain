@@ -1,6 +1,6 @@
 # Princípios Invioláveis — Slides Creator v9.0.0
 
-Fonte canônica: `.aiox/squad-runtime/sinkra-squad/criacao-slides-ia/architecture.yaml#invariants`
+Fonte canônica: `.aiox/squad-runtime/aiox-squad/criacao-slides-ia/architecture.yaml#invariants`
 Absorvido em: 2026-04-19 (ADR-021 / EPIC-SC-NARR)
 
 Estes 7 princípios são invariantes da geração de decks McKinsey-grade. Cada um é enforçado em layer específica (code | schema | validator) e falha bloqueia a release.

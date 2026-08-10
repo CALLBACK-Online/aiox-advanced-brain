@@ -6,7 +6,7 @@
 **Owner:** Conduit (project-integrator)
 **Purpose:** Set up a new repository with complete Claude Code integration from scratch, creating the .claude/ directory structure, CLAUDE.md, settings, rules, and hooks.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: setup-repository
 atomic_layer: Atom
@@ -169,7 +169,7 @@ Create `.claude/settings.json` with:
 3. **rules**: path-based rule loading configuration
 
 Adapt permissions based on `project_type`:
-- `monorepo`: include workspace-aware commands
+- `monorepo`: include path-aware commands
 - `fullstack`: include both frontend and backend build tools
 - `library`: include publish-related deny rules
 

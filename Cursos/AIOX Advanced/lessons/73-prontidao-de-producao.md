@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: prontidao-de-producao
 lesson_position: 73
 title: 'Prontidão de produção: checklist final'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/73-prontidao-de-producao/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

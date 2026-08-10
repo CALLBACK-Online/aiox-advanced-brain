@@ -86,10 +86,10 @@ test("S6: HEADER_WHITELIST does not contain sensitive header names", () => {
 
 // ── B7: fallback chain detection ───────────────────────────────────────
 
-test("B7: HONEST_HEADERS uses Sinkra UA (non-browser-impersonating)", () => {
-  assert.ok(/Sinkra-DesignOps-Extractor/.test(HONEST_HEADERS["User-Agent"]));
+test("B7: HONEST_HEADERS uses AIOX UA (non-browser-impersonating)", () => {
+  assert.ok(/AIOX-DesignOps-Extractor/.test(HONEST_HEADERS["User-Agent"]));
   assert.ok(!/Mozilla|Chrome|Safari/.test(HONEST_HEADERS["User-Agent"]));
-  assert.ok(!/sinkra\.ai\/extractor/.test(HONEST_HEADERS["User-Agent"]));
+  assert.ok(!/aiox\.ai\/extractor/.test(HONEST_HEADERS["User-Agent"]));
 });
 
 test("B7: BROWSER_HEADERS includes Sec-Ch-Ua + Sec-Fetch + br encoding (Akamai-coherent)", () => {

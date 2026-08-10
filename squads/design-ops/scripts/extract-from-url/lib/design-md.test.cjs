@@ -215,11 +215,11 @@ test("computeQualityScore recognizes proprietary namespaced CSS variable systems
 });
 
 test("classifyLintResult marks non-finding npm failures as execution errors", () => {
-  const result = classifyLintResult({ findings: [] }, 1, "", "npm error code EDUPLICATEWORKSPACE");
+  const result = classifyLintResult({ findings: [] }, 1, "", "npm error: duplicate outputs");
   assert.equal(result.errors_count, -1);
   assert.equal(result.execution_error, true);
-  assert.equal(result.failure_kind, "npm-duplicate-workspace");
-  assert.equal(formatLintSummary(result), "failed (npm-duplicate-workspace, exit=1)");
+  assert.equal(result.failure_kind, "npm-duplicate-local_docs");
+  assert.equal(formatLintSummary(result), "failed (npm-duplicate-local_docs, exit=1)");
 });
 
 test("computeQualityScore caps promotion grade when lint or accessibility block", () => {
@@ -230,7 +230,7 @@ test("computeQualityScore caps promotion grade when lint or accessibility block"
     spacing: { xs: "4px", sm: "8px", md: "16px", lg: "24px" },
   };
   const log = { confidence_summary: { high: 10, medium: 0, low: 0 } };
-  const lint = { ran: true, exit_code: 1, errors_count: -1, warnings_count: 0, execution_error: true, failure_kind: "npm-duplicate-workspace" };
+  const lint = { ran: true, exit_code: 1, errors_count: -1, warnings_count: 0, execution_error: true, failure_kind: "npm-duplicate-local_docs" };
   const result = computeQualityScore(tokens, log, lint, [], []);
 
   assert.equal(result.categories.lint_compliance.grade, "F");
@@ -301,7 +301,7 @@ colors:
 test("appendCustomLintFindings merges custom contract errors into lint counts", () => {
   const lint = { ran: true, exit_code: 0, errors_count: 0, warnings_count: 1, errors: [], warnings: [{}] };
   const merged = appendCustomLintFindings(lint, {
-    errors: [{ rule: "sinkra/consumer-contract", message: "missing" }],
+    errors: [{ rule: "aiox/consumer-contract", message: "missing" }],
     warnings: [],
   });
   assert.equal(merged.errors_count, 1);
@@ -312,7 +312,7 @@ test("appendCustomLintFindings merges custom contract errors into lint counts", 
 test("appendCustomLintFindings preserves lint execution failure counts", () => {
   const lint = { ran: true, exit_code: 1, errors_count: -1, warnings_count: 0, execution_error: true, errors: [], warnings: [] };
   const merged = appendCustomLintFindings(lint, {
-    errors: [{ rule: "sinkra/consumer-contract", message: "missing" }],
+    errors: [{ rule: "aiox/consumer-contract", message: "missing" }],
     warnings: [],
   });
   assert.equal(merged.errors_count, -1);

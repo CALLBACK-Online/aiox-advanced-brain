@@ -229,13 +229,13 @@ Composer: Phase 9: Validation — Layout: 9/10 | Typography: 0 | Spacing: 0
 
 - **On Fail:** Stop execution, capture evidence at the failing phase, and return remediation steps before proceeding.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_compose_page_artifact

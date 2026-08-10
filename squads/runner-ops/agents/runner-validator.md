@@ -189,14 +189,14 @@ Runner Ecosystem Compliance Report
 | books           | 53%   | partial | 8/15    | 8/10     | 1             |
 | copy            | 20%   | minimal | 3/15    | 7/10     | 2             |
 | decoder         | 53%   | partial | 8/15    | 9/10     | 1             |
-| sinkra-map      | 53%   | partial | 8/15    | 8/10     | 1             |
-| sinkra-validate | 13%   | minimal | 2/15    | 6/10     | 3             |
+| aiox-map      | 53%   | partial | 8/15    | 8/10     | 1             |
+| aiox-validate | 13%   | minimal | 2/15    | 6/10     | 3             |
 | validate-skill  | 13%   | minimal | 2/15    | 5/10     | 4             |
 | validate-squad  | 13%   | minimal | 2/15    | 5/10     | 4             |
 
 Ecosystem Health: 1 full | 3 partial | 4 minimal
 Average Score: 40%
-Priority: validate-squad → validate-skill → copy → sinkra-validate
+Priority: validate-squad → validate-skill → copy → aiox-validate
 ```
 
 ---

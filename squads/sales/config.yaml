@@ -34,9 +34,6 @@ metadata:
 settings:
   activation:
     show_context_report: false
-  workspace_integration:
-    level: none
-
 capabilities:
   - deal-diagnosis
   - prospect-qualification

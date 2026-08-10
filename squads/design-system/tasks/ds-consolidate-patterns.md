@@ -252,13 +252,13 @@ Brad: "Override recorded. Keeping both."
 - `squads/design/checklists/ds-pattern-audit-checklist.md`
 
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_consolidate_patterns_artifact

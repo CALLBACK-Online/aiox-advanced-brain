@@ -330,13 +330,13 @@ Phase 4: Enforcement (1 sprint)
 - `squads/design/checklists/ds-migration-readiness-checklist.md`
 
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_generate_migration_strategy_artifact

@@ -28,7 +28,7 @@ Quando o mesmo elemento tecnico aparece simultaneamente na tela (visual) E na fa
 
 ## CATEGORIAS DE CAPTURA
 
-### CATEGORIA A — ESTRUTURA DO WORKSPACE
+### CATEGORIA A — ESTRUTURA de docs/project
 
 Capturar a hierarquia organizacional do ClickUp conforme visivel na tela.
 
@@ -472,7 +472,7 @@ O JSON deve conter:
     "urls": [],
     "keys": []
   },
-  "context": "Apresentador navegando pela sidebar do workspace",
+  "context": "Apresentador navegando pela sidebar de docs/project",
   "evidence_type": "visual",
   "layer_hint": "clickup"
 }

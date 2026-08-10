@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: runner-executavel-deterministico
 lesson_position: 30
 title: 'Runner: o executável determinístico do Workflow'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/30-runner-executavel-deterministico/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -31,7 +31,7 @@ curated_at: '2026-08-09'
 
 # Runner: o executável determinístico do Workflow
 
-← [[29-sub-agents-vs-swarm-agents|Sub-agents versus Swarm-agents: isolado ou em rede]] · ↑ [[modulos/Módulo 5 - Arquitetura SINKRA|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[51-mapear-entidades-antes-do-squad|Mapear entidades antes do Squad: 5 perguntas + ciclo de vida]]
+← [[29-sub-agents-vs-swarm-agents|Sub-agents versus Swarm-agents: isolado ou em rede]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[51-mapear-entidades-antes-do-squad|Mapear entidades antes do Squad: 5 perguntas + ciclo de vida]]
 
 ## Conceitos
 
@@ -504,4 +504,4 @@ Tradução dos termos para alguém que está vendo a distinção Workflow versus
 
 ## Navegação
 
-← [[29-sub-agents-vs-swarm-agents|Sub-agents versus Swarm-agents: isolado ou em rede]] · ↑ [[modulos/Módulo 5 - Arquitetura SINKRA|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[51-mapear-entidades-antes-do-squad|Mapear entidades antes do Squad: 5 perguntas + ciclo de vida]]
+← [[29-sub-agents-vs-swarm-agents|Sub-agents versus Swarm-agents: isolado ou em rede]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[51-mapear-entidades-antes-do-squad|Mapear entidades antes do Squad: 5 perguntas + ciclo de vida]]

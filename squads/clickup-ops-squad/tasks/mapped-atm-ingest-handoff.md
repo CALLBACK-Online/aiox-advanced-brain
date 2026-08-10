@@ -15,9 +15,9 @@ accountability: Mission Lead
   tipo: YAML
   origem: artifact:mission-clickup-handoff.yaml
   obrigatorio: true
-- campo: contexto_sinkra_squad
+- campo: contexto_aiox_squad
   tipo: Contexto
-  origem: runtime:sinkra-squad
+  origem: runtime:aiox-squad
   obrigatorio: true
 ```
 

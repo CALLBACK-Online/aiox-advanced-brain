@@ -42,8 +42,8 @@ function run(label, cmd, cmdArgs) {
 function main() {
   const args = parseArgs(process.argv.slice(2));
 
-  run('Workspace Contracts (strict)', 'node', [
-    'squads/design-ops/scripts/validate-workspace-contracts.cjs',
+  run('project context contracts (strict)', 'node', [
+    'squads/design-ops/scripts/validate-project context contracts.cjs',
     `--business=${args.business}`,
     '--strict',
     '--format=json',

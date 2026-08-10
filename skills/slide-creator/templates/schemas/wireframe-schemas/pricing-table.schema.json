@@ -1,0 +1,102 @@
+{
+  "$id": "aiox://slide-creator/wireframes/pricing-table.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "A proposal needs package tiers, plan comparison, or buying path.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "tier_1_cta": {
+      "type": "string"
+    },
+    "tier_1_fit": {
+      "type": "string"
+    },
+    "tier_1_item_1": {
+      "type": "string"
+    },
+    "tier_1_item_2": {
+      "type": "string"
+    },
+    "tier_1_item_3": {
+      "type": "string"
+    },
+    "tier_1_label": {
+      "type": "string"
+    },
+    "tier_1_price": {
+      "type": "string"
+    },
+    "tier_2_cta": {
+      "type": "string"
+    },
+    "tier_2_fit": {
+      "type": "string"
+    },
+    "tier_2_item_1": {
+      "type": "string"
+    },
+    "tier_2_item_2": {
+      "type": "string"
+    },
+    "tier_2_item_3": {
+      "type": "string"
+    },
+    "tier_2_price": {
+      "type": "string"
+    },
+    "tier_3_cta": {
+      "type": "string"
+    },
+    "tier_3_fit": {
+      "type": "string"
+    },
+    "tier_3_item_1": {
+      "type": "string"
+    },
+    "tier_3_item_2": {
+      "type": "string"
+    },
+    "tier_3_item_3": {
+      "type": "string"
+    },
+    "tier_3_label": {
+      "type": "string"
+    },
+    "tier_3_price": {
+      "type": "string"
+    }
+  },
+  "title": "pricing-table",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "pricing_tiers",
+    "slot_count": 21,
+    "warnings": [
+      "action_title",
+      "tier_1_label",
+      "tier_1_price",
+      "tier_1_fit",
+      "tier_1_item_1",
+      "tier_1_item_2",
+      "tier_1_item_3",
+      "tier_1_cta",
+      "tier_2_price",
+      "tier_2_fit",
+      "tier_2_item_1",
+      "tier_2_item_2",
+      "tier_2_item_3",
+      "tier_2_cta",
+      "tier_3_label",
+      "tier_3_price",
+      "tier_3_fit",
+      "tier_3_item_1",
+      "tier_3_item_2",
+      "tier_3_item_3",
+      "tier_3_cta"
+    ],
+    "wireframe_ref": "templates/wireframes/pricing-table.html"
+  }
+}

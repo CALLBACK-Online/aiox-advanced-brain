@@ -10,7 +10,7 @@ estimated_time: 2-3 hours
 source: "$100M Retention Playbook - Crazy 8"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Operational
 atomic_layer: Atom

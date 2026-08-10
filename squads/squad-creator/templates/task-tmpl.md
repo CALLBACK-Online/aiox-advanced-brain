@@ -12,7 +12,7 @@ name: {task-name}
 description: "{1 sentence: what this task does}"
 allowed-tools: Read Write Bash
 # context: fork   # Uncomment for isolated sub-agent tasks
-# NOTE: owner/responsavel is NOT in frontmatter (SINKRA AD-3).
+# NOTE: owner/responsavel is NOT in frontmatter (AIOX AD-3).
 # The workflow sets steps[].agent to decide who executes.
 ---
 
@@ -116,8 +116,8 @@ task_anatomy:
     - output             # Array of produced outputs (MUST include output_persistence)
     - action_items       # Execution steps
     - acceptance_criteria # Criteria for completion
-    - output_persistence # Enum: canonical_workspace | transient_output (see Output Path Governance)
-    - error_handling     # Error behavior: fail-loud | escalate | rollback | VETO (SINKRA Field 8)
+    - output_persistence # Enum: canonical_project | transient_output (see Output Path Governance)
+    - error_handling     # Error behavior: fail-loud | escalate | rollback | VETO (AIOX Field 8)
   optional_fields:
     - estimated_time     # Format: "Xh" or "X-Yh"
     - dependencies       # Array of task IDs this depends on
@@ -138,9 +138,9 @@ output_persistence:
   field: output_persistence
   required: true
   values:
-    canonical_workspace:
+    canonical_project:
       meaning: "Data that persists across sessions, is loaded as context, or feeds other tasks"
-      path_pattern: "workspace/businesses/{business}/[analytics|products|operations]/"
+      path_pattern: "docs/[analytics|products|operations]/"
       signals:
         - "Loaded on agent boot (session context)"
         - "Used as input by other tasks in the squad or cross-squad"
@@ -164,8 +164,8 @@ output_persistence:
         - "competitor-analysis-2026-03.md"
         - "export-for-client-presentation.pdf"
   veto: |
-    VETO: Task with output classified as canonical_workspace using path outputs/ → BLOCK.
-    VETO: Task with output classified as transient_output using path workspace/ → BLOCK.
+    VETO: Task with output classified as canonical_project using path outputs/ → BLOCK.
+    VETO: Task with output classified as transient_output using path docs/ → BLOCK.
     When ambiguous: ASK the user before defining the path.
 
 executor_types:
@@ -318,7 +318,7 @@ sections:
     instruction: |
       List all outputs produced by this task.
       CRITICAL: For each output, classify output_persistence BEFORE defining the path.
-      Use the Output Path Governance heuristics to decide canonical_workspace vs transient_output.
+      Use the Output Path Governance heuristics to decide canonical_project vs transient_output.
     template: |
       ## Output
 
@@ -339,7 +339,7 @@ sections:
       {{/each}}
 
       {{#if output_persistence_is_canonical}}
-      > **Canonical workspace path:** `workspace/businesses/{business}/{{canonical_subpath}}`
+      > **Canonical project context path:** `docs/{{canonical_subpath}}`
       {{else}}
       > **Transient output path:** `outputs/{{squad_name}}/{business}/{{output_subpath}}`
       {{/if}}
@@ -563,8 +563,8 @@ sections:
       - [ ] `output` array has at least 1 item
       - [ ] `action_items` has clear, actionable steps
       - [ ] `acceptance_criteria` has measurable criteria
-      - [ ] `output_persistence` is canonical_workspace or transient_output
-      - [ ] Output path matches persistence classification (workspace/ for canonical, outputs/ for transient)
+      - [ ] `output_persistence` is canonical_project or transient_output
+      - [ ] Output path matches persistence classification (outputs/ for canonical, outputs/ for transient)
 
       ### Quality Check
 

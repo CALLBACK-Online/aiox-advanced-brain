@@ -7,46 +7,46 @@ origin: squads/design-ops/rules/design-system-fidelity.md
 external_reference: "agenmod/claw-design — extracted 2026-04-18"
 
 # Canonical discovery matrix for locating design-system artifacts.
-# Resolution order: workspace-first -> @sinkra/tokens-base -> brownfield fallbacks.
+# Resolution order: local -> @aiox/tokens-base -> brownfield fallbacks.
 # Consumers MUST check paths in the declared order. The first match wins and
 # subsequent paths are ignored for that artifact kind.
 
 # =============================================================================
-# CANONICAL PATHS (SOT — workspace-first)
+# CANONICAL PATHS (SOT — local)
 # =============================================================================
 canonical:
 
   tokens:
     priority: 1
     paths:
-      - "workspace/businesses/{business}/L2-tactical/design/tokens.yaml"
+      - "docs/tactical/design/tokens.yaml"
     format: yaml
     required: true
-    resolver: "squads/design-ops/scripts/resolve-workspace-contracts.cjs"
+    resolver: "squads/design-ops/scripts/resolve-project context contracts.cjs"
 
   foundations:
     priority: 1
     paths:
-      - "workspace/businesses/{business}/L2-tactical/design/foundations.yaml"
+      - "docs/tactical/design/foundations.yaml"
     format: yaml
     required: true
-    resolver: "squads/design-ops/scripts/resolve-workspace-contracts.cjs"
+    resolver: "squads/design-ops/scripts/resolve-project context contracts.cjs"
 
   component_contracts:
     priority: 1
     paths:
-      - "workspace/businesses/{business}/L2-tactical/design/component-contracts.yaml"
+      - "docs/tactical/design/component-contracts.yaml"
     format: yaml
     required: true
-    resolver: "squads/design-ops/scripts/resolve-workspace-contracts.cjs"
+    resolver: "squads/design-ops/scripts/resolve-project context contracts.cjs"
 
   motion_primitives:
     priority: 1
     paths:
-      - "workspace/businesses/{business}/L2-tactical/design/motion-primitives.yaml"
+      - "docs/tactical/design/motion-primitives.yaml"
     format: yaml
     required: false
-    resolver: "squads/design-ops/scripts/resolve-workspace-contracts.cjs"
+    resolver: "squads/design-ops/scripts/resolve-project context contracts.cjs"
 
 # =============================================================================
 # FRAMEWORK DEFAULTS (SOT — hub-level)
@@ -58,7 +58,7 @@ framework_defaults:
     paths:
       - "packages/tokens-base/tokens/"
     format: "dtcg-json"
-    npm_package: "@sinkra/tokens-base"
+    npm_package: "@aiox/tokens-base"
     required: false
     fallback_when: "canonical.tokens missing for greenfield bootstrap only"
 
@@ -68,29 +68,29 @@ framework_defaults:
       - "squads/design-ops/data/ds-core-catalog.yaml"
     format: yaml
     required: false
-    purpose: "Registered @sinkra/ds-core components"
+    purpose: "Registered @aiox/ds-core components"
 
   ds_core_package:
     priority: 2
     paths:
       - "packages/ds-core/src/"
     format: "tsx + css"
-    npm_package: "@sinkra/ds-core"
+    npm_package: "@aiox/ds-core"
     required: false
     purpose: "Reference-first consumption target for bundler-backed artifacts"
 
 # =============================================================================
-# BROWNFIELD FALLBACK PATTERNS (when business workspace not yet materialized)
+# BROWNFIELD FALLBACK PATTERNS (when business context not yet materialized)
 # =============================================================================
 brownfield_fallbacks:
-  enabled_when: "canonical paths do not resolve and workspace bootstrap is in progress"
+  enabled_when: "canonical paths do not resolve and local docs bootstrap is in progress"
   purpose: >-
     Allow design-ops to discover tokens in a brownfield business app before
-    its workspace contract has been materialized. Used by
-    wf-brandbook-workspace-extraction to seed the canonical workspace.
+    its project context contracts has been materialized. Used by
+    brownfield-complete to seed the canonical project context.
   action_on_match: >-
     Report the discovery as a proposal. Never consume directly for artifact
-    generation — always route through workspace extraction first.
+    generation — always route through docs extraction first.
 
   tokens:
     priority: 3
@@ -156,10 +156,10 @@ brownfield_fallbacks:
 external_reference_patterns:
   purpose: >-
     Patterns for reading reference material from adjacent repos/projects when
-    the source is not a canonical business workspace. These are READ-ONLY
+    the source is not a canonical business context. These are READ-ONLY
     reference resolvers — never a consumption path.
   security_note: >-
-    Only resolve to paths under the current workspace root. Never traverse
+    Only resolve to paths under the current project root. Never traverse
     outside the repo via .. or absolute paths pointing elsewhere.
   patterns:
     - "apps/aiox-design-starter/src/"      # reference starter runtime
@@ -176,14 +176,14 @@ integrations:
     paths:
       - "apps/{any}/.storybook/main.{ts,js,mjs}"
       - "apps/{any}/.storybook/preview.{ts,js}"
-    authority_rule: "never_overrides_workspace_contracts"
+    authority_rule: "never_overrides_project context contracts"
     required: false
 
   figma_tokens_studio:
     paths:
       - "apps/{any}/tokens-studio.json"
       - "apps/{any}/tokens/$metadata.json"
-    authority_rule: "never_overrides_workspace_contracts"
+    authority_rule: "never_overrides_project context contracts"
     required: false
 
   tailwind:
@@ -212,12 +212,12 @@ resolution_protocol:
     - step: 3
       action: "Scan brownfield fallback patterns (priority 3)"
       on_success: >-
-        Report discoveries as proposals for workspace extraction.
+        Report discoveries as proposals for docs extraction.
         DO NOT consume directly.
       on_miss: "Proceed to step 4"
 
     - step: 4
-      action: "HALT and request workspace contract materialization"
+      action: "HALT and request project context contracts materialization"
       blocking: true
       rationale: >-
         Per design-system-fidelity.md R4 (Context-First Mandate),
@@ -231,21 +231,21 @@ validation:
   gate: design-chief
   blocking: true
   validators:
-    - "squads/design-ops/scripts/resolve-workspace-contracts.cjs"
-    - "squads/design-ops/scripts/validate-workspace-contracts.cjs"
+    - "squads/design-ops/scripts/resolve-project context contracts.cjs"
+    - "squads/design-ops/scripts/validate-project context contracts.cjs"
   error_on_step_4: "DS_CONTEXT_MISSING"
 
 # =============================================================================
 # KNOWN LEGACY PATHS (to be migrated)
 # =============================================================================
 legacy_patterns_to_migrate:
-  - legacy: "workspace/businesses/{business}/design/tokens.yaml"
-    canonical: "workspace/businesses/{business}/L2-tactical/design/tokens.yaml"
-    rule: ".claude/rules/workspace-dialect.md"
+  - legacy: "docs/design/tokens.yaml"
+    canonical: "docs/tactical/design/tokens.yaml"
+    rule: ".claude/rules/project-dialect.md"
     migration_epic: "EPIC-120"
-  - legacy: "workspace/businesses/{business}/brand/tokens.yaml"
-    canonical: "workspace/businesses/{business}/L2-tactical/design/tokens.yaml"
-    rule: ".claude/rules/workspace-dialect.md"
+  - legacy: "docs/brand/tokens.yaml"
+    canonical: "docs/tactical/design/tokens.yaml"
+    rule: ".claude/rules/project-dialect.md"
 
 related:
   - squads/design-ops/rules/design-system-fidelity.md
@@ -253,5 +253,5 @@ related:
   - squads/design-ops/rules/context-gathering-protocol.md
   - squads/design-ops/data/ds-core-catalog.yaml
   - squads/design-ops/data/deliverable-kinds-registry.yaml
-  - squads/design-ops/scripts/resolve-workspace-contracts.cjs
-  - squads/design-ops/scripts/validate-workspace-contracts.cjs
+  - squads/design-ops/scripts/resolve-project context contracts.cjs
+  - squads/design-ops/scripts/validate-project context contracts.cjs

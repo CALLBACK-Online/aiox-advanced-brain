@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: tailwind-shadcn-storybook
 lesson_position: 56
 title: 'Tailwind + ShadCN + Storybook: stack canonical para IA'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/56-tailwind-shadcn-storybook/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

@@ -31,7 +31,7 @@ domain: Tactical
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Tactical`
 atomic_layer: Atom
 Input: request::discover_tools_scan
@@ -120,7 +120,7 @@ input, processing, output, enhancement.
 
 Check existing tool coverage from squad config and configured MCPs.
 
-Scan local skills (`.claude/skills/*/SKILL.md`) and squads (`squads/*/config.yaml`).
+Scan local skills (`skills/*/SKILL.md`) and squads (`squads/*/config.yaml`).
 Classify matches as COVERS, ADAPTABLE, or UNRELATED.
 
 Prioritize gaps using: `impact * 0.4 + frequency * 0.3 + user_dependency * 0.3`.

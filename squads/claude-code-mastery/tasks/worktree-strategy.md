@@ -7,7 +7,7 @@
 **Mode:** Interactive (elicit: true)
 **Quality Standard:** Worktree lifecycle tested end-to-end, cleanup verified
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: worktree-strategy
 atomic_layer: Atom

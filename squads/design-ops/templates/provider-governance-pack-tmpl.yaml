@@ -13,7 +13,7 @@ published_at: "YYYY-MM-DDTHH:MM:SSZ"
 ownership:
   provider: design-ops
   legacy_source: design-system  # frozen during migration
-  workspace_chief: workspace-chief
+  none: none
 
 sla:
   response_hours: 0

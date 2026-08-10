@@ -36,7 +36,7 @@
       {
         "id": "PV_PA_033",
         "title": "Executor Transversality",
-        "resonance": "Padrão de Infraestrutura Limpa: Módulos Core do Hub SINKRA (como Service Bus) não ligam se são de AIOX ou Synkra. PV eleva isso ao status de Executor Universal: 'se mudar o agente e a tela não muda, sua infra é transversal de fato'."
+        "resonance": "Padrão de Infraestrutura Limpa: Módulos Core do Hub AIOX (como Service Bus) não ligam se são de AIOX ou Synkra. PV eleva isso ao status de Executor Universal: 'se mudar o agente e a tela não muda, sua infra é transversal de fato'."
       },
       {
         "id": "PV_PA_011",
@@ -140,7 +140,7 @@
       {
         "id": "PV_PA_015",
         "title": "Multi-Executor Handoff Protocol",
-        "resonance": "AN instrui explicitamente as instâncias Autonômas SINKRA de que elas NÃO estão isoladas, demandando context-checks das actions adjacentes. PV regula via Handoff Formal que outputs devem moldar-se ao input esperado pelo executor vizinho sob pena de Death."
+        "resonance": "AN instrui explicitamente as instâncias Autonômas AIOX de que elas NÃO estão isoladas, demandando context-checks das actions adjacentes. PV regula via Handoff Formal que outputs devem moldar-se ao input esperado pelo executor vizinho sob pena de Death."
       },
       {
         "id": "PV_PA_010",
@@ -181,7 +181,7 @@
       {
         "id": "PV_PA_033",
         "title": "Executor Transversality",
-        "resonance": "A Extensão Desacoplada: AN bloqueia nomes específicos nos motores SINKRA garantindo Injeção Orgânica autônoma para expansões e novos Agentes. PV define essa lógica formal sob Transversalidade (Executor não define e nem contamina Processo)."
+        "resonance": "A Extensão Desacoplada: AN bloqueia nomes específicos nos motores AIOX garantindo Injeção Orgânica autônoma para expansões e novos Agentes. PV define essa lógica formal sob Transversalidade (Executor não define e nem contamina Processo)."
       }
     ]
   },
@@ -277,8 +277,8 @@
     "tension": [
       {
         "id": "PV_PA_001",
-        "title": "SINKRA Process Hierarchy (The 7 Levels)",
-        "divergence": "O Framework SINKRA de PV de 7 Níveis pode representar um Over-engineering pesado ('não-KISS') para workflows isolados e rápidos; Ponto Central de Fricção Criativa entre Simplicidade Pragmática vs Sistematização Completa SINKRA."
+        "title": "AIOX Process Hierarchy (The 7 Levels)",
+        "divergence": "O Framework AIOX de PV de 7 Níveis pode representar um Over-engineering pesado ('não-KISS') para workflows isolados e rápidos; Ponto Central de Fricção Criativa entre Simplicidade Pragmática vs Sistematização Completa AIOX."
       }
     ]
   },

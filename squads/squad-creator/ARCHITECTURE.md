@@ -25,7 +25,7 @@ Operational    Scaffolding, geracao de arquivos, instalacao e sincronizacao
 Observability  Analise continua: topologia, performance, gaps, radar, custo
 ```
 
-## Composicao SINKRA (6 niveis)
+## Composicao AIOX (6 niveis)
 
 ```
 Tokens (29)        Unidades parametricas indivisiveis que governam fluxo entre tasks
@@ -52,7 +52,7 @@ Instances          Squads gerados — identidade unica, lifecycle rastreado
 - Executor formal: `@squad-chief` (unico agent do pack base)
 - Pro mode: auto-detected via `squads/squad-creator-pro/config.yaml`
 - Especialistas PRO entram por delegacao explicita: `@oalanicolas` (Mind Cloning), `@pedro-valerio` (Quality), `@thiago_finch` (Strategy)
-- O pack nao escreve diretamente no workspace de negocios; `workspace_integration.level: read_only`
+- O pack nao escreve diretamente no project docs de negocios; `local project docs.level: read_only`
 
 ## Pipelines Principais
 

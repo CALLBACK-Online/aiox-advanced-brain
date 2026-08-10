@@ -1,0 +1,90 @@
+{
+  "$id": "aiox://slide-creator/wireframes/design-system-audit.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "A claim needs multiple compact proof points and source traceability.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "gap_1": {
+      "type": "string"
+    },
+    "gap_1_score": {
+      "type": "string"
+    },
+    "gap_1_width": {
+      "type": "string"
+    },
+    "gap_2": {
+      "type": "string"
+    },
+    "gap_2_score": {
+      "type": "string"
+    },
+    "gap_2_width": {
+      "type": "string"
+    },
+    "gap_3": {
+      "type": "string"
+    },
+    "gap_3_score": {
+      "type": "string"
+    },
+    "gap_3_width": {
+      "type": "string"
+    },
+    "gap_title": {
+      "type": "string"
+    },
+    "qa_score": {
+      "type": "string"
+    },
+    "risk_label": {
+      "type": "string"
+    },
+    "risk_note": {
+      "type": "string"
+    },
+    "risk_score": {
+      "type": "string"
+    },
+    "summary_title": {
+      "type": "string"
+    },
+    "template_score": {
+      "type": "string"
+    },
+    "token_score": {
+      "type": "string"
+    }
+  },
+  "title": "design-system-audit",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "evidence_stack",
+    "slot_count": 18,
+    "warnings": [
+      "action_title",
+      "summary_title",
+      "token_score",
+      "template_score",
+      "qa_score",
+      "gap_title",
+      "gap_1",
+      "gap_1_width",
+      "gap_1_score",
+      "gap_2",
+      "gap_2_width",
+      "gap_2_score",
+      "gap_3",
+      "gap_3_width",
+      "gap_3_score",
+      "risk_label",
+      "risk_note",
+      "risk_score"
+    ],
+    "wireframe_ref": "templates/wireframes/design-system-audit.html"
+  }
+}

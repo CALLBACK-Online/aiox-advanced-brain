@@ -164,7 +164,7 @@ selection_matrix:
 ds_consistency_binding:
   rule: >-
     Every starter MUST accept or derive tokens from the resolved business
-    workspace contracts (see ds-discovery-paths.yaml). Starters do NOT hardcode
+    project context contracts (see ds-discovery-paths.yaml). Starters do NOT hardcode
     colors, spacing, fonts, or radii — they consume the DS.
   required_token_consumption:
     - tokens.yaml (colors, spacing, typography, radii)

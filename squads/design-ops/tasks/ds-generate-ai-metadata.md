@@ -10,7 +10,7 @@ Create machine-readable metadata for design system components so AI agents can d
 
 ## Prerequisites
 
-- Components organized in workspace/system and workspace/ui
+- Components organized in docs/system and outputs/ui
 - Token hierarchy available (primitives/semantic/component)
 - Registry strategy defined (`registry.json`)
 - Governance protocol available: `squads/design-system/protocols/ai-first-governance.md`
@@ -39,7 +39,7 @@ Create machine-readable metadata for design system components so AI agents can d
 5. **Write Metadata Artifacts**
 - Per-component metadata JSON files.
 - Consolidated index:
-  - `workspace/domains/design-system/metadata/components.json`
+  - `docs/design-system/domains/metadata/components.json`
 
 6. **Quality Validation**
 - Validate metadata against JSON schema.
@@ -80,13 +80,13 @@ Create machine-readable metadata for design system components so AI agents can d
 - **Dependencies:** depends_on: `[]` · enables: `[]` · workflow: `design-system`
 - **On Fail:** Stop execution, capture evidence, and return remediation steps before proceeding.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_generate_ai_metadata_artifact

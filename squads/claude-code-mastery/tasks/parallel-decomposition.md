@@ -7,7 +7,7 @@
 **Mode:** Interactive (elicit: true)
 **Quality Standard:** Dependency graph validated, no circular dependencies, merge strategy tested
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: parallel-decomposition
 atomic_layer: Atom

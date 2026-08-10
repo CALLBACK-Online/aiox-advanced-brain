@@ -10,7 +10,7 @@
 | **Responsible Executor** | `squad-chief` |
 | **Execution Type** | `Worker` |
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 <!-- Domain: Operational -->
 <!-- atomic_layer: Atom -->
 <!-- Input: request::create_documentation -->

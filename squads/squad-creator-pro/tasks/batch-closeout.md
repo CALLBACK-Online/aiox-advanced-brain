@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: batch-closeout
   task_name: Batch Closeout
   status: pending
@@ -23,11 +23,11 @@ sinkra_task_metadata:
     per sub-batch)
   output_persistence: transient_output
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Operational
   atomic_layer: Atom
   executor: Human
@@ -35,12 +35,12 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Batch Closeout
 
-Formalizes the 3 partial SINKRA contract quality gates (QG-SCP-003, QG-SCP-005, QG-SCP-008) as a sequential operator checklist. Run this task at the end of any maintenance batch (sync, refactor, atomization round) before marking the batch as done.
+Formalizes the 3 partial AIOX contract quality gates (QG-SCP-003, QG-SCP-005, QG-SCP-008) as a sequential operator checklist. Run this task at the end of any maintenance batch (sync, refactor, atomization round) before marking the batch as done.
 
 ## Task Anatomy
 

@@ -11,7 +11,7 @@ source_fidelity: 100%
 source: $100M Leads - Section II "Engage Your Leads: Offers and Lead Magnets"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

@@ -1,14 +1,14 @@
-# Tech Research — Aggregate Pipeline Manifest (SINKRA-native v2.0.0)
+# Tech Research — Aggregate Pipeline Manifest (AIOX-native v2.0.0)
 # Source of truth: phase → operator-mode → outputs → checkpoint mapping.
-# Pattern: aligned with squads/sinkra-squad/workflows/sinkra-pipeline.yaml
-# Consumed by: .claude/skills/tech-research/SKILL.md (process_mapping pointer)
+# Pattern: aligned with squads/aiox-squad/workflows/aiox-pipeline.yaml
+# Consumed by: skills/tech-research/SKILL.md (process_mapping pointer)
 
 pipeline:
   id: SP-TECH-RESEARCH
   organism: ORG-TRR-001
   mode: EXPLORAR
   version: "2.0.0"
-  sinkra_version: "1.2"
+  aiox_version: "1.2"
   description: |
     Deep technical research pipeline with multi-wave search, coverage scoring,
     multi-LLM cross-reference, and citation verification. 7 molecules, 11 atoms.
@@ -243,7 +243,7 @@ phases:
     execution: conditional   # --deep flag OR coverage<70 after wave 2 OR manual trigger
     workflow_ref: squads/research/workflows/tech-research/phase-3-7-playwright-deep-research.yaml
     prompt_ref: squads/research/prompts/tech-research/playwright-deep-research.md
-    config_ref: .claude/skills/tech-research/config.yaml#playwright_deep_research
+    config_ref: skills/tech-research/config.yaml#playwright_deep_research
     mcp_required:
       - playwright (graceful degradation if absent)
     outputs:

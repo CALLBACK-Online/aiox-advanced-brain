@@ -1,5 +1,5 @@
 #!/bin/bash
-# validate-tokens.sh — SINKRA Token Reconciliation Validator
+# validate-tokens.sh — AIOX Token Reconciliation Validator
 # Validates that tokens declared in process-token-map.yaml are consistent
 # with tokens consumed/produced across workflows and tasks.
 #
@@ -28,7 +28,7 @@ log_fail() { checks=$((checks + 1)); errors=$((errors + 1)); echo -e "  ${RED}�
 log_warn() { checks=$((checks + 1)); warnings=$((warnings + 1)); echo -e "  ${YELLOW}⚠${NC} $1"; }
 
 echo "══════════════════════════════════════════════════════════"
-echo "  SINKRA Token Reconciliation Validator"
+echo "  AIOX Token Reconciliation Validator"
 echo "  Squad: $(basename "$SQUAD_PATH")"
 echo "  Date: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
 echo "══════════════════════════════════════════════════════════"

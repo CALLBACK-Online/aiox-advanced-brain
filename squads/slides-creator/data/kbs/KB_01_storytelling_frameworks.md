@@ -267,7 +267,6 @@ Use quando: Audiência já sabe do problema, quer solução rápida (apresentaç
 **ACSQ (começar com resposta):**
 A → C → S → Q
 
-Use quando: Audiência impaciente (C-level), quer bottom line primeiro, depois justificativa
 
 **CSA (omitir Q explícita):**
 C → S → A

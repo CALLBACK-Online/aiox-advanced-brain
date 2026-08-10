@@ -1,12 +1,15 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
+  "library_version": "0.5.0",
   "source": {
-    "repository": "sinkra-hub",
-    "path_at_import": "/Users/alan/Code/sinkra-hub",
+    "repository": "upstream-monorepo",
+    "path_relative": "../upstream-monorepo",
+    "path_at_import": "<upstream-monorepo-root>",
     "commit": "c2cd70b92cb68f49a6cb5256da2d5b7985b02c85",
     "branch": "oalanicolas",
     "source_assets_clean_at_import": true,
-    "import_date": "2026-08-10"
+    "import_date": "2026-08-10",
+    "last_library_hardening": "2026-08-10"
   },
   "course": {
     "path": "Cursos/AIOX Advanced",
@@ -14,17 +17,53 @@
     "source_path": "Cursos/AIOX Advanced",
     "source_git_status_at_import": "untracked",
     "import_date": "2026-08-10",
-    "markdown_files": 190,
+    "markdown_files": 191,
     "lessons": 75,
     "modules": 14,
     "quizzes": 14,
     "questions": 62,
-    "wikilinks": 1624,
+    "wikilinks": 1626,
     "unresolved_links_inside_cursos": 0,
     "ambiguous_links_inside_cursos": 0,
     "links_outside_course": 0
   },
+  "supplemental_courses": [
+    {
+      "path": "Cursos/AIOX-Advanced-Squads",
+      "source_repository": "this-library",
+      "source_assets": "catalog.json + squads/",
+      "created_at": "2026-08-10",
+      "markdown_files": 46,
+      "lessons": 25,
+      "modules": 6,
+      "quizzes": 6,
+      "questions": 24,
+      "squads_covered": 24,
+      "unresolved_links": 0,
+      "links_outside_course": 0,
+      "agent_guide": "Cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md",
+      "router_manifest": "Cursos/AIOX-Advanced-Squads/agent-router.json",
+      "routing_evals": "Cursos/AIOX-Advanced-Squads/_tools/routing-evals.json",
+      "supported_runtimes": [
+        "claude-code",
+        "codex",
+        "generic-prompt"
+      ]
+    }
+  ],
+  "counts": {
+    "skills": 62,
+    "squads": 24
+  },
+  "maturity_labels": {
+    "study": "Ler anatomia, agentes, tasks e workflows neste acervo",
+    "portable": "Executável com runtime mínimo (Node/Python + este repo)",
+    "partial": "Parte dos scripts/tasks roda; outras etapas pedem monorepo",
+    "runtime-aiox": "Exige runtime AIOX completo (.aiox-core, SYNAPSE, etc.)"
+  },
   "skills": [
+    "advisory-board",
+    "agent-autonomy",
     "aiox-analyst",
     "aiox-architect",
     "aiox-data-engineer",
@@ -35,11 +74,17 @@
     "aiox-po",
     "aiox-qa",
     "aiox-sm",
+    "aiox-sop",
+    "aiox-squads",
     "aiox-ux-designer",
     "apply-qa-fixes",
     "brand",
+    "claude-code-mastery",
+    "clickup-ops-squad",
     "close-story",
     "code-anatomist",
+    "conteudo",
+    "copy",
     "data",
     "db-sage",
     "decoder-chief",
@@ -47,20 +92,31 @@
     "deploy-story",
     "design-chief",
     "design-md",
+    "design-ops",
     "design-system",
     "develop-story",
     "doc-rot",
+    "domain-decoder",
     "enhance-workflow",
+    "etl-ops",
     "extract-session-heuristics",
     "full-sdc",
     "handoff",
     "hormozi",
     "impeccable",
+    "research",
     "review-story",
     "roundtable",
+    "runner-ops",
+    "sales",
     "skill-creator",
+    "skill-creator-ops",
     "slide-creator",
+    "slides-creator",
     "squad-chief",
+    "squad-creator",
+    "squad-creator-pro",
+    "storytelling",
     "survey-intel",
     "tech-research",
     "tech-search",
@@ -74,7 +130,6 @@
     "agent-autonomy",
     "aiox-sop",
     "brand",
-    "c-level",
     "claude-code-mastery",
     "clickup-ops-squad",
     "code-anatomist",
@@ -96,38 +151,668 @@
     "squad-creator-pro",
     "storytelling"
   ],
+  "skill_meta": {
+    "advisory-board": {
+      "maturity": "study"
+    },
+    "agent-autonomy": {
+      "maturity": "study"
+    },
+    "aiox-analyst": {
+      "maturity": "runtime-aiox"
+    },
+    "aiox-architect": {
+      "maturity": "runtime-aiox"
+    },
+    "aiox-data-engineer": {
+      "maturity": "runtime-aiox"
+    },
+    "aiox-dev": {
+      "maturity": "runtime-aiox"
+    },
+    "aiox-devops": {
+      "maturity": "runtime-aiox"
+    },
+    "aiox-master": {
+      "maturity": "runtime-aiox"
+    },
+    "aiox-pm": {
+      "maturity": "runtime-aiox"
+    },
+    "aiox-po": {
+      "maturity": "runtime-aiox"
+    },
+    "aiox-qa": {
+      "maturity": "runtime-aiox"
+    },
+    "aiox-sm": {
+      "maturity": "runtime-aiox"
+    },
+    "aiox-sop": {
+      "maturity": "study"
+    },
+    "aiox-squads": {
+      "maturity": "portable"
+    },
+    "aiox-ux-designer": {
+      "maturity": "runtime-aiox"
+    },
+    "apply-qa-fixes": {
+      "maturity": "runtime-aiox"
+    },
+    "brand": {
+      "maturity": "study"
+    },
+    "claude-code-mastery": {
+      "maturity": "study"
+    },
+    "clickup-ops-squad": {
+      "maturity": "study"
+    },
+    "close-story": {
+      "maturity": "runtime-aiox"
+    },
+    "code-anatomist": {
+      "maturity": "study"
+    },
+    "conteudo": {
+      "maturity": "study"
+    },
+    "copy": {
+      "maturity": "study"
+    },
+    "data": {
+      "maturity": "study"
+    },
+    "db-sage": {
+      "maturity": "study"
+    },
+    "decoder-chief": {
+      "maturity": "study"
+    },
+    "deep-strategic-planning": {
+      "maturity": "portable"
+    },
+    "deploy-story": {
+      "maturity": "runtime-aiox"
+    },
+    "design-chief": {
+      "maturity": "study"
+    },
+    "design-md": {
+      "maturity": "portable"
+    },
+    "design-ops": {
+      "maturity": "study"
+    },
+    "design-system": {
+      "maturity": "study"
+    },
+    "develop-story": {
+      "maturity": "runtime-aiox"
+    },
+    "doc-rot": {
+      "maturity": "portable"
+    },
+    "domain-decoder": {
+      "maturity": "study"
+    },
+    "enhance-workflow": {
+      "maturity": "runtime-aiox"
+    },
+    "etl-ops": {
+      "maturity": "study"
+    },
+    "extract-session-heuristics": {
+      "maturity": "portable"
+    },
+    "full-sdc": {
+      "maturity": "runtime-aiox"
+    },
+    "handoff": {
+      "maturity": "portable"
+    },
+    "hormozi": {
+      "maturity": "study"
+    },
+    "impeccable": {
+      "maturity": "portable"
+    },
+    "research": {
+      "maturity": "study"
+    },
+    "review-story": {
+      "maturity": "runtime-aiox"
+    },
+    "roundtable": {
+      "maturity": "runtime-aiox"
+    },
+    "runner-ops": {
+      "maturity": "study"
+    },
+    "sales": {
+      "maturity": "study"
+    },
+    "skill-creator": {
+      "maturity": "portable"
+    },
+    "skill-creator-ops": {
+      "maturity": "study"
+    },
+    "slide-creator": {
+      "maturity": "portable"
+    },
+    "slides-creator": {
+      "maturity": "study"
+    },
+    "squad-chief": {
+      "maturity": "study"
+    },
+    "squad-creator": {
+      "maturity": "study"
+    },
+    "squad-creator-pro": {
+      "maturity": "study"
+    },
+    "storytelling": {
+      "maturity": "study"
+    },
+    "survey-intel": {
+      "maturity": "portable"
+    },
+    "tech-research": {
+      "maturity": "portable"
+    },
+    "tech-search": {
+      "maturity": "portable"
+    },
+    "telegram": {
+      "maturity": "runtime-aiox"
+    },
+    "three-brain": {
+      "maturity": "runtime-aiox"
+    },
+    "validate-story-draft": {
+      "maturity": "runtime-aiox"
+    },
+    "verify-deploy": {
+      "maturity": "runtime-aiox"
+    }
+  },
+  "squad_meta": {
+    "advisory-board": {
+      "score": 6,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": false,
+      "has_changelog": false,
+      "has_headline": true,
+      "has_squad_io": false,
+      "maturity": "partial",
+      "agents": 11,
+      "tasks": 8,
+      "workflows": 2
+    },
+    "agent-autonomy": {
+      "score": 8,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": true,
+      "has_headline": false,
+      "has_squad_io": true,
+      "maturity": "partial",
+      "agents": 6,
+      "tasks": 7,
+      "workflows": 1
+    },
+    "aiox-sop": {
+      "score": 8,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": true,
+      "has_headline": true,
+      "has_squad_io": false,
+      "maturity": "partial",
+      "agents": 6,
+      "tasks": 21,
+      "workflows": 5
+    },
+    "brand": {
+      "score": 7,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": true,
+      "has_headline": false,
+      "has_squad_io": false,
+      "maturity": "partial",
+      "agents": 16,
+      "tasks": 21,
+      "workflows": 9
+    },
+    "claude-code-mastery": {
+      "score": 8,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": true,
+      "has_headline": false,
+      "has_squad_io": true,
+      "maturity": "study",
+      "agents": 8,
+      "tasks": 31,
+      "workflows": 3
+    },
+    "clickup-ops-squad": {
+      "score": 6,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": false,
+      "has_changelog": false,
+      "has_headline": false,
+      "has_squad_io": true,
+      "maturity": "partial",
+      "agents": 5,
+      "tasks": 30,
+      "workflows": 2
+    },
+    "code-anatomist": {
+      "score": 6,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": false,
+      "has_headline": false,
+      "has_squad_io": false,
+      "maturity": "partial",
+      "agents": 12,
+      "tasks": 10,
+      "workflows": 3
+    },
+    "conteudo": {
+      "score": 7,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": true,
+      "has_headline": false,
+      "has_squad_io": false,
+      "maturity": "study",
+      "agents": 10,
+      "tasks": 28,
+      "workflows": 9
+    },
+    "copy": {
+      "score": 8,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": false,
+      "has_headline": true,
+      "has_squad_io": true,
+      "maturity": "partial",
+      "agents": 27,
+      "tasks": 86,
+      "workflows": 18
+    },
+    "data": {
+      "score": 6,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": false,
+      "has_changelog": false,
+      "has_headline": true,
+      "has_squad_io": false,
+      "maturity": "partial",
+      "agents": 7,
+      "tasks": 12,
+      "workflows": 7
+    },
+    "db-sage": {
+      "score": 6,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": false,
+      "has_headline": false,
+      "has_squad_io": false,
+      "maturity": "partial",
+      "agents": 1,
+      "tasks": 25,
+      "workflows": 7
+    },
+    "design-ops": {
+      "score": 8,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": true,
+      "has_headline": false,
+      "has_squad_io": true,
+      "maturity": "partial",
+      "agents": 2,
+      "tasks": 126,
+      "workflows": 23
+    },
+    "design-system": {
+      "score": 8,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": false,
+      "has_headline": true,
+      "has_squad_io": true,
+      "maturity": "partial",
+      "agents": 11,
+      "tasks": 108,
+      "workflows": 15
+    },
+    "domain-decoder": {
+      "score": 5,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": false,
+      "has_changelog": false,
+      "has_headline": false,
+      "has_squad_io": false,
+      "maturity": "partial",
+      "agents": 8,
+      "tasks": 6,
+      "workflows": 2
+    },
+    "etl-ops": {
+      "score": 8,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": false,
+      "has_headline": true,
+      "has_squad_io": true,
+      "maturity": "partial",
+      "agents": 4,
+      "tasks": 7,
+      "workflows": 2
+    },
+    "hormozi": {
+      "score": 8,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": false,
+      "has_headline": true,
+      "has_squad_io": true,
+      "maturity": "partial",
+      "agents": 16,
+      "tasks": 57,
+      "workflows": 10
+    },
+    "research": {
+      "score": 8,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": false,
+      "has_headline": true,
+      "has_squad_io": true,
+      "maturity": "study",
+      "agents": 14,
+      "tasks": 65,
+      "workflows": 5
+    },
+    "runner-ops": {
+      "score": 5,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": false,
+      "has_headline": false,
+      "has_squad_io": false,
+      "maturity": "partial",
+      "agents": 5,
+      "tasks": 9,
+      "workflows": 0
+    },
+    "sales": {
+      "score": 6,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": true,
+      "has_headline": false,
+      "has_squad_io": false,
+      "maturity": "partial",
+      "agents": 9,
+      "tasks": 9,
+      "workflows": 0
+    },
+    "skill-creator-ops": {
+      "score": 6,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": false,
+      "has_headline": false,
+      "has_squad_io": false,
+      "maturity": "partial",
+      "agents": 3,
+      "tasks": 9,
+      "workflows": 1
+    },
+    "slides-creator": {
+      "score": 7,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": true,
+      "has_headline": false,
+      "has_squad_io": false,
+      "maturity": "partial",
+      "agents": 7,
+      "tasks": 53,
+      "workflows": 1
+    },
+    "squad-creator": {
+      "score": 9,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": true,
+      "has_headline": true,
+      "has_squad_io": true,
+      "maturity": "partial",
+      "agents": 1,
+      "tasks": 150,
+      "workflows": 26
+    },
+    "squad-creator-pro": {
+      "score": 8,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": true,
+      "has_changelog": true,
+      "has_headline": false,
+      "has_squad_io": true,
+      "maturity": "partial",
+      "agents": 6,
+      "tasks": 219,
+      "workflows": 52
+    },
+    "storytelling": {
+      "score": 8,
+      "score_max": 9,
+      "has_readme": true,
+      "has_architecture": false,
+      "has_changelog": true,
+      "has_headline": true,
+      "has_squad_io": true,
+      "maturity": "partial",
+      "agents": 13,
+      "tasks": 13,
+      "workflows": 1
+    }
+  },
+  "aliases": {
+    "aiox-squads": [
+      "squad-router",
+      "qual-squad",
+      "roteador-de-squads"
+    ],
+    "slide-creator": [
+      "slides-creator"
+    ],
+    "slides-creator": [
+      "slide-creator"
+    ],
+    "research": [
+      "spy",
+      "deep-research"
+    ],
+    "design-ops": [
+      "design",
+      "design-squad"
+    ],
+    "squad-chief": [
+      "aios-squad-creator"
+    ]
+  },
   "renames": [
-    { "mentioned": "aios-analyst", "included": "aiox-analyst" },
-    { "mentioned": "aios-architect", "included": "aiox-architect" },
-    { "mentioned": "aios-data-engineer", "included": "aiox-data-engineer" },
-    { "mentioned": "aios-dev", "included": "aiox-dev" },
-    { "mentioned": "aios-devops", "included": "aiox-devops" },
-    { "mentioned": "aios-master", "included": "aiox-master" },
-    { "mentioned": "aios-pm", "included": "aiox-pm" },
-    { "mentioned": "aios-po", "included": "aiox-po" },
-    { "mentioned": "aios-qa", "included": "aiox-qa" },
-    { "mentioned": "aios-sm", "included": "aiox-sm" },
-    { "mentioned": "aios-ux-design-expert", "included": "aiox-ux-designer" },
-    { "mentioned": "aios-squad-creator", "included": "squad-chief" }
+    {
+      "mentioned": "aios-analyst",
+      "included": "aiox-analyst"
+    },
+    {
+      "mentioned": "aios-architect",
+      "included": "aiox-architect"
+    },
+    {
+      "mentioned": "aios-data-engineer",
+      "included": "aiox-data-engineer"
+    },
+    {
+      "mentioned": "aios-dev",
+      "included": "aiox-dev"
+    },
+    {
+      "mentioned": "aios-devops",
+      "included": "aiox-devops"
+    },
+    {
+      "mentioned": "aios-master",
+      "included": "aiox-master"
+    },
+    {
+      "mentioned": "aios-pm",
+      "included": "aiox-pm"
+    },
+    {
+      "mentioned": "aios-po",
+      "included": "aiox-po"
+    },
+    {
+      "mentioned": "aios-qa",
+      "included": "aiox-qa"
+    },
+    {
+      "mentioned": "aios-sm",
+      "included": "aiox-sm"
+    },
+    {
+      "mentioned": "aios-ux-design-expert",
+      "included": "aiox-ux-designer"
+    },
+    {
+      "mentioned": "aios-squad-creator",
+      "included": "squad-chief"
+    }
   ],
   "documented_successors": [
     {
-      "mentioned": ["spy", "deep-research", "spy-bench-analyst", "spy-marketing-research", "spy-research-head"],
+      "mentioned": [
+        "spy",
+        "deep-research",
+        "spy-bench-analyst",
+        "spy-marketing-research",
+        "spy-research-head"
+      ],
       "included": "research",
       "evidence": "squads/research/config.yaml"
     },
     {
-      "mentioned": ["design", "design-squad"],
+      "mentioned": [
+        "design",
+        "design-squad"
+      ],
       "included": "design-ops",
       "evidence": "squads/design-ops/README.md"
+    },
+    {
+      "mentioned": [
+        "course-creator"
+      ],
+      "included": "squad-creator",
+      "note": "course-creator exists in ../upstream-monorepo but is not packaged here; squad-creator is the anatomical example in this library",
+      "evidence": "squads/squad-creator/config.yaml"
+    },
+    {
+      "mentioned": [
+        "slides-creator"
+      ],
+      "included": "slide-creator",
+      "note": "skill is slide-creator; squad is slides-creator",
+      "evidence": "skills/slide-creator/SKILL.md"
     }
   ],
   "related_current_assets": [
-    { "mentioned": ["sales-squad", "negotiation-squad"], "included": "sales" },
-    { "mentioned": ["project-management-clickup-squad"], "included": "clickup-ops-squad" },
-    { "mentioned": ["skill-tester-squad"], "included": "skill-creator-ops" },
-    { "mentioned": ["copy-squad", "copywriting-squad", "copywriting-masters"], "included": "copy" },
-    { "mentioned": ["slides-creator"], "included": "slides-creator" }
+    {
+      "mentioned": [
+        "sales-squad",
+        "negotiation-squad"
+      ],
+      "included": "sales"
+    },
+    {
+      "mentioned": [
+        "project-management-clickup-squad"
+      ],
+      "included": "clickup-ops-squad"
+    },
+    {
+      "mentioned": [
+        "skill-tester-squad"
+      ],
+      "included": "skill-creator-ops"
+    },
+    {
+      "mentioned": [
+        "copy-squad",
+        "copywriting-squad",
+        "copywriting-masters"
+      ],
+      "included": "copy"
+    },
+    {
+      "mentioned": [
+        "slides-creator"
+      ],
+      "included": "slides-creator"
+    },
+    {
+      "mentioned": [
+        "content-engine"
+      ],
+      "included": "conteudo"
+    }
+  ],
+  "source_only_upstream": [
+    "aiox-ads",
+    "backlog-ops",
+    "books",
+    "codex-mastery",
+    "content-geo",
+    "course-creator",
+    "creator-economy"
   ],
   "excluded_patterns": [
     "_archive",
@@ -143,10 +828,40 @@
   "excluded_file_patterns": [
     "*.pyc",
     "*.local.yaml",
-    "*.local.yml"
+    "*.local.yml",
+    "*.bak"
   ],
   "secret_fixture_allowlist": [
     "squads/squad-creator/checklists/squad-checklist.md",
     "squads/squad-creator-pro/scripts/tests/test_security_scanner.py"
-  ]
+  ],
+  "forbidden_path_markers": [
+    "/Users/",
+    "/home/",
+    "C:\\\\Users\\\\",
+    "C:/Users/"
+  ],
+  "excluded_from_library": [],
+  "layout": {
+    "skills": "skills/",
+    "squads": "squads/",
+    "course": "Cursos/AIOX Advanced/",
+    "note": "Distribution library. Copy skills/ into your IDE skills path and squads/ into your project."
+  },
+  "courses": {
+    "aiox-advanced": {
+      "path": "Cursos/AIOX Advanced",
+      "lessons": 75,
+      "bridge_to_squads": "Cursos/AIOX Advanced/ponte/trilha-squads.md",
+      "hub": "Cursos/README.md"
+    },
+    "aiox-advanced-squads": {
+      "path": "Cursos/AIOX-Advanced-Squads",
+      "lessons": 25,
+      "intro_lessons": 1,
+      "squads_covered": 24,
+      "hub": "Cursos/README.md",
+      "bridge_to_advanced": "Cursos/AIOX-Advanced-Squads/ponte/pre-requisitos-advanced.md"
+    }
+  }
 }

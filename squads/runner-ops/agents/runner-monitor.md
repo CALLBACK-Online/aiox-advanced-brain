@@ -85,10 +85,10 @@ Agregacao de metricas, monitoramento de saude e deteccao de anomalias no ecossis
 
 ```
 minds/**/metrics.jsonl          # mmos runner
-.aiox/squad-runtime/sinkra-squad/books/**/metrics.jsonl  # books runner
-.aiox/squad-runtime/sinkra-squad/copy/**/metrics.jsonl   # copy runner
+.aiox/squad-runtime/aiox-squad/books/**/metrics.jsonl  # books runner
+.aiox/squad-runtime/aiox-squad/copy/**/metrics.jsonl   # copy runner
 outputs/decoded/**/metrics.jsonl      # decoder runner
-.aiox/squad-runtime/sinkra-squad/**/metrics.jsonl        # sinkra-map runner
+.aiox/squad-runtime/aiox-squad/**/metrics.jsonl        # aiox-map runner
 ```
 
 ---
@@ -137,7 +137,7 @@ Cost Summary:
 | books    | 5    | $3.42   | $0.68   | 0 (0%)   | 12min        |
 | mmos     | 4    | $1.80   | $0.45   | 0 (0%)   | 8min         |
 | copy     | 3    | $2.10   | $0.70   | 1 (33%)  | 15min        |
-| sinkra   | 2    | $1.79   | $0.90   | 0 (0%)   | 20min        |
+| aiox   | 2    | $1.79   | $0.90   | 0 (0%)   | 20min        |
 
 Model Usage:
   gemini:  42% of calls ($6.02)
@@ -160,7 +160,7 @@ By Runner:
   books:        $12.30 (18 runs, avg $0.68)
   mmos:         $8.40  (19 runs, avg $0.44)
   copy:         $6.20  (9 runs, avg $0.69)
-  sinkra-map:   $4.80  (5 runs, avg $0.96)
+  aiox-map:   $4.80  (5 runs, avg $0.96)
   validators:   $2.10  (12 runs, avg $0.18)
   Total:        $52.30
 

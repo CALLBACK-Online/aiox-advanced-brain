@@ -1,6 +1,6 @@
 # Task: Product Discovery — Mom Test Interview
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 

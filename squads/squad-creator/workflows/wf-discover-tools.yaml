@@ -166,7 +166,7 @@ phases:
             - squads/{domain}/squad.yaml
             - squads/{domain}/config.yaml
             - squads/{domain}/README.md
-            - squads/sinkra-squad/data/ecosystem-registry.yaml
+            - squads/aiox-squad/data/ecosystem-registry.yaml
             - related tasks/workflows/agents
 
           rules:
@@ -329,7 +329,7 @@ phases:
         action: Scan existing skills and squad capabilities for domain coverage
         logic: |
           # 1. Scan project-level skills
-          scan: ".claude/skills/*/SKILL.md"
+          scan: "skills/*/SKILL.md"
           for each skill:
             extract:
               - name (from frontmatter)
@@ -361,7 +361,7 @@ phases:
               - UNRELATED: Different domain, no overlap
 
           # 3. Scan global skills
-          scan: "~/.claude/skills/*/SKILL.md"
+          scan: "~/skills/*/SKILL.md"
           for each skill:
             same extraction and matching as project skills
         output:
@@ -373,7 +373,7 @@ phases:
                 covered_by:
                   - type: skill
                     name: tech-search
-                    path: .claude/skills/tech-search/SKILL.md
+                    path: skills/tech-search/SKILL.md
             adaptable:
               - capability: competitor_analysis
                 adaptable_from:
@@ -815,7 +815,7 @@ phases:
           ## Search Strategy
 
           ### 1. Claude Code / Anthropic Ecosystem
-          - GitHub: "claude code skills" OR "claude skills" OR ".claude/skills"
+          - GitHub: "claude code skills" OR "claude skills" OR "skills"
           - GitHub: "claude agent" OR "claude code agent" OR ".claude/agents"
           - GitHub topic: "claude-code", "anthropic-tools", "claude-agent"
 
@@ -1668,7 +1668,7 @@ metadata:
       - "phase_4: task_ref discover-tools-report"
     v3.0:
       - Added Skill Discovery as hybrid flow (local scan + parallel skill agent)
-      - "Phase 0: New step_0_2b scans local skills (.claude/skills/) and squads (squads/*/config.yaml)"
+      - "Phase 0: New step_0_2b scans local skills (skills/) and squads (squads/*/config.yaml)"
       - "Phase 1: New agent_skill (6th parallel agent) searches community skills, prompt libraries, agent frameworks"
       - "Phase 2: Consolidation includes skill and local_skill categories"
       - "Phase 3: Registry updates include skill_recommendations and fork_candidates"

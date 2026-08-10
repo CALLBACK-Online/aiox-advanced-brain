@@ -29,13 +29,13 @@ reviewers; Chen et al. 2026, arxiv.org/abs/2605.01234).
 | Raw API | 95/100* | configurable | variable | Yes |
 
 *Raw API score assumes custom orchestration matching DeerFlow patterns
-(MEDIA confidence — extrapolated from SINKRA bench data; would require
+(MEDIA confidence — extrapolated from AIOX bench data; would require
 empirical validation per workload).
 
 ### Key finding
 
 DeerFlow's multi-wave gap-directed architecture scores 90/100 vs
-SINKRA's current linear pipeline at 57.5/100, a 32.5-point gap
+AIOX's current linear pipeline at 57.5/100, a 32.5-point gap
 (HIGH confidence — directly measured in bench/deepresearch-absorption-benchmark;
 6 domain-expert reviewers, 96 artifacts scored).
 
@@ -63,7 +63,7 @@ Cost benchmarks from 50 production runs across 3 organizations
 - LangChain avg: $0.15/run at variable waves, 8-20 sources
 - Raw API: $0.04-0.40/run (highly workload-dependent)
 
-Recommendation: For SINKRA research squad, adopt multi-signal heartbeat
+Recommendation: For AIOX research squad, adopt multi-signal heartbeat
 (token + cost + wallclock + gap + convergence) instead of single-signal
 coverage. Evidence shows 23% cost reduction without quality loss
 (Chen et al. 2026 — same citation as above).
@@ -88,7 +88,7 @@ coverage. Evidence shows 23% cost reduction without quality loss
 
 ## Conclusion
 
-The evidence is unambiguous: SINKRA's research squad operates 32.5 points
+The evidence is unambiguous: AIOX's research squad operates 32.5 points
 below the DeerFlow reference on multi-agent coordination. The gap is
 addressable in 3 sprints without architectural rewrites. The first step
 is measurable: deploy the eval-suite skeleton (RA-0.2) to create the

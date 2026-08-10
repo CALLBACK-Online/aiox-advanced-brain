@@ -3,13 +3,13 @@
 > Streamline design workflows and reduce friction using Dave Malouf's DesignOps Pillars framework, focusing on Workflow Operations.
 
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - design_process_optimization_artifact

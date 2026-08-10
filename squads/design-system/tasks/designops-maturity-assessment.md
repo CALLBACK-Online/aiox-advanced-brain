@@ -3,13 +3,13 @@
 > Assess organization's DesignOps maturity level using Dave Malouf's Three Lenses framework and 5-level maturity model.
 
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - designops_maturity_assessment_artifact

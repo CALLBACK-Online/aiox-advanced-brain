@@ -1,8 +1,8 @@
 # Task: Register Palette Override
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Tactical -->
+<!-- AIOX Domain: Tactical -->
 
 ## Metadata
 | Campo | Valor |
@@ -13,7 +13,7 @@
 | session | null (Human task — no LLM session) |
 | duration | 15-60 min (human + CODEOWNERS approval) |
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml
@@ -35,7 +35,7 @@ responsavel_type: Human  # STK-10 brand steward, dispatched by slide-chief
 Inputs:
   - name: client_brand_platform
     type: YAML
-    source: "workspace/businesses/{client_slug}/L2-tactical/brand/brand-platform.yaml"
+    source: "docs/tactical/brand/brand-platform.yaml"
     required: true
   - name: override_proposal
     type: YAML

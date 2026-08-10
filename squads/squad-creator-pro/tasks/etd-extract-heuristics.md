@@ -24,9 +24,9 @@ outputs:
 
 elicit: true
 ---
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: etd-extract-heuristics
   task_name: 'ETD Phase 3: Extract Heuristics (SE/ENTÃO + Vetos + Priorities)'
   status: pending
@@ -58,7 +58,7 @@ sinkra_task_metadata:
   accountable_id: Human:Squad_Operator
   accountability_scope: review_only
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
 # ETD Phase 3: Extract Heuristics
 

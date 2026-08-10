@@ -57,7 +57,7 @@ capability_tools:
   ds_mcp_runtime_queries:
     priority: high
     primary:
-      - workspace:design-system-mcp-server
+      - project:design-system-mcp-server
     fallback:
       - script:test_mcp_tools.cjs
 

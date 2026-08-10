@@ -7,9 +7,9 @@
 #   2. By Industry — vertical-specific (compliance, delivery, expertise)
 #   3. By Business Model — monetization-specific (sales, delivery, retention)
 #
-# Source: workspace/businesses/*/L0-identity/company-dna.yaml
+# Source: docs/*/identity/company-dna.yaml
 # Consumed by: sop-chief (SOP creation routing)
-# Update frequency: rare — only when new industries/models enter workspace
+# Update frequency: rare — only when new industries/models enter local_docs
 #
 # NOTE: Some SOPs have Brazil-specific context (NF-e, ANVISA, LGPD, CVM).
 # When generating SOPs for international businesses, adapt regulatory
@@ -642,6 +642,6 @@ business_model_sops:
 # 3. Business with industry=Technology and model=Agency+SaaS:
 #    -> Required SOPs = universal + technology + agency + saas
 #
-# The sop-research-context.yaml for each business (in workspace/businesses/
-# {slug}/L1-strategy/) references IDs from this file to indicate which SOPs apply.
+# The sop-research-context.yaml for each business (in docs/
+# {slug}/strategy/) references IDs from this file to indicate which SOPs apply.
 # =============================================================================

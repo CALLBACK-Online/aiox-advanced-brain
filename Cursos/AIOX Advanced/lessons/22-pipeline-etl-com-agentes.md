@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: pipeline-etl-com-agentes
 lesson_position: 22
 title: 'Pipeline ETL com agentes: hierarquia de camadas'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/22-pipeline-etl-com-agentes/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -421,7 +421,7 @@ Os termos desta aula em uma frase cada.
 - **Tier 2 LLM**: A camada de interpretação e julgamento, onde a IA agrega o que as camadas abaixo não dão.
 - **Descer a camada**: A regra de colocar cada etapa no tier mais baixo que a resolve, subindo só quando precisa.
 
-> **Próxima aula**: Você desenha pipelines em camadas e sabe onde a IA agrega. Com o determinismo dominado, M5 entra na arquitetura SINKRA: [[Squad|o que é um squad]] e como as entidades viram unidades de processo.
+> **Próxima aula**: Você desenha pipelines em camadas e sabe onde a IA agrega. Com o determinismo dominado, M5 entra na arquitetura AIOX: [[Squad|o que é um squad]] e como as entidades viram unidades de processo.
 
 ***
 

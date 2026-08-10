@@ -21,10 +21,10 @@ function readJson(relPath) {
   return JSON.parse(fs.readFileSync(full, 'utf8'));
 }
 
-const components = readJson('workspace/domains/design-system/metadata/components.json');
-const registry = readJson('workspace/ui/registry.json');
-const tokenRegistry = readJson('workspace/domains/design-system/metadata/tokens/index.json');
-const guidelines = readJson('workspace/domains/design-system/metadata/guidelines/usage.json');
+const components = readJson('docs/design-system/domains/metadata/components.json');
+const registry = readJson('docs/design-system/ui/registry.json');
+const tokenRegistry = readJson('docs/design-system/domains/metadata/tokens/index.json');
+const guidelines = readJson('docs/design-system/domains/metadata/guidelines/usage.json');
 
 // ---------------------------------------------------------------------------
 // Handler implementations (pure-JS mirrors of the TS handlers)

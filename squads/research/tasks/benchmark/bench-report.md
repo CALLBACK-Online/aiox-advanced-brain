@@ -11,7 +11,7 @@ type: molecule
 description: "Composed executive report stub with 3 internal atoms: load-evidence, synthesize-findings, publish"
 ```
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Strategic`
 

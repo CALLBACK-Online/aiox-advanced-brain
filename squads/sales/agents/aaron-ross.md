@@ -1124,7 +1124,6 @@ output_examples:
 
       - Company: $50M-$500M revenue, mid-market
       - Target: VP of Data, VP of Analytics
-      - Referral target: SVP or C-level in Technology or Operations
       - Approach: Referral-first (enterprise deals need warm introductions)
 
       ### Sequence Structure (4 Touches Over 14 Days)

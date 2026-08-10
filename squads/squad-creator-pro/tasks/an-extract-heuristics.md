@@ -41,9 +41,9 @@ template: "templates/session-heuristic-tmpl.md"
 elicit: false
 ---
 
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: an-extract-heuristics
   task_name: Extrair Heurísticas de Expert (Fontes Externas)
   status: pending
@@ -74,11 +74,11 @@ sinkra_task_metadata:
   accountability_scope: full
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Operational
   atomic_layer: Atom
   executor: Agent
@@ -86,7 +86,7 @@ sinkra_contract:
   post_condition: "heurísticas formalizadas em L2 (YAML) e L3 (.md), source_map completo, quality_check >= 6/7"
   performance: "executar em 20-40min, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 # SP-EXTRACT-HEURISTICS — Extração de Heurísticas de Expert
 

@@ -20,7 +20,7 @@ A squad passes only if final artifacts are production-ready.
 ---
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Operational`
 atomic_layer: Atom
 agent: squad-chief
@@ -43,8 +43,8 @@ required_artifacts:
   - tasks/*.md
   - workflows/*.yaml
   - README.md
-  - .claude/skills/*/{entry_agent}/SKILL.md
-  - .agents/skills/{entry_agent}/SKILL.md
+  - skills/*/{entry_agent}/SKILL.md
+  - skills/{entry_agent}/SKILL.md
 
 optional_but_scored:
   - checklists/*.md
@@ -72,8 +72,8 @@ optional_but_scored:
 - No veto condition triggered.
 
 4. `Chief Activation Gate` (blocking)
-- Chief slash skill exists in `.claude/skills/*/{entry_agent}/SKILL.md`.
-- Chief Codex skill exists in `.agents/skills/{entry_agent}/SKILL.md`.
+- Chief slash skill exists in `skills/*/{entry_agent}/SKILL.md`.
+- Chief Codex skill exists in `skills/{entry_agent}/SKILL.md`.
 
 5. `Usability Gate` (warning)
 - README includes activation and example commands.

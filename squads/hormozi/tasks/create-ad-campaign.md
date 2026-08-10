@@ -10,7 +10,7 @@ estimated_time: 2-4hrs (prep + recording)
 source: "$100M GOATed Ads Playbook"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

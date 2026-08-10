@@ -1,0 +1,1553 @@
+{
+  "schema_version": 1,
+  "router_skill": "aiox-squads",
+  "course_root": "Cursos/AIOX-Advanced-Squads",
+  "agent_guide": "Cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md",
+  "decision_map": "Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md",
+  "execution_guide": "Cursos/AIOX-Advanced-Squads/Guia-de-execucao.md",
+  "intro_lesson": "Cursos/AIOX-Advanced-Squads/aulas/00-como-usar-este-curso.md",
+  "library_layout": {
+    "skills": "skills/",
+    "squads": "squads/",
+    "note": "This repo is a distribution library, not a runnable monorepo runtime."
+  },
+  "runtime_surfaces": {
+    "claude_code": {
+      "skill_invoke": "Skill name after install under .claude/skills/{name}/SKILL.md — agent may load via skill tool or user types the skill name.",
+      "agent": "@agent-name only if your harness maps @ to agent files; otherwise open agents/*.md path.",
+      "task": "*command when the agent definition exposes commands; otherwise describe the task by name from tasks/.",
+      "slash_pack": "/Prefix:... only if the project registered the pack; never invent."
+    },
+    "codex": {
+      "skill_invoke": "Project/global skills by name if configured; else attach SKILL.md content.",
+      "agent": "Instruct model to adopt persona from squads/{id}/agents/{entry}.md",
+      "task": "Reference task file path; do not assume * prefix.",
+      "slash_pack": "Not assumed."
+    },
+    "generic": {
+      "skill_invoke": "Paste or load SKILL.md / AGENT-GUIDE.md",
+      "agent": "System prompt: adopt entry agent file",
+      "task": "Natural language task name from tasks/",
+      "slash_pack": "N/A"
+    }
+  },
+  "routing_procedure": [
+    "1. Classify user intent (decide / research / reverse-engineer / build / sell / operate).",
+    "2. Match intents[] and avoid_when in this manifest; if tie, open Mapa-de-decisao.md.",
+    "3. Open the lesson file for the chosen squad.",
+    "4. If squad not installed in the active project, follow if_not_installed before executing.",
+    "5. Build briefing from the lesson template; confirm external side effects.",
+    "6. Activate via runtime-appropriate surface only.",
+    "7. Require evidence checklist before claiming done."
+  ],
+  "squads": [
+    {
+      "id": "advisory-board",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/01-advisory-board.md",
+      "lesson_id": "01-advisory-board",
+      "maturity": "partial",
+      "agents_count": 11,
+      "tasks_count": 8,
+      "workflows_count": 2,
+      "entry_agent": "board-chair",
+      "skill_entries": [
+        "advisory-board"
+      ],
+      "intents": [
+        "decisão estratégica",
+        "reduzir vieses",
+        "múltiplas perspectivas",
+        "groupthink",
+        "conselho",
+        "conselho estratégico",
+        "mesa de decisão",
+        "devil's advocate"
+      ],
+      "signals": [
+        "decisão estratégica",
+        "reduzir vieses",
+        "múltiplas perspectivas",
+        "groupthink",
+        "conselho"
+      ],
+      "aliases": [
+        "conselho estratégico",
+        "mesa de decisão",
+        "devil's advocate"
+      ],
+      "avoid_when": "pesquisa factual; executar tarefa já decidida; buscar fontes",
+      "install_path": "squads/advisory-board/",
+      "activation": {
+        "claude_code": {
+          "skill": "/advisory-board",
+          "agent": "@board-chair",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "advisory-board",
+          "prompt": "Load squad at squads/advisory-board/ and adopt agent board-chair. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/advisory-board/config.yaml e squads/advisory-board/agents/board-chair.md. Avalie a decisão com perspectivas independentes, dissenso e critérios explícitos."
+      },
+      "if_not_installed": [
+        "Copy squads/advisory-board/ into the target project.",
+        "Optionally copy skills/advisory-board/ into the IDE skills path.",
+        "Open aulas/01-advisory-board.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/advisory-board/",
+      "entry_agent_path": "squads/advisory-board/agents/board-chair.md",
+      "skill": "advisory-board"
+    },
+    {
+      "id": "research",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/02-research.md",
+      "lesson_id": "02-research",
+      "maturity": "study",
+      "agents_count": 14,
+      "tasks_count": 65,
+      "workflows_count": 5,
+      "entry_agent": "research-chief",
+      "skill_entries": [
+        "research"
+      ],
+      "intents": [
+        "pesquisa multi-fonte",
+        "benchmark",
+        "OSINT",
+        "evidências",
+        "discovery",
+        "fontes confiáveis",
+        "pesquisa",
+        "benchmark",
+        "OSINT",
+        "discovery"
+      ],
+      "signals": [
+        "pesquisa multi-fonte",
+        "benchmark",
+        "OSINT",
+        "evidências",
+        "discovery",
+        "fontes confiáveis"
+      ],
+      "aliases": [
+        "pesquisa",
+        "benchmark",
+        "OSINT",
+        "discovery"
+      ],
+      "avoid_when": "decisão sem pesquisa; mapear codebase inteiro; implementar solução",
+      "install_path": "squads/research/",
+      "activation": {
+        "claude_code": {
+          "skill": "/research",
+          "agent": "@research-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "research",
+          "prompt": "Load squad at squads/research/ and adopt agent research-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/research/config.yaml e squads/research/agents/research-chief.md. Estruture a investigação, critérios de fonte, síntese e lacunas sem fabricar evidências."
+      },
+      "if_not_installed": [
+        "Copy squads/research/ into the target project.",
+        "Optionally copy skills/research/ into the IDE skills path.",
+        "Open aulas/02-research.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/research/",
+      "entry_agent_path": "squads/research/agents/research-chief.md",
+      "skill": "research"
+    },
+    {
+      "id": "code-anatomist",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/03-code-anatomist.md",
+      "lesson_id": "03-code-anatomist",
+      "maturity": "partial",
+      "agents_count": 12,
+      "tasks_count": 10,
+      "workflows_count": 3,
+      "entry_agent": "decoder-chief",
+      "skill_entries": [
+        "code-anatomist"
+      ],
+      "intents": [
+        "codebase inteiro",
+        "mapear arquitetura",
+        "APIs dados e infraestrutura",
+        "dependências do sistema",
+        "engenharia reversa completa",
+        "engenharia reversa",
+        "anatomia do código",
+        "mapa arquitetural"
+      ],
+      "signals": [
+        "codebase inteiro",
+        "mapear arquitetura",
+        "APIs dados e infraestrutura",
+        "dependências do sistema",
+        "engenharia reversa completa"
+      ],
+      "aliases": [
+        "engenharia reversa",
+        "anatomia do código",
+        "mapa arquitetural"
+      ],
+      "avoid_when": "somente regras de negócio; apenas taxonomia do domínio; implementar feature",
+      "install_path": "squads/code-anatomist/",
+      "activation": {
+        "claude_code": {
+          "skill": "/code-anatomist",
+          "agent": "@decoder-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "code-anatomist",
+          "prompt": "Load squad at squads/code-anatomist/ and adopt agent decoder-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/code-anatomist/config.yaml e squads/code-anatomist/agents/decoder-chief.md. Faça engenharia reversa do sistema completo e registre evidências por camada."
+      },
+      "if_not_installed": [
+        "Copy squads/code-anatomist/ into the target project.",
+        "Optionally copy skills/code-anatomist/ into the IDE skills path.",
+        "Open aulas/03-code-anatomist.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/code-anatomist/",
+      "entry_agent_path": "squads/code-anatomist/agents/decoder-chief.md",
+      "skill": "code-anatomist"
+    },
+    {
+      "id": "domain-decoder",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/04-domain-decoder.md",
+      "lesson_id": "04-domain-decoder",
+      "maturity": "partial",
+      "agents_count": 8,
+      "tasks_count": 6,
+      "workflows_count": 2,
+      "entry_agent": "decoder-chief",
+      "skill_entries": [
+        "domain-decoder",
+        "decoder-chief"
+      ],
+      "intents": [
+        "regras de negócio no código",
+        "taxonomia",
+        "decisões escondidas",
+        "domínio brownfield",
+        "modelo de negócio implícito",
+        "decodificador de domínio",
+        "regras do brownfield",
+        "taxonomia de negócio"
+      ],
+      "signals": [
+        "regras de negócio no código",
+        "taxonomia",
+        "decisões escondidas",
+        "domínio brownfield",
+        "modelo de negócio implícito"
+      ],
+      "aliases": [
+        "decodificador de domínio",
+        "regras do brownfield",
+        "taxonomia de negócio"
+      ],
+      "avoid_when": "mapear arquitetura completa; infraestrutura inteira; API e dependências completas",
+      "install_path": "squads/domain-decoder/",
+      "activation": {
+        "claude_code": {
+          "skill": "/domain-decoder",
+          "agent": "@decoder-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "domain-decoder",
+          "prompt": "Load squad at squads/domain-decoder/ and adopt agent decoder-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/domain-decoder/config.yaml e squads/domain-decoder/agents/decoder-chief.md. Extraia regras, taxonomias e decisões do domínio, ligando cada conclusão à fonte."
+      },
+      "if_not_installed": [
+        "Copy squads/domain-decoder/ into the target project.",
+        "Optionally copy skills/domain-decoder/ into the IDE skills path.",
+        "Optionally copy skills/decoder-chief/ into the IDE skills path.",
+        "Open aulas/04-domain-decoder.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/domain-decoder/",
+      "entry_agent_path": "squads/domain-decoder/agents/decoder-chief.md",
+      "skill": "domain-decoder"
+    },
+    {
+      "id": "agent-autonomy",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/05-agent-autonomy.md",
+      "lesson_id": "05-agent-autonomy",
+      "maturity": "partial",
+      "agents_count": 6,
+      "tasks_count": 7,
+      "workflows_count": 1,
+      "entry_agent": "autonomy-chief",
+      "skill_entries": [
+        "agent-autonomy"
+      ],
+      "intents": [
+        "agente entra em loops",
+        "depende demais de mim",
+        "baixa autonomia",
+        "não avalia progresso",
+        "intervenção humana constante",
+        "autonomia de agentes",
+        "loops de agente",
+        "agent ownership"
+      ],
+      "signals": [
+        "agente entra em loops",
+        "depende demais de mim",
+        "baixa autonomia",
+        "não avalia progresso",
+        "intervenção humana constante"
+      ],
+      "aliases": [
+        "autonomia de agentes",
+        "loops de agente",
+        "agent ownership"
+      ],
+      "avoid_when": "criar agente de domínio do zero; criar squad; problema apenas de prompt",
+      "install_path": "squads/agent-autonomy/",
+      "activation": {
+        "claude_code": {
+          "skill": "/agent-autonomy",
+          "agent": "@autonomy-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "agent-autonomy",
+          "prompt": "Load squad at squads/agent-autonomy/ and adopt agent autonomy-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/agent-autonomy/config.yaml e squads/agent-autonomy/agents/autonomy-chief.md. Diagnostique loops, ownership, avaliação de progresso e dependência humana antes de propor mudanças."
+      },
+      "if_not_installed": [
+        "Copy squads/agent-autonomy/ into the target project.",
+        "Optionally copy skills/agent-autonomy/ into the IDE skills path.",
+        "Open aulas/05-agent-autonomy.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/agent-autonomy/",
+      "entry_agent_path": "squads/agent-autonomy/agents/autonomy-chief.md",
+      "skill": "agent-autonomy"
+    },
+    {
+      "id": "claude-code-mastery",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/06-claude-code-mastery.md",
+      "lesson_id": "06-claude-code-mastery",
+      "maturity": "study",
+      "agents_count": 8,
+      "tasks_count": 31,
+      "workflows_count": 3,
+      "entry_agent": "claude-mastery-chief",
+      "skill_entries": [
+        "claude-code-mastery"
+      ],
+      "intents": [
+        "configurar Claude Code",
+        "hooks",
+        "MCP",
+        "subagentes",
+        "skills no Claude",
+        "integração de projeto",
+        "Claude Code",
+        "hooks Claude",
+        "MCP Claude",
+        "subagentes Claude"
+      ],
+      "signals": [
+        "configurar Claude Code",
+        "hooks",
+        "MCP",
+        "subagentes",
+        "skills no Claude",
+        "integração de projeto"
+      ],
+      "aliases": [
+        "Claude Code",
+        "hooks Claude",
+        "MCP Claude",
+        "subagentes Claude"
+      ],
+      "avoid_when": "feature de produto; configurar Codex; problema de negócio",
+      "install_path": "squads/claude-code-mastery/",
+      "activation": {
+        "claude_code": {
+          "skill": "/claude-code-mastery",
+          "agent": "@claude-mastery-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "claude-code-mastery",
+          "prompt": "Load squad at squads/claude-code-mastery/ and adopt agent claude-mastery-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/claude-code-mastery/config.yaml e squads/claude-code-mastery/agents/claude-mastery-chief.md. Oriente a configuração do Claude Code e valide cada superfície antes de usá-la."
+      },
+      "if_not_installed": [
+        "Copy squads/claude-code-mastery/ into the target project.",
+        "Optionally copy skills/claude-code-mastery/ into the IDE skills path.",
+        "Open aulas/06-claude-code-mastery.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/claude-code-mastery/",
+      "entry_agent_path": "squads/claude-code-mastery/agents/claude-mastery-chief.md",
+      "skill": "claude-code-mastery"
+    },
+    {
+      "id": "aiox-sop",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/07-aiox-sop.md",
+      "lesson_id": "07-aiox-sop",
+      "maturity": "partial",
+      "agents_count": 6,
+      "tasks_count": 21,
+      "workflows_count": 5,
+      "entry_agent": "sop-chief",
+      "skill_entries": [
+        "aiox-sop"
+      ],
+      "intents": [
+        "processo repetível",
+        "documentar processo",
+        "procedimento operacional",
+        "checklist executável",
+        "tirar processo da cabeça",
+        "SOP",
+        "procedimento operacional",
+        "processo documentado"
+      ],
+      "signals": [
+        "processo repetível",
+        "documentar processo",
+        "procedimento operacional",
+        "checklist executável",
+        "tirar processo da cabeça"
+      ],
+      "aliases": [
+        "SOP",
+        "procedimento operacional",
+        "processo documentado"
+      ],
+      "avoid_when": "documentação cosmética; materializar no ClickUp agora; pipeline de dados",
+      "install_path": "squads/aiox-sop/",
+      "activation": {
+        "claude_code": {
+          "skill": "/aiox-sop",
+          "agent": "@sop-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "aiox-sop",
+          "prompt": "Load squad at squads/aiox-sop/ and adopt agent sop-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/aiox-sop/config.yaml e squads/aiox-sop/agents/sop-chief.md. Extraia e formalize o processo como SOP executável, incluindo exceções, responsáveis e gate."
+      },
+      "if_not_installed": [
+        "Copy squads/aiox-sop/ into the target project.",
+        "Optionally copy skills/aiox-sop/ into the IDE skills path.",
+        "Open aulas/07-aiox-sop.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/aiox-sop/",
+      "entry_agent_path": "squads/aiox-sop/agents/sop-chief.md",
+      "skill": "aiox-sop"
+    },
+    {
+      "id": "etl-ops",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/08-etl-ops.md",
+      "lesson_id": "08-etl-ops",
+      "maturity": "partial",
+      "agents_count": 4,
+      "tasks_count": 7,
+      "workflows_count": 2,
+      "entry_agent": "etl-chief",
+      "skill_entries": [
+        "etl-ops"
+      ],
+      "intents": [
+        "extrair transformar carregar",
+        "pipeline ETL",
+        "collector",
+        "ingestão repetível",
+        "carregar dados",
+        "ETL",
+        "collector",
+        "ingestão",
+        "pipeline de dados"
+      ],
+      "signals": [
+        "extrair transformar carregar",
+        "pipeline ETL",
+        "collector",
+        "ingestão repetível",
+        "carregar dados"
+      ],
+      "aliases": [
+        "ETL",
+        "collector",
+        "ingestão",
+        "pipeline de dados"
+      ],
+      "avoid_when": "analisar métricas; modelar schema; runner genérico fora da IDE",
+      "install_path": "squads/etl-ops/",
+      "activation": {
+        "claude_code": {
+          "skill": "/etl-ops",
+          "agent": "@etl-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "etl-ops",
+          "prompt": "Load squad at squads/etl-ops/ and adopt agent etl-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/etl-ops/config.yaml e squads/etl-ops/agents/etl-chief.md. Defina fonte, transformação, destino, idempotência, observabilidade e validação do pipeline."
+      },
+      "if_not_installed": [
+        "Copy squads/etl-ops/ into the target project.",
+        "Optionally copy skills/etl-ops/ into the IDE skills path.",
+        "Open aulas/08-etl-ops.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/etl-ops/",
+      "entry_agent_path": "squads/etl-ops/agents/etl-chief.md",
+      "skill": "etl-ops"
+    },
+    {
+      "id": "runner-ops",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/09-runner-ops.md",
+      "lesson_id": "09-runner-ops",
+      "maturity": "partial",
+      "agents_count": 5,
+      "tasks_count": 9,
+      "workflows_count": 0,
+      "entry_agent": "runner-chief",
+      "skill_entries": [
+        "runner-ops"
+      ],
+      "intents": [
+        "execução headless",
+        "fora da IDE",
+        "runner autônomo",
+        "estado orçamento e métricas",
+        "pipeline agendado",
+        "runner headless",
+        "execução fora da IDE",
+        "pipeline autônomo"
+      ],
+      "signals": [
+        "execução headless",
+        "fora da IDE",
+        "runner autônomo",
+        "estado orçamento e métricas",
+        "pipeline agendado"
+      ],
+      "aliases": [
+        "runner headless",
+        "execução fora da IDE",
+        "pipeline autônomo"
+      ],
+      "avoid_when": "workflow apenas conceitual; ETL específico; rodar uma tarefa manual",
+      "install_path": "squads/runner-ops/",
+      "activation": {
+        "claude_code": {
+          "skill": "/runner-ops",
+          "agent": "@runner-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "runner-ops",
+          "prompt": "Load squad at squads/runner-ops/ and adopt agent runner-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/runner-ops/config.yaml e squads/runner-ops/agents/runner-chief.md. Desenhe ou avalie o runner headless com estado, orçamento, observabilidade e recuperação."
+      },
+      "if_not_installed": [
+        "Copy squads/runner-ops/ into the target project.",
+        "Optionally copy skills/runner-ops/ into the IDE skills path.",
+        "Open aulas/09-runner-ops.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/runner-ops/",
+      "entry_agent_path": "squads/runner-ops/agents/runner-chief.md",
+      "skill": "runner-ops"
+    },
+    {
+      "id": "data",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/10-data.md",
+      "lesson_id": "10-data",
+      "maturity": "partial",
+      "agents_count": 7,
+      "tasks_count": 12,
+      "workflows_count": 7,
+      "entry_agent": "data-chief",
+      "skill_entries": [
+        "data"
+      ],
+      "intents": [
+        "métricas",
+        "churn",
+        "coortes",
+        "atribuição",
+        "experimento",
+        "decisão com dados",
+        "analytics",
+        "métricas",
+        "coortes",
+        "experimentos"
+      ],
+      "signals": [
+        "métricas",
+        "churn",
+        "coortes",
+        "atribuição",
+        "experimento",
+        "decisão com dados"
+      ],
+      "aliases": [
+        "analytics",
+        "métricas",
+        "coortes",
+        "experimentos"
+      ],
+      "avoid_when": "modelar schema; RLS; extrair e carregar dados",
+      "install_path": "squads/data/",
+      "activation": {
+        "claude_code": {
+          "skill": "/data",
+          "agent": "@data-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "data",
+          "prompt": "Load squad at squads/data/ and adopt agent data-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/data/config.yaml e squads/data/agents/data-chief.md. Transforme a pergunta de negócio em análise, valide os dados e explicite limitações e decisão."
+      },
+      "if_not_installed": [
+        "Copy squads/data/ into the target project.",
+        "Optionally copy skills/data/ into the IDE skills path.",
+        "Open aulas/10-data.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/data/",
+      "entry_agent_path": "squads/data/agents/data-chief.md",
+      "skill": "data"
+    },
+    {
+      "id": "db-sage",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/11-db-sage.md",
+      "lesson_id": "11-db-sage",
+      "maturity": "partial",
+      "agents_count": 1,
+      "tasks_count": 25,
+      "workflows_count": 7,
+      "entry_agent": "db-sage",
+      "skill_entries": [
+        "db-sage"
+      ],
+      "intents": [
+        "PostgreSQL",
+        "Supabase",
+        "schema",
+        "migration",
+        "RLS",
+        "query lenta",
+        "PostgreSQL",
+        "Supabase",
+        "schema",
+        "RLS"
+      ],
+      "signals": [
+        "PostgreSQL",
+        "Supabase",
+        "schema",
+        "migration",
+        "RLS",
+        "query lenta"
+      ],
+      "aliases": [
+        "PostgreSQL",
+        "Supabase",
+        "schema",
+        "RLS"
+      ],
+      "avoid_when": "dashboard de negócio; análise de churn; pipeline de ingestão",
+      "install_path": "squads/db-sage/",
+      "activation": {
+        "claude_code": {
+          "skill": "/db-sage",
+          "agent": "@db-sage",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "db-sage",
+          "prompt": "Load squad at squads/db-sage/ and adopt agent db-sage. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/db-sage/config.yaml e squads/db-sage/agents/db-sage.md. Avalie schema, migrations, RLS e performance com testes e rollback antes de qualquer escrita."
+      },
+      "if_not_installed": [
+        "Copy squads/db-sage/ into the target project.",
+        "Optionally copy skills/db-sage/ into the IDE skills path.",
+        "Open aulas/11-db-sage.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/db-sage/",
+      "entry_agent_path": "squads/db-sage/agents/db-sage.md",
+      "skill": "db-sage"
+    },
+    {
+      "id": "clickup-ops-squad",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/12-clickup-ops-squad.md",
+      "lesson_id": "12-clickup-ops-squad",
+      "maturity": "partial",
+      "agents_count": 5,
+      "tasks_count": 30,
+      "workflows_count": 2,
+      "entry_agent": "clickup-chief",
+      "skill_entries": [
+        "clickup-ops-squad"
+      ],
+      "intents": [
+        "processo validado no ClickUp",
+        "materializar no ClickUp",
+        "Spaces Lists e Fields",
+        "automações ClickUp",
+        "ClickUp",
+        "Spaces e Lists",
+        "automação ClickUp"
+      ],
+      "signals": [
+        "processo validado no ClickUp",
+        "materializar no ClickUp",
+        "Spaces Lists e Fields",
+        "automações ClickUp"
+      ],
+      "aliases": [
+        "ClickUp",
+        "Spaces e Lists",
+        "automação ClickUp"
+      ],
+      "avoid_when": "desenhar processo do zero; SOP ainda não validado; gerenciar projeto sem modelo de processo",
+      "install_path": "squads/clickup-ops-squad/",
+      "activation": {
+        "claude_code": {
+          "skill": "/clickup-ops-squad",
+          "agent": "@clickup-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "clickup-ops-squad",
+          "prompt": "Load squad at squads/clickup-ops-squad/ and adopt agent clickup-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/clickup-ops-squad/config.yaml e squads/clickup-ops-squad/agents/clickup-chief.md. Confirme que o processo está validado antes de mapeá-lo para ClickUp."
+      },
+      "if_not_installed": [
+        "Copy squads/clickup-ops-squad/ into the target project.",
+        "Optionally copy skills/clickup-ops-squad/ into the IDE skills path.",
+        "Open aulas/12-clickup-ops-squad.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/clickup-ops-squad/",
+      "entry_agent_path": "squads/clickup-ops-squad/agents/clickup-chief.md",
+      "skill": "clickup-ops-squad"
+    },
+    {
+      "id": "brand",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/13-brand.md",
+      "lesson_id": "13-brand",
+      "maturity": "partial",
+      "agents_count": 16,
+      "tasks_count": 21,
+      "workflows_count": 9,
+      "entry_agent": "brand-chief",
+      "skill_entries": [
+        "brand"
+      ],
+      "intents": [
+        "naming",
+        "posicionamento de marca",
+        "arquitetura de marca",
+        "fundamentos da marca",
+        "ativação de marca",
+        "marca",
+        "naming",
+        "posicionamento",
+        "arquitetura de marca"
+      ],
+      "signals": [
+        "naming",
+        "posicionamento de marca",
+        "arquitetura de marca",
+        "fundamentos da marca",
+        "ativação de marca"
+      ],
+      "aliases": [
+        "marca",
+        "naming",
+        "posicionamento",
+        "arquitetura de marca"
+      ],
+      "avoid_when": "componentes de UI; regressão visual; apenas copy de landing page",
+      "install_path": "squads/brand/",
+      "activation": {
+        "claude_code": {
+          "skill": "/brand",
+          "agent": "@brand-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "brand",
+          "prompt": "Load squad at squads/brand/ and adopt agent brand-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/brand/config.yaml e squads/brand/agents/brand-chief.md. Conduza fundamentos, posicionamento e ativação da marca com critérios e decisões rastreáveis."
+      },
+      "if_not_installed": [
+        "Copy squads/brand/ into the target project.",
+        "Optionally copy skills/brand/ into the IDE skills path.",
+        "Open aulas/13-brand.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/brand/",
+      "entry_agent_path": "squads/brand/agents/brand-chief.md",
+      "skill": "brand"
+    },
+    {
+      "id": "design-system",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/14-design-system.md",
+      "lesson_id": "14-design-system",
+      "maturity": "partial",
+      "agents_count": 11,
+      "tasks_count": 108,
+      "workflows_count": 15,
+      "entry_agent": "design-chief",
+      "skill_entries": [
+        "design-system",
+        "design-chief"
+      ],
+      "intents": [
+        "criar tokens",
+        "foundations",
+        "componentes",
+        "registry do design system",
+        "construir design system",
+        "tokens",
+        "foundations",
+        "biblioteca de componentes",
+        "registry"
+      ],
+      "signals": [
+        "criar tokens",
+        "foundations",
+        "componentes",
+        "registry do design system",
+        "construir design system"
+      ],
+      "aliases": [
+        "tokens",
+        "foundations",
+        "biblioteca de componentes",
+        "registry"
+      ],
+      "avoid_when": "design system já existe e tem drift; regressão visual; auditoria de adoção",
+      "install_path": "squads/design-system/",
+      "activation": {
+        "claude_code": {
+          "skill": "/design-system",
+          "agent": "@design-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "design-system",
+          "prompt": "Load squad at squads/design-system/ and adopt agent design-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/design-system/config.yaml e squads/design-system/agents/design-chief.md. Construa ou evolua foundations, tokens, componentes e registry com validação."
+      },
+      "if_not_installed": [
+        "Copy squads/design-system/ into the target project.",
+        "Optionally copy skills/design-system/ into the IDE skills path.",
+        "Optionally copy skills/design-chief/ into the IDE skills path.",
+        "Open aulas/14-design-system.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/design-system/",
+      "entry_agent_path": "squads/design-system/agents/design-chief.md",
+      "skill": "design-system"
+    },
+    {
+      "id": "design-ops",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/15-design-ops.md",
+      "lesson_id": "15-design-ops",
+      "maturity": "partial",
+      "agents_count": 2,
+      "tasks_count": 126,
+      "workflows_count": 23,
+      "entry_agent": "design-chief",
+      "skill_entries": [
+        "design-ops",
+        "design-chief",
+        "design-system"
+      ],
+      "intents": [
+        "design system já existe",
+        "drift visual",
+        "regressão visual",
+        "acessibilidade",
+        "Storybook",
+        "Chromatic",
+        "adoção do design system",
+        "governança de design",
+        "regressão visual",
+        "Storybook",
+        "Chromatic"
+      ],
+      "signals": [
+        "design system já existe",
+        "drift visual",
+        "regressão visual",
+        "acessibilidade",
+        "Storybook",
+        "Chromatic",
+        "adoção do design system"
+      ],
+      "aliases": [
+        "governança de design",
+        "regressão visual",
+        "Storybook",
+        "Chromatic"
+      ],
+      "avoid_when": "criar design system do zero; definir tokens iniciais; criar marca",
+      "install_path": "squads/design-ops/",
+      "activation": {
+        "claude_code": {
+          "skill": "/design-ops",
+          "agent": "@design-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "design-ops",
+          "prompt": "Load squad at squads/design-ops/ and adopt agent design-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/design-ops/config.yaml e squads/design-ops/agents/design-chief.md. Audite e governe o design system existente com a11y, regressão, adoção e métricas."
+      },
+      "if_not_installed": [
+        "Copy squads/design-ops/ into the target project.",
+        "Optionally copy skills/design-ops/ into the IDE skills path.",
+        "Optionally copy skills/design-chief/ into the IDE skills path.",
+        "Optionally copy skills/design-system/ into the IDE skills path.",
+        "Open aulas/15-design-ops.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/design-ops/",
+      "entry_agent_path": "squads/design-ops/agents/design-chief.md",
+      "skill": "design-ops"
+    },
+    {
+      "id": "storytelling",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/16-storytelling.md",
+      "lesson_id": "16-storytelling",
+      "maturity": "partial",
+      "agents_count": 13,
+      "tasks_count": 13,
+      "workflows_count": 1,
+      "entry_agent": "blake-snyder",
+      "skill_entries": [
+        "storytelling"
+      ],
+      "intents": [
+        "arco narrativo",
+        "tensão e emoção",
+        "história memorável",
+        "estrutura de narrativa",
+        "storytelling",
+        "narrativa",
+        "arco de história",
+        "tensão",
+        "story"
+      ],
+      "signals": [
+        "arco narrativo",
+        "tensão e emoção",
+        "história memorável",
+        "estrutura de narrativa",
+        "storytelling"
+      ],
+      "aliases": [
+        "narrativa",
+        "arco de história",
+        "tensão",
+        "story"
+      ],
+      "avoid_when": "copy de conversão direta; produzir deck completo; roteiro apenas informativo",
+      "install_path": "squads/storytelling/",
+      "activation": {
+        "claude_code": {
+          "skill": "/storytelling",
+          "agent": "@blake-snyder",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "storytelling",
+          "prompt": "Load squad at squads/storytelling/ and adopt agent blake-snyder. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/storytelling/config.yaml e squads/storytelling/agents/blake-snyder.md. Estruture a narrativa com arco, tensão, transformação e payoff adequados ao público."
+      },
+      "if_not_installed": [
+        "Copy squads/storytelling/ into the target project.",
+        "Optionally copy skills/storytelling/ into the IDE skills path.",
+        "Open aulas/16-storytelling.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/storytelling/",
+      "entry_agent_path": "squads/storytelling/agents/blake-snyder.md",
+      "skill": "storytelling"
+    },
+    {
+      "id": "slides-creator",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/17-slides-creator.md",
+      "lesson_id": "17-slides-creator",
+      "maturity": "partial",
+      "agents_count": 7,
+      "tasks_count": 53,
+      "workflows_count": 1,
+      "entry_agent": "slide-chief",
+      "skill_entries": [
+        "slides-creator",
+        "slide-creator"
+      ],
+      "intents": [
+        "criar apresentação",
+        "deck",
+        "slides",
+        "speaker notes",
+        "pitch deck",
+        "QA de apresentação",
+        "slides",
+        "deck",
+        "apresentação",
+        "pitch deck"
+      ],
+      "signals": [
+        "criar apresentação",
+        "deck",
+        "slides",
+        "speaker notes",
+        "pitch deck",
+        "QA de apresentação"
+      ],
+      "aliases": [
+        "slides",
+        "deck",
+        "apresentação",
+        "pitch deck"
+      ],
+      "avoid_when": "apenas estruturar uma história; apenas escrever copy; criar design system",
+      "install_path": "squads/slides-creator/",
+      "activation": {
+        "claude_code": {
+          "skill": "/slides-creator",
+          "agent": "@slide-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "slides-creator",
+          "prompt": "Load squad at squads/slides-creator/ and adopt agent slide-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/slides-creator/config.yaml e squads/slides-creator/agents/slide-chief.md. Conduza briefing, narrativa, slides, notas e QA do deck."
+      },
+      "if_not_installed": [
+        "Copy squads/slides-creator/ into the target project.",
+        "Optionally copy skills/slides-creator/ into the IDE skills path.",
+        "Optionally copy skills/slide-creator/ into the IDE skills path.",
+        "Open aulas/17-slides-creator.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/slides-creator/",
+      "entry_agent_path": "squads/slides-creator/agents/slide-chief.md",
+      "skill": "slides-creator"
+    },
+    {
+      "id": "conteudo",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/18-conteudo.md",
+      "lesson_id": "18-conteudo",
+      "maturity": "study",
+      "agents_count": 10,
+      "tasks_count": 28,
+      "workflows_count": 9,
+      "entry_agent": "content-chief",
+      "skill_entries": [
+        "conteudo"
+      ],
+      "intents": [
+        "conteúdo para Instagram",
+        "carrossel",
+        "Reels",
+        "Stories",
+        "calendário de conteúdo",
+        "campanha social",
+        "Instagram",
+        "carrossel",
+        "Reels",
+        "Stories",
+        "calendário editorial"
+      ],
+      "signals": [
+        "conteúdo para Instagram",
+        "carrossel",
+        "Reels",
+        "Stories",
+        "calendário de conteúdo",
+        "campanha social"
+      ],
+      "aliases": [
+        "Instagram",
+        "carrossel",
+        "Reels",
+        "Stories",
+        "calendário editorial"
+      ],
+      "avoid_when": "funil de vendas completo; branding estratégico; landing page isolada",
+      "install_path": "squads/conteudo/",
+      "activation": {
+        "claude_code": {
+          "skill": "/conteudo",
+          "agent": "@content-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "conteudo",
+          "prompt": "Load squad at squads/conteudo/ and adopt agent content-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/conteudo/config.yaml e squads/conteudo/agents/content-chief.md. Planeje e produza o conteúdo social de acordo com objetivo, público, formato e cadência."
+      },
+      "if_not_installed": [
+        "Copy squads/conteudo/ into the target project.",
+        "Optionally copy skills/conteudo/ into the IDE skills path.",
+        "Open aulas/18-conteudo.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/conteudo/",
+      "entry_agent_path": "squads/conteudo/agents/content-chief.md",
+      "skill": "conteudo"
+    },
+    {
+      "id": "copy",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/19-copy.md",
+      "lesson_id": "19-copy",
+      "maturity": "partial",
+      "agents_count": 27,
+      "tasks_count": 86,
+      "workflows_count": 18,
+      "entry_agent": "copy-chief",
+      "skill_entries": [
+        "copy"
+      ],
+      "intents": [
+        "texto de conversão",
+        "landing page",
+        "VSL",
+        "e-mail de vendas",
+        "script persuasivo",
+        "copywriting",
+        "copywriting",
+        "landing page",
+        "VSL",
+        "e-mail de vendas"
+      ],
+      "signals": [
+        "texto de conversão",
+        "landing page",
+        "VSL",
+        "e-mail de vendas",
+        "script persuasivo",
+        "copywriting"
+      ],
+      "aliases": [
+        "copywriting",
+        "landing page",
+        "VSL",
+        "e-mail de vendas"
+      ],
+      "avoid_when": "negociação ao vivo; funil comercial completo; estratégia de marca inteira",
+      "install_path": "squads/copy/",
+      "activation": {
+        "claude_code": {
+          "skill": "/copy",
+          "agent": "@copy-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "copy",
+          "prompt": "Load squad at squads/copy/ and adopt agent copy-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/copy/config.yaml e squads/copy/agents/copy-chief.md. Escolha a rota de copy adequada ao público, consciência, oferta, prova e ação desejada."
+      },
+      "if_not_installed": [
+        "Copy squads/copy/ into the target project.",
+        "Optionally copy skills/copy/ into the IDE skills path.",
+        "Open aulas/19-copy.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/copy/",
+      "entry_agent_path": "squads/copy/agents/copy-chief.md",
+      "skill": "copy"
+    },
+    {
+      "id": "sales",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/20-sales.md",
+      "lesson_id": "20-sales",
+      "maturity": "partial",
+      "agents_count": 9,
+      "tasks_count": 9,
+      "workflows_count": 0,
+      "entry_agent": "sales-chief",
+      "skill_entries": [
+        "sales"
+      ],
+      "intents": [
+        "funil de vendas",
+        "prospecção",
+        "qualificação",
+        "negociação",
+        "fechamento",
+        "processo comercial",
+        "vendas",
+        "prospecção",
+        "qualificação",
+        "negociação",
+        "fechamento"
+      ],
+      "signals": [
+        "funil de vendas",
+        "prospecção",
+        "qualificação",
+        "negociação",
+        "fechamento",
+        "processo comercial"
+      ],
+      "aliases": [
+        "vendas",
+        "prospecção",
+        "qualificação",
+        "negociação",
+        "fechamento"
+      ],
+      "avoid_when": "apenas landing page; apenas escrever e-mail; desenhar oferta Hormozi completa",
+      "install_path": "squads/sales/",
+      "activation": {
+        "claude_code": {
+          "skill": "/sales",
+          "agent": "@sales-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "sales",
+          "prompt": "Load squad at squads/sales/ and adopt agent sales-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/sales/config.yaml e squads/sales/agents/sales-chief.md. Diagnostique a etapa do funil e estruture qualificação, prospecção, negociação ou fechamento com métricas."
+      },
+      "if_not_installed": [
+        "Copy squads/sales/ into the target project.",
+        "Optionally copy skills/sales/ into the IDE skills path.",
+        "Open aulas/20-sales.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/sales/",
+      "entry_agent_path": "squads/sales/agents/sales-chief.md",
+      "skill": "sales"
+    },
+    {
+      "id": "hormozi",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/21-hormozi.md",
+      "lesson_id": "21-hormozi",
+      "maturity": "partial",
+      "agents_count": 16,
+      "tasks_count": 57,
+      "workflows_count": 10,
+      "entry_agent": "hormozi-chief",
+      "skill_entries": [
+        "hormozi"
+      ],
+      "intents": [
+        "Grand Slam Offer",
+        "$100M",
+        "oferta Hormozi",
+        "sistema de leads",
+        "money model",
+        "escala comercial",
+        "Grand Slam Offer",
+        "$100M Offers",
+        "$100M Leads",
+        "money models"
+      ],
+      "signals": [
+        "Grand Slam Offer",
+        "$100M",
+        "oferta Hormozi",
+        "sistema de leads",
+        "money model",
+        "escala comercial"
+      ],
+      "aliases": [
+        "Grand Slam Offer",
+        "$100M Offers",
+        "$100M Leads",
+        "money models"
+      ],
+      "avoid_when": "branding institucional; pesquisa técnica; apenas fechar uma venda",
+      "install_path": "squads/hormozi/",
+      "activation": {
+        "claude_code": {
+          "skill": "/hormozi",
+          "agent": "@hormozi-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "hormozi",
+          "prompt": "Load squad at squads/hormozi/ and adopt agent hormozi-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/hormozi/config.yaml e squads/hormozi/agents/hormozi-chief.md. Aplique o framework adequado à oferta, leads ou money model com hipóteses e números explícitos."
+      },
+      "if_not_installed": [
+        "Copy squads/hormozi/ into the target project.",
+        "Optionally copy skills/hormozi/ into the IDE skills path.",
+        "Open aulas/21-hormozi.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/hormozi/",
+      "entry_agent_path": "squads/hormozi/agents/hormozi-chief.md",
+      "skill": "hormozi"
+    },
+    {
+      "id": "skill-creator-ops",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/22-skill-creator-ops.md",
+      "lesson_id": "22-skill-creator-ops",
+      "maturity": "partial",
+      "agents_count": 3,
+      "tasks_count": 9,
+      "workflows_count": 1,
+      "entry_agent": "skill-ops-chief",
+      "skill_entries": [
+        "skill-creator-ops"
+      ],
+      "intents": [
+        "governar várias skills",
+        "ciclo de vida de skills",
+        "migrar skills",
+        "depreciar skills",
+        "empacotar e testar skills",
+        "governança de skills",
+        "ciclo de vida de skills",
+        "skill ops"
+      ],
+      "signals": [
+        "governar várias skills",
+        "ciclo de vida de skills",
+        "migrar skills",
+        "depreciar skills",
+        "empacotar e testar skills"
+      ],
+      "aliases": [
+        "governança de skills",
+        "ciclo de vida de skills",
+        "skill ops"
+      ],
+      "avoid_when": "criar uma skill simples; criar squad multi-agente; implementar feature",
+      "install_path": "squads/skill-creator-ops/",
+      "activation": {
+        "claude_code": {
+          "skill": "/skill-creator-ops",
+          "agent": "@skill-ops-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "skill-creator-ops",
+          "prompt": "Load squad at squads/skill-creator-ops/ and adopt agent skill-ops-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/skill-creator-ops/config.yaml e squads/skill-creator-ops/agents/skill-ops-chief.md. Governe o ciclo de vida das skills com inventário, padrões, testes e decisão de publicação."
+      },
+      "if_not_installed": [
+        "Copy squads/skill-creator-ops/ into the target project.",
+        "Optionally copy skills/skill-creator-ops/ into the IDE skills path.",
+        "Open aulas/22-skill-creator-ops.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/skill-creator-ops/",
+      "entry_agent_path": "squads/skill-creator-ops/agents/skill-ops-chief.md",
+      "skill": "skill-creator-ops"
+    },
+    {
+      "id": "squad-creator",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/23-squad-creator.md",
+      "lesson_id": "23-squad-creator",
+      "maturity": "partial",
+      "agents_count": 1,
+      "tasks_count": 150,
+      "workflows_count": 26,
+      "entry_agent": "squad-chief",
+      "skill_entries": [
+        "squad-creator",
+        "squad-chief"
+      ],
+      "intents": [
+        "criar squad",
+        "agentes tasks e workflows",
+        "scaffold canônico",
+        "validar squad",
+        "nova capacidade multi-agente",
+        "criar squad",
+        "scaffold de squad",
+        "squad chief"
+      ],
+      "signals": [
+        "criar squad",
+        "agentes tasks e workflows",
+        "scaffold canônico",
+        "validar squad",
+        "nova capacidade multi-agente"
+      ],
+      "aliases": [
+        "criar squad",
+        "scaffold de squad",
+        "squad chief"
+      ],
+      "avoid_when": "criar apenas uma skill; prior art já resolve; clonar expertise profunda",
+      "install_path": "squads/squad-creator/",
+      "activation": {
+        "claude_code": {
+          "skill": "/squad-creator",
+          "agent": "@squad-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "squad-creator",
+          "prompt": "Load squad at squads/squad-creator/ and adopt agent squad-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/squad-creator/config.yaml e squads/squad-creator/agents/squad-chief.md. Confirme REUSE, desenhe a capacidade e crie agentes, tasks, workflows e gates canônicos."
+      },
+      "if_not_installed": [
+        "Copy squads/squad-creator/ into the target project.",
+        "Optionally copy skills/squad-creator/ into the IDE skills path.",
+        "Optionally copy skills/squad-chief/ into the IDE skills path.",
+        "Open aulas/23-squad-creator.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/squad-creator/",
+      "entry_agent_path": "squads/squad-creator/agents/squad-chief.md",
+      "skill": "squad-creator"
+    },
+    {
+      "id": "squad-creator-pro",
+      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/24-squad-creator-pro.md",
+      "lesson_id": "24-squad-creator-pro",
+      "maturity": "partial",
+      "agents_count": 6,
+      "tasks_count": 219,
+      "workflows_count": 52,
+      "entry_agent": "squad-chief",
+      "skill_entries": [
+        "squad-creator-pro",
+        "squad-chief"
+      ],
+      "intents": [
+        "clonagem mental",
+        "extrair DNA de especialista",
+        "model routing",
+        "gates avançados",
+        "squad com mentes",
+        "clonagem mental",
+        "DNA de especialista",
+        "model routing",
+        "squad avançado"
+      ],
+      "signals": [
+        "clonagem mental",
+        "extrair DNA de especialista",
+        "model routing",
+        "gates avançados",
+        "squad com mentes"
+      ],
+      "aliases": [
+        "clonagem mental",
+        "DNA de especialista",
+        "model routing",
+        "squad avançado"
+      ],
+      "avoid_when": "scaffold simples; criar uma skill; squad comum sem especialização profunda",
+      "install_path": "squads/squad-creator-pro/",
+      "activation": {
+        "claude_code": {
+          "skill": "/squad-creator-pro",
+          "agent": "@squad-chief",
+          "task_prefix": "*",
+          "note": "Só use se a skill/agente estiver registrado no runtime do projeto."
+        },
+        "codex": {
+          "skill": "squad-creator-pro",
+          "prompt": "Load squad at squads/squad-creator-pro/ and adopt agent squad-chief. Follow config.yaml.",
+          "note": "Não assuma @agent, *comando ou /comando."
+        },
+        "generic_prompt": "Leia squads/squad-creator-pro/config.yaml e squads/squad-creator-pro/agents/squad-chief.md. Use a rota avançada somente após justificar expertise, DNA, model routing e gates adicionais."
+      },
+      "if_not_installed": [
+        "Copy squads/squad-creator-pro/ into the target project.",
+        "Optionally copy skills/squad-creator-pro/ into the IDE skills path.",
+        "Optionally copy skills/squad-chief/ into the IDE skills path.",
+        "Open aulas/24-squad-creator-pro.md for briefing template and evidence checklist.",
+        "Do not invent commands that are not registered in the runtime."
+      ],
+      "squad_path": "squads/squad-creator-pro/",
+      "entry_agent_path": "squads/squad-creator-pro/agents/squad-chief.md",
+      "skill": "squad-creator-pro"
+    }
+  ]
+}

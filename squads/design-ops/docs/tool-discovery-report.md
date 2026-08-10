@@ -9,7 +9,7 @@
 ## Internal Coverage Summary
 
 ### Internal assets validated first
-1. `workspace/domains/design-system/*` (tokens, components, guidelines, MCP handlers)
+1. `docs/design-system/domains/*` (tokens, components, guidelines, MCP handlers)
 2. `squads/design-system/scripts/design-system/*` (manifest sync, metadata generation/validation, MCP checks)
 3. `squads/design-system/*` (tasks, checklists, workflows, protocols)
 4. `.aiox-core/infrastructure/*` (generic validation and dependency tooling)
@@ -76,9 +76,9 @@
 2. Adding external tools that duplicate existing internal checks.
 
 ## Sources
-- `workspace/domains/design-system/mcp/config.json`
-- `workspace/domains/design-system/metadata/components.json`
-- `workspace/domains/design-system/metadata/tokens/index.json`
+- `docs/design-system/domains/mcp/config.json`
+- `docs/design-system/domains/metadata/components.json`
+- `docs/design-system/domains/metadata/tokens/index.json`
 - `squads/design-system/scripts/design-system/sync_design_manifest.cjs`
 - `squads/design-system/scripts/design-system/validate_design_manifest_drift.cjs`
 - `squads/design-system/scripts/design-system/validate_task_checklist_bindings.cjs`

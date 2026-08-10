@@ -1,0 +1,70 @@
+{
+  "$id": "aiox://slide-creator/wireframes/org-chart.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "The audience needs to understand system boundaries, data flow, or integration flow.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "leader_owner": {
+      "type": "string"
+    },
+    "leader_role": {
+      "type": "string"
+    },
+    "owner_1": {
+      "type": "string"
+    },
+    "owner_2": {
+      "type": "string"
+    },
+    "owner_3": {
+      "type": "string"
+    },
+    "owner_4": {
+      "type": "string"
+    },
+    "owner_5": {
+      "type": "string"
+    },
+    "role_1": {
+      "type": "string"
+    },
+    "role_2": {
+      "type": "string"
+    },
+    "role_3": {
+      "type": "string"
+    },
+    "role_4": {
+      "type": "string"
+    },
+    "role_5": {
+      "type": "string"
+    }
+  },
+  "title": "org-chart",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "architecture_flow",
+    "slot_count": 13,
+    "warnings": [
+      "action_title",
+      "leader_role",
+      "leader_owner",
+      "role_1",
+      "owner_1",
+      "role_2",
+      "owner_2",
+      "role_3",
+      "owner_3",
+      "role_4",
+      "owner_4",
+      "role_5",
+      "owner_5"
+    ],
+    "wireframe_ref": "templates/wireframes/org-chart.html"
+  }
+}

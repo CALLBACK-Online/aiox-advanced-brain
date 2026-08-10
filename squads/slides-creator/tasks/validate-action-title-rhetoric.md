@@ -1,6 +1,6 @@
 # Task: Validate Action Title Rhetoric (Narrative sub-dimension, P4+)
 
-## SINKRA Validation Metadata
+## AIOX Validation Metadata
 
 ```yaml
 task: validate-action-title-rhetoric
@@ -25,9 +25,9 @@ Error_handling:
   strategy: fail fast with explicit handoff blocker
 ```
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Operational -->
+<!-- AIOX Domain: Operational -->
 
 ## Metadata
 
@@ -44,7 +44,7 @@ Error_handling:
 | mission_origin | MSN-2026-SLIDES-NARRATIVE-DESIGN (T-012) |
 | model_params | temperature=0, model=sonnet |
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml

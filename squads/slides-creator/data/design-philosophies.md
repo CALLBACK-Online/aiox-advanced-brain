@@ -1,4 +1,4 @@
-# Design Philosophies — Taxonomy para Decks Sinkra
+# Design Philosophies — Taxonomy para Decks AIOX
 
 > **Purpose:** taxonomia de 20 filosofias de design em 5 escolas, usada como fallback quando brief é visualmente vago e não há design context existente (brand spec, UI kit, reference).
 > **Consumer:** `slide-chief` (routing) + `tasks/advise-design-direction.md` (quando implementado) + `design-renderer` (prompt composition).
@@ -10,7 +10,7 @@
 
 Esta taxonomia é **fallback**, não default. Ordem de precedência para resolver visual style:
 
-1. **Brand spec existente** — se business tem brandbook/UI kit no workspace, respeitar integralmente
+1. **Brand spec existente** — se business tem brandbook/UI kit no project docs, respeitar integralmente
 2. **Reference fornecido pelo user** — screenshot, link, product that inspires
 3. **Existing design system (shadcn/ui + tokens)** — se deck é para produto que já tem DS, seguir
 4. **Esta taxonomia** — só se 1-3 falham e user pede "sugestões de estilo"
@@ -21,7 +21,7 @@ Esta taxonomia é **fallback**, não default. Ordem de precedência para resolve
 
 ## As 5 escolas
 
-| Escola | Princípio central | Quando escolher | Ideal para sinkra business |
+| Escola | Princípio central | Quando escolher | Ideal para aiox business |
 |---|---|---|---|
 | Information Architecture | "Dados não são decoração, são material de construção" | Audience sophisticated, data-heavy narrative | AIOX institucional, Bilhon investor deck |
 | Motion Poetics | "Tecnologia tem ritmo" | Launch, product demo, brand video | AIOX launch, Academia Lendária promos |

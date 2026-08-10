@@ -51,7 +51,7 @@ categories:
   skill_library:
     description: "Pre-built AI agent skills, prompts, and workflow patterns"
     discovery_sources:
-      - "github.com - Claude Code skills repos (.claude/skills)"
+      - "github.com - Claude Code skills repos (skills)"
       - "github.com - Claude agent definitions (.claude/agents)"
       - "smith.langchain.com/hub - LangChain prompt/chain templates"
       - "github.com/crewAIInc/crewAI - CrewAI agents/tools"
@@ -63,8 +63,8 @@ categories:
       - "github.com/topics/claude-code"
       - "github.com/topics/system-prompts"
     local_sources:
-      - ".claude/skills/*/SKILL.md - Project-level skills"
-      - "~/.claude/skills/*/SKILL.md - Global user-level skills"
+      - "skills/*/SKILL.md - Project-level skills"
+      - "~/skills/*/SKILL.md - Global user-level skills"
       - "squads/*/config.yaml - Squad-embedded capabilities"
       - "squads/*/agents/*.md - Squad agent definitions"
       - "squads/*/tasks/*.md - Squad task definitions"
@@ -611,7 +611,7 @@ domain_recommendations:
 
   design:
     essential:
-      - workspace-design-system-mcp  # Native DS MCP runtime in workspace/domains/design-system/mcp
+      - project-design-system-mcp  # Native DS MCP runtime in docs/design-system/domains/mcp
       - aiox-ast-structural-model-scanner  # scripts/ast/scan-structural-model.cjs --profile design-system
       - design-manifest-sync  # scripts/design-system/sync_design_manifest.cjs
       - design-manifest-drift-check  # scripts/design-system/validate_design_manifest_drift.cjs
@@ -748,7 +748,7 @@ discovery_queries:
 
   skills_and_prompts:
     - "claude code skills {domain} site:github.com"
-    - ".claude/skills {domain} site:github.com"
+    - "skills {domain} site:github.com"
     - "claude agent {domain} site:github.com"
     - "crewai {domain} agents"
     - "langchain {domain} chain prompt"

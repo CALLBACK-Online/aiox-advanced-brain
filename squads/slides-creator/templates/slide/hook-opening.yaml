@@ -110,7 +110,7 @@ source_provenance:
     - "Y Combinator demo day cover slides"
     - "Pentagram editorial covers"
   bench_ref:
-    - "/Users/alan/Code/bench/ppt-master/skills/ppt-master/templates/layouts/google_style/01_cover.svg"
-    - "/Users/alan/Code/bench/presenton/servers/nextjs/app/presentation-templates/neo-modern/ (hero patterns)"
+    - "<bench-root>/ppt-master/skills/ppt-master/templates/layouts/google_style/01_cover.svg"
+    - "<bench-root>/presenton/servers/nextjs/app/presentation-templates/neo-modern/ (hero patterns)"
   author: "slides-creator squad — MSN-2026-SLIDES-NARRATIVE-DESIGN"
   date_created: "2026-05-17"

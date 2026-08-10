@@ -6,7 +6,7 @@ test_case:
   version: "1.0"
   created: "2026-02-11"
   task_file: "tasks/pv-axioma-assessment.md"
-  skill_file: ".claude/skills/pv-axioma-assessment/SKILL.md"
+  skill_file: "skills/pv-axioma-assessment/SKILL.md"
 
 input:
   target: "squads/squad-creator-pro/workflows/wf-create-squad.yaml"

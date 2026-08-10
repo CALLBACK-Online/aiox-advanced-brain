@@ -9,7 +9,7 @@
 | session | null (Human) |
 | duration | 4-72h (async, SLA ladder) |
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml
@@ -78,7 +78,6 @@ Error_handling:
   strategy: halt_and_wait
   sla_breach:
     at_24h: "nudge STK-05 via notification channel"
-    at_72h: "escalate to STK-01 (C-level)"
     at_168h: "auto_pause workflow; human resume required"
 ```
 

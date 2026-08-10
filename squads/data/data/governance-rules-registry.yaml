@@ -1,5 +1,5 @@
 # Data Squad Governance Rules Registry v1.0
-# Os 10 Mandamentos SINKRA + Golden Rule da squad data.
+# Os 10 Mandamentos AIOX + Golden Rule da squad data.
 # Cada rule declara mecanismo de enforcement concreto.
 
 _dependents_declaration:
@@ -12,7 +12,7 @@ _dependents_declaration:
 
 version: "1.0.0"
 squad: data
-description: "Os 10 Mandamentos SINKRA aplicados a squad data + Golden Rule tier-0-first."
+description: "Os 10 Mandamentos AIOX aplicados a squad data + Golden Rule tier-0-first."
 
 # ─────────────────────────────────────────────────────────────────────────────
 # OS 10 MANDAMENTOS
@@ -24,7 +24,7 @@ mandamentos:
     description: "Cada task tem exatamente 1 responsavel_type"
     enforcement:
       mechanism: "responsavel_type field in task metadata"
-      validator: "SINKRA_TASK_METADATA block parser"
+      validator: "AIOX_TASK_METADATA block parser"
       blocking: true
     violation_example: "Task sem responsavel_type definido ou com 2+ executors"
 
@@ -49,8 +49,8 @@ mandamentos:
     name: output_schema_validado
     description: "Outputs sao validados contra schema declarado"
     enforcement:
-      mechanism: "SINKRA_TASK_METADATA + SINKRA_CONTRACT blocks in task.md"
-      validator: "contract-validator (sinkra-squad)"
+      mechanism: "AIOX_TASK_METADATA + AIOX_CONTRACT blocks in task.md"
+      validator: "contract-validator (aiox-squad)"
       blocking: true
 
   - id: MAND-005

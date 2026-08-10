@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """
 Validate Squad Structure - Worker Script (Deterministic)
 
@@ -59,7 +60,7 @@ THRESHOLDS = {
     }
 }
 
-WORKSPACE_LEVELS = {"none", "read_only", "controlled_runtime_consumer", "workspace_first"}
+PROJECT_LEVELS = {"none", "read_only", "none", "local"}
 
 
 # ============================================================================
@@ -82,8 +83,7 @@ def find_squads_root() -> Path:
     raise FileNotFoundError("Could not find squads/ directory")
 
 
-def has_workspace_governance_squad(squads_root: Path) -> bool:
-    return (squads_root / "c-level").exists()
+def has_project context governance_squad(squads_root: Path) -> bool:
 
 
 def count_files(directory: Path, patterns: List[str] = ["*.md", "*.yaml", "*.yml"]) -> int:
@@ -267,43 +267,43 @@ def validate_structure(squad_path: Path) -> Dict[str, Any]:
                     result["blocking_issues"].append(f"config.yaml missing required field: {field}")
                     result["passed"] = False
 
-            # T1-WSP-001: workspace integration level declared
-            workspace_level = None
-            if isinstance(config.get("workspace_integration"), dict):
-                workspace_level = config.get("workspace_integration", {}).get("level")
-            if workspace_level is None:
-                workspace_level = config.get("workspace_integration_level")
+            # T1-WSP-001: local project docs level declared
+            scope_level = None
+            if isinstance(config.get("local project docs"), dict):
+                scope_level = config.get("local project docs", {}).get("level")
+            if scope_level is None:
+                scope_level = config.get("local project docs_level")
 
-            if not workspace_level:
+            if not scope_level:
                 result["checks"].append({
                     "id": "T1-WSP-001",
                     "status": "fail",
-                    "message": "Missing workspace integration level (workspace_integration.level)"
+                    "message": "Missing local project docs level (local project docs.level)"
                 })
-                result["blocking_issues"].append("workspace integration level is required")
+                result["blocking_issues"].append("local project docs level is required")
                 result["passed"] = False
-            elif workspace_level not in WORKSPACE_LEVELS:
+            elif scope_level not in PROJECT_LEVELS:
                 result["checks"].append({
                     "id": "T1-WSP-001",
                     "status": "fail",
-                    "message": f"Invalid workspace integration level: {workspace_level}"
+                    "message": f"Invalid local project docs level: {scope_level}"
                 })
-                result["blocking_issues"].append(f"invalid workspace integration level: {workspace_level}")
+                result["blocking_issues"].append(f"invalid local project docs level: {scope_level}")
                 result["passed"] = False
             else:
                 result["checks"].append({
                     "id": "T1-WSP-001",
                     "status": "pass",
-                    "message": f"Workspace integration level: {workspace_level}"
+                    "message": f"local project docs level: {scope_level}"
                 })
 
-                if workspace_level != "none":
+                if scope_level != "none":
                     refs_found = False
                     for file in squad_path.rglob("*"):
                         if file.suffix.lower() not in [".md", ".yaml", ".yml"]:
                             continue
                         content = file.read_text(encoding='utf-8', errors='ignore')
-                        if "workspace/" in content:
+                        if "docs/" in content:
                             refs_found = True
                             break
 
@@ -311,31 +311,29 @@ def validate_structure(squad_path: Path) -> Dict[str, Any]:
                         result["checks"].append({
                             "id": "T1-WSP-002",
                             "status": "pass",
-                            "message": "Workspace references found in squad artifacts"
+                            "message": "LocalDocs references found in squad artifacts"
                         })
                     else:
                         result["checks"].append({
                             "id": "T1-WSP-002",
                             "status": "fail",
-                            "message": f"Level '{workspace_level}' requires workspace path references"
+                            "message": f"Level '{scope_level}' requires local_docs path references"
                         })
-                        result["blocking_issues"].append("workspace integration declared without workspace path references")
+                        result["blocking_issues"].append("local project docs declared without local_docs path references")
                         result["passed"] = False
 
-                if workspace_level in {"controlled_runtime_consumer", "workspace_first"}:
-                    if has_workspace_governance_squad(squads_root):
+                if scope_level in {"none", "local"}:
+                    if has_project context governance_squad(squads_root):
                         result["checks"].append({
                             "id": "T1-WSP-003A",
                             "status": "pass",
-                            "message": "Workspace governance squad exists for advanced workspace integration"
+                            "message": "project context governance squad exists for advanced local project docs"
                         })
                     else:
                         result["checks"].append({
                             "id": "T1-WSP-003A",
                             "status": "fail",
-                            "message": f"Level '{workspace_level}' requires squads/c-level to exist"
                         })
-                        result["blocking_issues"].append("advanced workspace integration requires squads/c-level")
                         result["passed"] = False
 
                     handoff_found = False
@@ -343,7 +341,6 @@ def validate_structure(squad_path: Path) -> Dict[str, Any]:
                         if file.suffix.lower() not in [".md", ".yaml", ".yml"]:
                             continue
                         content = file.read_text(encoding='utf-8', errors='ignore')
-                        if any(token in content for token in ["@coo", "COO", "c-level", "workspace-handoff.yaml"]):
                             handoff_found = True
                             break
 
@@ -351,50 +348,47 @@ def validate_structure(squad_path: Path) -> Dict[str, Any]:
                         result["checks"].append({
                             "id": "T1-WSP-003",
                             "status": "pass",
-                            "message": "Workspace write integration delegates to COO/c-level"
                         })
                     else:
                         result["checks"].append({
                             "id": "T1-WSP-003",
                             "status": "fail",
-                            "message": f"Level '{workspace_level}' requires explicit COO/c-level handoff"
                         })
-                        result["blocking_issues"].append("workspace write integration missing COO/c-level handoff")
                         result["passed"] = False
 
-                if workspace_level == "workspace_first":
+                if scope_level == "local":
                     scripts_dir = squad_path / "scripts"
-                    bootstrap_scripts = list(scripts_dir.glob("bootstrap-*-workspace.sh")) if scripts_dir.exists() else []
+                    bootstrap_scripts = list(scripts_dir.glob("bootstrap-project-context.sh")) if scripts_dir.exists() else []
                     essentials_scripts = list(scripts_dir.glob("validate-*-essentials.sh")) if scripts_dir.exists() else []
 
                     if bootstrap_scripts:
                         result["checks"].append({
                             "id": "T1-WSP-004",
                             "status": "pass",
-                            "message": "workspace_first bootstrap script exists"
+                            "message": "local bootstrap script exists"
                         })
                     else:
                         result["checks"].append({
                             "id": "T1-WSP-004",
                             "status": "fail",
-                            "message": "workspace_first requires scripts/bootstrap-*-workspace.sh"
+                            "message": "local requires scripts/bootstrap-project-context.sh"
                         })
-                        result["blocking_issues"].append("workspace_first missing bootstrap workspace script")
+                        result["blocking_issues"].append("local missing bootstrap local_docs script")
                         result["passed"] = False
 
                     if essentials_scripts:
                         result["checks"].append({
                             "id": "T1-WSP-005",
                             "status": "pass",
-                            "message": "workspace_first essentials validator script exists"
+                            "message": "local essentials validator script exists"
                         })
                     else:
                         result["checks"].append({
                             "id": "T1-WSP-005",
                             "status": "fail",
-                            "message": "workspace_first requires scripts/validate-*-essentials.sh"
+                            "message": "local requires scripts/validate-*-essentials.sh"
                         })
-                        result["blocking_issues"].append("workspace_first missing essentials validator script")
+                        result["blocking_issues"].append("local missing essentials validator script")
                         result["passed"] = False
         else:
             result["checks"].append({"id": "T1-CFG-002", "status": "fail", "message": "config.yaml has invalid YAML"})

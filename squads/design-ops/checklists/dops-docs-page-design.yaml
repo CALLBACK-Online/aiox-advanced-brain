@@ -3,7 +3,7 @@ version: "1.0.0"
 status: active
 owner: design-ops
 scope: documentation-page-design
-origin: outputs/analysis/sinkra-hub-prd-v2.2-buildout-postmortem (7 iterações)
+origin: outputs/analysis/upstream monorepo-prd-v2.2-buildout-postmortem (7 iterações)
 
 # Validation gate para páginas de documentação técnica densa
 # (PRDs visualizados, specs arquiteturais, guides, references).
@@ -171,6 +171,6 @@ artifact_outputs:
       - "diagrams.tsx (optional)"             # inline SVGs
 
 references:
-  - "outputs/analysis/sinkra-hub-prd-v2.2-rich.html (HTML reference, no Next dep)"
-  - "apps/aiox-brandbook/src/app/sinkra-hub-prd/ (Next + React reference)"
+  - "outputs/analysis/upstream monorepo-prd-v2.2-rich.html (HTML reference, no Next dep)"
+  - "apps/aiox-brandbook/src/app/upstream monorepo-prd/ (Next + React reference)"
   - "apps/anthropic-ds/src/pages/kits/docs/DocsLayout.tsx (visual reference)"

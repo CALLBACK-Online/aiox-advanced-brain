@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: mapear-entidades-antes-do-squad
 lesson_position: 51
 title: 'Mapear entidades antes do Squad: 5 perguntas + ciclo de vida'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/51-mapear-entidades-antes-do-squad/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -29,7 +29,7 @@ curated_at: '2026-08-09'
 
 # Mapear entidades antes do Squad: 5 perguntas + ciclo de vida
 
-← [[30-runner-executavel-deterministico|Runner: o executável determinístico do Workflow]] · ↑ [[modulos/Módulo 5 - Arquitetura SINKRA|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[52-workflow-vs-comando-manual|Workflow pronto vs comando manual: bicicleta com rodinha]]
+← [[30-runner-executavel-deterministico|Runner: o executável determinístico do Workflow]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[52-workflow-vs-comando-manual|Workflow pronto vs comando manual: bicicleta com rodinha]]
 
 ## Mapa desta aula
 
@@ -198,7 +198,7 @@ Responda por escrito — uma linha cada, sem poesia:
 Então o que acontece se você pula a 5? O agente marca "done" no feeling.
 QA não tem o que inspecionar. O board mente com cor verde.
 
-Olha só: as 5 perguntas não são burocracia SINKRA pra impressionar. São o
+Olha só: as 5 perguntas não são burocracia AIOX pra impressionar. São o
 mínimo pra ninguém inventar ontologia no meio do prompt.
 
 **As 5 na ordem**
@@ -408,4 +408,4 @@ A IA é a seta. O X é seu — inclusive recusar o creator até o quadro estar c
 
 ## Navegação
 
-← [[30-runner-executavel-deterministico|Runner: o executável determinístico do Workflow]] · ↑ [[modulos/Módulo 5 - Arquitetura SINKRA|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[52-workflow-vs-comando-manual|Workflow pronto vs comando manual: bicicleta com rodinha]]
+← [[30-runner-executavel-deterministico|Runner: o executável determinístico do Workflow]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[52-workflow-vs-comando-manual|Workflow pronto vs comando manual: bicicleta com rodinha]]

@@ -305,12 +305,12 @@ memory_system:
 # ---------------------------------------------------------------------------
 skills:
   discovery_surfaces:
-    managed: "<managed>/.claude/skills/<skill>/SKILL.md"
-    user: "~/.claude/skills/<skill>/SKILL.md"
-    project: ".claude/skills/<skill>/SKILL.md"
+    managed: "<managed>/skills/<skill>/SKILL.md"
+    user: "~/skills/<skill>/SKILL.md"
+    project: "skills/<skill>/SKILL.md"
     plugin: "<plugin>/skills/<skill>/SKILL.md"
-    additional_dirs: "--add-dir <path> loads <path>/.claude/skills/"
-    legacy_commands: "Legacy slash-command surface retired. Use .claude/skills/{name}/SKILL.md only."
+    additional_dirs: "--add-dir <path> loads <path>/skills/"
+    legacy_commands: "Legacy slash-command surface retired. Use skills/{name}/SKILL.md only."
     bundled: "Built-in skills ship with Claude Code"
     mcp: "skill:// resources from MCP servers are feature-gated and remote/untrusted"
   loading_model:

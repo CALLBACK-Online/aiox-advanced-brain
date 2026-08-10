@@ -100,13 +100,13 @@ Uses the `critical-eye-cycle-report-tmpl.md` template for consistent formatting 
 
 - `squads/design/checklists/ds-critical-eye-review-checklist.md`
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_critical_eye_report_artifact

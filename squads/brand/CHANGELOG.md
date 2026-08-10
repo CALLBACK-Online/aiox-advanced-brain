@@ -5,10 +5,6 @@ All notable changes to this squad will be documented in this file.
 ## [1.1.1] - 2026-03-10
 
 ### Fixed
-- Added explicit `COO`/`c-level` readiness contract to the Brand squad workspace integration
-- Added native `brand` readiness resolution in `workspace/scripts/resolve-squad-workspace-readiness.cjs`
-- Updated all 8 workflows to require `resolve-squad-workspace-readiness.cjs` during preflight
-- Added missing `validate-brand-essentials.sh` preflight to `wf-logo-brainstorm.yaml` and `wf-brand-mockup-generation.yaml`
 - Aligned visual workflow runtime steps with `nano-banana-generator` instead of mixed `aiox-master` routing
 - Added a local validation bridge for `nano-banana-generator` so workflow contract validation passes without warnings
 
@@ -34,5 +30,5 @@ All notable changes to this squad will be documented in this file.
 - 11 global specialists for foundations, positioning, narrative, activation
 - 7 workflows: naming-to-domain, foundations, positioning-narrative, activation-system, all-hands, logo-brainstorm, brand-complete
 - 16 tasks covering naming, domain, branding, logo, and epic management
-- workspace-first integration with bootstrap and essentials validation
+- local integration with bootstrap and essentials validation
 - Cross-squad integration with Design squad for logo/mockup generation

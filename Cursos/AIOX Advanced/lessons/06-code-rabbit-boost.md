@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: code-rabbit-boost
 lesson_position: 6
 title: Code Rabbit Boost
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/06-code-rabbit-boost/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

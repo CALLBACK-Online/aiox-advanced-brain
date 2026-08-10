@@ -1,7 +1,7 @@
 # migrated_from: squads/kaizen/data/journey-log-events.yaml | migration_story: STORY-108.3 | date: 2026-04-04
 version: "1.0.0"
 squad: kaizen
-description: "Eventos canônicos de journey log para os organisms SINKRA-native do Kaizen."
+description: "Eventos canônicos de journey log para os organisms AIOX-native do Kaizen."
 
 events:
   JLOG-KZ-001:

@@ -70,7 +70,7 @@ meta_axioms:
     threshold_target: 85
     threshold_ceiling: 95
     scoring:
-      - signal: "100% of tasks declare all 8 SINKRA mandatory fields (task, atomic_layer, responsavel_type, Inputs, Outputs, Pre_conditions, Post_conditions, Acceptance_criteria, Performance, Error_handling)"
+      - signal: "100% of tasks declare all 8 AIOX mandatory fields (task, atomic_layer, responsavel_type, Inputs, Outputs, Pre_conditions, Post_conditions, Acceptance_criteria, Performance, Error_handling)"
         weight: 0.30
       - signal: "100% of tasks placed in composition_mapping.atoms (no orphan tasks)"
         weight: 0.20
@@ -82,7 +82,7 @@ meta_axioms:
         weight: 0.15
     enforcement_consumers:
       - validate-squad-structure
-      - sinkra-validate-squad (Tier 2 scoring)
+      - aiox-validate-squad (Tier 2 scoring)
 
   coherence:
     name: "Coherence — declarations across files agree"
@@ -103,7 +103,7 @@ meta_axioms:
       - signal: "principios-invioláveis.md P1-P7 sections align with config.yaml#invariants section names"
         weight: 0.10
     enforcement_consumers:
-      - sinkra-validate-squad (cross-ref scoring)
+      - aiox-validate-squad (cross-ref scoring)
       - composition_lint (proposed CI check)
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -161,7 +161,7 @@ decisions:
       Validators MUST split responsavel_type on whitespace and consume only the first
       token as the canonical executor. Inline annotations after '#' and '@' are
       authoring hints for humans, not machine-parsed.
-    enforcement_consumer: sinkra-validate-squad (Tier 2 four_executors scoring)
+    enforcement_consumer: aiox-validate-squad (Tier 2 four_executors scoring)
     parser_rule: "executor = responsavel_type.split(/[\\s#@]/)[0]"
 
   - id: DEC-COMPRESS-OUTLINE-ATOM-2026-05-20
@@ -170,7 +170,7 @@ decisions:
     decision: "Atom (canonical) — placed in composition_mapping.atoms.narrative"
     rationale: |
       Task produces 2 coupled output artifacts (story_arc.yaml + slide-function-map.yaml)
-      from a single invocation. In SINKRA grammar, Molecule requires 2+ invocable
+      from a single invocation. In AIOX grammar, Molecule requires 2+ invocable
       sub-Atoms. Here the 2 outputs are bundled emission within one atomic operation,
       not invocable separately. Bundled outputs is a Performance characteristic, not
       a hierarchy escalation.

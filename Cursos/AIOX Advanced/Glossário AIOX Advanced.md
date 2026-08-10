@@ -45,7 +45,7 @@ Termos e conceitos do curso **AIOX Advanced** (course-brain).
 - [[-design-md]] — A skill do AIOX que extrai o DESIGN.md de uma URL pública, com tokens.json, render-contract e drift 
 - [[-research-bench]] — A skill do AIOX que compara dois projetos: spy de cada lado, scoring quantitativo, matrizes comparat
 - [[-roundtable]] — A skill do AIOX que orquestra reviews por consenso com lentes de especialista de domínio (@architect
-- [[-sinkra-map-process]] — O pipeline de 7 fases do AIOX para mapear processos recorrentes. Abre pela fase Discovery, com check
+- [[Taxonomia AIOX]] — O pipeline de 7 fases do AIOX para mapear processos recorrentes. Abre pela fase Discovery, com check
 - [[-swarm-execute]] — O comando que lança batches em paralelo no Swarm OS, com send_message ativo entre os agentes.
 - [[-tech-research]] — A skill do AIOX que faz pesquisa profunda em 7 moléculas e 11 átomos: clarifica, varre em multi-wave
 - [[5 perguntas]] — Processo, dados únicos, documentação, formato ideal e ciclo de vida. O roteiro para mapear qualquer 

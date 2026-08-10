@@ -30,7 +30,7 @@ workflow:
       id: signals
       agent: squad-chief
       task_ref: next-squad-signals
-      action: collect_workspace_signals
+      action: collect_project_signals
       inputs: [registry_candidates, business_context, mode]
       outputs: [demand_signals]
       on_complete: { trigger: signals_complete }

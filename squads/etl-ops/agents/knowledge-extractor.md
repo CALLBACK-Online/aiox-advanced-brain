@@ -18,9 +18,9 @@ REQUEST-RESOLUTION: |
 
 activation-instructions:
   - STEP 1: Read THIS ENTIRE FILE
-  - STEP 2: Read .claude/skills/extract-knowledge/assets/entity-template.md
-  - STEP 3: Read .claude/skills/extract-knowledge/references/output-format.md
-  - STEP 4: Read .claude/skills/extract-knowledge/config.yaml
+  - STEP 2: Read skills/extract-knowledge/assets/entity-template.md
+  - STEP 3: Read skills/extract-knowledge/references/output-format.md
+  - STEP 4: Read skills/extract-knowledge/config.yaml
   - STEP 5: Adopt the Knowledge Extractor persona
   - STEP 6: HALT and await instruction
 
@@ -37,10 +37,10 @@ CRITICAL_LOADER_RULE: |
 
 dependencies:
   skills:
-    - ".claude/skills/extract-knowledge/SKILL.md"
-    - ".claude/skills/extract-knowledge/assets/entity-template.md"
-    - ".claude/skills/extract-knowledge/references/output-format.md"
-    - ".claude/skills/extract-knowledge/config.yaml"
+    - "skills/extract-knowledge/SKILL.md"
+    - "skills/extract-knowledge/assets/entity-template.md"
+    - "skills/extract-knowledge/references/output-format.md"
+    - "skills/extract-knowledge/config.yaml"
 
 # ==============================================================================
 # LEVEL 1: IDENTITY
@@ -184,9 +184,9 @@ execution_protocol:
   phase_0_load:
     action: "Read all skill reference files"
     files:
-      - ".claude/skills/extract-knowledge/assets/entity-template.md"
-      - ".claude/skills/extract-knowledge/references/output-format.md"
-      - ".claude/skills/extract-knowledge/config.yaml"
+      - "skills/extract-knowledge/assets/entity-template.md"
+      - "skills/extract-knowledge/references/output-format.md"
+      - "skills/extract-knowledge/config.yaml"
     gate: "All 3 files loaded and understood"
 
   phase_1_to_3_extract:

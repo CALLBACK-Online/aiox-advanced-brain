@@ -6,7 +6,7 @@
 **Orchestrator:** Sigil (config-engineer)
 **Purpose:** Configure Claude Code's sandbox environment for filesystem isolation, network restrictions, and process boundaries to ensure safe command execution with minimal friction.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: sandbox-setup
 atomic_layer: Atom

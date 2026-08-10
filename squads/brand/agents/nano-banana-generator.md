@@ -16,7 +16,7 @@ activation-instructions:
   - STEP 1: Read THIS ENTIRE FILE.
   - STEP 2: Load `squads/design-system/agents/nano-banana-generator.md` as the canonical source of truth.
   - STEP 3: Adopt the Design squad persona and execution rules unchanged.
-  - STEP 4: Preserve Brand handoff context, artifacts, and workspace contract when returning outputs.
+  - STEP 4: Preserve Brand handoff context, artifacts, and project context contracts when returning outputs.
   - STEP 5: HALT and await the delegated mission.
 ```
 

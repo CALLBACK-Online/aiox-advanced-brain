@@ -16,19 +16,18 @@ command: "*review-epic-ds"
 
 ## DS Configuration Source
 
-This checklist reads DS configuration from the BU-first workspace contract:
+This checklist reads DS configuration from the BU-first project context contracts:
 
-- `workspace/_system/config.yaml` → whether the BU DS is `configured`, `not_configured`, or `not_applicable`
-- `workspace/businesses/{bu}/design-system/config.yaml` → canonical DS config for configured BUs
-- `squads/design-system/scripts/design-system/resolve_business_design_system.cjs` → deterministic resolver used by the squad
+- `docs/config.yaml` → whether the BU DS is `configured`, `not_configured`, or `not_applicable`
+- `docs/design-system/config.yaml` → canonical DS config for configured BUs
 - `squads/design-system/scripts/load-context.cjs` → task-level loader used by `epic-ds-review`
 
 **Auto-resolution:** The `epic-ds-review` task resolves DS context automatically:
-1. Match `business_slug` → `workspace/_system/config.yaml` → `businesses.{slug}`
-2. Or match `app_id` → `workspace/businesses/{bu}/design-system/config.yaml`
+1. Match `business_slug` → `docs/config.yaml` → `businesses.{slug}`
+2. Or match `app_id` → `docs/design-system/config.yaml`
 3. Extracts: `source`, `themes`, `components_root`, `component_dirs`, `token_files`, `hooks_dir`, `blueprint_files`, `app_dir`, `data_dir`, `framework`, `ui_primitives`
 
-**To register a BU DS:** Create `workspace/businesses/{bu}/design-system/config.yaml` and set `design_system.status: configured` in `workspace/_system/config.yaml`.
+**To register a BU DS:** Create `docs/design-system/config.yaml` and set `design_system.status: configured` in `docs/config.yaml`.
 
 **If status is `not_applicable`:** Skip DS review entirely and do not suggest DS creation.
 

@@ -1,5 +1,5 @@
 # Deviation Registry — DB Sage Squad
-# Tracks formal deviations from SINKRA methodology (Mandamento 7)
+# Tracks formal deviations from AIOX methodology (Mandamento 7)
 # Created: 2026-04-12
 # Owner: db-sage squad
 
@@ -10,11 +10,11 @@ updated: "2026-04-12"
 
 deviations:
   - id: DEV-DBS-001
-    type: workspace_integration
-    description: "workspace_integration level set to 'none' — db-sage operates on code/database/infrastructure, not canonical business artifacts"
-    rationale: "Database operations are technical infrastructure, not business-layer L0-L4 workspace artifacts"
+    type: local project docs
+    description: "local project docs level set to 'none' — db-sage operates on code/database/infrastructure, not canonical business artifacts"
+    rationale: "Database operations are technical infrastructure, not business-layer local-docs local_docs artifacts"
     status: accepted
-    approved_by: "config.yaml workspace_integration declaration"
+    approved_by: "config.yaml local project docs declaration"
     created: "2026-04-12"
 
   - id: DEV-DBS-002

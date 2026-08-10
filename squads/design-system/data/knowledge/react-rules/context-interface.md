@@ -2,7 +2,7 @@
 title: Context with Interface Pattern
 impact: high
 tags: [react, state, context, typescript]
-sinkra_source: v0-react-best-practices
+aiox_source: v0-react-best-practices
 ---
 
 # Context with Interface Pattern

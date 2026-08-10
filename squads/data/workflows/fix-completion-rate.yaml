@@ -50,22 +50,6 @@ workflow:
     - Metrics dashboard
     - Pilot validation
 
-workspace_execution_contract:
-  preflight:
-    - "*workspace-preflight (executa bootstrap-data-workspace.sh + validate-data-essentials.sh)"
-    - "*workspace-context {slug}"
-    - "Confirmar templates necessários em workspace/_templates/analytics/"
-  output_routing:
-    canonical:
-      - "workspace/businesses/{slug}/analytics/learning-outcomes.yaml"
-      - "workspace/businesses/{slug}/analytics/community-health.yaml"
-      - "workspace/businesses/{slug}/analytics/executive-report.yaml"
-    custom:
-      - "docs/data/{slug}/fix-completion-rate-{date}.md"
-  hard_rules:
-    - "Proibido gravar em workspace/businesses/{slug}/analytics/ sem template correspondente em workspace/_templates/analytics/."
-    - "Relatórios em docs/data/{slug}/ são complementares e não substituem artefatos canônicos."
-
 target_metrics:
   - metric: "Completion Rate"
     atual: "3%"

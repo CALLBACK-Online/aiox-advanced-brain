@@ -250,13 +250,13 @@ IF any validation fails: fix and re-validate
 ```
 ACTION: Save validated SOP to output directory
 
-FILE: workspace/businesses/{business}/sops/{process-name}-sop-v{version}.yaml  (or .json)
+FILE: docs/sops/{process-name}-sop-v{version}.yaml  (or .json)
 FORMAT: YAML or JSON (per output_format input)
 
 PUBLISH RULE:
   - Require explicit `business`
-  - Require `full_workspace_mode`
-  - STOP final publication if the COO readiness gate is not proven
+  - Require `none_mode`
+  - STOP final publication if the quality readiness gate is not proven
 
 ALSO GENERATE:
   - State diagram in Mermaid (for human visualization of the ML SOP)
@@ -268,7 +268,7 @@ ALSO GENERATE:
 ```yaml
 outputs:
   primary:
-    path: "workspace/businesses/{business}/sops/{process-name}-sop-v{version}.yaml"
+    path: "docs/sops/{process-name}-sop-v{version}.yaml"
     format: "yaml|json"
     description: "Complete machine-readable SOP with state machine, tool mappings, and error handling"
 
@@ -309,5 +309,5 @@ outputs:
 - STOP if no tools can be identified for more than 50% of steps (SOP would be mostly manual)
 - STOP if the process has unbounded loops with no exit condition
 - STOP if input types cannot be defined (completely unstructured process)
-- STOP if `business` is missing or `full_workspace_mode` is not proven for canonical publication
+- STOP if `business` is missing or `none_mode` is not proven for canonical publication
 - STOP if schema validation fails after 3 revision attempts

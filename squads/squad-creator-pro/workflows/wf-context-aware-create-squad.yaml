@@ -112,9 +112,9 @@ workflow:
       task: create-squad
       task_ref: create-squad
       action: create_architecture
-      notes: Use detected context, PRD, and merged discovery as mandatory inputs; compare at least 2 sequencing options, stress-test dependencies, persist why-this-order, then classify workspace integration level and contract
+      notes: Use detected context, PRD, and merged discovery as mandatory inputs; compare at least 2 sequencing options, stress-test dependencies, persist why-this-order, then classify local project docs level and contract
       outputs:
-        - .aiox/squad-runtime/create-squad/{squad_name}/workspace-integration-level.yaml
+        - .aiox/squad-runtime/create-squad/{squad_name}/local project docs-level.yaml
         - .aiox/squad-runtime/create-squad/{squad_name}/architecture-decision-record.yaml
     - phase: creation
       id: creation
@@ -157,9 +157,9 @@ workflow:
     - id: CP_ARCH
       phase: architecture
       decision: APPROVE_ARCHITECTURE
-    - id: CP_WORKSPACE
+    - id: CP_PROJECT
       phase: architecture
-      decision: WORKSPACE_CONTRACT_VALID
+      decision: project context contracts_VALID
     - id: CP_OPT
       phase: optimization
       decision: OPTIMIZATION_APPLIED
@@ -168,10 +168,10 @@ workflow:
       decision: PASS_OR_REVISE
   outputs:
     - squads/{squad_name}/
-    - .claude/skills/{slash_prefix}/{entry_agent}/SKILL.md
-    - .agents/skills/{entry_agent}/SKILL.md
+    - skills/{slash_prefix}/{entry_agent}/SKILL.md
+    - skills/{entry_agent}/SKILL.md
     - .aiox/squad-runtime/create-squad/{squad_name}/state.json
-    - .aiox/squad-runtime/create-squad/{squad_name}/workspace-integration-level.yaml
+    - .aiox/squad-runtime/create-squad/{squad_name}/local project docs-level.yaml
     - docs/projects/{squad_name}/epics/
     - .aiox/squad-runtime/optimize/{squad_name}/analysis-summary.yaml
     - .aiox/squad-runtime/create-squad/{squad_name}/creation-report.yaml

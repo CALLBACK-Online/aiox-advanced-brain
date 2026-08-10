@@ -1,10 +1,10 @@
 # Validate Evidence Ledger
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Operational -->
+<!-- AIOX Domain: Operational -->
 
-## SINKRA Task Anatomy (8 sections — STORY-SWI-2)
+## AIOX Task Anatomy (8 sections — STORY-SWI-2)
 
 ```yaml
 task: validateEvidenceLedger

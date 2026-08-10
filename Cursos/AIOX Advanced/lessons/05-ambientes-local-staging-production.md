@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: ambientes-local-staging-production
 lesson_position: 5
 title: Local, Staging, Production
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/05-ambientes-local-staging-production/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

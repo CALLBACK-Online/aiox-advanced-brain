@@ -128,7 +128,7 @@ source_provenance:
     - "Russell Brunson — Expert Secrets"
     - "Frank Kern — Mass Control patterns (para origin story)"
   bench_ref:
-    - "/Users/alan/Code/bench/ppt-master/examples/ppt169_kimsoong_loyalty_programme/ (estrutura consultiva similar, adaptada para arco de vendas)"
+    - "<bench-root>/ppt-master/examples/ppt169_kimsoong_loyalty_programme/ (estrutura consultiva similar, adaptada para arco de vendas)"
   author: "slides-creator squad — MSN-2026-SLIDES-NARRATIVE-DESIGN"
   date_created: "2026-05-17"
 

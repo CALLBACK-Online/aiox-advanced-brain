@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: engenharia-de-contexto
 lesson_position: 17
 title: 'Engenharia de contexto: limpar comandos, skills e MCPs'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/17-engenharia-de-contexto/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

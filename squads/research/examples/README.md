@@ -22,4 +22,4 @@ Inclui research reports completos do caso Video-Loops AI 2026: executive summary
 
 ## Provenance
 
-Outputs gerados antes da migração para SINKRA v3.1+. Mantidos como evidência de uso real do squad em deep research e análise competitiva.
+Outputs gerados antes da migração para AIOX v3.1+. Mantidos como evidência de uso real do squad em deep research e análise competitiva.

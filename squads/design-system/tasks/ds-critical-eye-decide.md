@@ -17,8 +17,8 @@ All decisions are logged to the append-only `canonical-decisions.json` for full 
 - **produces:**
   - `outputs/design-system/critical-eye/cycle-{N}/decisions.json` — executed auto-transitions
   - `outputs/design-system/critical-eye/cycle-{N}/proposals.json` — checkpoint proposals for design-chief
-  - Updates `workspace/ui/pattern-catalog.json` — lifecycle + scores
-  - Appends to `workspace/ui/canonical-decisions.json` — decision log
+  - Updates `docs/design-system/ui/pattern-catalog.json` — lifecycle + scores
+  - Appends to `docs/design-system/ui/canonical-decisions.json` — decision log
 - **consumed_by:** ds-critical-eye-report, ds-critical-eye-review-checklist (for proposals)
 
 ## Prerequisites
@@ -138,13 +138,13 @@ All decisions are logged to the append-only `canonical-decisions.json` for full 
 
 - `squads/design/checklists/ds-critical-eye-review-checklist.md`
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_critical_eye_decide_artifact

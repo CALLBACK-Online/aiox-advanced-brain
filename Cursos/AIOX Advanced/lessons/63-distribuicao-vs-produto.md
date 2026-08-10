@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: distribuicao-vs-produto
 lesson_position: 63
 title: Distribuição > Produto (10/90)
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/63-distribuicao-vs-produto/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

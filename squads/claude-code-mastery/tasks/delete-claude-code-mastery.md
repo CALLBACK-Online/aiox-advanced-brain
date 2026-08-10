@@ -4,9 +4,9 @@
 **Version:** 1.0.0
 **Command:** `*delete-squad`
 **Orchestrator:** Orion (claude-mastery-chief)
-**Purpose:** Safely remove the Claude Code Mastery squad from the workspace, including all agents, tasks, data, and configuration. Optionally archive before deletion.
+**Purpose:** Safely remove the Claude Code Mastery squad from the local_docs, including all agents, tasks, data, and configuration. Optionally archive before deletion.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: delete-claude-code-mastery
 atomic_layer: Atom
@@ -130,7 +130,7 @@ Completion Criteria:
 
 ### Phase 2: List Dependencies
 
-1. Scan the workspace for references to this squad:
+1. Scan local docs for references to this squad:
    - Search for `claude-code-mastery` in all YAML, JSON, and markdown files outside the squad directory
    - Check `.aiox/active-workflow.json` for active squad references
    - Check `docs/stories/` for stories referencing CCM agents
@@ -173,8 +173,8 @@ Completion Criteria:
 
 ### Phase 5: Update Registry and Report
 
-1. Check if any workspace-level registry references the squad:
-   - If `workspace/domains/` has a domain entry, remove or mark as deleted
+1. Check if any local_docs-level registry references the squad:
+   - If `docs/domains/` has a domain entry, remove or mark as deleted
    - If `.aiox-core/data/entity-registry.yaml` has entries, remove squad entities
 2. Generate deletion report:
    ```
@@ -194,7 +194,7 @@ Completion Criteria:
 ## Postconditions
 
 - `squads/claude-code-mastery/` directory no longer exists
-- No orphaned references to CCM agents in workspace configuration files
+- No orphaned references to CCM agents in local_docs configuration files
 - Archive exists at specified path (if archiving was enabled)
 - Deletion report is displayed to the user
 
@@ -216,7 +216,7 @@ Completion Criteria:
 
 If deletion was preceded by archiving, restoration is possible:
 1. Copy archive directory back to `squads/claude-code-mastery/`
-2. Re-register squad in any workspace registries that were updated
+2. Re-register squad in any local_docs registries that were updated
 3. Verify `config.yaml` is valid after restoration
 
 ---

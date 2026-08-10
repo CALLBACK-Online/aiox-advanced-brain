@@ -105,11 +105,11 @@ workflow:
         - motion_tokens
         - motion_primitives
         - motion_map
-      next: step-10-promote-to-workspace
-    - step: step-10-promote-to-workspace
-      id: step-10-promote-to-workspace
+      next: step-10-promote-to-docs
+    - step: step-10-promote-to-docs
+      id: step-10-promote-to-docs
       phase: 10
-      phase_name: Promote Outputs to Workspace Canonical Locations
+      phase_name: Promote Outputs to Local Docs Canonical Locations
       agent: brad-frost
       action: sync-registry
       outputs:
@@ -293,29 +293,29 @@ steps:
       motion_map: outputs/design-system/{{project_name}}/motion/motion-map.json
     error_handling:
       strategy: skip
-  - id: step_10_promote_to_workspace
-    name: Promote Outputs to Workspace Canonical Locations
+  - id: step_10_promote_to_project
+    name: Promote Outputs to Local Docs Canonical Locations
     type: agent
     agent: brad-frost
     command: "*sync-registry"
-    description: Move outputs from outputs/ to workspace canonical paths
+    description: Move outputs from outputs/ to docs/ canonical paths
     inputs:
       tokens_source: "{{step_3_tokenize.tokens_yaml}}"
       components_source: outputs/design-system/{{project_name}}/components/
     outputs:
-      tokens_promoted: workspace/system/tokens/
-      registry_updated: workspace/ui/registry.json
-      metadata_updated: workspace/domains/design-system/metadata/components.json
+      tokens_promoted: docs/design-system/system/tokens/
+      registry_updated: docs/design-system/ui/registry.json
+      metadata_updated: docs/design-system/domains/metadata/components.json
     promotion_map:
       - from: outputs/design-system/{{project_name}}/tokens/tokens.json
-        to: workspace/system/tokens/primitive.tokens.json
+        to: docs/design-system/system/tokens/primitive.tokens.json
       - from: outputs/design-system/{{project_name}}/tokens/tokens.yaml
         to: squads/design-system/data/design-tokens-spec.yaml
       - from: outputs/design-system/{{project_name}}/components/
-        to: workspace/ui/components/
+        to: docs/design-system/ui/components/
     validation:
-      - workspace/ui/registry.json updated with new components
-      - workspace/domains/design-system/metadata/components.json reflects changes
+      - docs/design-system/ui/registry.json updated with new components
+      - docs/design-system/domains/metadata/components.json reflects changes
       - squads/design-system/scripts/design-system/validate_components_metadata.cjs passes
     error_handling:
       strategy: fail
@@ -326,11 +326,11 @@ steps:
     workflow: critical-eye
     description: Evaluate all promoted patterns through the Critical Eye scoring engine. Scores variants (0-100), applies lifecycle transitions, generates proposals for canonical promotion. Non-blocking — brownfield completes even if curation is skipped.
     inputs:
-      catalog: workspace/ui/pattern-catalog.json
+      catalog: docs/design-system/ui/pattern-catalog.json
       scoring_rules: squads/design-system/data/critical-eye-scoring-rules.yaml
-      decisions_log: workspace/ui/canonical-decisions.json
+      decisions_log: docs/design-system/ui/canonical-decisions.json
     outputs:
-      catalog_updated: workspace/ui/pattern-catalog.json
+      catalog_updated: docs/design-system/ui/pattern-catalog.json
       cycle_report: outputs/design-system/critical-eye/cycle-{{cycle_number}}/report.md
     error_handling:
       strategy: skip
@@ -338,7 +338,7 @@ outputs:
   design_system_complete:
     type: boolean
     description: Workflow completed successfully
-    source: step_10_promote_to_workspace.success
+    source: step_10_promote_to_project.success
   tokens_location:
     type: string
     description: Path to design tokens

@@ -1,6 +1,6 @@
 # Task: Feature Absorption Roadmap (Autonomous)
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Strategic`
 

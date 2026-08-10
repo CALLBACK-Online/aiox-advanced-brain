@@ -89,7 +89,7 @@ As decisoes de padronizacao sao fundamentadas nestas fontes, nesta ordem de prio
                                    ▼
           ┌─────────────────────────────────────────────────────────┐
           │                  FASE 5: OUTPUT                          │
-          │  workspace/ui/{brand}/                                   │
+          │  docs/design-system/ui/{brand}/                                   │
           │  ├── brand.json                                          │
           │  ├── tokens/primitives/ (colors, spacing, typography)    │
           │  ├── tokens/semantic/ (colors, surfaces)                 │

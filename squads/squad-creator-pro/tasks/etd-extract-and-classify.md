@@ -25,9 +25,9 @@ outputs:
 
 elicit: true
 ---
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: etd-extract-and-classify
   task_name: 'ETD Phase 2: Extract & Classify (10 Categories + Epistemic Gate)'
   status: pending
@@ -60,11 +60,11 @@ sinkra_task_metadata:
   accountability_scope: review_only
   escalation_priority: high
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Operational
   atomic_layer: Atom
   executor: Agent
@@ -72,7 +72,7 @@ sinkra_contract:
   post_condition: "Candidatos extraidos, classificados e filtrados. Prontos para consolidacao."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # ETD Phase 2: Extract & Classify

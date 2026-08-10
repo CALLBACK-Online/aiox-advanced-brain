@@ -1,6 +1,6 @@
 # Task: Deep Research — Selection
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 

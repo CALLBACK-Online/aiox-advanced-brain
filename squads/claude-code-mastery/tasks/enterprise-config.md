@@ -6,7 +6,7 @@
 **Orchestrator:** Sigil (config-engineer)
 **Purpose:** Generate and deploy enterprise-grade Claude Code configuration using managed-settings.json for organizational policy enforcement, MDM integration, compliance rules, and standardized MCP server deployment across teams.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: enterprise-config
 atomic_layer: Atom

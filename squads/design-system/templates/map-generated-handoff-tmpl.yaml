@@ -1,18 +1,18 @@
 # Managed by materialize-map.py
-# Source: .aiox/squad-runtime/sinkra-squad/design-system/map/20260328-065055-gemini-gemini-3.1-pro-preview/phase-handoff.yaml
+# Source: .aiox/squad-runtime/aiox-squad/design-system/map/20260328-065055-gemini-gemini-3.1-pro-preview/phase-handoff.yaml
 # Category: formalization
 
 handoff:
   from_phase: 8
-  from_agent: "sinkra-qa"
+  from_agent: "aiox-qa"
   to_phase: null # Validation is the final phase
   timestamp: "2026-03-28T07:50:35.486389" # Using the timestamp from the reports
 
   artifacts_produced:
     - file: "score_card.yaml"
-      description: "Final SINKRA compliance scorecard with LLM adjustments and overall score."
-    - file: "sinkra_compliance_report.md"
-      description: "Comprehensive SINKRA compliance report detailing findings, scores, and remediation plan."
+      description: "Final AIOX compliance scorecard with LLM adjustments and overall score."
+    - file: "aiox_compliance_report.md"
+      description: "Comprehensive AIOX compliance report detailing findings, scores, and remediation plan."
 
   decisions:
     - "Applied semantic adjustments to 'Quality Gates' score based on manual review of `quality_gates.yaml`."
@@ -24,7 +24,7 @@ handoff:
     - "Remediation efforts require significant development for executor definition, task anatomy, and accountability tokens."
 
   checkpoint:
-    id: "SINKRA_QA_GATE"
+    id: "AIOX_QA_GATE"
     verdict: "NON-COMPLIANT"
     score: 40.1
 

@@ -11,7 +11,7 @@ source: "Registration Page SOP — Event Sign-up Optimization"
 sop_reference: squads/hormozi/sops/registration-page-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

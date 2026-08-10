@@ -11,16 +11,16 @@ estimated_duration: "30-70 min"
 ```
 
 **Responsible Executor:** Agent (@storybrand-narrator)  
-**Dependencies:** depends_on: `[load-workspace-context, brand-diagnosis]` · enables: `[wf-brand-positioning-narrative]` · workflow: `wf-brand-positioning-narrative`
+**Dependencies:** depends_on: `[load-project context, brand-diagnosis]` · enables: `[wf-brand-positioning-narrative]` · workflow: `wf-brand-positioning-narrative`
 
 ## Prerequisites
 
-- **Context Gate (mandatory):** Brand workspace context must be loaded. Run `load-workspace-context` first. If brand foundations (diagnosis) do not exist, HALT and run `brand-diagnosis` first.
+- **Context Gate (mandatory):** Brand project context must be loaded. Run `load-project context` first. If brand foundations (diagnosis) do not exist, HALT and run `brand-diagnosis` first.
 - **Vocabulary:** Consult `data/brand-mappings.yaml` for canonical positioning terminology.
 
 ## Prerequisites
 
-- **Context Gate (mandatory):** Brand workspace context must be loaded. If brand-diagnosis has not run, HALT and suggest running brand-diagnosis first.
+- **Context Gate (mandatory):** Brand project context must be loaded. If brand-diagnosis has not run, HALT and suggest running brand-diagnosis first.
 - **Vocabulary:** Consult `data/brand-mappings.yaml` for canonical positioning terminology.
 
 ## Objective
@@ -41,9 +41,9 @@ Definir território competitivo e sistema de mensagem usando Ries, Neumeier, Arc
 
 | Artifact | Location | Description |
 |---|---|---|
-| `messaging-framework.md` | `workspace/businesses/{brand_name}/L2-tactical/brand/narrative/messaging-framework.md` | Sistema de mensagem consolidado (SB7 + claims + provas) |
-| `strategic-positioning.yaml` | `workspace/businesses/{brand_name}/L2-tactical/brand/strategic-positioning.yaml` | Posicionamento estruturado para governanca de marca |
-| `positioning-narrative-report.md` | `workspace/businesses/{brand_name}/L2-tactical/brand/positioning/positioning-narrative-report.md` | Relatorio consolidado de posicionamento + narrativa |
+| `messaging-framework.md` | `docs/tactical/brand/narrative/messaging-framework.md` | Sistema de mensagem consolidado (SB7 + claims + provas) |
+| `strategic-positioning.yaml` | `docs/tactical/brand/strategic-positioning.yaml` | Posicionamento estruturado para governanca de marca |
+| `positioning-narrative-report.md` | `docs/tactical/brand/positioning/positioning-narrative-report.md` | Relatorio consolidado de posicionamento + narrativa |
 
 ## Veto Conditions
 

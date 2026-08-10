@@ -159,7 +159,7 @@ Definido em `squads/design-system/config.yaml`:
 
 Ordem de precedência para resolução de conflitos:
 
-1. `workspace/` — fonte de verdade global (system, ui, domains)
+1. `docs/` (substituto local; outputs/ é private enterprise distribution) — fonte de verdade global (system, ui, domains)
 2. `squads/design-system/` — governança e conhecimento local do squad
 3. `docs/` — evidência de suporte, nunca fonte final de verdade
 
@@ -167,7 +167,7 @@ Quando dois artefatos conflitam, prevalece a fonte de maior precedência. Confli
 
 ## Notes
 
-- Source hierarchy: `workspace/` -> `squads/design-system/` -> `docs/`
+- Source hierarchy: `docs/` (substituto local; outputs/ é private enterprise distribution) -> `squads/design-system/` -> `docs/`
 - This squad is DS-first by design and currently acts as the transitional provider/core of the future `design-ops`.
 - Cross-domain requests are routed to specialized squads instead of being executed here.
 - `apps/aiox-design-starter` is a first-class runtime target of this squad.

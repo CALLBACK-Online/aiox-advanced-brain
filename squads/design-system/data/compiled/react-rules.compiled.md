@@ -2,7 +2,7 @@
 
 > Compiled from 6 rules in react-rules/
 > Generated: 2026-04-17
-> Compiler: compile-rules.cjs (SINKRA rule-compiler)
+> Compiler: compile-rules.cjs (AIOX rule-compiler)
 
 ---
 
@@ -52,7 +52,7 @@ Use compound component patterns for complex UI that shares implicit state.
 - Each sub-component has a single responsibility
 - Consumer controls composition and layout
 - Internal state is shared via Context, not prop drilling
-- Follows @sinkra/ds-core component API conventions (Select, Dialog, etc.)
+- Follows @aiox/ds-core component API conventions (Select, Dialog, etc.)
 
 ---
 
@@ -98,7 +98,7 @@ function useTheme(): ThemeContextValue {
 - Default value `{}` hides missing providers at runtime
 - TypeScript cannot narrow the type without explicit interface
 - Null default + guard hook catches missing providers immediately
-- Follows @sinkra/ds-core ThemeProvider pattern
+- Follows @aiox/ds-core ThemeProvider pattern
 
 ---
 
@@ -133,7 +133,7 @@ function Input({ ref, ...props }: InputProps & { ref?: React.Ref<HTMLInputElemen
 - React 19 passes `ref` as a regular prop (no wrapper needed)
 - forwardRef adds component wrapper overhead and obscures displayName
 - Simpler TypeScript types (no generic wrapper)
-- @sinkra/ds-core targets React 19 -- all new components should use ref-as-prop
+- @aiox/ds-core targets React 19 -- all new components should use ref-as-prop
 - Existing forwardRef components work but should be migrated incrementally
 
 ---
@@ -179,7 +179,7 @@ needs data from the parent that cannot be passed via Context.
 - Children composition is the standard React model
 - Render props add indirection without compositional benefit here
 - JSX reads naturally top-to-bottom with children
-- Follows @sinkra/ds-core Card, Dialog, Sheet compound component patterns
+- Follows @aiox/ds-core Card, Dialog, Sheet compound component patterns
 - Render props remain valid for headless components that expose state (e.g., Combobox)
 
 ---
@@ -205,7 +205,7 @@ Use a single `variant` prop with string union instead of multiple boolean flags.
 
 ```tsx
 <Button variant="primary" size="lg" />
-// Uses CVA (class-variance-authority) pattern from @sinkra/ds-core
+// Uses CVA (class-variance-authority) pattern from @aiox/ds-core
 // Each variant dimension is a single enum, not booleans
 ```
 
@@ -213,7 +213,7 @@ Use a single `variant` prop with string union instead of multiple boolean flags.
 
 - Boolean props create exponential combinations, most invalid
 - String union makes valid states explicit and exhaustive
-- CVA pattern (used by @sinkra/ds-core) maps variants to classes cleanly
+- CVA pattern (used by @aiox/ds-core) maps variants to classes cleanly
 - TypeScript catches invalid combinations at compile time
 - Follows buttonVariants, badgeVariants, toggleVariants patterns in ds-core
 

@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: agentes-orbitais-aiox
 lesson_position: 4
 title: Agentes Orbitais do AIOX
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/04-agentes-orbitais-aiox/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -331,7 +331,7 @@ Quando a Story está done, o deploy é outra órbita, não uma continuação aut
 Dois casos do próprio repositório mostram a divisão de autoridade funcionando: uma migração de banco e uma subida de código bloqueada por gate.
 
 - **O que os dois casos têm em comum**: Em ambos, a tarefa parecia pertencer a uma órbita só (o Dev), mas a autoridade real estava em outra. Roteamento por autoridade, não por proximidade, é o que separa operação madura de improviso. Players: Architect, db-sage, Dev, QA, DevOps.
-- **Onde o gate vive**: Migração de banco e push de código têm hooks de autoridade enforçados no Sinkra Hub. O gate não depende de o operador lembrar: enforce-migration-authority e enforce-git-push-authority barram a operação errada.
+- **Onde o gate vive**: Migração de banco e push de código têm hooks de autoridade enforçados no AIOX platform. O gate não depende de o operador lembrar: enforce-migration-authority e enforce-git-push-authority barram a operação errada.
 
 ### Caso: Migrar banco para Supabase: quatro órbitas, uma migração
 

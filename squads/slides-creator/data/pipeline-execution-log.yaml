@@ -1,12 +1,12 @@
 # Pipeline Execution Log Schema — slides-creator
-# GAP-002 closure — per-run observability for SINKRA-native telemetry
+# GAP-002 closure — per-run observability for AIOX-native telemetry
 # Version: 1.0.0
 # Generated: 2026-04-20 | Upgrade Phase 4-7 Wave 1
 
 schema_version: "1.0"
 name: slides-creator-pipeline-execution-log
 owner_squad: slides-creator
-sinkra_framework: v3.2
+aiox_framework: v3.2
 storage_pattern: "append-only; one file per run in outputs/slides-creator/{run_id}/"
 
 record_schema:
@@ -25,7 +25,7 @@ record_schema:
     - final_outputs
     - cost_ledger
     - compliance
-    - sinkra_framework_version
+    - aiox_framework_version
     - squad_version
   field_types:
     correlation_id: "uuid v4"
@@ -54,13 +54,13 @@ record_schema:
 # M10 WIRING — first real run evidence (R2-01 fixture, 2026-05-20)
 # ---------------------------------------------------------------------------
 # Prior to 2026-05-20T17:30Z, this file contained only example_record (synthetic).
-# After /sinkra-upgrade-squad R2-01 wired emit-pipeline-log.js into the workflow's
+# After /aiox-upgrade-squad R2-01 wired emit-pipeline-log.js into the workflow's
 # phase_emit_matrix, the first real run was emitted as a fixture proving the
 # emission mechanism end-to-end. validate-pipeline-emission.js confirmed PASS.
 m10_wiring_evidence:
   status: WIRED
   wired_at: "2026-05-20T17:37:00Z"
-  driver: "/sinkra-upgrade-squad R2-01"
+  driver: "/aiox-upgrade-squad R2-01"
   workflow_changes:
     - "workflows/generate-presentation.yaml#global.observability (declarative emitter spec)"
     - "workflows/generate-presentation.yaml#phase_emit_matrix (all 11 phases + 5 gates + 3 conditional events)"
@@ -86,7 +86,7 @@ example_record:
   input:
     type: briefing
     hash: "sha256:abc123"
-    source_path: "workspace/businesses/aiox/L4-operational/briefings/sample.md"
+    source_path: "docs/aiox/operational/briefings/sample.md"
   orchestrator: slide-chief
   organism: ORG-GENERATE-PRESENTATION
   phases:
@@ -180,7 +180,7 @@ example_record:
       schema_ref: "squads/slides-creator/data/composition-rules.yaml#meta_axioms"
       validator: "squads/slides-creator/scripts/validate-meta-axioms.js"   # YOLO-6: implemented 2026-05-20
       measured_at: "2026-05-20T16:42:00Z"
-  sinkra_framework_version: "v3.2"
+  aiox_framework_version: "v3.2"
   squad_version: "9.1.0"
 
 emission_protocol:
@@ -220,5 +220,5 @@ consumers:
 
 meta:
   gap_closed: GAP-002
-  compatible_with: sinkra-v3.2
+  compatible_with: aiox-v3.2
   observability_ready: true

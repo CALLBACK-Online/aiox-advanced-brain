@@ -1,6 +1,6 @@
 # Infrastructure Map — squad-creator-pro
 # Maps the operational infrastructure available to this squad
-# SINKRA Mandamento 9/10: observability and handoff mapping
+# AIOX Mandamento 9/10: observability and handoff mapping
 #
 # Schema version: 1.0.0
 # Created: 2026-04-13
@@ -18,27 +18,27 @@ agents:
   items:
     - id: squad-chief
       path: agents/squad-chief.md
-      sinkra_type: Agent
+      executor_type: Agent
       role: "Master orchestrator for squad creation and upgrade"
     - id: oalanicolas
       path: agents/oalanicolas.md
-      sinkra_type: Clone
+      executor_type: Clone
       role: "Knowledge architect mind clone — DNA extraction, framework analysis"
     - id: pedro-valerio
       path: agents/pedro-valerio.md
-      sinkra_type: Agent
+      executor_type: Agent
       role: "Process axioma assessment, workflow audit, quality gates"
     - id: thiago_finch
       path: agents/thiago_finch.md
-      sinkra_type: Clone
+      executor_type: Clone
       role: "Business strategy and marketing intelligence"
     - id: ecosystem-analyst
       path: agents/ecosystem-analyst.md
-      sinkra_type: Agent
+      executor_type: Agent
       role: "Ecosystem topology analysis, gap detection, cost breakdown"
     - id: heuristic-ops
       path: agents/heuristic-ops.md
-      sinkra_type: Agent
+      executor_type: Agent
       role: "Heuristic lifecycle management — consolidation, conflict detection, promotion"
 
 scripts:
@@ -49,7 +49,7 @@ scripts:
       items:
         - scripts/validate-squad-structure.py
         - scripts/validate-agent-output.py
-        - scripts/validate-workspace-contract.py
+        - scripts/validate-project context contracts.py
         - scripts/validate-all.sh
         - scripts/validate-squad.sh
         - scripts/validate-clone.sh
@@ -65,18 +65,17 @@ scripts:
         - scripts/quality_gate.py
         - scripts/modernization-score.sh
     runtime:
-      count: 8
+      count: 7
       items:
         - scripts/squad-workflow-runner.cjs
         - scripts/squad-state-manager.cjs
         - scripts/squad-context-loader.cjs
         - scripts/wave-loop.cjs
         - scripts/wave-loop.sh
-        - scripts/detect-environment-contract.cjs
         - scripts/model-tier-validator.cjs
         - scripts/model-usage-logger.cjs
     generation:
-      count: 6
+      count: 5
       items:
         - scripts/scaffold-squad.cjs
         - scripts/generate-squad-guide.js
@@ -101,7 +100,6 @@ scripts:
         - scripts/sync-chief-codex-skill.js
         - scripts/save-session-metrics.py
         - scripts/on-specialist-complete.py
-        - scripts/load-business-sops.cjs
     operations:
       count: 4
       items:
@@ -140,10 +138,10 @@ cross_squad_dependencies:
     relationship: "upgrade-pack overlay"
     base_requirement: ">=5.0.0"
     shared: ["composition_mapping (base)", "templates (base set)", "scripts (proxied)"]
-  sinkra_squad:
+  aiox_squad:
     consumed: ["composition-rules.yaml", "token-registry.yaml (schema reference)", "ecosystem-registry.yaml"]
   ecosystem_registry:
-    path: "squads/sinkra-squad/data/ecosystem-registry.yaml"
+    path: "squads/aiox-squad/data/ecosystem-registry.yaml"
     role: "Source of truth for squad inventory (replaces deprecated local squad-registry.yaml)"
 
 gaps:

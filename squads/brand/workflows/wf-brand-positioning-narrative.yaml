@@ -18,41 +18,33 @@ inputs:
       type: string
     - name: target_audience
       type: string
-workspace_contract:
-  required_preflight:
-    - bash squads/brand/scripts/bootstrap-brand-workspace.sh {{brand_name}}
-    - bash squads/brand/scripts/validate-brand-essentials.sh
-    - node workspace/scripts/resolve-squad-workspace-readiness.cjs --squad=brand --business={{brand_name}} --context-type=brand
-  context_task: load-workspace-context
-  canonical_template_namespace: brand
-  canonical_output_policy: template-first
 phases:
-  - id: workspace_context
-    name: Workspace preflight and context load
+  - id: project context
+    name: Project preflight and context load
     executor: brand-chief
     tasks:
-      - task: load-workspace-context.md
+      - task: load-project context.md
         inputs:
           - brand_name
   - id: differentiation
     name: Onlyness and differentiation
     executor: neumeier-differentiation
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/onlyness-statement.md
+      - docs/tactical/brand/positioning/onlyness-statement.md
   - id: positioning
     name: Competitive positioning
     executor: ries-positioning
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/onlyness-statement.md
+      - docs/tactical/brand/positioning/onlyness-statement.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/positioning-statement.md
+      - docs/tactical/brand/positioning/positioning-statement.md
   - id: archetype
     name: Archetype system
     executor: archetype-consultant
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/positioning-statement.md
+      - docs/tactical/brand/positioning/positioning-statement.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/narrative/archetype-profile.md
+      - docs/tactical/brand/narrative/archetype-profile.md
   - id: narrative
     name: StoryBrand narrative
     executor: storybrand-narrator
@@ -64,20 +56,20 @@ phases:
           - primary_offer
           - target_audience
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/narrative/archetype-profile.md
+      - docs/tactical/brand/narrative/archetype-profile.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/narrative/messaging-framework.md
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/strategic-positioning.yaml
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/positioning-narrative-report.md
+      - docs/tactical/brand/narrative/messaging-framework.md
+      - docs/tactical/brand/strategic-positioning.yaml
+      - docs/tactical/brand/positioning/positioning-narrative-report.md
 outputs:
-  base_path: workspace/businesses/{{brand_name}}/L2-tactical/brand/
+  base_path: docs/tactical/brand/
   artifacts:
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/onlyness-statement.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/positioning-statement.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/narrative/archetype-profile.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/narrative/messaging-framework.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/strategic-positioning.yaml
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/positioning-narrative-report.md
+    - docs/tactical/brand/positioning/onlyness-statement.md
+    - docs/tactical/brand/positioning/positioning-statement.md
+    - docs/tactical/brand/narrative/archetype-profile.md
+    - docs/tactical/brand/narrative/messaging-framework.md
+    - docs/tactical/brand/strategic-positioning.yaml
+    - docs/tactical/brand/positioning/positioning-narrative-report.md
 final_output:
   format: markdown
   includes:
@@ -92,12 +84,12 @@ workflow:
   description: Diferenciação, posicionamento competitivo e mensagem
   type: legacy
   sequence:
-    - step: workspace-context
-      id: workspace-context
+    - step: project context
+      id: project context
       phase: 1
-      phase_name: Workspace preflight and context load
+      phase_name: Project preflight and context load
       agent: brand-chief
-      action: execute_workspace-preflight-and-context-load
+      action: execute_project-preflight-and-context-load
       next: differentiation
     - step: differentiation
       id: differentiation
@@ -106,7 +98,7 @@ workflow:
       agent: neumeier-differentiation
       action: execute_onlyness-and-differentiation
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/onlyness-statement.md
+        - docs/tactical/brand/positioning/onlyness-statement.md
       next: positioning
     - step: positioning
       id: positioning
@@ -115,7 +107,7 @@ workflow:
       agent: ries-positioning
       action: execute_competitive-positioning
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/positioning-statement.md
+        - docs/tactical/brand/positioning/positioning-statement.md
       next: archetype
     - step: archetype
       id: archetype
@@ -124,7 +116,7 @@ workflow:
       agent: archetype-consultant
       action: execute_archetype-system
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/narrative/archetype-profile.md
+        - docs/tactical/brand/narrative/archetype-profile.md
       next: narrative
     - step: narrative
       id: narrative
@@ -133,9 +125,9 @@ workflow:
       agent: storybrand-narrator
       action: execute_storybrand-narrative
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/narrative/messaging-framework.md
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/strategic-positioning.yaml
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/positioning/positioning-narrative-report.md
+        - docs/tactical/brand/narrative/messaging-framework.md
+        - docs/tactical/brand/strategic-positioning.yaml
+        - docs/tactical/brand/positioning/positioning-narrative-report.md
     - workflow_end:
         id: complete
         action: workflow_complete

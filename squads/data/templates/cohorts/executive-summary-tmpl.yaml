@@ -6,7 +6,7 @@ template_metadata:
   owner_agent: "avinash-kaushik"
   governance_owners:
     - "data-chief"
-  output_path: "workspace/businesses/{slug}/L1-strategy/analytics/cohorts/executive-summary.yaml"
+  output_path: "docs/strategy/analytics/cohorts/executive-summary.yaml"
   custom_fallback_path: "outputs/data/{slug}/executive-summary-{date}.md"
   contains_real_data: false
   pii_allowed: false
@@ -22,11 +22,11 @@ context:
 
 analysis:
   source_artifacts:
-    segmentation_rfm: "workspace/businesses/{slug}/analytics/cohorts/segmentation-rfm.yaml"
-    learning_journey: "workspace/businesses/{slug}/analytics/cohorts/learning-journey.yaml"
-    community_health: "workspace/businesses/{slug}/analytics/cohorts/community-health.yaml"
-    student_health_score: "workspace/businesses/{slug}/analytics/cohorts/student-health-score.yaml"
-    icp_deep_analysis: "workspace/businesses/{slug}/analytics/cohorts/icp-deep-analysis.yaml"
+    segmentation_rfm: "docs/analytics/cohorts/segmentation-rfm.yaml"
+    learning_journey: "docs/analytics/cohorts/learning-journey.yaml"
+    community_health: "docs/analytics/cohorts/community-health.yaml"
+    student_health_score: "docs/analytics/cohorts/student-health-score.yaml"
+    icp_deep_analysis: "docs/analytics/cohorts/icp-deep-analysis.yaml"
   executive_snapshot:
     health_signal: null
     completion_signal: null

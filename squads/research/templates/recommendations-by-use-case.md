@@ -98,7 +98,7 @@ gap_to_mitigate: |
 id: uc_3_custom_agent
 scenario: |
   Owner quer construir agent customizado consumindo a pesquisa via API/SDK,
-  integrando em pipeline próprio (Sinkra/AIOX/N8N/Zapier). Constraint dominante:
+  integrando em pipeline próprio (AIOX/N8N/Zapier). Constraint dominante:
   programmability + estabilidade de contrato.
 
 primary:

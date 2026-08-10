@@ -47,15 +47,6 @@ inputs:
     - name: references
       type: list
       description: URLs ou paths de referências visuais
-workspace_contract:
-  required_preflight:
-    - bash squads/brand/scripts/bootstrap-brand-workspace.sh {{brand_name}}
-    - bash squads/brand/scripts/validate-brand-essentials.sh
-    - node workspace/scripts/resolve-squad-workspace-readiness.cjs --squad=brand --business={{brand_name}} --context-type=brand
-  context_task: load-workspace-context
-  canonical_output_root: workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/
-  canonical_artifacts:
-    - logo-concept.yaml
 prerequisites:
   environment:
     - variable: GEMINI_API_KEY
@@ -68,11 +59,11 @@ prerequisites:
       priority: fallback
       note: At least one of GEMINI_API_KEY or OPENROUTER_API_KEY must be set
 phases:
-  - id: workspace_context
-    name: Workspace preflight and context load
+  - id: project context
+    name: Project preflight and context load
     executor: brand-chief
     tasks:
-      - task: load-workspace-context.md
+      - task: load-project context.md
         inputs:
           - brand_name
   - id: intake
@@ -88,7 +79,7 @@ phases:
           - archetype
           - brandbook_path
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-brief.md
+      - docs/tactical/brand/logo/logo-brief.md
   - id: strategic_direction
     name: Strategic Concept Directions
     executor: wheeler-brand-design
@@ -102,7 +93,7 @@ phases:
     resources:
       - squads/brand/data/logo-style-library.yaml
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-concepts.md
+      - docs/tactical/brand/logo/logo-concepts.md
   - id: prompt_engineering
     name: SCDS Prompt Engineering
     executor: wheeler-brand-design
@@ -117,7 +108,7 @@ phases:
       - squads/brand/data/logo-style-library.yaml
       - squads/design/data/gemini-logo-guidelines.yaml
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-prompt-brief.yaml
+      - docs/tactical/brand/logo/logo-prompt-brief.yaml
   - id: generation
     name: AI Logo Generation
     executor: nano-banana-generator
@@ -132,8 +123,8 @@ phases:
       - image-generate.md
       - image-batch.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/generations/
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/generation-log.yaml
+      - docs/tactical/brand/logo/generations/
+      - docs/tactical/brand/logo/generation-log.yaml
   - id: curation
     name: Logo Curation & Feedback
     executor: wheeler-brand-design
@@ -152,7 +143,7 @@ phases:
           - logo_concepts
           - brand_name
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/curation-report.md
+      - docs/tactical/brand/logo/curation-report.md
   - id: refinement
     name: Logo Refinement
     executor: nano-banana-generator
@@ -168,8 +159,8 @@ phases:
     design_tasks_used:
       - prompt-refine.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/refinements/
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/refinement-log.yaml
+      - docs/tactical/brand/logo/refinements/
+      - docs/tactical/brand/logo/refinement-log.yaml
   - id: deliverable
     name: Final Deliverable Package
     executor: wheeler-brand-design
@@ -185,23 +176,23 @@ phases:
           - curation_report
           - brand_name
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-spec.md
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-brainstorm-report.md
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo-concept.yaml
+      - docs/tactical/brand/logo/logo-spec.md
+      - docs/tactical/brand/logo/logo-brainstorm-report.md
+      - docs/tactical/brand/logo-concept.yaml
 outputs:
-  base_path: workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/
+  base_path: docs/tactical/brand/logo/
   artifacts:
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-brief.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-concepts.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-prompt-brief.yaml
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/generations/
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/generation-log.yaml
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/curation-report.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/refinements/
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/refinement-log.yaml
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-spec.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-brainstorm-report.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo-concept.yaml
+    - docs/tactical/brand/logo/logo-brief.md
+    - docs/tactical/brand/logo/logo-concepts.md
+    - docs/tactical/brand/logo/logo-prompt-brief.yaml
+    - docs/tactical/brand/logo/generations/
+    - docs/tactical/brand/logo/generation-log.yaml
+    - docs/tactical/brand/logo/curation-report.md
+    - docs/tactical/brand/logo/refinements/
+    - docs/tactical/brand/logo/refinement-log.yaml
+    - docs/tactical/brand/logo/logo-spec.md
+    - docs/tactical/brand/logo/logo-brainstorm-report.md
+    - docs/tactical/brand/logo-concept.yaml
 final_output:
   format: markdown
   includes:
@@ -215,12 +206,12 @@ workflow:
   description: "Brainstorm estratégico + geração visual de logo: intake → direções → prompts → geração → curação → refinamento → entrega"
   type: legacy
   sequence:
-    - step: workspace-context
-      id: workspace-context
+    - step: project context
+      id: project context
       phase: 1
-      phase_name: Workspace preflight and context load
+      phase_name: Project preflight and context load
       agent: brand-chief
-      action: execute_workspace-preflight-and-context-load
+      action: execute_project-preflight-and-context-load
       next: intake
     - step: intake
       id: intake
@@ -229,7 +220,7 @@ workflow:
       agent: wheeler-brand-design
       action: execute_logo-brief-collection
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-brief.md
+        - docs/tactical/brand/logo/logo-brief.md
       next: strategic-direction
     - step: strategic-direction
       id: strategic-direction
@@ -238,7 +229,7 @@ workflow:
       agent: wheeler-brand-design
       action: execute_strategic-concept-directions
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-concepts.md
+        - docs/tactical/brand/logo/logo-concepts.md
       next: prompt-engineering
     - step: prompt-engineering
       id: prompt-engineering
@@ -247,7 +238,7 @@ workflow:
       agent: wheeler-brand-design
       action: execute_scds-prompt-engineering
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-prompt-brief.yaml
+        - docs/tactical/brand/logo/logo-prompt-brief.yaml
       next: generation
     - step: generation
       id: generation
@@ -256,8 +247,8 @@ workflow:
       agent: nano-banana-generator
       action: execute_ai-logo-generation
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/generations/
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/generation-log.yaml
+        - docs/tactical/brand/logo/generations/
+        - docs/tactical/brand/logo/generation-log.yaml
       next: curation
     - step: curation
       id: curation
@@ -266,7 +257,7 @@ workflow:
       agent: wheeler-brand-design
       action: execute_logo-curation-feedback
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/curation-report.md
+        - docs/tactical/brand/logo/curation-report.md
       next: refinement
     - step: refinement
       id: refinement
@@ -275,8 +266,8 @@ workflow:
       agent: nano-banana-generator
       action: execute_logo-refinement
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/refinements/
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/refinement-log.yaml
+        - docs/tactical/brand/logo/refinements/
+        - docs/tactical/brand/logo/refinement-log.yaml
       next: deliverable
     - step: deliverable
       id: deliverable
@@ -285,9 +276,9 @@ workflow:
       agent: wheeler-brand-design
       action: execute_final-deliverable-package
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-spec.md
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-brainstorm-report.md
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo-concept.yaml
+        - docs/tactical/brand/logo/logo-spec.md
+        - docs/tactical/brand/logo/logo-brainstorm-report.md
+        - docs/tactical/brand/logo-concept.yaml
     - workflow_end:
         id: complete
         action: workflow_complete

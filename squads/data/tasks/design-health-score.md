@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: design-health-score
   task_name: Design Health Score
   status: active
@@ -36,11 +36,11 @@ sinkra_task_metadata:
   error_handling: "on failure, log to outputs/data/{slug}/errors.log and escalate to data-chief"
   output_path: "outputs/data/{slug}/health-score-report.yaml"
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Strategic
   atomic_layer: Atom
   executor: Clone
@@ -48,7 +48,7 @@ sinkra_contract:
   post_condition: "output generated, validated, ready for handoff"
   performance: "execute within SLA, log errors explicitly, escalate via handoff without silent failure"
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 # Design Health Score - Customer Health Measurement System
 
@@ -58,12 +58,12 @@ Systematic Health Score design task based on Nick Mehta's Customer Success metho
 
 Health Score is not just a metric - it's the foundation of proactive customer success. When designed correctly, it becomes an early warning system that enables intervention before customers reach the point of no return.
 
-## Workspace Output Contract
+## Local Docs Output Contract
 
-- Preflight: `*workspace-preflight` + `*workspace-context {slug}`
-- Output canônico (template-first): `workspace/businesses/{slug}/analytics/health-score-report.yaml`
+- Preflight: `*project-preflight` + `*project context {slug}`
+- Output canônico (template-first): `docs/analytics/health-score-report.yaml`
 - Output custom (ad-hoc): `docs/data/{slug}/health-score-design-{date}.md`
-- Regra: escrita canônica só se existir template em `workspace/_templates/analytics/health-score-report.yaml`
+- Regra: escrita canônica só se existir template em `docs/templates/analytics/health-score-report.yaml`
 
 ## When to Use
 

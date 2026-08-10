@@ -11,7 +11,7 @@ type: atom
 description: "LLM specs, benchmarks, pricing comparison"
 ```
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

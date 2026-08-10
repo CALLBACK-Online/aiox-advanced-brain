@@ -55,15 +55,15 @@ workflow:
         --business={business}
         --checklist squads/design-ops/checklists/dops-ai-trope-guardrails.yaml
       blocking: true
-      next: step-4-workspace-contracts
+      next: step-4-project context contracts
 
-    - step: step-4-workspace-contracts
-      id: step-4-workspace-contracts
+    - step: step-4-project context contracts
+      id: step-4-project context contracts
       phase: 4
-      phase_name: Validar contratos do workspace
+      phase_name: Validar contratos de docs/project
       agent: design-chief
       action: >-
-        node squads/design-ops/scripts/validate-workspace-contracts.cjs
+        node squads/design-ops/scripts/validate-project context contracts.cjs
         --business={business} --format=json --strict
       blocking: true
       next: step-5-build
@@ -155,8 +155,8 @@ quality_gates:
     phase: step-3-ai-trope-gate
     blocking: true
   - id: DOPS-ENRICH-GATE-004
-    check: validate-workspace-contracts
-    phase: step-4-workspace-contracts
+    check: validate-project context contracts
+    phase: step-4-project context contracts
     blocking: true
   - id: DOPS-ENRICH-GATE-005
     check: checklists

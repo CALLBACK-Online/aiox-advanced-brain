@@ -2,13 +2,7 @@ id: dops-ds-core-catalog
 version: "1.0.0"
 status: active
 owner: design-ops
-source_of_truth: workspace
-
-workspace_contracts:
-  tokens: workspace/businesses/{business}/L2-tactical/design/tokens.yaml
-  foundations: workspace/businesses/{business}/L2-tactical/design/foundations.yaml
-  component_contracts: workspace/businesses/{business}/L2-tactical/design/component-contracts.yaml
-  motion_primitives: workspace/businesses/{business}/L2-tactical/design/motion-primitives.yaml
+source_of_truth: docs
 
 required_components:
   - id: button
@@ -31,6 +25,6 @@ required_components:
       aria_contract: required
 
 consumer_policy:
-  design-pages: must_consume_workspace_component_contracts
-  design-app: must_consume_workspace_component_contracts
+  design-pages: must_consume_project_component_contracts
+  design-app: must_consume_project_component_contracts
 

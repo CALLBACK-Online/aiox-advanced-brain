@@ -1,0 +1,442 @@
+version: 1
+schema_version: image-rendering-style.v1
+source_attribution:
+  origin: ppt-master
+  origin_repo: https://github.com/hugohe3/ppt-master
+  origin_commit_sha: "3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af"
+  license: MIT
+  absorbed_at: "2026-05-19"
+  scope: taxonomy-only (no SVG/code copy)
+  attribution_doc: skills/slide-creator/ATTRIBUTION.md
+
+styles:
+  - id: 3d-isometric
+    label: "3D Isometric"
+    description: "Isometric 3D forms with controlled depth — boxes, layers, devices, stacks rendered in 30°/30°/30° projection. The dominant choice for tech architecture, product structure, and system composition visuals."
+    use_cases:
+      - tech_architecture
+      - product_structure
+      - system_composition
+      - saas_product_diagrams
+      - cloud_architecture
+    keywords: [isometric, 3d, modular, tech, stackable, cloud, architecture, blocks]
+    visual_characteristics:
+      line_quality: "Thin uniform edges, or no edges relying on color contrast"
+      texture: "None on surfaces — flat fills"
+      depth: "True isometric projection (30°/30°/30°), tonal shading on shadowed faces, optional 8% drop shadow under floating elements"
+      material: "Flat with tonal shading — not glossy, not photorealistic"
+      mood: "Technical, modular, contemporary"
+    ai_prompt_hints:
+      - "30°/30°/30° true isometric projection"
+      - "Flat solid fills with 15% darker shadowed-face tonal shift"
+      - "Soft 8% drop shadow under floating elements"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/3d-isometric.md"
+
+  - id: blueprint
+    label: "Blueprint"
+    description: "Technical schematic aesthetic — clean lines on a grid, monospace cues, restrained color. Conveys engineering precision and analytical depth. Used for architecture diagrams, AI systems, engineering decks, technical deep-dives."
+    use_cases:
+      - architecture_diagrams
+      - ai_system_design
+      - engineering_decks
+      - technical_deep_dives
+    keywords: [schematic, grid, engineering, precision, monochrome, analytical]
+    visual_characteristics:
+      line_quality: "Crisp uniform stroke, often 1-1.5px feel; perfectly straight or precisely curved"
+      texture: "None; optional very-low-opacity grid background"
+      depth: "Flat — schematic, not perspectival"
+      material: "None — abstract schematic"
+      mood: "Analytical, engineering-precise, restrained"
+    ai_prompt_hints:
+      - "Crisp 1.5px uniform stroke schematic lines"
+      - "Subtle grid pattern at 5-8% opacity reinforces blueprint feel"
+      - "Right-angle routing with small dot anchors at junctions"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/blueprint.md"
+
+  - id: chalkboard
+    label: "Chalkboard"
+    description: "Chalk on a dark green or black board — classroom aesthetic. Used in teaching-focused decks, tutorials, school / academic content, retro educational atmosphere."
+    use_cases:
+      - teaching_focused_decks
+      - tutorials
+      - school_academic_content
+      - retro_educational
+    keywords: [classroom, chalk, slate, instructional, nostalgic, pedagogy]
+    visual_characteristics:
+      line_quality: "Soft chalk strokes with slightly diffused edges, dry-medium look"
+      texture: "Visible chalk-dust grain at 15-25% opacity across the board"
+      depth: "Flat"
+      material: "Slate board (dark green or near-black) + chalk"
+      mood: "Nostalgic, instructional, classroom-warm"
+    ai_prompt_hints:
+      - "Dark slate green #1F3A2E or near-black #1A1A1A background"
+      - "White chalk dominates with sparing pastel accents (yellow, soft pink, light cyan)"
+      - "Chalk-dust grain at 15-25% opacity"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/chalkboard.md"
+
+  - id: corporate-photo
+    label: "Corporate Photo"
+    description: "Editorial photography style — real subjects, natural composition, professional grading. The only rendering where photorealism is intentional. Used for team photos, lifestyle shots, product photography, real-world scenarios."
+    use_cases:
+      - team_photos
+      - lifestyle_shots
+      - product_photography
+      - real_world_scenarios
+    keywords: [photography, editorial, photorealism, depth_of_field, magazine_quality]
+    visual_characteristics:
+      line_quality: "N/A — photographic"
+      texture: "Natural — skin, fabric, environment textures preserved"
+      depth: "True depth-of-field — subject sharp, background subtly blurred"
+      material: "Real-world physical materials, professionally lit"
+      mood: "Authentic, premium, magazine-editorial"
+    overrides_global_rules:
+      - "OVERRIDES image-generator.md §5.2 (simplified silhouettes / no realistic faces) for this rendering only"
+    ai_prompt_hints:
+      - "Rule of thirds, leading lines, deliberate foreground/background separation"
+      - "Natural or studio-soft lighting, never harsh"
+      - "Color grading matches deck palette temperament"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/corporate-photo.md"
+
+  - id: digital-dashboard
+    label: "Digital Dashboard"
+    description: "Polished UI / data-visualization aesthetic. The image looks like a screenshot of a product or analytics dashboard — clean cards, soft shadows, restrained type, chart-like visual elements. Used in SaaS demos, data product showcases, B2B analytics decks."
+    use_cases:
+      - saas_demos
+      - data_product_showcases
+      - b2b_analytics_decks
+    keywords: [ui, dashboard, cards, kpi, charts, saas, analytics, product_screenshot]
+    visual_characteristics:
+      line_quality: "No outlines on cards; chart elements use thin uniform strokes (1-1.5px feel)"
+      texture: "None — clean digital surfaces"
+      depth: "Uniform 8% soft drop shadows under cards; no inset/raised effects"
+      material: "Flat with deliberate elevation hierarchy via shadows"
+      mood: "Polished, restrained, product-fluent"
+    ai_prompt_hints:
+      - "Rounded corners 8-12px radius on cards"
+      - "Uniform 8% opacity soft drop shadows with slight Y-offset"
+      - "Chart elements stylized — recognizable without specific data values"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/digital-dashboard.md"
+
+  - id: editorial
+    label: "Editorial"
+    description: "Magazine-style infographic look — sophisticated layout, refined type-as-shape elements, restrained color, editorial pacing. The default choice for finance, journalism, explainers, opinion pieces, sophisticated B2B content."
+    use_cases:
+      - finance
+      - journalism
+      - explainers
+      - opinion_pieces
+      - sophisticated_b2b
+    keywords: [magazine, editorial, sophisticated, restrained, premium, intelligent]
+    visual_characteristics:
+      line_quality: "Refined — thin precise rules as dividers; clean filled shapes"
+      texture: "Minimal — optional very subtle paper grain at 5-10% opacity"
+      depth: "Flat with intentional layering; no shadows"
+      material: "None — abstract editorial composition"
+      mood: "Refined, intelligent, premium-restrained"
+    ai_prompt_hints:
+      - "One dominant focal area, deliberate alignment to invisible columns"
+      - "Restrained palette — one rich brand tone, one neutral, one subtle accent"
+      - "Duotone or limited-color treatment reinforces magazine feel"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/editorial.md"
+
+  - id: fantasy-animation
+    label: "Fantasy Animation"
+    description: "Ghibli/Disney-inspired hand-drawn animation warmth. Soft painterly forms, gentle lighting, expressive but simplified characters, dreamy atmosphere. Used for children's content, storybook brand narratives, healing/comforting themes, fairy-tale or whimsical decks."
+    use_cases:
+      - childrens_content
+      - storybook_brand_narratives
+      - healing_themes
+      - fairy_tale_whimsical
+    keywords: [ghibli, disney, hand_drawn, dreamy, magical, storybook, comforting, atmospheric]
+    visual_characteristics:
+      line_quality: "Soft hand-drawn outlines or no outlines, with painterly fills inside"
+      texture: "Subtle painterly brush quality + atmospheric softness"
+      depth: "Strong atmospheric perspective — distant elements paler and softer"
+      material: "Hand-painted animation cel"
+      mood: "Dreamy, magical, comforting, storybook"
+    ai_prompt_hints:
+      - "Warm slightly desaturated palette — pastel skies, soft greens, warm earth tones"
+      - "Dreamy lighting — soft window light, golden-hour glow, gentle morning haze"
+      - "Stylized friendly cartoon characters — large expressive eyes, simplified anatomy"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/fantasy-animation.md"
+
+  - id: flat
+    label: "Flat"
+    description: "Modern flat design with bolder geometric blocks than vector-illustration. More design-forward, slightly more decorative confidence. Used when a deck wants to feel brand-aware rather than purely utilitarian."
+    use_cases:
+      - product_launch_decks
+      - marketing_decks
+      - brand_aware_decks
+    keywords: [flat, geometric, brand_aware, designed, intentional, color_blocks]
+    visual_characteristics:
+      line_quality: "Often no outlines; when used, thin uniform stroke as accent only"
+      texture: "None — flat color blocks"
+      depth: "Through layered overlap and color contrast, not shadow"
+      material: "Flat — color is brand identity, not material"
+      mood: "Designed, intentional, slightly more expressive than vector-illustration"
+    ai_prompt_hints:
+      - "Bold geometric blocks — circles, rectangles, triangles, rounded squares"
+      - "Confident solid color blocks with deliberate juxtaposition"
+      - "Subtle layered overlap creates flat depth without shadows"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/flat.md"
+
+  - id: glassmorphism
+    label: "Glassmorphism"
+    description: "Frosted-glass / soft-UI aesthetic — translucent layered panels, blurred background, soft shadows, depth via transparency. The modern app UI rendering — used for modern SaaS, fintech, health-tech, premium app showcases, product launches."
+    use_cases:
+      - modern_saas
+      - fintech
+      - health_tech
+      - premium_app_showcases
+      - product_launches
+    keywords: [glass, frosted, translucent, fintech, premium, polished, futuristic, apple_style]
+    visual_characteristics:
+      line_quality: "Thin 1px highlight strokes on panel top/left edges (glass refraction cue)"
+      texture: "Frosted blur on panels (gaussian blur ~10-15px over background)"
+      depth: "Real layered depth — large soft drop shadows, parallax-suggesting offsets"
+      material: "Translucent polished glass on soft gradient background"
+      mood: "Premium, polished, futuristic-friendly, optimistic"
+    ai_prompt_hints:
+      - "Layered semi-transparent panels (~40-60% opacity) with frosted glass blur"
+      - "Soft pastel-cool background gradient blurs through panels"
+      - "Large soft drop shadows under panels (15-25% opacity, generous spread)"
+      - "Mid-light tones recommended — heavy saturation feels off"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/glassmorphism.md"
+
+  - id: ink-notes
+    label: "Ink Notes"
+    description: "Pure white paper, black ink, sparse semantic color accents — the Mike Rohde sketchnote tradition. Sharper, more professional, more manifesto than sketch-notes. Used for methodology, Before-After essays, mindset-shift narratives, technical manifestos, professional visual-note style."
+    use_cases:
+      - methodology_decks
+      - before_after_essays
+      - mindset_shift_narratives
+      - technical_manifestos
+      - professional_visual_notes
+    keywords: [sketchnote, mike_rohde, ink, manifesto, professional, sparse_color]
+    visual_characteristics:
+      line_quality: "Black ink with slight wobble; confident medium weight"
+      texture: "Pure white background; no paper grain"
+      depth: "Flat"
+      material: "Pen-on-paper"
+      mood: "Professional, considered, manifesto"
+    ai_prompt_hints:
+      - "Pure white #FFFFFF background, black ink dominates ~85% of visible content"
+      - "1-2 semantic accent colors (coral red risk, muted teal positive, dusty lavender neutral)"
+      - "Accent colors cover less than 10% of canvas combined"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/ink-notes.md"
+
+  - id: minimalist-swiss
+    label: "Minimalist Swiss"
+    description: "Swiss-grid / Bauhaus-adjacent visual discipline. Grid-locked geometry, generous negative space, sans-serif typographic character, no decoration. The most restrained rendering — used for high-end consulting, architecture, design firms, luxury brands, type foundries."
+    use_cases:
+      - high_end_consulting
+      - architecture_firms
+      - design_firms
+      - luxury_brands
+      - type_foundries
+    keywords: [swiss, bauhaus, grid, helvetica, vignelli, muller_brockmann, austere, academic]
+    visual_characteristics:
+      line_quality: "Single uniform stroke weight; mathematically straight or perfectly circular"
+      texture: "None — flat fills only"
+      depth: "None — strictly 2D; no shadows, no perspective"
+      material: "None — color is conceptual zone"
+      mood: "Rigorous, considered, austere, academic"
+    ai_prompt_hints:
+      - "Composition built on visible or implied modular grid"
+      - "Single accent appears at one rule-of-thirds intersection only"
+      - "No gradients, no shadows, no texture, no decoration"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/minimalist-swiss.md"
+
+  - id: nature
+    label: "Nature"
+    description: "Organic earthy illustration with botanical and natural motifs. Soft curves, organic shapes, earth-toned palette by default. Used for environmental / sustainability / wellness / outdoor / food / agriculture decks."
+    use_cases:
+      - environmental_sustainability
+      - wellness
+      - outdoor
+      - food
+      - agriculture
+    keywords: [organic, botanical, earth_tones, sustainable, grounded, contemplative]
+    visual_characteristics:
+      line_quality: "Minimal — forms defined by color, occasional thin organic line as accent"
+      texture: "Subtle organic textures (leaf veins, wood grain) sparingly"
+      depth: "Soft layering of natural elements, atmospheric perspective"
+      material: "Earth-toned illustration"
+      mood: "Grounded, contemplative, sustainable"
+    ai_prompt_hints:
+      - "Softly curved asymmetric forms — leaves, branches, organic curves"
+      - "Earth-toned palette — forest greens, warm earth browns, terracotta, soft cream"
+      - "Natural balance composition — never grid-aligned"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/nature.md"
+
+  - id: paper-cut
+    label: "Paper Cut"
+    description: "Layered paper-craft aesthetic — crisp scissor-cut edges, subtle paper shadows where layers overlap, hand-cut character. Used for education, children's content, cultural/folk topics, sustainability/environment, gift/festival contexts, storytelling decks."
+    use_cases:
+      - education
+      - childrens_content
+      - cultural_folk_topics
+      - sustainability_environment
+      - gift_festival
+      - storytelling_decks
+    keywords: [paper_craft, eric_carle, layered, scissor_cut, folk, tactile, handmade]
+    visual_characteristics:
+      line_quality: "No outlines — shapes are defined by paper edges (slightly irregular cuts)"
+      texture: "Paper grain at 10-15% opacity over each color sheet"
+      depth: "Real layered depth via soft 8-12% drop shadow under each cut-paper layer"
+      material: "Construction paper / cardstock — matte, slightly fibrous"
+      mood: "Warm, tactile, approachable, hand-made"
+    ai_prompt_hints:
+      - "Layered colored construction paper stacked with crisp scissor-cut edges"
+      - "Each layer casts soft 8-12% drop shadow onto layer beneath"
+      - "Slightly irregular hand-aware cuts — not mathematically perfect"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/paper-cut.md"
+
+  - id: pixel-art
+    label: "Pixel Art"
+    description: "8-bit / 16-bit retro game aesthetic. Sharp pixel grid, limited palette, no anti-aliasing. Used for gaming decks, retro tech decks, nostalgic content, and game-flavored education/entertainment."
+    use_cases:
+      - gaming_decks
+      - retro_tech_decks
+      - nostalgic_content
+      - game_flavored_education
+    keywords: [pixel, 8bit, 16bit, nes, snes, arcade, retro_game, nostalgic, playful]
+    visual_characteristics:
+      line_quality: "Pixel-stepped — outlines built from individual pixels, no smooth lines"
+      texture: "None beyond the pixel grid itself"
+      depth: "Achieved through palette layering (lighter top pixels, darker bottom for shading)"
+      material: "Pixel grid"
+      mood: "Nostalgic, retro-game, playful"
+    ai_prompt_hints:
+      - "Strict pixel-grid alignment, no anti-aliasing"
+      - "Limited retro palette — typically 16-32 distinct colors total"
+      - "Optional 1-pixel outlines in darker shades of fill color"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/pixel-art.md"
+
+  - id: screen-print
+    label: "Screen Print"
+    description: "Bold silkscreen poster art — flat color blocks, halftone textures, limited colors, bold silhouettes. Used for cultural / media / opinion / cinematic decks where a poster aesthetic carries the page."
+    use_cases:
+      - cultural_decks
+      - media_opinion_decks
+      - cinematic_decks
+    keywords: [silkscreen, poster, halftone, silhouette, cinematic, vintage, editorial_bold]
+    visual_characteristics:
+      line_quality: "Stencil-cut edges, slight roughness; no outlines on solid color blocks"
+      texture: "Halftone dot patterns in transition zones; paper grain at 15% across canvas"
+      depth: "Flat with figure-ground inversion — negative space tells secondary story"
+      material: "Silkscreen + paper"
+      mood: "Vintage poster, cinematic, editorial-bold"
+    ai_prompt_hints:
+      - "2-5 flat colors maximum, no gradients within shapes"
+      - "Halftone dot patterns with varying dot density in transitions"
+      - "Slight 1-2 pixel color layer misregistration for authentic silkscreen feel"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/screen-print.md"
+
+  - id: sketch-notes
+    label: "Sketch Notes"
+    description: "Warm cream paper with black hand-drawn lines and soft pastel color blocks. The most approachable rendering — used in education, training, onboarding, science communication, knowledge content where warmth and friendliness matter more than corporate precision."
+    use_cases:
+      - education
+      - training
+      - onboarding
+      - science_communication
+      - knowledge_content
+    keywords: [sketchnote, cream_paper, pastel, warm, instructional, friendly, hand_drawn]
+    visual_characteristics:
+      line_quality: "Hand-drawn black ink with slight wobble; uniform medium weight"
+      texture: "Subtle paper grain at 8-12% opacity over cream background"
+      depth: "Flat — sketchnote is intentionally 2D"
+      material: "Paper + ink + pastel block (hand-painted overshoot)"
+      mood: "Warm, instructional, friendly"
+    ai_prompt_hints:
+      - "Cream paper background close to #F5F0E8 — part of the rendering"
+      - "Soft pastel color blocks (light blue, mint, lavender, peach) with hand-painted overshoot"
+      - "Generous white space, small doodle decorations (stars, sparkles, dots)"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/sketch-notes.md"
+
+  - id: vector-illustration
+    label: "Vector Illustration"
+    description: "The default safe rendering for general PPT decks. Clean flat vector art with bold shapes, deliberate geometry, and confident negative space. Scales reliably across 15+ slide decks without visual fatigue."
+    use_cases:
+      - general_ppt_decks
+      - product_saas_contexts
+      - design_system_aesthetic
+    keywords: [default, safe, vector, flat, design_system, professional, scalable]
+    visual_characteristics:
+      line_quality: "Clean vector outlines, uniform stroke weight, sharp corners or consistent rounded radius"
+      texture: "None — flat fills only. No noise, no paper grain, no painterly artifacts"
+      depth: "Optional 8% soft drop shadow under elevated elements; no perspective rendering"
+      material: "None — color is information, not material simulation"
+      mood: "Neutral-positive, professional, designed"
+    ai_prompt_hints:
+      - "Crisp 1.5-2px equivalent stroke weight consistent across all elements"
+      - "Flat blocks of color — no gradients within shapes"
+      - "Grid-aware composition with deliberate negative space"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/vector-illustration.md"
+
+  - id: vintage-poster
+    label: "Vintage Poster"
+    description: "Mid-century modern (1950s–1970s) poster aesthetic. Limited color palette, halftone or paper texture, retro geometric character, hand-drawn warmth without looseness. Used for cultural decks, brand storytelling, hospitality, retro tech narratives, anniversaries, heritage brands."
+    use_cases:
+      - cultural_decks
+      - brand_storytelling
+      - hospitality
+      - retro_tech_narratives
+      - anniversaries
+      - heritage_brands
+    keywords: [mid_century, knoll, olivetti, pan_am, saul_bass, halftone, retro, heritage]
+    visual_characteristics:
+      line_quality: "Confident thick lines with slight hand-aware character; rounded corners"
+      texture: "Halftone dot pattern OR subtle paper grain at 10-15% opacity over fills"
+      depth: "Flat — depth implied via overlapping shapes, never via shadow"
+      material: "Printed-paper aesthetic — slight ink misregistration adds authenticity"
+      mood: "Warm, confident, nostalgic, optimistic-retro"
+    ai_prompt_hints:
+      - "Limited 3-5 flat color blocks with subtle halftone or screen-print texture"
+      - "Bold geometric shapes with rounded organic edges, slightly off-axis for retro tension"
+      - "Stylized reduced imagery — stylized sun, angular mountain, iconic silhouette"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/vintage-poster.md"
+
+  - id: warm-scene
+    label: "Warm Scene"
+    description: "Golden-hour cinematic warmth — illustrated scenes with intentional warm lighting, soft shadows, atmospheric mood. Sits between watercolor (more painterly) and corporate-photo (more realistic). Used for personal growth stories, origin stories, brand narratives, lifestyle decks."
+    use_cases:
+      - personal_growth_stories
+      - origin_stories
+      - brand_narratives
+      - lifestyle_decks
+    keywords: [golden_hour, cinematic, atmospheric, narrative, warm, contemplative]
+    visual_characteristics:
+      line_quality: "Soft — forms defined by light and shadow, no hard outlines"
+      texture: "Subtle painterly brush quality, optional very light film grain"
+      depth: "Strong — foreground/middleground/background separation via atmospheric perspective"
+      material: "Illustrated with golden-hour lighting"
+      mood: "Cinematic, contemplative, warm"
+    ai_prompt_hints:
+      - "Clear primary warm light source (warm low sun, lamplight, window light)"
+      - "Long soft shadows, ambers/terracottas/cream highlights with deep warm shadows"
+      - "Subtle bloom or halo effect around light source"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/warm-scene.md"
+
+  - id: watercolor
+    label: "Watercolor"
+    description: "Painterly soft edges, color bleeding, organic flow. The most artistic rendering — used for lifestyle, travel, brand story, personal narrative, creative content where mood matters more than data clarity."
+    use_cases:
+      - lifestyle
+      - travel
+      - brand_story
+      - personal_narrative
+      - creative_content
+    keywords: [painterly, wash, wet_on_wet, organic, artistic, calm, contemplative]
+    visual_characteristics:
+      line_quality: "Minimal — forms defined by color washes, not outlines"
+      texture: "Paper grain at 12-18% visible, characteristic wash bleeding at edges"
+      depth: "Achieved through color saturation gradient — saturated foreground, paler background"
+      material: "Watercolor + cold-press paper"
+      mood: "Calm, contemplative, artistic"
+    ai_prompt_hints:
+      - "Color pools and bleeds at edges with wet-on-wet transition zones"
+      - "Negative space (untouched paper) is part of the artwork"
+      - "Optional very subtle pencil lines suggest underlying structure"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-renderings/watercolor.md"

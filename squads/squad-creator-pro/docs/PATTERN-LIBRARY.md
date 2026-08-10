@@ -328,7 +328,7 @@ Patterns migrated from HybridOps to Squad-Creator:
 
 ---
 
-## SINKRA Compliance Artifacts (2026-03-27)
+## AIOX Compliance Artifacts (2026-03-27)
 
 - `data/token-registry.yaml` — Token layer: 23 tokens do contrato com producer/consumer explícito
 - `data/quality-gate-coverage.yaml` — Mapeamento formal dos 8 gates SCP contra gates operacionais do pack

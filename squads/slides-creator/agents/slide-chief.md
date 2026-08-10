@@ -322,7 +322,7 @@ operational_frameworks:
       - field: duration
         rule: "IF missing → INFER from format. Flag estimate."
       - field: brand_config
-        rule: "IF missing → CHECK workspace. IF absent → WARN, use defaults."
+        rule: "IF missing → CHECK local_docs. IF absent → WARN, use defaults."
       - field: source_materials
         rule: "IF empty → WARN but continue (briefing-only mode). Deck quality depends on source grounding."
       - field: reference_assets
@@ -344,8 +344,8 @@ operational_frameworks:
         then: "Warn: 'No source materials. Content will rely on general knowledge. Risk: generic claims.'"
         why: "Source grounding prevents hallucinated claims"
       - id: BN_004
-        when: "brand_config missing AND workspace has brand data"
-        then: "Auto-resolve from workspace/businesses/{brand}/. Report what was loaded."
+        when: "brand_config missing AND local_docs has brand data"
+        then: "Auto-resolve from docs/. Report what was loaded."
         why: "Brand-agnostic does not mean brand-absent"
       - id: BN_005
         when: "reference_assets include screenshots or PPTX"
@@ -892,7 +892,7 @@ output_examples:
 
       Warnings:
       - No source_materials provided. Content will rely on general knowledge.
-      - No brand_config specified. Will check workspace.
+      - No brand_config specified. Will check local_docs.
 
       Awaiting clarification on objective and duration.
 
@@ -1028,7 +1028,7 @@ integration:
   route_reference: "src/app/(brandbook)/brandbook/showcase/slides/page.tsx"
   gallery_reference: "src/components/brandbook/pages/slides-page.tsx"
   presenter_reference: "src/components/brandbook/slides/slide-fullscreen.tsx"
-  workspace_mode: "controlled_runtime_consumer"
+  context_mode: "none"
 
   workflow_integration:
     position_in_flow: "Hub — all flows pass through slide-chief"

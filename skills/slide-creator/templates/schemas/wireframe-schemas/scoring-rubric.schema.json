@@ -1,0 +1,66 @@
+{
+  "$id": "aiox://slide-creator/wireframes/scoring-rubric.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "Multiple players are compared across multiple dimensions.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "band_1": {
+      "type": "string"
+    },
+    "band_2": {
+      "type": "string"
+    },
+    "band_3": {
+      "type": "string"
+    },
+    "band_4": {
+      "type": "string"
+    },
+    "band_5": {
+      "type": "string"
+    },
+    "rule_1": {
+      "type": "string"
+    },
+    "rule_2": {
+      "type": "string"
+    },
+    "rule_3": {
+      "type": "string"
+    },
+    "rule_4": {
+      "type": "string"
+    },
+    "rule_5": {
+      "type": "string"
+    },
+    "score_formula": {
+      "type": "string"
+    }
+  },
+  "title": "scoring-rubric",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "comparison_matrix",
+    "slot_count": 12,
+    "warnings": [
+      "action_title",
+      "band_1",
+      "rule_1",
+      "band_2",
+      "rule_2",
+      "band_3",
+      "rule_3",
+      "band_4",
+      "rule_4",
+      "band_5",
+      "rule_5",
+      "score_formula"
+    ],
+    "wireframe_ref": "templates/wireframes/scoring-rubric.html"
+  }
+}

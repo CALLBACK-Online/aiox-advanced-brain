@@ -2,7 +2,7 @@
 
 ## Overview
 
-O squad `code-anatomist` (renomeado de `domain-decoder` por RT-DD-V2-001) executa engenharia reversa completa de software: extrai arquitetura (C4/Arc42), domínio (DDD/SBVR), dados (ER/schema), APIs (OpenAPI), dependências e infraestrutura de qualquer codebase, via pipeline de 9 fases com mapeamento para SINKRA Tokens.
+O squad `code-anatomist` (renomeado de `domain-decoder` por RT-DD-V2-001) executa engenharia reversa completa de software: extrai arquitetura (C4/Arc42), domínio (DDD/SBVR), dados (ER/schema), APIs (OpenAPI), dependências e infraestrutura de qualquer codebase, via pipeline de 9 fases com mapeamento para AIOX Tokens.
 
 ## Agent Hierarchy
 
@@ -63,22 +63,15 @@ Phase 8: Conformance      → Reflexion Model, drift detection
 | `*characterize-legacy` | Michael Feathers characterization tests |
 | `*standardize` | Normalização de regras pré-existentes |
 
-## Workspace Integration
-
-- **Level:** `read_only`
-- **Read paths:** `outputs/decoded/{business}/` (baseline canônico)
-- **Operations:** compare, audit, adopt (RT-ARCH-BRIDGE-001)
-- **Self-extraction TTL:** 90 dias (re-extração obrigatória pós-Epic major)
-
 ## Integration Points
 
 | Target | Output |
 |--------|--------|
-| SINKRA Tokens | Regras mapeadas para token-registry |
+| AIOX Tokens | Regras mapeadas para token-registry |
 | Document Registry | Lifecycle PLACEHOLDER → APPROVED |
 | ADRs | Decisões arquiteturais documentadas |
 
 ## Boundary
 
-- **In scope:** Reverse engineering de codebases brownfield, extração de arquitetura/domínio/regras/dados/APIs, conformance checking, mapeamento para SINKRA
+- **In scope:** Reverse engineering de codebases brownfield, extração de arquitetura/domínio/regras/dados/APIs, conformance checking, mapeamento para AIOX
 - **Out of scope:** Refactoring direto (@dev), novas features (@architect), escolha de novo stack (@architect)

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Quick validation script for skills — AllFluence extended version.
-Based on SynkraAI/sinkra-hub quick_validate.py, extended with AllFluence fields.
+Based on SynkraAI/upstream monorepo quick_validate.py, extended with AllFluence fields.
 """
 
 import sys
@@ -10,7 +10,7 @@ from pathlib import Path
 
 # AllFluence required frontmatter fields
 REQUIRED_FIELDS = ['name', 'description']
-# CC-native fields only — SINKRA fields (owner_squad, sinkra_tier) belong in tasks, not skills
+# CC-native fields only — AIOX fields (owner_squad, aiox_tier) belong in tasks, not skills
 CC_NATIVE_FIELDS = ['version', 'user-invocable']
 VALID_CONTEXTS = ['inline', 'fork', 'conversation']
 
@@ -94,7 +94,7 @@ def validate_skill(skill_path, strict=True):
                 warnings.append(f"version '{ver}' is not valid semver (X.Y.Z)")
 
     # Structure checks based on tier
-    tier_match = re.search(r'sinkra_tier:\s*(.+)', frontmatter)
+    tier_match = re.search(r'aiox_tier:\s*(.+)', frontmatter)
     if tier_match:
         tier = tier_match.group(1).strip().strip('"').strip("'")
         if tier == 'Tier2' and not (skill_path / 'config.yaml').exists():

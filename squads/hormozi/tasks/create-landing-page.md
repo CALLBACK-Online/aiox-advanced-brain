@@ -11,7 +11,7 @@ source: "Landing Page SOP — Lead Capture Optimization"
 sop_reference: squads/hormozi/sops/landing-page-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

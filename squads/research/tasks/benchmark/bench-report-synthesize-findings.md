@@ -1,6 +1,6 @@
 # Task: Bench Report — Synthesize Findings
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

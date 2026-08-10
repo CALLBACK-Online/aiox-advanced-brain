@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: wave-execute
 lesson_position: 61
 title: 'Wave Execute: orquestração avançada com waves paralelas'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/61-wave-execute/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -144,7 +144,7 @@ Agora sobe o nível: **épico inteiro com ondas**.
 
 Entrada ready → partição → execução → barreira → próxima onda.
 
-No AIOX/Sinkra, **wave-execute** é o pipeline que pega um épico e uma wave,
+No AIOX, **wave-execute** é o pipeline que pega um épico e uma wave,
 monta o plano e dispara **um full-cycle por story** (validate → develop →
 review → … → close) em isolamento, depois reintegra.
 

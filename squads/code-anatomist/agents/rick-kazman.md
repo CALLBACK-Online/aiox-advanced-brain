@@ -274,7 +274,7 @@ output_examples:
       - apps/api/ — FastAPI (Python), 12 routers, 8 services
       - apps/web/ — React 19 SPA, 45 components, 12 hooks
       - packages/db/ — Supabase migrations (23 files), edge functions (4)
-      - Build: npm workspaces, shared packages via @allfluence/*
+      - Build: npm projects, shared packages via @allfluence/*
 
       Level 2 (Structure):
       - Dependency graph: apps/web → packages/ui → packages/ds

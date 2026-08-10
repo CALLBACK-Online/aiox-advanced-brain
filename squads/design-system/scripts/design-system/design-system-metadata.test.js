@@ -8,7 +8,7 @@ describe('design system metadata pipeline', () => {
     });
 
     expect(result.status).toBe(0);
-    expect(existsSync('workspace/domains/design-system/metadata/components.json')).toBe(true);
+    expect(existsSync('docs/design-system/domains/metadata/components.json')).toBe(true);
   });
 
   test('validates metadata/components.json', () => {

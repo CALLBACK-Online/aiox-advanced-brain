@@ -1,6 +1,6 @@
 # Task: Codebase Reconnaissance
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

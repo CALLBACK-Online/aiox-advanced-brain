@@ -1,0 +1,90 @@
+{
+  "$id": "aiox://slide-creator/wireframes/workshop-canvas.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "The audience must learn a repeatable method.",
+  "properties": {
+    "canvas_goal": {
+      "type": "string"
+    },
+    "field_1_hint": {
+      "type": "string"
+    },
+    "field_1_label": {
+      "type": "string"
+    },
+    "field_1_prompt": {
+      "type": "string"
+    },
+    "field_2_hint": {
+      "type": "string"
+    },
+    "field_2_label": {
+      "type": "string"
+    },
+    "field_2_prompt": {
+      "type": "string"
+    },
+    "field_3_hint": {
+      "type": "string"
+    },
+    "field_3_label": {
+      "type": "string"
+    },
+    "field_3_prompt": {
+      "type": "string"
+    },
+    "field_4_hint": {
+      "type": "string"
+    },
+    "field_4_label": {
+      "type": "string"
+    },
+    "field_4_prompt": {
+      "type": "string"
+    },
+    "field_5_hint": {
+      "type": "string"
+    },
+    "field_5_label": {
+      "type": "string"
+    },
+    "field_5_prompt": {
+      "type": "string"
+    },
+    "output_artifact": {
+      "type": "string"
+    },
+    "timebox": {
+      "type": "string"
+    }
+  },
+  "title": "workshop-canvas",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "teaching_framework",
+    "slot_count": 18,
+    "warnings": [
+      "canvas_goal",
+      "field_1_label",
+      "field_1_prompt",
+      "field_1_hint",
+      "field_2_label",
+      "field_2_prompt",
+      "field_2_hint",
+      "field_3_label",
+      "field_3_prompt",
+      "field_3_hint",
+      "field_4_label",
+      "field_4_prompt",
+      "field_4_hint",
+      "field_5_label",
+      "field_5_prompt",
+      "field_5_hint",
+      "output_artifact",
+      "timebox"
+    ],
+    "wireframe_ref": "templates/wireframes/workshop-canvas.html"
+  }
+}

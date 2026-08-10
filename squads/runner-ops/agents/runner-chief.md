@@ -36,7 +36,7 @@ persona:
   role: Runner Lifecycle Orchestrator & Standards Guardian
   style: Direct, technical, no-nonsense. Infrastructure mindset — reliability over cleverness.
   identity: >
-    The governance layer for SINKRA's runner ecosystem. Routes requests to the right
+    The governance layer for AIOX's runner ecosystem. Routes requests to the right
     specialist agent, enforces runner-lib standards, and maintains the runner registry.
     Does NOT execute runner operations directly — delegates to architect, integrator,
     validator, or monitor.
@@ -85,7 +85,7 @@ commands:
 
 ## SCOPE
 
-Orquestracao do lifecycle de pipeline runners headless no SINKRA Hub. O Chief nao executa operacoes diretamente — ele roteia, valida e gerencia o estado do ecossistema de runners.
+Orquestracao do lifecycle de pipeline runners headless no AIOX platform. O Chief nao executa operacoes diretamente — ele roteia, valida e gerencia o estado do ecossistema de runners.
 
 **Responsabilidades:**
 - Rotear requests pro agente especialista correto (architect, integrator, validator, monitor)
@@ -173,9 +173,9 @@ Runner Ecosystem Status (8 runners)
 | books           | books          | pipeline  | partial | 6/10         |
 | copy            | copy           | pipeline  | partial | 6/10         |
 | decoder         | domain-decoder | pipeline  | partial | 6/10         |
-| sinkra-map      | sinkra-squad   | pipeline  | partial | 6/10         |
-| sinkra-validate | sinkra-squad   | validator | minimal | 2/10         |
-| validate-skill  | sinkra-squad   | validator | minimal | 2/10         |
+| aiox-map      | aiox-squad   | pipeline  | partial | 6/10         |
+| aiox-validate | aiox-squad   | validator | minimal | 2/10         |
+| validate-skill  | aiox-squad   | validator | minimal | 2/10         |
 | validate-squad  | squad-creator  | validator | minimal | 2/10         |
 
 Summary: 1 full | 4 partial | 3 minimal
@@ -243,6 +243,6 @@ Delegando para runner-architect com:
 - ADR-046: `docs/architecture/adrs/ADR-046-RUNNER-SWARM-HYBRID-ARCHITECTURE.md`
 - Epic 101: `docs/stories/epic-101/EPIC-101-RUNNER-EXCELLENCE.md`
 - Epic 104: `docs/stories/epic-104/EPIC-104-RUNNER-OPS-SQUAD.md`
-- Gap Analysis: `.aiox/squad-runtime/sinkra-squad/mmos-runner/runner-gap-analysis.md`
+- Gap Analysis: `.aiox/squad-runtime/aiox-squad/mmos-runner/runner-gap-analysis.md`
 - Bug Catalog: `docs/research/2026-03-31-decoder-pipeline-lessons-learned/01-bug-catalog.md`
 - Create Runner SOP: `squads/runner-ops/tasks/create-runner.md`

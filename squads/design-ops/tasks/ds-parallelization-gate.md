@@ -12,13 +12,13 @@ Gate obrigatório antes de distribuir trabalho em paralelo. Analisa dependência
 
 **Princípio:** Paralelizar sem análise = merge conflicts + retrabalho.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_parallelization_gate_artifact

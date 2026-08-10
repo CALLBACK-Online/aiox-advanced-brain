@@ -140,7 +140,7 @@ O processo e autonomo (sem human in the loop)?
 
 ### Gateway Runner Architecture
 
-Gateway runners are a distinct type that bridges external messaging channels (Telegram, WhatsApp, webhooks) with SINKRA's LLM runtime. Unlike pipeline runners (sequential phases) or validator runners (artifact checking), gateways accept inbound messages, process them via LLM, and respond on the originating channel.
+Gateway runners are a distinct type that bridges external messaging channels (Telegram, WhatsApp, webhooks) with AIOX's LLM runtime. Unlike pipeline runners (sequential phases) or validator runners (artifact checking), gateways accept inbound messages, process them via LLM, and respond on the originating channel.
 
 **Decision Tree: Gateway vs Pipeline vs Validator**
 
@@ -254,7 +254,7 @@ module_proposal:
     - "output_truncate()"      # Trunca respeitando estrutura JSON/YAML
     - "output_split()"         # Divide output grande em chunks
   flag: "RUNNER_LIB_OUTPUT_SIZER"
-  benefited_runners: [decoder, books, sinkra-map]
+  benefited_runners: [decoder, books, aiox-map]
   breaking_change: false
   backward_compatible: true
   estimated_loc: ~80

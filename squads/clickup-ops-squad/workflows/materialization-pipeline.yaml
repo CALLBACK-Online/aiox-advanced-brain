@@ -1,5 +1,5 @@
 # Materialization Pipeline Workflow
-# Fluxo completo: SINKRA composition → ClickUp structure
+# Fluxo completo: AIOX composition → ClickUp structure
 
 version: "1.0.0"
 name: materialization-pipeline
@@ -7,16 +7,16 @@ type: main
 squad: clickup-ops-squad
 
 description: |
-  Pipeline sequencial para materializar processo SINKRA no ClickUp.
+  Pipeline sequencial para materializar processo AIOX no ClickUp.
   Orquestrado pelo clickup-chief.
 
 trigger:
-  - "Novo processo mapeado pelo sinkra-squad"
+  - "Novo processo mapeado pelo aiox-squad"
   - "Comando *materialize {path}"
 
 steps:
   - id: validate
-    name: "Validar Composição SINKRA"
+    name: "Validar Composição AIOX"
     agent: clickup-chief
     checklist: "checklists/pre-materialization.md"
     on_fail: BLOCK

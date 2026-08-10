@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: upgrade-squad-inventory
   task_name: Upgrade Squad - Inventory
   status: pending
@@ -26,11 +26,11 @@ sinkra_task_metadata:
   coherence_threshold: 0.95
   error_behavior: raise
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Strategic
   atomic_layer: Atom
   executor: Worker
@@ -38,7 +38,7 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Task: Upgrade Squad - Inventory
@@ -67,7 +67,7 @@ description: "Wrapper fino sobre o inventário estrutural canônico do base, com
 
 ## Purpose
 
-Executar primeiro o inventário estrutural definido em `squads/squad-creator/tasks/upgrade-squad-inventory.md`. Depois disso, enriquecer o output com sinais avançados do target: `workspace_integration`, `artifact_contracts`, `supported_modes`, `journey_log`, `model-routing`, `test-cases`, `minds/` e ativos de runtime.
+Executar primeiro o inventário estrutural definido em `squads/squad-creator/tasks/upgrade-squad-inventory.md`. Depois disso, enriquecer o output com sinais avançados do target: `local project docs`, `artifact_contracts`, `supported_modes`, `journey_log`, `model-routing`, `test-cases`, `minds/` e ativos de runtime.
 
 ## Workflow / Steps
 
@@ -78,7 +78,7 @@ Executar primeiro o inventário estrutural definido em `squads/squad-creator/tas
 
 ### Step 2: Enriquecer para o overlay pro
 
-- Detectar se o target já possui `workspace_integration`, `artifact_contracts` e `supported_modes`.
+- Detectar se o target já possui `local project docs`, `artifact_contracts` e `supported_modes`.
 - Detectar presença de `minds/`, `config/model-routing.yaml`, `test-cases/` e ativos runtime em `.aiox/`.
 - Marcar quais desses sinais são nativos, ausentes ou parciais.
 
@@ -89,7 +89,7 @@ output:
   schema:
     structural_inventory: {}
     advanced_signals:
-      workspace_contract: "missing | partial | present"
+      project context contracts: "missing | partial | present"
       artifact_contracts: "missing | partial | present"
       supported_modes: "missing | partial | present"
       journey_log: "missing | partial | present"

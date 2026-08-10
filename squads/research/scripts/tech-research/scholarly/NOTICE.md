@@ -36,7 +36,7 @@ field selection in Semantic Scholar) were adapted from:
 ## License of AIOX Adapters
 
 These adapter files (`base.py`, `arxiv.py`, `pubmed.py`, `semantic_scholar.py`,
-`router.py`, `__init__.py`) are part of Sinkra Hub and follow the repository's
+`router.py`, `__init__.py`) are part of AIOX platform and follow the repository's
 overall license. They are independently authored code that follows the public
 patterns described above; no code was copied from the original sources.
 

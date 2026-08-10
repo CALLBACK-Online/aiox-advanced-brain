@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const {
   getCanonicalStatePath,
-  toWorkspaceRelative,
+  toProjectRelative,
 } = require('./squad-runtime-paths.cjs');
 
 const WORKFLOW = 'validate-squad';
@@ -115,7 +115,7 @@ function cmdStart(flags) {
   console.log(JSON.stringify({
     success: true,
     action: 'start',
-    state_file: toWorkspaceRelative(filePath),
+    state_file: toProjectRelative(filePath),
   }));
 }
 
@@ -159,7 +159,7 @@ function cmdPhase(flags) {
   console.log(JSON.stringify({
     success: true,
     action: 'phase',
-    state_file: toWorkspaceRelative(filePath),
+    state_file: toProjectRelative(filePath),
   }));
 }
 
@@ -224,7 +224,7 @@ function cmdComplete(flags) {
   console.log(JSON.stringify({
     success: true,
     action: 'complete',
-    state_file: toWorkspaceRelative(filePath),
+    state_file: toProjectRelative(filePath),
   }));
 }
 

@@ -202,7 +202,7 @@ deck_template:
           type: list
           item_type: string
           description: "Bench repo paths if pattern absorbed"
-          example: ["/Users/alan/Code/bench/ppt-master/examples/ppt169_kimsoong_loyalty_programme/"]
+          example: ["<bench-root>/ppt-master/examples/ppt169_kimsoong_loyalty_programme/"]
         author:
           type: string
           example: "slides-creator squad — MSN-2026-SLIDES-NARRATIVE-DESIGN"

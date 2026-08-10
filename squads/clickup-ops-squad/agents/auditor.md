@@ -6,7 +6,7 @@ agent:
   id: auditor
   title: ClickUp Structure Auditor
   aliases: ["audit", "validator", "checker"]
-  whenToUse: "Validating that ClickUp structures match SINKRA tokenization"
+  whenToUse: "Validating that ClickUp structures match AIOX tokenization"
 
 squad: clickup-ops-squad
 tier: 2
@@ -53,7 +53,7 @@ commands:
     description: "Auditar uma List específica (fields, views)"
     usage: "*audit-list {list_id}"
   - name: audit-full
-    description: "Audit completo do workspace"
+    description: "Audit completo de docs/project"
     usage: "*audit-full"
   - name: diff
     description: "Diff entre tokenization e ClickUp real"

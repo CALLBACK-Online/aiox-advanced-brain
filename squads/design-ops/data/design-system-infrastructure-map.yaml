@@ -11,6 +11,6 @@ infrastructure:
   registry_sync:
     connection: "scripts/runtime-paths.cjs"
     service_catalog: "squads/design-system/data/design-system-service-catalog.yaml"
-  workspace_handoff:
+  project_handoff:
     integration: "templates/map-generated-handoff-tmpl.yaml"
-    service_ref: "workspace/businesses/"
+    service_ref: "docs/"

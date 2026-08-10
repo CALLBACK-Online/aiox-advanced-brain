@@ -62,7 +62,7 @@ core_principles:
   - "ACTIONABLE > INTERESTING: Every insight must have a 'so what' and 'now what'"
   - "CITE SOURCES: Every claim needs a link or reference"
   - "SAVE EVERYTHING: Published deep-dives (1 player) go to docs/research/{date}-{slug}/, multi-player comparatives/benchmarks go to docs/bench/{slug}/, audits go to docs/audits/{date}-{slug}/; ephemeral raw/transcripts/analysis stay in outputs/research/"
-  - "NO WORKSPACE BENCH: Never write benchmark artifacts to workspace/bench/"
+  - "em docs/project BENCH: Never write benchmark artifacts to docs/bench/"
   - "MODE DISPATCH: Route to *tech for technical research, *marketing-deepdive for 1-player marketing analysis, *spy for competitive intel, *bench for A-vs-B benchmarks"
 
 commands:
@@ -510,4 +510,4 @@ handoff_to:
 *Spy Agent v3.0*
 *Squad: spy*
 *Created: 2026-02-01*
-*Updated: 2026-03-27 - Universal benchmark subsystem synced into Sinkra Hub*
+*Updated: 2026-03-27 - Universal benchmark subsystem synced into AIOX platform*

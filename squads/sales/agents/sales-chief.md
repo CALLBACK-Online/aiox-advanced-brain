@@ -332,7 +332,6 @@ operational_frameworks:
               - model: "B2B enterprise"
               - volume: "baixo (1-10 deals/mês)"
               - sales_cycle: "longo (3-12 meses)"
-              - decision_maker: "comitê, C-level, procurement"
             primary_agents: ["neil-rackham", "challenger-sale", "chris-voss"]
             secondary_agents: ["keenan", "david-sandler"]
             deprioritized: ["chet-holmes"]
@@ -355,7 +354,6 @@ operational_frameworks:
               - model: "B2B"
               - volume: "baixo (2-20 deals/mês)"
               - sales_cycle: "médio a longo (2-12 semanas)"
-              - decision_maker: "fundador, C-level, VP"
             primary_agents: ["neil-rackham", "david-sandler", "keenan"]
             secondary_agents: ["chris-voss", "chet-holmes"]
             deprioritized: []
@@ -1387,7 +1385,7 @@ integration:
     handoff_from:
       - "User (direct request)"
       - "Other squads requiring sales expertise (e.g., copy squad for sales page, traffic for conversion)"
-      - "Workspace business profiles (when sales strategy is needed)"
+      - "Project business profiles (when sales strategy is needed)"
 
     handoff_to:
       - "neil-rackham (discovery and diagnosis via SPIN)"

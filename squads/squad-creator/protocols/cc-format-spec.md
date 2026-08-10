@@ -1,6 +1,6 @@
 # CC Format Specification — Squad Protocol v2.0 (EPIC-109 Wave 4)
 
-> Source: Squad Protocol v2.0.0 by @gutomec (adopted as-is, SINKRA extensions are additive).
+> Source: Squad Protocol v2.0.0 by @gutomec (adopted as-is, AIOX extensions are additive).
 > Evidence: Squad Format Analysis (squads.sh, April 2026) — 418 real agents, ~18% token waste.
 > Story: STORY-109.4 | Epic: EPIC-109
 
@@ -107,7 +107,7 @@ Tone: {tone description}.
 | `allowed-tools` | string | Space-separated tool list |
 | `context` | string | `fork` for isolated sub-agent, omit for inline |
 
-**Removed from tasks (SINKRA AD-3):**
+**Removed from tasks (AIOX AD-3):**
 
 `owner` / `responsavel` fields are removed from tasks. The workflow decides who
 executes each task via `steps[].agent`. This enforces Task-First Architecture (P6).
@@ -181,25 +181,25 @@ human-readable and parseable by the validator.
 |------------------------------|-------------|-------|
 | `task` (function name) | `frontmatter.name` | kebab-case |
 | `owner` / `responsavel` | `workflow steps[].agent` | Removed from tasks (AD-3) |
-| `atomic_layer` | `config.yaml sinkra_extensions.composition_mapping` | SINKRA metadata |
+| `atomic_layer` | `config.yaml aiox_extensions.composition_mapping` | AIOX metadata |
 | `Entrada[].campo` | `body ## Input - campo (tipo, req)` | Markdown prose |
 | `Saida[].campo` | `body ## Output - campo (tipo, dest)` | Markdown prose |
 
 ---
 
-## SINKRA Extensions (Additive — AD-2)
+## AIOX Extensions (Additive — AD-2)
 
-SINKRA composition metadata does NOT go in agent/task frontmatter or body.
-It belongs in `config.yaml` under `sinkra_extensions`:
+AIOX composition metadata does NOT go in agent/task frontmatter or body.
+It belongs in `config.yaml` under `aiox_extensions`:
 
 ```yaml
-sinkra_extensions:
+aiox_extensions:
   composition_mapping:
     tasks:
       - id: task-name
         atomic_layer: Atom   # Atom | Molecule | Organism
         domain: Operational  # Strategic | Tactical | Operational
-        sinkra_primitive: atom
+        framework_primitive: atom
 ```
 
 ---
@@ -239,5 +239,5 @@ Migration uses `scripts/migrate-to-cc-format.js --squad squads/etl-ops`.
 
 *CC Format Specification v1.0*
 *EPIC-109 Wave 4 — Protocolo Universal*
-*Squad Protocol v2.0.0 adopted as-is, SINKRA extensions additive*
+*Squad Protocol v2.0.0 adopted as-is, AIOX extensions additive*
 *Last Updated: 2026-04-13*

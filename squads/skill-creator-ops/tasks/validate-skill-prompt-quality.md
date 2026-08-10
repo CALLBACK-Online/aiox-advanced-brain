@@ -8,7 +8,7 @@ Advisory mode by default — reports metrics without blocking. Blocking mode is 
 
 ## Inputs
 
-- `skill_path` (required) — path to the skill directory, e.g. `.claude/skills/tech-search/`
+- `skill_path` (required) — path to the skill directory, e.g. `skills/tech-search/`
 - `mode` (optional, default `advisory`) — `advisory` | `blocking`
 - `threshold` (optional, default 80) — minimum total score to pass in blocking mode
 
@@ -134,7 +134,7 @@ prompt_quality:
 ## Integration
 
 - Invoked by `workflows/skill-lifecycle.yaml` in phase `prompt-quality` (between `validate` and `test`).
-- Also runs as a recurring audit (monthly) over `.claude/skills/` to detect drift.
+- Also runs as a recurring audit (monthly) over `skills/` to detect drift.
 - Results feed `outputs/skill-creator-ops/prompt-quality-dashboard.md` for visibility.
 
 ## Completion criteria

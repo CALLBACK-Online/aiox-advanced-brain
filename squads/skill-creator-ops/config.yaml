@@ -8,16 +8,10 @@ ide_sync:
   enabled: false
   rationale: "A skill vinculada é a superfície de ativação; este pack é operacional"
 
-workspace_integration:
-  level: none
-  rationale: >-
-    Skill-Creator-Ops governa lifecycle de skills em .claude/skills/; não lê nem
-    escreve em workspace/businesses/.
-
 agents:
   - id: skill-ops-chief
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -25,12 +19,12 @@ agents:
       core_replaces: null
       work_contexts: ["general"]
       can_review: []
-    methodology: "SINKRA + skill-creator pipeline"
+    methodology: "AIOX + skill-creator pipeline"
     specialty: "Orquestra lifecycle completo de skills: init → develop → validate → test → package"
 
   - id: skill-validator
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -43,7 +37,7 @@ agents:
 
   - id: skill-tester
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -73,7 +67,7 @@ activation:
     - "/skill-creator-ops:skill-validator"
     - "/skill-creator-ops:skill-tester"
 
-# SINKRA v3.1
+# AIOX v3.1
 artifact_contracts:
   - artifact_id: "skill-validation-report"
     template_path: "templates/validation-report-tmpl.yaml"
@@ -127,10 +121,10 @@ skill_lifecycle:
 bu_mapping: "hub-framework"
 supported_modes: [CRIAR, VALIDAR, CONFIGURAR]
 
-# SINKRA v3.2
-sinkra_tier: "Core"
+# AIOX v3.2
+aiox_tier: "Core"
 
-# SINKRA v3.2 — Entity Bindings
+# AIOX v3.2 — Entity Bindings
 entity_bindings:
   tier: "Core"
   entities_owned: []
@@ -139,40 +133,40 @@ entity_bindings:
       role: "maintainer"
     - entity_ref: "skill-registry"
       role: "consumer"
-  domain_model_ref: "squads/sinkra-squad/data/domain-model.yaml"
+  domain_model_ref: "squads/aiox-squad/data/domain-model.yaml"
 
 # Linked skills
 linked_skills:
   - id: "skill-creator"
-    path: ".claude/skills/skill-creator/SKILL.md"
+    path: "skills/skill-creator/SKILL.md"
     relationship: "operational-owner"
     purpose: "Canonical skill authoring surface. This squad extends it with lifecycle governance."
   - id: "prompt-47-migrator"
-    path: ".claude/skills/prompt-47-migrator/SKILL.md"
+    path: "skills/prompt-47-migrator/SKILL.md"
     relationship: "tooling-consumer"
     purpose: "Consumed by tasks/migrate-skill-to-47.md and tasks/validate-skill-prompt-quality.md"
 
 # Legacy field (kept for backwards compatibility with consumers reading config.yaml)
 linked_skill:
   id: "skill-creator"
-  path: ".claude/skills/skill-creator/SKILL.md"
+  path: "skills/skill-creator/SKILL.md"
   relationship: "operational-owner"
 
-# Scripts — extended versions of .claude/skills/skill-creator/scripts/
+# Scripts — extended versions of skills/skill-creator/scripts/
 # Original scripts remain untouched in skill-creator skill
 scripts:
   - id: quick-validate
-    base: ".claude/skills/skill-creator/scripts/quick_validate.py"
+    base: "skills/skill-creator/scripts/quick_validate.py"
     extended: true
-    extension_notes: "Added checks for optional fields: version, owner_squad, sinkra_tier, context, agent, user-invocable"
+    extension_notes: "Added checks for optional fields: version, owner_squad, aiox_tier, context, agent, user-invocable"
 
   - id: init-skill
-    base: ".claude/skills/skill-creator/scripts/init_skill.py"
+    base: "skills/skill-creator/scripts/init_skill.py"
     extended: true
     extension_notes: "Template includes optional extended frontmatter fields"
 
   - id: package-skill
-    base: ".claude/skills/skill-creator/scripts/package_skill.py"
+    base: "skills/skill-creator/scripts/package_skill.py"
     extended: false
     extension_notes: "Used as-is from skill-creator"
 

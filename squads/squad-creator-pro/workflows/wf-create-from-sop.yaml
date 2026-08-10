@@ -1,11 +1,11 @@
 workflow:
   id: wf-create-from-sop
-  name: Create Squad Artifacts From Workspace SOPs
+  name: Create Squad Artifacts From LocalDocs SOPs
   version: "1.0.0"
   description: >
-    Load canonical SOPs from workspace/businesses/{slug} and transform into
+    Load canonical SOPs from docs/project and transform into
     squad creation artifacts. Business-aware operationalization with strict
-    environment contract validation (full_workspace_mode required).
+    environment contract validation (none_mode required).
   type: orchestration
   command: "*create-from-sop --business={slug} --namespace={dir}"
   state_machine:
@@ -89,16 +89,16 @@ workflow:
       trigger: Business slug not explicit
       action: BLOCK
     - id: VETO-CFS-002
-      trigger: Environment contract not full_workspace_mode
+      trigger: Environment contract not none_mode
       action: BLOCK
     - id: VETO-CFS-003
-      trigger: Source of truth not workspace_canonical
+      trigger: Source of truth not project_canonical
       action: BLOCK
     - id: VETO-CFS-004
       trigger: No SOP selector defined
       action: BLOCK
     - id: VETO-CFS-005
-      trigger: Selector resolves outside workspace/businesses/{slug}
+      trigger: Selector resolves outside docs/project
       action: BLOCK
   inputs:
     required:

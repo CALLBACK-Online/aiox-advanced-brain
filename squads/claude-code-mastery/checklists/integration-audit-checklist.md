@@ -27,7 +27,7 @@ This audit is non-destructive -- it only reads and reports.]]
 - [ ] `.claude/rules/` directory exists with at least one rule file
 - [ ] `.claude/CLAUDE.md` exists
 - [ ] `.claude/agents/` directory exists (if project uses custom agents)
-- [ ] `.claude/skills/` directory exists (if project uses custom skills)
+- [ ] `skills/` directory exists (if project uses custom skills)
 
 ## 2. Configuration Quality
 

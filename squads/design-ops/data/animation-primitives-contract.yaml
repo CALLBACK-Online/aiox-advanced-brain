@@ -153,13 +153,13 @@ fallback_library:
 # =============================================================================
 ds_consistency_binding:
   motion_tokens_source:
-    priority_1: "workspace/businesses/{business}/L2-tactical/design/motion-primitives.yaml"
+    priority_1: "docs/tactical/design/motion-primitives.yaml"
     priority_2: "packages/tokens-base/tokens/motion.json"
   required_reads:
     - duration scale (instant/fast/normal/slow/slower)
     - easing curves (linear/easeIn/easeOut/easeInOut + business-custom curves)
   rule: >-
-    Animation duration and easing MUST come from workspace motion tokens.
+    Animation duration and easing MUST come from local_docs motion tokens.
     Ad-hoc values like "duration={0.42}" are a consistency violation — use
     the token's `var(--motion-duration-normal)` equivalent or resolve the
     numeric value from motion-primitives.yaml at build time.

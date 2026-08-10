@@ -1,0 +1,16 @@
+{
+  "$id": "aiox://slide-creator/wireframes/gallery.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "The audience needs to see a concrete state change.",
+  "properties": {},
+  "title": "gallery",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "proof_before_after",
+    "slot_count": 0,
+    "warnings": null,
+    "wireframe_ref": "templates/wireframes/gallery.html"
+  }
+}

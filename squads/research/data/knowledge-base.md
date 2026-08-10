@@ -10,9 +10,9 @@ This is the Spy's knowledge base. Grows with each research.
 Comparative Dossiers:     4
 Benchmark Directories:    6
 Knowledge Scope:          Spy + absorbed Deep Research
-Confidence Policy:        Workspace-derived, no invented counts
+Confidence Policy:        LocalDocs-derived, no invented counts
 Primary Output Root:      outputs/research/
-Last Update:              2026-04-13 (workspace snapshot)
+Last Update:              2026-04-13 (local_docs snapshot)
 ```
 
 ---

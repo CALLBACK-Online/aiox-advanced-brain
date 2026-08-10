@@ -19,13 +19,13 @@ quality_policy:
   baseline_freshness_days:
     threshold: 7
 workflow:
-  type: sinkra-native-self-improvement-organism
+  type: aiox-native-self-improvement-organism
   id: wf-self-improve
   name: Self-Improvement — Meta-Análise do Próprio Squad
   version: 1.0.0
   orchestrator: kaizen-chief
   mode: autonomous
-  sinkra:
+  aiox:
     organism_id: org-self-improve
     organism_pattern: linear
     molecule_sequence: [mol-governance, mol-optimization]

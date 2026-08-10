@@ -51,7 +51,6 @@ O sales-chief roteia baseado em 6 dimensões. **Dimensão 0 (Niche) é obrigató
 | **1. Stage** | Onde no funil está | Varia por estágio |
 | **2. Complexity** | Transactional vs enterprise | Varia por complexidade |
 | **3. Problem Type** | Prospecting, qualifying, closing... | Varia por problema |
-| **4. Buyer Profile** | C-level, VP, individual | Varia por buyer |
 | **5. Urgency** | Imediato, trimestre, longo prazo | Varia por urgência |
 
 ## Data Flow entre Tasks

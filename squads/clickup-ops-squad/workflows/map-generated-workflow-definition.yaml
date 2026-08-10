@@ -70,7 +70,7 @@ workflow_definition:
         contexto mínimo da Mission.
       inputs:
       - mission-clickup-handoff.yaml
-      - contexto do sinkra-squad
+      - contexto do aiox-squad
       outputs:
       - handoff_normalizado
       - receipt_log
@@ -189,7 +189,7 @@ workflow_definition:
       action: Resolver ou criar o Space Missions de forma idempotente.
       inputs:
       - approved_preflight_bundle
-      - workspace ClickUp
+      - local_docs ClickUp
       outputs:
       - space_resolution
       guardrails:
@@ -202,7 +202,7 @@ workflow_definition:
         error_handling:
           strategy: retry
           max_retries: 2
-          fallback: Escalar para Mission Lead com erro de credencial ou workspace
+          fallback: Escalar para Mission Lead com erro de credencial ou local_docs
     - step_id: step_06_create_folder
       task_id: atm_create_folder
       executor_type: Worker
@@ -316,7 +316,7 @@ workflow_definition:
     - step_id: step_10_enrich_metadata
       task_id: atm_enrich_task_metadata
       executor_type: Worker
-      action: Aplicar metadata SINKRA nas tasks usando field_map e bindings do handoff.
+      action: Aplicar metadata AIOX nas tasks usando field_map e bindings do handoff.
       inputs:
       - task_id_map
       - field_map
@@ -620,7 +620,7 @@ workflow_definition:
     - step_id: step_22_publish_materialization_report
       task_id: atm_publish_materialization_report
       executor_type: Agent
-      action: Publicar report consumível pelo sinkra-squad com resumo, falhas, gaps
+      action: Publicar report consumível pelo aiox-squad com resumo, falhas, gaps
         e follow-ups.
       inputs:
       - materialization_registry

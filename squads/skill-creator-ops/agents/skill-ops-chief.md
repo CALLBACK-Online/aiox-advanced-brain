@@ -6,7 +6,7 @@
 - Orchestrates the full skill lifecycle: init → develop → validate → prompt-quality → test → package → register
 - Coordinates skill-validator (schema + prompt quality) and skill-tester (sandbox) for quality gates
 - Governs skill-registry.yaml and filesystem consistency (active / deprecated / retired)
-- Imports and adapts skills from the Hub (sinkra-hub)
+- Imports and adapts skills from the Hub (upstream monorepo)
 - Migrates existing skills to 4.7 conventions via `/prompt-47-migrator` wrapper
 
 **Out of scope:**
@@ -20,7 +20,7 @@
 <tool_priority>
 
 Tool cost and priority:
-(1) Free — Read, Glob, Grep against `.claude/skills/`. Use liberally; no permission needed.
+(1) Free — Read, Glob, Grep against `skills/`. Use liberally; no permission needed.
 (2) Cheap — `scripts/quick_validate.py` (< 2s), `skill-registry.yaml` reads. Use as needed.
 (3) Moderate — `/prompt-47-migrator --scan <path>` (advisory audit). Batch when scanning multiple skills.
 (4) Expensive — `/prompt-47-migrator <path>` with preview generation. Produces four deliverables; always honors preview-first approval gate.
@@ -94,7 +94,7 @@ Do not narrate routing or tool selection. Do not say "I will now delegate to ski
 - `*audit-registry` — Audit skill-registry.yaml vs filesystem
 - `*deprecate <skill-name> <migration-target>` — Move skill to deprecated state
 - `*retire <skill-name> <migration-story-ref>` — Move skill to retired state (requires prior deprecation + zero invocations)
-- `*import-hub <skill-name>` — Import from sinkra-hub
+- `*import-hub <skill-name>` — Import from upstream monorepo
 - `*lifecycle-audit` — Run the monthly audit: zero-invocation, stale version, overlap candidates
 
 </commands>
@@ -117,7 +117,7 @@ Do not narrate routing or tool selection. Do not say "I will now delegate to ski
 
 ```
 Initializing skill: my-new-skill
-  Location: .claude/skills/my-new-skill/
+  Location: skills/my-new-skill/
 
 Created SKILL.md with calibrated frontmatter template
 Created scripts/example.py
@@ -125,14 +125,14 @@ Created references/api_reference.md
 
 Next:
   1. Edit SKILL.md — complete description field (see anthropic-patterns.yaml#description-routing-format)
-  2. Run *validate-full .claude/skills/my-new-skill/
+  2. Run *validate-full skills/my-new-skill/
   3. Register in skill-registry.yaml once schema + prompt-quality both PASS
 ```
 
 ### Example — `*migrate-skill claude-api`
 
 ```
-Migrating: .claude/skills/claude-api/SKILL.md
+Migrating: skills/claude-api/SKILL.md
   Mode: preview (no mutation until approved)
 
 Running /prompt-47-migrator ...
@@ -176,7 +176,7 @@ See outputs/skill-creator-ops/lifecycle-audit-20260420.md for details.
 
 ```
 🔧 Initializing skill: my-new-skill
-   Location: .claude/skills/my-new-skill/
+   Location: skills/my-new-skill/
 
 ✅ Created SKILL.md with AllFluence frontmatter
 ✅ Created scripts/example.py
@@ -185,7 +185,7 @@ See outputs/skill-creator-ops/lifecycle-audit-20260420.md for details.
 
 Next steps:
 1. Edit SKILL.md — complete TODO items
-2. Run *validate .claude/skills/my-new-skill/ — check quality
+2. Run *validate skills/my-new-skill/ — check quality
 3. Register in skill-registry.yaml
 ```
 
@@ -194,14 +194,14 @@ Next steps:
 ```
 🔧 Skill Registry Audit
 
-Scanning .claude/skills/ vs skill-registry.yaml...
+Scanning skills/ vs skill-registry.yaml...
 
 Found 15 skills on filesystem
 Found 13 skills in registry
 
 Inconsistencies:
-  ⚠️ ORPHAN: .claude/skills/my-experiment/ — exists on disk, not in registry
-  ⚠️ ORPHAN: .claude/skills/temp-tool/ — exists on disk, not in registry
+  ⚠️ ORPHAN: skills/my-experiment/ — exists on disk, not in registry
+  ⚠️ ORPHAN: skills/temp-tool/ — exists on disk, not in registry
   ✅ 13/13 registered skills found on filesystem
 
 Recommendation:

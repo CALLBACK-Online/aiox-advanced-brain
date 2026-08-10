@@ -12,7 +12,7 @@
 ### Phase 3A: Tasks Sobrepostas (caso a caso)
 | Task | Decision | Rationale |
 |------|----------|-----------|
-| `briefing.md` | ABSORVER | Complementar ao load-workspace-context (user elicitation vs system loading) |
+| `briefing.md` | ABSORVER | Complementar ao load-project context (user elicitation vs system loading) |
 | `diagnose.md` | ABSORVER | 3-agent parallel orchestration missing in copy |
 | `qa-gate.md` | ABSORVER | Quality gate (copy only had trigger application, not gating) |
 | `write-copy.md` | ABSORVER | Unified routing layer over 50+ individual tasks |

@@ -164,13 +164,13 @@ Verificar que o CSS resultante e valido:
 
 - `squads/design/checklists/token-mapping-checklist.md`
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - f1_apply_foundations_artifact

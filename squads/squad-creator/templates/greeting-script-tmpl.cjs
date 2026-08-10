@@ -52,7 +52,7 @@ function collectContext() {
     config: loadYaml(path.join(SQUAD_DIR, 'config.yaml')),
     // {{CONTEXT_SOURCES}}
     // Add squad-specific data collection here:
-    // - Workspace state (businesses, diagnostics)
+    // - Local project state (businesses, diagnostics)
     // - Runtime state (session context, active state)
     // - Backlog state (pending items)
     // - Domain-specific signals

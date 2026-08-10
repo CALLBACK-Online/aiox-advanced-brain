@@ -36,8 +36,8 @@
 | 16 | `sync-chief-codex-skill.js` | Node.js | tasks/sync-chief-codex-skill.md | Generates skill file from squad config | ACTIVE |
 | 17 | `validate-agent-output.py` | Python | skills/squad.md (PreToolUse hook) | Agent output validation hook | ACTIVE |
 | 18 | `validate-clone.sh` | Bash | tasks/an-validate-clone.md | Clone validation execution | ACTIVE |
-| 19 | `validate-squad.sh` | Bash | workflows/validate-squad.yaml, tasks/optimize.md, tasks/workspace-integration-hardening.md, workflows/wf-optimize-squad.yaml | Squad-level validation (multi-workflow reference) | ACTIVE |
-| 20 | `validate-workspace-contract.py` | Python | tasks/workspace-integration-hardening.md | Workspace contract validation | ACTIVE |
+| 19 | `validate-squad.sh` | Bash | workflows/validate-squad.yaml, tasks/optimize.md, tasks/local project docs-hardening.md, workflows/wf-optimize-squad.yaml | Squad-level validation (multi-workflow reference) | ACTIVE |
+| 20 | `validate-project context contracts.py` | Python | tasks/local project docs-hardening.md | project context contracts validation | ACTIVE |
 | 21 | `wave-loop.cjs` | Node.js | squad-workflow-runner.cjs (delegation), direct CLI | External SSH-style fresh-session loop for `*create-squad --wave=N` | ACTIVE |
 | 22 | `wave-loop.sh` | Bash | direct CLI / SSH launcher | Thin shell wrapper for `wave-loop.cjs` | ACTIVE |
 
@@ -48,7 +48,6 @@
 These files intentionally stay in `squad-creator-pro` to preserve local paths used by commands, workflows, tests, and agent activation. They delegate canonical behavior to `squad-creator` instead of forking logic in the pack.
 
 - Python proxies: `checklist_validator.py`, `dependency_check.py`, `inventory.py`, `naming_validator.py`, `security_scanner.py`, `squad-analytics.py`, `squad_utils.py`, `sync-ide-skills.py`, `validate-squad-structure.py`, `yaml_validator.py`
-- Node/Bash wrappers: `detect-environment-contract.cjs`, `export-antigravity-workflows.cjs`, `generate-squad-greeting.js`, `generate-squad-guide.js`, `rename-squad.sh`, `scaffold-squad.cjs`, `validate-squad.sh`, `verify-squad-completeness.sh`
 - Shared runtime libs delegated to base: `lib/config-loader.js`, `lib/squad-runtime-paths.cjs`, `lib/validate-runtime-state.cjs`
 - Intentionally local despite same content today: `validate-all.sh` remains local because it is the Pro aggregate entrypoint
 
@@ -142,7 +141,6 @@ Located in `scripts/tests/`. Convention: `test_{script_name}.{ext}` mirrors the 
 | 19 | `test_validate_squad_runtime_state_e2e.cjs` | validate-squad runtime state | Node.js |
 | 20 | `test_wave_loop_runtime_e2e.cjs` | wave-loop.cjs | Node.js |
 | 21 | `test_wave_loop_runtime_unit.cjs` | wave-loop.cjs | Node.js |
-| 22 | `test_load_business_sops.cjs` | load-business-sops.cjs | Node.js |
 
 Supporting files: `conftest.py` (pytest fixtures), `__init__.py` (package marker).
 

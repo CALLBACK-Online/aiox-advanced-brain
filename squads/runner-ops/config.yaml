@@ -1,6 +1,6 @@
 # Runner-Ops Squad Configuration
 # Domain: Runner Lifecycle Management
-# Author: SINKRA Chief + Squad Architect
+# Author: AIOX Chief + Squad Architect
 # Version: 1.0.0
 
 pack:
@@ -8,11 +8,11 @@ pack:
   version: "1.0.0"
   short-title: Runner Operations
   description: >-
-    Squad dedicado ao lifecycle management de pipeline runners headless no SINKRA Hub.
+    Squad dedicado ao lifecycle management de pipeline runners headless no AIOX platform.
     Governa o runner-lib framework (30 modulos, 7.4K LOC) e os processos de criacao,
     integracao, validacao e monitoramento de runners. Nao governa runners individuais
     (eles pertencem aos squads que os usam), mas sim o FRAMEWORK e o PROCESSO.
-  author: SINKRA Chief + Squad Architect
+  author: AIOX Chief + Squad Architect
   icon: "⚡"
   slashPrefix: runnerOps
 
@@ -21,7 +21,7 @@ meta:
   display_name: "Runner Operations — Lifecycle Management"
   version: "1.0.0"
   domain: runner-lifecycle-management
-  author: SINKRA Chief + Squad Architect
+  author: AIOX Chief + Squad Architect
   license: MIT
   status: active
   created: "2026-04-03"
@@ -31,12 +31,6 @@ meta:
 ide_sync:
   enabled: false
   rationale: "Pack de governança de framework; o runtime canônico vive em infrastructure/scripts/runner-lib/"
-
-workspace_integration:
-  level: none
-  rationale: >-
-    Runner-Ops governa o framework runner-lib (infrastructure/scripts/runner-lib/)
-    e o registry de runners; não lê nem escreve em workspace/businesses/.
 
 description: |
   Squad que centraliza governance do ecossistema de pipeline runners headless.
@@ -280,12 +274,12 @@ distribution:
     runners_must_not_depend_on_squad: true
     canonical_runner_lib: "infrastructure/scripts/runner-lib/"
     canonical_registry: "infrastructure/scripts/runner-lib/runner-registry.yaml"
-    canonical_outputs_root: "outputs/"
+    outputs_root: "outputs/"
 
 # Dependencies
 dependencies:
-  - squad: sinkra-squad
-    reason: "SINKRA process mapping, quality gates"
+  - squad: aiox-squad
+    reason: "AIOX process mapping, quality gates"
   - squad: squad-creator-pro
     reason: "Squad creation templates, validation"
 

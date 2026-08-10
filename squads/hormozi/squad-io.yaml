@@ -2,12 +2,11 @@
 # squad-io.yaml — hormozi squad
 # Version: 2.0.0
 # Generated: 2026-03-09
-# Author: CSO (Chief Sinkra Officer)
+# Author: CSO (Chief AIOX Officer)
 # ============================================================
 #
 # Contract I/O formal do hormozi-squad.
-# Diferente dos squads c-level e brand, o hormozi é um squad de
-# EXECUÇÃO — consome docs do workspace como contexto mas NÃO
+# EXECUÇÃO — consome docs de docs/project como contexto mas NÃO
 # escreve de volta ao document-registry. Seus outputs são
 # artifacts de campanha (ofertas, copies, scripts, audits).
 #
@@ -23,24 +22,24 @@ entry_agent: hormozi-chief
 source_mind: alex_hormozi
 
 # ============================================================
-# INPUTS — Workspace docs consumed as context
+# INPUTS — LocalDocs docs consumed as context
 # ============================================================
-# O hormozi lê docs do workspace para contexto de negócio,
+# O hormozi lê docs de docs/project para contexto de negócio,
 # ICP, pricing e brand — mas NÃO os modifica.
 # ============================================================
 
 inputs:
 
-  workspace:
+  local_docs:
     # L0 - Identity (contexto de negócio e credibilidade)
-    - path: workspace/{spoke}/L0-identity/company-dna.yaml
+    - path: docs/identity/company-dna.yaml
       doc_id: L0-001
       min_state: POPULATED
       usage: reference
       consumed_by_agents: [hormozi-chief, hormozi-offers, hormozi-advisor, hormozi-audit]
       rationale: "Entender DNA do negócio para contextualizar oferta"
 
-    - path: workspace/{spoke}/L0-identity/founder-dna.yaml
+    - path: docs/identity/founder-dna.yaml
       doc_id: L0-002
       min_state: POPULATED
       usage: reference
@@ -48,21 +47,21 @@ inputs:
       rationale: "Credenciais do fundador para proof stack e authority"
 
     # L1 - Strategy (inputs críticos para engenharia de ofertas)
-    - path: workspace/{spoke}/L1-strategy/offerbook.yaml
+    - path: docs/strategy/offerbook.yaml
       doc_id: L1-001
       min_state: POPULATED
       usage: reference
       consumed_by_agents: [hormozi-chief, hormozi-offers, hormozi-models, hormozi-pricing, hormozi-audit]
       rationale: "Offerbook é o input primário — ofertas existentes, tickets, bundles"
 
-    - path: workspace/{spoke}/L1-strategy/icp.yaml
+    - path: docs/strategy/icp.yaml
       doc_id: L1-002
       min_state: POPULATED
       usage: reference
       consumed_by_agents: [hormozi-chief, hormozi-offers, hormozi-leads, hormozi-copy, hormozi-hooks, hormozi-ads, hormozi-content]
       rationale: "ICP define avatar, dores, desejos — base de toda comunicação"
 
-    - path: workspace/{spoke}/L1-strategy/pricing-strategy.yaml
+    - path: docs/strategy/pricing-strategy.yaml
       doc_id: L1-005
       min_state: POPULATED
       usage: reference
@@ -70,14 +69,14 @@ inputs:
       rationale: "Estratégia de pricing existente para calibrar recomendações"
 
     # L2 - Tactical (brand context para comunicação)
-    - path: workspace/{spoke}/L2-tactical/brand/brand-platform.yaml
+    - path: docs/tactical/brand/brand-platform.yaml
       doc_id: L2-001
       min_state: DRAFT
       usage: reference
       consumed_by_agents: [hormozi-copy, hormozi-content, hormozi-hooks, hormozi-ads]
       rationale: "Tom de voz e brand guidelines para consistência de copy"
 
-    - path: workspace/{spoke}/L2-tactical/brand/positioning.yaml
+    - path: docs/tactical/brand/positioning.yaml
       doc_id: L2-002
       min_state: DRAFT
       usage: reference
@@ -165,8 +164,8 @@ artifacts_produced:
 
 outputs:
 
-  # Nenhum output vai para o workspace canônico
-  workspace: []
+  # Nenhum output vai para o docs/ canônico
+  local_docs: []
 
   # Artifacts produzidos por domínio
   artifacts:
@@ -775,7 +774,7 @@ enforcement:
   enforcement_model: veto_conditions
   veto_config: squads/hormozi/config/veto-conditions.yaml
 
-  # Validação adicional: workspace docs recomendados mas não bloqueantes
+  # Validação adicional: local_docs docs recomendados mas não bloqueantes
   recommended_inputs:
     - doc_id: L0-001
       min_state: POPULATED
@@ -855,7 +854,6 @@ audit_notes:
     - id: HZ-001
       severity: INFO
       finding: "Squad não tem task files separados — tasks são comandos dentro dos agents"
-      impact: "Padrão diferente dos outros squads (c-level, brand)"
       recommendation: "Documentar como variação aceita do schema v2"
 
     - id: HZ-002
@@ -900,10 +898,10 @@ audit_notes:
 # squad-io.yaml v2.0 — Formal I/O contract schema
 #
 # SECTIONS:
-#   inputs.workspace[]   — doc_id, path, min_state, usage, consumed_by_agents
+#   inputs.local_docs[]   — doc_id, path, min_state, usage, consumed_by_agents
 #   inputs.squad_data    — shared databases, agent-specific DNA
 #   inputs.config        — enforcement configs, templates
-#   outputs.workspace[]  — docs escritos no workspace canônico (vazio para squads de execução)
+#   outputs.local_docs[]  — docs escritos no project docs canônico (vazio para squads de execução)
 #   outputs.artifacts[]  — artifacts produzidos pelo squad
 #   agents[]             — id, role, tier, commands, databases, checklists, veto_gates, handoffs
 #   workflows[]          — workflows formais com phases e gates

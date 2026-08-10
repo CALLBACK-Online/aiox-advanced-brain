@@ -2,7 +2,7 @@
 
 ## Overview
 
-O squad `runner-ops` governa o lifecycle de pipeline runners headless no SINKRA Hub.
+O squad `runner-ops` governa o lifecycle de pipeline runners headless no AIOX platform.
 Não executa runners — governa o FRAMEWORK e o PROCESSO.
 
 ## Shell & Core (ADR-046)
@@ -63,7 +63,7 @@ The ecosystem supports 3 runner types, each with distinct execution patterns:
     │ books.sh    │    │squad.sh  │    │ gateway.sh   │
     │ copy.sh     │    │validate- │    │ telegram-    │
     │ decoder.sh  │    │skill.sh  │    │ gateway.sh   │
-    │ sinkra-     │    │sinkra-   │    └──────────────┘
+    │ aiox-     │    │aiox-   │    └──────────────┘
     │ map.sh      │    │validate  │
     └─────────────┘    └──────────┘
 ```
@@ -88,12 +88,12 @@ Fonte unica de verdade: `infrastructure/scripts/runner-lib/runner-registry.yaml`
 | Runner | Squad | Integration Score |
 |--------|-------|------------------|
 | mmos.sh | mmos | full |
-| sinkra-map.sh | sinkra-squad | partial |
+| aiox-map.sh | aiox-squad | partial |
 | books.sh | books | partial |
 | decoder.sh | domain-decoder | partial |
 | copy.sh | copy | partial |
-| sinkra-validate.sh | sinkra-squad | minimal |
-| validate-skill.sh | sinkra-squad | minimal |
+| aiox-validate.sh | aiox-squad | minimal |
+| validate-skill.sh | aiox-squad | minimal |
 | validate-squad.sh | squad-creator | minimal |
 
 ## Process Flows
@@ -135,4 +135,4 @@ runner-monitor → aggregate JSONL → cost/perf/health report → runner-chief 
 - ADR-046: `docs/architecture/adrs/ADR-046-RUNNER-SWARM-HYBRID-ARCHITECTURE.md`
 - Epic 101: `docs/stories/epic-101/EPIC-101-RUNNER-EXCELLENCE.md`
 - Epic 104: `docs/stories/epic-104/EPIC-104-RUNNER-OPS-SQUAD.md`
-- Gap Analysis: `.aiox/squad-runtime/sinkra-squad/mmos-runner/runner-gap-analysis.md`
+- Gap Analysis: `.aiox/squad-runtime/aiox-squad/mmos-runner/runner-gap-analysis.md`

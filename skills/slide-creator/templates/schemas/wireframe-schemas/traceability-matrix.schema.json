@@ -1,0 +1,102 @@
+{
+  "$id": "aiox://slide-creator/wireframes/traceability-matrix.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "Multiple players are compared across multiple dimensions.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "evidence_1": {
+      "type": "string"
+    },
+    "evidence_2": {
+      "type": "string"
+    },
+    "evidence_3": {
+      "type": "string"
+    },
+    "evidence_4": {
+      "type": "string"
+    },
+    "id_1": {
+      "type": "string"
+    },
+    "id_2": {
+      "type": "string"
+    },
+    "id_3": {
+      "type": "string"
+    },
+    "id_4": {
+      "type": "string"
+    },
+    "owner_1": {
+      "type": "string"
+    },
+    "owner_2": {
+      "type": "string"
+    },
+    "owner_3": {
+      "type": "string"
+    },
+    "owner_4": {
+      "type": "string"
+    },
+    "req_1": {
+      "type": "string"
+    },
+    "req_2": {
+      "type": "string"
+    },
+    "req_3": {
+      "type": "string"
+    },
+    "req_4": {
+      "type": "string"
+    },
+    "status_1": {
+      "type": "string"
+    },
+    "status_2": {
+      "type": "string"
+    },
+    "status_3": {
+      "type": "string"
+    },
+    "status_4": {
+      "type": "string"
+    }
+  },
+  "title": "traceability-matrix",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "comparison_matrix",
+    "slot_count": 21,
+    "warnings": [
+      "action_title",
+      "id_1",
+      "req_1",
+      "evidence_1",
+      "owner_1",
+      "status_1",
+      "id_2",
+      "req_2",
+      "evidence_2",
+      "owner_2",
+      "status_2",
+      "id_3",
+      "req_3",
+      "evidence_3",
+      "owner_3",
+      "status_3",
+      "id_4",
+      "req_4",
+      "evidence_4",
+      "owner_4",
+      "status_4"
+    ],
+    "wireframe_ref": "templates/wireframes/traceability-matrix.html"
+  }
+}

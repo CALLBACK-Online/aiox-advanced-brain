@@ -48,13 +48,13 @@ protocol:
   q4_slot_contract:
     layer: layout
     description: "Defines WHERE other things go (named slots), declares responsiveness, content is placeholder"
-    examples: [workspace_layout, article_layout, pdp_layout, list_detail_canonical_layout]
-    legacy_name: template   # Brad Frost's term; renamed in ADR-052 to avoid SINKRA collision
+    examples: [application_layout, article_layout, pdp_layout, list_detail_canonical_layout]
+    legacy_name: template   # Brad Frost's term; renamed in ADR-052 to avoid AIOX collision
 
   q5_concrete_instance:
     layer: page
     description: "Final screen with realistic content, composes multiple organisms within a layout"
-    examples: [full_gmail_workspace, medium_home, amazon_pdp, full_mobile_compose_screen]
+    examples: [full_gmail_screen, medium_home, amazon_pdp, full_mobile_compose_screen]
 
 # ─────────────────────────────────────────────────────────────────────
 # Signals — heuristics extractors use to map DOM/CSS to layer.

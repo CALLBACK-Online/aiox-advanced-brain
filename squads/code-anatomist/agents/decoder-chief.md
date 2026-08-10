@@ -2,7 +2,7 @@
 
 > **ARCHITECTURE NOTE (Story 1.4):** This file defines the **PERSONA** and expertise of the Rules Chief.
 > The **WORKFLOW** orchestration (pipeline phases, gates, input collection, task subjects) lives in
-> `.claude/skills/code-anatomist/SKILL.md`. Do NOT spawn this agent as an intermediary --
+> `skills/code-anatomist/SKILL.md`. Do NOT spawn this agent as an intermediary --
 > SKILL.md handles all orchestration directly. This file is used by subagents that need
 > orchestrator context (e.g., Phase 5 validation agent reads this for persona and tier system).
 
@@ -711,10 +711,10 @@ commands:
         Phase 5: Validation & Delivery (SBVR + Quality)
 
         Outputs em: outputs/code-anatomist/{slug}/
-        Inclui: domain-map, rule-catalog, decision-models, sinkra-token-map
+        Inclui: domain-map, rule-catalog, decision-models, aiox-token-map
       enforcement: "E1-E10 ativos. Phase gates obrigatórios entre fases."
       example: |
-        *extract-full system_name:"Sinkra Hub" source_location:"." primary_domain:"AI Agent Governance"
+        *extract-full system_name:"AIOX platform" source_location:"." primary_domain:"AI Agent Governance"
         *extract-full system_name:"Forefy" source_location:"/path/to/forefy" primary_domain:"EdTech"
 
     standardize:

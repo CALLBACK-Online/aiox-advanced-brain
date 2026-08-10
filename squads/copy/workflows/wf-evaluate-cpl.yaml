@@ -40,7 +40,7 @@ workflow:
     - phase: context
       id: context
       agent: copy-chief
-      task_ref: tasks/load-workspace-context.md
+      task_ref: tasks/load-project context.md
       action: "Coletar contexto do lançamento e organizar os insumos da avaliação"
       creates: cpl-context
       on_complete: { trigger: context_complete }

@@ -8,7 +8,7 @@ Origin: Founder directive 2026-05-18:
 
 Problem solved:
     Pre-EPIC-153, bench weights were either:
-    (a) Hardcoded in research-bench-gold contract (SINKRA-fit favorable bias)
+    (a) Hardcoded in research-bench-gold contract (AIOX-fit favorable bias)
     (b) Set by AI without consulting the operator → epistemic dishonesty
 
 This script asks the operator BEFORE scoring axes selection:
@@ -162,10 +162,10 @@ MACRO_GROUPS = [
         "default_weight": 1,
         "examples": ["soc2_ready", "gdpr_aware", "pii_detection"],
     },
-    # NOTE: 'sinkra_fit' dimension intentionally REMOVED (founder directive 2026-05-18).
+    # NOTE: 'aiox_fit' dimension intentionally REMOVED (founder directive 2026-05-18).
     # A bench comparing competitors must NOT include a dimension that measures
     # "alignment with the anchor's own methodology" — that is structural self-favoring.
-    # The bench is framework-agnostic. SINKRA-specific evaluation belongs in
+    # The bench is framework-agnostic. AIOX-specific evaluation belongs in
     # internal audits, NOT in public benchmark comparisons.
 ]
 
@@ -225,8 +225,8 @@ PRESETS = {
         "compliance_safety": 0,
     },
     "absorption": {
-        # Historical compat: original "deepresearch-absorption-benchmark" weights MINUS sinkra_fit.
-        # sinkra_fit removed 2026-05-18 per founder directive — bench must be framework-agnostic.
+        # Historical compat: original "deepresearch-absorption-benchmark" weights MINUS aiox_fit.
+        # aiox_fit removed 2026-05-18 per founder directive — bench must be framework-agnostic.
         "agentic_planning_control": 15,
         "tool_runtime_integration": 13,
         "research_depth_synthesis": 13,
@@ -399,7 +399,7 @@ def build_weights_yaml(slug: str, weights: dict, raw_weights: dict, preset_used:
             "founder_mandate": "research_depth_synthesis + tool_runtime_integration + multi_agent_orchestration must be acknowledged before bench execution",
             "weights_normalized": True,
             "framework_agnostic": True,
-            "sinkra_fit_removed": "Removed 2026-05-18 per founder directive — anchor-favoring dimension violates framework-agnostic benchmarking",
+            "aiox_fit_removed": "Removed 2026-05-18 per founder directive — anchor-favoring dimension violates framework-agnostic benchmarking",
         },
     }
 

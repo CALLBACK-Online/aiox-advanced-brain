@@ -11,13 +11,13 @@ Extrair padrões de design systems validados (Shopify, Vercel, Linear, etc) em v
 
 **Princípio:** Sistemas com milhões de usuários já validaram UX. Extrair > inventar.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_reverse_engineer_artifact

@@ -217,7 +217,7 @@ Minimum competencies required per role before executing this SOP. Operators who 
 
 | Field | Value |
 |-------|-------|
-| **Storage location** | `squads/copy/data/sops/` within the active Sinkra installation |
+| **Storage location** | `squads/copy/data/sops/` within the active AIOX installation |
 | **File name** | `vsl-diagnostic-optimization-sop.md` |
 | **Access** | All Copy Squad agents have read access. Write access (updates, corrections) requires Copy Chief review and version increment. |
 | **Notification of updates** | When a new version is published, update the Revision History table and notify the Copy Squad via the team's primary communication channel within 48 hours. |

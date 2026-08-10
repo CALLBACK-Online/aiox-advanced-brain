@@ -10,7 +10,7 @@ estimated_time: 45-60min
 source: "$100M Launch Playbook - War Room Operations"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
@@ -134,7 +134,6 @@ communication_hierarchy:
 
 | Reuniao | Frequencia | Participantes | Duracao | Output |
 |---------|-----------|---------------|---------|--------|
-| SteerCo | Semanal | C-level + PO | 30min | Decisoes estrategicas |
 | War Room | Diario (S-1) | Lideres | 15min | Status + blockers |
 | Deep Dive | 2x/semana | Por area | 60min | Problemas especificos |
 | All Hands | Semanal | Todos | 30min | Alinhamento geral |
@@ -401,7 +400,6 @@ After completion:
 ---
 *Task: HZ_LAUNCH_004 | Owner: hormozi-launch | Version: 1.0*
 *Source: $100M Launch Playbook - War Room Operations*
-
 
 
 <\!-- Criado com Squad Creator do AIOXPRO por @oalanicolas e @pedrovalerio | 2026-02-10 -->

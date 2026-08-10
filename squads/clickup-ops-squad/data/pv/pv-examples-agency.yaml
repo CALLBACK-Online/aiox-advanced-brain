@@ -462,7 +462,7 @@ creative_workflows:
 
   - id: WF-AG-02
     name: "Produção de Conteúdo (Organico)"
-    source: "[SOURCE: D1 2.2 + pv-workspace-blueprint.yaml]"
+    source: "[SOURCE: D1 2.2 + pv-clickup-blueprint.yaml]"
     context: "Time de conteúdo organico (social media, blog, YouTube)"
     statuses:
       - name: "BRIEFING"

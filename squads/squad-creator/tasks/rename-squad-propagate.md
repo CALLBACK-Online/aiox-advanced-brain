@@ -19,7 +19,7 @@ category: maintenance
 agent: squad-chief
 elicit: false
 autonomous: true
-description: "Propaga o novo nome para mirrors IDE, cross-squad refs, workspace, infraestrutura, apps e registries textuais."
+description: "Propaga o novo nome para mirrors IDE, cross-squad refs, local_docs, infraestrutura, apps e registries textuais."
 accountability:
   human: squad-operator
   scope: review_only
@@ -28,13 +28,13 @@ domain: Operational
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Operational`
 atomic_layer: Atom
 Input: request::rename_squad_propagate
 Output: artifact::rename_squad_propagate
 pre_condition: rename-squad-structural completed AND blast radius com superfícies externas mapeadas
-post_condition: referências externas propagadas em IDE mirrors, cross-squad refs, workspace, infra e registries
+post_condition: referências externas propagadas em IDE mirrors, cross-squad refs, local_docs, infra e registries
 performance: deterministic Worker, < 30s, fail-loud se superfície crítica não propagada
 Completion Criteria: IDE mirrors atualizados AND cross-squad refs propagadas AND zero superfícies críticas pendentes
 error_handling: fail-loud, persist evidence, escalate if unrecoverable

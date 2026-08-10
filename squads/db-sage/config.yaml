@@ -39,13 +39,6 @@ metadata:
   version: "1.3.0"
   score: 8.5
 
-workspace_integration:
-  level: none
-  rationale: >-
-    Db Sage depende de código, banco e infraestrutura, não de artefatos
-    canônicos de negócio/produto em `workspace/`.
-
-# Environment variables
 environment:
   connection_requirement: >-
     Set at least one connection string before activation: SUPABASE_DB_URL or
@@ -65,7 +58,7 @@ environment:
 agents:
   - id: db-sage
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: "executor"
@@ -141,7 +134,7 @@ tags:
 independence: false
 independence_reason: "Requires PostgreSQL database and optionally Supabase"
 
-# SINKRA v3.1
+# AIOX v3.1
 artifact_contracts:
   - artifact_id: "schema-design"
     template_path: "templates/schema-design-tmpl.yaml"
@@ -161,7 +154,7 @@ artifact_contracts:
 
 bu_mapping: "hub-framework"
 
-sinkra_refs:
+aiox_refs:
   token_registry: "data/token-registry.yaml"
   quality_gates: "data/quality-gates.yaml"
   deviation_registry: "data/deviation-registry.yaml"

@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: harness-ambiente-execucao
 lesson_position: 67
 title: 'Harness: ambiente de execução do agente fora do Claude Code'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/67-harness-ambiente-execucao/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

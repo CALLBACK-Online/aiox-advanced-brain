@@ -1,6 +1,6 @@
 # Task: Product Research
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

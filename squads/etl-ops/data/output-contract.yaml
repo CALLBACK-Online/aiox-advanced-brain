@@ -27,21 +27,21 @@ status_values:
 
 artifacts:
   default_output_dir: "outputs/etl/{run_id}/"
-  canonical_output_dir: "workspace/businesses/{constraints.business_slug}/etl/runs/{run_id}/"
+  canonical_output_dir: "docs/etl/runs/{run_id}/"
   custom_output_dir: "docs/etl/{constraints.business_slug|global}/"
   output_route_rules:
-    - when: "constraints.workspace_mode == canonical"
+    - when: "constraints.context_mode == canonical"
       require: "constraints.business_slug"
       route: "canonical_output_dir"
-    - when: "constraints.workspace_mode == auto and constraints.business_slug exists"
+    - when: "constraints.context_mode == auto and constraints.business_slug exists"
       route: "canonical_output_dir"
-    - when: "constraints.workspace_mode == auto and constraints.business_slug missing"
+    - when: "constraints.context_mode == auto and constraints.business_slug missing"
       route: "default_output_dir"
-    - when: "constraints.workspace_mode == legacy"
+    - when: "constraints.context_mode == legacy"
       route: "default_output_dir"
   note: |
     When persist_output=true, artifacts are saved to default_output_dir.
-    If workspace mode resolves to canonical and business_slug exists, use canonical_output_dir.
+    If project mode resolves to canonical and business_slug exists, use canonical_output_dir.
     When persist_output=false, artifacts are returned inline (no files written),
     but still include a deterministic pseudo-path (example: inline://raw or inline://chunks)
     to satisfy artifact item_shape.required=[kind,path].

@@ -41,10 +41,10 @@ function main() {
     'squads/design-ops/checklists/dops-component-quality.yaml',
     'squads/design-ops/data/quality-gates.yaml',
     'squads/design-ops/data/design-tokens-spec.yaml',
-    `workspace/businesses/${args.business}/L2-tactical/design/tokens.yaml`,
-    `workspace/businesses/${args.business}/L2-tactical/design/foundations.yaml`,
-    `workspace/businesses/${args.business}/L2-tactical/design/component-contracts.yaml`,
-    `workspace/businesses/${args.business}/L2-tactical/design/motion-primitives.yaml`,
+    `docs/${args.business}/tactical/design/tokens.yaml`,
+    `docs/${args.business}/tactical/design/foundations.yaml`,
+    `docs/${args.business}/tactical/design/component-contracts.yaml`,
+    `docs/${args.business}/tactical/design/motion-primitives.yaml`,
   ];
 
   assertFilesExist(requiredPaths);
@@ -52,7 +52,7 @@ function main() {
   execFileSync(
     'node',
     [
-      'squads/design-ops/scripts/validate-workspace-contracts.cjs',
+      'squads/design-ops/scripts/validate-project context contracts.cjs',
       `--business=${args.business}`,
       '--strict',
       '--format=json',

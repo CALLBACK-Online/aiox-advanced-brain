@@ -13,7 +13,7 @@
 
 ## Objetivo
 
-Integrar gateway runners no ecossistema runner-ops. Gateway runners sao um tipo distinto de runner que opera como ponte entre canais de mensageria (Telegram, WhatsApp, etc.) e o runtime de agents SINKRA.
+Integrar gateway runners no ecossistema runner-ops. Gateway runners sao um tipo distinto de runner que opera como ponte entre canais de mensageria (Telegram, WhatsApp, etc.) e o runtime de agents AIOX.
 
 ## Input
 

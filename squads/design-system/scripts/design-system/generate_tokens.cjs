@@ -19,10 +19,10 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.cwd();
-const EXTRACTION_DIR = path.join(ROOT, 'workspace', 'domains', 'design-system', 'extraction');
+const EXTRACTION_DIR = path.join(ROOT, 'docs', 'project', 'domains', 'design-system', 'extraction');
 const CURATED_DIR = path.join(EXTRACTION_DIR, 'curated');
 const BRAND = process.env.DS_BRAND || process.argv[2] || 'default';
-const OUTPUT_DIR = path.join(ROOT, 'workspace', 'ui', BRAND);
+const OUTPUT_DIR = path.join(ROOT, 'docs', 'project', 'ui', BRAND);
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 

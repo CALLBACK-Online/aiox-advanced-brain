@@ -75,7 +75,7 @@ heuristic_watcher_rubric:
       veto_power: false
       description: "Checks if reusable squad/process artifacts remain free from hardcoded business identity."
       signals_positive:
-        - "business context resolved by workspace/config/environment"
+        - "business context resolved by outputs/config/environment"
         - "clone/process rules are reusable across brands or squads"
       red_flags:
         - "hardcoded business names in core files"
@@ -85,7 +85,7 @@ heuristic_watcher_rubric:
         - "Isto está puro no core e contextualizado só em binding/config?"
         - "Esse artefato funcionaria para outro cliente sem surgery?"
       recommended_actions:
-        - "externalize business-specific values to workspace/config"
+        - "externalize business-specific values to docs/config"
         - "replace literals with bindings or templates"
 
     encapsulation:

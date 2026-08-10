@@ -66,7 +66,7 @@ steps:
       audit_report: "{{step_1_agentic_audit.report}}"
     outputs:
       setup_report: outputs/design-system/{{project_name}}/agentic/agentic-setup.md
-      metadata_file: workspace/domains/design-system/metadata/components.json
+      metadata_file: docs/design-system/domains/metadata/components.json
     error_handling:
       strategy: fail
 outputs:

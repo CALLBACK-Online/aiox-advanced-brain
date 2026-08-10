@@ -6,7 +6,7 @@
 **Orchestrator:** Orion (claude-mastery-chief)
 **Purpose:** Triage Claude Code questions and problems, provide a quick answer, and route to the appropriate specialist agent when domain-specific expertise is needed.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: diagnose
 atomic_layer: Atom
@@ -117,7 +117,7 @@ Apply keyword matching against the 7 specialist domains:
 | mcp | mcp, server, tool search, stdio, sse, http streamable, mcp__, context7, exa, docker gateway, add server | mcp-integrator | Piper |
 | subagents | subagent, agent team, swarm, teammate, worktree, parallel, background agent, spawn, multi-agent, TeammateTool | swarm-orchestrator | Nexus |
 | config | settings, permission, CLAUDE.md, rules, sandbox, managed, enterprise, allow, deny, keybinding, context window, compaction | config-engineer | Sigil |
-| skills | skill, command, plugin, SKILL.md, slash command, context engineering, spec-driven, .claude/skills, marketplace | skill-craftsman | Anvil |
+| skills | skill, command, plugin, SKILL.md, slash command, context engineering, spec-driven, skills, marketplace | skill-craftsman | Anvil |
 | integration | integrate, repository, project setup, CI/CD, headless, brownfield, monorepo, AIOX, git workflow | project-integrator | Conduit |
 | roadmap | update, changelog, version, roadmap, new feature, what changed, migration, upgrade, adoption | roadmap-sentinel | Vigil |
 

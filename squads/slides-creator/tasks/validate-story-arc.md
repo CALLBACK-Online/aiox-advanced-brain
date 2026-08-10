@@ -1,6 +1,6 @@
 # Task: Validate Story Arc (Narrative sub-dimension, case-study derived)
 
-## SINKRA Validation Metadata
+## AIOX Validation Metadata
 
 ```yaml
 task: validate-story-arc
@@ -25,9 +25,9 @@ Error_handling:
   strategy: fail fast with explicit handoff blocker
 ```
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Operational -->
+<!-- AIOX Domain: Operational -->
 
 ## Metadata
 
@@ -43,7 +43,7 @@ Error_handling:
 | mission_origin | MSN-2026-SLIDES-NARRATIVE-DESIGN (T-013A) |
 | case_study | outputs/webinars/primeiro-servico-ia/ |
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml

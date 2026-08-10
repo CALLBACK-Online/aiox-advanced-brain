@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://sinkra.local/schemas/layout-slot-schema.json",
+  "$id": "https://aiox.local/schemas/layout-slot-schema.json",
   "title": "Design Ops Layout Slot Contract",
   "type": "object",
   "required": ["schema_version", "slots"],

@@ -90,10 +90,10 @@ workflow:
       outputs:
         - .aiox/squad-runtime/create-squad/{squad_slug}/template-selection.yaml
         - .aiox/squad-runtime/create-squad/{squad_slug}/squad-type-detection.md
-        - .aiox/squad-runtime/create-squad/{squad_slug}/workspace-integration-level.yaml
+        - .aiox/squad-runtime/create-squad/{squad_slug}/local project docs-level.yaml
       steps:
         - detect_squad_type
-        - classify_workspace_integration
+        - classify_local project docs
         - match_templates
         - confirm_selection
       scripts:
@@ -154,7 +154,7 @@ workflow:
       task: integrate-squad
       task_ref: create-squad
       action: integrate_squad_assets
-      description: Wire dependencies, generate docs, finalize config, and prepare COO handoff when workspace write integration is requested
+      description: Wire dependencies, generate docs, finalize config, and prepare human handoff when docs write integration is requested
       inputs:
         - squads/{squad_slug}/**/*
       outputs:
@@ -162,11 +162,11 @@ workflow:
         - squads/{squad_slug}/CHANGELOG.md
         - squads/{squad_slug}/config.yaml
         - .aiox/squad-runtime/create-squad/{squad_slug}/README.md
-        - .aiox/squad-runtime/create-squad/{squad_slug}/workspace-handoff.yaml
+        - .aiox/squad-runtime/create-squad/{squad_slug}/project-handoff.yaml
       steps:
         - wire_dependencies
-        - generate_workspace_contract
-        - prepare_coo_workspace_handoff
+        - generate_project context contracts
+        - prepare_coo_project_handoff
         - generate_readme
         - generate_changelog
         - finalize_config
@@ -207,7 +207,7 @@ workflow:
         - .aiox/squad-runtime/create-squad/{squad_slug}/validation/quality-score.yaml
       steps:
         - run_structure_check
-        - run_workspace_contract_check
+        - run_project context contracts_check
         - run_coo_handoff_check
         - run_coverage_check
         - run_quality_scoring

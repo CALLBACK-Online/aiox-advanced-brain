@@ -351,12 +351,12 @@ DETERMINE output filename:
 
 FILES:
   - Converted SOP (`md` target): docs/sops/{sop-name}.md
-  - Converted SOP (`yaml|json` target): workspace/businesses/{business}/sops/{sop-name}.{target-extension}
+  - Converted SOP (`yaml|json` target): docs/sops/{sop-name}.{target-extension}
   - Validation report: outputs/aiox-sop/converted/{sop-name}-conversion-report.md
 
 PUBLISH RULE:
   - `md` targets remain share-safe and publish to `docs/sops/`
-  - `yaml|json` targets require explicit `business` and `full_workspace_mode`
+  - `yaml|json` targets require explicit `business` and `none_mode`
 
 CONVERSION REPORT includes:
   - Source format and file
@@ -373,7 +373,7 @@ CONVERSION REPORT includes:
 ```yaml
 outputs:
   primary:
-    path: "docs/sops/{sop-name}.md | workspace/businesses/{business}/sops/{sop-name}.{yaml|json}"
+    path: "docs/sops/{sop-name}.md | docs/sops/{sop-name}.{yaml|json}"
     format: "human-md|yaml|json"
     description: "Converted SOP in target format"
 

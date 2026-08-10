@@ -37,9 +37,9 @@ Compilar o pacote final de entrega do brainstorm de logo: especificações de us
 
 | Artifact | Location | Description |
 |---|---|---|
-| `logo-spec.md` | `workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-spec.md` | Especificações de uso do logo |
-| `logo-brainstorm-report.md` | `workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-brainstorm-report.md` | Relatório consolidado do processo |
-| `logo-concept.yaml` | `workspace/businesses/{{brand_name}}/L2-tactical/brand/logo-concept.yaml` | Conceito estruturado (workspace canonical) |
+| `logo-spec.md` | `docs/tactical/brand/logo/logo-spec.md` | Especificações de uso do logo |
+| `logo-brainstorm-report.md` | `docs/tactical/brand/logo/logo-brainstorm-report.md` | Relatório consolidado do processo |
+| `logo-concept.yaml` | `docs/tactical/brand/logo-concept.yaml` | Conceito estruturado (docs/ canonical) |
 
 ## Execution Steps
 
@@ -108,7 +108,7 @@ Criar `logo-spec.md` com guidelines de uso:
 
 Criar `logo-brainstorm-report.md` — relatório consolidado do processo completo.
 
-Usar template de `workspace/_templates/business-template/L2-tactical/brand/logo-brainstorm-report.yaml` se existir.
+Usar template de `docs/templates/tactical/brand/logo-brainstorm-report.yaml` se existir.
 
 Conteúdo:
 1. **Resumo Executivo** — Resultado final em 3 linhas
@@ -122,11 +122,11 @@ Conteúdo:
 
 ### Step 4: Compilar Logo Concept YAML
 
-Criar `logo-concept.yaml` no formato canônico do workspace:
+Criar `logo-concept.yaml` no formato canônico de docs/project:
 
 ```yaml
 # Logo Concept — {{brand_name}}
-# Canonical workspace artifact
+# Canonical project context artifact
 
 logo:
   brand_name: "{{brand_name}}"
@@ -203,8 +203,8 @@ logo:
 ```yaml
 to: brand-chief
 pass:
-  - logo_spec: "workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-spec.md"
-  - brainstorm_report: "workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-brainstorm-report.md"
-  - logo_concept: "workspace/businesses/{{brand_name}}/L2-tactical/brand/logo-concept.yaml"
+  - logo_spec: "docs/tactical/brand/logo/logo-spec.md"
+  - brainstorm_report: "docs/tactical/brand/logo/logo-brainstorm-report.md"
+  - logo_concept: "docs/tactical/brand/logo-concept.yaml"
   - status: "brainstorm-complete"
 ```

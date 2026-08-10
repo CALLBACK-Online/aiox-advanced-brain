@@ -47,7 +47,7 @@ O agente **@{{agent_id}} ({{agent_persona}})** é {{agent_description}}. Este ag
 | Arquivo | Propósito |
 |---------|-----------|
 | `{{squad_path}}/agents/{{agent_id}}.md` | Definição core do agente (persona, comandos, workflows) |
-| `.claude/skills/{{squad_name}}/{{agent_id}}/SKILL.md` | Slash skill Claude Code para ativar |
+| `skills/{{squad_name}}/{{agent_id}}/SKILL.md` | Slash skill Claude Code para ativar |
 
 ### Arquivos de Data/Knowledge Usados pelo @{{agent_id}}
 
@@ -462,7 +462,7 @@ Erro: Handoff para @xyz falhou - agente não encontrado
 | Arquivo | Path |
 |---------|------|
 | Agent Definition | `{{squad_path}}/agents/{{agent_id}}.md` |
-| Claude Slash Skill | `.claude/skills/{{squad_name}}/{{agent_id}}/SKILL.md` |
+| Claude Slash Skill | `skills/{{squad_name}}/{{agent_id}}/SKILL.md` |
 
 ### Workflows
 

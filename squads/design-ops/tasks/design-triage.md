@@ -87,7 +87,7 @@ Apply the 5-question falsifiable rule (research doc 06). First question that ret
    → Defines WHERE other things go (named slots: header, rail, main,
      aside, actions), declares responsiveness and structure, but content
      inside is placeholder or structural variation?
-     YES → LAYOUT (workspace layout, article layout, PDP layout,
+     YES → LAYOUT (local_docs layout, article layout, PDP layout,
                    list-detail canonical layout)
                    ↳ this is what Brad Frost called "Template"
      NO → continue ↓
@@ -96,7 +96,7 @@ Apply the 5-question falsifiable rule (research doc 06). First question that ret
    → Final screen with realistic content, composes multiple organisms
      within a layout, a user would recognize it as "a real screen of
      the product"?
-     YES → PAGE (full Gmail workspace, Medium home,
+     YES → PAGE (full Gmail local_docs, Medium home,
                  Amazon PDP, full mobile compose screen)
      NO → review. Probably mis-classified organism.
 
@@ -105,7 +105,7 @@ Apply the 5-question falsifiable rule (research doc 06). First question that ret
      YES → PATTERN (recipes, not concrete pieces; doc on its own)
 ```
 
-**Anti-pattern detection:** if the deliverable is a "full app shell" (e.g. complete workspace with realistic data), it MUST be classified as `PAGE` or `LAYOUT` — never `ORGANISM`. This is the regression we're guarding against.
+**Anti-pattern detection:** if the deliverable is a "full app shell" (e.g. complete local_docs with realistic data), it MUST be classified as `PAGE` or `LAYOUT` — never `ORGANISM`. This is the regression we're guarding against.
 
 **Foundations** are not a level in the rule — they live in tokens (color, typography, spacing, motion, grid, breakpoints, icons). If the request is "extract tokens" or "audit foundations", emit `atomic_layer: foundations`.
 
@@ -151,13 +151,13 @@ triage_result:
 - [ ] Validation checks executed with evidence.
 - [ ] Next-step dependencies documented.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - design_triage_artifact

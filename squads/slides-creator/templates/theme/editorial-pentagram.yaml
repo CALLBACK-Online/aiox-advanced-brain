@@ -125,9 +125,9 @@ source_provenance:
     - "Y Combinator demo day visual language"
     - "Primeiro Servico de IA v3 retrospective (case-study)"
   bench_ref:
-    - "/Users/alan/Code/bench/presentation-ai/src/lib/presentation/themes.ts (ThemeProperties pattern)"
-    - "/Users/alan/Code/bench/ppt-master/examples/ppt169_谷歌风_google_annual_report/ (block of color anchor)"
+    - "<bench-root>/presentation-ai/src/lib/presentation/themes.ts (ThemeProperties pattern)"
+    - "<bench-root>/ppt-master/examples/ppt169_谷歌风_google_annual_report/ (block of color anchor)"
   author: "slides-creator squad — MSN-2026-SLIDES-NARRATIVE-DESIGN"
   date_created: "2026-05-17"
 
-evidence_ref: ".aiox/squad-runtime/sinkra-squad/MSN-2026-SLIDES-NARRATIVE-DESIGN/case-study-primeiro-servico-ia.md"
+evidence_ref: ".aiox/squad-runtime/aiox-squad/MSN-2026-SLIDES-NARRATIVE-DESIGN/case-study-primeiro-servico-ia.md"

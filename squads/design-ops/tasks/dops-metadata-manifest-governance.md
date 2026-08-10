@@ -8,7 +8,7 @@
 
 Garantir governança estrutural do `design-ops` com dois artefatos sincronizados:
 - manifesto do squad (`design-manifest.yaml`)
-- metadata de componentes derivada dos contratos canônicos do workspace
+- metadata de componentes derivada dos contratos canônicos de docs/project
 
 ## Sequência
 

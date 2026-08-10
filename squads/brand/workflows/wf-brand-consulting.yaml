@@ -1,6 +1,6 @@
 # Brand Consulting & Audit Workflow
 # Brand Squad — Interactive consulting + systematic audit
-# Adapted from branding squad for sinkra-hub agent IDs
+# Adapted from branding squad for upstream monorepo agent IDs
 
 id: wf-brand-consulting
 name: "Brand Consulting & Audit"

@@ -11,7 +11,7 @@ type: atom
 description: "8-minute player analysis with engagement metrics and pattern extraction"
 ```
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 

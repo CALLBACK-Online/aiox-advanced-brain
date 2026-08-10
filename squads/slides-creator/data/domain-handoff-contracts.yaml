@@ -3,7 +3,7 @@
 # DOMAIN HANDOFF CONTRACTS — slides-creator (Mandamento 9)
 # ═══════════════════════════════════════════════════════════════════════
 # Inter-domain handoff contracts between Strategic, Tactical, Operational
-# layers per SINKRA Mandamento 9. Each contract specifies producer/consumer
+# layers per AIOX Mandamento 9. Each contract specifies producer/consumer
 # domains, artifact, validation gate, accountability, and rollback.
 #
 # Owner: slide-chief (with composition-rules.yaml#domain_declaration as enum SOT)

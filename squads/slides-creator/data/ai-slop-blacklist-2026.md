@@ -107,7 +107,7 @@ AI gera N cards idênticos alinhados. Real designers fazem **asymmetric grids**:
 
 ### Emoji em UI
 
-Exceto brand que assume emoji (Notion, Slack workspace icons), **NÃO**:
+Exceto brand que assume emoji (Notion, Slack local_docs icons), **NÃO**:
 
 - ❌ `🚀 Launch` em button
 - ❌ `⚡️ Fast` em feature header

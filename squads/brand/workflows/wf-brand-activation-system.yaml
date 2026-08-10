@@ -21,41 +21,33 @@ inputs:
         - growth
         - enterprise
         - smb
-workspace_contract:
-  required_preflight:
-    - bash squads/brand/scripts/bootstrap-brand-workspace.sh {{brand_name}}
-    - bash squads/brand/scripts/validate-brand-essentials.sh
-    - node workspace/scripts/resolve-squad-workspace-readiness.cjs --squad=brand --business={{brand_name}} --context-type=brand
-  context_task: load-workspace-context
-  canonical_template_namespace: brand
-  canonical_output_policy: template-first
 phases:
-  - id: workspace_context
-    name: Workspace preflight and context load
+  - id: project context
+    name: Project preflight and context load
     executor: brand-chief
     tasks:
-      - task: load-workspace-context.md
+      - task: load-project context.md
         inputs:
           - brand_name
   - id: identity_system
     name: Identity design system
     executor: wheeler-brand-design
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/identity-system-plan.md
+      - docs/tactical/brand/activation/identity-system-plan.md
   - id: culture_alignment
     name: Culture-brand alignment
     executor: yohn-brand-culture
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/identity-system-plan.md
+      - docs/tactical/brand/activation/identity-system-plan.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/culture-alignment-plan.md
+      - docs/tactical/brand/activation/culture-alignment-plan.md
   - id: dtc_startup_playbook
     name: Startup/DTC playbook
     executor: heyward-dtc-brand
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/culture-alignment-plan.md
+      - docs/tactical/brand/activation/culture-alignment-plan.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/dtc-playbook.md
+      - docs/tactical/brand/activation/dtc-playbook.md
   - id: smb_b2b_playbook
     name: SMB/B2B sticky branding
     executor: miller-sticky-brand
@@ -66,20 +58,20 @@ phases:
           - positioning_report
           - business_stage
     inputs_from_previous:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/dtc-playbook.md
+      - docs/tactical/brand/activation/dtc-playbook.md
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/activation-30-60-90.md
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/activation-system-report.md
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo-concept.yaml
+      - docs/tactical/brand/activation/activation-30-60-90.md
+      - docs/tactical/brand/activation/activation-system-report.md
+      - docs/tactical/brand/logo-concept.yaml
 outputs:
-  base_path: workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/
+  base_path: docs/tactical/brand/activation/
   artifacts:
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/identity-system-plan.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/culture-alignment-plan.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/dtc-playbook.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/activation-30-60-90.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/activation-system-report.md
-    - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo-concept.yaml
+    - docs/tactical/brand/activation/identity-system-plan.md
+    - docs/tactical/brand/activation/culture-alignment-plan.md
+    - docs/tactical/brand/activation/dtc-playbook.md
+    - docs/tactical/brand/activation/activation-30-60-90.md
+    - docs/tactical/brand/activation/activation-system-report.md
+    - docs/tactical/brand/logo-concept.yaml
 final_output:
   format: markdown
   includes:
@@ -94,12 +86,12 @@ workflow:
   description: Implementação de marca em design, cultura e go-to-market
   type: legacy
   sequence:
-    - step: workspace-context
-      id: workspace-context
+    - step: project context
+      id: project context
       phase: 1
-      phase_name: Workspace preflight and context load
+      phase_name: Project preflight and context load
       agent: brand-chief
-      action: execute_workspace-preflight-and-context-load
+      action: execute_project-preflight-and-context-load
       next: identity-system
     - step: identity-system
       id: identity-system
@@ -108,7 +100,7 @@ workflow:
       agent: wheeler-brand-design
       action: execute_identity-design-system
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/identity-system-plan.md
+        - docs/tactical/brand/activation/identity-system-plan.md
       next: culture-alignment
     - step: culture-alignment
       id: culture-alignment
@@ -117,7 +109,7 @@ workflow:
       agent: yohn-brand-culture
       action: execute_culture-brand-alignment
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/culture-alignment-plan.md
+        - docs/tactical/brand/activation/culture-alignment-plan.md
       next: dtc-startup-playbook
     - step: dtc-startup-playbook
       id: dtc-startup-playbook
@@ -126,7 +118,7 @@ workflow:
       agent: heyward-dtc-brand
       action: execute_startup-dtc-playbook
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/dtc-playbook.md
+        - docs/tactical/brand/activation/dtc-playbook.md
       next: smb-b2b-playbook
     - step: smb-b2b-playbook
       id: smb-b2b-playbook
@@ -135,9 +127,9 @@ workflow:
       agent: miller-sticky-brand
       action: execute_smb-b2b-sticky-branding
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/activation-30-60-90.md
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/activation/activation-system-report.md
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/logo-concept.yaml
+        - docs/tactical/brand/activation/activation-30-60-90.md
+        - docs/tactical/brand/activation/activation-system-report.md
+        - docs/tactical/brand/logo-concept.yaml
     - workflow_end:
         id: complete
         action: workflow_complete

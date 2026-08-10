@@ -1,6 +1,6 @@
 # Task: Define Design Direction
 
-## SINKRA Validation Metadata
+## AIOX Validation Metadata
 
 ```yaml
 task: define-design-direction
@@ -25,9 +25,9 @@ Error_handling:
   strategy: fail fast with explicit handoff blocker
 ```
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Strategic -->
+<!-- AIOX Domain: Strategic -->
 
 ## Metadata
 
@@ -48,7 +48,7 @@ Error_handling:
 
 Lição empírica: Primeiro Serviço de IA v1 aplicou identidade AIOX como skin (cores+logo+tipografia) sem deck-stage real, sem referência visual, sem motivo dominante. Resultado: wireframe bonito-mas-vazio. Esta task **força declaração explícita** de design direction ANTES do primeiro render.
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml
@@ -78,7 +78,7 @@ Inputs:
     source: "{output_dir}/slide-function-map.yaml"
   - name: brand_config
     type: optional
-    source: "workspace/businesses/{slug}/L2-tactical/brand/"
+    source: "docs/tactical/brand/"
     desc: "se deck tem brand owner — caso contrário derive de briefing"
   - name: visual_reference_hints
     type: optional
@@ -102,7 +102,7 @@ action_items:
   - id: 1
     action: "Resolver brand_ref:"
     sub_actions:
-      - "Se brand_config presente → brand_ref = workspace/businesses/{slug}/L2-tactical/brand/"
+      - "Se brand_config presente → brand_ref = docs/tactical/brand/"
       - "Senão → brand_ref = null (deck brand-agnostic)"
 
   - id: 2
@@ -142,7 +142,7 @@ action_items:
     action: "Determinar composition_rules + palette_constraints + typography_constraints:"
     sub_actions:
       - "Derive de brand tokens quando presentes"
-      - "Defaults SINKRA quando ausente brand"
+      - "Defaults AIOX quando ausente brand"
 
   - id: 7
     action: "Determinar audience_context:"

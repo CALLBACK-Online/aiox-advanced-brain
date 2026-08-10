@@ -1,5 +1,5 @@
 type: object
-description: "Swarm configuration block for AIOX and SINKRA agents"
+description: "Swarm configuration block for AIOX and AIOX agents"
 properties:
   role:
     type: string

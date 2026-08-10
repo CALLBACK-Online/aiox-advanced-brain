@@ -11,7 +11,7 @@ type: molecule
 description: "Composed deep-dive stub with 7 internal atoms: collect, select, transcribe, patterns, comments, synthesis, publish"
 ```
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 

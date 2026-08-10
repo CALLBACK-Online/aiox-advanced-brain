@@ -6,8 +6,8 @@ const path = require('path');
 const CANONICAL_BUNDLE_BY_ALIAS = {
   AioxSop: 'AioxSop',
   Sop: 'AioxSop',
-  AioxWorkspace: 'AioxWorkspace',
-  Workspace: 'AioxWorkspace',
+  AioxProjectContext: 'AioxProjectContext',
+  LocalDocs: 'AioxProjectContext',
   Copy: 'Copy',
   Design: 'Design',
   SquadCreator: 'SquadCreator',
@@ -75,8 +75,8 @@ function copyDir(sourceDir, targetDir) {
 const ALIAS_HINTS = new Map([
   ['aioxsop', 'AioxSop'],
   ['sop', 'Sop'],
-  ['aioxworkspace', 'AioxWorkspace'],
-  ['workspace', 'Workspace'],
+  ['aioxproject', 'AioxProjectContext'],
+  ['docs', 'Docs'],
   ['copy', 'Copy'],
   ['design', 'Design'],
   ['designsystem', 'Design'],
@@ -136,8 +136,8 @@ function collectRequestedAliases(targetRoot) {
     requested.add('AioxSop');
   }
 
-  if (requested.has('Workspace')) {
-    requested.add('AioxWorkspace');
+  if (requested.has('Docs')) {
+    requested.add('AioxProjectContext');
   }
 
   if (requested.has('SquadCreatorPro')) {

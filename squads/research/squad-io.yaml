@@ -4,11 +4,11 @@ type: execution
 description: "Squad de inteligencia competitiva e pesquisa de mercado"
 
 inputs:
-  workspace: []
+  local_docs: []
   squad_data: []
 
 outputs:
-  workspace: []
+  local_docs: []
   artifacts:
     - competitive-analysis
     - player-analysis

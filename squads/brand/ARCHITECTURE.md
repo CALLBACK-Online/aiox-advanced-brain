@@ -52,21 +52,6 @@ wf-logo-brainstorm:          wheeler + archetype → nano-banana (cross-squad: d
 wf-brand-mockup-generation:  wheeler → nano-banana (cross-squad: design)
 ```
 
-## Workspace Integration
-
-Level: `workspace_first`
-
-```
-workspace/businesses/{brand_name}/L2-tactical/brand/
-├── brandbook.yaml          # Canonical brand definition
-├── naming/                 # SNP outputs
-├── foundations/             # CBBE, Brand Vision, Growth
-├── positioning/             # Onlyness, Positioning, SB7, Archetype
-├── activation/              # Identity system, culture, DTC, sticky
-├── logo/                    # Logo brainstorm outputs
-└── mockups/                 # Mockup generation outputs
-```
-
 ## Cross-Squad Dependencies
 
 | Squad | Agent | Used By |

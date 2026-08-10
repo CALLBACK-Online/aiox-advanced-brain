@@ -1,116 +1,411 @@
-# AIOX Advanced Brain — Guia Oficial do Aluno
+# AIOX Advanced Brain
 
-> **Material exclusivo dos alunos AIOX Advanced.** Uso educacional dentro da turma. Não redistribua publicamente este acervo.
+> **Segundo cérebro educacional do AIOX Advanced** — curso, skills e squads para estudar o método e aplicar em projetos reais.
 
-Este repositório reúne o curso completo, as skills e os squads apresentados e citados nas turmas AIOX Advanced. Ele funciona como material de estudo, referência operacional e ponto de partida para aplicar o método AIOX em projetos reais.
+| | |
+|---|---|
+| **Repositório** | [github.com/oalanicolas/aiox-advanced-brain](https://github.com/oalanicolas/aiox-advanced-brain) |
+| **Pacote** | `aiox-advanced-brain` · **v0.5.0** (`catalog.json`) |
+| **Licença** | [MIT](LICENSE) (empacotamento e material original; “minds” de terceiros permanecem dos autores) |
+| **Tipo** | Biblioteca de **distribuição e estudo** — não é o runtime AIOX completo |
 
-## Atualização de 10/08/2026
+```text
+Estudar (Obsidian)  →  Escolher skill/squad  →  Copiar ao projeto  →  Executar com agent  →  Exigir evidência
+```
 
-> Todas as **43 skills** e os **25 squads** estão **100% atualizados**.
->
-> O curso contém **75 aulas**, **14 módulos**, **14 quizzes**, **62 questões** e **1.624 wikilinks** verificados.
+---
 
-Validação do acervo:
+## Sumário
 
-- links não resolvidos dentro de `Cursos`: **0**;
-- links ambíguos dentro de `Cursos`: **0**;
-- links do curso apontando para fora de sua pasta: **0**;
-- erros de metadados ou navegação: **0**.
+1. [O que é (e o que não é)](#o-que-é-e-o-que-não-é)
+2. [O que está incluído](#o-que-está-incluído)
+3. [Primeiros 15 minutos](#primeiros-15-minutos)
+4. [Baixar o material](#baixar-o-material)
+5. [Navegar com o Obsidian](#navegar-o-conteúdo-com-o-obsidian)
+6. [Trilhas de estudo](#trilhas-de-estudo)
+7. [Copiar skills e squads para o projeto](#copiar-skills-e-squads-para-o-projeto)
+8. [Maturidade (leia antes de executar)](#maturidade-leia-antes-de-executar)
+9. [Skill ou squad?](#skill-ou-squad)
+10. [Usar com Claude Code, Codex ou outro agent](#usar-com-claude-code-codex-ou-outro-agent)
+11. [Missões frequentes](#missões-frequentes)
+12. [Estrutura do repositório](#estrutura-do-repositório)
+13. [Guia das 49 skills](#guia-das-49-skills)
+14. [Guia dos 24 squads](#guia-dos-24-squads)
+15. [Nomes legados e aliases](#nomes-legados-e-aliases)
+16. [FAQ](#faq)
+17. [Documentação e licença](#documentação-e-licença)
 
-## Por onde começar
+---
 
-1. Abra o [mapa do curso](Cursos/AIOX%20Advanced/README.md).
-2. Siga os módulos em ordem se esta for sua primeira passagem.
-3. Use este README para escolher a skill ou o squad adequado ao problema atual.
-4. Leia o `SKILL.md` ou o `config.yaml` do asset antes de executá-lo.
-5. Consulte as [dependências de runtime](docs/runtime-dependencies.md) quando quiser aplicar um asset fora do ambiente completo AIOX/SINKRA.
+## O que é (e o que não é)
 
-Se você recebeu somente a pasta `Cursos/`, todo o conteúdo pedagógico continuará navegável: o curso não depende de notas externas ao diretório compartilhado.
+### É
+
+- O **acervo da turma**: método + operação em um único repositório.
+- Um **vault de curso** (Markdown + wikilinks) pensado para o [Obsidian](https://obsidian.md).
+- Uma **biblioteca de assets**: 49 skills e 24 squads para copiar para o *seu* projeto.
+- Um **roteador para agents**: mapa de decisão, `AGENT-GUIDE.md` e `agent-router.json` para escolher o squad certo a partir de linguagem natural.
+- Material com **gates e evidência** — o curso termina no artefato que funciona, não no consumo de aulas.
+
+### Não é
+
+| Expectativa comum | Realidade neste repo |
+|-------------------|----------------------|
+| “Instalei e o AIOX inteiro roda” | Aqui não há monorepo/runtime completo (`.aiox-core`, SYNAPSE, etc.) |
+| “Toda skill executa sozinha” | Muitas exigem runtime AIOX (`runtime-aiox`) ou dependências no destino (`partial`) |
+| “É o produto Enterprise” | Componentes multi-tenant corporativos **não** estão no pacote ([NOTICE.md](NOTICE.md)) |
+| “GitHub substitui o vault” | No GitHub você baixa; o grafo de ~1.600 links se navega melhor no **Obsidian** |
+
+**Modelo mental:** este repositório é a **biblioteca + o cérebro de estudo**. O **projeto seu** é onde a execução acontece.
+
+---
+
+## O que está incluído
+
+| Camada | Conteúdo (fonte: `catalog.json` v0.5.0) |
+|--------|----------------------------------------|
+| **Skills** | **49** canônicas em [`skills/`](skills/) |
+| **Squads** | **24** canônicos em [`squads/`](squads/) |
+| **Curso método** | [AIOX Advanced](Cursos/AIOX%20Advanced/README.md) — **75 aulas**, **14 módulos**, **14 quizzes**, **62 questões** |
+| **Grafo** | **1.626** wikilinks internos no curso principal |
+| **Curso squads** | [AIOX Advanced Squads](Cursos/AIOX-Advanced-Squads/README.md) — **25 aulas** (intro + 1 por squad), **6 módulos**, **6 quizzes**, **24 questões** |
+| **Operação** | Mapas de decisão, briefings copiáveis, exemplos de ativação, exercícios, critérios de evidência |
+| **Agents (versionados)** | [AGENTS.md](AGENTS.md) (professor-especialista do segundo cérebro) · [CLAUDE.md](CLAUDE.md) · [AGENT-GUIDE](Cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md) · [agent-router.json](Cursos/AIOX-Advanced-Squads/agent-router.json) |
+| **Manifesto** | [`catalog.json`](catalog.json) — contagens, maturidade, aliases, proveniência |
+
+**Integridade do curso (última hardening registrada):** 0 links quebrados / ambíguos / para fora de `Cursos/`; sem paths absolutos de máquina na distribuição pública.
+
+---
+
+## Primeiros 15 minutos
+
+| Min | Faça |
+|-----|------|
+| 0–2 | [Baixe](#baixar-o-material) o repositório (Git ou ZIP). |
+| 2–5 | Abra `Cursos/AIOX Advanced/` como **vault no Obsidian**. |
+| 5–10 | Leia o [README do curso](Cursos/AIOX%20Advanced/README.md) e entre na **Rota Essencial** (32 aulas → sistema entregue). |
+| 10–12 | Abra o [hub das trilhas](Cursos/README.md) e o [Mapa de decisão dos squads](Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md). |
+| 12–15 | No workspace do agent, use o [prompt de roteamento](#prompt-pronto) e peça o squad certo para uma missão real sua. |
+
+Se só tiver a pasta `Cursos/`, o conteúdo pedagógico já é navegável — abra-a no Obsidian da mesma forma.
+
+---
+
+## Baixar o material
+
+### Com Git
+
+```bash
+git clone https://github.com/oalanicolas/aiox-advanced-brain.git
+cd aiox-advanced-brain
+```
+
+### Sem Git (ZIP)
+
+1. Abra [github.com/oalanicolas/aiox-advanced-brain](https://github.com/oalanicolas/aiox-advanced-brain).
+2. **Code → Download ZIP**.
+3. Extraia a pasta e **abra no Obsidian** (estudo) e/ou no workspace do agent (execução).
+
+### Validar o acervo (opcional)
+
+Requer Python 3 e Node:
+
+```bash
+npm run validate
+```
+
+Valida os dois cursos e o roteamento de agents (`agent-router.json` + paridade skill/squad/aula).
+
+---
+
+## Navegar o conteúdo com o Obsidian
+
+Os cursos usam **Markdown + wikilinks** (`[[Nome da nota]]`) — o formato nativo do [Obsidian](https://obsidian.md). **Recomendamos o Obsidian** para estudar aulas, módulos, glossário e mapas: clique nos links, use busca, backlinks e Graph view.
+
+### Passo a passo
+
+1. Instale o [Obsidian](https://obsidian.md) (gratuito para uso pessoal).
+2. Clone ou extraia o ZIP.
+3. **Open folder as vault**.
+4. Escolha a pasta:
+
+| Vault | Quando usar |
+|-------|-------------|
+| `Cursos/AIOX Advanced/` | **Padrão recomendado** — estudar o método com grafo limpo (~1.600 links) |
+| `Cursos/AIOX-Advanced-Squads/` | Estudar o curso 1:1 dos squads |
+| `Cursos/` | Hub das duas trilhas |
+| Raiz do repositório | Estudo + `skills/` + `squads/` no mesmo vault (índice mais pesado) |
+
+5. Abra o `README.md` do curso e navegue pelos links.
+6. Opcional: **Graph view** no curso principal.
+
+### Papéis: Obsidian vs agent
+
+| Ferramenta | Papel |
+|------------|--------|
+| **Obsidian** | Navegar, estudar, reler conceitos, seguir wikilinks |
+| **Agent** (Claude Code, Codex, …) | Escolher skill/squad, briefing, execução no *seu* projeto, gates |
+| **Seu projeto** | Destino dos arquivos copiados de `skills/` e `squads/` |
+
+Qualquer editor de Markdown funciona; o Obsidian é a **melhor superfície** para o segundo cérebro do curso.
+
+---
+
+## Trilhas de estudo
+
+Ordem sugerida (detalhe no [hub `Cursos/`](Cursos/README.md)):
+
+```text
+AIOX Advanced (Rota Essencial)
+        ↓
+AIOX Advanced Squads — aula 00
+        ↓
+Módulos de squads conforme a missão
+        ↓
+Capstone / Projeto Integrador (método + squads escolhidos)
+```
+
+| Trilha | Para quê | Comece em |
+|--------|----------|-----------|
+| **AIOX Advanced** | Mindset, SDC, taxonomia, determinismo, design system, deploy | [Cursos/AIOX Advanced/README.md](Cursos/AIOX%20Advanced/README.md) — use a **Rota Essencial** na 1ª passagem |
+| **AIOX Advanced Squads** | Quando usar cada squad, briefing, ativação, evidência | [Cursos/AIOX-Advanced-Squads/README.md](Cursos/AIOX-Advanced-Squads/README.md) · [Mapa de decisão](Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md) |
+
+**Ponte método ↔ squads:**  
+[`Cursos/AIOX Advanced/ponte/`](Cursos/AIOX%20Advanced/ponte/) · [`Cursos/AIOX-Advanced-Squads/ponte/`](Cursos/AIOX-Advanced-Squads/ponte/) · inventário em `catalog.json`.
+
+Cada módulo do Advanced fecha com **evidência + quiz**. O curso não termina quando você “lê tudo” — termina quando o artefato funciona.
+
+---
+
+## Copiar skills e squads para o projeto
+
+Este repo **não** usa `.claude/`, `.codex/` ou `.agents/` como layout canônico de distribuição. As pastas públicas são:
+
+| Pasta | Conteúdo | No seu projeto |
+|-------|----------|----------------|
+| `skills/` | `SKILL.md` + recursos | `.claude/skills/`, `.codex/skills/` ou path da IDE |
+| `squads/` | `config.yaml`, agents, tasks, workflows | `squads/` (ou path do monorepo AIOX) |
+| `Cursos/…` | Material pedagógico | Permanece no vault de estudo |
+
+```bash
+# exemplos
+cp -R skills/tech-search /caminho/do/seu-projeto/.claude/skills/
+cp -R squads/research /caminho/do/seu-projeto/squads/
+```
+
+Guia operacional completo (superfícies `$skill`, `@agent`, `*comando`, `/comando` e quando **não** inventar sintaxe):  
+[Cursos/AIOX-Advanced-Squads/Guia-de-execucao.md](Cursos/AIOX-Advanced-Squads/Guia-de-execucao.md).
+
+---
+
+## Maturidade (leia antes de executar)
+
+Nem todo asset roda “do zero” neste repositório. A fonte de verdade é `catalog.json` → `skill_meta` / `squad_meta`.
+
+| Label | Significado | O que fazer |
+|-------|-------------|-------------|
+| `study` | Anatomia, agentes, tasks — estudo e orientação | Ler, copiar, usar como referência; **não** prometer execução autônoma |
+| `portable` | Roda com Node/Python + este repo (ou poucas deps) | Boa aposta para experimentar sem monorepo AIOX |
+| `partial` | Parte roda; outras etapas pedem monorepo / infra no destino | Enumerar o que falta no projeto antes de executar |
+| `runtime-aiox` | Exige AIOX completo (`.aiox-core`, SYNAPSE, etc.) | Usar no ambiente AIOX; aqui serve principalmente para estudo do procedimento |
+
+### Snapshot real do catálogo (v0.5.0)
+
+| Tipo | Distribuição de maturidade |
+|------|----------------------------|
+| **49 skills** | ~11 `portable` · ~15 `study` · ~23 `runtime-aiox` |
+| **24 squads** | ~3 `study` · ~21 `partial` |
+
+**Skills portáteis (bom ponto de partida sem runtime AIOX):**  
+`tech-search`, `tech-research`, `deep-strategic-planning`, `design-md`, `doc-rot`, `extract-session-heuristics`, `handoff`, `impeccable`, `skill-creator`, `slide-creator`, `survey-intel`.
+
+**Regra de ouro:** presença no acervo ≠ “funciona sozinho no laptop”. Confira a label em `catalog.json`, a aula do squad e o `SKILL.md` / `config.yaml` antes de prometer entrega.
+
+---
 
 ## Skill ou squad?
 
-- **Use uma skill** quando o objetivo é específico, o resultado esperado está claro e você precisa de um procedimento especializado: validar uma story, pesquisar uma tecnologia, revisar código ou preparar um deploy.
-- **Use um squad** quando a missão exige vários especialistas, perspectivas ou etapas coordenadas: criar uma marca, estruturar vendas, conduzir research completo ou construir um design system.
-- **Use ambos** quando uma skill funciona como porta de entrada para um squad. Exemplos: `brand` → squad `brand`, `data` → squad `data`, `squad-chief` → squad `squad-creator`.
-- **Comece pelo menor mecanismo suficiente.** Uma skill bem escolhida costuma ser mais rápida; um squad oferece maior cobertura para problemas multidisciplinares.
+| | **Skill** | **Squad** |
+|---|-----------|-----------|
+| **Quando** | Objetivo específico, resultado claro | Missão multidisciplinar ou multi-etapa |
+| **Forma** | Um procedimento especializado | Vários agentes + tasks + workflows |
+| **Exemplos** | Validar story, tech-search, deploy | Marca, research multi-fonte, criar outro squad |
+| **Ambos** | Skill wrapper abre o squad (`brand`, `research`, `copy`…) | |
 
-## Atalhos por objetivo
+**Comece pelo menor mecanismo suficiente.** Skill bem escolhida costuma ser mais rápida; squad cobre o que uma skill sozinha não fecha.
 
-- **Descobrir e planejar produto:** `aiox-analyst` → `aiox-pm` → `aiox-sm` → `aiox-po`.
-- **Implementar uma story completa:** `validate-story-draft` → `develop-story` → `review-story` → `apply-qa-fixes` → `deploy-story` → `verify-deploy` → `close-story`, ou `full-sdc` para orquestrar o ciclo inteiro.
-- **Arquitetura e engenharia:** `aiox-architect`, `aiox-dev`, `aiox-data-engineer`, `db-sage` e `aiox-devops`.
-- **Research:** `tech-search` para pesquisa técnica autocontida; `tech-research` para dossier profundo; squad `research` para investigação multidisciplinar.
-- **Design:** `aiox-ux-designer` para UX/UI, `design-system` para criar, `design-ops` para governar e `impeccable` para elevar a qualidade final.
-- **Criar ativos AIOX:** `skill-creator` para uma skill; `squad-chief` ou squad `squad-creator` para um squad.
-- **Decisão complexa:** `roundtable`, `deep-strategic-planning` ou squad `advisory-board`.
+---
 
-## Guia das 43 skills
+## Usar com Claude Code, Codex ou outro agent
+
+O curso de squads e os bootstraps deste repo foram feitos para **humans e agents**.
+
+### Prompt pronto
+
+Depois de abrir o repositório no workspace do agent:
+
+```text
+Consulte Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md e
+Cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md + agent-router.json.
+Escolha o squad mais adequado para esta missão, confirme o anti-escopo
+na aula correspondente, diga a maturidade, peça só o briefing que faltar
+e me oriente com evidência de conclusão — sem inventar comandos do runtime.
+
+Missão: {descreva o que precisa acontecer}
+```
+
+Versão mais curta:
+
+```text
+Consulte Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md, escolha o squad
+mais adequado para esta missão e use a aula correspondente para me orientar.
+```
+
+### O que o agent deve entregar
+
+1. Squad (e por que **não** o vizinho).
+2. Maturidade e dependências.
+3. Briefing mínimo (só o que falta).
+4. Como copiar/ativar no **seu** projeto.
+5. Evidência esperada (artefato + gate) — não só “rodei o fluxo”.
+
+### Runtime
+
+| Runtime | Bootstrap neste repo | Cuidado |
+|---------|----------------------|---------|
+| **Claude Code** | [CLAUDE.md](CLAUDE.md) → [AGENTS.md](AGENTS.md) | Só use `$skill` / `@agent` / `*comando` / `/comando` se existirem no **seu** projeto |
+| **Codex** | [AGENTS.md](AGENTS.md) | Não assuma superfícies `@` / `*` / `/` |
+| **Outro** | [AGENTS.md](AGENTS.md) + [AGENT-GUIDE](Cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md) | Use o `generic_prompt` de cada rota em `agent-router.json` |
+
+**Contrato:** `AGENTS.md` e `CLAUDE.md` são **guias públicos versionados** (não ficam no `.gitignore`). Eles pedem ao agent atuar como **professor-especialista**: localizar material, conduzir estudo, rotear missões e exigir evidência. Overrides só em `AGENTS.local.md` / `CLAUDE.local.md`.
+
+Referências: [Mapa de decisão](Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md) · [Guia de execução](Cursos/AIOX-Advanced-Squads/Guia-de-execucao.md) · [agent-router.json](Cursos/AIOX-Advanced-Squads/agent-router.json).
+
+---
+
+## Missões frequentes
+
+| Objetivo | Caminho sugerido |
+|----------|------------------|
+| Descobrir e planejar produto | `aiox-analyst` → `aiox-pm` → `aiox-sm` → `aiox-po` |
+| Story completa (SDC) | `validate-story-draft` → … → `close-story`, ou `full-sdc` |
+| Arquitetura e engenharia | `aiox-architect`, `aiox-dev`, `aiox-data-engineer`, `db-sage`, `aiox-devops` |
+| Research rápido | skill `tech-search` (`portable`) |
+| Research profundo / multi-fonte | `tech-research` · squad `research` |
+| Brownfield (código) | `code-anatomist` · `domain-decoder` |
+| Design system | criar: squad `design-system` · governar: `design-ops` · polish: `impeccable` |
+| Criar skill / squad | `skill-creator` · `squad-chief` / squads `squad-creator` (+ `pro`) |
+| Decisão de alto impacto | `roundtable` · `deep-strategic-planning` · `advisory-board` |
+| Copy / vendas / conteúdo | skills + squads `copy`, `sales`, `conteudo`, `hormozi` |
+| Claude Code | skill/squad `claude-code-mastery` |
+| Slides | skill `slide-creator` · squad `slides-creator` |
+| Agente em loop / pouco autônomo | squad `agent-autonomy` |
+| Processo → ClickUp | squad `clickup-ops-squad` (depois do processo validado) |
+
+Aula por squad: pasta [`Cursos/AIOX-Advanced-Squads/aulas/`](Cursos/AIOX-Advanced-Squads/aulas/).
+
+---
+
+## Estrutura do repositório
+
+```text
+.
+├── skills/                         # 49 skills canônicas (catálogo)
+├── squads/                         # 24 squads canônicos
+├── Cursos/
+│   ├── README.md                   # Hub das trilhas
+│   ├── AIOX Advanced/              # Curso método (75 aulas) — vault Obsidian ideal
+│   └── AIOX-Advanced-Squads/       # Curso 1:1 dos squads + agent-router
+├── catalog.json                    # Manifesto da biblioteca (v2)
+├── package.json                    # validate
+├── AGENTS.md / CLAUDE.md           # Guias versionados: professor-especialista do acervo
+├── CHANGELOG.md · NOTICE.md · LICENSE
+└── .github/workflows/              # CI de validação
+```
+
+---
+
+## Guia das 49 skills
+
+Inventário canônico = lista `skills` em `catalog.json`. Abaixo, o “use quando” de cada uma.
 
 ### Agentes fundamentais do AIOX
 
-- [`aiox-analyst`](.claude/skills/aiox-analyst/SKILL.md) — Pesquisa mercado, concorrentes e usuários, conduz ideação, avalia viabilidade e descobre projetos brownfield. **Use quando:** existe uma pergunta de negócio ou produto que ainda precisa de evidência antes do PRD.
-- [`aiox-architect`](.claude/skills/aiox-architect/SKILL.md) — Define arquitetura full-stack, APIs, infraestrutura, segurança, performance, stack e estratégia de deploy. **Use quando:** uma decisão técnica afeta várias partes do sistema ou exige trade-offs explícitos.
-- [`aiox-data-engineer`](.claude/skills/aiox-data-engineer/SKILL.md) — Cuida de modelagem de dados, schemas, migrations, RLS e otimização de consultas dentro do ciclo AIOX. **Use quando:** a story altera banco, contratos de dados ou políticas de acesso.
-- [`aiox-dev`](.claude/skills/aiox-dev/SKILL.md) — Implementa código, corrige bugs, refatora e aplica práticas de desenvolvimento. **Use quando:** requisitos e critérios de aceite já estão claros e chegou a hora de construir.
-- [`aiox-devops`](.claude/skills/aiox-devops/SKILL.md) — Opera Git, GitHub, CI/CD, releases, MCPs e infraestrutura. **Use quando:** o trabalho envolve repositório, integração, publicação ou ambiente de execução.
-- [`aiox-master`](.claude/skills/aiox-master/SKILL.md) — Governa o framework e coordena trabalho entre domínios e squads. **Use quando:** a missão atravessa fronteiras do AIOX, há conflito de autoridade ou é necessária uma decisão sistêmica.
-- [`aiox-pm`](.claude/skills/aiox-pm/SKILL.md) — Cria PRDs, gerencia épicos, estratégia, roadmap e priorização MoSCoW/RICE. **Use quando:** é preciso decidir o que construir e por quê.
-- [`aiox-po`](.claude/skills/aiox-po/SKILL.md) — Refina backlog, critérios de aceite, prioridades e planejamento de sprint. **Use quando:** o trabalho precisa ficar pronto e ordenado para execução.
-- [`aiox-qa`](.claude/skills/aiox-qa/SKILL.md) — Define estratégia de testes, quality gates e avaliação de risco. **Use quando:** é preciso provar qualidade, cobertura e aderência aos critérios de aceite.
-- [`aiox-sm`](.claude/skills/aiox-sm/SKILL.md) — Transforma PRDs e épicos em stories executáveis, organiza sprint e retrospectiva. **Use quando:** o escopo de produto precisa virar unidades pequenas de entrega.
-- [`aiox-ux-designer`](.claude/skills/aiox-ux-designer/SKILL.md) — Cria fluxos, wireframes, protótipos, tokens e componentes acessíveis. **Use quando:** a solução depende da experiência do usuário ou da linguagem visual.
+- [`aiox-analyst`](skills/aiox-analyst/SKILL.md) — Pesquisa mercado, concorrentes e usuários, conduz ideação, avalia viabilidade e descobre projetos brownfield. **Use quando:** existe uma pergunta de negócio ou produto que ainda precisa de evidência antes do PRD.
+- [`aiox-architect`](skills/aiox-architect/SKILL.md) — Define arquitetura full-stack, APIs, infraestrutura, segurança, performance, stack e estratégia de deploy. **Use quando:** uma decisão técnica afeta várias partes do sistema ou exige trade-offs explícitos.
+- [`aiox-data-engineer`](skills/aiox-data-engineer/SKILL.md) — Cuida de modelagem de dados, schemas, migrations, RLS e otimização de consultas dentro do ciclo AIOX. **Use quando:** a story altera banco, contratos de dados ou políticas de acesso.
+- [`aiox-dev`](skills/aiox-dev/SKILL.md) — Implementa código, corrige bugs, refatora e aplica práticas de desenvolvimento. **Use quando:** requisitos e critérios de aceite já estão claros e chegou a hora de construir.
+- [`aiox-devops`](skills/aiox-devops/SKILL.md) — Opera Git, GitHub, CI/CD, releases, MCPs e infraestrutura. **Use quando:** o trabalho envolve repositório, integração, publicação ou ambiente de execução.
+- [`aiox-master`](skills/aiox-master/SKILL.md) — Governa o framework e coordena trabalho entre domínios e squads. **Use quando:** a missão atravessa fronteiras do AIOX, há conflito de autoridade ou é necessária uma decisão sistêmica.
+- [`aiox-pm`](skills/aiox-pm/SKILL.md) — Cria PRDs, gerencia épicos, estratégia, roadmap e priorização MoSCoW/RICE. **Use quando:** é preciso decidir o que construir e por quê.
+- [`aiox-po`](skills/aiox-po/SKILL.md) — Refina backlog, critérios de aceite, prioridades e planejamento de sprint. **Use quando:** o trabalho precisa ficar pronto e ordenado para execução.
+- [`aiox-qa`](skills/aiox-qa/SKILL.md) — Define estratégia de testes, quality gates e avaliação de risco. **Use quando:** é preciso provar qualidade, cobertura e aderência aos critérios de aceite.
+- [`aiox-sm`](skills/aiox-sm/SKILL.md) — Transforma PRDs e épicos em stories executáveis, organiza sprint e retrospectiva. **Use quando:** o escopo de produto precisa virar unidades pequenas de entrega.
+- [`aiox-ux-designer`](skills/aiox-ux-designer/SKILL.md) — Cria fluxos, wireframes, protótipos, tokens e componentes acessíveis. **Use quando:** a solução depende da experiência do usuário ou da linguagem visual.
 
 ### Ciclo de desenvolvimento de stories
 
-- [`validate-story-draft`](.claude/skills/validate-story-draft/SKILL.md) — Valida uma story em 12 passos, considera contexto do épico e corrige automaticamente problemas recomendados. **Use quando:** a story foi escrita, mas ainda não está pronta para desenvolvimento.
-- [`develop-story`](.claude/skills/develop-story/SKILL.md) — Implementa todas as tarefas, verifica critérios de aceite e registra decisões do agente de desenvolvimento. **Use quando:** a story está validada e pronta para execução.
-- [`review-story`](.claude/skills/review-story/SKILL.md) — Executa o quality gate completo, avalia riscos e prontidão de deploy e emite `PASS`, `CONCERNS`, `FAIL` ou `WAIVED`. **Use quando:** a implementação terminou e precisa de revisão independente.
-- [`apply-qa-fixes`](.claude/skills/apply-qa-fixes/SKILL.md) — Corrige os achados registrados pelo quality gate. **Use quando:** a revisão encontrou problemas concretos que precisam ser eliminados antes do deploy.
-- [`deploy-story`](.claude/skills/deploy-story/SKILL.md) — Detecta o tipo de deploy e executa publicação em Supabase, Docker Swarm, Vercel ou Railway. **Use quando:** a story foi aprovada e seu artefato deve chegar ao ambiente-alvo.
-- [`verify-deploy`](.claude/skills/verify-deploy/SKILL.md) — Confirma de ponta a ponta que o estado real publicado corresponde ao artefato aprovado. **Use quando:** o deploy terminou, mas o valor ainda precisa ser provado no ambiente real.
-- [`close-story`](.claude/skills/close-story/SKILL.md) — Verifica conclusão, deploy e governança, marca a story como concluída e atualiza o épico. **Use quando:** implementação e verificação já passaram e falta encerrar formalmente o ciclo.
-- [`full-sdc`](.claude/skills/full-sdc/SKILL.md) — Orquestra todo o Story Development Cycle, da validação ao fechamento, com handoffs e checkpoints. **Use quando:** você quer executar uma única story de ponta a ponta com o fluxo AIOX completo.
+- [`validate-story-draft`](skills/validate-story-draft/SKILL.md) — Valida uma story em 12 passos, considera contexto do épico e corrige automaticamente problemas recomendados. **Use quando:** a story foi escrita, mas ainda não está pronta para desenvolvimento.
+- [`develop-story`](skills/develop-story/SKILL.md) — Implementa todas as tarefas, verifica critérios de aceite e registra decisões do agente de desenvolvimento. **Use quando:** a story está validada e pronta para execução.
+- [`review-story`](skills/review-story/SKILL.md) — Executa o quality gate completo, avalia riscos e prontidão de deploy e emite `PASS`, `CONCERNS`, `FAIL` ou `WAIVED`. **Use quando:** a implementação terminou e precisa de revisão independente.
+- [`apply-qa-fixes`](skills/apply-qa-fixes/SKILL.md) — Corrige os achados registrados pelo quality gate. **Use quando:** a revisão encontrou problemas concretos que precisam ser eliminados antes do deploy.
+- [`deploy-story`](skills/deploy-story/SKILL.md) — Detecta o tipo de deploy e executa publicação em Supabase, Docker Swarm, Vercel ou Railway. **Use quando:** a story foi aprovada e seu artefato deve chegar ao ambiente-alvo.
+- [`verify-deploy`](skills/verify-deploy/SKILL.md) — Confirma de ponta a ponta que o estado real publicado corresponde ao artefato aprovado. **Use quando:** o deploy terminou, mas o valor ainda precisa ser provado no ambiente real.
+- [`close-story`](skills/close-story/SKILL.md) — Verifica conclusão, deploy e governança, marca a story como concluída e atualiza o épico. **Use quando:** implementação e verificação já passaram e falta encerrar formalmente o ciclo.
+- [`full-sdc`](skills/full-sdc/SKILL.md) — Orquestra todo o Story Development Cycle, da validação ao fechamento, com handoffs e checkpoints. **Use quando:** você quer executar uma única story de ponta a ponta com o fluxo AIOX completo.
 
 ### Pesquisa, estratégia e conhecimento
 
-- [`tech-search`](.claude/skills/tech-search/SKILL.md) — Pesquisa técnica autocontida com decomposição, buscas paralelas, avaliação e síntese. **Use quando:** precisa responder uma pergunta técnica bem delimitada com rapidez e fontes.
-- [`tech-research`](.claude/skills/tech-research/SKILL.md) — Conduz pesquisa técnica profunda, multi-wave, com scoring de cobertura, verificação de citações e fontes acadêmicas. **Use quando:** a decisão exige um dossier auditável e evidência graduada.
-- [`roundtable`](.claude/skills/roundtable/SKILL.md) — Reúne revisores com perspectivas diferentes e produz consenso ou divergências explícitas. **Use quando:** uma decisão importante não deve depender de uma única leitura.
-- [`deep-strategic-planning`](.claude/skills/deep-strategic-planning/SKILL.md) — Compara múltiplos futuros com lentes mentais, scoring e critérios de abandono. **Use quando:** arquitetura, investimento ou direção de produto têm alto impacto e alternativas reais.
-- [`extract-session-heuristics`](.claude/skills/extract-session-heuristics/SKILL.md) — Extrai heurísticas operacionais de sessões de trabalho usando Pareto ao Cubo e GAH. **Use quando:** uma experiência contém aprendizados que devem virar regras reutilizáveis.
-- [`doc-rot`](.claude/skills/doc-rot/SKILL.md) — Detecta documentação desatualizada, redundante ou enganosa. **Use quando:** documentos começaram a contradizer o sistema ou dificultar a busca pela fonte correta.
-- [`handoff`](.claude/skills/handoff/SKILL.md) — Gera um handoff compatível com SINKRA para outra IA retomar o trabalho. **Use quando:** haverá troca de sessão, agente ou janela de contexto sem perder decisões e estado.
-- [`enhance-workflow`](.claude/skills/enhance-workflow/SKILL.md) — Encadeia discovery, research, roundtable e criação de épico para melhorias complexas. **Use quando:** uma feature ou evolução ainda precisa ser investigada e estruturada antes de virar execução.
+- [`tech-search`](skills/tech-search/SKILL.md) — Pesquisa técnica autocontida com decomposição, buscas paralelas, avaliação e síntese. **Use quando:** precisa responder uma pergunta técnica bem delimitada com rapidez e fontes.
+- [`tech-research`](skills/tech-research/SKILL.md) — Conduz pesquisa técnica profunda, multi-wave, com scoring de cobertura, verificação de citações e fontes acadêmicas. **Use quando:** a decisão exige um dossier auditável e evidência graduada.
+- [`roundtable`](skills/roundtable/SKILL.md) — Reúne revisores com perspectivas diferentes e produz consenso ou divergências explícitas. **Use quando:** uma decisão importante não deve depender de uma única leitura.
+- [`deep-strategic-planning`](skills/deep-strategic-planning/SKILL.md) — Compara múltiplos futuros com lentes mentais, scoring e critérios de abandono. **Use quando:** arquitetura, investimento ou direção de produto têm alto impacto e alternativas reais.
+- [`extract-session-heuristics`](skills/extract-session-heuristics/SKILL.md) — Extrai heurísticas operacionais de sessões de trabalho usando Pareto ao Cubo e GAH. **Use quando:** uma experiência contém aprendizados que devem virar regras reutilizáveis.
+- [`doc-rot`](skills/doc-rot/SKILL.md) — Detecta documentação desatualizada, redundante ou enganosa. **Use quando:** documentos começaram a contradizer o sistema ou dificultar a busca pela fonte correta.
+- [`handoff`](skills/handoff/SKILL.md) — Gera um handoff compatível com AIOX para outra IA retomar o trabalho. **Use quando:** haverá troca de sessão, agente ou janela de contexto sem perder decisões e estado.
+- [`enhance-workflow`](skills/enhance-workflow/SKILL.md) — Encadeia discovery, research, roundtable e criação de épico para melhorias complexas. **Use quando:** uma feature ou evolução ainda precisa ser investigada e estruturada antes de virar execução.
 
 ### Design, marca, dados e conteúdo
 
-- [`design-chief`](.claude/skills/design-chief/SKILL.md) — Faz triagem, roteamento e sequência do trabalho de design. **Use quando:** você sabe que o problema é de design, mas ainda não sabe qual especialista ou pipeline deve assumir.
-- [`design-md`](.claude/skills/design-md/SKILL.md) — Extrai de uma URL pública um `DESIGN.md`, tokens, contrato de renderização, proveniência e relatório de drift. **Use quando:** precisa capturar ou comparar o sistema visual de uma referência existente.
-- [`design-system`](.claude/skills/design-system/SKILL.md) — Assistente conversacional para componentes, páginas, decks, protótipos, dashboards e e-mails. **Use quando:** quer criar um artefato visual respeitando uma linguagem de design.
-- [`impeccable`](.claude/skills/impeccable/SKILL.md) — Audita e refina interfaces em hierarquia, layout, acessibilidade, responsividade, conteúdo, movimento e acabamento. **Use quando:** a interface funciona, mas ainda precisa de qualidade visual e de experiência em nível profissional.
-- [`brand`](.claude/skills/brand/SKILL.md) — Ativa os especialistas de naming, posicionamento, arquitetura e ativação de marca. **Use quando:** a missão é de branding e exige o squad `brand`.
-- [`data`](.claude/skills/data/SKILL.md) — Ativa e coordena especialistas de analytics. **Use quando:** o problema envolve múltiplas disciplinas de dados ou o especialista correto ainda não está claro.
-- [`db-sage`](.claude/skills/db-sage/SKILL.md) — Especialista profundo em PostgreSQL e Supabase, schemas, RLS, migrations, performance, operações e monitoramento. **Use quando:** o banco é o centro do problema e exige autoridade técnica especializada.
-- [`slide-creator`](.claude/skills/slide-creator/SKILL.md) — Cria ou melhora apresentações com narrativa, direção visual, especificação slide a slide, notas e QA. **Use quando:** o entregável é um deck, pitch, aula, workshop ou apresentação executiva.
-- [`survey-intel`](.claude/skills/survey-intel/SKILL.md) — Transforma CSV/XLSX de pesquisas, inscrições ou NPS em segmentos, avatares, briefing e dashboard. **Use quando:** decisões de comunicação, oferta ou evento dependem de entender uma audiência real.
-- [`hormozi`](.claude/skills/hormozi/SKILL.md) — Ativa especialistas nas metodologias de Alex Hormozi. **Use quando:** a missão envolve oferta, leads, vendas, monetização ou escala segundo os frameworks `$100M`.
+- [`design-chief`](skills/design-chief/SKILL.md) — Faz triagem, roteamento e sequência do trabalho de design. **Use quando:** você sabe que o problema é de design, mas ainda não sabe qual especialista ou pipeline deve assumir.
+- [`design-md`](skills/design-md/SKILL.md) — Extrai de uma URL pública um `DESIGN.md`, tokens, contrato de renderização, proveniência e relatório de drift. **Use quando:** precisa capturar ou comparar o sistema visual de uma referência existente.
+- [`design-system`](skills/design-system/SKILL.md) — Assistente conversacional para componentes, páginas, decks, protótipos, dashboards e e-mails. **Use quando:** quer criar um artefato visual respeitando uma linguagem de design.
+- [`impeccable`](skills/impeccable/SKILL.md) — Audita e refina interfaces em hierarquia, layout, acessibilidade, responsividade, conteúdo, movimento e acabamento. **Use quando:** a interface funciona, mas ainda precisa de qualidade visual e de experiência em nível profissional.
+- [`brand`](skills/brand/SKILL.md) — Ativa os especialistas de naming, posicionamento, arquitetura e ativação de marca. **Use quando:** a missão é de branding e exige o squad `brand`.
+- [`data`](skills/data/SKILL.md) — Ativa e coordena especialistas de analytics. **Use quando:** o problema envolve múltiplas disciplinas de dados ou o especialista correto ainda não está claro.
+- [`db-sage`](skills/db-sage/SKILL.md) — Especialista profundo em PostgreSQL e Supabase, schemas, RLS, migrations, performance, operações e monitoramento. **Use quando:** o banco é o centro do problema e exige autoridade técnica especializada.
+- [`slide-creator`](skills/slide-creator/SKILL.md) — Cria ou melhora apresentações com narrativa, direção visual, especificação slide a slide, notas e QA. **Use quando:** o entregável é um deck, pitch, aula, workshop ou apresentação executiva.
+- [`survey-intel`](skills/survey-intel/SKILL.md) — Transforma CSV/XLSX de pesquisas, inscrições ou NPS em segmentos, avatares, briefing e dashboard. **Use quando:** decisões de comunicação, oferta ou evento dependem de entender uma audiência real.
+- [`hormozi`](skills/hormozi/SKILL.md) — Ativa especialistas nas metodologias de Alex Hormozi. **Use quando:** a missão envolve oferta, leads, vendas, monetização ou escala segundo os frameworks `$100M`.
 
 ### Criação, governança e operação do ecossistema
 
-- [`skill-creator`](.claude/skills/skill-creator/SKILL.md) — Orienta criação, empacotamento e validação de skills. **Use quando:** um procedimento recorrente merece virar uma capacidade invocável e reutilizável.
-- [`squad-chief`](.claude/skills/squad-chief/SKILL.md) — Cria squads, agentes e workflows por templates e validação estrutural. **Use quando:** o problema precisa de uma nova equipe especializada, não apenas de uma skill.
-- [`code-anatomist`](.claude/skills/code-anatomist/SKILL.md) — Faz engenharia reversa completa de software em nove fases: arquitetura, domínio, dados, API, dependências e infraestrutura. **Use quando:** precisa compreender um codebase inteiro antes de modificar, migrar ou documentar.
-- [`decoder-chief`](.claude/skills/decoder-chief/SKILL.md) — Extrai regras de negócio, taxonomias e modelos de decisão de sistemas brownfield. **Use quando:** o código é conhecido, mas o domínio e suas regras ainda estão implícitos.
-- [`telegram`](.claude/skills/telegram/SKILL.md) — Opera o AIOX Message Gateway: setup, deploy, canais, lifecycle, logs, health e webhooks. **Use quando:** agentes precisam funcionar por Telegram ou outros canais suportados pelo gateway.
-- [`three-brain`](.claude/skills/three-brain/SKILL.md) — Roteia tarefas entre Claude, Codex, Gemini e CodeRabbit e impede autorrevisão. **Use quando:** qualidade, custo ou modalidade exigem escolher motores diferentes para executar e revisar.
+- [`skill-creator`](skills/skill-creator/SKILL.md) — Orienta criação, empacotamento e validação de skills. **Use quando:** um procedimento recorrente merece virar uma capacidade invocável e reutilizável.
+- [`squad-chief`](skills/squad-chief/SKILL.md) — Cria squads, agentes e workflows por templates e validação estrutural. **Use quando:** o problema precisa de uma nova equipe especializada, não apenas de uma skill.
+- [`code-anatomist`](skills/code-anatomist/SKILL.md) — Faz engenharia reversa completa de software em nove fases: arquitetura, domínio, dados, API, dependências e infraestrutura. **Use quando:** precisa compreender um codebase inteiro antes de modificar, migrar ou documentar.
+- [`decoder-chief`](skills/decoder-chief/SKILL.md) — Extrai regras de negócio, taxonomias e modelos de decisão de sistemas brownfield. **Use quando:** o código é conhecido, mas o domínio e suas regras ainda estão implícitos.
+- [`telegram`](skills/telegram/SKILL.md) — Opera o AIOX Message Gateway: setup, deploy, canais, lifecycle, logs, health e webhooks. **Use quando:** agentes precisam funcionar por Telegram ou outros canais suportados pelo gateway.
+- [`three-brain`](skills/three-brain/SKILL.md) — Roteia tarefas entre Claude, Codex, Gemini e CodeRabbit e impede autorrevisão. **Use quando:** qualidade, custo ou modalidade exigem escolher motores diferentes para executar e revisar.
 
-## Guia dos 25 squads
+### Entradas de squad (wrappers)
+
+- [`advisory-board`](skills/advisory-board/SKILL.md) — Porta de entrada do conselho estratégico. **Use quando:** decisão de alto impacto com múltiplas perspectivas.
+- [`claude-code-mastery`](skills/claude-code-mastery/SKILL.md) — Porta de entrada do squad de domínio Claude Code. **Use quando:** hooks, skills, MCP e setup de projeto.
+- [`conteudo`](skills/conteudo/SKILL.md) — Porta de entrada do squad de conteúdo social. **Use quando:** carrosséis, Reels, Stories e campanhas.
+- [`copy`](skills/copy/SKILL.md) — Porta de entrada do squad de copy de conversão. **Use quando:** peças persuasivas e frameworks de copywriters.
+- [`research`](skills/research/SKILL.md) — Porta de entrada do squad unificado de research (sucessor de spy/deep-research). **Use quando:** bench, OSINT, discovery ou research multi-fonte.
+- [`sales`](skills/sales/SKILL.md) — Porta de entrada do squad de vendas. **Use quando:** funil completo (diagnose → close → scale).
+
+---
+
+## Guia dos 24 squads
+
+Cada squad tem **aula 1:1** em `Cursos/AIOX-Advanced-Squads/aulas/` (ver [índice](Cursos/AIOX-Advanced-Squads/README.md)). Confira maturidade em `catalog.json` antes de executar.
 
 - [`advisory-board`](squads/advisory-board/config.yaml) — Conselho estratégico com perspectivas alinhadas e complementares, devil's advocate e accountability. **Use quando:** precisa tomar uma decisão pessoal ou empresarial importante e quer reduzir vieses e groupthink.
 - [`agent-autonomy`](squads/agent-autonomy/config.yaml) — Audita, cria, diagnostica e otimiza agentes autônomos com frameworks de autonomia real. **Use quando:** um agente depende demais de intervenção humana, entra em loops ou não sabe avaliar seu próprio progresso.
 - [`aiox-sop`](squads/aiox-sop/config.yaml) — Cria, extrai, avalia e otimiza SOPs para humanos e agentes com referências de qualidade operacional. **Use quando:** um processo precisa sair da cabeça das pessoas e virar execução repetível e auditável.
 - [`brand`](squads/brand/config.yaml) — Reúne especialistas em naming, fundamentos, posicionamento, arquitetura e ativação de marca. **Use quando:** a missão cobre a construção ou evolução completa de uma marca.
-- [`c-level`](squads/c-level/config.yaml) — Simula funções executivas para elicitar contexto, estruturar documentos e organizar o workspace da empresa. **Use quando:** um negócio precisa transformar conhecimento disperso em direção executiva e fontes de verdade.
 - [`claude-code-mastery`](squads/claude-code-mastery/config.yaml) — Especialistas em hooks, skills, subagentes, MCPs, plugins, agent teams e integração de projetos no Claude Code. **Use quando:** quer configurar, dominar ou evoluir o ambiente Claude Code.
 - [`clickup-ops-squad`](squads/clickup-ops-squad/config.yaml) — Materializa processos validados em Spaces, Folders, Lists, Fields, automações, views e tasks no ClickUp. **Use quando:** o processo já foi mapeado e precisa virar operação real no ClickUp.
 - [`code-anatomist`](squads/code-anatomist/config.yaml) — Equipe de engenharia reversa que recupera arquitetura, domínio, dados, APIs, dependências e infraestrutura. **Use quando:** um sistema completo precisa ser entendido por múltiplas lentes antes de uma transformação.
@@ -132,36 +427,66 @@ Se você recebeu somente a pasta `Cursos/`, todo o conteúdo pedagógico continu
 - [`squad-creator-pro`](squads/squad-creator-pro/config.yaml) — Expande o `squad-creator` com clonagem mental, extração de DNA, delegação especializada, model routing e gates avançados. **Use quando:** a criação do squad exige especialistas baseados em mentes, maior profundidade ou otimização avançada.
 - [`storytelling`](squads/storytelling/config.yaml) — Reúne mestres de narrativa para estruturar histórias poderosas. **Use quando:** a mensagem depende de arco, tensão, emoção e memorabilidade, em vez de apenas conversão direta.
 
-## Estrutura do repositório
+---
 
-```text
-.
-├── .claude/skills/       # 43 skills canônicas
-├── Cursos/AIOX Advanced/ # 75 aulas e materiais compartilháveis
-├── squads/               # 25 squads canônicos e sucessores atuais
-├── docs/                 # Inventário, proveniência e limitações
-├── scripts/              # Validação local
-├── catalog.json          # Manifesto legível por máquina
-└── package.json
-```
+## Nomes legados e aliases
 
-## Observações de uso
+Útil se você veio de turmas antigas, slides ou do monorepo com nomes anteriores:
 
-Este repositório preserva as versões canônicas encontradas no `sinkra-hub` e o curso vindo do `mentelendaria`. Algumas skills e squads esperam o runtime completo AIOX/SINKRA e podem referenciar `.aiox-core`, `workspace`, apps, serviços ou ferramentas externas. A presença do asset neste acervo não significa que todas as dependências de execução foram empacotadas.
+| Mencionado | Neste acervo |
+|------------|--------------|
+| `aios-*` (analyst, dev, …) | `aiox-*` |
+| `spy`, Spy/Bench, deep-research (squad unificado) | squad + skill `research` |
+| `design` / design-squad | `design-ops` (+ `design-system` para construção) |
+| skill `slides-creator` | skill **`slide-creator`** · squad **`slides-creator`** |
+| `content-engine` | `conteudo` |
+| `course-creator` | **não empacotado**; anatomia de referência → `squad-creator` |
+| `sales-squad` / `negotiation-squad` | `sales` |
+| `project-management-clickup-squad` | `clickup-ops-squad` |
 
-Documentos complementares:
+Fonte completa: `catalog.json` → `aliases`, `renames`, `related_current_assets`.
 
-- [Inventário das conversas](docs/whatsapp-inventory.md)
-- [Resultado do cruzamento com o sinkra-hub](docs/search-results.md)
-- [Proveniência e política de atualização](docs/source-and-update-policy.md)
-- [Dependências de runtime](docs/runtime-dependencies.md)
+---
 
-Validação:
+## FAQ
 
-```bash
-npm run validate
-```
+**Preciso do AIOX Enterprise para usar isto?**  
+Não. Isto é biblioteca educacional. Enterprise multi-tenant não está no pacote.
 
-## Estado Git e distribuição
+**Por que copiar skills em vez de rodar daqui?**  
+Porque o destino canônico é o *seu* projeto/IDE. Este repo é fonte de distribuição; a execução usa o harness do projeto.
 
-O repositório é local e privado por padrão. Nenhum remoto é configurado automaticamente e nenhuma licença de redistribuição pública é presumida. O conteúdo é exclusivo dos alunos AIOX Advanced.
+**Obsidian é obrigatório?**  
+Não, mas é a forma recomendada de navegar o grafo de wikilinks. No GitHub os arquivos abrem; o segundo cérebro funciona de verdade no vault.
+
+**Qual a diferença entre os dois cursos?**  
+Advanced = **método** (como pensar e operar AIOX). Advanced Squads = **operação de cada squad** (quando usar, briefing, evidência).
+
+**Posso pedir ao agent “roda o squad X” sem copiar?**  
+O agent pode **orientar** lendo a aula e o `config.yaml`. Execução real exige o asset no projeto (e runtime compatível). Maturidade `study`/`partial` limita o que é seguro prometer.
+
+**Skill `slide-creator` vs squad `slides-creator`?**  
+Skill = procedimento de deck. Squad = time coordenado (narrativa, visual, QA). Nomes deliberadamente próximos; veja aliases.
+
+**Os números do README mudaram?**  
+Confie em `catalog.json` (`library_version`, `counts`, `course`, `supplemental_courses`). Este README acompanha **0.5.0**.
+
+**Posso redistribuir o link do repositório?**  
+Siga [NOTICE.md](NOTICE.md) e o combinado da turma. Frameworks/“minds” de terceiros são estudo metodológico — respeite direitos das obras originais.
+
+---
+
+## Documentação e licença
+
+| Documento | Função |
+|-----------|--------|
+| [Cursos/README.md](Cursos/README.md) | Hub das trilhas |
+| [NOTICE.md](NOTICE.md) | Proveniência e o que **não** está no pacote |
+| [CHANGELOG.md](CHANGELOG.md) | Histórico da biblioteca |
+| [catalog.json](catalog.json) | Manifesto máquina (contagens, maturidade, aliases) |
+| [AGENTS.md](AGENTS.md) / [CLAUDE.md](CLAUDE.md) | Bootstrap agents |
+| [LICENSE](LICENSE) | MIT + nota sobre material de terceiros |
+
+**Licença:** MIT para o empacotamento e materiais originais deste repositório. Metodologias e “minds” de terceiros incluídos para estudo permanecem dos respectivos autores — ver [LICENSE](LICENSE) e [NOTICE.md](NOTICE.md).
+
+Runtime enterprise multi-tenant **não** está empacotado neste repositório.

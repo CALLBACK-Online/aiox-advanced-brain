@@ -44,7 +44,7 @@ Business strategy question (offer, leads, scaling, pricing, content, sales, audi
        ↓                      ↓                      ↓
   Business recommendation + framework application
        ↓
-  Artifacts → workspace/businesses/{biz}/L1-L4
+  Artifacts → docs/L1-L4
 ```
 
 ## Methodology Frameworks
@@ -94,16 +94,15 @@ Is this about business health? → hormozi-audit
 |----------|---------------------------|
 | copy squad | Offer stacks → copy briefs |
 | brand squad | Positioning informed by Grand Slam Offer |
-| c-level | Strategic advisory from hormozi-advisor |
-| workspace L1-strategy | Pricing strategy derived from hormozi-models |
+| local_docs strategy | Pricing strategy derived from hormozi-models |
 
 ## Outputs Location
 
 | Artifact | Path |
 |----------|------|
-| Offer stacks | `workspace/businesses/{biz}/L1-strategy/offerbook.yaml` |
-| Pricing strategy | `workspace/businesses/{biz}/L1-strategy/pricing-strategy.yaml` |
-| Lead magnets | `workspace/businesses/{biz}/L4-operational/campaigns/{slug}/` |
+| Offer stacks | `docs/strategy/offerbook.yaml` |
+| Pricing strategy | `docs/strategy/pricing-strategy.yaml` |
+| Lead magnets | `docs/operational/campaigns/{slug}/` |
 | Business audits | Generated on demand |
 
 ## Boundary

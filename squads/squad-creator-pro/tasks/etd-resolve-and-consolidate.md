@@ -23,9 +23,9 @@ outputs:
 
 elicit: false
 ---
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: etd-resolve-and-consolidate
   task_name: 'ETD Phase 3: Resolve & Consolidate (Conflict + Deduplication)'
   status: pending
@@ -55,11 +55,11 @@ sinkra_task_metadata:
   accountability_scope: review_only
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Operational
   atomic_layer: Atom
   executor: Agent
@@ -67,7 +67,7 @@ sinkra_contract:
   post_condition: "Conflitos limpos e sistema consolidado. Pronto para transformacao em Decision Cards L4."
   performance: "executar SLA declarado, aplicar prioridades de maneira analitica."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # ETD Phase 3: Resolve & Consolidate

@@ -9,7 +9,7 @@
 | session | null |
 | duration | 4-72h |
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml

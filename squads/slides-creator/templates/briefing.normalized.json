@@ -70,7 +70,7 @@
     },
     "brand_config_resolved": {
       "type": "boolean",
-      "description": "Whether brand config was resolved from workspace or briefing."
+      "description": "Whether brand config was resolved from local_docs or briefing."
     },
     "brand_config_source": {
       "type": "string",
@@ -256,7 +256,7 @@
     "induction_mode": "registry_first",
     "max_slides": 12,
     "brand_config_resolved": true,
-    "brand_config_source": "workspace/businesses/aiox/",
+    "brand_config_source": "docs/aiox/",
     "source_materials_count": 3,
     "reference_assets_count": 0,
     "output_targets": ["ds"],

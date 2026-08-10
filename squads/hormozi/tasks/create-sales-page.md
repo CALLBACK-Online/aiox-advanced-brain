@@ -11,7 +11,7 @@ source: "Sales Page SOP — 17-Element Blueprint"
 sop_reference: squads/hormozi/sops/sales-page-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

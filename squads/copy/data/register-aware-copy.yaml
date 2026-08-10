@@ -6,7 +6,7 @@ cross_skill_pair: "squads/design-ops/data/register-inference.yaml"
 absorbed_from:
   - "impeccable.style v3.0 — register-aware vocabulary (brand.md vs product.md)"
 created: "2026-05-19"
-source_bench: "docs/bench/2026-05-18-impeccable-vs-sinkra-design-stack/"
+source_bench: "docs/bench/2026-05-18-impeccable-vs-aiox-design-stack/"
 
 # ── the_two_registers ────────────────────────────────────────────────────────
 
@@ -232,4 +232,4 @@ cross_skill_handshake:
     file: "DESIGN.md#frontmatter.register"
   with_slide_creator:
     rule: "If briefing-normalized.yaml#register exists in deck context, copy assets for that deck inherit register"
-    file: ".claude/skills/slide-creator/templates/qa/briefing-normalized#register"
+    file: "skills/slide-creator/templates/qa/briefing-normalized#register"

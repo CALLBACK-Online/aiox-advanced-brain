@@ -186,7 +186,7 @@ as data loaded by the authoring process itself.
 
 ## Learning Loop
 
-Every completed run writes a SINKRA execution log to:
+Every completed run writes a AIOX execution log to:
 
 ```bash
 .aiox/learning/logs/extract-from-url/extract-from-url-<slug>-<runTs>.yaml

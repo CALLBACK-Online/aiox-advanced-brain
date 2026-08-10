@@ -10,7 +10,7 @@ estimated_time: 30-45 min
 source: "$100M Money Models - Pilar 1"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Operational
 atomic_layer: Atom

@@ -5,7 +5,7 @@ title: AIOX Advanced
 status: canonical
 canonical_scope: Cursos/AIOX Advanced
 sharing_boundary: Cursos
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_format: lesson.md (via content-to-md.mjs)
 source_version: 1.0.0
 source_status: ready_to_ship
@@ -28,6 +28,15 @@ tags: [curso, aiox-advanced, course-brain]
 - Projeto de conclusão: [[Projeto Integrador]] · [[Rubrica]]
 - Dúvidas de campo: [[support/README|Central de suporte]]
 
+## Cursos neste acervo
+
+- **Este curso:** AIOX Advanced (método, SDC, mindset).
+- **Curso irmão:** `Cursos/AIOX-Advanced-Squads/` — 25 aulas (intro + um squad por aula).
+- **Hub das trilhas:** `Cursos/README.md`
+- **Ponte método → squads:** [[ponte/trilha-squads|Trilha de squads]]
+
+Ordem sugerida: Rota Essencial daqui → aula 00 do curso Squads → módulos de squads conforme a missão → Capstone.
+
 ## Comece aqui
 
 Este curso tem duas rotas. Na **Rota Essencial**, eu percorro 32 aulas e termino com um sistema entregue. Na **Rota Completa**, eu adiciono repertório, ferramentas e aprofundamentos. As quatro versões históricas permanecem acessíveis, mas não entram na sequência principal.
@@ -41,7 +50,7 @@ Cada módulo fecha com uma evidência e um quiz. O curso não termina quando eu 
 - [[modulos/Módulo 2 - Setup e Contexto|M2 — Setup operacional e contexto]]
 - [[modulos/Módulo 3 - Ciclo SDC|M3 — Ciclo SDC]]
 - [[modulos/Módulo 4 - Determinismo e Comando|M4 — Determinismo e comando]]
-- [[modulos/Módulo 5 - Arquitetura SINKRA|M5 — Arquitetura SINKRA]]
+- [[modulos/Módulo 5 - Arquitetura AIOX|M5 — Arquitetura AIOX]]
 - [[modulos/Módulo 6 - Brownfield e Greenfield|M6 — Workflows brownfield e greenfield]]
 - [[modulos/Módulo 7 - Criar Squad|M7 — Criar um Squad próprio]]
 - [[modulos/Módulo 8 - Pipeline de Research|M8 — Pipeline canônico de research]]
@@ -58,7 +67,7 @@ Cada módulo fecha com uma evidência e um quiz. O curso não termina quando eu 
 - **M2 — Setup operacional e contexto:** [[05-ambientes-local-staging-production|Local, Staging, Production]], [[17-engenharia-de-contexto|Engenharia de contexto: limpar comandos, skills e MCPs]]
 - **M3 — Ciclo SDC:** [[46-etapas-de-desenvolvimento|Briefing, PRD, Stories: as 3 etapas antes do código]], [[47-ciclo-de-vida-do-story|Ciclo de vida do Story: draft → ready → in progress → in review → done]], [[48-quality-gate-completo|Quality Gate: QA + Apply QA Fixes + CodeRabbit]]
 - **M4 — Determinismo e comando:** [[20-determinismo-progressivo|Determinismo Progressivo: 30, 60, 90]], [[21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro, LLM só onde gera ouro]], [[11-goal-vs-loop|Goal vs Loop]]
-- **M5 — Arquitetura SINKRA:** [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]], [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]], [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]]
+- **M5 — Arquitetura AIOX:** [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]], [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]], [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]]
 - **M6 — Workflows brownfield e greenfield:** [[31-brownfield-discovery|Brownfield Discovery: entrar num projeto que já existe]], [[53-brownfield-enhancement|Brownfield Enhancement: como adicionar feature em código legado]]
 - **M7 — Criar um Squad próprio:** [[33-anatomia-de-um-squad|Anatomia de um Squad AIOX]], [[34-squad-creator-passo-a-passo|Squad Creator passo a passo: criar um squad do zero]]
 - **M8 — Pipeline canônico de research:** [[40-pipeline-canonico-prd|Pipeline canônico: do nada ao PRD com stories prontas]]
@@ -179,5 +188,5 @@ Eu uso os [[Assessments|quizzes]] para recuperação ativa e entrego o [[Projeto
 - [[Taxonomia AIOX]]
 - [[Token Economy]]
 
-- Material de origem: `sinkra-hub/apps/aiox-courses/content/courses/aiox-advanced`
+- Material de origem: `upstream monorepo/apps/aiox-courses/content/courses/aiox-advanced`
 - Fronteira de publicação: nenhuma dependência do aluno pode sair de `/Cursos`.

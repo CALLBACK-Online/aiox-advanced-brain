@@ -1,6 +1,6 @@
 # ETL Env Bootstrap
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 executor: etl-chief

@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: core-config-leis-sociais
 lesson_position: 25
 title: 'core-config: as leis sociais do projeto'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/25-core-config-leis-sociais/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

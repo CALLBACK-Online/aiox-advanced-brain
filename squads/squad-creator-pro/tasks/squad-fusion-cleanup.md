@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: squad-fusion-cleanup
   task_name: Squad Fusion - Cleanup
   status: pending
@@ -21,11 +21,11 @@ sinkra_task_metadata:
   - O fechamento final mantém trilha de rollback [threshold: >= 1]
   output_persistence: transient_output
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Strategic
   atomic_layer: Atom
   executor: Human
@@ -33,7 +33,7 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Task: Squad Fusion - Cleanup
@@ -75,7 +75,7 @@ Executar cleanup apenas quando a fusão estiver estável e houver confirmação 
 ### Step 2: Executar cleanup opcional
 
 - Arquivar ou remover squads fonte somente quando aprovado.
-- Limpar workspace temporário e fechar o audit log.
+- Limpar local_docs temporário e fechar o audit log.
 
 ## Output
 

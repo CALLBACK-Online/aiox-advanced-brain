@@ -69,7 +69,7 @@ inputs:
 
 quality_gates:
   - id: DOPS-GATE-001
-    check: validate-workspace-contracts
+    check: validate-project context contracts
     blocking: true
   - id: DOPS-GATE-004
     check: checklists

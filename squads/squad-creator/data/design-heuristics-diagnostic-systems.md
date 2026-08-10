@@ -1,6 +1,5 @@
 # Design Heuristics: Diagnostic & Context Systems
 
-> Heurísticas extraídas de sessões de design do sistema de diagnósticos C-Level,
 > context manifests, greeting scripts e integração cross-squad.
 > Aplicar ao criar tasks de diagnóstico, greeting scripts, context loading ou backlog em qualquer squad.
 
@@ -8,7 +7,7 @@
 
 ## H1: Diagnóstico baseado em templates, não em opinião da LLM
 
-Cada dimensão de diagnóstico DEVE mapear para arquivos reais em `workspace/_templates/`.
+Cada dimensão de diagnóstico DEVE mapear para arquivos reais em `docs/templates/`.
 Scoring é determinístico: arquivo existe? campos preenchidos vs FILL_THIS? sinais de qualidade (regex)?
 Se não tem template, não tem diagnóstico. Zero interpretação subjetiva.
 
@@ -23,9 +22,8 @@ Em vez de "IA, lê 20 arquivos e descobre o que importa", definir variáveis fix
 O manifest lista: source (arquivo), field (caminho YAML), type (boolean/string/number/array_length).
 Render um documento tokenizado. A IA recebe contexto preciso, não matéria-prima.
 
-**Quando aplicar:** Ao criar tasks que consomem dados do workspace.
-**Referência:** `squads/c-level/manifests/*.manifest.yaml`
-**Anti-padrão:** Task que diz "leia o workspace e analise".
+**Quando aplicar:** Ao criar tasks que consomem dados de docs/project.
+**Anti-padrão:** Task que diz "leia o local_docs e analise".
 
 ---
 
@@ -58,7 +56,7 @@ Todo squad stateful deve mostrar a próxima ação inferida de gaps reais no fil
 Prioridade: gap bloqueante > gap não-bloqueante > intake operacional.
 Nunca sugerir `*help` genérico quando tem blocker.
 
-**Quando aplicar:** Ao criar greeting scripts para squads com workspace_integration ou runtime.
+**Quando aplicar:** Ao criar greeting scripts para squads com local project docs ou runtime.
 **Não aplicar:** Squads stateless (cybersecurity, deep-research, spy, db-sage).
 **Formato:** `**Next Action:** {icon} \`{comando}\`` seguido de `> {razão}`
 **Icons:** blocking=🔴, non_blocking=🟡, intake=🔵, ready=🟢
@@ -82,7 +80,7 @@ O empresário não sabe navegar entre squads.
 
 Diagnóstico encontra gaps → apresenta ao usuário → pergunta: "Adicionar ao backlog?"
 Opções: [Sim, todos | Selecionar | Não]. Não adicionar silenciosamente.
-Backlog persiste em `workspace/businesses/{slug}/L1-strategy/diagnostic-backlog.yaml`.
+Backlog persiste em `docs/strategy/diagnostic-backlog.yaml`.
 Items têm: ID, dimensão, score, prioridade, squad, comando, status, pré-requisito.
 
 **Quando aplicar:** Ao criar tasks de diagnóstico que identificam gaps acionáveis.
@@ -92,10 +90,10 @@ Items têm: ID, dimensão, score, prioridade, squad, comando, status, pré-requi
 
 ## H8: Stateful vs Stateless determina greeting
 
-Squads com `workspace_integration` (workspace_first, controlled_runtime_consumer) ou runtime
+Squads com `local project docs` (local, none) ou runtime
 precisam de greeting contextual com Next Action. Squads stateless não.
 
-**Critério:** `workspace_integration.level IN [workspace_first, controlled_runtime_consumer] OR runtime_dir exists`
+**Critério:** `local project docs.level IN [local, none] OR runtime_dir exists`
 **Quando aplicar:** No workflow de criação de squad (step_4_5 é condicional).
 **Referência:** `squads/squad-creator/workflows/wf-create-squad.yaml` step_4_5
 
@@ -119,7 +117,7 @@ O código não é descartado, é promovido. Mapear a migração (story + receita
 sem nested paths desnecessários. O caminho deve comunicar o que contém, não quem gerou.
 
 **Quando aplicar:** Ao definir output paths de tasks.
-**Anti-padrão:** `docs/qa/workspace-health/business-diagnostics/reports/YYYY-MM-DD/`
+**Anti-padrão:** `docs/qa/docs-health/business-diagnostics/reports/YYYY-MM-DD/`
 
 ---
 

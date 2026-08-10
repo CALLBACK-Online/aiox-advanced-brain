@@ -25,8 +25,7 @@ sections:
       - Author (person or organization)
       - Entry agent (orchestrator id, e.g., 'legal-chief')
       - Slash prefix (camelCase for commands, e.g., 'legalAssistant')
-      - Workspace integration level (`none|read_only|controlled_runtime_consumer|workspace_first`)
-      - If `controlled_runtime_consumer` or `workspace_first`, only use these levels when `squads/c-level/` exists and document COO/c-level handoff instead of direct workspace mutation during squad creation
+      - local project docs level (`none|read_only  # enterprise levels removed in aiox-advanced-brain`)
 
       Output file location: `squads/{{squad_name}}/config.yaml`
 
@@ -47,14 +46,6 @@ sections:
         icon: {{icon}}
         entry_agent: {{entry_agent}}
         slashPrefix: {{slash_prefix}}
-      workspace_integration:
-        level: {{workspace_integration_level}}
-        rationale: "{{workspace_integration_rationale}}"
-        read_paths: {{workspace_read_paths}}
-        write_paths: {{workspace_write_paths}}
-        template_namespace: {{workspace_template_namespace}}
-        owner: "{{workspace_integration_owner}}"
-        execution_mode: "{{workspace_integration_execution_mode}}"
     examples:
       - |
         squad:
@@ -69,17 +60,6 @@ sections:
           icon: "⚖️"
           entry_agent: legal-chief
           slashPrefix: legalAssistant
-        workspace_integration:
-          level: read_only
-          rationale: "Reads legal context from workspace for alignment; write integration is handed off to COO/c-level"
-          read_paths:
-            - workspace/businesses/{brand}/L0-identity/
-            - workspace/businesses/{brand}/L1-strategy/
-          write_paths: []
-          template_namespace: legal
-          owner: c-level/coo
-          execution_mode: handoff_only
-
   - id: pattern-library
     title: Pattern Library
     instruction: |

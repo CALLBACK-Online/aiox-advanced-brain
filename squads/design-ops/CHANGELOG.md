@@ -60,7 +60,7 @@
 
 ## 2026-04-19
 
-- Absorvido workflow **DS Static-to-Dynamic Migration** derivado do mapeamento SINKRA em `.aiox/squad-runtime/sinkra-squad/migracao-ds-estatico-para-dinamico-tokenizado/` (compliance 87/100, estrutural 0.91, todos 5 checkpoints APPROVE)
+- Absorvido workflow **DS Static-to-Dynamic Migration** derivado do mapeamento AIOX em `.aiox/squad-runtime/aiox-squad/migracao-ds-estatico-para-dinamico-tokenizado/` (compliance 87/100, estrutural 0.91, todos 5 checkpoints APPROVE)
 - Adicionado `workflows/ds-static-to-dynamic-migration.yaml` v1.0.0 — 6 Organisms (Scaffold → Tokens → Primitives → Routes → QA → Polish), 6 gates G1-G6, perfis lean|full, paralelização preview || kits em G3, execução de referência em `apps/anthropic-ds`
 - Criado `scripts/design-system/scaffold-ds.sh` — parametriza Next.js 16 + React 19 + TS + Tailwind v4 + shadcn/ui + next-themes + Lucide (fecha GAP-DS-001)
 - Criado `checklists/visual-gate-lean.yaml` — inspeção visual manual para perfil lean, 7 seções, verdict PASS/FAIL (fecha GAP-DS-003a)

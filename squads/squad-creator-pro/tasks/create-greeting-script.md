@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: create-greeting-script
   task_name: Create Greeting Script (Extension Wrapper)
   status: pending
@@ -27,11 +27,11 @@ sinkra_task_metadata:
   coherence_threshold: 0.95
   error_behavior: raise
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Strategic
   atomic_layer: Atom
   executor: Worker
@@ -39,7 +39,7 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Task: Create Greeting Script (Extension Wrapper)
@@ -64,7 +64,7 @@ O owner canônico permanece em:
 O papel desta task é apenas:
 
 1. normalizar o alvo do squad;
-2. preservar o contexto de `install-workspace-context`;
+2. preservar o contexto de `install-project context`;
 3. delegar a geração real do greeting para o base;
 4. devolver os outputs esperados pelo workflow do pro.
 
@@ -132,7 +132,7 @@ reconcile_outputs:
 ## Related Documents
 
 - `squads/squad-creator/tasks/create-greeting-script.md` -- owner canônico
-- `workflows/wf-install-workspace-context.yaml` -- consumidor local no pro
+- `workflows/wf-install-project context.yaml` -- consumidor local no pro
 
 ---
 

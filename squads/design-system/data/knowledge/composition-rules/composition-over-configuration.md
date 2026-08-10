@@ -2,7 +2,7 @@
 title: Composition over Configuration
 impact: high
 tags: [composition, api-design, patterns]
-sinkra_source: v0-composition-patterns
+aiox_source: v0-composition-patterns
 ---
 
 # Composition over Configuration

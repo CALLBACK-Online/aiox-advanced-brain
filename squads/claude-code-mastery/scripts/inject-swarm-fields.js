@@ -2,10 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 const squadsToProcess = [
-  'sinkra-squad', 'claude-code-mastery', 'copy', 'infra-ops',
+  'aiox-squad', 'claude-code-mastery', 'copy', 'infra-ops',
   'domain-decoder', 'hormozi', 'data', 'kaizen', 'backlog-ops',
   'etl-ops', 'aiox-sop', 'slides-creator', 'aiox-copy', 'aiox-design',
-  'aiox-ads', 'books', 'brand', 'c-level',
   'clickup-ops-squad', 'deep-research', 'design-system', 'edital',
   'google-workspace-squad', 'innerlens', 'ip-shield-squad',
   'mega-brain', 'mmos', 'movement', 'process-excellence-squad',

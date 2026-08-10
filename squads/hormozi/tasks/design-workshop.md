@@ -11,7 +11,7 @@ source: "Workshop Launch SOP — 7-Block Framework"
 sop_reference: squads/hormozi/sops/workshop-launch-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

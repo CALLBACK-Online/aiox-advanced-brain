@@ -25,7 +25,7 @@ NÃO use para landing pages comerciais (use `dops-page-composition.md`).
 |-------|------|--------|
 | `source_material` | path[] | SOT files, PRD, ADRs, specs (ex: `docs/architecture/.../SOT/`) |
 | `target_app` | string | App Next.js que vai hostear (ex: `apps/aiox-brandbook`) |
-| `route_slug` | kebab-case | Slug da rota (ex: `sinkra-hub-prd`) |
+| `route_slug` | kebab-case | Slug da rota (ex: `upstream monorepo-prd`) |
 | `accountable` | slot | Quem aprova o conteúdo final |
 | `design_token_namespace` | string | Token base (default: AIOX semantic — `background`, `foreground`, `card`, `muted`, `primary`) |
 
@@ -64,7 +64,7 @@ Plus:
    - Identificar 10-20 conceitos canônicos que viram seções
 
 2. **Decidir agrupamento de sidebar** (7 grupos × 3-5 items max)
-   - Exemplo Sinkra Hub: Fundamentos · Atores · Governança · Infra · Inteligência · Entrega · Review
+   - Exemplo AIOX platform: Fundamentos · Atores · Governança · Infra · Inteligência · Entrega · Review
    - Cada item da sidebar = uma seção do conteúdo
 
 3. **Identificar callouts críticos** (BLOCKERS, riscos, decisões frozen)
@@ -248,7 +248,7 @@ Se aprendizado for relevante para futuras pages, propor edit no checklist.
 - **Page composition** (landing pages, não docs): `squads/design-ops/checklists/page-composition-checklist.md`
 - **Component quality**: `squads/design-ops/checklists/dops-component-quality.yaml`
 - **Visual reference**: `apps/anthropic-ds/src/pages/kits/docs/DocsLayout.tsx`
-- **Canonical implementation**: `apps/aiox-brandbook/src/app/sinkra-hub-prd/`
+- **Canonical implementation**: `apps/aiox-brandbook/src/app/upstream monorepo-prd/`
 
 ---
 

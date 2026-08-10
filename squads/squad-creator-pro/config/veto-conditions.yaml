@@ -310,7 +310,7 @@ veto_engine:
       search_locations:
         - "squads/"
         - ".claude/agents/"
-        - ".claude/skills/"
+        - "skills/"
         - "app/components/"
         - "docs/"
       validation_questions:

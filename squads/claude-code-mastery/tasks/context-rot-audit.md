@@ -7,7 +7,7 @@
 **Mode:** Autonomous (elicit: false)
 **Quality Standard:** Rot score calculated, all stale references identified, remediation plan generated
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: context-rot-audit
 atomic_layer: Atom

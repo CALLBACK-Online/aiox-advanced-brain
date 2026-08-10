@@ -28,7 +28,7 @@ domain: Operational
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Operational`
 atomic_layer: Atom
 Input: request::install_skills
@@ -36,7 +36,7 @@ Output: artifact::install_skills
 pre_condition: contexto mínimo carregado e rota validada
 post_condition: decisão registrada com artefato persistido ou handoff emitido
 performance: registrar evidências, falhas e próximo passo sem erro silencioso
-Completion Criteria: contrato mínimo SINKRA explícito e saída rastreável produzida
+Completion Criteria: contrato mínimo AIOX explícito e saída rastreável produzida
 ========
 Input: request::install_skills
 Output: artifact::install_skills
@@ -120,12 +120,12 @@ Supported IDE surfaces:
 
 ```yaml
 destination_map:
-  claude: ".claude/skills/{prefix}-{agent}/SKILL.md"  # depth-2 flat naming (scanner constraint)
+  claude: "skills/{prefix}-{agent}/SKILL.md"  # depth-2 flat naming (scanner constraint)
   cursor: ".cursor/rules/"
   windsurf: ".windsurf/commands/{slashPrefix}/"
   gemini: ".gemini/agents/{slashPrefix}/"
   antigravity: ".agents/workflows/{slashPrefix}/"
-  codex: ".agents/skills/{slashPrefix}/"
+  codex: "skills/{slashPrefix}/"
 ```
 
 Blocking checks:
@@ -159,11 +159,11 @@ sync_plan:
       source: "squads/copy/agents/copy-chief.md"
       targets:
         - ide: claude
-          path: ".claude/skills/copy/copy-chief/SKILL.md"
+          path: "skills/copy/copy-chief/SKILL.md"
           exists: true
           resolution: "overwrite | skipped"
         - ide: codex
-          path: ".agents/skills/Copy/copy-chief.md"
+          path: "skills/Copy/copy-chief.md"
           exists: false
           resolution: "create"
 ```

@@ -2,7 +2,7 @@
 title: Controlled vs Uncontrolled Components
 impact: high
 tags: [composition, state, forms, patterns]
-sinkra_source: v0-composition-patterns
+aiox_source: v0-composition-patterns
 ---
 
 # Controlled vs Uncontrolled Components

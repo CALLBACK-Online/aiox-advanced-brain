@@ -32,7 +32,7 @@ domain: Strategic
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Strategic`
 atomic_layer: Atom
 Input: request::discover_tools_recommend

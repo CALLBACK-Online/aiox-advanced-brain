@@ -653,7 +653,7 @@ echo "dropped   scripts/check-token-drift.mjs (from template)"
 # 8b. components.map.json skeleton with status field
 cat >"$APP_DIR/src/design-system/components.map.json" <<CMP
 {
-  "\$schema": "https://raw.githubusercontent.com/sinkra-hub/design-ops/components-map-v1.schema.json",
+  "\$schema": "https://raw.githubusercontent.com/upstream monorepo/design-ops/components-map-v1.schema.json",
   "version": "1.0.0",
   "target": "$TARGET",
   "framework": "$FRAMEWORK",

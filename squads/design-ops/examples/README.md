@@ -22,4 +22,4 @@ Inclui ciclos completos de critical-eye, reports, rankings, decisions, scored va
 
 ## Provenance
 
-Outputs gerados antes da migração para SINKRA v3.1+. Mantidos como evidência de uso real do squad em operações de design critique e geração de assets.
+Outputs gerados antes da migração para AIOX v3.1+. Mantidos como evidência de uso real do squad em operações de design critique e geração de assets.

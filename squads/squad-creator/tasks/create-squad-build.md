@@ -19,7 +19,7 @@ category: squad-creation
 agent: squad-chief
 elicit: false
 autonomous: true
-description: "Create all squad components (agents, orchestrator, workflows, tasks), wire internal dependencies, create knowledge base, generate documentation, prepare COO handoff, and emit the publish contract."
+description: "Create all squad components (agents, orchestrator, workflows, tasks), wire internal dependencies, create knowledge base, generate documentation, prepare human handoff, and emit the publish contract."
 accountability:
   human: squad-operator
   scope: review_only
@@ -31,7 +31,7 @@ merged_from:
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Tactical`
 atomic_layer: Atom
 Input: request::create_squad_build
@@ -52,7 +52,7 @@ Create the core functional components of the squad -- agents from templates enri
 - [ ] Templates available: `templates/agent-tmpl.md`, `templates/workflow-tmpl.yaml`
 - [ ] Frameworks loaded: `data/executor-matrix-framework.md`
 - [ ] WebSearch tool available (for domain research)
-- [ ] `config.yaml` has valid `entry_agent` and `workspace_integration.level`
+- [ ] `config.yaml` has valid `entry_agent` and `local project docs.level`
 
 ## Inputs
 
@@ -80,10 +80,10 @@ inputs:
     type: string
     required: true
     description: "operational | expert_template | hybrid"
-  workspace_integration_level:
+  local project docs_level:
     type: string
     required: true
-    description: "none | read_only | controlled_runtime_consumer | workspace_first"
+    description: "none | read_only | none | local"
 ```
 
 ## Workflow / Steps
@@ -274,38 +274,37 @@ generate_documentation:
     validate: true
 ```
 
-### Step 4.4: Prepare COO Workspace Handoff
+### Step 4.4: Prepare COO LocalDocs Handoff
 
 ```yaml
 prepare_coo_handoff:
   trigger:
-    - "created squad declares workspace_integration.level = controlled_runtime_consumer"
-    - "created squad declares workspace_integration.level = workspace_first"
+    - "created squad declares local project docs.level = none"
+    - "created squad declares local project docs.level = local"
 
   rule: |
-    squad-creator nao executa integracao real com workspace.
-    Ele prepara um handoff para COO/c-level com contrato, paths e acoes pendentes.
+    squad-creator nao executa escrita em contexto enterprise-only (not packaged); outputs em docs/ do aluno.
 
   if_c_level_exists:
-    handoff_target: "@coo"
-    artifact: ".aiox/squad-runtime/create-squad/{squad_name}/workspace-handoff.yaml"
+    handoff_target: "@human"
+    artifact: ".aiox/squad-runtime/create-squad/{squad_name}/project-handoff.yaml"
     must_include:
       - squad_name
-      - requested_workspace_level
+      - requested_scope_level
       - rationale
       - read_paths
       - write_paths
       - template_namespace
-      - requested_workspace_actions
+      - requested_project_actions
       - dependencies_on_existing_domains_or_businesses
 
   if_c_level_missing:
-    artifact: ".aiox/squad-runtime/create-squad/{squad_name}/workspace-handoff.yaml"
+    artifact: ".aiox/squad-runtime/create-squad/{squad_name}/project-handoff.yaml"
     status: "pending_coo_unavailable"
     note: "Nao executar integracao. Apenas registrar handoff pendente."
 ```
 
-**VETO-SQD-005:** If the workflow attempts to write directly into `workspace/` during squad creation, HALT and generate COO handoff instead.
+**VETO-SQD-005:** If the workflow attempts to write directly into `docs/` (substituto local; outputs/ é private enterprise distribution) during squad creation, HALT and generate human handoff instead.
 
 ### Step 4.5: Prepare Activation Surface Contract
 
@@ -314,8 +313,8 @@ activation_surface_contract:
   publish_phase: "create-squad-publish"
   must_publish:
     - ".aiox-sync.yaml"
-    - ".claude/skills/{slash_prefix}/{entry_agent}/SKILL.md"
-    - ".agents/skills/{entry_agent}/SKILL.md"
+    - "skills/{slash_prefix}/{entry_agent}/SKILL.md"
+    - "skills/{entry_agent}/SKILL.md"
     - "CLAUDE.md generated registry entry"
   blocking_rule: "Do not finalize squad creation if any activation surface is missing after publish"
 ```
@@ -353,14 +352,14 @@ build_output:
 - [ ] All internal dependencies verified (no broken references)
 - [ ] Knowledge base created with domain content
 - [ ] README.md complete with all sections
-- [ ] COO handoff prepared when `workspace_integration.level` requires it
+- [ ] human handoff prepared when `local project docs.level` requires it
 - [ ] Activation surface contract prepared for publish phase
 - [ ] No stubs or placeholders remain in final artifacts
 
 ## Veto Conditions
 
 - **VETO-SQD-003:** Entry agent referenced in `config.yaml` does not exist as a file
-- **VETO-SQD-005:** Direct workspace mutation attempted (must use COO handoff)
+- **VETO-SQD-005:** Direct docs mutation attempted (must use human handoff)
 - Agent fails quality gate after 2 retries
 - Workflow fails contract validation after fix cycle
 - Missing dependency referenced by an agent with no remediation

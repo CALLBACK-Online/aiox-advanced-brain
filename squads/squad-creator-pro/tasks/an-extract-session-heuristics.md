@@ -37,7 +37,7 @@ hook_integration:
   auto_extract: false  # NEVER auto-extract. Human gate is non-negotiable.
   behavior: |
     1. Hook checks eligibility (deterministic, $0, <1s):
-       - Filters out runner/mechanical commits (sinkra-map, outputs, score_cards)
+       - Filters out runner/mechanical commits (aiox-map, outputs, score_cards)
        - Counts only HUMAN decision commits (feat/refactor/fix non-mechanical)
        - Checks duration ≥30min, human decisions ≥2, code files ≥5
        - If runner_ratio >70% → skip (runner session)
@@ -45,7 +45,7 @@ hook_integration:
     3. Human decides: /extract-session-heuristics OR skip
     4. NEVER extracts without explicit human approval
   rationale: |
-    90% das sessões são runners autônomos (sinkra-map, mmos, copy) que geram
+    90% das sessões são runners autônomos (aiox-map, mmos, copy) que geram
     50+ commits mecânicos. Auto-extract iria gerar heurísticas de lixo.
     AN_KE_002: "Se entrar cocô, sai cocô."
 
@@ -60,9 +60,9 @@ template: "templates/session-heuristic-tmpl.md"
 elicit: false
 ---
 
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: an-extract-session-heuristics
   task_name: Extrair Heurísticas de Sessão de Trabalho
   status: pending
@@ -93,11 +93,11 @@ sinkra_task_metadata:
   accountability_scope: full
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Operational
   atomic_layer: Atom
   executor: Agent
@@ -105,11 +105,11 @@ sinkra_contract:
   post_condition: "heurísticas de sessão formalizadas, decision-cards atualizados, extraction_report com contagem por zona Pareto"
   performance: "executar em 15min, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 # SP-EXTRACT-SESSION-HEURISTICS — Processo de Extração de Heurísticas de Sessão
 
-> **Processo SINKRA mapeado.** Não é uma task solta — é um pipeline de 5 fases
+> **Processo AIOX mapeado.** Não é uma task solta — é um pipeline de 5 fases
 > com tokens, checkpoints e composição formal.
 >
 > **Parent task:** `an-extract-heuristics` (SP-EXTRACT-HEURISTICS) — framework base para extração de experts.

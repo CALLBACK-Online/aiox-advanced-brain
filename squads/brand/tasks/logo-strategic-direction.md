@@ -38,7 +38,7 @@ Gerar 3-5 direções conceituais estratégicas para o logo, cada uma com metáfo
 
 | Artifact | Location | Description |
 |---|---|---|
-| `logo-concepts.md` | `workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-concepts.md` | 3-5 direções conceituais com rationale |
+| `logo-concepts.md` | `docs/tactical/brand/logo/logo-concepts.md` | 3-5 direções conceituais com rationale |
 
 ## Execution Steps
 
@@ -154,7 +154,7 @@ Garantir que as direções cubram espectro diverso:
 to: wheeler-brand-design
 task: logo-prompt-engineering
 pass:
-  - logo_concepts: "workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-concepts.md"
-  - logo_brief: "workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-brief.md"
+  - logo_concepts: "docs/tactical/brand/logo/logo-concepts.md"
+  - logo_brief: "docs/tactical/brand/logo/logo-brief.md"
   - brand_name: "{{brand_name}}"
 ```

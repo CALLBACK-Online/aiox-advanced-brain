@@ -6,7 +6,7 @@
 **Orchestrator:** Vigil (roadmap-sentinel)
 **Purpose:** Atualizar o contrato canônico de runtime da squad `claude-code-mastery` reconciliando dados, docs e trechos de agentes com o comportamento real observado no código-fonte do Claude Code.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: refresh-runtime-contract
 atomic_layer: Atom

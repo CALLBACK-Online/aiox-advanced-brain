@@ -1,8 +1,8 @@
-# SINKRA Composition Template
+# AIOX Composition Template
 # Use this template to define a process for materialization in ClickUp.
 # Fill in all fields and run: node services/clickup materialize <this-file.yaml>
 #
-# Reference: squads/sinkra-squad/data/clickup-composition-rules.yaml
+# Reference: squads/aiox-squad/data/clickup-composition-rules.yaml
 # Owner: clickup-ops-squad
 
 composition:
@@ -67,13 +67,13 @@ composition:
 #
 #   composition:
 #     domain: ai_automation
-#     owner_squad: sinkra-squad
+#     owner_squad: aiox-squad
 #     organism:
 #       name: "Mapeamento de Processos"
 #       state_machine:
 #         states: [Backlog, Discovery, Architecture, Executors, Composition, "QA Gates", Handoff, Concluído]
 #       molecules:
-#         - name: "Pipeline SINKRA"
+#         - name: "Pipeline AIOX"
 #           default_view: board
 #           tokens:
 #             - { name: "Cliente", family: Taxonomy, shared: true }

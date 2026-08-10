@@ -6,7 +6,7 @@ const { execFileSync } = require('child_process');
 
 const { buildInjectionPacket, parseArgs: parseContextArgs } = require('./context-injector.cjs');
 const { runAutofix, parseArgs: parseAutofixArgs } = require('./autofix-deterministic.cjs');
-const { runValidation } = require('./validate-workspace-contracts.cjs');
+const { runValidation } = require('./validate-project context contracts.cjs');
 
 const ROOT = process.cwd();
 const DEFAULT_OUTPUT_DIR = path.join(ROOT, 'outputs', 'design-ops');
@@ -121,7 +121,7 @@ function buildReport(args) {
         })
       : {
           pipeline: 'design-ops-minimal-v0-like',
-          mode: 'workspace-contract-validation',
+          mode: 'project context contracts-validation',
           skipped: true,
           reason: 'business_not_provided',
         };

@@ -289,7 +289,6 @@ legacy_patterns:
 non_renderable:
   - id: trigger_action
     description: "Event-driven trigger/action patterns"
-    used_by: "c-level workspace-governance, design self-healing"
     reason: "No linear flow — governance/CI pipelines, not agent orchestrations"
 
   - id: module

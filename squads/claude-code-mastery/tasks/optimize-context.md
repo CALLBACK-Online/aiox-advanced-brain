@@ -11,7 +11,7 @@
 | **Domain** | Operational |
 | **Duration** | 45-90 min per cycle |
 | **Checkpoint** | `task_anatomy_validation` (Phase 5) |
-| **Pipeline** | `sinkra-pipeline-context-optimizer-2026` |
+| **Pipeline** | `aiox-pipeline-context-optimizer-2026` |
 | **Workflow** | `wf-context-optimizer` (scaffolded in Phase 7) |
 
 Previous task stub (CCM-CONFIG-004) is superseded by this definition.
@@ -24,7 +24,7 @@ Recurring optimization process for the Claude Code always-loaded context surface
 
 ---
 
-## SINKRA Task Anatomy (Organism-level)
+## AIOX Task Anatomy (Organism-level)
 
 ### 1. task
 ```yaml
@@ -92,7 +92,7 @@ Error_handling:
    - Spawn `hooks-architect` (fork) with inventory + baseline as context
    - Sub-agent emits `sp1-rules-proposal.yaml` — NO direct file writes on hard-gate ops
    - Post-spawn: chief reads proposal, PAUSES for operator YES per hard-gate op
-   - Pre-apply: `sinkra:rename-artifact --dry-run` for every rename
+   - Pre-apply: `aiox:rename-artifact --dry-run` for every rename
    - Apply approved ops via Edit + commit barrier
 
 4. **phase_04_sp3_claudemd** (subagent_task)
@@ -121,7 +121,7 @@ Error_handling:
 
 8. **phase_08_sp7_final** (inline_bash)
    - Chief runs `context-budget-audit.js --strict`
-   - Sentinel verifies all 24 tokens (see `.aiox/squad-runtime/sinkra-squad/context-optimizer/phase-05-task-definitions/token-assignments.yaml`)
+   - Sentinel verifies all 24 tokens (see `.aiox/squad-runtime/aiox-squad/context-optimizer/phase-05-task-definitions/token-assignments.yaml`)
    - Chief writes `delta-report.md` + moves proposals from `.aiox/` to `outputs/qa/context-budget/proposals/{date}/`
    - Commit barrier
 
@@ -146,7 +146,7 @@ When a sub-agent emits a proposal with hard-gate operations, the chief MUST:
 
 ## Heuristics
 
-### H1 — Infer from Context First (inherited from sinkra-chief; prevents AP-CO-5)
+### H1 — Infer from Context First (inherited from aiox-chief; prevents AP-CO-5)
 
 > Before asking the operator for a parameter, INFER from session context. Prompt only when inference fails.
 
@@ -189,7 +189,7 @@ Every completion token in `token-assignments.yaml` is binary (done | not done). 
 ### AP-CO-2 — Rename Ref-Count Drift
 **Symptom:** File rename touches 2x more refs than estimated; silent corruption.
 **Prevention:**
-- `sinkra:rename-artifact --dry-run` BEFORE every rename
+- `aiox:rename-artifact --dry-run` BEFORE every rename
 - Block if ref-count deviates > 2x OR > 10 absolute
 - Mechanism: chief's during_step_checks in phase_03 enforce this gate
 
@@ -210,7 +210,7 @@ Every completion token in `token-assignments.yaml` is binary (done | not done). 
 ### AP-CO-5 — Operator Prompt Spam (Inference Fatigue)
 **Symptom:** Chief asks operator for parameters it could infer from context; operator disengages.
 **Prevention:**
-- Claude-mastery-chief persona inherits `infer_from_context_first` rule from sinkra-chief
+- Claude-mastery-chief persona inherits `infer_from_context_first` rule from aiox-chief
 - Phase 5 acceptance: "prompt only when inference fails"
 - Mechanism: checklist item in persona; reviewed at phase_06 handoff
 
@@ -224,7 +224,7 @@ Every completion token in `token-assignments.yaml` is binary (done | not done). 
 - `scripts/validate-rule-frontmatter.js` (CREATE AS-03)
 - `scripts/validate-claudemd-anchors.js` (CREATE AS-04)
 - `scripts/validate-skill-entry-agent-binding.js` (CREATE AS-05)
-- `scripts/sinkra/rename-artifact.js` (REUSE)
+- `scripts/aiox/rename-artifact.js` (REUSE)
 - `scripts/validate-yaml.js` (REUSE)
 - `.aiox-core/infrastructure/scripts/ide-sync/index.js` (ADAPT AS-02 — `--deletion-allowlist`)
 
@@ -278,5 +278,5 @@ Phase 7 (Implementation) consumes all Phase 5 + Phase 6 deliverables and scaffol
 ---
 
 *Task Definition v1.0 — claude-code-mastery squad*
-*Pipeline: sinkra-pipeline-context-optimizer-2026 | Phase 5: Task Definitions*
-*Produced by: composition-engineer (sinkra-squad)*
+*Pipeline: aiox-pipeline-context-optimizer-2026 | Phase 5: Task Definitions*
+*Produced by: composition-engineer (aiox-squad)*

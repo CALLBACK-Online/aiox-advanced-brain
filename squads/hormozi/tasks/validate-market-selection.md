@@ -12,7 +12,7 @@ prerequisite: NONE (first task before any offer creation)
 veto_checklist: checklists/market-validation-veto.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom

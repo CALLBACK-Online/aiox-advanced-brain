@@ -727,7 +727,6 @@ REGULAR (resposta < 4 horas):
 
 | Reuniao | Frequencia | Participantes | Duracao | Output |
 |---------|-----------|---------------|---------|--------|
-| SteerCo | Semanal | C-level + PO | 30min | Decisoes estrategicas |
 | War Room | Diario (ultima semana) | Lideres | 15min | Status + blockers |
 | Deep Dive | 2x/semana | Por area | 60min | Problemas especificos |
 | All Hands | Semanal | Todos | 30min | Alinhamento geral |
@@ -1049,7 +1048,6 @@ Base do calculo: Extraido de $ 100M Playbook Lauch.md, linhas 275-290.
 
 *SOP extraido pelo Hormozi Launch Agent em 2026-02-10*
 *Baseado 100% em conteudo original de Alex Hormozi*
-
 
 
 <\!-- Criado com Squad Creator do AIOXPRO por @oalanicolas e @pedrovalerio | 2026-02-10 -->

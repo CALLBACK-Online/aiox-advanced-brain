@@ -5,7 +5,7 @@
 **Agent:** @oalanicolas
 **Pattern:** {Nome do Pattern}
 **Source:** [SOURCE: {descrição rastreável — epic/story ID, data, incidente específico}]
-**Tags:** [{Agnostic}, {Scale}, {Automation}, {SINKRA}, {Framework}]
+**Tags:** [{Agnostic}, {Scale}, {Automation}, {AIOX}, {Framework}]
 
 ## Purpose
 

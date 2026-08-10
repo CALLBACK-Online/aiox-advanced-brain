@@ -3,7 +3,7 @@ squad: claude-code-mastery
 description: "Squad especialista em Claude Code, MCP, hooks, skills e setup de projetos"
 owner: claude-mastery-chief
 last_audited: "2026-03-28"
-audited_by: sinkra-squad
+audited_by: aiox-squad
 
 artifacts_produced:
   - hook-implementation
@@ -12,7 +12,7 @@ artifacts_produced:
   - cross-domain-handoff
 
 inputs:
-  workspace:
+  local_docs:
     - path: ".claude/CLAUDE.md"
       usage: [reference]
       optional: true

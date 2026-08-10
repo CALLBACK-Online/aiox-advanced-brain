@@ -945,7 +945,7 @@ Todos os insights de Koe convergem para uma verdade singular: a consciência hum
 ### Primeiros 30 Dias: FUNDAÇÃO
 **Semana 1: Despertar**
 - [ ] Brain dump completo + Lifestyle Design Reset
-- [ ] PPP definido e visível no workspace
+- [ ] PPP definido e visível no project docs
 - [ ] Treino de foco: 15→30 min progressivo
 - [ ] Remover 3 distrações do ambiente
 

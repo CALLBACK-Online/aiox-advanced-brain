@@ -7,7 +7,7 @@
 - **description**: Ciclo completo de auditoria → diagnóstico → otimização de um agente
 - **trigger**: `*audit-cycle <agent-id>`
 
-## SINKRA Controls
+## AIOX Controls
 
 Domain: `Tactical`
 fail_loud: true

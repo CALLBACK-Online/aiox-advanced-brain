@@ -41,13 +41,6 @@ inputs:
     - name: typography
       type: string
       description: Tipografia definida
-workspace_contract:
-  required_preflight:
-    - bash squads/brand/scripts/bootstrap-brand-workspace.sh {{brand_name}}
-    - bash squads/brand/scripts/validate-brand-essentials.sh
-    - node workspace/scripts/resolve-squad-workspace-readiness.cjs --squad=brand --business={{brand_name}} --context-type=brand
-  context_task: load-workspace-context
-  canonical_output_root: workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/
 prerequisites:
   environment:
     - variable: GEMINI_API_KEY
@@ -59,11 +52,11 @@ prerequisites:
       required_for: phases 3 and 5 (image generation) — fallback provider
       priority: fallback
 phases:
-  - id: workspace_context
-    name: Workspace preflight and context load
+  - id: project context
+    name: Project preflight and context load
     executor: brand-chief
     tasks:
-      - task: load-workspace-context.md
+      - task: load-project context.md
         inputs:
           - brand_name
   - id: touchpoint_definition
@@ -77,7 +70,7 @@ phases:
       - logo_path
       - touchpoints
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/mockup-brief.md
+      - docs/tactical/brand/mockups/mockup-brief.md
     checkpoint:
       gate: Touchpoints aprovados pelo usuário
       blocking: true
@@ -91,7 +84,7 @@ phases:
       - color_palette
       - typography
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/mockup-prompts.yaml
+      - docs/tactical/brand/mockups/mockup-prompts.yaml
     checkpoint:
       gate: Prompts seguem SCDS e incluem consistency prefixes
       blocking: true
@@ -104,8 +97,8 @@ phases:
       - mockup_prompts
       - output_dir
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/generations/
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/generation-log.yaml
+      - docs/tactical/brand/mockups/generations/
+      - docs/tactical/brand/mockups/generation-log.yaml
     checkpoint:
       gate: Imagens geradas sem erro
       blocking: true
@@ -123,7 +116,7 @@ phases:
       - generation_log
       - mockup_brief
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/curation-report.md
+      - docs/tactical/brand/mockups/curation-report.md
     checkpoint:
       gate: Pelo menos 1 mockup aprovado por touchpoint
       blocking: true
@@ -137,8 +130,8 @@ phases:
       - refinement_notes
       - mockup_prompts
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/refinements/
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/refinement-log.yaml
+      - docs/tactical/brand/mockups/refinements/
+      - docs/tactical/brand/mockups/refinement-log.yaml
   - id: deliverable
     name: Final Mockup Package
     executor: wheeler-brand-design
@@ -149,10 +142,10 @@ phases:
       - mockup_brief
       - curation_report
     outputs:
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/mockup-spec.md
-      - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/mockup-report.md
+      - docs/tactical/brand/mockups/mockup-spec.md
+      - docs/tactical/brand/mockups/mockup-report.md
 outputs:
-  base_path: workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/
+  base_path: docs/tactical/brand/mockups/
   artifacts:
     - mockup-brief.md
     - mockup-prompts.yaml
@@ -175,12 +168,12 @@ workflow:
   description: "Gera mockups de identidade visual em touchpoints: definição → prompt engineering → geração → curadoria → refinamento → entrega"
   type: legacy
   sequence:
-    - step: workspace-context
-      id: workspace-context
+    - step: project context
+      id: project context
       phase: 1
-      phase_name: Workspace preflight and context load
+      phase_name: Project preflight and context load
       agent: brand-chief
-      action: execute_workspace-preflight-and-context-load
+      action: execute_project-preflight-and-context-load
       next: touchpoint-definition
     - step: touchpoint-definition
       id: touchpoint-definition
@@ -189,7 +182,7 @@ workflow:
       agent: wheeler-brand-design
       action: execute_define-quais-touchpoints-mockupar-e-coleta-requisitos-visuais
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/mockup-brief.md
+        - docs/tactical/brand/mockups/mockup-brief.md
       next: prompt-engineering
     - step: prompt-engineering
       id: prompt-engineering
@@ -198,7 +191,7 @@ workflow:
       agent: wheeler-brand-design
       action: execute_cria-prompts-especializados-para-cada-touchpoint-com-prefixos-de
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/mockup-prompts.yaml
+        - docs/tactical/brand/mockups/mockup-prompts.yaml
       next: generation
     - step: generation
       id: generation
@@ -207,8 +200,8 @@ workflow:
       agent: nano-banana-generator
       action: execute_gera-mockups-via-gemini-openrouter-para-cada-touchpoint
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/generations/
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/generation-log.yaml
+        - docs/tactical/brand/mockups/generations/
+        - docs/tactical/brand/mockups/generation-log.yaml
       next: curation
     - step: curation
       id: curation
@@ -217,7 +210,7 @@ workflow:
       agent: wheeler-brand-design
       action: execute_curadoria-visual-consist-ncia-de-marca-qualidade-fidelidade-ao-b
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/curation-report.md
+        - docs/tactical/brand/mockups/curation-report.md
       next: refinement
     - step: refinement
       id: refinement
@@ -226,8 +219,8 @@ workflow:
       agent: nano-banana-generator
       action: execute_refina-mockups-selecionados-com-ajustes-de-detalhe
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/refinements/
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/refinement-log.yaml
+        - docs/tactical/brand/mockups/refinements/
+        - docs/tactical/brand/mockups/refinement-log.yaml
       next: deliverable
     - step: deliverable
       id: deliverable
@@ -236,8 +229,8 @@ workflow:
       agent: wheeler-brand-design
       action: execute_consolida-mockups-finais-relat-rio-de-identidade-visual-aplicada
       outputs:
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/mockup-spec.md
-        - workspace/businesses/{{brand_name}}/L2-tactical/brand/mockups/mockup-report.md
+        - docs/tactical/brand/mockups/mockup-spec.md
+        - docs/tactical/brand/mockups/mockup-report.md
     - workflow_end:
         id: complete
         action: workflow_complete

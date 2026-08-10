@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: create-from-sop-brief
   task_name: Create From SOP -- Brief
   status: pending
@@ -25,11 +25,11 @@ sinkra_task_metadata:
   accountability_scope: review_only
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Strategic
   atomic_layer: Atom
   executor: Agent
@@ -37,7 +37,7 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Task: Create From SOP -- Brief
@@ -90,8 +90,8 @@ create_from_sop:
     namespaces: []
     explicit_paths: []
   source_package:
-    runtime_mode: full_workspace_mode
-    source_of_truth: workspace_canonical
+    runtime_mode: none_mode
+    source_of_truth: project_canonical
     loaded_sources: []
     missing_requested_sources: []
   creation_brief:

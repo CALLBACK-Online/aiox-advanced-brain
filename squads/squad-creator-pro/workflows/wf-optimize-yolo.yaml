@@ -127,7 +127,7 @@ workflow:
         rule: Push is opt-in. Commit is opt-in. Validation is mandatory.
       - id: OY_007
         name: Mode Contract First
-        rule: Resolve and report the canonical environment contract before any workspace-aware optimization path.
+        rule: Resolve and report the canonical environment contract before any path-aware optimization path.
   inputs:
     required:
       - name: squad_name
@@ -165,13 +165,13 @@ workflow:
         description: full_yolo runs the full autonomous path after approval
       - name: business
         type: string
-        description: Explicit business slug used when attempting full_workspace_mode
+        description: Explicit business slug used when attempting none_mode
       - name: product
         type: string
-        description: Explicit product slug used when attempting full_workspace_mode
+        description: Explicit product slug used when attempting none_mode
       - name: app
         type: string
-        description: Explicit app id used when attempting full_workspace_mode
+        description: Explicit app id used when attempting none_mode
       - name: context_type
         type: string
         description: Optional context type override forwarded to the shared environment detector
@@ -212,7 +212,6 @@ workflow:
     steps:
       - id: pf_0_environment
         action: Resolve canonical environment contract
-        command: "node squads/squad-creator/scripts/detect-environment-contract.cjs --squad={squad_name} [--business={business}] [--product={product}] [--app={app}] [--context-type={context_type}] --format=json"
         output: environment_contract
       - id: pf_1_repo_global_baseline
         action: Capture repo-global quality gate baseline
@@ -443,7 +442,7 @@ workflow:
         - optimization-plan.md
     phase_5_worker_hybrid:
       priority_order:
-        - load-workspace-context
+        - load-project context
         - loading/runtime tasks
         - scoring/audit/rubric tasks
         - batch workflows
@@ -456,9 +455,9 @@ workflow:
         - other core creative judgment tasks
     phase_8_runtime_smoke:
       trigger_when_changes_include:
-        - workspace_integration
+        - local project docs
         - required_preflight
-        - readiness_resolver
+        - readiness_note
         - context_task
         - workflow.agent
         - workflow.executor
@@ -504,9 +503,9 @@ workflow:
   runtime_smoke_contract:
     required: true
     trigger_when_changes_include:
-      - workspace_integration
+      - local project docs
       - required_preflight
-      - readiness_resolver
+      - readiness_note
       - context_task
       - workflow.agent
       - workflow.executor
@@ -526,9 +525,9 @@ workflow:
       portable_docs_mode:
         evidence_source: docs_projection
         forbid_enterprise_only_surfaces: true
-      full_workspace_mode:
+      none_mode:
         requires:
-          - environment_contract.runtime_mode == full_workspace_mode
+          - environment_contract.runtime_mode == none_mode
           - explicit business/product/app context
           - readiness_status == ready
   validation_contract:

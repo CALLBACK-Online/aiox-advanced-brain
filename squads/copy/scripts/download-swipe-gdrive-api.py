@@ -46,7 +46,7 @@ BACKOFF_DELAYS = [30, 60, 120]
 MAX_FILE_SIZE = 500 * 1024 * 1024
 
 # MIME type mapping: Google Workspace → export format + extension
-WORKSPACE_EXPORT_MAP = {
+PROJECT_EXPORT_MAP = {
     "application/vnd.google-apps.document":     ("application/vnd.openxmlformats-officedocument.wordprocessingml.document", ".docx"),
     "application/vnd.google-apps.spreadsheet":  ("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", ".xlsx"),
     "application/vnd.google-apps.presentation": ("application/vnd.openxmlformats-officedocument.presentationml.presentation", ".pptx"),
@@ -101,13 +101,13 @@ def list_children(service, folder_id: str, page_size: int = 200) -> list[dict]:
     return results
 
 
-def is_workspace_type(mime_type: str) -> bool:
+def is_project_type(mime_type: str) -> bool:
     return mime_type.startswith("application/vnd.google-apps.")
 
 
 def get_export_info(mime_type: str) -> tuple[str, str] | None:
     """Return (export_mime, extension) for a Google Workspace type, or None if unsupported."""
-    return WORKSPACE_EXPORT_MAP.get(mime_type)
+    return PROJECT_EXPORT_MAP.get(mime_type)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -189,10 +189,10 @@ def download_file(file_meta: dict, dest_dir: Path, api_key: str) -> str:
         return "unsupported"
 
     # Google Workspace file — needs export
-    if is_workspace_type(mime_type):
+    if is_project_type(mime_type):
         export_info = get_export_info(mime_type)
         if not export_info:
-            print(f"      [skip] unsupported Workspace type: {mime_type}")
+            print(f"      [skip] unsupported LocalDocs type: {mime_type}")
             return "unsupported"
 
         export_mime, ext = export_info
@@ -397,7 +397,7 @@ def main() -> None:
     print("  SUMMARY")
     print(f"  Downloaded   : {stats['ok']}")
     print(f"  Skipped      : {stats['skip']} (already existed)")
-    print(f"  Unsupported  : {stats['unsupported']} (Workspace types with no export)")
+    print(f"  Unsupported  : {stats['unsupported']} (LocalDocs types with no export)")
     print(f"  Failed       : {stats['fail']}")
     print(f"  Folders done : {stats['folders_processed']}")
     print(f"  Folders skip : {stats['folders_skipped']} (--only-empty)")

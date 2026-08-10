@@ -1,0 +1,110 @@
+{
+  "$id": "aiox://slide-creator/wireframes/cohort-retention.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "A claim needs multiple compact proof points and source traceability.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "c1_m0": {
+      "type": "string"
+    },
+    "c1_m1": {
+      "type": "string"
+    },
+    "c1_m2": {
+      "type": "string"
+    },
+    "c1_m3": {
+      "type": "string"
+    },
+    "c1_m4": {
+      "type": "string"
+    },
+    "c1_m5": {
+      "type": "string"
+    },
+    "c2_m0": {
+      "type": "string"
+    },
+    "c2_m1": {
+      "type": "string"
+    },
+    "c2_m2": {
+      "type": "string"
+    },
+    "c2_m3": {
+      "type": "string"
+    },
+    "c2_m4": {
+      "type": "string"
+    },
+    "c2_m5": {
+      "type": "string"
+    },
+    "c3_m0": {
+      "type": "string"
+    },
+    "c3_m1": {
+      "type": "string"
+    },
+    "c3_m2": {
+      "type": "string"
+    },
+    "c3_m3": {
+      "type": "string"
+    },
+    "c3_m4": {
+      "type": "string"
+    },
+    "c3_m5": {
+      "type": "string"
+    },
+    "cohort_1": {
+      "type": "string"
+    },
+    "cohort_2": {
+      "type": "string"
+    },
+    "cohort_3": {
+      "type": "string"
+    },
+    "retention_pattern": {
+      "type": "string"
+    }
+  },
+  "title": "cohort-retention",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "evidence_stack",
+    "slot_count": 23,
+    "warnings": [
+      "action_title",
+      "cohort_1",
+      "c1_m0",
+      "c1_m1",
+      "c1_m2",
+      "c1_m3",
+      "c1_m4",
+      "c1_m5",
+      "cohort_2",
+      "c2_m0",
+      "c2_m1",
+      "c2_m2",
+      "c2_m3",
+      "c2_m4",
+      "c2_m5",
+      "cohort_3",
+      "c3_m0",
+      "c3_m1",
+      "c3_m2",
+      "c3_m3",
+      "c3_m4",
+      "c3_m5",
+      "retention_pattern"
+    ],
+    "wireframe_ref": "templates/wireframes/cohort-retention.html"
+  }
+}

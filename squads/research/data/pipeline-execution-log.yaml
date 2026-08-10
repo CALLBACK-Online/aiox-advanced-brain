@@ -18,13 +18,13 @@ executions:
     phases_executed: []
     phases_skipped: []
     agent: bench-analyst
-    subjects: ["hermes", "openclaw", "sinkra"]
+    subjects: ["hermes", "openclaw", "aiox"]
     comparison_type: "codebase"
     quality_gate_result: unknown
     meta_axiomas_overall: null
     evidence_source: "derived_from_docs_bench_artifacts"
     artifacts_produced:
-      - docs/bench/hermes-vs-openclaw-vs-sinkra/triangular-benchmark.md
+      - docs/bench/hermes-vs-openclaw-vs-aiox/triangular-benchmark.md
 
   - id: EXEC-SPY-002
     pipeline: bench-comparison-pipeline
@@ -69,13 +69,13 @@ executions:
     phases_executed: []
     phases_skipped: []
     agent: bench-analyst
-    subjects: ["hermes-agent", "openclaw", "sinkra-hub"]
+    subjects: ["hermes-agent", "openclaw", "upstream monorepo"]
     comparison_type: "codebase"
     quality_gate_result: unknown
     meta_axiomas_overall: null
     evidence_source: "derived_from_docs_bench_artifacts"
     artifacts_produced:
-      - docs/bench/hermes-agent-vs-openclaw-vs-sinkra-hub/battle-card.md
+      - docs/bench/hermes-agent-vs-openclaw-vs-upstream monorepo/battle-card.md
 
   - id: EXEC-SPY-005
     pipeline: bench-comparison-pipeline

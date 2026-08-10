@@ -1,15 +1,15 @@
-# Handoff Downstream Template — SINKRA Squad
+# Handoff Downstream Template — AIOX Squad
 # IMP-009: Formalizar handoff downstream como Worker deterministico
 #
-# Template usado pela task handoffDownstream (sinkra-task-011)
-# para criar arquivo de handoff padronizado entre sinkra-squad
+# Template usado pela task handoffDownstream (aiox-task-011)
+# para criar arquivo de handoff padronizado entre aiox-squad
 # e o downstream squad (squad-creator ou clickup-ops-squad).
 #
 # Placeholders: {{variable}} — resolvidos pelo Worker em runtime
 
 handoff:
   id: "{{handoff_id}}"
-  from: sinkra-squad
+  from: aiox-squad
   to: "{{downstream_squad}}"  # squad-creator | clickup-ops-squad
   mode: "{{pipeline_mode}}"  # process | mission
   date: "{{date}}"
@@ -21,17 +21,17 @@ handoff:
     downstream_squad: "{{downstream_squad}}"
     downstream_entry_agent: "{{downstream_entry_agent}}"  # squad-chief | clickup-chief
 
-  # Reference to the SINKRA output artifact (NOT duplicated — reference only)
+  # Reference to the AIOX output artifact (NOT duplicated — reference only)
   artifact:
-    path: "{{sinkra_output_path}}"
-    type: "{{artifact_type}}"  # sinkra-process-output | mission-output
+    path: "{{aiox_output_path}}"
+    type: "{{artifact_type}}"  # aiox-process-output | mission-output
     format: yaml
 
   # Artifact lifecycle state at handoff time
   lifecycle:
     state: draft
     created_at: "{{date}}"
-    created_by: sinkra-squad/handoffDownstream
+    created_by: aiox-squad/handoffDownstream
     accepted_at: null
     accepted_by: null
     consumed_at: null

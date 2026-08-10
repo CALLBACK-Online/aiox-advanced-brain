@@ -26,13 +26,13 @@ campaign_taxonomy:
       - Epic
       - Story
   storage:
-    planning_root: "workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/"
+    planning_root: "docs/operational/campaigns/{campaign_slug}/"
     delivery_root: "outputs/copy/{business}/"
-    rule: "Planning artifacts vivem em workspace (ADR-012); copy entregue vive em outputs/copy."
+    rule: "Planning artifacts vivem em docs/ (ADR-012); copy entregue vive em outputs/copy."
   source_of_truth_rules:
-    - "Business truth vem de L0-identity, L1-strategy e L2-tactical/brand."
+    - "Business truth vem de identity, strategy e tactical/brand."
     - "Product truth vem de L3-product/{product}/ e narrativa associada."
-    - "Campaign truth vem de workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/ (ADR-012)."
+    - "Campaign truth vem de docs/operational/campaigns/{campaign_slug}/ (ADR-012)."
     - "Delivery-ready copy vive em outputs/copy/{business}/."
 
 principles:
@@ -40,7 +40,7 @@ principles:
   - "Uma seção, uma ideia dominante"
   - "Especificidade antes de adjetivo"
   - "Prova e mecanismo antes de hype"
-  - "Arquitetura L0-L4 do Hub é a base; campaign layer é overlay operacional"
+  - "Arquitetura local-docs do Hub é a base; campaign layer é overlay operacional"
   - "Sem campaign brief persistido, estratégico/high-ticket/FINAL não sobe"
 
 surfaces:

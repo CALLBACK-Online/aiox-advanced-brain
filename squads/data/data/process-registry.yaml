@@ -1,6 +1,6 @@
 # Data Squad Process Registry v1.0
-# Registra os 7 workflows como processos SINKRA.
-# Referencia: squads/sinkra-squad/data/process-registry.yaml
+# Registra os 7 workflows como processos AIOX.
+# Referencia: squads/aiox-squad/data/process-registry.yaml
 
 _dependents_declaration:
   registry_id: data-process-registry
@@ -12,7 +12,7 @@ _dependents_declaration:
 
 version: "1.0.0"
 squad: data
-description: "Registro canonico dos 7 workflows da squad data como processos SINKRA."
+description: "Registro canonico dos 7 workflows da squad data como processos AIOX."
 
 processes:
   - id: PROC-DATA-001
@@ -24,13 +24,13 @@ processes:
     inputs:
       - business_slug
       - cohort_period
-      - workspace_context
+      - project context
     outputs:
       - cohort-analysis.yaml
       - retention-curves.json
     quality_gate: "meta_axiomas >= 7.0"
     task_refs:
-      - load-workspace-context
+      - load-project context
       - analyze-cohort
       - segment-rfm
       - create-dashboard
@@ -48,7 +48,7 @@ processes:
       - cohort-diagnostic-report.yaml
     quality_gate: "truth >= 7.0"
     task_refs:
-      - load-workspace-context
+      - load-project context
       - analyze-cohort
 
   - id: PROC-DATA-003

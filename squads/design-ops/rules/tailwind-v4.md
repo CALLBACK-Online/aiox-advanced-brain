@@ -1,9 +1,9 @@
 ---
 paths:
   - "apps/**"
-  - "workspace/shared-products/**"
-  - "workspace/businesses/**/L2-tactical/design/**"
-  - "workspace/businesses/**/L4-operational/campaigns/**"
+  - "outputs/shared-products/**"
+  - "docs/**/tactical/design/**"
+  - "docs/**/operational/campaigns/**"
   - "squads/design-ops/**"
   - "squads/**/scripts/**/*tailwind*"
   - "**/DESIGN.md"
@@ -59,4 +59,4 @@ Antes de aceitar um gerador Tailwind downstream como consumidor de `/design-md`,
 
 - Extractor canônico: `squads/design-ops/scripts/extract-from-url/`
 - Task: `squads/design-ops/tasks/extract-design-md-from-url.md`
-- Origem operacional: `.aiox/squad-runtime/sinkra-squad/transform-html-tailwind-gold-standard/handoff-downstream.yaml`
+- Origem operacional: `.aiox/squad-runtime/aiox-squad/transform-html-tailwind-gold-standard/handoff-downstream.yaml`

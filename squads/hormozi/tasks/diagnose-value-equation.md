@@ -10,7 +10,7 @@ estimated_time: 15-20min
 source: "$100M Offers - Chapter 6: The Value Equation"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom

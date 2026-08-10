@@ -1,6 +1,6 @@
 # Task: Product Discovery — Villain Mapping (Root Cause OSINT)
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 

@@ -155,7 +155,7 @@ modernization_score:
       legacy_if: "Inline output blocks"
     - id: 7
       name: "Agent File References"
-      check: "Read your agent file at .claude/skills/.../SKILL.md"
+      check: "Read your agent file at skills/.../SKILL.md"
       legacy_if: "Personas hardcoded no workflow"
     - id: 8
       name: "Task Dependencies"

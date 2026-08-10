@@ -11,7 +11,7 @@ source: "Price Raise SOP — RAISE Framework"
 sop_reference: squads/hormozi/sops/price-raise-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Operational
 atomic_layer: Atom

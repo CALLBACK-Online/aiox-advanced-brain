@@ -92,7 +92,7 @@ Hard blockers from the `create-squad` pipeline.
 | VETO-SQD-001 | Overwrite without confirmation | Squad directory exists AND user has not confirmed overwrite | HALT at PHASE 0. Prompt user for confirmation or abort. | Phase 0 |
 | VETO-SQD-002 | Validation score below threshold | Quality score < 7.0 after fix_cycle exhausts max_retries (2) | Transition to `failed`. Manual intervention required. | Phase 5 |
 | VETO-SQD-003 | Missing entry agent | config.yaml has no `entry_agent` OR referenced agent file does not exist | HALT at PHASE 3. Cannot proceed without valid entry point. | Phase 3 |
-| VETO-SQD-004 | Missing workspace integration | config.yaml has no `workspace_integration.level` field | HALT at PHASE 3. Must declare level (none/read_only/controlled_runtime_consumer/workspace_first). | Phase 3 |
+| VETO-SQD-004 | Missing local project docs | config.yaml has no `local project docs.level` field | HALT at PHASE 3. Must declare level (none/read_only/none/local). | Phase 3 |
 | VETO-SQD-005 | Smoke test failure | All 3 smoke test scenarios fail (activation, help, basic_task) | Transition to `failed` via `smoke_failed` trigger. | Phase 5 |
 
 ### SC_VC_* (config/veto-conditions.yaml [PRO])

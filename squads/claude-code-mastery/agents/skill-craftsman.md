@@ -57,7 +57,7 @@ agent:
   icon: "\u2728"
   aliases: ['sigil', 'skill-craft']
   whenToUse: |
-    Use for creating Claude Code skills (SKILL.md), project slash skills (.claude/skills/),
+    Use for creating Claude Code skills (SKILL.md), project slash skills (skills/),
     plugins (.claude-plugin/), context engineering (CLAUDE.md optimization, .claude/rules/,
     @imports, /compact strategies, token budget management), and spec-driven development setup.
 
@@ -106,7 +106,7 @@ persona:
   responsibility_boundaries:
     primary_scope:
       - Skill creation (SKILL.md with YAML frontmatter, supporting files, scripts)
-      - Slash skill authoring (.claude/skills/{namespace}/{skill}/SKILL.md with nested namespacing)
+      - Slash skill authoring (skills/{namespace}/{skill}/SKILL.md with nested namespacing)
       - Plugin architecture (.claude-plugin/plugin.json manifest, skills/, agents/, hooks/, .mcp.json, .lsp.json)
       - Context engineering (CLAUDE.md optimization, @imports, .claude/rules/ conditional loading, /compact strategies)
       - Spec-driven development setup (specification-first workflows, plan-before-code patterns)
@@ -171,7 +171,7 @@ commands:
     args: "{skill-name}"
   - name: create-slash-skill
     visibility: [full, quick, key]
-    description: "Create a slash skill (.claude/skills/{name}/SKILL.md with frontmatter)"
+    description: "Create a slash skill (skills/{name}/SKILL.md with frontmatter)"
     args: "{skill-name}"
   - name: create-plugin
     visibility: [full, quick, key]
@@ -257,7 +257,7 @@ dependencies:
         #   - official_required:  enforced by API schema validation (REJECT on missing/invalid)
         #   - official_optional:  recognized by API, optional
         #   - cli_extensions:     Claude Code CLI-specific routing (NOT in API spec — strip before upload)
-        #   - sinkra_extensions:  AIOX/SINKRA local governance (NOT in API spec — strip before upload)
+        #   - aiox_extensions:  AIOX local governance (NOT in API spec — strip before upload)
         #
         # Reference: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices
 
@@ -317,15 +317,15 @@ dependencies:
           - name: hooks
             description: "[CLI-only] Hooks scoped to this skill's lifecycle."
 
-        sinkra_extension_fields:
-          # These are AIOX/SINKRA local governance metadata. NOT in Anthropic spec.
+        aiox_extension_fields:
+          # These are AIOX local governance metadata. NOT in Anthropic spec.
           # Strip before any API upload or marketplace submission.
           - name: owner_squad
-            description: "[SINKRA-local] Ownership/compliance metadata. Ignored by Claude runtime."
-          - name: sinkra_tier
-            description: "[SINKRA-local] Governance tier. Validation/reporting only."
+            description: "[AIOX-local] Ownership/compliance metadata. Ignored by Claude runtime."
+          - name: aiox_tier
+            description: "[AIOX-local] Governance tier. Validation/reporting only."
           - name: license
-            description: "[SINKRA-local] Packaging metadata. Ignored by Claude runtime."
+            description: "[AIOX-local] Packaging metadata. Ignored by Claude runtime."
 
         body_constraints:
           line_limit: 500
@@ -411,12 +411,12 @@ dependencies:
               +-- api-docs.md    # Detailed reference loaded on demand
 
         locations:
-          managed: "<managed>/.claude/skills/<skill-name>/SKILL.md"
-          personal: "~/.claude/skills/<skill-name>/SKILL.md"
-          project: ".claude/skills/<skill-name>/SKILL.md"
+          managed: "<managed>/skills/<skill-name>/SKILL.md"
+          personal: "~/skills/<skill-name>/SKILL.md"
+          project: "skills/<skill-name>/SKILL.md"
           plugin: "<plugin>/skills/<skill-name>/SKILL.md"
-          additional_dirs: "--add-dir <path> loads <path>/.claude/skills/ during startup"
-          legacy_commands: "Legacy slash-command loading may exist upstream, but this repository standard is .claude/skills/**/SKILL.md only"
+          additional_dirs: "--add-dir <path> loads <path>/skills/ during startup"
+          legacy_commands: "Legacy slash-command loading may exist upstream, but this repository standard is skills/**/SKILL.md only"
           bundled: "Built-in Claude Code skills ship separately from project/user directories"
           mcp: "skill:// resources from MCP servers are feature-gated and treated as remote/untrusted"
 
@@ -462,10 +462,10 @@ dependencies:
 
       commands_format:
         description: |
-          Project-standard slash commands are modeled as skills under `.claude/skills/`.
+          Project-standard slash commands are modeled as skills under `skills/`.
           New work in this repository must use `SKILL.md` with frontmatter and optional supporting files.
-          The legacy slash-command surface has been retired. Use `.claude/skills/{name}/SKILL.md` only.
-        structure: ".claude/skills/{namespace}/{name}/SKILL.md"
+          The legacy slash-command surface has been retired. Use `skills/{name}/SKILL.md` only.
+        structure: "skills/{namespace}/{name}/SKILL.md"
         arguments: "Capture free-form user input inside the skill instructions instead of relying on legacy $ARGUMENTS files"
         namespacing: "Nested directories create namespaced slash skills (e.g., deploy/staging/SKILL.md -> /deploy:staging)"
 
@@ -621,7 +621,7 @@ dependencies:
         - Project-Context.md: Persistent context file for technology stack, conventions, patterns
 
       aiox_mapping: |
-        AIOX tasks (.aiox-core/development/tasks/) map to Claude Code skills (.claude/skills/)
+        AIOX tasks (.aiox-core/development/tasks/) map to Claude Code skills (skills/)
         AIOX agents (.claude/agents/) map to Claude Code subagents (.claude/agents/)
         AIOX workflows map to Claude Code command sequences
         AIOX checklists map to skill validation steps
@@ -702,7 +702,7 @@ command_blueprints:
         prompts:
           - "What should this skill enable Claude to do?"
           - "When should it trigger? (describe user phrases/contexts)"
-          - "Where should it live? (1) Personal ~/.claude/skills/ (2) Project .claude/skills/ (3) Plugin"
+          - "Where should it live? (1) Personal ~/skills/ (2) Project skills/ (3) Plugin"
           - "Should Claude auto-invoke it, or manual /name only?"
           - "Should it run inline or in a forked subagent?"
       - step: 2
@@ -732,7 +732,7 @@ command_blueprints:
       - step: 3
         action: "Create directory structure"
         output: |
-          .claude/skills/{skill-name}/
+          skills/{skill-name}/
           +-- SKILL.md
           +-- references/ (if needed)
           +-- scripts/ (if needed)
@@ -742,7 +742,7 @@ command_blueprints:
         output: "3 should-trigger and 3 should-not-trigger test queries"
 
   create-slash-skill:
-    description: "Create a slash skill in .claude/skills/"
+    description: "Create a slash skill in skills/"
     elicit: true
     steps:
       - step: 1
@@ -766,7 +766,7 @@ command_blueprints:
           {Skill instructions}
       - step: 3
         action: "Place file in correct location"
-        output: ".claude/skills/{namespace/}{name}/SKILL.md"
+        output: "skills/{namespace/}{name}/SKILL.md"
 
   create-plugin:
     description: "Scaffold a complete Claude Code plugin"
@@ -821,9 +821,9 @@ command_blueprints:
       - step: 1
         action: "Discover all skills"
         scan:
-          - ".claude/skills/*/SKILL.md"
-          - ".claude/skills/*/SKILL.md"
-          - ".claude/skills/**/SKILL.md"
+          - "skills/*/SKILL.md"
+          - "skills/*/SKILL.md"
+          - "skills/**/SKILL.md"
       - step: 2
         action: "Analyze each skill for"
         checks:
@@ -952,7 +952,7 @@ command_blueprints:
         output: |
           | AIOX Component | Type | Claude Code Equivalent | Notes |
           |----------------|------|----------------------|-------|
-          | {task-name} | Task | Skill (.claude/skills/) | {conversion notes} |
+          | {task-name} | Task | Skill (skills/) | {conversion notes} |
           | {agent-name} | Agent | Subagent (.claude/agents/) | {conversion notes} |
           | {workflow-name} | Workflow | Command chain | {conversion notes} |
           | {template-name} | Template | Skill supporting file | {conversion notes} |
@@ -1038,7 +1038,7 @@ output_examples:
 
       **Installation:**
       ```
-      .claude/skills/review-code/
+      skills/review-code/
       └── SKILL.md
       ```
 
@@ -1072,8 +1072,8 @@ output_examples:
       |-------|---------|----------------|
       | CLAUDE.md | 320 lines | Split to <200 + @imports |
       | .claude/rules/ | 0 files | Add 3 path-scoped rules |
-      | .claude/skills/ | 2 skills | Add 5 inner-loop skills |
-      | Slash skills in .claude/skills/ | 2 | Add 3 inner-loop slash skills |
+      | skills/ | 2 skills | Add 5 inner-loop skills |
+      | Slash skills in skills/ | 2 | Add 3 inner-loop slash skills |
       | Plugins | 0 | Install 2-3 essentials |
 
       **Priority actions:**
@@ -1153,14 +1153,14 @@ anti_patterns:
     - "Add argument-hint for skills that take parameters"
     - "Use disable-model-invocation for skills that should be manual-only"
     - "Audit skill usage monthly and archive unused skills"
-    - "Share team skills via git in .claude/skills/"
+    - "Share team skills via git in skills/"
 
 completion_criteria:
   create_skill:
     - "SKILL.md has valid runtime frontmatter (name, description, and optional fields only when justified)"
     - "when_to_use, arguments, paths, and context are used correctly for the workflow"
     - "Markdown body has clear step-by-step workflow"
-    - "Skill is installed in correct location (.claude/skills/)"
+    - "Skill is installed in correct location (skills/)"
     - "Activation verified via slash command"
   create_plugin:
     - "Plugin structure follows marketplace standards"
@@ -1205,7 +1205,7 @@ autoClaude:
 **Skill & Plugin Creation:**
 
 - `*create-skill {name}` - Create new Claude Code skill (SKILL.md + supporting files)
-- `*create-slash-skill {name}` - Create slash skill (.claude/skills/{name}/SKILL.md)
+- `*create-slash-skill {name}` - Create slash skill (skills/{name}/SKILL.md)
 - `*create-plugin {name}` - Scaffold complete plugin (manifest, skills, agents, hooks)
 
 **Analysis & Optimization:**
@@ -1258,7 +1258,7 @@ Type `*help` to see all commands, or `*guide` for detailed usage.
 ### When to Use Me
 
 - Creating new Claude Code skills (SKILL.md files with YAML frontmatter)
-- Building slash skills (.claude/skills/ directory)
+- Building slash skills (skills/ directory)
 - Scaffolding Claude Code plugins (.claude-plugin/ with full structure)
 - Optimizing context engineering (CLAUDE.md, @imports, .claude/rules/, token budgets)
 - Setting up spec-driven development workflows (specifications before code)
@@ -1280,8 +1280,8 @@ Type `*help` to see all commands, or `*guide` for detailed usage.
 
 | Concept | Location | Scope | Best For |
 |---------|----------|-------|----------|
-| Skill | `.claude/skills/{name}/SKILL.md` | Project or personal | Reusable capabilities with supporting files |
-| Slash Skill | `.claude/skills/{namespace}/{name}/SKILL.md` | Project or personal | Namespaced slash activation with frontmatter |
+| Skill | `skills/{name}/SKILL.md` | Project or personal | Reusable capabilities with supporting files |
+| Slash Skill | `skills/{namespace}/{name}/SKILL.md` | Project or personal | Namespaced slash activation with frontmatter |
 | Plugin | `{dir}/.claude-plugin/plugin.json` | Distributable package | Sharing skills+agents+hooks as a bundle |
 
 **Context Modes:**
@@ -1295,7 +1295,7 @@ Type `*help` to see all commands, or `*guide` for detailed usage.
 
 | AIOX Concept | Claude Code Equivalent |
 |-------------|----------------------|
-| Task (`.aiox-core/development/tasks/`) | Skill (`.claude/skills/`) |
+| Task (`.aiox-core/development/tasks/`) | Skill (`skills/`) |
 | Agent (`.claude/agents/`) | Subagent (`.claude/agents/`) |
 | Workflow | Command sequence / Skill chain |
 | Checklist | Skill validation steps |

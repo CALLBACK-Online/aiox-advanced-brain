@@ -11,7 +11,7 @@ source_fidelity: 100%
 source: $100M Leads - Section III "Get Leads" + "Core Four on Steroids: More Better New"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

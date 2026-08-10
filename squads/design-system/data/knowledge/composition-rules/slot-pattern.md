@@ -2,7 +2,7 @@
 title: Slot Pattern (asSlot / Render As)
 impact: high
 tags: [composition, patterns, polymorphism]
-sinkra_source: v0-composition-patterns
+aiox_source: v0-composition-patterns
 ---
 
 # Slot Pattern (asSlot)

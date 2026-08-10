@@ -29,7 +29,7 @@ freshness_governance:
 
 command_gates:
   required:
-    - node squads/design-ops/scripts/validate-workspace-contracts.cjs --business={business} --strict
+    - node squads/design-ops/scripts/validate-project context contracts.cjs --business={business} --strict
     - node squads/design-ops/scripts/validate-checklists-gate.cjs --business={business}
     - node squads/design-ops/scripts/validate-motion-coverage.cjs --business={business}
     - npm run validate:yaml:changed
@@ -37,7 +37,7 @@ command_gates:
 ci_enforcement:
   required:
     - validate_on_changes_in_squads_design_ops
-    - validate_on_changes_in_workspace_design_contracts
+    - validate_on_changes_in_project_design_contracts
     - block_release_on_gate_fail
 
 release_result:

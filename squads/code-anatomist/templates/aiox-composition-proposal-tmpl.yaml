@@ -1,0 +1,36 @@
+# AIOX Composition Proposal Template
+# Produzido por: code-anatomist squad (task extract-rules)
+# Consumido por: aiox-squad (Wave 4 do Epic 100)
+# Artifact ID: aiox-composition-proposal
+# Lifecycle: draft → validated → approved
+
+composition_proposal:
+  source_system: "{system_name}"
+  proposal_date: "{date}"
+  proposed_by: "{agent_id}"
+  molecules:
+    - molecule_id: "MOL-{DOMAIN}-{NNN}"
+      name: "{descriptive_name}"
+      source_rules: ["{RE-DOMAIN-NNN}"]
+      atoms:
+        - atom_id: "ATM-{DOMAIN}-{NNN}"
+          name: "{descriptive_name}"
+          executor_type: "{Human|Agent|Worker|Clone}"
+          enforces_rule: "RE-{DOMAIN}-{NNN}"
+          inputs: ["{input_description}"]
+          outputs: ["{output_description}"]
+          tokens:
+            - token_ref: "TK-{DOMAIN}-{NNN}"
+              token_family: "{family}"
+          completion_criteria: "{boolean_condition}"
+  dag:
+    edges:
+      - from: "ATM-{DOMAIN}-{NNN}"
+        to: "ATM-{DOMAIN}-{NNN}"
+    is_dag: true
+    dag_validation: "All edges must be acyclic. Retry patterns go in Organism state machine, NOT here."
+  summary:
+    total_rules_mapped: 0
+    molecules_proposed: 0
+    atoms_proposed: 0
+    tokens_referenced: 0

@@ -11,7 +11,7 @@ source: "Branding SOP — Brand Building Principles"
 sop_reference: squads/hormozi/sops/branding-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

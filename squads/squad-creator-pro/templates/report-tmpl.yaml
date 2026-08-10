@@ -3,7 +3,7 @@
 
 report:
   artifact_id: "{artifact-id}"
-  artifact_type: "{validation | modernization | workspace-hardening | analysis}"
+  artifact_type: "{validation | modernization | project context hardening | analysis}"
   subject: "{squad-name}"
   generated_at: "{ISO-8601}"
   generated_by: "@squad-chief"

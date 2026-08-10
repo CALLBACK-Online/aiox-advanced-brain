@@ -36,6 +36,14 @@ Pergunta de decisão, fontes contrastadas, comparação, anatomia do domínio e 
 
 Eu recupero os conceitos no [[avaliacoes/Quiz M8 - Pipeline de Research|Quiz do M8]] e confiro se consigo produzir a evidência sem seguir uma receita cega.
 
+## Trilha de squads (ponte)
+
+> **Depois deste módulo no método**, aprofunde a operação dos squads no curso irmão.
+>
+> Operação do squad unificado de research: `Cursos/AIOX-Advanced-Squads/aulas/02-research.md`. Pacote: `squads/research/`. Skill opcional: `skills/research/`.
+>
+> Índice da trilha: `ponte/trilha-squads.md` · Hub: `Cursos/README.md` · Pasta do curso: `Cursos/AIOX-Advanced-Squads/`
+
 ## Navegação
 
 ← [[modulos/Módulo 7 - Criar Squad|M7]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 9 - Design System|M9]]

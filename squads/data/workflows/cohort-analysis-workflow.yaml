@@ -49,21 +49,6 @@ workflow:
     - Growth recommendations
     - Executive cohort report
 
-workspace_execution_contract:
-  preflight:
-    - "*workspace-preflight (executa bootstrap-data-workspace.sh + validate-data-essentials.sh)"
-    - "*workspace-context {slug}"
-    - "Confirmar templates necessários em workspace/_templates/analytics/"
-  output_routing:
-    canonical:
-      - "workspace/businesses/{slug}/analytics/cohort-analysis.yaml"
-      - "workspace/businesses/{slug}/analytics/executive-report.yaml"
-    custom:
-      - "docs/data/{slug}/cohort-analysis-{date}.md"
-  hard_rules:
-    - "Proibido gravar em workspace/businesses/{slug}/analytics/ sem template correspondente em workspace/_templates/analytics/."
-    - "Relatórios em docs/data/{slug}/ são complementares e não substituem artefatos canônicos."
-
 notes: |
   ## Objetivo
   Analisar performance de diferentes cohorts para identificar padrões de retenção, valor e comportamento ao longo do tempo.

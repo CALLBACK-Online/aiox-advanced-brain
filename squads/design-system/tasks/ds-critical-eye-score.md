@@ -108,13 +108,13 @@ Authority: Nathan Curtis/EightShapes, GOV.UK Contribution Criteria, USWDS Lifecy
 
 - `squads/design/checklists/ds-critical-eye-review-checklist.md`
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_critical_eye_score_artifact

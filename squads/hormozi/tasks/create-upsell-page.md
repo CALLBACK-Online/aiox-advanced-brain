@@ -11,7 +11,7 @@ source: "Upsell Page SOP — Post-Purchase Maximization"
 sop_reference: squads/hormozi/sops/upsell-page-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

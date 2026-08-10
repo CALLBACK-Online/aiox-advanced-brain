@@ -772,7 +772,6 @@
 | `aula01_material_estudos` | aula01_material_estudos.html | 2026-02-05 | T1 | 78 | 1 |
 | `autoclaw` | autoclaw.zip | 2026-02-14 | T1 | 77 | 1 |
 | `biotech-intel` | biotech-intel.zip | 2026-03-11 | T1 | 111 | 1 |
-| `c-level` | c-level.zip | 2026-05-27 | T2 | 306 | 1 |
 | `c_level_operating_model_dashboard` | c_level_operating_model_dashboard.html | 2026-05-13 | T2 | 264 | 2 |
 | `celf-v1.0-whitepaper` | CELF-v1.0-whitepaper.html | 2026-03-10 | T1 | 71 | 1 |
 | `claude-code-mastery` | claude-code-mastery.zip | 2026-04-03 | T1 | 615 | 2 |

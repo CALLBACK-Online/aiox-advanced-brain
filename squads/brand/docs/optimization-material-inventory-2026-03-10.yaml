@@ -9,7 +9,7 @@ material_inventory:
     - path: squads/brand/README.md
       type: documentation
       classification: active
-      rationale: Core squad operating guide and workspace contract.
+      rationale: Core squad operating guide and project context contracts.
     - path: squads/brand/ARCHITECTURE.md
       type: documentation
       classification: active

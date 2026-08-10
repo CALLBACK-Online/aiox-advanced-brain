@@ -1,5 +1,5 @@
 # Managed by materialize-map.py
-# Source: .aiox/squad-runtime/sinkra-squad/copy/map/20260328-065841-gemini-gemini-3.1-pro-preview/infrastructure_connections.yaml
+# Source: .aiox/squad-runtime/aiox-squad/copy/map/20260328-065841-gemini-gemini-3.1-pro-preview/infrastructure_connections.yaml
 # Category: governance
 
 infrastructure:
@@ -33,20 +33,20 @@ infrastructure:
           - "atm_revisar_checklist"
           - "atm_aprovacao_final"
         status: "existing"
-        justification: "Campo obrigatório SINKRA mapeado no infrastructure-map"
+        justification: "Campo obrigatório AIOX mapeado no infrastructure-map"
       - field_name: "quality_gate_result"
         field_type: "dropdown"
         task_ids:
           - "atm_revisar_checklist"
         status: "existing"
-        justification: "Campo obrigatório SINKRA mapeado no infrastructure-map"
+        justification: "Campo obrigatório AIOX mapeado no infrastructure-map"
       - field_name: "checklist_score"
         field_type: "number"
         task_ids:
           - "atm_revisar_checklist"
           - "atm_aprovacao_final"
         status: "new"
-        justification: "Score numérico gerado pelo agente revisor, não existe no setup base SINKRA. Crucial para o QG."
+        justification: "Score numérico gerado pelo agente revisor, não existe no setup base AIOX. Crucial para o QG."
       - field_name: "copy_status"
         field_type: "dropdown"
         task_ids:
@@ -83,7 +83,7 @@ infrastructure:
           - "atm_revisar_checklist"
         trigger: "ClickUp Webhook (Status = Briefing Recebido)"
         status: "new"
-        justification: "Automação sequencial SINKRA para acionar sucessivamente os agentes não listada nos known_workflows."
+        justification: "Automação sequencial AIOX para acionar sucessivamente os agentes não listada nos known_workflows."
 
   agents_gateway:
     openclaw_gateway:

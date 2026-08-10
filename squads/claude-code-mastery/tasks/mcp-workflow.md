@@ -7,7 +7,7 @@
 **Mode:** Interactive (elicit: true)
 **Quality Standard:** Fully tested MCP integration with documented context budget, ownership, and policy fit
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: mcp-workflow
 atomic_layer: Atom

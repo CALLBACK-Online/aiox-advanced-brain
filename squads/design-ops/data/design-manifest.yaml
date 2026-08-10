@@ -31,7 +31,7 @@ io_contracts:
     - design-brief
     - legacy-provider-source
     - starter-runtime
-    - workspace-design-context
+    - project-design-context
   outputs:
     - design-routing-decision
     - ds-health-report
@@ -43,14 +43,14 @@ files:
     - design-chief
   tasks:
     - dops-context-contract
-    - dops-extract-brandbook-to-workspace-contracts
+    - dops-extract-brandbook-to-project context contracts
     - dops-metadata-manifest-governance
   workflows:
-    - wf-brandbook-workspace-extraction
-    - wf-dtcg-workspace-governance
+    - brownfield-complete
+    - wf-dtcg-project context governance
     - wf-generative-component-pipeline
     - wf-metadata-manifest-governance
-    - wf-ops-audit-workspace
+    - ops-audit
     - wf-self-healing-provider
     - wf-style-dictionary-token-pipeline
   checklists:
@@ -68,4 +68,4 @@ files:
     - motion-primitives-registry.yaml
     - quality-gates.yaml
     - token-registry.yaml
-    - workspace-contract-bridge.yaml
+    - project context contracts-bridge.yaml

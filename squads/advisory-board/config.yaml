@@ -35,7 +35,7 @@ identity_bound: true
 identity_source:
   type: person
   refs:
-    - workspace/sinkra-hub/L0-identity/people/alan-nicolas.yaml
+    - "upstream identity record: alan-nicolas"
     - .aiox/advisory-board/alan-nicolas-profile.yaml
 
 settings:
@@ -52,21 +52,6 @@ settings:
     session_selector: "latest_by_filename_desc"
     output_path: "outputs/advisory-board/context/advisory-context-brief.json"
     privacy_contract: "local_gitignored_only"
-
-workspace_integration:
-  level: controlled_runtime_consumer
-  rationale: >-
-    Advisory Board recebe contexto estrategico por handoff no prompt. Le dados
-    de empresa e estrategia do workspace para fornecer aconselhamento contextualizado.
-    Produz atas de reuniao e recomendacoes no workspace operacional.
-  read_paths:
-    - workspace/businesses/{slug}/L0-identity/
-    - workspace/businesses/{slug}/L1-strategy/
-    - workspace/businesses/{slug}/L2-tactical/
-  write_paths:
-    - workspace/businesses/{slug}/L4-operational/advisory/
-  readiness_owner: workspace-chief
-  readiness_resolver: board-chair
 
 handoffs:
   - squad: legal

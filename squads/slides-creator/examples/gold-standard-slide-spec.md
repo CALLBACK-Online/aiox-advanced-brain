@@ -11,7 +11,6 @@ Este exemplo demonstra o nível de detalhe esperado em CADA slide de uma apresen
 - **Posição:** Slide 7 de 45
 - **Tipo:** Data Slide (Quantitative - Mixed: Line Chart + Table)
 - **Tempo de apresentação:** 3 minutos
-- **Audiência primária:** C-level executives (CEO, CFO, CTO)
 - **Objetivo:** Demonstrar oportunidade de mercado e urgência de ação
 
 ---

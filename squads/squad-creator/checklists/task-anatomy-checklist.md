@@ -75,7 +75,7 @@ Every task MUST have ALL 8 fields. No exceptions.
 - [ ] **output** - Array of outputs produced
 - [ ] **action_items** - Array of execution steps
 - [ ] **acceptance_criteria** - Array of completion criteria
-- [ ] **output_persistence** - canonical_workspace or transient_output (Output Path Governance)
+- [ ] **output_persistence** - canonical_project or transient_output (Output Path Governance)
 
 ### 1.2 Field Presence Scoring
 
@@ -86,7 +86,7 @@ Every task MUST have ALL 8 fields. No exceptions.
 | 7/9 | 78% | FAIL |
 | <7/9 | <78% | HARD FAIL |
 
-### 1.3 SINKRA v1.2 Required Fields (Accountability Token)
+### 1.3 AIOX v1.2 Required Fields (Accountability Token)
 
 For tasks with non-Human executor (Agent, Worker, Hybrid, Composed) this field is **CRITICAL / AUTO-FAIL** if absent:
 
@@ -120,27 +120,27 @@ Every task with outputs MUST classify `output_persistence` and use the correct p
 
 ### 1B.1 Persistence Classification
 
-- [ ] **output_persistence** field is present (canonical_workspace or transient_output)
+- [ ] **output_persistence** field is present (canonical_project or transient_output)
 - [ ] Classification matches output characteristics (see heuristics below)
 
 ### 1B.2 Classification Heuristics
 
 | Signal | Classification |
 |--------|---------------|
-| Loaded on agent boot (session context) | **canonical_workspace** |
-| Used as input by other tasks | **canonical_workspace** |
-| Snapshot of business state (scores, maturity, health) | **canonical_workspace** |
-| Filled template that becomes canonical data | **canonical_workspace** |
+| Loaded on agent boot (session context) | **canonical_project** |
+| Used as input by other tasks | **canonical_project** |
+| Snapshot of business state (scores, maturity, health) | **canonical_project** |
+| Filled template that becomes canonical data | **canonical_project** |
 | One-time report or analysis | transient_output |
 | Draft, intermediate version | transient_output |
 | Export for external sharing | transient_output |
 
 ### 1B.3 Path Validation
 
-- [ ] `canonical_workspace` outputs use path `workspace/businesses/{business}/`
+- [ ] `canonical_project` outputs use path `docs/`
 - [ ] `transient_output` outputs use path `.aiox/squad-runtime/{squad}/{business}/`
 - [ ] No HIGH-VALUE canonical output points to `.aiox/squad-runtime/` (VETO if found)
-- [ ] No transient draft points to `workspace/` (VETO if found)
+- [ ] No transient draft points to `docs/` (substituto local; outputs/ é private enterprise distribution) (VETO if found)
 
 ### 1B.4 HIGH-VALUE Signal Words
 
@@ -608,7 +608,7 @@ task:
     - "{Testable criterion 1}"
     - "{Testable criterion 2}"
 
-  # SINKRA v1.2 — required for non-Human executors (AUTO-FAIL if absent)
+  # AIOX v1.2 — required for non-Human executors (AUTO-FAIL if absent)
   accountability:
     human: "{human-role-or-name}"
     scope: "{full|review_only|escalation_target}"

@@ -6,7 +6,7 @@
 **Orchestrator:** Sigil (config-engineer)
 **Purpose:** Design a comprehensive permission strategy for a project by assessing security needs, selecting the appropriate permission mode, and engineering precise allow/ask/deny rules using Claude Code's `Tool(specifier)` syntax and current runtime permission pipeline.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: permission-strategy
 atomic_layer: Atom

@@ -31,7 +31,7 @@ domain: Operational
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Operational`
 atomic_layer: Atom
 Input: request::install_skills_finalize
@@ -39,7 +39,7 @@ Output: artifact::install_skills_finalize
 pre_condition: contexto mínimo carregado e rota validada
 post_condition: decisão registrada com artefato persistido ou handoff emitido
 performance: registrar evidências, falhas e próximo passo sem erro silencioso
-Completion Criteria: contrato mínimo SINKRA explícito e saída rastreável produzida
+Completion Criteria: contrato mínimo AIOX explícito e saída rastreável produzida
 ========
 Input: request::install_skills_finalize
 Output: artifact::install_skills_finalize
@@ -211,7 +211,7 @@ skill_resolution:
     - id: S-DISC-001
       name: "Claude Code Command Index"
       description: >
-        Verificar que `.claude/skills/{slashPrefix}/{agent}/SKILL.md` está indexado
+        Verificar que `skills/{slashPrefix}/{agent}/SKILL.md` está indexado
         e que a sintaxe de ativação `/{slashPrefix}:{agent-id}` funciona.
       ide: claude_code
       check: "Directory exists AND contains expected SKILL.md files"

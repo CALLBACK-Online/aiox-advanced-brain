@@ -283,7 +283,7 @@ killer_items:
 
   # ─────────────────────────────────────────────────────
   # ABSORBED CROSS-FIT KILLERS (KI-12..KI-15) — 2026-05-20
-  # Source: .claude/skills/slide-creator/templates/qa/visual-gates.yaml + copy-gates.yaml
+  # Source: skills/slide-creator/templates/qa/visual-gates.yaml + copy-gates.yaml
   # Authority: .claude/rules/design-absolute-bans.md
   # ─────────────────────────────────────────────────────
   - id: KI-12

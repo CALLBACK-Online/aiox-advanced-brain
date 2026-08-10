@@ -1,4 +1,4 @@
-# Arc42 Architecture Documentation Template — SINKRA Native (YAML)
+# Arc42 Architecture Documentation Template — AIOX Native (YAML)
 # Blocker B3 resolution: machine-readable Arc42 for automated pipeline output
 # RT-DD-V2-001 Decision D3
 # Renders to Markdown via serialization — never edit markdown directly
@@ -13,7 +13,7 @@ _meta:
   lifecycle_states: [draft, validated, approved, stale, archived]
   owner_squad: code-anatomist  # Will become code-anatomist
   source_framework: "arc42 (Starke & Hruschka)"
-  sinkra_mode: EXPLORAR
+  aiox_mode: EXPLORAR
 
 project:
   name: "{project_name}"

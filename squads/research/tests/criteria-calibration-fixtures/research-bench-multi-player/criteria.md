@@ -28,7 +28,7 @@ scoring_calibration:
   reproducibility: high
 ```
 
-Framework-agnosticism pledge applied — NO `sinkra_fit`, NO anchor-only-satisfiable axes.
+Framework-agnosticism pledge applied — NO `aiox_fit`, NO anchor-only-satisfiable axes.
 
 ## Macro Dimensions
 

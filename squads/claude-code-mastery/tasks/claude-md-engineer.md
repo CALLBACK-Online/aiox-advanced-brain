@@ -7,7 +7,7 @@
 **Mode:** Interactive (elicit: true)
 **Quality Standard:** Under 200 lines, all sections actionable, no filler content, passes self-review
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: claude-md-engineer
 atomic_layer: Atom

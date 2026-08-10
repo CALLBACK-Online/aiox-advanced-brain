@@ -166,28 +166,27 @@ sections:
 
       {{integration_details}}
 
-  - id: workspace-governance
-    title: Workspace Integration Governance
+  - id: project context governance
+    title: local project docs Governance
     instruction: |
-      Declare required workspace integration level and contract.
-      Use canonical levels: none | read_only | controlled_runtime_consumer | workspace_first.
+      Declare required local project docs level and contract.
+      Use canonical levels: none | read_only | none | local.
     template: |
-      ## Workspace Integration Governance
+      ## local project docs Governance
 
-      - **Integration level:** `{{workspace_integration_level}}`
-      - **Rationale:** {{workspace_integration_rationale}}
-      - **Read paths:** {{workspace_read_paths}}
-      - **Write paths:** {{workspace_write_paths}}
-      - **Template namespace:** {{workspace_template_namespace}}
-      - **Owner:** {{workspace_integration_owner}}
-      - **Execution mode:** {{workspace_integration_execution_mode}}
+      - **Integration level:** `{{local project docs_level}}`
+      - **Rationale:** {{local project docs_rationale}}
+      - **Read paths:** {{project_read_paths}}
+      - **Write paths:** {{project_write_paths}}
+      - **Template namespace:** {{project_template_namespace}}
+      - **Owner:** {{local project docs_owner}}
+      - **Execution mode:** {{local project docs_execution_mode}}
 
       ### Required structural artifacts
-      - `config.yaml` with `workspace_integration.level`
-      - `scripts/bootstrap-*-workspace.sh` (if `workspace_first`)
-      - `scripts/validate-*-essentials.sh` (if `workspace_first`)
-      - `workspace-handoff.yaml` for `COO` (if `controlled_runtime_consumer` or `workspace_first`)
-      - `squads/c-level/` present in the repo (if `controlled_runtime_consumer` or `workspace_first`)
+      - `config.yaml` with `local project docs.level`
+      - `scripts/bootstrap-project-context.sh` (if `local`)
+      - `scripts/validate-*-essentials.sh` (if `local`)
+      - `project-handoff.yaml` for `COO` (if `none` or `local`)
 
   - id: getting-started
     title: Getting Started Guide

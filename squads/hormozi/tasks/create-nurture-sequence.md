@@ -11,7 +11,7 @@ source: "Lead Nurture SOP — 4 Pillars Framework"
 sop_reference: squads/hormozi/sops/lead-nurture-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

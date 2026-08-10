@@ -64,51 +64,13 @@ mmos_integration:
   enabled: false
   fallback_behavior: "graceful"
 
-workspace_integration:
-  level: controlled_runtime_consumer
-  rationale: >-
-    SOP Factory remains shared-safe by default, but it can consume canonical
-    business operations context when the COO resolves readiness for an explicit
-    business. Markdown SOPs remain share-safe under squad-local docs, while
-    machine-readable SOPs may publish into the canonical business `sops/`
-    namespace only after runtime readiness is proven. Portable docs mode
-    remains the default whenever readiness is not proven or the command has no
-    business context.
-  read_paths:
-    - workspace/_system/config.yaml
-    - workspace/businesses/
-    - workspace/_templates/business-template/L0-identity/
-    - workspace/_templates/business-template/L1-strategy/
-    - workspace/_templates/business-template/L2-tactical/
-    - workspace/_templates/sops/
-  write_paths:
-    - workspace/businesses/{business}/sops/
-  template_namespace: sops
-  canonical_outputs_root: workspace/businesses/{business}/sops/
-  custom_outputs_root: docs/sops/
-  readiness_owner: workspace-chief
-  readiness_resolver: squads/c-level/scripts/resolve-squad-workspace-readiness.cjs
-  readiness_context_type: operations
-
-distribution_contract:
-  shared_default_access_tier: opensource
-  environment_contract_script: squads/aiox-sop/scripts/resolve-environment-contract.cjs
-  default_runtime_mode: portable_docs_mode
-  docs_projection_path: docs/squad/aiox-sop/operational-projection.yaml
-  shared_safe_outputs_root: docs/sops/
-  full_workspace_requires:
-    - access tier resolved to pro or enterprise
-    - canonical COO readiness support for the operations context
-    - explicit business context for canonical YAML/JSON publication
-  enterprise_assumptions_allowed: false
-
 # ==============================================================================
 # AGENTS
 # ==============================================================================
 agents:
   - id: sop-chief
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -123,7 +85,7 @@ agents:
 
   - id: sop-analyst
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -138,7 +100,7 @@ agents:
 
   - id: sop-creator
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -153,7 +115,7 @@ agents:
 
   - id: sop-ml-architect
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -168,7 +130,7 @@ agents:
 
   - id: sop-extractor
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -183,7 +145,7 @@ agents:
 
   - id: sop-auditor
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: executor
@@ -217,8 +179,8 @@ tasks:
     description: "Generate operational checklist from existing SOP"
 
   # --- Analysis ---
-  - id: load-workspace-context
-    name: "Load Workspace Context"
+  - id: load-project context
+    name: "Load project context"
     category: governance
     description: "Load canonical company + operations business context before business-aware analysis"
 
@@ -265,11 +227,9 @@ tasks:
     category: audit
     description: "Audit multiple SOPs at once with comparative scoring"
 
-  # --- Cross-Squad Integration (C-Level → SOP) ---
   - id: create-sop-operations-suite
     name: "Create Operations SOP Suite"
     category: creation
-    description: "Creates SOPs from C-Level operations YAMLs (team-structure, pricing, KPIs, commissions)"
 
   - id: compliance-check
     name: "Compliance Check"
@@ -290,41 +250,39 @@ tasks:
   - id: map-core-sop-backlog
     name: "Map Core SOP Backlog by Business Category"
     category: research
-    description: "Analyzes all workspace businesses, categorizes by market type, and generates prioritized SOP backlog with research context per segment"
+    description: "Analyzes all local_docs businesses, categorizes by market type, and generates prioritized SOP backlog with research context per segment"
 
 # ==============================================================================
-# OPERATIONS INTEGRATION (C-Level handoff)
 # ==============================================================================
 operations_integration:
   enabled: true
-  description: "Mapeamento de YAMLs operacionais do C-Level para SOPs"
   canonical_sources:
-    - path: "workspace/_templates/business-template/L1-strategy/team-structure.yaml"
+    - path: "docs/templates/strategy/team-structure.yaml"
       context: "Estrutura organizacional definida pelo COO"
-    - path: "workspace/_templates/business-template/L1-strategy/pricing-strategy.yaml"
+    - path: "docs/templates/strategy/pricing-strategy.yaml"
       context: "Estratégia de pricing definida pelo CMO"
-    - path: "workspace/_templates/business-template/L1-strategy/kpi-scorecards.yaml"
+    - path: "docs/templates/strategy/kpi-scorecards.yaml"
       context: "KPIs definidos pelo COO"
-    - path: "workspace/_templates/business-template/L1-strategy/commission-design.yaml"
+    - path: "docs/templates/strategy/commission-design.yaml"
       context: "Comissões definidas pelo COO"
   output_paths:
-    - path: "workspace/businesses/{business}/sops/"
-      access: "write (after COO readiness)"
+    - path: "docs/sops/"
+      access: "write (after quality readiness)"
   standard_sop_types:
     - id: SOP-OPS-TEAM
-      source: "L1-strategy/team-structure.yaml"
+      source: "strategy/team-structure.yaml"
       sop_type: "Estrutura Organizacional"
       generator: "sop-creator"
     - id: SOP-OPS-PRICING
-      source: "L1-strategy/pricing-strategy.yaml"
+      source: "strategy/pricing-strategy.yaml"
       sop_type: "Decisões de Pricing"
       generator: "sop-creator"
     - id: SOP-OPS-KPI
-      source: "L1-strategy/kpi-scorecards.yaml"
+      source: "strategy/kpi-scorecards.yaml"
       sop_type: "Gestão de KPIs"
       generator: "sop-creator"
     - id: SOP-OPS-COMMISSION
-      source: "L1-strategy/commission-design.yaml"
+      source: "strategy/commission-design.yaml"
       sop_type: "Cálculo de Comissões"
       generator: "sop-creator"
 
@@ -430,7 +388,7 @@ tags:
   - gawande
   - juran
 
-# SINKRA v3.1 (Story 54.11)
+# AIOX v3.1 (Story 54.11)
 bu_mapping: "hub-framework"
 artifact_contracts:
   - artifact_id: "sop-human"
@@ -467,7 +425,7 @@ executor_profile:
 # BEGIN MAP MATERIALIZATION: supported_domains
 materialized_supported_domains: [Operational, Tactical, Strategic]
 materialized_supported_domains_ptbr: [Operacional, Tático, Estratégico]
-# Source: .aiox/squad-runtime/sinkra-squad/aiox-sop/map/20260329-190639-claude-opus/domain_map.json
+# Source: .aiox/squad-runtime/aiox-squad/aiox-sop/map/20260329-190639-claude-opus/domain_map.json
 # END MAP MATERIALIZATION: supported_domains
 
 

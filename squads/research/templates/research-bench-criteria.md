@@ -5,7 +5,7 @@
 > **Schema:** `bench-criteria.v1`
 > **Companion atoms:** `comparison-matrix.json` (scores) + `bench-weights.yaml` (group weights, MUST sum 100) + `scripts/scoring-{SLUG}.py` (reproducibility when composite multi-weighted).
 >
-> This atom is the AUDIT-FRIENDLY pre-declaration of axes, weights, and calibration. It is the source of truth for "why these dimensions and not others" and must be authored BEFORE any score is assigned. Aligns with `.claude/rules/bench-weight-calibration.md` framework-agnostic mandate (no `sinkra_fit`, no anchor-only-satisfiable axes).
+> This atom is the AUDIT-FRIENDLY pre-declaration of axes, weights, and calibration. It is the source of truth for "why these dimensions and not others" and must be authored BEFORE any score is assigned. Aligns with `.claude/rules/bench-weight-calibration.md` framework-agnostic mandate (no `aiox_fit`, no anchor-only-satisfiable axes).
 
 ---
 
@@ -64,9 +64,9 @@ scoring_calibration:
 
 Per `.claude/rules/bench-weight-calibration.md`, the bench MUST be framework-agnostic. Confirm before authoring dimensions:
 
-- [ ] NO `sinkra_fit` dimension (removed from schema 2026-05-18 — not even at weight 0).
+- [ ] NO `aiox_fit` dimension (removed from schema 2026-05-18 — not even at weight 0).
 - [ ] NO weight on `dogfood_presence` of the anchor.
-- [ ] NO governance-alignment scoring using SINKRA-specific vocabulary (`Mandamentos`, `Ponto A→B`, `tokenization`).
+- [ ] NO governance-alignment scoring using AIOX-specific vocabulary (`Mandamentos`, `Ponto A→B`, `tokenization`).
 - [ ] NO dimension that ONLY the anchor satisfies by construction.
 - [ ] Use universal capability dimensions (Coverage Gate, Citation verification, Cost-per-task, Wall-time) or external benchmark frameworks (Deep Research Bench, RACE/FACT, LiveDRBench) where possible.
 
@@ -143,7 +143,7 @@ Dimensions explicitly excluded WITH rationale. Required to prevent future review
 | Rejected Axis | Considered Because | Excluded Because | Evidence |
 |---|---|---|---|
 | `{axis_1}` | {reason} | {anti-reason — e.g. anchor-only-satisfiable, opaque scale, non-reproducible} | {citation} |
-| `sinkra_fit` (canonical) | Legacy from pre-2026-05-18 schema | Framework-agnostic mandate; anchor's own methodology cannot be a comparison dimension | `.claude/rules/bench-weight-calibration.md` |
+| `aiox_fit` (canonical) | Legacy from pre-2026-05-18 schema | Framework-agnostic mandate; anchor's own methodology cannot be a comparison dimension | `.claude/rules/bench-weight-calibration.md` |
 
 ---
 
@@ -188,7 +188,7 @@ authoring_record:
     - "bench-weights.yaml"
     - "{any prior bench in docs/bench/ used as template}"
   founder_directives_applied:
-    - "2026-05-18: no sinkra_fit (framework-agnostic mandate)"
+    - "2026-05-18: no aiox_fit (framework-agnostic mandate)"
     - "2026-05-18: 3 critical groups acknowledged"
   open_questions:
     - "{questions left in curiosity-queue.yaml about this criteria set}"
@@ -198,8 +198,8 @@ authoring_record:
 
 ## Anti-Patterns Avoided
 
-- `sinkra_fit` reintroduced at any weight (forbidden).
-- Anchor-only-satisfiable axes (e.g. "uses SINKRA tokenization").
+- `aiox_fit` reintroduced at any weight (forbidden).
+- Anchor-only-satisfiable axes (e.g. "uses AIOX tokenization").
 - Adding axes mid-scoring to favor the anchor.
 - Reporting raw GitHub counts without API caps in field names.
 - Composite scoring `total_normalized != 100.0`.

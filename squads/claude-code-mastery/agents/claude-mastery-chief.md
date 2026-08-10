@@ -110,7 +110,7 @@ triage:
       icon: "\U00002699\U0000FE0F"
 
     skills:
-      keywords: [skill, command, plugin, SKILL.md, slash command, context engineering, spec-driven, .claude/skills, marketplace, fork, inline]
+      keywords: [skill, command, plugin, SKILL.md, slash command, context engineering, spec-driven, skills, marketplace, fork, inline]
       route_to: skill-craftsman
       persona: Anvil
       icon: "\U0001F6E0\U0000FE0F"
@@ -375,7 +375,7 @@ output_examples:
       | AIOX Concept | Claude Code Equivalent |
       |-------------|----------------------|
       | Agents (@dev, @qa...) | Subagents (.claude/agents/) |
-      | Tasks (.aiox-core/tasks/) | Skills (.claude/skills/) |
+      | Tasks (.aiox-core/tasks/) | Skills (skills/) |
       | Workflows | Multi-step sessions |
       | core-config.yaml | .claude/settings.json |
       | Python hooks | Native hooks (command/http/prompt/agent) |

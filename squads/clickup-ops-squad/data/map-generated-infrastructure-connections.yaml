@@ -10,7 +10,7 @@ metadata:
   source_registry:
     requested_service_catalog: squads/infra-ops-squad/data/service-catalog.yaml
     requested_service_catalog_status: missing_in_repo
-    authoritative_registry_used: squads/sinkra-squad/data/infrastructure-map.yaml
+    authoritative_registry_used: squads/aiox-squad/data/infrastructure-map.yaml
     notes:
     - O caminho solicitado pela task não existe neste checkout; usei o registry brownfield
       disponível.
@@ -30,11 +30,11 @@ infrastructure:
       status: existing
       justification: Já implementa o fluxo de contrato, pré-flight e gate humano sem
         criar novas entidades.
-    - resource_name: Workspace topology provisioning
+    - resource_name: LocalDocs topology provisioning
       components:
       - services/clickup/structures.js
       - services/clickup/custom-fields.js
-      - squads/sinkra-squad/data/clickup-tokenization.yaml
+      - squads/aiox-squad/data/clickup-tokenization.yaml
       task_ids:
       - atm_resolve_space
       - atm_create_folder
@@ -60,7 +60,7 @@ infrastructure:
     - resource_name: Runtime governance views
       components:
       - services/clickup/views.js
-      - services/google-workspace/monitoring/health-dashboard.js
+      - services/google-outputs/monitoring/health-dashboard.js
       task_ids:
       - atm_create_execution_views
       - atm_create_health_view
@@ -86,7 +86,7 @@ infrastructure:
         de writeback upstream.
     - resource_name: Execution report publication
       components:
-      - services/google-workspace/governance/audit-trail.js
+      - services/google-outputs/governance/audit-trail.js
       - services/google-drive/docs.js
       - services/google-drive/files.js
       task_ids:
@@ -117,7 +117,7 @@ infrastructure:
         brownfield consultado.
     - table_name: projects / creators / proposals
       components:
-      - squads/sinkra-squad/data/infrastructure-map.yaml
+      - squads/aiox-squad/data/infrastructure-map.yaml
       task_ids: []
       status: existing_supporting
       justification: São tabelas já registradas para o ecossistema ClickUp-Supabase,
@@ -215,8 +215,8 @@ infrastructure:
     - atm_publish_materialization_report
     status: existing
     components:
-    - services/google-workspace/governance/audit-trail.js
-    - services/google-workspace/monitoring/health-dashboard.js
+    - services/google-outputs/governance/audit-trail.js
+    - services/google-outputs/monitoring/health-dashboard.js
   other:
   - resource_name: CLI-first orchestration
     task_ids:
@@ -238,7 +238,7 @@ task_mappings:
   model: Agent LLM estruturado
   tools:
   - services/clickup/materialize-mission.js
-  - services/google-workspace/governance/audit-trail.js
+  - services/google-outputs/governance/audit-trail.js
   note: Normaliza o handoff, preserva versionamento e registra receipt_log.
 - task_id: atm_validate_contract
   executor_type: Worker
@@ -296,7 +296,7 @@ task_mappings:
   automation_tool: services/clickup/custom-fields.js
   tools:
   - services/clickup/custom-fields.js
-  - squads/sinkra-squad/data/clickup-tokenization.yaml
+  - squads/aiox-squad/data/clickup-tokenization.yaml
   note: Resolve ou reutiliza Mission ID, Phase, Ponto A e Ponto B.
 - task_id: atm_create_dag_tasks
   executor_type: Worker
@@ -314,7 +314,7 @@ task_mappings:
   tools:
   - services/clickup/custom-fields.js
   - services/clickup/materialize-mission.js
-  note: Aplica metadata SINKRA e bindings estruturais.
+  note: Aplica metadata AIOX e bindings estruturais.
 - task_id: atm_create_checklists
   executor_type: Worker
   infra_layer: management
@@ -380,7 +380,7 @@ task_mappings:
   automation_tool: services/clickup/views.js
   tools:
   - services/clickup/views.js
-  - services/google-workspace/monitoring/health-dashboard.js
+  - services/google-outputs/monitoring/health-dashboard.js
   note: Cria a health view ou registra modo degradado.
 - task_id: atm_assemble_registry
   executor_type: Worker
@@ -408,7 +408,7 @@ task_mappings:
   automation_tool: services/journey-log/supabase-journey-log.ts
   tools:
   - services/journey-log/supabase-journey-log.ts
-  - services/google-workspace/governance/audit-trail.js
+  - services/google-outputs/governance/audit-trail.js
   note: Emite o log estruturado e mantém o rastro de execução auditável.
 - task_id: atm_publish_materialization_report
   executor_type: Agent
@@ -416,7 +416,7 @@ task_mappings:
   status: existing
   model: Agent LLM estruturado
   tools:
-  - services/google-workspace/governance/audit-trail.js
+  - services/google-outputs/governance/audit-trail.js
   - services/google-drive/docs.js
   - services/google-drive/files.js
   note: Publica o report final em Markdown e, se necessário, em Google Drive.

@@ -34,14 +34,14 @@ logging:
     on_research_conflict: emit_review_handoff
     on_missing_evidence: block_completion
 
-sinkra:
+aiox:
   hierarchy_mapping:
     Token: "Critério declarativo de autonomia, risco, ownership e modo"
     Atom: "Task unitária de auditoria, ensino, pesquisa ou prescrição"
     Molecule: "Ciclos recorrentes de audit, diagnose, teach e suggest"
     Organism: "Workflow completo de criação ou otimização de agente"
     Template: "Templates de report, handoff e plano de otimização"
-    Instance: "Run real persistido em .aiox/squad-runtime/sinkra-squad/agent-autonomy/"
+    Instance: "Run real persistido em .aiox/squad-runtime/aiox-squad/agent-autonomy/"
   governance_tokens:
     - type: Accountability
       rule: "Toda recomendação aponta um responsável humano ou agente executor"
@@ -78,15 +78,6 @@ automation_boundary:
   autonomy_level: 2
   autonomy_rationale: "Diagnostico automatico, prescricao requer LLM, implementacao requer humano."
 
-workspace_integration:
-  level: none
-  rationale: >-
-    Agent Autonomy audita agentes, configs e patterns do ecossistema, mas nao
-    depende de artefatos canonicos de business/produto em `workspace/`.
-
-# =========================================
-# Agent Registry
-# =========================================
 agents:
   - id: autonomy-steward
     file: null
@@ -95,7 +86,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Human
+      executor_type: Human
       human_in_the_loop: true
       output_schema: autonomy-governance-approval
 
@@ -106,7 +97,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: autonomy-routing-decision
 
@@ -117,7 +108,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: autonomy-audit-report
 
@@ -128,7 +119,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: autonomy-architecture-plan
 
@@ -139,7 +130,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: reasoning-pattern-brief
 
@@ -150,7 +141,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Worker
+      executor_type: Worker
       human_in_the_loop: true
       output_schema: tool-spec-or-implementation
 
@@ -161,7 +152,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Worker
+      executor_type: Worker
       human_in_the_loop: true
       output_schema: ecosystem-research-report
 
@@ -321,7 +312,7 @@ composition_mapping:
     source: "templates/"
   instances:
     description: "Runs persistidos em outputs do squad"
-    persistence: ".aiox/squad-runtime/sinkra-squad/agent-autonomy/"
+    persistence: ".aiox/squad-runtime/aiox-squad/agent-autonomy/"
     lifecycle: [draft, validated, approved, archived]
 
 # =========================================
@@ -397,7 +388,7 @@ paths:
   checklists: "squads/agent-autonomy/checklists"
   data: "squads/agent-autonomy/data"
 
-# SINKRA v3.1 (Story 55.15 Hub upgrade)
+# AIOX v3.1 (Story 55.15 Hub upgrade)
 artifact_contracts:
   - artifact_id: "autonomy-audit-report"
     template_path: "templates/autonomy-audit-tmpl.yaml"

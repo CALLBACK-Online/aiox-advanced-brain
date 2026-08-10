@@ -7,7 +7,7 @@
 - mind cloning e DNA extraction
 - research-first agent creation
 - workflow optimization e modernization
-- workspace hardening e quality gates avançados
+- project context hardening e quality gates avançados
 
 ## Superfície Ativa
 
@@ -21,13 +21,13 @@
 
 - Executor formal do pack: `@squad-chief`
 - Especialistas entram por delegação explícita, nunca como executor genérico
-- O pack não escreve diretamente no workspace de negócios; ele endurece contrato, gera artefatos e prepara handoffs
+- O pack não escreve diretamente no project docs de negócios; ele endurece contrato, gera artefatos e prepara handoffs
 
 ## Contratos Estruturais
 
 - `artifact_contracts` governam outputs tipados
 - `journey_log` registra lifecycle events do pack
-- `workspace_integration.level` permanece `read_only` no overlay pro
+- `local project docs.level` permanece `read_only` no overlay pro
 - Workflows exigem `sequence[].id` e `agent` concreto em cada step executável
 
 ## Referências

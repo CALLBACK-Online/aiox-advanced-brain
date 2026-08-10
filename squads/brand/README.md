@@ -8,8 +8,8 @@
 
 ```bash
 @brand                 # Orquestrador
-*workspace-preflight {brand_slug}
-*workspace-context {brand_slug}
+*project-preflight {brand_slug}
+*project context {brand_slug}
 @brand:naming          # Naming + domínio
 @brand:strategy        # Estratégia de marca (Ana Couto)
 @brand:domain          # Só domínio
@@ -137,31 +137,7 @@ Output: execução completa com todos os especialistas
 - `brand-diagnosis` - baseline de equity e identidade
 - `positioning-narrative` - onlyness, positioning e storytelling
 - `brand-activation` - implementação de marca por canais e cultura
-- `load-workspace-context` - preflight e snapshot de contexto workspace-first
-
-## Workspace Contract
-
-- Base path canônico: `workspace/businesses/{brand_name}/L2-tactical/brand/`
-- owner do readiness: `COO`
-- resolver canônico: `workspace/scripts/resolve-squad-workspace-readiness.cjs`
-- Estrutura operacional:
-  - `naming/`
-  - `foundations/`
-  - `positioning/`
-  - `narrative/`
-  - `activation/`
-- Templates canônicos: `workspace/_templates/business-template/L2-tactical/brand/` (24 arquivos, sem dados)
-- Bootstrap zero:
-  - `bash squads/brand/scripts/bootstrap-brand-workspace.sh {brand_slug}`
-  - `bash squads/brand/scripts/validate-brand-essentials.sh`
-  - `node workspace/scripts/resolve-squad-workspace-readiness.cjs --squad=brand --business={brand_slug} --context-type=brand`
-- Preflight recomendado em toda execução:
-  - `*workspace-preflight {brand_slug}`
-  - `*workspace-context {brand_slug}`
-
-O contrato `workspace_first` só permite output final depois do handoff/readiness do
-`COO`/`c-level`. Exploração fora do contrato canônico continua em
-`docs/brand/{brand_slug}/`.
+- `load-project context` - preflight e snapshot de contexto local
 
 ## Exemplos
 
@@ -198,7 +174,7 @@ squads/brand/
 │   ├── brand-diagnosis.md
 │   ├── positioning-narrative.md
 │   ├── brand-activation.md
-│   └── load-workspace-context.md
+│   └── load-project context.md
 ├── workflows/
 │   ├── wf-naming-to-domain.yaml
 │   ├── wf-brand-foundations.yaml

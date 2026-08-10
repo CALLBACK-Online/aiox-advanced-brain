@@ -280,23 +280,23 @@ output_examples:
           timestamp created_at
           timestamp updated_at
         }
-        workspaces {
+        projects {
           uuid id PK
           varchar name "NOT NULL"
           uuid owner_id FK
           jsonb settings
           timestamp created_at
         }
-        workspace_members {
+        project_members {
           uuid id PK
-          uuid workspace_id FK
+          uuid project_id FK
           uuid user_id FK
           varchar permission_domain "NOT NULL"
           timestamp joined_at
         }
-        users ||--o{ workspaces : "owns"
-        users ||--o{ workspace_members : "has memberships"
-        workspaces ||--o{ workspace_members : "has members"
+        users ||--o{ projects : "owns"
+        users ||--o{ project_members : "has memberships"
+        projects ||--o{ project_members : "has members"
       ```
 
       DATA DICTIONARY (excerpt):
@@ -314,7 +314,7 @@ output_examples:
 
       FINDINGS:
       - 8/12 tables have RLS policies (4 missing: settings, audit_log, migrations, schema_version)
-      - Junction table: workspace_members (users ↔ workspaces M:N)
+      - Junction table: project_members (users ↔ projects M:N)
       - Soft delete pattern: NOT used (no deleted_at columns)
       - permission_domain enum values: ['*', 'financial', 'operations', 'editing', 'genai']
 

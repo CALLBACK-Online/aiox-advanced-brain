@@ -51,7 +51,7 @@ def _create_test_squad(name: str, yolo_required: bool) -> Path:
 version: 1.0.0
 entry_agent: squad-chief
 tested: true
-workspace_integration:
+local project docs:
   level: none
 settings:
   activation:

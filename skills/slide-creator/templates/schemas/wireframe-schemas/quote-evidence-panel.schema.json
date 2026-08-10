@@ -1,0 +1,30 @@
+{
+  "$id": "aiox://slide-creator/wireframes/quote-evidence-panel.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "A claim needs multiple compact proof points and source traceability.",
+  "properties": {
+    "attribution": {
+      "type": "string"
+    },
+    "implication": {
+      "type": "string"
+    },
+    "quote": {
+      "type": "string"
+    }
+  },
+  "title": "quote-evidence-panel",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "evidence_stack",
+    "slot_count": 3,
+    "warnings": [
+      "quote",
+      "attribution",
+      "implication"
+    ],
+    "wireframe_ref": "templates/wireframes/quote-evidence-panel.html"
+  }
+}

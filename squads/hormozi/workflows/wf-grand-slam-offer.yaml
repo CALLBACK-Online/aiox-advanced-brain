@@ -211,9 +211,7 @@ phases:
             statement: "Eu resolvo a falta de leads qualificados para coaches de high-ticket que faturam R$50k+/mês através de um sistema de conteúdo que atrai via autoridade."
 
           - problem: "baixa conversão em vendas"
-            avatar: "consultores B2B que vendem para C-level"
             mechanism: "framework de diagnóstico que vende por você"
-            statement: "Eu resolvo a baixa conversão em vendas para consultores B2B que vendem para C-level através de um framework de diagnóstico que vende por você."
 
     checkpoint:
       id: CP_PHASE_0

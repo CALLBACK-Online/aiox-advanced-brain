@@ -16,7 +16,7 @@ Template para injetar regras obrigatórias em componentes que AI agents leem aut
 
 ## AI-First Governance Gate
 
-- [ ] Validar fontes canônicas (`workspace/system/*`, `workspace/ui/registry.json`, `workspace/domains/design-system/*`)
+- [ ] Validar fontes canônicas (`docs/design-system/system/*`, `docs/design-system/ui/registry.json`, `docs/design-system/domains/*`)
 - [ ] Registrar status por claim: `Implemented`, `Partially implemented`, `Concept only`
 - [ ] Explicitar contradições e itens não resolvidos
 - [ ] Evitar bloqueio semântico em CI; usar checkpoints de task/workflow

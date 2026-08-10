@@ -11,7 +11,7 @@ source: "Content Creation SOP — Content Unit Framework"
 sop_reference: squads/hormozi/sops/content-creation-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

@@ -21,7 +21,7 @@ Materialize a structured design brief from the intake template, invoking the que
 - **Template available:** `squads/design-ops/templates/design-brief-intake-tmpl.yaml`
 - **Protocol available:** `squads/design-ops/data/questions-intake-protocol-spec.yaml`
 - **Output dir** exists at `outputs/design-ops/{business}/artifacts/{artifact_slug}/`
-- **Workspace contracts resolvable** for the target business (at least `tokens.yaml`)
+- **project context contracts resolvable** for the target business (at least `tokens.yaml`)
 
 ## Workflow
 
@@ -83,7 +83,7 @@ Materialize a structured design brief from the intake template, invoking the que
 
 ## Failure Handling
 
-- **Tokens missing:** Halt. Direct user to `wf-brandbook-workspace-extraction`.
+- **Tokens missing:** Halt. Direct user to `brownfield-complete`.
 - **Less than 3 success_criteria after 3 asks:** Halt. Do not silent-fill. Emit `cancelled_incomplete_brief`.
 - **User answers "Decide for me" on divergence posture for component:** record default `variants_required: 1` (DS-first).
 - **User answers "Other" with non-parseable input:** re-ask with freeform, then validate.
@@ -104,7 +104,7 @@ Materialize a structured design brief from the intake template, invoking the que
 - **Dropping escape hatches** — every text-options question MUST include "Explore", "Decide for me", "Other".
 - **Priority inversion** — decorative questions before kind/palette/audience. Wrong order wastes the user's first few answers.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Molecule (P01 of design-artifact-cycle)
@@ -132,4 +132,4 @@ performance:
 - Protocol: `squads/design-ops/data/questions-intake-protocol-spec.yaml`
 - Rule: `squads/design-ops/rules/design-exploration-cycle.md#1-ask`
 - Policy: `squads/design-ops/rules/ds-consistency-policy.md#divergent-exploration-kind-aware-policy`
-- Skill: `.claude/skills/design-artifact-cycle/SKILL.md#phase-01`
+- Skill: `skills/design-artifact-cycle/SKILL.md#phase-01`

@@ -26,7 +26,7 @@ def _read_skill_workflow_version() -> str:
     """Read workflow_version from SKILL.md frontmatter.
 
     Resolves the SKILL.md path relative to this script's location
-    (squads/research/scripts/tech-research/ → ../../../../.claude/skills/tech-research/SKILL.md).
+    (squads/research/scripts/tech-research/ → ../../../../skills/tech-research/SKILL.md).
     Returns "unknown" if file not found or field absent.
     """
     script_dir = os.path.dirname(os.path.abspath(__file__))

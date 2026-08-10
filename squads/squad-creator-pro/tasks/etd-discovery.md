@@ -23,9 +23,9 @@ outputs:
 
 elicit: true
 ---
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: etd-discovery
   task_name: 'ETD Phase 1: Discovery (Recognition + Frameworks)'
   status: pending
@@ -55,11 +55,11 @@ sinkra_task_metadata:
   accountability_scope: review_only
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Operational
   atomic_layer: Atom
   executor: Agent
@@ -67,7 +67,7 @@ sinkra_contract:
   post_condition: "Recognition patterns e frameworks extraidos. Prontos para fase de extracao de heuristicas."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # ETD Phase 1: Discovery (Recognition + Frameworks)

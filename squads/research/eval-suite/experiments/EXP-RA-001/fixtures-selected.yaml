@@ -1,4 +1,4 @@
-schema: sinkra.eval-suite.fixtures.v1
+schema: aiox.eval-suite.fixtures.v1
 experiment_id: EXP-RA-001
 story: STORY-RA-EXP.1
 created: "2026-05-19"

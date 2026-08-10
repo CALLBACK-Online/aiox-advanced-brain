@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: quatro-executores
 lesson_position: 15
 title: '4 executores: humano, agent, clone, worker'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/15-quatro-executores/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

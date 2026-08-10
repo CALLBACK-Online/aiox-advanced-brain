@@ -11,7 +11,7 @@ estimated_duration: "10-20 min"
 ```
 
 **Responsible Executor:** Agent (@wheeler-brand-design)
-**Dependencies:** depends_on: `[load-workspace-context]` · enables: `[logo-strategic-direction]` · workflow: `wf-logo-brainstorm`
+**Dependencies:** depends_on: `[load-project context]` · enables: `[logo-strategic-direction]` · workflow: `wf-logo-brainstorm`
 
 ## Objective
 
@@ -35,7 +35,7 @@ Coletar todas as informações necessárias para o brainstorm de logo: marca, in
 
 | Artifact | Location | Description |
 |---|---|---|
-| `logo-brief.md` | `workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-brief.md` | Brief completo para brainstorm de logo |
+| `logo-brief.md` | `docs/tactical/brand/logo/logo-brief.md` | Brief completo para brainstorm de logo |
 
 ## Execution Steps
 
@@ -134,7 +134,7 @@ Gerar `logo-brief.md` com todas as seções preenchidas.
 ## Veto Conditions
 
 - [ ] Usuário não forneceu nome da marca
-- [ ] Nenhum contexto de negócio disponível (nem via workspace, nem via elicitação)
+- [ ] Nenhum contexto de negócio disponível (nem via local_docs, nem via elicitação)
 - [ ] Brief resultante tem menos de 50% dos campos preenchidos
 
 ---
@@ -145,7 +145,7 @@ Gerar `logo-brief.md` com todas as seções preenchidas.
 to: wheeler-brand-design
 task: logo-strategic-direction
 pass:
-  - logo_brief: "workspace/businesses/{{brand_name}}/L2-tactical/brand/logo/logo-brief.md"
+  - logo_brief: "docs/tactical/brand/logo/logo-brief.md"
   - brand_name: "{{brand_name}}"
   - archetype: "{{archetype_primary}}"
 ```

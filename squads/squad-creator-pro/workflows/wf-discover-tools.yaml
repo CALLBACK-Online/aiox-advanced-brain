@@ -376,7 +376,7 @@ phases:
         action: Scan existing skills and squad capabilities for domain coverage
         logic: |
           # 1. Scan project-level skills
-          scan: ".claude/skills/*/SKILL.md"
+          scan: "skills/*/SKILL.md"
           for each skill:
             extract:
               - name (from frontmatter)
@@ -408,7 +408,7 @@ phases:
               - UNRELATED: Different domain, no overlap
 
           # 3. Scan global skills
-          scan: "~/.claude/skills/*/SKILL.md"
+          scan: "~/skills/*/SKILL.md"
           for each skill:
             same extraction and matching as project skills
         output:
@@ -420,7 +420,7 @@ phases:
                 covered_by:
                   - type: skill
                     name: tech-search
-                    path: .claude/skills/tech-search/SKILL.md
+                    path: skills/tech-search/SKILL.md
             adaptable:
               - capability: competitor_analysis
                 adaptable_from:
@@ -870,7 +870,7 @@ phases:
           ## Search Strategy
 
           ### 1. Claude Code / Anthropic Ecosystem
-          - GitHub: "claude code skills" OR "claude skills" OR ".claude/skills"
+          - GitHub: "claude code skills" OR "claude skills" OR "skills"
           - GitHub: "claude agent" OR "claude code agent" OR ".claude/agents"
           - GitHub topic: "claude-code", "anthropic-tools", "claude-agent"
 

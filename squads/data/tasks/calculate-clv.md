@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: calculate-clv
   task_name: Calculate Customer Lifetime Value
   status: active
@@ -34,11 +34,11 @@ sinkra_task_metadata:
   error_handling: "on failure, log to outputs/data/{slug}/errors.log and escalate to data-chief"
   output_path: "outputs/data/{slug}/clv-report.yaml"
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Tactical
   atomic_layer: Atom
   executor: Clone
@@ -46,7 +46,7 @@ sinkra_contract:
   post_condition: "output generated, validated, ready for handoff"
   performance: "execute within SLA, log errors explicitly, escalate via handoff without silent failure"
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 # Calculate Customer Lifetime Value (CLV) Task
 
@@ -54,12 +54,12 @@ sinkra_contract:
 
 Calcular o Customer Lifetime Value (CLV) usando metodologias rigorosas de Peter Fader e Bruce Hardie (Wharton/LBS). Esta task implementa múltiplos métodos de cálculo - do histórico simples aos modelos probabilísticos avançados (BG/NBD, Gamma-Gamma) - permitindo escolher a abordagem adequada baseada nos dados disponíveis e maturidade analítica da organização.
 
-## Workspace Output Contract
+## Local Docs Output Contract
 
-- Preflight: `*workspace-preflight` + `*workspace-context {slug}`
-- Output canônico (template-first): `workspace/businesses/{slug}/analytics/clv-report.yaml`
+- Preflight: `*project-preflight` + `*project context {slug}`
+- Output canônico (template-first): `docs/analytics/clv-report.yaml`
 - Output custom (ad-hoc): `docs/data/{slug}/clv-investigation-{date}.md`
-- Regra: escrita canônica só se existir template em `workspace/_templates/analytics/clv-report.yaml`
+- Regra: escrita canônica só se existir template em `docs/templates/analytics/clv-report.yaml`
 
 ## When to Use
 

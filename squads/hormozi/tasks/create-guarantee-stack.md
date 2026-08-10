@@ -10,7 +10,7 @@ estimated_time: 20-30min
 source: "$100M Offers - Chapter 15: Guarantees"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: squad-fusion-initialize
   task_name: Squad Fusion - Initialize
   status: pending
@@ -14,7 +14,7 @@ sinkra_task_metadata:
   - Consultar a seção de outputs no corpo da task
   action_items:
   - Elicitar parametros de fusao
-  - Validar entrada e criar workspace
+  - Validar entrada e criar local_docs
   acceptance_criteria:
   - All 5 elicitation steps presented in sequence [threshold: >= 5]
   - 'Validation enforced: minimum 2 sources, kebab-case target name [threshold: >= 2]'
@@ -22,7 +22,7 @@ sinkra_task_metadata:
   - Confirmation summary accurately reflects collected inputs [threshold: >= 1]
   - Cancel option aborts without side effects [threshold: >= 1]
   - Pelo menos duas fontes validas foram confirmadas [threshold: >= 2]
-  - Workspace, backup e audit log foram definidos [threshold: >= 3]
+  - LocalDocs, backup e audit log foram definidos [threshold: >= 3]
   - O processo bloqueia cedo quando houver input invalido [threshold: >= 1]
   output_persistence: transient_output
   accountable_id: Human:Squad_Operator
@@ -31,11 +31,11 @@ sinkra_task_metadata:
   coherence_threshold: 0.95
   error_behavior: raise
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Strategic
   atomic_layer: Atom
   executor: Agent
@@ -43,7 +43,7 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Task: Squad Fusion - Initialize
@@ -73,7 +73,7 @@ description: "Coleta inputs do usuario para configurar a fusao e prepara o ambie
 
 ## Purpose
 
-Setup completo da fusao em duas etapas: primeiro coleta os parametros do usuario (squads fonte, target, escopo, modo e confirmacao), depois valida as entradas e cria o workspace de execucao com backup e audit log.
+Setup completo da fusao em duas etapas: primeiro coleta os parametros do usuario (squads fonte, target, escopo, modo e confirmacao), depois valida as entradas e cria o local_docs de execucao com backup e audit log.
 
 ## Workflow / Steps
 
@@ -191,14 +191,14 @@ elicit:
     - "Cancelar"
 ```
 
-### Step 2: Validar entrada e criar workspace
+### Step 2: Validar entrada e criar local_docs
 
 Garantir que a fusao comeca em ambiente controlado com rollback preparado.
 
 - Confirmar `sources.length >= 2`.
 - Confirmar que todos os squads fonte existem e sao legiveis.
 - Validar `target_name` em kebab-case.
-- Gerar `fusion_id`, `workspace_path`, `backup_path` e `audit_log_path`.
+- Gerar `fusion_id`, `project_path`, `backup_path` e `audit_log_path`.
 - Registrar parametros de execucao (`mode`, `dry_run`, `keep_sources`, `verbose`).
 
 ## Output
@@ -216,7 +216,7 @@ fusion_config:
 # Initialization output
 fusion_runtime:
   fusion_id: string
-  workspace_path: string
+  project_path: string
   backup_path: string
   audit_log_path: string
   inputs_valid: true
@@ -230,7 +230,7 @@ fusion_runtime:
 - [ ] Confirmation summary accurately reflects collected inputs [threshold: >= 1]
 - [ ] Cancel option aborts without side effects [threshold: >= 1]
 - [ ] Pelo menos duas fontes validas foram confirmadas [threshold: >= 2]
-- [ ] Workspace, backup e audit log foram definidos [threshold: >= 3]
+- [ ] LocalDocs, backup e audit log foram definidos [threshold: >= 3]
 - [ ] O processo bloqueia cedo quando houver input invalido [threshold: >= 1]
 
 ## Veto Conditions

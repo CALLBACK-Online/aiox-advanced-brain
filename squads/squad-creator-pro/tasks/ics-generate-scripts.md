@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: ics-generate-scripts
   task_name: ICS Phases 3-7 — Generate Scripts
   status: pending
@@ -21,7 +21,6 @@ sinkra_task_metadata:
   acceptance_criteria:
   - ics-domain-mapping completo
   - 'Referencia canonica acessivel: `squads/copy/scripts/`'
-  - '`squads/c-level/scripts/resolve-squad-workspace-readiness.cjs` acessivel'
   - Apenas scripts missing foram gerados (existing preservados)
   - Todos os scripts seguem o Script Structure Contract
   output_persistence: transient_output
@@ -29,11 +28,11 @@ sinkra_task_metadata:
   accountability_scope: review_only
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Operational
   atomic_layer: Atom
   executor: Agent
@@ -41,7 +40,7 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Task: ICS Phases 3-7 — Generate Scripts
@@ -88,7 +87,7 @@ sinkra_contract:
 | Parameter | Type | Required | Source | Validation |
 |-----------|------|----------|--------|------------|
 | `domain_mapping` | object | Yes | ics-domain-mapping | Contem primary_entity e session_schema |
-| `config_extract` | object | Yes | ics-audit | Contem workspace_integration fields |
+| `config_extract` | object | Yes | ics-audit | Contem local project docs fields |
 | `scripts_inventory` | object | Yes | ics-audit | Lista existing/missing/partial |
 | `--force` | flag | No | user | Permite sobrescrever (cria backup timestamped) |
 
@@ -98,7 +97,6 @@ sinkra_contract:
 
 - [ ] ics-domain-mapping completo
 - [ ] Referencia canonica acessivel: `squads/copy/scripts/`
-- [ ] `squads/c-level/scripts/resolve-squad-workspace-readiness.cjs` acessivel
 
 ---
 
@@ -119,7 +117,6 @@ Usar como modelo de referencia (READ-ONLY, nao copiar verbatim):
 ## Generation Rules
 
 1. **Self-contained** — importa apenas runtime-paths.cjs e libs padrao (fs, path, yaml)
-2. **Readiness via resolver central** — `squads/c-level/scripts/resolve-squad-workspace-readiness.cjs`
 3. **Session context em YAML** — `.aiox/squad-runtime/{namespace}/{entry_agent}/session-context.yaml` (VETO-CS-004)
 4. **Zero dependencia de LLM** — 100% deterministico (VETO-CS-003)
 5. **Erro = exit code != 0** — mensagem clara no stderr
@@ -163,12 +160,12 @@ if (require.main === module) {
 ### Step 3: Generate runtime-paths.cjs
 
 - Namespace derivado do squad name
-- Paths para workspace, outputs, runtime session
+- Paths para docs/, outputs, runtime session
 - Centraliza todos os paths usados pelos demais scripts
 
 ### Step 4: Generate discover-context.cjs
 
-- Lista businesses/products disponiveis no workspace
+- Lista businesses/products disponiveis no project docs
 - Adapta entidades descobertas ao dominio (primary_entity)
 - Output: JSON com entidades encontradas
 
@@ -181,8 +178,7 @@ if (require.main === module) {
 ### Step 6: Generate load-context.cjs
 
 - Le session-context.yaml ativa
-- Enriquece com dados do workspace (le read_paths)
-- Chama resolve-squad-workspace-readiness.cjs para readiness
+- Enriquece com dados de docs/project (le read_paths)
 - Output: JSON com business_slug, dados enriquecidos e readiness.status
 
 ### Step 7: Generate show-context.cjs
@@ -199,7 +195,6 @@ if (require.main === module) {
 |-------|-----------|----------|
 | Script fails (exit != 0) | Smoke test | Revisar codigo, comparar com referencia copy |
 | Partial script conflict | Inventario lista 'partial' | Criar wrapper que importa existente |
-| Readiness resolver missing | require() MODULE_NOT_FOUND | Verificar squads/c-level/scripts/ |
 
 ---
 

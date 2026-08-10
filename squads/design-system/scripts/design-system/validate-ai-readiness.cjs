@@ -85,8 +85,8 @@ function readJson(filePath) {
 
 function validate(businessSlug) {
   const designDir = path.join(
-    ROOT, 'workspace', 'businesses', businessSlug,
-    'L2-tactical', 'design'
+    ROOT, 'docs', 'project', businessSlug,
+    'tactical', 'design'
   );
   const componentIndexPath = path.join(designDir, 'component-index.json');
   const tokensRuntimePath = path.join(designDir, 'tokens-runtime.json');
@@ -255,9 +255,9 @@ function main() {
   }
 
   // Validate business directory exists
-  const businessDir = path.join(ROOT, 'workspace', 'businesses', args.bu);
+  const businessDir = path.join(ROOT, 'docs', 'project', 'businesses', args.bu);
   if (!fs.existsSync(businessDir)) {
-    fail(`Business directory not found: workspace/businesses/${args.bu}`);
+    fail(`Business directory not found: docs/${args.bu}`);
   }
 
   const { score, gaps } = validate(args.bu);

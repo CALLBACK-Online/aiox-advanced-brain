@@ -10,7 +10,7 @@ Report the current status of the Design System MCP server: tools available, data
 
 ## Prerequisites
 
-- MCP server exists at `workspace/domains/design-system/mcp/`
+- MCP server exists at `docs/design-system/domains/mcp/`
 
 ## Workflow
 
@@ -64,13 +64,13 @@ Report the current status of the Design System MCP server: tools available, data
 - **Dependencies:** depends_on: `[]` · enables: `[]` · workflow: `design-system`
 - **On Fail:** Stop execution, capture evidence, and return remediation steps before proceeding.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Operational
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_mcp_status_artifact

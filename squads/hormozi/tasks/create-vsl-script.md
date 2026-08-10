@@ -11,7 +11,7 @@ source: "VSL Script SOP — Video Sales Letter Framework"
 sop_reference: squads/hormozi/sops/vsl-script-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

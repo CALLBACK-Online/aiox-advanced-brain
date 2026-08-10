@@ -13,7 +13,7 @@ Focus areas (per founder ask 2026-05-18):
 
 Recalibrated weights:
 - Agentic 15, Tool Runtime 13, Research Depth 13, Multi-Agent 10, Evidence 10, UX 9
-- Sinkra Fit → weight 0 (anchor self-reference disclosure)
+- AIOX Fit → weight 0 (anchor self-reference disclosure)
 
 Usage:
     python3 expand_bench_to_130_dims.py [bench_dir]
@@ -24,9 +24,9 @@ import subprocess
 import sys
 from pathlib import Path
 
-BENCH = Path(sys.argv[1] if len(sys.argv) > 1 else "/Users/alan/Code/sinkra-hub/docs/bench/deepresearch-absorption-benchmark")
-BENCH_CLONES_DIR = Path("/Users/alan/Code/bench")
-AIOX_HUB = Path("/Users/alan/Code/sinkra-hub")
+BENCH = Path(sys.argv[1] if len(sys.argv) > 1 else "<upstream monorepo-root>/docs/bench/deepresearch-absorption-benchmark")
+BENCH_CLONES_DIR = Path("<bench-root>")
+AIOX_HUB = Path("<upstream monorepo-root>")
 
 # ============================================================================
 # 130 MICRODIMS DEFINITION (feature-specific decomposition)
@@ -272,13 +272,13 @@ GROUPS = {
         ],
     },
 
-    "Sinkra Fit": {
+    "AIOX Fit": {
         "weight": 0,  # Anchor self-reference — excluded from weighted total
         "rationale": "ANCHOR SELF-REFERENCE — weight 0 (transparency disclosure).",
         "dims": [
             ("sf__hub_native", "Hub-native integration?", "Anchor-specific"),
             ("sf__dogfood_presence", "Dogfood evidence?", "Anchor-specific"),
-            ("sf__governance_alignment", "SINKRA governance alignment?", "Anchor-specific"),
+            ("sf__governance_alignment", "AIOX governance alignment?", "Anchor-specific"),
         ],
     },
 }
@@ -309,7 +309,7 @@ PLAYER_CLONES = {
     "livedrbench": None,
     "mirorl": None,
     "mirotrain": None,
-    "agent-browser-workspace": None,
+    "agent-browser-local_docs": None,
     "dzhng-deep-research": None,
     "nickscamara-open-deep-research": None,
     "jigsawstack-deep-research": None,
@@ -505,8 +505,8 @@ DIM_SCORING_RULES = {
     "cs__content_moderation": (["moderation", "content_filter"], None),
     "cs__copyright_respect": (["robots.txt", "user_agent", "rate_limit"], None),
 
-    # Sinkra Fit (anchor only)
-    "sf__hub_native": (["sinkra", "aiox"], None),
+    # AIOX Fit (anchor only)
+    "sf__hub_native": (["aiox", "aiox"], None),
     "sf__dogfood_presence": (["dogfood", "production_use"], None),
     "sf__governance_alignment": (["governance", "constitution", ".claude/rules"], None),
 }
@@ -671,7 +671,7 @@ AIOX_OVERRIDES = {
     "cs__content_moderation": 40,
     "cs__copyright_respect": 75,
 
-    # Sinkra Fit — anchor self-ref
+    # AIOX Fit — anchor self-ref
     "sf__hub_native": 100,
     "sf__dogfood_presence": 100,
     "sf__governance_alignment": 100,
@@ -683,7 +683,7 @@ def score_player_on_dim(player_id: str, dim_id: str) -> tuple:
     # AIOX anchor
     if player_id == "aiox_research":
         score = AIOX_OVERRIDES.get(dim_id, 50)
-        return (score, "high", f"AIOX baseline (calibrated) for {dim_id}", "squads/research + .claude/skills/tech-research + apps/research")
+        return (score, "high", f"AIOX baseline (calibrated) for {dim_id}", "squads/research + skills/tech-research + apps/research")
 
     clone_subdir = PLAYER_CLONES.get(player_id)
     if clone_subdir is None:
@@ -704,7 +704,7 @@ def score_player_on_dim(player_id: str, dim_id: str) -> tuple:
     conf = "high" if count >= 3 else ("medium" if count > 0 else "high")  # 0 hits = high confidence (truly absent)
     note = f"grep count {count} files in {clone_subdir} for patterns {patterns[0] if patterns else 'n/a'}"
 
-    return (score, conf, note, str(clone_path.relative_to(Path("/Users/alan/Code"))))
+    return (score, conf, note, str(clone_path.relative_to(Path("<code-root>"))))
 
 
 def build_microdims_and_rows():
@@ -761,7 +761,7 @@ def build_microdims_and_rows():
             rows.append(row)
 
     print(f"\nGenerated {len(microdims)} microdims, {len(rows)} rows, {len(rows) * len(all_players)} cells")
-    print(f"Total weight allocation: {total_weight_check} (Sinkra Fit excluded from non-zero)")
+    print(f"Total weight allocation: {total_weight_check} (AIOX Fit excluded from non-zero)")
 
     return microdims, rows, all_players
 
@@ -773,7 +773,7 @@ def compute_totals(rows, players):
         score_sum = 0
         weight_sum = 0
         for row in rows:
-            if row["group"] == "Sinkra Fit":  # weight 0 → excluded
+            if row["group"] == "AIOX Fit":  # weight 0 → excluded
                 continue
             weight = row.get("weight", 1)
             cell = next((c for c in row["cells"] if c["player"] == pid), None)
@@ -835,7 +835,7 @@ def main():
         f"Decomposition focused on Agentic Planning, Multi-Agent, Tool Runtime, Research Depth, "
         f"Evidence Fidelity, UX Operator Control. Cells: {len(rows) * len(players)} = "
         f"{len(rows)} dims × {len(players)} players. Weights: Agentic 15 / Tool 13 / Research 13 / "
-        f"Multi-Agent 10 / Evidence 10 / UX 9 / others moderate. Sinkra Fit weight 0 "
+        f"Multi-Agent 10 / Evidence 10 / UX 9 / others moderate. AIOX Fit weight 0 "
         f"(anchor self-reference, excluded from weighted total)."
     )
     dash["matrix"]["scoring_guide"] = {
@@ -848,7 +848,7 @@ def main():
             {"range": "85-100", "meaning": "absorption reference for this microcapability"},
         ],
         "evidence_method": "grep count on local clones in ../bench/{player}/ for canonical patterns; AIOX scored from skill source + apps/research routes; players without clones use 50-default with low confidence",
-        "anchor_self_reference_disclosure": "Sinkra Fit group has weight 0 — AIOX scores there are anchor self-reference and excluded from weighted total",
+        "anchor_self_reference_disclosure": "AIOX Fit group has weight 0 — AIOX scores there are anchor self-reference and excluded from weighted total",
     }
 
     # Update summary
@@ -864,9 +864,9 @@ def main():
     s["leader_score"] = totals[0]["score"] if totals else None
     s["score_semantics"] = (
         f"Score 100 = bench completeness (decision-ready). anchor_score={aiox_total} is AIOX weighted total "
-        f"across {len(microdims) - 3} industry-neutral dims (Sinkra Fit excluded, weight 0). "
+        f"across {len(microdims) - 3} industry-neutral dims (AIOX Fit excluded, weight 0). "
         f"Leader: {s.get('leader')} ({s.get('leader_score')}). "
-        f"Disclaimer: Sinkra Fit group (3 dims) is anchor-self-graded and excluded from weighted total."
+        f"Disclaimer: AIOX Fit group (3 dims) is anchor-self-graded and excluded from weighted total."
     )
     dash["duels"] = duels
 
@@ -877,7 +877,7 @@ def main():
     cm = {
         "schema": "deepresearch-absorption-benchmark.micro-comparison-matrix.v6-130dims",
         "generated_at": "2026-05-18",
-        "scale": "0-100 per microdim; group weights sum to 100 excluding Sinkra Fit (weight 0 anchor-self-ref)",
+        "scale": "0-100 per microdim; group weights sum to 100 excluding AIOX Fit (weight 0 anchor-self-ref)",
         "method": dash["matrix"]["method"],
         "players": dash["matrix"]["players"],
         "groups": {g: {"weight": data["weight"], "rationale": data["rationale"]} for g, data in GROUPS.items()},

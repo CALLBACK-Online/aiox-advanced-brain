@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: create-task
   task_name: Create Squad Task (Extension Wrapper)
   status: pending
@@ -24,11 +24,11 @@ sinkra_task_metadata:
   coherence_threshold: 0.95
   error_behavior: raise
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Strategic
   atomic_layer: Atom
   executor: Worker
@@ -36,13 +36,13 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 # Task: Create Squad Task (Extension Wrapper)
 
 **Task ID:** create-task
 **Version:** 3.2.0
-**Purpose:** manter compatibilidade do `squad-creator-pro` delegando a criação real de tasks ao pipeline atômico do `squad-creator`. A partir da v3.2.0 o wrapper aceita também um `task_object` V5 estruturado (seam do `sinkra-squad-creator-gerar` / ADR §D-G), sem forkar os atomics.
+**Purpose:** manter compatibilidade do `squad-creator-pro` delegando a criação real de tasks ao pipeline atômico do `squad-creator`. A partir da v3.2.0 o wrapper aceita também um `task_object` V5 estruturado (seam do `aiox-squad-creator-gerar` / ADR §D-G), sem forkar os atomics.
 
 ## Canonical Owner
 
@@ -54,7 +54,7 @@ sinkra_contract:
 - `task_purpose` e `task_name` são obrigatórios (forma flat — chamadores legados)
 - `squad_name` é preferido; `pack_name` é aceito como alias legado
 - `source_framework`, `source_artifacts` e `integration_notes` apenas enriquecem a delegação
-- `task_object` (OPCIONAL, V5 — seam do `sinkra-squad-creator-gerar`): objeto V5 estruturado
+- `task_object` (OPCIONAL, V5 — seam do `aiox-squad-creator-gerar`): objeto V5 estruturado
   (`executor`, `inputs[]`, `outputs[]`, `depends_on[]`, `how_to`, `ac[]`, `artifact_template`).
   Quando presente, o wrapper deriva `task_purpose`/`task_name`/`squad_name` dele e delega ao MESMO
   workflow base — sem forkar atomics nem o quality gate (ver `v5_adapter` no Execution Contract).

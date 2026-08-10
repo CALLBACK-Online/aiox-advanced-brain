@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: entidade-como-unidade-de-processo
 lesson_position: 24
 title: 'Entidade como unidade de processo: nasce, vive, morre'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/24-entidade-como-unidade-de-processo/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -30,7 +30,7 @@ curated_at: '2026-08-09'
 
 # Entidade como unidade de processo: nasce, vive, morre
 
-← [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]] · ↑ [[modulos/Módulo 5 - Arquitetura SINKRA|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]]
+← [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]]
 
 ## Conceitos
 
@@ -112,7 +112,7 @@ esta aula é o chão que faltava.
 
 ## Entidade como unidade de processo
 
-*Conceito · M5 SINKRA · Por Alan Nicolas*
+*Conceito · M5 AIOX · Por Alan Nicolas*
 
 O Dev abre o editor e começa pela tabela: que campos essa entidade tem. O operador maduro começa pelo ciclo: como ela nasce, que estados percorre, como morre. A tabela cai do ciclo, não o contrário.
 
@@ -120,7 +120,7 @@ O Dev abre o editor e começa pela tabela: que campos essa entidade tem. O opera
 - **ciclo > tabela**: o processo define os campos, não o contrário
 - **1 entidade**: mapeada pelo ciclo no portão da aula
 
-- **status**: aiox advanced · m5 sinkra
+- **status**: aiox advanced · m5 aiox
 - **meta**: principio=entidade-unidade-de-processo
 - **meta**: fonte=aula-05 + aula-07 + t2-aula-2
 - **ready**: lifecycle before table
@@ -441,4 +441,4 @@ Os termos desta aula em uma frase cada.
 
 ## Navegação
 
-← [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]] · ↑ [[modulos/Módulo 5 - Arquitetura SINKRA|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]]
+← [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]]

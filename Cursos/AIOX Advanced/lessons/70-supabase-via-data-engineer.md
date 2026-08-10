@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: supabase-via-data-engineer
 lesson_position: 70
 title: 'Supabase: setup via @data-engineer'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/70-supabase-via-data-engineer/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -270,7 +270,7 @@ cara do Postgres gerenciado. Depois = tráfego real + esquecimento.
 
 - **Policy**: Regra SQL que libera ou nega linha/ação sob RLS.
 - **Migration**: Arquivo versionado que muda schema/policies de forma repetível.
-- **Tenant**: Unidade de isolamento (org/workspace) acima do user quando multi-org.
+- **Tenant**: Unidade de isolamento (org/local_docs) acima do user quando multi-org.
 
 ---
 
@@ -282,7 +282,7 @@ Time pequeno. App de propostas. Tabela `proposals` com `user_id`. RLS
 "ligado" num tutorial — mas a policy de SELECT era `true` "pra facilitar o
 dev". Em staging, ninguém percebeu. Em prod, o primeiro power user abriu o
 network tab, mudou um id na query e leu a proposta do concorrente do mesmo
-workspace... e de outros.
+local_docs... e de outros.
 
 O fix não foi "contratar pentester na hora". Foi: **data-engineer dono**,
 policy `auth.uid() = user_id` (e depois org_id), teste dos dois usuários no
@@ -325,7 +325,7 @@ flowchart TB
 
 - **Nova entidade / relação** — Tabela, FK, constraint, modelo de domínio.
   → _@data-engineer — schema + RLS + migration._
-  Ex.: Criar workspaces e membership.
+  Ex.: Criar organizações e vínculos de membros.
 - **Query na feature** — Ler/escrever dentro do contrato existente.
   → _@Dev — consome types/policies já definidas._
   Ex.: Listar propostas do user logado.

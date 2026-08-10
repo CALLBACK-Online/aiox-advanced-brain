@@ -11,7 +11,7 @@ source: "Ad Angles SOP — Angle Diversification"
 sop_reference: squads/hormozi/sops/ad-angles-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

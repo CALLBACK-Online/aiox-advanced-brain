@@ -1,12 +1,12 @@
 # Deviation Register — Copy Squad
 # Tracks deviations from expected behavior, outcomes, and process norms
-# Required by SINKRA Mandamento 7: Desvios Formalizados
+# Required by AIOX Mandamento 7: Desvios Formalizados
 
 meta:
   squad: copy
   version: "1.0.0"
   created_date: "2026-04-12"
-  created_by: "/sinkra-upgrade-squad"
+  created_by: "/aiox-upgrade-squad"
   schema: "deviation-register-v1"
 
 schema:

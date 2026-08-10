@@ -97,9 +97,9 @@ detect_expert:
 
 | Check | Validação | Severity |
 |-------|-----------|----------|
-| Output paths classificados | Cada task com output tem path classificado como HIGH-VALUE (workspace/) ou TRANSIENT (.aiox/squad-runtime/) | WARNING |
-| HIGH-VALUE não aponta para runtime transitório | Tasks que geram dados canônicos (scores, maturity, health, onboarding, analytics) apontam para workspace/businesses/{business}/ | WARNING |
-| Session-context outputs em workspace/ | Dados carregados no boot do agent vivem em workspace/, não .aiox/squad-runtime/ | WARNING |
+| Output paths classificados | Cada task com output tem path classificado como HIGH-VALUE (outputs/) ou TRANSIENT (.aiox/squad-runtime/) | WARNING |
+| HIGH-VALUE não aponta para runtime transitório | Tasks que geram dados canônicos (scores, maturity, health, onboarding, analytics) apontam para docs/ | WARNING |
+| Session-context outputs em docs/ | Dados carregados no boot do agent vivem em docs/, não .aiox/squad-runtime/ | WARNING |
 
 ### Para squads EXPERT/PIPELINE (WARNING se faltando)
 

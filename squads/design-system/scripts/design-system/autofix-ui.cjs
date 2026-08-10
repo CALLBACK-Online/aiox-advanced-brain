@@ -23,10 +23,10 @@ if (!filePath || !fs.existsSync(filePath)) {
 
 // Known wrong imports -> correct imports
 const IMPORT_FIXES = [
-  [/from ['"]shadcn\/ui['"]/g, "from '@sinkra/ds-core'"],
-  [/from ['"]@\/components\/ui\/(\w+)['"]/g, "from '@sinkra/ds-core'"],
-  [/from ['"]@radix-ui\/react-\w+['"]/g, "from '@sinkra/ds-core'"],
-  [/from ['"]lucide-react['"]/g, "from '@sinkra/ds-core'"],
+  [/from ['"]shadcn\/ui['"]/g, "from '@aiox/ds-core'"],
+  [/from ['"]@\/components\/ui\/(\w+)['"]/g, "from '@aiox/ds-core'"],
+  [/from ['"]@radix-ui\/react-\w+['"]/g, "from '@aiox/ds-core'"],
+  [/from ['"]lucide-react['"]/g, "from '@aiox/ds-core'"],
 ]
 
 // Hardcoded tokens -> semantic CSS vars (Tailwind classes)

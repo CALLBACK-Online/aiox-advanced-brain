@@ -154,7 +154,7 @@ Consolidation (reduce redundancy) → Critical Eye (select canonical)
 - **Critical Eye** = across all sources, select the best variant per category
 
 **Scoring reference:** `squads/design-system/data/critical-eye-scoring-rules.yaml`
-**Pattern catalog:** `workspace/ui/pattern-catalog.json`
+**Pattern catalog:** `docs/design-system/ui/pattern-catalog.json`
 **Lifecycle:** CANDIDATE → EXPERIMENTAL → STABLE → CANONICAL
 
 ---

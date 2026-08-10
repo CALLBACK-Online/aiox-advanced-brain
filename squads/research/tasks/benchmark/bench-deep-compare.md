@@ -1,6 +1,6 @@
 # Task: Deep Component-by-Component Comparison (Autonomous)
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

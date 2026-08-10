@@ -9,7 +9,7 @@
 
 ## Description
 
-Gera um arquivo DESIGN.md no formato oficial do Google Stitch a partir de um design system existente no starter ou no workspace.
+Gera um arquivo DESIGN.md no formato oficial do Google Stitch a partir de um design system existente no starter ou no project docs.
 
 O DESIGN.md serve como "source of truth" portavel para ferramentas externas de geracao de UI (Stitch, AI Studio, Lovable, Bolt, v0, Cursor). Ele traduz tokens tecnicos (CSS custom properties, Tailwind config) em linguagem descritiva de design suportada por valores exatos, seguindo a especificacao do [Stitch design-md skill](https://github.com/google-labs-code/stitch-skills/tree/main/skills/design-md).
 
@@ -19,10 +19,10 @@ Este task **nao** cria o design system. Ele **documenta** um DS existente no for
 
 Antes de executar, carregar:
 
-1. **DS Config:** `apps/{app}/starter/design-system.config.yaml` OU `workspace/businesses/{bu}/L2-tactical/design/config.yaml`
+1. **DS Config:** `apps/{app}/starter/design-system.config.yaml` OU `docs/tactical/design/config.yaml`
 2. **Tokens CSS:** Todos os arquivos listados em `token_files` do DS config
 3. **Site Config:** `apps/{app}/starter/site.config.yaml` (fonts, branding)
-4. **Brandbook YAML:** `workspace/businesses/{bu}/L2-tactical/brand/brandbook.yaml` (se existir)
+4. **Brandbook YAML:** `docs/tactical/brand/brandbook.yaml` (se existir)
 
 Se o business nao tem DS configurado, resolver primeiro via `*ds-setup-design-system`.
 
@@ -36,7 +36,7 @@ Se o business nao tem DS configurado, resolver primeiro via `*ds-setup-design-sy
 
 | Param | Obrigatorio | Descricao | Validacao |
 |-------|-------------|-----------|-----------|
-| `business` | Sim (ou app) | Slug do business no workspace | Deve existir em `workspace/businesses/{bu}/` |
+| `business` | Sim (ou app) | Slug do business no project docs | Deve existir em `docs/` |
 | `app` | Sim (ou business) | ID do app no monorepo | Deve existir em `apps/{app}/` |
 | `atmosphere` | Nao | Override da descricao de atmosfera | String livre. Se omitido, extrair do brandbook |
 | `target_tool` | Nao | Ferramenta alvo (stitch, ai-studio, lovable) | Default: stitch. Afeta secao 7 |
@@ -52,9 +52,8 @@ IF --app provided:
   Read apps/{app}/src/app/globals.css
   Read ALL token_files from DS config
 ELIF --business provided:
-  Run: node squads/design-system/scripts/design-system/resolve_business_design_system.cjs --bu={business}
   IF result == "not_applicable": HALT "Business nao tem DS configurado"
-  IF result == "configured": Load workspace/businesses/{bu}/design-system/config.yaml
+  IF result == "configured": Load docs/design-system/config.yaml
   Read token files from config
 ```
 
@@ -237,13 +236,13 @@ Se `--target_tool=ai-studio`:
 - **Created:** 2026-03-20
 - **Tags:** stitch, design-md, portability, ai-tools, tokens, documentation
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_generate_stitch_design_md_artifact

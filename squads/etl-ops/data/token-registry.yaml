@@ -34,7 +34,7 @@ tokens:
     semantic: "Prioridade operacional da execução ETL"
   - token_name: canonical_write_permission
     family: Permission
-    semantic: "Permissão necessária para gravar em workspace canônico"
+    semantic: "Permissão necessária para gravar em docs/ canônico"
   - token_name: routing_profile_taxonomy
     family: Taxonomy
     semantic: "Vocabulário controlado dos perfis de roteamento e source kinds"
@@ -53,6 +53,6 @@ tokens:
   - token_name: RESOLVER
     family: Mode
     semantic: "Modo de diagnóstico e resolução de falhas de ETL"
-  - token_name: workspace_route_guard
+  - token_name: project_route_guard
     family: Permission
-    semantic: "Guarda de rota entre workspace canônico, docs e outputs legados"
+    semantic: "Guarda de rota entre docs/ canônico, docs e outputs legados"

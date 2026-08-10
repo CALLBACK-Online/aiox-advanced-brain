@@ -84,7 +84,7 @@ Per founder decision (ADR-018 + handoff 2026-04-18): "contract in squad, runtime
    - Accessibility: every control labeled, keyboard-reachable, focus visible, changes announced via `aria-live`.
 
 6. **Namespace Globals**
-   - Any state the panel needs on `window` MUST use `window.__sinkra_designops_tweak_*` namespace per `self-contained-artifact-security.md`.
+   - Any state the panel needs on `window` MUST use `window.__aiox_designops_tweak_*` namespace per `self-contained-artifact-security.md`.
    - No global `fetch` interception, no `XMLHttpRequest.prototype` mutation.
 
 7. **Security Self-Check**
@@ -139,7 +139,7 @@ Per founder decision (ADR-018 + handoff 2026-04-18): "contract in squad, runtime
 - [ ] All event types match `tweak-protocol-spec.yaml#message_schemas` exactly (no invented types)
 - [ ] Panel controls match declared types; all keyboard-reachable with visible focus
 - [ ] `tweak-keys.yaml` registry written and consumed-ready
-- [ ] Globals namespaced under `window.__sinkra_designops_tweak_*`
+- [ ] Globals namespaced under `window.__aiox_designops_tweak_*`
 - [ ] Asset manifest updated with `tweak_protocol.instrumented: true`
 
 ## Anti-Patterns
@@ -151,7 +151,7 @@ Per founder decision (ADR-018 + handoff 2026-04-18): "contract in squad, runtime
 - **"Embed the panel HTML directly in the artifact's visible markup."** — Panel is an overlay; it must NOT mutate primary content when toggled off.
 - **"Use localStorage to persist tweaks inside the artifact."** — Violates the contract. Persistence is the HOST's job. The artifact only emits `__edit_mode_set_keys`.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Molecule (Phase 06 iterate-support when tweak enabled)

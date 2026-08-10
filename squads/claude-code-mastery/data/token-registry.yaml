@@ -1,5 +1,5 @@
 # Token Registry — claude-code-mastery
-# SINKRA-native: formal IDs (TK-CCM-*), families, values, and semantics
+# AIOX-native: formal IDs (TK-CCM-*), families, values, and semantics
 # Version: 2.0.0
 # Last updated: 2026-04-03
 
@@ -142,7 +142,7 @@ tokens:
     token_name: swarm_coordinator_mode
     family: Taxonomy
     value: ["direct", "coordinator", "hybrid"]
-    semantic: "Classificação estrutural do modo Hybrid Coordinator nos chiefs SINKRA"
+    semantic: "Classificação estrutural do modo Hybrid Coordinator nos chiefs AIOX"
     consumed_by:
       - swarm-orchestrator
       - claude-mastery-chief

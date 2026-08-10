@@ -1,7 +1,7 @@
 # PATTERNS REUTILIZÁVEIS DO HYBRIDOPS PARA SQUAD-CREATOR
 
 **Data da Extração:** 2026-02-10
-**Fonte:** `<workspace-root>/squads/hybrid-ops-squad`
+**Fonte:** `<repo-root>/squads/hybrid-ops-squad`
 **Status:** Pronto para Implementação
 **Última Atualização:** 2026-02-10 (v1.2 - Self-contained: COPIAR artifacts)
 

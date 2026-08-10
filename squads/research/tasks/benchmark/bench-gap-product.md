@@ -1,6 +1,6 @@
 # Task: Bench Gap — Product
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

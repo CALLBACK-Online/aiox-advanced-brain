@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: vercel-deploy
 lesson_position: 71
 title: 'Vercel Deploy: do localhost ao mundo'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/71-vercel-deploy/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

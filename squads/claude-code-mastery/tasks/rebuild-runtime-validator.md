@@ -6,7 +6,7 @@
 **Orchestrator:** Sigil (config-engineer)
 **Purpose:** Reconstruir `scripts/validate-setup.js` como validador orientado a contrato de runtime, alinhado ao comportamento real do Claude Code e aos thresholds da squad.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: rebuild-runtime-validator
 atomic_layer: Atom

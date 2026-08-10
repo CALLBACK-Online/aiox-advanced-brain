@@ -555,7 +555,7 @@ consumed_by:
     organism_6_polish:    "Applies next-themes per `invariant` contract; icon library and animation library applied per `brand_driven` (defaults: lucide-react + tw-animate-css)"
 
 references:
-  sinkra_map: .aiox/squad-runtime/sinkra-squad/migracao-ds-estatico-para-dinamico-tokenizado/
+  aiox_map: .aiox/squad-runtime/aiox-squad/migracao-ds-estatico-para-dinamico-tokenizado/
   reference_execution: apps/anthropic-ds
   reference_lean: apps/redpine-ds
   reference_full: apps/aiox-brandbook

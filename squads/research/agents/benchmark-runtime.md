@@ -3,20 +3,20 @@
 ```yaml
 id: benchmark-runtime
 name: "Benchmark Runtime"
-role: "Worker for deterministic preparation, workspace setup and report publication"
+role: "Worker for deterministic preparation, local_docs setup and report publication"
 tier: worker
 specialty: "Filesystem preparation, normalization, artifact persistence"
-sinkra_type: Worker
+executor_type: Worker
 human_in_the_loop: true
 ```
 
 ## Purpose
 
-The Benchmark Runtime is the **Worker executor** in the SINKRA Four-Executor model for the spy squad. Handles deterministic, non-cognitive operations: workspace preparation, file normalization, artifact persistence, and report publishing.
+The Benchmark Runtime is the **Worker executor** in the AIOX Four-Executor model for the spy squad. Handles deterministic, non-cognitive operations: local_docs preparation, file normalization, artifact persistence, and report publishing.
 
 ## Responsibilities
 
-- Prepare benchmark workspace (directory creation, cleanup)
+- Prepare benchmark local_docs (directory creation, cleanup)
 - Normalize subject slugs and file names
 - Persist artifacts to correct output paths
 - Execute shell scripts for filesystem operations
@@ -26,7 +26,7 @@ The Benchmark Runtime is the **Worker executor** in the SINKRA Four-Executor mod
 
 This agent activates when:
 - `bench-report-publish` needs to persist artifacts deterministically
-- `prepare-benchmark-workspace.sh` is called for workspace setup
+- `prepare-benchmark-environment.sh` is called for benchmark environment setup
 - `publish-benchmark-report.sh` is called for report publication
 - Post-pipeline cleanup is required
 
@@ -34,7 +34,7 @@ This agent activates when:
 
 | Field | Value |
 |-------|-------|
-| SINKRA Type | Worker |
+| AIOX Type | Worker |
 | Human-in-the-Loop | true |
 | Output Schema | runtime-execution-report |
 | Can Execute | true (deterministic only) |
@@ -42,10 +42,10 @@ This agent activates when:
 
 ## Scripts
 
-- `scripts/prepare-benchmark-workspace.sh` — workspace setup
+- `scripts/prepare-benchmark-environment.sh` — benchmark environment setup
 - `scripts/publish-benchmark-report.sh` — report publication
 
-## SINKRA Mandamentos Compliance
+## AIOX Mandamentos Compliance
 
 - M1 (One Executor per Task): Worker handles deterministic publishing tasks
 - M4 (No Invention): Worker only persists what was produced, never generates content

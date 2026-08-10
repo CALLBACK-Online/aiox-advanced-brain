@@ -17,10 +17,10 @@ Define how the Design Squad evolves from human-readable documentation into machi
 - Every component must publish a machine-readable contract.
 - Include props, variants, accessibility, and token dependencies.
 
-4. **Workspace boundaries are explicit**
-- `workspace/domains/design-system`: token source and metadata.
-- `workspace/system`: primitives and reusable patterns.
-- `workspace/ui`: final components and blocks.
+4. **Project doc boundaries are explicit**
+- `docs/domains/design-system`: token source and metadata.
+- `docs/design-system/system`: primitives and reusable patterns.
+- `docs/design-system/ui`: final components and blocks.
 
 5. **MCP exposure for AI execution**
 - Agents query DS artifacts via MCP handlers.
@@ -28,10 +28,10 @@ Define how the Design Squad evolves from human-readable documentation into machi
 
 ## Minimal Artifact Set
 
-- `workspace/domains/design-system/tokens/**`
-- `workspace/domains/design-system/metadata/components.json`
-- `workspace/ui/registry.json`
-- `workspace/domains/design-system/mcp/server.ts`
+- `docs/design-system/domains/tokens/**`
+- `docs/design-system/domains/metadata/components.json`
+- `docs/design-system/ui/registry.json`
+- `docs/design-system/domains/mcp/server.ts`
 
 ## Governance
 

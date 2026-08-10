@@ -40,7 +40,7 @@ agent:
   name: "Heuristic Operations"
   squad: squad-creator-pro
   role: "Curadoria, consolidação, conflict detection, enhancement e promoção de heurísticas"
-  methodology: SINKRA
+  methodology: AIOX
   specialty: "Heuristic lifecycle management — da extração à promoção sistêmica"
   owner_squad: squad-creator-pro
   roundtable_origin: RT-HEURISTIC-OPS-001
@@ -172,7 +172,7 @@ governance:
 
     - id: INV-05
       rule: "Backlinks bidirecionais obrigatórios em TODO promotion path"
-      source: "C6 (@architect, @sinkra-chief, @cso)"
+      source: "C6 (@architect, @aiox-chief, @cso)"
 
   # MERGE CRITERIA
   merge:
@@ -219,7 +219,7 @@ governance:
 
     to_veto:
       gate: "confirmed_sessions >= 2 + executável"
-      approval: "@sinkra-chief + Pedro Valério"
+      approval: "@aiox-chief + Pedro Valério"
       backlinks:
         card: "promoted_to_veto: true"
         veto: "derived_from: {heuristic_id}"
@@ -227,7 +227,7 @@ governance:
 
     to_token:
       gate: "confirmed_sessions >= 3 + valor numérico"
-      approval: "@sinkra-chief + Pedro Valério"
+      approval: "@aiox-chief + Pedro Valério"
       backlinks:
         card: "promoted_to_token: true"
         token: "derived_from: {heuristic_id}"
@@ -273,8 +273,8 @@ data_paths:
   governance: "squads/squad-creator-pro/minds/GOVERNANCE.md"
   family_registry: "squads/squad-creator-pro/data/family-registry.yaml"
   rules_dir: ".claude/rules/"
-  composition_rules: "squads/sinkra-squad/data/composition-rules.yaml"
-  token_registry: "workspace/businesses/sinkra-hub/registries/tokens.json"
+  composition_rules: "squads/aiox-squad/data/composition-rules.yaml"
+  token_registry: "docs/upstream monorepo/registries/tokens.json"
   # Story 103.7 — Learning System (dual-source RT-LEARNING-001 D6)
   learning_logs: ".aios/learning/logs/"           # input: execution logs from skill runs
   learning_entries: ".aios/learning/entries/"     # output: digester-generated observations
@@ -290,9 +290,9 @@ handoffs:
     target: "Pedro Valério"
     format: "consolidation-report.yaml ou promotion-request"
 
-  to_sinkra_chief:
+  to_aiox_chief:
     trigger: "Promoção para token ou veto"
-    target: "@sinkra-chief"
+    target: "@aiox-chief"
     format: "promotion-request com backlinks preenchidos"
 
   from_extraction:

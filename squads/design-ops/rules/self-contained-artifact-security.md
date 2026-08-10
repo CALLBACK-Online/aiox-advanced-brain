@@ -52,7 +52,7 @@ Example (required form):
 
 ### Global State Hygiene
 
-- Keys written to `window` MUST be namespaced (`window.__sinkra_designops_*`) to prevent host-page collisions when the artifact is embedded.
+- Keys written to `window` MUST be namespaced (`window.__aiox_designops_*`) to prevent host-page collisions when the artifact is embedded.
 - Keys written to `localStorage` / `sessionStorage` MUST be namespaced per artifact (`design-ops:{artifact_id}:{key}`).
 - No global `fetch` interception, no `XMLHttpRequest.prototype` mutation.
 

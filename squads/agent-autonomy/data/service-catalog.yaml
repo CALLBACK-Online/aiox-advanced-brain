@@ -1,7 +1,7 @@
 services:
   agent-autonomy-output-store:
     kind: filesystem
-    service_ref: ".aiox/squad-runtime/sinkra-squad/agent-autonomy/"
+    service_ref: ".aiox/squad-runtime/aiox-squad/agent-autonomy/"
     owner: agent-autonomy
   agent-autonomy-template-store:
     kind: filesystem

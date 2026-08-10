@@ -29,7 +29,7 @@
 2. `description` presente e informativa (>20 chars)
 3. `version` presente e semver válido
 4. `owner_squad` presente e squad existe
-5. `sinkra_tier` presente e válido (Tier1|Tier2|Tier3)
+5. `aiox_tier` presente e válido (Tier1|Tier2|Tier3)
 6. `context`, `agent`, `user-invocable` presentes
 
 ### Structure (4 checks)
@@ -58,7 +58,7 @@ score = (checks_passed / total_checks) * 100
 ```yaml
 # Skill Validation Report
 skill: tech-search
-path: .claude/skills/tech-search/
+path: skills/tech-search/
 timestamp: 2026-03-29T18:00:00Z
 
 verdict: PASS WITH WARNINGS
@@ -74,7 +74,7 @@ checks:
   - check: "owner_squad exists"
     status: PASS
     value: "infra-ops-squad"
-  - check: "sinkra_tier valid"
+  - check: "aiox_tier valid"
     status: PASS
     value: "Tier1"
   - check: "context, agent, user-invocable present"
@@ -106,15 +106,15 @@ findings:
 
 ```yaml
 skill: handoff
-path: .claude/skills/handoff/
+path: skills/handoff/
 verdict: PASS
 score: 100
 checks:
   - { check: "name kebab-case", status: PASS }
   - { check: "description >20 chars", status: PASS }
   - { check: "version semver", status: PASS, value: "1.0.0" }
-  - { check: "owner_squad exists", status: PASS, value: "sinkra-squad" }
-  - { check: "sinkra_tier valid", status: PASS, value: "Tier3" }
+  - { check: "owner_squad exists", status: PASS, value: "aiox-squad" }
+  - { check: "aiox_tier valid", status: PASS, value: "Tier3" }
   - { check: "context/agent/user-invocable", status: PASS }
   - { check: "SKILL.md exists", status: PASS }
   - { check: "structure matches Tier3", status: PASS }
@@ -129,7 +129,7 @@ findings: []
 
 ```yaml
 skill: broken-skill
-path: .claude/skills/broken-skill/
+path: skills/broken-skill/
 verdict: FAIL
 score: 33
 checks:

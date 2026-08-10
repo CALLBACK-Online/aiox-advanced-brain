@@ -29,12 +29,12 @@ Resolve the full design-system context for the business and survey prior art. Th
 ### Steps
 
 1. **Apply Resolution Protocol (from ds-discovery-paths.yaml#resolution_protocol)**
-   - Step 1: Resolve canonical workspace paths for `{business}`:
-     - `workspace/businesses/{business}/L2-tactical/design/tokens.yaml`
+   - Step 1: Resolve canonical project context paths for `{business}`:
+     - `docs/tactical/design/tokens.yaml`
      - `.../foundations.yaml`
      - `.../component-contracts.yaml`
      - `.../motion-primitives.yaml`
-   - Step 2 (on miss): check framework defaults (`@sinkra/tokens-base`, `ds-core-catalog.yaml`)
+   - Step 2 (on miss): check framework defaults (`@aiox/tokens-base`, `ds-core-catalog.yaml`)
    - Step 3 (on miss): scan brownfield fallback patterns under `apps/{any}/src/...`
    - Step 4 (on miss): HALT — emit `DS_CONTEXT_MISSING` error
 
@@ -63,10 +63,10 @@ Resolve the full design-system context for the business and survey prior art. Th
 
 6. **Brownfield Check (if canonical paths empty)**
    - Apply `ds-discovery-paths.yaml#brownfield_fallbacks` patterns
-   - If matches found: emit as PROPOSAL (not consumption source) — route to `wf-brandbook-workspace-extraction`
+   - If matches found: emit as PROPOSAL (not consumption source) — route to `brownfield-complete`
    - Set flag `brownfield_proposal_needed: true`
 
-7. **Workspace Dialect Enforcement**
+7. **LocalDocs Dialect Enforcement**
    - Validate no legacy dialect paths snuck into results
    - If any found: block and emit violation report
 
@@ -78,24 +78,24 @@ Resolve the full design-system context for the business and survey prior art. Th
 
 - **DS_CONTEXT_MISSING:** HALT. Do not proceed to P03. Route user to brandbook extraction workflow.
 - **Partial contracts** (e.g., tokens exist, foundations missing): emit advisory; allow proceed with flag `partial_context_risk: true`.
-- **Brownfield proposal needed:** surface the proposal to user; allow user to either (a) skip and proceed with framework defaults, or (b) halt and materialize workspace contracts first.
-- **Workspace dialect violation:** HALT. Direct user to migration story in EPIC-120.
+- **Brownfield proposal needed:** surface the proposal to user; allow user to either (a) skip and proceed with framework defaults, or (b) halt and materialize project context contracts first.
+- **LocalDocs dialect violation:** HALT. Direct user to migration story in EPIC-120.
 
 ## Success Criteria
 
 - [ ] `ds-context.yaml` exists with tokens + foundations populated
 - [ ] `prior-art.yaml` exists with catalog matches (may be empty — empty is valid, missing is not)
-- [ ] No unresolved workspace dialect violations
+- [ ] No unresolved project dialect violations
 - [ ] Resolution protocol did NOT reach step 4 (missing context)
 - [ ] IDS gate executed (REUSE > ADAPT > CREATE evaluation recorded)
 
 ## Anti-Patterns
 
 - **"The catalog has nothing, so I'll create."** — Always check brownfield fallbacks. The component may exist in another app's source.
-- **Accepting framework defaults silently when workspace missing.** — Flag the partial state explicitly; do not pretend the business has contracts it does not.
+- **Accepting framework defaults silently when local_docs missing.** — Flag the partial state explicitly; do not pretend the business has contracts it does not.
 - **Skipping prior-art survey for speed.** — Prior art often reveals the exact pattern the user is asking for.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Molecule (P02 of design-artifact-cycle)
@@ -123,4 +123,4 @@ performance:
 - Fidelity rule: `squads/design-ops/rules/design-system-fidelity.md`
 - Context rule: `squads/design-ops/rules/context-gathering-protocol.md`
 - DS catalog: `squads/design-ops/data/ds-core-catalog.yaml`
-- Skill: `.claude/skills/design-artifact-cycle/SKILL.md#phase-02`
+- Skill: `skills/design-artifact-cycle/SKILL.md#phase-02`

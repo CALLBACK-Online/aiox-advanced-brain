@@ -39,7 +39,7 @@ lifecycle: draft
 - effort:
 - maxTurns:
 
-> NOTA: owner_squad e sinkra_tier são PROIBIDOS em skills (Frontmatter Purity Rule). Pertencem a tasks.
+> NOTA: owner_squad e aiox_tier são PROIBIDOS em skills (Frontmatter Purity Rule). Pertencem a tasks.
 
 ## Descoberta e Roteamento
 - should_trigger:

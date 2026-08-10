@@ -1,8 +1,8 @@
 # Pipeline Execution Log — squad-creator
 # Tracks every squad creation/upgrade/validation execution for auditability.
-# Validators (sinkra-validate-squad) check this file to assess operational history.
+# Validators (aiox-validate-squad) check this file to assess operational history.
 #
-# Reference: squads/sinkra-squad/data/pipeline-execution-log.yaml
+# Reference: squads/aiox-squad/data/pipeline-execution-log.yaml
 # Created: 2026-04-12
 
 schema_version: "1.0.0"

@@ -1,6 +1,6 @@
 # Task: Product Discovery — Willingness-to-Pay Smoke Test
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 

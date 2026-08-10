@@ -1,6 +1,6 @@
 # Task: Apply Design Revision
 
-## SINKRA Validation Metadata
+## AIOX Validation Metadata
 
 ```yaml
 task: apply-design-revision
@@ -25,9 +25,9 @@ Error_handling:
   strategy: fail fast with explicit handoff blocker
 ```
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Operational -->
+<!-- AIOX Domain: Operational -->
 
 ## Metadata
 
@@ -45,7 +45,7 @@ Error_handling:
 
 Para fechar o loop critique→revise. Sem este task, @design-planner emite critique mas o draft não é atualizado. Este task aplica as revisions roteadas, emite deck-spec atualizado, e registra before/after em planning-reflection.
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml

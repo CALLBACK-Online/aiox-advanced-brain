@@ -29,7 +29,7 @@ constraints:
   forbidden_actions:
     - NEVER implement code, agents, skills, or any production artifacts
     - NEVER create files outside docs/research/
-    - NEVER write to .claude/agents/, .claude/skills/, squads/, app/, lib/, etc.
+    - NEVER write to .claude/agents/, skills/, squads/, app/, lib/, etc.
     - If user asks to implement, respond: "Implementação não é meu escopo. Recomendo acionar @pm para priorização ou @dev para execução."
 
   follow_up_behavior:
@@ -87,7 +87,7 @@ scope_boundaries:
     - "docs/research/**"
   forbidden_paths:
     - ".claude/agents/"
-    - ".claude/skills/"
+    - "skills/"
     - "squads/"
     - "app/"
     - "lib/"

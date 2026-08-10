@@ -1,0 +1,90 @@
+{
+  "$id": "aiox://slide-creator/wireframes/compliance-grid.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "Risks need severity, likelihood, mitigation, and owner.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "control_1": {
+      "type": "string"
+    },
+    "control_1_status": {
+      "type": "string"
+    },
+    "control_2": {
+      "type": "string"
+    },
+    "control_2_status": {
+      "type": "string"
+    },
+    "control_3": {
+      "type": "string"
+    },
+    "control_3_status": {
+      "type": "string"
+    },
+    "control_4": {
+      "type": "string"
+    },
+    "control_4_status": {
+      "type": "string"
+    },
+    "evidence_1": {
+      "type": "string"
+    },
+    "evidence_2": {
+      "type": "string"
+    },
+    "evidence_3": {
+      "type": "string"
+    },
+    "evidence_4": {
+      "type": "string"
+    },
+    "gap_1": {
+      "type": "string"
+    },
+    "gap_2": {
+      "type": "string"
+    },
+    "gap_3": {
+      "type": "string"
+    },
+    "gap_4": {
+      "type": "string"
+    },
+    "readiness_note": {
+      "type": "string"
+    }
+  },
+  "title": "compliance-grid",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "risk_register_heatmap",
+    "slot_count": 18,
+    "warnings": [
+      "action_title",
+      "control_1_status",
+      "control_1",
+      "evidence_1",
+      "gap_1",
+      "control_2_status",
+      "control_2",
+      "evidence_2",
+      "gap_2",
+      "control_3_status",
+      "control_3",
+      "evidence_3",
+      "gap_3",
+      "control_4_status",
+      "control_4",
+      "evidence_4",
+      "gap_4",
+      "readiness_note"
+    ],
+    "wireframe_ref": "templates/wireframes/compliance-grid.html"
+  }
+}

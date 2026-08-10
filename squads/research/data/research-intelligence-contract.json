@@ -1,5 +1,5 @@
 {
-  "schema": "sinkra.research-intelligence-contract.v1",
+  "schema": "aiox.research-intelligence-contract.v1",
   "updated_at": "2026-05-18",
   "local_contract_file": "research-contract.json",
   "reference_research": [

@@ -24,7 +24,7 @@ Generate N divergent variants along orthogonal axes (match_existing_system, nove
 - DS context resolved
 - Assumptions classified (zero remaining guesses)
 - **Component Variants Taxonomy loaded:** `data/component-variants-taxonomy.yaml`
-  - When generating component variants (Button/Input/Card/Dialog), use canonical Sinkra variants
+  - When generating component variants (Button/Input/Card/Dialog), use canonical AIOX variants
   - Decision trees in taxonomy guide which variant fits which use case
   - "Divergent variants along orthogonal axes" applies to **artifact exploration**, not to base component variants — those are pre-determined
 
@@ -61,7 +61,7 @@ Generate N divergent variants along orthogonal axes (match_existing_system, nove
    - **reference-first kinds:**
      - Import from `@synkraai/ds-core`
      - Use Tailwind utility classes backed by `@theme inline` tokens
-     - CSS variables override via business workspace tokens
+     - CSS variables override via business context tokens
    - **copy-first kinds:**
      - Inline exact token values from resolved `ds-context.yaml`
      - Use precompiled Tailwind (Path 1) by default; manual exact CSS (Path 3) as fallback
@@ -134,7 +134,7 @@ Generate N divergent variants along orthogonal axes (match_existing_system, nove
 - **"The novel variant is cool but breaks the DS."** — Document the break as justified novelty OR reject per `design-system-fidelity.md`.
 - **Mixing consistency models within one variant** — pick reference OR copy; mixing produces untraceable drift.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Molecule (P04 of design-artifact-cycle)
@@ -167,4 +167,4 @@ performance:
 - Checklist: `squads/design-ops/checklists/dops-ai-trope-guardrails.yaml`
 - Registry: `squads/design-ops/data/deliverable-kinds-registry.yaml`
 - Wave C contracts: `starter-components-catalog.yaml`, `tweak-protocol-spec.yaml`, `animation-primitives-contract.yaml`, `export-contracts-spec.yaml`
-- Skill: `.claude/skills/design-artifact-cycle/SKILL.md#phase-04`
+- Skill: `skills/design-artifact-cycle/SKILL.md#phase-04`

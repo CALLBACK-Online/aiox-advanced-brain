@@ -6,13 +6,13 @@
 > **Dependencies:** depends_on: `[]` · enables: `[]` · workflow: `metrics`
 
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Operational
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - dead_code_detection_artifact

@@ -29,7 +29,7 @@ metadata:
   architecture: "specialist"
   created: "2026-05-16"
   squad: "research"
-  absorbed_from: ".claude/skills/tech-research/ (v2.0.0)"
+  absorbed_from: "skills/tech-research/ (v2.0.0)"
   slash_alias: "/tech-research"
   parent_chief: "research-chief"
 
@@ -70,7 +70,7 @@ invocation_paths:
   prompts: "squads/research/prompts/tech-research/"
   data: "squads/research/data/tech-research/"
   checklists: "squads/research/checklists/tech-research/"
-  slash_entry: ".claude/skills/tech-research/SKILL.md"
+  slash_entry: "skills/tech-research/SKILL.md"
 
 commands:
   - "*help - Show available commands"
@@ -109,7 +109,7 @@ output_structure:
 
 slash_alias_note: |
   This agent is invoked via the `/tech-research` slash command (preserved alias).
-  The slash entry lives at `.claude/skills/tech-research/SKILL.md` and points to
+  The slash entry lives at `skills/tech-research/SKILL.md` and points to
   this agent + the workflow pipeline at squads/research/workflows/tech-research/.
   No `/research:tech` slash exists — `/tech-research` is the canonical entry.
 
@@ -137,9 +137,9 @@ cross_links:
 
 ## File Layout
 
-See "Skill File Structure" section in `.claude/skills/tech-research/SKILL.md` for the canonical layout of workflows, scripts, templates, prompts, data, and checklists under `squads/research/{section}/tech-research/`.
+See "Skill File Structure" section in `skills/tech-research/SKILL.md` for the canonical layout of workflows, scripts, templates, prompts, data, and checklists under `squads/research/{section}/tech-research/`.
 
 ## Version History
 
-- v2.0.0 (2026-XX-XX) — Standalone skill in `.claude/skills/tech-research/`
-- v2.1.0 (2026-05-16) — Absorbed into `squads/research/` as a SINKRA agent. Implementation files moved from `.claude/skills/tech-research/{workflows,scripts,templates,prompts,data,checklists}/` to `squads/research/{section}/tech-research/`. Slash command `/tech-research` preserved as stable alias. Parent chief: `research-chief`.
+- v2.0.0 (2026-XX-XX) — Standalone skill in `skills/tech-research/`
+- v2.1.0 (2026-05-16) — Absorbed into `squads/research/` as a AIOX agent. Implementation files moved from `skills/tech-research/{workflows,scripts,templates,prompts,data,checklists}/` to `squads/research/{section}/tech-research/`. Slash command `/tech-research` preserved as stable alias. Parent chief: `research-chief`.

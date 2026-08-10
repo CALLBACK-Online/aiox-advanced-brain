@@ -71,13 +71,13 @@ Audit completo do motion layer de um codebase, cobrindo as 7 dimensoes do Kineti
 
 **Dimension 1 Score:** 0-100 (sum of checks above)
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: page-composer
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_motion_audit_artifact

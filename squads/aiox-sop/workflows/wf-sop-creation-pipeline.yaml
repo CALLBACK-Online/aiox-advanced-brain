@@ -169,7 +169,7 @@ workflow:
           name: Save Artifacts
           action: |
             Save markdown SOP artifacts to docs/sops/
-            Save machine-readable SOP artifacts to workspace/businesses/{business}/sops/
+            Save machine-readable SOP artifacts to docs/sops/
             Save auxiliary reports to outputs/aiox-sop/
         - id: "4.3"
           name: Generate Scorecard
@@ -194,7 +194,7 @@ workflow:
     location: split publish contract
     artifacts:
       - human_sop: docs/sops/{process-name}-sop-v{version}.md
-      - ml_sop: workspace/businesses/{business}/sops/{process-name}-sop-v{version}.yaml
+      - ml_sop: docs/sops/{process-name}-sop-v{version}.yaml
       - checklist: outputs/aiox-sop/checklists/{process-name}-checklist.md
       - scorecard: outputs/aiox-sop/analysis/{process-name}-scorecard.md
       - analysis: outputs/aiox-sop/analysis/{process-name}-analysis.md

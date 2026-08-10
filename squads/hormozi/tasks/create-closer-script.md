@@ -10,7 +10,7 @@ estimated_time: 45-60min
 source: "CLOSER Framework — Consultative Sales Script"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

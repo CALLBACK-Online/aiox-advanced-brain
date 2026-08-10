@@ -28,7 +28,7 @@ domain: Strategic
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Strategic`
 atomic_layer: Atom
 Input: request::upgrade_squad_plan

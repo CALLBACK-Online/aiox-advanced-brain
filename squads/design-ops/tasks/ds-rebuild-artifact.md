@@ -159,13 +159,13 @@ This task uses interactive elicitation to configure rebuild.
 **Rebuilt**: 2025-10-28
 **Agent**: Brad (Design System Architect)
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_rebuild_artifact_artifact

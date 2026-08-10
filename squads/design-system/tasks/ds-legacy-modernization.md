@@ -11,13 +11,13 @@ Playbook para modernizar sistemas legados (CodeIgniter, Laravel, Rails, jQuery) 
 
 **Princípio:** Migrar sistemas legados = produto de múltiplos 6 dígitos.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_legacy_modernization_artifact

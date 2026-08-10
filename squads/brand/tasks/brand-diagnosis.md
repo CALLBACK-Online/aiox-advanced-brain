@@ -11,7 +11,7 @@ estimated_duration: "30-60 min"
 ```
 
 **Responsible Executor:** Agent (@keller-brand-equity)  
-**Dependencies:** depends_on: `[load-workspace-context]` · enables: `[wf-brand-foundations]` · workflow: `wf-brand-foundations`
+**Dependencies:** depends_on: `[load-project context]` · enables: `[wf-brand-foundations]` · workflow: `wf-brand-foundations`
 
 ## Objective
 
@@ -32,9 +32,9 @@ Construir baseline estratégico de marca usando CBBE (Keller), Brand Vision (Aak
 
 | Artifact | Location | Description |
 |---|---|---|
-| `cbbe-report.md` | `workspace/businesses/{brand_name}/L2-tactical/brand/foundations/cbbe-report.md` | Diagnostico CBBE com baseline de equity |
-| `foundations-report.md` | `workspace/businesses/{brand_name}/L2-tactical/brand/foundations/foundations-report.md` | Consolidado de fundamentos para handoff das proximas fases |
-| `brandbook.yaml` | `workspace/businesses/{brand_name}/L2-tactical/brand/brandbook.yaml` | Estrutura base de identidade e diretrizes estrategicas |
+| `cbbe-report.md` | `docs/tactical/brand/foundations/cbbe-report.md` | Diagnostico CBBE com baseline de equity |
+| `foundations-report.md` | `docs/tactical/brand/foundations/foundations-report.md` | Consolidado de fundamentos para handoff das proximas fases |
+| `brandbook.yaml` | `docs/tactical/brand/brandbook.yaml` | Estrutura base de identidade e diretrizes estrategicas |
 
 ## Veto Conditions
 

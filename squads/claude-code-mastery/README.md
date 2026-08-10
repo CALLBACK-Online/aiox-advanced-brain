@@ -95,7 +95,7 @@ This squad understands both Claude Code native capabilities AND the AIOX-core fr
 | AIOX Concept | Claude Code Equivalent | Bridge Agent |
 |-------------|----------------------|-------------|
 | Agents (@dev, @qa...) | Subagents (.claude/agents/) | Nexus |
-| Tasks (.aiox-core/tasks/) | Skills (.claude/skills/) | Anvil |
+| Tasks (.aiox-core/tasks/) | Skills (skills/) | Anvil |
 | Workflows | Multi-step sessions | Nexus + Orion |
 | core-config.yaml | .claude/settings.json | Sigil |
 | Python hooks (monitor/) | Native hooks (command/http/prompt/agent) | Latch |

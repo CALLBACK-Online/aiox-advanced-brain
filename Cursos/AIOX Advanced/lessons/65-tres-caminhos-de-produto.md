@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: tres-caminhos-de-produto
 lesson_position: 65
 title: 'Três caminhos de produto: Consultoria → App Web → SaaS'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/65-tres-caminhos-de-produto/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

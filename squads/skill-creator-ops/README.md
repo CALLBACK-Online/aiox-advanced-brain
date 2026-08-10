@@ -43,15 +43,15 @@ Auxiliary flows: migrate-to-47, deprecate, retire, lifecycle-audit.
 
 ## Linked Skills
 
-- `/skill-creator` — .claude/skills/skill-creator/SKILL.md (operational owner relationship)
-- `/prompt-47-migrator` — .claude/skills/prompt-47-migrator/SKILL.md (tooling consumer)
+- `/skill-creator` — skills/skill-creator/SKILL.md (operational owner relationship)
+- `/prompt-47-migrator` — skills/prompt-47-migrator/SKILL.md (tooling consumer)
 
 ## Reference Data
 
 - `data/anthropic-patterns.yaml` — empirical reference catalog of patterns observed in Claude Opus 4.7 production system prompt. Canonical shapes for decision trees, severity calibration, triggering tiers, cost framing, self-check loops, triplet examples, arrow notation, priority-numbered tool lists, section tagging, and internalized-no-scaffolding absences.
 - `data/validation-schema.yaml` — schema and prompt-quality check definitions, scoring formulas, lifecycle state requirements.
 
-## SINKRA
+## AIOX
 
 - **BU Mapping:** hub-framework
 - **Tier:** Core

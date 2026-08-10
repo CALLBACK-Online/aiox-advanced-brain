@@ -5,7 +5,7 @@
 > Version: 2.0.0
 > **Execution Type:** `Hybrid`
 > **Human Checkpoint:** Confirm whether the request is only technical boilerplate configuration or also requires brand strategy/logo creation
-> **Dependencies:** depends_on: `[]` · enables: `[ds-build-component, ds-theme-multi-brand, ds-integrate-workspace]` · workflow: `starter-runtime`
+> **Dependencies:** depends_on: `[]` · enables: `[ds-build-component, ds-theme-multi-brand, ds-integrate-squad]` · workflow: `starter-runtime`
 
 ## Description
 
@@ -69,7 +69,7 @@ Materialize a self-contained copy via:
 npm --prefix apps/aiox-design-starter run export:standalone -- --target=<path>
 ```
 
-Use this when the user wants the starter inside another repository or workspace.
+Use this when the user wants the starter inside another repository or local_docs.
 
 ## Prerequisites
 
@@ -98,7 +98,7 @@ Read the root README and package/config files listed above.
 Confirm the current runtime assumptions:
 
 - local-first contracts live in `starter/`
-- runtime sources are `starter` or `workspace`
+- runtime sources are `starter` or `local_docs`
 - variants inherit base and override selectively
 - `variant3` is the local preset
 - standalone export is first-class
@@ -244,13 +244,13 @@ If those are required, hand off to `brand`, then resume this task after assets a
 - `apps/aiox-design-starter/README.md`
 - `apps/aiox-design-starter/starter/variants/variant3/README.md`
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_bootstrap_starter_artifact

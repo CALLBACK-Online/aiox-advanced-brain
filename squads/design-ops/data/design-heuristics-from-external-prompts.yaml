@@ -353,7 +353,7 @@ heuristics:
     title: "Starting without DS context is a blocker"
     statement: >-
       An artifact without resolved design-system context is assumed, not
-      started. Halt until workspace contracts or a reference DS resolves.
+      started. Halt until project context contracts or a reference DS resolves.
     source: EXT-2026-04-18-CLAW-DESIGN
     confidence: HIGH
     binding:
@@ -514,7 +514,7 @@ heuristics:
     title: "Overused font list (forbidden defaults without rationale)"
     statement: >-
       Forbidden as silent defaults: Inter, Roboto, Arial, Fraunces, generic
-      system font stacks. Permitted only when the workspace tokens specify
+      system font stacks. Permitted only when the project tokens specify
       one (= rationale) or the user explicitly asks.
     source: EXT-2026-04-18-CLAW-DESIGN
     confidence: HIGH
@@ -889,7 +889,7 @@ explicit_rejections:
       Permitted only for greenfield bootstrap, brownfield audit with owner
       approval, or explicit brief request.
     rationale: >-
-      Ad-hoc color generation bypasses workspace tokens and erodes brand
+      Ad-hoc color generation bypasses project tokens and erodes brand
       integrity over time. Tokens are a contract; harmonic generation is a
       divergence pressure valve we refuse to leave unlocked.
     enforcement: "squads/design-ops/rules/ds-consistency-policy.md#the-oklch-harmonic-fallback-gate-policy"

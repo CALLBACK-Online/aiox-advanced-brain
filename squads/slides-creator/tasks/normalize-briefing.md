@@ -1,10 +1,10 @@
 # Normalize Briefing
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Strategic -->
+<!-- AIOX Domain: Strategic -->
 
-## SINKRA Task Anatomy (8 sections — migrated 2026-04-20 Wave 2)
+## AIOX Task Anatomy (8 sections — migrated 2026-04-20 Wave 2)
 
 ```yaml
 task: normalizeBriefing
@@ -46,7 +46,7 @@ elicit: true
 
 input:
   - raw_briefing: "User input — topic, objectives, audience, context, constraints"
-  - brand_context: "Workspace references (read-only from workspace/businesses/)"
+  - brand_context: "LocalDocs references (read-only from docs/)"
   - source_materials: "Supporting docs, notes, URLs, screenshots, assets"
   - reference_assets: "Screenshots, PPTX, or visual references that trigger reference_first mode"
   - youtube_source: "(v2) YouTube URL for video-to-presentation pipeline (requires ENABLE_YOUTUBE_ENTRYPOINT)"
@@ -91,7 +91,7 @@ Read the raw briefing and extract all available fields:
 | `audience` | User input or inferred from context | INFER + FLAG |
 | `context` | User input (where will this be presented?) | YES for mode detection |
 | `duration` | User input or estimated from format | INFER + FLAG |
-| `brand_config` | Workspace or user input | CHECK workspace first |
+| `brand_config` | LocalDocs or user input | CHECK local |
 | `source_materials` | User-provided docs, URLs, notes | WARN if empty |
 | `reference_assets` | User-provided screenshots, PPTX | Determines induction_mode |
 | `output_targets` | User input or default | DEFAULT: ds |
@@ -125,7 +125,7 @@ Preliminary resolution from what you provided:
 | BN_001 | objective is vague | Ask: "What should the audience DO, FEEL, or KNOW after?" |
 | BN_002 | audience is missing | Infer from topic + context. Flag for confirmation. |
 | BN_003 | source_materials empty + complex topic | Warn: content will rely on general knowledge |
-| BN_004 | brand_config missing + workspace has brand data | Auto-resolve from workspace. Report what was loaded. |
+| BN_004 | brand_config missing + local_docs has brand data | Auto-resolve from local_docs. Report what was loaded. |
 | BN_005 | reference_assets include screenshots/PPTX | Set induction_mode = reference_first |
 | BN_006 | duration not specified | Estimate from format defaults. Flag estimate. |
 | BN_007 | youtube_source provided + ENABLE_YOUTUBE_ENTRYPOINT=true | Set input_type = youtube_url. Extract video_id. Flag for transcription. |
@@ -160,7 +160,7 @@ After format detection, derive execution constraints:
 
 ```
 IF brand_config provided in briefing → use it
-ELSE IF workspace/businesses/ has brand data → auto-resolve, report source
+ELSE IF docs/ has brand data → auto-resolve, report source
 ELSE → WARN: "No brand config available. Deck will use generic defaults."
 ```
 
@@ -225,7 +225,7 @@ Preliminary resolution:
 - reference_assets: screenshots (count TBD)
 
 Warnings:
-- No brand_config specified. Will check workspace.
+- No brand_config specified. Will check local_docs.
 - Duration not specified. Estimating 30min based on conference format.
 
 Awaiting objective clarification.

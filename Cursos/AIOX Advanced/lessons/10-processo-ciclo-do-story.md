@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: processo-ciclo-do-story
 lesson_position: 10
 title: Ciclo de vida do Story
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/10-processo-ciclo-do-story/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -310,7 +310,7 @@ O ciclo só fica firme quando você para de trocar estes pares.
 
 O ciclo do Story não é teoria de slide. Ele é a estrutura física de docs/stories/ no monorepo. Estes dois casos mostram o estado e a transição em arquivos verificáveis.
 
-No Sinkra Hub, um Story não é um post-it. É um arquivo em
+No AIOX platform, um Story não é um post-it. É um arquivo em
 docs/stories/, com status no cabeçalho, File List e Dev Agent
 Record. O ciclo draft → ready → in progress → in review → done
 é o que governa esse arquivo. Quem opera o repo move o Story

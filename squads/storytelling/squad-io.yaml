@@ -2,9 +2,9 @@
 # SQUAD I/O CONTRACT — storytelling v2.0.0
 # CSO Governance | Gap-Zero Enforcement
 # ============================================================
-# Gerado por: CSO (Chief Sinkra Officer)
+# Gerado por: CSO (Chief AIOX Officer)
 # Data: 2026-03-09
-# Tipo: Execution Squad (consome workspace, produz artifacts)
+# Tipo: Execution Squad (consome local_docs, produz artifacts)
 # Pipeline: 4 fases (Analyze → Structure → Enhance → Validate)
 # ============================================================
 
@@ -21,43 +21,43 @@ description: >-
 # INPUTS
 # ============================================================
 inputs:
-  # --- Workspace Documents (canonical 5-layer) ---
-  workspace:
+  # --- LocalDocs Documents (canonical 5-layer) ---
+  local_docs:
     - doc_id: L0-001
-      path: workspace/{spoke}/L0-identity/company-dna.yaml
-      layer: L0-identity
+      path: docs/identity/company-dna.yaml
+      layer: identity
       usage: reference
       min_state: DRAFT
       description: "DNA da empresa — contexto para business stories e brandscript"
       consumed_by: [create-business-story, create-brandscript]
 
     - doc_id: L0-002
-      path: workspace/{spoke}/L0-identity/founder-dna.yaml
-      layer: L0-identity
+      path: docs/identity/founder-dna.yaml
+      layer: identity
       usage: reference
       min_state: DRAFT
       description: "DNA do fundador — material para personal stories e public narrative"
       consumed_by: [craft-personal-story, craft-public-narrative, create-pitch]
 
     - doc_id: L1-001
-      path: workspace/{spoke}/L1-strategy/icp.yaml
-      layer: L1-strategy
+      path: docs/strategy/icp.yaml
+      layer: strategy
       usage: reference
       min_state: DRAFT
       description: "ICP — audience profiling para narrativas direcionadas"
       consumed_by: [create-brandscript, craft-ted-talk, apply-abt]
 
     - doc_id: L2-001
-      path: workspace/{spoke}/L2-tactical/brand/brand-platform.yaml
-      layer: L2-tactical
+      path: docs/tactical/brand/brand-platform.yaml
+      layer: tactical
       usage: reference
       min_state: DRAFT
       description: "Brand platform — voz, personalidade, valores para narrativa"
       consumed_by: [create-brandscript, create-business-story, apply-abt]
 
     - doc_id: L2-002
-      path: workspace/{spoke}/L2-tactical/brand/positioning.yaml
-      layer: L2-tactical
+      path: docs/tactical/brand/positioning.yaml
+      layer: tactical
       usage: reference
       min_state: DRAFT
       description: "Positioning — diferenciacao e categoria para pitch stories"
@@ -72,9 +72,9 @@ inputs:
 # OUTPUTS
 # ============================================================
 outputs:
-  # --- Workspace (canonical) ---
-  workspace: []
-  # Execution squad: NAO escreve de volta no workspace.
+  # --- LocalDocs (canonical) ---
+  local_docs: []
+  # Execution squad: NAO escreve de volta no project docs.
 
   # --- Artifacts (narrativas e frameworks aplicados) ---
   artifacts:
@@ -336,7 +336,7 @@ tasks:
     duration: "60-120 min"
     inputs: [company_offering, customer_avatar, problems_3_levels, messaging]
     outputs: [brandscript]
-    workspace_refs: [L0-001, L1-001, L2-001, L2-002]
+    project_refs: [L0-001, L1-001, L2-001, L2-002]
 
   - id: create-business-story
     file: tasks/create-business-story.md
@@ -345,7 +345,7 @@ tasks:
     duration: "45-90 min"
     inputs: [business_context, audience, message, challenge, stakeholders]
     outputs: [business-story]
-    workspace_refs: [L0-001, L2-001]
+    project_refs: [L0-001, L2-001]
 
   # Pitch & Presentation
   - id: create-pitch
@@ -355,7 +355,7 @@ tasks:
     duration: "60-120 min"
     inputs: [offer, audience_profile, credibility, ask, competition, uvp]
     outputs: [pitch-script]
-    workspace_refs: [L0-002, L2-002]
+    project_refs: [L0-002, L2-002]
 
   - id: craft-ted-talk
     file: tasks/craft-ted-talk.md
@@ -364,7 +364,7 @@ tasks:
     duration: "45-90 min"
     inputs: [topic, audience_7dim, time_limit, desired_outcome, constraints]
     outputs: [ted-talk-outline]
-    workspace_refs: [L1-001]
+    project_refs: [L1-001]
 
   # Personal & Leadership
   - id: craft-personal-story
@@ -374,7 +374,7 @@ tasks:
     duration: "45-90 min"
     inputs: [raw_memory, transformation_moment, vulnerability]
     outputs: [personal-story]
-    workspace_refs: [L0-002]
+    project_refs: [L0-002]
 
   - id: craft-public-narrative
     file: tasks/craft-public-narrative.md
@@ -383,7 +383,7 @@ tasks:
     duration: "45-90 min"
     inputs: [cause, community, personal_values, leadership_context]
     outputs: [public-narrative]
-    workspace_refs: [L0-002]
+    project_refs: [L0-002]
 
   # Creative
   - id: improvise-story
@@ -449,11 +449,6 @@ workflows:
 # ============================================================
 cross_domain:
   bridges:
-    - target: c-level
-      direction: consumes
-      interface: "L0 (company-dna, founder-dna) como material narrativo"
-      docs: [L0-001, L0-002]
-
     - target: brand
       direction: consumes
       interface: "L2 (brand-platform, positioning) para brandscript e brand stories"

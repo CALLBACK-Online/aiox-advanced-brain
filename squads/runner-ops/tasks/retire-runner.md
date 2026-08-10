@@ -5,7 +5,7 @@
 
 ## Purpose
 
-Deprecar e remover um runner do ecossistema SINKRA de forma segura,
+Deprecar e remover um runner do ecossistema AIOX de forma segura,
 garantindo que nenhum processo dependente seja quebrado.
 
 ## Inputs

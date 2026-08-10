@@ -289,5 +289,5 @@ The molecule `validate-product-idea` synthesizes the 4 atoms (Phase 1) into a co
 - Spy workflow: `squads/research/workflows/wf-product-discovery.yaml`
 - Spy template: `squads/research/templates/product-discovery-report-tmpl.md`
 - Spy checklist: `squads/research/checklists/product-discovery-gates.yaml`
-- Companion skill: `.claude/skills/tech-research/` (mode `--product-discovery`)
+- Companion skill: `skills/tech-research/` (mode `--product-discovery`)
 - Observatory route: `/observatory/product-discovery/`

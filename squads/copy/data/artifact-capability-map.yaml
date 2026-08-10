@@ -25,11 +25,11 @@ project: "opb-corp"
 capabilities:
 
   andre-chaperon:
-    tags: [channel:email, domain:story, domain:structure, domain:persuasion]
+    tags: ["channel:email", "domain:story", "domain:structure", "domain:persuasion"]
     can_create:
       - id: email-sequence-tmpl
         type: template
-        tags: [channel:email, type:template]
+        tags: ["channel:email", "type:template"]
         name: "Email Sequence Template"
         source_frameworks:
           - "ARM (Autoresponder Madness)"
@@ -41,7 +41,7 @@ capabilities:
 
       - id: email-nurture-checklist
         type: checklist
-        tags: [channel:email, type:checklist]
+        tags: ["channel:email", "type:checklist"]
         name: "Email Nurture Quality Checklist"
         source_frameworks:
           - "Resonance Fidelity"
@@ -51,18 +51,18 @@ capabilities:
 
       - id: email-nurture-sop
         type: sop
-        tags: [channel:email, type:sop]
+        tags: ["channel:email", "type:sop"]
         name: "SOP: Email Nurture Sequence"
         source_frameworks:
           - "Evergreen Email Engine Setup"
           - "Digital Soulcraft World-Building"
 
   ben-settle:
-    tags: [channel:email, domain:personality, domain:hooks, domain:story]
+    tags: ["channel:email", "domain:personality", "domain:hooks", "domain:story"]
     can_create:
       - id: daily-email-tmpl
         type: template
-        tags: [channel:email, type:template]
+        tags: ["channel:email", "type:template"]
         name: "Daily Email Template"
         source_frameworks:
           - "Daily Email Methodology"
@@ -72,7 +72,7 @@ capabilities:
 
       - id: daily-email-checklist
         type: checklist
-        tags: [channel:email, type:checklist]
+        tags: ["channel:email", "type:checklist"]
         name: "Daily Email Quality Checklist"
         source_frameworks:
           - "10 Villain Charisma Pillars"
@@ -80,11 +80,11 @@ capabilities:
           - "Personality-Driven Copy Rules"
 
   stefan-georgi:
-    tags: [channel:vsl, domain:structure, domain:mechanism, domain:persuasion]
+    tags: ["channel:vsl", "domain:structure", "domain:mechanism", "domain:persuasion"]
     can_create:
       - id: vsl-script-tmpl
         type: template
-        tags: [channel:vsl, type:template]
+        tags: ["channel:vsl", "type:template"]
         name: "VSL Script Template (RMBC)"
         source_frameworks:
           - "RMBC Method (Research-Mechanism-Brief-Copy)"
@@ -94,18 +94,18 @@ capabilities:
 
       - id: vsl-checklist
         type: checklist
-        tags: [channel:vsl, type:checklist]
+        tags: ["channel:vsl", "type:checklist"]
         name: "VSL Quality Checklist"
         source_frameworks:
           - "VSL Structure Framework"
           - "Health Copy Compliance"
 
   jon-benson:
-    tags: [channel:vsl, domain:hooks, domain:structure, domain:persuasion]
+    tags: ["channel:vsl", "domain:hooks", "domain:structure", "domain:persuasion"]
     can_create:
       - id: conversational-vsl-tmpl
         type: template
-        tags: [channel:vsl, type:template]
+        tags: ["channel:vsl", "type:template"]
         name: "Conversational VSL Template"
         source_frameworks:
           - "5-Step VSL Formula"
@@ -114,11 +114,11 @@ capabilities:
           - "Alpha-Omega Optimization"
 
   gary-halbert:
-    tags: [channel:sales-page, channel:direct-mail, domain:hooks, domain:proof, domain:story]
+    tags: ["channel:sales-page", "channel:direct-mail", "domain:hooks", "domain:proof", "domain:story"]
     can_create:
       - id: sales-page-tmpl
         type: template
-        tags: [channel:sales-page, type:template]
+        tags: ["channel:sales-page", "type:template"]
         name: "Sales Page Template"
         source_frameworks:
           - "A-Pile/B-Pile Strategy"
@@ -129,18 +129,18 @@ capabilities:
 
       - id: sales-page-checklist
         type: checklist
-        tags: [channel:sales-page, type:checklist]
+        tags: ["channel:sales-page", "type:checklist"]
         name: "Sales Page Quality Checklist"
         source_frameworks:
           - "Emotional Hook Validation"
           - "Proof Elements Hierarchy"
 
   gary-bencivenga:
-    tags: [channel:sales-page, domain:persuasion, domain:testing, domain:mechanism]
+    tags: ["channel:sales-page", "domain:persuasion", "domain:testing", "domain:mechanism"]
     can_create:
       - id: big-idea-checklist
         type: checklist
-        tags: [domain:mechanism, type:checklist]
+        tags: ["domain:mechanism", "type:checklist"]
         name: "Big Idea Development Checklist"
         source_frameworks:
           - "Big Idea Methodology"
@@ -149,11 +149,11 @@ capabilities:
           - "Testing Philosophy"
 
   david-ogilvy:
-    tags: [channel:ads, channel:sales-page, domain:brand, domain:hooks, domain:testing]
+    tags: ["channel:ads", "channel:sales-page", "domain:brand", "domain:hooks", "domain:testing"]
     can_create:
       - id: headline-checklist
         type: checklist
-        tags: [domain:hooks, type:checklist]
+        tags: ["domain:hooks", "type:checklist"]
         name: "Headline Quality Checklist"
         source_frameworks:
           - "Headline Rules"
@@ -163,18 +163,18 @@ capabilities:
 
       - id: print-ad-tmpl
         type: template
-        tags: [channel:ads, type:template]
+        tags: ["channel:ads", "type:template"]
         name: "Print Ad / Display Ad Template"
         source_frameworks:
           - "Ogilvy Ad Structure"
           - "Research-First Methodology"
 
   jeff-walker:
-    tags: [channel:launch, domain:structure, domain:urgency, domain:story]
+    tags: ["channel:launch", "domain:structure", "domain:urgency", "domain:story"]
     can_create:
       - id: launch-sequence-tmpl
         type: template
-        tags: [channel:launch, type:template]
+        tags: ["channel:launch", "type:template"]
         name: "Launch Sequence Template (PLF)"
         source_frameworks:
           - "Product Launch Formula (PLF)"
@@ -184,18 +184,18 @@ capabilities:
 
       - id: launch-checklist
         type: checklist
-        tags: [channel:launch, type:checklist]
+        tags: ["channel:launch", "type:checklist"]
         name: "Launch Readiness Checklist"
         source_frameworks:
           - "PLF Phase Checkpoints"
           - "Pre-Launch Content Sequence"
 
   russell-brunson:
-    tags: [channel:webinar, channel:funnel, domain:structure, domain:story, domain:persuasion]
+    tags: ["channel:webinar", "channel:funnel", "domain:structure", "domain:story", "domain:persuasion"]
     can_create:
       - id: webinar-script-tmpl
         type: template
-        tags: [channel:webinar, type:template]
+        tags: ["channel:webinar", "type:template"]
         name: "Webinar Script Template (Perfect Webinar)"
         source_frameworks:
           - "Perfect Webinar"
@@ -205,7 +205,7 @@ capabilities:
 
       - id: funnel-copy-tmpl
         type: template
-        tags: [channel:funnel, type:template]
+        tags: ["channel:funnel", "type:template"]
         name: "Funnel Copy Template"
         source_frameworks:
           - "Value Ladder"
@@ -214,11 +214,11 @@ capabilities:
           - "Dream 100"
 
   dan-kennedy:
-    tags: [channel:sales-page, channel:direct-mail, domain:urgency, domain:structure]
+    tags: ["channel:sales-page", "channel:direct-mail", "domain:urgency", "domain:structure"]
     can_create:
       - id: sales-letter-tmpl
         type: template
-        tags: [channel:sales-page, type:template]
+        tags: ["channel:sales-page", "type:template"]
         name: "Sales Letter Template (28-Step)"
         source_frameworks:
           - "28-Step Sales Letter System"
@@ -228,18 +228,18 @@ capabilities:
 
       - id: urgency-checklist
         type: checklist
-        tags: [domain:urgency, type:checklist]
+        tags: ["domain:urgency", "type:checklist"]
         name: "Urgency & Deadline Checklist"
         source_frameworks:
           - "Urgency/Deadline Frameworks"
           - "No BS Direct Marketing Rules"
 
   todd-brown:
-    tags: [channel:funnel, domain:mechanism, domain:structure]
+    tags: ["channel:funnel", "domain:mechanism", "domain:structure"]
     can_create:
       - id: mechanism-discovery-tmpl
         type: template
-        tags: [domain:mechanism, type:template]
+        tags: ["domain:mechanism", "type:template"]
         name: "Unique Mechanism Discovery Template"
         source_frameworks:
           - "E5 Method Campaign Construction"
@@ -249,18 +249,18 @@ capabilities:
 
       - id: e5-campaign-workflow
         type: workflow
-        tags: [channel:funnel, type:workflow]
+        tags: ["channel:funnel", "type:workflow"]
         name: "E5 Campaign Workflow"
         source_frameworks:
           - "E5 Method (5 phases)"
           - "Island-to-Island Bridge Model"
 
   frank-kern:
-    tags: [channel:ads, channel:funnel, domain:brand, domain:story]
+    tags: ["channel:ads", "channel:funnel", "domain:brand", "domain:story"]
     can_create:
       - id: intent-branding-tmpl
         type: template
-        tags: [domain:brand, type:template]
+        tags: ["domain:brand", "type:template"]
         name: "Intent-Based Branding Template"
         source_frameworks:
           - "Intent-Based Branding (3 pillars)"
@@ -269,11 +269,11 @@ capabilities:
           - "4-Day Cash Machine"
 
   dan-koe:
-    tags: [channel:social, domain:hooks, domain:structure, domain:story]
+    tags: ["channel:social", "domain:hooks", "domain:structure", "domain:story"]
     can_create:
       - id: social-copy-tmpl
         type: template
-        tags: [channel:social, type:template]
+        tags: ["channel:social", "type:template"]
         name: "Social Media / Creator Copy Template"
         source_frameworks:
           - "One-Person Business Model"
@@ -283,18 +283,18 @@ capabilities:
 
       - id: thread-checklist
         type: checklist
-        tags: [channel:social, type:checklist]
+        tags: ["channel:social", "type:checklist"]
         name: "Thread / Post Quality Checklist"
         source_frameworks:
           - "Hook Discovery"
           - "Value Creation Framework"
 
   ry-schwartz:
-    tags: [channel:cohort, domain:persuasion, domain:story]
+    tags: ["channel:cohort", "domain:persuasion", "domain:story"]
     can_create:
       - id: cohort-launch-tmpl
         type: template
-        tags: [channel:cohort, type:template]
+        tags: ["channel:cohort", "type:template"]
         name: "Cohort Launch Copy Template"
         source_frameworks:
           - "Catalyzing a Conversation"
@@ -303,11 +303,11 @@ capabilities:
           - "Moment of Highest Tension"
 
   jim-rutz:
-    tags: [channel:magalog, channel:direct-mail, domain:story, domain:structure]
+    tags: ["channel:magalog", "channel:direct-mail", "domain:story", "domain:structure"]
     can_create:
       - id: magalog-tmpl
         type: template
-        tags: [channel:magalog, type:template]
+        tags: ["channel:magalog", "type:template"]
         name: "Magalog Template"
         source_frameworks:
           - "Magalog Construction"
@@ -316,11 +316,11 @@ capabilities:
           - "Story-Driven Selling"
 
   clayton-makepeace:
-    tags: [channel:sales-page, domain:persuasion, domain:proof, domain:hooks]
+    tags: ["channel:sales-page", "domain:persuasion", "domain:proof", "domain:hooks"]
     can_create:
       - id: health-copy-tmpl
         type: template
-        tags: [channel:sales-page, type:template]
+        tags: ["channel:sales-page", "type:template"]
         name: "Health/Supplement Copy Template"
         source_frameworks:
           - "Dominant Resident Emotion (DRE)"
@@ -329,11 +329,11 @@ capabilities:
           - "Proof Stacking System"
 
   parris-lampropoulos:
-    tags: [channel:sales-page, channel:direct-mail, domain:testing, domain:mechanism]
+    tags: ["channel:sales-page", "channel:direct-mail", "domain:testing", "domain:mechanism"]
     can_create:
       - id: control-beating-checklist
         type: checklist
-        tags: [domain:testing, type:checklist]
+        tags: ["domain:testing", "type:checklist"]
         name: "Control-Beating Checklist"
         source_frameworks:
           - "Control-Beating Method"
@@ -342,11 +342,11 @@ capabilities:
           - "Lizard & Gatekeeper"
 
   john-carlton:
-    tags: [channel:sales-page, domain:story, domain:hooks, domain:persuasion]
+    tags: ["channel:sales-page", "domain:story", "domain:hooks", "domain:persuasion"]
     can_create:
       - id: story-copy-tmpl
         type: template
-        tags: [domain:story, type:template]
+        tags: ["domain:story", "type:template"]
         name: "Story-Driven Copy Template"
         source_frameworks:
           - "Simple Writing System (SWS)"
@@ -355,11 +355,11 @@ capabilities:
           - "Star/Story/Solution"
 
   david-deutsch:
-    tags: [channel:infomercial, domain:structure, domain:proof]
+    tags: ["channel:infomercial", "domain:structure", "domain:proof"]
     can_create:
       - id: infomercial-tmpl
         type: template
-        tags: [channel:infomercial, type:template]
+        tags: ["channel:infomercial", "type:template"]
         name: "Infomercial / DRTV Script Template"
         source_frameworks:
           - "Copythinking Process"

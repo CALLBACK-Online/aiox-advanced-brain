@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: service-as-software
 lesson_position: 62
 title: 'Service-as-Software: a era do serviço produtivado'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/62-service-as-software/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

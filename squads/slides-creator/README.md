@@ -112,8 +112,7 @@ Principais grupos:
 ## Prerequisites
 
 - **Runtime ds**: O alvo histórico `apps/ds` não está presente neste monorepo e também não há `.gitmodules` registrando esse submodule. Os caminhos em `data/template-registry.yaml` e na arquitetura representam a superfície-alvo histórica, não uma superfície local executável.
-- **Workspace brand context**: `workspace/_system/config.yaml` and `workspace/businesses/{brand}/` must exist for brand-aware deck generation.
-- **COO readiness gate**: Publishing decks to the `ds` canonical runtime surface requires COO/c-level approval.
+- **LocalDocs brand context**: `docs/config.yaml` and `docs/` must exist for brand-aware deck generation.
 
 ## Quick Start
 
@@ -157,8 +156,8 @@ squads/slides-creator/
 │   ├── infrastructure-connections.yaml
 │   ├── quality-gates.yaml
 │   ├── template-registry.yaml
-│   ├── token-registry.yaml          # SINKRA-native (GAP-001 closed)
-│   └── pipeline-execution-log.yaml  # SINKRA-native (GAP-002 closed)
+│   ├── token-registry.yaml          # AIOX-native (GAP-001 closed)
+│   └── pipeline-execution-log.yaml  # AIOX-native (GAP-002 closed)
 ├── README.md
 ├── CHANGELOG.md
 ├── ARCHITECTURE.md
@@ -179,25 +178,6 @@ squads/slides-creator/
 └── workflows/
     └── generate-presentation.yaml
 ```
-
-## Workspace Integration Governance
-
-- **Integration level:** `controlled_runtime_consumer`
-- **Rationale:** lê brand context do workspace e entrega deck via `ds`
-  sob gate do `COO`
-- **Read paths:** `workspace/_system/config.yaml`, `workspace/businesses/`,
-  `workspace/domains/brand/`
-- **Write paths:** none during squad bootstrap; app mutation is handed off
-- **Template namespace:** `slides`
-- **Owner:** `c-level/coo`
-- **Execution mode:** `handoff_only`
-
-### Required structural artifacts
-
-- `config.yaml` with `workspace_integration.level`
-- `.aiox/squad-runtime/create-squad/slides-creator/workspace-integration-level.yaml`
-- `.aiox/squad-runtime/create-squad/slides-creator/workspace-handoff.yaml`
-- `squads/c-level/` present in the repo
 
 ## Next Handoff
 
@@ -220,7 +200,7 @@ Local smoke checks:
 
 ```bash
 node squads/slides-creator/scripts/smoke-squad-contract.js
-squads/sinkra-squad/scripts/sinkra-validate.sh --squad slides-creator --no-remediation
+squads/aiox-squad/scripts/aiox-validate.sh --squad slides-creator --no-remediation
 ```
 
 ## Version History

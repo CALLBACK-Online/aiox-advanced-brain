@@ -33,7 +33,7 @@ Run every applicable validator and checklist against the iterated artifact. Comp
 | 3 | A11y WCAG AA | `checklists/dops-accessibility-wcag-aa.yaml` | all | YES |
 | 4 | A11y release gate | `checklists/dops-a11y-release-gate.yaml` | all | YES |
 | 5 | Generative pipeline | `checklists/dops-generative-pipeline-gate.yaml` | component, html_prototype | YES |
-| 6 | Workspace contracts | `scripts/validate-workspace-contracts.cjs` | all | YES |
+| 6 | project context contracts | `scripts/validate-project context contracts.cjs` | all | YES |
 | 7 | Token pipeline | `scripts/validate-token-pipeline.cjs` | all | YES |
 | 8 | Brandbook contrast | `scripts/validate-brandbook-contrast.cjs` | all | YES |
 | 9 | Motion coverage | `scripts/validate-motion-coverage.cjs` | deck, animation, page | YES |
@@ -142,7 +142,7 @@ verdict: PASS | CONCERNS | FAIL
 - **Re-running P07 without fixing P06 violations** — validation is deterministic; same input = same output. Fix the input.
 - **Computing compliance by averaging — without weighting blockers** — a BLOCKER at 1% weight is still a blocker. Weighted averages hide severity.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Molecule (P07 of design-artifact-cycle)
@@ -171,4 +171,4 @@ performance:
 - Scripts: all `validate-*.cjs` under `squads/design-ops/scripts/`
 - Rule: `squads/design-ops/rules/design-system-fidelity.md`
 - Heuristic: HEUR-CLAW-050 (Verify after done, not instead of done)
-- Skill: `.claude/skills/design-artifact-cycle/SKILL.md#phase-07`
+- Skill: `skills/design-artifact-cycle/SKILL.md#phase-07`

@@ -4,7 +4,12 @@
   "title": "AIOX Squad Config Schema",
   "description": "Validates squad config.yaml files — governance framework compliance",
   "type": "object",
-  "required": ["name", "version", "description", "entry_agent"],
+  "required": [
+    "name",
+    "version",
+    "description",
+    "entry_agent"
+  ],
   "properties": {
     "name": {
       "type": "string",
@@ -41,24 +46,17 @@
         "activation": {
           "type": "object",
           "properties": {
-            "show_greeting": { "type": "boolean" },
-            "show_ecosystem_report": { "type": "boolean" },
-            "show_quick_commands": { "type": "boolean" }
+            "show_greeting": {
+              "type": "boolean"
+            },
+            "show_ecosystem_report": {
+              "type": "boolean"
+            },
+            "show_quick_commands": {
+              "type": "boolean"
+            }
           }
         }
-      }
-    },
-    "workspace_integration": {
-      "type": "object",
-      "required": ["level"],
-      "properties": {
-        "level": {
-          "type": "string",
-          "enum": ["none", "read_only", "controlled_runtime_consumer", "workspace_first"]
-        },
-        "rationale": { "type": "string" },
-        "read_paths": { "type": "array", "items": { "type": "string" } },
-        "write_paths": { "type": "array", "items": { "type": "string" } }
       }
     },
     "artifact_contracts": {
@@ -66,26 +64,54 @@
       "description": "Governance framework — artifacts produced by this squad",
       "items": {
         "type": "object",
-        "required": ["artifact_id", "template_path", "lifecycle_states"],
+        "required": [
+          "artifact_id",
+          "template_path",
+          "lifecycle_states"
+        ],
         "properties": {
-          "artifact_id": { "type": "string" },
-          "template_path": { "type": "string" },
+          "artifact_id": {
+            "type": "string"
+          },
+          "template_path": {
+            "type": "string"
+          },
           "lifecycle_states": {
             "type": "array",
             "items": {
               "type": "string",
-              "enum": ["draft", "pending_validation", "validated", "approved", "rejected", "consumed", "superseded", "archived"]
+              "enum": [
+                "draft",
+                "pending_validation",
+                "validated",
+                "approved",
+                "rejected",
+                "consumed",
+                "superseded",
+                "archived"
+              ]
             }
           }
         }
       }
     },
-    "bu_mapping": { "type": "string" },
+    "bu_mapping": {
+      "type": "string"
+    },
     "supported_modes": {
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["CRIAR", "PLANEJAR", "RESOLVER", "ENTENDER", "VALIDAR", "CONFIGURAR", "GERENCIAR", "EXPLORAR"]
+        "enum": [
+          "CRIAR",
+          "PLANEJAR",
+          "RESOLVER",
+          "ENTENDER",
+          "VALIDAR",
+          "CONFIGURAR",
+          "GERENCIAR",
+          "EXPLORAR"
+        ]
       }
     }
   }

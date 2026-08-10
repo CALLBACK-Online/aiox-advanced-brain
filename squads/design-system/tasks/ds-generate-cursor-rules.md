@@ -47,8 +47,8 @@ Generate `.cursorrules` and `.claude-rules.md` files from the design system meta
 
 ## Output Path
 
-- `workspace/domains/design-system/rules/.cursorrules`
-- `workspace/domains/design-system/rules/.claude-rules.md`
+- `docs/design-system/domains/rules/.cursorrules`
+- `docs/design-system/domains/rules/.claude-rules.md`
 
 ## Deliverables
 
@@ -73,13 +73,13 @@ Generate `.cursorrules` and `.claude-rules.md` files from the design system meta
 - **Dependencies:** depends_on: `[]` · enables: `[]` · workflow: `design-system`
 - **On Fail:** Stop execution, capture evidence, and return remediation steps before proceeding.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_generate_cursor_rules_artifact

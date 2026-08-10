@@ -15,7 +15,7 @@ const {
   writeActiveSquad: writeActiveSquadToRuntime,
   readStateWithLegacyFallback,
   writeCanonicalState,
-  toWorkspaceRelative,
+  toRepoRelative,
 } = require(path.resolve(__dirname, '..', '..', 'squad-creator', 'scripts', 'lib', 'squad-runtime-paths.cjs'));
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -357,7 +357,7 @@ function cmdInit(slug, options = {}) {
   outputJson({
     success: true,
     slug,
-    path: toWorkspaceRelative(getStatePath(slug)),
+    path: toRepoRelative(getStatePath(slug)),
     display_name: state.display_name
   });
 }
@@ -503,7 +503,7 @@ function cmdGet(slug) {
 
   if (state.__corrupted) {
     outputError('CORRUPTED_STATE', `state.json for ${resolvedSlug} is corrupted (invalid JSON)`, {
-      path: toWorkspaceRelative(getStatePath(resolvedSlug))
+      path: toRepoRelative(getStatePath(resolvedSlug))
     });
     process.exit(1);
   }

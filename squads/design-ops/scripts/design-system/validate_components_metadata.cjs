@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.cwd();
-const metadataPath = path.join(ROOT, 'workspace/domains/design-system/metadata/components.json');
+const metadataPath = path.join(ROOT, 'docs/design-system/domains/metadata/components.json');
 const squadRoot = path.join(ROOT, 'squads/design-system');
 
 function fail(message) {

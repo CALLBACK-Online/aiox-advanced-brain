@@ -28,22 +28,20 @@ Status: `completed`
 ## Baseline Blocker Resolved
 
 The workflow veto `OY_VC_002` fired initially because `brand` declared
-`workspace_first` without an explicit `COO`/`c-level` handoff. The prerequisite
 fix was applied before optimization:
 
-- `config.yaml`: added `readiness_owner`, `readiness_resolver`,
+- `config.yaml`: added `readiness_owner`, `readiness_note`,
   `readiness_context_type`
 - `README.md`: documented `COO` readiness owner and canonical resolver
-- `tasks/load-workspace-context.md`: added `COO` readiness to preflight and veto
+- `tasks/load-project context.md`: added `COO` readiness to preflight and veto
 
 ## Optimization Findings
 
-### F1. Workspace preflight drift across workflows
+### F1. Project preflight drift across workflows
 
-All 8 brand workflows still drift from the canonical workspace contract:
+All 8 brand workflows still drift from the canonical project context contracts:
 
 - 8/8 do not include the `COO` readiness resolver in `required_preflight`
-- 2/8 also miss `validate-brand-essentials.sh`
   - `wf-logo-brainstorm.yaml`
   - `wf-brand-mockup-generation.yaml`
 
@@ -87,8 +85,7 @@ Impact:
 
 Applied to all 8 workflows:
 
-- added `COO` readiness resolver to `workspace_contract.required_preflight`
-- aligned visual workflows with `validate-brand-essentials.sh`
+- added `COO` readiness resolver to `project context contracts.required_preflight`
 
 ### Wave 2. Cross-squad executor convergence
 
@@ -120,7 +117,7 @@ governance_check:
       status: implemented
     - path: squads/brand/README.md
       status: implemented
-    - path: squads/brand/tasks/load-workspace-context.md
+    - path: squads/brand/tasks/load-project context.md
       status: implemented
     - path: squads/brand/workflows/wf-naming-to-domain.yaml
       status: implemented

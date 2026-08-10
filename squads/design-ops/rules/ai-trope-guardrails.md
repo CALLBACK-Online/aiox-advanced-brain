@@ -20,7 +20,7 @@ Complements `squads/design-ops/rules/v0-frontend-quality.md` and `squads/design-
 - Line height for body: `1.4–1.6` (`leading-relaxed` / `leading-6`).
 - **NEVER** use decorative/script fonts for body text.
 - **NEVER** set body text below **14px** on screen.
-- **Overused AI-generator defaults** — permitted only with explicit business rationale, never as fallback: **Inter, Roboto, Arial, Fraunces, system font stacks** (`system-ui`, `-apple-system`, etc. used as primary choice). These are the "I asked AI for a font" signals. If the workspace tokens specify one of these, that is the rationale. Otherwise, choose intentionally or ask.
+- **Overused AI-generator defaults** — permitted only with explicit business rationale, never as fallback: **Inter, Roboto, Arial, Fraunces, system font stacks** (`system-ui`, `-apple-system`, etc. used as primary choice). These are the "I asked AI for a font" signals. If the project tokens specify one of these, that is the rationale. Otherwise, choose intentionally or ask.
 - Use `next/font/google` or the equivalent loader; apply via `font-sans` / `font-serif` / `font-mono` Tailwind classes.
 
 ### Minimum Sizing

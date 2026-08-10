@@ -2,7 +2,7 @@
 
 ## 2026-03-19 - v8.1.0 (Audit remediation: P0 + P1 + P2 gaps)
 
-- [P0] Created runtime artifacts: `.aiox/squad-runtime/create-squad/slides-creator/workspace-integration-level.yaml` and `workspace-handoff.yaml`
+- [P0] Created runtime artifacts: `.aiox/squad-runtime/create-squad/slides-creator/local project docs-level.yaml` and `project-handoff.yaml`
 - [P0] Documented ds submodule prerequisite in README.md and config.yaml (external repo, requires manual init)
 - [P1] Added concrete template schemas: `templates/briefing.normalized.json`, `templates/deck-manifest.json`, `templates/qa-report.json`
 - [P1] Resolved QUOTE incoherence: added governance note GOV-001 to template-registry.yaml marking quote template as deprecated for direct slide_type usage; updated slide-chief slide_type_mapping to normalize QUOTE to content_variant
@@ -13,7 +13,7 @@
 ## 2026-03-16 - v8.0.0 (Wave 8: execution handoff + validation)
 
 - Added final execution handoff documentation, runtime completion state, and refreshed operational next steps
-- Updated stale create-squad runtime artifacts (`creation-report.yaml`, `workspace-handoff.yaml`, planning summary) to the completed squad state
+- Updated stale create-squad runtime artifacts (`creation-report.yaml`, `project-handoff.yaml`, planning summary) to the completed squad state
 - Marked the MVP scope boundary explicitly around the seven-phase `ds` pipeline and isolated deferred follow-ups from the operational backlog
 
 ## 2026-03-16 - v7.0.0 (Wave 7: workflow integration)
@@ -76,7 +76,7 @@
 ## 2026-03-16 - v1.0.0
 
 - Bootstrapped `slides-creator` as an Epic 1 brownfield-light squad shell
-- Upgraded workspace integration to `controlled_runtime_consumer`
+- Upgraded local project docs to `none`
 - Fixed MVP target to `apps/ds` presenter parity
 - Added `slide-chief` activation shell, lifecycle tasks, workflow shell, and QA checklist
 - Initialized create-squad runtime artifacts and epic scaffolding

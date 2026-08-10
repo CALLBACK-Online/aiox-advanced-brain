@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.cwd();
-const EXTRACTION_DIR = path.join(ROOT, 'workspace', 'domains', 'design-system', 'extraction');
+const EXTRACTION_DIR = path.join(ROOT, 'docs', 'project', 'domains', 'design-system', 'extraction');
 const CURATED_DIR = path.join(EXTRACTION_DIR, 'curated');
 const REPORT_PATH = path.join(CURATED_DIR, 'curation-report.json');
 const VALIDATION_PATH = path.join(CURATED_DIR, 'validation-result.json');

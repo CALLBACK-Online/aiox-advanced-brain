@@ -106,7 +106,7 @@ module_splitting:
       - "Identify the N largest cohesive blocks (usually sub-components, state machines, or constants)"
       - "Extract each block to its own file with kebab-case filename inside a directory named after the parent"
       - "Re-export from an index.ts barrel in the new directory"
-      - "Update imports across the workspace via codemod, not manual edit"
+      - "Update imports across local docs via codemod, not manual edit"
     anti_pattern:
       label: "Arbitrary line-based split"
       description: >-

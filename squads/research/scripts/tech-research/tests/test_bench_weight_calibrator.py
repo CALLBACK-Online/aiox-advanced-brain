@@ -26,7 +26,7 @@ from bench_weight_calibrator import (  # noqa: E402
 class TestBenchWeightCalibrator(unittest.TestCase):
 
     def test_macro_groups_count_15(self):
-        """15 macro groups defined (sinkra_fit REMOVED 2026-05-18 — framework agnosticism)."""
+        """15 macro groups defined (aiox_fit REMOVED 2026-05-18 — framework agnosticism)."""
         self.assertEqual(len(MACRO_GROUPS), 15)
 
     def test_critical_groups_present(self):
@@ -36,13 +36,13 @@ class TestBenchWeightCalibrator(unittest.TestCase):
         self.assertIn("tool_runtime_integration", ids)
         self.assertIn("multi_agent_orchestration", ids)
 
-    def test_sinkra_fit_REMOVED_from_macro_groups(self):
-        """sinkra_fit must NOT be a macro group (framework agnostic mandate 2026-05-18)."""
+    def test_aiox_fit_REMOVED_from_macro_groups(self):
+        """aiox_fit must NOT be a macro group (framework agnostic mandate 2026-05-18)."""
         ids = [g["id"] for g in MACRO_GROUPS]
-        self.assertNotIn("sinkra_fit", ids, "sinkra_fit must be REMOVED, not zeroed")
+        self.assertNotIn("aiox_fit", ids, "aiox_fit must be REMOVED, not zeroed")
 
     def test_no_anchor_self_reference_flag_remaining(self):
-        """No remaining MACRO_GROUP should have anchor_self_reference flag (sinkra_fit was the only one)."""
+        """No remaining MACRO_GROUP should have anchor_self_reference flag (aiox_fit was the only one)."""
         for g in MACRO_GROUPS:
             self.assertFalse(
                 g.get("anchor_self_reference", False),
@@ -75,12 +75,12 @@ class TestBenchWeightCalibrator(unittest.TestCase):
         ux_total = p["ux_operator_control"] + p["product_ux_reference"]
         self.assertGreaterEqual(ux_total, 30, f"product preset ux total too low: {ux_total}")
 
-    def test_all_presets_sinkra_fit_ABSENT(self):
-        """sinkra_fit must be ABSENT from ALL presets (framework agnostic mandate)."""
+    def test_all_presets_aiox_fit_ABSENT(self):
+        """aiox_fit must be ABSENT from ALL presets (framework agnostic mandate)."""
         for name, weights in PRESETS.items():
             self.assertNotIn(
-                "sinkra_fit", weights,
-                f"preset {name} still has sinkra_fit — must be REMOVED, not zeroed",
+                "aiox_fit", weights,
+                f"preset {name} still has aiox_fit — must be REMOVED, not zeroed",
             )
 
     def test_normalize_weights_sums_to_100(self):
@@ -129,9 +129,9 @@ class TestBenchWeightCalibrator(unittest.TestCase):
         raw = dict(PRESETS["technical"])
         payload = build_weights_yaml("test", normalize_weights(raw), raw, "technical", "1.0.0")
         self.assertTrue(payload["validation"]["framework_agnostic"])
-        self.assertIn("sinkra_fit_removed", payload["validation"])
-        self.assertNotIn("sinkra_fit", payload["normalized_weights"])
-        self.assertNotIn("sinkra_fit", payload["raw_weights"])
+        self.assertIn("aiox_fit_removed", payload["validation"])
+        self.assertNotIn("aiox_fit", payload["normalized_weights"])
+        self.assertNotIn("aiox_fit", payload["raw_weights"])
 
     def test_interactive_calibration_method_marker(self):
         """If preset_used=None, calibration_method = 'interactive'."""

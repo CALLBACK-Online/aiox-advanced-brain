@@ -81,18 +81,9 @@ These are hard requirements. ANY failure = squad rejected.
 - [ ] `config.yaml` exists in squad root
 - [ ] `config.yaml` is valid YAML (no parse errors)
 - [ ] Required fields present: `name`, `version`, `description`, `entry_agent`
-- [ ] `workspace_integration.level` exists and is one of: `none`, `read_only`, `controlled_runtime_consumer`, `workspace_first`
+- [ ] `local project docs.level` exists and is one of: `none`, `read_only`, `none`, `local`
 - [ ] `name` uses kebab-case
 - [ ] `version` follows semver (X.Y.Z)
-
-### 1.1.a Workspace Governance (BLOCKING)
-
-- [ ] If `workspace_integration.level != none`, squad has explicit `workspace/` path references in tasks/workflows/config
-- [ ] If `workspace_integration.level in {controlled_runtime_consumer, workspace_first}`, integration execution is delegated to workspace governance (`COO`/`workspace-chief`) and not performed directly by `squad-creator`
-- [ ] If `workspace_integration.level in {controlled_runtime_consumer, workspace_first}`, at least one workspace governance squad exists in the repo (`squads/c-level/`)
-- [ ] If `workspace_integration.level == workspace_first`, squad has:
-- [ ] `scripts/bootstrap-*-workspace.sh`
-- [ ] `scripts/validate-*-essentials.sh`
 
 ### 1.2 Entry Point
 

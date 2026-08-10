@@ -107,7 +107,7 @@ See `templates/ds-tokens-defaults-tmpl.yaml` `core.color.accent-primary` / `acce
 ### Brand voice and casing
 
 **Default:** none — no voice has no brand.
-**Override:** REQUIRED per business — discovered from `workspace/businesses/{biz}/L0-identity/founder-dna.yaml` and brandbook.
+**Override:** REQUIRED per business — discovered from `docs/identity/founder-dna.yaml` and brandbook.
 
 ## What this means for consumers
 

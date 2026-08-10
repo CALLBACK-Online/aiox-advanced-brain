@@ -757,7 +757,7 @@ hook_lifecycle_reference:
     PreSquadActivation:
       fires_when: "Before an AIOX squad is activated (before first agent turn)"
       matcher_field: "squad name"
-      matcher_values: ["copy", "sinkra-squad", "squad-creator", "*"]
+      matcher_values: ["copy", "aiox-squad", "squad-creator", "*"]
       can_block: true
       stdout_injected: false
       notes: "Use to validate squad preconditions, load squad-specific context, or enforce activation policies."
@@ -765,7 +765,7 @@ hook_lifecycle_reference:
     PostSquadActivation:
       fires_when: "After an AIOX squad activates successfully"
       matcher_field: "squad name"
-      matcher_values: ["copy", "sinkra-squad", "squad-creator", "*"]
+      matcher_values: ["copy", "aiox-squad", "squad-creator", "*"]
       can_block: false
       stdout_injected: false
       notes: "Use for squad activation logging, metrics, and post-activation context injection."
@@ -819,17 +819,17 @@ hook_lifecycle_reference:
       notes: "Use for post-commit logging, updating story status, triggering CI notifications."
 
     PipelineStart:
-      fires_when: "Before a SINKRA multi-phase pipeline begins (first wave starts)"
+      fires_when: "Before a AIOX multi-phase pipeline begins (first wave starts)"
       matcher_field: "pipeline id"
-      matcher_values: ["sinkra-pipeline-*", "epic-*", "*"]
+      matcher_values: ["aiox-pipeline-*", "epic-*", "*"]
       can_block: true
       stdout_injected: false
       notes: "Use for pipeline precondition validation, baseline measurement triggers, and resource allocation."
 
     PipelineEnd:
-      fires_when: "After a SINKRA pipeline completes all waves (success or failure)"
+      fires_when: "After a AIOX pipeline completes all waves (success or failure)"
       matcher_field: "pipeline id"
-      matcher_values: ["sinkra-pipeline-*", "epic-*", "*"]
+      matcher_values: ["aiox-pipeline-*", "epic-*", "*"]
       can_block: false
       stdout_injected: false
       notes: "Use for pipeline metrics collection, success notification, and cleanup of pipeline resources."

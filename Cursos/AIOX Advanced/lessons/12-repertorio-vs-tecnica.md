@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: repertorio-vs-tecnica
 lesson_position: 12
 title: Repertório vence técnica
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/12-repertorio-vs-tecnica/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

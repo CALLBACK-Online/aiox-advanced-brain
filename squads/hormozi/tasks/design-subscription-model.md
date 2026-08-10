@@ -11,7 +11,7 @@ source: "Subscription Model SOP — Continuity Offers"
 sop_reference: squads/hormozi/sops/subscription-model-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

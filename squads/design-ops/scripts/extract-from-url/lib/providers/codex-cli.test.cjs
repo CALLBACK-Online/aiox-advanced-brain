@@ -8,10 +8,10 @@ test("codex-cli invoke is a function", () => {
   assert.equal(typeof invoke, "function");
 });
 
-test("codex-cli reads prompt from stdin and runs in workspace-write mode", () => {
+test("codex-cli reads prompt from stdin and runs in local_docs-write mode", () => {
   const args = buildCodexCliArgs({ cwd: "/repo" });
 
-  assert.deepEqual(args.slice(0, 4), ["--sandbox", "workspace-write", "--ask-for-approval", "never"]);
+  assert.deepEqual(args.slice(0, 4), ["--sandbox", "local_docs-write", "--ask-for-approval", "never"]);
   assert.equal(args.includes("exec"), true);
   assert.equal(args[args.indexOf("-C") + 1], "/repo");
   assert.equal(args.includes("--ephemeral"), true);

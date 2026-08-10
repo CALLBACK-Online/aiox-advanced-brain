@@ -148,8 +148,8 @@ test("loadLocalSource returns full bundle shape compatible with run.cjs", async 
     assert.ok(bundle.css.length > 0);
     assert.ok(bundle.cssMeta);
     assert.equal(bundle.cssMeta.files.length, 6);
-    assert.equal(bundle.headers["x-sinkra-source"], "local");
-    assert.ok(bundle.headers["x-sinkra-project"]);
+    assert.equal(bundle.headers["x-aiox-source"], "local");
+    assert.ok(bundle.headers["x-aiox-project"]);
     assert.equal(bundle.layoutInfo.htmlClassName, "dark");
     assert.equal(bundle.pkgInfo.name, "test-app");
     assert.equal(bundle.pkgInfo.next, "15.0.0");

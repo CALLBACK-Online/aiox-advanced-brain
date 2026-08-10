@@ -1,0 +1,86 @@
+{
+  "$id": "aiox://slide-creator/wireframes/architecture-tradeoff-table.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "Multiple players are compared across multiple dimensions.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "o1_complexity": {
+      "type": "string"
+    },
+    "o1_cost": {
+      "type": "string"
+    },
+    "o1_ops": {
+      "type": "string"
+    },
+    "o1_risk": {
+      "type": "string"
+    },
+    "o2_complexity": {
+      "type": "string"
+    },
+    "o2_cost": {
+      "type": "string"
+    },
+    "o2_ops": {
+      "type": "string"
+    },
+    "o2_risk": {
+      "type": "string"
+    },
+    "o3_complexity": {
+      "type": "string"
+    },
+    "o3_cost": {
+      "type": "string"
+    },
+    "o3_ops": {
+      "type": "string"
+    },
+    "o3_risk": {
+      "type": "string"
+    },
+    "option_1": {
+      "type": "string"
+    },
+    "option_2": {
+      "type": "string"
+    },
+    "option_3": {
+      "type": "string"
+    },
+    "recommendation": {
+      "type": "string"
+    }
+  },
+  "title": "architecture-tradeoff-table",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "comparison_matrix",
+    "slot_count": 17,
+    "warnings": [
+      "action_title",
+      "option_1",
+      "o1_cost",
+      "o1_risk",
+      "o1_complexity",
+      "o1_ops",
+      "option_2",
+      "o2_cost",
+      "o2_risk",
+      "o2_complexity",
+      "o2_ops",
+      "option_3",
+      "o3_cost",
+      "o3_risk",
+      "o3_complexity",
+      "o3_ops",
+      "recommendation"
+    ],
+    "wireframe_ref": "templates/wireframes/architecture-tradeoff-table.html"
+  }
+}

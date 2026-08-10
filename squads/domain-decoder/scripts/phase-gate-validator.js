@@ -3,7 +3,7 @@
 /**
  * Phase Gate Validator (deterministic worker)
  * Implementa enforcement rule E9
- * SINKRA Execution Type: Worker
+ * AIOX Execution Type: Worker
  */
 
 const fs = require('fs');

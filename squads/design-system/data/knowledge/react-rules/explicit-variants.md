@@ -2,7 +2,7 @@
 title: Explicit Variants over Boolean Props
 impact: medium
 tags: [react, api-design, components, typescript]
-sinkra_source: v0-react-best-practices
+aiox_source: v0-react-best-practices
 ---
 
 # Explicit Variants over Boolean Props

@@ -9,7 +9,7 @@ Todas as alterações notáveis no squad-creator serão documentadas aqui.
 ### Fusão Kaizen — Ecosystem Mode Integrado
 
 **Story**: EPIC-108 (STORY-108.1 → STORY-108.5)
-**Tipo**: Structural fusion + SINKRA-native certification
+**Tipo**: Structural fusion + AIOX-native certification
 
 #### Adicionado
 
@@ -35,11 +35,11 @@ Todas as alterações notáveis no squad-creator serão documentadas aqui.
   - Entities: `EcosystemHealthReport`, `CapabilityGapAnalysis`, `TechRadarReport`
 
 - **fusion_provenance**: Registro completo da fusão com kaizen (ADRs 108.1-001, 108.1-002, 108.2-001, 108.2-002, 108.2-003)
-- **sinkra_native: true**: Certificação SINKRA-native v6.0.0 (score: 9.5)
+- **aiox_native: true**: Certificação AIOX-native v6.0.0 (score: 9.5)
 
 #### Alterado
 
-- `config.yaml`: versão 5.x → 6.0.0, novos campos `fusion_provenance`, `sinkra_native`, domínio `Observability`
+- `config.yaml`: versão 5.x → 6.0.0, novos campos `fusion_provenance`, `aiox_native`, domínio `Observability`
 - `composition_mapping`: adicionadas moléculas `mol-ecosystem-analysis` e `mol-weekly-cadence`; organismos `org-ecosystem-analysis`, `org-weekly-report`, `org-self-improve`
 - `activation.shortcuts`: adicionado `/squadCreator:ecosystem-analyst`
 - `process_token_contract`: tokens_declared 29 (estável — kaizen não declarava tokens novos)

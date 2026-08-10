@@ -1,0 +1,1054 @@
+{
+  "schema_version": 1,
+  "course": "aiox-advanced-squads",
+  "route_count": 24,
+  "selection_contract": {
+    "input": "Pedido do usuário em linguagem natural",
+    "method": "Comparar signals e anti_signals, confirmar a fronteira na lesson e pedir somente o briefing ausente",
+    "output": [
+      "squad escolhido",
+      "justificativa",
+      "fronteira com o vizinho",
+      "maturidade",
+      "briefing mínimo",
+      "ativação segura",
+      "evidência esperada"
+    ],
+    "fallback": "Se a ambiguidade alterar o entregável, fazer uma pergunta curta; se não, declarar a hipótese e avançar"
+  },
+  "runtime_contracts": {
+    "codex": {
+      "bootstrap": "AGENTS.md",
+      "router_skill": "$aiox-squads",
+      "skill_install_path": ".codex/skills/aiox-squads",
+      "rule": "Usar skill específica apenas se instalada; não assumir suporte a @agent, *comando ou /comando"
+    },
+    "claude_code": {
+      "bootstrap": "CLAUDE.md",
+      "router_skill": "$aiox-squads",
+      "skill_install_path": ".claude/skills/aiox-squads",
+      "rule": "Usar @agent, *comando ou /comando somente se a superfície estiver registrada"
+    },
+    "generic": {
+      "bootstrap": "AGENT-GUIDE.md",
+      "rule": "Usar generic_prompt e carregar os paths diretamente, sem inventar sintaxe proprietária"
+    }
+  },
+  "routes": [
+    {
+      "id": "advisory-board",
+      "title": "Advisory Board",
+      "aliases": [
+        "conselho estratégico",
+        "mesa de decisão",
+        "devil's advocate"
+      ],
+      "lesson": "aulas/01-advisory-board.md",
+      "squad_path": "squads/advisory-board",
+      "skill": "advisory-board",
+      "entry_agent": "board-chair",
+      "entry_agent_path": "squads/advisory-board/agents/board-chair.md",
+      "maturity": "partial",
+      "signals": [
+        "decisão estratégica",
+        "reduzir vieses",
+        "múltiplas perspectivas",
+        "groupthink",
+        "conselho"
+      ],
+      "anti_signals": [
+        "pesquisa factual",
+        "executar tarefa já decidida",
+        "buscar fontes"
+      ],
+      "inputs": [
+        "decisão e contexto",
+        "alternativas reais",
+        "critérios e restrições"
+      ],
+      "deliverable": "recomendação com dissenso, trade-offs e decisão registrada",
+      "evidence": [
+        "perspectivas independentes",
+        "objeções",
+        "decision-log"
+      ],
+      "limits": "Não substitui pesquisa factual nem execução operacional.",
+      "generic_prompt": "Leia squads/advisory-board/config.yaml e squads/advisory-board/agents/board-chair.md. Avalie a decisão com perspectivas independentes, dissenso e critérios explícitos."
+    },
+    {
+      "id": "research",
+      "title": "Research",
+      "aliases": [
+        "pesquisa",
+        "benchmark",
+        "OSINT",
+        "discovery"
+      ],
+      "lesson": "aulas/02-research.md",
+      "squad_path": "squads/research",
+      "skill": "research",
+      "entry_agent": "research-chief",
+      "entry_agent_path": "squads/research/agents/research-chief.md",
+      "maturity": "study",
+      "signals": [
+        "pesquisa multi-fonte",
+        "benchmark",
+        "OSINT",
+        "evidências",
+        "discovery",
+        "fontes confiáveis",
+        "comparar",
+        "ferramentas",
+        "battle card",
+        "evidência",
+        "tech research"
+      ],
+      "anti_signals": [
+        "decisão sem pesquisa",
+        "mapear codebase inteiro",
+        "implementar solução"
+      ],
+      "inputs": [
+        "pergunta de pesquisa",
+        "escopo e recorte",
+        "critérios de fonte"
+      ],
+      "deliverable": "dossiê de evidências, síntese e lacunas",
+      "evidence": [
+        "fontes rastreáveis",
+        "método",
+        "grau de confiança"
+      ],
+      "limits": "No acervo, serve principalmente para estudo; execução pode exigir ferramentas externas.",
+      "generic_prompt": "Leia squads/research/config.yaml e squads/research/agents/research-chief.md. Estruture a investigação, critérios de fonte, síntese e lacunas sem fabricar evidências."
+    },
+    {
+      "id": "code-anatomist",
+      "title": "Code Anatomist",
+      "aliases": [
+        "engenharia reversa",
+        "anatomia do código",
+        "mapa arquitetural"
+      ],
+      "lesson": "aulas/03-code-anatomist.md",
+      "squad_path": "squads/code-anatomist",
+      "skill": "code-anatomist",
+      "entry_agent": "decoder-chief",
+      "entry_agent_path": "squads/code-anatomist/agents/decoder-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "codebase inteiro",
+        "mapear arquitetura, APIs",
+        "APIs dados e infraestrutura",
+        "dependências do sistema",
+        "engenharia reversa completa"
+      ],
+      "anti_signals": [
+        "somente regras de negócio",
+        "regras de negócio no código",
+        "apenas taxonomia",
+        "taxonomia",
+        "não mapear arquitetura"
+      ],
+      "inputs": [
+        "repositório",
+        "escopo técnico",
+        "objetivo da compreensão"
+      ],
+      "deliverable": "mapa do sistema por arquitetura, domínio, dados, APIs e infraestrutura",
+      "evidence": [
+        "inventário",
+        "diagramas ou mapas",
+        "riscos e lacunas"
+      ],
+      "limits": "Para apenas regras de domínio, usar Domain Decoder.",
+      "generic_prompt": "Leia squads/code-anatomist/config.yaml e squads/code-anatomist/agents/decoder-chief.md. Faça engenharia reversa do sistema completo e registre evidências por camada."
+    },
+    {
+      "id": "domain-decoder",
+      "title": "Domain Decoder",
+      "aliases": [
+        "decodificador de domínio",
+        "regras do brownfield",
+        "taxonomia de negócio"
+      ],
+      "lesson": "aulas/04-domain-decoder.md",
+      "squad_path": "squads/domain-decoder",
+      "skill": "domain-decoder",
+      "entry_agent": "decoder-chief",
+      "entry_agent_path": "squads/domain-decoder/agents/decoder-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "regras de negócio no código",
+        "taxonomia",
+        "decisões escondidas",
+        "domínio brownfield",
+        "extrair regras de negócio",
+        "modelo de negócio implícito",
+        "brownfield",
+        "extrair regras de negócio do brownfield"
+      ],
+      "anti_signals": [
+        "mapear arquitetura completa",
+        "codebase inteiro",
+        "infraestrutura inteira",
+        "APIs dados e infraestrutura"
+      ],
+      "inputs": [
+        "código ou documentos brownfield",
+        "área do domínio",
+        "dúvidas de negócio"
+      ],
+      "deliverable": "glossário, regras, decisões e modelo de domínio explícitos",
+      "evidence": [
+        "regra ligada à fonte",
+        "exceções",
+        "vocabulário consistente"
+      ],
+      "limits": "Não substitui a anatomia técnica completa do Code Anatomist.",
+      "generic_prompt": "Leia squads/domain-decoder/config.yaml e squads/domain-decoder/agents/decoder-chief.md. Extraia regras, taxonomias e decisões do domínio, ligando cada conclusão à fonte."
+    },
+    {
+      "id": "agent-autonomy",
+      "title": "Agent Autonomy",
+      "aliases": [
+        "autonomia de agentes",
+        "loops de agente",
+        "agent ownership"
+      ],
+      "lesson": "aulas/05-agent-autonomy.md",
+      "squad_path": "squads/agent-autonomy",
+      "skill": "agent-autonomy",
+      "entry_agent": "autonomy-chief",
+      "entry_agent_path": "squads/agent-autonomy/agents/autonomy-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "agente entra em loops",
+        "depende demais de mim",
+        "baixa autonomia",
+        "não avalia progresso",
+        "intervenção humana constante",
+        "entra em loops"
+      ],
+      "anti_signals": [
+        "criar agente de domínio do zero",
+        "criar squad",
+        "problema apenas de prompt"
+      ],
+      "inputs": [
+        "comportamento observado",
+        "logs ou exemplos",
+        "autonomia desejada"
+      ],
+      "deliverable": "diagnóstico de autonomia e plano de correção com gates",
+      "evidence": [
+        "falhas reproduzidas",
+        "métricas de autonomia",
+        "teste de reexecução"
+      ],
+      "limits": "Diagnosticar antes de redesenhar ou criar agentes.",
+      "generic_prompt": "Leia squads/agent-autonomy/config.yaml e squads/agent-autonomy/agents/autonomy-chief.md. Diagnostique loops, ownership, avaliação de progresso e dependência humana antes de propor mudanças."
+    },
+    {
+      "id": "claude-code-mastery",
+      "title": "Claude Code Mastery",
+      "aliases": [
+        "Claude Code",
+        "hooks Claude",
+        "MCP Claude",
+        "subagentes Claude"
+      ],
+      "lesson": "aulas/06-claude-code-mastery.md",
+      "squad_path": "squads/claude-code-mastery",
+      "skill": "claude-code-mastery",
+      "entry_agent": "claude-mastery-chief",
+      "entry_agent_path": "squads/claude-code-mastery/agents/claude-mastery-chief.md",
+      "maturity": "study",
+      "signals": [
+        "configurar Claude Code",
+        "hooks",
+        "MCP",
+        "subagentes",
+        "skills no Claude",
+        "integração de projeto"
+      ],
+      "anti_signals": [
+        "feature de produto",
+        "configurar Codex",
+        "problema de negócio"
+      ],
+      "inputs": [
+        "objetivo no Claude Code",
+        "configuração atual",
+        "restrições do projeto"
+      ],
+      "deliverable": "configuração ou orientação de Claude Code com verificação",
+      "evidence": [
+        "arquivos de configuração",
+        "smoke test",
+        "limites do runtime"
+      ],
+      "limits": "Material classificado como study; confirmar a versão real do runtime.",
+      "generic_prompt": "Leia squads/claude-code-mastery/config.yaml e squads/claude-code-mastery/agents/claude-mastery-chief.md. Oriente a configuração do Claude Code e valide cada superfície antes de usá-la."
+    },
+    {
+      "id": "aiox-sop",
+      "title": "AIOX SOP",
+      "aliases": [
+        "SOP",
+        "procedimento operacional",
+        "processo documentado"
+      ],
+      "lesson": "aulas/07-aiox-sop.md",
+      "squad_path": "squads/aiox-sop",
+      "skill": "aiox-sop",
+      "entry_agent": "sop-chief",
+      "entry_agent_path": "squads/aiox-sop/agents/sop-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "processo repetível",
+        "documentar processo",
+        "procedimento operacional",
+        "checklist executável",
+        "tirar processo da cabeça"
+      ],
+      "anti_signals": [
+        "documentação cosmética",
+        "materializar no ClickUp agora",
+        "pipeline de dados"
+      ],
+      "inputs": [
+        "processo atual",
+        "atores e gatilhos",
+        "resultado e exceções"
+      ],
+      "deliverable": "SOP executável, auditável e adequado a humanos ou agentes",
+      "evidence": [
+        "passos e responsáveis",
+        "exceções",
+        "teste de execução"
+      ],
+      "limits": "Validar o processo antes de automatizar ou materializar em ferramenta.",
+      "generic_prompt": "Leia squads/aiox-sop/config.yaml e squads/aiox-sop/agents/sop-chief.md. Transforme o processo em procedimento operacional repetível com papéis, passos e critérios."
+    },
+    {
+      "id": "etl-ops",
+      "title": "ETL Ops",
+      "aliases": [
+        "ETL",
+        "collector",
+        "ingestão",
+        "pipeline de dados"
+      ],
+      "lesson": "aulas/08-etl-ops.md",
+      "squad_path": "squads/etl-ops",
+      "skill": "etl-ops",
+      "entry_agent": "etl-chief",
+      "entry_agent_path": "squads/etl-ops/agents/etl-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "pipeline ETL",
+        "extrair transformar carregar",
+        "ingestão repetível",
+        "carregar dados",
+        "fonte destino",
+        "ETL"
+      ],
+      "anti_signals": [
+        "analisar métricas",
+        "churn",
+        "coortes",
+        "decisão com dados"
+      ],
+      "inputs": [
+        "fonte",
+        "transformações",
+        "destino e frequência"
+      ],
+      "deliverable": "pipeline de extração, transformação e carga reproduzível",
+      "evidence": [
+        "amostra de entrada e saída",
+        "logs",
+        "idempotência ou reconciliação"
+      ],
+      "limits": "Não substitui Data para análise nem DB Sage para arquitetura de banco.",
+      "generic_prompt": "Leia squads/etl-ops/config.yaml e squads/etl-ops/agents/etl-chief.md. Desenhe ou opere o pipeline ETL com contratos, qualidade e verificação de carga."
+    },
+    {
+      "id": "runner-ops",
+      "title": "Runner Ops",
+      "aliases": [
+        "runner headless",
+        "execução fora da IDE",
+        "pipeline autônomo"
+      ],
+      "lesson": "aulas/09-runner-ops.md",
+      "squad_path": "squads/runner-ops",
+      "skill": "runner-ops",
+      "entry_agent": "runner-chief",
+      "entry_agent_path": "squads/runner-ops/agents/runner-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "execução headless",
+        "fora da IDE",
+        "runner autônomo",
+        "estado orçamento e métricas",
+        "pipeline agendado"
+      ],
+      "anti_signals": [
+        "workflow apenas conceitual",
+        "ETL específico",
+        "rodar uma tarefa manual"
+      ],
+      "inputs": [
+        "processo executável",
+        "ambiente e gatilho",
+        "estado, orçamento e limites"
+      ],
+      "deliverable": "runner governado com lifecycle, observabilidade e recuperação",
+      "evidence": [
+        "smoke test headless",
+        "estado persistido",
+        "métricas e falhas"
+      ],
+      "limits": "Exige infraestrutura real no projeto destino.",
+      "generic_prompt": "Leia squads/runner-ops/config.yaml e squads/runner-ops/agents/runner-chief.md. Configure execução headless com estado, orçamento, métricas e evidência de conclusão."
+    },
+    {
+      "id": "data",
+      "title": "Data",
+      "aliases": [
+        "analytics",
+        "métricas",
+        "coortes",
+        "experimentos"
+      ],
+      "lesson": "aulas/10-data.md",
+      "squad_path": "squads/data",
+      "skill": "data",
+      "entry_agent": "data-chief",
+      "entry_agent_path": "squads/data/agents/data-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "analisar métricas",
+        "churn",
+        "coortes",
+        "experimentos",
+        "decisão com dados",
+        "analytics"
+      ],
+      "anti_signals": [
+        "pipeline ETL",
+        "ingestão repetível",
+        "carregar dados na fonte destino",
+        "extrair transformar carregar"
+      ],
+      "inputs": [
+        "pergunta de negócio",
+        "dados e definições",
+        "janela e segmentos"
+      ],
+      "deliverable": "análise reproduzível com conclusão e implicação de negócio",
+      "evidence": [
+        "definições métricas",
+        "método",
+        "resultado verificável"
+      ],
+      "limits": "Não assumir qualidade nem disponibilidade dos dados.",
+      "generic_prompt": "Leia squads/data/config.yaml e squads/data/agents/data-chief.md. Analise os dados com método, métricas e recomendação acionável."
+    },
+    {
+      "id": "db-sage",
+      "title": "DB Sage",
+      "aliases": [
+        "PostgreSQL",
+        "Supabase",
+        "schema",
+        "RLS"
+      ],
+      "lesson": "aulas/11-db-sage.md",
+      "squad_path": "squads/db-sage",
+      "skill": "db-sage",
+      "entry_agent": "db-sage",
+      "entry_agent_path": "squads/db-sage/agents/db-sage.md",
+      "maturity": "partial",
+      "signals": [
+        "PostgreSQL",
+        "Supabase",
+        "schema",
+        "migration",
+        "RLS",
+        "query lenta"
+      ],
+      "anti_signals": [
+        "dashboard de negócio",
+        "análise de churn",
+        "pipeline de ingestão"
+      ],
+      "inputs": [
+        "schema atual",
+        "mudança ou problema",
+        "restrições de dados e acesso"
+      ],
+      "deliverable": "desenho ou operação de banco com segurança e plano de validação",
+      "evidence": [
+        "migration revisável",
+        "políticas testadas",
+        "plano de rollback ou benchmark"
+      ],
+      "limits": "Mudanças reais em banco exigem autorização e ambiente confirmado.",
+      "generic_prompt": "Leia squads/db-sage/config.yaml e squads/db-sage/agents/db-sage.md. Revise schema, migrations, RLS e performance com evidência de query."
+    },
+    {
+      "id": "clickup-ops-squad",
+      "title": "ClickUp Ops Squad",
+      "aliases": [
+        "ClickUp",
+        "Spaces e Lists",
+        "automação ClickUp"
+      ],
+      "lesson": "aulas/12-clickup-ops-squad.md",
+      "squad_path": "squads/clickup-ops-squad",
+      "skill": "clickup-ops-squad",
+      "entry_agent": "clickup-chief",
+      "entry_agent_path": "squads/clickup-ops-squad/agents/clickup-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "processo validado no ClickUp",
+        "materializar no ClickUp",
+        "Spaces Lists e Fields",
+        "automações ClickUp",
+        "materializá-lo no ClickUp",
+        "ClickUp"
+      ],
+      "anti_signals": [
+        "desenhar processo do zero",
+        "SOP ainda não validado",
+        "gerenciar projeto sem modelo de processo"
+      ],
+      "inputs": [
+        "SOP ou processo validado",
+        "estrutura desejada",
+        "permissões e limites"
+      ],
+      "deliverable": "modelo operacional de ClickUp com hierarquia, campos, views e automações",
+      "evidence": [
+        "mapa processo→ClickUp",
+        "configuração validada",
+        "teste de caso"
+      ],
+      "limits": "Escrita no ClickUp exige credencial e autorização explícita.",
+      "generic_prompt": "Leia squads/clickup-ops-squad/config.yaml e squads/clickup-ops-squad/agents/clickup-chief.md. Materialize o processo validado em Spaces, Lists, Fields e automações do ClickUp."
+    },
+    {
+      "id": "brand",
+      "title": "Brand",
+      "aliases": [
+        "marca",
+        "naming",
+        "posicionamento",
+        "arquitetura de marca"
+      ],
+      "lesson": "aulas/13-brand.md",
+      "squad_path": "squads/brand",
+      "skill": "brand",
+      "entry_agent": "brand-chief",
+      "entry_agent_path": "squads/brand/agents/brand-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "naming",
+        "posicionamento de marca",
+        "arquitetura de marca",
+        "fundamentos da marca",
+        "ativação de marca",
+        "posicionamento",
+        "marca nova"
+      ],
+      "anti_signals": [
+        "componentes de UI",
+        "regressão visual",
+        "apenas copy de landing page"
+      ],
+      "inputs": [
+        "negócio e público",
+        "categoria e concorrentes",
+        "ambição e restrições"
+      ],
+      "deliverable": "sistema estratégico de marca com fundamentos, posição e ativação",
+      "evidence": [
+        "decisões justificadas",
+        "território distintivo",
+        "aplicações coerentes"
+      ],
+      "limits": "Não substitui Design System nem Copy para entregas específicas.",
+      "generic_prompt": "Leia squads/brand/config.yaml e squads/brand/agents/brand-chief.md. Conduza naming, posicionamento e arquitetura de marca com critérios de decisão."
+    },
+    {
+      "id": "design-system",
+      "title": "Design System",
+      "aliases": [
+        "tokens",
+        "foundations",
+        "biblioteca de componentes",
+        "registry"
+      ],
+      "lesson": "aulas/14-design-system.md",
+      "squad_path": "squads/design-system",
+      "skill": "design-system",
+      "entry_agent": "design-chief",
+      "entry_agent_path": "squads/design-system/agents/design-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "criar tokens",
+        "foundations",
+        "componentes",
+        "registry do design system",
+        "construir design system"
+      ],
+      "anti_signals": [
+        "design system já existe e tem drift",
+        "regressão visual",
+        "auditoria de adoção"
+      ],
+      "inputs": [
+        "produto e stack",
+        "linguagem visual",
+        "escopo de foundations e componentes"
+      ],
+      "deliverable": "foundations, tokens, componentes e contratos do design system",
+      "evidence": [
+        "tokens válidos",
+        "componentes documentados",
+        "contratos ou stories"
+      ],
+      "limits": "Para governança contínua de um sistema existente, usar Design Ops.",
+      "generic_prompt": "Leia squads/design-system/config.yaml e squads/design-system/agents/design-chief.md. Construa foundations, tokens, componentes e registry do design system."
+    },
+    {
+      "id": "design-ops",
+      "title": "Design Ops",
+      "aliases": [
+        "governança de design",
+        "regressão visual",
+        "Storybook",
+        "Chromatic"
+      ],
+      "lesson": "aulas/15-design-ops.md",
+      "squad_path": "squads/design-ops",
+      "skill": "design-ops",
+      "entry_agent": "design-chief",
+      "entry_agent_path": "squads/design-ops/agents/design-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "design system já existe",
+        "drift visual",
+        "regressão visual",
+        "acessibilidade",
+        "Storybook",
+        "Chromatic",
+        "adoção do design system",
+        "governar",
+        "a11y"
+      ],
+      "anti_signals": [
+        "criar design system do zero",
+        "definir tokens iniciais",
+        "criar marca"
+      ],
+      "inputs": [
+        "design system existente",
+        "sinais de drift",
+        "ferramentas e baseline"
+      ],
+      "deliverable": "governança, auditoria e pipeline de qualidade do design system",
+      "evidence": [
+        "baseline",
+        "findings priorizados",
+        "gates automatizados"
+      ],
+      "limits": "Não é a rota primária para criar foundations do zero.",
+      "generic_prompt": "Leia squads/design-ops/config.yaml e squads/design-ops/agents/design-chief.md. Governe drift, regressão visual, Storybook e acessibilidade do design system existente."
+    },
+    {
+      "id": "storytelling",
+      "title": "Storytelling",
+      "aliases": [
+        "narrativa",
+        "arco de história",
+        "tensão",
+        "story"
+      ],
+      "lesson": "aulas/16-storytelling.md",
+      "squad_path": "squads/storytelling",
+      "skill": "storytelling",
+      "entry_agent": "blake-snyder",
+      "entry_agent_path": "squads/storytelling/agents/blake-snyder.md",
+      "maturity": "partial",
+      "signals": [
+        "arco narrativo",
+        "tensão",
+        "história memorável",
+        "emoção",
+        "narrativa"
+      ],
+      "anti_signals": [
+        "deck completo",
+        "speaker notes",
+        "criar apresentação",
+        "slides"
+      ],
+      "inputs": [
+        "mensagem central",
+        "público",
+        "personagem, conflito ou transformação"
+      ],
+      "deliverable": "narrativa estruturada com arco, tensão e payoff",
+      "evidence": [
+        "beats",
+        "coerência do arco",
+        "teste de compreensão ou impacto"
+      ],
+      "limits": "Para deck final, encadear com Slides Creator; para conversão, com Copy.",
+      "generic_prompt": "Leia squads/storytelling/config.yaml e squads/storytelling/agents/blake-snyder.md. Construa arco narrativo, tensão e emoção antes de qualquer deck."
+    },
+    {
+      "id": "slides-creator",
+      "title": "Slides Creator",
+      "aliases": [
+        "slides",
+        "deck",
+        "apresentação",
+        "pitch deck"
+      ],
+      "lesson": "aulas/17-slides-creator.md",
+      "squad_path": "squads/slides-creator",
+      "skill": "slides-creator",
+      "entry_agent": "slide-chief",
+      "entry_agent_path": "squads/slides-creator/agents/slide-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "criar apresentação",
+        "deck com slides",
+        "speaker notes",
+        "slides",
+        "deck"
+      ],
+      "anti_signals": [
+        "arco narrativo",
+        "ainda não quero produzir deck",
+        "primeiro preciso definir arco"
+      ],
+      "inputs": [
+        "briefing e público",
+        "conteúdo ou fontes",
+        "formato, duração e contexto"
+      ],
+      "deliverable": "deck com narrativa, especificação visual, notas e QA",
+      "evidence": [
+        "mapa slide a slide",
+        "notas",
+        "revisão narrativa e visual"
+      ],
+      "limits": "A renderização final depende das ferramentas disponíveis.",
+      "generic_prompt": "Leia squads/slides-creator/config.yaml e squads/slides-creator/agents/slide-chief.md. Produza deck, slides, speaker notes e QA de apresentação."
+    },
+    {
+      "id": "conteudo",
+      "title": "Conteúdo",
+      "aliases": [
+        "Instagram",
+        "carrossel",
+        "Reels",
+        "Stories",
+        "calendário editorial"
+      ],
+      "lesson": "aulas/18-conteudo.md",
+      "squad_path": "squads/conteudo",
+      "skill": "conteudo",
+      "entry_agent": "content-chief",
+      "entry_agent_path": "squads/conteudo/agents/content-chief.md",
+      "maturity": "study",
+      "signals": [
+        "conteúdo para Instagram",
+        "carrossel",
+        "Reels",
+        "Stories",
+        "calendário de conteúdo",
+        "campanha social"
+      ],
+      "anti_signals": [
+        "funil de vendas completo",
+        "branding estratégico",
+        "landing page isolada"
+      ],
+      "inputs": [
+        "objetivo e público",
+        "pilares e oferta",
+        "canais, cadência e referências"
+      ],
+      "deliverable": "campanha ou calendário de conteúdo social com peças especificadas",
+      "evidence": [
+        "pauta",
+        "peças ou roteiros",
+        "coerência com objetivo e canal"
+      ],
+      "limits": "Material classificado como study; publicação externa exige autorização.",
+      "generic_prompt": "Leia squads/conteudo/config.yaml e squads/conteudo/agents/content-chief.md. Planeje e produza conteúdo com calendário, canais e critérios editoriais."
+    },
+    {
+      "id": "copy",
+      "title": "Copy",
+      "aliases": [
+        "copywriting",
+        "landing page",
+        "VSL",
+        "e-mail de vendas"
+      ],
+      "lesson": "aulas/19-copy.md",
+      "squad_path": "squads/copy",
+      "skill": "copy",
+      "entry_agent": "copy-chief",
+      "entry_agent_path": "squads/copy/agents/copy-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "texto de conversão",
+        "landing page",
+        "VSL",
+        "e-mail de vendas",
+        "script persuasivo",
+        "copywriting"
+      ],
+      "anti_signals": [
+        "negociação ao vivo",
+        "funil comercial completo",
+        "estratégia de marca inteira"
+      ],
+      "inputs": [
+        "oferta e público",
+        "estágio de consciência",
+        "prova, objeções e ação"
+      ],
+      "deliverable": "peça de copy alinhada ao estágio e objetivo de conversão",
+      "evidence": [
+        "estrutura persuasiva",
+        "claims sustentados",
+        "checklist de clareza e conversão"
+      ],
+      "limits": "Não inventar provas, dados, depoimentos ou garantias.",
+      "generic_prompt": "Leia squads/copy/config.yaml e squads/copy/agents/copy-chief.md. Escreva copy com promessa, prova e CTA mensuráveis."
+    },
+    {
+      "id": "sales",
+      "title": "Sales",
+      "aliases": [
+        "vendas",
+        "prospecção",
+        "qualificação",
+        "negociação",
+        "fechamento"
+      ],
+      "lesson": "aulas/20-sales.md",
+      "squad_path": "squads/sales",
+      "skill": "sales",
+      "entry_agent": "sales-chief",
+      "entry_agent_path": "squads/sales/agents/sales-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "funil de vendas",
+        "prospecção",
+        "qualificação",
+        "negociação",
+        "fechamento",
+        "processo comercial"
+      ],
+      "anti_signals": [
+        "apenas landing page",
+        "apenas escrever e-mail",
+        "desenhar oferta Hormozi completa"
+      ],
+      "inputs": [
+        "oferta e ICP",
+        "etapa do funil",
+        "processo, métricas e objeções"
+      ],
+      "deliverable": "diagnóstico e sistema comercial da prospecção ao fechamento",
+      "evidence": [
+        "pipeline",
+        "scripts ou playbooks",
+        "métricas e critérios de avanço"
+      ],
+      "limits": "Comunicação real com leads exige autorização e ferramentas externas.",
+      "generic_prompt": "Leia squads/sales/config.yaml e squads/sales/agents/sales-chief.md. Estruture funil, conversas e ativos de vendas com critérios de avanço."
+    },
+    {
+      "id": "hormozi",
+      "title": "Hormozi",
+      "aliases": [
+        "Grand Slam Offer",
+        "$100M Offers",
+        "$100M Leads",
+        "money models"
+      ],
+      "lesson": "aulas/21-hormozi.md",
+      "squad_path": "squads/hormozi",
+      "skill": "hormozi",
+      "entry_agent": "hormozi-chief",
+      "entry_agent_path": "squads/hormozi/agents/hormozi-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "Grand Slam Offer",
+        "$100M",
+        "oferta Hormozi",
+        "sistema de leads",
+        "money model",
+        "escala comercial",
+        "grand slam offer",
+        "value equation",
+        "Hormozi"
+      ],
+      "anti_signals": [
+        "branding institucional",
+        "pesquisa técnica",
+        "apenas fechar uma venda"
+      ],
+      "inputs": [
+        "mercado e avatar",
+        "oferta atual",
+        "economia, leads e restrições"
+      ],
+      "deliverable": "oferta e sistema de aquisição ou monetização segundo os frameworks Hormozi",
+      "evidence": [
+        "value equation",
+        "estrutura da oferta",
+        "hipóteses e números explícitos"
+      ],
+      "limits": "Não tratar frameworks como garantia de resultado nem inventar unit economics.",
+      "generic_prompt": "Leia squads/hormozi/config.yaml e squads/hormozi/agents/hormozi-chief.md. Monte oferta, value equation e money model no estilo Hormozi com testes."
+    },
+    {
+      "id": "skill-creator-ops",
+      "title": "Skill Creator Ops",
+      "aliases": [
+        "governança de skills",
+        "ciclo de vida de skills",
+        "skill ops"
+      ],
+      "lesson": "aulas/22-skill-creator-ops.md",
+      "squad_path": "squads/skill-creator-ops",
+      "skill": "skill-creator-ops",
+      "entry_agent": "skill-ops-chief",
+      "entry_agent_path": "squads/skill-creator-ops/agents/skill-ops-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "governar várias skills",
+        "ciclo de vida de skills",
+        "migrar skills",
+        "depreciar skills",
+        "empacotar e testar skills"
+      ],
+      "anti_signals": [
+        "criar uma skill simples",
+        "criar squad multi-agente",
+        "implementar feature"
+      ],
+      "inputs": [
+        "inventário de skills",
+        "padrões e runtimes",
+        "problema de lifecycle"
+      ],
+      "deliverable": "processo governado para criar, validar, migrar, publicar ou retirar skills",
+      "evidence": [
+        "inventário",
+        "gates",
+        "decisão de lifecycle"
+      ],
+      "limits": "Para uma única skill simples, preferir a skill `skill-creator`.",
+      "generic_prompt": "Leia squads/skill-creator-ops/config.yaml e squads/skill-creator-ops/agents/skill-ops-chief.md. Crie ou governe skills com estrutura, validação e distribuição."
+    },
+    {
+      "id": "squad-creator",
+      "title": "Squad Creator",
+      "aliases": [
+        "criar squad",
+        "scaffold de squad",
+        "squad chief"
+      ],
+      "lesson": "aulas/23-squad-creator.md",
+      "squad_path": "squads/squad-creator",
+      "skill": "squad-creator",
+      "entry_agent": "squad-chief",
+      "entry_agent_path": "squads/squad-creator/agents/squad-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "criar squad",
+        "agentes tasks e workflows",
+        "scaffold canônico",
+        "validar squad",
+        "nova capacidade multi-agente",
+        "criar um squad",
+        "squad novo",
+        "canônico",
+        "validação"
+      ],
+      "anti_signals": [
+        "criar apenas uma skill",
+        "prior art já resolve",
+        "clonar expertise profunda"
+      ],
+      "inputs": [
+        "problema e usuários",
+        "entregáveis",
+        "papéis, fluxo e gates"
+      ],
+      "deliverable": "squad canônico com agentes, tasks, workflows e validação",
+      "evidence": [
+        "estrutura válida",
+        "referências resolvidas",
+        "smoke test"
+      ],
+      "limits": "Aplicar REUSE antes de criar; usar Pro apenas quando a complexidade justificar.",
+      "generic_prompt": "Leia squads/squad-creator/config.yaml e squads/squad-creator/agents/squad-chief.md. Crie um squad canônico com agentes, tasks, workflows e validação."
+    },
+    {
+      "id": "squad-creator-pro",
+      "title": "Squad Creator Pro",
+      "aliases": [
+        "clonagem mental",
+        "DNA de especialista",
+        "model routing",
+        "squad avançado"
+      ],
+      "lesson": "aulas/24-squad-creator-pro.md",
+      "squad_path": "squads/squad-creator-pro",
+      "skill": "squad-creator-pro",
+      "entry_agent": "squad-chief",
+      "entry_agent_path": "squads/squad-creator-pro/agents/squad-chief.md",
+      "maturity": "partial",
+      "signals": [
+        "clonagem mental",
+        "extrair DNA de especialista",
+        "model routing",
+        "gates avançados",
+        "squad com mentes"
+      ],
+      "anti_signals": [
+        "scaffold simples",
+        "criar uma skill",
+        "squad comum sem especialização profunda"
+      ],
+      "inputs": [
+        "fontes da expertise",
+        "capacidade desejada",
+        "modelos, riscos e gates"
+      ],
+      "deliverable": "squad avançado com expertise extraída, routing e validações profundas",
+      "evidence": [
+        "proveniência da expertise",
+        "testes adversariais",
+        "routing e gates aprovados"
+      ],
+      "limits": "Começar pelo Squad Creator canônico; a rota Pro custa mais contexto e validação.",
+      "generic_prompt": "Leia squads/squad-creator-pro/config.yaml e squads/squad-creator-pro/agents/squad-chief.md. Use a rota avançada somente após justificar expertise, DNA, model routing e gates adicionais."
+    }
+  ]
+}

@@ -14,7 +14,7 @@ journal:
   created_at: "{YYYY-MM-DD}"
   status: ACTIVE  # ACTIVE | CONSOLIDATING | CONSOLIDATED | ANALYZED
 
-# SINKRA v1.2 — Lifecycle Triggers
+# AIOX v1.2 — Lifecycle Triggers
 triggers:
   on_birth:
     executor: Worker

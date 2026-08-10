@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: upgrade-squad-gap
   task_name: Upgrade Squad - Gap Analysis
   status: pending
@@ -24,11 +24,11 @@ sinkra_task_metadata:
   accountability_scope: review_only
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Strategic
   atomic_layer: Atom
   executor: Agent
@@ -36,7 +36,7 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Task: Upgrade Squad - Gap Analysis
@@ -79,7 +79,7 @@ Executar a análise estrutural do base e produzir um relatório dual-track:
 ### Step 2: Adicionar gaps qualitativos do pack
 
 - Verificar `voice_dna`, `output_examples`, `anti_patterns`, `handoff_to` e assets de routing quando houver agents especializados.
-- Verificar `workspace_integration`, `journey_log`, `artifact_contracts` e `model-routing` quando o target exigir governança avançada.
+- Verificar `local project docs`, `journey_log`, `artifact_contracts` e `model-routing` quando o target exigir governança avançada.
 - Classificar cada item como `structural`, `qualitative-manual` ou `qualitative-research`.
 
 ## Output

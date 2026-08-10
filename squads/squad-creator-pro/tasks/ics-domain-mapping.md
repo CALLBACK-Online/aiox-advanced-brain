@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: ics-domain-mapping
   task_name: ICS Phase 2 — Domain Mapping
   status: pending
@@ -20,17 +20,17 @@ sinkra_task_metadata:
   - config_extract disponivel com read_paths e write_paths
   - primary_entity identificada a partir do config_extract
   - session_schema definido com campos required e optional
-  - Dominio mapeado e consistente com workspace_integration do config.yaml
+  - Dominio mapeado e consistente com local project docs do config.yaml
   output_persistence: transient_output
   accountable_id: Human:Squad_Operator
   accountability_scope: review_only
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Operational
   atomic_layer: Atom
   executor: Agent
@@ -38,7 +38,7 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Task: ICS Phase 2 — Domain Mapping
@@ -80,7 +80,7 @@ sinkra_contract:
 
 | Parameter | Type | Required | Source | Validation |
 |-----------|------|----------|--------|------------|
-| `config_extract` | object | Yes | ics-audit output | Contem workspace_integration fields |
+| `config_extract` | object | Yes | ics-audit output | Contem local project docs fields |
 | `scripts_inventory` | object | Yes | ics-audit output | Classifica scripts existentes |
 
 ---
@@ -101,9 +101,8 @@ Derivar do config_extract:
 ```yaml
 domain_mapping:
   primary_entity: "{business|product|sop|campaign|design_system|...}"
-  read_paths: "{do config.yaml workspace_integration.read_paths}"
-  write_paths: "{do config.yaml workspace_integration.write_paths}"
-  readiness_context_type: "{do config.yaml}"
+  read_paths: "{do config.yaml local project docs.read_paths}"
+  write_paths: "{do config.yaml local project docs.write_paths}"
 ```
 
 ### Step 2.2: Definir Session Schema
@@ -140,7 +139,6 @@ domain_mapping:
   primary_entity: "{entity}"
   read_paths: []
   write_paths: []
-  readiness_context_type: ""
   session_schema:
     required: ["business_slug"]
     optional: []
@@ -152,7 +150,7 @@ domain_mapping:
 
 - [ ] primary_entity identificada a partir do config_extract
 - [ ] session_schema definido com campos required e optional
-- [ ] Dominio mapeado e consistente com workspace_integration do config.yaml
+- [ ] Dominio mapeado e consistente com local project docs do config.yaml
 
 ---
 

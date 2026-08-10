@@ -15,7 +15,7 @@
  * Design principles:
  * - Preserves 100% semantic content (no instructions dropped)
  * - Converts YAML key-value persona to natural language prose
- * - Moves metadata to config.yaml sinkra_extensions (not deleted)
+ * - Moves metadata to config.yaml aiox_extensions (not deleted)
  * - Dual-format period: 180 days of WARNING (not ERROR) for legacy
  */
 
@@ -160,7 +160,7 @@ function migrateTask(content) {
     context ? `context: ${context}` : null,
   ].filter(Boolean).join('\n');
 
-  const migrationNote = `\n<!-- MIGRATED TO CC FORMAT by migrate-to-cc-format.js — ${new Date().toISOString()} -->\n<!-- NOTE: owner/responsavel removed (SINKRA AD-3). Set executor in workflow steps[].agent -->\n`;
+  const migrationNote = `\n<!-- MIGRATED TO CC FORMAT by migrate-to-cc-format.js — ${new Date().toISOString()} -->\n<!-- NOTE: owner/responsavel removed (AIOX AD-3). Set executor in workflow steps[].agent -->\n`;
 
   return `---\n${ccFm}\n---\n${migrationNote}\n${body}`;
 }

@@ -6,7 +6,7 @@
  *
  * Dimension 2 — Quality (30pts):
  *   - token_compliance: no hardcoded colors/sizes (10pts)
- *   - import_compliance: imports from @sinkra/ds-core only (10pts)
+ *   - import_compliance: imports from @aiox/ds-core only (10pts)
  *   - a11y_basic: has aria-label or role or semantic HTML (10pts) — BLOCKER if 0
  *
  * Dimension 3 — Consistency (20pts):
@@ -74,7 +74,7 @@ const report = {
 
 // Save to critical-eye-report for the business
 const ROOT = path.resolve(__dirname, '..', '..', '..', '..')
-const reportPath = path.join(ROOT, 'workspace', 'businesses', bu, 'L2-tactical', 'design', 'critical-eye-ui-report.yaml')
+const reportPath = path.join(ROOT, 'docs', 'project', 'businesses', bu, 'tactical', 'design', 'critical-eye-ui-report.yaml')
 const reportDir = path.dirname(reportPath)
 if (fs.existsSync(reportDir)) {
   const yaml = `# Critical Eye UI Report — ${bu}\n# Generated: ${report.generated_at}\ngate: ${report.gate}\nscore: ${pct}%\ndetails:\n  quality: ${qualityScore}/30\n  consistency: ${consistencyScore}/20\n  a11y_blocker: ${report.a11y_blocker}\n`

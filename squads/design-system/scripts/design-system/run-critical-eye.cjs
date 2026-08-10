@@ -27,7 +27,7 @@ const ROOT = path.resolve(__dirname, '..', '..', '..', '..');
 const PASS_THRESHOLD = 80;
 const WARNING_THRESHOLD = 70;
 
-// Expected components based on @sinkra/ds-core registry
+// Expected components based on @aiox/ds-core registry
 // (14 atoms + 8 molecules + 8 organisms = 30 minimum, 46 full catalog)
 const EXPECTED_COMPONENT_COUNT = 46;
 
@@ -120,7 +120,7 @@ function scoreQuality(components) {
 
 /**
  * Consistency (20 pts):
- *   - import_path uses @sinkra/ds-core (10 pts)
+ *   - import_path uses @aiox/ds-core (10 pts)
  *   - naming pattern: PascalCase component names (5 pts)
  *   - has related_components field (5 pts)
  */
@@ -128,12 +128,12 @@ function scoreConsistency(components) {
   const total = components.length;
   if (total === 0) return { score: 0, max: 20, notes: 'No components' };
 
-  // Import path check — @sinkra/ds-core is canonical, @/components/ui/ is acceptable
+  // Import path check — @aiox/ds-core is canonical, @/components/ui/ is acceptable
   // (local alias before package migration)
   const withCorrectImport = components.filter((c) => {
     if (!c.import_path) return false;
     return (
-      c.import_path.startsWith('@sinkra/ds-core') ||
+      c.import_path.startsWith('@aiox/ds-core') ||
       c.import_path.startsWith('@/components/ui/')
     );
   });
@@ -300,19 +300,19 @@ function main() {
   }
 
   // Validate business directory exists
-  const businessDir = path.join(ROOT, 'workspace', 'businesses', args.bu);
+  const businessDir = path.join(ROOT, 'docs', 'project', 'businesses', args.bu);
   if (!fs.existsSync(businessDir)) {
-    fail(`Business directory not found: workspace/businesses/${args.bu}`);
+    fail(`Business directory not found: docs/${args.bu}`);
   }
 
-  const designDir = path.join(businessDir, 'L2-tactical', 'design');
+  const designDir = path.join(businessDir, 'tactical', 'design');
   const componentIndexPath = path.join(designDir, 'component-index.json');
 
   // Load component-index.json
   const index = readJson(componentIndexPath);
   if (!index || !Array.isArray(index.components)) {
     fail(
-      `component-index.json missing or invalid at workspace/businesses/${args.bu}/L2-tactical/design/component-index.json`,
+      `component-index.json missing or invalid at docs/${args.bu}/tactical/design/component-index.json`,
       1
     );
   }

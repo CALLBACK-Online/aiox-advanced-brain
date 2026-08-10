@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: squad-creator-passo-a-passo
 lesson_position: 34
 title: 'Squad Creator passo a passo: criar um squad do zero'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/34-squad-creator-passo-a-passo/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

@@ -1,8 +1,8 @@
 # Task: Distill Governing Thought
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Strategic -->
+<!-- AIOX Domain: Strategic -->
 
 ## Metadata
 | Campo | Valor |
@@ -14,7 +14,7 @@
 | session | SESSION-NARR |
 | duration | 5-15 min |
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml

@@ -1,6 +1,6 @@
 # ETL Enrich
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 executor: etl-transformer
@@ -56,7 +56,7 @@ Transform raw transcription output (unstructured text from speech-to-text) into 
   "output_file": "/path/to/enriched_output.md",
   "constraints": {
     "business_slug": "acme",
-    "workspace_mode": "auto"
+    "context_mode": "auto"
   }
 }
 ```
@@ -85,12 +85,11 @@ Transform raw transcription output (unstructured text from speech-to-text) into 
 
 ## Execution Flow
 
-### Phase 0: Workspace preflight
+### Phase 0: Project preflight
 
-- Run `bash squads/etl-ops/scripts/validate-etl-essentials.sh`
-- Load `tasks/load-workspace-context.md`
+- Load `tasks/load-project context.md`
 - Resolve output root:
-  - canonical: `workspace/businesses/{business_slug}/etl/enriched/`
+  - canonical: `docs/etl/enriched/`
   - custom: `docs/etl/{business_slug}/`
   - legacy: caller-provided output path
 
@@ -151,8 +150,8 @@ speaker: "{metadata.speaker}"
 3. Write to output_file
 4. Calculate fidelity metrics
 
-When `workspace_mode=auto|canonical` and `business_slug` exists:
-- prefer `output_file = workspace/businesses/{business_slug}/etl/enriched/{name}.md`
+When `context_mode=auto|canonical` and `business_slug` exists:
+- prefer `output_file = docs/etl/enriched/{name}.md`
 
 ## Fidelity Rules
 

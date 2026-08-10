@@ -116,13 +116,13 @@ States generated: 3 sections x 3 states = 9 state components
 - `squads/design-system/data/anti-ai-look-patterns.md` — Pattern 9: Missing States
 - `squads/design/checklists/page-composition-checklist.md` — Quality gate
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - compose_component_states_artifact

@@ -6,7 +6,7 @@
 **Owner:** Conduit (project-integrator)
 **Purpose:** Optimize Claude Code workflow for maximum productivity by analyzing usage patterns, identifying bottlenecks, and configuring permissions, context, shortcuts, and automation against the current runtime contract.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: optimize-workflow
 atomic_layer: Atom
@@ -108,7 +108,7 @@ Completion Criteria:
 
 Examine current configuration to infer usage patterns:
 
-0. **Session usage baseline**: run `scripts/session-usage-report.py` for the target project or workspace and ingest:
+0. **Session usage baseline**: run `scripts/session-usage-report.py` for the target project or local_docs and ingest:
    - `summary` for macro signals (errors, branches, task-agent adoption, research profile)
    - `facets` + `narrative` for dominant workflow patterns
    - `recommendations.global` + `recommendations.by_project` as the first-pass optimization backlog

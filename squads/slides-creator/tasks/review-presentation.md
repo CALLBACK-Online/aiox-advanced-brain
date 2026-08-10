@@ -1,10 +1,10 @@
 # Review Presentation
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Operational -->
+<!-- AIOX Domain: Operational -->
 
-## SINKRA Task Anatomy (8 sections — migrated 2026-04-20 Wave 2)
+## AIOX Task Anatomy (8 sections — migrated 2026-04-20 Wave 2)
 
 ```yaml
 task: reviewPresentation
@@ -35,7 +35,6 @@ Error_handling:
   strategy: changes_requested_returns_to_dimension_router
   on_dimension_router_invocation: route_to_P01_or_P03
   max_iterations: 2
-  escalation: "STK-10 co-sign if brand override; C-Level if 2 loops fail"
 ```
 
 ## Legacy Task Anatomy

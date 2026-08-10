@@ -11,8 +11,8 @@ Decision: Option A — dual convention by layer
 - `brandbook/pages` is a composition layer: Tailwind is preferred for layout, but inline `var()` is acceptable when a page is explicitly demonstrating token behavior or composing existing brandbook primitives.
 
 ## Approval
-- Owner basis: `workspace/businesses/{business}/design-system/config.yaml` declares the DS at BU level for the active business.
-- Business owner basis: `workspace/businesses/{business}/L0-identity/company-dna.yaml` and related identity artifacts define the local ownership context.
+- Owner basis: `docs/design-system/config.yaml` declares the DS at BU level for the active business.
+- Business owner basis: `docs/identity/company-dna.yaml` and related identity artifacts define the local ownership context.
 - Approval record: this convention was finalized on `2026-03-16` after explicit execution request in-session via `*route executar ds-token-consumption-convention`.
 
 ## Source Of Truth

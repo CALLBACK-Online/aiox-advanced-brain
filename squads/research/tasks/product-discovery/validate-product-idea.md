@@ -11,7 +11,7 @@ type: molecule
 description: "Composed product-validation pipeline with 4 atoms (JTBD → Mom Test → Villain → WTP Smoke Test) and a composite GO/NO-GO decision gate."
 ```
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 

@@ -1,0 +1,389 @@
+version: 1
+schema_version: image-type-template.v1
+source_attribution:
+  origin: ppt-master
+  origin_repo: https://github.com/hugohe3/ppt-master
+  origin_commit_sha: "3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af"
+  license: MIT
+  absorbed_at: "2026-05-19"
+  scope: taxonomy-only (no SVG/code copy)
+  attribution_doc: skills/slide-creator/ATTRIBUTION.md
+
+types:
+  - id: background
+    label: "Background"
+    description: "Atmospheric backdrop with no central subject. The image's job is to set tone and provide a calm field for SVG text overlay. The most common type for PPT covers, chapter dividers, and breathing pages."
+    use_cases:
+      - ppt_covers
+      - chapter_dividers
+      - breathing_pages
+    components:
+      - atmospheric_gradients
+      - subtle_pattern
+      - corner_or_edge_geometric_anchor
+      - calm_center_60_pct_for_svg_overlay
+    composition_principles:
+      - no_dominant_subject
+      - center_60_to_70_pct_must_be_calm
+      - anchor_in_corner_or_along_edge_never_centered
+    contrast_with:
+      hero: "hero has dominant figure, background has none"
+      infographic: "infographic has labeled zones, background has none"
+    text_policy_default: none
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-type-templates/background.md"
+
+  - id: comparison
+    label: "Comparison"
+    description: "Split composition showing two opposing sides — left vs right, before vs after, A vs B, traditional vs new. Used for pros/cons pages, mindset-shift narratives, option evaluations, transformation stories."
+    use_cases:
+      - pros_cons_pages
+      - mindset_shift_narratives
+      - option_evaluations
+      - transformation_stories
+    components:
+      - left_half_or_top_half_state_a
+      - right_half_or_bottom_half_state_b
+      - explicit_divider
+      - parallel_iconography_per_side
+    sub_structures:
+      - horizontal_split
+      - vertical_split
+    composition_principles:
+      - two_symmetric_or_near_symmetric_halves
+      - clear_divider_required
+      - parallel_elements_per_side
+    contrast_with:
+      matrix: "matrix splits both horizontally AND vertically (4 zones), comparison only one axis"
+      flowchart: "flowchart has sequence, comparison has duality"
+    text_policy_default: none
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-type-templates/comparison.md"
+
+  - id: cycle
+    label: "Cycle"
+    description: "A closed-loop process — 3-6 steps arranged in a circle (or rounded loop), connected by directional arrows that return the flow to its starting point. The structural backbone for PDCA, growth flywheel, design-thinking cycle, continuous-improvement loops, lifecycle diagrams."
+    use_cases:
+      - pdca
+      - growth_flywheel
+      - design_thinking_cycle
+      - continuous_improvement
+      - lifecycle_diagrams
+    components:
+      - 3_to_6_step_nodes_on_circular_perimeter
+      - directional_arrows_connecting_each_node
+      - closing_arrow_back_to_first_node
+    composition_principles:
+      - closed_circular_flow_no_terminal_end
+      - directional_motion_around_perimeter
+      - visually_consistent_step_nodes
+    contrast_with:
+      flowchart: "flowchart is linear/one-way, cycle has no terminal end"
+      framework: "framework has centered hub with passive satellites, cycle has motion around perimeter"
+    text_policy_default: none
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-type-templates/cycle.md"
+
+  - id: flowchart
+    label: "Flowchart"
+    description: "Sequential blocks connected by arrows, showing process / workflow / pipeline. Used for how-it-works visuals, onboarding steps, pipeline diagrams, sequential methodologies."
+    use_cases:
+      - how_it_works_visuals
+      - onboarding_steps
+      - pipeline_diagrams
+      - sequential_methodologies
+    components:
+      - 3_to_6_stage_blocks
+      - explicit_connectors_arrows_or_lines_with_arrowheads
+      - visually_consistent_stages
+      - uniform_connector_stroke_weight
+    sub_structures:
+      - horizontal_flow_most_common
+      - vertical_flow
+      - looping_cyclical
+    composition_principles:
+      - direction_unambiguous
+      - generous_negative_space_around_flow
+      - parallel_iconic_symbols_per_stage
+    contrast_with:
+      infographic: "infographic has parallel zones, flowchart has direction"
+      framework: "framework has hub + satellites, flowchart has sequence"
+    text_policy_default: none
+    text_policy_variants:
+      - {policy: none, treatment: "Each stage contains iconic symbol only; labels added in SVG overlay"}
+      - {policy: embedded, treatment: "Each stage may contain short English keyword (≤2 words)"}
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-type-templates/flowchart.md"
+
+  - id: framework
+    label: "Framework"
+    description: "A central concept surrounded by related sub-concepts, or a multi-component system shown as a relational structure. Used when the image's job is to make a methodology, model, or architecture legible at a glance."
+    use_cases:
+      - methodology_diagrams
+      - mental_models
+      - architecture_overviews
+      - relational_structures
+    components:
+      - central_geometric_anchor
+      - 3_to_6_satellite_nodes
+      - thin_uniform_connecting_lines
+    sub_structures:
+      - hub_and_spokes_most_common
+      - labeled_matrix
+      - layered_stack
+    composition_principles:
+      - one_central_element_radiating_satellites
+      - visually_consistent_satellite_nodes
+      - generous_radial_breathing_room
+      - symmetric_or_deliberate_asymmetric_weighting
+    contrast_with:
+      cycle: "cycle has directional motion, framework has passive satellites"
+      flowchart: "flowchart has sequence, framework has relational structure"
+    text_policy_default: none
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-type-templates/framework.md"
+
+  - id: funnel
+    label: "Funnel"
+    description: "A top-wide, bottom-narrow stack of horizontal bands representing successive conversion stages. Each band narrower than the one above, suggesting attrition/filtering as the process progresses. The standard structural backbone for marketing funnels, sales pipelines, hiring funnels, customer-journey conversion."
+    use_cases:
+      - marketing_funnels
+      - sales_pipelines
+      - hiring_funnels
+      - customer_journey_conversion
+    components:
+      - 3_to_6_horizontal_bands
+      - each_band_narrower_than_one_above
+      - top_widest_bottom_narrowest
+      - optional_conversion_rate_markers
+    composition_principles:
+      - converging_downward_filtering
+      - visual_weight_shrinks_as_you_descend
+      - never_narrows_upward
+    contrast_with:
+      pyramid: "pyramid narrows upward for hierarchy/value, funnel narrows downward for filtering"
+    text_policy_default: none
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-type-templates/funnel.md"
+
+  - id: hero
+    label: "Hero"
+    description: "Single dominant subject occupying 60-70% of the canvas. The hero image anchors a slide — it's what the page is about visually. Used for product reveals, concept introductions, chapter title visuals, brand statement pages."
+    use_cases:
+      - product_reveals
+      - concept_introductions
+      - chapter_title_visuals
+      - brand_statement_pages
+    components:
+      - dominant_subject_60_to_70_pct_of_canvas
+      - minimal_supporting_context_under_30_pct
+      - generous_padding_on_open_side_at_least_15_pct
+    composition_principles:
+      - one_confident_dominant_subject
+      - positioned_with_intent_centered_or_rule_of_thirds
+      - subject_visual_weight_clearly_dominant
+      - no_second_place_competing_subject
+    contrast_with:
+      background: "background has no subject, hero is all about the subject"
+      infographic: "infographic has multiple labeled zones, hero is singular focal subject"
+      portrait: "portrait is specifically human face/upper body, hero allows any singular subject"
+    text_policy_default: none
+    text_policy_variants:
+      - {policy: none, treatment: "Hero subject is the visual; title/label from SVG overlay"}
+      - {policy: embedded, treatment: "Hero subject includes text — product name on packaging, hand-lettered word, etc"}
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-type-templates/hero.md"
+
+  - id: infographic
+    label: "Infographic"
+    description: "2-5 ordered zones, each with an icon and minimal label/keyword. Used for data summaries, KPI rundowns, step lists, feature highlights, value propositions presented visually. Used as a local block — the AI image is a small information panel embedded in a slide."
+    use_cases:
+      - data_summaries
+      - kpi_rundowns
+      - step_lists
+      - feature_highlights
+      - value_propositions
+    components:
+      - 2_to_5_zones
+      - icon_per_zone
+      - minimal_label_or_keyword_per_zone
+    sub_structures:
+      - grid_2x2_or_3x1_most_common
+      - radial_4_to_5_zones_around_small_center_anchor
+    composition_principles:
+      - parallel_zones_without_strict_ordering
+      - no_directional_flow
+      - visually_consistent_zone_treatment
+    contrast_with:
+      framework: "framework has hub + radiating satellites, infographic has parallel zones"
+      flowchart: "flowchart has sequence with arrows, infographic has no directional flow"
+    text_policy_default: none
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-type-templates/infographic.md"
+
+  - id: map
+    label: "Map"
+    description: "A stylized geographic outline (country / region / continent / world) with annotated markers — pins, dots, highlighted regions, connection lines. Used for office locations, market presence, regional data distribution, supply-chain routes, expansion roadmaps, go-to-market geographies."
+    use_cases:
+      - office_locations
+      - market_presence
+      - regional_data_distribution
+      - supply_chain_routes
+      - expansion_roadmaps
+      - go_to_market_geographies
+    components:
+      - stylized_landmass_outline
+      - location_markers_pins_or_dots
+      - optional_highlighted_regions
+      - optional_connection_lines
+    composition_principles:
+      - schematic_geographic_visualization_not_photorealistic
+      - simplified_outlines_minimal_cartographic_detail
+      - deliberate_marker_placement
+    contrast_with:
+      infographic: "infographic has abstract data zones, map has real geographic shape"
+    text_policy_default: none
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-type-templates/map.md"
+
+  - id: matrix
+    label: "Matrix"
+    description: "A 2×2 quadrant grid (occasionally 3×3) where each cell carries its own label, color, or icon. The structural backbone of consulting frameworks — SWOT, BCG, Eisenhower, Ansoff, Porter's, Risk/Reward. Used wherever two orthogonal axes divide the page into discrete zones."
+    use_cases:
+      - swot
+      - bcg
+      - eisenhower
+      - ansoff
+      - porters
+      - risk_reward
+    components:
+      - perpendicular_axes_splitting_canvas
+      - 4_quadrants_2x2_or_9_cells_3x3
+      - icon_plus_label_per_cell
+      - optional_axis_labels
+    composition_principles:
+      - rigorously_divided_into_equal_quadrants
+      - meaning_lives_in_the_cells_no_center
+      - visually_consistent_cell_treatment
+    contrast_with:
+      framework: "framework has central hub + radiating satellites, matrix has no center"
+      comparison: "comparison splits one axis (2 zones), matrix splits two axes (4 zones)"
+    text_policy_default: none
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-type-templates/matrix.md"
+
+  - id: portrait
+    label: "Portrait"
+    description: "A single person headshot or upper-body shot — frontal or three-quarter turn, neutral or minimal background, the face as the visual anchor. Used for team pages, speaker bios, founder profiles, testimonial pages, about-us sections, executive introductions."
+    use_cases:
+      - team_pages
+      - speaker_bios
+      - founder_profiles
+      - testimonial_pages
+      - about_us_sections
+      - executive_introductions
+    components:
+      - single_person_face_forward_or_three_quarter
+      - neutral_or_minimal_background
+      - subject_occupies_50_to_65_pct_of_canvas_height
+      - centered_composition
+    composition_principles:
+      - face_as_visual_anchor
+      - environment_stripped_to_focus_on_person
+      - upper_body_or_headshot_only
+    contrast_with:
+      scene: "scene has atmospheric environment with narrative, portrait strips away context"
+      hero: "hero allows any singular subject, portrait is specifically human face/upper body"
+    text_policy_default: none
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-type-templates/portrait.md"
+
+  - id: pyramid
+    label: "Pyramid"
+    description: "A tiered triangular stack — bottom-wide, top-narrow — where each layer carries its own label/color/concept. The structural backbone for Maslow's hierarchy, food pyramids, capability stacks, value hierarchies, software-architecture layer diagrams."
+    use_cases:
+      - maslow_hierarchy
+      - food_pyramids
+      - capability_stacks
+      - value_hierarchies
+      - software_architecture_layer_diagrams
+    components:
+      - 3_to_6_horizontal_layers_stacked_vertically
+      - each_layer_narrower_than_one_below
+      - label_color_or_concept_per_layer
+    sub_structures:
+      - true_triangular_outline_sloping_sides
+      - stepped_right_angled_tiers
+    composition_principles:
+      - converging_upward_stacking_value
+      - foundation_supports_value_metaphor
+      - strictly_vertical_layered
+    contrast_with:
+      funnel: "funnel narrows downward for filtering, pyramid narrows upward for hierarchy/value"
+      framework: "framework has centered hub, pyramid is strictly vertical layered"
+    text_policy_default: none
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-type-templates/pyramid.md"
+
+  - id: scene
+    label: "Scene"
+    description: "Atmospheric environment with narrative — a moment, a place, a situation rendered as a small story. Used for case studies, brand storytelling, lifestyle pages, personal narrative slides."
+    use_cases:
+      - case_studies
+      - brand_storytelling
+      - lifestyle_pages
+      - personal_narrative_slides
+    components:
+      - three_layer_composition_foreground_middleground_background
+      - one_or_more_figures_in_environment
+      - environmental_elements_supporting_narrative
+    composition_principles:
+      - a_moment_in_a_place
+      - viewer_reads_scene_like_small_story
+      - atmospheric_perspective_creates_breathing_room
+      - background_paler_than_foreground
+    contrast_with:
+      hero: "hero is single dominant subject, scene has context and narrative"
+      background: "background has no subject, scene has inhabitants"
+    text_policy_default: none
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-type-templates/scene.md"
+
+  - id: timeline
+    label: "Timeline"
+    description: "Linear progression along a time axis — milestones, evolution, roadmap, history. Used for company history pages, product evolution, project roadmaps, era-by-era narratives."
+    use_cases:
+      - company_history_pages
+      - product_evolution
+      - project_roadmaps
+      - era_by_era_narratives
+    components:
+      - clear_axis_horizontal_or_vertical
+      - 3_to_6_milestone_markers
+      - iconic_element_per_milestone
+    sub_structures:
+      - horizontal_timeline_most_common
+      - vertical_timeline
+    composition_principles:
+      - clear_axis_with_milestones_positioned_along_it
+      - thin_uniform_axis_line
+      - visually_consistent_markers
+      - direction_unambiguous_left_to_right_or_top_to_bottom
+    contrast_with:
+      flowchart: "flowchart is process with arrows, timeline is about time positions"
+      framework: "framework is relational, timeline is sequential and chronological"
+    text_policy_default: none
+    text_policy_variants:
+      - {policy: none, treatment: "Each milestone has iconic symbol only; date labels and descriptions in SVG overlay"}
+      - {policy: embedded, treatment: "Each milestone may include short date (2020, Q1, v1.0) as part of artwork"}
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-type-templates/timeline.md"
+
+  - id: typography
+    label: "Typography"
+    description: "A large headline, number, or single word as the primary visual. The text itself is the image. Used for big-stat pages ($2.3M), slogan pages (MOVE FAST), chapter openers, hero quotes, signature numbers in consulting decks."
+    use_cases:
+      - big_stat_pages
+      - slogan_pages
+      - chapter_openers
+      - hero_quotes
+      - signature_numbers
+    components:
+      - large_text_40_to_60_pct_of_canvas_height
+      - minimal_supporting_visual_context_under_25_pct
+      - generous_padding_at_least_20_pct
+    composition_principles:
+      - text_itself_is_the_image
+      - centered_or_rule_of_thirds_positioned
+      - text_requires_text_policy_embedded
+    text_policy_default: embedded
+    text_policy_note: "typography REQUIRES text — it is the only image type where text is mandatory inside the image itself."
+    contrast_with:
+      hero: "hero may use text_policy:none with iconic subject, typography always requires text as the visual"
+    upstream_ref: "https://github.com/hugohe3/ppt-master/blob/3dab7baa30d9aab6bd8607f1ed06a3d1a5c4c9af/skills/ppt-master/references/image-type-templates/typography.md"

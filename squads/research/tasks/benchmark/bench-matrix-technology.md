@@ -1,6 +1,6 @@
 # Task: Bench Matrix — Technology
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

@@ -63,8 +63,6 @@ Estes scripts baixam material fonte (livros, newsletters, transcricoes) para ali
 |--------|-----------|-------------|-------------|
 | `etl-monitor.sh` | Dashboard minimalista do progresso das extrações RALPH-7D | Bash | Para acompanhar batch extractions |
 | `etl-monitor-render.py` | Renderizador aesthetic do monitor | Python3 | Para visualizar progresso |
-| `validate-squad-config.py` | Valida integridade do config.yaml vs filesystem | Python3, PyYAML | Apos adicionar novos componentes |
-| `validate-copy-essentials.sh` | Valida pre-requisitos do copy squad | Bash | Health check do squad |
 
 ---
 
@@ -75,11 +73,10 @@ Estes scripts ja existiam ou apoiam a operacao do copy squad.
 | Script | O que faz | Dependencias | Quando usar |
 |--------|-----------|-------------|-------------|
 | `generate-copy-greeting.cjs` | Gera greeting do copy-chief | Node.js, js-yaml | Ativacao do agent |
-| `load-context.cjs` | Carrega contexto do workspace | Node.js, js-yaml | Pre-load na ativacao |
-| `runtime-paths.cjs` | Resolve paths do workspace | Node.js | Utilitario |
+| `load-context.cjs` | Carrega contexto de docs/project | Node.js, js-yaml | Pre-load na ativacao |
+| `runtime-paths.cjs` | Resolve paths de docs/project | Node.js | Utilitario |
 | `set-active-context.cjs` | Define contexto ativo (business/product) | Node.js, js-yaml | Troca de contexto |
 | `show-context.cjs` | Mostra contexto carregado | Node.js, js-yaml | Debug |
-| `bootstrap-copy-workspace.sh` | Bootstrap inicial do workspace | Bash | Setup primeiro uso |
 
 ---
 

@@ -137,7 +137,7 @@ triage:
 duplicate-detection:
   trigger: "ONLY when user requests squad/agent creation, NOT on activation"
   on_squad_request:
-    - "1. Read squads/sinkra-squad/data/ecosystem-registry.yaml"
+    - "1. Read squads/aiox-squad/data/ecosystem-registry.yaml"
     - "2. Parse user request for domain keywords"
     - "3. Check domain_index for matches"
     - "4. If match found - WARN about existing squad, SHOW its details, ASK if user wants to extend or create new"
@@ -397,7 +397,7 @@ commands:
   - "*show-registry - Display squad registry (existing squads, patterns, gaps)"
   - "*squad-analytics - Detailed analytics dashboard (agents, tasks, workflows, templates, checklists per squad)"
   - "*refresh-registry - Scan squads/ and update registry (runs tasks/refresh-registry.md)"
-  - "*sync - Sync squad slash skills to .claude/skills/ (runs tasks/sync-ide-skills.md)"
+  - "*sync - Sync squad slash skills to skills/ (runs tasks/sync-ide-skills.md)"
   - "*show-context - Show what context files are loaded"
   - "*chat-mode - (Default) Conversational mode for squad guidance"
   - "*exit - Say goodbye and deactivate persona"
@@ -420,7 +420,7 @@ pre-execution-hooks:
   "*create-squad":
     - action: "check-registry"
       description: "Check if squad for this domain already exists"
-      file: "squads/sinkra-squad/data/ecosystem-registry.yaml"
+      file: "squads/aiox-squad/data/ecosystem-registry.yaml"
       on_match: "Show existing squad, ask user preference"
 
 quality_standards:
@@ -1817,6 +1817,6 @@ Registro explícito da superfície de tasks do `squad-creator-pro` para roteamen
 - tasks/validate-squad-quality.md
 - tasks/validate-squad-verdict.md
 - tasks/validate-squad.md
-- tasks/workspace-integration-hardening.md
+- tasks/local project docs-hardening.md
 
 <!-- ACTIVE_TASK_REGISTRY:END -->

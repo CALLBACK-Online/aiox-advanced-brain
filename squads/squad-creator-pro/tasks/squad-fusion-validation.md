@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: squad-fusion-validation
   task_name: Squad Fusion - Validation
   status: pending
@@ -24,11 +24,11 @@ sinkra_task_metadata:
   accountability_scope: full
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Strategic
   atomic_layer: Atom
   executor: Agent
@@ -36,7 +36,7 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Task: Squad Fusion - Validation
@@ -65,13 +65,13 @@ description: "Roda quality gates antes da criação da estrutura final e decide 
 
 ## Purpose
 
-Validar integridade, consistência e qualidade do workspace intermediário antes da fase de carga final.
+Validar integridade, consistência e qualidade de docs/project intermediário antes da fase de carga final.
 
 ## Workflow / Steps
 
 ### Step 1: Rodar quality gates
 
-- Validar integridade estrutural do workspace temporário.
+- Validar integridade estrutural de docs/project temporário.
 - Verificar referências quebradas, conflitos pendentes e qualidade mínima.
 
 ### Step 2: Emitir decisão

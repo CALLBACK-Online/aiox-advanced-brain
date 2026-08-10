@@ -37,12 +37,12 @@ consistency_checks:
     rationale: |
       Agents that generate output without domain context produce inconsistent,
       hallucinated, or generic results. A context gate ensures the required
-      workspace data is loaded before any generation task executes.
+      local_docs data is loaded before any generation task executes.
     implementation: |
       Add to the chief agent's rules/operational section:
 
       - "Context gate: Before any generation task, verify domain context is loaded
-         from workspace/businesses/{business}/{squad_namespace}/. If context is not
+         from docs/{squad_namespace}/. If context is not
          loaded, HALT and suggest the appropriate setup command. Generation without
          context produces inconsistent output."
 
@@ -130,5 +130,5 @@ reference_squads:
     note: "Context gates on chief, offers, pricing, scale. No separate mappings file."
   - squad: storytelling
     score: 3/5
-    note: "Mappings, edit-first, framework-first routing. No explicit context gate (workspace-first handles it)."
+    note: "Mappings, edit-first, framework-first routing. No explicit context gate (local handles it)."
 ```

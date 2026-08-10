@@ -32,7 +32,7 @@ triggers:
     description: "Consolidates the journey log when the artifact reaches a stable governed state."
   on_archive:
     executor: Hybrid
-    task: workspace-integration-hardening
+    task: local project docs-hardening
     event: archived
     auto: false
     requires_human_signoff: true

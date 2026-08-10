@@ -17,7 +17,7 @@ function parseArgs(argv) {
   const skillsDir =
     skillsDirFlag !== -1 && args[skillsDirFlag + 1]
       ? args[skillsDirFlag + 1]
-      : '.agents/skills';
+      : 'skills';
   if (squadFlag !== -1 && args[squadFlag + 1]) {
     return { squadName: args[squadFlag + 1], skillsDir };
   }

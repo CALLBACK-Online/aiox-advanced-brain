@@ -1,20 +1,20 @@
-# SINKRA Token Registry — slides-creator
-# GAP-001 closure — 9 canonical SINKRA families
+# AIOX Token Registry — slides-creator
+# GAP-001 closure — 9 canonical AIOX families
 # Version: 1.1.0
 # Generated: 2026-04-20 | Last upgrade: 2026-05-20 Wave W4-04
 
 schema_version: "1.1"
 name: slides-creator-token-registry
 owner_squad: slides-creator
-sinkra_framework: v3.2
+aiox_framework: v3.2
 
 # Wave W4-04 — Taxonomy reconciliation
-# The 9 canonical SINKRA families (tokens: section below) are the PRIMARY SOT.
+# The 9 canonical AIOX families (tokens: section below) are the PRIMARY SOT.
 # Additional top-level keys (process, task, executor, artifact, checkpoint, pattern,
 # decision, quality_gate, handoff) are SPECIALIZATIONS — task-specific aspects of
 # the canonical families. They do NOT compete; they refine.
 taxonomy_relationship:
-  primary: "tokens.{Family} — canonical 9 SINKRA families (Time/Capacity/Threshold/Priority/Permission/Taxonomy/Behavior/Accountability/Mode)"
+  primary: "tokens.{Family} — canonical 9 AIOX families (Time/Capacity/Threshold/Priority/Permission/Taxonomy/Behavior/Accountability/Mode)"
   specializations:
     process:      "Time × Mode — workflow phase contracts"
     task:         "Behavior × Accountability — task-level executor/output contracts"
@@ -220,13 +220,13 @@ checkpoint:
 # FAMILY 6: Pattern Tokens (pattern_library SC-* namespace)
 # ═══════════════════════════════════════════════════════════════════════
 pattern:
-  - { id: SC-TP-001, category: TaskPattern,       scope: "Standard task anatomy (8 SINKRA fields)" }
+  - { id: SC-TP-001, category: TaskPattern,       scope: "Standard task anatomy (8 AIOX fields)" }
   - { id: SC-EP-001, category: ExecutorPattern,   scope: "Human executor shape" }
   - { id: SC-EP-002, category: ExecutorPattern,   scope: "Agent executor shape" }
   - { id: SC-EP-003, category: ExecutorPattern,   scope: "Hybrid (Agent+Human) shape", status: deprecated, deprecated_at: "2026-05-20", replacement: "sequential Worker+Agent or single Agent (Mandamento 1)" }
   - { id: SC-EP-004, category: ExecutorPattern,   scope: "Worker executor shape" }
   - { id: SC-PP-001, category: ProcessPattern,    scope: "Narrative discipline pipeline (Pyramid+SCQA+APA)" }
-  - { id: SC-IP-001, category: IntegrationPattern, scope: "Brand config integration from workspace/L2-tactical/brand/" }
+  - { id: SC-IP-001, category: IntegrationPattern, scope: "Brand config integration from docs/tactical/brand/" }
   - { id: SC-AP-001, category: AutomationPattern, scope: "Deterministic validator via Worker" }
   - { id: SC-DP-001, category: DocumentationPattern, scope: "SOP structure (brand-agnostic)" }
 
@@ -317,4 +317,4 @@ meta:
   total_token_values: 133+  # 2 process + 33 tasks + 4 executors + 15 artifacts + 4 checkpoints + 9 patterns + 30+ decisions + 6 quality_gates + 5 handoffs
   lifecycle_supported: [draft, validated, approved, superseded, archived]
   gap_closed: GAP-001
-  compatible_with: sinkra-v3.2
+  compatible_with: aiox-v3.2

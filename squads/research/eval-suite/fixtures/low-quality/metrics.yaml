@@ -1,4 +1,4 @@
-schema: sinkra.research-core.metrics.v1
+schema: aiox.research-core.metrics.v1
 runtime: research-core
 engine: mock
 started_at: "2026-05-19T15:41:06.005Z"

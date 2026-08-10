@@ -61,5 +61,5 @@ Raw files serve:
 
 - Heuristics ledger: `../design-heuristics-from-external-prompts.yaml`
 - Persona spec: `../claude-design-persona.yaml`
-- Skill: `.claude/skills/design-system/SKILL.md`
+- Skill: `skills/design-system/SKILL.md`
 - Rule: `squads/design-ops/rules/design-system-fidelity.md`

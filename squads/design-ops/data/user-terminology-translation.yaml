@@ -98,7 +98,7 @@ concepts:
     user_facing: "refinamento"
 
   consistency_model_reference_first:
-    technical: "reference-first via @sinkra/ds-core"
+    technical: "reference-first via @aiox/ds-core"
     user_facing: "{hidden — usa o design system por import, automático pra componente/página/email/dashboard}"
 
   consistency_model_copy_first:
@@ -120,10 +120,6 @@ concepts:
   brief_intake:
     technical: "design-brief-intake artifact materialization"
     user_facing: "{hidden — brief gerado implicitamente da conversa}"
-
-  workspace_contracts:
-    technical: "tokens.yaml, foundations.yaml, component-contracts.yaml, motion-primitives.yaml"
-    user_facing: "design system da {business}"
 
   prior_art:
     technical: "existing components in ds-core-catalog and outputs/design-ops"
@@ -170,7 +166,7 @@ concepts:
 error_codes:
 
   DS_CONTEXT_MISSING:
-    technical: "Resolution protocol reached step 4; no workspace contracts"
+    technical: "Resolution protocol reached step 4; no project context contracts"
     user_facing: "Não achei o design system da {business} pronto"
     follow_up: "A gente pode extrair das bases ou começar mais livre"
 
@@ -265,6 +261,6 @@ silence_rules:
 
 related:
   - squads/design-ops/data/claude-design-persona.yaml
-  - .claude/skills/claude-design/SKILL.md
-  - .claude/skills/design-artifact-cycle/SKILL.md
+  - skills/claude-design/SKILL.md
+  - skills/design-artifact-cycle/SKILL.md
   - squads/design-ops/data/questions-intake-protocol-spec.yaml

@@ -18,24 +18,24 @@ meta:
 service_catalog:
   skill-surface-projection:
     service_ref: local-skill-surface-runtime
-    connection: ".claude/skills/"
+    connection: "skills/"
     integration: "Sincronização de slash skills canônicas"
   runtime-state:
     service_ref: local-squad-runtime
     connection: ".aiox/squad-runtime/"
     integration: "Persistencia de estado, lifecycle e journey log"
-  workspace-context:
-    service_ref: workspace-read-gateway
-    connection: "workspace/"
+  project context:
+    service_ref: docs-read-gateway
+    connection: "docs/"
     integration: "Leitura de contexto e templates corporativos"
   ecosystem-registry:
     service_ref: squad-registry-store
-    connection: "squads/sinkra-squad/data/ecosystem-registry.yaml"
+    connection: "squads/aiox-squad/data/ecosystem-registry.yaml"
     integration: "Consulta e atualização de catálogo"
 
 integrations:
-  - name: workspace_reader
-    connection: "workspace/"
+  - name: project_reader
+    connection: "docs/"
     endpoint: local-filesystem
     mode: read_only
   - name: squad_runtime_state
@@ -43,15 +43,15 @@ integrations:
     endpoint: local-filesystem
     mode: read_write
   - name: skill_surface_projection
-    connection: ".claude/skills/"
+    connection: "skills/"
     endpoint: local-filesystem
     mode: read_write
   - name: ecosystem_registry
-    connection: "squads/sinkra-squad/data/ecosystem-registry.yaml"
+    connection: "squads/aiox-squad/data/ecosystem-registry.yaml"
     endpoint: local-filesystem
     mode: read_write
   - name: token_registry
-    connection: "squads/sinkra-squad/data/token-registry.yaml"
+    connection: "squads/aiox-squad/data/token-registry.yaml"
     endpoint: local-filesystem
     mode: read_only
   - name: runner_registry
@@ -143,7 +143,7 @@ scripts_inventory:
 
   - id: validate-squad-structure.py
     runtime: python
-    purpose: "Validacao de estrutura SINKRA completa (dirs, artifact_contracts, duality)"
+    purpose: "Validacao de estrutura AIOX completa (dirs, artifact_contracts, duality)"
     referenced_by:
       - ci: validate-squads
         note: "Registered in infrastructure/scripts/runner-lib/squad-routing.yaml as entry for squad-creator"
@@ -180,7 +180,7 @@ scripts_inventory:
 
   - id: sync-ide-skills.py
     runtime: python
-    purpose: "Sincroniza agents publicaveis para superficies IDE (.claude/skills/)"
+    purpose: "Sincroniza agents publicaveis para superficies IDE (skills/)"
     referenced_by:
       - task: install-skills
         invocation: "python3 scripts/sync-ide-skills.py squad {squad_name}"
@@ -316,13 +316,6 @@ scripts_inventory:
       - task: sync-chief-codex-skill
         invocation: "node scripts/sync-chief-codex-skill.js --squad {squad_name}"
       - task: create-agent-publish
-
-  - id: detect-environment-contract.cjs
-    runtime: node
-    purpose: "Detecta contrato de ambiente (runtime state, services, connections)"
-    referenced_by:
-      - workflow: wf-setup-runtime
-        note: "Environment detection for runtime configuration"
 
   - id: export-antigravity-workflows.cjs
     runtime: node
@@ -611,8 +604,8 @@ resource_constraints:
 
   quality_thresholds:
     quality_threshold: 8.5
-    sinkra_native_score: 8.0
-    sinkra_tier: Enterprise
+    aiox_native_score: 8.0
+    aiox_tier: Enterprise
     error_behavior: fail_loud
     on_validation_fail: block_publish
     on_generation_fail: emit_handoff

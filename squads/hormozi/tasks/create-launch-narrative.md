@@ -10,7 +10,7 @@ estimated_time: 45-60min
 source: "$100M Launch Playbook - Tensao Narrativa"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

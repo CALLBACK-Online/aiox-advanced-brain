@@ -47,6 +47,6 @@ override_semantics:
 # Documentation references
 references:
   rule: ".claude/rules/research-bench-gold.md"  # Rule 1 — Profile Auto-Inference
-  skill: ".claude/skills/research-bench/SKILL.md"  # Lines 369-377 (gold_absorption documentation)
+  skill: "skills/research-bench/SKILL.md"  # Lines 369-377 (gold_absorption documentation)
   story: "docs/stories/epic-153/STORY-153.1-AUTO-FIRE-GOLD-ABSORPTION-PROFILE.md"
   post_mortem: "docs/bench/deepresearch-absorption-benchmark/skill-gap-analysis-tech-research.md"

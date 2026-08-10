@@ -3,13 +3,13 @@
 > Plan design team growth and structure using Dave Malouf's scaling framework and team topology principles.
 
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - design_team_scaling_artifact

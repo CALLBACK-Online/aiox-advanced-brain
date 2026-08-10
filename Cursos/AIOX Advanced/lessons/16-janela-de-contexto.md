@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: janela-de-contexto
 lesson_position: 16
 title: 'Janela de contexto: o limite real e a degradação acima de 40K'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/16-janela-de-contexto/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

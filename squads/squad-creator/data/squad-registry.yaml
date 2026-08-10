@@ -4,7 +4,7 @@
 
 metadata:
   deprecated: true
-  replaced_by: "squads/sinkra-squad/data/ecosystem-registry.yaml"
+  replaced_by: "squads/aiox-squad/data/ecosystem-registry.yaml"
   deprecation_date: "2026-03-26"
   removal_date: "2026-04-25"
   grace_period: "30d"

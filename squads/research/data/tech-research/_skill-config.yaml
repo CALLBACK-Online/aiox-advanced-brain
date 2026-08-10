@@ -1,6 +1,6 @@
-# Tech Research — SINKRA-native skill configuration
-# Pattern: aligned with sinkra-map-process, sinkra-validate-squad, sinkra-upgrade-squad, full-sdc
-# v2.0.0 — full SINKRA-native transformation (inline persona-fidelity, no specialist agents)
+# Tech Research — AIOX-native skill configuration
+# Pattern: aligned with processo de mapeamento AIOX, aiox-validate-squad, aiox-upgrade-squad, full-sdc
+# v2.0.0 — full AIOX-native transformation (inline persona-fidelity, no specialist agents)
 
 pack:
   name: tech-research
@@ -8,12 +8,12 @@ pack:
   description: "Deep technical research pipeline with multi-wave search, coverage scoring, multi-LLM cross-reference, and citation verification. Produces evidence-graded research dossiers under docs/research/. Optional product-discovery mode for JTBD validation."
   icon: "TRR"
   type: skill
-  location: .claude/skills/tech-research/
+  location: skills/tech-research/
 
 process:
   id: SP-TECH-RESEARCH
   mode: EXPLORAR
-  sinkra_version: "1.2"
+  aiox_version: "1.2"
   organism: ORG-TRR-001
   molecules: 7
   # M1 Auto-Clarify / M2 Decompose / M3 Generate-Prompt /
@@ -174,7 +174,7 @@ rules_applied:
   - skills-authoring            # frontmatter purity + visibility rules
 
 knowledge_sources:
-  - .claude/skills/tech-research/SKILL.md
+  - skills/tech-research/SKILL.md
   - squads/research/workflows/tech-research/tech-research-pipeline.yaml
   - squads/research/workflows/tech-research/phase-0-auto-clarify.yaml
   - squads/research/workflows/tech-research/phase-1-5-decompose.yaml
@@ -242,7 +242,7 @@ process_mapping: squads/research/workflows/tech-research/tech-research-pipeline.
 # ---------------------------------------------------------------------------
 # OPERATIONAL CONFIG (preserved from v1.1.0)
 # These sections are read by Phase 3.7 (playwright) and Phase 3 (search waves).
-# They are NOT SINKRA metadata — they are runtime configuration.
+# They are NOT AIOX metadata — they are runtime configuration.
 # ---------------------------------------------------------------------------
 
 # Playwright Deep Research Phase Configuration

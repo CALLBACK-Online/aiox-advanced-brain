@@ -28,7 +28,7 @@ domain: Operational
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Operational`
 atomic_layer: Atom
 Input: request::create_agent_publish
@@ -81,7 +81,7 @@ python3 squads/squad-creator/scripts/sync-ide-skills.py agent {agent_id} --squad
 ```
 
 Blocking requirement:
-- `.claude/skills/{slashPrefix}/{agent_id}/SKILL.md` exists after sync
+- `skills/{slashPrefix}/{agent_id}/SKILL.md` exists after sync
 
 ### Step 3: Refresh Core Surfaces When Agent Is Entry/Core
 
@@ -107,7 +107,7 @@ If not core:
 publish_output:
   aiox_sync_updated: true
   ide_sync_completed: true
-  slash_skill_published: ".claude/skills/{slashPrefix}/{agent_id}/SKILL.md"
+  slash_skill_published: "skills/{slashPrefix}/{agent_id}/SKILL.md"
   core_surfaces_updated: "true | skipped"
   status: "PASS"
 ```
@@ -115,7 +115,7 @@ publish_output:
 ## Acceptance Criteria
 
 - [ ] `.aiox-sync.yaml` reconciled
-- [ ] Agent synced to `.claude/skills/`
+- [ ] Agent synced to `skills/`
 - [ ] If agent is core/chief, Codex skill refreshed
 - [ ] If agent is core/chief, root `CLAUDE.md` registry refreshed
 

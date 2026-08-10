@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: cicd-pipeline-completa
 lesson_position: 72
 title: 'CI/CD Pipeline completa: GitHub Actions + Quality Gate pré-merge'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/72-cicd-pipeline-completa/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

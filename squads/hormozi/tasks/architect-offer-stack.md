@@ -11,7 +11,7 @@ source: "Offer Architecture SOP — Stack Building"
 sop_reference: squads/hormozi/sops/offer-architecture-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom

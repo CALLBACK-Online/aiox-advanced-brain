@@ -1,15 +1,15 @@
 # META_AXIOMAS Self-Assessment — squad-creator v6.0.0
-# Assessor: sinkra-qa (LLM) via STORY-122.1
+# Assessor: aiox-qa (LLM) via STORY-122.1
 # Date: 2026-04-12
 # Framework: squads/squad-creator-pro/data/pv-meta-axiomas.yaml (10 dimensions)
 # Method: Evidence-based scoring from actual squad artifacts
-# Reference: .aiox/squad-runtime/squad-validations/squad-creator/20260412-sinkra-qa-llm-scorecard.yaml
+# Reference: .aiox/squad-runtime/squad-validations/squad-creator/20260412-aiox-qa-llm-scorecard.yaml
 
 meta:
   squad: squad-creator
   squad_version: "6.0.0"
   assessment_date: "2026-04-12"
-  assessor: "sinkra-qa (LLM)"
+  assessor: "aiox-qa (LLM)"
   story: "STORY-122.1"
   framework_ref: "squads/squad-creator-pro/data/pv-meta-axiomas.yaml"
 
@@ -28,7 +28,7 @@ dimensions:
     score: 8.0
     evidence: |
       - config.yaml declara 139 tasks; filesystem confirma 140 arquivos (1 CHANGELOG = delta explicável)
-      - sinkra_native: true com certified_at: 2026-04-04 — data verificável
+      - aiox_native: true com certified_at: 2026-04-04 — data verificável
       - KPI baseline baseado em 20 execuções reais com métricas quantitativas (avg_quality_score: 8.7, success_rate: 0.90)
       - quality-gates.yaml tem 10 categorias com thresholds numéricos verificáveis (viability_score >= 6, schema_pass_rate = 1.0)
       - Composition mapping: tokens(29), atoms(139), molecules(9), organisms(8) — contagens conferem com filesystem
@@ -46,10 +46,10 @@ dimensions:
       - error_behavior: fail_loud alinhado com error_handling (block_publish, emit_handoff, persist_evidence) — ações consistentes
       - artifact_contracts declaram lifecycle_states que mapeiam para artifact_lifecycle.transitions
       - 10 artifact_contracts com template_path verificáveis (templates/ tem 36 arquivos)
-      - SINKRA_CONTRACT blocks são estruturalmente presentes mas semanticamente boilerplate — reduz coerência entre intenção e mecanismo
+      - AIOX_CONTRACT blocks são estruturalmente presentes mas semanticamente boilerplate — reduz coerência entre intenção e mecanismo
       - domain_model declara 4 domínios com scope explícito; tasks referem domínios no metadata
     recommendations:
-      - "Diferenciar SINKRA_CONTRACT pre/post conditions por task (STORY-122.3)"
+      - "Diferenciar AIOX_CONTRACT pre/post conditions por task (STORY-122.3)"
       - "Integrar PV checkpoints como mecanismo real, não apenas documentação (STORY-122.2)"
 
   - id: 3
@@ -136,7 +136,6 @@ dimensions:
       - Observabilidade via ecosystem-analyst: topology, performance, gaps, radar, cost — todos stakeholders se beneficiam
       - Weekly report cadence — comunicação regular
       - Squad creation success rate: 90% (18/20) — alto valor de entrega
-      - workspace_integration: read_only — respeita boundaries de outros stakeholders
     recommendations: []
 
   - id: 9
@@ -146,7 +145,7 @@ dimensions:
     veto_power: false
     score: 7.5
     evidence: |
-      - sinkra_native: true — aderência a framework de longo prazo
+      - aiox_native: true — aderência a framework de longo prazo
       - instance_lifecycle com 7 estados (CRIADA→ARQUIVADA) — rastreamento completo
       - journey_log enabled — aprendizado acumulado
       - Templates versionados com lifecycle states
@@ -205,5 +204,5 @@ prior_declaration:
   note: |
     O score auto-declarado de 9.5 era otimista. A avaliação fundamentada em evidência
     resulta em 8.0 — um score sólido que passa todos os thresholds, mas reflete gaps
-    reais em Coerência (SINKRA_CONTRACT boilerplate), Gestão de Riscos (sem deviation
+    reais em Coerência (AIOX_CONTRACT boilerplate), Gestão de Riscos (sem deviation
     register) e Sustentabilidade (PV checkpoints não integrados).

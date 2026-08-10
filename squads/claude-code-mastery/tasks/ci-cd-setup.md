@@ -7,7 +7,7 @@
 **Mode:** Interactive (elicit: true)
 **Quality Standard:** Pipeline runs successfully in headless mode, safety limits configured, costs controlled
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: ci-cd-setup
 atomic_layer: Atom

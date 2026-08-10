@@ -8,7 +8,7 @@
 Antes (2026-04-15 → 2026-05-08): hook `intent-detection-hook.js` em PreToolUse
 detectava keywords (`component|page|token|...`) em **todo Agent/Skill** e injetava
 ~6KB de KB chunks. Custo: ~50-100ms cold start em **todos** Agent/Skill — incluindo
-não-design (deploy-story, sinkra-map-process, etc.).
+não-design (deploy-story, processo de mapeamento AIOX, etc.).
 
 Agora: skills que precisam destes KB chunks devem **carregar diretamente** via Read:
 

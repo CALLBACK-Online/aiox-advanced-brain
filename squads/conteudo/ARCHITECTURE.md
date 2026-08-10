@@ -113,9 +113,3 @@ PESQUISA → SCRAPE/TRANSCRICAO → ANALISE DE PADROES → RELATORIO
 - **Externas:** yt-dlp, ffmpeg (para *multiplicar com YouTube)
 - **API:** OpenAI Whisper (transcricao)
 - **Squads relacionados:** copy (handoff de briefs de email)
-
-## Workspace Integration
-
-- **Level:** none (legado)
-- **Status:** Squad gera artefatos operacionais sem namespace canonico em workspace/
-- **Owner:** workspace-chief (para futura integracao)

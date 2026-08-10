@@ -29,7 +29,7 @@ domain: Tactical
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Tactical`
 atomic_layer: Molecule
 Input: request::create_squad
@@ -90,11 +90,11 @@ Each sub-task receives the output of the previous task as input. A blocking veto
 | VETO-SQD-001 | Overwrite without confirmation | discover |
 | VETO-SQD-002 | Quality score < 7.0 after retries | validate |
 | VETO-SQD-003 | Missing entry agent | build |
-| VETO-SQD-004 | Missing workspace integration level | design |
-| VETO-SQD-005 | Direct workspace mutation | build |
+| VETO-SQD-004 | Missing local project docs level | design |
+| VETO-SQD-005 | Direct docs mutation | build |
 | VETO-SQD-006 | Smoke test failure | publish |
 | VETO-SQD-007 | Prior-art search missing or contradicted by reusable/extendable assets | discover |
-| VETO-SQD-008 | Missing SINKRA creation contract fields or `squad-io.yaml` | design |
+| VETO-SQD-008 | Missing AIOX creation contract fields or `squad-io.yaml` | design |
 
 ## Error Handling
 

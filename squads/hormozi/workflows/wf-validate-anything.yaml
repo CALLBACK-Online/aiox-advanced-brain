@@ -684,7 +684,7 @@ workflow:
 
   metadata:
     version: "1.0.0"
-    framework: "AIOX SINKRA v3.2 / Hormozi 5 Attributes"
+    framework: "AIOX AIOX v3.2 / Hormozi 5 Attributes"
     created: "2026-05-21"
     author: "squad-chief (create-workflow-from-sop)"
     source_sops:

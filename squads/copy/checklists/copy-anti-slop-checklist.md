@@ -208,5 +208,5 @@ copy_anti_slop_report:
 
 - Canonical data: [`squads/copy/data/copy-anti-slop-bans.yaml`](../data/copy-anti-slop-bans.yaml)
 - Cross-skill rule: `.claude/rules/design-absolute-bans.md §5`
-- Bench source: `docs/bench/2026-05-18-impeccable-vs-sinkra-design-stack/`
-- Cross-fit pair: `.claude/skills/slide-creator/templates/qa/copy-gates.yaml#jane_doe_effect_gate`
+- Bench source: `docs/bench/2026-05-18-impeccable-vs-aiox-design-stack/`
+- Cross-fit pair: `skills/slide-creator/templates/qa/copy-gates.yaml#jane_doe_effect_gate`

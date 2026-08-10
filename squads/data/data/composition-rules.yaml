@@ -1,7 +1,7 @@
 # Data Squad Composition Rules v1.0
 # Regras de como atomos (tokens + skills) compoem molecules (tasks)
 # e como molecules compoem organisms (workflows).
-# Referencia: SINKRA-v3.md Capitulo 6 (Compositional Framework)
+# Referencia: AIOX-v3.md Capitulo 6 (Compositional Framework)
 
 _dependents_declaration:
   registry_id: data-composition-rules
@@ -55,7 +55,7 @@ composition_mapping:
     cohort-analysis-workflow:
       organism_type: diagnostic
       molecules:
-        - load-workspace-context
+        - load-project context
         - analyze-cohort
         - segment-rfm
         - create-dashboard
@@ -64,7 +64,7 @@ composition_mapping:
     cohorts-diagnostic:
       organism_type: diagnostic
       molecules:
-        - load-workspace-context
+        - load-project context
         - analyze-cohort
       entry_mode: ENTENDER
 
@@ -145,7 +145,7 @@ composition_mapping:
         - dashboard_publish_role
 
 # ─────────────────────────────────────────────────────────────────────────────
-# META-AXIOMAS (SINKRA v3.2)
+# META-AXIOMAS (AIOX v3.2)
 # ─────────────────────────────────────────────────────────────────────────────
 
 meta_axiomas:
@@ -197,4 +197,4 @@ golden_rule:
 meta:
   last_updated: "2026-04-15"
   owner: data-chief
-  version_parent: "sinkra-squad composition-rules v1.7"
+  version_parent: "aiox-squad composition-rules v1.7"

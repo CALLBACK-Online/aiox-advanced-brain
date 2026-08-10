@@ -340,7 +340,7 @@ scope_declaration:
 ### QW-1 — {nome curto da ação}
 
 - **O quê:** {ação concreta — 1 frase}
-- **Onde:** {caminho exato no hub: `squads/{name}/`, `apps/{name}/`, `.claude/skills/{name}/`, `.claude/rules/{name}.md`, etc.}
+- **Onde:** {caminho exato no hub: `squads/{name}/`, `apps/{name}/`, `skills/{name}/`, `.claude/rules/{name}.md`, etc.}
 - **Por que é alto valor:** {benefício observável — preferir métrica: tokens economizados, % coverage, tempo poupado, bug eliminado, etc.}
 - **Por que é baixo esforço:** {por que cabe em ≤S/8h — preferir indicadores: edição de N linhas, 1 arquivo, ADAPT de pattern existente, sem dependência cross-squad}
 - **Evidência no report:** §{X.Y} — {citação curta do finding}

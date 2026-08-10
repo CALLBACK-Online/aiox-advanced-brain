@@ -16,7 +16,7 @@ Output:
 Data Sources:
     - ~/.claude/projects/*/*.jsonl (session files)
     - git log --since (commit categorization)
-    - .claude/skills/, .claude/agents/ (available inventory)
+    - skills/, .claude/agents/ (available inventory)
 """
 import json
 import os

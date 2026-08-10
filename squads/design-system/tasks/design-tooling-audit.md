@@ -3,13 +3,13 @@
 > Evaluate and optimize design tool stack using Dave Malouf's "Governance over Tools" principle and Three Lenses framework.
 
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - design_tooling_audit_artifact

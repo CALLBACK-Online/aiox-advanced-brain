@@ -68,26 +68,25 @@ task_ref:
     - create-dashboard
 ```
 
-## Workspace Execution Contract
+## Local Execution Contract
 
 ### Preflight (obrigatório)
 
-1. `*workspace-preflight` (executa `bootstrap-data-workspace.sh` + `validate-data-essentials.sh`)
-2. `*workspace-context {slug}`
-3. Confirmar templates necessários em `workspace/_templates/analytics/`
+2. `*project context {slug}`
+3. Confirmar templates necessários em `docs/templates/analytics/`
 
 ### Output Routing
 
 - **Canonical (template-first):**
-  - `workspace/businesses/{slug}/analytics/attribution-report.yaml`
-  - `workspace/businesses/{slug}/analytics/dmmm.yaml`
-  - `workspace/businesses/{slug}/analytics/executive-report.yaml`
+  - `docs/analytics/attribution-report.yaml`
+  - `docs/analytics/dmmm.yaml`
+  - `docs/analytics/executive-report.yaml`
 - **Custom (ad-hoc):**
   - `docs/data/{slug}/implement-attribution-{date}.md`
 
 ### Hard Rules
 
-- Proibido gravar em `workspace/businesses/{slug}/analytics/` sem template correspondente em `workspace/_templates/analytics/`.
+- Proibido gravar em `docs/analytics/` sem template correspondente em `docs/templates/analytics/`.
 - Relatórios em `docs/data/{slug}/` são complementares e não substituem artefatos canônicos.
 
 ---

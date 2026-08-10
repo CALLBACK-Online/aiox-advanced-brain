@@ -803,10 +803,10 @@ def main():
         for cg in ("research_depth_synthesis", "tool_runtime_integration", "multi_agent_orchestration"):
             if cg not in critical:
                 sys.stderr.write(f"WARNING: critical group '{cg}' not acknowledged in bench-weights.yaml\n")
-        # 'sinkra_fit' must NOT appear in normalized_weights (founder directive 2026-05-18 — framework-agnostic bench).
-        if "sinkra_fit" in (weights_data.get("normalized_weights") or {}):
+        # 'aiox_fit' must NOT appear in normalized_weights (founder directive 2026-05-18 — framework-agnostic bench).
+        if "aiox_fit" in (weights_data.get("normalized_weights") or {}):
             sys.stderr.write(
-                f"ERROR: sinkra_fit is present in bench-weights.yaml. This dimension is forbidden\n"
+                f"ERROR: aiox_fit is present in bench-weights.yaml. This dimension is forbidden\n"
                 f"       (framework-agnostic bench mandate). Re-run bench_weight_calibrator.py to regenerate.\n"
             )
             return 2

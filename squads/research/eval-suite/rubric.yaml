@@ -1,4 +1,4 @@
-schema: sinkra.eval-suite.rubric.v1
+schema: aiox.eval-suite.rubric.v1
 version: "1.0"
 created: "2026-05-19"
 story: STORY-RA-0.2

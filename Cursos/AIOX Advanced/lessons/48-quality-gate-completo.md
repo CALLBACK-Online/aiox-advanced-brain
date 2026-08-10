@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: quality-gate-completo
 lesson_position: 48
 title: 'Quality Gate: QA + Apply QA Fixes + CodeRabbit'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/48-quality-gate-completo/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

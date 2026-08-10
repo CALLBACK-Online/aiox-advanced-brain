@@ -2,7 +2,7 @@
 
 Applies to every artifact produced under the `design-ops` provider, including downstream consumption by `design-pages`, `design-app`, `slides-creator`, and `aiox-design-starter`.
 
-Absorbed from `agenmod/claw-design` consistency analysis (2026-04-18). Reconciles our layered stack (shadcn/ui base + `@synkraai/ds-core` package + Tailwind v4 CSS variables + workspace-first tokens) with the copy-first mandates observed in external artifact-creation prompts.
+Absorbed from `agenmod/claw-design` consistency analysis (2026-04-18). Reconciles our layered stack (shadcn/ui base + `@synkraai/ds-core` package + Tailwind v4 CSS variables + local tokens) with the copy-first mandates observed in external artifact-creation prompts.
 
 ## The Layered Reality
 
@@ -14,7 +14,7 @@ Layer           Model         Implementation
 App tier        reference     import { Button } from "@synkraai/ds-core"
 Package tier    copy          shadcn source lives inside @synkraai/ds-core (owned, editable)
 Token tier      reference     CSS variables via @theme inline (Tailwind v4)
-Business tier   override      :root { --primary: ... } per business in workspace
+Business tier   override      :root { --primary: ... } per business in local_docs
 Artifact tier   variable      depends on deliverable_kind — see policy below
 ```
 
@@ -36,7 +36,7 @@ No layer conflicts with another. The apparent tension between shadcn "copy" and 
 ### Rationale
 
 - **Bundler-backed kinds** inherit the `@synkraai/ds-core` package and Tailwind v4's CSS variable cascade. Single source of truth for tokens; single source of truth for component behavior. No duplication.
-- **Self-contained kinds** cannot import a package. They must inline tokens and component code. The consistency is enforced by **exact-value copying** from `@sinkra/tokens-base` / workspace tokens, not by memory or harmonic generation.
+- **Self-contained kinds** cannot import a package. They must inline tokens and component code. The consistency is enforced by **exact-value copying** from `@aiox/tokens-base` / project tokens, not by memory or harmonic generation.
 - **Export kinds** (PDF, PPTX) derive from an authored source (HTML or deck) — consistency is inherited from the source, not re-established at export time.
 
 ## Self-Contained Artifact Bundling Strategy
@@ -56,7 +56,7 @@ Three paths for shipping Tailwind styles into a self-contained HTML artifact:
 - **Rejected as default.** Permitted only for throwaway exploratory prototypes with explicit user acknowledgement.
 
 ### Path 3 — Manual CSS with exact token values
-- Hand-authored CSS inlined with exact values from `@sinkra/tokens-base`.
+- Hand-authored CSS inlined with exact values from `@aiox/tokens-base`.
 - Pros: smallest bundle; aligns with claw-design copy model.
 - Cons: labor; divergence risk if tokens evolve after artifact is frozen.
 - **Fallback for small artifacts where bundle size matters or Path 1 build is unavailable.**
@@ -69,13 +69,13 @@ This is a **divergence pressure valve** that bypasses the DS. Over time, it erod
 
 ### When Oklch Harmonic Generation is PERMITTED
 
-1. **Greenfield bootstrap** — `workspace/businesses/{biz}/L2-tactical/design/tokens.yaml` does not exist and is being drafted. Oklch can generate the initial harmonic palette, which then becomes the workspace SOT.
-2. **Brownfield audit** — during `wf-brandbook-workspace-extraction`, if the source brandbook has only a primary color, oklch can propose complementary neutrals + accents as a **proposal** requiring owner approval.
+1. **Greenfield bootstrap** — `docs/tactical/design/tokens.yaml` does not exist and is being drafted. Oklch can generate the initial harmonic palette, which then becomes local docs SOT.
+2. **Brownfield audit** — during `brownfield-complete`, if the source brandbook has only a primary color, oklch can propose complementary neutrals + accents as a **proposal** requiring owner approval.
 3. **Explicit brief request** — `brief.known_constraints` includes "needs palette extension" AND the business owner has approved the extension via a `design-routing-decision` artifact with `state: approved`.
 
 ### When Oklch Harmonic Generation is PROHIBITED
 
-- Anytime the workspace tokens exist AND the artifact is consuming them — no ad-hoc color generation to fill visual gaps.
+- Anytime the project tokens exist AND the artifact is consuming them — no ad-hoc color generation to fill visual gaps.
 - When the artist "feels" the palette is restrictive — that's the brief intake's job, not the creation step's.
 - For self-contained artifacts (decks, prototypes) — they inline exact values, not generated ones.
 

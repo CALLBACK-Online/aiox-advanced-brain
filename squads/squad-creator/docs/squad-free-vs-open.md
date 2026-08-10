@@ -199,7 +199,7 @@ O squad-chief acumula todas as funcoes: triage, routing, criacao, validacao, ana
 | pv-axioma-assessment.md | Avaliacao por 10 meta-axiomas |
 | pv-audit.md | Auditoria completa |
 | pv-modernization-score.md | Score de modernizacao |
-| workspace-integration-hardening.md | Hardening de integracao workspace |
+| local project docs-hardening.md | Hardening de docs/project local |
 
 #### Manutencao Pro (2)
 | Task | Descricao |
@@ -237,7 +237,7 @@ O squad-chief acumula todas as funcoes: triage, routing, criacao, validacao, ana
 | wf-model-tier-qualification.yaml | Model Routing | Qualificacao por tier de modelo |
 | wf-cross-provider-qualification.yaml | Model Routing | Qualificacao cross-provider |
 | validate-squad.yaml | Quality | Validacao avancada (override do base) |
-| wf-workspace-integration-hardening.yaml | Quality | Hardening de integracao |
+| wf-local project docs-hardening.yaml | Quality | Hardening de integracao |
 
 #### Modules (composable)
 | Module | Descricao |
@@ -324,7 +324,7 @@ agent-quality-gate, create-agent-checklist, create-squad-checklist, create-workf
 | **Modernization score** | Score de modernizacao do squad |
 | **Model tier qualification** | Qualificacao cross-provider por complexidade |
 | **Veto conditions** | 7 configs de veto (axioma-validator, quality-gates, scoring-rubric, etc.) |
-| **Workspace integration** | Hardening de contratos de integracao |
+| **local project docs** | Hardening de contratos de integracao |
 
 **Checklists (7):**
 agent-depth-checklist, deep-research-quality, executor-matrix-checklist, mental-model-integration-checklist, mind-validation, quality-gate-checklist, sop-validation
@@ -413,7 +413,7 @@ O Pro inclui **2 minds clonadas** completas com heuristics e artifacts:
 
 | Tipo | Scripts |
 |------|---------|
-| **Python** | coherence-validator, create-agent-preflight, on-specialist-complete, quality_gate, save-session-metrics, scoring, validate-agent-output, validate-workspace-contract |
+| **Python** | coherence-validator, create-agent-preflight, on-specialist-complete, quality_gate, save-session-metrics, scoring, validate-agent-output, validate-project context contracts |
 | **JavaScript/CJS** | model-tier-validator.cjs, model-usage-logger.cjs, squad-context-loader.cjs, squad-state-manager.cjs, squad-workflow-runner.cjs, sync-chief-codex-skill.js |
 | **Bash** | assess-sources.sh, clone-review.sh, fidelity-score.sh, modernization-score.sh, validate-clone.sh, validate-squad.sh |
 | **Cross-Provider** | compare-results.js, cross-provider-runner.js |

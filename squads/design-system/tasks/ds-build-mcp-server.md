@@ -17,7 +17,7 @@ Core data exposed:
 ## Prerequisites
 
 - AI metadata generated (`ds-generate-ai-metadata`)
-- Registry and workspace structure validated
+- Registry and project structure validated
 - Stable token files and schemas
 
 ## Workflow
@@ -31,13 +31,13 @@ Core data exposed:
 
 2. **Implement Server Skeleton**
 - Create:
-  - `workspace/domains/design-system/mcp/server.ts`
-  - `workspace/domains/design-system/mcp/handlers/*`
+  - `docs/design-system/domains/mcp/server.ts`
+  - `docs/design-system/domains/mcp/handlers/*`
 - Keep handlers deterministic and stateless.
 
 3. **Connect Data Sources**
 - `metadata/components.json`
-- `workspace/ui/registry.json`
+- `docs/design-system/ui/registry.json`
 - token files under `domains/design-system/tokens`
 
 4. **Add Query Guards**
@@ -83,13 +83,13 @@ Core data exposed:
 - **Dependencies:** depends_on: `[]` · enables: `[]` · workflow: `design-system`
 - **On Fail:** Stop execution, capture evidence, and return remediation steps before proceeding.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_build_mcp_server_artifact

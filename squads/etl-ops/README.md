@@ -29,7 +29,7 @@ services/etl/
 
 Este squad usa as seguintes tasks publicas:
 
-- `tasks/load-workspace-context.md` (preflight + roteamento de output)
+- `tasks/load-project context.md` (preflight + roteamento de output)
 - `tasks/etl-env-bootstrap.md` (diagnostico e preparo do runtime ETL)
 - `tasks/process.md` (entrypoint principal)
 - `tasks/extract-podcast.md` (pipeline especializado com diarizacao)
@@ -59,30 +59,12 @@ A task define o fluxo. A decisao de ferramenta (CLI/API/collector), fallback e v
 - Resumir um capítulo por vez
 - Gerar síntese final apenas a partir dos artefatos intermediários
 
-## Workspace Contract (Workspace-First)
-
-- Comandos do chief:
-  - `*workspace-preflight {slug}`
-  - `*workspace-context {slug}`
-- Preflight:
-  - `bash squads/etl-ops/scripts/bootstrap-etl-workspace.sh {slug}`
-  - `bash squads/etl-ops/scripts/validate-etl-essentials.sh`
-- Task de contexto:
-  - `tasks/load-workspace-context.md`
-- Roteamento de saída:
-  - canonical: `workspace/businesses/{slug}/etl/`
-  - custom: `docs/etl/{slug}/`
-  - legacy fallback: `outputs/etl/{run_id}/` (quando não houver slug)
-- Templates canônicos:
-  - `workspace/_templates/etl/*.yaml` (sem dados)
-
 ## Quality Gate (Local, Not Global CI)
 
 Este squad nao depende de bloqueio no CI global para garantir qualidade.
 A trava acontece no proprio fluxo de agente/task/workflow:
 
 - comando local obrigatorio antes de concluir: `npm run validate:etl-ops`
-- comando de essenciais workspace-first: `bash squads/etl-ops/scripts/validate-etl-essentials.sh`
 - chief aplica gate antes da entrega final
 - task `process` exige gate aprovado para completion
 

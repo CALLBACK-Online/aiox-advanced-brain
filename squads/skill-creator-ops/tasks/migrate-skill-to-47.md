@@ -8,7 +8,7 @@ This task does NOT modify the source file without explicit operator approval. It
 
 ## Inputs
 
-- `skill_path` (required) — path to the skill directory, e.g. `.claude/skills/tech-search/`
+- `skill_path` (required) — path to the skill directory, e.g. `skills/tech-search/`
 - `mode` (optional, default `preview`) — `preview` | `apply` | `scan-only`
 - `apply_scope` (optional, default `SKILL.md`) — `SKILL.md` | `full-skill` (whole directory, recursive)
 

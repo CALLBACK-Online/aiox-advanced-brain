@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "generated_at": "2026-04-10T08:27:30.899Z",
-  "source": "workspace/businesses/aiox/L2-tactical/design/component-contracts.yaml",
+  "source": "docs/aiox/tactical/design/component-contracts.yaml",
   "business": "aiox",
   "components": [
     {

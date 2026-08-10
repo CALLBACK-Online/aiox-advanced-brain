@@ -10,7 +10,7 @@ estimated_time: 2-3 hours
 source: "$100M Money Models - Framework GMMM"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

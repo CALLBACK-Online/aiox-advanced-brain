@@ -5,13 +5,13 @@ const path = require('path');
 
 const ROOT = process.cwd();
 const requiredFiles = [
-  'workspace/domains/design-system/mcp/server.ts',
-  'workspace/domains/design-system/mcp/types.ts',
-  'workspace/domains/design-system/mcp/config.json',
-  'workspace/domains/design-system/mcp/handlers/components.ts',
-  'workspace/domains/design-system/mcp/handlers/registry.ts',
-  'workspace/domains/design-system/mcp/handlers/tokens.ts',
-  'workspace/domains/design-system/mcp/handlers/guidelines.ts'
+  'docs/design-system/domains/mcp/server.ts',
+  'docs/design-system/domains/mcp/types.ts',
+  'docs/design-system/domains/mcp/config.json',
+  'docs/design-system/domains/mcp/handlers/components.ts',
+  'docs/design-system/domains/mcp/handlers/registry.ts',
+  'docs/design-system/domains/mcp/handlers/tokens.ts',
+  'docs/design-system/domains/mcp/handlers/guidelines.ts'
 ];
 
 function fail(message) {

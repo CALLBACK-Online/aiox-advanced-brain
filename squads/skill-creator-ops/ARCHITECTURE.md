@@ -59,7 +59,7 @@ MAIN PIPELINE
   └── Version bump (semver per change type)
 
 [7] REGISTER
-  Update .claude/skills/skill-registry.yaml
+  Update skills/skill-registry.yaml
   └── total_skills count + last_updated
 ```
 
@@ -108,12 +108,12 @@ AUDIT FLOW (scheduled monthly)
   └── Consumes cc-session-analyze output
 ```
 
-## SINKRA Tier Definitions
+## AIOX Tier Definitions
 
 | Tier | Requirements | Example |
 |------|--------------|---------|
 | **Tier 1** (Basic) | SKILL.md + frontmatter | `tech-search`, `coderabbit-review` |
-| **Tier 2** (Standard) | Tier 1 + config.yaml + process_id + SINKRA mode | `service-*` skills |
+| **Tier 2** (Standard) | Tier 1 + config.yaml + process_id + AIOX mode | `service-*` skills |
 | **Tier 3** (Full) | Tier 2 + templates/ + checklists/ + data/ + artifact_contracts | `handoff`, `roundtable`, `wave-execute` |
 
 ## Required Frontmatter Schema
@@ -124,7 +124,7 @@ name: skill-name
 description: "Clear, concise — used by Claude for matching"
 version: "1.0.0"
 owner_squad: squad-name
-sinkra_tier: Tier1|Tier2|Tier3
+aiox_tier: Tier1|Tier2|Tier3
 context: inline|fork|conversation
 agent: general-purpose|specific
 user-invocable: true|false
@@ -151,8 +151,8 @@ user-invocable: true|false
 
 | File | Purpose |
 |------|---------|
-| `.claude/skills/skill-registry.yaml` | Canonical catalog (source of truth) |
-| `.claude/skills/{name}/SKILL.md` | Entry point per skill |
+| `skills/skill-registry.yaml` | Canonical catalog (source of truth) |
+| `skills/{name}/SKILL.md` | Entry point per skill |
 | `squads/infra-ops-squad/data/service-catalog.yaml` | Service-level tracking |
 
 ## Integration Points
@@ -161,12 +161,12 @@ user-invocable: true|false
 |--------------|-----|
 | `/skill-creator` skill | Operational owner relationship |
 | `/validate-skill` skill | Used in validation phase |
-| `.claude/skills/` directory | Direct filesystem ops |
+| `skills/` directory | Direct filesystem ops |
 | Registry governance | Pre-push check integration |
 
 ## Outputs Location
 
-Todas as skills instaladas vivem em `.claude/skills/` (80+ skills active). Validation reports e test results gerados sob demanda.
+Todas as skills instaladas vivem em `skills/` (80+ skills active). Validation reports e test results gerados sob demanda.
 
 ## Boundary
 

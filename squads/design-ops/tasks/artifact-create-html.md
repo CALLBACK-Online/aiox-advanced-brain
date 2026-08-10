@@ -91,7 +91,7 @@ This is the **minimum viable HTML runtime** for Wave C.1. Starter-component usag
    - Grep the emitted HTML for violations per `self-contained-artifact-security.md`:
      - No `eval(`, `new Function(`, `document.write(`, `innerHTML =` with unsanitized content
      - No CDN `<script>` without `integrity="sha384-"`
-     - No `window.` writes outside `window.__sinkra_designops_*` namespace
+     - No `window.` writes outside `window.__aiox_designops_*` namespace
      - No `localStorage.setItem(` with un-namespaced key (must start with `design-ops:{artifact_id}:`)
    - If any violation found → halt; fix before continuing
    - This is a cheap self-check; the blocking gate lives in `artifact-verify-postbuild.md` (Wave C.1 Task 5)
@@ -144,13 +144,13 @@ This is the **minimum viable HTML runtime** for Wave C.1. Starter-component usag
 ## Anti-Patterns
 
 - **"Use Tailwind Play CDN — it's faster."** — REJECTED (REJECT-CLAW-004). Runtime compilation in the browser defeats SRI and pins; use Path 1 or Path 3.
-- **"Reference the token by `var(--aiox-primary)` without inlining."** — Breaks copy-first guarantee. The artifact must render correctly even if the workspace tokens change tomorrow.
+- **"Reference the token by `var(--aiox-primary)` without inlining."** — Breaks copy-first guarantee. The artifact must render correctly even if the project tokens change tomorrow.
 - **"Post `__edit_mode_available` before registering the listener — it'll work most of the time."** — Single most common failure mode of the Tweak Protocol. Always register first.
 - **"Use `@latest` since it's only a prototype."** — Prototype today, client artifact tomorrow. Pinning is non-negotiable from emit time.
 - **"Embed a starter-components stub that actually runs."** — Starters are Wave C.2 runtime. Stub is a labeled placeholder, not executable code.
 - **"Inline `eval(window.getUserInput())` for the calculator demo."** — Dynamic code execution is a BLOCKER violation. Use explicit switch-cases or a safe expression parser.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Molecule (HTML variant of P04 BUILD)
@@ -191,4 +191,4 @@ performance:
 - Caller: `squads/design-ops/tasks/dops-generate-variants.md` (dispatches to this task when kind matches)
 - Workflow: `squads/design-ops/workflows/wf-artifact-creation-loop.yaml` (planned — Wave C.1 Task 4)
 - ADR: `docs/adrs/ADR-018-design-ops-artifact-creation-capability.md`
-- Skill: `.claude/skills/design-artifact-cycle/SKILL.md#phase-04-build`
+- Skill: `skills/design-artifact-cycle/SKILL.md#phase-04-build`

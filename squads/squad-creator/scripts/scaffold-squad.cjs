@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 /**
  * Squad Scaffold - Creates directory structure for new squads.
  *
@@ -43,22 +44,21 @@ const DIRECTORIES = [
   'scripts'
 ];
 
-const WORKSPACE_LEVELS = new Set(['none', 'read_only', 'controlled_runtime_consumer', 'workspace_first']);
+const PROJECT_LEVELS = new Set(['none', 'read_only', 'none', 'local']);
 
-function hasWorkspaceGovernanceSquad() {
-  return fs.existsSync(path.join(SQUADS_BASE, 'c-level'));
+function hasProjectGovernanceSquad() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
 // TEMPLATES
 // ═══════════════════════════════════════════════════════════════════════════
 
-function getReadmeTemplate(slug, displayName, date, workspaceLevel) {
+function getReadmeTemplate(slug, displayName, date, scopeLevel) {
   return `# ${displayName} Squad
 
 **Status:** 🚧 In Development
 **Created:** ${date}
-**Workspace Integration Level:** \`${workspaceLevel}\`
+**local project docs Level:** \`${scopeLevel}\`
 
 ---
 
@@ -100,13 +100,13 @@ python3 squads/squad-creator/scripts/squad-analytics.py --squad ${slug}
 | \`docs/\` | Squad documentation |
 | \`scripts/\` | Utility scripts |
 
-## Workspace Integration Contract
+## local project docs Contract
 
-- \`workspace_integration.level\`: \`${workspaceLevel}\`
-- \`workspace_integration.rationale\`: PENDING (must be defined before production)
-- \`workspace_integration.read_paths\`: PENDING
-- \`workspace_integration.write_paths\`: PENDING
-- \`workspace_integration.template_namespace\`: PENDING
+- \`local project docs.level\`: \`${scopeLevel}\`
+- \`local project docs.rationale\`: PENDING (must be defined before production)
+- \`local project docs.read_paths\`: PENDING
+- \`local project docs.write_paths\`: PENDING
+- \`local project docs.template_namespace\`: PENDING
 
 ---
 
@@ -124,7 +124,7 @@ node squads/squad-creator/scripts/squad-state-manager.cjs get ${slug}
 `;
 }
 
-function getConfigTemplate(slug, displayName, date, workspaceLevel) {
+function getConfigTemplate(slug, displayName, date, scopeLevel) {
   return `# ${displayName} Squad Configuration
 # Generated: ${date}
 
@@ -139,8 +139,8 @@ metadata:
   target_domain: null
   description: null
 
-workspace_integration:
-  level: ${workspaceLevel}
+local project docs:
+  level: ${scopeLevel}
   rationale: "PENDING - define why this level is required"
   read_paths: []
   write_paths: []
@@ -213,8 +213,8 @@ Usage:
 
 Options:
   --name "Name"    Display name for the squad (default: slug title-cased)
-  --workspace-level <none|read_only|controlled_runtime_consumer|workspace_first>
-                    Required integration level with workspace (default: read_only)
+  --local_docs-level <none|read_only  # enterprise levels removed in aiox-advanced-brain>
+                    Required integration level with local_docs (default: read_only)
 
 Creates directories: ${DIRECTORIES.join(', ')}
 Creates files: README.md, config.yaml`);
@@ -244,19 +244,18 @@ Creates files: README.md, config.yaml`);
   // Get display name from args or state or derive from slug
   const state = readState(slug);
   const argName = parseArg(args, '--name');
-  const workspaceLevel = parseArg(args, '--workspace-level') || 'read_only';
+  const scopeLevel = parseArg(args, '--local_docs-level') || 'read_only';
 
-  if (!WORKSPACE_LEVELS.has(workspaceLevel)) {
-    outputError('INVALID_WORKSPACE_LEVEL', 'workspace level must be one of: none, read_only, controlled_runtime_consumer, workspace_first', {
-      received: workspaceLevel
+  if (!PROJECT_LEVELS.has(scopeLevel)) {
+    outputError('INVALID_PROJECT_LEVEL', 'docs scope level must be one of: none, read_only (enterprise levels removed in aiox-advanced-brain)', {
+      received: scopeLevel
     });
     process.exit(1);
   }
-  if ((workspaceLevel === 'controlled_runtime_consumer' || workspaceLevel === 'workspace_first') && !hasWorkspaceGovernanceSquad()) {
+  if ((scopeLevel === 'none' || scopeLevel === 'local') && !hasProjectGovernanceSquad()) {
     outputError(
       'MISSING_C_LEVEL',
-      'controlled_runtime_consumer and workspace_first require squads/c-level to exist',
-      { received: workspaceLevel }
+      { received: scopeLevel }
     );
     process.exit(1);
   }
@@ -285,7 +284,7 @@ Creates files: README.md, config.yaml`);
   // Create README.md
   const readmePath = path.join(squadDir, 'README.md');
   if (!fs.existsSync(readmePath)) {
-    fs.writeFileSync(readmePath, getReadmeTemplate(slug, displayName, date, workspaceLevel));
+    fs.writeFileSync(readmePath, getReadmeTemplate(slug, displayName, date, scopeLevel));
     created.push('README.md');
   } else {
     skipped.push('README.md');
@@ -294,7 +293,7 @@ Creates files: README.md, config.yaml`);
   // Create config.yaml
   const configPath = path.join(squadDir, 'config.yaml');
   if (!fs.existsSync(configPath)) {
-    fs.writeFileSync(configPath, getConfigTemplate(slug, displayName, date, workspaceLevel));
+    fs.writeFileSync(configPath, getConfigTemplate(slug, displayName, date, scopeLevel));
     created.push('config.yaml');
   } else {
     skipped.push('config.yaml');
@@ -304,7 +303,7 @@ Creates files: README.md, config.yaml`);
     success: true,
     slug,
     display_name: displayName,
-    workspace_level: workspaceLevel,
+    scope_level: scopeLevel,
     path: squadDir,
     created,
     skipped,

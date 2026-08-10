@@ -6,7 +6,7 @@
  * parses frontmatter and content, sorts by impact, and produces a single compiled
  * markdown file suitable for agent consumption (injected as knowledge base).
  *
- * Adapted from v0 react-best-practices-build/build.ts for SINKRA format.
+ * Adapted from v0 react-best-practices-build/build.ts for AIOX format.
  * Source: B04 ABSORB verdict (COMPARE pipeline, 2026-04-16)
  *
  * Usage:
@@ -24,7 +24,7 @@ const config = require('./rule-compiler-config.cjs');
 
 /**
  * Parse YAML-like frontmatter from a markdown file.
- * Handles: title, impact, tags (as array), sinkra_source.
+ * Handles: title, impact, tags (as array), aiox_source.
  */
 function parseFrontmatter(content) {
   const match = content.match(/^---\n([\s\S]*?)\n---/);
@@ -106,7 +106,7 @@ function compileSkill(skillConfig) {
     '',
     `> Compiled from ${sorted.length} rules in ${path.basename(skillConfig.sourceDir)}/`,
     `> Generated: ${new Date().toISOString().split('T')[0]}`,
-    `> Compiler: compile-rules.cjs (SINKRA rule-compiler)`,
+    `> Compiler: compile-rules.cjs (AIOX rule-compiler)`,
     '',
     '---',
     '',

@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: spy-bench-comparativo
 lesson_position: 37
 title: 'Spy/Bench: comparação profunda entre dois projetos'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/37-spy-bench-comparativo/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -32,6 +32,9 @@ curated_at: '2026-08-09'
 ← [[36-tech-research-multi-fonte|Tech Research: pesquisa profunda multi-fonte]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[38-code-anatomy-domain-decoder|Code Anatomy: engenharia reversa de código com /code-anatomist]]
 
 ## Mapa desta aula
+
+> **Sucessor neste acervo:** o domínio Spy/Bench vive em `squads/research/` (tasks `tasks/benchmark/`) e na skill de entrada `research`. A skill standalone `tech-research` cobre research profunda multi-fonte. Nomes legados: `spy`, `deep-research`, `/research-bench`.
+
 
 Decisão-chave da aula — A escolha entre A e B trava algo caro de reverter?
 
@@ -140,7 +143,7 @@ Antes dos termos técnicos, a diferença é só isto: comparar no olho escolhe u
 
 > **Em uma frase**: Comparar no olho declara um vencedor pela impressão: rápido, mas cego ao critério que ficou implícito. O Spy/Bench espia os dois projetos a fundo, pontua cada eixo num score quantitativo, monta a matriz lado a lado e entrega um battle card com o gap e a recomendação. A regra muda: define o critério antes, pontua cada eixo no meio, emite o veredito no fim.
 
-- **Spy é olhar a fundo** -> Não um relance, mas uma varredura profunda de A e de B antes de comparar. Cada projeto é investigado como o /deep-research investigaria um tema.
+- **Spy é olhar a fundo** -> Não um relance, mas uma varredura profunda de A e de B antes de comparar. Cada projeto é investigado como o pipeline `tech-research` / squad `research` investigaria um tema.
 - **Score é o que se mede** -> Um placar quantitativo que dá nota a cada eixo. Sem o score, você não sabe se A ganhou de verdade ou só pareceu melhor.
 - **A matriz alinha** -> A e B lado a lado, eixo por eixo, na mesma régua. Onde a matriz mostra a coluna vazia, mora a fraqueza que o olho não viu.
 - **O battle card é a marca** -> Você sai da comparação com o gap medido e uma recomendação acionável, não com uma preferência. Sem battle card, não houve benchmark.

@@ -133,15 +133,15 @@ io_checks:
     anti_patterns: ["improvements", "results", "updates"]
 
   - id: output-persistence
-    check: "output_persistence field classifies output as canonical_workspace or transient_output"
+    check: "output_persistence field classifies output as canonical_project or transient_output"
     type: blocking
-    validation: "output_persistence in [canonical_workspace, transient_output]"
+    validation: "output_persistence in [canonical_project, transient_output]"
 
   - id: output-path-governance
     check: "Output path matches persistence classification"
     type: blocking
     validation: |
-      canonical_workspace -> workspace/businesses/{business}/
+      canonical_project -> docs/
       transient_output -> .aiox/squad-runtime/{squad}/{business}/
       HIGH-VALUE output in .aiox/squad-runtime/ -> VETO
 ```

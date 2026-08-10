@@ -6,7 +6,7 @@
 **Orchestrator:** Orion (claude-mastery-chief)
 **Purpose:** Update the Claude Code Mastery squad by adding agents, refreshing knowledge, modifying configuration, or applying structural changes.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: update-claude-code-mastery
 atomic_layer: Atom

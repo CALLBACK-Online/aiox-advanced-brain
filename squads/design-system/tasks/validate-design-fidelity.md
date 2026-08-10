@@ -6,13 +6,13 @@
 > **Dependencies:** depends_on: `[]` · enables: `[]` · workflow: `quality-gate`
 
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Operational
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - validate_design_fidelity_artifact
@@ -170,7 +170,7 @@ className="bg-studio-primary text-studio-bg"
 **Auto-fix mapping (load from design-tokens-spec.yaml):**
 ```yaml
 # Map brand hex values → semantic tokens
-# Values come from workspace/ui/{brand}/brand.json
+# Values come from docs/design-system/ui/{brand}/brand.json
 "{primary-hex}": "studio-primary"
 "{primary-dark-hex}": "studio-primary-dark"
 "{bg-hex}": "studio-bg"

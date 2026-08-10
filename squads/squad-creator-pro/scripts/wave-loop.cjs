@@ -16,7 +16,7 @@ const {
   getRuntimeDirForSlug,
   readActiveSquad,
   readStateWithLegacyFallback,
-  toWorkspaceRelative,
+  toRepoRelative,
 } = require(path.resolve(__dirname, '..', '..', 'squad-creator', 'scripts', 'lib', 'squad-runtime-paths.cjs'));
 
 // Shared transient-LLM-error detection (single source of truth). Includes the
@@ -377,7 +377,7 @@ function isFatalRuntimeError(output) {
 
 function buildWavePrompt({ slug, wave, command, statePath }) {
   return [
-    `You are working inside the AIOX workspace at ${ROOT}.`,
+    `You are working inside the AIOX local_docs at ${ROOT}.`,
     'Follow AGENTS.md, .aiox-core/constitution.md, and the local runtime state as the source of truth.',
     'Activate the orchestrator explicitly with the `$squad-chief` shortcut before executing the wave command unless that persona is already active.',
     `Continue the existing create-squad runtime for slug "${slug}".`,
@@ -387,7 +387,7 @@ function buildWavePrompt({ slug, wave, command, statePath }) {
     '',
     'Execution contract:',
     `- This is external SSH loop mode: complete only wave ${wave} in this fresh session.`,
-    `- Respect the canonical runtime file: ${toWorkspaceRelative(statePath)}.`,
+    `- Respect the canonical runtime file: ${toRepoRelative(statePath)}.`,
     '- If a story/checklist/file list must be updated for this wave, update it and close it properly.',
     '- Run focused validation for the files changed by this wave.',
     '- Do not auto-start the next wave.',
@@ -531,15 +531,15 @@ function buildSummary({
     requestedRuntime: args.runtime,
     selectedRuntime,
     status,
-    statePath: toWorkspaceRelative(statePath),
+    statePath: toRepoRelative(statePath),
     currentWave: getCurrentWave(state),
     totalWaves: getTotalWaves(state),
     nextWave,
     nextCommand: nextWave !== null ? inferWaveCommand(state, slug, nextWave) : null,
     plan,
-    loopStatePath: toWorkspaceRelative(loopStatePath),
-    logDir: toWorkspaceRelative(logDir),
-    lastLogFile: lastLogFile ? toWorkspaceRelative(lastLogFile) : null,
+    loopStatePath: toRepoRelative(loopStatePath),
+    logDir: toRepoRelative(logDir),
+    lastLogFile: lastLogFile ? toRepoRelative(lastLogFile) : null,
     history,
   };
 }
@@ -564,12 +564,12 @@ function createLoopState({
     requested_runtime: args.runtime,
     selected_runtime: selectedRuntime,
     status,
-    state_file: toWorkspaceRelative(statePath),
-    log_dir: toWorkspaceRelative(logDir),
+    state_file: toRepoRelative(statePath),
+    log_dir: toRepoRelative(logDir),
     plan,
     last_wave_started: lastWaveStarted,
     last_wave_completed: lastWaveCompleted,
-    last_log_file: lastLogFile ? toWorkspaceRelative(lastLogFile) : null,
+    last_log_file: lastLogFile ? toRepoRelative(lastLogFile) : null,
     updated_at: nowIso(),
     history,
   };
@@ -587,7 +587,7 @@ function main() {
 
     const runtimeState = loadState(slug);
     if (!runtimeState.state) {
-      throw new Error(`No runtime state found for slug "${slug}". Expected ${toWorkspaceRelative(getCanonicalStatePath(slug, DEFAULT_WORKFLOW))}.`);
+      throw new Error(`No runtime state found for slug "${slug}". Expected ${toRepoRelative(getCanonicalStatePath(slug, DEFAULT_WORKFLOW))}.`);
     }
 
     const state = runtimeState.state;
@@ -739,7 +739,7 @@ function main() {
             attempt,
             command,
             exit_code: result.exitCode,
-            log_file: toWorkspaceRelative(logFile),
+            log_file: toRepoRelative(logFile),
             updated_at: nowIso(),
           });
           break;
@@ -752,7 +752,7 @@ function main() {
             attempt,
             command,
             exit_code: result.exitCode,
-            log_file: toWorkspaceRelative(logFile),
+            log_file: toRepoRelative(logFile),
             updated_at: nowIso(),
           });
           writeLoopState(loopStatePath, createLoopState({
@@ -804,7 +804,7 @@ function main() {
             command,
             exit_code: result.exitCode,
             delay_seconds: delaySeconds,
-            log_file: toWorkspaceRelative(logFile),
+            log_file: toRepoRelative(logFile),
             updated_at: nowIso(),
           });
           writeLoopState(loopStatePath, createLoopState({
@@ -830,7 +830,7 @@ function main() {
           attempt,
           command,
           exit_code: result.exitCode,
-          log_file: toWorkspaceRelative(logFile),
+          log_file: toRepoRelative(logFile),
           updated_at: nowIso(),
         });
         break;

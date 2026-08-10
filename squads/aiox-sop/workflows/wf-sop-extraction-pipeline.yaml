@@ -423,7 +423,7 @@ workflow:
           name: Save Draft SOP
           action: |
             Save draft markdown SOP to docs/sops/
-            Save draft machine-readable SOP to workspace/businesses/{business}/sops/ when business context is explicit
+            Save draft machine-readable SOP to docs/sops/ when business context is explicit
         - id: "8.2"
           name: Save Gap Report
           action: Save gap analysis and interview questions
@@ -469,7 +469,7 @@ workflow:
     location: split publish contract
     artifacts:
       - draft_sop: docs/sops/draft-{process-name}-sop-v0.1.md
-      - draft_sop_ml: workspace/businesses/{business}/sops/draft-{process-name}-sop-v0.1.yaml
+      - draft_sop_ml: docs/sops/draft-{process-name}-sop-v0.1.yaml
       - gap_report: outputs/aiox-sop/extractions/gaps-{process-name}-{date}.md
       - confidence_report: outputs/aiox-sop/extractions/confidence-{process-name}-{date}.md
       - review_summary: outputs/aiox-sop/extractions/review-items-{process-name}-{date}.md

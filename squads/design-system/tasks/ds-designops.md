@@ -98,13 +98,13 @@ Setup DesignOps workflow for your design system team. Maps current operations, i
 ## Process Guards
 - **On Fail:** Stop execution, capture evidence, and return remediation steps before proceeding.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_designops_artifact

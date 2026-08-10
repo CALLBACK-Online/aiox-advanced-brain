@@ -7,9 +7,9 @@ checklist:
   scope: Provider generative component pipeline
   items:
     - id: GP-001
-      check: workspace_contracts_valid
+      check: project context contracts_valid
       required: true
-      description: Contratos canônicos do workspace estão válidos e em modo strict.
+      description: Contratos canônicos de docs/project estão válidos e em modo strict.
     - id: GP-002
       check: pipeline_execution_read_only_default
       required: true

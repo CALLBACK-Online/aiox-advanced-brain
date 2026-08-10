@@ -1,6 +1,6 @@
 # Quality Gates — Copy Squad
 # Materializa checkpoints formais com thresholds e veto conditions
-# Remediação P1 do audit SINKRA
+# Remediação P1 do audit AIOX
 
 quality_gates:
   version: "1.0.0"

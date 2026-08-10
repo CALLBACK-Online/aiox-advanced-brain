@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: design-system-e-decisao
 lesson_position: 41
 title: Design system é decisão, não estética
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/41-design-system-e-decisao/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

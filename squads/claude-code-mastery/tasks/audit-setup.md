@@ -6,7 +6,7 @@
 **Orchestrator:** Orion (claude-mastery-chief)
 **Purpose:** Perform a comprehensive audit of the Claude Code setup in the current project, generating a scored report with actionable recommendations.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: audit-setup
 atomic_layer: Atom

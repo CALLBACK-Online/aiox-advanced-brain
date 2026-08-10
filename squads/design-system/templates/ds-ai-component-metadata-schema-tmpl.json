@@ -23,9 +23,9 @@
     },
     "source": {
       "type": "object",
-      "required": ["workspacePath", "exportName"],
+      "required": ["projectPath", "exportName"],
       "properties": {
-        "workspacePath": { "type": "string" },
+        "projectPath": { "type": "string" },
         "exportName": { "type": "string" },
         "registryKey": { "type": "string" }
       },

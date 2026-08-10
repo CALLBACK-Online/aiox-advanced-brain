@@ -6,7 +6,7 @@
 **Orchestrator:** Sigil (config-engineer)
 **Purpose:** Audit all active Claude Code settings layers for conflicts, redundancies, security gaps, and optimization opportunities by reading managed, project, local, and user configuration files.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: audit-settings
 atomic_layer: Atom

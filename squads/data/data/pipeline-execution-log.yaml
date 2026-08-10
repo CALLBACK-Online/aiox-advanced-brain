@@ -46,9 +46,9 @@ example_entry:
   checkpoints_passed: 4
   checkpoints_failed: 0
   artifacts_produced:
-    - workspace/businesses/aiox/L1-strategy/analytics/customer-360-schema.yaml
-    - workspace/businesses/aiox/L1-strategy/analytics/clv-model.yaml
-    - workspace/businesses/aiox/L1-strategy/analytics/rfm-segments.yaml
+    - docs/aiox/strategy/analytics/customer-360-schema.yaml
+    - docs/aiox/strategy/analytics/clv-model.yaml
+    - docs/aiox/strategy/analytics/rfm-segments.yaml
     - outputs/data/aiox/customer-360-dashboard.yaml
   triggered_by: "@data-chief"
   business_slug: aiox

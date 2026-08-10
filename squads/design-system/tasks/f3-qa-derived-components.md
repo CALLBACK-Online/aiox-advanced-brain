@@ -99,13 +99,13 @@ Report final de QA com:
 
 - `squads/design/checklists/component-adaptation-checklist.md`
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - f3_qa_derived_components_artifact

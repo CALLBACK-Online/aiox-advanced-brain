@@ -5,14 +5,14 @@
  *
  * Strategy: No computer vision. Node.js only.
  * For each image in the prints directory, reports filename and generates
- * a pre-filled token template with SINKRA defaults. All tokens marked
+ * a pre-filled token template with AIOX defaults. All tokens marked
  * as confidence LOW (manual inference required).
  *
  * Usage:
  *   node ingest-from-prints.cjs --bu={slug} [--prints-dir={path}]
  *
  * Output:
- *   workspace/businesses/{slug}/L2-tactical/design/tokens-from-prints.json
+ *   docs/tactical/design/tokens-from-prints.json
  *
  * Exit codes:
  *   0 — Template generated successfully
@@ -37,14 +37,14 @@ if (!bu) {
 }
 
 // --- Resolve prints directory ---
-const defaultPrintsDir = path.join(ROOT, 'workspace', 'businesses', bu, 'L2-tactical', 'design', 'raw')
+const defaultPrintsDir = path.join(ROOT, 'docs', 'project', 'businesses', bu, 'tactical', 'design', 'raw')
 const printsDir = printsDirArg ? path.resolve(printsDirArg.split('=')[1]) : defaultPrintsDir
 
 // --- Validate business exists ---
-const buPath = path.join(ROOT, 'workspace', 'businesses', bu)
+const buPath = path.join(ROOT, 'docs', 'project', 'businesses', bu)
 if (!fs.existsSync(buPath)) {
   console.error(`ERROR: Business '${bu}' not found at ${buPath}`)
-  console.error(`ACTION: Create the folder first: mkdir -p workspace/businesses/${bu}/L2-tactical/design`)
+  console.error(`ACTION: Create the folder first: mkdir -p docs/${bu}/tactical/design`)
   process.exit(3)
 }
 
@@ -52,7 +52,7 @@ if (!fs.existsSync(buPath)) {
 if (!fs.existsSync(printsDir)) {
   console.error(`ERROR: Prints directory not found: ${printsDir}`)
   console.error('ACTION: Provide --prints-dir={path} or create the default directory:')
-  console.error(`  mkdir -p workspace/businesses/${bu}/L2-tactical/design/raw/`)
+  console.error(`  mkdir -p docs/${bu}/tactical/design/raw/`)
   console.error('  Then add screenshot images (.png, .jpg, .jpeg, .webp) to that folder.')
   process.exit(1)
 }
@@ -75,8 +75,8 @@ files.forEach((f, i) => {
   console.log(`  ${i + 1}. ${f}`)
 })
 
-// --- SINKRA default tokens (fallback values from tokens-base) ---
-const SINKRA_DEFAULTS = {
+// --- AIOX default tokens (fallback values from tokens-base) ---
+const AIOX_DEFAULTS = {
   color: {
     'brand-primary': { value: '#3B82F6', css_var: '--color-brand-primary' },
     'brand-accent': { value: '#8B5CF6', css_var: '--color-brand-accent' },
@@ -123,7 +123,7 @@ const SINKRA_DEFAULTS = {
 
 // --- Build output template ---
 // All brand-specific tokens start as PENDING_VALIDATION.
-// Semantic/utility tokens use SINKRA defaults but still LOW confidence.
+// Semantic/utility tokens use AIOX defaults but still LOW confidence.
 function buildTokenCategory(defaults) {
   const result = {}
   for (const [key, def] of Object.entries(defaults)) {
@@ -132,7 +132,7 @@ function buildTokenCategory(defaults) {
       value: isBrandSpecific ? 'PENDING_VALIDATION' : def.value,
       confidence: 'LOW',
       css_var: def.css_var,
-      source: isBrandSpecific ? 'needs_manual_input' : 'sinkra_default',
+      source: isBrandSpecific ? 'needs_manual_input' : 'aiox_default',
     }
   }
   return result
@@ -151,16 +151,16 @@ const output = {
     generator: 'ingest-from-prints.cjs',
     story: 'STORY-129.7',
   },
-  color: buildTokenCategory(SINKRA_DEFAULTS.color),
-  typography: buildTokenCategory(SINKRA_DEFAULTS.typography),
-  spacing: buildTokenCategory(SINKRA_DEFAULTS.spacing),
-  radius: buildTokenCategory(SINKRA_DEFAULTS.radius),
-  shadows: buildTokenCategory(SINKRA_DEFAULTS.shadows),
-  note: 'Review and update values before running F2. All values marked PENDING_VALIDATION must be filled. Tokens with source=sinkra_default use framework defaults and should be replaced with brand-specific values where available.',
+  color: buildTokenCategory(AIOX_DEFAULTS.color),
+  typography: buildTokenCategory(AIOX_DEFAULTS.typography),
+  spacing: buildTokenCategory(AIOX_DEFAULTS.spacing),
+  radius: buildTokenCategory(AIOX_DEFAULTS.radius),
+  shadows: buildTokenCategory(AIOX_DEFAULTS.shadows),
+  note: 'Review and update values before running F2. All values marked PENDING_VALIDATION must be filled. Tokens with source=aiox_default use framework defaults and should be replaced with brand-specific values where available.',
 }
 
 // --- Ensure output directory exists ---
-const designDir = path.join(buPath, 'L2-tactical', 'design')
+const designDir = path.join(buPath, 'tactical', 'design')
 if (!fs.existsSync(designDir)) {
   fs.mkdirSync(designDir, { recursive: true })
   console.log(`INFO: Created ${designDir}`)

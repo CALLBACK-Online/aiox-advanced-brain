@@ -50,7 +50,7 @@ const DELAY_MS = DELAY_ARG ? parseInt(DELAY_ARG.split('=')[1], 10) : 2000;
 const DEPTH = 100; // High depth to capture full component tree (API default is unlimited)
 
 // ── Paths ───────────────────────────────────────────────────────────────────
-const EXTRACTION_DIR = path.join(ROOT, 'workspace', 'domains', 'design-system', 'extraction');
+const EXTRACTION_DIR = path.join(ROOT, 'docs', 'project', 'domains', 'design-system', 'extraction');
 const PAGES_DIR = path.join(EXTRACTION_DIR, 'pages');
 const MANIFEST_PATH = path.join(EXTRACTION_DIR, 'batch-manifest.json');
 const MERGED_PATH = path.join(EXTRACTION_DIR, 'all-pages-merged.json');

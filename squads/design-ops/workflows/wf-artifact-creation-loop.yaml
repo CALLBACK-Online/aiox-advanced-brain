@@ -66,7 +66,7 @@ workflow:
         type: blocking
         resolution_protocol: squads/design-ops/data/ds-discovery-paths.yaml
         must_not_reach_step_4: true
-      failure: "halt; route to wf-brandbook-workspace-extraction when DS missing"
+      failure: "halt; route to brownfield-complete when DS missing"
       next: p03-vocalize
 
     - step: p03-vocalize
@@ -220,8 +220,8 @@ workflow:
       - squads/design-ops/checklists/dops-ai-trope-guardrails.yaml
 
   related:
-    - .claude/skills/design-artifact-cycle/SKILL.md
-    - .claude/skills/design-system/SKILL.md
+    - skills/design-artifact-cycle/SKILL.md
+    - skills/design-system/SKILL.md
     - squads/design-ops/rules/design-exploration-cycle.md
     - squads/design-ops/rules/ds-consistency-policy.md
     - squads/design-ops/rules/self-contained-artifact-security.md

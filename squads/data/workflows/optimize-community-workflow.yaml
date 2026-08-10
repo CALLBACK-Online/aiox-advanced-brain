@@ -48,21 +48,6 @@ workflow:
     - ROI metrics
     - Action plan
 
-workspace_execution_contract:
-  preflight:
-    - "*workspace-preflight (executa bootstrap-data-workspace.sh + validate-data-essentials.sh)"
-    - "*workspace-context {slug}"
-    - "Confirmar templates necessários em workspace/_templates/analytics/"
-  output_routing:
-    canonical:
-      - "workspace/businesses/{slug}/analytics/community-health.yaml"
-      - "workspace/businesses/{slug}/analytics/executive-report.yaml"
-    custom:
-      - "docs/data/{slug}/optimize-community-{date}.md"
-  hard_rules:
-    - "Proibido gravar em workspace/businesses/{slug}/analytics/ sem template correspondente em workspace/_templates/analytics/."
-    - "Relatórios em docs/data/{slug}/ são complementares e não substituem artefatos canônicos."
-
 spaces_assessment_template:
   date: "YYYY-MM-DD"
   assessor: "@david-spinks"

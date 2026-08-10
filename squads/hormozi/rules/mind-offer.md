@@ -1,9 +1,9 @@
 ---
 paths:
-  - "workspace/businesses/*/L1-strategy/offerbook.yaml"
-  - "workspace/businesses/*/L3-product/*/offerbook.yaml"
-  - "workspace/businesses/*/L3-product/*/pricing-strategy.yaml"
-  - "workspace/_templates/**/offerbook.yaml"
+  - "docs/*/strategy/offerbook.yaml"
+  - "docs/product/*/offerbook.yaml"
+  - "docs/product/*/pricing-strategy.yaml"
+  - "docs/templates/**/offerbook.yaml"
 mind_ref: alex_hormozi
 context: offer
 derivation: success

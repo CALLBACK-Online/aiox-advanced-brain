@@ -426,7 +426,7 @@ evaluation:
 
 ```yaml
 evaluation:
-  task: "Sincronizar squads/ para .claude/skills/"
+  task: "Sincronizar squads/ para skills/"
   repetitions: 5
   current_state: "manual"
 

@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: code-anatomy-domain-decoder
 lesson_position: 38
 title: 'Code Anatomy: engenharia reversa de código com /code-anatomist'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/38-code-anatomy-domain-decoder/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -37,6 +37,9 @@ curated_at: '2026-08-09'
 - [[Brownfield Discovery]]
 
 ## Mapa desta aula
+
+> **Neste acervo:** use a skill `code-anatomist` e/ou o squad `code-anatomist`; para regras de domínio brownfield, `decoder-chief` → squad `domain-decoder`. Referências a `/deep-research` mapeiam para `tech-research` + squad `research`.
+
 
 Decisão-chave da aula — A decisão sobre este sistema trava algo caro de reverter?
 
@@ -145,7 +148,7 @@ Antes dos termos técnicos, a diferença é só isto: ler no olho chuta o que o 
 
 > **Em uma frase**: Ler código no olho chuta o que o sistema faz pela impressão das primeiras telas: rápido, mas cego à arquitetura e à regra de negócio que ficaram escondidas. O Code Anatomy investiga o código a fundo, extrai arquitetura, domínio, dados, API, dependências e infra, e formaliza a regra de negócio antes de qualquer conclusão. A ordem muda: extrai a anatomia antes, formaliza a regra no meio, decide reescrever no fim.
 
-- **Spy é investigar a fundo** -> Não um relance no README, mas uma varredura profunda do sistema antes de tirar conclusão. O código é investigado como o /deep-research investigaria um tema.
+- **Spy é investigar a fundo** -> Não um relance no README, mas uma varredura profunda do sistema antes de tirar conclusão. O código é investigado como o pipeline `tech-research` / squad `research` investigaria um tema.
 - **Anatomia é o que se extrai** -> As camadas do sistema, nomeadas: arquitetura, domínio, dados, API, dependências, infra. Sem a anatomia, você não sabe como o sistema funciona, só como a tela parece.
 - **A regra de negócio é o ouro** -> A lógica de domínio que o código esconde, formalizada. Onde a anatomia revela uma regra implícita, mora a inteligência que o olho não viu.
 - **O decoder é a marca** -> Você sai da leitura com a anatomia mapeada e a regra de negócio extraída, não com uma impressão. Sem o /code-anatomist, não houve engenharia reversa.

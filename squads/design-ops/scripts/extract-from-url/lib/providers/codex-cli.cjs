@@ -27,7 +27,7 @@ function extractDesignMd(rawContent) {
 
 function buildCodexCliArgs({ cwd, model, outputLastMessage, reasoningEffort } = {}) {
   const args = [
-    "--sandbox", "workspace-write",
+    "--sandbox", "local_docs-write",
     "--ask-for-approval", "never",
   ];
 

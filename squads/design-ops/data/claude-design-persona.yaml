@@ -286,7 +286,7 @@ completion:
 
 related:
   - squads/design-ops/data/user-terminology-translation.yaml
-  - .claude/skills/claude-design/SKILL.md
-  - .claude/skills/design-artifact-cycle/SKILL.md
+  - skills/claude-design/SKILL.md
+  - skills/design-artifact-cycle/SKILL.md
   - squads/design-ops/templates/design-brief-intake-tmpl.yaml
   - squads/design-ops/data/questions-intake-protocol-spec.yaml

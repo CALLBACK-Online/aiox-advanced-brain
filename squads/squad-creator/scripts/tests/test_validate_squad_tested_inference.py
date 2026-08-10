@@ -62,7 +62,7 @@ def _create_test_squad(
     config = f"""name: {name}
 version: 1.0.0
 entry_agent: squad-chief
-{tested_line}workspace_integration:
+{tested_line}local project docs:
   level: none
 settings:
   activation:

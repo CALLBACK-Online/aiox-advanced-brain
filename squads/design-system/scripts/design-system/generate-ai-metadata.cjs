@@ -10,7 +10,7 @@
  *   node generate-ai-metadata.cjs --bu=aiox
  *
  * Output:
- *   workspace/businesses/{slug}/L2-tactical/design/component-index.json
+ *   docs/tactical/design/component-index.json
  *
  * [STORY-129.4] AC-1, AC-2
  */
@@ -74,14 +74,14 @@ function readYaml(filePath) {
 }
 
 /**
- * Attempts to load brand-specific design tokens from the business workspace.
- * Looks for tokens.yaml in the L2-tactical/design directory.
+ * Attempts to load brand-specific design tokens from the business context.
+ * Looks for tokens.yaml in the tactical/design directory.
  * Returns a flat object mapping token categories to arrays of token names.
  */
 function loadBrandTokens(businessSlug) {
   const tokensPath = path.join(
-    ROOT, 'workspace', 'businesses', businessSlug,
-    'L2-tactical', 'design', 'tokens.yaml'
+    ROOT, 'docs', 'project', businessSlug,
+    'tactical', 'design', 'tokens.yaml'
   );
   const tokensData = readYaml(tokensPath);
   if (!tokensData) {
@@ -168,9 +168,9 @@ function main() {
   }
 
   // Validate business directory exists
-  const businessDir = path.join(ROOT, 'workspace', 'businesses', args.bu);
+  const businessDir = path.join(ROOT, 'docs', 'project', 'businesses', args.bu);
   if (!fs.existsSync(businessDir)) {
-    fail(`Business directory not found: workspace/businesses/${args.bu}`, 3);
+    fail(`Business directory not found: docs/${args.bu}`, 3);
   }
 
   // Read base component index
@@ -201,8 +201,8 @@ function main() {
 
   // Ensure output directory exists
   const outputDir = path.join(
-    ROOT, 'workspace', 'businesses', args.bu,
-    'L2-tactical', 'design'
+    ROOT, 'docs', 'project', args.bu,
+    'tactical', 'design'
   );
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });

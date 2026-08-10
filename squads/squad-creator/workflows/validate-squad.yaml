@@ -73,9 +73,9 @@ workflow:
       checks:
         - config_yaml_exists
         - entry_agent_defined
-        - workspace_integration_level_defined
-        - workspace_integration_level_valid
-        - coo_handoff_declared_for_workspace_write
+        - local project docs_level_defined
+        - local project docs_level_valid
+        - coo_handoff_declared_for_project_write
         - all_referenced_files_exist
         - naming_conventions
         - no_external_references
@@ -97,9 +97,9 @@ workflow:
         - checklist_coverage_gte_30pct
         - orphan_tasks_max_2
         - data_file_usage_gte_50pct
-        - workspace_references_present_when_required
-        - workspace_write_delegates_to_coo
-        - workspace_first_has_bootstrap_and_essentials_validator
+        - project_references_present_when_required
+        - project_write_delegates
+        - local_has_bootstrap_and_essentials_validator
         - required_docs_exist
       scripts:
         - scripts/checklist_validator.py

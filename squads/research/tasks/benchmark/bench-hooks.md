@@ -1,6 +1,6 @@
 # Task: Hook/Lifecycle System Deep Comparison (Autonomous)
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

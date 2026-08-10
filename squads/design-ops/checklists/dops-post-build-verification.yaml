@@ -90,15 +90,6 @@ quality_dimensions:
       - copyright_compliance_pass
     failure_severity: HIGH
 
-  workspace_contracts:
-    required_checks:
-      - tokens_resolve
-      - foundations_resolve
-      - component_contracts_resolve_when_required
-      - motion_primitives_resolve_when_required
-      - no_legacy_workspace_dialect_paths_in_artifact
-    failure_severity: BLOCKER
-
   build_integrity:
     required_checks:
       - lint_passes
@@ -217,5 +208,5 @@ related:
   - squads/design-ops/data/artifact-file-governance.yaml
   - squads/design-ops/data/tweak-protocol-spec.yaml
   - squads/design-ops/data/primitives-interface.yaml
-  - .claude/skills/design-artifact-cycle/SKILL.md
+  - skills/design-artifact-cycle/SKILL.md
   - docs/adrs/ADR-018-design-ops-artifact-creation-capability.md

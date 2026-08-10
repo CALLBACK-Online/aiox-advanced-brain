@@ -26,7 +26,7 @@ artifact_contracts:
     lifecycle_states: [draft, validated, approved]
     schema:
       required_fields: [pack, agents, capabilities, activation]
-      optional_fields: [artifact_contracts, bu_mapping, supported_modes, workspace_integration]
+      optional_fields: [artifact_contracts, bu_mapping, supported_modes, local project docs]
 
   - artifact_id: "agent-persona"
     template_path: "squads/squad-creator/templates/agent-tmpl.md"

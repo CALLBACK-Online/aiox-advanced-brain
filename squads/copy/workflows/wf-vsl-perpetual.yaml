@@ -52,7 +52,7 @@ workflow:
       architecture: data/sops/vsl-funnel-architecture-sop.md
       script_creation: data/sops/vsl-script-creation-sop.md
       diagnostic: data/sops/vsl-diagnostic-optimization-sop.md
-    planning_root: "workspace/businesses/{business}/copy/{campaign_slug}/"
+    planning_root: "docs/copy/{campaign_slug}/"
     delivery_root: "outputs/copy/{business}/"
     review_gates:
       required:
@@ -73,7 +73,7 @@ workflow:
       phase: 0
       phase_name: "Context & SOP Load"
       agent: copy-chief
-      action: load-workspace-context-and-sop-references
+      action: load-project context-and-sop-references
       next: phase-1
 
     - step: phase-1
@@ -167,11 +167,11 @@ phases:
     day: 1
     tier: 0
     description: |
-      Carregar contexto do workspace (ICP, brand, proof, offerbook) e
+      Carregar contexto de docs/project (ICP, brand, proof, offerbook) e
       os 3 SOPs de referencia do framework VSL perpetuo.
       SEM este passo, nenhum output pode ser FINAL.
     tasks:
-      - task_file: load-workspace-context.md
+      - task_file: load-project context.md
         agent: copy-chief
         required: true
         focus: "Load ICP, brand voice, proof stack, offerbook, positioning"
@@ -189,7 +189,7 @@ phases:
 
     checkpoint:
       criteria:
-        - "WORKSPACE CONTEXT loaded (ICP + brand + proof + offerbook)"
+        - "project context loaded (ICP + brand + proof + offerbook)"
         - "SOPs loaded and referenced"
         - "Brief status determined (DRAFT or FINAL eligible)"
       human_review: false

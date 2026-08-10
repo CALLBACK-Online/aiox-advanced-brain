@@ -2,7 +2,7 @@
 
 # Task: Quick Framework Comparison (Autonomous)
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

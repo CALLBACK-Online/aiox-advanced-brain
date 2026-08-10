@@ -134,7 +134,7 @@ modes:
       - "cria um design system pra {business}"
       - "não temos DS, precisa criar"
       - "bootstrap do DS"
-    related_workflow: squads/design-ops/workflows/wf-brandbook-workspace-extraction.yaml
+    related_workflow: squads/design-ops/workflows/brownfield-complete.yaml
 
   save-as-pdf:
     label: "Exportar como PDF"
@@ -251,11 +251,11 @@ wave_c_gated_modes:
     - create-component
     - frontend-design (design output only)
     - wireframe (HTML-only, no advanced runtime)
-    - create-design-system (via wf-brandbook-workspace-extraction)
+    - create-design-system (via brownfield-complete)
     - handoff-to-claude-code
 
 related:
-  - .claude/skills/design-system/SKILL.md
+  - skills/design-system/SKILL.md
   - squads/design-ops/data/deliverable-kinds-registry.yaml
   - squads/design-ops/data/claude-design-persona.yaml
   - squads/design-ops/data/starter-components-catalog.yaml

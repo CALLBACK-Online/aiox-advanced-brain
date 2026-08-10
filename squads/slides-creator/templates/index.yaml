@@ -44,7 +44,6 @@ deck_templates:
   - id: executive-pitch
     path: templates/deck/executive-pitch.yaml
     family: pitch
-    pick_for: "Pitch executivo 15-30min, C-level/board, decisao especifica"
     skip_if: "Audiencia frio OR tempo >45min OR decisao binaria simples"
     slide_count_target: 10
     default_theme: editorial-pentagram
@@ -118,11 +117,11 @@ selection_guidance:
 # ─────────────────────────────────────────────────────
 provenance:
   inspired_by_benches:
-    - "/Users/alan/Code/bench/ppt-master/ (template-as-contract pattern + charts_index.json)"
-    - "/Users/alan/Code/bench/presenton/ (Zod schema per layout + family settings)"
-    - "/Users/alan/Code/bench/PPTAgent/ (layout_selector with reasoning JSON)"
-    - "/Users/alan/Code/bench/presentation-ai/ (ThemeProperties separation visual/structure)"
-    - "/Users/alan/Code/bench/slide-deck-ai/ (minimal structural markers)"
+    - "<bench-root>/ppt-master/ (template-as-contract pattern + charts_index.json)"
+    - "<bench-root>/presenton/ (Zod schema per layout + family settings)"
+    - "<bench-root>/PPTAgent/ (layout_selector with reasoning JSON)"
+    - "<bench-root>/presentation-ai/ (ThemeProperties separation visual/structure)"
+    - "<bench-root>/slide-deck-ai/ (minimal structural markers)"
   analysis_doc: "docs/bench/slides-creator-templates-architecture/00-cross-bench-synthesis.md"
   mission: "MSN-2026-SLIDES-NARRATIVE-DESIGN"
   deviation: "DEV-2026-003 (scope expansion approved by Mission Lead via 'ok')"

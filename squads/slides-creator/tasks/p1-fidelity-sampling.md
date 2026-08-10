@@ -1,8 +1,8 @@
 # Task: P1 Fidelity Sampling (10% spot-check)
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Operational -->
+<!-- AIOX Domain: Operational -->
 
 ## Metadata
 | Campo | Valor |
@@ -14,7 +14,7 @@
 | session | null (Human task) |
 | duration | 15-60 min (depending on deck size) |
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml

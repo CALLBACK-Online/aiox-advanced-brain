@@ -6,7 +6,7 @@ paths:
   - "squads/backlog-ops/**"
 ---
 
-# ClickUp — Sinkra Hub
+# ClickUp — AIOX platform
 
 Applies when interacting with ClickUp: creating/modifying Spaces/Folders/Lists/Custom Fields, updating task descriptions via API, or configuring SuperAgent instructions.
 
@@ -314,5 +314,5 @@ ALL agents that interact with ClickUp task descriptions:
 
 ---
 
-*ClickUp v4.0 — Sinkra Hub | Merged organization + description 2026-04-13*
+*ClickUp v4.0 — AIOX platform | Merged organization + description 2026-04-13*
 *Roundtable RT-JL-001: 2026-03-30 — 7/7 unanimous*

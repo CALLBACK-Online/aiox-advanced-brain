@@ -127,7 +127,7 @@ def check_task_completeness(squad_path: Path) -> Dict[str, Any]:
     3. Outputs (what it produces) — output/saída/deliverable/template references
     4. Completion signal (when it's done) — criteria/checklist/quality gate
 
-    This is format-agnostic: works for SINKRA Task Anatomy, squad-creator tasks,
+    This is format-agnostic: works for AIOX Task Anatomy, squad-creator tasks,
     copy squad tasks, books squad tasks, etc.
     """
     tasks_dir = squad_path / "tasks"
@@ -161,13 +161,13 @@ def check_task_completeness(squad_path: Path) -> Dict[str, Any]:
         if (re.search(r'##?\s*(Purpose|Mission|Prop[oó]sito|Identity|MISSION|What|When to Use|Quando Usar)', content, re.IGNORECASE)
             or re.search(r'##?\s*Task\s+Anatomy', content, re.IGNORECASE)
             or re.search(r'\|\s*\*\*Task\s+ID\*\*\s*\|', content, re.IGNORECASE)
-            or re.search(r'sinkra_task_metadata', content)
+            or re.search(r'framework_task_metadata', content)
             or (lines >= 30 and re.search(r'^#\s+', content, re.MULTILINE))):
             signals += 1
             found.append("purpose")
 
         # Signal 2: INPUTS — references to what the task needs
-        if (re.search(r'(input|entrada|context|source|workspace|require|depend|pre.?condition)', content, re.IGNORECASE)
+        if (re.search(r'(input|entrada|context|source|local_docs|require|depend|pre.?condition)', content, re.IGNORECASE)
             or re.search(r'(reads?|loads?|receives?|expects?)\s+(from|the|a|an)', content, re.IGNORECASE)):
             signals += 1
             found.append("inputs")

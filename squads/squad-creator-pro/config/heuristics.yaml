@@ -516,7 +516,7 @@ heuristics_engine:
     agent: "@oalanicolas"
     description: |
       ALWAYS check if similar exists before creating new.
-      Search: squads/, .claude/agents/, .claude/skills/, app/components/
+      Search: squads/, .claude/agents/, skills/, app/components/
 
     decision_matrix:
       - similarity: ">= 80%"

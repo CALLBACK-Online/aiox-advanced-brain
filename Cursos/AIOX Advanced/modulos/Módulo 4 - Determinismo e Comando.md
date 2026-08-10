@@ -42,4 +42,4 @@ Eu recupero os conceitos no [[avaliacoes/Quiz M4 - Determinismo e Comando|Quiz d
 
 ## Navegação
 
-← [[modulos/Módulo 3 - Ciclo SDC|M3]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 5 - Arquitetura SINKRA|M5]]
+← [[modulos/Módulo 3 - Ciclo SDC|M3]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 5 - Arquitetura AIOX|M5]]

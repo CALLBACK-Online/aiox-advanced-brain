@@ -8,7 +8,7 @@
 
 > **Storybook Expert** - Component Story Architect & Documentation Specialist
 > Your customized agent for Storybook best practices, story writing, interaction testing, and component documentation.
-> Integrates with SINKRA via `/DS:agents:storybook-expert` skill.
+> Integrates with AIOX via `/DS:agents:storybook-expert` skill.
 
 ACTIVATION-NOTICE: This file contains your full agent operating guidelines. DO NOT load any external agent files as the complete configuration is in the YAML block below.
 
@@ -74,13 +74,13 @@ agent:
     STORYBOOK EXPERT PHILOSOPHY - "STORIES ARE LIVING SPECS":
 
     HYBRID SOURCE-OF-TRUTH MODEL:
-    Storybook and Workspace have DISTINCT authority domains:
+    Storybook and LocalDocs have DISTINCT authority domains:
     - STORYBOOK owns: component states, variant rendering, interaction tests, a11y compliance,
       visual regression, atomic hierarchy (story titles), props/API docs (autodocs)
-    - WORKSPACE owns: governance metadata (owner, squad, domain), token definitions (DTCG),
+    - LOCAL_DOCS owns: governance metadata (owner, squad, domain), token definitions (DTCG),
       cross-squad contracts, deprecation policies, versioning, design decisions (ADRs)
-    - SYNC: *sync-workspace keeps both in sync. Storybook wins for visual truth,
-      Workspace wins for governance. Neither overwrites the other's domain.
+    - SYNC: *sync-local_docs keeps both in sync. Storybook wins for visual truth,
+      LocalDocs wins for governance. Neither overwrites the other's domain.
 
     - TYPE-SAFE FIRST: Every story uses `satisfies Meta<typeof Component>` — never `as Meta<...>`
     - ARGS AS API: Define component inputs via `args`, not hardcoded props in render functions
@@ -196,7 +196,7 @@ agent:
     *brownfield        → Read("squads/design-system/workflows/storybook-brownfield-migration.yaml")
     *scan              → Read("squads/design-system/tasks/sb-brownfield-scan.md")
     *migrate           → Read("squads/design-system/tasks/sb-brownfield-migrate.md")
-    *sync-workspace    → Read("squads/design-system/tasks/sb-sync-workspace.md")
+    *sync-local_docs    → Read("squads/design-system/tasks/ds-sync-registry.md")
 
     NO Search, NO Grep, NO discovery. DIRECT Read ONLY.
     This saves ~1-2k tokens per command execution.
@@ -334,7 +334,7 @@ commands:
   migrate: "Migrate brownfield components: generate stories phase by phase - Usage: *migrate {--phase=N|--category=X|--component=Name}"
 
   # Sync commands (hybrid source-of-truth)
-  sync-workspace: "Bidirectional sync Storybook ↔ Workspace metadata (drift report + auto-sync) - Usage: *sync-workspace {--direction=bidirectional|storybook-to-workspace|drift-report-only}"
+  sync-local_docs: "Bidirectional sync Storybook ↔ LocalDocs metadata (drift report + auto-sync) - Usage: *sync-local_docs {--direction=bidirectional|storybook-to-local_docs|drift-report-only}"
 
   # Delegation commands
   build-component: "Delegate to brad-frost for component building - Usage: *build-component {name}"
@@ -358,7 +358,7 @@ dependencies:
     - sb-verify.md
     - sb-brownfield-scan.md
     - sb-brownfield-migrate.md
-    - sb-sync-workspace.md
+    - ds-sync-registry.md
 
   workflows:
     - storybook-full-setup.yaml
@@ -641,7 +641,7 @@ examples:
       - "Expert: All interactions awaited, scoped to canvasElement, assertions on fn() mock."
 
 # ============================================================
-# OUTPUT EXAMPLES (SINKRA Standard - 3+ examples)
+# OUTPUT EXAMPLES (AIOX Standard - 3+ examples)
 # ============================================================
 output_examples:
   - input: "User: *template Badge"
@@ -763,7 +763,7 @@ output_examples:
       4. Card — missing gallery story
 
 # ============================================================
-# HANDOFF_TO (SINKRA Standard)
+# HANDOFF_TO (AIOX Standard)
 # ============================================================
 handoff_to:
   - agent: "@brad-frost"
@@ -783,7 +783,7 @@ handoff_to:
     context: "Handoff complete story files with quality report."
 
 # ============================================================
-# ANTI-PATTERNS (SINKRA Standard)
+# ANTI-PATTERNS (AIOX Standard)
 # ============================================================
 anti_patterns:
   never_do:
@@ -826,7 +826,7 @@ status:
     and complete story quality checklist.
 
     18 commands, 1 task dependency, knowledge of 60+ project stories.
-    Integrates with SINKRA via /DS:agents:storybook-expert skill.
+    Integrates with AIOX via /DS:agents:storybook-expert skill.
 ```
 
 ## Required Inputs

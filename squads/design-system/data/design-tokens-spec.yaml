@@ -3,7 +3,7 @@
 # Last Updated: 2026-01-05
 #
 # IMPORTANT: This is the TEMPLATE for design tokens structure.
-# Brand-specific values (colors, fonts) must come from workspace/ui/{brand}/brand.json.
+# Brand-specific values (colors, fonts) must come from docs/design-system/ui/{brand}/brand.json.
 # This file defines the TOKEN STRUCTURE and SEMANTIC ROLES, not brand values.
 #
 # Usage:
@@ -11,11 +11,11 @@
 #   - *contrast-check: Validates color contrast ratios
 #   - Subagents: Must read this file before creating components
 #
-# Brand values are loaded from: workspace/ui/{brand}/brand.json
+# Brand values are loaded from: docs/design-system/ui/{brand}/brand.json
 
 metadata:
   version: "2.0.0"
-  brand: "{brand}"  # Replaced at runtime from workspace/ui/{brand}/brand.json
+  brand: "{brand}"  # Replaced at runtime from docs/design-system/ui/{brand}/brand.json
   theme: "dark"     # Default theme; brand.json may override
   wcag_target: "AA"  # AA = 4.5:1 normal, 3:1 large | AAA = 7:1 normal, 4.5:1 large
 
@@ -23,7 +23,7 @@ metadata:
 # COLORS
 # =============================================================================
 colors:
-  # Primary Brand Colors — values loaded from workspace/ui/{brand}/brand.json
+  # Primary Brand Colors — values loaded from docs/design-system/ui/{brand}/brand.json
   primary:
     accent:
       value: "var(--color-primary)"  # From brand.json
@@ -395,7 +395,7 @@ components:
 # =============================================================================
 validation:
   # Colors that should NEVER be hardcoded — use semantic tokens instead
-  # Brand-specific hex values are loaded at runtime from workspace/ui/{brand}/brand.json
+  # Brand-specific hex values are loaded at runtime from docs/design-system/ui/{brand}/brand.json
   forbidden_patterns:
     - "Raw hex values (#XXXXXX) — use var(--color-*) tokens"
     - "Raw rgba with brand colors — use rgba(var(--color-*-rgb), opacity)"

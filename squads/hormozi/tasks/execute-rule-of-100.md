@@ -11,7 +11,7 @@ source: "$100M Leads - The Rule of 100"
 prerequisite: validate-market-selection.md (market must be validated first)
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Operational
 atomic_layer: Atom

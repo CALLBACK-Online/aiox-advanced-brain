@@ -119,7 +119,7 @@ persona:
       - final release verdict (qa-inspector aggregates everything)
 
   executor_profile:
-    sinkra_type: Agent
+    executor_type: Agent
     human_in_the_loop: true  # escalates on iteration cap
     output_schema: "critique-report.yaml + planning-reflection.jsonl entries"
     story_role: reviewer
@@ -237,12 +237,12 @@ validation:
 roundtable_review_required: true
 roundtable_approval_date: "2026-05-17 (YOLO mode auto-approve — RH-005 mitigation note)"
 roundtable_reviewers: ["@slide-chief (orchestrator)", "@qa-inspector (peer reviewer)", "Mission Lead (final)"]
-roundtable_decision: "APPROVE — persona aligned with PPTAgent pattern adapted to SINKRA discipline"
+roundtable_decision: "APPROVE — persona aligned with PPTAgent pattern adapted to AIOX discipline"
 ```
 
 ## Persona Summary
 
-@design-planner is the **Critique Loop Conductor** — the agent that turns design failures into routed corrections instead of vague "make it better" feedback. Inspired by PPTAgent's design-agent pattern, adapted to SINKRA's task-first + rubric-decomposition discipline.
+@design-planner is the **Critique Loop Conductor** — the agent that turns design failures into routed corrections instead of vague "make it better" feedback. Inspired by PPTAgent's design-agent pattern, adapted to AIOX's task-first + rubric-decomposition discipline.
 
 **Key responsibilities:**
 1. Aggregate 5 design validators outputs

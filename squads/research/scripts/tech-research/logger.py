@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Structured JSON Lines logger for tech-research Worker atoms.
 
-Implements M3 (logging obrigatório) from SINKRA 10 Mandamentos.
+Implements M3 (logging obrigatório) from AIOX 10 Mandamentos.
 Outputs JSON Lines to stderr. Data goes to stdout. Never mix.
 
 Usage:

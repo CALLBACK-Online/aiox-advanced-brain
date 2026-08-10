@@ -6,7 +6,7 @@
 **Owner:** Conduit (project-integrator)
 **Purpose:** Audit an existing Claude Code integration in a project, checking completeness, consistency, health, and generating an actionable score with recommendations.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: audit-integration
 atomic_layer: Atom
@@ -114,8 +114,8 @@ Scan the `.claude/` directory and check for expected components:
 | settings.local.json | Recommended | `.claude/settings.local.json` | 5 |
 | rules/ directory | Recommended | `.claude/rules/` | 15 |
 | At least 1 rule file | Recommended | `.claude/rules/*.md` | 10 |
-| skills/ directory | Optional | `.claude/skills/` | 5 |
-| skills/ directory | Optional | `.claude/skills/` | 5 |
+| skills/ directory | Optional | `skills/` | 5 |
+| skills/ directory | Optional | `skills/` | 5 |
 
 For each component, record: present/missing, file size, last modified date.
 

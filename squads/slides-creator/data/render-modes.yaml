@@ -160,10 +160,10 @@ output_path_rules:
   standalone_modes_base: "outputs/slides-creator/{business_slug}/{deck_slug}/"
   rationale: |
     Standalone HTML artifacts são outputs de squad execution,
-    não workspace canonical data.
+    não docs/ canonical data.
 
   forbidden_paths:
-    - "workspace/businesses/*/" # NUNCA — violates artifact-classification rule
+    - "docs/*/" # NUNCA — violates artifact-classification rule
     - "apps/"                    # reserved para applications
     - "packages/"                # reserved para shared packages
 

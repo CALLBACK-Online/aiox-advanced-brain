@@ -43,9 +43,9 @@ Spawning agents without validation creates expensive cleanup work.]]
 
 ## 3. Isolation Strategy
 
-- [ ] Worktree vs shared workspace decision is made and documented (CRITICAL)
+- [ ] Worktree vs shared local_docs decision is made and documented (CRITICAL)
 - [ ] Branch naming convention defined (e.g., agent/{agent-id}/{subtask-id})
-- [ ] If shared workspace: file-level locking strategy defined to prevent conflicts
+- [ ] If shared local_docs: file-level locking strategy defined to prevent conflicts
 - [ ] If worktree isolation: base branch for each worktree identified
 - [ ] Agents working on the same codebase have non-overlapping file scopes
 - [ ] Temporary files and build artifacts have agent-specific paths

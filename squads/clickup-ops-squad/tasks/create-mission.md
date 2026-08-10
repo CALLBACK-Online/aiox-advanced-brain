@@ -15,8 +15,8 @@ architecture: "Clean — Mission=Task, DAG=Subtasks, Gate=Subtask Type Gate"
 
 ## Description
 
-Materializar uma Mission SINKRA específica no ClickUp a partir do handoff YAML
-gerado pelo `@sinkra-chief` na Phase 7 (Mission Launch).
+Materializar uma Mission AIOX específica no ClickUp a partir do handoff YAML
+gerado pelo `@aiox-chief` na Phase 7 (Mission Launch).
 
 Cria 1 Task (tipo Mission) na List "Missions" + N subtasks (DAG tasks + Gates)
 com dependencies nativas entre elas → Gantt automático com critical path.
@@ -24,7 +24,7 @@ com dependencies nativas entre elas → Gantt automático com critical path.
 ## Entrada
 
 - `mission_clickup_handoff` — YAML no formato `mission-clickup-handoff-tmpl.yaml`
-  - Path típico: `.aiox/handoffs/handoff-sinkra-chief-to-clickup-chief-mission-{date}.yaml`
+  - Path típico: `.aiox/handoffs/handoff-aiox-chief-to-clickup-chief-mission-{date}.yaml`
 
 ## Saída
 
@@ -75,7 +75,7 @@ validation_checklist:
 action: validate_handoff
 input: "{mission-clickup-handoff-path}"
 checks: 9
-on_fail: "BLOCK — devolver para @sinkra-chief com feedback"
+on_fail: "BLOCK — devolver para @aiox-chief com feedback"
 on_pass: "Prosseguir"
 ```
 
@@ -201,7 +201,7 @@ logic: |
 
 ```yaml
 action: update_registry
-file: "squads/sinkra-squad/data/clickup-tokenization.yaml"
+file: "squads/aiox-squad/data/clickup-tokenization.yaml"
 section: "missions.instances"
 register:
   mission_id: "{MSN-YYYY-NNN}"

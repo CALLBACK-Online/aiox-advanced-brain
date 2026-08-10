@@ -84,7 +84,7 @@ inputs:
     type: string
     description: Path to the pattern catalog JSON
     required: true
-    default: workspace/ui/pattern-catalog.json
+    default: docs/design-system/ui/pattern-catalog.json
   scoring_rules_path:
     type: string
     description: Path to the scoring rules YAML
@@ -94,7 +94,7 @@ inputs:
     type: string
     description: Path to the append-only decisions log
     required: true
-    default: workspace/ui/canonical-decisions.json
+    default: docs/design-system/ui/canonical-decisions.json
   cycle_number:
     type: integer
     description: Current evaluation cycle (auto-incremented from catalog.evaluationCycle)

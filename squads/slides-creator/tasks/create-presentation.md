@@ -1,10 +1,10 @@
 # Create Presentation
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Tactical -->
+<!-- AIOX Domain: Tactical -->
 
-## SINKRA Task Anatomy (8 sections — migrated 2026-04-20 Wave 2)
+## AIOX Task Anatomy (8 sections — migrated 2026-04-20 Wave 2)
 
 ```yaml
 task: createPresentation
@@ -15,7 +15,7 @@ session: null  # spans all sessions
 Inputs:
   - { name: briefing, type: text|JSON, source: user }
   - { name: source_materials, type: array, source: user }
-  - { name: brand_context, source: "workspace/businesses/{slug}/L2-tactical/brand/" }
+  - { name: brand_context, source: "docs/tactical/brand/" }
   - { name: output_target, type: enum, values: [handoff_only, {consumer_app}] }
 Outputs:
   - { name: briefing.normalized.json, template: templates/briefing.normalized.json }
@@ -58,7 +58,7 @@ execution_type: Agent
 input:
   - briefing: "Problem, objective, audience, constraints"
   - source_materials: "Docs, notes, URLs, screenshots, assets"
-  - brand_context: "Workspace brand and company references"
+  - brand_context: "LocalDocs brand and company references"
   - output_target: "ds presenter parity"
 output:
   - briefing_contract: "briefing.normalized.json"

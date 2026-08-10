@@ -6,7 +6,7 @@
 **Orchestrator:** Orion (claude-mastery-chief)
 **Purpose:** Interactive wizard to set up Claude Code for a new or existing project, generating all required configuration files tailored to the detected project type.
 
-## Contrato SINKRA
+## Contrato AIOX
 
 task: setup-wizard
 atomic_layer: Atom
@@ -89,7 +89,7 @@ Completion Criteria:
 Analyze the project to determine its type:
 
 1. Check for project markers:
-   - `package.json` -> Node.js project; check for `workspaces` field (monorepo)
+   - `package.json` -> Node.js project; check for `projects` field (monorepo)
    - `next.config.*` -> Next.js fullstack
    - `vite.config.*` -> Vite frontend
    - `tsconfig.json` -> TypeScript project
@@ -109,7 +109,7 @@ Analyze the project to determine its type:
 
 | Type | Markers | Default Permission Mode |
 |------|---------|------------------------|
-| monorepo | workspaces, packages/ | acceptEdits |
+| monorepo | projects, packages/ | acceptEdits |
 | fullstack | next.config, app/ + api/ | acceptEdits |
 | frontend | vite.config, src/components | acceptEdits |
 | api | server/, express/fastify dep | acceptEdits |

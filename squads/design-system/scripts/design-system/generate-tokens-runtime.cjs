@@ -2,9 +2,9 @@
 /**
  * Generate tokens-runtime.json — Compact token file for LLM context injection
  *
- * Reads brand tokens from workspace/businesses/{slug}/L2-tactical/design/
+ * Reads brand tokens from docs/tactical/design/
  * and generates tokens-runtime.json optimized for agent context.
- * Falls back to SINKRA defaults when brand tokens are not yet extracted.
+ * Falls back to AIOX defaults when brand tokens are not yet extracted.
  *
  * Usage: node generate-tokens-runtime.cjs --bu=aiox
  *
@@ -17,10 +17,10 @@ const path = require('path');
 // ── Constants ─────────────────────────────────────────────────────────────────
 
 const ROOT = process.cwd();
-const BUSINESSES_DIR = path.join(ROOT, 'workspace', 'businesses');
+const BUSINESSES_DIR = path.join(ROOT, 'docs', 'project', 'businesses');
 
-// SINKRA default tokens — sourced from .claude/rules/design-system-generation.md
-const SINKRA_DEFAULTS = {
+// AIOX default tokens — sourced from .claude/rules/design-system-generation.md
+const AIOX_DEFAULTS = {
   color: {
     'brand-primary': { value: '#3B82F6', css_var: '--color-brand-primary', use_for: 'CTAs, links, primary actions, interactive elements' },
     'brand-accent': { value: '#8B5CF6', css_var: '--color-brand-accent', use_for: 'Highlights, secondary actions' },
@@ -95,8 +95,8 @@ function parseArgs(argv) {
  */
 function loadNormalizedTokens(businessSlug) {
   const candidates = [
-    path.join(BUSINESSES_DIR, businessSlug, 'L2-tactical', 'design', 'tokens-normalized.json'),
-    path.join(BUSINESSES_DIR, businessSlug, 'L2-tactical', 'design', 'tokens-resolved.json'),
+    path.join(BUSINESSES_DIR, businessSlug, 'tactical', 'design', 'tokens-normalized.json'),
+    path.join(BUSINESSES_DIR, businessSlug, 'tactical', 'design', 'tokens-resolved.json'),
   ];
 
   for (const candidate of candidates) {
@@ -112,13 +112,13 @@ function loadNormalizedTokens(businessSlug) {
 }
 
 /**
- * Merge business-specific token overrides onto SINKRA defaults.
+ * Merge business-specific token overrides onto AIOX defaults.
  * Normalized tokens may have a flat or grouped structure.
  */
 function mergeTokens(normalized) {
-  const result = JSON.parse(JSON.stringify(SINKRA_DEFAULTS));
+  const result = JSON.parse(JSON.stringify(AIOX_DEFAULTS));
 
-  if (!normalized) return { tokens: result, source: 'sinkra-defaults' };
+  if (!normalized) return { tokens: result, source: 'aiox-defaults' };
 
   // If normalized has group keys matching our structure, merge per-group
   for (const group of Object.keys(result)) {
@@ -147,7 +147,7 @@ function main() {
     fail('Missing --bu argument. Usage: node generate-tokens-runtime.cjs --bu=aiox');
   }
 
-  const designDir = path.join(BUSINESSES_DIR, args.bu, 'L2-tactical', 'design');
+  const designDir = path.join(BUSINESSES_DIR, args.bu, 'tactical', 'design');
 
   // Ensure design directory exists
   if (!fs.existsSync(designDir)) {

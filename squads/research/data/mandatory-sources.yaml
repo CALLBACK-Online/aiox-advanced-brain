@@ -4,8 +4,8 @@
 # Purpose: For each detected domain/subject_type, declares which literatures,
 # dimensions, or benchmarks MUST be covered in the research pipeline.
 # Consumed by:
-#   - .claude/skills/tech-research/SKILL.md Phase 1.5 (Decompose)
-#   - .claude/skills/research-bench/SKILL.md (subject_type detection)
+#   - skills/tech-research/SKILL.md Phase 1.5 (Decompose)
+#   - skills/research-bench/SKILL.md (subject_type detection)
 #   - squads/research/scripts/tech-research/output_validator.py (check_mandatory_sources_coverage)
 #
 # Rules:

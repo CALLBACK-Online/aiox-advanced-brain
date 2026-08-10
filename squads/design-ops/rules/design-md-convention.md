@@ -1,9 +1,9 @@
 ---
 paths:
   - "apps/**"
-  - "workspace/businesses/**/L2-tactical/design/**"
-  - "workspace/businesses/**/L4-operational/campaigns/**"
-  - "workspace/shared-products/**"
+  - "docs/**/tactical/design/**"
+  - "docs/**/operational/campaigns/**"
+  - "outputs/shared-products/**"
   - "**/DESIGN.md"
   - "squads/design-ops/**"
   - "squads/design-system/**"
@@ -12,11 +12,11 @@ paths:
 
 # DESIGN.md Convention — Per-App Design System Artifact
 
-Applies when working on any app/surface under `apps/**` that has a visual interface, or any `workspace/businesses/{biz}/L2-tactical/design/` directory, or any `workspace/businesses/{biz}/L4-operational/campaigns/{slug}/` with visual identity.
+Applies when working on any app/surface under `apps/**` that has a visual interface, or any `docs/tactical/design/` directory, or any `docs/operational/campaigns/{slug}/` with visual identity.
 
 ## Rule (NON-NEGOTIABLE)
 
-**Every UI-bearing app MUST carry a `DESIGN.md` at its root** conforming to the Google DESIGN.md spec (`@google/design.md`, alpha). Business DS lives at `workspace/businesses/{biz}/L2-tactical/design/DESIGN.md`. App DS lives at `apps/{name}/DESIGN.md`. Campaigns may carry one at `workspace/businesses/{biz}/L4-operational/campaigns/{slug}/DESIGN.md`.
+**Every UI-bearing app MUST carry a `DESIGN.md` at its root** conforming to the Google DESIGN.md spec (`@google/design.md`, alpha). Business DS lives at `docs/tactical/design/DESIGN.md`. App DS lives at `apps/{name}/DESIGN.md`. Campaigns may carry one at `docs/operational/campaigns/{slug}/DESIGN.md`.
 
 **Code generation for a surface MUST consult that surface's DESIGN.md FIRST** and treat its tokens as authoritative. Hand-rolling `globals.css`, picking arbitrary hex values, or guessing font stacks is forbidden when a DESIGN.md exists.
 
@@ -26,16 +26,16 @@ Applies when working on any app/surface under `apps/**` that has a visual interf
 2. **Mechanical validation** — `npx @google/design.md lint DESIGN.md` catches broken token refs + WCAG contrast regressions as JSON findings agents can act on.
 3. **Mechanical regression detection** — `npx @google/design.md diff old.md new.md` surfaces token-level drift between versions.
 4. **Dual-layer artifact** — YAML front matter (machine-readable tokens) + Markdown prose (why those tokens exist). Agents consume both; humans author the prose.
-5. **Converts cleanly** to `tokens.json` / Figma variables / Tailwind `@theme` config / `@sinkra/tokens-base` overlays — no lossy transforms required.
+5. **Converts cleanly** to `tokens.json` / Figma variables / Tailwind `@theme` config / `@aiox/tokens-base` overlays — no lossy transforms required.
 
 ## Where (canonical paths)
 
 | Layer | Location | Who owns | Scope |
 |---|---|---|---|
-| Business DS (SOT) | `workspace/businesses/{biz}/L2-tactical/design/DESIGN.md` | Business owner + `@design-chief` | Tokens + rationale for the whole business |
+| Business DS (SOT) | `docs/tactical/design/DESIGN.md` | Business owner + `@design-chief` | Tokens + rationale for the whole business |
 | App DS (self-contained snapshot + extensions) | `apps/{name}/DESIGN.md` | App owner + `@design-chief` | App-scoped; self-contained so app remains portable |
-| Campaign DS (optional) | `workspace/businesses/{biz}/L4-operational/campaigns/{slug}/DESIGN.md` | Campaign owner + `@brand-chief` | Campaign visual identity (hero, CTA, social specimens) |
-| Shared products | `workspace/shared-products/{product}/DESIGN.md` | All founders + `@design-chief` | Cross-business shared product |
+| Campaign DS (optional) | `docs/operational/campaigns/{slug}/DESIGN.md` | Campaign owner + `@brand-chief` | Campaign visual identity (hero, CTA, social specimens) |
+| Shared products | `outputs/shared-products/{product}/DESIGN.md` | All founders + `@design-chief` | Cross-business shared product |
 
 Skip DESIGN.md when:
 - App is server-only (no UI) — e.g. `webhook-handler`, `squad-engine` (if headless)
@@ -56,18 +56,18 @@ Every DESIGN.md MUST have:
 2. **Nine numbered canonical sections** (in order — omit only if irrelevant):
    `## 1. Visual Theme & Atmosphere` → `## 2. Color Palette & Roles` → `## 3. Typography Rules` → `## 4. Components` → `## 5. Layout Principles` → `## 6. Depth & Elevation` → `## 7. Do's and Don'ts` → `## 8. Responsive Behavior` → `## 9. Agent Prompt Guide`.
    Numbering is part of the contract — it aids navigation for both humans and LLM consumers (VoltAgent pattern, validated on 59 brands / 67k stars).
-3. **`## Implementation` section (Sinkra-Hub extension)** — unknown-but-preserved section carrying stack metadata that the spec omits. Required fields:
+3. **`## Implementation` section (AIOX-Hub extension)** — unknown-but-preserved section carrying stack metadata that the spec omits. Required fields:
    - Stack (framework + major versions)
    - Tailwind config path + version
    - shadcn `components.json` snapshot (aliases, baseColor, cssVariables)
    - Token → utility mapping table
    - Component source root path
    - Regenerate command (if tokens have a build step)
-4. **`## 9. Agent Prompt Guide` (Sinkra-Hub extension, REQUIRED for URL-extracted DESIGN.md)** — operational guide for AI consumers. Three subsections:
+4. **`## 9. Agent Prompt Guide` (AIOX-Hub extension, REQUIRED for URL-extracted DESIGN.md)** — operational guide for AI consumers. Three subsections:
    - `### Quick Color Reference` — one-line per role with canonical hex (e.g. `Primary CTA: Stripe Purple (#533afd)`)
    - `### Example Component Prompts` — 5+ ready-to-paste LLM prompts (hero, card, badge, navigation, dark/brand section minimum)
    - `### Iteration Guide` — 6-8 numbered tips for iterative UI generation, **brand-specific**
-5. **`## Fidelity Notes` (Sinkra-Hub extension, OPTIONAL)** — structured YAML block declaring extraction limits and intentional gaps. Sub-keys:
+5. **`## Fidelity Notes` (AIOX-Hub extension, OPTIONAL)** — structured YAML block declaring extraction limits and intentional gaps. Sub-keys:
    - `shadows_detected: true|false` — populated by `lib/extractors.cjs:detectShadows()`
    - `fonts_proprietary: ["FontName1", "FontName2"]` — populated by `detectFontFaces()`
    - `icons_not_captured: true` — always true for static-CSS extraction
@@ -174,11 +174,11 @@ Emit task: `squads/design-ops/tasks/emit-design-md.md` (reads tokens.json + glob
 ## Related
 
 - **Google spec:** `https://github.com/google-labs-code/design.md` (alpha; may evolve — pin the version when spec breaks)
-- **Skills:** `.claude/skills/design-system/SKILL.md` (consumer) · `.claude/skills/design-artifact-cycle/` (technical pipeline)
+- **Skills:** `skills/design-system/SKILL.md` (consumer) · `skills/design-artifact-cycle/` (technical pipeline)
 - **Squad:** `squads/design-ops/rules/design-system-generation.md` (codegen directive — references DESIGN.md as SOT)
 - **Template:** `squads/design-ops/templates/DESIGN.md.tmpl`
 - **Task:** `squads/design-ops/tasks/emit-design-md.md`
-- **DS Port Playbook:** `.claude/skills/design-system/SKILL.md#ds-port-playbook` (byte-diff rubric + fidelity sign-off)
+- **DS Port Playbook:** `skills/design-system/SKILL.md#ds-port-playbook` (byte-diff rubric + fidelity sign-off)
 
 ## Evidence
 

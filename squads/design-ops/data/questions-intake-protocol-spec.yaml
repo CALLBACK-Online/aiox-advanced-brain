@@ -30,7 +30,7 @@ protocol:
     - "Purely mechanical implementation of an approved variant"
 
   timing_rule:
-    call_after: ["file_reads", "workspace_contract_resolution", "prior_art_research"]
+    call_after: ["file_reads", "project context contracts_resolution", "prior_art_research"]
     call_before: ["planning", "divergent_exploration", "build"]
     rationale: >-
       Asking too early wastes the user's time with unanswerable questions.

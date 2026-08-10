@@ -218,7 +218,7 @@ Do NOT use pie charts. Do NOT use card shadows on dark backgrounds.
 
 ```
 Build a signup page for the platform.
-Used by new users arriving from the landing page to create their first workspace.
+Used by new users arriving from the landing page to create their first project space.
 
 Layout: split-screen — left: brand panel, right: form.
 Brand panel: Platform logo + "Agora o controle é seu" + abstract geometric illustration.

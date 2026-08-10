@@ -4,22 +4,22 @@ All notable changes to the Claude Code Mastery squad.
 
 ## [3.0.0] - 2026-04-03
 
-### SINKRA-Native Upgrade (STORY-CCM-INT.1)
+### AIOX-Native Upgrade (STORY-CCM-INT.1)
 
 #### Added
-- `accountability_token: TK-CCM-ACC-001` in all 31 task Contrato SINKRA blocks
+- `accountability_token: TK-CCM-ACC-001` in all 31 task Contrato AIOX blocks
 - `output_schema` specific refs in all 31 tasks (mapping task output to artifact contracts)
 - Specific acceptance criteria in 13 tasks that had generic ACs
-- CCM tokens registered in central SINKRA token registry (`workspace/businesses/sinkra-hub/registries/tokens.json`)
-- `sinkra_refs` in `composition_mapping.atoms` linking atoms to token registry
-- `sinkra_refs` in `composition_mapping.molecules` linking journey log + state machines
+- CCM tokens registered in central AIOX token registry (`docs/upstream monorepo/registries/tokens.json`)
+- `aiox_refs` in `composition_mapping.atoms` linking atoms to token registry
+- `aiox_refs` in `composition_mapping.molecules` linking journey log + state machines
 - 3 missing atoms added to `composition_mapping` (align-memory-context, rebuild-runtime-validator, refresh-runtime-contract)
-- `sinkra_native: true` flag in config.yaml
+- `aiox_native: true` flag in config.yaml
 - Injection scripts: `inject-accountability-tokens.js`, `inject-output-schemas.js`
 
 #### Changed
 - config.yaml version bumped to 3.0.0
-- Baseline score: 6.8/10 -> SINKRA-native compliant
+- Baseline score: 6.8/10 -> AIOX-native compliant
 
 ## [1.0.0] - 2026-03-02
 

@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: squad-fora-do-claude-code
 lesson_position: 68
 title: Extrair Squad do Claude Code para API própria
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/68-squad-fora-do-claude-code/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

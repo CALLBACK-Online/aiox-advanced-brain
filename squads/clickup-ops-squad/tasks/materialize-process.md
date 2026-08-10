@@ -12,12 +12,12 @@ accountable: "{spoke-owner}"
 
 ## Description
 
-Materializar um processo completo mapeado pelo SINKRA no ClickUp.
+Materializar um processo completo mapeado pelo AIOX no ClickUp.
 Segue Receita 1 de `clickup-composition-rules.yaml` (11 steps).
 
 ## Entrada
 
-- `sinkra_composition` — YAML com hierarquia completa (Instance→Token)
+- `aiox_composition` — YAML com hierarquia completa (Instance→Token)
 - `domain` — Domínio de negócio
 - `owner_squad` — Squad responsável
 
@@ -33,7 +33,7 @@ Segue Receita 1 de `clickup-composition-rules.yaml` (11 steps).
 
 ## Pre-Conditions
 
-- [ ] Composição SINKRA validada (pre-materialization checklist)
+- [ ] Composição AIOX validada (pre-materialization checklist)
 - [ ] APIs necessárias implementadas (Wave 1 gaps resolvidos)
 - [ ] CSO enforcement passou
 

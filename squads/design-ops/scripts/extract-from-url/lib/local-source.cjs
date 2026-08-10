@@ -173,8 +173,8 @@ async function loadLocalSource(projectRoot) {
     cssMeta,
     headers: {
       "content-type": "text/html; charset=utf-8",
-      "x-sinkra-source": "local",
-      "x-sinkra-project": path.relative(process.cwd(), root) || ".",
+      "x-aiox-source": "local",
+      "x-aiox-project": path.relative(process.cwd(), root) || ".",
     },
     status: 200,
     strategy: "local-source",

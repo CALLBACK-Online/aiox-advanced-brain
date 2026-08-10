@@ -111,7 +111,6 @@ Applied to support materials and output contract docs:
 
 Validation after implementation:
 
-- `node squads/aiox-sop/scripts/resolve-environment-contract.cjs --format=json`
   -> `pro + portable_docs_mode + docs_projection`
 - `bash squads/squad-creator/scripts/validate-squad.sh aiox-sop --quick --json`
   -> `result: PASS`, `final_score: 10`

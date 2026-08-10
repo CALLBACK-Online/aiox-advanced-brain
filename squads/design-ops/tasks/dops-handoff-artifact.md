@@ -137,7 +137,7 @@ Emit the final artifact, register it in the business manifest, generate the down
 - **Silent registry update** — registry governance rule requires visible update per push
 - **Defer learning log** — "I'll write it later" = never. Write it now while context is warm.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Molecule (P08 of design-artifact-cycle)
@@ -168,4 +168,4 @@ performance:
 
 - File governance: `squads/design-ops/data/artifact-file-governance.yaml#asset_registration`
 - Deliverable registry: `squads/design-ops/data/deliverable-kinds-registry.yaml`
-- Skill: `.claude/skills/design-artifact-cycle/SKILL.md#phase-08`
+- Skill: `skills/design-artifact-cycle/SKILL.md#phase-08`

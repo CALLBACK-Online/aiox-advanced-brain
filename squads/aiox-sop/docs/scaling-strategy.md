@@ -51,7 +51,7 @@ Single instance é suficiente. Ação requerida:
 ### Consumo por SOP processado
 - T2.2 (schema mapping) → Sonnet: ~2K tokens
 - T3.1 (clarity, Clone) → Opus: ~3K tokens
-- T3.3 (SINKRA adherence, Clone) → Opus: ~3K tokens
+- T3.3 (AIOX adherence, Clone) → Opus: ~3K tokens
 - T3.4 (gap analysis) → Sonnet: ~2K tokens
 - T5.1-T5.3 (doc generation) → Sonnet: ~5K tokens cada
 - **Total por SOP: ~18-22K tokens**

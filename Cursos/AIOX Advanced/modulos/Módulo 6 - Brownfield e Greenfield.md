@@ -37,4 +37,4 @@ Eu recupero os conceitos no [[avaliacoes/Quiz M6 - Brownfield e Greenfield|Quiz 
 
 ## Navegação
 
-← [[modulos/Módulo 5 - Arquitetura SINKRA|M5]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 7 - Criar Squad|M7]]
+← [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 7 - Criar Squad|M7]]

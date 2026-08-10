@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: squad-fusion-structure
   task_name: Squad Fusion - Structure
   status: pending
@@ -13,14 +13,14 @@ sinkra_task_metadata:
   output:
   - Consultar a seção de outputs no corpo da task
   action_items:
-  - Coletar componentes aprovados para workspace
+  - Coletar componentes aprovados para docs/
   - Materializar estrutura final do target
   acceptance_criteria:
-  - So componentes aprovados entram no workspace [threshold: >= 1]
+  - So componentes aprovados entram no project docs [threshold: >= 1]
   - Todo conflito resolvido fica registrado [threshold: >= 1]
   - A provenance do merge fica preservada [threshold: >= 1]
   - O target final e criado de forma deterministica [threshold: >= 1]
-  - Config e contagens finais fecham com o workspace validado [threshold: score >= 0.8]
+  - Config e contagens finais fecham com o pacote do squad validado [threshold: score >= 0.8]
   - Metadados de fusao permanecem acessiveis [threshold: >= 1]
   output_persistence: transient_output
   accountable_id: Human:Squad_Operator
@@ -29,11 +29,11 @@ sinkra_task_metadata:
   coherence_threshold: 0.95
   error_behavior: raise
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Strategic
   atomic_layer: Atom
   executor: Worker
@@ -41,7 +41,7 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Task: Squad Fusion - Structure
@@ -66,27 +66,27 @@ category: fusion
 agent: squad-chief
 elicit: false
 autonomous: true
-description: "Executa o ETL extract+load: coleta componentes selecionados para o workspace com provenance e materializa a estrutura final do squad fusionado."
+description: "Executa o ETL extract+load: coleta componentes selecionados para o local_docs com provenance e materializa a estrutura final do squad fusionado."
 ```
 
 ## Purpose
 
-Montar o workspace de fusao copiando componentes aprovados com rastreabilidade completa, e em seguida transformar o workspace temporario validado na estrutura final do squad fusionado.
+Montar o local_docs de fusao copiando componentes aprovados com rastreabilidade completa, e em seguida transformar o local_docs temporario validado na estrutura final do squad fusionado.
 
 ## Workflow / Steps
 
-### Step 1: Coletar componentes para workspace
+### Step 1: Coletar componentes para docs/
 
-Executar o ETL extract: copiar componentes selecionados para o workspace temporario e registrar provenance.
+Executar o ETL extract: copiar componentes selecionados para o local_docs temporario e registrar provenance.
 
-- Copiar assets de `final_components` para o workspace.
+- Copiar assets de `final_components` para o local_docs.
 - Resolver conflitos fisicos de nome e path.
-- Produzir `workspace_contents`, `conflicts_resolved` e `provenance_map`.
-- Garantir que cada asset do workspace aponte para sua origem.
+- Produzir `project_contents`, `conflicts_resolved` e `provenance_map`.
+- Garantir que cada asset de docs/project aponte para sua origem.
 
 ### Step 2: Materializar estrutura final do target
 
-Transformar o workspace temporario validado na estrutura final do squad fusionado.
+Transformar o local_docs temporario validado na estrutura final do squad fusionado.
 
 - Materializar `squads/{target_name}/`.
 - Escrever config, assets fusionados e arquivos obrigatorios.
@@ -98,7 +98,7 @@ Transformar o workspace temporario validado na estrutura final do squad fusionad
 ```yaml
 # Collection output
 collection:
-  workspace_contents: []
+  project_contents: []
   conflicts_resolved: []
   provenance_map: {}
 
@@ -111,11 +111,11 @@ structure:
 
 ## Acceptance Criteria
 
-- [ ] So componentes aprovados entram no workspace [threshold: >= 1]
+- [ ] So componentes aprovados entram no project docs [threshold: >= 1]
 - [ ] Todo conflito resolvido fica registrado [threshold: >= 1]
 - [ ] A provenance do merge fica preservada [threshold: >= 1]
 - [ ] O target final e criado de forma deterministica [threshold: >= 1]
-- [ ] Config e contagens finais fecham com o workspace validado [threshold: score >= 0.8]
+- [ ] Config e contagens finais fecham com o pacote do squad validado [threshold: score >= 0.8]
 - [ ] Metadados de fusao permanecem acessiveis [threshold: >= 1]
 
 ## Related Documents

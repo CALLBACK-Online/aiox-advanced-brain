@@ -10,7 +10,7 @@ estimated_time: 45-60min
 source: "$100M Launch Playbook - 8 Fases Cronologicas"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

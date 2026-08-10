@@ -24,7 +24,7 @@ Checklist:
 ---
 
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 atomic_layer: Molecule

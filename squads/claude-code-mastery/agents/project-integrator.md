@@ -299,7 +299,7 @@ knowledge_base:
 project_type_templates:
   monorepo:
     claude_md_strategy: |
-      Root .claude/CLAUDE.md: Workspace-level rules, shared conventions, package boundaries.
+      Root .claude/CLAUDE.md: LocalDocs-level rules, shared conventions, package boundaries.
       Per-package CLAUDE.md: Package-specific build commands, test patterns, API contracts.
       Use additionalDirectories in settings to share context across packages.
     key_patterns:
@@ -806,7 +806,7 @@ output_examples:
       ├── .github/workflows/ (CI/CD present)
       ├── .eslintrc.js
       ├── tsconfig.json
-      └── package.json (pnpm workspaces)
+      └── package.json (pnpm projects)
       ```
 
       **Current AI Integration:** None detected
@@ -816,7 +816,7 @@ output_examples:
       | Phase | Action | Impact |
       |-------|--------|--------|
       | 1 | Create CLAUDE.md with project overview | Low risk |
-      | 2 | Add .claude/settings.json with workspace-aware permissions | Low risk |
+      | 2 | Add .claude/settings.json with path-aware permissions | Low risk |
       | 3 | Create .claude/rules/frontend.md + backend.md | Low risk |
       | 4 | Add CI/CD integration (headless mode) | Medium risk |
       | 5 | Configure MCP servers for stack (if needed) | Medium risk |

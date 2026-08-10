@@ -1,6 +1,6 @@
 # Task: Validate Density (Design sub-dimension)
 
-## SINKRA Validation Metadata
+## AIOX Validation Metadata
 
 ```yaml
 task: validate-density
@@ -25,9 +25,9 @@ Error_handling:
   strategy: fail fast with explicit handoff blocker
 ```
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Operational -->
+<!-- AIOX Domain: Operational -->
 
 ## Metadata
 
@@ -43,7 +43,7 @@ Error_handling:
 | duration | <10s |
 | mission_origin | MSN-2026-SLIDES-NARRATIVE-DESIGN (T-005) |
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml

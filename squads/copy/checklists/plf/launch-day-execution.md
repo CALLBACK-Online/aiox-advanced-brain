@@ -22,7 +22,7 @@
 - [ ] Good night's sleep
 - [ ] Alarm set for early morning
 - [ ] Coffee/water ready
-- [ ] Workspace clean
+- [ ] LocalDocs clean
 - [ ] Phone charged
 
 ---

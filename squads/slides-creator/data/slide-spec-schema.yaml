@@ -21,7 +21,6 @@ mandatory_components:
       - position_in_deck  # ex: "7 of 45"
       - slide_type        # enum: slide_types below
       - presentation_time_minutes
-      - primary_audience  # enum: [C-level, board, strategy_team, operators, investors]
       - objective         # 1-sentence goal for this slide
 
   - id: 2_action_title

@@ -47,7 +47,7 @@ infrastructure/
 - Each service owns its data (database, cache, files)
 - No direct database access between services
 - All communication via defined APIs or events
-- Each service has its own repository or workspace package
+- Each service has its own repository or local_docs package
 
 ### Service Template
 Every service follows this structure:
@@ -162,18 +162,18 @@ npm run test:e2e            # End-to-end (full system)
 ```bash
 # Development
 docker-compose up -d                    # Start infrastructure
-npm run dev --workspace=user-service    # Dev mode for one service
+npm run dev --local_docs=user-service    # Dev mode for one service
 
 # Testing
-npm test --workspaces                   # Test all services
-npm run test:integration --workspace=order-service
+npm test                                # Execute a partir da raiz do monorepo
+npm run test:integration --local_docs=order-service
 
 # Building
 docker build -t user-service:latest ./services/user-service
 
 # Database
-npm run migrate --workspace=user-service     # Run migrations
-npm run seed --workspace=user-service        # Seed data
+npm run migrate --local_docs=user-service     # Run migrations
+npm run seed --local_docs=user-service        # Seed data
 ```
 
 ## Important Notes

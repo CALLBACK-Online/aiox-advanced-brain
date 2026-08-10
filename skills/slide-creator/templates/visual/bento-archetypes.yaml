@@ -1,0 +1,249 @@
+# Motion-Engine Bento Paradigm — 5 Card Archetypes
+#
+# title: Motion-Engine Bento Paradigm — 5 Card Archetypes
+# purpose: Reusable card recipes for modern SaaS dashboards + feature sections in decks
+# version: 1.0.0
+# authority: .claude/rules/design-absolute-bans.md §2 (extended bans)
+# absorbed_from: tasteskill.dev v2 — Section 9 (Motion-Engine Bento Paradigm)
+# created: 2026-05-19
+# source_bench: docs/bench/2026-05-18-impeccable-vs-aiox-design-stack/
+# license_note: Pattern names + specs adopted with attribution. tasteskill.dev is open-source.
+#
+# 5 named card archetypes with full motion specs. Use these when the deck has
+# SaaS dashboard slides, feature sections, or "Vercel-core meets Dribbble-clean"
+# aesthetic moments.
+
+title: "Motion-Engine Bento Paradigm — 5 Card Archetypes"
+purpose: "Reusable card recipes for modern SaaS dashboards + feature sections in decks"
+version: "1.0.0"
+authority: ".claude/rules/design-absolute-bans.md §2 (extended bans)"
+absorbed_from: "tasteskill.dev v2 — Section 9 (Motion-Engine Bento Paradigm)"
+created: "2026-05-19"
+source_bench: "docs/bench/2026-05-18-impeccable-vs-aiox-design-stack/"
+license_note: "Pattern names + specs adopted with attribution. tasteskill.dev is open-source."
+
+# ── aesthetic_charter ─────────────────────────────────────────────────────────
+
+aesthetic_charter:
+  palette:
+    background: "#f9fafb"
+    cards: "#ffffff with 1px solid border-slate-200/50"
+    surfaces_radius: "rounded-[2.5rem] for major containers"
+    diffusion_shadow: "shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] for depth without clutter"
+  typography:
+    font_stack_allowlist: ["Geist", "Satoshi", "Cabinet Grotesk"]
+    headers_tracking: "tracking-tight"
+    labels_placement: "outside and below cards (gallery-style presentation, NOT inside-cards)"
+  spacing:
+    card_padding: "p-8 or p-10"
+    gap_between_cards: "gap-6 minimum"
+
+# ── animation_contract ────────────────────────────────────────────────────────
+# All cards in this paradigm MUST honor the contract below.
+
+animation_contract:
+  no_linear_easing: true
+  spring_physics:
+    framer_motion:
+      type: spring
+      stiffness: 100
+      damping: 20
+  layout_transitions:
+    use: [layout, layoutId]   # Framer Motion props for smooth re-ordering/resizing
+  infinite_loops:
+    required: true
+    options: [Pulse, Typewriter, Float, Carousel, Shimmer]
+    rationale: "Dashboard feels alive — never frozen"
+  performance:
+    memo_required: true
+    isolation: "Perpetual motion MUST be in microscopic Client Component (use 'use client')"
+    forbidden: "Never trigger re-renders in the parent layout"
+    wrap_lists_in: "<AnimatePresence>"
+
+# ── archetypes ────────────────────────────────────────────────────────────────
+# The 5 Archetypes.
+
+archetypes:
+
+  # Archetype 1 — The Intelligent List
+  # Purpose: Vertical stack of items with infinite auto-sorting loop.
+  # Items swap positions using layoutId, simulating AI prioritization in real-time.
+  intelligent_list:
+    purpose: "Vertical stack of items with infinite auto-sorting loop (AI-prioritization feel)"
+    layout: vertical_stack
+    item_count: [5, 8]
+    motion:
+      primary: auto_sort_loop
+      framer_props:
+        layoutId: "item-{id}"
+        transition:
+          type: spring
+          stiffness: 100
+          damping: 20
+      duration_per_swap: "1.5s"
+      pause_between_swaps: "4s"
+    variants:
+      item:
+        initial: { y: 0 }
+        hover:
+          y: -2
+          transition: { duration: 0.2 }
+    copy_density: low_to_medium
+    use_in_slides: [feature_proof, mechanism_demo, ai_capability_showcase]
+
+  # Archetype 2 — The Command Input
+  # Purpose: Search/AI bar with multi-step Typewriter Effect.
+  # Cycles through complex prompts with blinking cursor and processing shimmer.
+  command_input:
+    purpose: "Search/AI bar with multi-step Typewriter Effect"
+    layout: horizontal_bar
+    height_px: [56, 72]
+    motion:
+      primary: typewriter_cycle
+      states: [idle, typing, processing, done, reset]
+      cycle_duration: "8s"
+      typewriter_speed_cps: 25
+      cursor_blink_rate: "530ms"
+      processing_shimmer:
+        duration: "1.2s"
+        easing: ease-in-out
+        infinite: true
+    prompts_cycle:
+      min_count: 3
+      max_count: 6
+      example_pool: "user-supplied per deck"
+    use_in_slides: [hook, demo, ai_command_showcase]
+
+  # Archetype 3 — The Live Status
+  # Purpose: Scheduling/operations interface with breathing status indicators.
+  # Includes pop-up notification badge with Overshoot spring entry.
+  live_status:
+    purpose: "Scheduling/operations interface with breathing status indicators"
+    layout: "grid_2x2 or 3x1"
+    status_dots:
+      breathing_animation:
+        property: opacity
+        from: 0.4
+        to: 1.0
+        duration: "1.8s"
+        easing: ease-in-out
+        infinite: true
+    notification_badge:
+      enter:
+        scale: [0.5, 1.05, 1]
+        duration: "0.4s"
+        easing: spring
+      visible_duration_ms: 3000
+      exit:
+        opacity: [1, 0]
+        y: [0, -8]
+        duration: "0.3s"
+    use_in_slides: [operations_overview, ops_dashboard, status_demo]
+
+  # Archetype 4 — The Wide Data Stream
+  # Purpose: Horizontal "Infinite Carousel" of data cards or metrics.
+  # Loop seamless using x: ["0%", "-100%"] with effortless-feeling speed.
+  wide_data_stream:
+    purpose: "Horizontal Infinite Carousel of data cards or metrics"
+    layout: horizontal_strip
+    item_width_px: [220, 320]
+    item_count_visible: [3, 5]
+    motion:
+      primary: infinite_horizontal_loop
+      framer_props:
+        animate:
+          x: ["0%", "-100%"]
+        transition:
+          duration: 30
+          ease: linear
+          repeat: Infinity
+      seamless_loop_requirement: "Duplicate items at end for visual continuity"
+      speed_feel: effortless
+    hover_behavior: pause_animation
+    use_in_slides: [logo_proof, metric_marquee, customer_strip]
+
+  # Archetype 5 — The Contextual UI Focus Mode
+  # Purpose: Document view that animates staggered highlight of a text block,
+  # followed by Float-in of floating action toolbar with micro-icons.
+  contextual_focus:
+    purpose: "Document view with staggered text highlight + floating toolbar reveal"
+    layout: document_with_overlay
+    text_block:
+      staggered_highlight:
+        type: line_by_line
+        delay_per_line_ms: 80
+        highlight_color: "brand_accent_at_15pct_opacity"
+        sweep_duration: "1.6s"
+    floating_toolbar:
+      enter_animation:
+        from: { opacity: 0, y: 12 }
+        to: { opacity: 1, y: 0 }
+        duration: "0.4s"
+        easing: spring
+        delay: "1.8s"
+      icons: "phosphor_or_radix_set, 3 to 5 actions max"
+      icon_stroke_width: 1.5
+    use_in_slides: [feature_demo, product_walkthrough, ai_assist_demo]
+
+# ── composition_rules ─────────────────────────────────────────────────────────
+
+motion_thresholds_per_archetype:
+  # RT-FIX-4 (2026-05-19): @design-chief identified that binary MOTION≥5 gate
+  # was too coarse. Archetype 5 (Contextual UI Focus) is line-by-line staggered
+  # highlight + Float-in toolbar — runs cleanly at MOTION=3-4 without loss.
+  # Archetypes 1+4 (continuous loops) need higher motion budget.
+  intelligent_list:
+    min_motion: 6      # auto_sort_loop + spring — continuous animation
+    rationale: "Continuous reorder loop needs >=6 to feel intentional, not jittery"
+  command_input:
+    min_motion: 4      # typewriter cycle — discrete event
+    rationale: "Typewriter is discrete event, plays once per cycle. MOTION=4 fluid CSS sufficient"
+  live_status:
+    min_motion: 4      # breathing dots + overshoot badge — discrete + slow loop
+    rationale: "Status pulse + badge are bounded events. Fluid CSS easings cover it"
+  wide_data_stream:
+    min_motion: 6      # infinite carousel — continuous animation
+    rationale: "Infinite horizontal scroll needs continuous tick. <6 will choke or freeze on PPTX"
+  contextual_focus:
+    min_motion: 4      # staggered highlight + float-in — discrete events
+    rationale: "Line-by-line highlight + toolbar reveal are bounded. Default MOTION=4 covers cleanly"
+
+  # Decision rule for routing:
+  # Archetype available IFF tasteskill_dials.MOTION_INTENSITY >= min_motion[archetype]
+  # When output_target == pptx AND min_motion >= 6, downgrade archetype to static variant.
+
+composition_rules:
+  - "Max 2 archetypes per deck unless deck is explicitly a dashboard showcase (then max 4)"
+  - "Never combine all 5 in one slide — overload destroys premium feel"
+  - "Pair with proper register: archetypes work in register: product decks. For register: brand decks, simplify motion (MOTION_INTENSITY ≤ 5) but keep composition"
+  - "MOTION_INTENSITY threshold: graded per archetype (see motion_thresholds_per_archetype block above) — Archetypes 1+4 require >=6 (continuous loops), Archetypes 2+3+5 require >=4 (discrete events). Below threshold → static variant. RT-FIX-4 2026-05-19"
+  - "Performance gate: Each archetype renders as isolated Client Component with React.memo. Never trigger re-renders in parent slide layout"
+
+# ── pptx_export_behavior ──────────────────────────────────────────────────────
+# When deck exports to PPTX, all motion specs are lost.
+# Warn in deck-spec when archetype is used + export target is PPTX.
+
+pptx_export_behavior:
+  intelligent_list: "static stack, no auto-sort"
+  command_input: "static bar with example prompt frozen"
+  live_status: "static dots at full opacity, badge frozen at visible state"
+  wide_data_stream: "static strip with first N items visible"
+  contextual_focus: "static highlight on first line, toolbar visible"
+  warning: "All motion specs are lost in PPTX. Warn in deck-spec when archetype is used + export target is PPTX."
+
+# ── consumption ───────────────────────────────────────────────────────────────
+
+consumption:
+  - "templates/runtime/design-direction-contract.yaml (tasteskill_dials) — MOTION_INTENSITY gates archetype usage"
+  - "templates/qa/visual-gates.yaml (animation_easing_gate) — validates Spring physics specs"
+  - "scripts/validate_design_capability.py — checks archetype implementation matches spec"
+  - "templates/runtime/storyboard-render-bridge.yaml — maps archetypes to rendered output"
+
+# ── anti_patterns ─────────────────────────────────────────────────────────────
+
+anti_patterns:
+  - "Mixing GSAP + Framer Motion in same component — pick one. Framer for UI/Bento, GSAP only for isolated full-page scrolltelling"
+  - "useState for magnetic hover or continuous animations — use Framer's useMotionValue + useTransform outside React render cycle"
+  - "staggerChildren in async-fetched lists — parent variants + children MUST be in same Client Component tree"
+  - "Archetype 4 carousel without seamless loop — looks broken when items snap back"
+  - "Archetype 5 highlight without exit transition — looks sticky/stale"

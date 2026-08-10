@@ -5,10 +5,10 @@ Se qualquer item falhar → **BLOCK**.
 
 ## Structural Checks
 
-- [ ] **CHK-001** Composição segue hierarquia SINKRA sem pular níveis
+- [ ] **CHK-001** Composição segue hierarquia AIOX sem pular níveis
   - Instance → Template → Organism → Molecule → Atom → Token
 - [ ] **CHK-002** Sem dependências circulares (grafo DAG)
-- [ ] **CHK-003** Todos Tokens têm família SINKRA definida
+- [ ] **CHK-003** Todos Tokens têm família AIOX definida
   - {Time, Capacity, Threshold, Priority, Permission, Taxonomy, Behavior, Accountability}
 - [ ] **CHK-004** Accountability Token presente em Atoms com executor não-Human
 
@@ -25,5 +25,5 @@ Se qualquer item falhar → **BLOCK**.
 
 ## Process Checks
 
-- [ ] **CHK-009** CSO aprovou a composição SINKRA (`*enforce` passou)
+- [ ] **CHK-009** CSO aprovou a composição AIOX (`*enforce` passou)
 - [ ] **CHK-010** Owner squad definido e tem squad-io.yaml

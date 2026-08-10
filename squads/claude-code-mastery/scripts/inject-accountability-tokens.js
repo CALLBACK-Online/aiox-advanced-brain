@@ -3,7 +3,7 @@
  * CCM Accountability Token Injector
  * Story: STORY-CCM-INT.1 T1
  *
- * Adds `accountability_token: TK-CCM-ACC-001` to the Contrato SINKRA block
+ * Adds `accountability_token: TK-CCM-ACC-001` to the Contrato AIOX block
  * in all 31 task .md files in squads/claude-code-mastery/tasks/.
  *
  * All CCM tasks map to the single accountability token TK-CCM-ACC-001.
@@ -29,9 +29,9 @@ function processFile(filepath) {
     return { file: basename, status: 'skipped', reason: 'already exists' };
   }
 
-  // Check for Contrato SINKRA section
-  if (!content.includes('## Contrato SINKRA')) {
-    return { file: basename, status: 'skipped', reason: 'no Contrato SINKRA section' };
+  // Check for Contrato AIOX section
+  if (!content.includes('## Contrato AIOX')) {
+    return { file: basename, status: 'skipped', reason: 'no Contrato AIOX section' };
   }
 
   // Insert accountability_token after the Domain: line

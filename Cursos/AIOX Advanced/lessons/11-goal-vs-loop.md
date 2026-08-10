@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: goal-vs-loop
 lesson_position: 11
 title: Goal vs Loop
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/11-goal-vs-loop/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -32,6 +32,9 @@ curated_at: '2026-08-09'
 # Goal vs Loop
 
 ← [[21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro, LLM só onde gera ouro]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[50-rider-modo-elicitacao|Rider: quando o operador é o piloto]]
+
+
+> **Nota deste acervo:** comandos e squads de produção de curso (`course-creator`) vivem no monorepo `../upstream-monorepo`. Este repositório traz o curso materializado e a biblioteca de skills/squads citados na turma.
 
 ## Conceitos
 
@@ -507,7 +510,7 @@ A pesquisa deixou uma regra clara: o avaliador de /goal só consegue fechar aqui
 - O exemplo convence e fixa.
 - A aula parece melhor que Método S2S.
 
-> **Regra para AIOX Courses**: Use /goal para produzir o rascunho verificável. Use revisão adversarial humana, course-creator ou UX para julgar pedagogia, clareza e gosto visual.
+> **Regra para AIOX Courses**: Use /goal para produzir o rascunho verificável. Use revisão adversarial humana, o squad de cursos (em `../upstream-monorepo/squads/course-creator/`) ou UX para julgar pedagogia, clareza e gosto visual. Neste acervo educacional, use `squads/squad-creator/` como anatomia de referência e revisão humana para pedagogia.
 
 **Colunas:** Critério | Vai no /goal? | Vai no review? | Por quê
 
@@ -727,7 +730,7 @@ Use quando o trabalho tem muitas aulas, design, dados estruturados e validação
 - `melhorar UI`
 - `validar`
 - `repetir`
-- `AIOX:course-creator`: Diagnostica didática, objetivos, exemplos, prática e Portão da aula.
+- `course-creator` (fonte: `../upstream-monorepo/squads/course-creator/`): Diagnostica didática, objetivos, exemplos, prática e Portão da aula.
 - `AIOX:aiox-ux-designer`: Ajusta hierarquia, sidebar, hero, espaçamento e leitura.
 - `AIOX:design-system`: Garante wrappers finos e uso de Brandbook antes de criar componente local.
 - `AIOX:visual-knowledge-chief`: Converte conceitos abstratos em diagramas, matrizes e fluxos.
@@ -763,7 +766,7 @@ Use quando o avaliador automático pode passar algo tecnicamente correto, mas di
 - `corrigir`
 - `fechar`
 - `AIOX:aiox-qa`: Confere validadores e riscos técnicos.
-- `AIOX:course-creator`: Confere clareza, objetivo, exemplo, prática e Portão da aula.
+- `course-creator` (fonte: `../upstream-monorepo/squads/course-creator/`): Confere clareza, objetivo, exemplo, prática e Portão da aula.
 - `AIOX:aiox-ux-designer`: Confere se a aula está legível, com ritmo e sem ruído visual.
 - `Critério`: Se o segundo olhar encontrar risco real, volta para o loop.
 

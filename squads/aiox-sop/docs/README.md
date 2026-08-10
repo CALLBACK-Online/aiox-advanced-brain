@@ -6,5 +6,5 @@ Canonical share-safe markdown SOPs live in root `docs/sops/`.
 
 Portable operational source of truth lives at `docs/squad/aiox-sop/operational-projection.yaml`.
 
-Business-aware workspace context is loaded on demand via
-`scripts/load-workspace-context.cjs`; it is not the default mode for the squad.
+Business-aware project context is loaded on demand via
+`scripts/load-project context.cjs`; it is not the default mode for the squad.

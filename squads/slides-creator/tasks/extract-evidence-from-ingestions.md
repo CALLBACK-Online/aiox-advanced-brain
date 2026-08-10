@@ -1,10 +1,10 @@
 # Extract Evidence From Ingestions
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Tactical -->
+<!-- AIOX Domain: Tactical -->
 
-## SINKRA Task Anatomy (8 sections — STORY-SWI-1)
+## AIOX Task Anatomy (8 sections — STORY-SWI-1)
 
 ```yaml
 task: extractEvidenceFromIngestions

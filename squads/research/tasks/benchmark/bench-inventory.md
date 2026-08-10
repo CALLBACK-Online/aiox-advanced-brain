@@ -11,7 +11,7 @@ type: molecule
 description: "Composed router for type-specific inventory atoms (codebase, llm, product, company, technology)"
 ```
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Tactical`
 

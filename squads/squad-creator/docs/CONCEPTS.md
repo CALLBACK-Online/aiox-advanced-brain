@@ -834,7 +834,7 @@ serve como base, e o agente preenche os campos com conteudo especifico.
 |  +-- self_critique_checklist                                   |
 |                                                                 |
 |  Level 5: INTEGRATION                                           |
-|  +-- workspace_integration                                     |
+|  +-- local project docs                                     |
 |  +-- related_agents, ecosystem_position                        |
 |                                                                 |
 +-----------------------------------------------------------------+

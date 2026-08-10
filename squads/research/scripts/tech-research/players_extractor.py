@@ -74,7 +74,7 @@ from typing import Any
 
 # Match an H3 heading that opens a player block:
 #   "### 1.1 `btahir/open-deep-research`"
-#   "### 2.5 CliDeck, Agent Workspace, Agent Hub e Localforge"
+#   "### 2.5 CliDeck, Agent LocalDocs, Agent Hub e Localforge"
 _PLAYER_HEADING_RE = re.compile(r"^###\s+(\d+\.\d+)\s+(.+?)\s*$", re.MULTILINE)
 
 # Match an H2 section heading (used as `section` anchor for each player):

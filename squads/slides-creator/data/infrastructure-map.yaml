@@ -2,7 +2,7 @@
 # ═══════════════════════════════════════════════════════════════════════
 # INFRASTRUCTURE MAP — slides-creator
 # ═══════════════════════════════════════════════════════════════════════
-# Canonical name per SINKRA Phase 7 (formerly infrastructure-connections.yaml).
+# Canonical name per AIOX Phase 7 (formerly infrastructure-connections.yaml).
 # Maps all 53 tasks to concrete infrastructure: services, packages, LLM endpoints,
 # compute targets, storage paths, MCP integrations, and gateway routing.
 #
@@ -32,9 +32,9 @@ service_catalog:
       - evidence_extraction
       - pptx_reverse_parsing
       - native_slide_ir_compilation
-    endpoint: "import @sinkra/slides-core"
+    endpoint: "import @aiox/slides-core"
     owner_squad: slides-creator
-    sinkra_executor_class: Worker
+    aiox_executor_class: Worker
 
   - id: slides-renderer
     type: local_package
@@ -43,9 +43,9 @@ service_catalog:
       - native_pptx_emission
       - editability_validation
       - tsx_handoff_packaging
-    endpoint: "import @sinkra/slides-renderer"
+    endpoint: "import @aiox/slides-renderer"
     owner_squad: slides-creator
-    sinkra_executor_class: Worker
+    aiox_executor_class: Worker
 
   # ─── Shared services (cross-squad reuse) ────────────────────────────
   - id: gateway-ai
@@ -56,9 +56,9 @@ service_catalog:
       - multi_provider_fallback
       - cost_attribution
       - rate_limiting
-    endpoint: "https://gateway-ai.sinkra.internal/v1/chat"
+    endpoint: "https://gateway-ai.aiox.internal/v1/chat"
     owner_squad: infra-ops
-    sinkra_executor_class: Agent
+    aiox_executor_class: Agent
     cost_model:
       base: "gateway-ai marks cost per token by provider"
       attribution: "finops-chief query_pattern: cost_by_squad=slides-creator"
@@ -70,21 +70,21 @@ service_catalog:
       - workflow_orchestration
       - task_execution_dag
       - openapi_schema_validation
-    endpoint: "https://squad-engine.sinkra.internal/api/v1"
+    endpoint: "https://squad-engine.aiox.internal/api/v1"
     owner_squad: infra-ops
     contract_ref: apps/squad-engine/openapi/slides.yaml
 
-  - id: sinkra-etl
+  - id: aiox-etl
     type: shared_service
     service_ref: services/etl
     capabilities:
       - youtube_extraction
       - transcript_generation
       - keyframe_extraction
-    endpoint: "@sinkra/etl#extractYouTube"
+    endpoint: "@aiox/etl#extractYouTube"
     owner_squad: etl-ops
 
-  - id: sinkra-file-service
+  - id: aiox-file-service
     type: shared_service
     service_ref: services/file-service
     capabilities:
@@ -93,7 +93,7 @@ service_catalog:
       - xlsx_parsing
       - csv_parsing
       - markdown_parsing
-    endpoint: "@sinkra/file-service"
+    endpoint: "@aiox/file-service"
     owner_squad: infra-ops
 
   - id: research-adapters
@@ -116,9 +116,9 @@ service_catalog:
     retention_days: 30
     owner_squad: slides-creator
 
-  - id: workspace-l2-brand
+  - id: project-brand
     type: storage
-    location: "workspace/businesses/{slug}/L2-tactical/brand/"
+    location: "docs/tactical/brand/"
     capabilities:
       - brand_config_resolution
       - design_token_lookup
@@ -164,11 +164,11 @@ task_infrastructure:
     storage_write: "{outputs-fs}/briefing.normalized.json"
   - task: youtube-to-briefing
     executor: Agent
-    services: [sinkra-etl, whisper-cpp, gateway-ai]
+    services: [aiox-etl, whisper-cpp, gateway-ai]
     storage_write: "{outputs-fs}/transcript.txt, {outputs-fs}/keyframes/, {outputs-fs}/briefing-skeleton.json"
   - task: load-kb-bundle
     executor: Worker
-    services: [sinkra-file-service]
+    services: [aiox-file-service]
     storage_read: "squads/slides-creator/data/kbs/"
   - task: confirm-delivery-format
     executor: Agent
@@ -185,7 +185,7 @@ task_infrastructure:
   # ─── P00.5 Ingestion (4 tasks) ──────────────────────────────────────
   - task: ingest-multimodal-sources
     executor: Worker
-    services: [slides-core, sinkra-etl, sinkra-file-service, research-adapters]
+    services: [slides-core, aiox-etl, aiox-file-service, research-adapters]
     parallelizable: true
   - task: extract-evidence-from-ingestions
     executor: Worker
@@ -226,7 +226,7 @@ task_infrastructure:
   - task: define-design-direction
     executor: Agent
     services: [gateway-ai]
-    storage_read: [workspace-l2-brand]
+    storage_read: [project-brand]
   - task: classify-slide-type
     executor: Agent
     services: [gateway-ai]
@@ -249,12 +249,12 @@ task_infrastructure:
   - task: detect-brand-override
     executor: Worker
     services: []
-    storage_read: [workspace-l2-brand, "squads/slides-creator/data/palette-registry.yaml"]
+    storage_read: [project-brand, "squads/slides-creator/data/palette-registry.yaml"]
   - task: clone-visual-style-signature
     executor: Clone
     services: [gateway-ai]
     identity_source: "reference deck or brand-platform.yaml — voice-bound"
-    sinkra_clone_pattern: VISUAL_STYLE_SIGNATURE
+    aiox_clone_pattern: VISUAL_STYLE_SIGNATURE
   - task: register-palette-override
     executor: Human
     services: []
@@ -383,7 +383,7 @@ connections:
     to: gateway-ai
     pattern: http_streaming
     api: "OpenAI-compatible chat completions"
-    cost_attribution: "X-Sinkra-Squad: slides-creator"
+    cost_attribution: "X-AIOX-Squad: slides-creator"
 
   - id: workflow_to_squad_engine
     from: workflows/generate-presentation.yaml
@@ -393,15 +393,15 @@ connections:
 
   - id: ingestion_to_etl
     from: ingest-multimodal-sources (when YouTube URL)
-    to: sinkra-etl
+    to: aiox-etl
     pattern: synchronous_extraction
-    api: "@sinkra/etl#extractYouTube"
+    api: "@aiox/etl#extractYouTube"
 
   - id: ingestion_to_file_service
     from: ingest-multimodal-sources (when local file)
-    to: sinkra-file-service
+    to: aiox-file-service
     pattern: synchronous_extraction
-    api: "@sinkra/file-service.parse(path)"
+    api: "@aiox/file-service.parse(path)"
 
   - id: ingestion_to_research_adapters
     from: ingest-multimodal-sources (when arxiv/pubmed/etc.)
@@ -409,11 +409,11 @@ connections:
     pattern: synchronous_extraction
     api: "squads/research/scripts/research-adapters/{adapter}.py"
 
-  - id: brand_resolution_to_workspace
+  - id: brand_resolution_to_project
     from: detect-brand-override + resolve-active-palette
-    to: workspace-l2-brand
+    to: project-brand
     pattern: filesystem_read
-    canonical_path: "workspace/businesses/{slug}/L2-tactical/brand/"
+    canonical_path: "docs/tactical/brand/"
 
   - id: youtube_to_whisper
     from: youtube-to-briefing
@@ -481,7 +481,7 @@ cost_ledger:
   # YOLO-8: finops cost-by-squad dashboard wiring
   finops_integration:
     dashboard_id: "finops-cost-by-squad"
-    squad_filter: "X-Sinkra-Squad: slides-creator"
+    squad_filter: "X-AIOX-Squad: slides-creator"
     metrics_exposed:
       - cost_per_run_usd
       - cost_per_phase_usd     # P00..P06 attribution

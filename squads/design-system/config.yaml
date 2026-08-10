@@ -2,7 +2,7 @@ pack:
   name: design-system
   version: "2.1.0"
   description: >-
-    Camada 2 SPECIALIST canonical do design system Sinkra Hub
+    Camada 2 SPECIALIST canonical do design system AIOX platform
     (ver ADR-DS-CONSOLIDATION D10/D11 + ADR-DS-ARCHITECTURE-3LAYERS).
     Runtime técnico para ds-core + aiox-design-starter.
     Especializado em tokens, foundations, componentes (build-time),
@@ -99,20 +99,6 @@ metadata:
   domain: design-system
   version: 2.1.0
   score: 10
-workspace_integration:
-  level: controlled_runtime_consumer
-  rationale: >-
-    Design squad depende de contexto canônico de Design System por BU/app, mas não é owner da integração com workspace.
-    O gate de readiness vem do COO e o squad só expande contexto local depois de receber liberação.
-  read_paths:
-    - workspace/_system/config.yaml
-    - workspace/businesses/
-    - workspace/businesses/{business}/L2-tactical/brand/brand-context.yaml
-    - workspace/businesses/{business}/L2-tactical/design/social-visual-tokens.yaml
-    - workspace/businesses/{business}/L2-tactical/design/marketing-ui-patterns.yaml
-  write_paths: []
-  readiness_owner: workspace-chief
-  readiness_resolver: workspace/scripts/resolve-squad-workspace-readiness.cjs
 tier_system:
   tier_0_foundation:
     description: Entry point agents for operations and adoption strategy
@@ -134,7 +120,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Human
+      executor_type: Human
       human_in_the_loop: true
       output_schema: design-approval-brief
   - id: design-runtime
@@ -144,7 +130,7 @@ agents:
     executor_profile:
       story_role: "consultant"
       can_execute: false
-      sinkra_type: Worker
+      executor_type: Worker
       human_in_the_loop: true
       output_schema: design-runtime-report
   - id: design-chief
@@ -154,7 +140,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: design-routing-decision
   - id: brad-frost
@@ -164,7 +150,7 @@ agents:
     executor_profile:
       story_role: "consultant"
       can_execute: false
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: ds-pattern-audit
   - id: dave-malouf
@@ -174,7 +160,7 @@ agents:
     executor_profile:
       story_role: "consultant"
       can_execute: false
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: designops-assessment
   - id: dan-mall
@@ -184,7 +170,7 @@ agents:
     executor_profile:
       story_role: "consultant"
       can_execute: false
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: stakeholder-collage-report
   - id: nano-banana-generator
@@ -194,7 +180,7 @@ agents:
     executor_profile:
       story_role: "consultant"
       can_execute: false
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: visual-generation-pack
   - id: ds-token-architect
@@ -207,7 +193,7 @@ agents:
     executor_profile:
       story_role: "consultant"
       can_execute: false
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: token-schema-package
   - id: ds-foundations-lead
@@ -217,7 +203,7 @@ agents:
     executor_profile:
       story_role: "consultant"
       can_execute: false
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: foundations-spec
   - id: storybook-expert
@@ -227,7 +213,7 @@ agents:
     executor_profile:
       story_role: "consultant"
       can_execute: false
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: storybook-governance-report
   - id: page-composer
@@ -237,7 +223,7 @@ agents:
     executor_profile:
       story_role: "executor"
       can_execute: true
-      sinkra_type: Clone
+      executor_type: Clone
       human_in_the_loop: true
       output_schema: page-composition-report
 tasks:
@@ -248,7 +234,6 @@ tasks:
   - ds-calculate-roi
   - ds-compose-molecule
   - ds-consolidate-patterns
-  - ds-context-contract
   - ds-extend-pattern
   - ds-extract-tokens
   - ds-generate-ai-metadata
@@ -258,7 +243,7 @@ tasks:
   - ds-govern-a11y-compliance
   - ds-health-metrics
   - ds-integrate-squad
-  - ds-integrate-workspace
+  - ds-integrate-squad
   - ds-legacy-modernization
   - ds-parallelization-gate
   - ds-rebuild-artifact
@@ -456,7 +441,7 @@ tags:
 # BEGIN MAP MATERIALIZATION: supported_domains
 materialized_supported_domains: [Strategic, Tactical, Operational]
 materialized_supported_domains_ptbr: [Estratégico, Tático, Operacional]
-# Source: .aiox/squad-runtime/sinkra-squad/design-system/map/20260328-065055-gemini-gemini-3.1-pro-preview/domain_map.yaml
+# Source: .aiox/squad-runtime/aiox-squad/design-system/map/20260328-065055-gemini-gemini-3.1-pro-preview/domain_map.yaml
 # END MAP MATERIALIZATION: supported_domains
 
 # ADR-119: Selective manifest domains (Story 119.12)

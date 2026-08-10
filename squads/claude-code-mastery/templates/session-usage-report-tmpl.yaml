@@ -88,7 +88,7 @@ usage_inventory:
     top_by_context_cost: []
     top_by_friction: []
   slash_commands:
-    description: "Invocações slash cruas observadas nas sessões; não confundir com skill_groups do inventário do workspace"
+    description: "Invocações slash cruas observadas nas sessões; não confundir com skill_groups do inventário de docs/project"
     entries: []
     top_by_usage: []
   skill_tools:
@@ -209,7 +209,7 @@ unused:
     #   recommendation: "KEEP|DELETE|EVALUATE"
     #   reason: "reason for recommendation"
   skills:
-    description: "Skills in .claude/skills/ with 0 invocations (neither Skill tool nor slash command)"
+    description: "Skills in skills/ with 0 invocations (neither Skill tool nor slash command)"
     entries: []
     # Each entry:
     # - name: "skill-name"

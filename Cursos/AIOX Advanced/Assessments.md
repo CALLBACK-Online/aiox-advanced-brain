@@ -18,7 +18,7 @@ Eu uso quizzes para recuperar conceitos, não para fingir competência. Cada che
 - [[modulos/Módulo 2 - Setup e Contexto|M2]] — [[avaliacoes/Quiz M2 - Setup e Contexto|Quiz M2]] — Um projeto com fronteiras local, staging e production, instruções mínimas e relatório do que foi removido do contexto.
 - [[modulos/Módulo 3 - Ciclo SDC|M3]] — [[avaliacoes/Quiz M3 - Ciclo SDC|Quiz M3]] — Story com critérios de aceite, resultado do gate, correções realizadas e estado final registrado.
 - [[modulos/Módulo 4 - Determinismo e Comando|M4]] — [[avaliacoes/Quiz M4 - Determinismo e Comando|Quiz M4]] — Um processo real decomposto por camada, com Goal ou Loop escolhido, stop rule e tratamento de falha.
-- [[modulos/Módulo 5 - Arquitetura SINKRA|M5]] — [[avaliacoes/Quiz M5 - Arquitetura SINKRA|Quiz M5]] — Mapa de uma entidade real, seus estados, responsáveis, artefatos, transições e camada de execução adequada.
+- [[modulos/Módulo 5 - Arquitetura AIOX|M5]] — [[avaliacoes/Quiz M5 - Arquitetura AIOX|Quiz M5]] — Mapa de uma entidade real, seus estados, responsáveis, artefatos, transições e camada de execução adequada.
 - [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] — [[avaliacoes/Quiz M6 - Brownfield e Greenfield|Quiz M6]] — Diagnóstico do terreno, riscos, prior art, estratégia escolhida e plano de mudança com gates.
 - [[modulos/Módulo 7 - Criar Squad|M7]] — [[avaliacoes/Quiz M7 - Criar Squad|Quiz M7]] — Estrutura do Squad, entidade central, papéis, tasks, critérios de aceite e uma execução validada.
 - [[modulos/Módulo 8 - Pipeline de Research|M8]] — [[avaliacoes/Quiz M8 - Pipeline de Research|Quiz M8]] — Pergunta de decisão, fontes contrastadas, comparação, anatomia do domínio e PRD com Stories prontas.

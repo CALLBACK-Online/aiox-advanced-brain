@@ -119,9 +119,9 @@ def resolve_skill_path(
 ) -> Optional[Path]:
     """
     4-step cascade per AC2:
-    1. .claude/skills/{entry_agent}/SKILL.md
-    2. .claude/skills/{slash_prefix}/{entry_agent}/SKILL.md
-    3. .claude/skills/{slash_prefix}/SKILL.md
+    1. skills/{entry_agent}/SKILL.md
+    2. skills/{slash_prefix}/{entry_agent}/SKILL.md
+    3. skills/{slash_prefix}/SKILL.md
     4. Frontmatter agent-match (variant-dirname)
     """
     skills_root = project_root / ".claude" / "skills"

@@ -7,7 +7,7 @@ purpose: |
   When a business onboards or an existing app needs token review, this matrix
   shows what each reference DS does for the same token category.
 
-  Use this to answer: "Why is sinkra-hub default {{X}} = {{Y}}?"
+  Use this to answer: "Why is upstream monorepo default {{X}} = {{Y}}?"
   Answer: trace to row below. Every default is justified by at least 3 DS.
 
 method: |
@@ -30,7 +30,7 @@ method: |
 dimensions:
 
   spacing:
-    sinkra_default: "5-step named (xs/sm/md/lg/xl) + base-unit 0.25rem (4px)"
+    aiox_default: "5-step named (xs/sm/md/lg/xl) + base-unit 0.25rem (4px)"
     rationale: "Mantine + HeroUI + Polaris (named); Tailwind base-unit for grid math"
     references:
       polaris:
@@ -60,13 +60,13 @@ dimensions:
       (c) shadcn compat — 4px matches Tailwind v4 convention
 
   font_sizes:
-    sinkra_default: "8-step (xs..4xl); base=1rem (16px)"
+    aiox_default: "8-step (xs..4xl); base=1rem (16px)"
     rationale: "Tailwind + Primer + Chakra — modern web 8-step is standard"
     references:
       tailwind:
         scale: ["xs(12)/sm(14)/base(16)/lg(18)/xl(20)/2xl(24)/3xl(30)/4xl(36)/5xl(48)/6xl(60)/7xl(72)/8xl(96)/9xl(128)"]
         steps: 13
-        notes: "Maximum range; sinkra picks first 8"
+        notes: "Maximum range; aiox picks first 8"
       primer:
         scale: ["xs(12)/sm(14)/md(16)/lg(20)/xl(32)"]
         steps: 5
@@ -89,7 +89,7 @@ dimensions:
       4xl(36) is enough for h1 in most layouts; apps can extend if needed.
 
   font_weights:
-    sinkra_default: "4-step (regular/medium/semibold/bold)"
+    aiox_default: "4-step (regular/medium/semibold/bold)"
     rationale: "Mantine + shadcn alignment; Tailwind 9-step is overkill"
     references:
       mantine:
@@ -110,7 +110,7 @@ dimensions:
       System fonts have 400/500/600/700 reliably.
 
   line_height:
-    sinkra_default: "3-step (tight/normal/relaxed)"
+    aiox_default: "3-step (tight/normal/relaxed)"
     rationale: "Pragmatic; Mantine 5-step is overkill"
     references:
       mantine:
@@ -127,7 +127,7 @@ dimensions:
       - relaxed (1.75): long-form reading
 
   radius:
-    sinkra_default: "7-step (none/sm/base/md/lg/xl/2xl/full)"
+    aiox_default: "7-step (none/sm/base/md/lg/xl/2xl/full)"
     rationale: "Chakra + shadcn alignment"
     references:
       chakra:
@@ -145,7 +145,7 @@ dimensions:
       to override per component. We use absolute values for clarity.
 
   durations:
-    sinkra_default: "3-step (fast/base/slow) + instant"
+    aiox_default: "3-step (fast/base/slow) + instant"
     rationale: "Mantine consensus; Chakra 7-step rarely fully utilized"
     references:
       chakra:
@@ -166,7 +166,7 @@ dimensions:
       <100ms feels instant; >400ms feels sluggish.
 
   breakpoints:
-    sinkra_default: "5-step (mobile 640/tablet 768/desktop 1024/wide 1280/ultrawide 1536)"
+    aiox_default: "5-step (mobile 640/tablet 768/desktop 1024/wide 1280/ultrawide 1536)"
     rationale: "Tailwind v4 + shadcn convention (sm/md/lg/xl/2xl)"
     references:
       tailwind:
@@ -180,11 +180,11 @@ dimensions:
         steps: 5
         notes: "em-based"
     decision_log: |
-      Tailwind v4 px-based scale wins for sinkra-hub because shadcn uses it.
+      Tailwind v4 px-based scale wins for upstream monorepo because shadcn uses it.
       em-based (Mantine) is more accessible but requires learning curve.
 
   z_index:
-    sinkra_default: "6-step (dropdown 1000/sticky 1100/fixed 1200/modal 1300/popover 1400/tooltip 1500)"
+    aiox_default: "6-step (dropdown 1000/sticky 1100/fixed 1200/modal 1300/popover 1400/tooltip 1500)"
     rationale: "Primer ascending pattern collapsed to 6 layers"
     references:
       primer:
@@ -199,7 +199,7 @@ dimensions:
       Numeric gaps (1000/1100/1200) allow business-specific insertions.
 
   color_space:
-    sinkra_default: "oklch"
+    aiox_default: "oklch"
     rationale: "shadcn 2024+ standard; perceptually uniform; CSS native"
     references:
       shadcn:
@@ -226,7 +226,7 @@ dimensions:
       Tradeoff: less browser DevTools support than hex (improving).
 
   theming_strategy:
-    sinkra_default: "data-attribute (data-theme='dark') + .dark class"
+    aiox_default: "data-attribute (data-theme='dark') + .dark class"
     rationale: "shadcn pattern; SSR-safe; no React Context overhead"
     references:
       shadcn:

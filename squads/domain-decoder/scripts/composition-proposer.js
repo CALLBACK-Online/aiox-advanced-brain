@@ -3,14 +3,14 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 if (process.argv.length < 4) {
-  console.error("Usage: node composition-proposer.js <path-to-decision-model.yaml> <path-to-sinkra-token-map.yaml>");
+  console.error("Usage: node composition-proposer.js <path-to-decision-model.yaml> <path-to-aiox-token-map.yaml>");
   process.exit(1);
 }
 
 const decisionModelPath = path.resolve(process.cwd(), process.argv[2]);
 const tokenMapPath = path.resolve(process.cwd(), process.argv[3]);
 const outputDir = path.dirname(decisionModelPath);
-const outputPath = path.join(outputDir, 'sinkra-composition-proposal.yaml');
+const outputPath = path.join(outputDir, 'aiox-composition-proposal.yaml');
 
 if (!fs.existsSync(decisionModelPath) || !fs.existsSync(tokenMapPath)) {
   console.error("FAIL: Input files not found.");

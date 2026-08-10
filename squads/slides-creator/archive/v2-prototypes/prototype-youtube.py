@@ -316,7 +316,7 @@ def map_to_briefing_normalized(
         },
         "brand": {
             "design_tokens_path": None,
-            "note": "Brand tokens should be provided by the user or loaded from workspace/businesses/{brand}/"
+            "note": "Brand tokens should be provided by the user or loaded from docs/"
         },
         "_pipeline_hints": {
             "skip_normalize": True,

@@ -3,7 +3,7 @@
 /**
  * Registry Schema Validator
  *
- * Validates workspace/ui/registry.json against the Shadcn registry schema rules.
+ * Validates docs/design-system/ui/registry.json against the Shadcn registry schema rules.
  * Run from repo root: node squads/design-system/scripts/design-system/validate_registry.cjs
  */
 
@@ -11,7 +11,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = process.cwd();
-const REGISTRY_PATH = path.join(ROOT, 'workspace/ui/registry.json');
+const REGISTRY_PATH = path.join(ROOT, 'docs/design-system/ui/registry.json');
 
 const VALID_ITEM_TYPES = [
   'registry:lib',
@@ -43,7 +43,7 @@ function warn(msg) {
 function main() {
   // 1. File exists and parses
   if (!fs.existsSync(REGISTRY_PATH)) {
-    error('registry.json not found at workspace/ui/registry.json');
+    error('registry.json not found at docs/design-system/ui/registry.json');
     return report();
   }
 

@@ -2,7 +2,7 @@
 # Status: scaffold | IMP-012 | Date: 2026-03-27
 
 inputs:
-  - "mission-clickup-handoff.yaml (from sinkra-squad, mode=mission, Phase 7)"
+  - "mission-clickup-handoff.yaml (from aiox-squad, mode=mission, Phase 7)"
   - "ClickUp API credentials (via services/clickup/)"
 
 outputs:
@@ -11,15 +11,15 @@ outputs:
   - "Materialization report (success/failure per component)"
 
 triggers:
-  - "sinkra-squad Phase 7 completion (mode=mission)"
+  - "aiox-squad Phase 7 completion (mode=mission)"
   - "Manual activation via /clickup-ops:clickup-chief"
 
 dependencies:
-  - "squads/sinkra-squad/ (upstream — produces mission handoff)"
+  - "squads/aiox-squad/ (upstream — produces mission handoff)"
   - "services/clickup/ (API adapter)"
 
 upstream:
-  - squad: sinkra-squad
+  - squad: aiox-squad
     mode: mission
     artifact: "mission-clickup-handoff.yaml"
     schema_fields:

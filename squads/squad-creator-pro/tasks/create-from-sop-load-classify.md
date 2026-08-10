@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: create-from-sop-load-classify
   task_name: Create From SOP -- Load + Classify
   status: pending
@@ -19,18 +19,18 @@ sinkra_task_metadata:
   - Loader executed with explicit business and selectors
   - All 4 environment gates passed
   - Every loaded YAML classified into exactly one class
-  - No source outside `workspace/businesses/{slug}` considered valid
+  - No source outside `docs/project` considered valid
   - Environment validated
-  output_persistence: canonical_workspace
+  output_persistence: canonical_project
   accountable_id: Human:Squad_Operator
   accountability_scope: full
   escalation_priority: medium
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Strategic
   atomic_layer: Atom
   executor: Agent
@@ -38,7 +38,7 @@ sinkra_contract:
   post_condition: "output principal gerado, validado e pronto para handoff da próxima fase."
   performance: "executar dentro do SLA declarado, registrar erro explicitamente e escalar via handoff sem falha silenciosa."
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 
 # Task: Create From SOP -- Load + Classify
@@ -72,8 +72,8 @@ sinkra_contract:
 | ID | Condition | Check | Result |
 |----|-----------|-------|--------|
 | VETO-CFS-001 | Business slug must be explicit | `--business=<slug>` present | VETO - BLOCK |
-| VETO-CFS-002 | Must resolve to `full_workspace_mode` | Loader output check | VETO - BLOCK |
-| VETO-CFS-003 | Source of truth must be `workspace_canonical` | Loader output check | VETO - BLOCK |
+| VETO-CFS-002 | Must resolve to `none_mode` | Loader output check | VETO - BLOCK |
+| VETO-CFS-003 | Source of truth must be `project_canonical` | Loader output check | VETO - BLOCK |
 | VETO-CFS-004 | At least one SOP selector required | `--namespace` or `--paths` present | VETO - BLOCK |
 | VETO-CFS-005 | All selectors must resolve | `missing_requested_sources == []` | VETO - BLOCK |
 
@@ -83,19 +83,13 @@ sinkra_contract:
 
 ### Step 0: Environment + Source Package
 
-```bash
-node squads/squad-creator-pro/scripts/load-business-sops.cjs \
-  --business={slug} \
-  --namespace={namespace} \
-  --paths={paths} \
-  --format=yaml
-```
+Selecione e revise manualmente as fontes locais do SOP antes de classificar o material.
 
 Confirm:
 
 - `coo_readiness_status == ready`
-- `runtime_mode == full_workspace_mode`
-- `source_of_truth == workspace_canonical`
+- `runtime_mode == none_mode`
+- `source_of_truth == project_canonical`
 - `missing_requested_sources == []`
 
 If any gate fails: STOP.
@@ -110,7 +104,7 @@ For each loaded YAML, classify into one of these classes:
 
 **Rules:**
 
-- `L1-strategy/*.yaml` tends to be `executable_process`
+- `strategy/*.yaml` tends to be `executable_process`
 - `L3-product/*/offerbook.yaml` tends to be `supporting_context`
 - metadata, evidence, sources never become tasks directly; they become guardrails
 
@@ -125,8 +119,8 @@ source_classification:
   business_slug: "{slug}"
   environment:
     coo_readiness_status: "ready"
-    runtime_mode: "full_workspace_mode"
-    source_of_truth: "workspace_canonical"
+    runtime_mode: "none_mode"
+    source_of_truth: "project_canonical"
   selectors:
     namespaces: []
     explicit_paths: []
@@ -150,7 +144,7 @@ source_classification:
 - [ ] Loader executed with explicit business and selectors
 - [ ] All 4 environment gates passed
 - [ ] Every loaded YAML classified into exactly one class
-- [ ] No source outside `workspace/businesses/{slug}` considered valid
+- [ ] No source outside `docs/project` considered valid
 
 ---
 

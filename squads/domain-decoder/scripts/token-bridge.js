@@ -9,7 +9,7 @@ if (process.argv.length < 3) {
 
 const catalogPath = path.resolve(process.cwd(), process.argv[2]);
 const outputDir = path.dirname(catalogPath);
-const outputPath = path.join(outputDir, 'sinkra-token-map.yaml');
+const outputPath = path.join(outputDir, 'aiox-token-map.yaml');
 
 if (!fs.existsSync(catalogPath)) {
   console.error(`File not found: ${catalogPath}`);
@@ -65,7 +65,7 @@ rules.forEach((rule, idx) => {
     family = 'Taxonomy';
     token_value = 'enum_inference';
   } else if (rule_type === 'ACTION_ENABLER' && (st.includes('pode') || st.includes('permitido'))) {
-    family = 'Permission';  // Permission family exists in SINKRA token-registry
+    family = 'Permission';  // Permission family exists in AIOX token-registry
     token_value = 'role_access';
   }
 
@@ -83,7 +83,7 @@ rules.forEach((rule, idx) => {
   } else {
     unmappable_rules.push({
       rule_id: rule_id,
-      reason: "Could not infer appropriate SINKRA family from statement logic.",
+      reason: "Could not infer appropriate AIOX family from statement logic.",
       recommendation: "atom"
     });
   }

@@ -282,11 +282,11 @@ detect_source_version() {
     if [[ -n "$v" ]]; then echo "$v"; return; fi
   fi
 
-  # 2. config.yaml (SINKRA squads)
+  # 2. config.yaml (AIOX squads)
   for cfg in "$src/config.yaml" "$src/config.yml"; do
     if [[ -f "$cfg" ]]; then
       local v
-      # Try pack.version first (SINKRA pattern), then top-level version
+      # Try pack.version first (AIOX pattern), then top-level version
       v=$(python3 -c "
 import yaml, sys
 try:
@@ -328,8 +328,8 @@ if [[ -n "${SOURCE_PATH_ABS:-}" ]]; then
   # Warn if source is outside the repo — Gemini CLI cannot read external paths
   if [[ ! "$SOURCE_PATH_ABS" == "$REPO_ROOT"* ]]; then
     echo "⚠️  Source is OUTSIDE this repo ($REPO_ROOT)"
-    echo "   Gemini fallback will fail with 'Path not in workspace' errors."
-    echo "   Use --claude or --model opus to force Claude (no workspace restriction)."
+    echo "   Gemini fallback will fail with 'Path not in local_docs' errors."
+    echo "   Use --claude or --model opus to force Claude (no project docs restriction)."
   fi
 
   DETECTED_VERSION="$(detect_source_version "$SOURCE_PATH_ABS")"

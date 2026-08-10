@@ -124,7 +124,6 @@ guard:
 # =============================================================================
 sla_defaults:
   - { at: 24h, action: "nudge senior consultant (SendMessage + notification channel)" }
-  - { at: 72h, action: "escalate to C-level stakeholder ref" }
   - { at: 168h, action: "auto_pause — mark workflow paused; require manual resume" }
 
 # =============================================================================
@@ -132,6 +131,6 @@ sla_defaults:
 # =============================================================================
 filesystem:
   path_template: "outputs/slides-creator/{deck_slug}/checkpoints/{gate_id}.yaml"
-  rationale: "Per artifact-classification.md — outputs/ (not workspace/) because these are deck-specific transitional artifacts regenerable from pipeline run."
+  rationale: "Per artifact-classification.md — outputs/ (not outputs/) because these are deck-specific transitional artifacts regenerable from pipeline run."
   git_tracked: true
   retention: "keep for 1 release cycle (or CODEOWNERS policy)"

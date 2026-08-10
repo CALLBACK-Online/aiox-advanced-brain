@@ -8,7 +8,7 @@ pack:
     Baseado em SOP-SLIDES-003 (brand-agnostic), PPTEval (Design, Content, Coherence, GAD)
     e absorção v9 da disciplina narrativa McKinsey (Pyramid + SCQA + Action Titles + APA).
 
-absorption_source: .aiox/squad-runtime/sinkra-squad/criacao-slides-ia/
+absorption_source: .aiox/squad-runtime/aiox-squad/criacao-slides-ia/
 
 squad:
   name: slides-creator
@@ -37,28 +37,6 @@ metadata:
     scored_at: "2026-04-18"
   # absorption_source removed (duplicate — canonical declaration at top-level line 11)
 
-workspace_integration:
-  level: controlled_runtime_consumer
-  rationale: >-
-    Slides Creator consumes brand context from the workspace and targets a consumer
-    TSX application (resolved per deployment via config.yaml#render_targets). The squad
-    does not own any specific app; readiness + handoff are gated by the operator.
-    Designed portable — may ship into any repo without hard refs.
-  read_paths:
-    - workspace/_system/config.yaml
-    - workspace/businesses/
-  write_paths: []
-  template_namespace: slides
-  owner: "operator"
-  execution_mode: "contract_based"   # consumer apps implement the contract; squad emits spec
-  readiness_owner: "operator"
-  delivery_targets: "resolved via config.yaml#render_targets at runtime"
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# INVARIANTS (P1-P7) — absorbed from /sinkra-map-process criacao-slides-ia
-# ═══════════════════════════════════════════════════════════════════════════════
-# Canonical summary: data/principios-invioláveis.md
-# Canonical source:  .aiox/squad-runtime/sinkra-squad/criacao-slides-ia/architecture.yaml#invariants
 invariants:
   reference: data/principios-invioláveis.md
   items:
@@ -122,7 +100,7 @@ pattern_library:
 task_standards:
   enforce_anatomy: true
   validator: "SC-TP-001"
-  # SINKRA canonical 8 fields per Mandamento 1+2 (matches actual squads/slides-creator/tasks/*.md)
+  # AIOX canonical 8 fields per Mandamento 1+2 (matches actual squads/slides-creator/tasks/*.md)
   required_fields:
     - task                # canonical task slug
     - atomic_layer        # Atom | Molecule | Organism
@@ -197,7 +175,7 @@ executor_types:
     name: "Hybrid Executor"
     status: deprecated   # Mandamento 1 — exactly 1 canonical executor per task. Migrate to sequential Agent+Worker or single Agent.
     deprecated_at: "2026-05-20"
-    deprecation_rationale: "Violates SINKRA Mandamento 1 (one executor per task). Replaced by sequential composition (Worker structural check + Agent reasoning) or single Agent if reasoning subsumes structural validation."
+    deprecation_rationale: "Violates AIOX Mandamento 1 (one executor per task). Replaced by sequential composition (Worker structural check + Agent reasoning) or single Agent if reasoning subsumes structural validation."
     characteristics:
       - ai_assisted
       - human_validated
@@ -272,7 +250,7 @@ quality_gates:
 # ═══════════════════════════════════════════════════════════════════════════════
 handoff_contract:
   imports:
-    - source: "workspace/businesses/{slug}/L2-tactical/brand/"
+    - source: "docs/tactical/brand/"
       provides: "Brand config (colors, fonts, spacing, logo)"
     - source: "data/template-registry.yaml"
       provides: "56 canonical slide templates with provenance"
@@ -325,7 +303,7 @@ agents:
     tier: tier_0
     phases: [P00, P01, P02, P03, P04, P05, P06]
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "deliverable definido pela task ativa"
       story_role: "orchestrator"
@@ -340,7 +318,7 @@ agents:
     tier: tier_1
     phases: [P01, P02, P04]
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "pyramid-tree.yaml, scqa-map.yaml, sources-apa.yaml, action-titles"
       story_role: "executor"
@@ -356,7 +334,7 @@ agents:
     tier: tier_1
     phases: [P00, P03]
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "slide-type classification, template-selection-summary.md, chart-type mapping"
       story_role: "executor"
@@ -372,7 +350,7 @@ agents:
     tier: tier_2
     phases: [P03, P04, P06]
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "grid-layouts.yaml, deck-spec.yaml, render-request.yaml"
       story_role: "executor"
@@ -388,7 +366,7 @@ agents:
     tier: tier_2
     phases: [P03]
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "active-palette.yaml, asset-resolution.json"
       story_role: "executor"
@@ -404,7 +382,7 @@ agents:
     tier: tier_3
     phases: [P02, P05]
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "qa-report.json, vertical-test-result.yaml, validator outputs"
       story_role: "reviewer"
@@ -421,7 +399,7 @@ agents:
     phases: [P04_5]
     mission_origin: "MSN-2026-SLIDES-NARRATIVE-DESIGN (T-015)"
     executor_profile:
-      sinkra_type: Agent
+      executor_type: Agent
       human_in_the_loop: true
       output_schema: "critique-report.yaml, planning-reflection.jsonl entries"
       story_role: "reviewer"
@@ -536,7 +514,7 @@ dependencies:
       resolution: "runtime-declared via config.yaml#render_targets"
       status: "contract_based"
 
-# SINKRA v3.2 — Artifact Contracts (Wave 3 — expanded for 16 workflow outputs)
+# AIOX v3.2 — Artifact Contracts (Wave 3 — expanded for 16 workflow outputs)
 # Each contract: producer/consumer/lifecycle + transition rules
 artifact_contracts:
   # === Canonical existing contracts ===
@@ -723,10 +701,10 @@ sessions:
     kb_bundle_ref: SESSION-DESIGN-CRITIQUE
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# COMPOSITION MAPPING (SINKRA v3.2 — GAP-003 closure)
+# COMPOSITION MAPPING (AIOX v3.2 — GAP-003 closure)
 # ═══════════════════════════════════════════════════════════════════════════════
 composition_mapping:
-  # Wave W4-05 — Token level added for SINKRA hierarchy traceability (Token → Atom → Molecule → Organism)
+  # Wave W4-05 — Token level added for AIOX hierarchy traceability (Token → Atom → Molecule → Organism)
   tokens:
     registry_ref: "squads/slides-creator/data/token-registry.yaml"
     canonical_families:
@@ -799,7 +777,7 @@ composition_mapping:
     critique:
       # Note: run-design-critique is a Molecule (orchestrates 10 sub-validators + aggregates verdict).
       # Listed here only as filesystem reference. Authoritative placement is composition_mapping.molecules.MOL-DESIGN-CRITIQUE below.
-      # Resolved 2026-05-20 via /sinkra-upgrade-squad R3 polish (Atom/Molecule duality eliminated).
+      # Resolved 2026-05-20 via /aiox-upgrade-squad R3 polish (Atom/Molecule duality eliminated).
       - tasks/apply-design-revision.md
     crud:
       # Note: create-presentation is an Organism entry-point (atomic_layer: Organism in task).
@@ -834,9 +812,9 @@ composition_mapping:
     pattern: "Per-execution instances indexed by correlation_id"
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# SINKRA-NATIVE REFERENCES (v3.2)
+# AIOX-NATIVE REFERENCES (v3.2)
 # ═══════════════════════════════════════════════════════════════════════════════
-sinkra_refs:
+aiox_refs:
   token_registry: data/token-registry.yaml
   pipeline_execution_log: data/pipeline-execution-log.yaml
   checkpoint_schema: data/checkpoint-schema.yaml
@@ -853,17 +831,17 @@ sinkra_refs:
 # RENDER TARGETS (brand-agnostic — consumer app contract, not specific paths)
 # ═══════════════════════════════════════════════════════════════════════════════
 # YOLO-9: consumer_app resolver formalized 2026-05-20
-# Resolution order: explicit briefing.delivery_target → workspace_integration default
+# Resolution order: explicit briefing.delivery_target → local project docs default
 #   → handoff_only fallback. resolver_contract defines the exact lookup algorithm.
 consumer_app_resolver:
   resolution_order:
     - source: briefing.delivery_target.consumer_app
       precedence: 1
       pattern: "operator-declared per run"
-    - source: "workspace/businesses/{business}/L4-operational/slide-rendering/default-consumer-app.yaml"
+    - source: "docs/operational/slide-rendering/default-consumer-app.yaml"
       precedence: 2
-      pattern: "business-default declared in workspace L4 (TTL 7d)"
-    - source: "workspace/_system/config.yaml#default_render_consumer"
+      pattern: "business-default declared in local_docs L4 (TTL 7d)"
+    - source: "docs/config.yaml#default_render_consumer"
       precedence: 3
       pattern: "hub-wide default (last-resort)"
     - source: "render_target: llm_direct (FALLBACK)"
@@ -873,7 +851,7 @@ consumer_app_resolver:
     inputs: [briefing.normalized.json, business_slug, run_id]
     output:
       consumer_app_id: "string | null"
-      resolution_source: "briefing | workspace_default | hub_default | fallback"
+      resolution_source: "briefing | project_default | hub_default | fallback"
       consumer_root: "absolute path | null"
       slides_dir: "string (e.g. apps/{app}/src/slides) | null"
     fallback_behavior:
@@ -920,7 +898,7 @@ render_targets:
       - "slides-core"
       - "slides-mcp"
     surfaces:
-      - cli: "scripts/sinkra/slides-cli.mjs"
+      - cli: "scripts/aiox/slides-cli.mjs"
       - api: "apps/squad-engine /api/v1/slides/*"
       - mcp: "slides-mcp"
     quality_gates:
@@ -932,7 +910,7 @@ render_targets:
       runtime_from: ["../bench/Presenton (Apache-2.0) — API/MCP scaffold"]
       forbidden: ["../bench/banana-slides (AGPL-3.0)"]
 
-sinkra_native: true
+aiox_native: true
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # FEATURE FLAGS (Wave C — standalone render + motion + direction advisor)

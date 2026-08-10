@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: run-growth-experiment
   task_name: Run Growth Experiment
   status: active
@@ -35,11 +35,11 @@ sinkra_task_metadata:
   error_handling: "on failure, log to outputs/data/{slug}/errors.log and escalate to data-chief"
   output_path: "outputs/data/{slug}/experiment-results.yaml"
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Tactical
   atomic_layer: Atom
   executor: Clone
@@ -47,7 +47,7 @@ sinkra_contract:
   post_condition: "output generated, validated, ready for handoff"
   performance: "execute within SLA, log errors explicitly, escalate via handoff without silent failure"
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 # Run Growth Experiment Task
 

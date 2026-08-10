@@ -29,7 +29,7 @@ domain: Operational
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Operational`
 atomic_layer: Atom
 Input: request::sync_ide_skills
@@ -37,7 +37,7 @@ Output: artifact::sync_ide_skills
 pre_condition: contexto mínimo carregado e rota validada
 post_condition: decisão registrada com artefato persistido ou handoff emitido
 performance: registrar evidências, falhas e próximo passo sem erro silencioso
-Completion Criteria: contrato mínimo SINKRA explícito e saída rastreável produzida
+Completion Criteria: contrato mínimo AIOX explícito e saída rastreável produzida
 
 ========
 Input: request::sync_ide_skills
@@ -130,8 +130,8 @@ sync_config:
   squad_alias: "{slashPrefix}"
   active_ides: ["claude", "cursor", "codex"]
   destination_map:
-    claude: ".claude/skills/{squad_alias}/{agent}/SKILL.md"
-    codex: ".agents/skills/{squad_alias}/"
+    claude: "skills/{squad_alias}/{agent}/SKILL.md"
+    codex: "skills/{squad_alias}/"
 ```
 
 ### Step 3: Resolve Source, Targets & Conflicts
@@ -153,7 +153,7 @@ sync_plan:
     - "squads/{squad}/agents/{agent_id}.md"
   targets:
     - ide: "claude"
-      path: ".claude/skills/{squad_alias}/{agent_id}/SKILL.md"
+      path: "skills/{squad_alias}/{agent_id}/SKILL.md"
       exists: true | false
       overwrite_required: true | false
 ```
@@ -193,7 +193,7 @@ sync_report:
     name: "{name}"
     squad: "{squad}"
   synced_files:
-    - path: ".claude/skills/{slashPrefix}/{agent_id}/SKILL.md"
+    - path: "skills/{slashPrefix}/{agent_id}/SKILL.md"
       ide: "claude"
       status: "created | updated | skipped"
   conflicts:

@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: storybook-para-variantes
 lesson_position: 57
 title: Storybook para derivar e testar variantes (a11y, dark mode, responsivo)
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/57-storybook-para-variantes/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

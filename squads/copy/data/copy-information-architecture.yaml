@@ -1,32 +1,32 @@
 version: "1.0.0"
 owner: "copy-chief"
 status: active
-purpose: "Definir boundaries de layer, source-of-truth e regras de reconciliação para artifacts de copy no Sinkra Hub."
+purpose: "Definir boundaries de layer, source-of-truth e regras de reconciliação para artifacts de copy no AIOX platform."
 
 layers:
   business_brand:
     owner: copy
     question: "Quem somos, como nos posicionamos e qual linguagem governa a comunicação?"
     canonical_paths:
-      - "workspace/businesses/{business}/L0-identity/"
-      - "workspace/businesses/{business}/L1-strategy/"
-      - "workspace/businesses/{business}/L2-tactical/brand/"
-      - "workspace/businesses/{business}/L2-tactical/movement/"
+      - "docs/identity/"
+      - "docs/strategy/"
+      - "docs/tactical/brand/"
+      - "docs/tactical/movement/"
     canonical_artifacts:
-      - "L0-identity/company-dna.yaml"
-      - "L0-identity/founder-dna.yaml"
-      - "L1-strategy/icp.yaml"
-      - "L1-strategy/offerbook.yaml"
-      - "L1-strategy/pricing-strategy.yaml"
-      - "L2-tactical/brand/brandbook.yaml"
-      - "L2-tactical/brand/strategic-positioning.yaml"
+      - "identity/company-dna.yaml"
+      - "identity/founder-dna.yaml"
+      - "strategy/icp.yaml"
+      - "strategy/offerbook.yaml"
+      - "strategy/pricing-strategy.yaml"
+      - "tactical/brand/brandbook.yaml"
+      - "tactical/brand/strategic-positioning.yaml"
 
   product:
     owner: copy
     question: "O que estamos vendendo, qual prova existe e o que é estruturalmente verdadeiro sobre a oferta?"
     canonical_paths:
-      - "workspace/businesses/{business}/L3-product/{product}/"
-      - "workspace/businesses/{business}/L3-product/{product}/narrative/"
+      - "docs/execution/{product}/"
+      - "docs/execution/{product}/narrative/"
     canonical_artifacts:
       - "L3-product/{product}/offerbook.yaml"
       - "L3-product/{product}/proof.yaml"
@@ -41,7 +41,7 @@ layers:
     owner: copy
     question: "O que esta campanha precisa alcançar, com qual lógica de mensagem e quais assets?"
     canonical_paths:
-      - "workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/"
+      - "docs/operational/campaigns/{campaign_slug}/"
     canonical_artifacts:
       - "campaign-brief.yaml"              # raiz cross-squad (ADR-012)
       - "message-architecture.yaml"        # raiz cross-squad (ADR-012)
@@ -62,17 +62,17 @@ layers:
 source_of_truth:
   icp_and_business_context:
     paths:
-      - "L1-strategy/icp.yaml"
-      - "L0-identity/company-dna.yaml"
-      - "L0-identity/founder-dna.yaml"
+      - "strategy/icp.yaml"
+      - "identity/company-dna.yaml"
+      - "identity/founder-dna.yaml"
     layer: business_brand
   brand_voice_and_positioning:
     paths:
-      - "L2-tactical/brand/brandbook.yaml"
-      - "L2-tactical/brand/strategic-positioning.yaml"
+      - "tactical/brand/brandbook.yaml"
+      - "tactical/brand/strategic-positioning.yaml"
     layer: business_brand
   movement_and_identity_narrative:
-    path: "L2-tactical/movement/"
+    path: "tactical/movement/"
     layer: business_brand
   product_structure_and_value_stack:
     path: "L3-product/{product}/offerbook.yaml"
@@ -86,16 +86,16 @@ source_of_truth:
     path: "L3-product/{product}/narrative/*"
     layer: product
   campaign_objective_and_scope:
-    path: "L4-operational/campaigns/{campaign_slug}/campaign-brief.yaml"
+    path: "operational/campaigns/{campaign_slug}/campaign-brief.yaml"
     layer: campaign
   campaign_message_strategy:
-    path: "L4-operational/campaigns/{campaign_slug}/message-architecture.yaml"
+    path: "operational/campaigns/{campaign_slug}/message-architecture.yaml"
     layer: campaign
   execution_angle_and_tone:
-    path: "L4-operational/campaigns/{campaign_slug}/copy/creative-brief.yaml"
+    path: "operational/campaigns/{campaign_slug}/copy/creative-brief.yaml"
     layer: campaign
   per_asset_requirements:
-    path: "L4-operational/campaigns/{campaign_slug}/copy/assets/asset-brief-*.yaml"
+    path: "operational/campaigns/{campaign_slug}/copy/assets/asset-brief-*.yaml"
     layer: campaign
   actual_written_copy:
     path: "outputs/copy/{business}/..."
@@ -105,25 +105,25 @@ stage_source_of_truth:
   stage_1_intake:
     primary_artifact: "campaign-brief.yaml"
     owner: copy
-    canonical_path: "workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/campaign-brief.yaml"
+    canonical_path: "docs/operational/campaigns/{campaign_slug}/campaign-brief.yaml"
     truth_statement: "Escopo, objetivo, audiência, canais, constraints e critérios de sucesso"
     fallback_policy: "Brief implícito só para DRAFT exploratório ou peça simples"
   stage_2_message_strategy:
     primary_artifact: "message-architecture.yaml"
     owner: copy
-    canonical_path: "workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/message-architecture.yaml"
+    canonical_path: "docs/operational/campaigns/{campaign_slug}/message-architecture.yaml"
     truth_statement: "Lógica de mensagem, hierarquia de prova, mecanismo e boundaries de claim"
     fallback_policy: "Pode ser comprimido apenas em campanhas leves"
   stage_3_creative_direction:
     primary_artifact: "creative-brief.yaml"
     owner: copy
-    canonical_path: "workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/copy/creative-brief.yaml"
+    canonical_path: "docs/operational/campaigns/{campaign_slug}/copy/creative-brief.yaml"
     truth_statement: "Ângulo, tom emocional, território criativo e CTA"
     fallback_policy: "Pode ser incorporado ao asset brief em peça única simples"
   stage_4_asset_planning:
     primary_artifact: "assets/asset-brief-*.yaml"
     owner: copy
-    canonical_path: "workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/copy/assets/asset-brief-*.yaml"
+    canonical_path: "docs/operational/campaigns/{campaign_slug}/copy/assets/asset-brief-*.yaml"
     truth_statement: "Especificação por deliverable"
     fallback_policy: "Pode ser implícito em peça única simples"
   stage_5_delivery:
@@ -158,7 +158,7 @@ reconciliation_rules:
 
 runtime_rules:
   copy_chief:
-    - "Carregar L1-strategy, L2-tactical/brand e L3-product antes de escrever"
+    - "Carregar strategy, tactical/brand e L3-product antes de escrever"
     - "Resolver business, product e campaign_slug antes de tentar promover para FINAL"
-    - "Salvar planning em workspace/businesses/{business}/L4-operational/campaigns/{campaign_slug}/ (ADR-012)"
+    - "Salvar planning em docs/operational/campaigns/{campaign_slug}/ (ADR-012)"
     - "Salvar delivery-ready copy em outputs/copy/{business}/"

@@ -3,7 +3,7 @@
  * CCM Output Schema Injector
  * Story: STORY-CCM-INT.1 T2
  *
- * Adds `output_schema: <schema-ref>` to the Contrato SINKRA block
+ * Adds `output_schema: <schema-ref>` to the Contrato AIOX block
  * in all 31 task .md files in squads/claude-code-mastery/tasks/.
  *
  * Usage:
@@ -62,9 +62,9 @@ function processFile(filepath) {
     return { file: basename, status: 'skipped', reason: 'already exists' };
   }
 
-  // Check for Contrato SINKRA section
-  if (!content.includes('## Contrato SINKRA')) {
-    return { file: basename, status: 'skipped', reason: 'no Contrato SINKRA section' };
+  // Check for Contrato AIOX section
+  if (!content.includes('## Contrato AIOX')) {
+    return { file: basename, status: 'skipped', reason: 'no Contrato AIOX section' };
   }
 
   const schema = OUTPUT_SCHEMA_MAP[taskSlug];

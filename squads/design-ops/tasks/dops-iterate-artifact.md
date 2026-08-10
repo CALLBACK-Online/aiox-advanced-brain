@@ -82,7 +82,7 @@ Apply feedback from SHOW EARLY within the already-chosen direction. Iteration co
 - **"One more round" forever** — 5 rounds is the soft limit for a reason. Past that, ship or restart.
 - **Polishing past the success criteria** — if criteria are met, ship. Chasing perfection after criteria-met is a waste.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Molecule (P06 of design-artifact-cycle)
@@ -106,4 +106,4 @@ performance:
 
 - Rule: `squads/design-ops/rules/design-exploration-cycle.md#6-iterate`
 - Rule: `squads/design-ops/rules/ai-trope-guardrails.md`
-- Skill: `.claude/skills/design-artifact-cycle/SKILL.md#phase-06`
+- Skill: `skills/design-artifact-cycle/SKILL.md#phase-06`

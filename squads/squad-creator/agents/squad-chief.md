@@ -108,7 +108,7 @@ pro_detection:
     upgrade-squad: "squads/squad-creator-pro/workflows/wf-brownfield-upgrade-squad.yaml"
     validate-squad: "squads/squad-creator-pro/workflows/validate-squad.yaml"
     optimize-yolo: "squads/squad-creator-pro/workflows/wf-optimize-yolo.yaml"
-    install-context-stack: "squads/squad-creator-pro/workflows/wf-install-workspace-context.yaml"
+    install-context-stack: "squads/squad-creator-pro/workflows/wf-install-project context.yaml"
 
   override_mechanism: |
     When executing ANY task/command with pro_mode=true:
@@ -152,7 +152,7 @@ pro_detection:
       - command: "*optimize-workflow"
         description: "Otimização de workflow em 6 dimensões"
       - command: "*create-from-sop"
-        description: "Carregar SOPs canônicos do workspace e derivar artefatos de criação de squad"
+        description: "Carregar SOPs canônicos de docs/project e derivar artefatos de criação de squad"
       - command: "*install-context-stack"
         description: "Instalar stack completo de contexto + greeting + next action em squad elegível"
     response_template: |
@@ -374,8 +374,7 @@ agent_rules:
   - "TEMPLATE ENFORCEMENT RULE - When creating ANY squad file (config.yaml, agents/*.md, tasks/*.md, README.md), MUST first Read() the corresponding template from templates/ folder. NEVER write squad files from memory/ad-hoc. Templates define the canonical structure."
   - "TEMPLATE VETO - If Write() is called for config.yaml without prior Read() of config-tmpl.yaml → VETO. If Write() is called for agent file without prior Read() of agent-tmpl.md → VETO."
   - "PRO OVERRIDE RULE - When pro_mode=true, resolve command_override_map first; then fallback to squads/squad-creator-pro/tasks/{task-name}.md when available."
-  - "WORKSPACE GOVERNANCE RULE - squad-creator creates squads; workspace-chief owns workspace integration. Declare contract, generate handoff, but do NOT execute workspace mutations as part of squad creation."
-  - "NAMING CONVENTION RULE - All agent names MUST follow rules/agent-naming-convention.md. Chief is reserved for squad orchestrators. No C-level titles. Consistency across all IDE mirrors."
+  - "SCOPE RULE - squad-creator creates squads; none is out of scope for this library. Declare contract, generate handoff, but do NOT execute docs mutations as part of squad creation."
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # AGENT DESIGN RULES (Apply when creating/reviewing agents)
@@ -383,19 +382,18 @@ agent_rules:
 
 design_rules:
   self_contained:
-    rule: "Squad DEVE ser self-contained - tudo dentro da pasta do squad. Referencias READ-ONLY ao workspace/ sao permitidas para alinhamento com dominios e produtos."
-    check: "Agent ESCREVE arquivo fora de squads/{squad-name}/? → VETO. Agent LE workspace/ para contexto? → PERMITIDO."
+    rule: "Squad DEVE ser self-contained - tudo dentro da pasta do squad. Referencias READ-ONLY ao outputs/ sao permitidas para alinhamento com dominios e produtos."
+    check: "Agent ESCREVE arquivo fora de squads/{squad-name}/? → VETO. Agent LE outputs/ para contexto? → PERMITIDO."
     allowed: ["agents/", "tasks/", "data/", "checklists/"]
     forbidden: [".aiox/squad-runtime/minds/", ".aiox-core/", "docs/"]
 
-  workspace_governance:
-    rule: "Integracao real com workspace e responsabilidade do workspace-chief. squad-creator apenas declara o contrato e prepara o handoff."
-    check: "Workflow de criacao tentou escrever em workspace/ fora do proprio squad-creator? → VETO."
+  project context governance:
+    rule: "Contexto de projeto local e responsabilidade do none. squad-creator apenas declara o contrato e prepara o handoff."
+    check: "Workflow de criacao tentou escrever em docs/ fora do proprio squad-creator? → VETO."
     required_handoff_when:
-      - "squad criado declara workspace_integration.level = controlled_runtime_consumer"
-      - "squad criado declara workspace_integration.level = workspace_first"
-    handoff_target: "@coo"
-    handoff_condition: "Se squad c-level existir no repo"
+      - "squad criado declara local project docs.level = none"
+      - "squad criado declara local project docs.level = local"
+    handoff_target: "@human"
 
   functional_over_philosophical:
     rule: "Agent deve saber FAZER o trabalho, nao ser clone perfeito"
@@ -417,27 +415,27 @@ design_rules:
       ANTES de definir output paths em tasks, AVALIAR se o dado gerado é:
       (A) HIGH-VALUE CANONICAL: dado que será consultado em sessões futuras,
           fundamenta decisões, ou é pré-requisito para outras operações.
-          → DEVE ir para workspace/businesses/{business}/ (YAML obrigatório)
+          → DEVE ir para docs/ (YAML obrigatório)
       (B) TRANSIENT/DRAFT: rascunho, versão intermediária, artefato pontual.
           → Pode ir para .aiox/squad-runtime/{squad}/{business}/
 
       Heurística de classificação:
-      - "Será carregado no boot de sessões futuras?" → (A) workspace
-      - "Outro agent/task depende deste dado como input?" → (A) workspace
-      - "É snapshot de estado do business (scores, maturity, health)?" → (A) workspace
-      - "É template preenchido que vira dado canônico do business?" → (A) workspace
+      - "Será carregado no boot de sessões futuras?" → (A) local_docs
+      - "Outro agent/task depende deste dado como input?" → (A) local_docs
+      - "É snapshot de estado do business (scores, maturity, health)?" → (A) local_docs
+      - "É template preenchido que vira dado canônico do business?" → (A) local_docs
       - "É draft de copy, relatório pontual, ou versão intermediária?" → (B) .aiox/squad-runtime
     check: |
       Para CADA task com output path:
       1. Classificar output como (A) ou (B) usando heurística acima
-      2. Se (A): path DEVE ser workspace/businesses/{business}/[L1-strategy|L3-product|L4-operational]/
+      2. Se (A): path DEVE ser docs/[strategy|L3-product|operational]/
       3. Se (B): path pode ser .aiox/squad-runtime/{squad}/{business}/
       4. Se ambíguo: perguntar ao usuário ANTES de definir
-    workspace_paths:
-      per_product_data: "workspace/businesses/{business}/L3-product/{product}/"
-      per_product_analytics: "workspace/businesses/{business}/analytics/{squad}/{product}/"
-      cross_product_analytics: "workspace/businesses/{business}/analytics/{squad}/"
-      operational_data: "workspace/businesses/{business}/L4-operational/"
+    project_paths:
+      per_product_data: "docs/execution/{product}/"
+      per_product_analytics: "docs/analytics/{squad}/{product}/"
+      cross_product_analytics: "docs/analytics/{squad}/"
+      operational_data: "docs/operational/"
     veto: "Task com output HIGH-VALUE apontando para .aiox/squad-runtime/ → VETO. Reclassificar path antes de prosseguir."
 
   curadoria_over_volume:
@@ -447,12 +445,12 @@ design_rules:
       heuristics: "10 uteis > 30 genericas"
 
   veto_conditions:
-    - "Agent ESCREVE arquivo externo ao squad → VETO (leitura read-only de workspace/ e permitida)"
+    - "Agent ESCREVE arquivo externo ao squad → VETO (leitura read-only de outputs/ e permitida)"
     - "Agent >50% filosofico vs operacional → VETO"
     - "Agent sem SCOPE → VETO"
     - "Agent sem heuristics → VETO"
     - "Agent sem output examples → VETO"
-    - "Task com output HIGH-VALUE canonical apontando para .aiox/squad-runtime/ → VETO (deve ir para workspace/)"
+    - "Task com output HIGH-VALUE canonical apontando para .aiox/squad-runtime/ → VETO (deve ir para outputs/)"
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # AUTO-TRIGGERS
@@ -742,7 +740,7 @@ commands:
   - "*refresh-registry - Scan squads/ and update registry (runs scripts/refresh-registry.py)"
   # Utility Commands — task-backed
   - "*squad-overview {name} - Generate comprehensive SQUAD-OVERVIEW.md documentation for a squad"
-  - "*sync - Sync squad slash skills to .claude/skills/ (runs tasks/sync-ide-skills.md)"
+  - "*sync - Sync squad slash skills to skills/ (runs tasks/sync-ide-skills.md)"
   # Utility Commands — behavioral (agent-handled, no task file)
   - "*show-tools - Display global tool registry by reading {registry_path}"
   - "*add-tool {name} - Add discovered tool to squad config.yaml dependencies"
@@ -766,7 +764,7 @@ commands:
   # - "*optimize [PRO] - Optimize squad/task (Worker vs Agent) + economy"
   # - "*optimize-yolo [PRO] - Optimize with one approval gate then autonomous YOLO execution"
   # - "*optimize-workflow [PRO] - Optimize workflow (6 dimensions)"
-  # - "*create-from-sop [PRO] - Load canonical workspace SOPs and derive squad creation inputs"
+  # - "*create-from-sop [PRO] - Load canonical project context SOPs and derive squad creation inputs"
   # - "*install-context-stack [PRO] - Install full context stack + greeting + next action in eligible squad"
 
 command_aliases_ptbr:

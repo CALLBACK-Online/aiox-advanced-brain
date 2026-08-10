@@ -16,9 +16,9 @@ phases:
     inputs:
       - skill_name  # kebab-case
       - owner_squad
-      - sinkra_tier  # Tier1 | Tier2 | Tier3
+      - aiox_tier  # Tier1 | Tier2 | Tier3
     outputs:
-      - skill_path  # .claude/skills/{skill_name}/
+      - skill_path  # skills/{skill_name}/
     veto_conditions:
       - "Skill com mesmo nome já existe em skill-registry.yaml"
       - "Nome não segue kebab-case"

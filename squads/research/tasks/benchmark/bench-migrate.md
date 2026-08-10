@@ -1,6 +1,6 @@
 # Task: Migration Playbook Generation (Autonomous)
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Strategic`
 

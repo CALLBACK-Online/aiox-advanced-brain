@@ -11,7 +11,7 @@ source: "Fast Cash SOP — Quick Revenue Plays"
 sop_reference: squads/hormozi/sops/fast-cash-sop.md
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom

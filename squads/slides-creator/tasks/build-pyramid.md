@@ -1,8 +1,8 @@
 # Task: Build Pyramid (Minto 3 Levels)
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Strategic -->
+<!-- AIOX Domain: Strategic -->
 
 ## Metadata
 | Campo | Valor |
@@ -14,7 +14,7 @@
 | session | SESSION-NARR |
 | duration | 10-30 min |
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml

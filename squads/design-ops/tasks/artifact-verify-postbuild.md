@@ -38,7 +38,7 @@ Runs the verification battery defined in `dops-post-build-verification.yaml` aga
    - `console_health` — render artifact at every declared viewport; assert zero errors/exceptions/404/CSP/CORS
    - `responsive_render` — render at 360/768/1280 + all brief-declared viewports; assert no horizontal scroll, no overflow, text legible at smallest
    - `accessibility_floor` — WCAG AA; contrast ratios; keyboard reachability; focus visible; landmarks; heading hierarchy
-   - `workspace_contracts` — `node squads/design-ops/scripts/validate-workspace-contracts.cjs` (if present) + path-check for legacy dialect (`workspace-dialect.md`)
+   - `project context contracts` — `node squads/design-ops/scripts/validate-project context contracts.cjs` (if present) + path-check for legacy dialect (`project-dialect.md`)
    - `build_integrity` — `npm run lint`, `npm run typecheck`, `npm run validate:yaml:changed`
    - `security_baseline` (for html_prototype/deck/pdf) — SRI on all CDN scripts, no `eval`/`document.write`, namespaced globals, CSP-compatible
    - Any BLOCKER violation → proceed with scoring but mark verdict path as FAIL
@@ -125,7 +125,7 @@ Runs the verification battery defined in `dops-post-build-verification.yaml` aga
 - **"If lint fails, run with `--fix` and re-score."** — Autofixes may introduce regressions. Surface the violation; let Phase 06 decide.
 - **"Waive BLOCKER to ship."** — BLOCKER is BLOCKER. Loop back to p04 or p06 — there is no waiver path.
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Molecule (Phase 07 of wf-artifact-creation-loop)
@@ -162,5 +162,5 @@ performance:
 - Task (upstream): `squads/design-ops/tasks/dops-iterate-artifact.md`
 - Task (downstream): `squads/design-ops/tasks/dops-handoff-artifact.md`
 - Workflow: `squads/design-ops/workflows/wf-artifact-creation-loop.yaml#p07-verify`
-- Skill: `.claude/skills/design-artifact-cycle/SKILL.md#phase-07`
+- Skill: `skills/design-artifact-cycle/SKILL.md#phase-07`
 - ADR: `docs/adrs/ADR-018-design-ops-artifact-creation-capability.md#D2` (verifier is checklist-based, not sub-agent)

@@ -1,0 +1,58 @@
+{
+  "$id": "aiox://slide-creator/wireframes/experiment-grid.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "A claim needs multiple compact proof points and source traceability.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "decision_1": {
+      "type": "string"
+    },
+    "decision_2": {
+      "type": "string"
+    },
+    "decision_3": {
+      "type": "string"
+    },
+    "hypothesis_1": {
+      "type": "string"
+    },
+    "hypothesis_2": {
+      "type": "string"
+    },
+    "hypothesis_3": {
+      "type": "string"
+    },
+    "result_1": {
+      "type": "string"
+    },
+    "result_2": {
+      "type": "string"
+    },
+    "result_3": {
+      "type": "string"
+    }
+  },
+  "title": "experiment-grid",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "evidence_stack",
+    "slot_count": 10,
+    "warnings": [
+      "action_title",
+      "hypothesis_1",
+      "result_1",
+      "decision_1",
+      "hypothesis_2",
+      "result_2",
+      "decision_2",
+      "hypothesis_3",
+      "result_3",
+      "decision_3"
+    ],
+    "wireframe_ref": "templates/wireframes/experiment-grid.html"
+  }
+}

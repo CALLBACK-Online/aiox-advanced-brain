@@ -19,20 +19,20 @@ quality_policy:
   executive_summary_sentences:
     threshold: 3
 workflow:
-  type: sinkra-native-reporting-organism
+  type: aiox-native-reporting-organism
   id: wf-weekly-report
   name: Weekly Recommendations Report
   version: 1.0.0
   orchestrator: kaizen-chief
   mode: autonomous
-  sinkra:
+  aiox:
     organism_id: org-weekly-report
     organism_pattern: linear
     molecule_sequence: [mol-diagnosis, mol-optimization]
     quality_gate_source: squads/kaizen/data/quality-gates.yaml
     journey_log_source: squads/kaizen/data/journey-log-events.yaml
   description: |
-    Organism SINKRA-native de reporting semanal. Se uma análise completa
+    Organism AIOX-native de reporting semanal. Se uma análise completa
     recente existir (< 3 dias), reutiliza a Instance validada; caso
     contrário, dispara o organism de análise do ecossistema.
   sequence:

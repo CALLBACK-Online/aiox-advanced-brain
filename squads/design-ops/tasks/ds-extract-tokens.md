@@ -316,13 +316,13 @@ Ready for Merovingian to build components or generate migration strategy.
 - `squads/design/checklists/ds-pattern-audit-checklist.md`
 
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom
 executor: design-chief
 Input:
-- project_context
+- local_docs
 - design_system_context
 Output:
 - ds_extract_tokens_artifact

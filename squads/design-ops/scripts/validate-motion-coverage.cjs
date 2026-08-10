@@ -39,10 +39,10 @@ function main() {
   const registryPath = path.join(ROOT, 'squads', 'design-ops', 'data', 'motion-primitives-registry.yaml');
   const contractPath = path.join(
     ROOT,
-    'workspace',
+    'docs',
     'businesses',
     args.business,
-    'L2-tactical',
+    'tactical',
     'design',
     'motion-primitives.yaml'
   );

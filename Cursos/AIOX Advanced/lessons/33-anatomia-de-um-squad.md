@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: anatomia-de-um-squad
 lesson_position: 33
 title: Anatomia de um Squad AIOX
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/33-anatomia-de-um-squad/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
@@ -213,13 +213,16 @@ A confusão mais comum: tratar as pastas como o squad e o config como detalhe. �
 
 ## A anatomia existe de verdade no AIOX
 
+> **Nota deste acervo (AIOX Advanced library):** o exemplo canônico apontável aqui é `squads/squad-creator/`. O monorepo fonte `../upstream-monorepo` também contém `squads/course-creator/` e dezenas de outros squads não empacotados neste repositório educacional.
+
+
 A anatomia não é teoria. Todo squad em squads/ no repositório AIOX tem o mesmo esqueleto. Estes dois casos mostram a estrutura real: o config.yaml que declara e as pastas que dão corpo ao squad.
 
-- **01 Squad real em squads/course-creator/**: config.yaml mais as pastas canônicas, apontáveis no repo. (squad-real-no-repo)
+- **01 Squad real em squads/squad-creator/**: config.yaml mais as pastas canônicas, apontáveis no repo. (squad-real-no-repo)
 - **02 O mesmo esqueleto em dezenas de squads**: padrão compartilhado torna cada squad novo familiar. (esqueleto-compartilhado)
 
 - **Onde a anatomia vive no AIOX**: Todo squad vive em squads/{nome}/. Na raiz, o config.yaml declara a identidade. Dentro, as pastas agents/, tasks/, workflows/ e data/ guardam o trabalho. A estrutura não é abstração: tem lar fixo no repositório, apontável arquivo por arquivo. Players: config.yaml, agents/, tasks/, workflows/, data/.
-- **O que muda entre squads**: A anatomia é a mesma; o que muda é o conteúdo. course-creator tem agents pedagógicos e tasks de extração de currículo. Um squad de design tem agents de design e tasks de extração de tokens. Mesmo esqueleto, domínio diferente.
+- **O que muda entre squads**: A anatomia é a mesma; o que muda é o conteúdo. squad-creator tem agents e tasks de scaffold de squads, validação e templates. Um squad de design tem agents de design e tasks de extração de tokens. Mesmo esqueleto, domínio diferente.
 
 **Cada parte num eixo**
 
@@ -238,13 +241,13 @@ A anatomia vira sistema quando cada parte tem papel, lar no diretório do squad 
 - tasks/: Declara ou trabalha? | Cada task transforma um estado, entrada em saída. | Task que decide rota em vez de só transformar.
 - workflows/: Declara ou trabalha? | Ordem explícita das tasks, dependências claras. | Workflow tentando executar em vez de só encadear.
 
-### Caso: Um squad de verdade em squads/course-creator/
+### Caso: Um squad de verdade em squads/squad-creator/
 
 A anatomia não é metáfora de aula: o AIOX tem dezenas de squads em squads/, cada um com config.yaml e as pastas agents/, tasks/, workflows/, data/ apontáveis.
 
-- Começou como: Um domínio (criar cursos) sem estrutura: agentes e processos soltos, sem identidade reconhecida pelo framework.
+- Começou como: Um domínio (criar squads) sem estrutura: agentes e processos soltos, sem identidade reconhecida pelo framework.
 - Virou: Um squad com config.yaml declarando nome, prefixo e entry agent, mais as pastas que guardam agents, tasks, workflows e data.
-- Prova: squads/course-creator/ existe no repo com config.yaml (pack.name, slashPrefix, entry agent) e as pastas agents/, tasks/, workflows/, data/, templates/, checklists/.
+- Prova: squads/squad-creator/ existe no repo com config.yaml (pack.name, slashPrefix, entry agent) e as pastas agents/, tasks/, workflows/, data/, templates/, checklists/.
 - Lição: Squad é estrutura real: tem documento de identidade no config.yaml e pastas com lar fixo no repositório.
 
 ### Caso: O mesmo esqueleto em dezenas de squads
@@ -253,7 +256,7 @@ Abra qualquer squad em squads/ e a anatomia se repete: o repositório AIOX tem d
 
 - Começou como: Domínios diferentes (cursos, design, copy, dados) cada um com sua lógica própria e nenhum padrão de estrutura.
 - Virou: Todos virando squads com o mesmo esqueleto: um config.yaml declarando identidade e as pastas agents/, tasks/, workflows/, data/.
-- Prova: O diretório squads/ contém dezenas de squads (course-creator, design-ops, copy, data, hormozi e outros), e cada um repete a mesma anatomia interna.
+- Prova: O diretório squads/ contém dezenas de squads (squad-creator, design-ops, copy, data, hormozi e outros), e cada um repete a mesma anatomia interna.
 - Lição: O padrão compartilhado é o que torna o framework legível: aprendeu um squad, leu todos.
 
 ---
@@ -465,10 +468,10 @@ anatomia:
 ```
 *O acerto não é decorar as pastas. É abrir a caixa de um squad real, reconhecer cada parte pelo papel e saber dizer se o esqueleto está completo para o trabalho que ele executa.*
 
-**Exemplo preenchido: o squad course-creator**
+**Exemplo preenchido: o squad squad-creator**
 
-- **Squad**: squads/course-creator/ — o squad de criacao de cursos.
-- **Identidade**: config.yaml declara pack.name course-creator, slashPrefix course e a versao. O framework reconhece.
+- **Squad**: squads/squad-creator/ — o squad de criacao de cursos.
+- **Identidade**: config.yaml declara pack.name squad-creator, slashPrefix e a versão. O framework reconhece.
 - **Partes**: agents/ (especialistas pedagogicos), tasks/ (transformacoes), workflows/ (ordem), data/ (templates e conhecimento).
 - **Papeis**: config declara a identidade; agents julgam; tasks transformam; workflows ordenam; data alimenta.
 - **Gate**: O esqueleto esta completo: identidade declarada e as quatro pastas presentes para o que o squad faz.
@@ -498,7 +501,7 @@ Tradução dos termos para alguém que está abrindo a caixa de um squad pela pr
 - **workflows/**: A pasta que define a ordem das tasks. Encadeia o processo sem executar nenhuma task sozinho.
 - **data/**: A pasta da memória do domínio: templates, checklists e conhecimento que agents e tasks consultam para agir certo.
 - **Tiers**: A escada de níveis dos agents: estratégico decide o quê e por quê, tático decide o como, operacional executa.
-- **slashPrefix**: O prefixo de comando declarado no config.yaml. É como o squad é ativado, ex.: /course para o course-creator.
+- **slashPrefix**: O prefixo de comando declarado no config.yaml. É como o squad é ativado, ex.: o slashPrefix declarado no config do squad-creator.
 
 > **Portão da aula**: A aula só está no padrão quando o aluno nomeia as partes internas de um squad (config.yaml, agents/, tasks/, workflows/, data/), distingue o papel de cada uma (quem declara, pensa, transforma, orquestra e alimenta) e consegue, abrindo um squad real do repositório, apontar cada parte e dizer se o esqueleto está completo para o trabalho que ele executa.
 

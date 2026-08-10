@@ -31,7 +31,7 @@ merged_from:
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Operational`
 atomic_layer: Atom
 Input: request::create_squad_publish
@@ -100,7 +100,7 @@ input:
 ```
 
 Blocking requirement:
-- `.claude/skills/{slash_prefix}/{entry_agent}/SKILL.md` must exist at the end
+- `skills/{slash_prefix}/{entry_agent}/SKILL.md` must exist at the end
 
 ### Step 3: Publish Codex Chief Skill
 
@@ -111,7 +111,7 @@ input:
 ```
 
 Blocking requirement:
-- `.agents/skills/{entry_agent}/SKILL.md` must exist
+- `skills/{entry_agent}/SKILL.md` must exist
 
 ### Step 4: Update Root `CLAUDE.md` Activation Registry
 
@@ -178,8 +178,8 @@ smoke_test_report:
 publish_output:
   # Publish outputs
   aiox_sync_updated: true
-  slash_skill_published: ".claude/skills/{slash_prefix}/{entry_agent}/SKILL.md"
-  codex_skill_published: ".agents/skills/{entry_agent}/SKILL.md"
+  slash_skill_published: "skills/{slash_prefix}/{entry_agent}/SKILL.md"
+  codex_skill_published: "skills/{entry_agent}/SKILL.md"
   claude_registry_updated: true
   # Smoke test outputs
   smoke_test_verdict: "PASS | FAIL"
@@ -192,8 +192,8 @@ publish_output:
 
 - [ ] `.aiox-sync.yaml` created or reconciled
 - [ ] IDE sync triggered through `install-skills`
-- [ ] Chief slash skill exists in `.claude/skills/{slash_prefix}/{entry_agent}/SKILL.md`
-- [ ] Chief Codex skill exists in `.agents/skills/{entry_agent}/SKILL.md`
+- [ ] Chief slash skill exists in `skills/{slash_prefix}/{entry_agent}/SKILL.md`
+- [ ] Chief Codex skill exists in `skills/{entry_agent}/SKILL.md`
 - [ ] Root `CLAUDE.md` registry updated
 - [ ] Entry agent file loads and parses without errors
 - [ ] Greeting text is present and matches agent persona

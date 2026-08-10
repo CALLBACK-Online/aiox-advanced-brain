@@ -28,7 +28,7 @@ const HEADER_WHITELIST = [
 // remains an SPA-shell case handled separately by Phase 2.6 SPA-payload
 // extractor (B3) — when even that fails, only a real headless browser would
 // help, which is out of scope per skill anti-pattern.
-const EXTRACTOR_UA = "Sinkra-DesignOps-Extractor/1.0 (+mailto:devops@sinkra.ai)";
+const EXTRACTOR_UA = "AIOX-DesignOps-Extractor/1.0 (+mailto:devops@aiox.ai)";
 const HONEST_HEADERS = {
   "User-Agent": EXTRACTOR_UA,
   Accept: "text/html,application/xhtml+xml",
@@ -82,7 +82,7 @@ async function tryFetch(url, headers) {
 // Returns { html, headers } where headers contains only whitelisted diagnostic keys (lowercased).
 // Internally runs a 2-stage strategy: honest UA first, then browser-coherent
 // headers if the first stage looks blocked. The strategy used is recorded in
-// responseHeaders["x-sinkra-fetch-strategy"] for telemetry.
+// responseHeaders["x-aiox-fetch-strategy"] for telemetry.
 async function fetchHtml(url) {
   let strategy = "honest";
   let res = await tryFetch(url, HONEST_HEADERS);
@@ -114,8 +114,8 @@ async function fetchHtml(url) {
       responseHeaders[key] = String(val);
     }
   }
-  responseHeaders["x-sinkra-fetch-strategy"] = strategy;
-  responseHeaders["x-sinkra-status"] = String(res.status);
+  responseHeaders["x-aiox-fetch-strategy"] = strategy;
+  responseHeaders["x-aiox-status"] = String(res.status);
 
   return { html, headers: responseHeaders, status: res.status, strategy };
 }

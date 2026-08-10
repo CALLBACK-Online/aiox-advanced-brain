@@ -1,8 +1,8 @@
 # Task: Catalog Sources (APA Business)
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Tactical -->
+<!-- AIOX Domain: Tactical -->
 
 ## Metadata
 | Campo | Valor |
@@ -14,7 +14,7 @@
 | session | SESSION-NARR |
 | duration | 10-30 min per deck |
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml

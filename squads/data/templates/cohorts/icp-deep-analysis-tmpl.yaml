@@ -6,7 +6,7 @@ template_metadata:
   owner_agent: "data-chief"
   governance_owners:
     - "data-chief"
-  output_path: "workspace/businesses/{slug}/L1-strategy/analytics/cohorts/icp-deep-analysis.yaml"
+  output_path: "docs/strategy/analytics/cohorts/icp-deep-analysis.yaml"
   custom_fallback_path: "outputs/data/{slug}/icp-deep-analysis-{date}.md"
   contains_real_data: false
   pii_allowed: false

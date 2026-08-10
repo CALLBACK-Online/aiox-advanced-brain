@@ -10,7 +10,7 @@ estimated_time: 60-90min
 source: "Team Building Frameworks — WHO Method + Delegation"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Strategic
 atomic_layer: Atom

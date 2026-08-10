@@ -1,8 +1,8 @@
 # Mission → ClickUp Specification
-# Mapeamento do domínio Mission SINKRA para estruturas ClickUp
+# Mapeamento do domínio Mission AIOX para estruturas ClickUp
 # Owner: clickup-ops-squad
 # Consumed by: clickup-chief, materializer
-# Source: sinkra-squad/templates/mission-clickup-handoff-tmpl.yaml
+# Source: aiox-squad/templates/mission-clickup-handoff-tmpl.yaml
 # Version: 2.0.0 — Arquitetura Clean (List única, Task+Subtasks, Task Types)
 # Created: 2026-03-27
 # Updated: 2026-03-30
@@ -12,7 +12,7 @@ meta:
   version: "2.0.0"
   created: "2026-03-27"
   owner: clickup-ops-squad
-  source_template: "squads/sinkra-squad/templates/mission-clickup-handoff-tmpl.yaml"
+  source_template: "squads/aiox-squad/templates/mission-clickup-handoff-tmpl.yaml"
   status: POPULATED
   architecture: "Clean — entidade nasce e morre em uma única lista"
 
@@ -21,7 +21,7 @@ meta:
 # ═══════════════════════════════════════════════════════════════════
 domain:
   description: |
-    Mission é o 3º Organism Pattern do SINKRA (junto com Process e Flywheel).
+    Mission é o 3º Organism Pattern do AIOX (junto com Process e Flywheel).
     Enquanto Process é recorrente e Flywheel é cíclico-acumulativo, Mission é
     um projeto one-time com início (Ponto A) e fim (Ponto B), timebox fixo
     (Shape Up), e DAG de tasks com dependências.
@@ -94,11 +94,11 @@ architecture:
     - "Relationship fields vinculam a projetos/produtos/clientes sem folders"
 
 # ═══════════════════════════════════════════════════════════════════
-# 3. MAPEAMENTO — Mission SINKRA → ClickUp
+# 3. MAPEAMENTO — Mission AIOX → ClickUp
 # ═══════════════════════════════════════════════════════════════════
 mapping:
   list:
-    sinkra_concept: "Mission Registry (todas as missions)"
+    aiox_concept: "Mission Registry (todas as missions)"
     clickup_entity: "List"
     name: "Missions"
     location: "Folder: {ops_folder_name}"
@@ -106,12 +106,12 @@ mapping:
     note: "UMA lista para todas as missions. Criada pelo *bootstrap --mission."
 
   mission_task:
-    sinkra_concept: "Mission (Organism)"
+    aiox_concept: "Mission (Organism)"
     clickup_entity: "Task"
     task_type: "Mission"  # Task Type customizado no ClickUp
     list: "Missions"
     fields:
-      name: "Task name (ex: 'SINKRA OPS Cohort T1')"
+      name: "Task name (ex: 'AIOX OPS Cohort T1')"
       description: "Journey Log consolidado + resumo do mission"
       status: "Lifecycle: Shaped → Approved → Active → Complete | Cancelled"
       custom_fields: "Mission ID, Timebox, Circuit Breaker, Ponto A, Ponto B (due date nativo substitui Appetite Deadline)"
@@ -119,7 +119,7 @@ mapping:
     note: "Cada mission = 1 task. Subtasks são o DAG."
 
   dag_task:
-    sinkra_concept: "DAG Task (Atom)"
+    aiox_concept: "DAG Task (Atom)"
     clickup_entity: "Subtask"
     task_type: "Task"  # Task Type default do ClickUp
     parent: "Mission task"
@@ -137,7 +137,7 @@ mapping:
       agent: "Tag com nome do agent/squad (não assignee)"
 
   gate_task:
-    sinkra_concept: "Gate (checkpoint go/no-go)"
+    aiox_concept: "Gate (checkpoint go/no-go)"
     clickup_entity: "Subtask"
     task_type: "Gate"  # Task Type customizado no ClickUp
     parent: "Mission task"
@@ -150,18 +150,18 @@ mapping:
     note: "Task Type Gate permite filtrar/agrupar gates separadamente das tasks normais"
 
   circuit_breaker:
-    sinkra_concept: "Circuit Breaker"
+    aiox_concept: "Circuit Breaker"
     clickup_entity: "Custom Field + Automação"
     mechanism:
       field: "Custom Field: Circuit Breaker (dropdown: Active/Extended/Triggered)"
       automation: "Quando due date atingido → escalar (via notificação nativa de overdue)"
 
   relationships:
-    sinkra_concept: "Contexto (produto/projeto/cliente)"
+    aiox_concept: "Contexto (produto/projeto/cliente)"
     clickup_entity: "Custom Field: Relationship"
     purpose: "Vincular mission ao que ela serve sem criar folders por contexto"
     examples:
-      - "Mission 'Cohort T1' → Relationship → Produto 'SINKRA OPS Cohort'"
+      - "Mission 'Cohort T1' → Relationship → Produto 'AIOX OPS Cohort'"
       - "Mission 'Launch XYZ' → Relationship → Cliente 'Empresa ABC'"
 
 # ═══════════════════════════════════════════════════════════════════
@@ -362,10 +362,10 @@ rules:
 # ═══════════════════════════════════════════════════════════════════
 io_contract:
   input:
-    source: "@sinkra-chief (Phase 7: Mission Launch)"
+    source: "@aiox-chief (Phase 7: Mission Launch)"
     artifact: "mission-clickup-handoff-{mission-id}.yaml"
     zone: "Zone 2 (Source of Truth) ou .aiox/handoffs/"
-    template: "squads/sinkra-squad/templates/mission-clickup-handoff-tmpl.yaml"
+    template: "squads/aiox-squad/templates/mission-clickup-handoff-tmpl.yaml"
     required_fields:
       - "mission.id"
       - "mission.name"
@@ -378,19 +378,19 @@ io_contract:
   output:
     target: "ClickUp (external system)"
     side_effect: "Task (Mission) + Subtasks (DAG + Gates) + Dependencies + Views"
-    registry_update: "squads/sinkra-squad/data/clickup-tokenization.yaml"
+    registry_update: "squads/aiox-squad/data/clickup-tokenization.yaml"
     report: "squads/clickup-ops-squad/output/materialization-report-{mission-id}.yaml"
 
   governance:
     rule: "clickup-ops NUNCA modifica Zone 2 — apenas lê e materializa"
-    escalation: "Se handoff incompleto → devolver para @sinkra-chief"
+    escalation: "Se handoff incompleto → devolver para @aiox-chief"
 
 # ═══════════════════════════════════════════════════════════════════
 # 11. ASSIGNEE RESOLUTION — person-resolver
 # ═══════════════════════════════════════════════════════════════════
 assignee_resolution:
   module: "services/clickup/person-resolver.js"
-  registry: "workspace/{spoke}/L0-identity/people-registry.yaml"
+  registry: "docs/identity/people-registry.yaml"
   functions:
     - "resolvePersonId(name) → clickup_user_id"
     - "resolvePersonName(clickup_user_id) → name"

@@ -1,0 +1,62 @@
+{
+  "$id": "aiox://slide-creator/wireframes/survey-results.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "A claim needs multiple compact proof points and source traceability.",
+  "properties": {
+    "answer_1": {
+      "type": "string"
+    },
+    "answer_1_pct": {
+      "type": "string"
+    },
+    "answer_2": {
+      "type": "string"
+    },
+    "answer_2_pct": {
+      "type": "string"
+    },
+    "answer_3": {
+      "type": "string"
+    },
+    "answer_3_pct": {
+      "type": "string"
+    },
+    "answer_4": {
+      "type": "string"
+    },
+    "answer_4_pct": {
+      "type": "string"
+    },
+    "interpretation": {
+      "type": "string"
+    },
+    "question": {
+      "type": "string"
+    },
+    "sample_context": {
+      "type": "string"
+    }
+  },
+  "title": "survey-results",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "evidence_stack",
+    "slot_count": 11,
+    "warnings": [
+      "question",
+      "answer_1",
+      "answer_1_pct",
+      "answer_2",
+      "answer_2_pct",
+      "answer_3",
+      "answer_3_pct",
+      "answer_4",
+      "answer_4_pct",
+      "sample_context",
+      "interpretation"
+    ],
+    "wireframe_ref": "templates/wireframes/survey-results.html"
+  }
+}

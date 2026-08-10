@@ -1,0 +1,98 @@
+{
+  "$id": "aiox://slide-creator/wireframes/responsibility-matrix.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "Multiple players are compared across multiple dimensions.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "r1_1": {
+      "type": "string"
+    },
+    "r1_2": {
+      "type": "string"
+    },
+    "r1_3": {
+      "type": "string"
+    },
+    "r1_4": {
+      "type": "string"
+    },
+    "r2_1": {
+      "type": "string"
+    },
+    "r2_2": {
+      "type": "string"
+    },
+    "r2_3": {
+      "type": "string"
+    },
+    "r2_4": {
+      "type": "string"
+    },
+    "r3_1": {
+      "type": "string"
+    },
+    "r3_2": {
+      "type": "string"
+    },
+    "r3_3": {
+      "type": "string"
+    },
+    "r3_4": {
+      "type": "string"
+    },
+    "role_1": {
+      "type": "string"
+    },
+    "role_2": {
+      "type": "string"
+    },
+    "role_3": {
+      "type": "string"
+    },
+    "role_4": {
+      "type": "string"
+    },
+    "task_1": {
+      "type": "string"
+    },
+    "task_2": {
+      "type": "string"
+    },
+    "task_3": {
+      "type": "string"
+    }
+  },
+  "title": "responsibility-matrix",
+  "type": "object",
+  "x-aiox": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "comparison_matrix",
+    "slot_count": 20,
+    "warnings": [
+      "action_title",
+      "role_1",
+      "role_2",
+      "role_3",
+      "role_4",
+      "task_1",
+      "r1_1",
+      "r1_2",
+      "r1_3",
+      "r1_4",
+      "task_2",
+      "r2_1",
+      "r2_2",
+      "r2_3",
+      "r2_4",
+      "task_3",
+      "r3_1",
+      "r3_2",
+      "r3_3",
+      "r3_4"
+    ],
+    "wireframe_ref": "templates/wireframes/responsibility-matrix.html"
+  }
+}

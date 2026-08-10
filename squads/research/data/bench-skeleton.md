@@ -50,7 +50,7 @@ Minimal local contract:
 
 ```json
 {
-  "schema": "sinkra.bench-local-contract.v1",
+  "schema": "aiox.bench-local-contract.v1",
   "benchmark_kind": "custom_market_landscape | product_benchmark | code_absorption | tco_model | risk_model | ...",
   "objective": "Decision this benchmark exists to support.",
   "taxonomy": {

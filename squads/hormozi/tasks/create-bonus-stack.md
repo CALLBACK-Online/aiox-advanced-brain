@@ -10,7 +10,7 @@ estimated_time: 25-35min
 source: "$100M Offers - Chapter 14: Bonuses"
 ```
 
-## SINKRA Contract
+## AIOX Contract
 
 Domain: Tactical
 atomic_layer: Atom

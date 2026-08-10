@@ -319,7 +319,6 @@ Texto que captura a essência em forma narrativa.
 ### Fase 1: Diagnóstico (Semana 1-2)
 
 **Entrevistas:**
-- Fundadores/C-Level (visão interna)
 - Colaboradores (cultura real)
 - Clientes (percepção externa)
 - Não-clientes (barreiras)

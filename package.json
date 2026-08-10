@@ -1,13 +1,20 @@
 {
   "name": "aiox-advanced-brain",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.5.0",
+  "private": false,
   "description": "Curso e biblioteca educacional de skills e squads das turmas AIOX Advanced",
-  "type": "module",
+  "files": [
+    "skills/",
+    "squads/",
+    "Cursos/",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "catalog.json",
+    "README.md",
+    "NOTICE.md",
+    "CHANGELOG.md"
+  ],
   "scripts": {
-    "validate": "node scripts/validate-library.mjs && python3 \"Cursos/AIOX Advanced/_tools/validate_course.py\""
-  },
-  "engines": {
-    "node": ">=18"
+    "validate": "python3 \"Cursos/AIOX Advanced/_tools/validate_course.py\" && python3 \"Cursos/AIOX-Advanced-Squads/_tools/validate_course.py\" && node \"Cursos/AIOX-Advanced-Squads/_tools/validate-agent-routing.mjs\""
   }
 }

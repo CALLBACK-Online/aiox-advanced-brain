@@ -28,7 +28,7 @@ domain: Tactical
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Tactical`
 atomic_layer: Atom
 Input: request::delete_squad
@@ -85,7 +85,7 @@ Baseado no `scope`:
 
 **artifacts:**
 - Remover `squads/{squad_name}/`
-- Remover IDE skill mirrors em `.claude/skills/` (se existirem)
+- Remover IDE skill mirrors em `skills/` (se existirem)
 
 **runtime:**
 - Remover `.aiox/squad-runtime/{squad_name}/`
@@ -96,7 +96,7 @@ Baseado no `scope`:
 
 ### Step 5: Registry Update
 
-1. Remover entrada de `squads/sinkra-squad/data/ecosystem-registry.yaml`
+1. Remover entrada de `squads/aiox-squad/data/ecosystem-registry.yaml`
 2. Remover entrada de `squads/infra-ops-squad/data/service-catalog.yaml` (se existir)
 3. Atualizar `.aiox-core/core/ecosystem/ecosystem-sync-config.yaml` (se referenciado)
 

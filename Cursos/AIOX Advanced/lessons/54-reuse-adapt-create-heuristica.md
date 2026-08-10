@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: reuse-adapt-create-heuristica
 lesson_position: 54
 title: 'REUSE > ADAPT > CREATE: a heurística antes de criar nada'
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/54-reuse-adapt-create-heuristica/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

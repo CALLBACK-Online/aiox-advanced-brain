@@ -1,6 +1,6 @@
-<!-- SINKRA_TASK_METADATA:START -->
+<!-- AIOX_TASK_METADATA:START -->
 ```yaml
-sinkra_task_metadata:
+framework_task_metadata:
   task_id: build-attribution
   task_name: Build Attribution Model
   status: active
@@ -36,11 +36,11 @@ sinkra_task_metadata:
   error_handling: "on failure, log to outputs/data/{slug}/errors.log and escalate to data-chief"
   output_path: "outputs/data/{slug}/attribution-report.yaml"
 ```
-<!-- SINKRA_TASK_METADATA:END -->
+<!-- AIOX_TASK_METADATA:END -->
 
-<!-- SINKRA_CONTRACT:START -->
+<!-- AIOX_CONTRACT:START -->
 ```yaml
-sinkra_contract:
+aiox_contract:
   Domain: Tactical
   atomic_layer: Atom
   executor: Clone
@@ -48,7 +48,7 @@ sinkra_contract:
   post_condition: "output generated, validated, ready for handoff"
   performance: "execute within SLA, log errors explicitly, escalate via handoff without silent failure"
 ```
-<!-- SINKRA_CONTRACT:END -->
+<!-- AIOX_CONTRACT:END -->
 
 # Build Attribution Model Task
 
@@ -56,13 +56,13 @@ sinkra_contract:
 
 Construir modelos de attribution marketing completos para entender como diferentes canais e touchpoints contribuem para conversões. Este task guia a implementação de múltiplos modelos de attribution (first-touch, last-touch, linear, time-decay, position-based e data-driven), mapeamento de canais, definição de janelas de conversão e metodologia multi-touch attribution (MTA).
 
-## Workspace Output Contract
+## Local Docs Output Contract
 
-- Preflight: `*workspace-preflight` + `*workspace-context {slug}`
-- Output canônico (template-first): `workspace/businesses/{slug}/analytics/attribution-report.yaml`
-- Output canônico adicional: `workspace/businesses/{slug}/analytics/dmmm.yaml`
+- Preflight: `*project-preflight` + `*project context {slug}`
+- Output canônico (template-first): `docs/analytics/attribution-report.yaml`
+- Output canônico adicional: `docs/analytics/dmmm.yaml`
 - Output custom (ad-hoc): `docs/data/{slug}/attribution-analysis-{date}.md`
-- Regra: escrita canônica só se existir template correspondente em `workspace/_templates/analytics/`
+- Regra: escrita canônica só se existir template correspondente em `docs/templates/analytics/`
 
 ---
 

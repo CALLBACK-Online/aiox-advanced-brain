@@ -1,12 +1,12 @@
 # Token Registry — squad-creator-pro (Upgrade Pack)
-# Materializa a camada de tokens do contrato SINKRA
-# Fonte: squads/sinkra-squad/output/squad-creator-pro-upgrade-pack/phase-4-5-token-assignments.yaml
-# Gerado por: sinkra-chief / sinkra-qa
+# Materializa a camada de tokens do contrato AIOX
+# Fonte: squads/aiox-squad/output/squad-creator-pro-upgrade-pack/phase-4-5-token-assignments.yaml
+# Gerado por: aiox-chief / aiox-qa
 # Data: 2026-03-27
 # Versão: 1.0.0
 
 meta:
-  contract_source: "squads/sinkra-squad/data/token-registry.yaml"
+  contract_source: "squads/aiox-squad/data/token-registry.yaml"
   total_tokens: 23
   token_types: [Time, Capacity, Threshold, Priority, Permission, Taxonomy, Behavior, Accountability, Mode]
   handoff_persistence: ".aiox/squad-runtime/squad-creator-pro/token-state.json"
@@ -40,7 +40,7 @@ behavior:
   tokens: [TK-BEH-001, TK-BEH-002]
 
 accountability:
-  source: "tasks/*#sinkra_task_metadata.accountable_id"
+  source: "tasks/*#framework_task_metadata.accountable_id"
   tokens:
     - Human:Squad_Operator
     - Human:Quality_Reviewer

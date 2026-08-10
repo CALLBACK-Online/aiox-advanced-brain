@@ -31,7 +31,7 @@ merged_from:
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Strategic`
 atomic_layer: Atom
 Input: request::create_squad_design
@@ -45,12 +45,12 @@ error_handling: escalate to squad-chief on failure, persist error context
 
 Transform the agent roster from discovery into a complete architectural blueprint with tier assignments, handoff maps, agent synergies/conflicts, and quality gates -- then materialize that architecture into the physical directory structure and initial files. The scaffold is the direct expression of the architecture; separating them was artificial.
 
-## SINKRA Creation Contract
+## AIOX Creation Contract
 
-Every squad created by this task must have an explicit SINKRA contract before files are generated. Do not postpone these fields to validation; architecture owns the decision.
+Every squad created by this task must have an explicit AIOX contract before files are generated. Do not postpone these fields to validation; architecture owns the decision.
 
 ```yaml
-sinkra_creation_contract:
+aiox_creation_contract:
   required:
     - squad_io_contract:
         source: "squads/squad-creator/squad-io.yaml"
@@ -66,12 +66,11 @@ sinkra_creation_contract:
     - supported_modes:
         allowed: [CRIAR, RESOLVER, GERENCIAR, ENTENDER, VALIDAR, CONFIGURAR, PLANEJAR, EXPLORAR]
         min_items: 1
-    - workspace_integration:
+    - local project docs:
         required_field: level
-        allowed_levels: [none, read_only, controlled_runtime_consumer, workspace_first]
+        allowed_levels: [none, read_only (enterprise levels removed in aiox-advanced-brain)]
   blocking_rule:
     - "If any required field is unknown, stop and elicit it before Step 3.1"
-    - "If workspace_integration writes to workspace/, require explicit COO/c-level handoff"
 ```
 
 ## Prerequisites
@@ -266,10 +265,10 @@ create_initial_files:
       - agents: "from tier_structure"
       - capabilities: "from use_cases"
       - activation.shortcuts: "/{squad_name}:{entry_agent}"
-      - artifact_contracts: "from sinkra_creation_contract"
-      - bu_mapping: "from sinkra_creation_contract"
-      - supported_modes: "from sinkra_creation_contract"
-      - workspace_integration: "from sinkra_creation_contract"
+      - artifact_contracts: "from aiox_creation_contract"
+      - bu_mapping: "from aiox_creation_contract"
+      - supported_modes: "from aiox_creation_contract"
+      - local project docs: "from aiox_creation_contract"
 
   squad_io_yaml:
     source: "squads/squad-creator/squad-io.yaml"
@@ -279,7 +278,7 @@ create_initial_files:
       - outputs: "from artifact_contracts"
       - triggers: "from activation model"
       - dependencies: "from integration plan"
-      - artifact_contracts: "from sinkra_creation_contract"
+      - artifact_contracts: "from aiox_creation_contract"
 
   readme_md:
     target: "squads/{squad_name}/README.md"
@@ -329,12 +328,12 @@ design_output:
     - "squads/{squad_name}/config.yaml"
     - "squads/{squad_name}/squad-io.yaml"
     - "squads/{squad_name}/README.md"
-  sinkra_creation_contract:
+  aiox_creation_contract:
     squad_io_contract: "present"
     artifact_contracts_count: "{N}"
     bu_mapping: "{bu_mapping}"
     supported_modes: ["{mode}"]
-    workspace_integration_level: "{level}"
+    local project docs_level: "{level}"
   runtime_state: ".aiox/squad-runtime/create-squad/{squad_name}/state.json"
   artifact_produced:
     artifact_id: squad-config-base
@@ -356,7 +355,7 @@ design_output:
 - [ ] `config.yaml` declares `artifact_contracts[]` with at least 1 contract
 - [ ] `config.yaml` declares `bu_mapping`
 - [ ] `config.yaml` declares `supported_modes[]`
-- [ ] `config.yaml` defines `workspace_integration.level` (VETO-SQD-004)
+- [ ] `config.yaml` defines `local project docs.level` (VETO-SQD-004)
 - [ ] `squad-io.yaml` exists with inputs, outputs, triggers, dependencies, artifact_contracts, data_sources, integrations, and observability
 - [ ] `README.md` placeholder created
 - [ ] Runtime state file initialized
@@ -365,8 +364,8 @@ design_output:
 ## Veto Conditions
 
 - **VETO-SQD-001:** Squad directory already exists without user confirmation to overwrite
-- **VETO-SQD-004:** `config.yaml` missing `workspace_integration.level` field
-- **VETO-SQD-008:** SINKRA creation contract missing `artifact_contracts`, `bu_mapping`, `supported_modes`, or `squad-io.yaml`
+- **VETO-SQD-004:** `config.yaml` missing `local project docs.level` field
+- **VETO-SQD-008:** AIOX creation contract missing `artifact_contracts`, `bu_mapping`, `supported_modes`, or `squad-io.yaml`
 - Missing Tier 0 definition
 - Missing orchestrator definition
 - Fewer than 3 quality gates

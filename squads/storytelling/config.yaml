@@ -28,7 +28,7 @@ agents:
     tier: 0
     framework: "The Hero with a Thousand Faces"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       story_role: executor
       can_execute: true
       core_replaces: null
@@ -41,7 +41,7 @@ agents:
     tier: 0
     framework: "The Story Grid"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       story_role: executor
       can_execute: true
       core_replaces: null
@@ -55,7 +55,7 @@ agents:
     tier: 1
     framework: "Building a StoryBrand (SB7)"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       story_role: executor
       can_execute: true
       core_replaces: null
@@ -71,7 +71,7 @@ agents:
       enabled: false
       rationale: "Expert mantida como superfície canônica em visual-knowledge-squad para evitar basename duplicado"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       story_role: executor
       can_execute: true
       core_replaces: null
@@ -84,7 +84,7 @@ agents:
     tier: 1
     framework: "Story Circle (8 beats)"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       story_role: executor
       can_execute: true
       core_replaces: null
@@ -97,7 +97,7 @@ agents:
     tier: 1
     framework: "Save the Cat (15 beats)"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       story_role: executor
       can_execute: true
       core_replaces: null
@@ -111,7 +111,7 @@ agents:
     tier: 2
     framework: "Pitch Anything (STRONG method)"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       story_role: executor
       can_execute: true
       core_replaces: null
@@ -124,7 +124,7 @@ agents:
     tier: 2
     framework: "Stories That Stick"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       story_role: executor
       can_execute: true
       core_replaces: null
@@ -137,7 +137,7 @@ agents:
     tier: 2
     framework: "Storyworthy"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       story_role: executor
       can_execute: true
       core_replaces: null
@@ -150,7 +150,7 @@ agents:
     tier: 2
     framework: "Story of Self, Us, Now"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       story_role: executor
       can_execute: true
       core_replaces: null
@@ -163,7 +163,7 @@ agents:
     tier: 2
     framework: "Business of Story (ABT)"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       story_role: executor
       can_execute: true
       core_replaces: null
@@ -176,7 +176,7 @@ agents:
     tier: 2
     framework: "Impro, Status Theory"
     executor_profile:
-      sinkra_type: Clone
+      executor_type: Clone
       story_role: executor
       can_execute: true
       core_replaces: null
@@ -219,29 +219,13 @@ settings:
     max_shared_files: 3
     max_product_files: 4
 
-workspace_integration:
-  level: controlled_runtime_consumer
-  rationale: >-
-    Storytelling depende de contexto canônico de ICP, brand, positioning,
-    offerbook, proof e pricing para criar narrativas de negócio consistentes,
-    mas o output principal continua sendo narrativo e não define namespace
-    próprio em workspace. O COO resolve readiness e o squad consome esse
-    contrato antes de output final.
-  read_paths:
-    - workspace/_system/config.yaml
-    - workspace/businesses/
-    - workspace/_templates/product-narrative/
-  write_paths: []
-  readiness_owner: workspace-chief
-  readiness_resolver: squads/storytelling/scripts/resolve-readiness.cjs
-
 data:
   - id: story-mappings
     name: "Story Mappings — Canonical Vocabulary"
     format: yaml
     description: "Traduz pedidos narrativos vagos em terminologia profissional de storytelling."
 
-# SINKRA v3.1 (Story 54.11)
+# AIOX v3.1 (Story 54.11)
 bu_mapping: "hub-framework"
 artifact_contracts:
   - artifact_id: "narrative-output"

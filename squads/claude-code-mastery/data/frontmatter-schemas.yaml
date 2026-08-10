@@ -10,7 +10,7 @@ version: "1.0.0"
 last_verified: "2026-04-06"
 
 # ===========================================================================
-# SKILLS FRONTMATTER (.claude/skills/*/SKILL.md)
+# SKILLS FRONTMATTER (skills/*/SKILL.md)
 # ===========================================================================
 # Source: src/utils/frontmatterParser.ts (FrontmatterData type, lines 10-59)
 # Source: src/skills/loadSkillsDir.ts (parsing, lines 185-265)
@@ -155,7 +155,7 @@ skills:
       source: "loadSkillsDir.ts (via command type)"
 
   non_native_fields_note: |
-    Fields like owner_squad, sinkra_tier are AIOX-specific extensions.
+    Fields like owner_squad, aiox_tier are AIOX-specific extensions.
     Claude Code ignores them but they pass through as unknown frontmatter.
     They are used by our validation scripts (validate:skill-sync, validate-skill).
 
@@ -378,12 +378,12 @@ aiox_extensions:
   skills_and_agents:
     forbidden:
       - owner_squad    # Governance metadata — belongs in tasks only
-      - sinkra_tier    # Governance metadata — belongs in tasks only
-    note: "Skills and agents MUST contain only CC-native fields. SINKRA fields go in squads/*/tasks/"
+      - aiox_tier    # Governance metadata — belongs in tasks only
+    note: "Skills and agents MUST contain only CC-native fields. AIOX fields go in squads/*/tasks/"
   tasks:
     allowed:
       - owner_squad
-      - sinkra_tier
+      - aiox_tier
       - process_id
       - mode
       - artifact_contracts

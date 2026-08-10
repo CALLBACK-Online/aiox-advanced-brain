@@ -55,7 +55,7 @@ function claudeBinaryAvailable() {
 //   5. claude-cli direct (legacy alias for spawn-only path)
 //   6. Hard fail with actionable error message.
 //
-// Rationale: Sinkra Hub runs primarily inside Claude Code sessions and the
+// Rationale: AIOX platform runs primarily inside Claude Code sessions and the
 // expected default is to reuse the active LLM (inline mode, zero extra cost).
 // But an explicit API key is operator intent — if someone exports
 // OPENROUTER_API_KEY they want to pay for openrouter, not fall back to the

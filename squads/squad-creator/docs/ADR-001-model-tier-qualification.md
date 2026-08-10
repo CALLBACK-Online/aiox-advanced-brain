@@ -99,7 +99,7 @@ Uma skill que faz lookup dinâmico e spawna com modelo correto.
 
 ### Opção D: Skills com `model:` no Frontmatter (ESCOLHIDA)
 ```yaml
-# .claude/skills/pv-axioma-assessment/SKILL.md
+# skills/pv-axioma-assessment/SKILL.md
 ---
 name: pv-axioma-assessment
 model: haiku  # ENFORCED pelo runtime
@@ -209,7 +209,7 @@ Hook que intercepta todas as chamadas Task() e valida/injeta modelo.
 ### Skills
 | Arquivo | Propósito |
 |---------|-----------|
-| [../../.claude/skills/pv-axioma-assessment/SKILL.md](../../../.claude/skills/pv-axioma-assessment/SKILL.md) | Primeira skill com model: haiku |
+| [../../skills/pv-axioma-assessment/SKILL.md](../../../skills/pv-axioma-assessment/SKILL.md) | Primeira skill com model: haiku |
 
 ### Documentação
 | Arquivo | Propósito |

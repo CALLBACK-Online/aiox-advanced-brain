@@ -1,6 +1,6 @@
 # Task: Product Discovery — JTBD Validation
 
-## Contrato SINKRA
+## Contrato AIOX
 
 Domain: `Operational`
 

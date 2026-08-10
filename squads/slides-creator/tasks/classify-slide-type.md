@@ -1,8 +1,8 @@
 # Task: Classify Slide Type
 
-<!-- SINKRA accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
+<!-- AIOX accountability: producer owns output integrity; qa-inspector or human reviewer owns validation before release. -->
 
-<!-- SINKRA Domain: Operational -->
+<!-- AIOX Domain: Operational -->
 
 ## Metadata
 | Campo | Valor |
@@ -13,7 +13,7 @@
 | session | SESSION-SPEC |
 | duration | 30s-2min per slide |
 
-## SINKRA Task Anatomy
+## AIOX Task Anatomy
 
 ### 1. task
 ```yaml

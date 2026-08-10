@@ -42,29 +42,28 @@ task_ref:
     - create-dashboard
 ```
 
-## Workspace Execution Contract
+## Local Execution Contract
 
 ### Preflight (obrigatorio)
 
-1. `*workspace-preflight` (executa `bootstrap-data-workspace.sh` + `validate-data-essentials.sh`)
-2. `*workspace-context {slug}`
-3. Confirmar templates em `workspace/_templates/analytics/cohorts/`
+2. `*project context {slug}`
+3. Confirmar templates em `docs/templates/analytics/cohorts/`
 
 ### Output Routing
 
 - **Canonical (template-first):**
-  - `workspace/businesses/{slug}/analytics/cohorts/segmentation-rfm.yaml`
-  - `workspace/businesses/{slug}/analytics/cohorts/learning-journey.yaml`
-  - `workspace/businesses/{slug}/analytics/cohorts/community-health.yaml`
-  - `workspace/businesses/{slug}/analytics/cohorts/student-health-score.yaml`
-  - `workspace/businesses/{slug}/analytics/cohorts/icp-deep-analysis.yaml`
-  - `workspace/businesses/{slug}/analytics/cohorts/executive-summary.yaml`
+  - `docs/analytics/cohorts/segmentation-rfm.yaml`
+  - `docs/analytics/cohorts/learning-journey.yaml`
+  - `docs/analytics/cohorts/community-health.yaml`
+  - `docs/analytics/cohorts/student-health-score.yaml`
+  - `docs/analytics/cohorts/icp-deep-analysis.yaml`
+  - `docs/analytics/cohorts/executive-summary.yaml`
 - **Custom (ad-hoc):**
   - `docs/data/{slug}/cohorts-diagnostic-{date}.md`
 
 ### Hard Rules
 
-- Proibido gravar em `workspace/businesses/{slug}/analytics/cohorts/` sem template correspondente em `workspace/_templates/analytics/cohorts/`.
+- Proibido gravar em `docs/analytics/cohorts/` sem template correspondente em `docs/templates/analytics/cohorts/`.
 - Relatorios em `docs/data/{slug}/` sao complementares e nao substituem artefatos canonicos.
 
 ## Governance Ownership

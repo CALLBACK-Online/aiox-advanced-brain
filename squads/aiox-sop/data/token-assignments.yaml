@@ -1,5 +1,5 @@
 # Managed by materialize-map.py
-# Source: .aiox/squad-runtime/sinkra-squad/aiox-sop/map/20260329-190639-claude-opus/token_assignments.yaml
+# Source: .aiox/squad-runtime/aiox-squad/aiox-sop/map/20260329-190639-claude-opus/token_assignments.yaml
 # Category: governance
 
 metadata:
@@ -10,7 +10,7 @@ metadata:
     formats.'
   token_registry_version: 1.2.0
   generated_at: '2026-03-30'
-  generated_by: sinkra-chief (manual fill)
+  generated_by: aiox-chief (manual fill)
 tokens:
 - family: Time
   tokens:
@@ -96,7 +96,7 @@ tokens:
     consumed_by:
     - T3.3
     - T4.1
-    description: Score SINKRA mínimo para compliance gate passar
+    description: Score AIOX mínimo para compliance gate passar
   - name: audit_approval_threshold
     value: 0.9
     unit: float_0_1
@@ -127,8 +127,8 @@ tokens:
     value: false
     consumed_by:
     - T5.3
-    description: false = portable_docs_mode default; true = full_workspace_mode exige
-      COO readiness
+    description: false = portable_docs_mode default; true = none_mode exige
+      quality readiness
   - name: can_approve_release
     value: true
     required_role: sop_auditor
@@ -150,7 +150,7 @@ tokens:
     - T3.1
     - T3.3
     - T5.1
-    description: Tasks executadas por Agent SINKRA
+    description: Tasks executadas por Agent AIOX
   - name: executor_type_worker
     value: Worker
     consumed_by:

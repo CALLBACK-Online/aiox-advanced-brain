@@ -32,7 +32,7 @@ merged_from:
 ```
 
 
-<!-- SINKRA_CONTRACT -->
+<!-- AIOX_CONTRACT -->
 Domain: `Operational`
 atomic_layer: Atom
 Input: request::create_squad_validate
@@ -86,14 +86,14 @@ run_squad_checklist:
     - workflows: "All workflows have checkpoints"
     - tasks: "All tasks follow anatomy"
     - documentation: "README complete"
-    - integration: "Dependencies wired + COO handoff prepared when workspace write is requested"
+    - integration: "Dependencies wired + human handoff prepared when local_docs write is requested"
 
   blocking_items:
     - orchestrator_exists
     - tier_0_exists
     - quality_gates_defined
     - readme_complete
-    - coo_handoff_exists_when_workspace_write_requested
+    - coo_handoff_exists_when_project_write_requested
 ```
 
 ### Step 5.2: Quality Dimensions Scoring

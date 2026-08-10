@@ -35,19 +35,19 @@ const bu = buArg.split('=')[1];
 const REPO_ROOT = path.resolve(__dirname, '..', '..', '..', '..');
 const INDEX_PATH = path.join(
   REPO_ROOT,
-  'workspace',
+  'docs',
   'businesses',
   bu,
-  'L2-tactical',
+  'tactical',
   'design',
   'component-index.json'
 );
 const OUT_DIR = path.join(
   REPO_ROOT,
-  'workspace',
+  'docs',
   'businesses',
   bu,
-  'L2-tactical',
+  'tactical',
   'design',
   'storybook'
 );
@@ -103,7 +103,7 @@ function generateStory(component) {
 
   // Imports
   lines.push(`import type { Meta, StoryObj } from '@storybook/react'`);
-  lines.push(`import { ${name} } from '@sinkra/ds-core'`);
+  lines.push(`import { ${name} } from '@aiox/ds-core'`);
   lines.push('');
 
   // Meta

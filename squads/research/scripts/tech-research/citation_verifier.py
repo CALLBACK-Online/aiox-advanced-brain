@@ -69,7 +69,7 @@ def fetch_archive_snapshot(url: str, timeout: int = 8) -> Optional[str]:
         try:
             req = urllib.request.Request(
                 api_url,
-                headers={"User-Agent": "sinkra-citation-verifier/1.0 (research pipeline)"},
+                headers={"User-Agent": "aiox-citation-verifier/1.0 (research pipeline)"},
             )
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 data = json.loads(resp.read().decode())
@@ -97,7 +97,7 @@ def check_url_liveness(url: str, timeout: int = 6) -> bool:
         req = urllib.request.Request(
             url,
             method="HEAD",
-            headers={"User-Agent": "sinkra-citation-verifier/1.0"},
+            headers={"User-Agent": "aiox-citation-verifier/1.0"},
         )
         with urllib.request.urlopen(req, timeout=timeout) as resp:
             return resp.status < 400

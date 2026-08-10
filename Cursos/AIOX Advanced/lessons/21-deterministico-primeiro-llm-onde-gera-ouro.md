@@ -5,7 +5,7 @@ course_title: AIOX Advanced
 lesson_id: deterministico-primeiro-llm-onde-gera-ouro
 lesson_position: 21
 title: Determinístico primeiro, LLM só onde gera ouro
-source: sinkra-hub/apps/aiox-courses
+source: upstream monorepo/apps/aiox-courses
 source_path: content/courses/aiox-advanced/lessons/21-deterministico-primeiro-llm-onde-gera-ouro/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'

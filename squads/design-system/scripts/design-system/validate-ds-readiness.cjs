@@ -22,7 +22,7 @@ if (!bu) {
 }
 
 const ROOT = path.resolve(__dirname, '../../../..')
-const designPath = path.join(ROOT, 'workspace', 'businesses', bu, 'L2-tactical', 'design')
+const designPath = path.join(ROOT, 'docs', 'project', 'businesses', bu, 'tactical', 'design')
 
 // Check 1: design folder exists
 if (!fs.existsSync(designPath)) {

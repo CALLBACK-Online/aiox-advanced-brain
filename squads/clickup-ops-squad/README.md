@@ -6,7 +6,7 @@
 **Status:** Pilot
 **Entry Agent:** clickup-chief
 
-> Squad responsável por materializar Missions mapeadas pelo sinkra-squad no ClickUp. Recebe mission-clickup-handoff.yaml e cria a estrutura de Space/Folder/Lists/Views no ClickUp.
+> Squad responsável por materializar Missions mapeadas pelo aiox-squad no ClickUp. Recebe mission-clickup-handoff.yaml e cria a estrutura de Space/Folder/Lists/Views no ClickUp.
 
 ---
 
@@ -21,15 +21,15 @@
 
 ## Capabilities
 
-- Receive mission-clickup-handoff.yaml from sinkra-squad
+- Receive mission-clickup-handoff.yaml from aiox-squad
 - Create ClickUp Space/Folder/Lists structure
 - Configure DAG View, Board, Dashboard views
 
 ## Upstream
 
-- **sinkra-squad** — Phase 7 completion (mode=mission)
+- **aiox-squad** — Phase 7 completion (mode=mission)
 
-## SINKRA
+## AIOX
 
 - **Modes:** CRIAR, RESOLVER, GERENCIAR, ENTENDER, VALIDAR, CONFIGURAR, PLANEJAR, EXPLORAR
-- **Composition:** Full SINKRA hierarchy (Tokens → Atoms → Molecules → Organisms → Instances)
+- **Composition:** Full AIOX hierarchy (Tokens → Atoms → Molecules → Organisms → Instances)
