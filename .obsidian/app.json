@@ -1,0 +1,10 @@
+{
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "Cursos/_notas-pessoais/inbox",
+  "attachmentFolderPath": "Cursos/_notas-pessoais/attachments",
+  "showLineNumber": false,
+  "strictLineBreaks": false,
+  "readableLineLength": true
+}

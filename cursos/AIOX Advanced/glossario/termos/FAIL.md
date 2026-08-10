@@ -1,0 +1,34 @@
+---
+type: glossary-term
+course: aiox-advanced
+tags:
+- glossario
+- aiox
+- course-brain
+updated: '2026-08-10'
+status: reference
+canonical_scope: Cursos/AIOX Advanced
+freq:
+  aiox_advanced: 39
+  aiox_advanced_squads: 0
+  total: 39
+  counted_at: '2026-08-10'
+---
+# FAIL
+
+Veredito do Quality Gate: bloqueio — há problemas que impedem seguir sem correção.
+
+**Frequência nos cursos:** **39** menções (AIOX Advanced: 39 · AIOX Advanced Squads: 0).
+
+## Aulas
+
+- [[48-quality-gate-completo]]
+- [[49-apply-qa-fixes-loop]]
+
+## Ver também
+
+- [[Quality Gate]]
+- [[PASS]]
+- [[Apply QA Fixes]]
+- [[Finding]]
+- [[Glossário AIOX Advanced]]

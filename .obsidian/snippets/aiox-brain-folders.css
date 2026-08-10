@@ -1,0 +1,50 @@
+/*
+  AIOX Advanced Brain — cores no explorador de arquivos
+  Ativar: Appearance → CSS snippets → aiox-brain-folders
+  Vault root = raiz do repositório aiox-advanced-brain
+*/
+
+/* Cursos — método (azul) */
+.nav-folder-title[data-path="Cursos/AIOX Advanced"],
+.nav-folder-title[data-path^="Cursos/AIOX Advanced/"] {
+  color: #4c8bf5 !important;
+}
+
+/* Cursos — squads (roxo) */
+.nav-folder-title[data-path="Cursos/AIOX-Advanced-Squads"],
+.nav-folder-title[data-path^="Cursos/AIOX-Advanced-Squads/"] {
+  color: #9b59b6 !important;
+}
+
+/* Mini Obsidian + IA (ciano) */
+.nav-folder-title[data-path="Cursos/Obsidian-IA"],
+.nav-folder-title[data-path^="Cursos/Obsidian-IA/"] {
+  color: #1abc9c !important;
+}
+
+/* Notas pessoais (âmbar) */
+.nav-folder-title[data-path="Cursos/_notas-pessoais"],
+.nav-folder-title[data-path^="Cursos/_notas-pessoais/"] {
+  color: #ffc107 !important;
+}
+
+/* Skills (verde) */
+.nav-folder-title[data-path="skills"],
+.nav-folder-title[data-path^="skills/"] {
+  color: #00a86b !important;
+}
+
+/* Squads (laranja) */
+.nav-folder-title[data-path="squads"],
+.nav-folder-title[data-path^="squads/"] {
+  color: #ff8c00 !important;
+}
+
+/* Hubs / HOME */
+.nav-file-title[data-path="00-HOME.md"],
+.nav-file-title[data-path="Cursos/MOC-Acervo-AIOX.md"],
+.nav-file-title[data-path="Cursos/MOC-Skills.md"],
+.nav-file-title[data-path="Cursos/MOC-Squads.md"] {
+  color: #ff69b4 !important;
+  font-weight: 600;
+}

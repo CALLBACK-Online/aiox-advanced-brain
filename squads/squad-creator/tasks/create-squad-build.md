@@ -274,10 +274,10 @@ generate_documentation:
     validate: true
 ```
 
-### Step 4.4: Prepare COO LocalDocs Handoff
+### Step 4.4: Prepare Project Docs Handoff
 
 ```yaml
-prepare_coo_handoff:
+prepare_project_docs_handoff:
   trigger:
     - "created squad declares local project docs.level = none"
     - "created squad declares local project docs.level = local"
@@ -285,26 +285,20 @@ prepare_coo_handoff:
   rule: |
     squad-creator nao executa escrita em contexto enterprise-only (not packaged); outputs em docs/ do aluno.
 
-  if_c_level_exists:
-    handoff_target: "@human"
-    artifact: ".aiox/squad-runtime/create-squad/{squad_name}/project-handoff.yaml"
-    must_include:
-      - squad_name
-      - requested_scope_level
-      - rationale
-      - read_paths
-      - write_paths
-      - template_namespace
-      - requested_project_actions
-      - dependencies_on_existing_domains_or_businesses
-
-  if_c_level_missing:
-    artifact: ".aiox/squad-runtime/create-squad/{squad_name}/project-handoff.yaml"
-    status: "pending_coo_unavailable"
-    note: "Nao executar integracao. Apenas registrar handoff pendente."
+  handoff_target: "@human"
+  artifact: ".aiox/squad-runtime/create-squad/{squad_name}/project-handoff.yaml"
+  must_include:
+    - squad_name
+    - requested_scope_level
+    - rationale
+    - read_paths
+    - write_paths
+    - template_namespace
+    - requested_project_actions
+    - dependencies_on_existing_domains_or_businesses
 ```
 
-**VETO-SQD-005:** If the workflow attempts to write directly into `docs/` (substituto local; outputs/ é private enterprise distribution) during squad creation, HALT and generate human handoff instead.
+**VETO-SQD-005:** If the workflow attempts to write directly into `docs/` during squad creation, HALT and generate human handoff instead.
 
 ### Step 4.5: Prepare Activation Surface Contract
 

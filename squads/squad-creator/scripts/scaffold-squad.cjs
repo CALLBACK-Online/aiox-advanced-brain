@@ -44,10 +44,7 @@ const DIRECTORIES = [
   'scripts'
 ];
 
-const PROJECT_LEVELS = new Set(['none', 'read_only', 'none', 'local']);
-
-function hasProjectGovernanceSquad() {
-}
+const PROJECT_LEVELS = new Set(['none', 'read_only']);
 
 // ═══════════════════════════════════════════════════════════════════════════
 // TEMPLATES
@@ -213,7 +210,7 @@ Usage:
 
 Options:
   --name "Name"    Display name for the squad (default: slug title-cased)
-  --local_docs-level <none|read_only  # enterprise levels removed in aiox-advanced-brain>
+  --local_docs-level <none|read_only>
                     Required integration level with local_docs (default: read_only)
 
 Creates directories: ${DIRECTORIES.join(', ')}
@@ -247,16 +244,9 @@ Creates files: README.md, config.yaml`);
   const scopeLevel = parseArg(args, '--local_docs-level') || 'read_only';
 
   if (!PROJECT_LEVELS.has(scopeLevel)) {
-    outputError('INVALID_PROJECT_LEVEL', 'docs scope level must be one of: none, read_only (enterprise levels removed in aiox-advanced-brain)', {
+    outputError('INVALID_PROJECT_LEVEL', 'docs scope level must be one of: none, read_only', {
       received: scopeLevel
     });
-    process.exit(1);
-  }
-  if ((scopeLevel === 'none' || scopeLevel === 'local') && !hasProjectGovernanceSquad()) {
-    outputError(
-      'MISSING_C_LEVEL',
-      { received: scopeLevel }
-    );
     process.exit(1);
   }
   const displayName = argName ||

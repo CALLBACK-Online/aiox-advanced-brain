@@ -60,7 +60,7 @@ THRESHOLDS = {
     }
 }
 
-PROJECT_LEVELS = {"none", "read_only", "none", "local"}
+PROJECT_LEVELS = {"none", "read_only"}
 
 
 # ============================================================================
@@ -81,9 +81,6 @@ def find_squads_root() -> Path:
         return cwd
 
     raise FileNotFoundError("Could not find squads/ directory")
-
-
-def has_project context governance_squad(squads_root: Path) -> bool:
 
 
 def count_files(directory: Path, patterns: List[str] = ["*.md", "*.yaml", "*.yml"]) -> int:
@@ -322,74 +319,6 @@ def validate_structure(squad_path: Path) -> Dict[str, Any]:
                         result["blocking_issues"].append("local project docs declared without local_docs path references")
                         result["passed"] = False
 
-                if scope_level in {"none", "local"}:
-                    if has_project context governance_squad(squads_root):
-                        result["checks"].append({
-                            "id": "T1-WSP-003A",
-                            "status": "pass",
-                            "message": "project context governance squad exists for advanced local project docs"
-                        })
-                    else:
-                        result["checks"].append({
-                            "id": "T1-WSP-003A",
-                            "status": "fail",
-                        })
-                        result["passed"] = False
-
-                    handoff_found = False
-                    for file in squad_path.rglob("*"):
-                        if file.suffix.lower() not in [".md", ".yaml", ".yml"]:
-                            continue
-                        content = file.read_text(encoding='utf-8', errors='ignore')
-                            handoff_found = True
-                            break
-
-                    if handoff_found:
-                        result["checks"].append({
-                            "id": "T1-WSP-003",
-                            "status": "pass",
-                        })
-                    else:
-                        result["checks"].append({
-                            "id": "T1-WSP-003",
-                            "status": "fail",
-                        })
-                        result["passed"] = False
-
-                if scope_level == "local":
-                    scripts_dir = squad_path / "scripts"
-                    bootstrap_scripts = list(scripts_dir.glob("bootstrap-project-context.sh")) if scripts_dir.exists() else []
-                    essentials_scripts = list(scripts_dir.glob("validate-*-essentials.sh")) if scripts_dir.exists() else []
-
-                    if bootstrap_scripts:
-                        result["checks"].append({
-                            "id": "T1-WSP-004",
-                            "status": "pass",
-                            "message": "local bootstrap script exists"
-                        })
-                    else:
-                        result["checks"].append({
-                            "id": "T1-WSP-004",
-                            "status": "fail",
-                            "message": "local requires scripts/bootstrap-project-context.sh"
-                        })
-                        result["blocking_issues"].append("local missing bootstrap local_docs script")
-                        result["passed"] = False
-
-                    if essentials_scripts:
-                        result["checks"].append({
-                            "id": "T1-WSP-005",
-                            "status": "pass",
-                            "message": "local essentials validator script exists"
-                        })
-                    else:
-                        result["checks"].append({
-                            "id": "T1-WSP-005",
-                            "status": "fail",
-                            "message": "local requires scripts/validate-*-essentials.sh"
-                        })
-                        result["blocking_issues"].append("local missing essentials validator script")
-                        result["passed"] = False
         else:
             result["checks"].append({"id": "T1-CFG-002", "status": "fail", "message": "config.yaml has invalid YAML"})
             result["blocking_issues"].append("config.yaml has invalid YAML syntax")

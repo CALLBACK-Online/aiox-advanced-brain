@@ -1,0 +1,29 @@
+---
+type: glossary-term
+course: aiox-advanced
+tags:
+- glossario
+- aiox
+- course-brain
+updated: '2026-08-10'
+status: reference
+canonical_scope: Cursos/AIOX Advanced
+freq:
+  aiox_advanced: 20
+  aiox_advanced_squads: 0
+  total: 20
+  counted_at: '2026-08-10'
+---
+# Agent tool
+
+O mecanismo que spawna um sub-agent em sessão isolada. Um filho por chamada, sem cross-talk.
+
+**Frequência nos cursos:** **20** menções (AIOX Advanced: 20 · AIOX Advanced Squads: 0).
+
+## Aulas
+
+- [[29-sub-agents-vs-swarm-agents]]
+
+## Ver também
+
+- [[Glossário AIOX Advanced]]

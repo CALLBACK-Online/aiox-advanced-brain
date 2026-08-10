@@ -1,12 +1,20 @@
 {
   "name": "aiox-advanced-brain",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "private": false,
   "description": "Curso e biblioteca educacional de skills e squads das turmas AIOX Advanced",
   "files": [
     "skills/",
     "squads/",
     "Cursos/",
+    "00-HOME.md",
+    ".obsidian/app.json",
+    ".obsidian/appearance.json",
+    ".obsidian/core-plugins.json",
+    ".obsidian/README.md",
+    ".obsidian/graph.aiox-brain.json",
+    ".obsidian/graph.json",
+    ".obsidian/snippets/aiox-brain-folders.css",
     "AGENTS.md",
     "CLAUDE.md",
     "catalog.json",
@@ -15,6 +23,7 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "validate": "python3 \"Cursos/AIOX Advanced/_tools/validate_course.py\" && python3 \"Cursos/AIOX-Advanced-Squads/_tools/validate_course.py\" && node \"Cursos/AIOX-Advanced-Squads/_tools/validate-agent-routing.mjs\""
+    "validate": "python3 \"Cursos/AIOX Advanced/_tools/validate_course.py\" && python3 \"Cursos/AIOX-Advanced-Squads/_tools/validate_course.py\" && python3 \"Cursos/Obsidian-IA/_tools/validate_course.py\" && node \"Cursos/AIOX-Advanced-Squads/_tools/validate-agent-routing.mjs\"",
+    "smoke:routing:runtimes": "node \"Cursos/AIOX-Advanced-Squads/_tools/smoke-agent-runtimes.mjs\""
   }
 }

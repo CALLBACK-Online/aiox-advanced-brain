@@ -41,7 +41,6 @@ SQUAD_CREATOR_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
 SQUADS_DIR="$PROJECT_ROOT/squads"
 RUNTIME_STATE_HELPER="$SCRIPT_DIR/lib/validate-runtime-state.cjs"
-C_LEVEL_REMOVED_DIR="$SQUADS_DIR/__c-level-removed__"
 WORKFLOW_CONTRACT_VALIDATOR="$PROJECT_ROOT/infrastructure/scripts/squads/validate_workflow_contracts.cjs"
 # ── Bootstrap all shared libs (runner-lib v2 + validator-lib) ──
 RUNNER_LIB_DIR="$PROJECT_ROOT/infrastructure/scripts/runner-lib"
@@ -1473,7 +1472,7 @@ extract_config_scalar() {
   ' "$SQUAD_DIR/config.yaml" 2>/dev/null || true
 }
 
-extract_local project docs_level() {
+extract_local_project_docs_level() {
   awk '
     BEGIN { in_ws=0 }
     /^local project docs_level:[[:space:]]*/ {
@@ -1727,7 +1726,7 @@ check_structure() {
   ' "$SQUAD_DIR/config.yaml" 2>/dev/null || true)
 
   case "$scope_level" in
-    none|read_only  # enterprise levels removed in aiox-advanced-brain)
+    none|read_only)
       log_pass "local project docs level declared: $scope_level"
       ;;
     "")
@@ -1752,46 +1751,6 @@ check_structure() {
       log_pass "docs references found for integration level '$scope_level'"
     else
       log_fail "local project docs level '$scope_level' declared but no project docs paths found"
-      tier1_fail=$((tier1_fail + 1))
-    fi
-  fi
-
-  if [[ "$scope_level" == "none" || "$scope_level" == "local" ]]; then
-    if [[ -d "$C_LEVEL_REMOVED_DIR" ]]; then
-      log_pass "project context governance squad present for level '$scope_level'"
-    else
-      tier1_fail=$((tier1_fail + 1))
-    fi
-    # Build list of existing paths (README.md may not exist yet)
-    local coo_search_paths=()
-    [[ -f "$SQUAD_DIR/README.md" ]] && coo_search_paths+=("$SQUAD_DIR/README.md")
-    [[ -d "$SQUAD_DIR/tasks" ]] && coo_search_paths+=("$SQUAD_DIR/tasks")
-    [[ -d "$SQUAD_DIR/workflows" ]] && coo_search_paths+=("$SQUAD_DIR/workflows")
-    [[ -f "$SQUAD_DIR/config.yaml" ]] && coo_search_paths+=("$SQUAD_DIR/config.yaml")
-
-      "${coo_search_paths[@]}" >/dev/null 2>&1; then
-      log_pass "docs write integration delegates to project context governance"
-    else
-      log_fail "docs scope level '$scope_level' requires explicit COO/project context governance handoff"
-      tier1_fail=$((tier1_fail + 1))
-    fi
-  fi
-
-  if [[ "$scope_level" == "local" ]]; then
-    local bootstrap_count=0
-    local essentials_count=0
-    bootstrap_count=$(find "$SQUAD_DIR/scripts" -maxdepth 1 -type f -name "bootstrap-project-context.sh" 2>/dev/null | wc -l | tr -d ' ')
-    essentials_count=$(find "$SQUAD_DIR/scripts" -maxdepth 1 -type f -name "validate-*-essentials.sh" 2>/dev/null | wc -l | tr -d ' ')
-    if [[ "$bootstrap_count" -gt 0 ]]; then
-      log_pass "local has bootstrap script"
-    else
-      log_fail "local requires scripts/bootstrap-project-context.sh"
-      tier1_fail=$((tier1_fail + 1))
-    fi
-    if [[ "$essentials_count" -gt 0 ]]; then
-      log_pass "local has essentials validator script"
-    else
-      log_fail "local requires scripts/validate-*-essentials.sh"
       tier1_fail=$((tier1_fail + 1))
     fi
   fi
@@ -2622,7 +2581,7 @@ check_production() {
   local operational_story_files=0
 
   manifest_type=$(extract_config_scalar "type")
-  scope_level=$(extract_local project docs_level)
+  scope_level=$(extract_local_project_docs_level)
   contract_test_files=$(count_contract_test_files 2>/dev/null || echo 0)
   operational_story_files=$(count_operational_story_files 2>/dev/null || echo 0)
 
@@ -3290,7 +3249,7 @@ calculate_final_score() {
       config_missing="${config_missing}tested_flag, "
     fi
 
-    scope_level=$(extract_local project docs_level)
+    scope_level=$(extract_local_project_docs_level)
     [[ -n "$scope_level" ]] && config_score=$((config_score + 1)) || config_missing="${config_missing}local project docs.level, "
 
     output_root=$(extract_declared_output_root 2>/dev/null || true)

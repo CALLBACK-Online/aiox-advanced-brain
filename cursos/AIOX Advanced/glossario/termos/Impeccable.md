@@ -1,0 +1,33 @@
+---
+type: glossary-term
+course: aiox-advanced
+tags:
+- glossario
+- aiox
+- course-brain
+updated: '2026-08-10'
+status: reference
+canonical_scope: Cursos/AIOX Advanced
+freq:
+  aiox_advanced: 0
+  aiox_advanced_squads: 0
+  total: 0
+  counted_at: '2026-08-10'
+---
+# Impeccable
+
+Camada de polimento visual/UX depois do gate de conformidade: hierarquia, ritmo, acessibilidade e acabamento profissional.
+
+**Frequência nos cursos:** **0** menções (AIOX Advanced: 0 · AIOX Advanced Squads: 0).
+
+## Aulas
+
+- [[41-design-system-e-decisao]]
+- [[43-design-md-novo-contrato]]
+
+## Ver também
+
+- [[Design System]]
+- [[Design Ops]]
+- [[Quality Gate]]
+- [[Glossário AIOX Advanced]]

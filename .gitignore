@@ -20,10 +20,16 @@ artifacts/
 # Overrides locais opcionais — AGENTS.md e CLAUDE.md canônicos SÃO versionados
 AGENTS.local.md
 CLAUDE.local.md
+.obsidian/*space*.json
+.obsidian/themes/
 
-# Local library tooling — never publish
-scripts/
-docs/
+# Captura de estudo do aluno (só README versionado)
+Cursos/_notas-pessoais/**
+!Cursos/_notas-pessoais/README.md
+
+# Root-only library tooling — never publish
+/scripts/
+/docs/
 
 # IDE runtime projections (this repo is a distribution library, not a live project)
 .claude/

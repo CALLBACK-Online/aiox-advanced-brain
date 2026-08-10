@@ -1,5 +1,16 @@
 # Changelog — AIOX Advanced library
 
+## 0.5.1 — 2026-08-10
+
+### Added
+
+- Mini-curso `Cursos/Obsidian-IA/` (8 aulas: vault, wikilinks, agent professor, captura, MOCs, execução).
+- Skills de **vault de estudo** (segundo cérebro do acervo): `aiox-brain`, `obsidian-course-vault`, `course-moc`, `study-capture`.
+- Pasta local `Cursos/_notas-pessoais/` (README versionado; captura do aluno gitignored).
+- Wiring em `AGENTS.md` / `CLAUDE.md` / README para curadoria de estudo sem poluir o canônico.
+- **Vault Obsidian personalizado:** tema **PLN** (igual mentelendaria), `.obsidian/graph.json` com color groups (cursos/skills/squads), snippet CSS de pastas, `00-HOME.md` + MOCs de conexão.
+- Glossário ampliado para 235 arquivos Markdown e **2.004 wikilinks** verificados no curso principal.
+
 ## 0.5.0 — 2026-08-10
 
 ### Added
@@ -13,7 +24,7 @@
 - Metadados de maturidade e contagens das 24 aulas sincronizados com `catalog.json`.
 - Regra de links alinhada ao escopo autocontido do curso de squads.
 - Catálogo reconciliado em **62 skills**: 43 skills-base, 18 entradas dedicadas de squad e 1 roteador.
-- Arquivos locais `AGENTS.md`, `CLAUDE.md`, `docs/` e `scripts/` excluídos da distribuição pública.
+- Guias públicos `AGENTS.md` e `CLAUDE.md` versionados como contrato pedagógico do segundo cérebro; `docs/` e `scripts/` permanecem fora da distribuição.
 
 ## 0.4.1 — layout de distribuição
 

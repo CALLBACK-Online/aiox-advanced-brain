@@ -5,7 +5,7 @@
 | | |
 |---|---|
 | **Repositório** | [github.com/oalanicolas/aiox-advanced-brain](https://github.com/oalanicolas/aiox-advanced-brain) |
-| **Pacote** | `aiox-advanced-brain` · **v0.5.0** (`catalog.json`) |
+| **Pacote** | `aiox-advanced-brain` · **v0.5.1** (`catalog.json`) |
 | **Licença** | [MIT](LICENSE) (empacotamento e material original; “minds” de terceiros permanecem dos autores) |
 | **Tipo** | Biblioteca de **distribuição e estudo** — não é o runtime AIOX completo |
 
@@ -21,7 +21,7 @@ Estudar (Obsidian)  →  Escolher skill/squad  →  Copiar ao projeto  →  Exec
 2. [O que está incluído](#o-que-está-incluído)
 3. [Primeiros 15 minutos](#primeiros-15-minutos)
 4. [Baixar o material](#baixar-o-material)
-5. [Navegar com o Obsidian](#navegar-o-conteúdo-com-o-obsidian)
+5. [Navegar com o Obsidian](#navegar-o-conteúdo-com-o-obsidian) (inclui [segundo cérebro](#usar-este-repositório-como-segundo-cérebro))
 6. [Trilhas de estudo](#trilhas-de-estudo)
 7. [Copiar skills e squads para o projeto](#copiar-skills-e-squads-para-o-projeto)
 8. [Maturidade (leia antes de executar)](#maturidade-leia-antes-de-executar)
@@ -29,7 +29,7 @@ Estudar (Obsidian)  →  Escolher skill/squad  →  Copiar ao projeto  →  Exec
 10. [Usar com Claude Code, Codex ou outro agent](#usar-com-claude-code-codex-ou-outro-agent)
 11. [Missões frequentes](#missões-frequentes)
 12. [Estrutura do repositório](#estrutura-do-repositório)
-13. [Guia das 49 skills](#guia-das-49-skills)
+13. [Guia das 66 skills](#guia-das-66-skills)
 14. [Guia dos 24 squads](#guia-dos-24-squads)
 15. [Nomes legados e aliases](#nomes-legados-e-aliases)
 16. [FAQ](#faq)
@@ -43,7 +43,7 @@ Estudar (Obsidian)  →  Escolher skill/squad  →  Copiar ao projeto  →  Exec
 
 - O **acervo da turma**: método + operação em um único repositório.
 - Um **vault de curso** (Markdown + wikilinks) pensado para o [Obsidian](https://obsidian.md).
-- Uma **biblioteca de assets**: 49 skills e 24 squads para copiar para o *seu* projeto.
+- Uma **biblioteca de assets**: **66** skills e **24** squads para copiar para o *seu* projeto (inclui skills de vault de estudo).
 - Um **roteador para agents**: mapa de decisão, `AGENT-GUIDE.md` e `agent-router.json` para escolher o squad certo a partir de linguagem natural.
 - Material com **gates e evidência** — o curso termina no artefato que funciona, não no consumo de aulas.
 
@@ -54,7 +54,7 @@ Estudar (Obsidian)  →  Escolher skill/squad  →  Copiar ao projeto  →  Exec
 | “Instalei e o AIOX inteiro roda” | Aqui não há monorepo/runtime completo (`.aiox-core`, SYNAPSE, etc.) |
 | “Toda skill executa sozinha” | Muitas exigem runtime AIOX (`runtime-aiox`) ou dependências no destino (`partial`) |
 | “É o produto Enterprise” | Componentes multi-tenant corporativos **não** estão no pacote ([NOTICE.md](NOTICE.md)) |
-| “GitHub substitui o vault” | No GitHub você baixa; o grafo de ~1.600 links se navega melhor no **Obsidian** |
+| “GitHub substitui o vault” | No GitHub você baixa; o grafo de ~2.000 links se navega melhor no **Obsidian** |
 
 **Modelo mental:** este repositório é a **biblioteca + o cérebro de estudo**. O **projeto seu** é onde a execução acontece.
 
@@ -62,13 +62,14 @@ Estudar (Obsidian)  →  Escolher skill/squad  →  Copiar ao projeto  →  Exec
 
 ## O que está incluído
 
-| Camada | Conteúdo (fonte: `catalog.json` v0.5.0) |
+| Camada | Conteúdo (fonte: `catalog.json` v0.5.1) |
 |--------|----------------------------------------|
-| **Skills** | **49** canônicas em [`skills/`](skills/) |
+| **Skills** | **66** em [`skills/`](skills/): base AIOX, entradas de squad, roteador `aiox-squads` e 4 de vault de estudo |
 | **Squads** | **24** canônicos em [`squads/`](squads/) |
 | **Curso método** | [AIOX Advanced](Cursos/AIOX%20Advanced/README.md) — **75 aulas**, **14 módulos**, **14 quizzes**, **62 questões** |
-| **Grafo** | **1.626** wikilinks internos no curso principal |
+| **Grafo** | **2.004** wikilinks internos no curso principal |
 | **Curso squads** | [AIOX Advanced Squads](Cursos/AIOX-Advanced-Squads/README.md) — **25 aulas** (intro + 1 por squad), **6 módulos**, **6 quizzes**, **24 questões** |
+| **Mini Obsidian+IA** | [Obsidian + IA](Cursos/Obsidian-IA/README.md) — **8 aulas**, ~60–90 min, vault + agent + captura |
 | **Operação** | Mapas de decisão, briefings copiáveis, exemplos de ativação, exercícios, critérios de evidência |
 | **Agents (versionados)** | [AGENTS.md](AGENTS.md) (professor-especialista do segundo cérebro) · [CLAUDE.md](CLAUDE.md) · [AGENT-GUIDE](Cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md) · [agent-router.json](Cursos/AIOX-Advanced-Squads/agent-router.json) |
 | **Manifesto** | [`catalog.json`](catalog.json) — contagens, maturidade, aliases, proveniência |
@@ -85,7 +86,7 @@ Estudar (Obsidian)  →  Escolher skill/squad  →  Copiar ao projeto  →  Exec
 | 2–5 | Abra `Cursos/AIOX Advanced/` como **vault no Obsidian**. |
 | 5–10 | Leia o [README do curso](Cursos/AIOX%20Advanced/README.md) e entre na **Rota Essencial** (32 aulas → sistema entregue). |
 | 10–12 | Abra o [hub das trilhas](Cursos/README.md) e o [Mapa de decisão dos squads](Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md). |
-| 12–15 | No workspace do agent, use o [prompt de roteamento](#prompt-pronto) e peça o squad certo para uma missão real sua. |
+| 12–15 | Na pasta aberta pelo agent, use o [prompt de roteamento](#prompt-pronto) e peça o squad certo para uma missão real sua. |
 
 Se só tiver a pasta `Cursos/`, o conteúdo pedagógico já é navegável — abra-a no Obsidian da mesma forma.
 
@@ -104,7 +105,7 @@ cd aiox-advanced-brain
 
 1. Abra [github.com/oalanicolas/aiox-advanced-brain](https://github.com/oalanicolas/aiox-advanced-brain).
 2. **Code → Download ZIP**.
-3. Extraia a pasta e **abra no Obsidian** (estudo) e/ou no workspace do agent (execução).
+3. Extraia a pasta e **abra no Obsidian** (estudo) e/ou no seu agent (execução).
 
 ### Validar o acervo (opcional)
 
@@ -114,7 +115,15 @@ Requer Python 3 e Node:
 npm run validate
 ```
 
-Valida os dois cursos e o roteamento de agents (`agent-router.json` + paridade skill/squad/aula).
+Valida todos os cursos e o roteamento de agents (`agent-router.json` + paridade skill/squad/aula).
+
+Para a prova comportamental opcional em sessões limpas de Claude Code e Codex:
+
+```bash
+npm run smoke:routing:runtimes
+```
+
+O smoke usa somente ferramentas de leitura, limita o Claude por orçamento e mantém o Codex em sandbox `read-only`. Para testar apenas um runtime, acrescente `-- claude` ou `-- codex`.
 
 ---
 
@@ -131,7 +140,7 @@ Os cursos usam **Markdown + wikilinks** (`[[Nome da nota]]`) — o formato nativ
 
 | Vault | Quando usar |
 |-------|-------------|
-| `Cursos/AIOX Advanced/` | **Padrão recomendado** — estudar o método com grafo limpo (~1.600 links) |
+| `Cursos/AIOX Advanced/` | **Padrão recomendado** — estudar o método com grafo limpo (~2.000 links) |
 | `Cursos/AIOX-Advanced-Squads/` | Estudar o curso 1:1 dos squads |
 | `Cursos/` | Hub das duas trilhas |
 | Raiz do repositório | Estudo + `skills/` + `squads/` no mesmo vault (índice mais pesado) |
@@ -148,6 +157,43 @@ Os cursos usam **Markdown + wikilinks** (`[[Nome da nota]]`) — o formato nativ
 | **Seu projeto** | Destino dos arquivos copiados de `skills/` e `squads/` |
 
 Qualquer editor de Markdown funciona; o Obsidian é a **melhor superfície** para o segundo cérebro do curso.
+
+### Graph colorido (Obsidian)
+
+Abra a **raiz deste repositório** como vault. O Graph já vem com filtros por pasta (`.obsidian/graph.json`):
+
+| Cor | O quê |
+|-----|--------|
+| Azul | Curso AIOX Advanced (método) |
+| Roxo | Curso AIOX Advanced Squads |
+| Ciano | Mini Obsidian + IA |
+| Verde | `skills/` |
+| Laranja | `squads/` |
+| Âmbar | notas pessoais |
+| Rosa | hubs (`#hub`) |
+
+- **Tema:** padrão do Obsidian, sem dependência de tema de terceiros
+- **Home:** [`00-HOME.md`](00-HOME.md)
+- **Mapas:** [`Cursos/MOC-Acervo-AIOX.md`](Cursos/MOC-Acervo-AIOX.md) · [Skills](Cursos/MOC-Skills.md) · [Squads](Cursos/MOC-Squads.md)
+- **Explorer colorido:** snippet `aiox-brain-folders` (Appearance → CSS snippets)
+- **Orphans off** no Graph = some o anel de arquivos soltos; **on** = auditoria
+
+### Usar este repositório como segundo cérebro
+
+O acervo já é um vault de estudo. Para o agent **cuidar do grafo de aprendizado** (não só rotear squads), use as skills portáveis:
+
+| Skill | Quando |
+|-------|--------|
+| [`aiox-brain`](skills/aiox-brain/SKILL.md) | Visão geral: como este repo funciona como segundo cérebro |
+| [`obsidian-course-vault`](skills/obsidian-course-vault/SKILL.md) | Abrir vault, achar aula, trilha no Obsidian |
+| [`course-moc`](skills/course-moc/SKILL.md) | Mapas de conteúdo / hubs (LYT-light) |
+| [`study-capture`](skills/study-capture/SKILL.md) | Capturar insight **sem** editar aulas canônicas |
+
+- **Canônico:** `Cursos/**/lessons/`, `aulas/`, `modulos/` — material da turma.
+- **Pessoal:** `Cursos/_notas-pessoais/` (só o README é versionado; suas notas ficam no clone).
+- **Operação AIOX:** continue com `skills/` + `squads/` e o [roteador de squads](Cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md).
+
+Isto **não** substitui um vault de vida/livros pessoal: é o segundo cérebro do **método e da operação AIOX**.
 
 ---
 
@@ -170,7 +216,7 @@ Capstone / Projeto Integrador (método + squads escolhidos)
 | **AIOX Advanced** | Mindset, SDC, taxonomia, determinismo, design system, deploy | [Cursos/AIOX Advanced/README.md](Cursos/AIOX%20Advanced/README.md) — use a **Rota Essencial** na 1ª passagem |
 | **AIOX Advanced Squads** | Quando usar cada squad, briefing, ativação, evidência | [Cursos/AIOX-Advanced-Squads/README.md](Cursos/AIOX-Advanced-Squads/README.md) · [Mapa de decisão](Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md) |
 
-**Ponte método ↔ squads:**  
+**Ponte método ↔ squads:**
 [`Cursos/AIOX Advanced/ponte/`](Cursos/AIOX%20Advanced/ponte/) · [`Cursos/AIOX-Advanced-Squads/ponte/`](Cursos/AIOX-Advanced-Squads/ponte/) · inventário em `catalog.json`.
 
 Cada módulo do Advanced fecha com **evidência + quiz**. O curso não termina quando você “lê tudo” — termina quando o artefato funciona.
@@ -193,7 +239,7 @@ cp -R skills/tech-search /caminho/do/seu-projeto/.claude/skills/
 cp -R squads/research /caminho/do/seu-projeto/squads/
 ```
 
-Guia operacional completo (superfícies `$skill`, `@agent`, `*comando`, `/comando` e quando **não** inventar sintaxe):  
+Guia operacional completo (superfícies `$skill`, `@agent`, `*comando`, `/comando` e quando **não** inventar sintaxe):
 [Cursos/AIOX-Advanced-Squads/Guia-de-execucao.md](Cursos/AIOX-Advanced-Squads/Guia-de-execucao.md).
 
 ---
@@ -209,14 +255,14 @@ Nem todo asset roda “do zero” neste repositório. A fonte de verdade é `cat
 | `partial` | Parte roda; outras etapas pedem monorepo / infra no destino | Enumerar o que falta no projeto antes de executar |
 | `runtime-aiox` | Exige AIOX completo (`.aiox-core`, SYNAPSE, etc.) | Usar no ambiente AIOX; aqui serve principalmente para estudo do procedimento |
 
-### Snapshot real do catálogo (v0.5.0)
+### Snapshot real do catálogo (v0.5.1)
 
 | Tipo | Distribuição de maturidade |
 |------|----------------------------|
-| **49 skills** | ~11 `portable` · ~15 `study` · ~23 `runtime-aiox` |
+| **66 skills** | ver `skill_meta` em `catalog.json` (`portable` / `study` / `runtime-aiox` / camada `second-brain`) |
 | **24 squads** | ~3 `study` · ~21 `partial` |
 
-**Skills portáteis (bom ponto de partida sem runtime AIOX):**  
+**Skills portáteis (bom ponto de partida sem runtime AIOX):**
 `tech-search`, `tech-research`, `deep-strategic-planning`, `design-md`, `doc-rot`, `extract-session-heuristics`, `handoff`, `impeccable`, `skill-creator`, `slide-creator`, `survey-intel`.
 
 **Regra de ouro:** presença no acervo ≠ “funciona sozinho no laptop”. Confira a label em `catalog.json`, a aula do squad e o `SKILL.md` / `config.yaml` antes de prometer entrega.
@@ -242,7 +288,7 @@ O curso de squads e os bootstraps deste repo foram feitos para **humans e agents
 
 ### Prompt pronto
 
-Depois de abrir o repositório no workspace do agent:
+Depois de abrir o repositório no agent:
 
 ```text
 Consulte Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md e
@@ -310,7 +356,7 @@ Aula por squad: pasta [`Cursos/AIOX-Advanced-Squads/aulas/`](Cursos/AIOX-Advance
 
 ```text
 .
-├── skills/                         # 49 skills canônicas (catálogo)
+├── skills/                         # 66 skills: AIOX + vault de estudo + entradas de squad
 ├── squads/                         # 24 squads canônicos
 ├── Cursos/
 │   ├── README.md                   # Hub das trilhas
@@ -325,9 +371,16 @@ Aula por squad: pasta [`Cursos/AIOX-Advanced-Squads/aulas/`](Cursos/AIOX-Advance
 
 ---
 
-## Guia das 49 skills
+## Guia das 66 skills
 
 Inventário canônico = lista `skills` em `catalog.json`. Abaixo, o “use quando” de cada uma.
+
+### Segundo cérebro (vault de estudo)
+
+- [`aiox-brain`](skills/aiox-brain/SKILL.md) — Meta: usar este repo como segundo cérebro. **Use quando:** onboarding de estudo, Obsidian vs agent, ou dúvida de onde capturar notas.
+- [`obsidian-course-vault`](skills/obsidian-course-vault/SKILL.md) — Operar `Cursos/` no Obsidian. **Use quando:** abrir vault, achar aula, Graph, trilha.
+- [`course-moc`](skills/course-moc/SKILL.md) — Mapas de conteúdo / hubs (LYT-light). **Use quando:** “como se conecta X e Y?” ou índice por dor/módulo.
+- [`study-capture`](skills/study-capture/SKILL.md) — Captura pessoal ligada à aula. **Use quando:** anotar aprendizado sem editar o canônico (`Cursos/_notas-pessoais/`).
 
 ### Agentes fundamentais do AIOX
 
@@ -389,12 +442,25 @@ Inventário canônico = lista `skills` em `catalog.json`. Abaixo, o “use quand
 
 ### Entradas de squad (wrappers)
 
+- [`aiox-squads`](skills/aiox-squads/SKILL.md) — Roteador universal dos 24 squads. **Use quando:** o usuário descreve uma missão sem saber qual squad escolher ou precisa de briefing e ativação segura por runtime.
 - [`advisory-board`](skills/advisory-board/SKILL.md) — Porta de entrada do conselho estratégico. **Use quando:** decisão de alto impacto com múltiplas perspectivas.
+- [`agent-autonomy`](skills/agent-autonomy/SKILL.md) — Porta de entrada para autonomia de agentes. **Use quando:** o agente entra em loops, depende de intervenção humana ou não avalia o próprio progresso.
+- [`aiox-sop`](skills/aiox-sop/SKILL.md) — Porta de entrada para SOPs. **Use quando:** um processo precisa virar execução repetível e auditável.
 - [`claude-code-mastery`](skills/claude-code-mastery/SKILL.md) — Porta de entrada do squad de domínio Claude Code. **Use quando:** hooks, skills, MCP e setup de projeto.
+- [`clickup-ops-squad`](skills/clickup-ops-squad/SKILL.md) — Porta de entrada para ClickUp Ops. **Use quando:** um processo validado precisa virar Spaces, Lists, Fields e automações.
 - [`conteudo`](skills/conteudo/SKILL.md) — Porta de entrada do squad de conteúdo social. **Use quando:** carrosséis, Reels, Stories e campanhas.
 - [`copy`](skills/copy/SKILL.md) — Porta de entrada do squad de copy de conversão. **Use quando:** peças persuasivas e frameworks de copywriters.
+- [`design-ops`](skills/design-ops/SKILL.md) — Porta de entrada para governança de design systems. **Use quando:** o sistema já existe e precisa de a11y, regressão, adoção ou controle de drift.
+- [`domain-decoder`](skills/domain-decoder/SKILL.md) — Porta de entrada para regras de negócio brownfield. **Use quando:** o domínio está implícito no código.
+- [`etl-ops`](skills/etl-ops/SKILL.md) — Porta de entrada para ETL. **Use quando:** dados precisam ser extraídos, transformados e carregados de forma repetível.
 - [`research`](skills/research/SKILL.md) — Porta de entrada do squad unificado de research (sucessor de spy/deep-research). **Use quando:** bench, OSINT, discovery ou research multi-fonte.
+- [`runner-ops`](skills/runner-ops/SKILL.md) — Porta de entrada para runners headless. **Use quando:** execução autônoma precisa operar fora da IDE com estado e observabilidade.
 - [`sales`](skills/sales/SKILL.md) — Porta de entrada do squad de vendas. **Use quando:** funil completo (diagnose → close → scale).
+- [`skill-creator-ops`](skills/skill-creator-ops/SKILL.md) — Porta de entrada para governança de skills. **Use quando:** várias skills precisam de lifecycle, testes e versionamento comuns.
+- [`slides-creator`](skills/slides-creator/SKILL.md) — Porta de entrada para decks. **Use quando:** uma apresentação exige narrativa, visual, notas e QA coordenados.
+- [`squad-creator`](skills/squad-creator/SKILL.md) — Porta de entrada para criação canônica de squads. **Use quando:** uma nova capacidade precisa de agentes, tasks e workflows.
+- [`squad-creator-pro`](skills/squad-creator-pro/SKILL.md) — Porta de entrada para criação avançada de squads. **Use quando:** há clonagem mental, extração de DNA, model routing ou gates avançados.
+- [`storytelling`](skills/storytelling/SKILL.md) — Porta de entrada para narrativa. **Use quando:** a mensagem depende de arco, tensão, emoção e memorabilidade.
 
 ---
 
@@ -450,28 +516,28 @@ Fonte completa: `catalog.json` → `aliases`, `renames`, `related_current_assets
 
 ## FAQ
 
-**Preciso do AIOX Enterprise para usar isto?**  
+**Preciso do AIOX Enterprise para usar isto?**
 Não. Isto é biblioteca educacional. Enterprise multi-tenant não está no pacote.
 
-**Por que copiar skills em vez de rodar daqui?**  
+**Por que copiar skills em vez de rodar daqui?**
 Porque o destino canônico é o *seu* projeto/IDE. Este repo é fonte de distribuição; a execução usa o harness do projeto.
 
-**Obsidian é obrigatório?**  
+**Obsidian é obrigatório?**
 Não, mas é a forma recomendada de navegar o grafo de wikilinks. No GitHub os arquivos abrem; o segundo cérebro funciona de verdade no vault.
 
-**Qual a diferença entre os dois cursos?**  
+**Qual a diferença entre os dois cursos?**
 Advanced = **método** (como pensar e operar AIOX). Advanced Squads = **operação de cada squad** (quando usar, briefing, evidência).
 
-**Posso pedir ao agent “roda o squad X” sem copiar?**  
+**Posso pedir ao agent “roda o squad X” sem copiar?**
 O agent pode **orientar** lendo a aula e o `config.yaml`. Execução real exige o asset no projeto (e runtime compatível). Maturidade `study`/`partial` limita o que é seguro prometer.
 
-**Skill `slide-creator` vs squad `slides-creator`?**  
+**Skill `slide-creator` vs squad `slides-creator`?**
 Skill = procedimento de deck. Squad = time coordenado (narrativa, visual, QA). Nomes deliberadamente próximos; veja aliases.
 
-**Os números do README mudaram?**  
-Confie em `catalog.json` (`library_version`, `counts`, `course`, `supplemental_courses`). Este README acompanha **0.5.0**.
+**Os números do README mudaram?**
+Confie em `catalog.json` (`library_version`, `counts`, `course`, `supplemental_courses`). Este README acompanha **0.5.1**.
 
-**Posso redistribuir o link do repositório?**  
+**Posso redistribuir o link do repositório?**
 Siga [NOTICE.md](NOTICE.md) e o combinado da turma. Frameworks/“minds” de terceiros são estudo metodológico — respeite direitos das obras originais.
 
 ---
