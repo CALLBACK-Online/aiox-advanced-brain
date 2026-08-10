@@ -96,7 +96,9 @@ def course_files(course: Path, part: str, suffixes: set[str], include_archive: b
     return sorted(files)
 
 
-def infer_profile(section_presence: Counter[str], metadata_presence: Counter[str]) -> tuple[str, dict[str, int]]:
+def infer_profile(
+    section_presence: Counter[str], metadata_presence: Counter[str]
+) -> tuple[str, dict[str, int], dict]:
     scores = {
         profile: sum(section_presence.get(section, 0) for section in signature)
         for profile, signature in PROFILE_SIGNATURES.items()
@@ -105,8 +107,24 @@ def infer_profile(section_presence: Counter[str], metadata_presence: Counter[str
     scores["migração-profunda"] += metadata_presence.get("source_lesson_id", 0)
     scores["catálogo-roteamento"] += metadata_presence.get("maturity", 0)
     scores["catálogo-roteamento"] += metadata_presence.get("squad", 0)
-    profile = max(scores, key=scores.get) if scores and max(scores.values()) else "não-classificado"
-    return profile, scores
+    ranking = sorted(scores.items(), key=lambda item: (-item[1], item[0]))
+    profile = ranking[0][0] if ranking and ranking[0][1] else "não-classificado"
+    top_score = ranking[0][1] if ranking else 0
+    second_score = ranking[1][1] if len(ranking) > 1 else 0
+    margin = top_score - second_score
+    margin_ratio = margin / top_score if top_score else 0
+    confidence = "low" if margin_ratio <= 0.15 else ("medium" if margin_ratio <= 0.35 else "high")
+    diagnostics = {
+        "confidence": confidence if profile != "não-classificado" else "none",
+        "margin": margin,
+        "margin_ratio": round(margin_ratio, 3),
+        "needs_human_review": profile == "não-classificado" or confidence == "low",
+        "alternatives": [
+            {"profile": name, "score": score}
+            for name, score in ranking[:3]
+        ],
+    }
+    return profile, scores, diagnostics
 
 
 def analyze(course: Path, root: Path, include_archive: bool) -> dict:
@@ -134,7 +152,9 @@ def analyze(course: Path, root: Path, include_archive: bool) -> dict:
         external_links += sum(target.startswith(("http://", "https://")) for target in targets)
         wikilinks += len(WIKILINK.findall(text))
 
-    profile, profile_scores = infer_profile(section_presence, metadata_presence)
+    profile, profile_scores, profile_diagnostics = infer_profile(
+        section_presence, metadata_presence
+    )
     root_files = sorted(path.name for path in course.iterdir() if path.is_file())
     relative = course.relative_to(root).as_posix()
     return {
@@ -142,6 +162,7 @@ def analyze(course: Path, root: Path, include_archive: bool) -> dict:
         "path": relative,
         "profile_suggestion": profile,
         "profile_scores": profile_scores,
+        "profile_diagnostics": profile_diagnostics,
         "counts": {
             "lessons": len(lessons),
             "modules": len(modules),
@@ -177,6 +198,9 @@ def render_markdown(results: list[dict]) -> str:
                 "",
                 f"- path: `{item['path']}`",
                 f"- profile: `{item['profile_suggestion']}`",
+                f"- profile confidence: `{item['profile_diagnostics']['confidence']}` "
+                f"(margin={item['profile_diagnostics']['margin']}; "
+                f"human_review={item['profile_diagnostics']['needs_human_review']})",
                 f"- lessons/modules/quizzes: {counts['lessons']}/{counts['modules']}/{counts['quizzes']}",
                 f"- lesson words min/avg/max: {words['min']}/{words['average']}/{words['max']}",
                 f"- root files: {', '.join(item['root_file_names']) or '—'}",

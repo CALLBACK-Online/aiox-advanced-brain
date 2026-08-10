@@ -42,10 +42,14 @@ def signals(course_id: str, course: Path, path: Path, index: int, total: int) ->
     body = text.split("## Navegação", 1)[0]
     navigation = navigation_region(text)
     has_course = "README.md" in navigation
+    has_module = not (course / "modulos").is_dir() or bool(
+        re.search(r"\]\(\.\./modulos/[^)]+\.md(?:#[^)]+)?\)", navigation)
+    )
     has_previous = index == 0 or bool(re.search(r"(?i)anterior|←", navigation))
     has_next = index == total - 1 or bool(re.search(r"(?i)próxim|→", navigation))
-    bridge_scope = course_id in {"aiox-advanced", "aiox-advanced-squads"}
-    bridge_files = list((course / "ponte").glob("*.md")) if (course / "ponte").is_dir() else []
+    bridge_dir = course / "ponte"
+    bridge_required = course_id in {"aiox-advanced", "aiox-advanced-squads"} or bridge_dir.is_dir()
+    bridge_files = list(bridge_dir.glob("*.md")) if bridge_dir.is_dir() else []
     glossary = course / "Glossario.md"
     return {
         "objetivo-verificavel": (
@@ -61,16 +65,22 @@ def signals(course_id: str, course: Path, path: Path, index: int, total: int) ->
             "prática/checkpoint encontrado; revisar qualidade" if EXERCISE.search(body) else "prática ou checkpoint não encontrado",
         ),
         "navegacao": (
-            "PASS" if has_course and has_previous and has_next else "FAIL",
-            f"curso={has_course} anterior={has_previous} próxima={has_next}",
+            "PASS" if has_course and has_module and has_previous and has_next else "FAIL",
+            f"curso={has_course} módulo={has_module} anterior={has_previous} próxima={has_next}",
         ),
         "ponte-metodo-operacao": (
-            "PENDING" if bridge_scope and bridge_files else ("FAIL" if bridge_scope else "PASS"),
-            "confirmar cobertura semântica em ponte/" if bridge_scope and bridge_files else ("ponte/ ausente" if bridge_scope else "fora do escopo desta trilha"),
+            "PENDING"
+            if bridge_required and bridge_files
+            else ("FAIL" if bridge_required else "PASS"),
+            "confirmar cobertura semântica em ponte/"
+            if bridge_required and bridge_files
+            else ("ponte/ ausente" if bridge_required else "fora do escopo desta trilha"),
         ),
         "terminologia-consistente": (
-            "PENDING" if glossary.is_file() else "PASS",
-            "Glossario.md presente; revisar deriva" if glossary.is_file() else "glossário não obrigatório; consistência por revisão humana se termos divergirem",
+            "PENDING",
+            "Glossario.md presente; revisar deriva"
+            if glossary.is_file()
+            else "revisar vocabulário; glossário não obrigatório",
         ),
     }
 

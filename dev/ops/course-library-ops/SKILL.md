@@ -233,8 +233,8 @@ Contrato anti-deriva (o que torna 3 cópias sustentáveis):
 - Após editar o SoT: `install.sh --target both` (operação `ops-sync`).
 - `doctor.py` compara SoT ↔ projeções arquivo a arquivo e **falha com ERR**
   em qualquer divergência.
-- `package.sh` só gera zip após selftest funcional (bootstrap num tmp +
-  `dev/validate.py` PASS) — nunca distribuir o que não prova nascer verde.
+- `package.sh` só gera zip após selftest funcional em tmp (bootstrap, gates,
+  create, improve, upgrade add/archive e validação) — nunca distribuir fluxo não provado.
 - Versão: fonte única em `package.json` (SemVer validada no empacote).
 
 ---
