@@ -70,5 +70,7 @@ Esse registro é o seu **Mapa do Custo de Reconstrução** — a leitura mais co
 
 ## Navegação
 
+- Curso: [Visão geral da trilha](../README.md)
+- Módulo: [M2 — Operação como sistema](../modulos/02-operacao-como-sistema.md)
 - Anterior: [Aula 03 — Quando os squads passam a operar como sistema](03-quando-os-squads-operam-como-sistema.md)
 - Próxima: [Aula 05 — Prontidão: evidência antes de pressa](05-prontidao-evidencia-antes-de-pressa.md)

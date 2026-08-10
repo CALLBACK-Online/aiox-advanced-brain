@@ -71,9 +71,11 @@ Pegue uma missão recorrente e responda:
 - o que acontece quando duas fontes entram em conflito;
 - onde a decisão final fica registrada.
 
-Se as respostas dependem de uma pessoa lembrar “onde ficou”, você identificou um problema de contexto operacional. Guarde o registro: ele vira a linha de contexto do Mapa do Custo de Reconstrução (aula 04).
+Se as respostas dependem de uma pessoa lembrar “onde ficou”, você identificou um problema de contexto operacional. Guarde o registro: ele vira a linha de contexto do [Mapa do Custo de Reconstrução](../templates/mapa-custo-reconstrucao.md) na [aula 04](04-o-que-voce-deixa-de-reconstruir.md).
 
 ## Navegação
 
+- Curso: [Visão geral da trilha](../README.md)
+- Módulo: [M2 — Operação como sistema](../modulos/02-operacao-como-sistema.md)
 - Anterior: [Aula 01 — O teto invisível depois do Advanced](01-o-teto-invisivel-depois-do-advanced.md)
 - Próxima: [Aula 03 — Quando os squads passam a operar como sistema](03-quando-os-squads-operam-como-sistema.md)

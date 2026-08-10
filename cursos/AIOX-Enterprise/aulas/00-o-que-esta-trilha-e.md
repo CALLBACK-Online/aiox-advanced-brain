@@ -60,7 +60,11 @@ Complete a frase com um exemplo real:
 
 Se o primeiro espaço ainda é “aprender mais sobre AIOX”, seu gargalo continua educacional. Se você consegue nomear uma operação real e o trabalho que hoje a fragmenta, avance.
 
+Guarde a frase: ela reaparece no [diagnóstico de prontidão](../avaliacoes/diagnostico-de-prontidao.md) e nos limites editoriais de [PROVENIENCIA](../PROVENIENCIA.md).
+
 ## Navegação
 
+- Curso: [Visão geral da trilha](../README.md)
+- Módulo: [M1 — Da competência ao gargalo](../modulos/01-da-competencia-ao-gargalo.md)
 - Anterior: [Visão geral da trilha](../README.md)
 - Próxima: [Aula 01 — O teto invisível depois do Advanced](01-o-teto-invisivel-depois-do-advanced.md)

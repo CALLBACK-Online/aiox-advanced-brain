@@ -58,7 +58,7 @@ No acervo público, você estuda e adapta ativos ao próprio projeto. Isso prese
 
 O desejo correto não é ter “mais IA”. É recuperar atenção que hoje fica presa ao trabalho de cola.
 
-As três próximas aulas percorrem uma carga por vez: contexto (aula 02), coordenação (aula 03) e manutenção (aula 04).
+As três próximas aulas percorrem uma carga por vez: [contexto (aula 02)](02-do-contexto-remontado-ao-contexto-operacional.md), [coordenação (aula 03)](03-quando-os-squads-operam-como-sistema.md) e [manutenção (aula 04)](04-o-que-voce-deixa-de-reconstruir.md).
 
 ## O que não muda
 
@@ -74,11 +74,13 @@ Escolha uma entrega recente e registre:
 - quantas passagens entre partes exigiram intervenção manual;
 - qual manutenção ficou pendente depois da entrega.
 
-Feche com um número: some as horas da última semana gastas nessas tarefas de sustentação e compare com as horas de construção nova. Quando a sustentação ganha, o teto deixou de ser hipótese.
+Feche com um número: some as horas da última semana gastas nessas tarefas de sustentação e compare com as horas de construção nova. Quando a sustentação ganha, o teto deixou de ser hipótese. Esse número alimenta o [Mapa do Custo de Reconstrução](../templates/mapa-custo-reconstrucao.md) na aula 04.
 
 Se você ainda não tem uma entrega para analisar, volte ao Advanced. Se o padrão se repete em missões reais, você encontrou matéria-prima para avaliar o Enterprise.
 
 ## Navegação
 
+- Curso: [Visão geral da trilha](../README.md)
+- Módulo: [M1 — Da competência ao gargalo](../modulos/01-da-competencia-ao-gargalo.md)
 - Anterior: [Aula 00 — O que esta trilha é](00-o-que-esta-trilha-e.md)
 - Próxima: [Aula 02 — Do contexto remontado ao contexto operacional](02-do-contexto-remontado-ao-contexto-operacional.md)

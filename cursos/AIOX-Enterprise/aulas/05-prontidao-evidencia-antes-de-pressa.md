@@ -69,5 +69,7 @@ Se as respostas dependem de “quero”, transforme vontade em uma missão real.
 
 ## Navegação
 
+- Curso: [Visão geral da trilha](../README.md)
+- Módulo: [M3 — Prontidão e decisão](../modulos/03-prontidao-e-decisao.md)
 - Anterior: [Aula 04 — O que você deixa de reconstruir toda semana](04-o-que-voce-deixa-de-reconstruir.md)
 - Próxima: [Aula 06 — O primeiro passo, se houver fit](06-o-primeiro-passo-se-houver-fit.md)

@@ -63,6 +63,8 @@ Se a decisão for avaliar fit, consulte a [página oficial do AIOX Enterprise](h
 
 ## Navegação
 
+- Curso: [Visão geral da trilha](../README.md)
+- Módulo: [M3 — Prontidão e decisão](../modulos/03-prontidao-e-decisao.md)
 - Anterior: [Aula 05 — Prontidão: evidência antes de pressa](05-prontidao-evidencia-antes-de-pressa.md)
 - Revisar: [FAQ do AIOX Enterprise](../FAQ.md)
 - Encerrar: [Visão geral da trilha](../README.md)

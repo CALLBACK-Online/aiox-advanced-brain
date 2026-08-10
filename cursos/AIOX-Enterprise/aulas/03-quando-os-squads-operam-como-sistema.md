@@ -63,9 +63,11 @@ Mapeie uma missão com três colunas:
 - artefato que entrega;
 - capacidade ou pessoa que consome.
 
-Marque onde hoje você precisa traduzir, reformatar, conferir ou reenviar contexto. Esses pontos mostram se o gargalo está no especialista ou no sistema entre especialistas — e são a linha de coordenação do Mapa do Custo de Reconstrução (aula 04).
+Marque onde hoje você precisa traduzir, reformatar, conferir ou reenviar contexto. Esses pontos mostram se o gargalo está no especialista ou no sistema entre especialistas — e são a linha de coordenação do [Mapa do Custo de Reconstrução](../templates/mapa-custo-reconstrucao.md) na [aula 04](04-o-que-voce-deixa-de-reconstruir.md).
 
 ## Navegação
 
+- Curso: [Visão geral da trilha](../README.md)
+- Módulo: [M2 — Operação como sistema](../modulos/02-operacao-como-sistema.md)
 - Anterior: [Aula 02 — Do contexto remontado ao contexto operacional](02-do-contexto-remontado-ao-contexto-operacional.md)
 - Próxima: [Aula 04 — O que você deixa de reconstruir toda semana](04-o-que-voce-deixa-de-reconstruir.md)
