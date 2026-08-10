@@ -70,6 +70,18 @@ Perguntas boas no Graph:
 2. Os hubs rosa puxam arestas para verde/laranja?
 3. Quais pastas ainda são só órfãs?
 
+## Busca vs grafo vs wikilink
+
+Três modos de achar coisa — use o mais barato:
+
+| Precisa de… | Use |
+|-------------|-----|
+| Nome ou trecho de texto | **Busca** (`Cmd/Ctrl+O` ou Search) |
+| “O que se conecta a isto?” | **Backlinks** / **Graph** |
+| Navegação estável entre aulas deste curso | **Links markdown** no rodapé (`## Navegação`) |
+
+Não transforme o Graph em procrastinação: se a pergunta é “qual aula de captura?”, a busca ou o README do curso bastam.
+
 ## Prática
 
 1. Abra o vault na **raiz do repo** (recomendado) ou neste mini.

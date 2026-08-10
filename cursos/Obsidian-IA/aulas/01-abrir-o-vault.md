@@ -53,6 +53,17 @@ Para filtros coloridos (azul/roxo/verde/laranja) e hubs `00-HOME` / MOCs, use a 
 
 Com o agent no repo, a skill `obsidian-course-vault` formaliza esse onboarding.
 
+## Settings mínimas (15 minutos, não 3 horas)
+
+O Obsidian tem dezenas de opções. Para **este** acervo, configure só o que evita caos:
+
+1. **Files & Links → Default location for new notes** → pasta `notas/inbox` (ou equivalente já no `.obsidian/app.json` da raiz).
+2. **Default location for new attachments** → `notas/attachments` (crie se não existir; ver `notas/README.md`).
+3. Confirme que o vault aberto é a **raiz do repositório** se quiser Graph com skills/squads coloridos.
+4. **Não** instale plugin de IA no Obsidian só porque “todo mundo usa” — neste acervo o agent é a superfície de IA (Claude Code / Codex / genérico).
+
+Instalação multiplataforma e sync mobile/desktop não são pré-requisito deste mini: se ainda não tem o app, instale o desktop e abra a pasta do clone. Tutorial profundo de install/sync fica fora do escopo.
+
 ## Prática
 
 1. Abra a **raiz do repositório** como vault.

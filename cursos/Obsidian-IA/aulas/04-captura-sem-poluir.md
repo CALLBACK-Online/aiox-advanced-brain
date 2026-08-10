@@ -35,7 +35,28 @@ Ao final desta aula você consegue **gravar um insight** em espaço pessoal (`no
 | `notas/retornos/` | Resultado e aprendizado devolvidos depois de uma execução |
 | Vault pessoal | Depois de destilar, se quiser PARA/LYT da sua vida |
 
-Skill: `study-capture` no repositório (`skills/study-capture/SKILL.md`).
+Skill: `study-capture` no repositório (`skills/study-capture/SKILL.md`). Layout canônico: `notas/README.md`.
+
+## Tipos de nota (quando usar cada uma)
+
+Não invente taxonomia de 20 pastas. Use **tipos** (inspirados em PKM clássico, adaptados a este acervo):
+
+| Tipo | Onde | Quando |
+|------|------|--------|
+| **Inbox** | `notas/inbox/` | Durante a aula; rascunho sujo |
+| **Atômica** | `notas/notes/` ou `notas/cards/` | Uma ideia reutilizável (1 ideia = 1 nota) |
+| **Por aula** | `notas/aulas/` (opcional) | Espelho pessoal de uma aula canônica |
+| **MOC** | `notas/MOCs/` | ≥5 conexões úteis ou dor recorrente (aula 05) |
+| **Retorno** | `notas/retornos/` | Depois de executar no projeto / fechar ciclo |
+
+Anti-padrão: uma “nota dump” eterna sem fonte. Sempre: **fonte → insight → próximo passo**.
+
+## Pastas mínimas (não premature organization)
+
+**Errado:** criar `Trabalho/Projetos/…/IA/Marketing/` com 5 notas.  
+**Certo:** `inbox` → destilar → MOC só quando o tema puxar.
+
+O canônico (`cursos/`) já tem a taxonomia do produto. Sua pasta pessoal **espelha captura**, não reorganiza o acervo.
 
 ## Template inbox (copie)
 

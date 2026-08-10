@@ -42,6 +42,18 @@ Estudar → Capturar → Context Brief → Executar no projeto → Evidência �
 
 Na primeira passagem, antes de você operar o Core, “executar” significa cumprir uma missão de estudo e preparar o handoff para **Introdução à Arquitetura de Sistemas**. Depois de Fundamentals ou Advanced, o mesmo loop chega a um projeto real.
 
+## Níveis de maestria (neste acervo)
+
+Não meça sucesso só por “quantas notas criei”. Use níveis leves (inspirados em cursos de Obsidian genéricos; aqui o alvo é o **acervo AIOX**):
+
+| Nível | Sinais | O que fazer no mini |
+|-------|--------|---------------------|
+| **1 · Coletor** | Abre vault, captura esporádica, poucos links | Aulas 00–04 |
+| **2 · Organizador** | `notas/` estável, MOC ou capturas ligadas a fontes | Aulas 04–05 |
+| **3 · Sintetizador** | Context Brief + handoff + retorno de execução | Aulas 06–07 |
+
+Power-user de plugins, Canvas e sync multi-device fica em cursos de **produto Obsidian** (ex.: Dominando Obsidian) — não é o foco aqui.
+
 ## Anti-padrões comuns
 
 1. Tratar o GitHub como se fosse o grafo (ele só hospeda arquivos).

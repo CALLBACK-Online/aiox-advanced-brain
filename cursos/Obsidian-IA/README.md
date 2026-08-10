@@ -41,6 +41,7 @@ Ao terminar você consegue:
 - Substituição de Introdução à Arquitetura de Sistemas, AIOX Fundamentals, AIOX Advanced ou do curso de Squads.
 - Tutorial do vault pessoal mentelendaria (paths de máquina / vida / livros).
 - Sincronização automática entre vault e projeto: a ponte ensinada é manual, mínima e reproduzível.
+- **Dominando Obsidian** (ou equivalente): curso produto de ~15h (install multi-device, plugins, Canvas, Smart Connections, import). Conceitos úteis (tipos de nota, pastas mínimas, maestria, settings essenciais) foram **sintetizados** neste mini; o deep dive de produto não mora aqui.
 
 ## Como estudar
 
