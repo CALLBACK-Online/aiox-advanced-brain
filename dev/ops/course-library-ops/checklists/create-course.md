@@ -20,4 +20,6 @@
 - [ ] `catalog.json` + hub `cursos/README.md`
 - [ ] AGENTS/CLAUDE se rota nova de roteamento
 - [ ] gap-analysis + deviations + validation-report no bastidor
+- [ ] `retrospective.md` no bastidor (template do pack) se o fluxo fechou
+- [ ] `doctor.py --course <id>` → estado derivado coerente
 - [ ] `npm run validate` EXIT 0

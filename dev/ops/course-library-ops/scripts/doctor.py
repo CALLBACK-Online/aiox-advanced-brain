@@ -22,6 +22,7 @@ PRODUCTION_FILES = {
     "upgrade-ledger.md",
     "upgrade-plan.json",
     "course-spec.json",
+    "retrospective.md",
     "deviations.yaml",
     "deviations.yml",
 }
@@ -112,17 +113,52 @@ def report_course_state(root: Path, query: str) -> int:
     return 0
 
 
+def report_all_states(root: Path) -> int:
+    scripts = Path(__file__).resolve().parent
+    if str(scripts) not in sys.path:
+        sys.path.insert(0, str(scripts))
+    from course_common import infer_course_state, resolve_course  # noqa: WPS433
+
+    catalog = json.loads((root / "catalog.json").read_text(encoding="utf-8"))
+    courses = catalog.get("courses") or {}
+    print(f"# course states (derived)\nroot: {root}\n")
+    print("| id | state | lessons | placeholders | harness | catalog | validate |")
+    print("|---|---|---:|---:|---|---|---|")
+    for cid in sorted(courses):
+        try:
+            course_id, course = resolve_course(root, cid)
+            st = infer_course_state(root, course_id, course)
+            print(
+                f"| `{cid}` | {st.get('state')} | {st.get('lessons')} | "
+                f"{st.get('placeholders')} | {st.get('harness')} | "
+                f"{st.get('in_catalog')} | {st.get('validate_exit', '—')} |"
+            )
+        except SystemExit as exc:
+            print(f"| `{cid}` | error | — | — | — | — | {exc} |")
+    print("\nNota: estado derivado do filesystem; aprovações só no frontmatter.")
+    return 0
+
+
 def main() -> int:
     import argparse
 
     parser = argparse.ArgumentParser(description="Doctor do acervo ou estado derivado de um curso")
     parser.add_argument("--course", help="infere estado de um curso (derived, sem JSON de estado)")
+    parser.add_argument(
+        "--states",
+        action="store_true",
+        help="tabela de estado derivado de todos os courses no catalog",
+    )
     parser.add_argument("--repo-root", type=Path)
     args = parser.parse_args()
 
     root = find_root(args.repo_root or Path.cwd())
+    if args.course and args.states:
+        raise SystemExit("use --course ou --states, não ambos")
     if args.course:
         return report_course_state(root, args.course)
+    if args.states:
+        return report_all_states(root)
 
     errors: list[str] = []
     warnings: list[str] = []

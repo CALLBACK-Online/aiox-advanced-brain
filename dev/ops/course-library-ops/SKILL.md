@@ -195,7 +195,7 @@ todo `PENDING`, corrigir todo `FAIL` e registrar evidência final.
 
 | Operação | Ação |
 |----------|------|
-| doctor | `python3 scripts/doctor.py` (acervo) · `--course <id>` (estado derivado) |
+| doctor | `doctor.py` · `--course <id>` · `--states` (resumo derivado do acervo) |
 | validate | `npm run validate` / `python3 dev/validate.py --course <slug>` |
 | sync-counters | README ↔ checks ↔ catalog |
 | rebalance-journey | `catalog.json` + bridges reais (`references/journey-model.md`) |
@@ -256,9 +256,9 @@ Contrato anti-deriva (o que torna 3 cópias sustentáveis):
 |------|----------------|
 | reverse-engineer | invariantes + variações + gaps + perfil respaldados por paths |
 | bootstrap | validate PASS + skeleton + ops SoT em `dev/ops/` |
-| create-course | brief/outline aprovados + superfície + harness + catalog + validate PASS |
-| upgrade-course | plano aprovado + paths/IDs preservados + ledger + validate PASS |
-| improve-course | ledger sem FAIL/PENDING + lotes evidenciados + validate PASS |
+| create-course | brief/outline aprovados + superfície + harness + catalog + validate PASS (+ retro opcional) |
+| upgrade-course | plano aprovado + paths/IDs preservados + ledger + apply + validate PASS (+ retro) |
+| improve-course | ledger sem FAIL/PENDING + lotes evidenciados + validate PASS (+ retro se DNA mudou) |
 | manage | operação + doctor/validate |
 | pack-install | selftest PASS + zip gerado e/ou projeções instaladas + doctor sem DERIVA |
 
@@ -274,6 +274,6 @@ references/library-anatomy | production-pipeline | course-anatomy | course-dna
            archetypes | surface-vs-bastidor | journey-model | approval-protocol
            source-patterns
 checklists/bootstrap | create-course | upgrade-course | improve-course | manage
-assets/course-templates/ | assets/library-skeleton/
+assets/course-templates/ (… | retrospective.md) | assets/library-skeleton/
 agents/openai.yaml
 ```

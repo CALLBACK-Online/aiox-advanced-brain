@@ -132,7 +132,11 @@ Saída: gate capaz de falhar quando o invariante é violado.
 2. Verificar placeholders, conflitos, whitespace e paths absolutos.
 3. Conferir contagens em todas as SoTs.
 4. Atualizar gap, validation-report e deviations no bastidor.
-5. Relatar artefatos, perfil, fontes, validações e limites não provados.
+5. Preencher `retrospective.md` no bastidor (template em
+   `assets/course-templates/retrospective.md`) quando o fluxo for create,
+   upgrade ou improve — captura o que o harness não pegou e candidatos a DNA.
+6. Relatar artefatos, perfil, fontes, validações e limites não provados.
+7. Opcional: `doctor.py --course <id>` para estado derivado `ready`.
 
 Saída: `EXIT 0` e pacote reproduzível. Sem isso, estado é draft/blocked/failed,
 nunca “pronto”.

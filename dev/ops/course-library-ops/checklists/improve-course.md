@@ -10,3 +10,4 @@
 - [ ] Validar o curso entre lotes.
 - [ ] `audit_didactics.py --check ...` sem `FAIL`/`PENDING`.
 - [ ] `npm run validate` EXIT 0 e evidência no ledger.
+- [ ] `retrospective.md` no bastidor se a rodada mudou padrões reutilizáveis.

@@ -17,3 +17,4 @@
 - [ ] `doctor.py --course <id>` (estado derivado).
 - [ ] Harness, catálogo, módulos, navegação e contadores sincronizados.
 - [ ] Validador do curso e `npm run validate` verdes.
+- [ ] `retrospective.md` no bastidor (o que o harness não pegou + DNA).

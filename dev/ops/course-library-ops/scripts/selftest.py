@@ -209,6 +209,16 @@ def main() -> int:
             "--repo-root",
             str(root),
         )
+        run(
+            sys.executable,
+            str(SCRIPTS / "doctor.py"),
+            "--states",
+            "--repo-root",
+            str(root),
+        )
+        # retrospective template present in pack
+        if not (PACK / "assets" / "course-templates" / "retrospective.md").is_file():
+            raise SystemExit("selftest: retrospective.md template ausente")
     print("course-library-ops selftest: PASS")
     return 0
 

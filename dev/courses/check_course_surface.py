@@ -35,6 +35,7 @@ PRODUCTION_FILES = {
     "reformed-brief-validation-report.md",
     "upgrade-ledger.md",
     "upgrade-plan.json",
+    "retrospective.md",
 }
 
 

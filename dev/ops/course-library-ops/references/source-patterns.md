@@ -29,13 +29,17 @@ Não importado:
 - scorer 0–100 e thresholds não calibrados neste acervo;
 - organização/movimentação automática de materiais brownfield.
 
-Adiado conscientemente:
+Estado e retomada:
 
-- máquina de estados e retomada (`course-state.json`);
-- retrospectiva operacional.
+- **estado derivado** via `doctor.py --course <id>` (e `--states` no acervo);
+  não há `course-state.json` — evita dessincronia.
+- Aprovações humanas continuam no frontmatter + `deviations.yaml`.
 
-Esses itens só entram quando houver repetição real de fluxos longos. Se entrarem,
-devem estender o `course-spec.json`, não criar blueprints concorrentes.
+Retrospectiva:
+
+- template `assets/course-templates/retrospective.md` → bastidor
+  `docs/producao-cursos/<id>/retrospective.md` no fechamento de create/upgrade/improve;
+- alimenta DNA/arquétipos sob decisão humana, sem auto-merge no pack.
 
 ## Skill `teach` canônica
 
