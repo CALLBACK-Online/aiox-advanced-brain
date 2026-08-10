@@ -200,7 +200,57 @@ def main() -> int:
             "segunda-decisao",
             "--repo-root",
             str(root),
+            expected=1,
         )
+        plan_path = bastidor / "upgrade-plan.json"
+        plan = json.loads(plan_path.read_text(encoding="utf-8"))
+        for change in plan["changes"]:
+            if change["lesson_id"] == "segunda-decisao":
+                change["status"] = "approved"
+        plan_path.write_text(json.dumps(plan, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        run(
+            sys.executable,
+            str(SCRIPTS / "apply_upgrade.py"),
+            "--course",
+            "aiox-exemplo",
+            "--add",
+            "segunda-decisao",
+            "--repo-root",
+            str(root),
+        )
+        spec["modules"][0]["lessons"] = [spec["modules"][0]["lessons"][1]]
+        spec_path.write_text(json.dumps(spec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        run(
+            sys.executable,
+            str(SCRIPTS / "plan_upgrade.py"),
+            "--course",
+            "aiox-exemplo",
+            "--spec",
+            str(spec_path),
+            "--require-approved",
+            "--write",
+            "--refresh",
+            "--repo-root",
+            str(root),
+        )
+        plan = json.loads(plan_path.read_text(encoding="utf-8"))
+        for change in plan["changes"]:
+            if change["lesson_id"] == "primeira-decisao":
+                change["status"] = "approved"
+        plan_path.write_text(json.dumps(plan, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        run(
+            sys.executable,
+            str(SCRIPTS / "apply_upgrade.py"),
+            "--course",
+            "aiox-exemplo",
+            "--archive",
+            "primeira-decisao",
+            "--repo-root",
+            str(root),
+        )
+        archived = list((bastidor / "archive" / "upgraded").rglob("01-primeira-decisao.md"))
+        if len(archived) != 1 or (root / "cursos/AIOX-Exemplo/aulas/01-primeira-decisao.md").exists():
+            raise SystemExit("selftest: archive recuperável não preservou o contrato")
         run(
             sys.executable,
             str(SCRIPTS / "doctor.py"),

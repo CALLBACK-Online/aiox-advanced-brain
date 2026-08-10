@@ -155,17 +155,18 @@ python3 scripts/plan_upgrade.py --course <id> \
 
 4. Revisar `upgrade-plan.json` e `upgrade-ledger.md`; preservar paths/IDs válidos.
 5. Reaprovar brief/outline e repetir com `--require-approved --refresh`.
-6. Apply **assistido e explícito** (nunca apaga; nunca bulk):
+6. Humano marca `status: approved` somente nas ações autorizadas do plano.
+7. Apply **assistido e explícito** (nunca apaga; nunca bulk):
 
 ```bash
 python3 scripts/apply_upgrade.py --course <id> --add <lesson-id>
 python3 scripts/apply_upgrade.py --course <id> --archive <lesson-id>
-# archive → cursos/.../archive/upgraded/YYYY-MM-DD/
+# archive → docs/producao-cursos/<id>/archive/upgraded/YYYY-MM-DD/
 ```
 
-7. Editar lotes pequenos. `review-preserve-path` = edição humana do conteúdo.
-8. Estado derivado (sem JSON extra): `python3 scripts/doctor.py --course <id>`.
-9. Fechar cada lote com o validador do curso; fechar o fluxo com `npm run validate`.
+8. Editar lotes pequenos. `review-preserve-path` = edição humana do conteúdo.
+9. Estado derivado (sem JSON extra): `python3 scripts/doctor.py --course <id>`.
+10. Fechar cada lote com o validador do curso; fechar o fluxo com `npm run validate`.
 
 `creation_mode` canônico: **`create` | `upgrade`** (aliases `greenfield`→create,
 `brownfield`→upgrade).

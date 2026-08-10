@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 from collections import Counter
@@ -29,7 +30,15 @@ def target_lessons(spec: dict) -> list[dict]:
     return lessons
 
 
-def build_plan(root: Path, course_id: str, course: Path, spec: dict, approved: bool) -> dict:
+def build_plan(
+    root: Path,
+    course_id: str,
+    course: Path,
+    spec: dict,
+    approved: bool,
+    spec_sha256: str,
+    approval_sha256: dict[str, str],
+) -> dict:
     existing = lesson_inventory(course)
     existing_by_id = {lesson["id"]: lesson for lesson in existing}
     target = target_lessons(spec)
@@ -65,6 +74,8 @@ def build_plan(root: Path, course_id: str, course: Path, spec: dict, approved: b
         "course_path": course.relative_to(root).as_posix(),
         "generated_date": date.today().isoformat(),
         "approvals_verified": approved,
+        "spec_sha256": spec_sha256,
+        "approval_sha256": approval_sha256,
         "rules": [
             "preservar paths e lesson_id válidos",
             "archive-candidate exige decisão humana; este script não move nem apaga",
@@ -120,10 +131,23 @@ def main() -> int:
     if spec["course_id"] != course_id or spec["path"] != course.relative_to(root).as_posix():
         raise SystemExit("spec deve apontar para o mesmo course_id e path do curso existente")
     approved = False
+    approval_sha256: dict[str, str] = {}
     if args.require_approved:
-        validate_approval_artifacts(root, spec)
+        approvals = validate_approval_artifacts(root, spec)
+        approval_sha256 = {
+            gate: hashlib.sha256(path.read_bytes()).hexdigest()
+            for gate, path in approvals.items()
+        }
         approved = True
-    plan = build_plan(root, course_id, course, spec, approved)
+    plan = build_plan(
+        root,
+        course_id,
+        course,
+        spec,
+        approved,
+        hashlib.sha256(spec_path.read_bytes()).hexdigest(),
+        approval_sha256,
+    )
     counts = Counter(change["action"] for change in plan["changes"])
     print(json.dumps({"course_id": course_id, "approved": approved, "actions": counts}, ensure_ascii=False, default=dict))
     if not args.write:

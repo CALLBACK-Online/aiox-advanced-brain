@@ -33,6 +33,7 @@ PRODUCTION_FILES = {
     "gap-analysis.md",
     "didactic-audit.md",
     "reformed-brief-validation-report.md",
+    "retrospective.md",
     "upgrade-ledger.md",
     "upgrade-plan.json",
     "retrospective.md",

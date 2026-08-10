@@ -12,7 +12,7 @@ Contrato KISS herdado do acervo aiox-advanced-brain.
 ## O que nunca vai em `cursos/`
 
 - `COURSE-BRIEF`, `course-outline`, `course-spec`, `gap-analysis`, `deviations.*`, `*validation-report*`
-- `didactic-audit`, `upgrade-plan`, `upgrade-ledger`
+- `didactic-audit`, `upgrade-plan`, `upgrade-ledger`, `retrospective`
 - `CURRICULUM-GAP`, `CURRICULUM-EXPANSION`
 - `_tools/`, `tests/`, `scripts/`
 - sufixos `.py`, `.sh`, `.js`, `.ts`, `.mjs`
@@ -27,6 +27,7 @@ Gate: `dev/courses/check_course_surface.py`.
 - gap-analysis.md
 - didactic-audit.md
 - upgrade-plan.json / upgrade-ledger.md
+- retrospective.md
 - deviations.yaml
 - validation-report.md
 - expansões / drafts editoriais

@@ -10,9 +10,10 @@
 - [ ] Brief e outline re-aprovados com identidade, data, artefato e escopo.
 - [ ] `check_approvals.py` PASS.
 - [ ] Plano regenerado com `--require-approved` antes da primeira edição.
+- [ ] Humano marcou `status: approved` apenas nas ações autorizadas do `upgrade-plan.json`.
 - [ ] Apply assistido (explícito; **nunca** `rm`):
   - `apply_upgrade.py --add <lesson-id>` — stub novo
-  - `apply_upgrade.py --archive <lesson-id>` — move para `archive/upgraded/<date>/`
+  - `apply_upgrade.py --archive <lesson-id>` — move para o bastidor `archive/upgraded/<date>/`
 - [ ] Edição em lote pequeno; cada linha registra gate, evidência e ação corretiva.
 - [ ] `doctor.py --course <id>` (estado derivado).
 - [ ] Harness, catálogo, módulos, navegação e contadores sincronizados.

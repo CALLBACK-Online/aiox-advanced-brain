@@ -196,6 +196,21 @@ def approval_status(root: Path, course_id: str, spec: dict | None = None) -> dic
     return out
 
 
+def harness_slug_for_course(root: Path, course_id: str, course: Path) -> str | None:
+    direct = root / "dev" / "courses" / course_id / "manifest.yaml"
+    if direct.is_file():
+        return course_id
+    relative = course.relative_to(root).as_posix()
+    for manifest in sorted((root / "dev" / "courses").glob("*/manifest.yaml")):
+        fields = scalar_frontmatter(manifest)
+        if fields.get("path") == relative:
+            return manifest.parent.name
+        for line in manifest.read_text(encoding="utf-8").splitlines():
+            if line.startswith("path:") and line.split(":", 1)[1].strip().strip("'\"") == relative:
+                return manifest.parent.name
+    return None
+
+
 def infer_course_state(root: Path, course_id: str, course: Path) -> dict:
     """Deriva estado operacional do filesystem — sem course-state.json.
 
@@ -204,7 +219,7 @@ def infer_course_state(root: Path, course_id: str, course: Path) -> dict:
       scaffolded | lessons_in_progress | validation_failed | ready
     """
     bastidor = bastidor_dir(root, course_id)
-    harness = root / "dev" / "courses" / course_id
+    harness_slug = harness_slug_for_course(root, course_id, course) if course.is_dir() else None
     spec_path = bastidor / "course-spec.json"
     spec = None
     if spec_path.is_file():
@@ -217,7 +232,8 @@ def infer_course_state(root: Path, course_id: str, course: Path) -> dict:
         "course_id": course_id,
         "course_path": course.relative_to(root).as_posix() if course.is_dir() else None,
         "bastidor": bastidor.relative_to(root).as_posix() if bastidor.is_dir() else None,
-        "harness": (harness / "manifest.yaml").is_file(),
+        "harness": harness_slug is not None,
+        "harness_slug": harness_slug,
         "in_catalog": course_id in (json.loads((root / "catalog.json").read_text(encoding="utf-8")).get("courses") or {}),
         "approvals": approval_status(root, course_id, spec),
         "placeholders": count_placeholders(course) if course.is_dir() else 0,
@@ -247,7 +263,7 @@ def infer_course_state(root: Path, course_id: str, course: Path) -> dict:
             import sys
 
             result = subprocess.run(
-                [sys.executable, "dev/validate.py", "--course", course_id],
+                [sys.executable, "dev/validate.py", "--course", harness_slug],
                 cwd=str(root),
                 capture_output=True,
                 text=True,

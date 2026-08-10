@@ -8,6 +8,7 @@ Nunca apaga. `archive` move para archive/ com path recuperável.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import shutil
@@ -21,7 +22,7 @@ from course_common import (
     resolve_course,
     validate_approval_artifacts,
 )
-from scaffold_course import PROFILES, read_template, replace_tokens
+from scaffold_course import PROFILES, read_template, replace_tokens, validate_spec
 
 
 def load_plan(path: Path) -> dict:
@@ -38,25 +39,27 @@ def find_change(plan: dict, lesson_id: str) -> dict:
     raise SystemExit(f"lesson_id ausente no plano: {lesson_id}")
 
 
-def archive_lesson(course: Path, change: dict) -> Path:
+def archive_lesson(course: Path, bastidor: Path, change: dict) -> Path:
     if change.get("action") != "archive-candidate":
         raise SystemExit(f"{change['lesson_id']}: action não é archive-candidate")
     rel = change.get("current_path")
     if not rel:
         raise SystemExit(f"{change['lesson_id']}: current_path ausente")
-    source = course / rel
+    source = (course / rel).resolve()
+    if not source.is_relative_to(course.resolve()):
+        raise SystemExit(f"path de archive fora do curso: {rel}")
     if not source.is_file():
         raise SystemExit(f"arquivo ausente: {source}")
-    dest_dir = course / "archive" / "upgraded" / date.today().isoformat()
+    dest_dir = bastidor / "archive" / "upgraded" / date.today().isoformat()
     dest_dir.mkdir(parents=True, exist_ok=True)
     dest = dest_dir / source.name
     if dest.exists():
-        dest = dest_dir / f"{source.stem}.{date.today().strftime('%H%M%S')}{source.suffix}"
+        raise SystemExit(f"archive já existe; preservar e resolver manualmente: {dest}")
     shutil.move(str(source), str(dest))
     return dest
 
 
-def add_lesson_stub(course: Path, root: Path, spec: dict, change: dict) -> Path:
+def add_lesson_stub(course: Path, spec: dict, change: dict) -> Path:
     if change.get("action") != "add":
         raise SystemExit(f"{change['lesson_id']}: action não é add")
     lesson_id = change["lesson_id"]
@@ -67,6 +70,23 @@ def add_lesson_stub(course: Path, root: Path, spec: dict, change: dict) -> Path:
     dest = course / "aulas" / f"{position:02d}-{lesson_id}.md"
     if dest.exists():
         raise SystemExit(f"já existe (não sobrescreve): {dest.relative_to(course)}")
+    position_conflicts = list((course / "aulas").glob(f"{position:02d}-*.md"))
+    if position_conflicts:
+        raise SystemExit(
+            f"posição {position} já ocupada; preserve paths e resolva ordem manualmente: "
+            f"{position_conflicts[0].relative_to(course)}"
+        )
+    target = next(
+        (
+            lesson
+            for module_spec in spec["modules"]
+            for lesson in module_spec["lessons"]
+            if lesson["id"] == lesson_id
+        ),
+        None,
+    )
+    if target is None:
+        raise SystemExit(f"{lesson_id}: ausente no course-spec.json")
     template_name, _ = PROFILES[spec["profile"]]
     text = read_template(template_name)
     scope = spec["path"]
@@ -75,7 +95,7 @@ def add_lesson_stub(course: Path, root: Path, spec: dict, change: dict) -> Path:
         {
             "slug": spec["course_id"],
             "lesson-id": lesson_id,
-            "Título": lesson_id.replace("-", " ").title(),
+            "Título": target["title"],
             "scope": scope,
             "Nome-Do-Curso": Path(scope).name,
         },
@@ -84,7 +104,7 @@ def add_lesson_stub(course: Path, root: Path, spec: dict, change: dict) -> Path:
     text = re.sub(r"(?m)^module:\s*M(?:\d+|C)", f"module: {module}", text)
     if "lesson_id:" in text:
         text = re.sub(r"(?m)^lesson_id:\s*.+$", f"lesson_id: {lesson_id}", text)
-    text = re.sub(r"(?m)^# .+$", f"# {lesson_id.replace('-', ' ').title()}", text, count=1)
+    text = re.sub(r"(?m)^# .+$", f"# {target['title']}", text, count=1)
     if "_DRAFT_" not in text:
         text = text.rstrip() + "\n\n> _DRAFT_ stub de upgrade — preencher conteúdo.\n"
     dest.parent.mkdir(parents=True, exist_ok=True)
@@ -117,11 +137,6 @@ def main() -> int:
         metavar="LESSON_ID",
         help="cria stub para action=add",
     )
-    parser.add_argument(
-        "--allow-unapproved",
-        action="store_true",
-        help="só para debug; por default exige brief/outline approved",
-    )
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
@@ -135,6 +150,10 @@ def main() -> int:
     if not plan_path.is_file():
         raise SystemExit(f"plano ausente: {plan_path}")
     plan = load_plan(plan_path)
+    if not plan.get("approvals_verified"):
+        raise SystemExit("plano sem aprovações verificadas; regenere com plan_upgrade --require-approved")
+    if plan.get("course_id") != course_id or plan.get("course_path") != course.relative_to(root).as_posix():
+        raise SystemExit("plano não corresponde ao curso solicitado")
 
     bastidor = root / "docs" / "producao-cursos" / course_id
     spec_path = bastidor / "course-spec.json"
@@ -145,9 +164,17 @@ def main() -> int:
     if mode != "upgrade":
         raise SystemExit("apply_upgrade exige creation_mode=upgrade no course-spec.json")
     spec["creation_mode"] = mode
+    validate_spec(spec)
+    if hashlib.sha256(spec_path.read_bytes()).hexdigest() != plan.get("spec_sha256"):
+        raise SystemExit("course-spec mudou após o plano; regenere e re-aprove o plano")
 
-    if not args.allow_unapproved:
-        validate_approval_artifacts(root, spec)
+    approvals = validate_approval_artifacts(root, spec)
+    approval_sha256 = {
+        gate: hashlib.sha256(path.read_bytes()).hexdigest()
+        for gate, path in approvals.items()
+    }
+    if approval_sha256 != plan.get("approval_sha256"):
+        raise SystemExit("artefatos aprovados mudaram após o plano; reaprovação obrigatória")
 
     if not args.archive and not args.add:
         raise SystemExit("informe ao menos --archive LESSON_ID e/ou --add LESSON_ID")
@@ -155,18 +182,22 @@ def main() -> int:
     actions_log: list[str] = []
     for lesson_id in args.archive:
         change = find_change(plan, lesson_id)
+        if change.get("status") != "approved":
+            raise SystemExit(f"{lesson_id}: ação exige status=approved marcado pelo humano no plano")
         if args.dry_run:
             actions_log.append(f"DRY archive {lesson_id} ← {change.get('current_path')}")
             continue
-        dest = archive_lesson(course, change)
+        dest = archive_lesson(course, bastidor, change)
         actions_log.append(f"archived {lesson_id} → {dest.relative_to(root)}")
 
     for lesson_id in args.add:
         change = find_change(plan, lesson_id)
+        if change.get("status") != "approved":
+            raise SystemExit(f"{lesson_id}: ação exige status=approved marcado pelo humano no plano")
         if args.dry_run:
             actions_log.append(f"DRY add stub {lesson_id} @ pos {change.get('target_position')}")
             continue
-        dest = add_lesson_stub(course, root, spec, change)
+        dest = add_lesson_stub(course, spec, change)
         actions_log.append(f"added stub {dest.relative_to(course)}")
 
     for line in actions_log:
