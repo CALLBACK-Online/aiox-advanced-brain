@@ -300,7 +300,7 @@ def run(ctx: Context) -> str | None:
         for promise in ("Context Brief", "projeto AIOX", "nota de retorno"):
             if promise not in body:
                 errors.append(f"README.md sem promessa operacional: {promise}")
-        require_tokens(body, ["**ou** 1 MOC", "source_version: 1.2.0"], "README.md", errors)
+        require_tokens(body, ["**ou** 1 MOC", "source_version: 1.3.0"], "README.md", errors)
 
     for path in COURSE.rglob("*.md"):
         text = path.read_text(encoding="utf-8")

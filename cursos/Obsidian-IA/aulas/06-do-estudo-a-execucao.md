@@ -24,7 +24,8 @@ Ao final desta aula você consegue **preencher um Context Brief** a partir de 1�
 
 **Use** quando a missão já tem transformação observável.
 
-**Não** copie 24 squads “por precaução”.
+**Não** copie 24 squads “por precaução”.  
+**Não** transfira `notas/`, secrets ou o vault inteiro.
 
 ## Arquitetura da integração
 
@@ -37,6 +38,19 @@ Segundo cérebro ── Context Brief de estudo ──→ próxima trilha
 ```
 
 O projeto não precisa acessar todo o vault, e o vault não precisa virar parte do projeto. A ponte é o **menor contexto suficiente** para a missão.
+
+## Dois modos de Brief
+
+| | **Estudo (modo A)** | **Operação (modo B)** |
+|--|---------------------|------------------------|
+| Missão | Compreender / decidir com base em aula | Transformação no projeto |
+| Mecanismo | Curso/aula | Skill ou squad |
+| Maturidade | “não se aplica” ou n/a | Obrigatória (`catalog.json`) |
+| Handoff | Síntese + próxima trilha | Brief + menor asset |
+| Aceite | Explicar / diagrama / exercício | Artefato validado |
+| Retorno | Nota de estudo | `notas/retornos/` com evidência |
+
+Mesmo template; campos mudam de peso. Na primeira passagem, complete o modo estudo. Depois de Fundamentals/Advanced + projeto seguro, complete o modo operação (aula 07).
 
 ## Menor mecanismo suficiente
 
@@ -80,7 +94,7 @@ Evidência: qual artefato ou validação provará a execução?
 Retorno: o que será registrado no segundo cérebro depois?
 ```
 
-O briefing é copiável para qualquer runtime. Paths do vault servem como proveniência; o conteúdo necessário deve estar resumido no próprio briefing, porque o agent do projeto pode não enxergar este repositório.
+O briefing é copiável para qualquer runtime. Paths do vault servem como proveniência; o conteúdo necessário deve estar **resumido no próprio briefing**, porque o agent do projeto pode não enxergar este repositório.
 
 ## Handoff seguro à próxima etapa
 
@@ -91,6 +105,17 @@ O briefing é copiável para qualquer runtime. Paths do vault servem como proven
 5. Entregue o Context Brief ao agent da próxima etapa ou do projeto.
 6. Exija artefato + validação; uma conversa concluída não é evidência.
 7. Não transfira `notas/`, secrets, logs brutos nem o vault inteiro.
+
+## Falhas comuns de handoff
+
+| Falha | Sintoma | Correção |
+|-------|---------|----------|
+| Brief vazio de fontes | Agent do projeto improvisa | 1–3 paths + síntese no Brief |
+| Asset errado / inexistente | “Skill not found” | Confirmar path neste repo + maturidade |
+| Vault inteiro no zip | Ruído + risco de notas privadas | Só Brief + pasta do asset |
+| Maturidade `study` tratada como pronto | Expectativa de run autônomo | Declarar limite; estudar anatomia |
+| Sem aceite | “Acho que terminou” | Critério verificável antes de executar |
+| Sem plano de retorno | Aprendizado some | Campo retorno no Brief + nota depois |
 
 ## Runtime honesto
 
@@ -112,6 +137,8 @@ Critérios de aceite: …
 Evidência que vou exigir: …
 Retorno que vou capturar: …
 ```
+
+Marque no topo da nota: **modo estudo** ou **modo operação**.
 
 ## Evidência de conclusão
 

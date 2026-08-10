@@ -6,7 +6,7 @@ status: canonical
 canonical_scope: cursos/Obsidian-IA
 sharing_boundary: cursos
 source: skills/aiox-brain + vault de estudo
-source_version: 1.2.0
+source_version: 1.3.0
 curriculum_modules: 1
 lessons: 8
 tags: [curso, obsidian, ia, segundo-cerebro, aiox, layer/curso]
@@ -16,7 +16,7 @@ tags: [curso, obsidian, ia, segundo-cerebro, aiox, layer/curso]
 
 > Do vault à próxima decisão: recuperar contexto, estudar com intenção e, quando houver base operacional, executar no projeto AIOX.
 
-Mini-curso **prático** (cerca de **90–120 minutos**) para usar este repositório como segundo cérebro de estudo com **Obsidian** e um **agent** (Claude Code, Codex ou genérico). Ele abre a jornada e volta a ser usado nas etapas seguintes.
+Mini-curso **prático** (cerca de **100–140 minutos**) para usar este repositório como segundo cérebro de estudo com **Obsidian** e um **agent** (Claude Code, Codex ou genérico). Ele abre a jornada e volta a ser usado nas etapas seguintes.
 
 ## Para quem
 

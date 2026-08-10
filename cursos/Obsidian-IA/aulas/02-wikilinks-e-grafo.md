@@ -7,7 +7,7 @@ lesson_position: 2
 title: "Wikilinks, backlinks e Graph"
 status: canonical
 canonical_scope: cursos/Obsidian-IA
-reading_minutes: 12
+reading_minutes: 14
 tags: [curso/obsidian-ia, segundo-cerebro]
 maturity: study
 ---
@@ -24,7 +24,8 @@ Ao final desta aula você consegue **ler e criar** `[[wikilinks]]`, **usar backl
 
 **Use** para estudar qualquer etapa da jornada e montar seus próprios hubs.
 
-**Não** force wikilink para fora da pasta do curso canônico se isso quebrar o validador — cada curso é autocontido.
+**Não** force wikilink para fora da pasta do curso canônico se isso quebrar o validador — cada curso é autocontido.  
+**Não** use o Graph como procrastinação: se a pergunta é “qual aula de captura?”, a busca ou o README bastam.
 
 ## Wikilinks
 
@@ -36,6 +37,19 @@ Exemplos de intenção:
 - Entre aulas deste mini: use os links de navegação no topo/rodapé.
 
 Fora do Obsidian (GitHub, agent), traduza wikilink → **path relativo**.
+
+### Higiene de links (notas pessoais)
+
+Nas suas notas em `notas/`:
+
+| Faça | Evite |
+|------|--------|
+| Linkar a fonte canônica por path (`cursos/…/aula.md`) ou wikilink do stem | Editar o arquivo canônico para “fechar” o link |
+| Títulos de nota **declarativos** e únicos o suficiente | `[[nota]]`, `[[1]]`, `[[temp]]` que colidem no vault |
+| Preferir link **para** a aula, não reescrever a aula | Criar cópia da aula em `notas/` e divergir para sempre |
+| No Context Brief, path + síntese | Só wikilink sem texto — o agent do projeto pode não resolver `[[…]]` |
+
+Cursos canônicos usam links markdown relativos entre si de propósito (validador + GitHub). Suas notas podem misturar wikilink (Obsidian) e path (handoff).
 
 ## Backlinks e Graph
 
@@ -79,8 +93,11 @@ Três modos de achar coisa — use o mais barato:
 | Nome ou trecho de texto | **Busca** (`Cmd/Ctrl+O` ou Search) |
 | “O que se conecta a isto?” | **Backlinks** / **Graph** |
 | Navegação estável entre aulas deste curso | **Links markdown** no rodapé (`## Navegação`) |
+| Agent no repo (“me ensine X”) | Peça **path** — ele lê arquivo; Graph é para *você* |
 
-Não transforme o Graph em procrastinação: se a pergunta é “qual aula de captura?”, a busca ou o README do curso bastam.
+## Agent e o grafo
+
+O agent **não** “vê” o Graph visual. Ele localiza por path, busca e contrato (`AGENTS.md`). Use o Graph para *sua* intuição; use o agent para *trilha + evidência* (aula 03). Combinar os dois: você aponta um hub no Graph; o agent detalha a aula e o exercício.
 
 ## Prática
 
@@ -88,10 +105,11 @@ Não transforme o Graph em procrastinação: se a pergunta é “qual aula de ca
 2. Abra o Graph; confira se os color groups estão ativos (Appearance → se preciso, recarregue).
 3. Alternar Orphans off/on e anotar a diferença.
 4. Abrir o Home (`00-HOME.md`) e clicar até um squad e uma skill.
+5. Na sua nota de inbox (ou rascunho), linke **uma** aula canônica por path relativo.
 
 ## Evidência de conclusão
 
-Você descreve as cores que viu e 1 conexão curso ↔ skill ou curso ↔ squad.
+Você descreve as cores que viu, 1 conexão curso ↔ skill ou curso ↔ squad, e sabe traduzir um wikilink para path fora do Obsidian.
 
 ## Navegação
 [← Anterior](01-abrir-o-vault.md) · [↑ Curso](../README.md) · [Próxima →](03-agent-como-professor.md)
