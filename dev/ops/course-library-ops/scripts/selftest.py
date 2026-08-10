@@ -133,6 +133,28 @@ def main() -> int:
         spec_path.write_text(json.dumps(spec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         run(sys.executable, str(SCRIPTS / "check_approvals.py"), "--spec", str(spec_path), "--repo-root", str(root))
         run(sys.executable, str(SCRIPTS / "scaffold_course.py"), "--spec", str(spec_path), "--repo-root", str(root))
+        run(
+            sys.executable,
+            str(SCRIPTS / "analyze_courses.py"),
+            "--course",
+            "cursos/AIOX-Exemplo",
+            "--write",
+            "--repo-root",
+            str(root),
+        )
+        if not (bastidor / "course-dna.md").is_file():
+            raise SystemExit("selftest: analyze --write não persistiu course-dna.md")
+        run(
+            sys.executable,
+            str(SCRIPTS / "audit_vault_links.py"),
+            "--course",
+            "aiox-exemplo",
+            "--write",
+            "--repo-root",
+            str(root),
+        )
+        if not (bastidor / "vault-links.md").is_file():
+            raise SystemExit("selftest: vault-links --write não persistiu ledger")
         run(sys.executable, "dev/validate.py", "--course", "aiox-exemplo", cwd=root, expected=1)
         run(
             sys.executable,

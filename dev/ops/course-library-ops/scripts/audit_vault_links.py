@@ -44,18 +44,11 @@ PLACEHOLDER_WIKI = re.compile(
 )
 
 
-def iter_markdown(
-    vault: Path,
-    *,
-    include_notas: bool = False,
-    include_archive: bool = False,
-) -> list[Path]:
+def iter_markdown(vault: Path, *, include_notas: bool = False) -> list[Path]:
     files: list[Path] = []
     skip = set(SKIP_DIRS)
     if not include_notas:
         skip.add("notas")
-    if not include_archive:
-        skip.add("archive")
     for path in vault.rglob("*.md"):
         if any(part in skip for part in path.parts):
             continue
@@ -168,13 +161,8 @@ def analyze_vault(
     *,
     course_filter: Path | None = None,
     include_notas: bool = False,
-    include_archive: bool = False,
 ) -> dict:
-    files = iter_markdown(
-        vault,
-        include_notas=include_notas,
-        include_archive=include_archive,
-    )
+    files = iter_markdown(vault, include_notas=include_notas)
     if course_filter is not None:
         course_resolved = course_filter.resolve()
         prefix = str(course_resolved) + "/"
@@ -243,7 +231,6 @@ def analyze_vault(
 
     return {
         "vault": vault.as_posix(),
-        "include_archive": include_archive,
         "files_indexed": len(files),
         "files_scanned": len(sources),
         "stem_collisions": len(collisions),
@@ -286,7 +273,7 @@ def render_markdown(report: dict, *, title: str) -> str:
 
 Data: {date.today().isoformat()}  
 Vault: `{report['vault']}`  
-Índice (md no vault útil): **{report['files_indexed']}** · Escaneados: **{report['files_scanned']}** · Archive: **{'incluído' if report['include_archive'] else 'excluído'}**
+Índice (md no vault útil): **{report['files_indexed']}** · Escaneados: **{report['files_scanned']}**
 
 Lente: skill **obsidian-course-vault** / Obsidian Graph — wikilink resolve por **stem**;
 markdown relativo por path. Skip: `.git`, `dev/`, `docs/`, `node_modules`, …
@@ -357,11 +344,6 @@ def main() -> int:
         action="store_true",
         help="incluir pasta notas/ (gitignored; default off)",
     )
-    parser.add_argument(
-        "--include-archive",
-        action="store_true",
-        help="incluir pastas archive/ (default off)",
-    )
     parser.add_argument("--write", action="store_true", help="grava no bastidor")
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
@@ -374,10 +356,7 @@ def main() -> int:
         course_id, course_path = resolve_course(root, course_id)
 
     report = analyze_vault(
-        vault,
-        course_filter=course_path,
-        include_notas=args.include_notas,
-        include_archive=args.include_archive,
+        vault, course_filter=course_path, include_notas=args.include_notas
     )
     title = f"Vault link audit — {course_id}" if course_id else "Vault link audit — acervo"
     md = render_markdown(report, title=title)

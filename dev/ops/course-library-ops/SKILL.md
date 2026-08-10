@@ -74,7 +74,8 @@ Decisões de absorção: `references/source-patterns.md`.
 
 ## Modo reverse-engineer
 
-1. Executar `python3 scripts/analyze_courses.py` no root do acervo.
+1. Executar `python3 scripts/analyze_courses.py --write` no root do acervo;
+   cada curso recebe `docs/producao-cursos/<id>/course-dna.md`.
 2. **Lente Obsidian (links internos):**  
    `python3 scripts/audit_vault_links.py` ou `--course <id> --write`  
    (wikilinks por stem como o Graph; md relativo; órfãos; colisões de nome).  

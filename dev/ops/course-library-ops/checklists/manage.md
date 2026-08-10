@@ -51,7 +51,7 @@ conferem a coerência entre elas.
 
 ## reverse-engineer
 
-- [ ] `python3 scripts/analyze_courses.py --course cursos/<Curso>`
+- [ ] `python3 scripts/analyze_courses.py --course cursos/<Curso> --write`
 - [ ] `python3 scripts/audit_vault_links.py --course <id>` (grafo Obsidian: stems, órfãos)
 - [ ] Comparar com 1–3 vizinhos
 - [ ] Separar invariantes, variações intencionais e dívida

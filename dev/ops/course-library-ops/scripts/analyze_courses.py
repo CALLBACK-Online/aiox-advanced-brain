@@ -223,12 +223,42 @@ def render_markdown(results: list[dict]) -> str:
     return "\n".join(lines)
 
 
+def course_ids_by_path(root: Path) -> dict[str, str]:
+    catalog = json.loads((root / "catalog.json").read_text(encoding="utf-8"))
+    return {
+        meta["path"]: course_id
+        for course_id, meta in (catalog.get("courses") or {}).items()
+        if isinstance(meta, dict) and isinstance(meta.get("path"), str)
+    }
+
+
+def fallback_course_id(course_name: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", course_name.lower()).strip("-")
+
+
+def write_reports(root: Path, results: list[dict]) -> list[Path]:
+    ids = course_ids_by_path(root)
+    written: list[Path] = []
+    for result in results:
+        course_id = ids.get(result["path"]) or fallback_course_id(result["course"])
+        output = root / "docs" / "producao-cursos" / course_id / "course-dna.md"
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(render_markdown([result]).rstrip() + "\n", encoding="utf-8")
+        written.append(output)
+    return written
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Analisa o DNA dos cursos sem alterar o acervo")
     parser.add_argument("--repo-root", type=Path)
     parser.add_argument("--course", action="append", type=Path, dest="courses")
     parser.add_argument("--format", choices=("markdown", "json"), default="markdown")
     parser.add_argument("--include-archive", action="store_true")
+    parser.add_argument(
+        "--write",
+        action="store_true",
+        help="grava docs/producao-cursos/<id>/course-dna.md por curso",
+    )
     args = parser.parse_args()
 
     root = find_root(args.repo_root or Path.cwd())
@@ -252,6 +282,9 @@ def main() -> int:
         print(json.dumps(results, indent=2, ensure_ascii=False))
     else:
         print(render_markdown(results))
+    if args.write:
+        for output in write_reports(root, results):
+            print(f"report → {output.relative_to(root)}", file=sys.stderr)
     return 0
 
 
