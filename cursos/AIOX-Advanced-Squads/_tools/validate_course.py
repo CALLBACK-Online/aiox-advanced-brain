@@ -34,6 +34,23 @@ EXPECTED_SQUADS = [
     "squad-creator",
     "squad-creator-pro",
 ]
+ENTERPRISE_WORKSPACE_SQUADS = {
+    "advisory-board",
+    "aiox-sop",
+    "brand",
+    "conteudo",
+    "copy",
+    "data",
+    "design-ops",
+    "design-system",
+    "etl-ops",
+    "hormozi",
+    "slides-creator",
+    "squad-creator",
+    "squad-creator-pro",
+    "storytelling",
+}
+ENTERPRISE_SECTION = "## O que muda no AIOX Enterprise"
 REQUIRED_SECTIONS = [
     "## Resultado",
     "## Quando usar — e quando não usar",
@@ -114,6 +131,15 @@ for position, path in enumerate(squad_lesson_files, 1):
             errors.append(f"{path.name}: seção ausente {section}")
     if "## Pré-requisito no AIOX Advanced" not in text:
         errors.append(f"{path.name}: falta bloco Pré-requisito no AIOX Advanced")
+    has_enterprise_section = ENTERPRISE_SECTION in text
+    if data.get("squad") in ENTERPRISE_WORKSPACE_SQUADS and not has_enterprise_section:
+        errors.append(f"{path.name}: falta delta Enterprise conectado ao workspace")
+    if data.get("squad") not in ENTERPRISE_WORKSPACE_SQUADS and has_enterprise_section:
+        errors.append(f"{path.name}: delta Enterprise sem integração canônica de workspace")
+    if has_enterprise_section:
+        enterprise_delta = text.split(ENTERPRISE_SECTION, 1)[1].split("\n## ", 1)[0]
+        if "workspace" not in enterprise_delta.lower():
+            errors.append(f"{path.name}: delta Enterprise não explica a conexão com workspace")
 
 if actual_squads != EXPECTED_SQUADS:
     errors.append(f"ordem/cobertura de squads divergente: {actual_squads}")
@@ -159,6 +185,14 @@ print(
     f"{len(module_files)} módulos, {len(quiz_files)} quizzes"
 )
 print(f"Squads cobertos: {len([name for name in actual_squads if name])}/24")
+enterprise_deltas = sum(
+    ENTERPRISE_SECTION in path.read_text(encoding="utf-8")
+    for path in squad_lesson_files
+)
+print(
+    "Deltas Enterprise conectados ao workspace: "
+    f"{enterprise_deltas}/{len(ENTERPRISE_WORKSPACE_SQUADS)}"
+)
 print(f"Erros: {len(errors)}")
 for error in errors:
     print(f"ERROR {error}")

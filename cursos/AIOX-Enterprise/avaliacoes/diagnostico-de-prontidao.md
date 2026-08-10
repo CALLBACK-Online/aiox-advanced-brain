@@ -71,7 +71,7 @@ Complete em uma página:
 - **Operação atual:**
 - **Resultado que preciso sustentar:**
 - **O que já consigo construir com o Advanced:**
-- **O que preciso reconstruir a cada ciclo:**
+- **O que preciso reconstruir a cada ciclo** (Mapa do Custo de Reconstrução, aula 04):
 - **Evidência do impacto dessa fragmentação:**
 - **O que espero validar numa conversa Enterprise:**
 - **Decisão agora:** continuar construindo / preparar evidência / avaliar fit.

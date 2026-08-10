@@ -26,7 +26,7 @@ O Advanced encerra o **núcleo comum**. A próxima decisão depende do resultado
 
 Rotas de aplicação são cursos canônicos de primeira classe. Elas não formam uma fila obrigatória: escolha pelo gate e pelo artefato que precisa produzir.
 
-Depois de uma execução real com Advanced Squads, `cursos/AIOX-Enterprise/README.md` funciona como vitrine diagnóstica de continuidade — não como acesso aos componentes proprietários.
+Depois do Advanced e de uma execução real, `cursos/AIOX-Enterprise/README.md` funciona como vitrine diagnóstica de continuidade — não como acesso aos componentes proprietários.
 
 ## Navegação
 

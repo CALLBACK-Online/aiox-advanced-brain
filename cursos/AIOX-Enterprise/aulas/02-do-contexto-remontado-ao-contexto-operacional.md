@@ -13,11 +13,11 @@ canonical_scope: cursos/AIOX-Enterprise
 
 ## Resultado
 
-Ao final, você conseguirá explicar por que workspace não é uma pasta com mais documentos, mas uma forma de tornar contexto recorrente parte da operação.
+Ao final, você conseguirá explicar por que workspace vai além de uma pasta com documentos. Ele torna contexto recorrente parte da operação.
 
 ## O cenário
 
-Uma boa resposta de IA pode nascer de um briefing excelente. Uma operação consistente exige algo além: o que foi aprendido hoje precisa continuar disponível, distinguível e governável amanhã.
+Uma boa resposta de IA pode nascer de um briefing excelente. Uma operação consistente exige algo além. O aprendizado de hoje precisa continuar disponível, distinguível e governável amanhã.
 
 Sem essa continuidade, o trabalho costuma seguir este ciclo:
 
@@ -32,7 +32,7 @@ O problema não é a falta de documentos. É a ausência de uma relação operac
 
 ## O que muda no Enterprise
 
-No Enterprise, o workspace é a base organizada do negócio que alimenta a operação. Ele foi desenhado para que informações relevantes não dependam apenas da memória de uma conversa ou da habilidade de cada pessoa em localizar arquivos.
+No Enterprise, o workspace é a base organizada do negócio que alimenta a operação. Seu desenho reduz a dependência da memória de uma conversa ou da habilidade de localizar arquivos.
 
 Em alto nível, a mudança acontece em quatro movimentos:
 
@@ -56,9 +56,9 @@ Pense na diferença entre carregar uma mala para cada viagem e ter uma base onde
 
 ## O que não muda
 
-Contexto organizado não é contexto verdadeiro por definição. O operador continua responsável por qualidade dos insumos, conflitos, atualização das decisões e validação do que será usado.
+Contexto organizado não é contexto verdadeiro por definição. O operador continua responsável pela qualidade dos insumos, pelos conflitos, pela atualização das decisões e pelo uso final.
 
-Também não significa que toda integração imaginável está disponível. Capacidades e conexões dependem do escopo vigente e devem ser confirmadas oficialmente.
+Também não significa que toda integração imaginável está disponível. Capacidades e conexões dependem do escopo vigente. Confirme-as pelos canais oficiais.
 
 Esta aula descreve o papel do workspace; não entrega estrutura, esquema, arquivos ou procedimento de configuração.
 

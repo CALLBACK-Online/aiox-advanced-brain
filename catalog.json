@@ -142,12 +142,16 @@
     {
       "path": "cursos/AIOX-Enterprise",
       "source_repository": "this-library",
-      "source_assets": "public Enterprise positioning + readiness diagnosis",
+      "source_assets": "canonical Enterprise positioning, ICP, onboarding and adoption sources; public synthesis only",
       "created_at": "2026-08-10",
-      "markdown_files": 1,
+      "markdown_files": 18,
       "lessons": 7,
+      "modules": 3,
       "kind": "preview",
-      "title": "AIOX Enterprise — vitrine do próximo contexto",
+      "title": "AIOX Enterprise — Visão Operacional e Prontidão",
+      "unresolved_links": 0,
+      "links_outside_course": 0,
+      "external_links": 1,
       "agent_guide": "cursos/AIOX-Enterprise/AGENT-GUIDE.md"
     }
   ],
@@ -1078,9 +1082,9 @@
     "continuity_preview": {
       "course": "aiox-enterprise",
       "kind": "preview",
-      "entry_from": "aiox-advanced-squads",
-      "entry_gate": "ao menos uma execução real com squad e gargalo recorrente de integração, governança ou observabilidade",
-      "bridge": "cursos/AIOX-Advanced-Squads/README.md"
+      "entry_from": "aiox-advanced",
+      "entry_gate": "AIOX Advanced concluído ou em encerramento, ao menos uma execução real e gargalo recorrente de integração, governança ou observabilidade",
+      "bridge": "cursos/AIOX Advanced/ponte/trilhas-de-aplicacao.md"
     }
   },
   "courses": {
@@ -1199,11 +1203,13 @@
       "path": "cursos/AIOX-Enterprise",
       "kind": "preview",
       "lessons": 7,
+      "modules": 3,
       "duration_minutes": 30,
       "hub": "cursos/README.md",
-      "prerequisite": "cursos/AIOX-Advanced-Squads/README.md",
+      "prerequisite": "cursos/AIOX Advanced/README.md",
       "agent_guide": "cursos/AIOX-Enterprise/AGENT-GUIDE.md",
-      "entry_gate": "ao menos uma execução real com squad e gargalo recorrente de integração, governança ou observabilidade"
+      "assessment": "cursos/AIOX-Enterprise/avaliacoes/diagnostico-de-prontidao.md",
+      "entry_gate": "AIOX Advanced concluído ou em encerramento, ao menos uma execução real e gargalo recorrente de integração, governança ou observabilidade"
     }
   }
 }

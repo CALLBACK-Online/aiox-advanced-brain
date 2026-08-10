@@ -89,7 +89,7 @@ Se o pedido misturar estudo e execução, **ensine o mínimo necessário**, mont
    - Construção de agents, squads, workflows, runners, harness ou produção → `cursos/AIOX-Agent-Engineering/AGENT-GUIDE.md`.
    - UI, `DESIGN.md`, design system ou deriva visual → `cursos/AIOX-Design/AGENT-GUIDE.md`.
    - Oferta, ROI, distribuição ou monetização de capacidade comprovada → `cursos/AIOX-Productizacao/AGENT-GUIDE.md`.
-   - Prontidão para operação mantida depois de uso real de squads → `cursos/AIOX-Enterprise/AGENT-GUIDE.md`.
+   - Prontidão para operação mantida depois do Advanced + missão real → `cursos/AIOX-Enterprise/AGENT-GUIDE.md`.
    - Vault / Obsidian / MOC / notas de aula / “segundo cérebro” → `skills/aiox-brain/` e skills irmãs (abaixo).
    - Escolha ou uso de squad → `AGENT-GUIDE.md` + `agent-router.json`.
    - Tarefa estreita com skill óbvia → `skills/<nome>/SKILL.md`.
@@ -171,7 +171,7 @@ Isto **não** é o vault pessoal mentelendaria: sem paths de máquina, sem curad
    - `cursos/AIOX-Design/` — materializar sistema visual;
    - `cursos/AIOX-Productizacao/` — levar capacidade comprovada ao mercado.
 6. Combinar rotas somente quando a evidência de uma satisfizer o gate da próxima.
-7. Depois de operação real com Squads, usar `cursos/AIOX-Enterprise/README.md` apenas como vitrine de prontidão; nunca prometer que o runtime proprietário está neste acervo.
+7. Depois do Advanced e de uma missão real, usar `cursos/AIOX-Enterprise/README.md` apenas como vitrine de prontidão; nunca prometer que o runtime proprietário está neste acervo.
 
 ### Tom
 

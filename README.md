@@ -73,7 +73,7 @@ Você não escolhe pelo nome “mais avançado”. Escolhe pelo gargalo que prec
 |-------------|---------------|---------------------|
 | Ainda não instalou nem operou o Core com segurança | **AIOX Fundamentals** | Conclui o primeiro ciclo AIOX local com evidência |
 | Opera o básico, mas ainda não conduz o método de ponta a ponta | **AIOX Advanced** | Transforma intenção em sistema entregue, com SDC, gates e evidência |
-| Já constrói, mas a operação é fragmentada e difícil de manter | **AIOX Enterprise** | Opera contexto, execução e evolução sobre uma base integrada e mantida |
+| Já constrói, mas a operação é fragmentada e difícil de manter | [**AIOX Enterprise**](cursos/AIOX-Enterprise/README.md) | Opera contexto, execução e evolução sobre uma base integrada e mantida |
 
 **Fundamentos dá a base operacional. Advanced dá profundidade ao método. Enterprise dá o ambiente de produção.**
 
@@ -97,7 +97,7 @@ Na jornada educacional, [Introdução à Arquitetura de Sistemas](cursos/Introdu
 | **Curso design** | [AIOX Design](cursos/AIOX-Design/README.md) — **20 aulas**, **6 módulos**, **5 quizzes**, **20 questões**, capstone Storybook |
 | **Curso Productização** | [AIOX Productização](cursos/AIOX-Productizacao/README.md) — **6 aulas**, **3 módulos**, **2 quizzes**, **8 questões**, capstone |
 | **Curso squads** | [AIOX Advanced Squads](cursos/AIOX-Advanced-Squads/README.md) — **25 aulas** (intro + 1 por squad), **6 módulos**, **6 quizzes**, **24 questões** |
-| **Vitrine Enterprise** | [AIOX Enterprise — próximo contexto](cursos/AIOX-Enterprise/README.md) — **7 aulas diagnósticas**, sem componentes proprietários |
+| **Preview Enterprise** | [AIOX Enterprise — Visão Operacional e Prontidão](cursos/AIOX-Enterprise/README.md) — **7 aulas diagnósticas**, sem componentes proprietários |
 | **Mini Obsidian+IA** | [Obsidian + IA](cursos/Obsidian-IA/README.md) — **8 aulas**, ~90–120 min, gate de estudo na entrada + missão operacional depois do Core |
 | **Operação** | Mapas de decisão, briefings copiáveis, exemplos de ativação, exercícios, critérios de evidência |
 | **Agents (versionados)** | [AGENTS.md](AGENTS.md) · [CLAUDE.md](CLAUDE.md) · [guia de arquitetura](cursos/Introducao-a-Arquitetura-de-Sistemas/AGENT-GUIDE.md) · [guia do Core](cursos/AIOX-Fundamentals/AGENT-GUIDE.md) · [guia de Agent Engineering](cursos/AIOX-Agent-Engineering/AGENT-GUIDE.md) · [guia de design](cursos/AIOX-Design/AGENT-GUIDE.md) · [guia de Productização](cursos/AIOX-Productizacao/AGENT-GUIDE.md) · [guia de squads](cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md) · [guia Enterprise](cursos/AIOX-Enterprise/AGENT-GUIDE.md) |
@@ -250,8 +250,9 @@ AIOX Advanced (28 aulas de método)
         ├─ AIOX Agent Engineering — construir capacidade agentic
         ├─ AIOX Design — materializar sistema visual
         └─ AIOX Productização — levar capacidade comprovada ao mercado
-                              ↓ depois de operação real com Squads
-                    AIOX Enterprise — vitrine de prontidão
+
+AIOX Advanced + operação real + gargalo recorrente
+        └─ AIOX Enterprise — vitrine de prontidão
 ```
 
 As quatro primeiras etapas formam o núcleo comum. Os quatro cursos seguintes são rotas de aplicação canônicas: escolha uma ou combine várias conforme o gate e o artefato exigido pela missão.
@@ -589,7 +590,9 @@ Não. Este acervo permite estudar o método e adaptar assets ao seu projeto. O E
 Vá para o **AIOX Advanced** quando já conseguir instalar o Core, escolher o mecanismo correto e fechar uma story local com evidência reproduzível.
 
 **Qual é o próximo passo depois do Advanced?**
-Escolha a rota de aplicação pelo resultado: **Advanced Squads** para especialista publicado, **Agent Engineering** para capacidade própria, **Design** para sistema visual ou **Productização** para capacidade comprovada. Se o gargalo virou sustentar a base integrada, avalie o **AIOX Enterprise**.
+Escolha a rota de aplicação pelo resultado: **Advanced Squads** para especialista publicado, **Agent Engineering** para capacidade própria, **Design** para sistema visual ou **Productização** para capacidade comprovada.
+
+Se o gargalo virou sustentar a base integrada, faça o preview [AIOX Enterprise — Visão Operacional e Prontidão](cursos/AIOX-Enterprise/README.md).
 
 **O curso AIOX Enterprise entrega o produto Enterprise?**
 Não. A [vitrine AIOX Enterprise](cursos/AIOX-Enterprise/README.md) é um diagnóstico educacional. O runtime e os componentes proprietários continuam fora deste acervo.
@@ -603,7 +606,7 @@ Você passa de uma base montada e mantida por você para uma operação integrad
 **Como sei se chegou a hora do Enterprise?**
 Quando você já entrega com o Advanced, mas remontar contexto, integrações, gates e monitoramento virou parte relevante do custo de cada projeto. O sinal não é querer mais conteúdo; é precisar sustentar a operação com menos fragmentação.
 
-Veja a [comparação completa](JORNADA-AIOX.md) e confirme as condições na [página oficial](https://lp.aioxsquad.ai/enterprise).
+Veja a [comparação completa](JORNADA-AIOX.md), faça o [diagnóstico público de prontidão](cursos/AIOX-Enterprise/README.md) e confirme as condições na [página oficial](https://lp.aioxsquad.ai/enterprise).
 
 **Por que copiar skills em vez de rodar daqui?**
 Porque o destino canônico é o *seu* projeto/IDE. Este repo é fonte de distribuição; a execução usa o harness do projeto.

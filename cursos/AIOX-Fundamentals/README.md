@@ -109,7 +109,7 @@ Também não substitui **Introdução à Arquitetura de Sistemas**. Arquitetura 
 
 Depois do núcleo comum, a rota pode ser Advanced Squads, Agent Engineering, Design ou Productização conforme o resultado exigido.
 
-Depois de operação real com Squads, a vitrine AIOX Enterprise diagnostica se o próximo gargalo já é infraestrutura mantida.
+Depois do Advanced e de uma operação real, a vitrine AIOX Enterprise diagnostica se o próximo gargalo já é infraestrutura mantida.
 
 ## Próximo passo
 

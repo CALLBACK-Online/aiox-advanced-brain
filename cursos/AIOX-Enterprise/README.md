@@ -6,6 +6,7 @@ kind: preview
 status: canonical
 canonical_scope: cursos/AIOX-Enterprise
 lessons: 7
+modules: 3
 duration_minutes: 30
 tags: [curso, enterprise, preview, layer/curso]
 ---
@@ -34,21 +35,25 @@ Ao final, você conseguirá:
 - reunir evidências de prontidão para uma conversa sobre o Enterprise;
 - escolher entre avançar agora, preparar melhor a operação ou continuar extraindo valor do acervo público.
 
-## Trilha de 30 minutos
+## Trilha de 30 minutos em três módulos
 
-| # | Aula | Decisão que prepara |
-|---|------|---------------------|
-| 00 | [O que esta trilha é — e o que ela protege](aulas/00-o-que-esta-trilha-e.md) | Ler a experiência sem confundir descrição com acesso |
-| 01 | [O teto invisível depois do Advanced](aulas/01-o-teto-invisivel-depois-do-advanced.md) | Separar falta de domínio de custo de sustentação |
-| 02 | [Do contexto remontado ao contexto operacional](aulas/02-do-contexto-remontado-ao-contexto-operacional.md) | Entender por que workspace muda a continuidade |
-| 03 | [Quando os squads passam a operar como sistema](aulas/03-quando-os-squads-operam-como-sistema.md) | Enxergar integração além do inventário de squads |
-| 04 | [O que você deixa de reconstruir toda semana](aulas/04-o-que-voce-deixa-de-reconstruir.md) | Nomear o trabalho de cola que limita a operação |
-| 05 | [Prontidão: evidência antes de pressa](aulas/05-prontidao-evidencia-antes-de-pressa.md) | Qualificar o momento com fatos da própria operação |
-| 06 | [O primeiro passo, se houver fit](aulas/06-o-primeiro-passo-se-houver-fit.md) | Sair com uma decisão e uma próxima ação |
+- [Módulo 1 — Da competência ao gargalo](modulos/01-da-competencia-ao-gargalo.md)
+- [Módulo 2 — Operação como sistema](modulos/02-operacao-como-sistema.md)
+- [Módulo 3 — Prontidão e decisão](modulos/03-prontidao-e-decisao.md)
+
+| Módulo | # | Aula | Decisão que prepara |
+|--------|---|------|---------------------|
+| M1 | 00 | [O que esta trilha é — e o que ela protege](aulas/00-o-que-esta-trilha-e.md) | Ler a experiência sem confundir descrição com acesso |
+| M1 | 01 | [O teto invisível depois do Advanced](aulas/01-o-teto-invisivel-depois-do-advanced.md) | Separar falta de domínio de custo de sustentação |
+| M2 | 02 | [Do contexto remontado ao contexto operacional](aulas/02-do-contexto-remontado-ao-contexto-operacional.md) | Entender por que workspace muda a continuidade |
+| M2 | 03 | [Quando os squads passam a operar como sistema](aulas/03-quando-os-squads-operam-como-sistema.md) | Enxergar integração além do inventário de squads |
+| M2 | 04 | [O que você deixa de reconstruir toda semana](aulas/04-o-que-voce-deixa-de-reconstruir.md) | Nomear o trabalho de cola que limita a operação |
+| M3 | 05 | [Prontidão: evidência antes de pressa](aulas/05-prontidao-evidencia-antes-de-pressa.md) | Qualificar o momento com fatos da própria operação |
+| M3 | 06 | [O primeiro passo, se houver fit](aulas/06-o-primeiro-passo-se-houver-fit.md) | Sair com uma decisão e uma próxima ação |
 
 ## Pré-requisito real
 
-Esta trilha faz sentido depois do **AIOX Advanced**, de preferência com o Capstone concluído e uma execução real no seu negócio ou para um cliente. O requisito não é colecionar aulas. É ter operação suficiente para comparar dois cenários:
+Esta trilha faz sentido depois do **AIOX Advanced**, de preferência com o Capstone concluído. Você também precisa de uma execução real no seu negócio ou para um cliente. O requisito não é colecionar aulas. É ter operação suficiente para comparar dois cenários:
 
 - o que você já consegue construir;
 - o que ainda precisa remontar para continuar construindo.
@@ -59,6 +64,7 @@ Se você ainda está aprendendo a conduzir uma missão de ponta a ponta, o Advan
 
 - [Diagnóstico de prontidão](avaliacoes/diagnostico-de-prontidao.md)
 - [FAQ do AIOX Enterprise](FAQ.md)
+- [Recursos de decisão](RECURSOS.md)
 - [Proveniência e limites editoriais](PROVENIENCIA.md)
 
 ## Regra de honestidade

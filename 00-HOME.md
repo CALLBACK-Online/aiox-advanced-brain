@@ -62,7 +62,7 @@ Assim só entra a camada de conhecimento: cursos, READMEs, entradas, skills, not
 
 ### Continuidade
 
-- [[cursos/AIOX-Enterprise/README|AIOX Enterprise — vitrine de prontidão]]
+- [[cursos/AIOX-Enterprise/README|AIOX Enterprise — Visão Operacional e Prontidão]]
 
 ### Apoio do vault
 
@@ -81,7 +81,7 @@ Arquitetura e AIOX Fundamentals são etapas diferentes: linguagem técnica unive
 
 Depois do Advanced, escolha a rota pelo resultado: [[cursos/AIOX-Advanced-Squads/README|Squads]] para especialistas publicados, [[cursos/AIOX-Agent-Engineering/README|Agent Engineering]] para capacidade própria, [[cursos/AIOX-Design/README|Design]] para sistema visual ou [[cursos/AIOX-Productizacao/README|Productização]] para mercado. As rotas podem ser combinadas; não formam uma fila obrigatória.
 
-Depois de operação real com Squads, use [[cursos/AIOX-Enterprise/README|AIOX Enterprise — vitrine]] para diagnosticar se o gargalo já pede infraestrutura mantida.
+Depois do Advanced e de uma operação real, observe se sustentar a base virou o novo gargalo. Use [[cursos/AIOX-Enterprise/README|AIOX Enterprise — Visão Operacional e Prontidão]] para fazer esse diagnóstico.
 
 ## Loop
 

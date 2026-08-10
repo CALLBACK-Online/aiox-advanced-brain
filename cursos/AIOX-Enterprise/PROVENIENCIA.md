@@ -9,7 +9,7 @@ canonical_scope: cursos/AIOX-Enterprise
 
 ## Base factual
 
-Esta trilha foi sintetizada a partir das fontes canônicas do AIOX e do AIOX Enterprise:
+Esta trilha sintetiza as fontes canônicas do AIOX e do AIOX Enterprise:
 
 - identidade e princípios de comunicação da marca;
 - ICP geral do AIOX e ICP específico do Enterprise;
@@ -28,7 +28,7 @@ Essas fontes sustentam quatro afirmações públicas usadas ao longo do curso:
 
 Foram excluídos preços, quantidades de componentes, comparações de mercado, métricas de ativação, prazos garantidos e promessas de resultado. Mesmo quando aparecem em materiais internos, esses dados podem mudar ou exigir comprovação adicional.
 
-Também foram removidos nomes, comandos, estruturas, paths e sequências do ambiente privado. O objetivo é explicar o valor da integração, não publicar um mapa de implementação.
+Também removemos nomes, comandos, estruturas, paths e sequências do ambiente privado. O objetivo é explicar o valor da integração, não publicar um mapa de implementação.
 
 ## Status editorial
 

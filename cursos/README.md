@@ -46,7 +46,7 @@ No GitHub ou em editores genéricos os arquivos abrem, mas o grafo de ~2.000 lin
 | **AIOX Agent Engineering** | Rota de aplicação: projetar, construir, orquestrar e operar capacidades agentic | `cursos/AIOX-Agent-Engineering/README.md` |
 | **AIOX Design** | Rota de aplicação: repertório → contrato → Storybook → governança e prova visual | `cursos/AIOX-Design/README.md` |
 | **AIOX Productização** | Rota de aplicação: capacidade comprovada → oferta, distribuição, formato e monetização | `cursos/AIOX-Productizacao/README.md` |
-| **AIOX Enterprise — vitrine** | Continuidade: diagnosticar se a operação já pede infraestrutura mantida | `cursos/AIOX-Enterprise/README.md` |
+| **AIOX Enterprise — Visão Operacional e Prontidão** | Preview: diagnosticar se a operação já pede infraestrutura mantida | `cursos/AIOX-Enterprise/README.md` |
 
 ## Jornada completa: núcleo comum + rotas de aplicação
 
@@ -66,7 +66,7 @@ Depois do núcleo comum, escolha uma ou combine rotas de aplicação:
 
 Esses quatro cursos são partes canônicas da jornada atual. Eles não formam uma fila universal: o gate da missão decide a rota. Agent Engineering pode levar a Productização; Agent Engineering, Design e Productização podem terminar em Squads quando a execução pedir especialistas publicados.
 
-Depois de ao menos uma execução real com Squads, a **vitrine AIOX Enterprise** ajuda a decidir se integração, governança e observabilidade recorrentes já justificam uma operação mantida. É diagnóstico, não entrega dos componentes proprietários.
+Depois do Advanced e de uma execução real, o **preview AIOX Enterprise** ajuda a decidir se a operação já pede uma base mantida. Ele diagnostica integração, governança e observabilidade recorrentes. Não entrega componentes proprietários.
 
 **Fronteira Agent Engineering × Productização (1 página):** `cursos/MOC-Agent-Engineering-vs-Productizacao.md` — o que não misturar entre capacidade técnica e mercado.
 
@@ -82,9 +82,9 @@ Há três momentos na jornada de produto:
 - **Advanced:** transformar intenção em sistema entregue, com método, contexto, SDC e gates.
 - **Enterprise:** operar com infraestrutura proprietária mantida quando integrar e sustentar a base de produção já virou o gargalo.
 
-Os cursos deste acervo desenvolvem as duas primeiras capacidades. O Enterprise não é um curso com mais módulos: é o próximo contexto operacional para quem já constrói e precisa reduzir fragmentação, governar a execução e acompanhar a evolução do sistema.
+Os oito cursos formativos deste acervo desenvolvem as duas primeiras capacidades. O Enterprise não é um curso com mais módulos. É o próximo contexto para quem já constrói e precisa sustentar a operação com menos fragmentação.
 
-[Compare as três etapas e diagnostique o seu próximo passo](../JORNADA-AIOX.md).
+[Compare as três etapas](../JORNADA-AIOX.md) e faça o preview [AIOX Enterprise — Visão Operacional e Prontidão](AIOX-Enterprise/README.md).
 
 ## Contratos de passagem
 
@@ -101,7 +101,7 @@ Os cursos deste acervo desenvolvem as duas primeiras capacidades. O Enterprise n
 | Agent Engineering / Design → Advanced Squads | a missão pede um especialista publicado para continuar | briefing específico + limites da capacidade ou do sistema visual |
 | Productização → Advanced Squads | oferta e experimento pedem execução comercial especializada | decision pack + hipótese + canal + critério de parada |
 | Advanced Squads → operação recorrente | escolhe e opera especialistas sem confundir orientação com runtime | routing decision + artefatos + validation report + retrospectiva reutilizável |
-| Advanced Squads → vitrine Enterprise | já executou missão real e o gargalo passou a ser recorrência, integração ou governança | retrospectiva + custo operacional + decisão de prontidão |
+| Advanced + operação real → vitrine Enterprise | o gargalo passou de aprendizagem para recorrência, integração ou governança | retrospectiva + custo operacional + decisão de prontidão |
 
 ## Matriz método → rota de aplicação → operação
 

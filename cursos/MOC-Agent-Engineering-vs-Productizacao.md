@@ -115,7 +115,7 @@ Obsidian-IA → Arquitetura → Fundamentals → Advanced
                               ├─ Agent Engineering — capacidade em produção
                               ├─ Design — contrato visual
                               └─ Productização — oferta e mercado
-Squads + operação real → Enterprise — vitrine de prontidão
+Advanced + operação real → Enterprise — vitrine de prontidão
 ```
 
 Entrada típica em Productização: **depois** de ter capacidade + evidência (AE ou Advanced + prática real).

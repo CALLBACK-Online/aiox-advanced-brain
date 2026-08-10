@@ -38,7 +38,9 @@ As quatro rotas pertencem à jornada atual. Escolha pelo gate da missão; combin
 
 ## Continuidade
 
-- [[cursos/AIOX-Enterprise/README|AIOX Enterprise — vitrine]] — diagnóstico de prontidão depois de operação real com Squads; não contém o runtime proprietário
+- [[cursos/AIOX-Enterprise/README|AIOX Enterprise — Visão Operacional e Prontidão]] — diagnóstico depois do Advanced + operação real; não contém o runtime proprietário
+
+Paths para agentes: `cursos/AIOX-Enterprise/README.md` · `cursos/AIOX-Enterprise/AGENT-GUIDE.md`.
 
 ## Mapas
 

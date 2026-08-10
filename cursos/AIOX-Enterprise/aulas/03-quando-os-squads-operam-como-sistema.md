@@ -19,6 +19,8 @@ Ao final, você conseguirá distinguir **ter vários squads** de **operar uma ca
 
 Um inventário grande impressiona, mas não resolve integração. Você pode ter um excelente especialista de pesquisa, outro de marca, outro de copy e outro de design. Se cada um começa do zero, você ainda é a ponte manual entre todos eles.
 
+Talvez você já opere três cadeias com os squads públicos deste acervo. **Brand → copy → conteúdo** transforma posicionamento em peça e peça em calendário. **ETL Ops → data** transforma extração em análise e análise em decisão. **Research → advisory board** converte evidência em deliberação. Em todas, a inteligência que conecta um elo ao outro tem um nome: a sua agenda.
+
 Na prática, a sequência costuma exigir que alguém:
 
 - escolha qual versão do contexto vale;

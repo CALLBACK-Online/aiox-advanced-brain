@@ -30,7 +30,7 @@ flowchart LR
     E --> S
     D --> S
     P --> S
-    S --> Q["AIOX Enterprise<br/>vitrine de prontidão"]
+    X -. "operação real + gargalo recorrente" .-> Q["AIOX Enterprise<br/>vitrine de prontidão"]
 ```
 
 | Curso | Responsabilidade exclusiva | Evidência de passagem |
@@ -43,7 +43,7 @@ flowchart LR
 | [AIOX Agent Engineering](cursos/AIOX-Agent-Engineering/README.md) | Construir, orquestrar e operar capacidade agentic própria | Capacidade executável com contrato, gates e limites |
 | [AIOX Design](cursos/AIOX-Design/README.md) | Materializar contrato visual e governança de interface | DESIGN.md + catálogo + Storybook + ciclo visual |
 | [AIOX Productização](cursos/AIOX-Productizacao/README.md) | Transformar capacidade comprovada em oferta e experimento | Decision pack + hipótese, canal, métrica e critério de parada |
-| [AIOX Enterprise — vitrine](cursos/AIOX-Enterprise/README.md) | Diagnosticar prontidão para uma operação mantida sem prometer os componentes proprietários | Decisão sustentada por evidência + próximo passo |
+| [AIOX Enterprise — Visão Operacional e Prontidão](cursos/AIOX-Enterprise/README.md) | Diagnosticar prontidão para uma operação mantida sem prometer os componentes proprietários | Decisão sustentada por evidência + próximo passo |
 
 **Arquitetura não é AIOX Fundamentals.** A primeira ensina a compreender qualquer sistema; o segundo ensina a operar o framework AIOX. Diagnósticos permitem encurtar uma etapa já dominada, mas não alteram essa ordem conceitual.
 
@@ -54,13 +54,13 @@ flowchart LR
 - [AIOX Design](cursos/AIOX-Design/README.md) — estabelecer contrato visual e qualidade de interface.
 - [AIOX Productização](cursos/AIOX-Productizacao/README.md) — transformar capacidade comprovada em oferta e experimento de mercado.
 
-As quatro rotas são cursos canônicos, mas não formam uma sequência obrigatória. Escolha pelo gate de entrada e pelo artefato necessário. Agent Engineering pode levar a Productização; as rotas podem convergir em Squads quando a execução pedir especialistas publicados. A vitrine Enterprise só ganha matéria-prima depois de operação real.
+As quatro rotas são cursos canônicos, mas não formam uma sequência obrigatória. Escolha pelo gate de entrada e pelo artefato necessário. Agent Engineering pode levar a Productização; as rotas podem convergir em Squads quando a execução pedir especialistas publicados. A vitrine Enterprise exige Advanced e matéria-prima de uma operação real.
 
 ## Jornada de oferta — três momentos
 
 > **Primeiro ciclo → construção avançada → operação mantida.**
 
-Você não escolhe pelo nome “mais avançado”. Escolhe pela capacidade que precisa desenvolver — ou pela operação que precisa colocar de pé agora. Os nove cursos pertencem à jornada educacional; a vitrine Enterprise explica um nível comercial existente, não cria outro.
+Você não escolhe pelo nome “mais avançado”. Escolhe pela capacidade que precisa desenvolver — ou pela operação que precisa colocar de pé agora. O acervo reúne oito cursos formativos e um preview Enterprise; o preview explica um nível comercial existente, não cria outro.
 
 ## A diferença em 30 segundos
 
@@ -68,7 +68,7 @@ Você não escolhe pelo nome “mais avançado”. Escolhe pela capacidade que p
 |-------|---------|----------------------|---------------------|
 | **AIOX Fundamentals** | Formação operacional no `aiox-core` | “Como instalo, escolho um agent e concluo o primeiro ciclo com evidência?” | Você instala/audita o Core, conhece os 12 agents e conduz uma story local. |
 | **AIOX Advanced** | Formação prática no método AIOX | “Como transformo uma intenção em um sistema entregue?” | Você aprende a conduzir contexto, SDC, determinismo, brownfield, gates e evidência. |
-| **AIOX Enterprise** | Assinatura de operação e infraestrutura proprietária | “Como coloco isso para operar no meu negócio com ativos de produção, governança e evolução contínua?” | Você recebe o ambiente de produção mantido, em vez de precisar montar cada camada sozinho. |
+| **AIOX Enterprise** | Sistema de produção mantido, com onboarding e acompanhamento contínuo | “Como coloco isso para operar no meu negócio com ativos de produção, governança e evolução contínua?” | Você recebe o ambiente de produção mantido, em vez de precisar montar cada camada sozinho. |
 
 **Atalho mental:** Fundamentals dá o Core. Advanced dá profundidade ao método. Enterprise dá o ambiente de produção.
 
@@ -150,7 +150,9 @@ Você transforma uma intenção em sistema entregue. A evidência é um artefato
 
 ### Próximo passo
 
-Conclua as 28 aulas e o Capstone; depois escolha **Squads**, **Agent Engineering**, **Design** ou **Productização** pelo gate da missão. Quando a operação já se repete e o gargalo vira infraestrutura mantida, avalie o **AIOX Enterprise**.
+Conclua as 28 aulas e o Capstone. Depois, escolha **Squads**, **Agent Engineering**, **Design** ou **Productização** pelo gate da missão.
+
+Se a operação se repete e o gargalo vira infraestrutura mantida, faça o preview [AIOX Enterprise — Visão Operacional e Prontidão](cursos/AIOX-Enterprise/README.md).
 
 ## A virada: por que o Enterprise não é “Advanced 2”
 
@@ -158,7 +160,7 @@ O Advanced desenvolve a sua capacidade de construir. O Enterprise acrescenta **c
 
 No Advanced, você aprende o playbook. No Enterprise, conecta o seu negócio a uma base de produção que continua evoluindo.
 
-Entrar no Enterprise sem clareza não elimina a confusão. Apenas coloca a confusão dentro de um sistema mais potente. Por isso, prontidão importa mais do que pressa.
+Entrar no Enterprise sem clareza não elimina a confusão. Apenas coloca a confusão dentro de uma operação mais complexa. Por isso, prontidão importa mais do que pressa.
 
 ## 3. AIOX Enterprise — operar com infraestrutura mantida
 
@@ -199,7 +201,7 @@ O Enterprise ganha valor quando o custo de coordenar a operação já supera o e
 - você consegue nomear o resultado de negócio que quer sustentar;
 - o gargalo está em integração, governança, observabilidade e evolução, não em entender os fundamentos.
 
-Quanto mais respostas forem positivas, menos provável que apenas outro curso resolva o problema. Use a conversa sobre o Enterprise para validar aderência, escopo e condições; se essas respostas ainda forem vagas, extraia mais evidência no Capstone e nos squads antes de avançar.
+Quanto mais respostas forem positivas, menos provável que apenas outro curso resolva o problema. Use a conversa sobre o Enterprise para validar aderência, escopo e condições. Se as respostas ainda forem vagas, extraia mais evidência no Capstone e nos squads.
 
 ### O Enterprise não é
 
@@ -208,7 +210,7 @@ Quanto mais respostas forem positivas, menos provável que apenas outro curso re
 - requisito para estudar ou usar este repositório público;
 - licença para redistribuir componentes proprietários.
 
-O código do Enterprise **não está neste acervo público**. Elegibilidade, duração, vagas e condições podem mudar; consulte a [página oficial](https://lp.aioxsquad.ai/enterprise).
+O código do Enterprise **não está neste acervo público**. Use a [trilha de visão operacional e prontidão](cursos/AIOX-Enterprise/README.md) para preparar a decisão. Elegibilidade, duração, vagas e condições podem mudar; consulte a [página oficial](https://lp.aioxsquad.ai/enterprise).
 
 ## Para quem é cada etapa
 
@@ -256,7 +258,9 @@ Não. O acervo público permite estudar o método e adaptar assets ao seu projet
 
 ### Qual é o próximo passo depois do Advanced?
 
-Conclua o Capstone e escolha a rota de aplicação: **Advanced Squads** para especialistas publicados, **Agent Engineering** para capacidade própria, **Design** para sistema visual ou **Productização** para uma capacidade comprovada. Se o gargalo virou infraestrutura recorrente, avalie o Enterprise.
+Conclua o Capstone e escolha a rota de aplicação pelo resultado. Use **Advanced Squads**, **Agent Engineering**, **Design** ou **Productização** conforme a missão.
+
+Se o gargalo virou infraestrutura recorrente, faça o [preview Enterprise](cursos/AIOX-Enterprise/README.md).
 
 ### Como sei se chegou a hora do Enterprise?
 
@@ -271,7 +275,8 @@ Quando você consegue entregar com o Advanced, mas contexto, integrações, gate
 - **Quero construir uma capacidade agentic própria:** [AIOX Agent Engineering](cursos/AIOX-Agent-Engineering/README.md).
 - **Quero materializar um sistema visual governável:** [AIOX Design](cursos/AIOX-Design/README.md).
 - **Quero levar uma capacidade comprovada ao mercado:** [AIOX Productização](cursos/AIOX-Productizacao/README.md).
-- **Quero diagnosticar prontidão para uma operação mantida:** [AIOX Enterprise — vitrine](cursos/AIOX-Enterprise/README.md).
-- **Já construo; quero avaliar se minha operação pede uma base mantida:** [AIOX Enterprise](https://lp.aioxsquad.ai/enterprise).
+- **Quero diagnosticar prontidão para uma operação mantida:** [AIOX Enterprise — Visão Operacional e Prontidão](cursos/AIOX-Enterprise/README.md).
+
+Se o diagnóstico indicar fit, confirme escopo e condições na [página oficial](https://lp.aioxsquad.ai/enterprise).
 
 O critério não é o número de certificados. É a distância entre o que você consegue operar hoje e o resultado que precisa sustentar amanhã.

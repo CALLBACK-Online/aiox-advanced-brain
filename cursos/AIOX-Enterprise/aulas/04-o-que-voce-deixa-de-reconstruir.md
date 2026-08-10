@@ -13,7 +13,7 @@ canonical_scope: cursos/AIOX-Enterprise
 
 ## Resultado
 
-Ao final, você conseguirá nomear o trabalho de cola que uma base mantida pode reduzir e separar isso de promessas irreais de “operação sem trabalho”.
+Ao final, você conseguirá nomear o trabalho de cola que uma base mantida pode reduzir. Também separará esse efeito de promessas irreais de “operação sem trabalho”.
 
 ## O cenário
 
@@ -46,7 +46,9 @@ Uma base mantida não promete que todas essas tarefas desapareçam. Ela muda qua
 
 A frase importante é “direção do Enterprise”. O efeito concreto depende do contexto, da configuração, do uso e das capacidades vigentes. A honestidade não reduz o benefício; ajuda a avaliá-lo pelo trabalho que realmente existe na sua semana.
 
-O desejo mais maduro nasce quando você olha para uma tarefa repetida e pensa: “eu sei fazer isso, mas não deveria precisar reconstruir a base para fazê-lo de novo”.
+Há um efeito menos visível na linha “Verificar”: critério que mora no ambiente não depende do seu estado. Hoje, quem decide se o gate roda na semana apertada é você, cansado, às 23h. Quando verificação e evidência são parte do fluxo, o dia ruim entrega com a mesma régua do dia bom.
+
+O desejo mais maduro nasce quando você olha para uma tarefa repetida e pensa: “eu sei fazer isso”. A pergunta seguinte é: “preciso mesmo reconstruir a base para fazer de novo?”.
 
 ## O que não muda
 
@@ -64,7 +66,7 @@ Depois pergunte:
 - ela acontece por exceção ou por padrão?
 - quem fica impedido de avançar enquanto ela não termina?
 
-Você terá um mapa mais confiável do valor potencial de uma base mantida.
+Esse registro é o seu **Mapa do Custo de Reconstrução** — a leitura mais confiável do valor potencial de uma base mantida. Leve-o para o [diagnóstico de prontidão](../avaliacoes/diagnostico-de-prontidao.md).
 
 ## Navegação
 

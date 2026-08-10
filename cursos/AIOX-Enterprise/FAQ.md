@@ -29,7 +29,7 @@ Não necessariamente. O sinal mais importante é ter uma execução real e conse
 
 ## O que entra a mais no Enterprise?
 
-Na oferta atual, a diferença está no ambiente integrado: acesso privado ao sistema de produção, Dashboard Enterprise, workspace do negócio, capacidades de produção, governança, visibilidade da execução, atualizações e acompanhamento. Disponibilidade e condições devem ser confirmadas na página oficial.
+Na oferta atual, a diferença está no ambiente integrado: acesso privado ao sistema de produção, Dashboard Enterprise e workspace do negócio. A experiência também reúne capacidades de produção, governança, visibilidade da execução, atualizações e acompanhamento. Confirme disponibilidade e condições na página oficial.
 
 ## Consigo reconstruir o Enterprise seguindo estas aulas?
 

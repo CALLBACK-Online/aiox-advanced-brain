@@ -8,6 +8,19 @@ duration_minutes: 30
 audience: "Operadores pós-Advanced com ao menos uma execução real"
 promise: "Diagnosticar se o próximo gargalo é aprendizagem ou operação mantida"
 implementation_boundary: "Descrever a experiência sem entregar acesso, arquivos, comandos ou arquitetura reproduzível"
+modules:
+  - position: 1
+    id: da-competencia-ao-gargalo
+    title: "Da competência ao gargalo"
+    lessons: [0, 1]
+  - position: 2
+    id: operacao-como-sistema
+    title: "Operação como sistema"
+    lessons: [2, 3, 4]
+  - position: 3
+    id: prontidao-e-decisao
+    title: "Prontidão e decisão"
+    lessons: [5, 6]
 lessons:
   - position: 0
     id: o-que-esta-trilha-e

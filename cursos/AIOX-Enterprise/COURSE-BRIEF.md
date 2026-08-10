@@ -17,12 +17,12 @@ Criar uma trilha pública de visão operacional e prontidão após o AIOX Advanc
 - **Formato:** preview educacional e diagnóstico.
 - **Não é:** formação Enterprise, onboarding privado, documentação técnica ou demonstração reproduzível.
 - **Duração:** aproximadamente 30 minutos.
-- **Estrutura:** sete aulas curtas, um diagnóstico e um FAQ.
+- **Estrutura:** três módulos, sete aulas curtas, um diagnóstico, um FAQ e um mapa de recursos.
 - **Estado de aprovação:** direção aprovada pelo usuário nesta conversa.
 
 ## Público primário
 
-Operador que concluiu ou está encerrando o AIOX Advanced, já realizou uma missão real e percebe que o custo de manter contexto, integrações, gates e visibilidade começa a limitar a próxima entrega.
+Operador que concluiu ou está encerrando o AIOX Advanced e já realizou uma missão real. Essa pessoa percebe que sustentar contexto, integrações, gates e visibilidade começa a limitar a próxima entrega.
 
 O leitor já conhece a solução AIOX. Sua dúvida não é “o que é IA?”, mas “meu próximo gargalo se resolve com mais estudo ou com um ambiente operacional mantido?”.
 
@@ -88,7 +88,7 @@ A trilha não pode revelar:
 
 ## Critérios de sucesso
 
-- Sete aulas em sequência e com navegação interna íntegra.
+- Três módulos e sete aulas em sequência, com navegação interna íntegra.
 - Toda aula contém resultado, cenário, mudança, limite e portão de diagnóstico.
 - Nenhum comando, path privado ou instrução de implementação.
 - Diagnóstico sem pontuação arbitrária apresentada como critério oficial.

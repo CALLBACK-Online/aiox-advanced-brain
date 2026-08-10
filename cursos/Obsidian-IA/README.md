@@ -82,7 +82,7 @@ AIOX Advanced — aplicar o método
         ├─ AIOX Agent Engineering — capacidade agentic
         ├─ AIOX Design — sistema visual
         └─ AIOX Productização — oferta e mercado
-        Advanced Squads + operação real → AIOX Enterprise — vitrine de prontidão
+Advanced + operação real + gargalo recorrente → AIOX Enterprise — vitrine de prontidão
 ```
 
 Quem já domina Obsidian pode validar o gate de entrada e seguir. Reabra este mini **em paralelo** às outras etapas sempre que captura, MOC, Context Brief ou retorno ao vault virarem gargalo.

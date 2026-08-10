@@ -25,7 +25,7 @@
     ".obsidian/graph.aiox-brain.audit.json"
   ],
   "scripts": {
-    "validate": "python3 \"cursos/AIOX Advanced/_tools/validate_course.py\" && python3 \"cursos/Introducao-a-Arquitetura-de-Sistemas/_tools/validate_course.py\" && python3 \"cursos/AIOX-Fundamentals/_tools/validate_course.py\" && python3 \"cursos/AIOX-Agent-Engineering/_tools/validate_course.py\" && python3 \"cursos/AIOX-Design/_tools/validate_course.py\" && python3 \"cursos/AIOX-Productizacao/_tools/validate_course.py\" && python3 \"cursos/AIOX-Advanced-Squads/_tools/validate_course.py\" && python3 \"cursos/Obsidian-IA/_tools/validate_course.py\" && python3 \"cursos/_tools/validate_learning_journey.py\" && node \"cursos/AIOX-Advanced-Squads/_tools/validate-agent-routing.mjs\"",
+    "validate": "python3 \"cursos/AIOX Advanced/_tools/validate_course.py\" && python3 \"cursos/Introducao-a-Arquitetura-de-Sistemas/_tools/validate_course.py\" && python3 \"cursos/AIOX-Fundamentals/_tools/validate_course.py\" && python3 \"cursos/AIOX-Agent-Engineering/_tools/validate_course.py\" && python3 \"cursos/AIOX-Design/_tools/validate_course.py\" && python3 \"cursos/AIOX-Productizacao/_tools/validate_course.py\" && python3 \"cursos/AIOX-Advanced-Squads/_tools/validate_course.py\" && python3 \"cursos/Obsidian-IA/_tools/validate_course.py\" && python3 \"cursos/AIOX-Enterprise/_tools/validate_course.py\" && python3 \"cursos/_tools/validate_learning_journey.py\" && node \"cursos/AIOX-Advanced-Squads/_tools/validate-agent-routing.mjs\"",
     "smoke:routing:runtimes": "node \"cursos/AIOX-Advanced-Squads/_tools/smoke-agent-runtimes.mjs\""
   }
 }

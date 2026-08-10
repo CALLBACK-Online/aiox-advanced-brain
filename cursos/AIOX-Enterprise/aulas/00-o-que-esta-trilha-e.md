@@ -23,7 +23,7 @@ Essa expectativa está errada por uma razão simples: o Enterprise não é a con
 
 Por isso, esta trilha tem uma função mais precisa. Ela mostra:
 
-- o tipo de gargalo que o Enterprise foi desenhado para enfrentar;
+- o tipo de gargalo que o Enterprise enfrenta;
 - a mudança operacional criada por contexto, execução e governança integrados;
 - as evidências que tornam uma conversa sobre o produto útil.
 
@@ -39,7 +39,7 @@ Imagine três níveis de contato com um avião:
 
 Esta trilha ocupa o primeiro nível. O onboarding privado ocupa o segundo. O terceiro não faz parte da proposta pública.
 
-Essa fronteira não enfraquece o conteúdo. Ela torna a promessa honesta. Em vez de uma amostra artificial de arquivos, você recebe o que precisa antes de decidir: uma visão do destino, do tipo de operação e das responsabilidades que continuam sendo suas.
+Essa fronteira não enfraquece o conteúdo. Ela torna a promessa honesta. Em vez de uma amostra artificial de arquivos, você recebe uma visão do destino e do tipo de operação. Também enxerga quais responsabilidades continuam sendo suas.
 
 O primeiro contraste já pode ser feito:
 

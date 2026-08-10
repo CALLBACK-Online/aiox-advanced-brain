@@ -24,10 +24,21 @@ O curso possuía apenas um README que anunciava sete aulas inexistentes. O posic
 | Sem proteção automatizada de propriedade intelectual | Regressão futura | Validador bloqueia comandos, paths, componentes privados e links quebrados |
 | Curso fora da navegação e da validação global | Descoberta e manutenção frágeis | Catálogo, hubs, guias de agentes e comando global integrados |
 
-## Estado final esperado
+## Estado final confirmado
 
 - Trilha completa e autocontida.
 - Benefícios sustentados pelas fontes canônicas do produto.
 - Nenhuma instrução reproduzível do Enterprise.
 - Decisão comercial subordinada ao diagnóstico e à oferta vigente.
 - Validação específica e global com zero erros.
+
+## Fechamento dos gates
+
+- Currículo: 3/3 módulos, 7/7 aulas, 30 minutos.
+- Materiais de decisão: brief, diagnóstico, FAQ, recursos e proveniência presentes.
+- Copy editorial: 100/100, sem erros ou avisos na trilha.
+- Proteção de propriedade intelectual: contrato anti-vazamento ativo, zero ocorrências.
+- Aulas de squads com conexão canônica ao workspace: 14/14 com delta Enterprise.
+- Navegação, catálogo, links e validação global do acervo: zero erros.
+
+**Progresso: 100%.**

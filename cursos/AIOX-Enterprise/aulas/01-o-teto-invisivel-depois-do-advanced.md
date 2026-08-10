@@ -24,9 +24,11 @@ Então aparece um teto menos visível. Você consegue construir, mas antes de ca
 - localizar ou reexplicar decisões anteriores;
 - reunir contexto espalhado;
 - conectar saídas produzidas em momentos diferentes;
-- conferir se os mesmos critérios foram aplicados;
+- confirmar a aplicação dos mesmos critérios;
 - atualizar a base sem romper o que já funcionava;
 - reconstruir visibilidade sobre o que aconteceu.
+
+E o padrão cresce com o sucesso: quanto mais você constrói, mais você reconstrói.
 
 Nada disso prova que o Advanced falhou. Pelo contrário: só percebe esse teto quem já construiu o suficiente para enxergar o que existe depois da primeira entrega.
 
@@ -69,6 +71,8 @@ Escolha uma entrega recente e registre:
 - quanto contexto precisou ser remontado;
 - quantas passagens entre partes exigiram intervenção manual;
 - qual manutenção ficou pendente depois da entrega.
+
+Feche com um número: some as horas da última semana gastas nessas tarefas de sustentação e compare com as horas de construção nova. Quando a sustentação ganha, o teto deixou de ser hipótese.
 
 Se você ainda não tem uma entrega para analisar, volte ao Advanced. Se o padrão se repete em missões reais, você encontrou matéria-prima para avaliar o Enterprise.
 

@@ -135,8 +135,8 @@ def main() -> int:
         errors.append("vitrine de continuidade divergente")
     if continuity_preview.get("kind") != "preview":
         errors.append("vitrine de continuidade deve declarar kind=preview")
-    if continuity_preview.get("entry_from") != "aiox-advanced-squads":
-        errors.append("vitrine de continuidade deve partir de Advanced Squads")
+    if continuity_preview.get("entry_from") != "aiox-advanced":
+        errors.append("vitrine de continuidade deve partir do Advanced com gate real")
     validate_bridge(
         {
             "to": preview_id,
@@ -147,7 +147,7 @@ def main() -> int:
     )
 
     if responsibilities != expected_responsibilities:
-        errors.append("responsabilidades não cobrem exatamente os oito cursos")
+        errors.append("responsabilidades não cobrem os oito cursos formativos e o preview")
 
     if "canonical_order" in journey or "specializations" in journey or "transitions" in journey:
         errors.append("schema legado de jornada linear ainda presente")
@@ -221,7 +221,7 @@ def main() -> int:
 
     print(
         "Jornada AIOX: "
-        f"9 cursos ({len(EXPECTED_CORE)} no núcleo comum, "
+        f"8 cursos formativos + 1 preview ({len(EXPECTED_CORE)} no núcleo comum, "
         f"{len(core_transitions)}/{len(expected_core_pairs)} transições do núcleo, "
         f"{len(application_routes)}/{len(EXPECTED_APPLICATION_ROUTES)} rotas de aplicação, "
         f"{len(cross_route_transitions)}/{len(EXPECTED_CROSS_ROUTE_PAIRS)} conexões entre rotas, "

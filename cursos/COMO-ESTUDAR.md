@@ -33,10 +33,10 @@ flowchart LR
     E -->|"operar especialistas"| S
     D -->|"operar especialistas"| S
     P -->|"squads comerciais"| S
-    S -->|"operação real + gargalo recorrente"| Q["AIOX Enterprise<br/>vitrine de prontidão"]
+    X -.->|"operação real + gargalo recorrente"| Q["AIOX Enterprise<br/>vitrine de prontidão"]
 ```
 
-As quatro primeiras caixas formam o **núcleo comum**. Depois do Advanced, Squads, Agent Engineering, Design e Productização são **rotas de aplicação canônicas**. A vitrine AIOX Enterprise vem depois de operação real: ela diagnostica continuidade, não entrega o runtime proprietário.
+As quatro primeiras caixas formam o **núcleo comum**. Depois do Advanced, Squads, Agent Engineering, Design e Productização são **rotas de aplicação canônicas**. A vitrine AIOX Enterprise exige Advanced + operação real: ela diagnostica continuidade, não entrega o runtime proprietário.
 
 | Resultado que você precisa | Rota de aplicação |
 |----------------------------|-------------------|
@@ -58,7 +58,7 @@ As quatro primeiras caixas formam o **núcleo comum**. Depois do Advanced, Squad
 | [AIOX Agent Engineering](AIOX-Agent-Engineering/README.md) | precisa construir ou operar uma capacidade que o catálogo publicado não resolve | capacidade executável com contrato, gates, runtime ou bloqueio diagnosticado |
 | [AIOX Design](AIOX-Design/README.md) | precisa transformar direção visual em contrato e componentes governáveis | `DESIGN.md` + catálogo + Storybook rodando + ciclo visual |
 | [AIOX Productização](AIOX-Productizacao/README.md) | já possui capacidade executável e precisa decidir oferta, canal ou monetização | decision pack + experimento com hipótese, métrica e critério de parada |
-| [AIOX Enterprise — vitrine](AIOX-Enterprise/README.md) | já operou squad real e o gargalo virou integração, governança ou observabilidade recorrente | decisão de prontidão sustentada por evidência + próximo passo explícito |
+| [AIOX Enterprise — vitrine](AIOX-Enterprise/README.md) | encerrou o Advanced, já executou missão real e o gargalo virou integração, governança ou observabilidade recorrente | decisão de prontidão sustentada por evidência + próximo passo explícito |
 
 ## Escolha sua trilha pelo caso
 
@@ -128,7 +128,7 @@ Se a capacidade ainda depende da IDE, não tem contrato de execução ou não pr
 
 ### Caso 9 — “Já executo várias missões; o problema virou manter a operação”
 
-**Percurso:** conclua uma execução real no Advanced Squads, repita-a e registre o atrito. Depois faça a [vitrine diagnóstica AIOX Enterprise](AIOX-Enterprise/README.md) e compare com o [teste de prontidão](../JORNADA-AIOX.md#teste-de-prontidão-para-o-enterprise).
+**Percurso:** conclua o Advanced, execute uma missão real por uma das rotas de aplicação e registre o atrito. Depois faça a [vitrine diagnóstica AIOX Enterprise](AIOX-Enterprise/README.md) e compare com o [teste de prontidão](../JORNADA-AIOX.md#teste-de-prontidão-para-o-enterprise).
 
 Mais conteúdo não resolve automaticamente fragmentação de contexto, integrações, governança e observabilidade. A evidência aqui é o custo recorrente da operação, não uma preferência por uma oferta mais avançada.
 

@@ -17,7 +17,7 @@ Ao final, você conseguirá avaliar fit sem usar entusiasmo, quantidade de aulas
 
 ## O cenário
 
-O Enterprise pode parecer mais desejável justamente quando é menos necessário: no momento em que alguém ainda está descobrindo o que o AIOX consegue fazer.
+O Enterprise pode parecer mais desejável justamente quando é menos necessário. Isso acontece quando alguém ainda descobre o que o AIOX consegue fazer.
 
 Curiosidade quer ver tudo. Prontidão quer sustentar algo específico.
 
@@ -35,7 +35,7 @@ Você já consegue conduzir uma missão com objetivo, critérios e evidência. N
 
 ### 2. Aplicação real
 
-Existe negócio, produto, cliente ou processo onde a operação será usada. O caso não foi inventado apenas para testar ferramentas.
+Existe negócio, produto, cliente ou processo onde você aplicará a operação. O caso representa uma necessidade real, não apenas um teste de ferramentas.
 
 ### 3. Recorrência observada
 
