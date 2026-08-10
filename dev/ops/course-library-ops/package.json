@@ -1,6 +1,6 @@
 {
   "name": "course-library-ops",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "private": true,
   "description": "Team ops pack: reverse-engineer, create, improve, upgrade and govern verifiable course libraries. Not student-facing.",
   "files": [

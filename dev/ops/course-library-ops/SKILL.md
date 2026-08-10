@@ -75,10 +75,15 @@ Decisões de absorção: `references/source-patterns.md`.
 ## Modo reverse-engineer
 
 1. Executar `python3 scripts/analyze_courses.py` no root do acervo.
-2. Comparar o alvo com 1–3 cursos vizinhos da mesma responsabilidade.
-3. Ler bastidor, proveniência, checks específicos e histórico Git.
-4. Separar invariantes, diferenças intencionais e dívida que não deve ser clonada.
-5. Entregar perfil, pipeline provável, gaps e riscos dominantes.
+2. **Lente Obsidian (links internos):**  
+   `python3 scripts/audit_vault_links.py` ou `--course <id> --write`  
+   (wikilinks por stem como o Graph; md relativo; órfãos; colisões de nome).  
+   Contrato de vault: `skills/obsidian-course-vault/SKILL.md` — raiz do repo
+   para skills/squads coloridos; pasta do curso para grafo leve.
+3. Comparar o alvo com 1–3 cursos vizinhos da mesma responsabilidade.
+4. Ler bastidor, proveniência, checks específicos e histórico Git.
+5. Separar invariantes, diferenças intencionais e dívida que não deve ser clonada.
+6. Entregar perfil, pipeline provável, gaps e riscos dominantes (incl. grafo).
 
 O relatório do script é a verdade dinâmica; `references/course-dna.md` registra
 o baseline que originou esta skill.
@@ -179,16 +184,23 @@ Abrir a `skills/teach/SKILL.md` canônica e `checklists/improve-course.md`.
 
 ```bash
 npm run validate
+# grafo Obsidian — quebra de navegação humana no vault
+python3 scripts/audit_vault_links.py --course <id> --write
 python3 scripts/audit_didactics.py --course <id> --write
 # revisar/corrigir o ledger em lotes de 3–4 aulas ou um módulo
 python3 scripts/audit_didactics.py \
   --check docs/producao-cursos/<id>/didactic-audit.md
+python3 scripts/audit_vault_links.py --course <id>   # re-checar se tocou links
 python3 dev/validate.py --course <id>
 ```
 
 O ledger usa seis dimensões e estados `PASS|FAIL|PENDING`; não usa score
 Enterprise não calibrado. Sinais automáticos nunca aprovam semântica. Resolver
 todo `PENDING`, corrigir todo `FAIL` e registrar evidência final.
+
+A auditoria de vault **não** substitui o harness (autocontenção por curso):
+wikilinks podem apontar para fora da pasta e ainda assim resolver no Graph se a
+raiz do vault for o repositório.
 
 ---
 
@@ -269,8 +281,8 @@ Contrato anti-deriva (o que torna 3 cópias sustentáveis):
 SKILL.md
 scripts/install.sh | package.sh | bootstrap_library.py | prepare_course.py
          scaffold_course.py | plan_upgrade.py | apply_upgrade.py
-         audit_didactics.py | check_approvals.py | course_common.py
-         doctor.py | analyze_courses.py | selftest.py
+         audit_didactics.py | audit_vault_links.py | check_approvals.py
+         course_common.py | doctor.py | analyze_courses.py | selftest.py
 references/library-anatomy | production-pipeline | course-anatomy | course-dna
            archetypes | surface-vs-bastidor | journey-model | approval-protocol
            source-patterns

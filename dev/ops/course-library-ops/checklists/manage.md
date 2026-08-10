@@ -20,7 +20,8 @@ conferem a coerência entre elas.
 | **retire-course** | `archive/` do material · remoção em catalog/journey/hub/MOCs/mapas · pontes dos vizinhos apontando para substituto | `npm run validate` + doctor sem órfãos |
 | **surface-check** | mover bastidor vazado de `cursos/` para `docs/producao-cursos/<id>/` | `check_course_surface.py` limpo |
 | **ops-sync** | após editar o SoT (`dev/ops/course-library-ops/`): reinstalar projeções | `doctor.py` sem DERIVA |
-| **improve-course** | baseline validate · `audit_didactics.py --write` · ledger `didactic-audit.md` · lotes (rubrica teach) · `audit --check` | audit sem FAIL/PENDING + `dev/validate.py --course` |
+| **improve-course** | baseline validate · **`audit_vault_links.py --course`** (lente Obsidian) · `audit_didactics.py --write` · ledger · lotes (rubrica teach) · `audit --check` | audit sem FAIL/PENDING + validate curso + vault-links sem md quebrados críticos |
+| **vault-links** | `audit_vault_links.py` (repo ou `--course`) · opcional `--write` no bastidor | wikilinks missing/colisão revisados; órfãos canônicos ligados a hub |
 | **upgrade-course** | bastidor/spec delta · `plan_upgrade.py --write` · ledger · re-aprovação · lotes (sem apagar) · contadores | plano + `npm run validate` |
 
 ## improve-course
@@ -51,6 +52,7 @@ conferem a coerência entre elas.
 ## reverse-engineer
 
 - [ ] `python3 scripts/analyze_courses.py --course cursos/<Curso>`
+- [ ] `python3 scripts/audit_vault_links.py --course <id>` (grafo Obsidian: stems, órfãos)
 - [ ] Comparar com 1–3 vizinhos
 - [ ] Separar invariantes, variações intencionais e dívida
 
