@@ -3,7 +3,7 @@ type: lesson
 course: obsidian-ia
 course_title: Obsidian + IA
 lesson_id: captura-sem-poluir
-lesson_position: 4
+lesson_position: 5
 title: "Captura sem poluir o canônico"
 status: canonical
 canonical_scope: cursos/Obsidian-IA
@@ -14,7 +14,7 @@ maturity: study
 
 # Captura sem poluir o canônico
 
-[← Agent como professor](03-agent-como-professor.md) · [⌂ Curso](../README.md) · [→ MOCs e hubs](05-mocs-e-hubs.md)
+[← Agent como professor](04-agent-como-professor.md) · [⌂ Curso](../README.md) · [→ MOCs e hubs](06-mocs-e-hubs.md)
 
 ## Resultado
 
@@ -48,7 +48,7 @@ Não invente taxonomia de 20 pastas. Use **tipos** (inspirados em PKM clássico,
 | **Inbox** | `notas/inbox/` | Durante a aula; rascunho sujo |
 | **Atômica** | `notas/notes/` ou `notas/cards/` | Uma ideia reutilizável (1 ideia = 1 nota) |
 | **Por aula** | `notas/aulas/` (opcional) | Espelho pessoal de uma aula canônica |
-| **MOC** | `notas/MOCs/` | ≥5 conexões úteis ou dor recorrente (aula 05) |
+| **MOC** | `notas/MOCs/` | ≥5 conexões úteis ou dor recorrente (aula 06) |
 | **Retorno** | `notas/retornos/` | Depois de executar no projeto / fechar ciclo |
 
 Anti-padrão: uma “nota dump” eterna sem fonte. Sempre: **fonte → insight → próximo passo**.
@@ -112,8 +112,8 @@ Frontmatter rico e plugins de properties ficam para o curso de **produto** Obsid
 ```text
 1. Inbox sujo (durante)
 2. Destilar 1 atômica ou card (após)
-3. Se ≥5 conexões no tema → MOC (aula 05)
-4. Se missão operacional nasceu → rascunho de Context Brief (aula 06)
+3. Se ≥5 conexões no tema → MOC (aula 06)
+4. Se missão operacional nasceu → rascunho de Context Brief (aula 07)
 ```
 
 Não pule do inbox direto para “executar no projeto” sem Brief.
@@ -130,4 +130,4 @@ Não pule do inbox direto para “executar no projeto” sem Brief.
 Existe um arquivo de captura com fonte + insight + próximo passo, **fora** de `cursos/**/aulas/`.
 
 ## Navegação
-[← Anterior](03-agent-como-professor.md) · [↑ Curso](../README.md) · [Próxima →](05-mocs-e-hubs.md)
+[← Anterior](04-agent-como-professor.md) · [↑ Curso](../README.md) · [Próxima →](06-mocs-e-hubs.md)

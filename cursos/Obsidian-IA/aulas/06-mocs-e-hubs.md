@@ -3,7 +3,7 @@ type: lesson
 course: obsidian-ia
 course_title: Obsidian + IA
 lesson_id: mocs-e-hubs
-lesson_position: 5
+lesson_position: 6
 title: "MOCs e hubs de estudo"
 status: canonical
 canonical_scope: cursos/Obsidian-IA
@@ -14,7 +14,7 @@ maturity: study
 
 # MOCs e hubs de estudo
 
-[← Captura sem poluir](04-captura-sem-poluir.md) · [⌂ Curso](../README.md) · [→ Context Brief](06-do-estudo-a-execucao.md)
+[← Captura sem poluir](05-captura-sem-poluir.md) · [⌂ Curso](../README.md) · [→ Context Brief](07-do-estudo-a-execucao.md)
 
 ## Resultado
 
@@ -65,9 +65,9 @@ Hubs úteis (paths no repo):
 
 | Situação | Mecanismo |
 |----------|-----------|
-| 1–4 insights no mesmo tema | Inbox / atômicas (aula 04) |
+| 1–4 insights no mesmo tema | Inbox / atômicas (aula 05) |
 | ≥5 destinos ou “sempre volto a este tema” | **MOC** |
-| Missão com transformação observável | Context Brief (aula 06) — o MOC alimenta as **fontes**, não substitui o Brief |
+| Missão com transformação observável | Context Brief (aula 07) — o MOC alimenta as **fontes**, não substitui o Brief |
 
 ## Esqueleto
 
@@ -105,16 +105,16 @@ Cada bullet: **destino real** + **meia linha de porquê**. Lista de 40 links sem
 Quando o MOC estiver maduro o bastante para uma missão:
 
 1. Escolha 1–3 fontes do MOC (não as 20).
-2. Copie paths + “por quê” para o template da aula 06.
+2. Copie paths + “por quê” para o template da aula 07.
 3. O MOC permanece no vault; o Brief viaja para o projeto.
 
 ## Prática
 
-Crie um MOC com **no mínimo 5** destinos reais (aulas ou notas suas) sobre um tema que você vai usar esta semana. Cada destino com meia linha de porquê. Se ainda não tem 5 itens, continue capturando (aula 04) e volte.
+Crie um MOC com **no mínimo 5** destinos reais (aulas ou notas suas) sobre um tema que você vai usar esta semana. Cada destino com meia linha de porquê. Se ainda não tem 5 itens, continue capturando (aula 05) e volte.
 
 ## Evidência de conclusão
 
 Arquivo de MOC aberto no Obsidian com seções Entrada + Fundamentos + Evidência **e** ≥5 destinos com “por quê”.
 
 ## Navegação
-[← Anterior](04-captura-sem-poluir.md) · [↑ Curso](../README.md) · [Próxima →](06-do-estudo-a-execucao.md)
+[← Anterior](05-captura-sem-poluir.md) · [↑ Curso](../README.md) · [Próxima →](07-do-estudo-a-execucao.md)

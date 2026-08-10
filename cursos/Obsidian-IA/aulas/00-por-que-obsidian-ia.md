@@ -46,9 +46,9 @@ Três verbos simples — sem framework de produtividade paralelo:
 
 | Verbo | Onde | Nesta trilha |
 |-------|------|--------------|
-| **Capturar** | `notas/` | Insight ligado a uma aula (aula 04) |
-| **Conectar** | wikilinks, Graph, MOC | Ligar fontes e hubs (aulas 02 e 05) |
-| **Criar** | Context Brief → projeto | Handoff + artefato + retorno (aulas 06–07) |
+| **Capturar** | `notas/` | Insight ligado a uma aula (aula 05) |
+| **Conectar** | wikilinks, Graph, MOC | Ligar fontes e hubs (aulas 02–03 e 06) |
+| **Criar** | Context Brief → projeto | Handoff + artefato + retorno (aulas 07–08) |
 
 Na primeira passagem, antes de você operar o Core, “criar” significa cumprir uma missão de estudo e preparar o handoff para **Introdução à Arquitetura de Sistemas**. Depois de Fundamentals ou Advanced, o mesmo loop chega a um projeto real.
 
@@ -58,18 +58,18 @@ Na primeira passagem, antes de você operar o Core, “criar” significa cumpri
 |---------|----------------------|----------|
 | “A skill não roda no Graph” | Obsidian ≠ projeto | Copiar asset + executar no projeto |
 | “O agent reescreveu a aula” | Agent poluindo canônico | Captura em `notas/`, aula intocada |
-| “Colei o vault inteiro no projeto” | Vault ≠ Context Brief | Menor contexto suficiente (aula 06) |
+| “Colei o vault inteiro no projeto” | Vault ≠ Context Brief | Menor contexto suficiente (aula 07) |
 | “Anotei no GitHub Preview” | Leitura ≠ memória | Abrir vault + `notas/inbox/` |
 
 ## Níveis de maestria (neste acervo)
 
 Não meça sucesso só por “quantas notas criei”. Use níveis leves (inspirados em cursos de Obsidian genéricos; aqui o alvo é o **acervo AIOX**):
 
-| Nível | Sinais | O que fazer no mini | Gate na aula 07 |
+| Nível | Sinais | O que fazer no mini | Gate na aula 08 |
 |-------|--------|---------------------|-----------------|
-| **1 · Coletor** | Abre vault, captura esporádica, poucos links | Aulas 00–04 | Inbox com fonte |
-| **2 · Organizador** | `notas/` estável, MOC ou capturas ligadas a fontes | Aulas 04–05 | Captura **ou** MOC justificado |
-| **3 · Sintetizador** | Context Brief + handoff + retorno de execução | Aulas 06–07 | Brief + (estudo **ou** artefato + retorno) |
+| **1 · Coletor** | Abre vault, vê o Graph, captura esporádica | Aulas 00–05 | Inbox com fonte |
+| **2 · Organizador** | `notas/` estável, MOC ou capturas ligadas a fontes | Aulas 05–06 | Captura **ou** MOC justificado |
+| **3 · Sintetizador** | Context Brief + handoff + retorno de execução | Aulas 07–08 | Brief + (estudo **ou** artefato + retorno) |
 
 Power-user de plugins, Canvas e sync multi-device fica em cursos de **produto Obsidian** (ex.: Dominando Obsidian) — não é o foco aqui. Não existe “nível 4 = plugin de IA no Obsidian” como meta deste mini: a superfície de IA é o **agent** no repo/projeto.
 

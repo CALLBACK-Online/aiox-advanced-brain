@@ -3,7 +3,7 @@ type: lesson
 course: obsidian-ia
 course_title: Obsidian + IA
 lesson_id: agent-como-professor
-lesson_position: 3
+lesson_position: 4
 title: "O agent como professor-especialista"
 status: canonical
 canonical_scope: cursos/Obsidian-IA
@@ -14,7 +14,7 @@ maturity: study
 
 # O agent como professor-especialista
 
-[← Wikilinks e grafo](02-wikilinks-e-grafo.md) · [⌂ Curso](../README.md) · [→ Captura sem poluir](04-captura-sem-poluir.md)
+[← Graph do acervo](03-graph-do-acervo.md) · [⌂ Curso](../README.md) · [→ Captura sem poluir](05-captura-sem-poluir.md)
 
 ## Resultado
 
@@ -36,7 +36,7 @@ Ao final desta aula você consegue **formular um pedido** ao agent como condutor
 | Força | Ler aulas, rotear squad, montar Brief, capturar | Resumir nota aberta, chat local |
 | Risco | Inventar runtime se você não cobrar path | Poluir vault, vazar nota, sem maturidade AIOX |
 
-Neste mini, **a superfície de IA é o agent no repositório** (e depois no projeto). Plugin no Obsidian é opcional de produto, não pré-requisito e não está no caminho crítico 00→07.
+Neste mini, **a superfície de IA é o agent no repositório** (e depois no projeto). Plugin no Obsidian é opcional de produto, não pré-requisito e não está no caminho crítico 00→08.
 
 ## Contrato
 
@@ -126,4 +126,4 @@ Faça **uma** pergunta real ao agent sobre uma dúvida sua do AIOX. Exija na res
 Cole (na sua nota pessoal) a resposta do agent com pelo menos um path relativo válido **e** um próximo passo verificável.
 
 ## Navegação
-[← Anterior](02-wikilinks-e-grafo.md) · [↑ Curso](../README.md) · [Próxima →](04-captura-sem-poluir.md)
+[← Anterior](03-graph-do-acervo.md) · [↑ Curso](../README.md) · [Próxima →](05-captura-sem-poluir.md)

@@ -4,7 +4,7 @@ course: obsidian-ia
 status: canonical
 canonical_scope: cursos/Obsidian-IA
 passing_score: 75
-question_count: 8
+question_count: 9
 ---
 
 # Quiz final — Obsidian + IA
@@ -32,35 +32,42 @@ question_count: 8
 - C. Trocar o wikilink por um path absoluto da sua máquina
 - D. Mover a nota para dentro de `aulas/`, onde os links funcionam
 
-### 4. Você pergunta ao agent "como estudo design system?" e ele devolve só conselho genérico, sem citar arquivo nenhum. Pelo contrato da aula 03, o que falta?
+### 4. No Graph deste acervo (aula 03), o que a cor **verde** tipicamente representa?
+
+- A. Suas notas pessoais em `notas/`
+- B. Skills em `skills/` (e tags de skill)
+- C. O curso de método AIOX Advanced
+- D. Hubs oficiais com tag `#hub`
+
+### 5. Você pergunta ao agent "como estudo design system?" e ele devolve só conselho genérico, sem citar arquivo nenhum. Pelo contrato da aula 04, o que falta?
 
 - A. Um comando `/design-system` inventado para ativar o runtime
 - B. A lista completa das aulas do acervo na resposta
 - C. Path de arquivo real do acervo + próximo passo verificável
 - D. Uma reescrita das aulas oficiais no estilo do aluno
 
-### 5. Terminou um bloco de estudo e quer registrar um insight sobre a aula que acabou de ler. Onde grava?
+### 6. Terminou um bloco de estudo e quer registrar um insight sobre a aula que acabou de ler. Onde grava?
 
 - A. Na própria aula canônica, num bloco "Minhas notas" no fim do arquivo
 - B. Em `notas/inbox/`, com fonte, insight e próximo passo
 - C. Em um arquivo novo dentro de `aulas/`, para ficar perto do conteúdo
 - D. Direto no README do curso, para não perder o registro
 
-### 6. Quando a aula 05 recomenda criar um MOC?
+### 7. Quando a aula 06 recomenda criar um MOC?
 
 - A. Quando há pelo menos 5 notas/aulas no mesmo tema ou uma dor recorrente
 - B. Na primeira semana, começando pelo "MOC do universo AIOX"
 - C. Toda vez que uma nota nova entrar no inbox
 - D. Quando quiser reunir todos os links do vault em um arquivo só
 
-### 7. Missão definida, skill escolhida com maturidade confirmada no `catalog.json`. O que atravessa a ponte para o projeto AIOX?
+### 8. Missão definida, skill escolhida com maturidade confirmada no `catalog.json`. O que atravessa a ponte para o projeto AIOX?
 
 - A. O vault inteiro, para o agent do projeto ter contexto máximo
 - B. Os 24 squads, por precaução
 - C. Suas `notas/` e os logs brutos das sessões de estudo
 - D. O Context Brief e somente o asset necessário
 
-### 8. O que prova a conclusão do capstone (aula 07)?
+### 9. O que prova a conclusão do capstone (aula 08)?
 
 - A. Uma conversa concluída com o agent do projeto
 - B. O log completo do terminal colado na nota de retorno
@@ -73,10 +80,11 @@ question_count: 8
 **1. B** — Obsidian navega, o agent conduz; skills e squads só executam de verdade no seu projeto, após a cópia.  
 **2. D** — Só a raiz do repositório coloca cursos, skills e squads no mesmo Graph com os grupos coloridos.  
 **3. A** — Wikilink resolve pelo nome do arquivo dentro do vault; fora do Obsidian a tradução é path relativo.  
-**4. C** — O contrato exige localizar material real e apontar próximo passo; conselho sem path é aconselhamento genérico.  
-**5. B** — Captura vive em espaço pessoal ligado ao canônico; editar aula oficial faz você perder os updates do curso.  
-**6. A** — MOC nasce de massa crítica (≥5 conexões) ou dor recorrente; é hub com propósito, não despejo de links.  
-**7. D** — A ponte é o menor contexto suficiente: briefing + asset; vault, notas e logs ficam no segundo cérebro.  
-**8. C** — Loop fechado exige evidência em cada etapa; conversa, log bruto ou draft não contam como conclusão.
+**4. B** — Verde = camada skill (`path:skills` / tags de skill); notas são âmbar; hubs rosa; Advanced é azul método.  
+**5. C** — O contrato exige localizar material real e apontar próximo passo; conselho sem path é aconselhamento genérico.  
+**6. B** — Captura vive em espaço pessoal ligado ao canônico; editar aula oficial faz você perder os updates do curso.  
+**7. A** — MOC nasce de massa crítica (≥5 conexões) ou dor recorrente; é hub com propósito, não despejo de links.  
+**8. D** — A ponte é o menor contexto suficiente: briefing + asset; vault, notas e logs ficam no segundo cérebro.  
+**9. C** — Loop fechado exige evidência em cada etapa; conversa, log bruto ou draft não contam como conclusão.
 
 </details>

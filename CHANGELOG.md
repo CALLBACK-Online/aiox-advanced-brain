@@ -25,6 +25,7 @@
 - Hubs, catálogo, bootstraps e jornada passam a separar método, Agent Engineering, Design, Productização e operação de squads por responsabilidade curricular.
 - Fundamentos antes dispersos no AIOX Advanced passam a ter fonte curricular canônica no novo curso; as aulas antigas permanecem como extensões aplicadas ao método AIOX, preservando o grafo existente.
 - Mini-curso Obsidian + IA agora fecha o loop **estudo → Context Brief → execução no projeto → retorno ao segundo cérebro**, com template copiável, capstone operacional e validação estrutural do contrato.
+- Obsidian + IA passa a **9 aulas** (`source_version` 1.4.0): aula dedicada **Graph do acervo** (cores, filtros, órfãos, restore); wikilinks/backlinks separados; quiz com 9 questões; `graph.json` restaurado com 13 color groups.
 - Skills de vault passam a orientar handoff mínimo, evidência e captura pós-execução sem transferir vault, secrets ou logs brutos.
 - Hardening 1.2 do mini-curso: Context Brief obrigatório no bridge, captura/MOC por menor mecanismo, bootstrap de `notas/`, template pessoal com `status: draft`, navegação autocontida e validator comportamental sincronizado ao catálogo e aos bootstraps.
 - READMEs, Capstones e projetos finais passam a diagnosticar o próximo passo entre Fundamentals, Advanced e Enterprise sem inserir promoção nas aulas técnicas.

@@ -14,7 +14,7 @@ maturity: study
 
 # Abrir o vault e o mapa
 
-[← Por que Obsidian + IA](00-por-que-obsidian-ia.md) · [⌂ Curso](../README.md) · [→ Wikilinks e grafo](02-wikilinks-e-grafo.md)
+[← Por que Obsidian + IA](00-por-que-obsidian-ia.md) · [⌂ Curso](../README.md) · [→ Wikilinks e backlinks](02-wikilinks-e-backlinks.md)
 
 ## Resultado
 
@@ -50,7 +50,7 @@ Para filtros coloridos (azul/roxo/verde/laranja) e hubs `00-HOME` / MOCs, use a 
 | Estudar o acervo AIOX com Graph colorido | **Um** vault = raiz deste repo |
 | Curso isolado (só Advanced) em foco profundo | Vault na pasta do curso — ok; volte à raiz para skills/squads |
 | Vault de vida/livros (ex.: mentelendaria) | **Outro** vault; não misture paths de máquina neste acervo |
-| Projeto AIOX de produção | **Não** é vault de estudo; é destino de handoff (aula 06) |
+| Projeto AIOX de produção | **Não** é vault de estudo; é destino de handoff (aula 07) |
 
 Trocar de vault no Obsidian é barato. Confundir *estudo* com *runtime do produto* é caro.
 
@@ -108,4 +108,4 @@ Detalhe: `notas/README.md`.
 Screenshot mental (ou nota): “Minha root padrão é ___ porque ___.”
 
 ## Navegação
-[← Anterior](00-por-que-obsidian-ia.md) · [↑ Curso](../README.md) · [Próxima →](02-wikilinks-e-grafo.md)
+[← Anterior](00-por-que-obsidian-ia.md) · [↑ Curso](../README.md) · [Próxima →](02-wikilinks-e-backlinks.md)

@@ -40,7 +40,7 @@ Você conduz a pessoa a:
 | Abrir/estudar no Obsidian, buscar aula, trilha | `obsidian-course-vault` | `skills/obsidian-course-vault/` |
 | Criar/atualizar MOC ou hub de estudo | `course-moc` | `skills/course-moc/` |
 | Capturar insight / nota atômica ligada à aula | `study-capture` | `skills/study-capture/` |
-| Preparar handoff cérebro → projeto | `aiox-brain` + aula 06 | `cursos/Obsidian-IA/templates/context-brief.md` |
+| Preparar handoff cérebro → projeto | `aiox-brain` + aula 07 | `cursos/Obsidian-IA/templates/context-brief.md` |
 | Escolher/operar squad | `aiox-squads` | `skills/aiox-squads/` + `cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md` |
 | Inventário e maturidade | — | `catalog.json` · `README.md` |
 

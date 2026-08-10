@@ -3,7 +3,7 @@ type: lesson
 course: obsidian-ia
 course_title: Obsidian + IA
 lesson_id: pratica-integrada
-lesson_position: 7
+lesson_position: 8
 title: "Prática integrada: estudo → execução → memória"
 status: canonical
 canonical_scope: cursos/Obsidian-IA
@@ -14,7 +14,7 @@ maturity: study
 
 # Prática integrada: estudo → execução → memória
 
-[← Context Brief: do estudo à execução](06-do-estudo-a-execucao.md) · [⌂ Curso](../README.md)
+[← Context Brief: do estudo à execução](07-do-estudo-a-execucao.md) · [⌂ Curso](../README.md)
 
 ## Resultado
 
@@ -170,4 +170,4 @@ Antes de declarar “feito”, releia o checklist do modo que você escolheu e m
 5. Repetir o loop Context Brief → execução → retorno em cada missão que exigir contexto do acervo.
 
 ## Navegação
-[← Anterior](06-do-estudo-a-execucao.md) · [↑ Curso](../README.md)
+[← Anterior](07-do-estudo-a-execucao.md) · [↑ Curso](../README.md)

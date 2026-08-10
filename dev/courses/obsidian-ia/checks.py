@@ -32,7 +32,8 @@ def run(ctx: Context) -> str | None:
     EXPECTED = [
         "por-que-obsidian-ia",
         "abrir-o-vault",
-        "wikilinks-e-grafo",
+        "wikilinks-e-backlinks",
+        "graph-do-acervo",
         "agent-como-professor",
         "captura-sem-poluir",
         "mocs-e-hubs",
@@ -137,8 +138,8 @@ def run(ctx: Context) -> str | None:
     quiz_files = sorted((COURSE / "avaliacoes").glob("Quiz-*.md"))
     question_count = 0
 
-    if len(lesson_files) != 8:
-        errors.append(f"esperadas 8 aulas; encontradas {len(lesson_files)}")
+    if len(lesson_files) != 9:
+        errors.append(f"esperadas 9 aulas; encontradas {len(lesson_files)}")
 
     actual_ids: list[str] = []
     for position, path in enumerate(lesson_files):
@@ -176,7 +177,7 @@ def run(ctx: Context) -> str | None:
                 f"encontradas {questions}"
             )
 
-    capstone = COURSE / "aulas" / "07-pratica-integrada.md"
+    capstone = COURSE / "aulas" / "08-pratica-integrada.md"
     if capstone.exists():
         capstone_body = capstone.read_text(encoding="utf-8")
         require_tokens(capstone_body, REQUIRED_CAPSTONE_SECTIONS, capstone.name, errors)
@@ -196,7 +197,25 @@ def run(ctx: Context) -> str | None:
             errors,
         )
 
-    operation_lesson = COURSE / "aulas" / "06-do-estudo-a-execucao.md"
+    graph_lesson = COURSE / "aulas" / "03-graph-do-acervo.md"
+    if graph_lesson.exists():
+        graph_body = graph_lesson.read_text(encoding="utf-8")
+        require_tokens(
+            graph_body,
+            [
+                "path:skills",
+                "path:squads",
+                "Órfãos",
+                "RESTORE-GRAPH",
+                "raiz do repositório",
+            ],
+            graph_lesson.name,
+            errors,
+        )
+    else:
+        errors.append("aula Graph ausente: 03-graph-do-acervo.md")
+
+    operation_lesson = COURSE / "aulas" / "07-do-estudo-a-execucao.md"
     if operation_lesson.exists():
         operation_body = operation_lesson.read_text(encoding="utf-8")
         require_in_order(operation_body, REQUIRED_OPERATIONAL_LOOP, operation_lesson.name, errors)
@@ -300,7 +319,7 @@ def run(ctx: Context) -> str | None:
         for promise in ("Context Brief", "projeto AIOX", "nota de retorno"):
             if promise not in body:
                 errors.append(f"README.md sem promessa operacional: {promise}")
-        require_tokens(body, ["**ou** 1 MOC", "source_version: 1.3.0"], "README.md", errors)
+        require_tokens(body, ["**ou** 1 MOC", "source_version: 1.4.0"], "README.md", errors)
 
     for path in COURSE.rglob("*.md"):
         text = path.read_text(encoding="utf-8")

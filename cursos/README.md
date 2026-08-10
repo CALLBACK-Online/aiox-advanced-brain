@@ -39,7 +39,7 @@ No GitHub ou em editores genéricos os arquivos abrem, mas o grafo de ~2.000 lin
 
 | Curso | Para quê | Comece em |
 |-------|----------|-----------|
-| **Obsidian + IA** | Mini: vault, captura, Context Brief, execução no projeto e retorno | `cursos/Obsidian-IA/README.md` |
+| **Obsidian + IA** | Mini (9 aulas): vault, Graph colorido, captura, Context Brief, execução e retorno | `cursos/Obsidian-IA/README.md` |
 | **Introdução à Arquitetura de Sistemas** | Base técnica: componentes, dados, comunicação, fan-out/fan-in, escala, operação, segurança e agentes | `cursos/Introducao-a-Arquitetura-de-Sistemas/README.md` |
 | **AIOX Fundamentals** | Core: instalação, anatomia, 12 agents, contexto, story e validação básica | `cursos/AIOX-Fundamentals/README.md` |
 | **AIOX Advanced** | Método: mindset, contexto, SDC, determinismo e brownfield | `cursos/AIOX Advanced/README.md` |

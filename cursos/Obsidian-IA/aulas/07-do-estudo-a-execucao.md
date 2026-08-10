@@ -3,7 +3,7 @@ type: lesson
 course: obsidian-ia
 course_title: Obsidian + IA
 lesson_id: do-estudo-a-execucao
-lesson_position: 6
+lesson_position: 7
 title: "Context Brief: do estudo à execução"
 status: canonical
 canonical_scope: cursos/Obsidian-IA
@@ -14,7 +14,7 @@ maturity: study
 
 # Context Brief: do estudo à execução
 
-[← MOCs e hubs](05-mocs-e-hubs.md) · [⌂ Curso](../README.md) · [→ Estudo → execução → memória](07-pratica-integrada.md)
+[← MOCs e hubs](06-mocs-e-hubs.md) · [⌂ Curso](../README.md) · [→ Estudo → execução → memória](08-pratica-integrada.md)
 
 ## Resultado
 
@@ -50,7 +50,7 @@ O projeto não precisa acessar todo o vault, e o vault não precisa virar parte 
 | Aceite | Explicar / diagrama / exercício | Artefato validado |
 | Retorno | Nota de estudo | `notas/retornos/` com evidência |
 
-Mesmo template; campos mudam de peso. Na primeira passagem, complete o modo estudo. Depois de Fundamentals/Advanced + projeto seguro, complete o modo operação (aula 07).
+Mesmo template; campos mudam de peso. Na primeira passagem, complete o modo estudo. Depois de Fundamentals/Advanced + projeto seguro, complete o modo operação (aula 08).
 
 ## Menor mecanismo suficiente
 
@@ -145,4 +145,4 @@ Marque no topo da nota: **modo estudo** ou **modo operação**.
 Context Brief preenchido com pelo menos uma fonte real, um destino existente, aceite verificável e retorno planejado. Na rota operacional, inclua também asset e maturidade confirmados.
 
 ## Navegação
-[← Anterior](05-mocs-e-hubs.md) · [↑ Curso](../README.md) · [Próxima →](07-pratica-integrada.md)
+[← Anterior](06-mocs-e-hubs.md) · [↑ Curso](../README.md) · [Próxima →](08-pratica-integrada.md)

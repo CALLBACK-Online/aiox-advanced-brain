@@ -98,7 +98,7 @@ Na jornada educacional, [Introdução à Arquitetura de Sistemas](cursos/Introdu
 | **Curso Productização** | [AIOX Productização](cursos/AIOX-Productizacao/README.md) — **6 aulas**, **3 módulos**, **2 quizzes**, **8 questões**, capstone |
 | **Curso squads** | [AIOX Advanced Squads](cursos/AIOX-Advanced-Squads/README.md) — **25 aulas** (intro + 1 por squad), **6 módulos**, **6 quizzes**, **24 questões** |
 | **Preview Enterprise** | [AIOX Enterprise — Visão Operacional e Prontidão](cursos/AIOX-Enterprise/README.md) — **7 aulas diagnósticas**, sem componentes proprietários |
-| **Mini Obsidian+IA** | [Obsidian + IA](cursos/Obsidian-IA/README.md) — **8 aulas**, ~90–120 min, gate de estudo na entrada + missão operacional depois do Core |
+| **Mini Obsidian+IA** | [Obsidian + IA](cursos/Obsidian-IA/README.md) — **9 aulas**, ~110–150 min (inclui Graph colorido), gate de estudo na entrada + missão operacional depois do Core |
 | **Operação** | Mapas de decisão, briefings copiáveis, exemplos de ativação, exercícios, critérios de evidência |
 | **Agents (versionados)** | [AGENTS.md](AGENTS.md) · [CLAUDE.md](CLAUDE.md) · [guia de arquitetura](cursos/Introducao-a-Arquitetura-de-Sistemas/AGENT-GUIDE.md) · [guia do Core](cursos/AIOX-Fundamentals/AGENT-GUIDE.md) · [guia de Agent Engineering](cursos/AIOX-Agent-Engineering/AGENT-GUIDE.md) · [guia de design](cursos/AIOX-Design/AGENT-GUIDE.md) · [guia de Productização](cursos/AIOX-Productizacao/AGENT-GUIDE.md) · [guia de squads](cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md) · [guia Enterprise](cursos/AIOX-Enterprise/AGENT-GUIDE.md) |
 | **Manifesto** | [`catalog.json`](catalog.json) — contagens, maturidade, aliases, proveniência |
