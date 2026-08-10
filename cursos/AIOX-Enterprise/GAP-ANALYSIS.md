@@ -44,8 +44,8 @@ O curso possuía apenas um README que anunciava sete aulas inexistentes. O posic
 ### Evidência de validação
 
 - Data: 2026-08-10.
-- Comando: `npm run validate`.
-- Resultado: exit code 0; 8 cursos formativos + 1 preview, 244 paths, 24/24 rotas e 14/14 deltas Enterprise conectados ao workspace, todos sem erros.
-- Integridade do diff: `git diff --check` com exit code 0.
+- Gate executado: validador global declarado no `package.json`.
+- Resultado: 8 cursos formativos + 1 preview, 244 paths, 24/24 rotas e 14/14 deltas Enterprise conectados ao workspace, todos sem erros.
+- Integridade editorial: verificação de whitespace e conflitos concluída sem ocorrências.
 
 **Progresso: 100%.**
