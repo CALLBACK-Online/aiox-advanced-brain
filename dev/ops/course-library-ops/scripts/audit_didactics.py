@@ -24,10 +24,16 @@ EXERCISE = re.compile(r"(?im)^#{2,3}\s+(?:exercício|prática|checkpoint|autoava
 ANCHOR = re.compile(r"(?:skills/|squads/|aulas/|modulos/|ponte/|\]\((?!https?://|#)[^)]+\.md(?:#[^)]+)?\))")
 
 
+# Heading real de navegação (linha própria). A string "## Navegação" pode
+# aparecer em código inline/tabela no meio da aula — não usar split ingênuo.
+_NAV_HEADING = re.compile(r"(?m)^##\s+Navegação\s*$")
+
+
 def navigation_region(text: str) -> str:
     """Aceita seção ## Navegação ou breadcrumb compacto (README / ← / →)."""
-    if "## Navegação" in text:
-        return text.split("## Navegação", 1)[1]
+    parts = _NAV_HEADING.split(text, maxsplit=1)
+    if len(parts) == 2:
+        return parts[1]
     # primeiras linhas pós-título costumam carregar o breadcrumb
     lines = text.splitlines()
     chunk: list[str] = []
@@ -39,7 +45,7 @@ def navigation_region(text: str) -> str:
 
 def signals(course_id: str, course: Path, path: Path, index: int, total: int) -> dict[str, tuple[str, str]]:
     text = path.read_text(encoding="utf-8")
-    body = text.split("## Navegação", 1)[0]
+    body = _NAV_HEADING.split(text, maxsplit=1)[0]
     navigation = navigation_region(text)
     has_course = "README.md" in navigation
     has_module = not (course / "modulos").is_dir() or bool(
