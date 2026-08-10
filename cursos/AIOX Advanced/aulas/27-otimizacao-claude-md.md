@@ -257,6 +257,19 @@ Quando enxugar regras reduz o número sem perder nenhuma capacidade.
 - Prova: Auditoria registrada documenta zero perda de inteligência no corte.
 - Lição: Menos arquivos, mesma capacidade, quando a consolidação respeita a regra viva.
 
+### Caso: A demo da T2 que fixou a meta de -40%
+
+Na primeira aula da T2, Adriano rodou ao vivo a verificação de ambiguidades sobre CLAUDE.md reais e reportou o padrão que virou a meta desta aula:
+
+> **Adriano de Marqui (host T2, t2-aula-1 L3097-3105)**: Verifique se o seu CLAUDE.md não tem ambiguidades. Por quê? Porque pode ter muita coisa repetida. De cada dez que executam o comando perguntando "dentro do meu CLAUDE.md tem ambiguidades?", nove já encontram ali cerca de, sei lá, quarenta [por cento] do arquivo excluído. Otimizado, porque tem ambiguidade pra caramba.
+
+O "por cento" está entre colchetes porque o áudio engole a palavra, mas o contexto é inequívoco: cerca de quarenta por cento do arquivo sai na primeira passada. E ele mesmo delimitou quem sente o corte: quem está começando projeto agora não encontra quase nada ("Claro, gente. Aqui não vai ter. Comecei meu projeto agora"), mas quem já tem projeto sendo executado "vai encontrar um monte de coisa" [SOURCE: t2-aula-1 L3113-3121].
+
+- Começou como: CLAUDE.md de aluno com repetição e ambiguidade acumuladas em projeto rodando.
+- Virou: arquivo com cerca de 40% a menos após a passada de verificação de ambiguidades.
+- Prova: padrão reportado ao vivo na demo: nove de cada dez execuções encontram corte dessa ordem.
+- Lição: a meta de -40% não é chute de slide. É a taxa típica de ambiguidade e repetição num arquivo que nunca foi otimizado.
+
 ---
 
 ## As 3 operações de otimização
