@@ -1,0 +1,367 @@
+# Pedro Valerio - Taxonomia Combinatoria de Criativos
+# Sources: Fabrica de Criativos Sep 19, Esteira de Criativos Sep 09, Allfluence Dec 10
+# Version: 1.0.0
+# Type: Framework operacional — como a Fabrica de Criativos funciona no ClickUp
+
+metadata:
+  source: "pedro_valerio/fabrica_criativos + esteira_criativos + allfluence_formacao"
+  methodology: "Sistema Allfluence"
+  domain: "producao_criativos"
+  principle: "Criatividade escalavel não e inspiracao — e análise combinatoria de variaveis catalogadas."
+  numeros_allfluence:
+    criativos_simultaneos: 1800
+    projetos_tiktok_simultaneos: 99
+    pacote_criativo_g: "R$80k (16 criativos x 8 creators)"
+    modelo_aquisicao: "TikTok Creative Exchange (TTCX) — ByteDance repassa produção"
+    equipe_async: "100% assincrono. Zero calls com equipe."
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PRINCIPIO CENTRAL
+# ═══════════════════════════════════════════════════════════════════════════════
+
+princípio:
+  nome: "Fabrica de Criativos"
+  source: "[SOURCE: Fabrica de Criativos Sep 19, D2 2.1]"
+  tese: |
+    A produção criativa baseada em 'ideias e inspiracao' não escala.
+    Para escalar anuncios a trafegos milionarios, o criativo precisa virar
+    um produto parametrico. Você não 'inventa' uma campanha — você combina
+    blocos Lego catalogados (Formato X, Storytelling Y, Hook Z, Thumbstopping W)
+    criando uma Análise Combinatoria gerida pelo ClickUp.
+  inversao_paradigma:
+    antes: "Precisamos de 50 ideias novas para anuncios"
+    agora: "Precisamos de 5 Hooks, 2 Storytellings e 5 Angulos. Combinando = 50 variacoes automaticamente."
+    source: "[SOURCE: Fabrica de Criativos Sep 19, D2 2.3]"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TAXONOMIA ANATOMICA DO ANUNCIO (5 EIXOS)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+taxonomia:
+  description: |
+    O anuncio não e um bloco macico. E uma soma de fatores independentes
+    que o ClickUp cadastra como tags/dropdowns. Cada eixo e isolado.
+    A combinacao gera variacoes infinitas sem depender de inspiracao.
+  source: "[SOURCE: Esteira de Criativos Sep 09, D2 2.2]"
+
+  eixos:
+
+    - id: TX-01
+      nome: "MOOD (Emocao Global)"
+      descricao: "A emocao dominante da campanha inteira"
+      tipo_campo: "dropdown"
+      nivel: "Pai — define o tom de TUDO abaixo"
+      opções:
+        - "Comedia"
+        - "Nostalgia"
+        - "Ação"
+        - "Edificante"
+        - "Medo/Urgencia"
+        - "Curiosidade"
+        - "Raiva/Indignacao"
+        - "Aspiracional"
+      source: "[SOURCE: Esteira de Criativos Sep 09, D2 2.2 Pilar 1]"
+
+    - id: TX-02
+      nome: "FORMATO DE PRODUCAO"
+      descricao: "Como o video e fisicamente produzido"
+      tipo_campo: "dropdown"
+      opções:
+        - "UGC (Creator c/ Celular)"
+        - "Cinematico (Super Produção)"
+        - "AI Powered (VFX/Pos-producao)"
+        - "Screen Recording"
+        - "Slideshow/Carrossel"
+        - "Misto (UGC + Cinematico)"
+      source: "[SOURCE: Esteira de Criativos Sep 09, D2 2.2 Pilar 1]"
+
+    - id: TX-03
+      nome: "STORYTELLING (Dinâmica Narrativa)"
+      descricao: "A estrutura de como a historia e contada"
+      tipo_campo: "dropdown"
+      opções:
+        - "Esquete Multi-Personagens"
+        - "Dialogo pra Camera"
+        - "React"
+        - "Entrevista"
+        - "Antes/Depois"
+        - "Tutorial/How-To"
+        - "Depoimento"
+        - "Voz Off + B-Roll"
+      source: "[SOURCE: Esteira de Criativos Sep 09, D2 2.2 Pilar 1]"
+
+    - id: TX-04
+      nome: "HOOK (Gancho Textual)"
+      descricao: "Exclusivamente o texto/narrativa dos primeiros 3 segundos — a promessa"
+      tipo_campo: "dropdown"
+      subtipo: "A frieza inteligente — o que e DITO ou ESCRITO"
+      opções:
+        - "Pergunta Direta"
+        - "Estatística Chocante"
+        - "Declaracao Controversa"
+        - "Promessa Específica"
+        - "Negacao (Não faca X)"
+        - "Comparacao Inesperada"
+        - "Confissao/Vulnerabilidade"
+        - "Comando Direto"
+      source: "[SOURCE: Esteira de Criativos Sep 09, D2 2.2 Pilar 2]"
+      regra: "Hook e SEPARADO do Thumbstopping. Hook = texto. Thumbstopping = impacto sensorial."
+
+    - id: TX-05
+      nome: "THUMBSTOPPING (Impacto Sensorial 3s)"
+      descricao: "O que paralisa o dedo na tela de rolagem — puramente sensorial, não textual"
+      tipo_campo: "labels (multipla selecao)"
+      subtipo: "O impacto FISICO — o que e VISTO/OUVIDO"
+      subtipos:
+        visual:
+          descricao: "Impacto estatico nos olhos"
+          exemplos:
+            - "Figurino bizarro (fantasia de dinossauro num escritorio)"
+            - "Cenario contrastante"
+            - "Filtros gritantes"
+            - "Texto bold gigante na tela"
+          source: "[SOURCE: Esteira de Criativos Sep 09, D2 2.2 Pilar 2]"
+        cenico:
+          descricao: "Ação de estranheza na movimentacao"
+          exemplos:
+            - "Glitch fisico na movimentacao"
+            - "Malabarismos"
+            - "Cair da cadeira antes de falar"
+            - "Corte abrupto pra close-up"
+          source: "[SOURCE: Esteira de Criativos Sep 09, D2 2.2 Pilar 2]"
+        sonoro:
+          descricao: "Ruido inesperado nos fones"
+          exemplos:
+            - "ASMR agressivo"
+            - "Gemidao do WhatsApp (audio viral)"
+            - "Silencio subito apos barulho"
+            - "Trending audio reconhecivel"
+          source: "[SOURCE: Esteira de Criativos Sep 09, D2 2.2 Pilar 2]"
+      source: "[SOURCE: Esteira de Criativos Sep 09, D2 2.2 Pilar 2]"
+      regra: "Thumbstopping pode ter MULTIPLOS subtipos (visual + sonoro). Por isso e labels, não dropdown."
+
+  # Eixo complementar (vendas)
+  angulo_venda:
+    nome: "ANGULO DE VENDA (Pilar Emocional)"
+    descricao: "O pilar psicologico pelo qual o produto e vendido"
+    tipo_campo: "dropdown"
+    opções:
+      - "Dinheiro (Sobrevivencia)"
+      - "Relacionamento (Pertencimento)"
+      - "Status (Poder)"
+      - "Saúde (Longevidade)"
+      - "Liberdade (Autonomia)"
+    source: "[SOURCE: Esteira de Criativos Sep 09, D3 Insight #2]"
+    teste: "Mesmo produto, mesmo criativo, muda APENAS o angulo. Revela ICP real."
+    exemplo: "Empresarios compraram mais no angulo Relacionamento do que Dinheiro"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# COMBINATORIA (COMO USAR)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+combinatoria:
+  formula: "MOOD x FORMATO x STORYTELLING x HOOK x THUMBSTOPPING x ANGULO"
+  exemplo:
+    mood: "Comedia"
+    formato: "UGC"
+    storytelling: "Esquete Multi-Personagens"
+    hook: "Pergunta Direta"
+    thumbstopping: ["Visual: figurino bizarro", "Sonoro: trending audio"]
+    angulo: "Dinheiro"
+    resultado: "Video UGC comico com 2 personagens, abre com pergunta sobre dinheiro, creator de fantasia com audio viral"
+
+  regra_producao: |
+    Você não grava 50 videos diferentes do zero.
+    Grava 1 Corpo e 10 Hooks diferentes, montando combinacoes no trafego.
+    [SOURCE: Fabrica de Criativos Sep 19, D2 2.2 Pilar 4]
+
+  regra_clickup: |
+    O ClickUp só segura as TAGS (dropdowns/labels).
+    O cerebro lógico (dicionario de prompts, estruturas teoricas) fica em
+    Planilhas e Documentos externos. Mais fácil treinar pessoas e programar
+    automações de LLM em planilhas do que ensinar ClickUp.
+    [SOURCE: Fabrica de Criativos Sep 19, D2 2.2 Pilar 1]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ARQUITETURA NO CLICKUP (CASCATA RELACIONAL)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+arquitetura_clickup:
+  cascata:
+    description: "Vinculacao relacional que permite metrificar ROI exato"
+    source: "[SOURCE: Fabrica de Criativos Sep 19, D2 2.2 Pilar 4]"
+    niveis:
+      - nivel: 1
+        nome: "Projeto (Conta/Cliente)"
+        tipo: "Folder"
+        exemplo: "Cliente Magazine Luiza"
+      - nivel: 2
+        nome: "Produto"
+        tipo: "List"
+        exemplo: "Academy, Formacao, Mentoria"
+      - nivel: 3
+        nome: "Campanha"
+        tipo: "Task (Parent)"
+        exemplo: "Lançamento X, Black Friday"
+      - nivel: 4
+        nome: "Criativo"
+        tipo: "Task (granular) ou Subtask"
+        exemplo: "Video UGC Comedia #001"
+        custom_fields: "Mood, Formato, Storytelling, Hook, Thumbstopping, Angulo"
+
+  custom_fields_criativos:
+    - name: "Mood"
+      type: "dropdown"
+      ref: "TX-01"
+    - name: "Formato Produção"
+      type: "dropdown"
+      ref: "TX-02"
+    - name: "Storytelling"
+      type: "dropdown"
+      ref: "TX-03"
+    - name: "Hook"
+      type: "dropdown"
+      ref: "TX-04"
+    - name: "Thumbstopping"
+      type: "labels"
+      ref: "TX-05"
+    - name: "Angulo Venda"
+      type: "dropdown"
+      ref: "angulo_venda"
+    - name: "URL Referência"
+      type: "url"
+    - name: "Creator"
+      type: "dropdown"
+      note: "Quem grava o criativo"
+    - name: "Plataforma Destino"
+      type: "dropdown"
+      options: ["TikTok", "Meta", "YouTube", "Google"]
+    - name: "Budget Teste"
+      type: "currency"
+    - name: "ROAS"
+      type: "number"
+    - name: "Status Performance"
+      type: "dropdown"
+      options: ["Testando", "Winner", "Fadigado", "Morto"]
+
+  regra_tags: |
+    Não crie campos complexos no ClickUp explicando o que e um anuncio 'Inspiracional'.
+    Use APENAS uma label (tag). Em Planilha externa, guarde o 'dicionario' do que compoe
+    a estrutura. Freelas, redatores ou IAs não precisam dominar ClickUp — leem a label.
+    [SOURCE: Fabrica de Criativos Sep 19, D2 2.2 Pilar 1]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SCRAPING REVERSO (ALIMENTAR O BANCO)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+scraping_reverso:
+  description: |
+    A esteira não começa na mente do redator. Começa com automacao/scraping
+    buscando concorrentes nas bibliotecas mundiais de Ads.
+  source: "[SOURCE: Esteira de Criativos Sep 09, D3 Insight #2]"
+  pipeline:
+    step_1:
+      action: "Scraper (N8N) busca na TikTok Creative Center e Facebook Ad Library"
+      output: "Videos/scripts de ads que converteram bem"
+    step_2:
+      action: "LLM decupa o script do video"
+      output: "Classificacao: 'Este anuncio e Mood X, Storytelling Y, Hook Z'"
+    step_3:
+      action: "Resultado entra no Ideation Box (List Banco de Dados no ClickUp)"
+      output: "Referência pronta com tags, disponivel pro time"
+  regra: "A equipe cria a partir de COMBINACAO de referencias, não de pagina em branco."
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TECNICAS DE EDICAO (RETENTION STACKING)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+edicao_retention:
+  description: |
+    A mesma copy enviada a 2 editores não garante mesmo ROI.
+    A edicao carrega o DNA do 'Empilhamento de Retencao'.
+    O ClickUp precisa cadastrar técnicas de edicao tão avidamente
+    quanto arquiva copies.
+  source: "[SOURCE: Esteira de Criativos Sep 09, D3 Insight #1]"
+  técnicas:
+    - "Via-Fast (Cortes abruptos)"
+    - "Jump-Cuts em Respiracoes"
+    - "Zoom dinâmico em picos emocionais"
+    - "Legenda bold sincronizada"
+    - "B-Roll intercalado"
+    - "Transicoes nativas (swipe, flip)"
+  custom_field_sugerido:
+    name: "Técnica Edicao"
+    type: "labels"
+    note: "Multipla selecao — um video pode ter várias técnicas"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ETL DE BRIEFING (AUTOMACAO ENTERPRISE)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+etl_briefing:
+  description: |
+    Quando chegam 90 projetos complexos simultaneos em PDF, o cerebro humano frita.
+    Solução: botao no ClickUp que aciona IA para ler, extrair e preencher.
+  source: "[SOURCE: Allfluence Dec 10, D2 2.2 Pilar 3]"
+  pipeline:
+    trigger: "Account Manager aperta botao no ClickUp"
+    step_1: "IA (Langflow + Gemini) le PDF do cliente via RAG"
+    step_2: "Extrai: dores, persona, tom de voz, restricoes"
+    step_3: "Preenche automaticamente Custom Fields no ClickUp"
+    step_4: "SE falta info → IA gera rascunho de email pedindo ao cliente"
+  resultado: "Briefing preenchido em segundos. Zero Ctrl+C/Ctrl+V."
+
+  gerar_legenda:
+    description: "Botao 'Gerar Legenda' no ClickUp"
+    source: "[SOURCE: Allfluence Dec 10, D2 2.2 Pilar 2]"
+    trigger: "Botao no ClickUp"
+    action: "Roteiro enviado pra ChatGPT via API. Retorna 2 opções de legenda instantaneamente."
+    resultado: "Acabou o ping-pong humano. Account não manda pra roteirista, roteirista não devolve."
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# REGRAS OPERACIONAIS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+regras:
+
+  - id: "TX-R01"
+    nome: "ClickUp = Tags, Planilha = Cerebro"
+    regra: "SE contexto pesado (prompts, dicionarios, estruturas teoricas) → Planilha/Docs externos. ClickUp só guarda as chaves (tags/dropdowns)."
+    source: "[SOURCE: Fabrica de Criativos Sep 19, D2 2.2]"
+    rationale: "Mais fácil treinar IA e pessoas em planilha do que em ClickUp."
+
+  - id: "TX-R02"
+    nome: "Não crie LookerStudio no ClickUp"
+    regra: "SE precisa de dashboard de métricas de ads → LookerStudio. ClickUp e pra gestao de produção e decisoes humanas, não pra espelhar API de dashboard."
+    source: "[SOURCE: Esteira de Criativos Sep 09, D3 Insight #3]"
+    rationale: "Misturar analytics com gestao polui ambos."
+
+  - id: "TX-R03"
+    nome: "Template Dinâmico (Atualize o Pai)"
+    regra: "SE descobriu gap no meio da campanha → ATUALIZAR o Template Pai imediatamente, não só corrigir a instancia atual."
+    source: "[SOURCE: Fabrica de Criativos Sep 19, D3 Insight #1]"
+    rationale: "Não arruma o erro atual — blinda o futuro."
+
+  - id: "TX-R04"
+    nome: "Embed, não Tab"
+    regra: "SE ferramenta externa e essencial (LookerStudio, Miro, AI Chat) → Embedar via iframe no ClickUp. NAO fazer executor abrir aba no Chrome."
+    source: "[SOURCE: Onboarding ClickUp Sep 23, D3 Insight #3]"
+    rationale: "Taxa de fuga de atenção explode com abas externas."
+
+  - id: "TX-R05"
+    nome: "Documentacao NAO e Processo"
+    regra: "SE tem Notion/Docs com SOPs mas tarefas vivem em outro lugar → NAO e processo. Processo só existe quando Tarefa e refem do Banco de Dados dentro da mesma tela."
+    source: "[SOURCE: Gestao Lendaria Dec 27, D3]"
+    rationale: "Se posso ignorar a regra no Notion e fazer a tarefa no Trello, o processo fracassou."
+
+  - id: "TX-R06"
+    nome: "Preencham Tudo Errado"
+    regra: "SE equipe nova no ClickUp → PEDIR que preencham errado nas primeiras 15 tasks ativas. O atrito revela furos do processo."
+    source: "[SOURCE: Onboarding ClickUp Sep 23, D3 Insight #2]"
+    rationale: "Não lave a louca antes de colocar na maquina. O erro forcado audita o processo."
+
+  - id: "TX-R07"
+    nome: "Reunião e Cancer"
+    regra: "SE precisa de reunião pra saber status → ClickUp tá mal configurado. Empresa deve ser 100% assincrona via ClickUp."
+    source: "[SOURCE: Allfluence Dec 10, D3 Insight #2]"
+    rationale: "Reunião só quer se proliferar. Uma leva a outra. SOP inline + video Loom resolve."

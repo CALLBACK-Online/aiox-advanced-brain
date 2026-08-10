@@ -1,0 +1,34 @@
+---
+_meta:
+  artifact_id: domain-map
+  version: "1.0.0"
+  lifecycle_states: [draft, validated, approved]
+  owner_squad: code-anatomist
+
+# Domain Map Template
+project_name: "{project_name}"
+analysis_date: "{analysis_date}"
+
+bounded_contexts: []
+
+ubiquitous_language:
+  terms: []
+
+domain_relationships:
+  - context_a: "{context_a}"
+    context_b: "{context_b}"
+    relationship_type: "{relationship_type}"
+
+aggregates: []
+
+entities: []
+
+value_objects: []
+
+domain_events: []
+
+context_map:
+  upstream: []
+  downstream: []
+  conformist: []
+  anticorruption_layers: []

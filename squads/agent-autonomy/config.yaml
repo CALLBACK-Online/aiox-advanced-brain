@@ -1,0 +1,431 @@
+# Agent Autonomy Squad Configuration
+# Version: 1.0.1
+
+pack:
+  name: agent-autonomy
+  version: "1.0.1"
+  description: >-
+    Squad para auditar, criar, diagnosticar e otimizar agentes autonomos.
+    Aplica frameworks como Weng's 3 Pillars, ACI, ReAct/Reflexion,
+    e IMPACT para garantir autonomia real dos agentes.
+  icon: "🤖"
+  author: "{{YOUR_NAME}}"
+  slashPrefix: agentAutonomy
+  pattern_prefix: "AA"
+
+entry_agent: autonomy-chief
+
+domain_model:
+  Strategic:
+    label: "Estratégico"
+    scope: "Evolução do framework de autonomia, níveis alvo e políticas de orquestração"
+  Tactical:
+    label: "Tático"
+    scope: "Diagnóstico, arquitetura e otimização de agentes e pipelines de autonomia"
+  Operational:
+    label: "Operacional"
+    scope: "Auditorias, pesquisas, geração de relatórios, handoffs e execução guiada"
+
+logging:
+  runtime_audit: true
+  error_behavior: fail_loud
+  error_handling:
+    on_diagnosis_fail: preserve_partial_artifacts
+    on_research_conflict: emit_review_handoff
+    on_missing_evidence: block_completion
+
+sinkra:
+  hierarchy_mapping:
+    Token: "Critério declarativo de autonomia, risco, ownership e modo"
+    Atom: "Task unitária de auditoria, ensino, pesquisa ou prescrição"
+    Molecule: "Ciclos recorrentes de audit, diagnose, teach e suggest"
+    Organism: "Workflow completo de criação ou otimização de agente"
+    Template: "Templates de report, handoff e plano de otimização"
+    Instance: "Run real persistido em .aiox/squad-runtime/sinkra-squad/agent-autonomy/"
+  governance_tokens:
+    - type: Accountability
+      rule: "Toda recomendação aponta um responsável humano ou agente executor"
+    - type: Threshold
+      rule: "Nenhuma recomendação passa sem threshold explícito e mensurável"
+    - type: Behavior
+      rule: "Fail loud em ausência de evidência ou conflito de diagnóstico"
+    - type: Permission
+      rule: "Mudanças em agente real exigem steward humano na aprovação"
+    - type: Time
+      rule: "Runs de autonomia e auditoria devem ser revisitados em janela definida"
+  composition_rules:
+    - "Cada workflow compõe tasks explicitamente mapeadas por camada"
+    - "Handoffs entre domínios usam artifact tipado e lifecycle explícito"
+    - "Recomendação sem evidência externa documentada não é promoted"
+    - "Caminhos determinísticos e probabilísticos são separados e rastreáveis"
+    - "Todo output relevante persiste com schema e steward"
+
+aiox:
+  minVersion: "2.1.0"
+  type: squad
+
+automation_boundary:
+  deterministic:
+    - "Scan de agentes e configs (Glob/Grep)"
+    - "Extracao de metricas de autonomia de arquivos YAML/MD"
+    - "Checklist validation (campos obrigatorios, estrutura)"
+  probabilistic:
+    - "audit-agent — avaliacao qualitativa de autonomia (LLM)"
+    - "diagnose-autonomy-failure — RCA de falhas (LLM)"
+    - "teach-reasoning — ensinar patterns ReAct/Reflexion (LLM)"
+    - "create-autonomous-agent — design de novo agente (LLM)"
+    - "optimize-agent — recomendacoes de melhoria (LLM)"
+  autonomy_level: 2
+  autonomy_rationale: "Diagnostico automatico, prescricao requer LLM, implementacao requer humano."
+
+workspace_integration:
+  level: none
+  rationale: >-
+    Agent Autonomy audita agentes, configs e patterns do ecossistema, mas nao
+    depende de artefatos canonicos de business/produto em `workspace/`.
+
+# =========================================
+# Agent Registry
+# =========================================
+agents:
+  - id: autonomy-steward
+    file: null
+    tier: human
+    minds: ["Framework Steward"]
+    executor_profile:
+      story_role: "executor"
+      can_execute: true
+      sinkra_type: Human
+      human_in_the_loop: true
+      output_schema: autonomy-governance-approval
+
+  - id: autonomy-chief
+    file: agents/autonomy-chief.md
+    tier: orchestrator
+    minds: ["Erik Schluntz", "Lilian Weng"]
+    executor_profile:
+      story_role: "executor"
+      can_execute: true
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: autonomy-routing-decision
+
+  - id: autonomy-auditor
+    file: agents/autonomy-auditor.md
+    tier: 0
+    minds: ["Lilian Weng", "Beth Barnes"]
+    executor_profile:
+      story_role: "executor"
+      can_execute: true
+      sinkra_type: Clone
+      human_in_the_loop: true
+      output_schema: autonomy-audit-report
+
+  - id: agent-architect
+    file: agents/agent-architect.md
+    tier: 1
+    minds: ["Erik Schluntz", "Harrison Chase"]
+    executor_profile:
+      story_role: "executor"
+      can_execute: true
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: autonomy-architecture-plan
+
+  - id: reasoning-engineer
+    file: agents/reasoning-engineer.md
+    tier: 1
+    minds: ["Shunyu Yao", "Noah Shinn", "Andy Zhou"]
+    executor_profile:
+      story_role: "executor"
+      can_execute: true
+      sinkra_type: Clone
+      human_in_the_loop: true
+      output_schema: reasoning-pattern-brief
+
+  - id: tool-smith
+    file: agents/tool-smith.md
+    tier: 2
+    minds: ["Shawn Wang (swyx)", "Simon Willison"]
+    executor_profile:
+      story_role: "executor"
+      can_execute: true
+      sinkra_type: Worker
+      human_in_the_loop: true
+      output_schema: tool-spec-or-implementation
+
+  - id: ecosystem-scout
+    file: agents/ecosystem-scout.md
+    tier: 2
+    minds: ["Andrew Ng", "Joao Moura"]
+    executor_profile:
+      story_role: "executor"
+      can_execute: true
+      sinkra_type: Worker
+      human_in_the_loop: true
+      output_schema: ecosystem-research-report
+
+agent_tiers:
+  orchestrator:
+    - autonomy-chief
+  tier_0:
+    - autonomy-auditor
+  tier_1:
+    - agent-architect
+    - reasoning-engineer
+  tier_2:
+    - tool-smith
+    - ecosystem-scout
+
+# =========================================
+# Components
+# =========================================
+components:
+  agents:
+    - autonomy-chief.md
+    - autonomy-auditor.md
+    - agent-architect.md
+    - reasoning-engineer.md
+    - tool-smith.md
+    - ecosystem-scout.md
+  tasks:
+    - audit-agent.md
+    - create-autonomous-agent.md
+    - diagnose-autonomy-failure.md
+    - optimize-agent.md
+    - search-ecosystem.md
+    - suggest-tools.md
+    - teach-reasoning.md
+  workflows:
+    - audit-optimize-cycle.md
+    - create-agent-flow.md
+  checklists:
+    - autonomy-checklist.md
+  data:
+    - agent-autonomy-kb.md
+
+# =========================================
+# Use Cases Coverage
+# =========================================
+use_cases:
+  - id: UC1
+    name: "Auditar agente existente"
+    primary_agent: autonomy-auditor
+  - id: UC2
+    name: "Criar agente autonomo"
+    primary_agent: agent-architect
+  - id: UC3
+    name: "Diagnosticar falhas de autonomia"
+    primary_agent: autonomy-auditor
+  - id: UC4
+    name: "Otimizar agente existente"
+    primary_agent: agent-architect
+    secondary: reasoning-engineer
+  - id: UC5
+    name: "Sugerir construcao de tools"
+    primary_agent: tool-smith
+  - id: UC6
+    name: "Recomendar repos GitHub open-source"
+    primary_agent: ecosystem-scout
+  - id: UC7
+    name: "Ensinar COMO o agente deve atuar"
+    primary_agent: reasoning-engineer
+  - id: UC8
+    name: "Analise deterministico vs probabilistico"
+    primary_agent: autonomy-auditor
+    secondary: agent-architect
+  - id: UC9
+    name: "Construcao de docs .md auxiliares"
+    primary_agent: tool-smith
+  - id: UC10
+    name: "Construcao de scripts auxiliares"
+    primary_agent: tool-smith
+  - id: UC11
+    name: "Buscar bibliotecas Python para autonomia"
+    primary_agent: ecosystem-scout
+
+# =========================================
+# Quality Gates
+# =========================================
+quality_gates:
+  - id: QG-001
+    name: "Request Classification"
+    owner: autonomy-chief
+    type: routing
+  - id: QG-002
+    name: "Diagnosis Complete"
+    owner: autonomy-auditor
+    type: blocking
+  - id: QG-003
+    name: "Architecture Review"
+    owner: agent-architect
+    type: blocking
+  - id: QG-004
+    name: "Reasoning Validated"
+    owner: reasoning-engineer
+    type: blocking
+  - id: QG-005
+    name: "Tool Quality"
+    owner: tool-smith
+    type: blocking
+  - id: QG-006
+    name: "Final Validation"
+    owner: autonomy-chief
+    type: blocking
+  - id: QG-SCOUT
+    name: "Research Quality"
+    owner: ecosystem-scout
+    type: advisory
+
+composition_mapping:
+  tokens:
+    source: "data/token-registry.yaml"
+    count: 12
+    description: "Tokens de autonomia, ownership, evidência e fail-loud"
+  atoms:
+    description: "Tasks unitárias do squad agent-autonomy"
+    mapping:
+      - pattern: "tasks/audit-agent.md"
+        role: audit
+      - pattern: "tasks/diagnose-autonomy-failure.md"
+        role: diagnosis
+      - pattern: "tasks/teach-reasoning.md"
+        role: reasoning
+      - pattern: "tasks/suggest-tools.md"
+        role: tooling
+      - pattern: "tasks/search-ecosystem.md"
+        role: research
+    count: 7
+  molecules:
+    description: "Combinações recorrentes de tasks"
+    declared:
+      - id: mol-audit-diagnose
+        atoms: [audit-agent, diagnose-autonomy-failure]
+      - id: mol-reasoning-tooling
+        atoms: [teach-reasoning, suggest-tools, search-ecosystem]
+  organisms:
+    description: "Workflows completos do squad"
+    mapping:
+      - id: org-audit-optimize
+        workflow: audit-optimize-cycle
+        molecules: [mol-audit-diagnose, mol-reasoning-tooling]
+        state_machine: true
+        phases: 5
+      - id: org-create-agent
+        workflow: create-agent-flow
+        molecules: [mol-reasoning-tooling]
+        state_machine: true
+        phases: 8
+  templates:
+    description: "Templates de artefato e handoff do squad"
+    source: "templates/"
+  instances:
+    description: "Runs persistidos em outputs do squad"
+    persistence: ".aiox/squad-runtime/sinkra-squad/agent-autonomy/"
+    lifecycle: [draft, validated, approved, archived]
+
+# =========================================
+# Autonomy Level Framework (Google SOC-inspired)
+# =========================================
+autonomy_levels:
+  L1_assisted:
+    name: "Assistido"
+    description: "IA gera sugestoes/rascunhos, humano decide e executa"
+    criteria:
+      - "Output requer aprovacao humana antes de uso"
+      - "Humano inicia cada execucao manualmente"
+      - "Nenhuma acao automatica sem confirmacao"
+
+  L2_semi_autonomous:
+    name: "Semi-Autonomo"
+    description: "IA executa pipeline automaticamente, humano audita em batch"
+    criteria:
+      - "Pipeline roda end-to-end sem intervencao"
+      - "Humano revisa outputs em lote (nao item a item)"
+      - "Auto-healing para erros triviais"
+      - "Quality gates automaticos com threshold numerico"
+
+  L3_autonomous:
+    name: "Autonomo"
+    description: "IA executa, monitora e corrige. Humano so em excecoes"
+    criteria:
+      - "Execucao end-to-end sem humano no loop"
+      - "Overseer agent audita qualidade em batch"
+      - "Auto-correcao de falhas sem escalacao"
+      - "Humano intervem apenas em excecoes flagradas"
+      - "Metricas de confianca acima de 95%"
+
+# =========================================
+# Autonomy Baseline
+# =========================================
+autonomy_baseline:
+  assessed_at: "2026-03-01"
+  squads:
+    ai-reels:
+      level: 2
+      rationale: "Pipeline B semi-autonomo, Pipeline A requer gates humanos"
+    kaizen:
+      level: 2
+      rationale: "Coleta automatica, analise LLM, decisoes humanas"
+    agent-autonomy:
+      level: 2
+      rationale: "Diagnostico automatico, prescricao LLM, implementacao humana"
+
+# =========================================
+# Research Foundation
+# =========================================
+research_foundation:
+  minds_count: 14
+  key_frameworks:
+    - "Weng's 3 Pillars (Planning, Memory, Tool Use)"
+    - "Schluntz's ACI (Agent-Computer Interface)"
+    - "Knight Institute Autonomy Levels (L1-L5)"
+    - "ReAct (Thought > Action > Observation)"
+    - "Reflexion (Verbal Reinforcement Learning)"
+    - "IMPACT Framework (Intent, Memory, Planning, Control Flow, Authority, Tools)"
+    - "4 Failure Modes (Context Saturation, Tool Brittleness, Reasoning Drift, Evaluator Absence)"
+    - "Rule Maker Pattern (LLM generates rules, code executes)"
+
+# =========================================
+# Paths
+# =========================================
+paths:
+  squad_root: "squads/agent-autonomy"
+  agents: "squads/agent-autonomy/agents"
+  tasks: "squads/agent-autonomy/tasks"
+  workflows: "squads/agent-autonomy/workflows"
+  checklists: "squads/agent-autonomy/checklists"
+  data: "squads/agent-autonomy/data"
+
+# SINKRA v3.1 (Story 55.15 Hub upgrade)
+artifact_contracts:
+  - artifact_id: "autonomy-audit-report"
+    template_path: "templates/autonomy-audit-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "agent-optimization-plan"
+    template_path: "templates/optimization-plan-tmpl.md"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "cross-domain-handoff"
+    template_path: "templates/cross-domain-handoff-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+
+bu_mapping: "hub-framework"
+supported_modes:
+  - VALIDAR
+  - RESOLVER
+  - ENTENDER
+
+
+# --- MIGRATION-SCHEMA-001 (auto-backfill, refine domain & capabilities) ---
+metadata:
+  name: agent-autonomy
+  status: active
+  domain: agent-autonomy
+# --- /MIGRATION-SCHEMA-001 ---
+
+
+# --- MIGRATION-SCHEMA-001 (top-level schema backfill) ---
+capabilities:
+  - agent-autonomy-default
+workflows: {}
+# --- /MIGRATION-SCHEMA-001 ---

@@ -1,0 +1,97 @@
+version: "1.0.0"
+schema: pipeline-execution-log
+squad: c-level
+description: >
+  Runtime execution journal for c-level squad pipelines.
+  Each entry records a pipeline run with executor, timestamp, inputs, outputs,
+  duration, and verdict. Enables traceability and performance analysis.
+
+executions:
+  - id: "EXE-2026-04-13-001"
+    pipeline: "sinkra-upgrade-squad"
+    executor: "sinkra-upgrade-squad (external)"
+    started_at: "2026-04-13T22:23:28Z"
+    completed_at: "2026-04-13T22:55:00Z"
+    duration_seconds: 1892
+    inputs:
+      - path: "squads/c-level/config.yaml"
+        state: "POPULATED"
+      - path: "squads/c-level/squad-io.yaml"
+        state: "POPULATED"
+      - path: "squads/c-level/data/token-registry.yaml"
+        state: "POPULATED"
+    outputs:
+      - path: ".aiox/squad-runtime/squad-validations/c-level/2026-04-13T2226-phase1/score-card.yaml"
+        action: "created"
+      - path: ".aiox/squad-runtime/squad-validations/c-level/2026-04-13T2238-phase8/score-card.yaml"
+        action: "created"
+      - path: "squads/c-level/data/pipeline-execution-log.yaml"
+        action: "created"
+      - path: "squads/c-level/data/deviation-registry.yaml"
+        action: "created"
+      - path: "squads/c-level/data/token-registry.yaml"
+        action: "updated"
+      - path: "squads/c-level/data/quality-gates.yaml"
+        action: "updated"
+      - path: "squads/c-level/squad-io.yaml"
+        action: "updated"
+      - path: "squads/c-level/config.yaml"
+        action: "updated"
+    gate_results:
+      - gate_id: "PV_BS_001"
+        score: 67
+        threshold: 80
+        verdict: "REVIEW"
+      - gate_id: "SINKRA_QA_GATE"
+        score: 72
+        threshold: 80
+        verdict: "REVIEW"
+    verdict: "REVIEW"
+    notes: "8-phase upgrade pipeline. Score improved from 46 to 72 (+26). 105 dialect violations fixed, 14 cross-ref breaks resolved, token registry upgraded to v2.0, quality gates upgraded to ternary verdict."
+    business_slug: "n/a (squad-level operation)"
+
+  - id: "EXE-2026-04-13-002"
+    pipeline: "sinkra-validate-squad"
+    executor: "sinkra-validate-squad (external)"
+    started_at: "2026-04-13T22:56:34Z"
+    completed_at: "2026-04-13T23:03:36Z"
+    duration_seconds: 422
+    inputs:
+      - path: "squads/c-level/config.yaml"
+        state: "POPULATED"
+      - path: "squads/c-level/squad-io.yaml"
+        state: "POPULATED"
+    outputs:
+      - path: ".aiox/squad-runtime/squad-validations/c-level/20260413-160231/score-card.yaml"
+        action: "created"
+      - path: ".aiox/squad-runtime/squad-validations/c-level/20260413-160231/sinkra-compliance-report.md"
+        action: "created"
+    gate_results:
+      - gate_id: "overall_score"
+        score: 82.1
+        threshold: 80
+        verdict: "REVIEW"
+    verdict: "REVIEW"
+    notes: "Standard mode validation (Tier 1+2). Score 82.10 but 3 dimensions below minimum (D2=83<85, D7=78<90, D9=45<60)."
+    business_slug: "n/a (squad-level operation)"
+# Schema per entry:
+#   - id: "EXE-{YYYY-MM-DD}-{NNN}"
+#     pipeline: "workflow ID (e.g., business-profile-pipeline)"
+#     executor: "agent ID"
+#     started_at: "ISO8601"
+#     completed_at: "ISO8601"
+#     duration_seconds: NN
+#     inputs:
+#       - path: "input file path"
+#         state: "PLACEHOLDER|POPULATED|etc"
+#     outputs:
+#       - path: "output file path"
+#         action: "created|updated"
+#     gate_results:
+#       - gate_id: "quality gate ID"
+#         score: NN
+#         threshold: NN
+#         verdict: "PASS|REVIEW|FAIL"
+#     verdict: "PASS|REVIEW|FAIL"
+#     notes: "free text"
+#     business_slug: "business identifier"

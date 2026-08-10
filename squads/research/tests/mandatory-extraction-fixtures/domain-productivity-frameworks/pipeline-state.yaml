@@ -1,0 +1,19 @@
+---
+pipeline_id: "fixture-domain-productivity-frameworks"
+status: completed
+stop_reason: coverage_sufficient
+phase: p5b_finalize
+inferred_pattern: single_player
+comparison_pattern: single_player
+
+# STORY-RA-F.3 AC-A2: mandatory_additions logged at Phase 1.5
+mandatory_additions:
+  - "job_crafting — Wrzesniewski & Dutton 2001, evidence base"
+  - "self_determination_theory — Deci & Ryan 1985, evidence base"
+  - "flow_theory — Csikszentmihalyi 1990, evidence base"
+
+domain_inferred:
+  - productivity_frameworks
+  - work_design
+
+phases_completed: 7

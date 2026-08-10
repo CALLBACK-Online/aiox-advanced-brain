@@ -1,0 +1,67 @@
+schema_version: "research-matrices.v1"
+comparison_pattern: "multi_player"
+
+meta:
+  scoring_calibration:
+    type: hybrid
+    scale: "1-5"
+    baseline: "GitHub API snapshot 2026-05-19 + maintainer docs review"
+    calibrated_by: "@aiox-dev single-pass"
+    disclaimer: "Hybrid scores; inter-rater agreement not measured."
+    reproducibility: high
+
+weights:
+  agentic_planning: 0.30
+  tool_runtime: 0.25
+  multi_agent: 0.20
+  evidence_fidelity: 0.15
+  ux_control: 0.10
+
+dimensions:
+  - id: agentic_planning
+    label: "Agentic Planning & Control"
+  - id: tool_runtime
+    label: "Tool Runtime Integration"
+  - id: multi_agent
+    label: "Multi-Agent Orchestration"
+  - id: evidence_fidelity
+    label: "Evidence Fidelity"
+  - id: ux_control
+    label: "UX Operator Control"
+
+rows:
+  - dimension: agentic_planning
+    cells:
+      claude_code: { score: 5, confidence: high }
+      aider:       { score: 3, confidence: high }
+      cline:       { score: 4, confidence: medium }
+      openhands:   { score: 4, confidence: medium }
+      cursor:      { score: 3, confidence: medium }
+  - dimension: tool_runtime
+    cells:
+      claude_code: { score: 5, confidence: high }
+      aider:       { score: 3, confidence: high }
+      cline:       { score: 5, confidence: high }
+      openhands:   { score: 4, confidence: medium }
+      cursor:      { score: 4, confidence: medium }
+  - dimension: multi_agent
+    cells:
+      claude_code: { score: 5, confidence: high }
+      aider:       { score: 1, confidence: high }
+      cline:       { score: 2, confidence: medium }
+      openhands:   { score: 4, confidence: medium }
+      cursor:      { score: 2, confidence: medium }
+  - dimension: evidence_fidelity
+    cells:
+      claude_code: { score: 4, confidence: medium }
+      aider:       { score: 3, confidence: medium }
+      cline:       { score: 3, confidence: medium }
+      openhands:   { score: 4, confidence: medium }
+      cursor:      { score: 3, confidence: medium }
+  - dimension: ux_control
+    cells:
+      claude_code: { score: 5, confidence: high }
+      aider:       { score: 4, confidence: high }
+      cline:       { score: 4, confidence: high }
+      openhands:   { score: 3, confidence: medium }
+      cursor:      { score: 4, confidence: high }

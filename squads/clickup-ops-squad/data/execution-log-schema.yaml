@@ -1,0 +1,14 @@
+schema:
+  artifact: execution_log
+  version: 1.0.0
+  required:
+  - mission_id
+  - step_id
+  - status
+  - emitted_at
+  properties:
+    mission_id: string
+    step_id: string
+    status: string
+    emitted_at: datetime
+    fallback_route: string

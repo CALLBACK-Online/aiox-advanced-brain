@@ -1,0 +1,118 @@
+# Unified Architecture Proposal Template — wf-multi-compare Phase 5
+# Code Anatomist v3.0.0
+
+unified_proposal:
+  id: "PROP-{YYYY-MM-DD}"
+  date: "{ISO date}"
+  baseline: "allfluence"
+  groups_analyzed: 0
+  references_compared: 0
+  analyst: "code-anatomist v3.0.0"
+  status: "draft"  # draft → reviewed → approved → implementing
+
+executive_summary:
+  total_adoptions_proposed: 0
+  total_effort_estimate: "{S | M | L | XL}"
+  estimated_waves: 0
+  highest_impact_adoption: "{pattern name}"
+  key_insight: "{1-sentence summary of the most important finding}"
+
+c4_diagrams:
+  before:
+    container: |
+      ```mermaid
+      C4Container
+        title AllFluence Platform — BEFORE (current state)
+        %% Generated from outputs/decoded/allfluence/phase-3-fusion/c4-container.md
+      ```
+    components: []  # Per-module component diagrams
+
+  after:
+    container: |
+      ```mermaid
+      C4Container
+        title AllFluence Platform — AFTER (with proposed adoptions)
+        %% Annotated with changes from unified proposal
+      ```
+    components: []  # Per-module component diagrams with changes highlighted
+    changes_highlighted:
+      - module: "{module name}"
+        change: "{what changes}"
+        source_reference: "{which project inspired this}"
+
+adoptions:
+  - id: "ADOPT-001"
+    pattern: "{pattern name}"
+    source_references: ["{slug1}", "{slug2}"]
+    confidence: "{HIGH | MEDIUM}"
+    target_module: "{AllFluence module}"
+    description: "{what to adopt and why}"
+    current_state: "{how AllFluence does it now}"
+    proposed_state: "{how it should work after adoption}"
+    adaptation_notes:
+      keep: ["{aspect to keep from reference}"]
+      change: ["{aspect to adapt for AllFluence context}"]
+      discard: ["{aspect that doesn't apply}"]
+    impact:
+      quality_attribute: "{performance | modifiability | security | deployability}"
+      improvement: "{expected improvement description}"
+    effort:
+      estimate: "{S | M | L | XL}"
+      breakdown:
+        - task: "{sub-task}"
+          effort: "{days}"
+    risk:
+      - risk: "{what can go wrong}"
+        mitigation: "{how to mitigate}"
+    priority: "{P0 | P1 | P2 | P3}"
+    wave: 0  # Implementation wave number
+
+conflicts_resolved:
+  - id: "CONF-001"
+    concern: "{what was in conflict}"
+    resolution: "{which approach was chosen}"
+    rationale: "{why — ATAM trade-off analysis}"
+    rejected_approach: "{what was NOT chosen}"
+    rejection_reason: "{why not}"
+
+roadmap:
+  waves:
+    - wave: 1
+      name: "{wave name}"
+      adoptions: ["ADOPT-001", "ADOPT-002"]
+      effort: "{total days}"
+      dependencies: []
+      risk: "{LOW | MEDIUM | HIGH}"
+    - wave: 2
+      name: "{wave name}"
+      adoptions: ["ADOPT-003"]
+      effort: "{total days}"
+      dependencies: ["wave-1"]
+
+story_candidates:
+  - title: "{feat/refactor: description}"
+    type: "{feat | refactor | chore}"
+    adoption_ref: "ADOPT-001"
+    effort: "{S | M | L}"
+    wave: 1
+    acceptance_criteria:
+      - "{AC 1}"
+
+adr_drafts:
+  - id: "ADR-XXX"
+    title: "Adopt {pattern} from {source} for {module}"
+    status: "Proposed"
+    context: "{why}"
+    decision: "{what}"
+    consequences:
+      positive: ["{benefit}"]
+      negative: ["{cost}"]
+
+handoff:
+  to: "@architect"
+  scope: inter_bu
+  signoff:
+    required: true
+    approver: "Pedro Valério"
+    approved: false
+  lifecycle_state: created

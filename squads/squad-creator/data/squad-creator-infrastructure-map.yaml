@@ -1,0 +1,736 @@
+# ═══════════════════════════════════════════════════════════════════
+# Squad-Creator Infrastructure Map v2.0.0
+# Comprehensive operational map of integrations, scripts, CI/CD,
+# tool dependencies, resource constraints, and known gaps.
+# ═══════════════════════════════════════════════════════════════════
+
+meta:
+  id: squad-creator-infrastructure-map
+  version: 2.0.0
+  purpose: "Mapa operacional completo das integracoes, scripts, superficies de execucao, CI/CD, tool dependencies e gaps do squad-creator."
+  updated_at: "2026-04-12"
+  source_config: "squads/squad-creator/config.yaml v6.0.0"
+
+# ═══════════════════════════════════════════════════════════════════
+# 1. SERVICE CATALOG (existing, expanded)
+# ═══════════════════════════════════════════════════════════════════
+
+service_catalog:
+  skill-surface-projection:
+    service_ref: local-skill-surface-runtime
+    connection: ".claude/skills/"
+    integration: "Sincronização de slash skills canônicas"
+  runtime-state:
+    service_ref: local-squad-runtime
+    connection: ".aiox/squad-runtime/"
+    integration: "Persistencia de estado, lifecycle e journey log"
+  workspace-context:
+    service_ref: workspace-read-gateway
+    connection: "workspace/"
+    integration: "Leitura de contexto e templates corporativos"
+  ecosystem-registry:
+    service_ref: squad-registry-store
+    connection: "squads/sinkra-squad/data/ecosystem-registry.yaml"
+    integration: "Consulta e atualização de catálogo"
+
+integrations:
+  - name: workspace_reader
+    connection: "workspace/"
+    endpoint: local-filesystem
+    mode: read_only
+  - name: squad_runtime_state
+    connection: ".aiox/squad-runtime/"
+    endpoint: local-filesystem
+    mode: read_write
+  - name: skill_surface_projection
+    connection: ".claude/skills/"
+    endpoint: local-filesystem
+    mode: read_write
+  - name: ecosystem_registry
+    connection: "squads/sinkra-squad/data/ecosystem-registry.yaml"
+    endpoint: local-filesystem
+    mode: read_write
+  - name: token_registry
+    connection: "squads/sinkra-squad/data/token-registry.yaml"
+    endpoint: local-filesystem
+    mode: read_only
+  - name: runner_registry
+    connection: "infrastructure/scripts/runner-lib/runner-registry.yaml"
+    endpoint: local-filesystem
+    mode: read_only
+    note: "validate-squad registered as runner id in runner-registry.yaml"
+
+# ═══════════════════════════════════════════════════════════════════
+# 3. SCRIPTS INVENTORY
+# ═══════════════════════════════════════════════════════════════════
+#
+# Each script is mapped to its runtime, referenced-by surface, and
+# whether it is actively consumed by a workflow/task or orphaned.
+#
+# Reuse ratio calculated at bottom of this section.
+#
+
+scripts_inventory:
+
+  # --- Validation scripts (Python) ---
+
+  - id: checklist_validator.py
+    runtime: python
+    purpose: "Valida estrutura e completude de checklists de squad"
+    referenced_by:
+      - task: validate-squad-preflight
+        invocation: "python3 scripts/checklist_validator.py squads/{squad_name}/checklists/ --all --output json"
+
+  - id: coherence-validator.py
+    runtime: python
+    purpose: "Cross-reference coherence entre config, agents, tasks, workflows"
+    referenced_by:
+      - task: validate-squad-preflight
+        invocation: "python3 scripts/coherence-validator.py --output json"
+      - workflow: wf-create-squad
+        invocation: "python scripts/coherence-validator.py"
+    note: "Delegates to squad-creator-pro/scripts/coherence-validator.py if pro mode detected"
+
+  - id: dependency_check.py
+    runtime: python
+    purpose: "Valida referencias internas e externas de dependencias"
+    referenced_by:
+      - task: validate-squad-preflight
+        invocation: "python3 scripts/dependency_check.py squads/{squad_name}/ --output json"
+
+  - id: naming_validator.py
+    runtime: python
+    purpose: "Valida convencoes de nomenclatura (kebab-case, prefixos)"
+    referenced_by:
+      - task: validate-squad-preflight
+        invocation: "python3 scripts/naming_validator.py squads/{squad_name}/ --output json"
+
+  - id: scoring.py
+    runtime: python
+    purpose: "Calcula score ponderado de qualidade do squad"
+    referenced_by:
+      - task: validate-squad-preflight
+        invocation: "python3 scripts/scoring.py squads/{squad_name}/ --output json"
+    note: "Delegates to squad-creator-pro/scripts/scoring.py if pro mode detected"
+
+  - id: security_scanner.py
+    runtime: python
+    purpose: "Detecta API keys, secrets, e problemas de seguranca"
+    referenced_by:
+      - task: validate-squad-preflight
+        invocation: "python3 scripts/security_scanner.py squads/{squad_name}/ --output json"
+
+  - id: yaml_validator.py
+    runtime: python
+    purpose: "Valida YAML frontmatter de agents, tasks, e config"
+    referenced_by:
+      - task: validate-squad-preflight
+        note: "Invoked indirectly via validate-squad pipeline"
+
+  - id: inventory.py
+    runtime: python
+    purpose: "Scan completo de estrutura de squad para inventory"
+    referenced_by:
+      - task: upgrade-squad-inventory
+        note: "Provides filesystem inventory data for upgrade workflow"
+
+  - id: validate-squad-quality.py
+    runtime: python
+    purpose: "Quality scoring pipeline para squads"
+    referenced_by:
+      - workflow: wf-qa-after-creation
+        note: "Part of mol-qa-pipeline"
+
+  - id: validate-squad-structure.py
+    runtime: python
+    purpose: "Validacao de estrutura SINKRA completa (dirs, artifact_contracts, duality)"
+    referenced_by:
+      - ci: validate-squads
+        note: "Registered in infrastructure/scripts/runner-lib/squad-routing.yaml as entry for squad-creator"
+      - command: "npm run validate:squad-structure"
+
+  - id: squad-analytics.py
+    runtime: python
+    purpose: "Metricas e analytics do ecossistema de squads"
+    referenced_by:
+      - workflow: wf-ecosystem-analysis
+        note: "Provides data for ecosystem health reports"
+
+  - id: squad_utils.py
+    runtime: python
+    purpose: "Utility functions compartilhadas entre scripts Python"
+    referenced_by:
+      - script: "multiple Python scripts (shared lib)"
+        note: "Imported by other .py scripts in this directory"
+
+  - id: on-specialist-complete.py
+    runtime: python
+    purpose: "Hook callback quando um agente especialista completa uma task"
+    referenced_by:
+      - workflow: wf-create-squad
+        note: "Callback hook for specialist agent completion in composed tasks"
+
+  - id: refresh-registry.py
+    runtime: python
+    purpose: "Atualiza ecosystem-registry.yaml com dados atuais dos squads"
+    referenced_by:
+      - task: next-squad
+        note: "Referenced in next-squad task for registry refresh"
+      - workflow: wf-next-squad
+
+  - id: sync-ide-skills.py
+    runtime: python
+    purpose: "Sincroniza agents publicaveis para superficies IDE (.claude/skills/)"
+    referenced_by:
+      - task: install-skills
+        invocation: "python3 scripts/sync-ide-skills.py squad {squad_name}"
+      - task: install-skills-prepare
+      - task: install-skills-finalize
+      - task: create-agent-publish
+        invocation: "python3 scripts/sync-ide-skills.py agent {agent_id} --squad {squad_name}"
+      - workflow: wf-install-skills
+      - workflow: wf-sync-ide-skills
+
+  - id: update-aiox-sync-config.py
+    runtime: python
+    purpose: "Atualiza .aiox-sync.yaml com novo squad/agent registrado"
+    referenced_by:
+      - task: create-agent-publish
+        invocation: "python3 scripts/update-aiox-sync-config.py --squad {squad_name}"
+      - task: create-squad-publish
+        invocation: "python3 scripts/update-aiox-sync-config.py --squad {squad_name}"
+
+  - id: update-claude-command-registry.py
+    runtime: python
+    purpose: "Atualiza command registry do Claude com novos comandos de squad"
+    referenced_by:
+      - task: create-agent-publish
+        invocation: "python3 scripts/update-claude-command-registry.py"
+      - task: create-squad-publish
+        invocation: "python3 scripts/update-claude-command-registry.py"
+
+  # --- Validation scripts (Bash) ---
+
+  - id: validate-squad.sh
+    runtime: bash
+    purpose: "Entry point principal de validacao de squad (orquestra sub-validators)"
+    referenced_by:
+      - runner: validate-squad
+        note: "Registered in infrastructure/scripts/runner-lib/runner-registry.yaml"
+      - task: qa-check-completeness
+      - task: validate-squad (composed)
+
+  - id: validate-squad-deep.sh
+    runtime: bash
+    purpose: "Deep review com LLM (Opus/Haiku) para analise qualitativa"
+    referenced_by:
+      - task: validate-squad-deep-review
+        invocation: "bash scripts/validate-squad-deep.sh squads/{squad_name}/ [--model opus|haiku] [--verbose]"
+
+  - id: validate-all.sh
+    runtime: bash
+    purpose: "Executa todos os validators em sequencia"
+    referenced_by:
+      - workflow: wf-qa-after-creation
+        note: "Umbrella validation for post-creation QA"
+
+  - id: validate-report.sh
+    runtime: bash
+    purpose: "Gera relatorio consolidado de validacao"
+    referenced_by:
+      - workflow: wf-improve-workflow-from-report
+        note: "validate-report phase"
+
+  - id: validate-tokens.sh
+    runtime: bash
+    purpose: "Valida reconciliacao de tokens entre squad e token-registry central"
+    referenced_by:
+      - workflow: wf-qa-after-creation
+        invocation: "scripts/validate-tokens.sh"
+      - config: "process_token_contract.validation_script"
+
+  - id: verify-squad-completeness.sh
+    runtime: bash
+    purpose: "Verifica completude estrutural de squad (dirs, files obrigatorios)"
+    referenced_by:
+      - workflow: wf-qa-after-creation
+        note: "Part of completeness check pipeline"
+
+  - id: rename-squad.sh
+    runtime: bash
+    purpose: "Script de rename estrutural de squad (map, structural, propagate, validate)"
+    referenced_by:
+      - workflow: wf-rename-squad
+        note: "Underlying script for 4-phase rename workflow"
+
+  - id: audit-autonomy.sh
+    runtime: bash
+    purpose: "Audita nivel de autonomia dos agents de um squad"
+    referenced_by:
+      - workflow: wf-ecosystem-analysis
+        invocation: "bash scripts/audit-autonomy.sh"
+
+  - id: audit-output-quality.sh
+    runtime: bash
+    purpose: "Audita qualidade dos outputs gerados por squads"
+    referenced_by:
+      - workflow: wf-ecosystem-analysis
+        invocation: "bash scripts/audit-output-quality.sh content-engine carousel"
+
+  - id: auto-healing-gate.sh
+    runtime: bash
+    purpose: "Gate de auto-healing que diagnostica e corrige erros operacionais"
+    referenced_by:
+      - workflow: wf-ecosystem-analysis
+        invocation: "bash scripts/auto-healing-gate.sh"
+      - workflow: wf-auto-heal
+
+  # --- Generation scripts (Node.js) ---
+
+  - id: generate-squad-greeting.js
+    runtime: node
+    purpose: "Gera script de greeting para ativacao de squad"
+    referenced_by:
+      - task: create-greeting-script-validate
+        invocation: "node scripts/generate-squad-greeting.js {squad} {agent}"
+      - workflow: wf-create-greeting-script
+
+  - id: generate-squad-guide.js
+    runtime: node
+    purpose: "Gera guia de uso do squad (SQUAD-GUIDE.md)"
+    referenced_by:
+      - workflow: wf-create-squad
+        note: "Post-creation documentation generation"
+
+  - id: scaffold-squad.cjs
+    runtime: node
+    purpose: "Scaffolding estrutural de diretorio de squad a partir de templates"
+    referenced_by:
+      - workflow: wf-create-squad
+        note: "Core scaffolding step in create-squad-build"
+
+  - id: sync-chief-codex-skill.js
+    runtime: node
+    purpose: "Sincroniza skill do chief agent para surface Codex"
+    referenced_by:
+      - task: sync-chief-codex-skill
+        invocation: "node scripts/sync-chief-codex-skill.js --squad {squad_name}"
+      - task: create-agent-publish
+
+  - id: detect-environment-contract.cjs
+    runtime: node
+    purpose: "Detecta contrato de ambiente (runtime state, services, connections)"
+    referenced_by:
+      - workflow: wf-setup-runtime
+        note: "Environment detection for runtime configuration"
+
+  - id: export-antigravity-workflows.cjs
+    runtime: node
+    purpose: "Exporta workflows em formato antigravidade para visualizacao"
+    referenced_by:
+      - note: "Utility for workflow export/visualization"
+      - status: orphan_candidate
+        reason: "No direct task/workflow reference found in active pipeline"
+
+  # --- Lib scripts (Node.js) ---
+
+  - id: lib/config-loader.js
+    runtime: node
+    purpose: "Carrega e parsea config.yaml de squads"
+    referenced_by:
+      - script: "multiple Node.js scripts (shared lib)"
+
+  - id: lib/squad-runtime-paths.cjs
+    runtime: node
+    purpose: "Resolve paths de runtime (.aiox/squad-runtime/) para squads"
+    referenced_by:
+      - script: "multiple Node.js scripts (shared lib)"
+
+  - id: lib/validate-runtime-state.cjs
+    runtime: node
+    purpose: "Valida estado de runtime de squad (instance, artifact state)"
+    referenced_by:
+      - workflow: wf-setup-runtime
+      - workflow: wf-operational-test
+
+  # --- Kaizen scripts (Bash) ---
+
+  - id: kaizen/kaizen-trigger.sh
+    runtime: bash
+    purpose: "Trigger para ciclo kaizen de self-improvement"
+    referenced_by:
+      - workflow: wf-self-improve
+        note: "Entry point for kaizen self-improvement cycle"
+
+  # --- Test scripts ---
+
+  - id: tests/__init__.py
+    runtime: python
+    purpose: "Python test package init"
+    referenced_by:
+      - test_suite: true
+
+  - id: tests/test_adapters.py
+    runtime: python
+    purpose: "Testa adapter functions"
+    referenced_by:
+      - test_suite: true
+
+  - id: tests/test_assess_sources.sh
+    runtime: bash
+    purpose: "Testa avaliacao de fontes"
+    referenced_by:
+      - test_suite: true
+
+  - id: tests/test_clone_review.sh
+    runtime: bash
+    purpose: "Testa clone review workflow"
+    referenced_by:
+      - test_suite: true
+
+  - id: tests/test_fidelity_score.sh
+    runtime: bash
+    purpose: "Testa calculo de fidelity score"
+    referenced_by:
+      - test_suite: true
+
+  - id: tests/test_refresh_registry_contract.py
+    runtime: python
+    purpose: "Testa contrato de refresh-registry"
+    referenced_by:
+      - test_suite: true
+
+  - id: tests/test_squad_analytics.py
+    runtime: python
+    purpose: "Testa squad-analytics.py"
+    referenced_by:
+      - test_suite: true
+
+  - id: tests/test_validate_squad_contextual_lifecycle.py
+    runtime: python
+    purpose: "Testa validacao de lifecycle contextual de squad"
+    referenced_by:
+      - test_suite: true
+
+  - id: tests/test_validate_squad_tested_inference.py
+    runtime: python
+    purpose: "Testa inferencia do campo tested em squads"
+    referenced_by:
+      - test_suite: true
+
+  - id: tests/test_validate_squad_yolo_warning.py
+    runtime: python
+    purpose: "Testa warnings de modo YOLO em validacao"
+    referenced_by:
+      - test_suite: true
+
+  # --- README ---
+
+  - id: README.md
+    runtime: documentation
+    purpose: "Documentacao do diretorio scripts/"
+    referenced_by:
+      - documentation: true
+
+# --- Script statistics ---
+
+scripts_stats:
+  total_scripts: 34
+  by_runtime:
+    python: 16
+    bash: 12
+    node: 8
+    documentation: 1
+  by_category:
+    validation: 14
+    generation: 4
+    sync_publish: 5
+    audit_kaizen: 4
+    utility_lib: 4
+    tests: 10
+    documentation: 1
+  test_scripts: 10
+  orphan_candidates:
+    - id: export-antigravity-workflows.cjs
+      reason: "No direct task/workflow invocation found in active pipelines"
+
+# --- Reuse ratio ---
+# Scripts referenced by 2+ workflows or tasks / total non-test, non-lib, non-doc scripts
+# Multi-referenced: coherence-validator.py (2), sync-ide-skills.py (6), update-aiox-sync-config.py (2),
+#   update-claude-command-registry.py (2), auto-healing-gate.sh (2), sync-chief-codex-skill.js (2),
+#   validate-squad.sh (3), validate-tokens.sh (2)
+# Total active scripts (excl tests, lib, README): 27
+# Multi-referenced: 8
+
+reuse_ratio:
+  multi_referenced_scripts: 8
+  total_active_scripts: 27
+  ratio: 0.30
+  interpretation: "30% dos scripts sao reutilizados por 2+ workflows/tasks"
+
+# ═══════════════════════════════════════════════════════════════════
+# 4. CI/CD INTEGRATION
+# ═══════════════════════════════════════════════════════════════════
+
+ci_cd_integration:
+  ci_gate_yml:
+    path: ".github/workflows/ci-gate.yml"
+
+    jobs_consuming_squad_creator:
+
+      - job_id: validate-squads
+        enforcement: hard-mandatory
+        description: "Valida config.yaml pack: e name: de todos os squads"
+        triggers_on: "squads changed (detected by detect-layers job)"
+        scripts_consumed:
+          - "infrastructure/scripts/runner-lib/squad-routing.yaml (routes to squad-creator entry)"
+          - "squads/squad-creator/scripts/validate-squad-structure.py"
+        npm_command: "npm run validate:squads"
+        allowed_failure: true
+        note: "Listed in allowed-failures but enforcement is hard-mandatory when squads layer is changed"
+
+      - job_id: validate-yaml
+        enforcement: soft-mandatory
+        description: "Valida todos os arquivos YAML/YML do repositorio"
+        triggers_on: "any YAML file changed"
+        scope: "All YAML files including squads/squad-creator/**/*.yaml"
+        npm_command: "npm run validate:yaml"
+
+  squad_validation_yml:
+    path: ".github/workflows/squad-validation.yml"
+    description: "Dedicated squad validation workflow"
+    command: "npm run validate:squads"
+
+  runner_registry:
+    path: "infrastructure/scripts/runner-lib/runner-registry.yaml"
+    entries:
+      - id: validate-squad
+        script_path: "squads/squad-creator/scripts/validate-squad.sh"
+        squad: squad-creator
+
+  squad_routing:
+    path: "infrastructure/scripts/runner-lib/squad-routing.yaml"
+    entries:
+      - squad: squad-creator
+        entry: "squads/squad-creator/scripts/validate-squad-structure.py"
+        runners:
+          - validate-squad
+
+  local_ci_parity:
+    validate_squads: "npm run validate:squads"
+    validate_squad_structure: "npm run validate:squad-structure"
+    validate_yaml_changed: "npm run validate:yaml:changed"
+
+# ═══════════════════════════════════════════════════════════════════
+# 5. EXTERNAL TOOL DEPENDENCIES
+# ═══════════════════════════════════════════════════════════════════
+#
+# Tools used by squad-chief agent tasks at runtime.
+# These are Claude Code built-in tools and MCP capabilities.
+#
+
+external_tool_dependencies:
+
+  filesystem_tools:
+    - tool: Glob
+      usage: "File pattern discovery (squads/*/config.yaml, templates, tasks)"
+      consumed_by:
+        - task: create-squad-discover
+        - task: upgrade-squad-inventory
+        - task: detect-gaps
+        - task: next-squad
+      criticality: high
+
+    - tool: Grep
+      usage: "Content search across files (capability matching, reference validation)"
+      consumed_by:
+        - task: upgrade-squad-gap
+        - task: qa-check-references
+        - task: validate-squad-preflight
+      criticality: high
+
+    - tool: Read
+      usage: "File content reading (config.yaml, agent personas, task definitions)"
+      consumed_by:
+        - task: "virtually all tasks"
+      criticality: critical
+
+    - tool: Write
+      usage: "File creation (new squads, agents, tasks, workflows, reports)"
+      consumed_by:
+        - task: create-squad-build
+        - task: create-agent-generate
+        - task: create-task-generate
+        - task: create-workflow-generate
+      criticality: critical
+
+    - tool: Edit
+      usage: "File modification (config.yaml updates, registry entries)"
+      consumed_by:
+        - task: create-squad-publish
+        - task: create-agent-publish
+        - task: upgrade-squad-apply
+      criticality: high
+
+  research_tools:
+    - tool: WebSearch
+      usage: "External tool discovery and domain research"
+      consumed_by:
+        - workflow: wf-discover-tools
+        - task: discover-tools-search
+        - task: discover-tools-classify
+      criticality: medium
+      note: "Only used in discover-tools workflow family; not required for core creation"
+
+  agent_tools:
+    - tool: Agent
+      usage: "Spawning sub-agents for composed tasks and parallel execution"
+      consumed_by:
+        - workflow: wf-discover-tools (parallel category research)
+        - workflow: wf-ecosystem-analysis (multi-agent analysis)
+        - workflow: wf-cross-provider-qualification (baseline vs candidate)
+      criticality: medium
+
+  bash_tool:
+    - tool: Bash
+      usage: "Script execution (validation scripts, sync scripts, generators)"
+      consumed_by:
+        - task: validate-squad-preflight (runs 6 Python validators)
+        - task: validate-squad-deep-review (runs validate-squad-deep.sh)
+        - task: create-greeting-script-validate (runs generate-squad-greeting.js)
+        - task: install-skills (runs sync-ide-skills.py)
+        - task: sync-chief-codex-skill (runs sync-chief-codex-skill.js)
+        - workflow: wf-ecosystem-analysis (runs audit + healing scripts)
+      criticality: critical
+
+# ═══════════════════════════════════════════════════════════════════
+# 6. RESOURCE CONSTRAINTS
+# ═══════════════════════════════════════════════════════════════════
+
+resource_constraints:
+
+  quality_thresholds:
+    quality_threshold: 8.5
+    sinkra_native_score: 8.0
+    sinkra_tier: Enterprise
+    error_behavior: fail_loud
+    on_validation_fail: block_publish
+    on_generation_fail: emit_handoff
+    on_runtime_error: persist_evidence
+
+  workflow_scale:
+    total_tasks: 140
+    total_workflows: 24
+    total_agents: 1
+    total_checklists: 17
+    total_data_files: 25
+    supported_modes: 8
+
+  artifact_lifecycle:
+    states: [draft, pending_validation, validated, approved, rejected, consumed, superseded, archived]
+    tracking_enabled: true
+    state_persistence: ".aiox/squad-runtime/{squad-name}/artifact-state.yaml"
+
+  instance_lifecycle:
+    states: [CRIADA, EM_EXECUCAO, COMPLETA, PAUSADA, BLOQUEADA, CANCELADA, ARQUIVADA]
+    tracking_enabled: true
+
+  token_contract:
+    tokens_declared: 29
+    central_registry_family: squad_creator
+    prefix: "TK-SC"
+    range: "TK-SC-001..TK-SC-029"
+
+  pro_mode_detection:
+    enabled: true
+    pro_path: "squads/squad-creator-pro/config.yaml"
+    note: "Pro mode auto-detected; adds ecosystem-analyst agent, advanced scoring, mind cloning"
+
+# ═══════════════════════════════════════════════════════════════════
+# 7. KNOWN GAPS
+# ═══════════════════════════════════════════════════════════════════
+
+gaps:
+
+  - id: GAP-SC-001
+    area: scripts
+    description: "export-antigravity-workflows.cjs has no active task/workflow consumer"
+    impact: low
+    recommendation: "Evaluate if still needed; remove or wire into wf-squad-overview if useful"
+
+  - id: GAP-SC-002
+    area: ci_cd
+    description: "No dedicated CI job runs squad-creator test suite (tests/ directory)"
+    impact: medium
+    recommendation: "Add a validate-squad-creator-tests job to ci-gate.yml or integrate into validate-squads"
+
+  - id: GAP-SC-003
+    area: quality_policy
+    description: "No explicit timeout or max creation window defined in config.yaml"
+    impact: low
+    recommendation: "Add quality_policy section with workflow timeouts (e.g., max_creation_window: 30m, analysis_timeout: 10m)"
+
+  - id: GAP-SC-004
+    area: scripts
+    description: "Python scripts lack a requirements.txt or pyproject.toml for dependency pinning"
+    impact: low
+    recommendation: "Scripts appear to use only stdlib; document this explicitly or add a minimal requirements.txt"
+
+  - id: GAP-SC-005
+    area: ci_cd
+    description: "validate-squads is in allowed-failures list despite being hard-mandatory"
+    impact: medium
+    recommendation: "Remove from allowed-failures to enforce hard gate, or downgrade enforcement label"
+
+  - id: GAP-SC-006
+    area: observability
+    description: "No runtime metrics collection for script execution times"
+    impact: low
+    recommendation: "Add timing instrumentation to validate-squad.sh and scoring.py for performance baseline"
+
+  - id: GAP-SC-007
+    area: scripts
+    description: "on-specialist-complete.py callback mechanism lacks documentation on trigger contract"
+    impact: low
+    recommendation: "Document expected callback payload and invocation context in script header"
+
+# ═══════════════════════════════════════════════════════════════════
+# DEPRECATED SCRIPTS (Wave 3 validation remediation, 2026-04-12)
+# ═══════════════════════════════════════════════════════════════════
+
+deprecated_scripts:
+  - script: scripts/export-antigravity-workflows.cjs
+    status: deprecated
+    reason: "No active task/workflow consumer. Orphan since squad-creator v5.0."
+    action: "Remove in next major version or wire into wf-squad-overview"
+    deprecated_at: "2026-04-12"
+
+  - script: scripts/validate-all.sh
+    status: deprecated
+    reason: "Explicitly marked DEPRECATE in scripts/README.md. Superseded by validate-squad.sh and validate-squad-deep.sh."
+    action: "Remove in next major version"
+    deprecated_at: "2026-04-12"
+
+  - script: scripts/on-specialist-complete.py
+    status: deprecated
+    reason: "Callback hook never triggered by any task or workflow. No documented trigger contract."
+    action: "Remove or document trigger contract and wire into Composed task completion"
+    deprecated_at: "2026-04-12"
+
+  - script: scripts/validate-report.sh
+    status: deprecated
+    reason: "No task or workflow consumer. report-quality-checklist.md also orphaned."
+    action: "Wire into wf-weekly-report or remove both script and checklist"
+    deprecated_at: "2026-04-12"
+
+  - script: scripts/kaizen/kaizen-trigger.sh
+    status: deprecated
+    reason: "Dead post-kaizen-fusion (STORY-108.3). wf-self-improve.yaml does not reference it."
+    action: "Remove or integrate trigger detection into wf-ecosystem-analysis"
+    deprecated_at: "2026-04-12"
+
+  - script: scripts/scaffold-squad.cjs
+    status: deprecated
+    reason: "317 lines of scaffold logic duplicated by inline task instructions in create-squad-build.md."
+    action: "Consolidate: either use script exclusively (refactor task to call it) or remove script"
+    deprecated_at: "2026-04-12"

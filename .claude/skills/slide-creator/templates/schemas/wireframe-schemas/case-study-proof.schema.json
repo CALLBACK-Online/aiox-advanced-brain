@@ -1,0 +1,55 @@
+{
+  "$id": "sinkra://slide-creator/wireframes/case-study-proof.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "A customer, project, or internal case proves a repeatable outcome.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "baseline_detail": {
+      "type": "string"
+    },
+    "baseline_title": {
+      "type": "string"
+    },
+    "intervention_detail": {
+      "type": "string"
+    },
+    "intervention_title": {
+      "type": "string"
+    },
+    "repeatable_lesson": {
+      "description": "pattern",
+      "maxLength": 120,
+      "type": "string"
+    },
+    "result_detail": {
+      "type": "string"
+    },
+    "result_metric": {
+      "type": "string"
+    },
+    "source_note": {
+      "type": "string"
+    }
+  },
+  "title": "case-study-proof",
+  "type": "object",
+  "x-sinkra": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "case_study_result",
+    "slot_count": 9,
+    "warnings": [
+      "action_title",
+      "baseline_title",
+      "baseline_detail",
+      "intervention_title",
+      "intervention_detail",
+      "result_metric",
+      "result_detail",
+      "source_note"
+    ],
+    "wireframe_ref": "templates/wireframes/case-study-proof.html"
+  }
+}

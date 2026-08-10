@@ -1,0 +1,86 @@
+{
+  "schema_version": "comparison-matrix.v1",
+  "comparison_pattern": "multi_player",
+  "meta": {
+    "scoring_calibration": {
+      "type": "hybrid",
+      "scale": "0-2",
+      "baseline": "coverage_matrix_helper canonical map",
+      "calibrated_by": "@aiox-dev fixture stub",
+      "disclaimer": "Hybrid scores derived from 4-level status enum",
+      "reproducibility": "high"
+    }
+  },
+  "weights": {
+    "agentic_planning_control": 0.18,
+    "tool_runtime_integration": 0.18,
+    "research_depth_synthesis": 0.15,
+    "multi_agent_orchestration": 0.12,
+    "evidence_fidelity_evaluation": 0.12,
+    "ux_operator_control": 0.10,
+    "architecture_absorption": 0.05,
+    "implementation_maturity": 0.05,
+    "trace_observability": 0.03,
+    "private_kb_grounding": 0.02
+  },
+  "players": ["claude_code", "aider", "cline", "openhands", "cursor"],
+  "dimensions": [
+    {"id": "agentic_planning_control",    "label": "Agentic Planning & Control"},
+    {"id": "tool_runtime_integration",    "label": "Tool Runtime Integration"},
+    {"id": "research_depth_synthesis",    "label": "Research Depth Synthesis"},
+    {"id": "multi_agent_orchestration",   "label": "Multi-Agent Orchestration"},
+    {"id": "evidence_fidelity_evaluation","label": "Evidence Fidelity"}
+  ],
+  "rows": [
+    {
+      "dimension": "agentic_planning_control",
+      "cells": {
+        "claude_code": {"status": "confirmed",   "score": 2.0, "symbol": "✅", "confidence": "high"},
+        "aider":       {"status": "partial",     "score": 1.0, "symbol": "◐", "confidence": "high"},
+        "cline":       {"status": "confirmed",   "score": 2.0, "symbol": "✅", "confidence": "medium"},
+        "openhands":   {"status": "partial",     "score": 1.0, "symbol": "◐", "confidence": "medium"},
+        "cursor":      {"status": "uncertain",   "score": 0.5, "symbol": "?", "confidence": "medium"}
+      }
+    },
+    {
+      "dimension": "tool_runtime_integration",
+      "cells": {
+        "claude_code": {"status": "confirmed",   "score": 2.0, "symbol": "✅", "confidence": "high"},
+        "aider":       {"status": "partial",     "score": 1.0, "symbol": "◐", "confidence": "high"},
+        "cline":       {"status": "confirmed",   "score": 2.0, "symbol": "✅", "confidence": "high"},
+        "openhands":   {"status": "confirmed",   "score": 2.0, "symbol": "✅", "confidence": "medium"},
+        "cursor":      {"status": "partial",     "score": 1.0, "symbol": "◐", "confidence": "medium"}
+      }
+    },
+    {
+      "dimension": "research_depth_synthesis",
+      "cells": {
+        "claude_code": {"status": "confirmed",   "score": 2.0, "symbol": "✅", "confidence": "high"},
+        "aider":       {"status": "uncertain",   "score": 0.5, "symbol": "?", "confidence": "medium"},
+        "cline":       {"status": "partial",     "score": 1.0, "symbol": "◐", "confidence": "medium"},
+        "openhands":   {"status": "partial",     "score": 1.0, "symbol": "◐", "confidence": "medium"},
+        "cursor":      {"status": "not_present", "score": 0.0, "symbol": "—", "confidence": "high"}
+      }
+    },
+    {
+      "dimension": "multi_agent_orchestration",
+      "cells": {
+        "claude_code": {"status": "confirmed",   "score": 2.0, "symbol": "✅", "confidence": "high"},
+        "aider":       {"status": "not_present", "score": 0.0, "symbol": "—", "confidence": "high"},
+        "cline":       {"status": "uncertain",   "score": 0.5, "symbol": "?", "confidence": "medium"},
+        "openhands":   {"status": "partial",     "score": 1.0, "symbol": "◐", "confidence": "medium"},
+        "cursor":      {"status": "not_present", "score": 0.0, "symbol": "—", "confidence": "medium"}
+      }
+    },
+    {
+      "dimension": "evidence_fidelity_evaluation",
+      "cells": {
+        "claude_code": {"status": "partial",     "score": 1.0, "symbol": "◐", "confidence": "medium"},
+        "aider":       {"status": "partial",     "score": 1.0, "symbol": "◐", "confidence": "medium"},
+        "cline":       {"status": "uncertain",   "score": 0.5, "symbol": "?", "confidence": "medium"},
+        "openhands":   {"status": "partial",     "score": 1.0, "symbol": "◐", "confidence": "medium"},
+        "cursor":      {"status": "uncertain",   "score": 0.5, "symbol": "?", "confidence": "medium"}
+      }
+    }
+  ]
+}

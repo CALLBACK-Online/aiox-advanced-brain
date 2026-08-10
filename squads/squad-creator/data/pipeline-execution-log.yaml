@@ -1,0 +1,80 @@
+# Pipeline Execution Log — squad-creator
+# Tracks every squad creation/upgrade/validation execution for auditability.
+# Validators (sinkra-validate-squad) check this file to assess operational history.
+#
+# Reference: squads/sinkra-squad/data/pipeline-execution-log.yaml
+# Created: 2026-04-12
+
+schema_version: "1.0.0"
+squad: "squad-creator"
+description: >
+  Registro de execucoes do pipeline squad-creator.
+  Cada entrada representa uma invocacao completa de *create, *upgrade, *validate, ou *analyze.
+  Usado por meta-axiomas assessment e auditoria de qualidade.
+
+# ═══════════════════════════════════════════════════════════════════
+# EXECUTION ENTRIES
+# ═══════════════════════════════════════════════════════════════════
+# Append-only. Each execution adds an entry at the end.
+# squad-chief writes entries at pipeline completion (success or failure).
+
+executions: []
+# Entry schema:
+# - id: "exec-{YYYYMMDD}-{HHMMSS}-{workflow}"
+#   workflow: "wf-create-squad | wf-upgrade-squad | wf-create-agent | wf-qa-after-creation | ..."
+#   command: "*create | *upgrade | *validate | *analyze | ..."
+#   target: "{squad-name or target identifier}"
+#   started_at: "ISO-8601"
+#   completed_at: "ISO-8601"
+#   duration_seconds: N
+#   status: "completed | failed | aborted | timeout"
+#   mode: "yolo | incremental | interactive"
+#   phases_completed: [list of phase IDs]
+#   phases_skipped: [list of phase IDs]
+#   phases_failed: [list of phase IDs with failure reason]
+#   quality_score: N.N  # overall quality score if applicable
+#   meta_axiomas_overall: N.N  # META_AXIOMAS score if assessed
+#   checkpoints_passed: N
+#   checkpoints_failed: N
+#   error_summary: "null | short error description"
+#   error_handling_triggered:
+#     - scenario: "on_X_fail"
+#       action_taken: "description"
+#       retries: N
+#       resolved: true|false
+#   outputs:
+#     - path: "relative path to generated artifact"
+#       type: "squad | agent | report | validation"
+#   operator: "{slug}"
+#   agent_version: "{squad-creator version}"
+
+# ═══════════════════════════════════════════════════════════════════
+# AGGREGATE METRICS (updated after each execution)
+# ═══════════════════════════════════════════════════════════════════
+
+metrics:
+  total_executions: 0
+  by_status:
+    completed: 0
+    failed: 0
+    aborted: 0
+    timeout: 0
+  by_workflow:
+    wf-create-squad: 0
+    wf-upgrade-squad: 0
+    wf-create-agent: 0
+    wf-qa-after-creation: 0
+    wf-ecosystem-analysis: 0
+    other: 0
+  average_duration_seconds: 0
+  average_quality_score: 0
+  last_execution_at: null
+  success_rate: 0
+
+metadata:
+  created_at: "2026-04-12"
+  last_updated: "2026-04-12"
+  note: >
+    This file is append-only during execution and metrics are recalculated
+    after each entry. Validators check meta_axiomas_overall population
+    to assess feedback loop maturity.

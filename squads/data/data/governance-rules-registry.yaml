@@ -1,0 +1,146 @@
+# Data Squad Governance Rules Registry v1.0
+# Os 10 Mandamentos SINKRA + Golden Rule da squad data.
+# Cada rule declara mecanismo de enforcement concreto.
+
+_dependents_declaration:
+  registry_id: data-governance-rules-registry
+  dag_role: leaf
+  upstream:
+    - registry: "squads/data/data/token-registry.yaml"
+    - registry: "squads/data/data/composition-rules.yaml"
+    - registry: "squads/data/data/process-registry.yaml"
+
+version: "1.0.0"
+squad: data
+description: "Os 10 Mandamentos SINKRA aplicados a squad data + Golden Rule tier-0-first."
+
+# ─────────────────────────────────────────────────────────────────────────────
+# OS 10 MANDAMENTOS
+# ─────────────────────────────────────────────────────────────────────────────
+
+mandamentos:
+  - id: MAND-001
+    name: uma_task_um_executor
+    description: "Cada task tem exatamente 1 responsavel_type"
+    enforcement:
+      mechanism: "responsavel_type field in task metadata"
+      validator: "SINKRA_TASK_METADATA block parser"
+      blocking: true
+    violation_example: "Task sem responsavel_type definido ou com 2+ executors"
+
+  - id: MAND-002
+    name: criterio_conclusao_pre_definido
+    description: "Task so inicia se acceptance_criteria esta definido"
+    enforcement:
+      mechanism: "acceptance_criteria field required in task frontmatter"
+      validator: "task-linter (checks AC before exec)"
+      blocking: true
+
+  - id: MAND-003
+    name: logging_obrigatorio
+    description: "Todo executor deve logar erros e estado"
+    enforcement:
+      mechanism: "error_handling field in task.md"
+      validator: "pipeline-execution-log.yaml entries must reference task_id"
+      blocking: false
+      severity: WARN
+
+  - id: MAND-004
+    name: output_schema_validado
+    description: "Outputs sao validados contra schema declarado"
+    enforcement:
+      mechanism: "SINKRA_TASK_METADATA + SINKRA_CONTRACT blocks in task.md"
+      validator: "contract-validator (sinkra-squad)"
+      blocking: true
+
+  - id: MAND-005
+    name: quality_gates_threshold_numerico
+    description: "Quality gates usam thresholds numericos, nao subjetivos"
+    enforcement:
+      mechanism: "checkpoints in workflows/*.yaml with numeric thresholds"
+      validator: "workflow-linter (checks quality_gate expressions)"
+      blocking: true
+    example: "meta_axiomas >= 7.0 (not 'looks good')"
+
+  - id: MAND-006
+    name: executor_types_4_canonical
+    description: "Apenas 4 responsavel_types: Worker, Agent, Clone, Human"
+    enforcement:
+      mechanism: "responsavel_type enum in token-registry.yaml (TK-DATA-ACC-001)"
+      validator: "token-validator"
+      blocking: true
+
+  - id: MAND-007
+    name: desvios_formalizados
+    description: "Desvios de processo sao registrados formalmente"
+    enforcement:
+      mechanism: "deviation-registry.yaml entries with DEV-YYYY-NNN id"
+      validator: "deviation-schema-validator"
+      blocking: false
+      severity: WARN
+
+  - id: MAND-008
+    name: pipeline_sequencial
+    description: "Workflows sao maquinas de estado sequenciais"
+    enforcement:
+      mechanism: "state_machine transitions in workflow yaml"
+      validator: "workflow-state-machine-validator"
+      blocking: true
+
+  - id: MAND-009
+    name: handoff_formal
+    description: "Handoffs entre agents sao formalmente declarados"
+    enforcement:
+      mechanism: "workflow.task_ref + agents_involved fields"
+      validator: "workflow-linter (checks agents_involved vs task owners)"
+      blocking: true
+
+  - id: MAND-010
+    name: observabilidade_e2e
+    description: "Toda execucao e-2-e e observavel via log"
+    enforcement:
+      mechanism: "pipeline-execution-log.yaml entries per execution_id"
+      validator: "observability-validator"
+      blocking: false
+      severity: WARN
+
+# ─────────────────────────────────────────────────────────────────────────────
+# GOLDEN RULE (Data Squad Specific)
+# ─────────────────────────────────────────────────────────────────────────────
+
+golden_rule:
+  id: GR-DATA-001
+  name: tier_0_first
+  description: |
+    Nunca implementar metrica sem passar por pelo menos 1 fundamentador (Tier 0).
+    Tier 0 = peter-fader (CLV/RFM/probabilistic) ou sean-ellis (Viral/PMF).
+  rationale: |
+    Tier 1 (Mehta, Spinks, Kao) operacionaliza e Tier 2 (Kaushik) comunica.
+    Fundamento matematico deve vir do Tier 0 para evitar vanity metrics.
+  enforcement:
+    mechanism: "composition-rules validator checks organism.agents_involved for tier_0 presence"
+    validator: "golden-rule-validator.py"
+    blocking: true
+    exception_path: "deviation-registry.yaml with @data-chief approval"
+  examples:
+    allowed:
+      - "Kaushik constroi attribution APOS Fader validar modelo CLV subjacente"
+      - "Kao desenha learning outcomes APOS Ellis validar PMF do curso"
+    forbidden:
+      - "Mehta cria health score sem input de Fader (base matematica)"
+      - "Spinks mede comunidade com K-factor sem validacao de Ellis"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# META
+# ─────────────────────────────────────────────────────────────────────────────
+
+meta:
+  total_rules: 11
+  mandamentos: 10
+  golden_rules: 1
+  enforcement_coverage:
+    blocking: 7
+    warn: 3
+    advisory: 1
+  last_updated: "2026-04-15"
+  owner: data-chief

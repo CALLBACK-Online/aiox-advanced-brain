@@ -1,0 +1,70 @@
+{
+  "$id": "sinkra://slide-creator/wireframes/objection-matrix.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "The audience likely has a named objection that can block action.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "objection_1": {
+      "type": "string"
+    },
+    "objection_2": {
+      "type": "string"
+    },
+    "objection_3": {
+      "type": "string"
+    },
+    "objection_4": {
+      "type": "string"
+    },
+    "proof_1": {
+      "type": "string"
+    },
+    "proof_2": {
+      "type": "string"
+    },
+    "proof_3": {
+      "type": "string"
+    },
+    "proof_4": {
+      "type": "string"
+    },
+    "response_1": {
+      "type": "string"
+    },
+    "response_2": {
+      "type": "string"
+    },
+    "response_3": {
+      "type": "string"
+    },
+    "response_4": {
+      "type": "string"
+    }
+  },
+  "title": "objection-matrix",
+  "type": "object",
+  "x-sinkra": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "objection_response",
+    "slot_count": 13,
+    "warnings": [
+      "action_title",
+      "objection_1",
+      "response_1",
+      "proof_1",
+      "objection_2",
+      "response_2",
+      "proof_2",
+      "objection_3",
+      "response_3",
+      "proof_3",
+      "objection_4",
+      "response_4",
+      "proof_4"
+    ],
+    "wireframe_ref": "templates/wireframes/objection-matrix.html"
+  }
+}

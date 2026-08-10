@@ -1,0 +1,723 @@
+_meta:
+  description: "Operation → tool map (REST API or Playwright). Source of truth for the unified /clickup dispatcher routing."
+  priority: "api > api+playwright > playwright"
+  api_base: "services/clickup/"
+  playwright_base: ".claude/skills/clickup-playwright/skills/"
+  version: "2.0.0"
+  updated_at: "2026-03-30"
+  notes: "v2.0: Converted from JSON, fixed api_base path, added Mission/rendering/lifecycle ops, hybrid_flows, governance_refs."
+
+operations:
+  # ── Task ────────────────────────────────────────────────────────────────────
+  task.create:
+    tool: api
+    module: tasks.js
+    fn: createTask
+    via_index: true
+
+  task.read:
+    tool: api
+    module: tasks.js
+    fn: getTask
+    via_index: true
+
+  task.list:
+    tool: api
+    module: tasks.js
+    fn: getTasks
+    via_index: true
+
+  task.update:
+    tool: api
+    module: tasks.js
+    fn: updateTask
+    via_index: true
+
+  task.subtask_create:
+    tool: api
+    module: tasks.js
+    fn: createSubtask
+    via_index: true
+
+  task.move_cross_space:
+    tool: playwright
+    skill: cu-tasks
+    reason: "API falha silenciosamente em moves cross-Space"
+
+  task.bulk_operations:
+    tool: playwright
+    skill: cu-bulk-operations
+    reason: "API não suporta seleção/edição em massa via UI"
+
+  task.capture:
+    tool: api
+    module: capture-task.js
+    fn: captureTask
+    via_index: false
+    note: "internal — not re-exported by index.js"
+
+  task.start:
+    tool: api
+    module: execute-task.js
+    fn: startTask
+    via_index: false
+    note: "internal — not re-exported by index.js"
+
+  task.complete:
+    tool: api
+    module: execute-task.js
+    fn: completeTask
+    via_index: false
+    note: "internal — not re-exported by index.js"
+
+  task.update_description_safe:
+    tool: api
+    module: tasks.js
+    fn: updateTaskDescriptionSafe
+    via_index: true
+    mandatory: true
+    note: "OBRIGATÓRIO para qualquer update de description — preserva Journey Log e Task Digest"
+
+  task.append_journal:
+    tool: api
+    module: tasks.js
+    fn: appendJournalEntry
+    via_index: true
+    mandatory: true
+    note: "OBRIGATÓRIO para Journey Log — append-only, nunca reescreve Zone 2"
+
+  # ── Status ───────────────────────────────────────────────────────────────────
+  status.change:
+    tool: api
+    module: tasks.js
+    fn: updateStatus
+    via_index: true
+
+  status.get_all:
+    tool: api
+    module: tasks.js
+    fn: getStatuses
+    via_index: true
+
+  status.workflow_create:
+    tool: playwright
+    skill: cu-statuses
+    reason: "Criar/editar workflows completos requer UI"
+
+  status.transition_next:
+    tool: api
+    module: custom-fields.js
+    fn: transitionToNextStatus
+    via_index: true
+
+  # ── Custom Fields ────────────────────────────────────────────────────────────
+  field.list:
+    tool: api
+    module: custom-fields.js
+    fn: getCustomFields
+    via_index: true
+
+  field.list_all:
+    tool: api
+    module: custom-fields.js
+    fn: getAllCustomFields
+    via_index: true
+
+  field.read:
+    tool: api
+    module: custom-fields.js
+    fn: getCustomFieldValue
+    via_index: true
+
+  field.set:
+    tool: api
+    module: custom-fields.js
+    fn: setCustomFieldValue
+    via_index: true
+
+  field.update_multiple:
+    tool: api
+    module: custom-fields.js
+    fn: updateMultipleFields
+    via_index: true
+
+  field.create:
+    tool: playwright
+    skill: cu-custom-fields
+    reason: "API REST não cria custom fields, apenas lê/seta valores"
+
+  # ── Comments ─────────────────────────────────────────────────────────────────
+  comment.list:
+    tool: api
+    module: tasks.js
+    fn: getComments
+    via_index: true
+
+  comment.add:
+    tool: api
+    module: tasks.js
+    fn: addComment
+    via_index: true
+
+  comment.thread:
+    tool: playwright
+    skill: cu-comments-activity
+    reason: "Threads, mentions e reactions requerem UI"
+
+  # ── Attachments ───────────────────────────────────────────────────────────────
+  attachment.list:
+    tool: api
+    module: attachments.js
+    fn: getAttachments
+    via_index: true
+
+  attachment.download:
+    tool: api
+    module: attachments.js
+    fn: downloadAttachment
+    via_index: true
+
+  attachment.download_to_file:
+    tool: api
+    module: attachments.js
+    fn: downloadToFile
+    via_index: true
+
+  attachment.parse:
+    tool: api
+    module: attachments.js
+    fn: parseAttachmentContent
+    via_index: true
+
+  attachment.parse_all:
+    tool: api
+    module: attachments.js
+    fn: getAllParsedAttachments
+    via_index: true
+
+  attachment.briefing:
+    tool: api
+    module: attachments.js
+    fn: getBriefingFiles
+    via_index: true
+
+  attachment.upload:
+    tool: playwright
+    skill: cu-attachments-files
+    reason: "Upload via API requer multipart, Playwright mais confiável"
+
+  # ── Docs ─────────────────────────────────────────────────────────────────────
+  doc.create:
+    tool: api
+    module: docs.js
+    fn: createDoc
+    via_index: false
+    note: "Usar docs.js diretamente (v3 API) ou index.docs.createDoc"
+
+  doc.create_with_content:
+    tool: api
+    module: docs.js
+    fn: createDocWithContent
+    via_index: false
+    note: "Acessível via index.docs.createDocWithContent"
+
+  doc.read:
+    tool: api
+    module: docs.js
+    fn: getDoc
+    via_index: false
+
+  doc.search:
+    tool: api
+    module: docs.js
+    fn: searchDocs
+    via_index: false
+
+  doc.page_create:
+    tool: api
+    module: docs.js
+    fn: createPage
+    via_index: false
+
+  doc.page_read:
+    tool: api
+    module: docs.js
+    fn: getPage
+    via_index: false
+
+  doc.page_edit:
+    tool: api
+    module: docs.js
+    fn: editPage
+    via_index: false
+
+  doc.edit_rich:
+    tool: playwright
+    skill: cu-docs
+    reason: "Edição rica (tabelas, embeds, formatting avançado) requer UI"
+
+  # ── Workspace ─────────────────────────────────────────────────────────────────
+  workspace.discover:
+    tool: api
+    module: sprints.js
+    fn: discoverStructure
+    via_index: true
+
+  workspace.spaces:
+    tool: api
+    module: sprints.js
+    fn: getSpaces
+    via_index: true
+
+  workspace.folders:
+    tool: api
+    module: sprints.js
+    fn: getFolders
+    via_index: true
+
+  workspace.lists:
+    tool: api
+    module: sprints.js
+    fn: getLists
+    via_index: true
+
+  # ── Sprint ────────────────────────────────────────────────────────────────────
+  sprint.folders:
+    tool: api
+    module: sprints.js
+    fn: findSprintFolders
+    via_index: true
+
+  sprint.lists:
+    tool: api
+    module: sprints.js
+    fn: findSprintLists
+    via_index: true
+
+  sprint.tasks:
+    tool: api
+    module: sprints.js
+    fn: getSprintTasks
+    via_index: true
+
+  sprint.summary:
+    tool: api
+    module: sprints.js
+    fn: getSprintSummary
+    via_index: true
+
+  sprint.create_folder:
+    tool: api
+    module: sprints.js
+    fn: createSprintFolder
+    via_index: false
+
+  sprint.create_list:
+    tool: api
+    module: sprints.js
+    fn: createList
+    via_index: false
+
+  # ── Sync ─────────────────────────────────────────────────────────────────────
+  sync.sprint_to_supabase:
+    tool: api
+    module: sprint-sync.js
+    fn: syncSprintsFromClickUp
+    via_index: true
+
+  sync.full:
+    tool: api
+    module: sprint-sync.js
+    fn: fullSync
+    via_index: true
+
+  sync.status:
+    tool: api
+    module: sprint-sync.js
+    fn: getSyncStatus
+    via_index: true
+
+  # ── Data ──────────────────────────────────────────────────────────────────────
+  data.extract_backlog:
+    tool: api
+    module: extract-data.js
+    fn: extractBacklog
+    via_index: true
+
+  data.extract_sprint_tasks:
+    tool: api
+    module: extract-data.js
+    fn: extractSprintTasks
+    via_index: true
+
+  data.extract_structure:
+    tool: api
+    module: extract-data.js
+    fn: extractSprintStructure
+    via_index: true
+
+  data.tasks_with_subtasks:
+    tool: api
+    module: extract-data.js
+    fn: getTasksWithSubtasks
+    via_index: true
+
+  # ── Seed ─────────────────────────────────────────────────────────────────────
+  seed.run:
+    tool: api
+    module: seed-squad.js
+    fn: runSeeding
+    via_index: true
+
+  seed.validate:
+    tool: api
+    module: validate-seeding.js
+    fn: validateSeeding
+    via_index: true
+
+  # ── Automation ────────────────────────────────────────────────────────────────
+  automation.create:
+    tool: playwright
+    skill: cu-automations
+    reason: "API REST não cria automações"
+
+  automation.manage:
+    tool: playwright
+    skill: cu-automations
+    reason: "API REST não gerencia automações"
+
+  automation.list:
+    tool: playwright
+    skill: cu-automations
+    reason: "API REST não lista automações"
+
+  # ── Forms ─────────────────────────────────────────────────────────────────────
+  form.create:
+    tool: playwright
+    skill: cu-forms
+    reason: "API REST não cria forms"
+
+  form.manage:
+    tool: playwright
+    skill: cu-forms
+    reason: "API REST não gerencia forms"
+
+  # ── Dashboard ─────────────────────────────────────────────────────────────────
+  dashboard.create:
+    tool: playwright
+    skill: cu-dashboards
+    reason: "API REST não cria dashboards"
+
+  dashboard.add_widget:
+    tool: playwright
+    skill: cu-dashboards
+    reason: "API REST não adiciona widgets"
+
+  dashboard.manage:
+    tool: playwright
+    skill: cu-dashboards
+    reason: "API REST não gerencia dashboards"
+
+  # ── Views ─────────────────────────────────────────────────────────────────────
+  view.create:
+    tool: playwright
+    skill: cu-view-management
+    reason: "API REST não cria views"
+
+  view.list:
+    tool: playwright
+    skill: cu-view-list
+    reason: "Configuração de list view requer UI"
+
+  view.board:
+    tool: playwright
+    skill: cu-view-board
+    reason: "Configuração de board/kanban requer UI"
+
+  view.calendar:
+    tool: playwright
+    skill: cu-view-calendar
+    reason: "Configuração de calendar view requer UI"
+
+  view.gantt:
+    tool: playwright
+    skill: cu-view-gantt
+    reason: "Configuração de gantt view requer UI"
+
+  view.table:
+    tool: playwright
+    skill: cu-view-table
+    reason: "Configuração de table view requer UI"
+
+  view.timeline:
+    tool: playwright
+    skill: cu-view-timeline
+    reason: "Configuração de timeline view requer UI"
+
+  view.activity:
+    tool: playwright
+    skill: cu-view-activity
+    reason: "Activity view requer UI"
+
+  view.map:
+    tool: playwright
+    skill: cu-view-map
+    reason: "Map/mindmap view requer UI"
+
+  # ── Templates ─────────────────────────────────────────────────────────────────
+  template.create:
+    tool: playwright
+    skill: cu-templates
+    reason: "API REST não cria templates"
+
+  template.apply:
+    tool: playwright
+    skill: cu-templates
+    reason: "API REST não aplica templates"
+
+  # ── Goals ─────────────────────────────────────────────────────────────────────
+  goal.create:
+    tool: playwright
+    skill: cu-goals
+    reason: "API REST não suporta goals"
+
+  goal.manage:
+    tool: playwright
+    skill: cu-goals
+    reason: "API REST não suporta goals"
+
+  # ── Whiteboard ────────────────────────────────────────────────────────────────
+  whiteboard.create:
+    tool: playwright
+    skill: cu-whiteboards
+    reason: "API REST não suporta whiteboards"
+
+  # ── Chat ─────────────────────────────────────────────────────────────────────
+  chat.send:
+    tool: playwright
+    skill: cu-chat
+    reason: "API REST não suporta chat"
+
+  # ── Clip ─────────────────────────────────────────────────────────────────────
+  clip.create:
+    tool: playwright
+    skill: cu-clips
+    reason: "API REST não suporta clips"
+
+  # ── SuperAgent ────────────────────────────────────────────────────────────────
+  superagent.configure:
+    tool: playwright
+    skill: cu-ai-brain
+    reason: "API REST não suporta SuperAgents/AI Brain"
+
+  # ── Settings ─────────────────────────────────────────────────────────────────
+  settings.people:
+    tool: playwright
+    skill: cu-settings-people
+    reason: "Gerenciamento de users/roles requer UI"
+
+  settings.workspace:
+    tool: playwright
+    skill: cu-settings-workspace
+    reason: "Configuração de workspace requer UI"
+
+  settings.security:
+    tool: playwright
+    skill: cu-settings-security
+    reason: "Configuração de segurança requer UI"
+
+  settings.integrations:
+    tool: playwright
+    skill: cu-settings-integrations
+    reason: "Configuração de integrações/webhooks requer UI"
+
+  settings.billing:
+    tool: playwright
+    skill: cu-settings-billing
+    reason: "Billing requer UI"
+
+  settings.clickapps:
+    tool: playwright
+    skill: cu-settings-clickapps
+    reason: "Toggles de ClickApps requer UI"
+
+  # ── Structure ─────────────────────────────────────────────────────────────────
+  space.create:
+    tool: playwright
+    skill: cu-spaces
+    reason: "Criação de Space com ClickApps requer UI"
+
+  space.configure:
+    tool: playwright
+    skill: cu-spaces
+    reason: "Configuração de Space requer UI"
+
+  folder.create:
+    tool: playwright
+    skill: cu-folders
+    reason: "Criação de folder via UI com configuração completa"
+
+  list.create_with_workflow:
+    tool: playwright
+    skill: cu-lists
+    reason: "Criar list com workflow customizado requer UI"
+
+  # ── Search / Misc ─────────────────────────────────────────────────────────────
+  search.global:
+    tool: playwright
+    skill: cu-search-filter
+    reason: "Busca global e filtros salvos requerem UI"
+
+  notification.manage:
+    tool: playwright
+    skill: cu-notifications
+    reason: "Notificações requerem UI"
+
+  tag.manage:
+    tool: playwright
+    skill: cu-tags-priorities
+    reason: "Gerenciamento de tags requer UI"
+
+  relationship.create:
+    tool: playwright
+    skill: cu-relationships
+    reason: "Criar relationships requer UI"
+
+  time_tracking.manage:
+    tool: playwright
+    skill: cu-time-tracking
+    reason: "Time tracking requer UI"
+
+  nav.go_to:
+    tool: playwright
+    skill: cu-nav-core
+    reason: "Navegação no browser"
+
+  auth.login:
+    tool: playwright
+    skill: cu-auth-session
+    reason: "Autenticação requer browser"
+
+  # ── Mission ───────────────────────────────────────────────────────────────────
+  mission.materialize:
+    tool: api
+    module: materialize-mission.js
+    fn: materializeMission
+    via_index: true
+
+  mission.validate_handoff:
+    tool: api
+    module: materialize-mission.js
+    fn: validateHandoff
+    via_index: true
+    note: "Exportado por index.js como validateMissionHandoff (alias de validateHandoff)"
+
+  mission.bootstrap:
+    tool: "api+playwright"
+    module: bootstrap.js
+    fn: run
+    via_index: true
+    note: "API para createList + createCustomField; Playwright para Task Types creation"
+
+  mission.enrich:
+    tool: api
+    module: enrich-mission-tasks.js
+    fn: enrichTask
+    via_index: false
+    note: "internal — not re-exported by index.js"
+
+  # ── Pipeline / Rendering (CLI only) ──────────────────────────────────────────
+  pipeline.day:
+    tool: api
+    module: pipeline-day.js
+    fn: generatePipelineDay
+    via_index: false
+    note: "internal — not re-exported by index.js"
+
+  board.render:
+    tool: api
+    module: board-renderer.js
+    fn: boardCommand
+    via_index: false
+    note: "internal — not re-exported by index.js"
+
+  missions.render:
+    tool: api
+    module: my-missions.js
+    fn: fetchMyMissions
+    via_index: false
+    note: "internal — not re-exported by index.js"
+
+  # ── Audit ─────────────────────────────────────────────────────────────────────
+  audit.run:
+    tool: api
+    module: audit.js
+    fn: runAudit
+    via_index: false
+    note: "internal — not re-exported by index.js"
+
+hybrid_flows:
+  task_with_automation:
+    description: "Criar task via API + configurar automação via Playwright"
+    steps:
+      - tool: api
+        operation: task.create
+        description: "Criar task via API"
+      - tool: playwright
+        operation: automation.create
+        description: "Criar trigger/action via Playwright"
+
+  list_with_form:
+    description: "Criar list via API + criar formulário de entrada via Playwright"
+    steps:
+      - tool: api
+        operation: sprint.create_list
+        description: "Criar list via API"
+      - tool: playwright
+        operation: form.create
+        description: "Criar formulário via Playwright"
+
+  doc_with_template:
+    description: "Criar doc via API + aplicar template rich via Playwright"
+    steps:
+      - tool: api
+        operation: doc.create
+        description: "Criar doc via API"
+      - tool: playwright
+        operation: template.apply
+        description: "Aplicar template via Playwright"
+
+  space_full_setup:
+    description: "Criar estrutura de pastas via API + configurar ClickApps via Playwright"
+    steps:
+      - tool: api
+        operation: sprint.create_folder
+        description: "Criar folder/structure via API"
+      - tool: playwright
+        operation: settings.clickapps
+        description: "Configurar ClickApps via Playwright"
+
+  task_cross_space_move:
+    description: "Ler task via API + mover cross-Space via Playwright (API falha silenciosamente)"
+    steps:
+      - tool: api
+        operation: task.read
+        description: "Ler task atual via API"
+      - tool: playwright
+        operation: task.move_cross_space
+        description: "Mover task via Playwright"
+
+  mission_bootstrap:
+    description: "Bootstrap completo de missão: estrutura via API + Task Types via Playwright"
+    steps:
+      - tool: api
+        operation: "createList + createCustomField"
+        description: "Criar list e custom fields da missão via API"
+      - tool: playwright
+        operation: "Task Types creation"
+        description: "Configurar Task Types (não suportado por API REST) via Playwright"
+
+governance_refs:
+  clickup_governance: "squads/clickup-ops-squad/rules/clickup.md"
+  pre_materialization_checklist: "squads/clickup-ops-squad/checklists/pre-materialization.md"
+  note: "Toda operação de ESCRITA em estruturas (Space/Folder/List/Field) DEVE passar pelo pre-materialization checklist. task.update_description_safe e task.append_journal são OBRIGATÓRIOS para descriptions."

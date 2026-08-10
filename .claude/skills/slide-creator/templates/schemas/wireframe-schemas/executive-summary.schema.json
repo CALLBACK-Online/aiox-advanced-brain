@@ -1,0 +1,86 @@
+{
+  "$id": "sinkra://slide-creator/wireframes/executive-summary.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "Executives need the answer, status, and decision signal before details.",
+  "properties": {
+    "decision_signal": {
+      "type": "string"
+    },
+    "headline_answer": {
+      "description": "conclusion",
+      "maxLength": 90,
+      "type": "string"
+    },
+    "metric_1_delta": {
+      "type": "string"
+    },
+    "metric_1_label": {
+      "type": "string"
+    },
+    "metric_1_value": {
+      "type": "string"
+    },
+    "metric_2_delta": {
+      "type": "string"
+    },
+    "metric_2_label": {
+      "type": "string"
+    },
+    "metric_2_value": {
+      "type": "string"
+    },
+    "metric_3_delta": {
+      "type": "string"
+    },
+    "metric_3_label": {
+      "type": "string"
+    },
+    "metric_3_value": {
+      "type": "string"
+    },
+    "metric_4_delta": {
+      "type": "string"
+    },
+    "metric_4_label": {
+      "type": "string"
+    },
+    "metric_4_value": {
+      "type": "string"
+    },
+    "source_note": {
+      "type": "string"
+    },
+    "status_label": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "headline_answer"
+  ],
+  "title": "executive-summary",
+  "type": "object",
+  "x-sinkra": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "executive_summary_kpi",
+    "slot_count": 16,
+    "warnings": [
+      "status_label",
+      "metric_1_label",
+      "metric_1_value",
+      "metric_1_delta",
+      "metric_2_label",
+      "metric_2_value",
+      "metric_2_delta",
+      "metric_3_label",
+      "metric_3_value",
+      "metric_3_delta",
+      "metric_4_label",
+      "metric_4_value",
+      "metric_4_delta",
+      "decision_signal",
+      "source_note"
+    ],
+    "wireframe_ref": "templates/wireframes/executive-summary.html"
+  }
+}

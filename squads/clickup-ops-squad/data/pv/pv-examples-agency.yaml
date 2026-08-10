@@ -1,0 +1,997 @@
+# Pedro Valerio - Exemplos Reais: Agência Criativa
+# Source: Mentoria de Processos (framework_mentoria_processos.md)
+# Version: 1.0.0
+# Type: Swipe File — cases reais, patterns concretos, antes/depois
+
+metadata:
+  source: "pedro_valerio/mentoria_processos"
+  methodology: "Sistema Allfluence"
+  domain: "agencia_criativa"
+  principle: "Exemplos reais > teoria. Se não tem case, não tá validado."
+  roles_covered:
+    - copywriter
+    - editor_video
+    - videomaker
+    - account_manager
+    - trend_hunter
+    - diretor_criativo
+    - gestor_trafego
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CASES REAIS (ANTES → DEPOIS)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+cases:
+
+  - id: CASE-01
+    name: "A Recusa do ClickUp"
+    source: "[SOURCE: D4, Historias e Casos Transformadores]"
+    context: "Time de agência se recusou a usar ClickUp"
+    antes:
+      situação: "Equipe via todos os Spaces, Folders, Lists, Custom Fields"
+      resultado: "Time rejeitou a ferramenta — complexidade gerava paralisia"
+      sintoma: "Editor tentava 'inovar o card' em vez de executar"
+    depois:
+      ação: "Views customizadas cortadas. Editor passou a ver APENAS My Tasks."
+      resultado: "Adocao imediata — editor parou de ver complexidade"
+      principio_aplicado: "Cabresto do Executor (restricao cognitiva)"
+    lição: "Não treine a equipe na ferramenta. Configure a ferramenta pra equipe não precisar de treino."
+    mandamentos_relacionados: ["M1", "M6"]
+    heuristica: "CU-H01, PV-MP-001"
+
+  - id: CASE-02
+    name: "Copywriter Afogado em Ctrl+V"
+    source: "[SOURCE: D1, Sumario Executivo]"
+    context: "Copywriter gastava dias pra criar e alinhar 10 copies"
+    antes:
+      situação: "1 copywriter criando 10 copies manualmente, alinhando com account via WhatsApp"
+      resultado: "Dias pra entregar. Folha de pagamento consumida por trabalho braco."
+      sintoma: "Margem operacional esmagada pelo custo humano"
+    depois:
+      ação: "IA (Gemini) gera 100 variacoes com dados retroalimentados do ClickUp + comentarios do YouTube"
+      resultado: "Copywriter opera como juiz editorial. Filtra top 3 de 100. Escala sem contratar."
+      principio_aplicado: "ETL Humano-IA + IA Volumetrica"
+    lição: "IA gera volume cru. Humano filtra. Nunca o contrario."
+    numeros:
+      antes: "10 copies em dias"
+      depois: "100 variacoes, top 3 filtradas pelo humano"
+    mandamentos_relacionados: ["M1", "M7"]
+
+  - id: CASE-03
+    name: "Redator Senior com 15 Janelas de Zap"
+    source: "[SOURCE: D6, Top Erros Fatais #2]"
+    context: "Time de elite atuando como responsivo em vez de dono"
+    antes:
+      situação: "Redator senior com 15 janelas do WhatsApp cobrando account manager"
+      resultado: "Energia criativa gasta em burocracia de comunicação"
+      sintoma: "Copywriter fatiando tempo entre zap e criação"
+    depois:
+      ação: "Dashboard de Trends e referencias filtradas entregue no ClickUp. Comunicação na task."
+      resultado: "Redator foca no que importa: fatiar copy a partir de referência curada"
+      principio_aplicado: "M5 (comunicação nas tarefas) + Cabresto do Executor"
+    lição: "Se o criativo esta no WhatsApp, o ClickUp tá mal configurado."
+    mandamentos_relacionados: ["M5", "M6"]
+
+  - id: CASE-04
+    name: "500+ Depoimentos Sem Processo"
+    source: "[SOURCE: MentorIA Processos Dec 19, AN @27:00-35:00]"
+    context: "Empresa com 500+ depoimentos de alunos armazenados mas time de marketing quase não usava"
+    antes:
+      situação: "Depoimentos coletados manualmente no WhatsApp, pessoa organizava no Drive em pastas"
+      resultado: "Time de marketing não lia depoimentos. Ouro escondido. Lider de vendas descobriu 'muito ouro' quando comecou a separar"
+      sintoma: "Desconexao entre coleta e uso. Processo para no 'salvar no Drive'"
+    depois:
+      ação: "Desenhar pipeline completo: Captura → Extracao (Gemini) → Classificacao (Ruim/Bom/Lendario) → Follow-up → Banco de Dados → Distribuição por nivel → Remarketing automatico"
+      resultado: "Depoimentos classificados alimentam pesquisa, criativos, quebra de objecoes e remarketing"
+      principio_aplicado: "ETL de depoimentos + classificacao IA + distribuição por nivel"
+    lição: "Ter depoimentos sem processo de classificacao e uso = ter ouro enterrado que ninguém minera."
+    mandamentos_relacionados: ["M1", "M7", "M8"]
+
+  - id: CASE-05
+    name: "3 Tipos de Documentadores (Dump do Time)"
+    source: "[SOURCE: MentorIA Processos Dec 19, PV @2:25:00-2:27:00]"
+    context: "PV pediu para cada membro do time descrever o que faziam no dia a dia"
+    antes:
+      situação: "PV pediu dump livre — cada pessoa descreveu diferente"
+      resultado: "Descobriu 3 perfis distintos de documentacao que distorcem a realidade"
+      sintoma: "Processo documentado não reflete realidade operacional"
+    depois:
+      ação: "Identificar tipo ANTES de interpretar: Supervalorizador (infla dificuldade), Resumidor (omite tarefas), Criterioso (retrata fielmente)"
+      resultado: "Interpretacao correta do dump, processos estruturados com base na realidade"
+      principio_aplicado: "Calibrar interpretacao baseado no perfil do documentador"
+    lição: "O dump do time NAO e a realidade. E a realidade FILTRADA pelo perfil da pessoa. Saber o filtro muda tudo."
+    mandamentos_relacionados: ["M7"]
+
+  - id: CASE-06
+    name: "Win Rate 1:60 de Criativos"
+    source: "[SOURCE: D5, Numeros e Formulas]"
+    context: "Benchmark de performance de criativos em agência de trafego"
+    numeros:
+      win_rate: "1 criativo vencedor a cada 60-70 testados"
+      roi_vencedor: "R$1 investido retorna R$5-6 limpo"
+      escala_vencedor: "R$200k/dia em escala quando encontra winner"
+    implicacao_clickup: |
+      Se precisa testar 60-70 criativos pra achar 1 winner,
+      o sistema precisa ACELERAR produção, não CONTROLAR qualidade.
+      Pipeline: volume (IA) → filtro (humano) → teste (trafego) → escala (gestor).
+    workflow_sugerido:
+      list: "Criativos Pipeline"
+      statuses: ["REFERENCIA", "ROTEIRO", "PRODUCAO", "EDICAO", "APROVACAO", "SUBINDO", "ATIVO", "WINNER", "MORTO"]
+      kpi: "Criativos ATIVO por semana / Criativos WINNER por mês"
+
+  - id: CASE-07
+    name: "Documentacao não e Processo"
+    source: "[SOURCE: 08_clickup_lendario.md, Documentacao vs Processo]"
+    context: "Empresa com Notion cheio de SOPs mas processos não funcionavam"
+    antes:
+      situação: "Notion com dezenas de SOPs bonitos, fluxogramas, wikis organizadas"
+      resultado: "Time não seguia os processos. SOPs eram consultados uma vez e esquecidos"
+      sintoma: "Documentacao existia mas não gerava acao. Processo só no papel"
+    depois:
+      ação: "Migrar processo para DENTRO do ClickUp onde a ação acontece. Ação refem do BD na mesma tela."
+      resultado: "Processo passa a existir de verdade porque a pessoa NAO CONSEGUE executar sem seguir o fluxo"
+      principio_aplicado: "Processo só existe quando ação e refem do banco de dados na mesma tela"
+    lição: "Notion cheio de SOPs ≠ processo real. Processo só existe quando a ação e refem do BD na mesma tela."
+    mandamentos_relacionados: ["M1", "M7"]
+
+  - id: CASE-08
+    name: "Template Pai Update Rule"
+    source: "[SOURCE: 08_clickup_lendario.md, Template Pai Update Rule]"
+    context: "Gap encontrado durante execução de projeto — time corrigiu apenas a instancia"
+    antes:
+      situação: "Time encontrou que template de briefing não tinha campo de 'Tom de Voz'"
+      resultado: "Adicionaram o campo naquela task específica e seguiram em frente"
+      sintoma: "Próximo projeto usando o template teve o mesmo gap. Correcao local, erro sistemico"
+    depois:
+      ação: "Regra: SEMPRE atualizar template-pai quando descobrir gap, não só corrigir instancia"
+      resultado: "Template-pai atualizado propaga correcao para todos os próximos projetos"
+      principio_aplicado: "Correcao sistemica > correcao pontual. Template-pai e a fonte de verdade."
+    lição: "Corrigir só a instancia e tapar buraco. Atualizar o template-pai e consertar o encanamento."
+    mandamentos_relacionados: ["M7", "M10"]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PATTERNS DE AUTOMACAO (AGENCIA CRIATIVA)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+automation_patterns:
+
+  - id: PAT-01
+    name: "Trocador de Corpos"
+    source: "[SOURCE: D6, Hack #1]"
+    category: "assignee_rotation"
+    description: |
+      Automatizar a passagem de bastao entre papeis na esteira criativa.
+      Em vez de recolocar tarefa numa esteira, o STATUS muda e o ASSIGNEE muda junto.
+    trigger: "status.changed_to 'ENTREGAR MIDIA'"
+    actions:
+      - "Remover assignee atual (Copywriter)"
+      - "Atribuir novo assignee (Editor de Video)"
+      - "Setar due_date = amanha 18h"
+    resultado: "Colaborador acorda, esvazia Inbox, encerra dia sem pensar com quem a bola estava"
+    aplicacoes:
+      - esteira: "Copy → Edicao"
+        trigger_status: "ESCREVENDO → ENTREGAR MIDIA"
+        de: "Copywriter"
+        para: "Editor"
+      - esteira: "Edicao → Aprovação"
+        trigger_status: "EDITANDO → REVISAO"
+        de: "Editor"
+        para: "Diretor Criativo"
+      - esteira: "Aprovação → Publicacao"
+        trigger_status: "APROVADO → SUBINDO"
+        de: "Diretor Criativo"
+        para: "Gestor de Trafego"
+      - esteira: "Briefing → Produção"
+        trigger_status: "BRIEFING → REDACAO"
+        de: "Account Manager"
+        para: "Copywriter"
+    guardrails:
+      - "Due date sempre relativo (amanha 18h, +2 dias uteis)"
+      - "Notificar novo assignee via ClickUp inbox"
+      - "Se novo assignee não existir, escalar pra gestor"
+    anti_pattern: "Não criar nova task pra cada etapa. UMA task viaja pela esteira."
+    mandamentos_relacionados: ["M2", "M4", "M6"]
+
+  - id: PAT-02
+    name: "ETL de Trends (TikTok/YouTube)"
+    source: "[SOURCE: D1 Passo 3.2 + D2 Insight #3 + D5]"
+    category: "etl_content"
+    description: |
+      Pipeline automatizado que alimenta o banco de referencias do time criativo.
+      IA filtra volume, humano curada resultado final.
+    pipeline:
+      step_1:
+        name: "Extract"
+        action: "Raspar videos trending TikTok/YouTube do nicho"
+        tool: "N8N + API TikTok/YouTube"
+        output: "Lista bruta de 200+ referencias"
+      step_2:
+        name: "Transform"
+        action: "IA (Gemini) filtra top 50, classifica por formato (hook, flip de camera, b-roll)"
+        tool: "N8N + Gemini API"
+        output: "50 referencias classificadas com tags"
+      step_3:
+        name: "Load"
+        action: "Carregar na List 'Banco de Trends' no ClickUp com custom fields"
+        tool: "N8N + ClickUp API"
+        output: "List ativa e tratada para o time criativo consumir"
+    custom_fields_sugeridos:
+      - name: "Formato"
+        type: "dropdown"
+        options: ["Hook Direto", "Flip de Camera", "B-Roll", "Depoimento", "Tutorial", "Meme", "Trending Audio"]
+      - name: "Duracao"
+        type: "number"
+        unit: "segundos"
+        benchmark: "22-34s (sweet spot TikTok TTCX)"
+      - name: "Plataforma Origem"
+        type: "dropdown"
+        options: ["TikTok", "YouTube Shorts", "Instagram Reels", "YouTube Long"]
+      - name: "Score IA"
+        type: "number"
+        range: "0-100"
+        description: "Score de relevancia atribuido pela IA"
+      - name: "URL Original"
+        type: "url"
+    benchmark: "Sweet-spot TikTok: 22-34 segundos nativos. Romper sem motivo mata retencao."
+    mandamentos_relacionados: ["M1", "M7", "M8"]
+
+  - id: PAT-03
+    name: "ETL de Comentarios (Dores do Publico)"
+    source: "[SOURCE: D1 Passo 3.2 + D2 Insight #3]"
+    category: "etl_content"
+    description: |
+      Extrair comentarios de videos do nicho, fatiar por dores/objecoes,
+      e carregar como insumo para copywriter.
+    pipeline:
+      step_1:
+        name: "Extract"
+        action: "Puxar comentarios de videos do YouTube do nicho via API"
+        tool: "N8N + YouTube Data API"
+        output: "Milhares de comentarios brutos"
+      step_2:
+        name: "Transform"
+        action: "Gemini classifica por: dor, objecao, desejo, pergunta, elogio"
+        tool: "N8N + Gemini API"
+        output: "Comentarios categorizados com tags"
+      step_3:
+        name: "Load"
+        action: "Top 50 carregados na List 'Dores do Publico' no ClickUp"
+        tool: "N8N + ClickUp API"
+        output: "Copywriter recebe dores reais, não pagina em branco"
+    custom_fields_sugeridos:
+      - name: "Tipo Comentario"
+        type: "dropdown"
+        options: ["Dor", "Objecao", "Desejo", "Pergunta", "Elogio", "Reclamacao"]
+      - name: "Video Origem"
+        type: "url"
+      - name: "Sentimento"
+        type: "dropdown"
+        options: ["Positivo", "Negativo", "Neutro", "Desesperado"]
+      - name: "Usavel em Copy"
+        type: "checkbox"
+    mandamentos_relacionados: ["M1", "M7"]
+
+  - id: PAT-04
+    name: "Gestao de Depoimentos (Capture + Classify + Distribute)"
+    source: "[SOURCE: MentorIA Processos Dec 19, AN @23:00-40:00]"
+    category: "testimonial_lifecycle"
+    description: |
+      Pipeline completo de captura, classificacao e distribuição de depoimentos.
+      Depoimentos são classificados em 3 niveis (Ruim/Bom/Lendario) e distribuidos
+      automaticamente para os grupos corretos do ecossistema.
+    pipeline:
+      step_1:
+        name: "Capture"
+        action: "Capturar depoimentos de multiplas fontes (WhatsApp, NPS, Zoom, Instagram)"
+        tool: "Manual (inicial) → Evolution API + N8N (automatizado)"
+        output: "Depoimento bruto com metadata (nome, contato, tipo, produto)"
+      step_2:
+        name: "Extract"
+        action: "Extrair texto de imagem/audio/video usando Gemini API"
+        tool: "N8N + Gemini API"
+        output: "Texto transcrito do depoimento"
+      step_3:
+        name: "Classify"
+        action: "Classificar em Ruim/Bom/Lendario baseado em critérios definidos"
+        tool: "N8N + Gemini API (com critérios pre-definidos)"
+        output: "Depoimento classificado com score"
+        critérios:
+          ruim: "Generico, sem jornada. Ex: 'Gostei do curso, muito bom'"
+          bom: "Algum detalhe de resultado, mas sem transformacao profunda"
+          lendario: "Jornada de transformacao completa: antes/depois + ganho emocional + numeros"
+      step_4:
+        name: "Follow-up"
+        action: "Acionar follow-up baseado na classificacao"
+        tool: "N8N + WhatsApp Business API"
+        rules:
+          lendario: "Avisar time marketing + solicitar video/audio"
+          bom: "Solicitar depoimento em video"
+          ruim: "Pedir para pessoa contar mais da jornada (antes/depois)"
+      step_5:
+        name: "Store"
+        action: "Salvar em banco de dados estruturado no ClickUp (List tipo Banco de Dados)"
+        tool: "N8N + ClickUp API"
+        output: "Registro com ID único (novo registro por formato, mesmo aluno)"
+      step_6:
+        name: "Distribute"
+        action: "Distribuir depoimento nos grupos corretos do ecossistema"
+        tool: "N8N + WhatsApp Business API"
+        rules:
+          regra_geral: "Depoimento vai para grupo do MESMO nivel ou UM abaixo"
+          mentoria: "Envia para mentoria + formacao"
+          formacao: "Envia para formacao + comunidade"
+          comunidade: "Envia para comunidade + 8020"
+          exceção: "SE lendario E significativo -> pode subir nivel"
+          anti_pattern: "NAO mandar print de R$3k no grupo de negócios milionarios"
+      step_7:
+        name: "Activate"
+        action: "SE lendario -> subir como remarketing automatico"
+        tool: "N8N + Meta Ads API"
+        regra: "Rodar 1 semana só para alunos primeiro (gerar comentarios), depois abrir para prospects"
+    custom_fields_sugeridos:
+      - name: "Classificacao"
+        type: "dropdown"
+        options: ["Ruim", "Bom", "Lendario"]
+      - name: "Tipo Midia"
+        type: "dropdown"
+        options: ["Texto", "Imagem", "Audio", "Video"]
+      - name: "Produto"
+        type: "dropdown"
+        options: ["Formacao", "Mentoria", "Comunidade", "8020"]
+      - name: "NPS Score"
+        type: "number"
+        range: "0-10"
+      - name: "Tem Video"
+        type: "checkbox"
+      - name: "URL Midia"
+        type: "url"
+      - name: "Contato WhatsApp"
+        type: "phone"
+      - name: "Usado em Marketing"
+        type: "checkbox"
+    mandamentos_relacionados: ["M1", "M7", "M8"]
+
+  - id: PAT-06
+    name: "ETL de Depoimentos (Alan Nicolas — Lado Captura)"
+    source: "[SOURCE: 08_clickup_lendario.md, ETL de Depoimentos Alan Nicolas]"
+    category: "testimonial_lifecycle"
+    description: |
+      Extensao do PAT-04 com o pipeline de captura do lado Alan Nicolas.
+      WhatsApp como fonte primaria → Gemini classifica → DM automatica
+      pedindo video → Banco de Dados → Remarketing.
+      Complementa PAT-04 com a etapa de captura ativa via WhatsApp.
+    pipeline:
+      step_1:
+        name: "Captura WhatsApp"
+        action: "Monitorar mensagens de alunos em grupos/DMs que contenham sinais de depoimento (palavras-chave: 'resultado', 'consegui', 'mudou', 'transformou')"
+        tool: "Evolution API + N8N"
+        output: "Mensagem capturada com metadata (nome, grupo, data)"
+      step_2:
+        name: "Classificacao IA"
+        action: "Gemini classifica depoimento em Ruim/Bom/Lendario usando critérios do PAT-04"
+        tool: "N8N + Gemini API"
+        output: "Depoimento classificado com score e justificativa"
+      step_3:
+        name: "DM Automatica"
+        action: "SE Bom ou Lendario → enviar DM automatica pedindo video de depoimento com script sugerido"
+        tool: "N8N + WhatsApp Business API"
+        output: "DM enviada com template de pedido de video"
+      step_4:
+        name: "Store"
+        action: "Salvar no Banco de Dados de Depoimentos (List no ClickUp) com classificacao e midia"
+        tool: "N8N + ClickUp API"
+        output: "Task criada com custom fields preenchidos"
+      step_5:
+        name: "Remarketing"
+        action: "SE Lendario com video → subir como criativo de remarketing (1 semana alunos, depois prospects)"
+        tool: "N8N + Meta Ads API"
+        output: "Criativo de remarketing ativo"
+    relacao_pat04: "PAT-04 cobre o pipeline completo post-captura. PAT-06 cobre a captura ativa via WhatsApp."
+    mandamentos_relacionados: ["M1", "M7", "M8"]
+
+  - id: PAT-05
+    name: "Onboarding de Cliente (Pasta Magica)"
+    source: "[SOURCE: D1 Passo 3.1]"
+    category: "client_lifecycle"
+    description: |
+      Quando cliente entra no fluxo, pasta no Drive e criada automaticamente.
+      Zero ação manual do account manager.
+    trigger: "task.created na List 'Clientes Ativos' com status 'ONBOARDING'"
+    actions:
+      - "Criar pasta no Google Drive com nome do cliente"
+      - "Criar subpastas padrão: /Briefings, /Criativos, /Aprovados, /Ativos"
+      - "Adicionar link da pasta como custom field na task do cliente"
+      - "Notificar account manager com link pronto"
+    resultado: "Account manager abre task, pasta já existe. Zero cliques extras."
+    mandamentos_relacionados: ["M1", "M7"]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ESTEIRAS CRIATIVAS (STATUS WORKFLOWS REAIS)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+creative_workflows:
+
+  - id: WF-AG-01
+    name: "Pipeline de Criativos (Ads)"
+    source: "[SOURCE: D1 3.1 + D5]"
+    context: "Agência de performance que precisa testar 60-70 criativos pra achar 1 winner"
+    statuses:
+      - name: "REFERENCIA"
+        assignee: "Trend Hunter"
+        descricao: "Referência do banco de trends selecionada"
+      - name: "ROTEIRO"
+        assignee: "Copywriter"
+        descricao: "Copy escrito baseado na referência + dores do publico"
+      - name: "PRODUCAO"
+        assignee: "Videomaker"
+        descricao: "Gravacao do criativo"
+      - name: "EDICAO"
+        assignee: "Editor"
+        descricao: "Edicao final com cortes, legenda, thumbnail"
+      - name: "APROVACAO"
+        assignee: "Diretor Criativo"
+        descricao: "Aprovação ou pedido de ajuste (novo ciclo, não backward)"
+      - name: "SUBINDO"
+        assignee: "Gestor de Trafego"
+        descricao: "Upload na plataforma de ads"
+      - name: "ATIVO"
+        assignee: "Gestor de Trafego"
+        descricao: "Rodando em teste"
+      - name: "WINNER"
+        assignee: "Gestor de Trafego"
+        descricao: "Criativo vencedor em escala"
+        terminal: true
+      - name: "MORTO"
+        assignee: "none"
+        descricao: "Não performou, arquivado"
+        terminal: true
+    regras:
+      - "NUNCA volta status. Se aprovação rejeita, abre NOVA task de ajuste."
+      - "Trocador de Corpos ativo em cada transicao de status"
+      - "Due date automatico: +1 dia útil por status"
+    custom_fields:
+      - "Formato (dropdown): Hook Direto, Flip, B-Roll, Depoimento, Tutorial"
+      - "Plataforma (dropdown): Meta, TikTok, Google, YouTube"
+      - "Budget Teste (currency): valor alocado pro teste"
+      - "ROAS (number): retorno sobre investimento"
+      - "Referência URL (url): link da referência original"
+    kpis:
+      leading: "Criativos em ATIVO por semana"
+      lagging: "WINNER por mês + ROAS medio"
+      benchmark: "1 WINNER a cada 60-70 testados"
+
+  - id: WF-AG-02
+    name: "Produção de Conteúdo (Organico)"
+    source: "[SOURCE: D1 2.2 + pv-workspace-blueprint.yaml]"
+    context: "Time de conteúdo organico (social media, blog, YouTube)"
+    statuses:
+      - name: "BRIEFING"
+        assignee: "Account Manager"
+        descricao: "Briefing preenchido com tema, formato, referência"
+      - name: "REDACAO"
+        assignee: "Copywriter"
+        descricao: "Texto escrito baseado no briefing"
+      - name: "DESIGN"
+        assignee: "Designer"
+        descricao: "Arte criada baseada no texto aprovado"
+      - name: "REVISAO"
+        assignee: "Diretor Criativo"
+        descricao: "Revisão final de texto + arte"
+      - name: "APROVACAO"
+        assignee: "Cliente (via Account)"
+        descricao: "Cliente aprova ou solicita ajuste"
+      - name: "AGENDADO"
+        assignee: "Social Media Manager"
+        descricao: "Conteúdo agendado na plataforma"
+      - name: "PUBLICADO"
+        assignee: "none"
+        descricao: "No ar"
+        terminal: true
+    regras:
+      - "Se APROVACAO rejeita → nova task de ajuste, não backward"
+      - "Trocador de Corpos ativo"
+      - "Checklist obrigatório antes de REVISAO"
+
+  - id: WF-AG-03
+    name: "Gestao de Depoimentos"
+    source: "[SOURCE: MentorIA Processos Dec 19, AN @23:00-40:00]"
+    context: "Pipeline completo de captura, classificacao e distribuição de depoimentos para marketing"
+    tipo_lista: "banco_de_dados"
+    statuses:
+      - name: "CAPTURADO"
+        assignee: "Automação (WhatsApp/NPS/Manual)"
+        descricao: "Depoimento recebido de qualquer fonte"
+      - name: "EXTRAINDO"
+        assignee: "Automação (Gemini)"
+        descricao: "IA extraindo texto de imagem/audio/video"
+      - name: "CLASSIFICADO"
+        assignee: "Automação (Gemini)"
+        descricao: "Classificado como Ruim/Bom/Lendario"
+      - name: "FOLLOW-UP"
+        assignee: "Automação (WhatsApp)"
+        descricao: "Aguardando resposta do follow-up"
+      - name: "PRONTO"
+        assignee: "Time Marketing"
+        descricao: "Depoimento completo, pronto para uso"
+      - name: "DISTRIBUIDO"
+        assignee: "Automação"
+        descricao: "Enviado para grupos e/ou remarketing"
+        terminal: true
+      - name: "DESCARTADO"
+        assignee: "none"
+        descricao: "Sem valor apos follow-up"
+        terminal: true
+    regras:
+      - "Classificacao: Ruim = generico sem jornada. Bom = algum resultado. Lendario = jornada completa com emocao + numeros"
+      - "Follow-up: Lendario sem video → pedir video. Ruim → pedir mais detalhes da jornada. Bom → pedir video"
+      - "Distribuição: MESMO nivel ou UM abaixo. Mentoria→mentoria+formacao. Formacao→formacao+comunidade"
+      - "Exceção: Lendario significativo pode subir nivel"
+      - "Anti-pattern: NAO mandar depoimento de R$3k no grupo de negócios milionarios"
+      - "SE lendario → subir como remarketing automatico (1 semana alunos, depois prospects)"
+      - "Novo registro por formato (mesmo aluno pode ter texto + video = 2 registros)"
+    custom_fields:
+      - "Classificacao (dropdown): Ruim, Bom, Lendario"
+      - "Tipo Midia (dropdown): Texto, Imagem, Audio, Video"
+      - "Produto (dropdown): Formacao, Mentoria, Comunidade, 8020"
+      - "NPS Score (number): 0-10"
+      - "Tem Video (checkbox)"
+      - "URL Midia (url)"
+      - "Contato WhatsApp (phone)"
+      - "Usado em Marketing (checkbox)"
+    kpis:
+      leading: "Depoimentos capturados por semana"
+      lagging: "Lendarios distribuidos por mês + depoimentos usados em criativos"
+    mandamentos_relacionados: ["M1", "M7", "M8"]
+
+  - id: WF-AG-04
+    name: "Ideation Box (Banco de Ideias)"
+    source: "[SOURCE: D1 1.3, Trend-Hunter / Ideation / Copywriting]"
+    context: "List tipo Banco de Dados para mapear DNA de anuncios vencedores"
+    tipo_lista: "banco_de_dados"
+    descricao: |
+      Não e esteira de produção — e banco de referencia.
+      Trend Hunter alimenta, Copywriter consome.
+      Cada task = 1 referência analisada.
+    custom_fields:
+      - name: "Tipo de Hook"
+        type: "dropdown"
+        options: ["Video Caindo", "Flip de Camera", "Pergunta Direta", "Estatística Chocante", "Antes/Depois", "Depoimento", "Trending Audio"]
+      - name: "Formato"
+        type: "dropdown"
+        options: ["Video Curto (<34s)", "Video Longo", "Carrossel", "Imagem Estatica", "GIF"]
+      - name: "Thumbstopping Visual"
+        type: "dropdown"
+        options: ["Antes/Depois Split", "Zoom Extremo", "Cor Saturada", "Texto Grande", "Imagem Chocante", "Rosto Close-Up"]
+        description: "Sub-classificacao visual do elemento que para o scroll"
+        source: "[SOURCE: 08_clickup_lendario.md, Thumbstopping Taxonomy]"
+      - name: "Thumbstopping Cenico"
+        type: "dropdown"
+        options: ["Ambiente Inesperado", "Prop Incomum", "Figurino Disruptivo", "Cenario Contrastante", "Ação Fisica"]
+        description: "Sub-classificacao cenica do gancho visual"
+        source: "[SOURCE: 08_clickup_lendario.md, Thumbstopping Taxonomy]"
+      - name: "Thumbstopping Sonoro"
+        type: "dropdown"
+        options: ["Trending Audio", "Silencio Dramatico", "ASMR", "Voz Alterada", "Sound Effect Viral", "Musica Contrastante"]
+        description: "Sub-classificacao sonora do gancho auditivo"
+        source: "[SOURCE: 08_clickup_lendario.md, Thumbstopping Taxonomy]"
+      - name: "Elemento Estetico"
+        type: "labels"
+        options: ["B-Roll", "Plot Twist", "Legenda Bold", "Zoom Dramatico", "Corte Rápido", "Nativo/UGC"]
+      - name: "Nicho"
+        type: "dropdown"
+      - name: "Performance"
+        type: "dropdown"
+        options: ["Viral (1M+)", "Alto (100K+)", "Medio (10K+)", "Baixo (<10K)"]
+      - name: "URL Referência"
+        type: "url"
+      - name: "Plataforma"
+        type: "dropdown"
+        options: ["TikTok", "Instagram", "YouTube", "Facebook"]
+    views_recomendadas:
+      - name: "Por Tipo de Hook"
+        tipo: "Board"
+        groupby: "Tipo de Hook"
+        uso: "Copywriter buscando inspiracao por estilo"
+      - name: "Top Performers"
+        tipo: "List"
+        filter: "Performance = Viral OR Alto"
+        sort: "date_created DESC"
+        uso: "Quick wins — o que tá funcionando agora"
+      - name: "Por Nicho"
+        tipo: "Board"
+        groupby: "Nicho"
+        uso: "Quando pega cliente novo, ver o que funciona no nicho"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CHECKLISTS POR PAPEL (AGENCIA)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+role_checklists:
+
+  # ─── Checklists Existentes (Enhanced) ────────────────────────────────────────
+
+  - id: CK-AG-01
+    name: "Checklist Diário: Account Manager"
+    source: "[SOURCE: D1 3.2 + 03_onboarding_clickup.md + 05_mentoria_offerbook.md]"
+    frequência: "diário (início do dia)"
+    items:
+      - "Limpar bandeja de tasks (inbox zero no ClickUp)"
+      - "Checar clientes em HOLD há 2+ dias — cobrar cliente via comentario na task"
+      - "Checar tasks com status PENDING sem ação há 24h"
+      - "Verificar se todos os briefings do dia estão preenchidos"
+      - "Atualizar status de tasks que mudaram (M6: status reflete realidade)"
+      - "Validar que novos pedidos de cliente atendem Formulário Mínimo (7 campos obrigatórios)"
+      - "Converter qualquer pedido via WhatsApp/Email para task ANTES de responder ao time"
+      - "Verificar se Angulo Primordial foi selecionado em cada briefing (Dinheiro/Relacionamento/Status)"
+      - "Auditar: todas tasks tem 1 responsável único? (não multiplos assignees — ref: M4)"
+      - "Se task em HOLD > 2 dias, follow-up via comentario no ClickUp (NAO WhatsApp)"
+    items_semanal:
+      - "Revisar Matriz de Angulos com cliente — qual esta convertendo melhor?"
+      - "Validar que OfferBook do cliente esta atualizado (não > 30 dias sem review)"
+      - "Antes de criar nova campanha: copiar template da ULTIMA campanha similar e validar mudancas"
+    anti_pattern: "Não abrir WhatsApp pra cobrar status. Se não tá no ClickUp, não aconteceu."
+
+  - id: CK-AG-02
+    name: "Checklist Diário: Copywriter"
+    source: "[SOURCE: D1 Sumario + D2 Insight #3 + 04_esteira_criativos.md + 05_mentoria_offerbook.md]"
+    frequência: "diário (início do dia)"
+    items:
+      - "Abrir My Tasks → filtrar por DUE DATE = hoje"
+      - "Ler briefing completo da task (description + checklist)"
+      - "Consultar Banco de Trends (Ideation Box) para referencias"
+      - "Consultar Dores do Publico (List ETL de comentarios) para angulos de copy"
+      - "Verificar Custom Field 'Elemento Estetico' do briefing — qual formato será usado?"
+      - "Revisar Taxonomia de Hooks esperada (Visual/Cenico/Sonoro definidos no briefing?)"
+      - "Produzir copies respeitando restricao de caracteres/tom definidos no briefing"
+      - "NAO abrir WhatsApp pra perguntar pro account — tá tudo na task"
+    self_check_antes_de_aprovar:
+      - "Copy tem gancho nos 3 primeiros segundos?"
+      - "Copy tem prova social ou dado concreto?"
+      - "Copy tem CTA claro?"
+      - "Tom de voz esta alinhado com OfferBook do cliente?"
+      - "Caracteres dentro do limite da plataforma?"
+    anti_pattern: "Copywriter buscando briefing fora do ClickUp = sistema mal configurado."
+
+  - id: CK-AG-03
+    name: "Checklist Diário: Editor de Video"
+    source: "[SOURCE: D2 Insight #1 + D4 Case 1 + 04_esteira_criativos.md]"
+    frequência: "diário (início do dia)"
+    items:
+      - "Abrir My Tasks → só ve o que e dele"
+      - "Ler checklist operacional dentro da task (cortes, legenda, thumbnail)"
+      - "Revisar Taxonomia de Retencao esperada (Hook + Thumbstopping Visual/Cenico/Sonoro)"
+      - "Baixar assets do link do Drive na task"
+      - "Editar seguindo checklist (não 'inovar o card')"
+      - "Validar: primeiros 3 segundos GARANTEM thumbstopping definido no briefing?"
+      - "Check: duracao respeita benchmark? (TikTok 22-34s, Reels <60s) Se não, justificar"
+      - "Revisar se 'Mood' do briefing esta refletido na edicao (comedia vs edificante vs ação)"
+      - "Antes de REVISAO: legenda legivel em mobile? Audio alto e claro?"
+      - "Mover pra REVISAO quando terminar"
+    anti_pattern: "Editor tentando entender a big picture da empresa = restricao cognitiva faltando."
+
+  - id: CK-AG-04
+    name: "Checklist Analitico: Trend Hunter"
+    source: "[SOURCE: D1 3.2 + D1 1.3 + 08_clickup_lendario.md]"
+    frequência: "2-3x por semana"
+    items:
+      - "Rodar pipeline ETL de Trends (top 50 filtradas pela IA)"
+      - "Revisar top 50 — marcar 'Usavel' nos que tem potencial"
+      - "Classificar por Tipo de Hook e Formato"
+      - "Classificar Thumbstopping Taxonomy (Visual/Cenico/Sonoro) das top 50"
+      - "Alimentar Ideation Box com novas referencias"
+      - "Analisar top 50 comentarios de videos do nicho"
+      - "Atualizar custom field Performance (Viral 1M+ / Alto 100K+ / Medio 10K+ / Baixo <10K)"
+      - "Gerar 3-5 variacoes de angulo com IA: 'Dado esta referência visual, que angulos de copy funcionariam?'"
+      - "Selecao fina humana das top 3 variacoes"
+    anti_pattern: "Trend Hunter gerando conteúdo do zero em vez de combinar variaveis funcionais."
+
+  # ─── Checklists Novos por Papel ─────────────────────────────────────────────
+
+  - id: CK-AG-05
+    name: "Checklist Diário: Diretor Criativo"
+    source: "[SOURCE: 04_esteira_criativos.md + 05_mentoria_offerbook.md + 08_clickup_lendario.md]"
+    frequência: "diário (início do dia)"
+    items:
+      - "Abrir My Tasks → filtrar por status APROVACAO"
+      - "Revisar criativos pendentes com checklist de Thumbstopping (Visual/Cenico/Sonoro)"
+      - "Validar conformidade com OfferBook (Angulos, Hooks, Avatares do cliente)"
+      - "Aprovar ou rejeitar com feedback específico no comentario (NUNCA backward status — se rejeitado, abrir NOVA task de ajuste)"
+      - "Auditar consistencia visual vs Brandbook antes de marcar aprovado"
+      - "Mapear 'Moods' dos criativos que passam — alimentar dados de performance"
+      - "SE descobrir gap no template do briefing → atualizar Template Pai (ref: CASE-08, H-DES-06)"
+    anti_pattern: "Aprovar criativo sem feedback escrito = zero aprendizado para o time."
+
+  - id: CK-AG-06
+    name: "Checklist Diário: Gestor de Trafego"
+    source: "[SOURCE: 04_esteira_criativos.md + D5 Numeros e Formulas]"
+    frequência: "diário"
+    items:
+      - "Monitorar criativos em status ATIVO — checar ROAS, CTR, CPC diariamente"
+      - "Identificar quando criativo atinge threshold de WINNER (ROI > benchmark definido)"
+      - "Escalar criativos WINNER: aumentar budget sem limite"
+      - "Marcar criativos que não performam como MORTO (não desperdicar budget)"
+      - "Atualizar custom fields na task: ROAS, Budget Teste, Performance"
+      - "Revisar benchmark TTCX (22-34s TikTok) — rejeitar criativos que quebram padrão sem motivo"
+    items_semanal:
+      - "Consolidar learnings dos testes da semana"
+      - "Feedback para Copywriter: 'Angulo X outperformed Y por Z%'"
+      - "Testar novos criativos em rotacao A/B antes de scale completa"
+      - "Atualizar Matriz Combinatoria com resultados da semana"
+    anti_pattern: "Gestor de trafego que não documenta learnings = cada teste começa do zero."
+    kpis:
+      leading: "Criativos em ATIVO por semana"
+      lagging: "WINNER por mês + ROAS medio"
+      benchmark: "1 WINNER a cada 60-70 testados (ref: CASE-06)"
+
+  - id: CK-AG-07
+    name: "Checklist Diário: Designer Grafico"
+    source: "[SOURCE: 02_fabrica_de_criativos.md + WF-AG-02]"
+    frequência: "diário (início do dia)"
+    items:
+      - "Abrir My Tasks → filtrar por DUE DATE = hoje"
+      - "Aguardar status DESIGN com copy aprovada (NAO iniciar design antes da copy)"
+      - "Consultar Brandbook no ClickUp antes de iniciar"
+      - "Revisar Custom Field 'Elemento Estetico' do briefing (B-Roll, Plot Twist, Zoom, etc.)"
+      - "Usar cores/fonts conforme Brandbook — não improvisar"
+      - "Upload final no Drive com nomenclatura padronizada"
+      - "Mover para REVISAO quando pronto"
+    anti_pattern: "Designer comecando arte antes da copy estar aprovada = retrabalho garantido."
+
+  - id: CK-AG-08
+    name: "Checklist Diário: Videomaker"
+    source: "[SOURCE: 04_esteira_criativos.md + WF-AG-01]"
+    frequência: "diário (início do dia)"
+    items:
+      - "Abrir My Tasks → filtrar por status PRODUCAO"
+      - "Revisar roteiro COMPLETO (copy + storyboard de Thumbstopping)"
+      - "Revisar Taxonomia de Retencao esperada (Hook textual + Visual + Cenico + Sonoro)"
+      - "Garantir que primeiros 3 segundos alcancam o Thumbstopping definido no briefing"
+      - "Gravar variacoes de angulos/close-ups conforme briefing pedir"
+      - "Passar drives para editor com naming padrão: {cliente}_{campanha}_{data}_{take}"
+      - "Marcar status como EDICAO quando terminar"
+    anti_pattern: "Videomaker gravando sem ler roteiro completo = material inutilizavel."
+
+  - id: CK-AG-09
+    name: "Checklist Diário: Content Writer (Organico)"
+    source: "[SOURCE: WF-AG-02 + 05_mentoria_offerbook.md]"
+    frequência: "diário (início do dia)"
+    items:
+      - "Abrir My Tasks → filtrar por DUE DATE = hoje"
+      - "Ler briefing completo (descricao + checklist + Angulo Primordial a usar)"
+      - "Consultar Banco de Trends para formatos validados no nicho"
+      - "Escrever baseado em restricao de caracteres/tom definidos no briefing"
+      - "Mover para REVISAO quando terminar (nenhuma volta de status)"
+      - "NAO publicar direto — sempre passa por REVISAO + APROVACAO"
+    anti_pattern: "Content writer publicando sem aprovação = risco de marca."
+
+  - id: CK-AG-10
+    name: "Checklist Semanal: HR / People Manager"
+    source: "[SOURCE: 08_clickup_lendario.md, HR/People Management]"
+    frequência: "semanal + mensal + trimestral"
+    items_semanal:
+      - "Monitorar Workload View de cada membro da equipe"
+      - "Identificar sobrecarga (>120% capacidade) e alertar lider direto"
+      - "Verificar tasks em ALERTA no CRM de Pessoas — intervir proativamente"
+      - "Revisar novos colaboradores em ENTREVISTA_IA — follow-up se bot não completou"
+    items_mensal:
+      - "Revisar Risco Turnover score de toda equipe — intervir em casos Alto/Critico"
+      - "Validar alinhamento pessoa-papel (Estrato Cognitivo vs função exercida)"
+      - "Rodar auditoria de pagamentos PJ (conferir valores vs custom field Salario/Fee)"
+      - "Processar feedbacks de 1:1s e registrar no CRM de Pessoas"
+    items_trimestral:
+      - "Revisar distribuição de Estilos Sociais por squad — realocar se necessário"
+      - "Avaliar turnover do trimestre vs previsoes do sistema"
+      - "Atualizar thresholds de burnout baseado em dados reais"
+    anti_pattern: "Usar dados de workload para cobrar produtividade. O objetivo e PROTEGER, não controlar."
+    reference: "pv-hr-people.yaml"
+
+  - id: CK-AG-11
+    name: "Checklist Semanal: Social Media Manager"
+    source: "[SOURCE: WF-AG-02 + D1 3.2]"
+    frequência: "diário + semanal"
+    items_diario:
+      - "Abrir My Tasks → filtrar por status AGENDADO"
+      - "Verificar que todos os conteúdos agendados para hoje estão com assets prontos"
+      - "Publicar conteúdos e mover status para PUBLICADO"
+      - "Monitorar comentarios/engajamento dos posts publicados"
+    items_semanal:
+      - "Compilar métricas de performance da semana (alcance, engajamento, cliques)"
+      - "Identificar top 3 posts e bottom 3 — documentar por que funcionaram/falharam"
+      - "Alimentar feedback para Copywriter e Designer sobre o que performa"
+      - "Validar calendario de conteúdo da próxima semana esta completo"
+    anti_pattern: "Social media manager atuando sem dados = publicar por publicar."
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TEMPLATES DE MENSAGEM (SCRIPTS REAIS)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+message_templates:
+
+  - id: MSG-01
+    name: "Mensagem do Dumping (Phase 0)"
+    source: "[SOURCE: D6, Ação 1]"
+    quando_usar: "Antes de implementar ClickUp — extrair realidade do time"
+    destinatario: "Equipe de produção (Copy, Edicao, Design)"
+    template: |
+      Até o final do expediente amanha, escrevam um bruto livre de quais
+      ferramentas abrem, quais cliques e mini etapas vocês passam desde
+      o oi bom dia até eu aprovar uma peca. O que de fato vocês gastam
+      tempo aqui e agora.
+    nota: "NAO pedir formato. NAO pedir organizacao. O caos e o ponto."
+
+  - id: MSG-02
+    name: "Resposta a 'Preciso de mais liberdade no ClickUp'"
+    source: "[SOURCE: D3 #2 + D2 Insight #1]"
+    quando_usar: "Quando membro pede acesso a mais views/dashboards"
+    template: |
+      Entendo que parece limitante. Mas a restricao e proposital.
+      Quando você ve só o que e seu, sua energia vai TODA pra criacao.
+      Me mostra o que tá faltando pra você executar — se falta info
+      na task, eu corrijo o briefing. Mas abrir mais views não resolve.
+
+  - id: MSG-03
+    name: "Resposta a 'O card voltou de status'"
+    source: "[SOURCE: D7 Mantra + D1 Passo 2.3]"
+    quando_usar: "Quando alguém tenta retroceder status"
+    template: |
+      O fluxo não retrocede. NUNCA. Se precisa de ajuste, abre uma nova
+      task de correcao linkada a essa. O status original segue pra frente.
+      Se tá acontecendo muito, o problema e no briefing — a gente ajusta
+      o processo, não o fluxo.
+
+  - id: MSG-04
+    name: "Resposta a 'Preciso de reunião pra alinhar'"
+    source: "[SOURCE: Allfluence + Formacao Lendaria, Dec 10, D3 Insight #2]"
+    quando_usar: "Quando alguém propoe reunião de alinhamento"
+    template: |
+      Reunião e cancer porque ela só quer se proliferar. Uma leva a outra.
+      Se precisa de reunião pra saber status, o ClickUp tá mal configurado.
+      Delega pelo ClickUp com base de conhecimento embarcada — o campo
+      já tem link pro SOP. Se o funcionario não sabe preencher, a instrucao
+      tá faltando na task, não na agenda.
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# BENCHMARKS E NUMEROS (AGENCIA CRIATIVA)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+benchmarks:
+
+  criativos:
+    win_rate: "1:60 a 1:70"
+    source: "[SOURCE: D5]"
+    descricao: "A cada 60-70 criativos testados, 1 escala com ROI brutal"
+    roi_winner: "R$1 investido → R$5-6 retorno limpo"
+    escala_winner: "R$200k/dia em escala quando encontra winner"
+    implicacao: "Sistema precisa ACELERAR volume, não burocratizar qualidade"
+
+  tiktok:
+    sweet_spot_duracao: "22-34 segundos"
+    source: "[SOURCE: D5, TTCX]"
+    descricao: "Sweet-spot estrito de ouro para ads nativos"
+    regra: "Romper barreira sem motivo mata retencao imediata"
+
+  produtividade:
+    antes_etl: "1 copywriter = 10 copies em dias"
+    depois_etl: "1 copywriter + IA = 100 variacoes, top 3 filtradas"
+    source: "[SOURCE: D1, Sumario]"
+    multiplicador: "10x output com mesmo headcount"
+
+  gaps:
+    leading_kpi: "Tempo morto entre fases (gap)"
+    lagging_kpi: "Criativos Aprovados no Ar por semana + Win Rate"
+    source: "[SOURCE: D1, 2.4]"
+    regra: "Se gap entre fases > 4h em dia útil, processo tem gargalo"
+
+  escala_allfluence:
+    criativos_simultaneos: "1.800/mes"
+    projetos_simultaneos: "90+ projetos complexos em PDF"
+    modelo_aquisicao: "ByteDance (TikTok TTCX) repassa produção — zero prospeccao"
+    budget_medio_cliente: "R$2M em midia (TikTok paga produção)"
+    operação: "100% assincrona — zero calls com equipe"
+    source: "[SOURCE: Allfluence + Formacao Lendaria, Dec 10]"
+    descricao: "Escala massiva via microreducoes de atrito, não automações megalomaniacas"
+    formula_escala: "6 gaps eliminados x 1.800 criativos = milhares de horas devolvidas"
+    diferencial: "Neurodivergencia como vantagem — hiperfoco cria sistemas rigidos que compensam caos natural"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ANTI-PATTERNS (AGENCIA CRIATIVA)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+anti_patterns:
+
+  - id: AP-AG-01
+    name: "Falso Masterplan Genial"
+    source: "[SOURCE: D6, Erro Fatal #1]"
+    descricao: "Semanas criando automação N8N antes do processo rodar manual"
+    como_acontece: "Gestor fica empolgado com automação e pula a fase manual"
+    como_evitar: "Construir apenas 1 fase rodando em teste. Se funcionar manual, automatiza."
+    detection: "Equipe fala 'a automação vai resolver' mas ninguém sabe descrever o processo manual"
+
+  - id: AP-AG-02
+    name: "Elite Responsiva"
+    source: "[SOURCE: D6, Erro Fatal #2]"
+    descricao: "Copywriter senior gastando energia cobrando account via WhatsApp"
+    como_acontece: "Falta de visibilidade no ClickUp força comunicação informal"
+    como_evitar: "Dashboard de Trends filtrado + comunicação na task (M5)"
+    detection: "Criativo com 15+ janelas de zap abertas no horário de produção"
+
+  - id: AP-AG-03
+    name: "Microtask Explosion"
+    source: "[SOURCE: D6, Erro Fatal #3]"
+    descricao: "Criar milhares de microtasks para cada etapa do criativo"
+    como_acontece: "Gestor fragmenta o criativo em 10 tasks separadas por etapa"
+    como_evitar: "UMA task mae do criativo indo de pessoa pra pessoa alterando Assigned (Trocador de Corpos)"
+    detection: "Mais de 5 tasks linkadas para um único criativo"
+
+  - id: AP-AG-04
+    name: "Onboarding Enciclopedico"
+    source: "[SOURCE: D3 #1 + D4 Case 1]"
+    descricao: "Treinar toda equipe na arquitetura do ClickUp"
+    como_acontece: "Migrou do Trello, acham que precisam de curso de ClickUp pra todos"
+    como_evitar: "Omitir arquitetura. Dar 'to-do list magica e cega' (My Tasks filtrado)"
+    detection: "Planejamento inclui '2 semanas de treinamento ClickUp'"
+
+  - id: AP-AG-05
+    name: "Banco de Dados em Planilha"
+    source: "[SOURCE: D1 1.4]"
+    descricao: "Manter atores, scripts, referencias em Google Sheets separado"
+    como_acontece: "Habito antigo de planilha. 'Sempre fizemos assim.'"
+    como_evitar: "Criar Lists tipo Banco de Dados dentro do ClickUp (Ideation Box, Atores, Scripts)"
+    detection: "Time abrindo Google Sheets pra consultar referência que deveria estar no ClickUp"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PARADIGM SHIFTS (ANTES → AGORA)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+paradigm_shifts:
+
+  - id: PS-01
+    antes: "Todos precisam entender a arquitetura do ClickUp"
+    agora: "Equipe da ponta precisa de onboarding burro e eficiente"
+    source: "[SOURCE: D1, 1.4]"
+    municio_retorica: |
+      Quando o usuário disser 'preciso treinar meu time no ClickUp',
+      responder: 'Nao. Você precisa configurar o ClickUp pro seu time
+      não precisar de treino. My Tasks + due date + checklist. Fim.'
+
+  - id: PS-02
+    antes: "IA escreve a copia final"
+    agora: "IA gera volume cru, humano e o afunilador"
+    source: "[SOURCE: D1, 1.4]"
+    municio_retorica: |
+      'A IA não substitui o copywriter. Ela gera 100 variacoes.
+      O copywriter filtra 3. O volume e da maquina, a curadoria e humana.'
+
+  - id: PS-03
+    antes: "Liberdade criativa melhora output"
+    agora: "Restricao operacional libera energia mental pra arte"
+    source: "[SOURCE: D3, #2]"
+    municio_retorica: |
+      'Quanto menos decisão operacional o criativo toma, mais energia
+      ele tem pra criar. Checklist operacional não e prisao — e liberacao.'
+
+  - id: PS-04
+    antes: "CRM e banco de dados precisam de planilhas gigantes"
+    agora: "Lists de Banco de Dados dentro do ClickUp resolvem"
+    source: "[SOURCE: D1, 1.4]"
+    municio_retorica: |
+      'Atores, Scripts, Trends — tudo vira List no ClickUp.
+      Não e planilha passiva. E banco ativo com alertas e filtros.'
+
+  - id: PS-05
+    antes: "Erro do executor = culpa do executor"
+    agora: "Erro do executor = culpa de quem montou o processo"
+    source: "[SOURCE: D1 1.2 Pilar 2 + D7 Meta-Insight]"
+    municio_retorica: |
+      'Se o executor errou, não demite o executor — conserta o processo.
+      A culpa SOBE. Se ele conseguiu errar, o sistema permitiu.'
+
+  - id: PS-06
+    antes: "SOPs no Notion = processos documentados"
+    agora: "Documentacao ≠ Processo. Processo só existe quando ação e refem do BD"
+    source: "[SOURCE: 08_clickup_lendario.md, Documentacao vs Processo]"
+    municio_retorica: |
+      'Você tem 50 SOPs no Notion? Otimo. Quantos são seguidos?
+      Documentacao que não esta na mesma tela da ação e ficcao.
+      Processo real = a pessoa NAO CONSEGUE executar sem seguir o fluxo.
+      Se consegue pular, não e processo — e sugestao.'

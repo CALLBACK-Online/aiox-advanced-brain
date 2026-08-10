@@ -1,0 +1,263 @@
+# Pedro Valerio - HR/People Management no ClickUp
+# Source: MentorIA Processos (08_clickup_lendario.md)
+# Version: 1.0.0
+# Type: Vertical completa — ClickUp como CRM de Pessoas
+
+metadata:
+  source: "pedro_valerio/mentoria_processos"
+  methodology: "Sistema Allfluence"
+  domain: "hr_people_management"
+  principle: "Pessoas são ativos gerenciaveis. ClickUp como CRM de Pessoas, não planilha de RH."
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CLICKUP COMO CRM DE PESSOAS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+crm_pessoas:
+  description: |
+    List tipo Banco de Dados onde cada task = 1 colaborador.
+    Custom fields capturam cargo, salario, estrato cognitivo, estilo social.
+    Não e planilha passiva — e banco ativo com alertas, filtros e automacoes.
+  source: "[SOURCE: 08_clickup_lendario.md, ClickUp como CRM de Pessoas]"
+
+  list_config:
+    name: "Equipe (CRM de Pessoas)"
+    tipo_lista: "banco_de_dados"
+    space: "People"
+    folder: "Gestao de Pessoas"
+
+  custom_fields:
+    - name: "Cargo"
+      type: "dropdown"
+      options: ["CEO", "Diretor", "Gerente", "Coordenador", "Analista", "Assistente", "Estagiario", "PJ Externo"]
+      required: true
+
+    - name: "Departamento"
+      type: "dropdown"
+      options: ["Marketing", "Vendas", "Operações", "Financeiro", "RH", "TI", "Criativo", "Trafego"]
+      required: true
+
+    - name: "Estrato Cognitivo"
+      type: "dropdown"
+      options: ["Estratégico", "Tático", "Operacional"]
+      description: "Nivel de complexidade cognitiva do papel. Estratégico = decide, Tático = planeja, Operacional = executa."
+
+    - name: "Estilo Social"
+      type: "dropdown"
+      options: ["Analitico", "Condutor", "Expressivo", "Amigavel"]
+      description: "Perfil comportamental extraido via HR Bot Analysis. Determina estilo de comunicação e gestao."
+
+    - name: "Salario/Fee"
+      type: "currency"
+      description: "Valor mensal (CLT ou PJ)"
+      visibility: "admin_only"
+
+    - name: "Tempo na Empresa"
+      type: "date"
+      description: "Data de admissao. ClickUp calcula tempo automaticamente."
+
+    - name: "Lider Direto"
+      type: "dropdown"
+      options: ["(nomes dos lideres)"]
+      description: "Gestor direto do colaborador"
+
+    - name: "Risco Turnover"
+      type: "dropdown"
+      options: ["Baixo", "Medio", "Alto", "Critico"]
+      description: "Calculado via Workload view x Estrato Cognitivo x sinais comportamentais"
+
+    - name: "Tipo Contrato"
+      type: "dropdown"
+      options: ["CLT", "PJ", "Freelancer", "Estagiario"]
+
+    - name: "WhatsApp"
+      type: "phone"
+      description: "Contato direto para automações"
+
+  views_recomendadas:
+    - name: "Organograma"
+      tipo: "Whiteboard"
+      descricao: "Blocos por pessoa com campos cognitivos como tags. Visão hierarquica da empresa."
+      source: "[SOURCE: 08_clickup_lendario.md, Organograma View]"
+
+    - name: "Por Departamento"
+      tipo: "Board"
+      groupby: "Departamento"
+      uso: "Visão rápida de headcount por area"
+
+    - name: "Risco Turnover"
+      tipo: "List"
+      filter: "Risco Turnover = Alto OR Critico"
+      sort: "Risco Turnover DESC"
+      uso: "Alerta precoce de possível perda de talento"
+
+    - name: "Tabela Completa"
+      tipo: "Table"
+      columns: "Todos os custom fields"
+      uso: "Visão planilha para RH e lideranca"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# HR BOT ANALYSIS PIPELINE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+hr_bot_analysis:
+  description: |
+    Pipeline automatizado de mapeamento comportamental de colaboradores.
+    Form ClickUp inicia processo, WhatsApp bot conduz entrevista por audio,
+    IA extrai estilo social e preenche custom fields automaticamente.
+  source: "[SOURCE: 08_clickup_lendario.md, HR Bot Analysis Pipeline]"
+
+  pipeline:
+    step_1:
+      name: "Trigger"
+      action: "Colaborador preenche Form ClickUp com dados basicos"
+      tool: "ClickUp Forms"
+      output: "Task criada na List 'Equipe' com status CADASTRO"
+
+    step_2:
+      name: "Entrevista Bot"
+      action: "N8N envia link de WhatsApp bot para colaborador. Bot conduz entrevista por audio com perguntas comportamentais padronizadas."
+      tool: "N8N + WhatsApp Business API + Evolution API"
+      output: "Audios gravados com respostas do colaborador"
+
+    step_3:
+      name: "Extracao IA"
+      action: "IA transcreve audios e extrai estilo social (Analitico/Condutor/Expressivo/Amigavel) + estrato cognitivo"
+      tool: "N8N + Gemini API"
+      output: "Classificacao comportamental estruturada"
+
+    step_4:
+      name: "Auto-Preenchimento"
+      action: "Custom Fields da task do colaborador preenchidos automaticamente com resultados da IA"
+      tool: "N8N + ClickUp API"
+      output: "Task completa com perfil comportamental mapeado"
+
+    step_5:
+      name: "Validação Humana"
+      action: "Lider direto revisa e válida classificacao. Ajusta se necessario."
+      tool: "ClickUp (comentario + status change)"
+      output: "Status muda para MAPEADO"
+
+  guardrails:
+    - "Bot tem limite de 15min por entrevista"
+    - "Se colaborador não responder em 48h, escalar para lider direto"
+    - "Classificacao da IA e sugestao — lider válida antes de MAPEADO"
+    - "Dados de salario NUNCA passam pelo bot — apenas admin preenche"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PREVISAO DE BURNOUT/TURNOVER
+# ═══════════════════════════════════════════════════════════════════════════════
+
+burnout_turnover_prevention:
+  description: |
+    Cruzamento de Workload view com Estrato Cognitivo para identificar
+    risco de burnout ANTES da ruptura. Operacional sobrecarregado quebra
+    antes de Estratégico com mesma carga.
+  source: "[SOURCE: 08_clickup_lendario.md, Previsao Burnout/Turnover]"
+
+  formula: "Workload View (horas atribuidas) × Estrato Cognitivo = Score de Risco"
+
+  thresholds:
+    operacional:
+      verde: "< 35h/semana"
+      amarelo: "35-42h/semana"
+      vermelho: "> 42h/semana"
+    tático:
+      verde: "< 40h/semana"
+      amarelo: "40-48h/semana"
+      vermelho: "> 48h/semana"
+    estratégico:
+      verde: "< 45h/semana"
+      amarelo: "45-55h/semana"
+      vermelho: "> 55h/semana"
+
+  alertas:
+    - trigger: "Workload em vermelho por 2+ semanas consecutivas"
+      action: "Custom Field 'Risco Turnover' = Alto. Notificar lider direto."
+    - trigger: "Risco Turnover = Alto por 4+ semanas"
+      action: "Risco Turnover = Critico. Escalar para diretoria."
+    - trigger: "Colaborador não atualiza tasks por 5+ dias"
+      action: "Flag comportamental — verificar com lider se esta tudo bem"
+
+  anti_pattern: "NAO usar estes dados para cobrar produtividade. O objetivo e PROTEGER, não controlar."
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# AUTOMACAO DE PAGAMENTOS (PJ)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+automacao_pagamentos:
+  description: |
+    Botao "Gerar Pagamentos" no ClickUp varre todos os PJs ativos,
+    dispara autorizacao de pagamento e solicitacao de NF via N8N.
+    Elimina processo manual de cobrar NF de 43+ prestadores.
+  source: "[SOURCE: 08_clickup_lendario.md, Automação de Pagamentos]"
+
+  trigger: "Botao 'Gerar Pagamentos' na List de Pagamentos (clicado pelo financeiro)"
+
+  pipeline:
+    step_1:
+      name: "Varrer PJs"
+      action: "Listar todas tasks na List 'Equipe' com Tipo Contrato = PJ e Status = ATIVO"
+      tool: "N8N + ClickUp API"
+      output: "Lista de PJs ativos com valores"
+
+    step_2:
+      name: "Gerar Autorizacoes"
+      action: "Criar task de pagamento para cada PJ no Space Financeiro"
+      tool: "N8N + ClickUp API"
+      output: "Tasks de pagamento criadas com valor e dados do PJ"
+
+    step_3:
+      name: "Solicitar NF"
+      action: "Enviar mensagem WhatsApp para cada PJ solicitando NF do mês"
+      tool: "N8N + WhatsApp Business API"
+      output: "Mensagem enviada com valor, CNPJ e prazo"
+
+    step_4:
+      name: "Confirmar Recebimento"
+      action: "Quando PJ responde com NF, anexar na task e mover status para APROVADO"
+      tool: "N8N + ClickUp API"
+      output: "Task com NF anexada, pronta para pagamento"
+
+  guardrails:
+    - "Timeout de 48h para envio de NF — apos isso, escalar para financeiro"
+    - "Valores conferidos contra custom field 'Salario/Fee' da task do colaborador"
+    - "Log de todas autorizacoes para auditoria"
+    - "PJs com status != ATIVO são ignorados automaticamente"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# STATUS WORKFLOW (PEOPLE MANAGEMENT)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+status_workflow:
+  name: "people_management"
+  display_name: "Gestao de Pessoas"
+  applies_to: "List de Equipe (CRM de Pessoas)"
+  source: "[SOURCE: 08_clickup_lendario.md, Workflow de Status People]"
+
+  sequence:
+    - status: "CADASTRO"
+      color: "#d3d3d3"
+      description: "Colaborador registrado, dados basicos preenchidos"
+    - status: "ENTREVISTA_IA"
+      color: "#4194f6"
+      description: "Bot de WhatsApp conduzindo entrevista comportamental"
+    - status: "MAPEADO"
+      color: "#f4c542"
+      description: "Perfil comportamental extraido e validado pelo lider"
+    - status: "ATIVO"
+      color: "#6bc950"
+      description: "Colaborador ativo, integrado ao sistema"
+    - status: "ALERTA"
+      color: "#f49e42"
+      description: "Risco de burnout/turnover detectado. Intervencao necessaria."
+    - status: "DESLIGADO"
+      color: "#f44242"
+      description: "Colaborador desligado. Manter registro para historico."
+      terminal: true
+
+  regras:
+    - "ALERTA pode voltar para ATIVO se risco mitigado (exceção ao no-backward-status)"
+    - "DESLIGADO e terminal — não deleta task, mantem histórico"
+    - "Transicao ATIVO → ALERTA e automatica (baseada em thresholds de burnout)"
+    - "Transicao ALERTA → ATIVO requer comentario do lider justificando mitigacao"

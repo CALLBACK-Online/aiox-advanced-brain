@@ -1,0 +1,22 @@
+{
+  "slug": "medium-quality",
+  "scores": {
+    "coverage": 14,
+    "citation_quality": 12,
+    "claim_verifiability": 11,
+    "narrative_coherence": 13,
+    "actionability": 10
+  },
+  "total": 60,
+  "rationale_per_dim": {
+    "coverage": "Mock: good breadth, minor gaps detected.",
+    "citation_quality": "Mock: most claims sourced, limited diversity.",
+    "claim_verifiability": "Mock: qualified claims, methodology partial.",
+    "narrative_coherence": "Mock: clear structure, minor transition gaps.",
+    "actionability": "Mock: concrete recommendations, prioritization absent."
+  },
+  "model_used": "mock/claude-sonnet-4-5",
+  "timestamp": "20260519T193035Z",
+  "research_dir": "/Users/alan/Code/sinkra-hub/squads/research/eval-suite/fixtures/medium-quality",
+  "rubric_version": "1.0"
+}

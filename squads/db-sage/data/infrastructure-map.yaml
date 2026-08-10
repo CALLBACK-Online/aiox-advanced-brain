@@ -1,0 +1,123 @@
+# Infrastructure Map — DB Sage Squad
+# Comprehensive mapping of infrastructure services, task bindings, and gaps
+# Created: 2026-04-12
+# Owner: db-sage squad
+
+updated_at: "2026-04-14"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SERVICE CATALOG
+# ═══════════════════════════════════════════════════════════════════════════════
+service_catalog:
+  postgresql_connection:
+    service_ref: postgresql-primary
+    connection: "$SUPABASE_DB_URL or $DATABASE_URL"
+    integration: "Primary database connection for all operations"
+    type: external-database
+    tasks_using:
+      - db-env-check
+      - db-bootstrap
+      - db-run-sql
+      - db-apply-migration
+      - db-dry-run
+      - db-snapshot
+      - db-rollback
+      - db-smoke-test
+      - db-explain
+      - db-analyze-hotpaths
+      - db-rls-audit
+      - db-policy-apply
+      - db-impersonate
+      - db-seed
+      - db-load-csv
+      - db-best-practices-audit
+      - db-verify-order
+      - query-optimization
+      - schema-audit
+      - kiss
+    retention: "persistent (database state)"
+
+  snapshot_storage:
+    service_ref: snapshot-local-store
+    connection: "supabase/snapshots/"
+    integration: "Schema-only backup storage for rollback safety"
+    type: local-filesystem
+    tasks_using:
+      - db-snapshot
+      - db-rollback
+      - db-apply-migration
+      - db-best-practices-audit
+      - db-squad-integration
+    retention: "manual cleanup"
+
+  migration_storage:
+    service_ref: migration-local-store
+    connection: "supabase/migrations/"
+    integration: "SQL migration file storage"
+    type: local-filesystem
+    tasks_using:
+      - db-apply-migration
+      - db-dry-run
+      - db-verify-order
+    retention: "permanent (version-controlled)"
+
+  connection_profiles:
+    service_ref: connection-profile-store
+    connection: ".db-sage/connection-profiles.yaml"
+    integration: "Non-secret connection metadata persistence"
+    type: local-filesystem
+    tasks_using:
+      - supabase-setup
+      - domain-modeling
+      - schema-audit
+      - create-doc
+      - execute-checklist
+    retention: "gitignored (local state)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# EXTERNAL TOOLS
+# ═══════════════════════════════════════════════════════════════════════════════
+external_tools:
+  psql:
+    purpose: "PostgreSQL CLI client for query execution"
+    required: true
+    tasks_using: [db-run-sql, db-apply-migration, db-dry-run, db-explain, db-rls-audit, db-impersonate, db-policy-apply, kiss]
+
+  pg_dump:
+    purpose: "Schema-only and full database backup"
+    required: true
+    tasks_using: [db-snapshot, db-rollback]
+
+  supabase_cli:
+    purpose: "Supabase project management and local development"
+    required: false
+    tasks_using: [supabase-setup, db-bootstrap]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# GAPS
+# ═══════════════════════════════════════════════════════════════════════════════
+gaps:
+  - id: GAP-DBS-001
+    description: "No centralized metrics collection for query performance baselines"
+    severity: low
+    recommendation: "Add pg_stat_statements integration for performance tracking"
+
+  - id: GAP-DBS-002
+    description: "Snapshot cleanup is manual — no automated retention policy"
+    severity: medium
+    recommendation: "Add retention policy to snapshot_storage (e.g., keep last N snapshots)"
+
+  - id: GAP-DBS-003
+    description: "Duplicate script directories (db-ops/ vs database-operations/) — see DEV-DBS-003"
+    severity: low
+    recommendation: "Consolidate to single canonical scripts/db-ops/ directory"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# REUSE METRICS
+# ═══════════════════════════════════════════════════════════════════════════════
+reuse_ratio:
+  total_tasks: 25
+  tasks_mapped_to_services: 25
+  coverage_pct: 1.0
+  avg_tasks_per_service: 6.25
+  most_reused_service: postgresql_connection (20 tasks)

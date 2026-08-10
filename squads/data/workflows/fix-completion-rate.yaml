@@ -1,0 +1,139 @@
+workflow:
+  id: fix-completion-rate
+  name: "Transform Course Completion Rate"
+  version: "1.0"
+  primary_agent: wes-kao
+  tier_flow: [0, 1, 2]
+  phases: 5
+  estimated_duration: "4-8 weeks"
+  agents_involved:
+    - wes-kao
+    - david-spinks
+    - nick-mehta
+    - avinash-kaushik
+  state_machine:
+    states: [preflight, redesign, pilot-validation, complete]
+    transitions:
+      - trigger: preflight_complete
+        source: preflight
+        dest: redesign
+      - trigger: redesign_complete
+        source: redesign
+        dest: pilot-validation
+      - trigger: pilot_validated
+        source: pilot-validation
+        dest: complete
+  task_ref:
+    primary:
+      - design-learning-outcomes
+    supporting:
+      - analyze-cohort
+      - design-health-score
+      - measure-community
+      - create-dashboard
+  views_required:
+    - v_learning_completion_rate
+    - v_learning_progression_tracking
+    - v_customer_health_composite
+    - v_cohort_retention_matrix
+  templates_used:
+    - learning-outcomes-tmpl.yaml
+    - community-health-tmpl.yaml
+  checklists_used:
+    - cbc-readiness-checklist.md
+    - community-health-checklist.md
+  deliverables:
+    - Diagnóstico de drop-off points
+    - Redesign para CBC model
+    - Community integration plan
+    - Student Health Score
+    - Metrics dashboard
+    - Pilot validation
+
+workspace_execution_contract:
+  preflight:
+    - "*workspace-preflight (executa bootstrap-data-workspace.sh + validate-data-essentials.sh)"
+    - "*workspace-context {slug}"
+    - "Confirmar templates necessários em workspace/_templates/analytics/"
+  output_routing:
+    canonical:
+      - "workspace/businesses/{slug}/analytics/learning-outcomes.yaml"
+      - "workspace/businesses/{slug}/analytics/community-health.yaml"
+      - "workspace/businesses/{slug}/analytics/executive-report.yaml"
+    custom:
+      - "docs/data/{slug}/fix-completion-rate-{date}.md"
+  hard_rules:
+    - "Proibido gravar em workspace/businesses/{slug}/analytics/ sem template correspondente em workspace/_templates/analytics/."
+    - "Relatórios em docs/data/{slug}/ são complementares e não substituem artefatos canônicos."
+
+target_metrics:
+  - metric: "Completion Rate"
+    atual: "3%"
+    meta: "80%"
+    como_medir: "% que termina todos módulos"
+  - metric: "Attendance Rate"
+    atual: "-"
+    meta: "85%"
+    como_medir: "% presença nas lives"
+  - metric: "Assignment Rate"
+    atual: "-"
+    meta: "90%"
+    como_medir: "% entregas no prazo"
+  - metric: "NPS"
+    atual: "?"
+    meta: "70+"
+    como_medir: "Survey final"
+  - metric: "Referral Rate"
+    atual: "?"
+    meta: "30%"
+    como_medir: "% que indica após completar"
+
+course_mechanics_canvas:
+  structure:
+    duration: "4 semanas"
+    cadence: "2 lives/semana + async"
+    cohort_size: "20-50 alunos"
+  format:
+    live_vs_async: "40% live, 60% async"
+    lecture_vs_discussion: "30% lecture, 70% discussion/work"
+    individual_vs_group: "40% individual, 60% group"
+  engagement:
+    accountability: "Study buddies + small groups"
+    community: "Private Slack channel"
+    feedback: "Peer review + instructor feedback"
+  outcomes:
+    deliverables: "1 projeto final + entregas semanais"
+    certification: "Certificado de conclusão"
+    alumni: "Acesso vitalício à comunidade"
+
+notes: |
+  ## Objetivo
+  Transformar curso com 3% completion em programa com 80%+ usando metodologia Cohort-Based Course (CBC).
+
+  > "Completion rate de MOOCs é 6%. Cohort-based courses chegam a 96%. A diferença é design, não conteúdo." — Wes Kao
+
+  ## Contexto do Problema
+  MOOC (3% completion): self-paced, sozinho, passivo, baixo commitment.
+  CBC Target (80%+): fixed timeline, cohort, ativo, high commitment.
+
+  ## Fases
+  - FASE 1: DIAGNÓSTICO (Wes Kao) - Tier 0
+    Identificar drop points, causas raiz, survey com dropouts (min 50), perfil de completers.
+  - FASE 2: REDESIGN (Wes Kao) - Tier 1
+    Adicionar elementos CBC (fixed dates, cohort, live sessions, peer accountability), State Change Method (alternar modalidades cada 5-10min, max 15min lecture), deliverables, revisar pricing/commitment.
+  - FASE 3: COMMUNITY ELEMENTS (David Spinks) - Tier 1
+    Criar comunidade do cohort, rituais de conexão, peer support structures, alumni community, métricas SPACES.
+  - FASE 4: STUDENT HEALTH (Nick Mehta adaptado) - Tier 1
+    Student Health Score (Attendance 30%, Assignment 30%, Community 20%, Pace 20%), thresholds (Verde 70-100, Amarelo 40-69, Vermelho 0-39), alertas e playbooks.
+  - FASE 5: MÉTRICAS E ITERAÇÃO (Kao + Kaushik) - Tier 2
+    Métricas de processo (completion 80%, attendance 85%, assignment 90%, NPS 70+), cohort pilot (20-30 alunos, 4-6 semanas), iteração pós-pilot, reporting So What.
+
+  ## Referências
+  - Wes Kao: CBC Methodology, Course Mechanics Canvas, State Change Method
+  - David Spinks: SPACES Model
+  - Nick Mehta: Health Score adaptation
+  - Avinash Kaushik: So What framework
+  - Source: altMBA case study (96% completion)
+
+  Data Intelligence Pack - Workflow v1.0
+  Primary Agent: @wes-kao

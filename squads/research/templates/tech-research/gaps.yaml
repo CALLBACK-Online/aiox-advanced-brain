@@ -1,0 +1,60 @@
+# gaps.yaml — Tech Research Pipeline Gap Tracker
+# Story: STORY-RA-B.1 | Template version: 1.0 | Created: 2026-05-19
+#
+# SEMANTICS: APPEND-ONLY
+# - Wave N NEVER removes gaps detected in Wave N-1 or earlier.
+# - New gaps are appended at the end of the gaps[] array.
+# - Status transitions are the ONLY mutations allowed on existing entries:
+#     open → closed   (source found that answers the gap question)
+#     open → abandoned (gap deemed out-of-scope after N attempts; requires explicit decision)
+# - Validator (check_gaps_schema in output_validator.py) REJECTS any write that
+#   removes entries or reorders existing IDs.
+#
+# CRASH RECOVERY:
+# - gap_detector.py writes to gaps.yaml.tmp, validates, then mv → gaps.yaml (atomic).
+# - pipeline-state.yaml#gaps_yaml_ref always points to the last committed gaps.yaml.
+# - On pipeline restart: read last-good gaps.yaml + pipeline-state.yaml. No duplication.
+#
+# CONSUMED BY:
+# - Phase 3.5 (evaluate-coverage.yaml): gap_convergence = gap_set.is_empty()
+# - heartbeat-policy.yaml signal gap_convergence (priority 6)
+# - output_validator.py hook check_gaps_schema
+# - RA-B.2 (Wave 2+ uses gaps to focus sub-queries)
+#
+# ID CONVENTION: G{NNN} zero-padded to 3 digits (G001, G002, ..., G999)
+# IDs are stable across waves — never reassigned.
+
+schema_version: "1.0"
+story_ref: STORY-RA-B.1
+pipeline_id: "{pipeline_id}"      # populated by gap_detector.py from pipeline-state.yaml
+slug: "{research_slug}"           # populated by gap_detector.py
+generated_at: "{iso8601}"         # populated by gap_detector.py (last write timestamp)
+wave_last_updated: {wave_num}     # populated by gap_detector.py
+
+# ─── Gap State Summary ───────────────────────────────────────────────────────
+summary:
+  total: 0
+  open: 0
+  closed: 0
+  abandoned: 0
+  gap_convergence: false          # true when open == 0
+
+# ─── Gaps Array (APPEND-ONLY) ────────────────────────────────────────────────
+# Each entry represents a research gap identified during wave execution.
+# Entries are never removed. Status field captures lifecycle state.
+gaps: []
+
+# ─── Template Entry (for reference — NOT part of runtime file) ───────────────
+# Uncomment and populate when gap_detector.py appends real entries:
+#
+# gaps:
+#   - id: G001
+#     question: "What are the benchmark results for pgvector vs pinecone at 10M vectors?"
+#     source_hint: "academic-paper"      # academic-paper | enterprise-postmortem | general-web | any
+#     priority: high                      # high | medium | low
+#     attempts: 0                         # incremented each wave gap remains open (set by gap_detector.py)
+#     status: open                        # open | closed | abandoned
+#     opened_in_wave: 1                   # wave when gap was first detected
+#     closed_in_wave: null                # wave when gap was closed (null if still open)
+#     closed_by_source: null             # source_id from sources.yaml (null if still open)
+#     notes: ""                           # optional — human or LLM annotation

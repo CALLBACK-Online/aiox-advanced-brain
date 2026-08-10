@@ -1,0 +1,477 @@
+workflow:
+  type: legacy
+  name: Business Rules Standardization
+  id: wf-standardize-rules
+  version: 1.0.0
+  description: Workflow para padronizar regras de negocio ja extraidas. Diferente do wf-extract-rules (que extrai do zero), este workflow recebe regras existentes (em qualquer formato) e as padroniza em documentacao consistente.
+  squad: domain-decoder
+  orchestrator: decoder-chief
+  command: "*standardize"
+  sequence:
+    - step: phase-0-intake
+      id: phase-0-intake
+      phase: 1
+      phase_name: Rule Intake & Assessment
+      agent: ronald-ross
+      action: execute_assess-the-incoming-rules-material-what-format-what-quality-what
+      next: phase-1-restructure
+    - step: phase-1-restructure
+      id: phase-1-restructure
+      phase: 2
+      phase_name: Restructure & Deduplicate
+      agent: barbara-von-halle
+      action: execute_restructure-rules-into-decision-model-format
+      next: phase-2-formalize
+    - step: phase-2-formalize
+      id: phase-2-formalize
+      phase: 3
+      phase_name: Formalize in DMN
+      agent: james-taylor
+      action: execute_express-computational-and-conditional-rules-as-dmn-decision-tabl
+      next: phase-3-express
+    - step: phase-3-express
+      id: phase-3-express
+      phase: 4
+      phase_name: Express in RuleSpeak
+      agent: graham-witt
+      action: execute_rewrite-every-rule-in-structured-natural-language
+      next: phase-4-validate
+    - step: phase-4-validate
+      id: phase-4-validate
+      phase: 5
+      phase_name: Validation & Packaging
+      agent: decoder-chief
+      action: execute_final-validation-catalog-generation-and-delivery
+      next: post-phase-3-compound-gate
+    - step: post-phase-3-compound-gate
+      id: post-phase-3-compound-gate
+      phase: 6
+      phase_name: Compound-Rule Scan Gate
+      agent: decoder-chief
+      action: gate
+      next: pre-phase-3-contradiction-resolution
+    - step: pre-phase-3-contradiction-resolution
+      id: pre-phase-3-contradiction-resolution
+      phase: 7
+      phase_name: Contradiction Resolution Gate
+      agent: decoder-chief
+      action: gate
+    - workflow_end:
+        id: complete
+        action: workflow_complete
+  handoff_prompts:
+    ronald-ross_to_barbara-von-halle: Handoff context from ronald-ross to barbara-von-halle. Preserve outputs, risks, and open decisions.
+    barbara-von-halle_to_james-taylor: Handoff context from barbara-von-halle to james-taylor. Preserve outputs, risks, and open decisions.
+    james-taylor_to_graham-witt: Handoff context from james-taylor to graham-witt. Preserve outputs, risks, and open decisions.
+    graham-witt_to_decoder-chief: Handoff context from graham-witt to decoder-chief. Preserve outputs, risks, and open decisions.
+inputs:
+  required:
+    - name: rules_source
+      description: Existing rules in any format (spreadsheets, documents, wiki pages, PDFs, email threads)
+      example: /docs/business-rules-v2.xlsx
+    - name: source_format
+      description: Format of the input rules
+      allowed_values:
+        - spreadsheet
+        - document
+        - wiki
+        - pdf
+        - email
+        - mixed
+    - name: domain
+      description: Business domain these rules belong to
+      example: Credit Approval
+  optional:
+    - name: existing_glossary
+      description: Any existing glossary or data dictionary
+    - name: target_format
+      description: Desired output format
+      default: markdown catalog + YAML rules
+    - name: stakeholders
+      description: Business stakeholders for validation
+input_veto:
+  description: Hard blockers checked BEFORE any phase executes. If ANY veto fires, pipeline HALTS.
+  checks:
+    - id: IV-1
+      field: rules_source
+      condition: missing OR empty OR path does not exist
+      action: VETO — pipeline cannot start without source material
+      message: rules_source is required. Provide path to existing rules (e.g., /docs/business-rules-v2.xlsx)
+    - id: IV-2
+      field: source_format
+      condition: missing OR value not in allowed_values [spreadsheet, document, wiki, pdf, email, mixed]
+      action: VETO — invalid source format
+      message: "source_format must be one of: spreadsheet, document, wiki, pdf, email, mixed"
+    - id: IV-3
+      field: domain
+      condition: missing OR empty string OR whitespace-only
+      action: VETO — domain not specified
+      message: domain is required. Provide the business domain (e.g., 'Credit Approval', 'Order Processing')
+  on_veto: Present ALL failing checks to user at once. Do NOT partially execute pipeline.
+phases:
+  phase_0_intake:
+    name: Rule Intake & Assessment
+    order: 0
+    tier: 0
+    agents:
+      - ronald-ross
+      - eric-evans
+    mandatory: true
+    description: "Assess the incoming rules material: what format, what quality, what gaps exist."
+    actions:
+      - id: "0.1"
+        agent: ronald-ross
+        action: Classify each incoming rule using Ross taxonomy
+        output: Classification of all incoming rules by type
+        guidance: |
+          Read ALL incoming rules before classifying.
+          Many existing rule documents mix rules with procedures, policies, and guidelines.
+          Only classify actual BUSINESS RULES (constraints, computations, inferences, action enablers, behavioral).
+          Tag non-rules as: PROCEDURE, POLICY, GUIDELINE, or NOT_A_RULE.
+      - id: "0.2"
+        agent: eric-evans
+        action: Identify bounded contexts from rule content
+        output: Context assignment for each rule
+        guidance: |
+          Incoming rules may not be organized by domain.
+          Group rules by the business context they operate in.
+          Create a preliminary glossary from terms found in the rules.
+      - id: "0.3"
+        agent: ronald-ross
+        action: Assess quality of existing rule statements
+        output: Quality assessment with specific issues per rule
+        guidance: |
+          Check each rule for:
+          - Ambiguity (vague terms, no thresholds)
+          - Incompleteness (missing conditions, missing subjects)
+          - Redundancy (same rule stated differently)
+          - Contradiction (two rules that conflict)
+          Score each rule: GOOD (minor edits), REWRITE (major issues), SPLIT (multiple rules in one)
+    checkpoint:
+      name: Intake assessment complete
+      estimated_time: 5-10 minutes (source validation and domain scoping)
+      criteria:
+        - All incoming rules classified (or tagged as non-rules)
+        - Bounded contexts identified
+        - Quality assessment complete with per-rule scores
+        - Non-rules separated from actual rules
+      gate: Orchestrator (decoder-chief) approves before Phase 1
+      blocker: Do NOT standardize without completing intake assessment. You will carry forward ambiguity.
+      anti_patterns_caught:
+        - Standardizing without classifying first — produces inconsistent output
+        - Treating non-rules (procedures, guidelines) as rules
+  phase_1_restructure:
+    name: Restructure & Deduplicate
+    order: 1
+    tier: 1
+    agents:
+      - barbara-von-halle
+      - ronald-ross
+    mandatory: true
+    depends_on: phase_0_intake
+    description: Restructure rules into Decision Model format. Eliminate duplicates and resolve contradictions.
+    actions:
+      - id: "1.1"
+        agent: barbara-von-halle
+        action: Group rules into Rule Families under Business Decisions
+        output: Decision Model structure (decisions → rule families → rules)
+        guidance: |
+          Incoming rules are often flat lists. The Decision Model adds structure:
+          1. Identify the BUSINESS DECISIONS being made
+          2. Group rules that answer each decision into Rule Families
+          3. Rules in a family share the same condition columns
+      - id: "1.2"
+        agent: ronald-ross
+        action: Identify and resolve duplicates
+        output: "Deduplication report: merged rules, eliminated duplicates"
+        guidance: |
+          Common duplicate patterns:
+          - Same rule stated in different words
+          - Same rule in different documents (one may be outdated)
+          - Rule and its exception documented separately (merge into conditional)
+          Always keep the MORE SPECIFIC version. Document which version was kept and why.
+      - id: "1.3"
+        agent: ronald-ross
+        action: Resolve contradictions
+        output: Contradiction resolution report
+        guidance: |
+          When two rules contradict:
+          1. Check dates — newer may supersede older
+          2. Check scope — one may be an exception to the other
+          3. Check authority — one source may have higher authority
+          4. If unresolvable — flag for stakeholder decision
+          NEVER silently pick one. Document the conflict and resolution.
+    checkpoint:
+      name: Rules restructured, no duplicates, no unresolved contradictions
+      criteria:
+        - Decision Model created with all rules assigned
+        - Zero duplicate rules
+        - All contradictions resolved or flagged for stakeholder
+        - No orphaned rules
+      gate: Orchestrator (decoder-chief) approves before Phase 2
+      anti_patterns_caught:
+        - Keeping duplicates to avoid conflict resolution (AP-2)
+        - Silently choosing one version when rules contradict (AP-3)
+  phase_2_formalize:
+    name: Formalize in DMN
+    order: 2
+    tier: 2
+    agents:
+      - james-taylor
+    mandatory: false
+    depends_on: phase_1_restructure
+    description: Express computational and conditional rules as DMN decision tables. Skip if rules are purely textual/behavioral.
+    skip_instruction: |
+      Phase 2 (Formalize in DMN) is OPTIONAL for projects where rules are purely
+      textual, behavioral, or definitional. Decision tables add value only for
+      computational and conditional rules.
+
+      WHEN TO SKIP:
+      - All rules are behavioral (obligations/prohibitions) with no conditions
+      - Rules are definitions or glossary terms only
+      - Greenfield project with no existing decision logic
+      - Stakeholder explicitly requests text-only output
+
+      HOW TO SKIP:
+      1. Set characterization_skipped=true in pipeline state
+      2. Use defaults: risk_level=MEDIUM, test_status=UNTESTED
+      3. Document skip reason in outputs: "Phase 2 skipped: {reason}"
+      4. Proceed directly to Phase 3 (Express in RuleSpeak)
+      5. In final report, note: "DMN tables: N/A (Phase 2 skipped — {reason})"
+    actions:
+      - id: "2.1"
+        agent: james-taylor
+        action: Build decision tables for computation and conditional rules
+        output: DMN decision tables with hit policies
+        guidance: |
+          Only formalize rules that benefit from tabular representation:
+          - Rules with multiple conditions → decision table
+          - Rules with calculations → FEEL expressions
+          - Simple constraints → keep as text (no table needed)
+      - id: "2.2"
+        agent: james-taylor
+        action: Create DRDs showing decision dependencies
+        output: Decision Requirements Diagrams (Mermaid format)
+      - id: "2.3"
+        agent: james-taylor
+        action: Validate decision table completeness
+        output: "Completeness check: missing condition combinations documented"
+    checkpoint:
+      name: Decision tables complete, no gaps
+      criteria:
+        - Decision tables created for applicable rules
+        - Hit policies justified
+        - DRDs created
+        - Completeness validated
+      gate: Orchestrator (decoder-chief) approves before Phase 3
+      anti_patterns_caught:
+        - Standardizing without classifying first — tables built on unclassified rules (AP-1)
+  pre_phase_3_contradiction_resolution:
+    name: Contradiction Resolution Gate
+    order: 2.5
+    type: gate
+    depends_on: phase_1_restructure
+    description: Verify all contradictions from Phase 1 are formally resolved before expression.
+    protocol:
+      statuses:
+        - "RESOLVED (scope_boundary): contradiction exists by context boundary -- document scope of each rule"
+        - "UNRESOLVED (needs_human): real contradiction requiring human decision -- escalate with evidence"
+      annotation_format: <!-- contradiction:RS-XXX resolved:scope_boundary ref:RS-YYY -->
+      cross_references: All resolved contradictions MUST have bidirectional inline cross-references
+      gate_condition: Every contradiction in Phase 1 output has status RESOLVED or UNRESOLVED with justification
+      on_unresolved_high_impact: HALT and escalate to user
+  phase_3_express:
+    name: Express in RuleSpeak
+    order: 3
+    tier: 3
+    agents:
+      - graham-witt
+      - ronald-ross
+    mandatory: true
+    depends_on: phase_1_restructure
+    description: Rewrite every rule in structured natural language. Eliminate all ambiguity.
+    actions:
+      - id: "3.1"
+        agent: graham-witt
+        action: Rewrite all rules using RuleSpeak sentence patterns
+        output: All rules with standardized statement field
+        guidance: |
+          Apply the appropriate sentence pattern:
+          - Obligation: "[Subject] MUST [verb phrase]."
+          - Prohibition: "[Subject] MUST NOT [verb phrase]."
+          - Permission: "[Subject] MAY [verb phrase]."
+          - Derivation: "[Term] is [derived as] [expression]."
+          - Fact: "[Subject] [verb] [object]."
+      - id: "3.2"
+        agent: graham-witt
+        action: Eliminate ambiguity from all rule statements
+        output: Ambiguity review log
+      - id: "3.3"
+        agent: ronald-ross
+        action: Validate pattern consistency across all rules
+        output: Consistency review report
+      - id: "3.4"
+        agent: graham-witt
+        action: Cross-reference all terms with glossary
+        output: Glossary cross-reference (no undefined terms in rules)
+    checkpoint:
+      name: All rules expressed without ambiguity
+      criteria:
+        - Every rule has a standardized statement
+        - Zero ambiguous qualifiers
+        - All terms in glossary
+        - Pattern consistency confirmed
+      gate: Orchestrator (decoder-chief) approves before Phase 4
+      anti_patterns_caught:
+        - Treating non-rules (procedures, guidelines) as rules — would fail pattern consistency (AP-5)
+  post_phase_3_compound_gate:
+    name: Compound-Rule Scan Gate
+    order: 3.5
+    type: gate
+    depends_on: phase_3_express
+    description: Scan expressed rules for compound statements (semicolons). Block if unannotated compounds found.
+    protocol:
+      scan_target: All rule statements in Phase 3 output
+      detection: Semicolons (;) within rule statement blocks indicate potential compound rules
+      annotation_format: <!-- compound:intentional reason="..." -->
+      on_unannotated: BLOCK -- return to Phase 3 @graham-witt to split into atomic rules
+      lint_check: Run node squads/domain-decoder/scripts/rule-lint.js on expressed rules. Exit 1 = BLOCK.
+      gate_result:
+        pass: 0 unannotated compounds AND rule-lint.js exit 0
+        fail: Any unannotated compounds OR rule-lint.js exit 1
+  phase_4_validate:
+    name: Validation & Packaging
+    order: 4
+    tier: orchestrator
+    agents:
+      - decoder-chief
+    tools:
+      - sbvr-validation
+      - extraction-quality
+    mandatory: true
+    depends_on: phase_3_express
+    description: Final validation, catalog generation, and delivery.
+    actions:
+      - id: "4.1"
+        agent: decoder-chief
+        tool: sbvr-validation.md
+        action: Run SBVR validation checklist
+        output: SBVR score (must be 85%+)
+      - id: 4.1-veto
+        type: veto_gate
+        condition: SBVR validation score < 85%
+        action: |
+          VETO: Do NOT generate final catalog. Return to Phase 3 (express-rules)
+          with the list of items that failed SBVR validation.
+          Steps on VETO:
+          1. Log all failing SBVR criteria with rule IDs
+          2. Present failure summary to orchestrator
+          3. Re-run Phase 3 express actions for failing rules ONLY
+          4. Re-run action 4.1 after corrections
+          5. If second attempt also < 85%: HALT and escalate to user
+        message: SBVR score {score}% is below 85% threshold. {N} rules failed validation. Returning to Phase 3.
+      - id: "4.2"
+        agent: decoder-chief
+        action: Generate standardized rule catalog
+        output: Rule catalog from template (templates/rule-catalog-tmpl.md)
+      - id: "4.3"
+        agent: decoder-chief
+        action: Generate comparison report (before vs after)
+        output: Before/after comparison showing improvements
+        guidance: |
+          Show for each rule:
+          - BEFORE: Original statement (from source)
+          - AFTER: Standardized statement (RuleSpeak)
+          - CHANGES: What was fixed (ambiguity, structure, terminology)
+          This demonstrates the value of standardization.
+      - id: "4.4"
+        agent: decoder-chief
+        action: Package deliverables
+        output: "Final package: catalog, decision tables, glossary, comparison report"
+    checkpoint:
+      name: SBVR validation passed
+      criteria:
+        - SBVR score 85%+ with all criticals passing
+        - Rule catalog complete
+        - Before/after comparison report generated
+        - All deliverables packaged
+      gate: FINAL — delivery to stakeholders
+      anti_patterns_caught:
+        - Skipping the before/after comparison — loses the value demonstration (AP-4)
+        - Standardizing without classifying first — caught by SBVR vocabulary check (AP-1)
+differences_from_extraction:
+  - No code characterization phase (rules already exist)
+  - No seam finding (not working with legacy code)
+  - Intake phase replaces discovery phase
+  - Deduplication is critical (existing rules often have redundancy)
+  - Before/after comparison report added (shows standardization value)
+  - Phase 2 (formalize) is OPTIONAL (not all rules need decision tables)
+anti_patterns:
+  - id: AP-1
+    description: Standardizing without classifying first — produces inconsistent output
+    caught_at: phase_0_intake checkpoint
+    prevention: Phase 0 requires all rules classified before gate approval
+  - id: AP-2
+    description: Keeping duplicates to avoid conflict resolution
+    caught_at: phase_1_restructure checkpoint
+    prevention: Phase 1 checkpoint requires 'Zero duplicate rules' before gate approval
+  - id: AP-3
+    description: Silently choosing one version when rules contradict
+    caught_at: phase_1_restructure checkpoint
+    prevention: Phase 1 action 1.3 requires documented resolution for every contradiction
+  - id: AP-4
+    description: Skipping the before/after comparison — loses the value demonstration
+    caught_at: phase_4_validate checkpoint
+    prevention: Phase 4 action 4.3 explicitly generates comparison report; checkpoint requires it
+  - id: AP-5
+    description: Treating non-rules (procedures, guidelines) as rules
+    caught_at: phase_0_intake checkpoint
+    prevention: Phase 0 action 0.1 tags non-rules as PROCEDURE/POLICY/GUIDELINE/NOT_A_RULE
+outputs:
+  artifact_base: outputs/decoded/{slug}/
+  primary:
+    - name: rule-catalog.md
+      artifact_path: outputs/decoded/{slug}/rule-catalog.md
+      template: templates/rule-catalog-tmpl.md
+      description: Standardized rule catalog
+      produced_by: phase_4_validate (action 4.2)
+  secondary:
+    - name: comparison-report.md
+      artifact_path: outputs/decoded/{slug}/validation/comparison-report.md
+      description: Before/after comparison showing improvements
+      produced_by: phase_4_validate (action 4.3)
+    - name: deduplication-report.md
+      artifact_path: outputs/decoded/{slug}/restructure/deduplication-report.md
+      description: Duplicate and contradiction resolution log
+      produced_by: phase_1_restructure (actions 1.2, 1.3)
+    - name: decision-tables/
+      artifact_path: outputs/decoded/{slug}/formalize/decision-tables/
+      description: DMN decision tables (if applicable, Phase 2)
+      produced_by: phase_2_formalize (action 2.1)
+    - name: validation-scores.md
+      artifact_path: outputs/decoded/{slug}/validation/validation-scores.md
+      description: SBVR and quality scores
+      produced_by: phase_4_validate (action 4.1)
+    - name: enforcement-gap-report.md
+      artifact_path: outputs/decoded/{slug}/validation/enforcement-gap-report.md
+      description: Analysis of enforcement gaps for CONSTRAINT rules (machine vs LLM enforcement)
+      template: templates/enforcement-gap-report-tmpl.md
+      produced_by: phase_4_validate (action 4.5)
+  phase_artifacts:
+    phase_0: outputs/decoded/{slug}/intake/
+    phase_1: outputs/decoded/{slug}/restructure/
+    phase_2: outputs/decoded/{slug}/formalize/
+    phase_3: outputs/decoded/{slug}/expression/
+    phase_4: outputs/decoded/{slug}/validation/
+metadata:
+  created: "2026-02-18"
+  version: 1.0.0
+  squad: domain-decoder
+  related_workflow: wf-extract-rules.yaml
+  rule_change_protocol: squads/domain-decoder/docs/rule-change-protocol.md
+  theoretical_framework:
+    - Ronald Ross — Business Rule Concepts 4th ed.
+    - Barbara von Halle — The Decision Model (2009)
+    - James Taylor — Real-World Decision Modeling with DMN (2016)
+    - Graham Witt — Writing Effective Business Rules (2012)
+    - OMG SBVR 1.5 Standard

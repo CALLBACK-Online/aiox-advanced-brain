@@ -1,0 +1,117 @@
+workflow:
+  id: implement-attribution
+  name: "Implement Marketing Attribution System"
+  version: "1.0"
+  primary_agent: avinash-kaushik
+  tier_flow: [0, 1, 2]
+  phases: 4
+  estimated_duration: "2-3 weeks"
+  agents_involved:
+    - avinash-kaushik
+    - sean-ellis
+    - peter-fader
+  state_machine:
+    states: [preflight, attribution-modeling, reporting, complete]
+    transitions:
+      - trigger: preflight_complete
+        source: preflight
+        dest: attribution-modeling
+      - trigger: model_validated
+        source: attribution-modeling
+        dest: reporting
+      - trigger: reports_published
+        source: reporting
+        dest: complete
+  task_ref:
+    primary:
+      - build-attribution
+    supporting:
+      - calculate-clv
+      - segment-rfm
+      - create-dashboard
+  views_required:
+    - v_attribution_touchpoint_journey
+    - v_attribution_first_touch
+    - v_attribution_last_touch
+    - v_attribution_position_based
+    - v_customer_lifetime_value
+    - v_rfm_customer_classification
+  templates_used:
+    - attribution-report-tmpl.yaml
+    - dmmm-tmpl.yaml
+  checklists_used:
+    - so-what-checklist.md
+    - pre-implementation-checklist.md
+  deliverables:
+    - First-touch attribution
+    - Last-touch attribution
+    - Position-based attribution
+    - CLV-weighted attribution
+    - Monthly attribution report
+    - DMMM documentation
+
+workspace_execution_contract:
+  preflight:
+    - "*workspace-preflight (executa bootstrap-data-workspace.sh + validate-data-essentials.sh)"
+    - "*workspace-context {slug}"
+    - "Confirmar templates necessários em workspace/_templates/analytics/"
+  output_routing:
+    canonical:
+      - "workspace/businesses/{slug}/analytics/attribution-report.yaml"
+      - "workspace/businesses/{slug}/analytics/dmmm.yaml"
+      - "workspace/businesses/{slug}/analytics/executive-report.yaml"
+    custom:
+      - "docs/data/{slug}/implement-attribution-{date}.md"
+  hard_rules:
+    - "Proibido gravar em workspace/businesses/{slug}/analytics/ sem template correspondente em workspace/_templates/analytics/."
+    - "Relatórios em docs/data/{slug}/ são complementares e não substituem artefatos canônicos."
+
+dmmm_template:
+  business_objective: "Aumentar receita da Academia em 25% em 2026"
+  goals:
+    - goal: "Aumentar aquisição de alunos"
+      kpi: "Novos alunos/mês"
+      target: "500 → 750"
+      segment: "Vindos de indicação"
+    - goal: "Melhorar qualidade da aquisição"
+      kpi: "Avg CLV por fonte"
+      target: "CLV médio > R$2.000"
+      segment: "Todos os canais"
+    - goal: "Aumentar eficiência"
+      kpi: "CLV/CAC ratio"
+      target: "> 3:1"
+      segment: "Paid channels"
+
+notes: |
+  ## Objetivo
+  Entender quais canais/fontes trazem e convertem clientes de maior valor.
+
+  > "A maioria das empresas está data-rich e insight-poor. Não faltam dados, faltam decisões." — Avinash Kaushik
+
+  ## Regra de Ouro
+  Attribution deve informar decisões de alocação de budget.
+  - Se um número não muda uma decisão, é ruído.
+  - Não apenas "quantos clientes" mas "quanto CLV cada fonte gera".
+
+  ## Fases
+  - FASE 1: DEFINIR OBJETIVO (Kaushik + Fader) - Tier 0
+    Que decisão informar (onde investir, qual canal desligar), conectar com CLV, mapear fontes (Paid, Organic, Referral, Social, Events, Email), criar DMMM mapping.
+  - FASE 2: IMPLEMENTAR MODELOS (Kaushik) - Tier 1
+    First-Touch, Last-Touch, Position-Based (40/20/40), Linear Attribution, comparação first vs last.
+  - FASE 3: REFERRAL ATTRIBUTION (Sean Ellis) - Tier 1
+    Rastrear cadeia (até 3 níveis), calcular Viral Coefficient K (meta K>0.5, ideal >1.0), medir qualidade de referrals (CLV/retention/completion vs outros), otimizar programa.
+  - FASE 4: REPORTING (Kaushik - So What) - Tier 2
+    Report mensal (SO WHAT / WHAT CHANGED / WHY / NOW WHAT), attribution por CLV (Fader), See-Think-Do-Care mapping, recomendações de alocação.
+
+  ## Queries de Attribution (SQL)
+  - CLV total por fonte de aquisição (transactions + v_customer_lifetime_value)
+  - Comparação RFM por segmento de aquisição
+
+  ## Referências
+  - Avinash Kaushik: DMMM, So What Framework, See-Think-Do-Care
+  - Sean Ellis: Viral Coefficient, AARRR, Referral optimization
+  - Peter Fader: CLV-weighted attribution
+  - Templates: attribution-report-tmpl.yaml, dmmm-tmpl.yaml
+
+  Data Intelligence Pack - Workflow v1.0
+  Primary Agent: @avinash-kaushik

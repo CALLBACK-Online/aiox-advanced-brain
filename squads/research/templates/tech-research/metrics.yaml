@@ -1,0 +1,66 @@
+# metrics.yaml — Tech Research Pipeline Metrics Template
+# Story: STORY-RA-B.2 (gap_loop block added) | Created: 2026-05-19
+# Location (runtime instance): docs/research/{date}-{slug}/metrics.yaml
+# Emitted by: metrics_collector.py (RA-0.1 extension)
+# Consumed by: output_validator.py, Observatory bench dashboard
+#
+# SCHEMA:
+#   schema_version "1.0" — base metrics (coverage, sources, waves)
+#   schema_version "1.1" — + gap_loop block (RA-B.2)
+
+schema_version: "1.1"
+story_ref: STORY-RA-B.2
+pipeline_id: "{pipeline_id}"
+slug: "{research_slug}"
+generated_at: "{iso8601}"
+
+# ─── Wave Summary ─────────────────────────────────────────────────────────────
+waves_executed: {waves_executed}
+max_waves_allowed: 3
+stop_reason: "{stop_reason}"        # max_waves | budget_limit | decision_sufficiency | saturation
+
+# ─── Coverage ─────────────────────────────────────────────────────────────────
+coverage_score: {coverage_score}    # 0-100; COVERAGE_GATE fires if < 50 at wave 3
+coverage_gate_status: "{status}"    # PASS | FAIL | REVIEW
+
+# ─── Sources ──────────────────────────────────────────────────────────────────
+sources_total: {sources_total}
+sources_by_credibility:
+  high: {high}
+  medium: {medium}
+  low: {low}
+sources_by_type:
+  exa_search: {exa_search}
+  scholarly_adapter: {scholarly_adapter}
+  youtube_transcript: {youtube_transcript}
+  pdf_extraction: {pdf_extraction}
+  official_docs: {official_docs}
+  web_search: {web_search}
+
+# ─── Sub-queries ──────────────────────────────────────────────────────────────
+sub_queries_total: {sub_queries_total}
+sub_queries_by_wave:
+  wave_1: {wave_1}
+  wave_2: {wave_2}
+  wave_3: {wave_3}
+
+# ─── Gap Loop Block (RA-B.2) ─────────────────────────────────────────────────
+# Populated after each wave by gap_detector.py (RA-B.1) + gap_alignment_check.py (RA-B.2).
+# wave_2_alignment_ratio: computed by gap_alignment_check.py after Wave 2 sub-queries.
+# gaps_opened/closed_per_wave: populated by gap_detector.py.
+gap_loop:
+  gaps_opened_per_wave:
+    1: 0                            # number of new gaps detected after Wave 1
+    2: 0                            # number of new gaps detected after Wave 2
+    3: 0                            # number of new gaps detected after Wave 3
+  gaps_closed_per_wave:
+    1: 0                            # gaps cannot be closed in Wave 1 (no prior gaps)
+    2: 0                            # gaps closed by Wave 2 sources
+    3: 0                            # gaps closed by Wave 3 sources
+  gaps_persisted: 0                 # total gaps still open after last wave
+  wave_2_alignment_ratio: null      # float: set by gap_alignment_check.py after Wave 2
+  # alignment_ratio semantics:
+  #   null  → Wave 2 not yet executed or check not run
+  #   float → ratio of sub-queries that target open gaps (0.0–1.0)
+  #   threshold: 0.60 (PASS if >= 0.60; FAIL warning if < 0.60; not a veto in v1)
+  #   EXEMPT if wave_num <= 1 (targets_gaps optional on Wave 1)

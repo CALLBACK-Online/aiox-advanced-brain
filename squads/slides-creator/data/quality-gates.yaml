@@ -1,0 +1,46 @@
+schema_version: "1.0"
+quality_gates:
+  - id: evidence_traceability
+    threshold: 1.0
+    condition: "Every factual claim maps to a source."
+    veto: "Any untraceable factual claim blocks release."
+  - id: design_density
+    threshold: 0.85
+    condition: "Density/readability validators pass."
+    veto: "Any unreadable slide blocks premium delivery."
+  - id: editable_pptx
+    threshold: 0.95
+    condition: "Native PPTX editability report passes when PPTX is requested."
+    veto: "Non-editable text in PPTX export blocks editable delivery."
+
+# Mandamento 7 — Deviation tracking for advisory-mode bypass
+advisory_mode:
+  enabled: true
+  deviation_registry: "squads/slides-creator/data/deviation-registry.yaml"
+  policy: "Any threshold bypass MUST log a deviation record before release. Records are immutable + time-bounded."
+  non_overridable_gates: [evidence_traceability]   # P1+P6 invariants never waivable
+  overridable_with_deviation: [design_density, editable_pptx]
+
+# Cross-fit absorbed gates (2026-05-20) — projected from .claude/skills/slide-creator/templates/qa/visual-gates.yaml
+cross_fit_absorbed_gates:
+  authority: ".claude/rules/design-absolute-bans.md"
+  absorbed_at: "2026-05-20"
+  source_canonical: ".claude/skills/slide-creator/templates/qa/visual-gates.yaml + copy-gates.yaml"
+  gates:
+    - id: font_monoculture
+      killer_item_ref: KI-12
+      score_weight: 20
+      enforcement_point: P04_5
+    - id: eight_absolute_bans
+      killer_item_ref: KI-13
+      score_weight: 25
+      enforcement_point: P04_5
+    - id: jane_doe_effect
+      killer_item_ref: KI-14
+      score_weight: 20
+      enforcement_point: P04_5
+    - id: persona_walkthrough
+      killer_item_ref: KI-15
+      score_weight: 15
+      enforcement_point: P05
+  rationale: "Squad-side enforcement gate so SINKRA-integrated runs apply the same anti-AI-fingerprint refusal patterns as Codex/external runs via the skill."

@@ -1,0 +1,152 @@
+# Data Squad Process Registry v1.0
+# Registra os 7 workflows como processos SINKRA.
+# Referencia: squads/sinkra-squad/data/process-registry.yaml
+
+_dependents_declaration:
+  registry_id: data-process-registry
+  dag_role: internal
+  upstream:
+    - registry: "squads/data/data/composition-rules.yaml"
+  dependents:
+    - "squads/data/data/pipeline-execution-log.yaml"
+
+version: "1.0.0"
+squad: data
+description: "Registro canonico dos 7 workflows da squad data como processos SINKRA."
+
+processes:
+  - id: PROC-DATA-001
+    name: cohort-analysis-workflow
+    owner: peter-fader
+    phases: 4
+    status: active
+    entry_mode: ENTENDER
+    inputs:
+      - business_slug
+      - cohort_period
+      - workspace_context
+    outputs:
+      - cohort-analysis.yaml
+      - retention-curves.json
+    quality_gate: "meta_axiomas >= 7.0"
+    task_refs:
+      - load-workspace-context
+      - analyze-cohort
+      - segment-rfm
+      - create-dashboard
+
+  - id: PROC-DATA-002
+    name: cohorts-diagnostic
+    owner: peter-fader
+    phases: 2
+    status: active
+    entry_mode: ENTENDER
+    inputs:
+      - business_slug
+      - time_window
+    outputs:
+      - cohort-diagnostic-report.yaml
+    quality_gate: "truth >= 7.0"
+    task_refs:
+      - load-workspace-context
+      - analyze-cohort
+
+  - id: PROC-DATA-003
+    name: create-churn-system
+    owner: nick-mehta
+    phases: 3
+    status: active
+    entry_mode: RESOLVER
+    inputs:
+      - customer_base
+      - health_dimensions
+    outputs:
+      - health-score-model.yaml
+      - churn-prediction-api.yaml
+      - churn-dashboard.yaml
+    quality_gate: "meta_axiomas >= 7.0 AND tier_0_validation_passed"
+    task_refs:
+      - design-health-score
+      - predict-churn
+      - create-dashboard
+
+  - id: PROC-DATA-004
+    name: fix-completion-rate
+    owner: wes-kao
+    phases: 3
+    status: active
+    entry_mode: RESOLVER
+    inputs:
+      - course_completion_baseline
+      - learner_cohort
+    outputs:
+      - learning-outcomes-spec.yaml
+      - experiment-results.yaml
+      - completion-dashboard.yaml
+    quality_gate: "completeness >= 7.0"
+    task_refs:
+      - design-learning-outcomes
+      - run-growth-experiment
+      - create-dashboard
+
+  - id: PROC-DATA-005
+    name: implement-attribution
+    owner: avinash-kaushik
+    phases: 2
+    status: active
+    entry_mode: RESOLVER
+    inputs:
+      - channel_data
+      - conversion_events
+    outputs:
+      - attribution-model.yaml
+      - attribution-dashboard.yaml
+    quality_gate: "truth >= 7.0 AND coherence >= 7.0"
+    task_refs:
+      - build-attribution
+      - create-dashboard
+
+  - id: PROC-DATA-006
+    name: implement-customer-360
+    owner: data-chief
+    phases: 4
+    status: active
+    entry_mode: RESOLVER
+    inputs:
+      - customer_data_sources
+      - business_slug
+    outputs:
+      - customer-360-schema.yaml
+      - clv-model.yaml
+      - rfm-segments.yaml
+      - customer-360-dashboard.yaml
+    quality_gate: "meta_axiomas >= 7.0 AND tier_0_validation_passed"
+    task_refs:
+      - calculate-clv
+      - segment-rfm
+      - design-health-score
+      - create-dashboard
+
+  - id: PROC-DATA-007
+    name: optimize-community-workflow
+    owner: david-spinks
+    phases: 2
+    status: active
+    entry_mode: EXPLORAR
+    inputs:
+      - community_metrics
+      - engagement_baseline
+    outputs:
+      - community-health-report.yaml
+      - experiment-backlog.yaml
+    quality_gate: "completeness >= 7.0"
+    task_refs:
+      - measure-community
+      - run-growth-experiment
+
+meta:
+  total_processes: 7
+  active: 7
+  deprecated: 0
+  last_updated: "2026-04-15"
+  owner: data-chief

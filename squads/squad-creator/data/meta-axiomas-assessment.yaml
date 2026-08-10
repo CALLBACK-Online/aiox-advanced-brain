@@ -1,0 +1,209 @@
+# META_AXIOMAS Self-Assessment — squad-creator v6.0.0
+# Assessor: sinkra-qa (LLM) via STORY-122.1
+# Date: 2026-04-12
+# Framework: squads/squad-creator-pro/data/pv-meta-axiomas.yaml (10 dimensions)
+# Method: Evidence-based scoring from actual squad artifacts
+# Reference: .aiox/squad-runtime/squad-validations/squad-creator/20260412-sinkra-qa-llm-scorecard.yaml
+
+meta:
+  squad: squad-creator
+  squad_version: "6.0.0"
+  assessment_date: "2026-04-12"
+  assessor: "sinkra-qa (LLM)"
+  story: "STORY-122.1"
+  framework_ref: "squads/squad-creator-pro/data/pv-meta-axiomas.yaml"
+
+scoring:
+  overall_threshold: 7.0
+  minimum_per_dimension: 6.0
+  veto_dimension: "Verdade"
+  veto_threshold: 7.0
+
+dimensions:
+  - id: 1
+    name: "Verdade (Truthfulness)"
+    weight: 1.0
+    threshold: 7.0
+    veto_power: true
+    score: 8.0
+    evidence: |
+      - config.yaml declara 139 tasks; filesystem confirma 140 arquivos (1 CHANGELOG = delta explicável)
+      - sinkra_native: true com certified_at: 2026-04-04 — data verificável
+      - KPI baseline baseado em 20 execuções reais com métricas quantitativas (avg_quality_score: 8.7, success_rate: 0.90)
+      - quality-gates.yaml tem 10 categorias com thresholds numéricos verificáveis (viability_score >= 6, schema_pass_rate = 1.0)
+      - Composition mapping: tokens(29), atoms(139), molecules(9), organisms(8) — contagens conferem com filesystem
+      - Score anterior auto-declarado (9.5) NÃO tinha derivação — esta avaliação corrige isso
+    recommendations:
+      - "Manter rastreabilidade entre config.yaml counts e filesystem real"
+
+  - id: 2
+    name: "Coerência (Coherence)"
+    weight: 0.9
+    threshold: 6.0
+    veto_power: false
+    score: 7.5
+    evidence: |
+      - error_behavior: fail_loud alinhado com error_handling (block_publish, emit_handoff, persist_evidence) — ações consistentes
+      - artifact_contracts declaram lifecycle_states que mapeiam para artifact_lifecycle.transitions
+      - 10 artifact_contracts com template_path verificáveis (templates/ tem 36 arquivos)
+      - SINKRA_CONTRACT blocks são estruturalmente presentes mas semanticamente boilerplate — reduz coerência entre intenção e mecanismo
+      - domain_model declara 4 domínios com scope explícito; tasks referem domínios no metadata
+    recommendations:
+      - "Diferenciar SINKRA_CONTRACT pre/post conditions por task (STORY-122.3)"
+      - "Integrar PV checkpoints como mecanismo real, não apenas documentação (STORY-122.2)"
+
+  - id: 3
+    name: "Alinhamento Estratégico"
+    weight: 0.9
+    threshold: 6.0
+    veto_power: false
+    score: 9.0
+    evidence: |
+      - Meta-squad: cria outros squads — alinhamento direto com estratégia de scaling do ecossistema AIOX
+      - bu_mapping: hub-framework — opera no nível mais alto (cross-business)
+      - Kaizen fusion (EPIC-108) absorveu observabilidade do ecossistema — visão estratégica de auto-melhoria contínua
+      - 18 capabilities declaradas cobrindo criação, validação, upgrade, observabilidade e self-improvement
+      - supported_modes: [CRIAR, CONFIGURAR, VALIDAR, GERENCIAR, ENTENDER, EXPLORAR] — cobertura completa do lifecycle
+    recommendations: []
+
+  - id: 4
+    name: "Excelência Operacional"
+    weight: 0.8
+    threshold: 6.0
+    veto_power: false
+    score: 8.0
+    evidence: |
+      - 140 tasks, 24 workflows, 36 templates, 17 checklists, 28 data files, 35 scripts
+      - quality_threshold: 8.5 (alto) com quality gates numéricos em todas as fases
+      - Pipeline completo: discovery > architecture > generation > validation > installation > publication
+      - Error handling em 3 níveis: block_publish (validação), emit_handoff (geração), persist_evidence (runtime)
+      - avg_quality_score: 8.7 over 20 execuções — evidência de qualidade operacional real
+    recommendations:
+      - "Consolidar Worker-to-infrastructure mapping (infra map incompleto)"
+
+  - id: 5
+    name: "Capacidade de Inovação"
+    weight: 0.7
+    threshold: 5.0
+    veto_power: false
+    score: 8.5
+    evidence: |
+      - Cross-provider qualification workflow: avalia e compara múltiplos LLM providers com rigor quantitativo
+      - Ecosystem analysis com 6 lentes internas (topology, performance, bottleneck, gaps, radar, cost)
+      - Kaizen fusion: auto-absorção de squad para eliminar redundância — meta-innovation
+      - Self-improve workflow (wf-self-improve) com loop de auto-melhoria
+      - Context-aware squad creation: adapta criação baseado em squads existentes e gaps
+    recommendations: []
+
+  - id: 6
+    name: "Gestão de Riscos"
+    weight: 0.8
+    threshold: 6.0
+    veto_power: false
+    score: 7.0
+    evidence: |
+      - Veto conditions definidas (SC_QG_001, SC_QG_002, SC_QG_003) com blocking behavior
+      - Error handling com 3 estratégias (block, handoff, persist) — não há falha silenciosa
+      - Fallback recovery mode como behavior token
+      - Falta: deviation register formal (M7 dos 10 Mandamentos não atendido)
+      - Falta: domain handoff protocol formal (riscos de transição entre domínios)
+    recommendations:
+      - "Criar data/deviation-register.yaml"
+      - "Documentar domain handoff protocol"
+
+  - id: 7
+    name: "Otimização de Recursos"
+    weight: 0.8
+    threshold: 6.0
+    veto_power: false
+    score: 8.0
+    evidence: |
+      - Hybrid execution: Worker para checks determinísticos (~45 tasks), Agent para análise (~51 tasks)
+      - 35 scripts para automação — alto grau de Worker delegation
+      - max_parallel_generations como capacity token — controle de concorrência
+      - Templates parametrizáveis (36) evitando recriação manual
+      - Kaizen fusion eliminou squad redundante — otimização de ecossistema real
+    recommendations: []
+
+  - id: 8
+    name: "Valor para Stakeholders"
+    weight: 0.7
+    threshold: 6.0
+    veto_power: false
+    score: 8.5
+    evidence: |
+      - Produz squads para TODO o ecossistema (23+ squads registrados)
+      - Observabilidade via ecosystem-analyst: topology, performance, gaps, radar, cost — todos stakeholders se beneficiam
+      - Weekly report cadence — comunicação regular
+      - Squad creation success rate: 90% (18/20) — alto valor de entrega
+      - workspace_integration: read_only — respeita boundaries de outros stakeholders
+    recommendations: []
+
+  - id: 9
+    name: "Sustentabilidade"
+    weight: 0.7
+    threshold: 6.0
+    veto_power: false
+    score: 7.5
+    evidence: |
+      - sinkra_native: true — aderência a framework de longo prazo
+      - instance_lifecycle com 7 estados (CRIADA→ARQUIVADA) — rastreamento completo
+      - journey_log enabled — aprendizado acumulado
+      - Templates versionados com lifecycle states
+      - KPI baseline auto-atualizado — melhoria contínua quantificada
+      - Falta: PV checkpoints não estão integrados nos contracts — sustentabilidade da governança comprometida
+    recommendations:
+      - "Integrar PV checkpoints (STORY-122.2) para sustentabilidade da governança"
+
+  - id: 10
+    name: "Adaptabilidade"
+    weight: 0.6
+    threshold: 5.0
+    veto_power: false
+    score: 8.0
+    evidence: |
+      - 6 modos suportados: CRIAR, CONFIGURAR, VALIDAR, GERENCIAR, ENTENDER, EXPLORAR
+      - Cross-provider qualification: adapta a diferentes LLM backends
+      - Pro detection: auto-detecta squad-creator-pro como upgrade pack quando presente
+      - Agnosticism exceptions documentadas — adapta regras sem violar princípios
+      - Kaizen fusion demonstrou capacidade de absorver e adaptar squads externos
+    recommendations: []
+
+# Scoring calculation
+overall:
+  formula: "SUM(score * weight) / SUM(weights)"
+  calculation: |
+    Verdade:              8.0 * 1.0 =  8.00
+    Coerência:            7.5 * 0.9 =  6.75
+    Alinhamento:          9.0 * 0.9 =  8.10
+    Excelência:           8.0 * 0.8 =  6.40
+    Inovação:             8.5 * 0.7 =  5.95
+    Riscos:               7.0 * 0.8 =  5.60
+    Recursos:             8.0 * 0.8 =  6.40
+    Stakeholders:         8.5 * 0.7 =  5.95
+    Sustentabilidade:     7.5 * 0.7 =  5.25
+    Adaptabilidade:       8.0 * 0.6 =  4.80
+    ─────────────────────────────────
+    TOTAL:                           63.20
+    SUM(weights):     1.0+0.9+0.9+0.8+0.7+0.8+0.8+0.7+0.7+0.6 = 7.9
+    OVERALL SCORE:    63.20 / 7.9 = 8.0
+
+  score: 8.0
+  verdade_score: 8.0
+  verdade_pass: true
+  min_dimension_score: 7.0
+  min_dimension_name: "Gestão de Riscos"
+  min_dimension_pass: true  # >= 6.0 threshold
+  status: "PASS"
+  veto_triggered: false
+
+# Comparison with prior declaration
+prior_declaration:
+  config_yaml_score: 9.5
+  derivation: "none (auto-declarado sem evidência)"
+  delta: -1.5
+  note: |
+    O score auto-declarado de 9.5 era otimista. A avaliação fundamentada em evidência
+    resulta em 8.0 — um score sólido que passa todos os thresholds, mas reflete gaps
+    reais em Coerência (SINKRA_CONTRACT boilerplate), Gestão de Riscos (sem deviation
+    register) e Sustentabilidade (PV checkpoints não integrados).

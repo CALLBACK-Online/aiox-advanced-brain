@@ -1,0 +1,443 @@
+# Pedro Valerio - Automation Blueprints & Integrations
+# Source: Gestao ClickUp Playbook (Allfluence), reuniões PV
+# Version: 1.0.0
+
+metadata:
+  source: "pedro_valerio/gestao_clickup"
+  methodology: "Sistema Allfluence"
+  principle: "SE processo repetido 2+ vezes, ENTAO automatizar"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# AUTOMATION BLUEPRINTS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+automations:
+  # ─── Task Lifecycle ─────────────────────────────────────────────────────────
+
+  - id: AUT-01
+    name: "Auto-assign por Role"
+    category: task_lifecycle
+    trigger: "task.created"
+    condition: "custom_field 'Role' is set"
+    action: "Atribuir tarefa ao membro da equipe mapeado para o Role"
+    fallback: "Se Role sem membro mapeado, notificar gestor"
+    clickup_native: true
+
+  - id: AUT-02
+    name: "Auto-close parent quando subtarefas concluidas"
+    category: task_lifecycle
+    trigger: "subtask.all_completed"
+    condition: "none"
+    action: "Alterar status da tarefa pai para próximo status"
+    fallback: "none"
+    clickup_native: true
+
+  - id: AUT-03
+    name: "Criar subtarefas de template"
+    category: task_lifecycle
+    trigger: "task.created_from_template"
+    condition: "Template tem subtarefas predefinidas"
+    action: "Criar todas subtarefas com assignees e due dates do template"
+    fallback: "none"
+    clickup_native: true
+
+  - id: AUT-04
+    name: "Mover tarefa ao aprovar"
+    category: task_lifecycle
+    trigger: "status.changed_to 'APROVADO'"
+    condition: "none"
+    action: "Mover tarefa para List de execução correspondente"
+    fallback: "none"
+    clickup_native: true
+
+  # ─── Notifications & Escalation ─────────────────────────────────────────────
+
+  - id: AUT-05
+    name: "Alerta de due date próximo"
+    category: notification
+    trigger: "due_date.approaching (1 day before)"
+    condition: "status != 'DONE'"
+    action: "Notificar responsável e gestor"
+    fallback: "Se já atrasada, escalar para gestor direto"
+    clickup_native: true
+
+  - id: AUT-06
+    name: "Escalar tarefa atrasada"
+    category: escalation
+    trigger: "due_date.overdue (48h+)"
+    condition: "status != 'DONE'"
+    action: "Adicionar comentario @gestor com alerta de atraso"
+    fallback: "Se 72h+ atrasada, mover para lista de Operação Resgate"
+    clickup_native: true
+
+  - id: AUT-07
+    name: "Alerta de tarefa sem atualizacao"
+    category: escalation
+    trigger: "task.no_activity (48h+)"
+    condition: "status == 'IN PROGRESS'"
+    action: "Notificar responsável pedindo update"
+    fallback: "Se 72h sem update, escalar para gestor"
+    clickup_native: true
+
+  # ─── Status Governance ──────────────────────────────────────────────────────
+
+  - id: AUT-08
+    name: "Status comentario automatico"
+    category: governance
+    trigger: "status.changed"
+    condition: "none"
+    action: "Adicionar comentario automatico: 'Status alterado para {new_status} por {user}'"
+    fallback: "none"
+    clickup_native: true
+
+  - id: AUT-09
+    name: "Notificar equipe ao concluir"
+    category: notification
+    trigger: "status.changed_to 'DONE'"
+    condition: "none"
+    action: "Enviar notificacao para watchers e gestor de contas"
+    fallback: "none"
+    clickup_native: true
+
+  # ─── Quality Gates ──────────────────────────────────────────────────────────
+
+  - id: AUT-10
+    name: "Validar campos antes de mover para REVIEW"
+    category: quality
+    trigger: "status.changing_to 'REVIEW'"
+    condition: "Campo 'descricao' vazio OU campo 'URL' vazio"
+    action: "Bloquear transicao e notificar responsável"
+    fallback: "Permite override com comentario justificando"
+    clickup_native: false
+    requires: "N8N webhook"
+
+  - id: AUT-11
+    name: "Checklist obrigatório antes de DONE"
+    category: quality
+    trigger: "status.changing_to 'DONE'"
+    condition: "Checklist não completado"
+    action: "Bloquear transicao e alertar sobre itens pendentes"
+    fallback: "none"
+    clickup_native: true
+
+  # ─── Backward Status Blocking ──────────────────────────────────────────────
+
+  - id: AUT-17
+    name: "Block backward status transition"
+    category: governance
+    trigger: "status.changing"
+    condition: "new_status.sequence_index < current_status.sequence_index AND user.role != 'admin'"
+    action: "Bloquear transicao, reverter para status atual, notificar responsável com motivo"
+    fallback: "Se bloqueio falhar, registrar violacao e alertar gestor"
+    clickup_native: false
+    requires: "N8N webhook (status.updated event)"
+    note: "Implementar como webhook que compara indice do status novo vs atual na sequência do workflow"
+    guardrails:
+      loop_prevention: "Detecta e ignora eventos gerados pela própria reversao do bot"
+      idempotency: "Verifica se status já foi revertido antes de agir novamente"
+      audit_trail: "Comentario automatico: '[BACKWARD-BLOCK] Tentativa de {old} → {new} bloqueada por {user}'"
+      manual_escape: "Admin pode forcar via ClickUp UI (bypass webhook) - fica registrado no audit trail"
+      retry_logic: "1 tentativa de reversao, se falhar alerta gestor imediatamente"
+
+  - id: AUT-18
+    name: "Admin backward override audit"
+    category: governance
+    trigger: "status.changed AND direction == 'backward' AND user.role == 'admin'"
+    condition: "none"
+    action: "Permitir transicao mas exigir comentario de justificativa em 1h"
+    fallback: "Se comentario não adicionado em 1h, criar tarefa de cobranca para gestor"
+    clickup_native: false
+    requires: "N8N webhook"
+    guardrails:
+      loop_prevention: "1 check por evento de status change"
+      idempotency: "Verifica se cobranca já foi criada para este evento"
+      audit_trail: "Comentario: '[ADMIN-OVERRIDE] Status revertido {old} → {new} por {admin}. Justificativa pendente.'"
+      manual_escape: "Admin pode desativar auditoria temporariamente via tag 'audit-pause'"
+      retry_logic: "Check de comentario a cada 30min por 1h, depois cria cobranca"
+
+  # ─── Integration Automations ────────────────────────────────────────────────
+
+  - id: AUT-12
+    name: "Sync novo negócio CRM -> ClickUp"
+    category: integration
+    trigger: "HubSpot: deal.status == 'Closed Won'"
+    condition: "none"
+    action: "Criar folder + list no Space Delivery com dados do deal"
+    fallback: "Se criação falhar, criar tarefa de alerta no Operations"
+    requires: "N8N"
+    guardrails:
+      loop_prevention: "Deduplica por deal_id - se folder já existe para o deal, skip"
+      idempotency: "Verifica existencia de folder com nome do deal antes de criar"
+      audit_trail: "Log em N8N execution history + comentario na tarefa de alerta"
+      manual_escape: "Webhook pode ser desativado no N8N sem afetar ClickUp"
+      retry_logic: "3 tentativas com backoff exponencial (1s, 5s, 15s)"
+
+  - id: AUT-13
+    name: "Transcrever reunião e criar tarefa"
+    category: integration
+    trigger: "Fathom: meeting.transcribed"
+    condition: "Meeting tem action items"
+    action: "Criar tarefas no ClickUp a partir dos action items via N8N"
+    fallback: "Se parsing falhar, criar tarefa única com link da transcricao"
+    requires: "N8N + Fathom"
+    guardrails:
+      loop_prevention: "Deduplica por meeting_id - ignora webhooks duplicados do Fathom"
+      idempotency: "Busca tarefas com tag 'fathom-{meeting_id}' antes de criar"
+      audit_trail: "Log em N8N + tag na tarefa com meeting_id de origem"
+      manual_escape: "Webhook Fathom desativavel independentemente no N8N"
+      retry_logic: "3 tentativas com backoff (1s, 5s, 15s), fallback para tarefa única"
+
+  - id: AUT-14
+    name: "Backup de anexos para Drive"
+    category: integration
+    trigger: "task.attachment_added"
+    condition: "Arquivo > 5MB ou tipo PDF/DOCX"
+    action: "Copiar para pasta correspondente no Google Drive"
+    fallback: "Se Drive indisponivel, adicionar tag 'backup-pendente' na tarefa"
+    requires: "N8N + Google Drive API"
+    guardrails:
+      loop_prevention: "Ignora arquivos já copiados (verifica hash SHA256 no Drive)"
+      idempotency: "Verifica existencia do arquivo por nome+hash antes de upload"
+      audit_trail: "Comentario na tarefa com link do Drive apos backup"
+      manual_escape: "Desativar workflow N8N sem impacto no ClickUp"
+      retry_logic: "3 tentativas com backoff (2s, 10s, 30s) para uploads grandes"
+
+  - id: AUT-15
+    name: "Notificacao WhatsApp para tarefas urgentes"
+    category: integration
+    trigger: "task.priority_changed_to 'Urgente'"
+    condition: "none"
+    action: "Enviar mensagem WhatsApp para responsável via API"
+    fallback: "Se WhatsApp falhar, enviar email + notificacao ClickUp"
+    requires: "N8N + WhatsApp Business API"
+    guardrails:
+      loop_prevention: "Max 1 notificacao por tarefa por hora (cooldown por task_id)"
+      idempotency: "Verifica se já notificou sobre esta tarefa nas ultimas 2h"
+      audit_trail: "Log de envio no N8N + comentario na tarefa 'WhatsApp enviado para {user}'"
+      manual_escape: "Responsável pode responder 'MUTE' para silenciar tarefa"
+      retry_logic: "2 tentativas WhatsApp, depois fallback para email automatico"
+
+  - id: AUT-16
+    name: "Análise de tarefa com Gemini"
+    category: integration
+    trigger: "task.description_updated AND tag 'analise-ia'"
+    condition: "Descricao tem conteúdo substancial (>200 chars)"
+    action: "Enviar descricao para Gemini, salvar análise como comentario"
+    fallback: "Se Gemini indisponivel, criar tarefa de análise manual"
+    requires: "N8N + Gemini API"
+    guardrails:
+      loop_prevention: "Ignora updates disparados pelo próprio bot (check author != 'N8N')"
+      idempotency: "Verifica se já existe comentario com tag '[GEMINI-ANALYSIS]' na tarefa"
+      audit_trail: "Comentario com prefixo '[GEMINI-ANALYSIS]' + timestamp + model_version"
+      manual_escape: "Remover tag 'analise-ia' desativa para aquela tarefa"
+      retry_logic: "2 tentativas Gemini com backoff (3s, 10s), depois fallback manual"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# PREVENTION RULES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+prevention_rules:
+  - id: PREV-01
+    name: "No backward status"
+    rule: "Status só pode avancar, nunca retroceder no workflow"
+    enforcement: "Automação bloqueia transicao para status anterior"
+    exception: "Admin pode forcar com justificativa registrada"
+    source: "H-DEL-01"
+
+  - id: PREV-02
+    name: "Require due date"
+    rule: "Toda tarefa deve ter due date ao ser criada"
+    enforcement: "Template force due date; automação alerta tarefas sem prazo"
+    exception: "Tarefas tipo 'Registro' ou 'Ideia' podem não ter due date"
+    source: "M2, M3"
+
+  - id: PREV-03
+    name: "Require assignee"
+    rule: "Toda tarefa deve ter exatamente 1 assignee"
+    enforcement: "Automação alerta tarefas sem responsável a cada 24h"
+    exception: "Tarefas tipo 'Ideia' no backlog podem ficar sem assignee"
+    source: "M2, M4"
+
+  - id: PREV-04
+    name: "No empty tasks"
+    rule: "Tarefas devem ter descricao minima ou checklist"
+    enforcement: "Automação marca tarefas vazias com tag 'needs-context'"
+    exception: "Subtarefas cujo nome e auto-explicativo"
+    source: "M7, H-QUA-01"
+
+  - id: PREV-05
+    name: "No duplicate custom fields"
+    rule: "Cada custom field deve existir em apenas 1 nivel da hierarquia"
+    enforcement: "Auditoria mensal via *audit-hygiene"
+    exception: "none"
+    source: "M8"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# INTEGRATION MAP
+# ═══════════════════════════════════════════════════════════════════════════════
+
+integration_map:
+  description: |
+    Mapa de integracoes recomendadas pelo Sistema Allfluence.
+    ClickUp como hub central, N8N como orquestrador de automacoes.
+
+  integrations:
+    - name: "ClickUp <> N8N"
+      type: "orchestrator"
+      purpose: "Automações complexas, multi-step, lógica condicional"
+      connection: "Webhook bidirectional + ClickUp API v2"
+      priority: "critical"
+
+    - name: "ClickUp <> Google Drive"
+      type: "storage"
+      purpose: "Backup de anexos, templates de documentos, acesso centralizado"
+      connection: "Integracao nativa + N8N"
+      priority: "high"
+
+    - name: "ClickUp <> WhatsApp"
+      type: "notification"
+      purpose: "Alertas urgentes, coleta de depoimentos, comunicação rápida"
+      connection: "N8N + WhatsApp Business API"
+      priority: "medium"
+
+    - name: "ClickUp <> Gemini"
+      type: "ai_analysis"
+      purpose: "Análise de conteúdo, geracao de insights, revisão automatica"
+      connection: "N8N + Gemini API"
+      priority: "medium"
+
+    - name: "ClickUp <> Supabase"
+      type: "data_sync"
+      purpose: "Sync de sprints, dashboards externos, histórico de dados"
+      connection: "N8N + Supabase API ou script direto"
+      priority: "medium"
+
+    - name: "ClickUp <> HubSpot"
+      type: "crm"
+      purpose: "Sync de deals, criação automatica de projetos, pipeline"
+      connection: "N8N + HubSpot API"
+      priority: "high"
+
+    - name: "ClickUp <> Fathom"
+      type: "meeting"
+      purpose: "Transcricao de reuniões, extracao de action items"
+      connection: "N8N + Fathom webhook"
+      priority: "low"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# AI-POWERED AUTOMATIONS (Creative Factory + Approval Gates)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+ai_automations:
+  # ─── AI-Powered Automations (Creative Factory) ────────────────────────────
+
+  - id: AUT-19
+    name: "ETL de Briefing (IA le PDF e preenche campos)"
+    category: integration
+    trigger: "Botao 'Processar Briefing' clicado na task"
+    condition: "Task tem anexo PDF/DOCX"
+    action: "IA (Langflow/Gemini via RAG) le PDF, extrai dores/persona/tom de voz/restricoes, preenche Custom Fields automaticamente"
+    fallback: "Se falta info, IA gera rascunho de email pedindo ao cliente e adiciona como comentario na task"
+    clickup_native: false
+    requires: "N8N + Langflow + Gemini API"
+    source: "[SOURCE: Allfluence Dec 10, D2 2.2 Pilar 3]"
+    numeros: "Allfluence processa 90 projetos simultaneos com este pattern"
+    guardrails:
+      loop_prevention: "Botao desabilita apos 1 execução por task (flag custom field 'Briefing Processado')"
+      idempotency: "Verifica se campos já preenchidos antes de sobrescrever"
+      audit_trail: "Comentario: '[ETL-BRIEFING] Campos preenchidos via IA. Fonte: {filename}. Revisar antes de aprovar.'"
+      manual_escape: "Account Manager pode editar campos manualmente apos ETL"
+      retry_logic: "2 tentativas com backoff (5s, 15s), fallback para flag 'ETL-FALHOU' na task"
+
+  - id: AUT-20
+    name: "Gerar Legenda via IA (botao magico)"
+    category: integration
+    trigger: "Botao 'Gerar Legenda' clicado na task"
+    condition: "Campo 'Roteiro' preenchido na task"
+    action: "Roteiro enviado para ChatGPT/Gemini via API. Retorna 2 opções de legenda como comentario na task."
+    fallback: "Se API indisponivel, criar subtask 'Escrever legenda manual' atribuida ao roteirista"
+    clickup_native: false
+    requires: "N8N + OpenAI/Gemini API"
+    source: "[SOURCE: Allfluence Dec 10, D2 2.2 Pilar 2]"
+    numeros: "Elimina ping-pong Account→Roteirista→Account→Cliente. Resultado instantaneo."
+    guardrails:
+      loop_prevention: "Max 3 geracoes por task (contador via custom field)"
+      idempotency: "Cada geracao cria novo comentario, não sobrescreve"
+      audit_trail: "Comentario: '[IA-LEGENDA] Opção 1: {text1} | Opção 2: {text2} | Model: {model_version}'"
+      manual_escape: "Ignorar sugestoes da IA e escrever manualmente"
+      retry_logic: "1 tentativa, fallback para subtask manual"
+
+  - id: AUT-21
+    name: "Trocador de Corpos (rotacao automatica de assignee)"
+    category: task_lifecycle
+    trigger: "status.changed (qualquer transicao definida no mapa de esteira)"
+    condition: "Task tem campo 'Esteira' preenchido (identifica workflow de rotacao)"
+    action: "Remover assignee atual, atribuir próximo papel na esteira, setar due_date relativo (+1 dia útil), notificar novo assignee"
+    fallback: "Se próximo assignee não definido, criar alerta pra gestor"
+    clickup_native: false
+    requires: "N8N webhook (status.updated event)"
+    source: "[SOURCE: Mentoria Processos, Hack #1 + Onboarding ClickUp Sep 23, D2 2.2]"
+    mapa_esteira:
+      - de: "ESCREVENDO"
+        para: "ENTREGAR MIDIA"
+        remove: "Copywriter"
+        atribui: "Editor"
+        due_date: "+1 dia útil 18h"
+      - de: "EDITANDO"
+        para: "REVISAO"
+        remove: "Editor"
+        atribui: "Diretor Criativo"
+        due_date: "+1 dia útil"
+      - de: "APROVADO"
+        para: "SUBINDO"
+        remove: "Diretor Criativo"
+        atribui: "Gestor de Trafego"
+        due_date: "+1 dia útil"
+    guardrails:
+      loop_prevention: "Ignora eventos gerados pela própria troca de assignee"
+      idempotency: "Verifica se assignee já foi trocado para este status antes de agir"
+      audit_trail: "Comentario: '[TROCADOR] {old_assignee} → {new_assignee}. Due: {new_due_date}'"
+      manual_escape: "Admin pode reatribuir manualmente (bypass webhook)"
+      retry_logic: "1 tentativa de troca, se falhar alerta gestor"
+
+  # ─── Approval Gates ─────────────────────────────────────────────────────────
+
+  - id: AUT-22
+    name: "Approval Flow Cross-Departamento"
+    category: governance
+    trigger: "status.changing_to 'PUBLICAR'"
+    condition: "Custom Field 'Aprovação Financeiro' != checked"
+    action: |
+      1. Bloquear transicao de status
+      2. Notificar responsável: 'Status não pode avancar sem aprovação do Financeiro'
+      3. Criar tarefa de aprovação no Space Financeiro se não existir
+    fallback: "Se bloqueio falhar, registrar violacao e alertar gestor"
+    clickup_native: false
+    requires: "N8N webhook (status.updating event)"
+    source: "[SOURCE: 08_clickup_lendario.md, Approval Flow Cross-Departamento]"
+    guardrails:
+      loop_prevention: "Detecta e ignora eventos gerados pela própria reversao do bot"
+      idempotency: "Verifica se tarefa de aprovação já existe antes de criar nova"
+      audit_trail: "Comentario '[APPROVAL-GATE] Transicao bloqueada — aguardando Aprovação Financeiro'"
+      manual_escape: "Admin pode forcar via tag 'approval-override' com justificativa"
+      retry_logic: "1 tentativa de bloqueio, se falhar alerta gestor imediatamente"
+    nota: |
+      Extensivel para qualquer departamento: substituir 'Financeiro' pelo departamento
+      alvo e 'PUBLICAR' pelo status-gate desejado. Pattern generico de approval gate.
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# BLUEPRINT TEMPLATE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+blueprint_template:
+  description: "Template padrão para definir novas automações"
+  fields:
+    - "id: AUT-XX"
+    - "name: Nome descritivo da automação"
+    - "category: task_lifecycle | notification | escalation | governance | quality | integration"
+    - "trigger: Evento que dispara (task.created, status.changed, etc)"
+    - "condition: Condição para executar (ou 'none')"
+    - "action: O que acontece quando trigger+condition são satisfeitos"
+    - "fallback: O que acontece se action falhar"
+    - "clickup_native: true/false"
+    - "requires: Ferramentas externas necessárias (N8N, API, etc)"

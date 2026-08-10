@@ -1,0 +1,304 @@
+# Advisory Board Squad Configuration
+# Personal Board of Directors for Strategic Decisions
+# Version: 1.1.0
+
+pack:
+  name: advisory-board
+  title: "Advisory Board - Personal Board of Directors"
+  version: "1.1.0"
+  description: |
+    Squad de conselheiros estratégicos pessoais baseado no DNA Mental™ de Alan Nicolas.
+    Combina 4 mentes alinhadas + 6 mentes complementares para decisões robustas.
+    Implementa mecânicas reais de advisory boards: Issue Processing (Vistage),
+    Devil's Advocate, Anti-Groupthink, e Accountability Loops.
+
+  domain: "strategic-advisory"
+  target_user: "Alan Nicolas / Founders seeking strategic counsel"
+
+  slash_prefix: "Board"
+  pattern_prefix: "AB"
+
+  created: "2026-02-03"
+  author: "squad-architect"
+
+metadata:
+  status: active
+  version: "1.2.0"
+  score: 8.5
+  upgraded_at: "2026-04-13"
+  upgrade_story: "107.4"
+
+# Identity-Bound Squad — PII allowed per ADR-SQUAD-PII-POLICY (2026-05-05)
+# Built on Alan Nicolas's DNA Mental™ profile. The Advisory Board persona
+# loader reads alan-nicolas-profile.yaml as identity source.
+identity_bound: true
+identity_source:
+  type: person
+  refs:
+    - workspace/sinkra-hub/L0-identity/people/alan-nicolas.yaml
+    - .aiox/advisory-board/alan-nicolas-profile.yaml
+
+settings:
+  activation:
+    show_context_report: true
+    show_preload_report: true
+    show_quick_commands: true
+    quick_commands_limit: 6
+  preload:
+    context_task: "tasks/load-advisory-context.md"
+    resolver_script: "scripts/resolve-advisory-context.cjs"
+    profile_path: ".aiox/advisory-board/alan-nicolas-profile.yaml"
+    sessions_root: "docs/advisory/"
+    session_selector: "latest_by_filename_desc"
+    output_path: "outputs/advisory-board/context/advisory-context-brief.json"
+    privacy_contract: "local_gitignored_only"
+
+workspace_integration:
+  level: controlled_runtime_consumer
+  rationale: >-
+    Advisory Board recebe contexto estrategico por handoff no prompt. Le dados
+    de empresa e estrategia do workspace para fornecer aconselhamento contextualizado.
+    Produz atas de reuniao e recomendacoes no workspace operacional.
+  read_paths:
+    - workspace/businesses/{slug}/L0-identity/
+    - workspace/businesses/{slug}/L1-strategy/
+    - workspace/businesses/{slug}/L2-tactical/
+  write_paths:
+    - workspace/businesses/{slug}/L4-operational/advisory/
+  readiness_owner: workspace-chief
+  readiness_resolver: board-chair
+
+handoffs:
+  - squad: legal
+    agent: legal-chief
+    trigger: "Questões jurídicas identificadas nas deliberações do board"
+  - squad: contabilidade
+    agent: contabil-chief
+    trigger: "Análise financeira e tributária necessária para decisões do board"
+  - squad: franchise
+    agent: franchise-chief
+    trigger: "Revisão estratégica de modelo de franchising"
+
+agents:
+  - id: board-chair
+    path: agents/board-chair.md
+  - id: charlie-munger
+    path: agents/charlie-munger.md
+  - id: naval-ravikant
+    path: agents/naval-ravikant.md
+  - id: ray-dalio
+    path: agents/ray-dalio.md
+  - id: derek-sivers
+    path: agents/derek-sivers.md
+  - id: simon-sinek
+    path: agents/simon-sinek.md
+  - id: patrick-lencioni
+    path: agents/patrick-lencioni.md
+  - id: reid-hoffman
+    path: agents/reid-hoffman.md
+  - id: brene-brown
+    path: agents/brene-brown.md
+  - id: peter-thiel
+    path: agents/peter-thiel.md
+  - id: yvon-chouinard
+    path: agents/yvon-chouinard.md
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TIER STRUCTURE
+# ═══════════════════════════════════════════════════════════════════════════════
+
+tiers:
+  orchestrator:
+    agent: "board-chair"
+    purpose: "Facilita reuniões, sintetiza perspectivas, gerencia tempo, garante anti-groupthink"
+
+  aligned:
+    purpose: "Mentes que validam e amplificam pontos fortes"
+    agents:
+      - "charlie-munger"   # Mental models, inversão
+      - "naval-ravikant"   # Liberdade, leverage
+      - "ray-dalio"        # Princípios, sistemas
+      - "derek-sivers"     # Hell Yeah or No, autenticidade
+
+  complementary:
+    purpose: "Mentes que desafiam e expandem perspectivas"
+    agents:
+      - "simon-sinek"      # Start With Why, pessoas > sistemas
+      - "patrick-lencioni" # Team dynamics, vulnerabilidade
+      - "reid-hoffman"     # Networking, velocidade
+      - "brene-brown"      # Vulnerabilidade, coragem
+      - "peter-thiel"      # Contrarian, ação > análise
+      - "yvon-chouinard"   # Valores, permanência
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# COMPONENTS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+components:
+  agents:
+    - board-chair.md
+    - charlie-munger.md
+    - naval-ravikant.md
+    - ray-dalio.md
+    - derek-sivers.md
+    - simon-sinek.md
+    - patrick-lencioni.md
+    - reid-hoffman.md
+    - brene-brown.md
+    - peter-thiel.md
+    - yvon-chouinard.md
+
+  tasks:
+    - load-advisory-context.md # Preload determinístico de memória local e última ata
+    - board-meeting.md        # Reunião completa do board
+    - issue-processing.md     # Modelo Vistage
+    - strategic-review.md     # Revisão estratégica
+    - opportunity-eval.md     # Avaliar oportunidade
+    - quick-consult.md        # Consulta 1:1
+    - crisis-advisory.md      # Sessão de crise
+    - devils-advocate.md      # Devil's advocate session
+
+  workflows:
+    - wf-board-meeting.yaml   # Workflow completo de reunião
+    - wf-issue-processing.yaml # Vistage model
+
+  checklists:
+    - pre-meeting-checklist.md
+    - decision-quality-checklist.md
+    - anti-groupthink-checklist.md
+
+  templates:
+    - meeting-minutes-tmpl.md
+    - issue-brief-tmpl.md
+    - opportunity-brief-tmpl.md
+
+  data:
+    - board-kb.md
+    - advisor-frameworks.yaml
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# BOARD MECHANICS (Based on Real Advisory Board Research)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+mechanics:
+  meeting_types:
+    full_board:
+      duration: "60-90 minutes"
+      frequency: "As needed for major decisions"
+      participants: "All advisors"
+
+    issue_processing:
+      duration: "30-45 minutes"
+      frequency: "Ad-hoc"
+      model: "Vistage 5-stage framework"
+
+    quick_consult:
+      duration: "15-20 minutes"
+      frequency: "Ad-hoc"
+      participants: "1-2 specific advisors"
+
+    strategic_review:
+      duration: "45-60 minutes"
+      frequency: "Quarterly mindset"
+      focus: "Long-term direction"
+
+  anti_groupthink:
+    devils_advocate:
+      rotation: true
+      minimum: 2  # Always have 2 challengers
+
+    divergence_tracking:
+      enabled: true
+      flag_when: "< 2 dissenting voices"
+
+    reframe_requirement:
+      enabled: true
+      rule: "Must articulate opposing view before dismissing"
+
+    anonymous_pre_vote:
+      enabled: true
+      purpose: "Capture initial reactions before group influence"
+
+  accountability:
+    action_items:
+      required_fields:
+        - what
+        - who
+        - when
+        - priority
+      follow_up: "Check at start of next session"
+
+    decision_log:
+      enabled: true
+      track:
+        - decision
+        - advisors_consulted
+        - dissenting_views
+        - rationale
+        - outcome_review_date
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ADVISOR SELECTION MATRIX
+# ═══════════════════════════════════════════════════════════════════════════════
+
+advisor_selection:
+  by_situation:
+    strategic_decision:
+      primary: ["munger", "dalio", "thiel"]
+      challenger: ["sinek", "chouinard"]
+
+    people_team:
+      primary: ["lencioni", "sinek"]
+      challenger: ["naval", "thiel"]
+
+    growth_scale:
+      primary: ["hoffman", "thiel"]
+      challenger: ["sivers", "chouinard"]
+
+    values_ethics:
+      primary: ["chouinard", "sivers"]
+      challenger: ["thiel", "hoffman"]
+
+    personal_leadership:
+      primary: ["brown", "sinek"]
+      challenger: ["munger", "naval"]
+
+    risk_opportunity:
+      primary: ["munger", "naval", "thiel"]
+      challenger: ["brown", "chouinard"]
+
+  by_question_type:
+    "how_do_i": ["munger", "dalio", "hoffman"]
+    "should_i": ["sivers", "naval", "thiel"]
+    "what_if": ["thiel", "munger", "brown"]
+    "why_am_i": ["brown", "sinek", "sivers"]
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# QUALITY STANDARDS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+quality:
+  meeting_output:
+    required:
+      - clear_decision_or_direction
+      - action_items_with_owners
+      - dissenting_views_documented
+      - follow_up_date
+
+  advisor_contribution:
+    minimum_per_session:
+      - perspective_shared: true
+      - challenge_offered: true
+      - framework_applied: true
+
+  decision_quality:
+    checklist_required: true
+    minimum_advisors_consulted: 3
+    devil_advocate_required: true
+
+# --- Auto-added schema fields (validate:squad-schema) ---
+name: "advisory-board"
+domain: "strategic-advisory"
+capabilities:
+  - advisory-board
+workflows: []

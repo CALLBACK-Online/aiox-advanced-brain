@@ -1,0 +1,98 @@
+{
+  "$id": "sinkra://slide-creator/wireframes/harvey-balls-table.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "Multiple players are compared across multiple dimensions.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "dimension_1": {
+      "type": "string"
+    },
+    "dimension_2": {
+      "type": "string"
+    },
+    "dimension_3": {
+      "type": "string"
+    },
+    "p1_d1": {
+      "type": "string"
+    },
+    "p1_d2": {
+      "type": "string"
+    },
+    "p1_d3": {
+      "type": "string"
+    },
+    "p2_d1": {
+      "type": "string"
+    },
+    "p2_d2": {
+      "type": "string"
+    },
+    "p2_d3": {
+      "type": "string"
+    },
+    "p3_d1": {
+      "type": "string"
+    },
+    "p3_d2": {
+      "type": "string"
+    },
+    "p3_d3": {
+      "type": "string"
+    },
+    "p4_d1": {
+      "type": "string"
+    },
+    "p4_d2": {
+      "type": "string"
+    },
+    "p4_d3": {
+      "type": "string"
+    },
+    "player_1": {
+      "type": "string"
+    },
+    "player_2": {
+      "type": "string"
+    },
+    "player_3": {
+      "type": "string"
+    },
+    "player_4": {
+      "type": "string"
+    }
+  },
+  "title": "harvey-balls-table",
+  "type": "object",
+  "x-sinkra": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "comparison_matrix",
+    "slot_count": 20,
+    "warnings": [
+      "action_title",
+      "player_1",
+      "player_2",
+      "player_3",
+      "player_4",
+      "dimension_1",
+      "p1_d1",
+      "p2_d1",
+      "p3_d1",
+      "p4_d1",
+      "dimension_2",
+      "p1_d2",
+      "p2_d2",
+      "p3_d2",
+      "p4_d2",
+      "dimension_3",
+      "p1_d3",
+      "p2_d3",
+      "p3_d3",
+      "p4_d3"
+    ],
+    "wireframe_ref": "templates/wireframes/harvey-balls-table.html"
+  }
+}

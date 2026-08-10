@@ -1,0 +1,13 @@
+policy:
+  artifact: journey_log_append_only
+  version: 1.0.0
+  logging: structured
+  storage:
+  - data/execution-log-schema.yaml
+  - services/journey-log/supabase-journey-log.ts
+  append_only: true
+  required_fields:
+  - mission_id
+  - step_id
+  - status
+  - emitted_at

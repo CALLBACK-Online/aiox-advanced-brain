@@ -1,0 +1,285 @@
+---
+# mandatory-sources.yaml — Mandatory Sources & Dimensions Matrix
+#
+# Purpose: For each detected domain/subject_type, declares which literatures,
+# dimensions, or benchmarks MUST be covered in the research pipeline.
+# Consumed by:
+#   - .claude/skills/tech-research/SKILL.md Phase 1.5 (Decompose)
+#   - .claude/skills/research-bench/SKILL.md (subject_type detection)
+#   - squads/research/scripts/tech-research/output_validator.py (check_mandatory_sources_coverage)
+#
+# Rules:
+#   - matrix entries are ADDITIVE (injected only when domain keyword matches)
+#   - max_mandatory_additions_per_run: 3 (see Regression Risk R2)
+#   - mismatch is WARNING only (not block) — anti-pattern from story Anti-patterns §1
+#   - fields: when_domain_includes | when_subject_type | must_cover_literatures |
+#             must_cover_dimensions | must_cover_benchmarks
+#
+# Schema version: 1.0
+# Source: STORY-RA-F.3 (Wave 14, Sprint F, 2026-05-19)
+# Evidence: PROCESS-LEARNINGS-emergent-patterns-2sessions.md §L8
+
+schema_version: "1.0"
+generator: "squads/research/data/mandatory-sources.yaml"
+created_at: "2026-05-19"
+max_mandatory_additions_per_run: 3
+
+mandatory_coverage:
+
+  # ── 1. Productivity Frameworks & Work Design ──────────────────────────────
+  - id: productivity_frameworks
+    when_domain_includes:
+      - productivity_frameworks
+      - work_design
+      - prioritization_methodology
+      - task_management
+      - deep_work
+    must_cover_literatures:
+      - id: job_crafting
+        why: "Proactive shaping of work tasks/relationships — often missed when brief focuses on tools"
+        canonical_refs: ["Wrzesniewski & Dutton 2001", "Berg et al. 2013"]
+      - id: self_determination_theory
+        why: "Autonomy/competence/relatedness as intrinsic motivation drivers"
+        canonical_refs: ["Deci & Ryan 1985", "Ryan & Deci 2000"]
+      - id: flow_theory
+        why: "Optimal experience and deep engagement at work"
+        canonical_refs: ["Csikszentmihalyi 1990"]
+      - id: strengths_based_work
+        why: "Performance uplift from leveraging strengths vs. fixing weaknesses"
+        canonical_refs: ["Clifton & Harter 2003", "Seligman 2002"]
+      - id: person_environment_fit
+        why: "Match between person's values/skills and job demands"
+        canonical_refs: ["Kristof 1996", "Edwards & Shipp 2007"]
+
+  # ── 2. AI Productivity & Human-AI Collaboration ───────────────────────────
+  - id: ai_productivity
+    when_domain_includes:
+      - ai_productivity
+      - human_ai_collaboration
+      - generative_ai_at_work
+      - copilot_adoption
+      - llm_augmentation
+    must_cover_literatures:
+      - id: empirical_genai_productivity
+        why: "Peer-reviewed RCT evidence on GenAI productivity impact"
+        canonical_refs:
+          - "Brynjolfsson et al. 2023 (BCG customer service)"
+          - "Dell'Acqua et al. 2023 (BCG consultants)"
+          - "Peng et al. 2023 (GitHub Copilot)"
+      - id: cognitive_offloading
+        why: "How AI-assisted offloading affects skill retention and meta-cognition"
+        canonical_refs: ["Risko & Gilbert 2016", "Sparrow et al. 2011"]
+      - id: augmentation_vs_substitution
+        why: "Evidence for/against automation substitution vs. augmentation outcomes"
+        canonical_refs: ["Autor 2015", "Acemoglu & Restrepo 2019"]
+
+  # ── 3. Scientific Review & Systematic Review ──────────────────────────────
+  - id: scientific_review
+    when_domain_includes:
+      - scientific_review
+      - systematic_review
+      - evidence_synthesis
+      - meta_analysis
+      - literature_review
+    must_cover_literatures:
+      - id: cochrane_protocol
+        why: "Gold-standard methodology for systematic reviews in health/social science"
+        canonical_refs: ["Cochrane Handbook 2023"]
+      - id: meta_analysis_methods
+        why: "Statistical pooling of effect sizes across studies"
+        canonical_refs: ["Borenstein et al. 2009", "Hedges & Olkin 1985"]
+      - id: evidence_grading_grade
+        why: "GRADE framework for quality of evidence and strength of recommendations"
+        canonical_refs: ["Guyatt et al. 2008 BMJ GRADE series"]
+      - id: prisma_protocol
+        why: "Preferred Reporting Items for Systematic Reviews — reproducibility"
+        canonical_refs: ["Page et al. 2021 PRISMA 2020"]
+
+  # ── 4. Marketing Research & Competitive Intelligence ──────────────────────
+  - id: marketing_research
+    when_domain_includes:
+      - marketing_research
+      - competitive_intelligence
+      - market_analysis
+      - consumer_behavior
+      - brand_strategy
+    must_cover_literatures:
+      - id: jobs_to_be_done
+        why: "Functional/emotional/social jobs customers hire products to do"
+        canonical_refs: ["Christensen et al. 2016", "Ulwick 2016"]
+      - id: market_segmentation
+        why: "Behavioral, psychographic, and need-based segmentation evidence"
+        canonical_refs: ["Wedel & Kamakura 2000"]
+      - id: blue_ocean_strategy
+        why: "Value innovation vs. competitive analysis — uncontested market space"
+        canonical_refs: ["Kim & Mauborgne 2004"]
+
+  # ── 5. Product Comparison & SaaS Evaluation ───────────────────────────────
+  - id: product_comparison
+    when_domain_includes:
+      - product_comparison
+      - saas_evaluation
+      - tool_comparison
+      - platform_selection
+      - vendor_evaluation
+    must_cover_literatures:
+      - id: user_research_synthesis
+        why: "Aggregated evidence from user interviews, usability tests, surveys"
+        canonical_refs: ["Nielsen Norman Group research corpus"]
+      - id: unit_economics
+        why: "CAC/LTV/payback period benchmarks for SaaS category"
+        canonical_refs: ["Bessemer Venture Partners Atlas", "OpenView SaaS benchmarks"]
+      - id: churn_analysis
+        why: "Net revenue retention and churn drivers in the category"
+        canonical_refs: ["ChurnZero benchmark reports", "Baremetrics data"]
+
+  # ── 6. Organizational Behavior & Leadership ───────────────────────────────
+  - id: organizational_behavior
+    when_domain_includes:
+      - organizational_behavior
+      - leadership
+      - management
+      - team_dynamics
+      - organizational_culture
+    must_cover_literatures:
+      - id: sensemaking_theory
+        why: "How organizations construct meaning from ambiguous environments"
+        canonical_refs: ["Weick 1995"]
+      - id: psychological_safety
+        why: "Team climate for interpersonal risk-taking — foundational for innovation"
+        canonical_refs: ["Edmondson 1999", "Google Project Aristotle 2016"]
+      - id: distributed_cognition
+        why: "Cognitive processes distributed across people, artifacts, and environments"
+        canonical_refs: ["Hutchins 1995", "Clark 1997"]
+
+  # ── 7. Education Technology & Learning Science ────────────────────────────
+  - id: education_technology
+    when_domain_includes:
+      - education_technology
+      - edtech
+      - learning_science
+      - instructional_design
+      - online_learning
+    must_cover_literatures:
+      - id: cognitive_load_theory
+        why: "Intrinsic/extraneous/germane load — critical for instructional design"
+        canonical_refs: ["Sweller 1988", "Paas et al. 2004"]
+      - id: spaced_repetition
+        why: "Evidence for spacing effect on long-term retention"
+        canonical_refs: ["Cepeda et al. 2006", "Ebbinghaus 1885"]
+      - id: desirable_difficulties
+        why: "Interleaving/testing/generation effects on durable learning"
+        canonical_refs: ["Bjork & Bjork 2011", "Kornell & Bjork 2008"]
+
+  # ── 8. Software Architecture & Systems Design ─────────────────────────────
+  - id: software_architecture
+    when_domain_includes:
+      - software_architecture
+      - systems_design
+      - distributed_systems
+      - microservices
+      - platform_engineering
+    must_cover_literatures:
+      - id: cap_theorem_tradeoffs
+        why: "Consistency/availability/partition tolerance fundamentals"
+        canonical_refs: ["Brewer 2000", "Gilbert & Lynch 2002"]
+      - id: observability_standards
+        why: "OpenTelemetry, DORA metrics — production readiness benchmarks"
+        canonical_refs: ["DORA State of DevOps 2023", "OpenTelemetry Spec"]
+      - id: twelve_factor_app
+        why: "Methodology for building scalable, maintainable software-as-a-service"
+        canonical_refs: ["Wiggins 2012 (12factor.net)"]
+
+  # ── 9. Cybersecurity & Information Security ───────────────────────────────
+  - id: cybersecurity
+    when_domain_includes:
+      - cybersecurity
+      - infosec
+      - information_security
+      - threat_modeling
+      - security_architecture
+    must_cover_literatures:
+      - id: threat_modeling_frameworks
+        why: "STRIDE/PASTA/LINDDUN — structured adversarial thinking"
+        canonical_refs: ["Shostack 2014", "OWASP Threat Modeling Cheat Sheet"]
+      - id: owasp_top10
+        why: "Most critical web application security risks"
+        canonical_refs: ["OWASP Top 10 2021"]
+      - id: zero_trust_architecture
+        why: "Never trust, always verify — NIST SP 800-207 foundation"
+        canonical_refs: ["Rose et al. 2020 NIST SP 800-207"]
+
+  # ── 10. Health Technology & Digital Therapeutics ──────────────────────────
+  - id: health_technology
+    when_domain_includes:
+      - health_technology
+      - digital_therapeutics
+      - digital_health
+      - mhealth
+      - clinical_ai
+    must_cover_literatures:
+      - id: rct_evidence_base
+        why: "Randomized controlled trial evidence for digital interventions"
+        canonical_refs: ["CONSORT 2010 Statement", "Digital Medicine Society guidelines"]
+      - id: regulatory_pathway
+        why: "FDA De Novo / 510(k) / Software as Medical Device (SaMD) framework"
+        canonical_refs: ["FDA Digital Health Center of Excellence guidance 2022"]
+      - id: clinical_validation
+        why: "Validation levels (analytical/clinical/real-world) for health tech"
+        canonical_refs: ["Goldsack et al. 2020 npj Digital Medicine"]
+
+  # ── 11. Financial Technology & Fintech ────────────────────────────────────
+  - id: financial_technology
+    when_domain_includes:
+      - financial_technology
+      - fintech
+      - payments
+      - banking_technology
+      - insurtech
+    must_cover_literatures:
+      - id: regulatory_compliance_fintech
+        why: "PCI-DSS, PSD2/open banking, AML/KYC regulatory frameworks"
+        canonical_refs: ["PCI DSS v4.0", "EBA PSD2 Guidelines"]
+      - id: fraud_detection_benchmarks
+        why: "Precision/recall benchmarks for ML-based fraud detection at scale"
+        canonical_refs: ["Card Transaction Fraud Detection Survey — Kou et al. 2021"]
+      - id: open_banking_adoption
+        why: "Consumer adoption evidence and API standardization patterns"
+        canonical_refs: ["McKinsey Global Payments Report 2023"]
+
+  # ── 12. Codebase Analysis (subject_type: codebase) ───────────────────────
+  - id: codebase_subject
+    when_subject_type: codebase
+    must_cover_dimensions:
+      - id: architectural_patterns
+        why: "Layering, coupling, cohesion, separation of concerns"
+      - id: dependency_health
+        why: "Outdated/vulnerable deps, dependency count, peer dep conflicts"
+      - id: testing_coverage
+        why: "Unit/integration/e2e coverage metrics + mutation score"
+      - id: documentation_quality
+        why: "README completeness, inline docs, architecture docs"
+      - id: community_velocity
+        why: "Stars/forks trend, PR merge time, contributor count, release cadence"
+      - id: ci_cd_maturity
+        why: "Pipeline quality gates, deployment frequency, DORA metrics"
+
+  # ── 13. LLM Evaluation (subject_type: LLM) ───────────────────────────────
+  - id: llm_subject
+    when_subject_type: LLM
+    must_cover_benchmarks:
+      - id: reasoning_benchmarks
+        canonical: ["MMLU", "GPQA", "ARC-Challenge", "HellaSwag"]
+        why: "Academic knowledge and reasoning — baseline for LLM comparison"
+      - id: coding_benchmarks
+        canonical: ["HumanEval", "MBPP", "SWE-bench", "LiveCodeBench"]
+        why: "Code generation and software engineering capability"
+      - id: safety_benchmarks
+        canonical: ["HarmBench", "TruthfulQA", "BBQ"]
+        why: "Safety alignment, truthfulness, and bias evaluation"
+      - id: cost_per_token
+        canonical: ["Artificial Analysis pricing tracker", "provider pricing pages"]
+        why: "Operational cost — critical for production decision-making"
+      - id: latency_throughput
+        canonical: ["Artificial Analysis speed benchmarks", "provider benchmarks"]
+        why: "Time-to-first-token and tokens/second for real workloads"

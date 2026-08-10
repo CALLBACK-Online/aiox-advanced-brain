@@ -1,0 +1,41 @@
+version: "1.0.0"
+last_updated: "2026-06-02"
+purpose: "Canonical family registry for extract-session-heuristics owner/prefix resolution. Owner-agnostic: owner_profiles are runtime examples, not hardcoded defaults."
+
+families:
+  - id: KE
+    name: "Knowledge Extraction Heuristics"
+    default_for_session_extraction: true
+    file_pattern: "{PREFIX}_{NNN}.md"
+    card_registry: "minds/{owner_slug}/heuristics/decision-cards.yaml"
+    document_registry: "minds/{owner_slug}/heuristics/{ID}.md"
+    description: "Operational heuristics extracted from real work sessions."
+
+  - id: BS
+    name: "Begin-State Checkpoints"
+    default_for_session_extraction: false
+    file_pattern: "{PREFIX}_BS_{NNN}.md"
+    description: "Checkpoint heuristics that validate begin-state and strategic alignment."
+
+  - id: PA
+    name: "Process Architecture Checkpoints"
+    default_for_session_extraction: false
+    file_pattern: "{PREFIX}_PA_{NNN}.md"
+    description: "Checkpoint heuristics that validate executor/process coherence."
+
+  - id: PM
+    name: "Process Mechanics Checkpoints"
+    default_for_session_extraction: false
+    file_pattern: "{PREFIX}_PM_{NNN}.md"
+    description: "Checkpoint heuristics that validate workflow mechanics and automation readiness."
+
+# owner_profiles is OPTIONAL and purely illustrative. The skill resolves the owner
+# at runtime (see SKILL.md Owner Resolution). Do NOT treat any entry here as a default.
+# Populate this list per-deployment if you want named shortcuts; leave empty otherwise.
+owner_profiles: []
+
+rules:
+  - "Resolve owner at runtime — never infer from legacy example paths."
+  - "Reuse an existing owner prefix when present in minds/{owner_slug}/heuristics/."
+  - "Session extraction defaults to the KE family. BS/PA/PM require explicit user intent."
+  - "Derive a prefix from the slug initials when none exists (e.g. naval_ravikant -> NR_KE)."

@@ -1,0 +1,60 @@
+{
+  "schema_version": "comparison-matrix.v1",
+  "slug": "2026-05-19-research-bench-multi-player-fixture",
+  "comparison_pattern": "multi_player",
+  "meta": {
+    "scoring_calibration": {
+      "type": "hybrid",
+      "scale": "1-5",
+      "baseline": "Deep Research Bench v1.2 reference scores + GitHub API snapshot 2026-05-19",
+      "calibrated_by": "@aiox-dev single-pass",
+      "disclaimer": "Hybrid scores; inter-rater agreement not measured.",
+      "reproducibility": "high"
+    }
+  },
+  "players": ["aiox_research", "openhands", "claude_code", "aider", "cline"],
+  "dimensions": [
+    {"id": "agentic_planning_control", "weight": 18},
+    {"id": "tool_runtime_integration", "weight": 18},
+    {"id": "research_depth_synthesis", "weight": 14},
+    {"id": "multi_agent_orchestration", "weight": 12},
+    {"id": "evidence_fidelity_evaluation", "weight": 10}
+  ],
+  "rows": [
+    {"dimension": "agentic_planning_control", "cells": [
+      {"player": "aiox_research", "score": 4},
+      {"player": "openhands", "score": 4},
+      {"player": "claude_code", "score": 5},
+      {"player": "aider", "score": 3},
+      {"player": "cline", "score": 4}
+    ]},
+    {"dimension": "tool_runtime_integration", "cells": [
+      {"player": "aiox_research", "score": 5},
+      {"player": "openhands", "score": 4},
+      {"player": "claude_code", "score": 5},
+      {"player": "aider", "score": 3},
+      {"player": "cline", "score": 5}
+    ]},
+    {"dimension": "research_depth_synthesis", "cells": [
+      {"player": "aiox_research", "score": 5},
+      {"player": "openhands", "score": 3},
+      {"player": "claude_code", "score": 4},
+      {"player": "aider", "score": 2},
+      {"player": "cline", "score": 3}
+    ]},
+    {"dimension": "multi_agent_orchestration", "cells": [
+      {"player": "aiox_research", "score": 4},
+      {"player": "openhands", "score": 4},
+      {"player": "claude_code", "score": 5},
+      {"player": "aider", "score": 1},
+      {"player": "cline", "score": 2}
+    ]},
+    {"dimension": "evidence_fidelity_evaluation", "cells": [
+      {"player": "aiox_research", "score": 5},
+      {"player": "openhands", "score": 4},
+      {"player": "claude_code", "score": 4},
+      {"player": "aider", "score": 3},
+      {"player": "cline", "score": 3}
+    ]}
+  ]
+}

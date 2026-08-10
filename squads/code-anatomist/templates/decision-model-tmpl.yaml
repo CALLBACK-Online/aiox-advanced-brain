@@ -1,0 +1,36 @@
+---
+_meta:
+  artifact_id: decision-model
+  version: "1.0.0"
+  lifecycle_states: [draft, validated, approved]
+  owner_squad: code-anatomist
+
+# Decision Model Template
+model_name: "{model_name}"
+analysis_date: "{analysis_date}"
+source_system: "{source_system}"
+
+decisions:
+  - id: "{decision_id}"
+    name: "{decision_name}"
+    description: "{decision_description}"
+    input_data: []
+    business_rules: []
+    output: "{decision_output}"
+
+decision_tables:
+  - id: "{table_id}"
+    decision_ref: "{decision_id}"
+    hit_policy: "{hit_policy}"
+    conditions: []
+    actions: []
+    rules: []
+
+dmn_notation:
+  drd_diagram: "{drd_reference}"
+  decision_services: []
+
+traceability:
+  source_files: []
+  extraction_method: "{extraction_method}"
+  confidence_level: "{confidence_level}"

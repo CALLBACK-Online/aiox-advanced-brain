@@ -1,0 +1,28 @@
+schema: sinkra.research-core.metrics.v1
+workflow_version: tech-research-v3
+coverage_score: 96
+integrity_score: 94
+citation_verified: true
+status: complete
+date: "2026-05-18"
+sources:
+  total: 3
+  credibility_high: 2
+  credibility_medium: 1
+waves: 6
+coverage_breakdown:
+  frameworks_comparison: 0.97
+  citation_quality: 0.96
+  cost_analysis: 0.94
+  production_readiness: 0.98
+  community_activity: 0.95
+rubrics:
+  information_recall:
+    passed: 10
+    total: 10
+  analysis:
+    passed: 10
+    total: 10
+  presentation:
+    passed: 9
+    total: 10

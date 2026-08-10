@@ -1,0 +1,7 @@
+items:
+  - question: "Does OpenHands multi-agent claim hold up under stress?"
+    status: open
+    owner: "@aiox-dev"
+  - question: "Cursor agentic capabilities post 2026-Q2?"
+    status: open
+    owner: "@aiox-architect"

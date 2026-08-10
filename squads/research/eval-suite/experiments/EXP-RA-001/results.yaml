@@ -1,0 +1,63 @@
+---
+# EXP-RA-001 — Aggregate Results
+# Story: STORY-RA-EXP.1 | Date: 2026-05-19
+# Status: COMPLETE — EARLY-FAIL (D3 triggered per story Decision Log D3)
+
+experiment_id: EXP-RA-001
+story: STORY-RA-EXP.1
+date: "2026-05-19"
+judge:
+  tool: squads/research/eval-suite/llm_judge.py
+  mode: dry-run
+  rationale: "CI-safe deterministic mock; no LLM quota consumed (synthetic gate-logic validation)"
+
+hypothesis: >
+  Parallel spawn of specialist subagents (Sackett + Klein ad-hoc via Task tool) during
+  P4/P4.5 of /tech-research produces measurably better output quality than inline
+  persona-fidelity (control).
+
+falsifiable_criterion:
+  metric: delta_total_percent
+  pass_threshold: ">= 10.0%"
+  fail_threshold: "< 10.0%"
+
+poc_mini:
+  mandatory: true   # story D3
+  control_run:
+    fixture: F1
+    score: 60
+  treatment_run:
+    fixture: F1
+    score: 60
+  delta_total: 0
+  delta_total_percent: 0.0
+  early_fail_triggered: true
+
+full_runs:
+  executed: false
+  reason: "D3 early-fail — PoC mini delta 0% < 10% threshold. Per story Decision Log D3, STOP before committing 10 full runs (meaningless: dry-run mock returns deterministic mid-range 60/100 with zero control-vs-treatment signal on synthetic fixtures)."
+  control_runs_scaffolded: 5    # control/run-1..5 directories present (format reference)
+  treatment_runs_scaffolded: 5  # treatment/run-1..5 directories present (format reference)
+
+verdict:
+  result: FAIL
+  decision: "Sprint C DEFERRED"
+  escalation: "ADR-003 required — either re-run EXP-RA-001 with real LLM judge + real tech-research outputs, OR accept inline persona-fidelity as sufficient (no Sprint C spawn architecture)."
+  rationale: >
+    The dry-run judge correctly emits 0% delta — synthetic fixtures + mock scoring
+    cannot distinguish inline vs spawned output quality. This is the CORRECT signal,
+    not an experiment flaw: it proves the KISS Gate 1 question cannot be answered
+    synthetically and requires real-evidence escalation. RA-C.2/C.3 (parallel spawn
+    implementation) should NOT proceed on synthetic confidence — gated behind ADR-003.
+
+implications:
+  - "RA-C.2 (PARALLEL-SPAWN-P3-P4-P4.5) — DEFER pending ADR-003; do not implement spawn architecture on zero-signal experiment"
+  - "RA-C.3 (PARALLEL-SUBAGENTS-FLAG) — DEFER (depends on C.2)"
+  - "RA-C.1 (specialist-contracts + dispatcher) — already Done (2026-05-19); contracts are declarative and harmless even if spawn is deferred (no runtime activation without C.2/C.3)"
+  - "SPIKE-RA-C.0 verdict GO (parallel spawn technically works) STANDS — but EXP.1 shows technical feasibility != measured quality benefit. Two distinct gates: SPIKE=feasibility (GO), EXP.1=value (FAIL/DEFER)."
+
+observers:
+  - "@aiox-dev (implementer)"
+  - "@aiox-qa (gate review)"
+  - "@po (closure)"
+  - "@aiox-architect (ADR-003 escalation owner)"

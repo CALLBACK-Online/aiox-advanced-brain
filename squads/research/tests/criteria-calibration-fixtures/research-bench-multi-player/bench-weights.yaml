@@ -1,0 +1,21 @@
+schema_version: "bench-weights.v1"
+slug: "2026-05-19-research-bench-multi-player-fixture"
+validate_method: "preset:technical"
+total_normalized: 100.0
+critical_groups_acknowledged:
+  - research_depth_synthesis
+  - tool_runtime_integration
+  - multi_agent_orchestration
+normalized_weights:
+  agentic_planning_control: 18
+  tool_runtime_integration: 18
+  research_depth_synthesis: 14
+  multi_agent_orchestration: 12
+  evidence_fidelity_evaluation: 10
+  ux_operator_control: 8
+  architecture_absorption: 6
+  implementation_maturity: 5
+  trace_observability: 4
+  private_kb_grounding: 3
+  evaluation_value: 1
+  scientific_pipeline: 1

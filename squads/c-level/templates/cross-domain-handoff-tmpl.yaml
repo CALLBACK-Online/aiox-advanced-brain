@@ -1,0 +1,58 @@
+version: "2.0.0"
+artifact_id: cross-domain-handoff
+handoff_id: "HANDOFF-{timestamp}"
+scope: intra_bu
+lifecycle_state: draft
+status: pending_acceptance
+
+source:
+  squad: c-level
+  agent: coo-orchestrator
+  domain: Strategic
+  task_id: null
+  process_id: null
+
+target:
+  squad: brand
+  agent: null
+  domain: Tactical
+  task_id: null
+
+summary: "Resumo do contexto executivo que precisa continuar na próxima camada."
+
+inputs_required:
+  - artifact_id: company-dna
+    path: workspace/{spoke}/L0-identity/company-dna.yaml
+    min_state: POPULATED
+  - artifact_id: icp
+    path: workspace/{spoke}/L1-strategy/icp.yaml
+    min_state: POPULATED
+
+outputs_expected:
+  - artifact_id: tactical-plan
+    path: workspace/{spoke}/L2-tactical/
+    target_state: DRAFT
+
+risks:
+  - id: risk-bottleneck-humano
+    severity: medium
+    description: Dependência de validação humana pode atrasar o downstream.
+  - id: risk-missing-baseline
+    severity: high
+    description: Handoff perde valor se os artefatos upstream ainda estiverem incompletos.
+
+signoff:
+  required: true
+  source_owner: coo-orchestrator
+  target_owner: null
+  source_approved_by: null
+  target_accepted_by: null
+  approved_at: null
+
+traceability:
+  upstream_artifacts: []
+  downstream_artifacts: []
+  supporting_tokens: []
+  related_execution_log: squads/c-level/data/pipeline-execution-log.yaml
+
+notes: []

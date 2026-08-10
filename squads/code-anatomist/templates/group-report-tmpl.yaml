@@ -1,0 +1,66 @@
+# Group Comparison Report Template — wf-multi-compare Phase 3
+# Code Anatomist v3.0.0
+
+group_report:
+  group_id: "{G1 | G2 | G3 | G4}"
+  name: "{group name}"
+  date: "{ISO date}"
+  baseline: "allfluence"
+  analyst: "code-anatomist v3.0.0"
+
+target_modules:
+  - path: "{apps/module or services/module}"
+    description: "{what this module does in AllFluence}"
+
+references:
+  - slug: "{reference slug}"
+    comparability_score: 0.0
+    delta_report: "outputs/decoded/allfluence/comparisons/{slug}/delta-report.yaml"
+    total_deltas: 0
+
+convergences:
+  description: "Padrões recomendados por 2+ referências"
+  patterns:
+    - id: "CONV-001"
+      pattern: "{pattern name}"
+      recommended_by: ["{slug1}", "{slug2}"]
+      target_module: "{AllFluence module}"
+      description: "{what the pattern does}"
+      confidence: "{HIGH (3+ refs) | MEDIUM (2 refs)}"
+      effort: "{S | M | L | XL}"
+      value: "{description of benefit}"
+
+divergences:
+  description: "Referências recomendam abordagens diferentes para o mesmo concern"
+  conflicts:
+    - id: "DIV-001"
+      concern: "{what both address}"
+      approaches:
+        - reference: "{slug1}"
+          approach: "{how slug1 does it}"
+          pros: ["{pro}"]
+          cons: ["{con}"]
+        - reference: "{slug2}"
+          approach: "{how slug2 does it}"
+          pros: ["{pro}"]
+          cons: ["{con}"]
+      target_module: "{AllFluence module}"
+      resolution: null  # Filled in Phase 4
+
+unique_findings:
+  description: "Padrões recomendados por apenas 1 referência"
+  patterns:
+    - id: "UNQ-001"
+      pattern: "{pattern name}"
+      reference: "{slug}"
+      target_module: "{AllFluence module}"
+      confidence: "{LOW — single reference}"
+      note: "{why still worth considering}"
+
+priority_ranking:
+  - rank: 1
+    pattern_id: "{CONV-001}"
+    type: "{convergence | unique}"
+    impact: "{HIGH | MEDIUM | LOW}"
+    effort: "{S | M | L | XL}"
+    roi_score: 0.0  # impact/effort ratio

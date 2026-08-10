@@ -1,0 +1,44 @@
+# Fixture — cost_confidence: unavailable (AC-5)
+# Story: STORY-RA-A.2
+# Purpose: Verify that when SDK failure + tiktoken failure both occur,
+#          heartbeat ignores the cost_usd_used signal (not a false positive).
+#
+# Scenario: Pipeline is past cost_usd_max threshold in raw value,
+#           but cost_confidence=unavailable → signal must be IGNORED.
+#           Decision must be driven by other signals (coverage insufficient
+#           at wave 1 → CONTINUE).
+schema_version: "1.0"
+fixture_id: "cost-unavailable-ac5"
+story: STORY-RA-A.2
+description: >
+  cost_usd_used exceeds cost_max but cost_confidence=unavailable.
+  Expected: cost_usd signal IGNORED, decision CONTINUE (coverage=42, wave=1).
+
+heartbeat_state:
+  wave_num: 1
+  coverage_score: 42            # below 70 threshold → no coverage soft-stop
+  token_budget_used: 0.30       # well below 0.85 → no token stop
+  cost_usd_used: 3.00           # > cost_max=2.50, BUT must be ignored
+  cost_max: 2.50
+  cost_confidence: unavailable  # SDK failure + tiktoken failure → ignore signal
+  wallclock_used: 180
+  timeout_sec: 600
+  new_information_ratio: 0.35   # above 0.05 → no new-info stop
+  gap_set_is_empty: false
+  source_contradiction_detected: false
+  wave_returned_low_signal: false
+  unsupported_claim_top_tier_ratio: 0.12
+
+expected_evaluation:
+  decision: CONTINUE
+  cost_signal_ignored: true
+  cost_signal_ignored_reason: "cost_confidence=unavailable — SDK+tiktoken failure; signal excluded from stop evaluation"
+  signals_NOT_fired:
+    - wave_max_with_low_coverage  # wave_num != 3
+    - token_budget                # 0.30 < 0.85
+    - cost_usd                    # IGNORED (unavailable)
+    - wallclock                   # 180 < 600
+    - coverage_score              # 42 < 70
+    - gap_convergence             # gap_set not empty
+    - new_information_ratio       # 0.35 > 0.05
+  replan_signals_fired: []

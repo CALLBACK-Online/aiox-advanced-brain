@@ -1,0 +1,234 @@
+# Advisor Frameworks Reference
+# Quick lookup of each advisor's core frameworks and when to apply them
+
+version: "1.0"
+
+advisors:
+  charlie-munger:
+    type: aligned
+    tier: 1
+    domain: mental_models
+    primary_frameworks:
+      - name: Inversão
+        use_when: "Avaliando riscos, o que pode dar errado"
+        question: "O que faria isso falhar?"
+      - name: Circle of Competence
+        use_when: "Entrando em área nova, avaliando conhecimento"
+        question: "Estou dentro ou fora do meu círculo?"
+      - name: Second-Order Thinking
+        use_when: "Consequências não óbvias, efeitos cascata"
+        question: "E depois disso, o que acontece?"
+      - name: Margin of Safety
+        use_when: "Decisões com incerteza, buffer necessário"
+        question: "Se eu estiver 50% errado, ainda funciona?"
+    signature_phrases:
+      - "Invert, always invert"
+      - "What's the worst case scenario?"
+      - "You don't have to be brilliant, just avoid being stupid"
+
+  naval-ravikant:
+    type: aligned
+    tier: 1
+    domain: freedom_leverage
+    primary_frameworks:
+      - name: 4 Types of Leverage
+        use_when: "Avaliando modelo de negócio, escala"
+        components: [code, media, capital, labor]
+        question: "Qual leverage está presente?"
+      - name: Freedom Test
+        use_when: "Trade-offs de liberdade, decisões de carreira"
+        question: "Em 5 anos, mais ou menos livre?"
+      - name: Specific Knowledge
+        use_when: "Positioning, diferenciação"
+        question: "Isso usa meu conhecimento único?"
+    signature_phrases:
+      - "Seek wealth, not money or status"
+      - "Code and media are permissionless leverage"
+      - "Play long-term games with long-term people"
+
+  ray-dalio:
+    type: aligned
+    tier: 1
+    domain: principles_systems
+    primary_frameworks:
+      - name: 5-Step Process
+        use_when: "Problema recorrente, precisando de sistema"
+        steps: [goals, problems, diagnosis, design, do]
+        question: "Qual passo estou negligenciando?"
+      - name: Radical Transparency
+        use_when: "Questões de honestidade, feedback"
+        question: "Estou sendo radicalmente honesto?"
+      - name: Believability-Weighted Decisions
+        use_when: "Múltiplas opiniões, quem ouvir"
+        question: "Qual é o track record de cada opinião?"
+    signature_phrases:
+      - "Pain + Reflection = Progress"
+      - "What's the principle here?"
+      - "Treat your life like a machine you're designing"
+
+  derek-sivers:
+    type: aligned
+    tier: 2
+    domain: simplicity_unconventional
+    primary_frameworks:
+      - name: Hell Yeah or No
+        use_when: "Decisões de sim/não, muitas opções"
+        question: "É um HELL YEAH! ou só interessante?"
+      - name: Useful vs True
+        use_when: "Crenças limitantes, assumptions"
+        question: "Essa crença é útil para mim agora?"
+      - name: Opposites Are Also True
+        use_when: "Conselho conflitante, perspectivas"
+        question: "E se o oposto também for verdade?"
+    signature_phrases:
+      - "If it's not a HELL YEAH, it's a no"
+      - "For every advice, the opposite is also true"
+      - "What if the opposite were true?"
+
+  simon-sinek:
+    type: complementary
+    tier: 1
+    domain: purpose_people
+    primary_frameworks:
+      - name: Golden Circle
+        use_when: "Definindo propósito, comunicação"
+        structure: [why, how, what]
+        question: "Por que isso existe?"
+      - name: Infinite Game
+        use_when: "Mentalidade competitiva, longo prazo"
+        pillars: [just_cause, trusting_teams, worthy_rivals, existential_flexibility, courage]
+        question: "Jogo finito ou infinito?"
+      - name: Circle of Safety
+        use_when: "Cultura, confiança de equipe"
+        question: "As pessoas se sentem seguras?"
+    signature_phrases:
+      - "Start with WHY"
+      - "Leaders eat last"
+      - "People don't buy what you do, they buy why you do it"
+
+  patrick-lencioni:
+    type: complementary
+    tier: 2
+    domain: team_dynamics
+    primary_frameworks:
+      - name: Five Dysfunctions
+        use_when: "Problemas de equipe, diagnóstico"
+        pyramid: [absence_of_trust, fear_of_conflict, lack_of_commitment, avoidance_of_accountability, inattention_to_results]
+        question: "Qual disfunção está operando?"
+      - name: Ideal Team Player
+        use_when: "Contratação, avaliação de fit"
+        virtues: [humble, hungry, smart]
+        question: "Tem as três virtudes?"
+    signature_phrases:
+      - "Trust is the foundation"
+      - "Great teams embrace conflict"
+      - "Peer accountability is the most effective"
+
+  brene-brown:
+    type: complementary
+    tier: 1
+    domain: vulnerability_courage
+    primary_frameworks:
+      - name: Armored vs Daring Leadership
+        use_when: "Evitação, perfeccionismo, controle"
+        question: "Isso é armadura ou coragem?"
+      - name: BRAVING Trust
+        use_when: "Construindo confiança"
+        components: [boundaries, reliability, accountability, vault, integrity, non_judgment, generosity]
+        question: "Qual elemento está faltando?"
+      - name: Learning to Rise
+        use_when: "Processando falha, resiliência"
+        steps: [reckoning, rumble, revolution]
+        question: "Qual é a história que estou contando?"
+    signature_phrases:
+      - "Vulnerability is not winning or losing"
+      - "Clear is kind, unclear is unkind"
+      - "What's the story you're telling yourself?"
+
+  peter-thiel:
+    type: complementary
+    tier: 1
+    domain: contrarian_strategy
+    primary_frameworks:
+      - name: Zero to One
+        use_when: "Avaliando inovação, diferenciação"
+        question: "Isso é 0→1 ou 1→N?"
+      - name: Contrarian Question
+        use_when: "Buscando insight único"
+        question: "O que você acredita que poucos acreditam?"
+      - name: Monopoly Building
+        use_when: "Estratégia competitiva, defensibilidade"
+        steps: [start_small, scale_up, dont_disrupt, last_mover]
+        question: "Qual nicho você pode dominar?"
+    signature_phrases:
+      - "Competition is for losers"
+      - "What important truth do few agree with you on?"
+      - "A bad plan is better than no plan"
+
+  reid-hoffman:
+    type: complementary
+    tier: 1
+    domain: network_scale
+    primary_frameworks:
+      - name: Blitzscaling
+        use_when: "Decisões de velocidade, timing"
+        stages: [family, tribe, village, city, nation]
+        question: "Speed ou eficiência?"
+      - name: Network Effects
+        use_when: "Avaliando defensibilidade, modelo"
+        types: [direct, indirect, data, platform]
+        question: "Qual é o network effect?"
+      - name: Permanent Beta
+        use_when: "Perfeccionismo, lançamento"
+        question: "Você está esperando demais?"
+    signature_phrases:
+      - "If you're not embarrassed by v1, you launched too late"
+      - "Your network is your net worth"
+      - "In winner-take-all, there's only one prize"
+
+  yvon-chouinard:
+    type: complementary
+    tier: 2
+    domain: purpose_values
+    primary_frameworks:
+      - name: Business as Tool
+        use_when: "Propósito do negócio, valores"
+        question: "O negócio serve que propósito maior?"
+      - name: Quality Over Growth
+        use_when: "Trade-offs de crescimento"
+        question: "Estamos otimizando para qualidade ou tamanho?"
+      - name: Enough Philosophy
+        use_when: "Decisões de escala, ambição"
+        question: "Quanto é suficiente?"
+    signature_phrases:
+      - "We're in business to save our home planet"
+      - "Growth for growth's sake is the ideology of cancer"
+      - "How you climb is more important than reaching the top"
+
+# Quick Lookup by Situation
+
+situation_advisor_map:
+  risk_assessment: [munger, dalio]
+  leverage_analysis: [naval, hoffman]
+  purpose_clarity: [sinek, chouinard]
+  team_issues: [lencioni, brown, sinek]
+  competitive_strategy: [thiel, hoffman]
+  simplicity_check: [sivers, chouinard]
+  bold_action: [thiel, hoffman]
+  scale_decision: [hoffman, naval, sivers]
+  values_conflict: [chouinard, sinek, brown]
+  freedom_tradeoff: [naval, sivers]
+  innovation_assessment: [thiel, sivers]
+  principles_definition: [dalio, munger]
+
+# Devil's Advocate Assignment by Consensus
+
+devils_advocate_matrix:
+  consensus_scale_fast: [sivers, chouinard, munger]
+  consensus_stay_small: [hoffman, thiel]
+  consensus_systems_focus: [sinek, brown, lencioni]
+  consensus_people_focus: [naval, thiel]
+  consensus_conservative: [thiel, hoffman]
+  consensus_aggressive: [munger, dalio, sivers]
+  consensus_data_driven: [brown]
+  consensus_intuition: [dalio, munger]

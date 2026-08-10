@@ -1,0 +1,106 @@
+{
+  "$id": "sinkra://slide-creator/wireframes/persona-fit-matrix.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "Multiple players are compared across multiple dimensions.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "criterion_1": {
+      "type": "string"
+    },
+    "criterion_2": {
+      "type": "string"
+    },
+    "criterion_3": {
+      "type": "string"
+    },
+    "p1_c1": {
+      "type": "string"
+    },
+    "p1_c2": {
+      "type": "string"
+    },
+    "p1_c3": {
+      "type": "string"
+    },
+    "p1_reason": {
+      "type": "string"
+    },
+    "p1_winner": {
+      "type": "string"
+    },
+    "p2_c1": {
+      "type": "string"
+    },
+    "p2_c2": {
+      "type": "string"
+    },
+    "p2_c3": {
+      "type": "string"
+    },
+    "p2_reason": {
+      "type": "string"
+    },
+    "p2_winner": {
+      "type": "string"
+    },
+    "p3_c1": {
+      "type": "string"
+    },
+    "p3_c2": {
+      "type": "string"
+    },
+    "p3_c3": {
+      "type": "string"
+    },
+    "p3_reason": {
+      "type": "string"
+    },
+    "p3_winner": {
+      "type": "string"
+    },
+    "persona_1": {
+      "type": "string"
+    },
+    "persona_2": {
+      "type": "string"
+    },
+    "persona_3": {
+      "type": "string"
+    }
+  },
+  "title": "persona-fit-matrix",
+  "type": "object",
+  "x-sinkra": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "comparison_matrix",
+    "slot_count": 22,
+    "warnings": [
+      "action_title",
+      "criterion_1",
+      "criterion_2",
+      "criterion_3",
+      "persona_1",
+      "p1_c1",
+      "p1_c2",
+      "p1_c3",
+      "p1_winner",
+      "p1_reason",
+      "persona_2",
+      "p2_c1",
+      "p2_c2",
+      "p2_c3",
+      "p2_winner",
+      "p2_reason",
+      "persona_3",
+      "p3_c1",
+      "p3_c2",
+      "p3_c3",
+      "p3_winner",
+      "p3_reason"
+    ],
+    "wireframe_ref": "templates/wireframes/persona-fit-matrix.html"
+  }
+}

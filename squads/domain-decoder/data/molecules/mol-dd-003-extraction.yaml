@@ -1,0 +1,74 @@
+molecule:
+  molecule_id: "MOL-DD-003"
+  name: "Extraction"
+  mode: "EXPLORAR"
+  pattern: "sequential"
+  phase: 2
+  reusable: false
+  used_in_variants: ["extraction"]
+  agents_primary: ["michael-feathers", "ronald-ross"]
+  tokens_molecule:
+    - "TK-DD-MOD-003"
+    - "TK-DD-ACC-001"
+    - "TK-DD-PRI-001"
+
+atoms:
+  - atom_id: "ATM-DD-016"
+    name: "Extract Raw Rules from Seams"
+    executor_type: Agent
+    executor_id: michael-feathers
+    mode: EXPLORAR
+    inputs:
+      - { name: "seams_map", type: "yaml", source: "ATM-DD-012" }
+    outputs:
+      - { name: "raw_rules", type: "yaml", artifact: true }
+    tokens_bound: []
+    completion_criteria:
+      - "Raw rules output verbatim with code snippet, file, line, and method"
+
+  - atom_id: "ATM-DD-017"
+    name: "Classify Rules (Ross Taxonomy)"
+    executor_type: Agent
+    executor_id: ronald-ross
+    mode: EXPLORAR
+    inputs:
+      - { name: "raw_rules", type: "yaml", source: "ATM-DD-016" }
+    outputs:
+      - { name: "classified_rules", type: "yaml", artifact: true }
+    tokens_bound:
+      - "TK-DD-TAX-001"
+    completion_criteria:
+      - "Rules classified into valid Ross taxonomy"
+
+  - atom_id: "ATM-DD-018"
+    name: "Build Fact Model"
+    executor_type: Agent
+    executor_id: ronald-ross
+    mode: EXPLORAR
+    inputs:
+      - { name: "validated_glossary", type: "yaml", source: "ATM-DD-009" }
+      - { name: "classified_rules", type: "yaml", source: "ATM-DD-017" }
+    outputs:
+      - { name: "fact_model", type: "yaml", artifact: true }
+    tokens_bound: []
+    completion_criteria:
+      - "Terms as nodes, fact types as edges, rules as constraints"
+    veto_on:
+      - "Glossary terms used must be in validated_glossary"
+
+  - atom_id: "ATM-DD-019"
+    name: "Checkpoint: All Rules Extracted Classified with Traceability"
+    executor_type: Worker
+    executor_id: checkpoint-validator
+    mode: VALIDAR
+    inputs:
+      - { name: "raw_rules", type: "yaml", source: "ATM-DD-016" }
+      - { name: "classified_rules", type: "yaml", source: "ATM-DD-017" }
+    outputs:
+      - { name: "checkpoint_result", type: "enum[APPROVE, REVIEW, VETO]", artifact: false }
+    tokens_bound: []
+    completion_criteria:
+      - "checkpoint_result = APPROVE"
+      - "Unique IDs present"
+      - "Ross type populated"
+      - "Bounded context traced"

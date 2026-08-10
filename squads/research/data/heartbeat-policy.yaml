@@ -1,0 +1,152 @@
+# Heartbeat Policy — Multi-signal stop + replan signals
+# Story: STORY-RA-A.1 | Created: 2026-05-19
+# Source: ADR-002 v2.0 + Roundtable @cso C-02 + @architect M01
+#
+# Precedence: quality-gates.yaml is the macro SOT.
+# heartbeat-policy.yaml is a specialization/refinement.
+# In case of conflict, quality-gates.yaml wins.
+# See quality-gates.yaml#stop_signal_governance for resolution protocol.
+schema_version: "1.0"
+governed_by: quality-gates.yaml
+
+# ─── Stop Signals ────────────────────────────────────────────────────────────
+# Any single signal firing triggers an immediate STOP decision.
+# Precedence order (highest priority first):
+#   1. wave_max_with_low_coverage  — hard fail-fast (do not waste more budget)
+#   2. token_budget                — economic guardrail
+#   3. cost_usd                    — economic guardrail (absolute cap)
+#   4. wallclock                   — operational cap
+#   5. coverage_score              — quality threshold (preserved from v1.0)
+#   6. gap_convergence             — epistemic: all gaps resolved
+#   7. new_information_ratio       — epistemic: diminishing returns
+#
+# Signals are evaluated in this order at each heartbeat tick (Phase 3.5).
+# First match wins; remaining signals are still logged for audit.
+
+stop_when_any:
+  - signal: wave_max_with_low_coverage
+    condition: "wave_num == 3 AND coverage_score < 50"
+    category: hard_stop
+    priority: 1
+    description: >
+      Wave 3 exhausted with coverage below acceptable threshold.
+      Continuing would incur full wave cost with near-zero probability of
+      reaching 50+ coverage. Emit VETO caveat in final report.
+    stop_reason_category: max_waves
+
+  - signal: token_budget
+    condition: "token_budget_used > 0.85"
+    category: hard_stop
+    priority: 2
+    description: >
+      Token budget 85% consumed. Reserving 15% headroom for synthesis,
+      citation verification, and documentation phases (P4/P4.5/P5).
+      Source: cost_tracker.py `token_budget_used` field.
+    stop_reason_category: budget_limit
+
+  - signal: cost_usd
+    condition: "cost_usd_used > cost_max"
+    category: hard_stop
+    priority: 3
+    description: >
+      Absolute USD cost cap reached. cost_max is declared per-run in
+      pipeline-state.yaml (default: operator-configured or env var
+      RESEARCH_COST_MAX_USD). Source: cost_tracker.py `cost_usd_used` field.
+    stop_reason_category: budget_limit
+
+  - signal: wallclock
+    condition: "wallclock_used > timeout_sec"
+    category: hard_stop
+    priority: 4
+    description: >
+      Wall-clock timeout exceeded. timeout_sec declared per-run in
+      pipeline-state.yaml (default: 900s / 15 min per Phase 3 wave budget).
+      Source: cost_tracker.py `wallclock_elapsed_sec` field.
+    stop_reason_category: budget_limit
+
+  - signal: coverage_score
+    condition: "coverage_score >= 70"
+    category: soft_stop
+    priority: 5
+    description: >
+      Coverage threshold reached. Preserved from v1.0 single-signal baseline.
+      Now evaluated after economic signals to ensure budget is not wasted
+      on coverage already achievable early.
+    stop_reason_category: decision_sufficiency
+
+  - signal: gap_convergence
+    condition: "gap_set.is_empty()"
+    category: soft_stop
+    priority: 6
+    description: >
+      All gaps in gaps.yaml have status != open (all resolved, deferred, or
+      pruned). No remaining open gaps to target with new queries.
+      NOTE: This signal ALWAYS returns false until RA-B.1 delivers gaps.yaml.
+      Until then, treated as inactive — does not block stop by other signals.
+    stop_reason_category: saturation
+    prerequisite: RA-B.1
+
+  - signal: new_information_ratio
+    condition: "new_information_ratio < 0.05"
+    category: soft_stop
+    priority: 7
+    description: >
+      Less than 5% new information in this wave. Diminishing returns confirmed.
+      Source: coverage_calculator.py `newinfo` mode output.
+    stop_reason_category: saturation
+
+# ─── Replan Signals ──────────────────────────────────────────────────────────
+# Replan signals do NOT stop the run. They trigger strategic re-decomposition
+# of the query brief for the next wave (modify sub-queries, not restart).
+# Evaluated independently from stop signals.
+
+replan_when_any:
+  - signal: source_contradiction_detected
+    condition: "source_contradiction_detected == true"
+    category: replan
+    description: >
+      Two or more sources with high credibility contradict each other on a
+      core factual claim. Replan: add verification sub-query targeting the
+      contradicted claim via alternative sources or meta-analysis.
+    action: inject_contradiction_resolution_subquery
+
+  - signal: wave_returned_low_signal
+    condition: "wave_returned_low_signal == true"
+    category: replan
+    description: >
+      The wave returned fewer than 2 high-credibility sources AND
+      new_information_ratio < 0.15. Replan: pivot query phrasing,
+      add specificity (version, year, framework), try alternative databases.
+    action: pivot_query_phrasing
+
+  - signal: unsupported_claim_top_tier
+    condition: "unsupported_claim_top_tier > 20%"
+    category: replan
+    description: >
+      More than 20% of top-tier claims (Sackett grades 1a/1b/2a) lack
+      citation support. Replan: add targeted citation-search sub-queries.
+      NOTE: also triggers CITATION_QG_001 veto in quality-gates.yaml
+      if the condition persists after citation verification phase (P4.5).
+      Replan here is a proactive mid-run correction, not a replacement of P4.5.
+    action: inject_citation_recovery_subquery
+
+# ─── Runtime Contract ─────────────────────────────────────────────────────────
+# Phase 3.5 reads this file at each heartbeat evaluation tick.
+# Evaluation order:
+#   1. Evaluate all stop_when_any signals in priority order
+#   2. If any stop fires: emit stop decision with matched signal + stop_reason_category
+#   3. If no stop fires: evaluate all replan_when_any signals
+#   4. If any replan fires: emit replan action for next wave
+#   5. Otherwise: emit CONTINUE with current coverage_score + metrics
+
+runtime_contract:
+  consumer: squads/research/workflows/tech-research/phase-3-5-evaluate-coverage.yaml
+  evaluation_mode: first_match_stop
+  replan_mode: all_matching
+  output_fields:
+    - decision          # STOP | CONTINUE
+    - matched_signal    # signal id that triggered STOP (null if CONTINUE)
+    - stop_reason       # human-readable string
+    - stop_reason_category  # saturation|decision_sufficiency|max_waves|budget_limit|source_unavailable|authority_handoff|human_decision_required
+    - replan_actions    # list of actions if replan signals fired (empty if STOP)
+    - signals_evaluated # audit log of all signal values at this tick

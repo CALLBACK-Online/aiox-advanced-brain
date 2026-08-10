@@ -1,0 +1,137 @@
+---
+# ═══════════════════════════════════════════════════════════════════════
+# DEVIATION REGISTRY — slides-creator
+# ═══════════════════════════════════════════════════════════════════════
+# SINKRA Mandamento 7 enforcement: tracks workflow deviations and
+# advisory-gate waivers with traceable approval + mitigation + expiration.
+#
+# Owner: slide-chief (advisory by qa-inspector)
+# Schema version: 1.0.0
+# Consumed by: data/quality-gates.yaml#advisory_mode, qa-rubric.yaml release_criteria
+# Emitted by: P05 QA verdict, gate D01/D02/D03/D04 when verdict_enum == WAIVED
+# ═══════════════════════════════════════════════════════════════════════
+
+schema_version: "1.0.0"
+squad: slides-creator
+mandamento_ref: M7
+
+# ═══════════════════════════════════════════════════════════════════════
+# SCHEMA — fields required per deviation record
+# ═══════════════════════════════════════════════════════════════════════
+schema:
+  deviation_id:
+    type: string
+    pattern: "DEV-SC-{YYYY}-{NNN}"
+    required: true
+  phase:
+    type: enum
+    values: [P00, P00_5, P01, P02, P03, P04, P04_5, P05, P06]
+    required: true
+  gate:
+    type: enum
+    values: [D01, D02, D03, D04, qa_verdict, advisory]
+    required: true
+  deviation_type:
+    type: enum
+    values:
+      - threshold_waiver        # score below floor but business-approved
+      - gate_bypass             # gate skipped for explicit reason
+      - sla_override            # SLA ladder bypassed
+      - invariant_relaxation    # P1-P7 invariant deferred (rare)
+      - executor_substitution   # canonical executor swapped (e.g., Human→Agent emergency)
+    required: true
+  score_achieved:
+    type: number
+    description: "Numeric score recorded at deviation moment (0-100)"
+    required: true
+  threshold_required:
+    type: number
+    description: "Numeric threshold that was bypassed"
+    required: true
+  justification:
+    type: string
+    min_length: 50
+    description: "Why proceeding despite deviation — must be evidence-based"
+    required: true
+  approver:
+    type: string
+    description: "Human approver identity (operator handle or STK-* ref)"
+    required: true
+  mitigation:
+    type: string
+    description: "What compensates for the deviation (e.g., enhanced manual QA, post-release monitoring)"
+    required: true
+  expiration:
+    type: date
+    format: "YYYY-MM-DD"
+    description: "Deviation valid until this date — re-approval required after"
+    required: true
+  related_run_id:
+    type: string
+    description: "pipeline-execution-log run_id where deviation was logged"
+    required: false
+  related_artifact:
+    type: string
+    description: "Path to artifact that triggered deviation (e.g., qa-report.json)"
+    required: false
+
+# ═══════════════════════════════════════════════════════════════════════
+# DEVIATION RECORDS — append-only ledger
+# ═══════════════════════════════════════════════════════════════════════
+deviations:
+  - deviation_id: DEV-SC-2026-001
+    phase: P05
+    gate: qa_verdict
+    deviation_type: threshold_waiver
+    score_achieved: 6.8
+    threshold_required: 7.0
+    justification: |
+      Example record — narrative_dim scored 6.8 on a deck where Tactical
+      goal was time-to-handoff (<48h) and client explicitly accepted
+      "rough first cut" per briefing. Re-validation scheduled post-handoff.
+    approver: "Human:STK-10 (senior consultant)"
+    mitigation: |
+      Post-handoff revision iteration committed to docs/stories/.
+      qa-inspector to re-run validate-pyramid + validate-action-title
+      within 48h of D04 approval.
+    expiration: "2026-06-01"
+    related_run_id: "example-run-id"
+    related_artifact: "outputs/slides-creator/example-run-id/qa-report.json"
+
+# ═══════════════════════════════════════════════════════════════════════
+# POLICY
+# ═══════════════════════════════════════════════════════════════════════
+policy:
+  immutable: true                # deviations are append-only; never edit/delete past records
+  expiration_default_days: 30    # if not specified, deviation expires in 30d
+  require_re_approval_post_expiration: true
+  block_on_critical_invariants:
+    - P1                         # Fidelidade aos dados — never waivable
+    - P6                         # APA citations — never waivable
+  advisory_only_invariants:
+    - P2                         # Especificação obsessiva — waivable with mitigation
+    - P3                         # Pyramid — waivable with mitigation
+    - P4                         # Action titles — waivable with mitigation
+    - P5                         # Enumeration universal — waivable with mitigation
+    - P7                         # Andragogic structure — waivable with mitigation
+
+# ═══════════════════════════════════════════════════════════════════════
+# AUDIT TRAIL
+# ═══════════════════════════════════════════════════════════════════════
+audit:
+  total_deviations: 0           # example_record not counted
+  by_phase: {}
+  by_type: {}
+  last_updated: "2026-05-20"
+  last_review_date: "2026-05-20"
+
+# ═══════════════════════════════════════════════════════════════════════
+# REFERENCES
+# ═══════════════════════════════════════════════════════════════════════
+references:
+  mandamento: "M7 — formalize deviation registry to track non-default workflow paths"
+  related_artifacts:
+    - "squads/slides-creator/data/quality-gates.yaml#advisory_mode"
+    - "squads/slides-creator/data/qa-rubric.yaml#release_criteria"
+    - "squads/slides-creator/data/pipeline-execution-log.yaml#deviation_refs"
+    - "squads/slides-creator/data/checkpoint-schema.yaml#status (waived)"

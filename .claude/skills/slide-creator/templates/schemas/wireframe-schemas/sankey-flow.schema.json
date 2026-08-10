@@ -1,0 +1,54 @@
+{
+  "$id": "sinkra://slide-creator/wireframes/sankey-flow.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "The audience needs to understand system boundaries, data flow, or integration flow.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "flow_1_value": {
+      "type": "string"
+    },
+    "flow_2_value": {
+      "type": "string"
+    },
+    "flow_3_value": {
+      "type": "string"
+    },
+    "flow_takeaway": {
+      "type": "string"
+    },
+    "source_1": {
+      "type": "string"
+    },
+    "source_2": {
+      "type": "string"
+    },
+    "target_1": {
+      "type": "string"
+    },
+    "target_2": {
+      "type": "string"
+    }
+  },
+  "title": "sankey-flow",
+  "type": "object",
+  "x-sinkra": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "architecture_flow",
+    "slot_count": 9,
+    "warnings": [
+      "action_title",
+      "source_1",
+      "source_2",
+      "flow_1_value",
+      "flow_2_value",
+      "flow_3_value",
+      "target_1",
+      "target_2",
+      "flow_takeaway"
+    ],
+    "wireframe_ref": "templates/wireframes/sankey-flow.html"
+  }
+}

@@ -1,0 +1,95 @@
+molecule:
+  molecule_id: "MOL-DD-005"
+  name: "Expression"
+  mode: "CRIAR"
+  pattern: "sequential"
+  phase: 4
+  reusable: false
+  used_in_variants: ["extraction", "standardization"]
+  agents_primary: ["graham-witt", "ronald-ross"]
+  tokens_molecule:
+    - "TK-DD-MOD-005"
+    - "TK-DD-ACC-001"
+    - "TK-DD-PRI-001"
+
+atoms:
+  - atom_id: "ATM-DD-025"
+    name: "Apply RuleSpeak Sentence Patterns"
+    executor_type: Agent
+    executor_id: graham-witt
+    mode: CRIAR
+    inputs:
+      - { name: "decision_tables", type: "yaml", source: "ATM-DD-022" }
+      - { name: "drds", type: "yaml", source: "ATM-DD-023" }
+    outputs:
+      - { name: "rulespeak_statements", type: "yaml", artifact: true }
+    tokens_bound:
+      - "TK-DD-TAX-008"
+    completion_criteria:
+      - "RuleSpeak patterns applied to all identified rules"
+      - "OBLIGATION, PROHIBITION, PERMISSION correctly formed"
+
+  - atom_id: "ATM-DD-026"
+    name: "Eliminate Ambiguity"
+    executor_type: Agent
+    executor_id: graham-witt
+    mode: CRIAR
+    inputs:
+      - { name: "rulespeak_statements", type: "yaml", source: "ATM-DD-025" }
+    outputs:
+      - { name: "unambiguous_rules", type: "yaml", artifact: true }
+    tokens_bound:
+      - "TK-DD-BEH-001"
+      - "TK-DD-ACC-001"
+    accountability: "review_only"
+    escalation_priority: "high"
+    completion_criteria:
+      - "No banned words from TK-DD-BEH-001 list used"
+      - "Precision replacements documented"
+
+  - atom_id: "ATM-DD-027"
+    name: "Validate Pattern Consistency"
+    executor_type: Agent
+    executor_id: ronald-ross
+    mode: VALIDAR
+    inputs:
+      - { name: "unambiguous_rules", type: "yaml", source: "ATM-DD-026" }
+    outputs:
+      - { name: "consistent_rules", type: "yaml", artifact: true }
+    tokens_bound:
+      - "TK-DD-TAX-013"
+    completion_criteria:
+      - "Only MUST, MUST NOT, MAY used as modal verbs"
+      - "Active voice preserved"
+      - "Atomic rule structure intact"
+
+  - atom_id: "ATM-DD-028"
+    name: "Cross-Reference Glossary"
+    executor_type: Worker
+    executor_id: rule-lint.js
+    mode: VALIDAR
+    inputs:
+      - { name: "consistent_rules", type: "yaml", source: "ATM-DD-027" }
+      - { name: "validated_glossary", type: "yaml", source: "ATM-DD-009" }
+    outputs:
+      - { name: "lint_report", type: "yaml", artifact: false }
+    tokens_bound: []
+    completion_criteria:
+      - "Every term in rule statements appears in glossary"
+      - "lint_report returns 0 errors"
+
+  - atom_id: "ATM-DD-029"
+    name: "Stakeholder Review Sample"
+    executor_type: Human
+    executor_id: "Human:stakeholder"
+    mode: VALIDAR
+    inputs:
+      - { name: "consistent_rules", type: "yaml", source: "ATM-DD-027" }
+    outputs:
+      - { name: "reviewed_rules", type: "yaml", artifact: true }
+    tokens_bound:
+      - "TK-DD-TIME-001"
+    hitl_id: "HITL-002"
+    completion_criteria:
+      - "Minimum 10% of rules reviewed"
+      - "Review timeout logic processed correctly if no response within TK-DD-TIME-001"

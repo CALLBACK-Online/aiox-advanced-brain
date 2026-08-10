@@ -1,0 +1,341 @@
+# Runner-Ops Squad Configuration
+# Domain: Runner Lifecycle Management
+# Author: SINKRA Chief + Squad Architect
+# Version: 1.0.0
+
+pack:
+  name: runner-ops
+  version: "1.0.0"
+  short-title: Runner Operations
+  description: >-
+    Squad dedicado ao lifecycle management de pipeline runners headless no SINKRA Hub.
+    Governa o runner-lib framework (30 modulos, 7.4K LOC) e os processos de criacao,
+    integracao, validacao e monitoramento de runners. Nao governa runners individuais
+    (eles pertencem aos squads que os usam), mas sim o FRAMEWORK e o PROCESSO.
+  author: SINKRA Chief + Squad Architect
+  icon: "⚡"
+  slashPrefix: runnerOps
+
+meta:
+  name: runner-ops
+  display_name: "Runner Operations — Lifecycle Management"
+  version: "1.0.0"
+  domain: runner-lifecycle-management
+  author: SINKRA Chief + Squad Architect
+  license: MIT
+  status: active
+  created: "2026-04-03"
+  epic_reference: "docs/stories/epic-104/EPIC-104-RUNNER-OPS-SQUAD.md"
+  adr_reference: "docs/architecture/adrs/ADR-046-RUNNER-SWARM-HYBRID-ARCHITECTURE.md"
+
+ide_sync:
+  enabled: false
+  rationale: "Pack de governança de framework; o runtime canônico vive em infrastructure/scripts/runner-lib/"
+
+workspace_integration:
+  level: none
+  rationale: >-
+    Runner-Ops governa o framework runner-lib (infrastructure/scripts/runner-lib/)
+    e o registry de runners; não lê nem escreve em workspace/businesses/.
+
+description: |
+  Squad que centraliza governance do ecossistema de pipeline runners headless.
+
+  Arquitetura Shell & Core (ADR-046):
+  - Shell (Runner-Lib): Exoesqueleto deterministico em Bash. Owns: state persistence,
+    budget/cost management, session tracking, metrics JSONL, error flags.
+  - Core (Swarm OS): Motor cognitivo efemero. Swarms sao efemeros, Team destruido apos reportar.
+
+  Processos governados:
+  1. Create Runner — Scaffolding de novos runners a partir do template canonico
+  2. Integrate Runner — Migracao brownfield de runners para runner-lib modules
+  3. Validate Runner — Compliance check contra runner-lib standards
+  4. Monitor Runner — Metricas de custo, performance, falhas
+  5. Evolve Runner-Lib — Manutencao e evolucao do framework compartilhado
+  6. Headless Compliance — Enforcement das 10 regras headless em todos os runners
+
+  O que NAO governa:
+  - Runners individuais (continuam nos squads que os usam)
+  - Logica de negocio dos runners (cada squad decide o que seu runner faz)
+  - Swarm OS (runners sao a Shell, Swarm e o Core)
+
+  Framework gerenciado: infrastructure/scripts/runner-lib/ (~30 modulos, 7.4K LOC)
+  Registry: infrastructure/scripts/runner-lib/runner-registry.yaml (8 runners)
+
+  Boundary contract:
+  - O pack runner-ops deve ser autocontido para distribuicao e instalacao.
+  - Os runners gerados ou governados por ele NAO podem depender de arquivos dentro de squads/runner-ops/.
+  - Runtime canonico dos runners permanece em infrastructure/scripts/runner-lib/ + outputs/.
+
+# Entry point
+entry_agent: runner-chief
+
+# Agents
+agents:
+  - id: runner-chief
+    file: agents/runner-chief.md
+    tier: 0
+    role: orchestrator
+    executor: Agent
+
+  - id: runner-architect
+    file: agents/runner-architect.md
+    tier: 1
+    role: specialist
+    executor: Agent
+
+  - id: runner-integrator
+    file: agents/runner-integrator.md
+    tier: 1
+    role: specialist
+    executor: Agent
+
+  - id: runner-validator
+    file: agents/runner-validator.md
+    tier: 2
+    role: automation
+    executor: Worker
+
+  - id: runner-monitor
+    file: agents/runner-monitor.md
+    tier: 2
+    role: automation
+    executor: Worker
+
+# Pattern Library
+pattern_library:
+  prefix: RO
+  naming_convention:
+    format: "{PREFIX}-{CATEGORY}-{NUMBER}"
+    example: "RO-TP-001"
+  categories:
+    - id: TP
+      name: "Task Patterns"
+      description: "Patterns for runner task structure and execution"
+    - id: EP
+      name: "Executor Patterns"
+      description: "Patterns for executor types in runner operations"
+    - id: PP
+      name: "Process Patterns"
+      description: "Patterns for runner lifecycle processes"
+    - id: IP
+      name: "Integration Patterns"
+      description: "Patterns for runner-lib module integration"
+    - id: AP
+      name: "Automation Patterns"
+      description: "Patterns for runner validation and monitoring automation"
+    - id: GTW
+      name: "Gateway Patterns"
+      description: "Patterns for gateway runner lifecycle, latency, state isolation, and multi-channel support"
+  patterns:
+    - id: RO-PP-001
+      name: "Shell & Core Separation"
+      description: "Runners own state+budget (Shell), Swarms own cognition (Core). Never mix."
+    - id: RO-IP-001
+      name: "Golden Master Reference"
+      description: "mmos.sh is the reference implementation. All integrations compare against it."
+    - id: RO-AP-001
+      name: "Headless Compliance Gate"
+      description: "Every runner must pass 10 headless rules before production use."
+    - id: RO-GTW-001
+      name: "Gateway Latency SLA"
+      description: "Gateway runners must respond within 5s for simple turns. Route simple input to Haiku via classify_turn()."
+    - id: RO-GTW-002
+      name: "Gateway State Isolation"
+      description: "Each conversation gets isolated state via session_mgr. No cross-conversation state leakage."
+    - id: RO-GTW-003
+      name: "Gateway Credential Rotation"
+      description: "Gateway runners with high traffic SHOULD use credential-pool.sh for API key rotation and cooldown."
+    - id: RO-GTW-004
+      name: "Gateway Error Containment"
+      description: "Raw LLM errors never reach end users. headless-guard.sh + user-friendly error templates required."
+    - id: RO-GTW-005
+      name: "Gateway Multi-Channel Adapter"
+      description: "Output formatting adapts per channel (Markdown for Telegram, plain text for SMS, rich for WhatsApp)."
+
+# Task Standards
+task_standards:
+  enforce_anatomy: true
+  validator: "RO-TP-001"
+  required_fields:
+    - task_name
+    - status
+    - responsible_executor
+    - execution_type
+    - input
+    - output
+    - action_items
+    - acceptance_criteria
+  optional_fields:
+    - estimated_time
+    - dependencies
+    - templates
+    - quality_gate
+    - handoff
+
+# Executor Types
+executor_types:
+  human:
+    id: "RO-EP-001"
+    name: "Human Executor"
+    use_for:
+      - "ADR decisions for runner-lib breaking changes"
+      - "Approval of new module additions"
+      - "Runner retirement decisions"
+  agent:
+    id: "RO-EP-002"
+    name: "Agent Executor (AI)"
+    use_for:
+      - "Runner architecture design"
+      - "Integration planning and migration"
+      - "Quality gate cognitive validation"
+      - "Prompt engineering for runner phases"
+  hybrid:
+    id: "RO-EP-003"
+    name: "Hybrid Executor"
+    use_for:
+      - "Runner code review (AI suggests, human approves)"
+      - "Module evolution proposals"
+  worker:
+    id: "RO-EP-004"
+    name: "Worker Executor"
+    use_for:
+      - "validate-runner.sh execution"
+      - "Metrics JSONL aggregation"
+      - "Registry maintenance"
+      - "Cost cap enforcement"
+      - "Health check automation"
+
+# Workflow Configuration
+workflow_config:
+  checkpoint_policy: always_active
+  fail_fast: true
+  allow_manual_override: false
+
+# Governance Framework Compliance
+artifact_contracts:
+  - artifact_id: "runner-compliance-report"
+    template_path: "templates/runner-compliance-report-tmpl.md"
+    lifecycle_states: [draft, pending_validation, validated, approved]
+  - artifact_id: "runner-integration-plan"
+    template_path: "templates/runner-integration-plan-tmpl.md"
+    lifecycle_states: [draft, pending_validation, validated, approved]
+  - artifact_id: "runner-health-report"
+    template_path: "templates/runner-health-report-tmpl.md"
+    lifecycle_states: [draft, validated]
+
+# Module Reference Templates
+# One per runner-lib layer — used by runner-architect and runner-integrator
+module_templates:
+  layer_1_core:
+    path: "templates/modules/layer-1-core-tmpl.md"
+    modules: [pipeline-bootstrap.sh, runtime.sh, metrics.sh, models.sh]
+    requirement: MUST
+    description: "LLM execution, cost tracking, model catalog — non-negotiable"
+  layer_2_state:
+    path: "templates/modules/layer-2-state-tmpl.md"
+    modules: [state-manager.sh, session-mgr.sh, context-engine.sh]
+    requirement: MUST
+    description: "Phase state persistence, session lifecycle, prior output injection"
+  layer_3_quality:
+    path: "templates/modules/layer-3-quality-tmpl.md"
+    modules: [evaluator.sh, assertions.sh, headless-guard.sh, validate-runner.sh]
+    requirement: SHOULD
+    description: "Quality scoring (3 tiers), schema validation, safety filters"
+  layer_4_utility:
+    path: "templates/modules/layer-4-utility-tmpl.md"
+    modules: [display.sh, arg-parser.sh, progress-logger.sh, json-validator.sh, python-resolver.sh, memory.sh, preflight.sh, loader.sh]
+    requirement: SHOULD
+    description: "UX, CLI args, structured logging, JSON extraction, cross-run learning"
+  layer_5_advanced:
+    path: "templates/modules/layer-5-advanced-tmpl.md"
+    modules: [cascade.sh, hooks.sh, dispatch.sh, worktree.sh, replan.sh, compress.sh]
+    requirement: NICE
+    description: "Model escalation, lifecycle hooks, cross-squad dispatch, isolation, recovery"
+
+artifact_lifecycle:
+  tracking_enabled: true
+  state_persistence: ".aiox/squad-runtime/runner-ops/artifact-state.yaml"
+  transitions: [draft -> pending_validation -> validated/rejected -> approved -> consumed/superseded -> archived]
+
+instance_lifecycle:
+  tracking_enabled: true
+  state_persistence: ".aiox/squad-runtime/runner-ops/instance.yaml"
+  states: [CRIADA, EM_EXECUCAO, COMPLETA, PAUSADA, BLOQUEADA, CANCELADA, ARQUIVADA]
+
+journey_log:
+  enabled: true
+  template: "templates/journey-log-tmpl.yaml"
+  persistence: ".aiox/squad-runtime/runner-ops/journey-log.yaml"
+  events: [INITIATED, DELEGATED, CHECKPOINT, HANDOFF, DECISION, BLOCKER, RESOLVED, COMPLETED, FAILED]
+
+bu_mapping: "hub-framework"
+supported_modes: [CRIAR, VALIDAR, GERENCIAR, CONFIGURAR]
+
+distribution:
+  self_contained_pack: true
+  install_root: "squads/runner-ops/"
+  install_script: "scripts/install.sh"
+  runtime_boundary:
+    runners_must_not_depend_on_squad: true
+    canonical_runner_lib: "infrastructure/scripts/runner-lib/"
+    canonical_registry: "infrastructure/scripts/runner-lib/runner-registry.yaml"
+    canonical_outputs_root: "outputs/"
+
+# Dependencies
+dependencies:
+  - squad: sinkra-squad
+    reason: "SINKRA process mapping, quality gates"
+  - squad: squad-creator-pro
+    reason: "Squad creation templates, validation"
+
+# Squad Scripts (self-contained for installation, but targeting canonical runtime assets)
+scripts:
+  validate_runner:
+    path: "scripts/validate-runner.sh"
+    description: "Valida runners contra runner-lib e atualiza o registry canonico em infrastructure/."
+    targets:
+      registry: "infrastructure/scripts/runner-lib/runner-registry.yaml"
+      outputs: "outputs/runner-ops/validation/"
+  register_runner:
+    path: "scripts/register-runner.sh"
+    description: "Registra/atualiza runners no registry canonico do runner-lib."
+    targets:
+      registry: "infrastructure/scripts/runner-lib/runner-registry.yaml"
+  monitor_runners:
+    path: "scripts/monitor-runners.sh"
+    description: "Agrega metrics JSONL via registry canonico e gera health reports em outputs/runner-ops/health/."
+  install:
+    path: "scripts/install.sh"
+    description: "Verifica instalacao do squad e prepara diretórios locais sem acoplar runners ao squad."
+
+executor_profile:
+  supportedTaskTypes:
+    - implement
+    - deploy
+    - test
+  work_contexts: []
+  can_review: []
+  confidence_weight: 1.0
+
+# External references (governed, not owned physically)
+external_assets:
+  runner_lib:
+    path: "infrastructure/scripts/runner-lib/"
+    relationship: "governance owner"
+    note: "Runner-Ops governa este runtime, mas runners continuam apontando para ele diretamente."
+  runner_registry:
+    path: "infrastructure/scripts/runner-lib/runner-registry.yaml"
+    relationship: "canonical state"
+    note: "Fonte unica de verdade para descoberta, score e metadata de runners."
+  adr_046:
+    path: "docs/architecture/adrs/ADR-046-RUNNER-SWARM-HYBRID-ARCHITECTURE.md"
+    relationship: "reference"
+
+# Production evidence: squad has been executed in real scenarios
+tested: true
+
+# --- Auto-added schema fields (validate:squad-schema) ---
+capabilities:
+  - runner-ops
+workflows: []

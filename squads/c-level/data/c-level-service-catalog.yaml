@@ -1,0 +1,14 @@
+version: "1.0.0"
+services:
+  - id: workspace-service
+    service_catalog: workspace-runtime
+    endpoint: workspace/scripts/scaffold-workspace.js
+    owner: coo-orchestrator
+  - id: qa-service
+    service_catalog: workspace-health
+    endpoint: docs/qa/workspace-health/
+    owner: cso
+  - id: business-profile-service
+    service_catalog: business-profile-pipeline
+    endpoint: squads/c-level/workflows/business-profile-pipeline.yaml
+    owner: cmo-architect

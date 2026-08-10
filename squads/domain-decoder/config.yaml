@@ -1,0 +1,270 @@
+pack:
+  name: domain-decoder
+  version: "2.2.0"
+  entry_agent: decoder-chief
+  description: "Squad especializado em decodificação de domínio a partir de código brownfield — extrai regras de negócio, taxonomia e modelo de negócio de sistemas legados, atuais e open-source, com mapeamento para SINKRA Tokens"
+  icon: "🧬"
+
+activation:
+  shortcuts:
+    - "/domain-decoder:decoder-chief"
+    - "/domain-decoder:eric-evans"
+    - "/domain-decoder:ronald-ross"
+    - "/domain-decoder:michael-feathers"
+    - "/domain-decoder:barbara-von-halle"
+    - "/domain-decoder:james-taylor"
+    - "/domain-decoder:martin-fowler"
+    - "/domain-decoder:graham-witt"
+  commands:
+    - "*extract-full"
+    - "*standardize"
+    - "*diagnose"
+    - "*classify-rules"
+    - "*map-domain"
+    - "*extract-rules"
+    - "*characterize-legacy"
+    - "*model-decisions"
+    - "*formalize-dmn"
+    - "*express-rules"
+    - "*validate-sbvr"
+
+squad:
+  name: domain-decoder
+  title: "Domain Decoder Squad"
+  version: "2.2.0"
+  description: "Squad especializado em decodificação de domínio a partir de código brownfield — extrai regras de negócio, taxonomia e modelo de negócio de sistemas legados, atuais e open-source, com mapeamento para SINKRA Tokens"
+  domain: business-model-extraction
+  author: "AIOX Squad Creator"
+  score: 7.5
+  status: active
+  sinkra_native: true
+  sinkra_certified_at: "2026-04-02"
+  created_at: "2026-02-18"
+  last_updated: "2026-03-31"
+
+capabilities:
+  - "Extração de regras de negócio de sistemas brownfield (SBVR, DMN)"
+  - "Mapeamento de domínios e bounded contexts (DDD)"
+  - "Classificação de regras com taxonomia Ross (5 tipos)"
+  - "Modelagem de decisões com Decision Model e DMN tables"
+  - "Expressão de regras em RuleSpeak (zero ambiguidade)"
+  - "Caracterização de código legado com testes de caracterização"
+  - "Padronização de regras existentes (docs, spreadsheets, wiki)"
+  - "Validação SBVR (45 itens) e qualidade de extração (54 itens)"
+  - "Mapeamento de regras extraídas para SINKRA Tokens"
+
+workspace_integration:
+  level: none
+  rationale: >-
+    Domain Decoder extrai dominio a partir de codigo brownfield e fontes
+    tecnicas. Nao precisa de contrato proprio com `workspace/`.
+
+tier_system:
+  orchestrator: decoder-chief
+  tier_0:
+    - ronald-ross
+    - eric-evans
+  tier_1:
+    - michael-feathers
+    - barbara-von-halle
+  tier_2:
+    - james-taylor
+    - martin-fowler
+  tier_3:
+    - graham-witt
+  tools:
+    - sbvr-checklist
+
+agents:
+  - id: decoder-chief
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/decoder-chief.md
+    tier: orchestrator
+    role: "Orquestrador do squad — decodifica regras, taxonomia e modelo de negócio"
+
+  - id: ronald-ross
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/ronald-ross.md
+    tier: 0
+    role: "Taxonomia e classificação de regras de negócio"
+
+  - id: eric-evans
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/eric-evans.md
+    tier: 0
+    role: "Mapeamento de domínios e ubiquitous language"
+
+  - id: michael-feathers
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/michael-feathers.md
+    tier: 1
+    role: "Entrada segura em código legado"
+
+  - id: barbara-von-halle
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/barbara-von-halle.md
+    tier: 1
+    role: "Modelagem de lógica de negócio (Decision Model)"
+
+  - id: james-taylor
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/james-taylor.md
+    tier: 2
+    role: "Formalização em DMN e decision tables"
+
+  - id: martin-fowler
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/martin-fowler.md
+    tier: 2
+    role: "Padrões arquiteturais e localização de regras"
+
+  - id: graham-witt
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/graham-witt.md
+    tier: 3
+    role: "Expressão de regras em linguagem natural sem ambiguidade"
+
+workflows:
+  - id: extract-rules
+    file: workflows/wf-extract-rules.yaml
+    description: "Workflow completo de extração de regras de um sistema legado"
+
+  - id: standardize-rules
+    file: workflows/wf-standardize-rules.yaml
+    description: "Workflow de padronização de regras já extraídas"
+
+tasks:
+  - id: classify-rules
+    file: tasks/classify-rules.md
+  - id: map-domain
+    file: tasks/map-domain.md
+  - id: characterize-legacy
+    file: tasks/characterize-legacy.md
+  - id: model-decisions
+    file: tasks/model-decisions.md
+  - id: express-rules
+    file: tasks/express-rules.md
+  - id: extract-rules
+    file: tasks/extract-rules.md
+
+checklists:
+  - id: sbvr-validation
+    file: checklists/sbvr-validation.md
+  - id: extraction-quality
+    file: checklists/extraction-quality.md
+
+keywords:
+  - domain decoding
+  - business rules
+  - taxonomy extraction
+  - business model reverse engineering
+  - legacy systems
+  - brownfield analysis
+  - open source analysis
+  - reverse engineering
+  - decision model
+  - DMN
+  - SBVR
+  - domain driven design
+  - characterization tests
+  - modernization
+
+# SINKRA v3.1
+artifact_contracts:
+  - artifact_id: "rule-catalog"
+    template_path: "templates/rule-catalog-tmpl.md"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "enforcement-gap-report"
+    template_path: "templates/enforcement-gap-report-tmpl.md"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "domain-map"
+    template_path: "templates/domain-map-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "decision-model"
+    template_path: "templates/decision-model-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "sinkra-token-map"
+    template_path: "templates/sinkra-token-map-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "sinkra-composition-proposal"
+    template_path: "templates/sinkra-composition-proposal-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+
+bu_mapping: "hub-framework"
+
+supported_modes:
+  - ENTENDER
+  - EXPLORAR
+  - RESOLVER
+  - PLANEJAR
+  - VALIDAR
+
+# --- Auto-added schema fields (validate:squad-schema) ---
+name: "domain-decoder"
+domain: "domain-decoder"
+metadata:
+  status: active

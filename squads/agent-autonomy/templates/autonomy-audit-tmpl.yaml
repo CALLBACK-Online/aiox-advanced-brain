@@ -1,0 +1,14 @@
+report:
+  id: autonomy-audit-report
+  version: "1.0.0"
+  agent_id: ""
+  assessed_level: ""
+  executive_summary: ""
+  scores:
+    planning: 0
+    memory: 0
+    tool_use: 0
+    overall: 0
+  failure_modes: []
+  recommendations: []
+  sources: []

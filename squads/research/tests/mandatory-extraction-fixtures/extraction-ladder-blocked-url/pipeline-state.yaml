@@ -1,0 +1,8 @@
+---
+pipeline_id: "fixture-extraction-ladder-blocked-url"
+status: completed
+stop_reason: coverage_sufficient
+phase: p5b_finalize
+inferred_pattern: single_player
+comparison_pattern: single_player
+mandatory_additions: []

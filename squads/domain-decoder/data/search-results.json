@@ -1,0 +1,408 @@
+[
+  {
+    "index": 1,
+    "target_title": "Principles of the Business Rule Approach",
+    "target_author": "Ronald G. Ross",
+    "tier": "0",
+    "priority": 1,
+    "total_results": 0,
+    "matches": [],
+    "status": "review"
+  },
+  {
+    "index": 2,
+    "target_title": "Building Business Solutions Business Analysis with Business Rules",
+    "target_author": "Ronald G. Ross, Gladys S.W. Lam",
+    "tier": "0",
+    "priority": 2,
+    "total_results": 0,
+    "matches": [],
+    "status": "review"
+  },
+  {
+    "index": 3,
+    "target_title": "Business Rule Concepts Getting to the Point of Knowledge",
+    "target_author": "Ronald G. Ross",
+    "tier": "0",
+    "priority": 3,
+    "total_results": 0,
+    "matches": [],
+    "status": "review"
+  },
+  {
+    "index": 4,
+    "target_title": "Business Knowledge Blueprints Enabling Your Data to Speak the Language of the Business",
+    "target_author": "Ronald G. Ross",
+    "tier": "0",
+    "priority": 4,
+    "total_results": 0,
+    "matches": [],
+    "status": "review"
+  },
+  {
+    "index": 5,
+    "target_title": "Domain-Driven Design Tackling Complexity in the Heart of Software",
+    "target_author": "Eric Evans",
+    "tier": "0",
+    "priority": 5,
+    "total_results": 5,
+    "matches": [
+      {
+        "score": 1.342,
+        "title": "DOMAIN-DRIVEN DESIGN: TACKLING COMPLEXITY IN THE HEART OF SOFTWARE",
+        "author": "Eric Evans",
+        "language": "English",
+        "command": "/book2082584_15ba8f",
+        "format": "pdf",
+        "size": "4.49 MB"
+      },
+      {
+        "score": 1.342,
+        "title": "DOMAIN-DRIVEN DESIGN: TACKLING COMPLEXITY IN THE HEART OF SOFTWARE",
+        "author": "Eric Evans",
+        "language": "English",
+        "command": "/book2726356_a9a718",
+        "format": "epub",
+        "size": "4.41 MB"
+      },
+      {
+        "score": 1.342,
+        "title": "DOMAIN-DRIVEN DESIGN: TACKLING COMPLEXITY IN THE HEART OF SOFTWARE",
+        "author": "Eric Evans",
+        "language": "English",
+        "command": "/book3399451_9793bd",
+        "format": "pdf",
+        "size": "3.61 MB"
+      }
+    ],
+    "status": "found"
+  },
+  {
+    "index": 6,
+    "target_title": "Working Effectively with Legacy Code",
+    "target_author": "Michael Feathers",
+    "tier": "1",
+    "priority": 6,
+    "total_results": 4,
+    "matches": [
+      {
+        "score": 1.35,
+        "title": "WORKING EFFECTIVELY WITH LEGACY CODE",
+        "author": "Michael C. Feathers",
+        "language": "English",
+        "command": "/book18447245_171727",
+        "format": "mobi",
+        "size": "4.41 MB"
+      },
+      {
+        "score": 1.35,
+        "title": "WORKING EFFECTIVELY WITH LEGACY CODE",
+        "author": "Michael C. Feathers",
+        "language": "English",
+        "command": "/book117445026_c13fbd",
+        "format": "pdf",
+        "size": "1.68 MB"
+      },
+      {
+        "score": 1.35,
+        "title": "WORKING EFFECTIVELY WITH LEGACY CODE",
+        "author": "Michael C. Feathers",
+        "language": "English",
+        "command": "/book118334338_a120ec",
+        "format": "azw",
+        "size": "4.42 MB"
+      }
+    ],
+    "status": "found"
+  },
+  {
+    "index": 7,
+    "target_title": "The Decision Model A Business Logic Framework Linking Business and Technology",
+    "target_author": "Barbara von Halle, Larry Goldberg",
+    "tier": "1",
+    "priority": 7,
+    "total_results": 2,
+    "matches": [
+      {
+        "score": 1.701,
+        "title": "THE DECISION MODEL: A BUSINESS LOGIC FRAMEWORK LINKING BUSINESS AND TECHNOLOGY (IT MANAGEMENT)",
+        "author": "Barbara von Halle, Larry Goldberg",
+        "language": "English",
+        "command": "/book943380_a54e0e",
+        "format": "pdf",
+        "size": "8.59 MB"
+      },
+      {
+        "score": 1.644,
+        "title": "THE DECISION MODEL: A BUSINESS LOGIC FRAMEWORK LINKING BUSINESS AND TECHNOLOGY",
+        "author": "Barbara von Halle & Larry Goldberg",
+        "language": "English",
+        "command": "/book118695305_bf724e",
+        "format": "epub",
+        "size": "3.43 MB"
+      }
+    ],
+    "status": "found"
+  },
+  {
+    "index": 8,
+    "target_title": "Business Rules Applied Building Better Systems Using the Business Rules Approach",
+    "target_author": "Barbara von Halle",
+    "tier": "1",
+    "priority": 8,
+    "total_results": 2,
+    "matches": [
+      {
+        "score": 1.494,
+        "title": "BUSINESS RULES APPLIED: BUILDING BETTER SYSTEMS USING THE BUSINESS RULES APPROACH",
+        "author": "Barbara von Halle",
+        "language": "English",
+        "command": "/book491921_152d4a",
+        "format": "pdf",
+        "size": "9.46 MB"
+      },
+      {
+        "score": 1.494,
+        "title": "BUSINESS RULES APPLIED: BUILDING BETTER SYSTEMS USING THE BUSINESS RULES APPROACH",
+        "author": "Barbara von Halle",
+        "language": "English",
+        "command": "/book650843_83f1b3",
+        "format": "pdf",
+        "size": "9.46 MB"
+      }
+    ],
+    "status": "found"
+  },
+  {
+    "index": 9,
+    "target_title": "Real-World Decision Modeling with DMN",
+    "target_author": "James Taylor, Jan Purchase",
+    "tier": "2",
+    "priority": 9,
+    "total_results": 0,
+    "matches": [],
+    "status": "review"
+  },
+  {
+    "index": 10,
+    "target_title": "Decision Management Systems A Practical Guide to Using Business Rules and Predictive Analytics",
+    "target_author": "James Taylor",
+    "tier": "2",
+    "priority": 10,
+    "total_results": 0,
+    "matches": [],
+    "status": "review"
+  },
+  {
+    "index": 11,
+    "target_title": "Patterns of Enterprise Application Architecture",
+    "target_author": "Martin Fowler",
+    "tier": "2",
+    "priority": 11,
+    "total_results": 5,
+    "matches": [
+      {
+        "score": 1.35,
+        "title": "PATTERNS OF ENTERPRISE APPLICATION ARCHITECTURE",
+        "author": "Martin Fowler",
+        "language": "English",
+        "command": "/book19218117_984fbd",
+        "format": "pdf",
+        "size": "3.36 MB"
+      },
+      {
+        "score": 1.35,
+        "title": "PATTERNS OF ENTERPRISE APPLICATION ARCHITECTURE",
+        "author": "Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford",
+        "language": "English",
+        "command": "/book17941054_97fc4b",
+        "format": "epub",
+        "size": "2.05 MB"
+      },
+      {
+        "score": 1.35,
+        "title": "PATTERNS OF ENTERPRISE APPLICATION ARCHITECTURE",
+        "author": "Martin Fowler",
+        "language": "English",
+        "command": "/book21337400_9bf4cc",
+        "format": "pdf",
+        "size": "4.53 MB"
+      }
+    ],
+    "status": "found"
+  },
+  {
+    "index": 12,
+    "target_title": "Analysis Patterns Reusable Object Models",
+    "target_author": "Martin Fowler",
+    "tier": "2",
+    "priority": 12,
+    "total_results": 0,
+    "matches": [],
+    "status": "review"
+  },
+  {
+    "index": 13,
+    "target_title": "Refactoring Improving the Design of Existing Code",
+    "target_author": "Martin Fowler",
+    "tier": "2",
+    "priority": 13,
+    "total_results": 5,
+    "matches": [
+      {
+        "score": 1.34,
+        "title": "REFACTORING: IMPROVING THE DESIGN OF EXISTING CODE",
+        "author": "Martin Fowler",
+        "language": "English",
+        "command": "/book24017831_ab24bc",
+        "format": "pdf",
+        "size": "13.21 MB"
+      },
+      {
+        "score": 1.34,
+        "title": "REFACTORING: IMPROVING THE DESIGN OF EXISTING CODE",
+        "author": "Martin Fowler",
+        "language": "English",
+        "command": "/book23982736_0a8caf",
+        "format": "epub",
+        "size": "35.06 MB"
+      },
+      {
+        "score": 1.34,
+        "title": "REFACTORING: IMPROVING THE DESIGN OF EXISTING CODE",
+        "author": "Martin Fowler",
+        "language": "English",
+        "command": "/book23982737_319e69",
+        "format": "mobi",
+        "size": "13.90 MB"
+      }
+    ],
+    "status": "found"
+  },
+  {
+    "index": 14,
+    "target_title": "Writing Effective Business Rules",
+    "target_author": "Graham Witt",
+    "tier": "3",
+    "priority": 14,
+    "total_results": 0,
+    "matches": [],
+    "status": "review"
+  },
+  {
+    "index": 15,
+    "target_title": "DMN Method and Style",
+    "target_author": "Bruce Silver",
+    "tier": "bonus",
+    "priority": 15,
+    "total_results": 0,
+    "matches": [],
+    "status": "review"
+  },
+  {
+    "index": 16,
+    "target_title": "Architecture Modernization",
+    "target_author": "Nick Tune",
+    "tier": "bonus",
+    "priority": 16,
+    "total_results": 5,
+    "matches": [
+      {
+        "score": 0.798,
+        "title": "ARCHITECTURE MODERNIZATION: SOCIO-TECHNICAL ALIGNMENT OF SOFTWARE, STRATEGY, AND STRUCTURE",
+        "author": "Nick Tune, Jean-Georges Perrin",
+        "language": "English",
+        "command": "/book27447461_827220",
+        "format": "pdf",
+        "size": "20.40 MB"
+      },
+      {
+        "score": 0.798,
+        "title": "ARCHITECTURE MODERNIZATION: SOCIO-TECHNICAL ALIGNMENT OF SOFTWARE, STRATEGY, AND STRUCTURE",
+        "author": "Nick Tune, Jean-Georges Perrin",
+        "language": "English",
+        "command": "/book29395996_c4bd93",
+        "format": "pdf",
+        "size": "7.78 MB"
+      },
+      {
+        "score": 0.798,
+        "title": "ARCHITECTURE MODERNIZATION: SOCIO-TECHNICAL ALIGNMENT OF SOFTWARE, STRATEGY, AND STRUCTURE",
+        "author": "Nick Tune, Jean-Georges Perrin",
+        "language": "English",
+        "command": "/book27807250_1f280a",
+        "format": "epub",
+        "size": "21.86 MB"
+      }
+    ],
+    "status": "found"
+  },
+  {
+    "index": 17,
+    "target_title": "Learning Domain-Driven Design",
+    "target_author": "Vlad Khononov",
+    "tier": "bonus",
+    "priority": 17,
+    "total_results": 0,
+    "matches": [],
+    "status": "review"
+  },
+  {
+    "index": 18,
+    "target_title": "Your Code as a Crime Scene",
+    "target_author": "Adam Tornhill",
+    "tier": "bonus",
+    "priority": 18,
+    "total_results": 5,
+    "matches": [
+      {
+        "score": 0.719,
+        "title": "YOUR CODE AS A CRIME SCENE: USE FORENSIC TECHNIQUES TO ARREST DEFECTS, BOTTLENECKS, AND BAD DESIGN IN YOUR PROGRAMS",
+        "author": "Adam Tornhill",
+        "language": "English",
+        "command": "/book2622930_752c91",
+        "format": "epub",
+        "size": "15.90 MB"
+      },
+      {
+        "score": 0.719,
+        "title": "YOUR CODE AS A CRIME SCENE: USE FORENSIC TECHNIQUES TO ARREST DEFECTS, BOTTLENECKS, AND BAD DESIGN IN YOUR PROGRAMS",
+        "author": "Adam Tornhill",
+        "language": "English",
+        "command": "/book28347437_8d9b65",
+        "format": "pdf",
+        "size": "53.05 MB"
+      },
+      {
+        "score": 0.719,
+        "title": "YOUR CODE AS A CRIME SCENE: USE FORENSIC TECHNIQUES TO ARREST DEFECTS, BOTTLENECKS, AND BAD DESIGN IN YOUR PROGRAMS",
+        "author": "Adam Tornhill",
+        "language": "English",
+        "command": "/book5103083_47adc4",
+        "format": "pdf",
+        "size": "6.85 MB"
+      }
+    ],
+    "status": "found"
+  },
+  {
+    "index": 19,
+    "target_title": "Knowledge Automation How to Implement Decision Management in Business Processes",
+    "target_author": "Alan Fish",
+    "tier": "bonus",
+    "priority": 19,
+    "total_results": 0,
+    "matches": [],
+    "status": "review"
+  },
+  {
+    "index": 20,
+    "target_title": "Domain Storytelling A Collaborative Visual and Agile Way to Build Domain-Driven Software",
+    "target_author": "Stefan Hofer, Henning Schwentner",
+    "tier": "bonus",
+    "priority": 20,
+    "total_results": 0,
+    "matches": [],
+    "status": "review"
+  }
+]

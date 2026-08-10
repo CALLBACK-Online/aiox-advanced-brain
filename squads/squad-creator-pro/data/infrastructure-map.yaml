@@ -1,0 +1,163 @@
+# Infrastructure Map — squad-creator-pro
+# Maps the operational infrastructure available to this squad
+# SINKRA Mandamento 9/10: observability and handoff mapping
+#
+# Schema version: 1.0.0
+# Created: 2026-04-13
+# Last updated: 2026-04-13
+
+version: "1.0.0"
+last_updated: "2026-04-13"
+description: |
+  Operational infrastructure map for squad-creator-pro (upgrade-pack).
+  Covers agents, scripts, skills, runtime paths, and cross-squad dependencies.
+
+agents:
+  total: 6
+  registered_in_config: 6
+  items:
+    - id: squad-chief
+      path: agents/squad-chief.md
+      sinkra_type: Agent
+      role: "Master orchestrator for squad creation and upgrade"
+    - id: oalanicolas
+      path: agents/oalanicolas.md
+      sinkra_type: Clone
+      role: "Knowledge architect mind clone — DNA extraction, framework analysis"
+    - id: pedro-valerio
+      path: agents/pedro-valerio.md
+      sinkra_type: Agent
+      role: "Process axioma assessment, workflow audit, quality gates"
+    - id: thiago_finch
+      path: agents/thiago_finch.md
+      sinkra_type: Clone
+      role: "Business strategy and marketing intelligence"
+    - id: ecosystem-analyst
+      path: agents/ecosystem-analyst.md
+      sinkra_type: Agent
+      role: "Ecosystem topology analysis, gap detection, cost breakdown"
+    - id: heuristic-ops
+      path: agents/heuristic-ops.md
+      sinkra_type: Agent
+      role: "Heuristic lifecycle management — consolidation, conflict detection, promotion"
+
+scripts:
+  total: 44
+  categories:
+    validation:
+      count: 10
+      items:
+        - scripts/validate-squad-structure.py
+        - scripts/validate-agent-output.py
+        - scripts/validate-workspace-contract.py
+        - scripts/validate-all.sh
+        - scripts/validate-squad.sh
+        - scripts/validate-clone.sh
+        - scripts/coherence-validator.py
+        - scripts/checklist_validator.py
+        - scripts/naming_validator.py
+        - scripts/yaml_validator.py
+    scoring:
+      count: 4
+      items:
+        - scripts/scoring.py
+        - scripts/fidelity-score.sh
+        - scripts/quality_gate.py
+        - scripts/modernization-score.sh
+    runtime:
+      count: 8
+      items:
+        - scripts/squad-workflow-runner.cjs
+        - scripts/squad-state-manager.cjs
+        - scripts/squad-context-loader.cjs
+        - scripts/wave-loop.cjs
+        - scripts/wave-loop.sh
+        - scripts/detect-environment-contract.cjs
+        - scripts/model-tier-validator.cjs
+        - scripts/model-usage-logger.cjs
+    generation:
+      count: 6
+      items:
+        - scripts/scaffold-squad.cjs
+        - scripts/generate-squad-guide.js
+        - scripts/generate-squad-greeting.js
+        - scripts/generate-heuristic-registry.py
+        - scripts/export-antigravity-workflows.cjs
+        - scripts/create-agent-preflight.py
+    analysis:
+      count: 6
+      items:
+        - scripts/squad-analytics.py
+        - scripts/inventory.py
+        - scripts/dependency_check.py
+        - scripts/cross-mind-linker.py
+        - scripts/security_scanner.py
+        - scripts/squad_utils.py
+    lifecycle:
+      count: 6
+      items:
+        - scripts/refresh-registry.py
+        - scripts/sync-ide-skills.py
+        - scripts/sync-chief-codex-skill.js
+        - scripts/save-session-metrics.py
+        - scripts/on-specialist-complete.py
+        - scripts/load-business-sops.cjs
+    operations:
+      count: 4
+      items:
+        - scripts/rename-squad.sh
+        - scripts/verify-squad-completeness.sh
+        - scripts/clone-review.sh
+        - scripts/assess-sources.sh
+
+skills:
+  total: 2
+  items:
+    - id: squad
+      path: skills/squad.md
+      description: "Master orchestrator for squad creation"
+    - id: fidelity-score
+      path: skills/fidelity-score.md
+      description: "Deterministic fidelity scoring for mind clones"
+
+runtime_state:
+  base_path: ".aiox/squad-runtime/squad-creator-pro/"
+  artifacts:
+    - path: runtime-log.yaml
+      purpose: "Runtime audit log (logging.runtime_audit)"
+    - path: artifact-state.yaml
+      purpose: "Artifact lifecycle tracking (artifact_lifecycle)"
+    - path: instance.yaml
+      purpose: "Instance lifecycle tracking (instance_lifecycle)"
+    - path: journey-log.yaml
+      purpose: "Journey log persistence (journey_log)"
+    - path: token-state.json
+      purpose: "Token handoff persistence (token-registry)"
+
+cross_squad_dependencies:
+  base_squad:
+    id: squad-creator
+    relationship: "upgrade-pack overlay"
+    base_requirement: ">=5.0.0"
+    shared: ["composition_mapping (base)", "templates (base set)", "scripts (proxied)"]
+  sinkra_squad:
+    consumed: ["composition-rules.yaml", "token-registry.yaml (schema reference)", "ecosystem-registry.yaml"]
+  ecosystem_registry:
+    path: "squads/sinkra-squad/data/ecosystem-registry.yaml"
+    role: "Source of truth for squad inventory (replaces deprecated local squad-registry.yaml)"
+
+gaps:
+  - area: "Orphan scripts"
+    detail: "23 of 44 scripts are not referenced by any task or workflow"
+    impact: "LOW — most are base-squad proxies inherited via upgrade-pack pattern"
+    remediation: "Document as proxies or wire into tasks"
+  - area: "Pipeline execution log"
+    detail: "No committed pipeline-execution-log.yaml — runtime only"
+    impact: "LOW — observability is architecturally declared but evidence is runtime-only"
+    remediation: "Consider periodic snapshots to committed data/"
+
+reuse_ratio:
+  scripts_referenced: 21
+  scripts_total: 44
+  ratio: 0.48
+  note: "Low ratio due to base-squad proxy scripts; actual operational scripts are well-wired"

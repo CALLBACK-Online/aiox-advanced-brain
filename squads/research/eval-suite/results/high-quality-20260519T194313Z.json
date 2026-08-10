@@ -1,0 +1,22 @@
+{
+  "slug": "high-quality",
+  "scores": {
+    "coverage": 17,
+    "citation_quality": 17,
+    "claim_verifiability": 16,
+    "narrative_coherence": 16,
+    "actionability": 16
+  },
+  "total": 82,
+  "rationale_per_dim": {
+    "coverage": "Mock (baseline-derived, total=82): breadth proxy.",
+    "citation_quality": "Mock: source proxy.",
+    "claim_verifiability": "Mock: verifiability proxy.",
+    "narrative_coherence": "Mock: coherence proxy.",
+    "actionability": "Mock: actionability proxy."
+  },
+  "model_used": "mock/claude-sonnet-4-5",
+  "timestamp": "20260519T194313Z",
+  "research_dir": "/Users/alan/Code/sinkra-hub/squads/research/eval-suite/fixtures/high-quality",
+  "rubric_version": "1.0"
+}

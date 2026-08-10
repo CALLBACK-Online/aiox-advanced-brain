@@ -1,0 +1,139 @@
+version: 1
+gates:
+  - id: visual_density_gate
+    gate: Slides fit their visual role.
+    blocks_if:
+      - Visible words exceed template limit without appendix reason.
+      - More than two consecutive slides use the same layout family.
+      - A key slide has no visual structure.
+    pass_if:
+      - Density is appropriate for audience and slide function.
+    score_weight: 15
+    absorbed_from: [powerpoint-skill, ppt-master]
+  - id: chart_selection_gate
+    gate: Chart matches data shape.
+    blocks_if:
+      - Chart type is chosen for aesthetics instead of data shape.
+      - Axes, units, or target baselines are missing.
+    pass_if:
+      - Pick/skip rule justifies the selected chart.
+    score_weight: 10
+    absorbed_from: [ppt-master]
+  - id: media_relevance_gate
+    gate: Images and videos carry meaning.
+    blocks_if:
+      - Media is atmospheric or decorative.
+      - Media lacks relevance reason.
+    pass_if:
+      - Media either proves, demonstrates, or clarifies the claim.
+    score_weight: 10
+    absorbed_from: [PPTAgent, banana-slides]
+  - id: overlap_boundary_gate
+    gate: Rendered slides have no overlap or boundary violations.
+    blocks_if:
+      - Text overlaps charts, cards, or other text.
+      - Element exceeds canvas bounds.
+      - Font is too small for intended display.
+    pass_if:
+      - Layout can pass visual inspection or automated overlap check.
+    score_weight: 10
+    absorbed_from: [powerpoint-skill]
+  - id: brand_fidelity_gate
+    gate: Deck follows the selected brand/template system, not just its colors.
+    blocks_if:
+      - Brand deck or imported template exists but no manifest was produced.
+      - Typography, spacing, grid, surface treatment, or chart style contradicts the reference.
+      - The deck applies logo/colors while ignoring composition and density rules.
+    pass_if:
+      - Brand/template manifest maps tokens, layout families, type scale, chart style, imagery, and anti-patterns.
+    score_weight: 15
+    absorbed_from: [ppt-master, presentation-ai]
+  - id: rendered_design_quality_gate
+    gate: Key slides look premium after rendering, not only in source spec.
+    blocks_if:
+      - Cover, reframe, mechanism, proof, or CTA slide lacks rendered review.
+      - Rendered review finds generic layout, weak hierarchy, clutter, poor crop, or unreadable text.
+      - More than one key slide scores below 90 in visual hierarchy or brand fidelity.
+    pass_if:
+      - Rendered key slides pass hierarchy, spacing, contrast, crop, emphasis, and scan-path checks.
+    score_weight: 20
+    absorbed_from: [PPTAgent, powerpoint-skill, banana-slides]
+  - id: template_replication_gate
+    gate: Imported or selected templates are replicated as reusable behavior.
+    blocks_if:
+      - Template selection has no rejected runners-up.
+      - Layout choice is based on taste rather than slide function.
+      - Imported template elements are not mapped to reusable slide roles.
+    pass_if:
+      - Each key slide declares layout family, source pattern, function fit, and replication constraints.
+    score_weight: 15
+    absorbed_from: [ppt-master, presentation-ai, PPTAgent]
+
+  - id: eight_absolute_bans_gate
+    gate: No design pattern in the deck matches any of the 8 canonical absolute bans (refuse-and-rewrite).
+    authority: .claude/rules/design-absolute-bans.md §2
+    blocks_if:
+      - ban_01_side_stripe_borders: Card / list-item / callout has border-left or border-right >1px as colored accent
+      - ban_02_gradient_text: Heading or display text uses background-clip:text + gradient background
+      - ban_03_glassmorphism_default: Decorative glass panels / blurs used as default (not rare/purposeful)
+      - ban_04_hero_metric_template: Big number + small label + supporting stats + gradient accent SaaS cliché
+      - ban_05_identical_card_grids: 3+ same-sized cards with icon + heading + text repeating without variation
+      - ban_06_modal_as_first_thought: Modal used where inline / progressive disclosure was viable
+      - ban_07_em_dashes: Slide copy contains em dashes (—) or double-hyphens (--)
+      - ban_08_pure_black_or_white: Background or surface uses #000 / #fff exactly (no brand tint)
+    pass_if:
+      - Cards use full borders, background tints, leading numbers/icons, or nothing
+      - Emphasis via weight or size (not gradient text)
+      - Glass only rare and purposeful (declared in design-direction)
+      - Hero uses composed hierarchy with contextual content
+      - Card grids use 2-col zig-zag, asymmetric, horizontal scroll, or single varied row
+      - Inline / progressive disclosure preferred over modal
+      - Punctuation uses commas, colons, semicolons, periods, parentheses
+      - Neutrals tinted to brand hue with min_chroma 0.005
+    score_weight: 25
+    severity: P0
+    absorbed_from: [impeccable.style v3.1.1 absolute bans, tasteskill.dev v2 anti-patterns]
+
+  - id: lila_palette_gate
+    gate: Deck does NOT use the AI Purple/Blue lila aesthetic as primary accent.
+    authority: .claude/rules/design-absolute-bans.md §2 (extended ban #9)
+    blocks_if:
+      - lila_detected: Primary accent has saturation > 0.7 AND hue in [260, 280]
+      - neon_glow_detected: Box-shadow on accent creates purple/blue glow
+      - gradient_neon_detected: Gradient backgrounds combine purple + neon
+    pass_if:
+      - Neutrals Zinc/Slate with accent from Emerald | Electric Blue | Deep Rose
+      - OR brand has explicit purple/blue declared in workspace L2-tactical/brand/
+    score_weight: 10
+    severity: P1
+    absorbed_from: [tasteskill.dev v2 — Rule 2 (THE LILA BAN)]
+
+  - id: font_monoculture_gate
+    gate: No font in render-lock appears in canonical blocklist.
+    authority: squads/design-ops/data/font-allowlist.yaml + .claude/rules/design-absolute-bans.md §1
+    blocks_if:
+      - inter_in_brand_register: render-lock.font_family uses Inter/Inter Tight AND deck register is brand|pitch|marketing|creative
+      - italic_serif_hero: Hero uses Fraunces or Recoleta italic
+      - generic_monoculture: Any of [Mona Sans, Plus Jakarta Sans, Space Grotesk, Instrument Sans] used
+    pass_if:
+      - Fonts from allowed_sans (Geist | Outfit | Cabinet Grotesk | Satoshi)
+      - Mono fonts from allowed_mono (Geist Mono | JetBrains Mono | IBM Plex Mono)
+      - Inter allowed ONLY in technical product/dashboard registers
+    score_weight: 20
+    severity: P0
+    absorbed_from: [tasteskill.dev v2 Rule 1, impeccable.style v3.0.7]
+
+  - id: animation_easing_gate
+    gate: Motion uses ease-out exponential, never bouncy/elastic, never layout properties.
+    authority: .claude/rules/design-absolute-bans.md §2 (extended bans #12-13)
+    blocks_if:
+      - bounce_easing: Animation cubic-bezier corresponds to bounce/elastic (overshoot > 0)
+      - layout_property_animation: Animates width, height, top, left, margin, padding
+      - linear_only: All transitions linear with no easing variation
+    pass_if:
+      - Transitions use ease-out-quart | ease-out-quint | ease-out-expo
+      - Animates via transform and opacity ONLY
+      - Spring physics specs (Framer Motion): stiffness=100, damping=20
+    score_weight: 8
+    severity: P1
+    absorbed_from: [tasteskill.dev v2 Section 4, impeccable.style motion-design.md]

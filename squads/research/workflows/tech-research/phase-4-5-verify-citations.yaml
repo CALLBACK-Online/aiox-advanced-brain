@@ -1,0 +1,157 @@
+workflow:
+  phases:
+    4_5_verify_citations:
+      # MODEL TIER: MAIN MODEL (Opus/Sonnet) - requires semantic verification
+      # Story: STORY-RA-D.1 — per-claim adaptive classification + archive.org + rewrite-claim
+      name: "Citation Verification (per-claim adaptive)"
+      description: |
+        Verify all claims in the synthesized report have traceable sources.
+        RA-D.1 upgrade: CITATION_GATE is now per-claim adaptive (not binary).
+        Each claim is classified as supported/unsupported/unknown/ambiguous.
+        Dead URLs trigger archive.org fallback. Ambiguous claims are rewritten
+        with audit trail. Veto fires only if unsupported_top_tier > 20%.
+
+        If RA-C done: consumes Sackett graded_claims for evidence_grade enrichment.
+        If RA-C DEFERRED: operates standalone without Sackett (graceful fallback).
+
+      execution: |
+        1. Load prompts/verify-citations.md
+
+        2. Extract factual claims using Worker (deterministic regex extraction):
+           ```bash
+           python3 squads/research/scripts/tech-research/claim_extractor.py extract \
+             < {output_dir}/02-research-report.md \
+             > {output_dir}/claims-extracted.json
+           ```
+           Returns claims with type + per-claim metadata (claim_id, rewritten=false, etc.)
+
+        3. Match claims to sources using Worker (string matching):
+           ```bash
+           echo '{"claims":[...],"sources":[...]}' | \
+             python3 squads/research/scripts/tech-research/claim_extractor.py match \
+             > {output_dir}/claims-matched.json
+           ```
+           Returns MATCHED/UNSOURCED per claim + match_score.
+
+        4. Per-claim classification via citation_verifier (AC-2):
+           Determine if Sackett output is available (RA-C done or DEFERRED):
+
+           IF RA-C done AND {output_dir}/sackett.md exists:
+           ```bash
+           python3 squads/research/scripts/tech-research/citation_verifier.py verify \
+             --claims {output_dir}/claims-matched.json \
+             --sources {output_dir}/sources.json \
+             --sackett {output_dir}/sackett.md \
+             > {output_dir}/claims-verified.json
+           ```
+
+           IF RA-C DEFERRED (no sackett.md):
+           ```bash
+           python3 squads/research/scripts/tech-research/citation_verifier.py verify \
+             --claims {output_dir}/claims-matched.json \
+             --sources {output_dir}/sources.json \
+             > {output_dir}/claims-verified.json
+           ```
+
+           Per-claim classification:
+           - supported   = source content matches claim (live OR archive snapshot)
+           - unsupported = URL dead + no archive snapshot found
+           - unknown     = source accessible but doesn't clearly confirm/refute
+           - ambiguous   = source diverges partially → candidate for rewrite-claim
+
+           archive.org fallback fires automatically on dead URLs (AC-1):
+           - Exponential backoff: 1s/2s/4s
+           - Cache: squads/research/scripts/tech-research/.archive-cache/ (gitignored)
+           - If snapshot found: uses snapshot URL + marks archive_url in output
+           - If no snapshot: claim marked unsupported (not fatal error)
+
+           Rewrite-claim fires automatically on ambiguous claims (AC-3):
+           - Rewrites text to reflect what source ACTUALLY says
+           - Emits: original_claim, rewritten=true, rewrite_rationale
+           - Status after rewrite: supported
+
+        5. Cross-reference each claim semantically (LLM verification):
+           - For supported claims: confirm source says what we claim
+           - For unknown claims: add caveat or remove from report
+           - For rewritten claims: review rewrite_rationale is accurate
+           - Check for paraphrasing that changes meaning
+
+        6. TAG CLAIMS WITH CONFIDENCE (Q3):
+           For each factual claim in the report that includes numbers, comparisons,
+           or definitive statements, add an inline confidence tag:
+           - [HIGH — N sources]: Claim supported by 2+ HIGH credibility sources
+           - [MEDIA — N sources]: 1 HIGH or 2+ MEDIUM sources
+           - [LOW — N sources]: 1 MEDIUM or only LOW sources
+           - [UNSOURCED]: No supporting source found (add caveat or remove)
+           Example: "Custo estimado de $0.06-$0.12 [MEDIA — baseado em token budgets, não medição real]"
+           Example: "Playwright é o padrão dominante [HIGH — 3 projetos + npm 3.1M/week]"
+
+           If Sackett available: combine confidence + evidence_grade for richer tags:
+           - [HIGH 1a — N sources]: supported + grade 1a (systematic review)
+           - [LOW 5 — N sources]: low confidence + grade 5 (expert opinion only)
+
+        7. Generate per-claim fixes and aggregation:
+           ```bash
+           python3 squads/research/scripts/tech-research/citation_verifier.py aggregate \
+             --claims-out {output_dir}/claims-verified.json \
+             > {output_dir}/citation-aggregation.json
+           ```
+
+           Verdict logic (AC-4 — replaces binary verified_ratio < 0.85):
+           - APPROVE clean         : unsupported_ratio < 5%
+           - APPROVE_WITH_CONFIDENCE: unsupported_ratio 5-20% (log confidence_distribution)
+           - VETO                  : unsupported_top_tier_ratio > 20%
+
+           Note: "top_tier" = claims with Sackett grade 1a/1b/2a OR highest-impact claims.
+           If Sackett DEFERRED: all unsupported claims treated as tier-agnostic for veto calc.
+
+        8. Write claims.yaml artifact:
+           Emit {output_dir}/claims.yaml following template:
+           squads/research/templates/tech-research/claims.yaml (schema: claims.v2)
+
+        9. Update learning log with rewrite diffs:
+           For each rewritten claim, capture:
+           - before: original_claim
+           - after: text (rewritten)
+           - rationale: rewrite_rationale
+           Append to {output_dir}/execution-log.jsonl as event type "claim_rewrite"
+
+        10. EMIT citation_verified to README metadata (MANDATORY — AC11):
+            ALWAYS write citation_verified to the README.md `research_metadata` YAML block.
+            Never omit this field regardless of skip conditions.
+
+            If phase executed normally:
+              citation_verified: true
+            If phase was skipped (see skip_when):
+              citation_verified:
+                skipped: "<reason matching skip_when condition>"
+            Example skip reasons:
+              - "fewer than 5 factual claims"
+              - "quick mode"
+
+            output_validator.py checks citation_verified presence with --enforcement block.
+
+        11. Pass verified_report + citation-aggregation to Phase 5 (Document)
+
+      output: |
+        {
+          "verdict": "APPROVE | APPROVE_WITH_CONFIDENCE | VETO",
+          "unsupported_ratio": 0.0,
+          "unsupported_top_tier_ratio": 0.0,
+          "confidence_distribution": {...},
+          "total_claims": N,
+          "counts": {"supported": N, "unsupported": N, "unknown": N, "ambiguous": N},
+          "verified_report": "report with per-claim tags and rewrites applied",
+          "claims_yaml_path": "{output_dir}/claims.yaml",
+          "citation_verified": "true | {skipped: <reason>}"
+        }
+
+      skip_when:
+        - "Quick mode (*quick command)"
+        - "Report has fewer than 5 factual claims"
+
+      sackett_integration:
+        status: optional          # AC-5: enhancement, not dependency
+        source_file: "{output_dir}/sackett.md"
+        frontmatter_key: graded_claims
+        fallback: standalone      # if missing → no evidence_grade enrichment, pipeline continues

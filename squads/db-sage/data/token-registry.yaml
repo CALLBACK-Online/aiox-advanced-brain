@@ -1,0 +1,84 @@
+# Token Registry — DB Sage Squad
+# SINKRA v3.2 Token Bridge — 9 canonical families
+# Created: 2026-04-12
+# Owner: db-sage squad
+
+time:
+  - migration_timeout_window
+capacity:
+  - max_concurrent_connections
+threshold:
+  - kiss_gate_threshold
+  - rls_coverage_target
+priority:
+  - connection_priority
+permission:
+  - db_access_scope
+taxonomy:
+  - operation_type
+behavior:
+  - migration_advisory_lock
+  - snapshot_before_apply
+  - dry_run_first
+  - ddl_execution_order
+accountability:
+  - human_confirm_migration
+  - human_confirm_rollback
+mode:
+  - CONFIGURAR
+  - RESOLVER
+  - VALIDAR
+  - ENTENDER
+
+tokens:
+  - token_name: migration_timeout_window
+    family: Time
+    semantic: "Janela temporal máxima permitida para execução de migração antes de abort"
+  - token_name: max_concurrent_connections
+    family: Capacity
+    semantic: "Teto de conexões simultâneas durante operações de banco"
+  - token_name: kiss_gate_threshold
+    family: Threshold
+    semantic: "Contagem de red flags para gate KISS (0=PASS, 1-2=WARN, 3+=FAIL)"
+  - token_name: rls_coverage_target
+    family: Threshold
+    semantic: "Percentual alvo de cobertura RLS em tabelas user-facing"
+  - token_name: connection_priority
+    family: Priority
+    semantic: "Ordem de prioridade de conexão: SUPABASE_DB_URL > DATABASE_URL"
+  - token_name: db_access_scope
+    family: Permission
+    semantic: "Escopo de acesso permitido (read-only, read-write, superuser)"
+  - token_name: operation_type
+    family: Taxonomy
+    semantic: "Classificação canônica de operações DB (DDL/DML/DCL/TCL)"
+  - token_name: migration_advisory_lock
+    family: Behavior
+    semantic: "Lock exclusivo via pg_advisory_lock durante migração"
+  - token_name: snapshot_before_apply
+    family: Behavior
+    semantic: "Snapshot obrigatório pré-migração para rollback safety"
+  - token_name: dry_run_first
+    family: Behavior
+    semantic: "Dry-run recomendado (BEGIN/ROLLBACK) antes de apply"
+  - token_name: ddl_execution_order
+    family: Behavior
+    semantic: "Ordem canônica: Extensions→Tables→Functions→Triggers→RLS→Views"
+  - token_name: human_confirm_migration
+    family: Accountability
+    semantic: "Aprovação humana obrigatória antes de aplicar migração"
+  - token_name: human_confirm_rollback
+    family: Accountability
+    semantic: "Aprovação humana obrigatória antes de executar rollback"
+  - token_name: CONFIGURAR
+    family: Mode
+    semantic: "Modo de configuração de banco e ambiente"
+  - token_name: RESOLVER
+    family: Mode
+    semantic: "Modo de resolução de problemas de banco"
+  - token_name: VALIDAR
+    family: Mode
+    semantic: "Modo de validação de schema, RLS e integridade"
+  - token_name: ENTENDER
+    family: Mode
+    semantic: "Modo de entendimento e análise de schema existente"

@@ -1,0 +1,411 @@
+# Mission → ClickUp Specification
+# Mapeamento do domínio Mission SINKRA para estruturas ClickUp
+# Owner: clickup-ops-squad
+# Consumed by: clickup-chief, materializer
+# Source: sinkra-squad/templates/mission-clickup-handoff-tmpl.yaml
+# Version: 2.0.0 — Arquitetura Clean (List única, Task+Subtasks, Task Types)
+# Created: 2026-03-27
+# Updated: 2026-03-30
+
+meta:
+  spec_id: "MISSION-CLICKUP-SPEC-001"
+  version: "2.0.0"
+  created: "2026-03-27"
+  owner: clickup-ops-squad
+  source_template: "squads/sinkra-squad/templates/mission-clickup-handoff-tmpl.yaml"
+  status: POPULATED
+  architecture: "Clean — entidade nasce e morre em uma única lista"
+
+# ═══════════════════════════════════════════════════════════════════
+# 1. CONCEITOS — O que é uma Mission
+# ═══════════════════════════════════════════════════════════════════
+domain:
+  description: |
+    Mission é o 3º Organism Pattern do SINKRA (junto com Process e Flywheel).
+    Enquanto Process é recorrente e Flywheel é cíclico-acumulativo, Mission é
+    um projeto one-time com início (Ponto A) e fim (Ponto B), timebox fixo
+    (Shape Up), e DAG de tasks com dependências.
+
+  lifecycle:
+    states: ["Shaped", "Approved", "Active", "Complete", "Cancelled"]
+    flow: "Shaped → Approved → Active → Complete | Cancelled"
+    note: "Lifecycle é representado pelos statuses da List 'Missions'"
+
+  key_concepts:
+    timebox:
+      what: "Tempo fixo e escopo variável (metodologia Shape Up)"
+      sizes: ["small_batch (2 semanas)", "big_batch (6 semanas)"]
+      rule: "Se timebox estoura, Circuit Breaker escala — nunca se estende silenciosamente"
+
+    dag:
+      what: "Directed Acyclic Graph de tasks com dependências"
+      components: ["tasks (nós)", "dependencies (arestas)", "phases (agrupamento)", "critical_path"]
+      clickup_implementation: "Subtasks com dependencies nativas → Gantt automático com critical path"
+
+    executor_pool:
+      what: "Time temporário montado de squads existentes para a mission"
+      types: ["Human (pessoa física)", "Agent (IA/squad)", "Worker (automação)", "Clone (instância)"]
+      rule: "Pool dissolve quando mission completa. Se 3+ missions usam mesmo pool → squad permanente"
+
+    gates:
+      what: "Checkpoints go/no-go entre fases do DAG"
+      mechanism: "Subtask com Task Type 'Gate' + checklist de critérios"
+      ownership: "Mission Lead é sempre o reviewer do gate"
+
+    circuit_breaker:
+      what: "Mecanismo de escalação automática se mission derrapar"
+      trigger: "Due date atingido com tasks pendentes"
+      action: "Extensão 1x (+50%) ou cancelamento"
+
+    ponto_a_ponto_b:
+      what: "Estado atual (Ponto A) vs estado desejado (Ponto B)"
+      granularity: "Cada task do DAG mapeia um aspecto do Ponto A → Ponto B"
+
+    journey_log:
+      what: "Registro de lifecycle events na description da task"
+      pattern: "Super agent escreve journey log na description de cada subtask → consolida na task Mission pai"
+      reference: "Padrão replicável por spoke"
+
+# ═══════════════════════════════════════════════════════════════════
+# 2. ARQUITETURA CLICKUP — Clean & Econômica
+# ═══════════════════════════════════════════════════════════════════
+architecture:
+  principle: |
+    Uma entidade nasce e morre em uma única lista. Pode ser adicionada a outras
+    listas, mas a lista é onde se opera. NUNCA criar Folder/Space por instância.
+
+  structure:
+    folder: "{ops_folder_name}"       # Folder de operações do spoke — lookup from tokenization
+    list: "Missions"                  # List ÚNICA para todas as missions
+    mission: "Task (Task Type: Mission)"      # Cada mission = 1 task
+    dag_tasks: "Subtasks (Task Type: Task)"   # DAG tasks = subtasks default
+    gates: "Subtasks (Task Type: Gate)"       # Gates = subtasks com tipo Gate
+
+  anti_patterns:
+    - "Space por tipo de entidade"
+    - "Folder por instância (1 folder = 1 mission)"
+    - "Lists separadas para 'Mission Board' e 'Gates'"
+    - "Custom Fields que só fazem sentido em 1 lista"
+
+  benefits:
+    - "Todos missions na mesma lista → análise cross-mission"
+    - "Journey log consolidável por lista"
+    - "Views (Gantt, Board) funcionam sobre a lista inteira"
+    - "Relationship fields vinculam a projetos/produtos/clientes sem folders"
+
+# ═══════════════════════════════════════════════════════════════════
+# 3. MAPEAMENTO — Mission SINKRA → ClickUp
+# ═══════════════════════════════════════════════════════════════════
+mapping:
+  list:
+    sinkra_concept: "Mission Registry (todas as missions)"
+    clickup_entity: "List"
+    name: "Missions"
+    location: "Folder: {ops_folder_name}"
+    statuses: ["Shaped", "Approved", "Active", "Complete", "Cancelled"]
+    note: "UMA lista para todas as missions. Criada pelo *bootstrap --mission."
+
+  mission_task:
+    sinkra_concept: "Mission (Organism)"
+    clickup_entity: "Task"
+    task_type: "Mission"  # Task Type customizado no ClickUp
+    list: "Missions"
+    fields:
+      name: "Task name (ex: 'SINKRA OPS Cohort T1')"
+      description: "Journey Log consolidado + resumo do mission"
+      status: "Lifecycle: Shaped → Approved → Active → Complete | Cancelled"
+      custom_fields: "Mission ID, Timebox, Circuit Breaker, Ponto A, Ponto B (due date nativo substitui Appetite Deadline)"
+      relationships: "Custom Field Relationship → produto/projeto/cliente vinculado"
+    note: "Cada mission = 1 task. Subtasks são o DAG."
+
+  dag_task:
+    sinkra_concept: "DAG Task (Atom)"
+    clickup_entity: "Subtask"
+    task_type: "Task"  # Task Type default do ClickUp
+    parent: "Mission task"
+    fields:
+      name: "Subtask name"
+      description: "Descrição + Journey Log individual"
+      start_date: "ClickUp native (data de início)"
+      due_date: "ClickUp native (data final)"
+      assignee: "ClickUp native (apenas Human executors)"
+      time_estimate: "ClickUp native (duração estimada)"
+      custom_fields: "Task Status (universal), Phase, Executor Type, Source Squad"
+    dependencies: "ClickUp native (waiting_on) → Gantt com critical path"
+    assignment:
+      human: "Assignee nativo"
+      agent: "Tag com nome do agent/squad (não assignee)"
+
+  gate_task:
+    sinkra_concept: "Gate (checkpoint go/no-go)"
+    clickup_entity: "Subtask"
+    task_type: "Gate"  # Task Type customizado no ClickUp
+    parent: "Mission task"
+    fields:
+      name: "Gate: Phase {X} → Phase {Y}"
+      checklist: "Critérios go/no-go (cada critério = 1 checklist item)"
+      custom_fields: "Gate Score"
+      assignee: "Mission Lead (sempre)"
+    dependencies: "waiting_on todas tasks da phase anterior"
+    note: "Task Type Gate permite filtrar/agrupar gates separadamente das tasks normais"
+
+  circuit_breaker:
+    sinkra_concept: "Circuit Breaker"
+    clickup_entity: "Custom Field + Automação"
+    mechanism:
+      field: "Custom Field: Circuit Breaker (dropdown: Active/Extended/Triggered)"
+      automation: "Quando due date atingido → escalar (via notificação nativa de overdue)"
+
+  relationships:
+    sinkra_concept: "Contexto (produto/projeto/cliente)"
+    clickup_entity: "Custom Field: Relationship"
+    purpose: "Vincular mission ao que ela serve sem criar folders por contexto"
+    examples:
+      - "Mission 'Cohort T1' → Relationship → Produto 'SINKRA OPS Cohort'"
+      - "Mission 'Launch XYZ' → Relationship → Cliente 'Empresa ABC'"
+
+# ═══════════════════════════════════════════════════════════════════
+# 4. TASK TYPES — 3 tipos
+# ═══════════════════════════════════════════════════════════════════
+task_types:
+  - name: "Mission"
+    scope: "List: Missions"
+    purpose: "Entidade pai — representa a mission completa"
+    statuses_via: "List statuses (Shaped, Approved, Active, Complete, Cancelled)"
+    custom_item_id: null  # Lookup from spoke's clickup-tokenization.yaml
+    create_in_bootstrap: true
+
+  - name: "Task"
+    scope: "Universal (default ClickUp)"
+    purpose: "Entidade executável — subtask do DAG"
+    statuses_via: "Custom Field: Task Status (universal)"
+    custom_item_id: null  # Default ClickUp — sem custom_item_id
+    create_in_bootstrap: false  # já existe como default
+
+  - name: "Gate"
+    scope: "List: Missions (subtask level)"
+    purpose: "Checkpoint go/no-go entre fases"
+    statuses_via: "Custom Field: Task Status (universal)"
+    custom_item_id: null  # Lookup from spoke's clickup-tokenization.yaml
+    create_in_bootstrap: true
+
+# ═══════════════════════════════════════════════════════════════════
+# 5. CUSTOM FIELDS
+# ═══════════════════════════════════════════════════════════════════
+custom_fields:
+  universal:
+    - name: "Task Status"
+      type: dropdown
+      scope: "Universal — todas tasks do ClickUp do spoke"
+      purpose: "Status operacional da entidade tipo Task (subtask)"
+      options: ["To Do", "In Progress", "Review", "Done", "Blocked"]
+      note: |
+        Serve para 90% dos casos. Quando houver necessidade de status
+        diferente, criar campo específico só para aquela task.
+      create_in_bootstrap: true  # se não existir ainda
+
+  mission_level:
+    - name: "Mission ID"
+      type: short_text
+      required: true
+      example: "MSN-2026-002"
+      applies_to: "Task Type: Mission"
+
+    - name: "Timebox"
+      type: dropdown
+      options: ["2 semanas", "6 semanas"]
+      applies_to: "Task Type: Mission"
+      note: "Renomeado de 'Appetite' para 'Timebox'"
+
+    # DEPRECATED: "Appetite Deadline" removido — substituído por due date nativo do ClickUp
+    # O due date nativo oferece notificações de overdue automáticas, sem necessidade de automação custom.
+
+    - name: "Circuit Breaker"
+      type: dropdown
+      options: ["Active", "Extended", "Triggered"]
+      default: "Active"
+      applies_to: "Task Type: Mission"
+
+    - name: "Ponto A"
+      type: text
+      applies_to: "Task Type: Mission"
+
+    - name: "Ponto B"
+      type: text
+      applies_to: "Task Type: Mission"
+
+  subtask_level:
+    - name: "Phase"
+      type: number
+      required: true
+      applies_to: "Subtasks (Task + Gate)"
+
+    - name: "Executor Type"
+      type: dropdown
+      options: ["Human", "Agent", "Worker", "Clone"]
+      applies_to: "Subtasks (Task)"
+
+    - name: "Source Squad"
+      type: short_text
+      applies_to: "Subtasks (Task)"
+
+  gate_level:
+    - name: "Gate Score"
+      type: number
+      applies_to: "Task Type: Gate"
+
+  relationship:
+    - name: "Relacionado a"
+      type: relationship
+      purpose: "Vincular mission a projeto/produto/cliente"
+      applies_to: "Task Type: Mission"
+
+# ═══════════════════════════════════════════════════════════════════
+# 6. VIEWS — na List "Missions"
+# ═══════════════════════════════════════════════════════════════════
+views:
+  - name: "Gantt"
+    type: Gantt
+    scope: "List: Missions (com subtasks expandidas)"
+    group_by: "Mission (parent task)"
+    show_dependencies: true
+    purpose: "DAG visual com critical path — dependencies entre subtasks"
+
+  - name: "Board"
+    type: Board
+    scope: "List: Missions"
+    group_by: "Status"
+    purpose: "Kanban dos missions por lifecycle (Shaped → Active → Complete)"
+
+  - name: "Missions por Status"
+    type: List
+    scope: "List: Missions"
+    filter: "Task Type = Mission"
+    group_by: "Status"
+    purpose: "Visão de todos missions ativos com progresso"
+
+# ═══════════════════════════════════════════════════════════════════
+# 7. AUTOMAÇÕES
+# ═══════════════════════════════════════════════════════════════════
+automations:
+  # DEPRECATED: "Appetite Deadline Alert" removido — substituído por notificação nativa de due date overdue do ClickUp.
+  # A notificação nativa dispara automaticamente quando o due date é ultrapassado.
+
+  - name: "Circuit Breaker Extension"
+    trigger: "Campo Circuit Breaker mudou para Extended"
+    action: "Atualizar due date com +50%"
+    implementation: playwright
+
+  - name: "All Subtasks Done"
+    trigger: "Todas subtasks de um Mission com Task Status = Done + todos Gates aprovados"
+    action: "Mover Mission status para Complete"
+    implementation: playwright
+
+# ═══════════════════════════════════════════════════════════════════
+# 8. JOURNEY LOG — Padrão de registro
+# ═══════════════════════════════════════════════════════════════════
+journey_log:
+  pattern: "Super agent na description"
+  flow:
+    - step: 1
+      what: "Super agent registra journey log na description de cada subtask"
+      where: "Description da subtask (Task/Gate)"
+    - step: 2
+      what: "Journey logs individuais consolidam na description da task Mission"
+      where: "Description da task Mission (pai)"
+    - step: 3
+      what: "Cross-mission: analisar journey logs de todos missions na lista"
+      where: "List 'Missions' → report consolidado"
+  insights: |
+    Journey log permite análise retroativa de todos missions:
+    tempo real vs estimado, bloqueios recorrentes, squads mais eficientes,
+    gates que mais falham, etc.
+
+# ═══════════════════════════════════════════════════════════════════
+# 9. REGRAS — Constraints de materialização
+# ═══════════════════════════════════════════════════════════════════
+rules:
+  - id: R1
+    rule: "UMA lista 'Missions' para todas as missions — NUNCA criar Folder/Space por instância"
+    reason: "Clean & econômico. Permite análise cross-mission e journey log consolidado."
+
+  - id: R2
+    rule: "Mission = Task (Task Type Mission). DAG tasks = Subtasks. Gates = Subtasks (Task Type Gate)."
+    reason: "Hierarquia nativa do ClickUp: task → subtasks com dependencies."
+
+  - id: R3
+    rule: "Task Status é Custom Field universal para entidades tipo Task em todo ClickUp do spoke"
+    reason: "Permite análise transversal cross-projeto, cross-produto, cross-cliente."
+
+  - id: R4
+    rule: "Relationship fields vinculam contexto (produto/projeto/cliente) — não folders"
+    reason: "Elimina necessidade de estrutura de pastas por contexto."
+
+  - id: R5
+    rule: "Dependencies são do tipo 'waiting_on' (blocking) entre subtasks"
+    reason: "Gantt nativo mostra critical path automaticamente."
+
+  - id: R6
+    rule: "Agents não são assignees — são tags/labels ou campo Executor Type"
+    reason: "ClickUp assignees são apenas para pessoas."
+
+  - id: R7
+    rule: "Materialização é idempotente — re-executar valida sem duplicar"
+    reason: "Segurança para re-execução em caso de falha parcial."
+
+  - id: R8
+    rule: "Journey Log na description — super agent registra, consolida para pai"
+    reason: "Padrão replicável por spoke. Permite insights cross-mission."
+
+# ═══════════════════════════════════════════════════════════════════
+# 10. IO CONTRACT — Fluxo de dados
+# ═══════════════════════════════════════════════════════════════════
+io_contract:
+  input:
+    source: "@sinkra-chief (Phase 7: Mission Launch)"
+    artifact: "mission-clickup-handoff-{mission-id}.yaml"
+    zone: "Zone 2 (Source of Truth) ou .aiox/handoffs/"
+    template: "squads/sinkra-squad/templates/mission-clickup-handoff-tmpl.yaml"
+    required_fields:
+      - "mission.id"
+      - "mission.name"
+      - "mission.timebox"
+      - "mission.deadline"
+      - "dag_tasks[] (pelo menos 1)"
+      - "dependencies[]"
+      - "gate_tasks[] (pelo menos 1)"
+
+  output:
+    target: "ClickUp (external system)"
+    side_effect: "Task (Mission) + Subtasks (DAG + Gates) + Dependencies + Views"
+    registry_update: "squads/sinkra-squad/data/clickup-tokenization.yaml"
+    report: "squads/clickup-ops-squad/output/materialization-report-{mission-id}.yaml"
+
+  governance:
+    rule: "clickup-ops NUNCA modifica Zone 2 — apenas lê e materializa"
+    escalation: "Se handoff incompleto → devolver para @sinkra-chief"
+
+# ═══════════════════════════════════════════════════════════════════
+# 11. ASSIGNEE RESOLUTION — person-resolver
+# ═══════════════════════════════════════════════════════════════════
+assignee_resolution:
+  module: "services/clickup/person-resolver.js"
+  registry: "workspace/{spoke}/L0-identity/people-registry.yaml"
+  functions:
+    - "resolvePersonId(name) → clickup_user_id"
+    - "resolvePersonName(clickup_user_id) → name"
+    - "resolveByRole(role) → clickup_user_id"
+    - "clearCache() → void"
+  flow:
+    - step: 1
+      action: "Ler people-registry.yaml do spoke"
+    - step: 2
+      action: "Para cada dag_task.assignee, chamar resolvePersonId(name)"
+    - step: 3
+      action: "Se resolvido → incluir em assignees[] do POST /task"
+    - step: 4
+      action: "Se NÃO resolvido → WARN (task criada sem assignee, warning no relatório)"
+  policy:
+    unresolvable: "WARN — não bloqueia materialização"
+    gates: "resolveByRole('mission-lead') para atribuir Mission Lead"
+    cache: "Em memória por sessão — clearCache() se registry atualizado mid-session"

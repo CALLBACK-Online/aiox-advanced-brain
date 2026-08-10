@@ -1,0 +1,14 @@
+schema:
+  artifact: materialization_report
+  version: 1.0.0
+  required:
+  - mission_id
+  - status
+  - published_at
+  - accountable_human
+  properties:
+    mission_id: string
+    status: string
+    published_at: datetime
+    accountable_human: string
+    report_url: string

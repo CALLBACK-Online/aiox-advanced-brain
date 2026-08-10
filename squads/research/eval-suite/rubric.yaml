@@ -1,0 +1,158 @@
+schema: sinkra.eval-suite.rubric.v1
+version: "1.0"
+created: "2026-05-19"
+story: STORY-RA-0.2
+description: >
+  Minimal eval rubric for research squad output quality assessment.
+  Sprint 0 skeleton — 5 dimensions, 0-20 pts each, total 0-100.
+  Not Gartner-grade. Designed to falsify RA-EXP.1 (KISS Gate 1).
+
+total_max: 100
+dimensions:
+  coverage:
+    weight: 20
+    description: >
+      How completely does the research address all sub-questions and
+      angles implied by the original query?
+    scoring_guide:
+      "0-4": >
+        Fewer than 40% of expected sub-questions addressed. Major topic
+        areas absent. Output feels like a stub or partial first wave.
+      "5-9": >
+        40-60% of expected sub-questions addressed. Core topic present
+        but notable gaps in breadth. Secondary angles missing.
+      "10-14": >
+        60-80% addressed. Good breadth, minor gaps. Most sub-questions
+        covered at least at surface level.
+      "15-20": >
+        80-100% addressed. Comprehensive coverage. All main sub-questions
+        and most secondary angles explored with appropriate depth.
+    examples:
+      good: >
+        Query: "Best LLM frameworks for production". Report covers
+        LangChain, LlamaIndex, Haystack, CrewAI, raw API — including
+        cost comparison, scaling, community activity, and known
+        production failure modes.
+      bad: >
+        Same query. Report covers only LangChain in depth and mentions
+        others by name only. No cost, no scaling, no failure modes.
+
+  citation_quality:
+    weight: 20
+    description: >
+      Are claims backed by verifiable, credible, dated sources?
+      Are sources diverse (not all from same domain/outlet)?
+    scoring_guide:
+      "0-4": >
+        Fewer than 30% of claims have a source. Many sources are vague
+        ("According to studies…") or unverifiable URLs. High risk of
+        hallucination.
+      "5-9": >
+        30-60% of claims have a source. Some sources verifiable, others
+        vague. Limited diversity (all from same outlet or domain).
+      "10-14": >
+        60-80% of claims sourced. Sources mostly verifiable. Reasonable
+        diversity. A few claims still unsupported.
+      "15-20": >
+        80-100% of claims sourced. Sources verifiable with pub date and
+        credibility signal. Diverse (academic, practitioner, news).
+        Hallucination risk low.
+    examples:
+      good: >
+        "DeerFlow scored 90/100 on multi-agent coordination (Chen et al.
+        2026, arxiv.org/abs/2605.01234, retrieved 2026-05-18)"
+      bad: >
+        "Studies show LLMs improve with multi-agent setups" — no source,
+        no date, no link.
+
+  claim_verifiability:
+    weight: 20
+    description: >
+      Can independent parties verify the key claims? Are claims
+      calibrated (confidence stated) or stated as facts without
+      qualification?
+    scoring_guide:
+      "0-4": >
+        Most claims are unqualified assertions. No confidence markers.
+        No methodology for how claims were derived. Impossible to
+        independently verify.
+      "5-9": >
+        Some claims qualified ("likely", "reported"). Core claims
+        unverified. Methodology absent or opaque.
+      "10-14": >
+        Most claims appropriately qualified. Methodology partially
+        described. Key claims traceable to sources.
+      "15-20": >
+        All key claims carry confidence markers (HIGH/MEDIUM/LOW or
+        equivalent). Methodology explicit. Claims directly traceable
+        to cited sources. A reviewer can independently reproduce.
+    examples:
+      good: >
+        "Coverage score 96 (HIGH confidence — measured via
+        coverage-breakdown in metrics.yaml, 6 rubric dimensions, 13
+        sources)"
+      bad: >
+        "This is the best framework for agentic research." — No
+        confidence, no comparison basis, no source.
+
+  narrative_coherence:
+    weight: 20
+    description: >
+      Does the report read as a unified whole? Is the argument
+      structure logical? Are sections connected with clear transitions?
+      Does the conclusion follow from the evidence?
+    scoring_guide:
+      "0-4": >
+        Report reads as a collection of disconnected bullet lists.
+        No narrative arc. Sections contradict each other. Conclusion
+        does not follow from body.
+      "5-9": >
+        Loose narrative. Some sections flow but transitions are absent.
+        Repetition or contradictions in places. Conclusion partially
+        follows from evidence.
+      "10-14": >
+        Clear structure with logical progression. Minor gaps in
+        transitions. Conclusion generally follows from evidence with
+        occasional leaps.
+      "15-20": >
+        Cohesive, well-argued report. Sections build on each other.
+        Smooth transitions. Conclusion is a direct synthesis of the
+        evidence presented.
+    examples:
+      good: >
+        Executive summary states the hypothesis → body tests it via
+        multiple lenses → recommendations map directly to findings →
+        conclusion names the key insight in one sentence.
+      bad: >
+        Executive summary copied from intro. Body is 10 independent
+        bullet lists. Recommendations are generic. No conclusion.
+
+  actionability:
+    weight: 20
+    description: >
+      Do the recommendations enable a decision-maker to act? Are
+      next steps concrete, scoped, and prioritized?
+    scoring_guide:
+      "0-4": >
+        Recommendations are absent or purely generic ("do more research",
+        "consider options"). No prioritization. No owner or timeline.
+      "5-9": >
+        Some specific recommendations but most are vague. Prioritization
+        absent or arbitrary. Decision-maker still unclear on what to do
+        first.
+      "10-14": >
+        Concrete recommendations with rough prioritization. Some have
+        owners or timelines implied. Decision-maker can extract a
+        first action.
+      "15-20": >
+        Recommendations are specific, ordered by impact/effort, tied to
+        findings, and include owner/timeline guidance. A decision-maker
+        can hand this to a team and work starts same day.
+    examples:
+      good: >
+        "P1 (this sprint): Wire RA-A heartbeat to coverage gate —
+        owner @aiox-dev, 2h effort, unblocks RA-EXP.1. P2 (next sprint):
+        Implement citation-verify per-claim…"
+      bad: >
+        "Future work: improve the pipeline. Consider multi-agent.
+        Evaluate costs."

@@ -1,0 +1,45 @@
+---
+# pipeline-state.yaml — Tech Research Pipeline State Template
+# Story: STORY-RA-A.2 (cost-latency artifact + cost_confidence + run real validation)
+# Emitted by: tech-research pipeline Phase 00 (init) per run
+# Location (runtime instance): docs/research/{date}-{slug}/pipeline-state.yaml
+schema_version: "1.1"  # 1.0 = base (RA-0.1); 1.1 = budget block (RA-A.2)
+
+pipeline_id: "{slug}"   # e.g. "2026-05-19-pgvector-vs-pinecone"
+status: in_progress     # in_progress | completed | halted | failed | escalated
+stop_reason: null       # populated on completion
+phase: p0_init          # current active phase
+inferred_pattern: null  # single_player | multi_player (set at Phase 1.5)
+comparison_pattern: null
+
+phases_completed: 0
+
+# ─── Budget Block (RA-A.2) ───────────────────────────────────────────────────
+# Governs cost/time hard stops in heartbeat-policy.yaml (signal priority 2-4).
+# Populated by: cost_tracker.py at Phase 00 init from flag or preset defaults.
+# Consumed by: heartbeat-policy.yaml signal evaluator at Phase 3.5.
+budget:
+  # Token budget
+  token_max: 250000          # hard cap — fires token_budget stop at 85%
+  token_used: 0              # updated by cost_tracker.py at each phase
+  # Cost budget (USD)
+  cost_usd_max: 2.50         # matches --budget-preset standard
+  cost_usd_used: 0.0         # updated by cost_tracker.py at each phase
+  # Wall-clock budget
+  wallclock_max_sec: 600     # 10 min default for standard preset
+  wallclock_used_sec: 0      # updated at each heartbeat tick
+  # Projection map: phase_id → {estimate_usd, actual_usd, estimate_sec, actual_sec}
+  projection_per_phase: {}   # estimate vs actual — populated as phases run
+
+# Budget preset used to initialize this run.
+# Values: economy | standard | deep | custom
+# economy:  cost_usd_max=0.50, token_max=100000, wallclock_max_sec=300
+# standard: cost_usd_max=2.50, token_max=250000, wallclock_max_sec=600
+# deep:     cost_usd_max=10.0, token_max=800000, wallclock_max_sec=1800
+# custom:   user-supplied via --cost-max $X (overrides preset defaults)
+budget_preset: standard
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Optional fields (populated during run)
+mandatory_additions: []
+domain_inferred: []

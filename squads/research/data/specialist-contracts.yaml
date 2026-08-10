@@ -1,0 +1,149 @@
+# specialist-contracts.yaml
+# Formal cross-agent I/O contracts for the 5 research specialists.
+# Story: RA-C.1 | 2026-05-19 | SINKRA v3.2
+#
+# Design decisions (see story Decision Log):
+#   D1: available_tools: [] — forward-compat ADR-001 Wave 2 populates with adapters when shipped
+#   D2: All 5 specialists use failure_mode: warn_and_continue (safe default; halt is future)
+#   D3: invoked_when DSL is minimal — field == value | field in [list] | field contains 'str'
+#       conjunctions with AND/OR. No Jinja-style or Python eval.
+#
+# Source of truth for schemas: frontmatter of each specialist agent file (RA-E.2 delivery).
+# This file REFERENCES those schemas; it does NOT duplicate them.
+#
+# Consumed by: squads/research/scripts/tech-research/specialist_dispatcher.py
+# Validated by: squads/research/scripts/tech-research/output_validator.py (check_specialist_contracts)
+
+schema_version: specialist-contracts.v1
+last_updated: "2026-05-19"
+source_story: STORY-RA-C.1
+
+specialists:
+  sackett:
+    # Ref: squads/research/agents/sackett.md frontmatter (RA-E.2)
+    agent_file: squads/research/agents/sackett.md
+    invoked_when: "evidence_grading_required == true"
+    input_schema:
+      claims:
+        type: list
+        items:
+          text: string
+          sources: list  # list of source references
+    output_schema:
+      graded_claims:
+        type: list
+        items:
+          text: string
+          sources: list
+          grade: "1a|1b|2a|2b|3|4|5"
+          rationale: string
+    available_tools: []  # forward-compat ADR-001 Wave 2 adapter slot
+    triggers_in_phase: P4.5
+    failure_mode: warn_and_continue
+
+  klein:
+    # Ref: squads/research/agents/klein.md frontmatter (RA-E.2)
+    agent_file: squads/research/agents/klein.md
+    invoked_when: "mode in [product-discovery, strategic-decision]"
+    input_schema:
+      synthesis_draft: string
+      hypotheses:
+        type: list
+        items: string
+    output_schema:
+      pre_mortem:
+        type: list
+        items:
+          scenario: string
+          likelihood: string
+          impact: string
+      system1_assumptions:
+        type: list
+        items: string
+      steelman_counter:
+        type: list
+        items:
+          position: string
+          evidence: string
+    available_tools: []  # forward-compat ADR-001 Wave 2 adapter slot
+    triggers_in_phase: P4
+    failure_mode: warn_and_continue
+
+  booth:
+    # Ref: squads/research/agents/booth.md frontmatter (RA-E.2)
+    agent_file: squads/research/agents/booth.md
+    invoked_when: "wave_num == 0 AND coverage_target > 70"
+    input_schema:
+      strategic_brief: string
+    output_schema:
+      systematic_search_plan:
+        type: list
+        items:
+          query: string
+          sources_target: string
+          expected_coverage: string
+      source_taxonomy:
+        type: list
+        items:
+          type: string
+          weight: string
+          priority: string
+    available_tools: []  # forward-compat ADR-001 Wave 2 adapter slot
+    triggers_in_phase: P2
+    failure_mode: warn_and_continue
+
+  creswell:
+    # Ref: squads/research/agents/creswell.md frontmatter (RA-E.2)
+    agent_file: squads/research/agents/creswell.md
+    invoked_when: "research_design == 'mixed-methods'"
+    input_schema:
+      brief: string
+      evidence_so_far:
+        type: list
+        items:
+          claim: string
+          sources: list
+    output_schema:
+      design_rationale: string
+      sequence:
+        type: list
+        items:
+          phase_id: string
+          method: "qual|quant|mixed"
+      integration_points:
+        type: list
+        items:
+          phase_a: string
+          phase_b: string
+          integration_type: string
+    available_tools: []  # forward-compat ADR-001 Wave 2 adapter slot
+    triggers_in_phase: P1.5
+    failure_mode: warn_and_continue
+
+  forsgren:
+    # Ref: squads/research/agents/forsgren.md frontmatter (RA-E.2)
+    agent_file: squads/research/agents/forsgren.md
+    invoked_when: "domain_signals contains 'devops|delivery|deployment'"
+    input_schema:
+      claims_re_devops:
+        type: list
+        items:
+          text: string
+          sources: list
+    output_schema:
+      dora_alignment:
+        deployment_freq: string
+        lead_time: string
+        change_failure: string
+        mttr: string
+      missing_metrics:
+        type: list
+        items: string
+      antipatterns_detected:
+        type: list
+        items:
+          pattern: string
+          evidence: string
+    available_tools: []  # forward-compat ADR-001 Wave 2 adapter slot
+    triggers_in_phase: P4
+    failure_mode: warn_and_continue

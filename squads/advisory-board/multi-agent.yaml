@@ -1,0 +1,192 @@
+# Multi-Agent Configuration — Advisory Board
+# Mapeamento de agentes, custos, selecao e defaults
+version: "2.0"
+
+# ============================================================================
+# ORCHESTRATOR
+# ============================================================================
+orchestrator:
+  id: ab-00-board-chair
+  name: Board Chair
+  file: .claude/agents/ab-00-board-chair.md
+  model: inherit  # herda do caller (tipicamente opus)
+  max_turns: 50
+  role: Orquestrador de deliberacao
+  cost_tier: high
+
+# ============================================================================
+# SPECIALISTS (10 advisors)
+# ============================================================================
+specialists:
+  ab-01:
+    name: Estrategista de Crescimento
+    file: .claude/agents/ab-01.md
+    model: sonnet
+    max_turns: 15
+    archetype: Peter Thiel
+    domain: strategy_growth
+    tags: [zero-to-one, contrarian, monopoly, distribution, secrets]
+
+  ab-02:
+    name: Operador / Executor
+    file: .claude/agents/ab-02.md
+    model: sonnet
+    max_turns: 15
+    archetype: Keith Rabois
+    domain: operations_execution
+    tags: [barrels, metrics, editing, bottleneck, simplification]
+
+  ab-03:
+    name: Investidor / Financeiro
+    file: .claude/agents/ab-03.md
+    model: sonnet
+    max_turns: 15
+    archetype: Buffett + Munger
+    domain: finance_economics
+    tags: [unit-economics, margin-of-safety, cash-flow, opportunity-cost, mental-models]
+
+  ab-04:
+    name: Futurista / Tecnologo
+    file: .claude/agents/ab-04.md
+    model: sonnet
+    max_turns: 15
+    archetype: Naval Ravikant
+    domain: technology_leverage
+    tags: [leverage, asymmetry, first-principles, specific-knowledge, freedom]
+
+  ab-05:
+    name: Psicologo Organizacional
+    file: .claude/agents/ab-05.md
+    model: sonnet
+    max_turns: 15
+    archetype: Adam Grant + Lencioni
+    domain: people_culture
+    tags: [incentives, psychological-safety, 5-dysfunctions, culture, givers-takers]
+
+  ab-06:
+    name: Devil's Advocate / Provocador
+    file: .claude/agents/ab-06.md
+    model: sonnet
+    max_turns: 15
+    archetype: Nassim Taleb
+    domain: risk_fragility
+    tags: [antifragility, fat-tails, skin-in-the-game, via-negativa, black-swan]
+    special_role: devils_advocate
+    activation: on_unanimous_consensus  # ativado automaticamente quando ha consenso
+
+  ab-07:
+    name: Vendas / Revenue
+    file: .claude/agents/ab-07.md
+    model: sonnet
+    max_turns: 15
+    archetype: Alex Hormozi
+    domain: sales_revenue
+    tags: [value-equation, grand-slam-offer, ltv, pricing, pipeline]
+
+  ab-08:
+    name: Marketing / Brand
+    file: .claude/agents/ab-08.md
+    model: sonnet
+    max_turns: 15
+    archetype: Seth Godin
+    domain: marketing_brand
+    tags: [positioning, remarkable, smallest-viable-audience, permission, story]
+
+  ab-09:
+    name: Juridico / Risco
+    file: .claude/agents/ab-09.md
+    model: sonnet
+    max_turns: 15
+    archetype: General Counsel
+    domain: legal_risk
+    tags: [risk-matrix, compliance, lgpd, contracts, reversibility]
+
+  ab-10:
+    name: Cliente / Mercado
+    file: .claude/agents/ab-10.md
+    model: sonnet
+    max_turns: 15
+    archetype: Marty Cagan + Steve Blank
+    domain: customer_market
+    tags: [customer-evidence, jtbd, retention, pmf, segmentation]
+
+# ============================================================================
+# SELECTION STRATEGY
+# ============================================================================
+selection:
+  method: dimension_mapping  # mapeia dimensoes do issue para advisors
+  min_advisors: 3
+  max_advisors: 5
+  quick_consult_max: 2
+
+  # Matriz dimensao -> advisors primarios
+  dimension_map:
+    strategy_growth: [ab-01, ab-04]
+    operations_execution: [ab-02]
+    finance_economics: [ab-03]
+    technology_leverage: [ab-04]
+    people_culture: [ab-05]
+    sales_revenue: [ab-07]
+    marketing_brand: [ab-08]
+    legal_risk: [ab-09]
+    customer_market: [ab-10]
+
+  rules:
+    - ensure_cross_pollination: true    # pelo menos 1 advisor de dimensao diferente
+    - devils_advocate_on_consensus: true # ab-06 ativado se todos concordam
+    - devils_advocate_on_irreversible: true # ab-06 incluido se decisao irreversivel
+    - avoid_echo_chamber: true          # nao selecionar so advisors que concordariam
+
+# ============================================================================
+# SESSION TYPES
+# ============================================================================
+session_types:
+  strategic_review:
+    description: Revisao estrategica profunda
+    min_advisors: 3
+    max_advisors: 5
+    include_da: optional  # Devil's Advocate
+
+  issue_processing:
+    description: Processamento de issue especifico
+    min_advisors: 3
+    max_advisors: 5
+    include_da: optional
+
+  opportunity_eval:
+    description: Avaliacao de oportunidade
+    min_advisors: 3
+    max_advisors: 4
+    include_da: optional
+
+  crisis_advisory:
+    description: Consultoria de crise
+    min_advisors: 4
+    max_advisors: 5
+    include_da: required  # sempre incluir em crise
+
+  quick_consult:
+    description: Consulta rapida com 1-2 advisors
+    min_advisors: 1
+    max_advisors: 2
+    include_da: never
+    skip_cross_examination: true  # pular estagio 4
+
+# ============================================================================
+# COST CONTROLS
+# ============================================================================
+cost_controls:
+  max_total_turns: 200
+  advisor_max_turns: 15
+  orchestrator_max_turns: 50
+  force_convergence_at_turn: 40  # Chair forca convergencia apos 40 turns totais
+
+# ============================================================================
+# DEFAULTS
+# ============================================================================
+defaults:
+  urgency: media
+  session_type: issue_processing
+  output_dir: outputs/advisory-board/sessions
+  memory_dir: outputs/advisory-board/memory
+  context_dir: outputs/advisory-board/context

@@ -1,0 +1,30 @@
+# Deviation Registry — squad-creator-pro
+# Mandamento 7: "Desvios formalizados — todo desvio de processo deve ser documentado"
+# Reference: squads/sinkra-squad/data/deviation-registry.yaml (canonical schema)
+#
+# Usage: When a checkpoint returns REVIEW (not APPROVE) and the pipeline continues
+# with Human approval, the deviation MUST be logged here before advancing.
+#
+# Schema version: 1.0.0
+# Created: 2026-04-13
+
+schema_version: "1.0.0"
+
+deviations: []
+  # Template for new entries:
+  # - id: "DEV-SCP-YYYY-NNN"
+  #   date: "YYYY-MM-DD"
+  #   pipeline_execution: "exec-NNN"
+  #   phase: N
+  #   checkpoint: "checkpoint_id"
+  #   checkpoint_result: "REVIEW"
+  #   dimension_failed: "dimension name"
+  #   score_achieved: 0.0
+  #   threshold_required: 0.0
+  #   deviation_description: "What specifically deviated"
+  #   justification: "Why Human approved continuation"
+  #   approved_by: "Human name/handle"
+  #   approved_at: "YYYY-MM-DDTHH:MM:SSZ"
+  #   remediation_plan: "What will be done to close the gap"
+  #   remediation_deadline: "YYYY-MM-DD"
+  #   remediation_status: "open | in_progress | closed"

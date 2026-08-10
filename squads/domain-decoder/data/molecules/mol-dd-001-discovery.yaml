@@ -1,0 +1,168 @@
+molecule:
+  molecule_id: "MOL-DD-001"
+  name: "Discovery"
+  mode: "ENTENDER"
+  pattern: "sequential"
+  phase: 0
+  reusable: false
+  used_in_variants: ["extraction"]
+  agents_primary: ["eric-evans", "ronald-ross"]
+  tokens_molecule:
+    - "TK-DD-MOD-001"
+    - "TK-DD-ACC-001"
+    - "TK-DD-PRI-001"
+
+atoms:
+  - atom_id: "ATM-DD-001"
+    name: "Map Bounded Contexts"
+    executor_type: Agent
+    executor_id: eric-evans
+    mode: ENTENDER
+    inputs:
+      - { name: "system_name",      type: "string",         source: "external" }
+      - { name: "source_location",  type: "directory_path", source: "external" }
+      - { name: "primary_domain",   type: "string",         source: "external" }
+    outputs:
+      - { name: "context_map",      type: "yaml",           artifact: true }
+    tokens_bound:
+      - "TK-DD-THR-007"
+      - "TK-DD-TAX-006"
+      - "TK-DD-ACC-001"
+    completion_criteria:
+      - "context_map has >= 2 bounded contexts identified and named"
+      - "Each context has: name, description, source modules, relationships"
+      - "Relationship types use TK-DD-TAX-006 controlled vocabulary"
+    veto_on:
+      - "Do NOT create context map without identifying at least 2 bounded contexts (map-domain.md)"
+      - "Do NOT define terms without source evidence"
+
+  - atom_id: "ATM-DD-002"
+    name: "Create Ubiquitous Language Glossary"
+    executor_type: Agent
+    executor_id: eric-evans
+    mode: ENTENDER
+    inputs:
+      - { name: "context_map",      type: "yaml",  source: "ATM-DD-001" }
+    outputs:
+      - { name: "glossary_draft",   type: "yaml",  artifact: true }
+    tokens_bound:
+      - "TK-DD-THR-009"
+      - "TK-DD-CAP-001"
+    completion_criteria:
+      - "Glossary contains terms per major context"
+      - "Minimum 15 terms per major context identified"
+
+  - atom_id: "ATM-DD-003"
+    name: "Classify Expected Rule Types & Build Inventory"
+    executor_type: Agent
+    executor_id: ronald-ross
+    mode: ENTENDER
+    inputs:
+      - { name: "context_map",      type: "yaml",  source: "ATM-DD-001" }
+    outputs:
+      - { name: "rule_type_inventory", type: "yaml",  artifact: true }
+    tokens_bound:
+      - "TK-DD-TAX-001"
+    completion_criteria:
+      - "Expected rule types classified"
+      - "Inventory of rule types built"
+
+  - atom_id: "ATM-DD-004"
+    name: "Map Sources to Contexts"
+    executor_type: Agent
+    executor_id: eric-evans
+    mode: ENTENDER
+    inputs:
+      - { name: "context_map",      type: "yaml",  source: "ATM-DD-001" }
+    outputs:
+      - { name: "source_to_context_map", type: "yaml",  artifact: true }
+    tokens_bound: []
+    completion_criteria:
+      - "Source systems mapped to contexts"
+
+  - atom_id: "ATM-DD-005"
+    name: "Identify Rule Relationships & Dependencies"
+    executor_type: Agent
+    executor_id: ronald-ross
+    mode: ENTENDER
+    inputs:
+      - { name: "rule_type_inventory", type: "yaml",  source: "ATM-DD-003" }
+    outputs:
+      - { name: "rule_dependencies",   type: "yaml",  artifact: true }
+    tokens_bound: []
+    completion_criteria:
+      - "Rule relationships and dependencies identified"
+
+  - atom_id: "ATM-DD-006"
+    name: "Prioritize Extraction Order"
+    executor_type: Agent
+    executor_id: ronald-ross
+    mode: ENTENDER
+    inputs:
+      - { name: "rule_dependencies",   type: "yaml",  source: "ATM-DD-005" }
+    outputs:
+      - { name: "extraction_order",    type: "yaml",  artifact: true }
+    tokens_bound:
+      - "TK-DD-TAX-014"
+    completion_criteria:
+      - "Ordered list highest to lowest priority"
+
+  - atom_id: "ATM-DD-007"
+    name: "Checkpoint: Domain Map Glossary Started"
+    executor_type: Worker
+    executor_id: checkpoint-validator
+    mode: VALIDAR
+    inputs:
+      - { name: "context_map",              type: "yaml",  source: "ATM-DD-001" }
+      - { name: "glossary_draft",           type: "yaml",  source: "ATM-DD-002" }
+      - { name: "rule_type_inventory",      type: "yaml",  source: "ATM-DD-003" }
+      - { name: "source_to_context_map",    type: "yaml",  source: "ATM-DD-004" }
+    outputs:
+      - { name: "checkpoint_result",        type: "enum[APPROVE, REVIEW, VETO]", artifact: false }
+    tokens_bound:
+      - "TK-DD-THR-009"
+      - "TK-DD-CAP-001"
+    completion_criteria:
+      - "checkpoint_result = APPROVE"
+      - "All major bounded contexts named and mapped"
+      - "Glossary has at least 10 terms defined (soft gate; 15 is the final target)"
+      - "Rule type inventory complete"
+      - "Source systems mapped to contexts"
+    veto_on:
+      - "VETO if context_map is absent or empty"
+      - "VETO if glossary has 0 terms"
+
+  - atom_id: "ATM-DD-008"
+    name: "Create Context Map with Relationship Types"
+    executor_type: Agent
+    executor_id: eric-evans
+    mode: ENTENDER
+    inputs:
+      - { name: "context_map",              type: "yaml",  source: "ATM-DD-001" }
+    outputs:
+      - { name: "context_map_relationships",type: "yaml",  artifact: true }
+    tokens_bound:
+      - "TK-DD-TAX-006"
+    completion_criteria:
+      - "Context map complete with Evans relationship types"
+
+  - atom_id: "ATM-DD-009"
+    name: "Stakeholder Glossary Validation"
+    executor_type: Human
+    executor_id: "Human:stakeholder"
+    mode: VALIDAR
+    inputs:
+      - { name: "glossary_draft",    type: "yaml",   source: "ATM-DD-002" }
+      - { name: "context_map",       type: "yaml",   source: "ATM-DD-001" }
+    outputs:
+      - { name: "validated_glossary", type: "yaml",  artifact: true }
+    tokens_bound:
+      - "TK-DD-TAX-010"
+      - "TK-DD-ACC-001"
+    hitl_id: "HITL-001"
+    completion_criteria:
+      - "Each glossary term marked VALIDATED, NEEDS_REVIEW, or INFERRED"
+      - "At least one business stakeholder consulted (or fallback INFERRED documented)"
+      - "Disagreements between stakeholders documented (signals context boundaries)"
+    veto_on:
+      - "Do NOT proceed to Phase 2 if STAKEHOLDER REVIEW PENDING terms include regulatory/revenue terms"

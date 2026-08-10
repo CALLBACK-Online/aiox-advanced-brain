@@ -1,0 +1,13 @@
+# ⚠️ DEPRECATED (2026-05-03): Migrado para squads/INDEX.json
+# Este arquivo é mantido apenas para retrocompatibilidade. NÃO referenciar em código novo.
+# --- Previous deprecation (2026-03-26): was pointing to ecosystem-registry.yaml, now also deprecated.
+
+metadata:
+  deprecated: true
+  replaced_by: "squads/sinkra-squad/data/ecosystem-registry.yaml"
+  deprecation_date: "2026-03-26"
+  removal_date: "2026-04-25"
+  grace_period: "30d"
+  note: "Legacy redirect stub kept only for backward compatibility during STORY-META-1.5 grace period."
+
+squads: {}

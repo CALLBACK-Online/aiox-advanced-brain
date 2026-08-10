@@ -1,0 +1,70 @@
+{
+  "$id": "sinkra://slide-creator/wireframes/decision-tree.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "The audience must choose among options.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "branch_1_action": {
+      "type": "string"
+    },
+    "branch_1_label": {
+      "type": "string"
+    },
+    "branch_1_question": {
+      "type": "string"
+    },
+    "branch_2_action": {
+      "type": "string"
+    },
+    "branch_2_label": {
+      "type": "string"
+    },
+    "branch_2_question": {
+      "type": "string"
+    },
+    "decision_a": {
+      "type": "string"
+    },
+    "decision_a_action": {
+      "type": "string"
+    },
+    "decision_b": {
+      "type": "string"
+    },
+    "decision_b_action": {
+      "type": "string"
+    },
+    "root_context": {
+      "type": "string"
+    },
+    "root_question": {
+      "type": "string"
+    }
+  },
+  "title": "decision-tree",
+  "type": "object",
+  "x-sinkra": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "decision_options",
+    "slot_count": 13,
+    "warnings": [
+      "action_title",
+      "root_question",
+      "root_context",
+      "branch_1_label",
+      "branch_1_question",
+      "branch_1_action",
+      "branch_2_label",
+      "branch_2_question",
+      "branch_2_action",
+      "decision_a",
+      "decision_a_action",
+      "decision_b",
+      "decision_b_action"
+    ],
+    "wireframe_ref": "templates/wireframes/decision-tree.html"
+  }
+}

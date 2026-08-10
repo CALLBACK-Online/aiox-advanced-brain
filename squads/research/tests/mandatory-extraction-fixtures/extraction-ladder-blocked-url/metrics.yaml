@@ -1,0 +1,20 @@
+---
+workflow_version: "tech-research-v2.0.0"
+coverage_score: 60
+integrity_score: 0.88
+citation_verified: true
+stop_reason: coverage_sufficient
+rubrics:
+  information_recall:
+    passed: 3
+    total: 5
+  analysis:
+    passed: 4
+    total: 5
+  presentation:
+    passed: 5
+    total: 5
+runtime_contract:
+  elapsed_minutes: 14
+  waves: 2
+mandatory_additions: []

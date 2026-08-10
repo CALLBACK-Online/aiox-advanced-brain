@@ -1,0 +1,467 @@
+pack:
+  name: clickup-ops-squad
+  version: "2.2.0"
+  description: >-
+    Squad responsável por materializar processos e Missions mapeados pelo
+    sinkra-squad no ClickUp. Consome composições SINKRA e cria Spaces, Folders,
+    Lists, Custom Fields, Automations, Views e Tasks. Pipeline: sinkra-squad
+    (mapeia) → CSO (valida) → clickup-ops-squad (materializa).
+  icon: "📋"
+
+meta:
+  name: clickup-ops-squad
+  display_name: ClickUp Operations — SINKRA Materializer
+  version: 2.2.0
+  domain: clickup-materialization
+  status: active
+  created: '2026-03-27'
+
+workspace_integration_level: none
+
+ide_sync:
+  enabled: false
+  rationale: "Legado especializado em ClickUp; a superfície canônica de projeção é project-ops"
+
+# ═══════════════════════════════════════════════════════════════════
+# AGENTS — 5 agents
+# ═══════════════════════════════════════════════════════════════════
+agents:
+- id: clickup-chief
+  title: ClickUp Operations Orchestrator
+  tier: 0
+  methodology: SINKRA
+  specialty: Mission materialization orchestration in ClickUp
+  description: "Coordena materialização end-to-end, valida inputs, roteia para especialistas"
+  executor_profile:
+    story_role: "executor"
+    can_execute: true
+    sinkra_type: Agent
+    human_in_the_loop: false
+    output_schema: data/materialization-report-schema.yaml
+    work_contexts: [ClickUp, materialização, SINKRA, orquestração, estrutura, processos, validação]
+    can_review: [ClickUp, materialização, estrutura, SINKRA]
+
+- id: materializer
+  title: Structure Materializer
+  tier: 1
+  methodology: SINKRA
+  specialty: ClickUp structure creation via API
+  description: "Executa criação de Spaces, Folders, Lists, Custom Fields via API"
+  executor_profile:
+    sinkra_type: Agent
+    human_in_the_loop: false
+    story_role: executor
+    can_execute: true
+    core_replaces: "@dev"
+    work_contexts: [ClickUp-API, Spaces, Folders, Lists, Custom-Fields, Views, tokenização]
+    can_review: [ClickUp-API, estrutura, Custom-Fields]
+
+- id: api-builder
+  title: API Gap Filler
+  tier: 1
+  methodology: SINKRA
+  specialty: ClickUp API function implementation
+  description: "Implementa funções faltantes em services/clickup/ (createTask, createFolder, etc.)"
+  executor_profile:
+    sinkra_type: Agent
+    human_in_the_loop: false
+    story_role: executor
+    can_execute: true
+    core_replaces: "@dev"
+    work_contexts: [API, services, ClickUp, createTask, createFolder, JavaScript, integração, gaps]
+    can_review: [API, services, ClickUp]
+
+- id: playwright-ops
+  title: Playwright Automation Specialist
+  tier: 1
+  methodology: SINKRA
+  specialty: UI-only ClickUp features via Playwright
+  description: "Executa ações UI-only via MCP Playwright (automações, dashboards, forms)"
+  executor_profile:
+    sinkra_type: Agent
+    human_in_the_loop: false
+    story_role: executor
+    can_execute: true
+    core_replaces: "@dev"
+    work_contexts: [Playwright, browser-automation, UI, automações, dashboards, forms, scraping]
+    can_review: [Playwright, browser-automation, UI]
+
+- id: auditor
+  title: ClickUp Structure Auditor
+  tier: 2
+  methodology: SINKRA
+  specialty: ClickUp structure coherence validation
+  description: "Valida que estrutura ClickUp está coerente com tokenização SINKRA"
+  executor_profile:
+    sinkra_type: Agent
+    human_in_the_loop: false
+    story_role: executor
+    can_execute: true
+    core_replaces: "@analyst"
+    work_contexts: [auditoria, validação, ClickUp, SINKRA, coerência, tokenização, compliance]
+    can_review: [auditoria, ClickUp, SINKRA, coerência]
+
+# Additional executor roles (non-agent)
+- id: mission-lead
+  title: Mission Lead
+  methodology: SINKRA
+  specialty: Go/no-go, accountability and exception handling
+  executor_profile:
+    story_role: "executor"
+    can_execute: true
+    sinkra_type: Human
+    human_in_the_loop: true
+    output_schema: data/approval-decision-schema.yaml
+
+- id: clickup-runner
+  title: ClickUp Automation Runner
+  methodology: SINKRA
+  specialty: Deterministic API and automation execution
+  executor_profile:
+    story_role: "executor"
+    can_execute: true
+    sinkra_type: Worker
+    human_in_the_loop: false
+    output_schema: data/execution-log-schema.yaml
+
+- id: mission-quality-clone
+  title: Mission Quality Clone
+  methodology: SINKRA
+  specialty: Preflight coherence and readiness review
+  executor_profile:
+    story_role: "executor"
+    can_execute: true
+    sinkra_type: Clone
+    human_in_the_loop: true
+    output_schema: data/preflight-review-schema.yaml
+
+# ═══════════════════════════════════════════════════════════════════
+# CAPABILITIES
+# ═══════════════════════════════════════════════════════════════════
+capabilities:
+- Receive mission-clickup-handoff.yaml from sinkra-squad
+- Create ClickUp Space/Folder/Lists structure
+- Configure DAG View, Board, Dashboard views
+- materialize_full_process
+- add_molecule_to_organism
+- add_tokens_to_molecule
+- clone_process
+- materialize_mission
+- create_automations (via Playwright)
+- create_dashboards (via Playwright)
+- create_forms (via Playwright)
+- configure_workload (via Playwright)
+- audit_clickup_structure
+- sync_tokenization_registry
+# Epic 75 — ClickUp Skill-Kit Absorption
+- capability_matrix_routing
+- visual_workspace_extraction
+- selector_validation
+- ui_page_mapping
+
+# ═══════════════════════════════════════════════════════════════════
+# ACTIVATION
+# ═══════════════════════════════════════════════════════════════════
+activation:
+  shortcuts:
+  - /clickup-ops:clickup-chief
+  - /clickup-ops:materializer
+  - /clickup-ops:api-builder
+  - /clickup-ops:playwright-ops
+  - /clickup-ops:auditor
+
+# ═══════════════════════════════════════════════════════════════════
+# TASKS — 4 high-level + 22 mapped-atm
+# ═══════════════════════════════════════════════════════════════════
+tasks:
+  # High-level tasks (from AllFluence evolution)
+  - id: bootstrap-mission
+    agent: clickup-chief
+    description: "Setup one-time de infraestrutura Mission no ClickUp (Fields, Views, Automações)"
+    command: "*bootstrap --mission"
+    task_file: "tasks/bootstrap-mission.md"
+    idempotent: true
+
+  - id: create-mission
+    agent: clickup-chief
+    description: "Materializar Mission SINKRA específica (DAG → ClickUp Tasks + Dependencies + Gates)"
+    command: "*create-mission {handoff-path}"
+    task_file: "tasks/create-mission.md"
+    recipe: 5
+    prerequisite: bootstrap-mission
+
+  - id: materialize-process
+    agent: clickup-chief
+    description: "Orquestra materialização completa de processo SINKRA"
+    task_file: "tasks/materialize-process.md"
+
+  - id: fill-api-gaps
+    agent: api-builder
+    description: "Implementa funções API faltantes em services/clickup/"
+    task_file: "tasks/fill-api-gaps.md"
+
+  # Derived operational tasks
+  - id: create-structure
+    agent: materializer
+    description: "Cria Folders, Lists, Custom Fields via API"
+
+  - id: create-automations
+    agent: playwright-ops
+    description: "Cria automações e features UI-only via Playwright"
+
+  - id: audit-structure
+    agent: auditor
+    description: "Valida coerência ClickUp ↔ SINKRA tokenization"
+
+  - id: update-registry
+    agent: materializer
+    description: "Atualiza clickup-tokenization.yaml com novos IDs"
+
+# ═══════════════════════════════════════════════════════════════════
+# ARTIFACT CONTRACTS
+# ═══════════════════════════════════════════════════════════════════
+artifact_contracts:
+- artifact_id: clickup-mission-structure
+  template_path: templates/clickup-structure-tmpl.yaml
+  lifecycle_states:
+  - draft
+  - validated
+  - approved
+- artifact_id: mission-materialization-report
+  template: null
+  lifecycle: [draft, validated, consumed]
+- artifact_id: mission-bootstrap-report
+  template: null
+  lifecycle: [draft, validated, consumed]
+# Epic 75 — ClickUp Skill-Kit Absorption
+- artifact_id: capability-matrix
+  template_path: data/capability-matrix.yaml
+  lifecycle_states: [draft, validated, approved]
+- artifact_id: visual-extraction-output
+  template_path: templates/visual-extraction-prompt.md
+  lifecycle_states: [draft, validated]
+- artifact_id: selector-validation-report
+  template: null
+  lifecycle: [draft, validated]
+- artifact_id: ui-page-snapshot
+  template: null
+  lifecycle: [draft, validated]
+
+# ═══════════════════════════════════════════════════════════════════
+# DEPENDENCIES
+# ═══════════════════════════════════════════════════════════════════
+dependencies:
+  consumes:
+    - squads/sinkra-squad/data/clickup-tokenization.yaml
+    - squads/sinkra-squad/data/clickup-composition-rules.yaml
+    - squads/sinkra-squad/data/infrastructure-map.yaml
+    - squads/sinkra-squad/data/composition-rules.yaml
+    - squads/sinkra-squad/templates/mission-clickup-handoff-tmpl.yaml
+    - squads/clickup-ops-squad/data/mission-clickup-spec.yaml
+  produces:
+    - "ClickUp Spaces, Folders, Lists, Custom Fields, Views, Automations"
+    - "ClickUp Mission Tasks com DAG, Dependencies, Gates"
+    - "Atualização do clickup-tokenization.yaml com novos IDs"
+    - "Relatório de materialização (YAML)"
+  api_client: "services/clickup/"
+  playwright_mcp: "playwright (browser automation para UI-only features)"
+
+upstream:
+- squad: sinkra-squad
+  mode: mission
+  handoff_artifact: mission-clickup-handoff.yaml
+  trigger: Phase 7 completion (mode=mission)
+
+# ═══════════════════════════════════════════════════════════════════
+# QUALITY GATES
+# ═══════════════════════════════════════════════════════════════════
+quality_gates:
+  materialized: data/quality-gates.yaml
+  pre_materialization:
+    checklist: "checklists/pre-materialization.md"
+    required: true
+    on_fail: BLOCK
+  post_materialization:
+    checklist: "checklists/post-materialization.md"
+    required: true
+    on_fail: WARN
+
+# ═══════════════════════════════════════════════════════════════════
+# WORKFLOWS
+# ═══════════════════════════════════════════════════════════════════
+workflows:
+  - id: materialization-pipeline
+    type: main
+    description: "Pipeline completo de materialização"
+    steps:
+      - validate_sinkra_composition
+      - check_api_readiness
+      - create_structure
+      - create_automations_playwright
+      - update_tokenization_registry
+      - audit_result
+
+  - id: mission-materialization-pipeline
+    type: mission
+    description: "Pipeline de materialização de Mission SINKRA (Receita 5)"
+    steps:
+      - validate_mission_handoff
+      - resolve_or_create_space_missions
+      - create_mission_folder
+      - create_lists_mission_board_and_gates
+      - create_custom_fields_mission
+      - create_tasks_from_dag
+      - create_dependencies_waiting_on
+      - create_gate_tasks_with_checklists
+      - configure_views_gantt_board_dashboard
+      - configure_automations_playwright
+      - update_tokenization_registry
+      - audit_result
+
+  - id: api-gap-fill
+    type: preparation
+    description: "Pipeline de preparação — implementar APIs faltantes"
+    steps:
+      - identify_gaps
+      - implement_functions
+      - test_functions
+      - validate_integration
+
+# ═══════════════════════════════════════════════════════════════════
+# LOGGING & GOVERNANCE
+# ═══════════════════════════════════════════════════════════════════
+logging:
+  strategy: structured
+  outputs:
+  - data/execution-log-schema.yaml
+  - data/map-generated-infrastructure-connections.yaml
+  audit_trail: data/journey-log-policy.yaml
+
+# ═══════════════════════════════════════════════════════════════════
+# WORKSPACE INTEGRATION
+# ═══════════════════════════════════════════════════════════════════
+workspace_integration:
+  documents_owned: []
+  documents_consumed:
+    - "clickup-tokenization.yaml"
+    - "clickup-composition-rules.yaml"
+    - "infrastructure-map.yaml"
+
+# ═══════════════════════════════════════════════════════════════════
+# IO CONTRACT
+# ═══════════════════════════════════════════════════════════════════
+io_contract:
+  inputs:
+    - id: process-artifacts
+      from: sinkra-squad
+      zone: source_of_truth
+      path_pattern: "workspace/{spoke}/L2-tactical/sinkra-processes/{processo}/"
+      never_reads_from: "squads/sinkra-squad/output/"
+      description: "Artefatos de processo promovidos e aprovados — única fonte para materialização"
+      required_state: POPULATED
+
+    - id: mission-handoff
+      from: sinkra-squad
+      path: "squads/sinkra-squad/templates/mission-clickup-handoff-tmpl.yaml"
+      description: "Template de handoff Mission → ClickUp"
+
+    - id: framework-data
+      from: sinkra-squad
+      paths:
+        - "squads/sinkra-squad/data/clickup-tokenization.yaml"
+        - "squads/sinkra-squad/data/clickup-composition-rules.yaml"
+        - "squads/sinkra-squad/data/infrastructure-map.yaml"
+
+  outputs:
+    - id: clickup-materialization
+      type: side_effect
+      target: "ClickUp (external system)"
+      description: "Estruturas criadas no ClickUp — Spaces, Folders, Lists, Fields, Views"
+
+    - id: tokenization-update
+      path: "squads/sinkra-squad/data/clickup-tokenization.yaml"
+      description: "Atualização do registry com IDs do ClickUp criados"
+
+    - id: materialization-report
+      path: "output/"
+      lifecycle: ephemeral
+      description: "Relatório de materialização (o que foi criado, erros, warnings)"
+
+  governance:
+    rule: "NUNCA materializar a partir de artefatos efêmeros (Zone 1). Sempre exigir promoção para Zone 2 antes."
+    escalation: "Se artefato não está em workspace/{spoke}/, escalar para sinkra-chief para promover primeiro."
+
+# ═══════════════════════════════════════════════════════════════════
+# SINKRA METADATA
+# ═══════════════════════════════════════════════════════════════════
+supported_domains:
+- Strategic
+- Tactical
+- Operational
+supported_domains_ptbr:
+- Estratégico
+- Tático
+- Operacional
+
+supported_modes:
+- CRIAR
+- RESOLVER
+- GERENCIAR
+- ENTENDER
+- VALIDAR
+- CONFIGURAR
+- PLANEJAR
+- EXPLORAR
+
+bu_mapping: "bu-operacoes"
+
+# ═══════════════════════════════════════════════════════════════════
+# COMPOSITION MAPPING — 22 mapped-atm tasks preserved
+# ═══════════════════════════════════════════════════════════════════
+composition_mapping:
+  tokens:
+    source: data/token-registry.yaml
+  atoms:
+    paths:
+    - tasks/mapped-atm-ingest-handoff.md
+    - tasks/mapped-atm-validate-contract.md
+    - tasks/mapped-atm-build-preflight.md
+    - tasks/mapped-atm-authorize-execution.md
+    - tasks/mapped-atm-resolve-space.md
+    - tasks/mapped-atm-create-folder.md
+    - tasks/mapped-atm-provision-lists.md
+    - tasks/mapped-atm-provision-fields.md
+    - tasks/mapped-atm-create-dag-tasks.md
+    - tasks/mapped-atm-enrich-task-metadata.md
+    - tasks/mapped-atm-create-checklists.md
+    - tasks/mapped-atm-bind-dependencies.md
+    - tasks/mapped-atm-create-gate-tasks.md
+    - tasks/mapped-atm-attach-gate-criteria.md
+    - tasks/mapped-atm-activate-automations.md
+    - tasks/mapped-atm-activate-circuit-breaker.md
+    - tasks/mapped-atm-create-execution-views.md
+    - tasks/mapped-atm-create-health-view.md
+    - tasks/mapped-atm-assemble-registry.md
+    - tasks/mapped-atm-sync-upstream-registry.md
+    - tasks/mapped-atm-emit-execution-log.md
+    - tasks/mapped-atm-publish-materialization-report.md
+  templates:
+    paths:
+    - templates/clickup-structure-tmpl.yaml
+    - templates/handoff-downstream-tmpl.yaml
+  molecules:
+    paths:
+    - workflows/map-generated-workflow-definition.yaml#wf_contract_governance
+    - workflows/map-generated-workflow-definition.yaml#wf_topology_provisioning
+    - workflows/map-generated-workflow-definition.yaml#wf_graph_materialization
+    - workflows/map-generated-workflow-definition.yaml#wf_runtime_governance
+  organisms:
+    paths:
+    - workflows/map-generated-workflow-definition.yaml
+  instances:
+    paths:
+    - data/approval-decision-schema.yaml
+    - data/materialization-report-schema.yaml
+  workflows:
+    paths:
+    - workflows/map-generated-workflow-definition.yaml

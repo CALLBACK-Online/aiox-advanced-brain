@@ -1,0 +1,46 @@
+version: "1.0.0"
+last_updated: "2026-05-22"
+purpose: "Canonical family registry for extract-session-heuristics owner/prefix resolution."
+
+families:
+  - id: KE
+    name: "Knowledge Extraction Heuristics"
+    default_for_session_extraction: true
+    file_pattern: "{PREFIX}_KE_{NNN}.md"
+    card_registry: "minds/{owner_slug}/heuristics/decision-cards.yaml"
+    document_registry: "minds/{owner_slug}/heuristics/{ID}.md"
+    description: "Operational heuristics extracted from real work sessions."
+
+  - id: BS
+    name: "Begin-State Checkpoints"
+    default_for_session_extraction: false
+    file_pattern: "{PREFIX}_BS_{NNN}.md"
+    description: "Checkpoint heuristics that validate begin-state and strategic alignment."
+
+  - id: PA
+    name: "Process Architecture Checkpoints"
+    default_for_session_extraction: false
+    file_pattern: "{PREFIX}_PA_{NNN}.md"
+    description: "Checkpoint heuristics that validate executor/process coherence."
+
+  - id: PM
+    name: "Process Mechanics Checkpoints"
+    default_for_session_extraction: false
+    file_pattern: "{PREFIX}_PM_{NNN}.md"
+    description: "Checkpoint heuristics that validate workflow mechanics and automation readiness."
+
+owner_profiles:
+  - owner_slug: alan_nicolas
+    handle: "@oalanicolas"
+    default_extract_prefix: AN_KE
+    namespace: "minds/alan_nicolas/heuristics"
+
+  - owner_slug: pedro_valerio
+    handle: "@pedro-valerio"
+    default_extract_prefix: PV_KE
+    namespace: "minds/pedro_valerio/heuristics"
+
+rules:
+  - "Reuse an existing owner *_KE prefix when present."
+  - "Session extraction defaults to KE. BS/PA/PM require explicit user intent."
+  - "Never infer owner from legacy example paths; resolve owner from active operator metadata."

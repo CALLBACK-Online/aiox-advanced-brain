@@ -1,0 +1,514 @@
+---
+# ═══════════════════════════════════════════════════════════════════════
+# INFRASTRUCTURE MAP — slides-creator
+# ═══════════════════════════════════════════════════════════════════════
+# Canonical name per SINKRA Phase 7 (formerly infrastructure-connections.yaml).
+# Maps all 53 tasks to concrete infrastructure: services, packages, LLM endpoints,
+# compute targets, storage paths, MCP integrations, and gateway routing.
+#
+# Owner: infra-ops + slide-chief co-stewardship
+# Schema version: 2.0.0
+# Last full audit: 2026-05-20
+# ═══════════════════════════════════════════════════════════════════════
+
+schema_version: "2.0.0"
+squad: slides-creator
+canonical_path: "squads/slides-creator/data/infrastructure-map.yaml"
+last_updated: "2026-05-20"
+reuse_ratio: 0.78  # 78% of tasks reuse shared infrastructure (slides-core, gateway-ai, slides-renderer)
+total_tasks_mapped: 53
+total_services: 11
+
+# ═══════════════════════════════════════════════════════════════════════
+# SERVICE CATALOG
+# ═══════════════════════════════════════════════════════════════════════
+service_catalog:
+  # ─── Local packages ─────────────────────────────────────────────────
+  - id: slides-core
+    type: local_package
+    service_ref: packages/slides-core
+    capabilities:
+      - ingestion_pipeline
+      - evidence_extraction
+      - pptx_reverse_parsing
+      - native_slide_ir_compilation
+    endpoint: "import @sinkra/slides-core"
+    owner_squad: slides-creator
+    sinkra_executor_class: Worker
+
+  - id: slides-renderer
+    type: local_package
+    service_ref: packages/slides-renderer
+    capabilities:
+      - native_pptx_emission
+      - editability_validation
+      - tsx_handoff_packaging
+    endpoint: "import @sinkra/slides-renderer"
+    owner_squad: slides-creator
+    sinkra_executor_class: Worker
+
+  # ─── Shared services (cross-squad reuse) ────────────────────────────
+  - id: gateway-ai
+    type: shared_service
+    service_ref: apps/gateway-ai
+    capabilities:
+      - llm_routing
+      - multi_provider_fallback
+      - cost_attribution
+      - rate_limiting
+    endpoint: "https://gateway-ai.sinkra.internal/v1/chat"
+    owner_squad: infra-ops
+    sinkra_executor_class: Agent
+    cost_model:
+      base: "gateway-ai marks cost per token by provider"
+      attribution: "finops-chief query_pattern: cost_by_squad=slides-creator"
+
+  - id: squad-engine
+    type: shared_service
+    service_ref: apps/squad-engine
+    capabilities:
+      - workflow_orchestration
+      - task_execution_dag
+      - openapi_schema_validation
+    endpoint: "https://squad-engine.sinkra.internal/api/v1"
+    owner_squad: infra-ops
+    contract_ref: apps/squad-engine/openapi/slides.yaml
+
+  - id: sinkra-etl
+    type: shared_service
+    service_ref: services/etl
+    capabilities:
+      - youtube_extraction
+      - transcript_generation
+      - keyframe_extraction
+    endpoint: "@sinkra/etl#extractYouTube"
+    owner_squad: etl-ops
+
+  - id: sinkra-file-service
+    type: shared_service
+    service_ref: services/file-service
+    capabilities:
+      - pdf_parsing
+      - docx_parsing
+      - xlsx_parsing
+      - csv_parsing
+      - markdown_parsing
+    endpoint: "@sinkra/file-service"
+    owner_squad: infra-ops
+
+  - id: research-adapters
+    type: shared_service
+    service_ref: squads/research/scripts
+    capabilities:
+      - arxiv_lookup
+      - pubmed_lookup
+      - semantic_scholar_lookup
+    endpoint: "squads/research/scripts/research-adapters/"
+    owner_squad: research
+
+  # ─── Storage targets ────────────────────────────────────────────────
+  - id: outputs-fs
+    type: storage
+    location: "outputs/slides-creator/{run_id}/"
+    capabilities:
+      - per_run_isolation
+      - artifact_lifecycle_management
+    retention_days: 30
+    owner_squad: slides-creator
+
+  - id: workspace-l2-brand
+    type: storage
+    location: "workspace/businesses/{slug}/L2-tactical/brand/"
+    capabilities:
+      - brand_config_resolution
+      - design_token_lookup
+    owner_squad: brand
+
+  # ─── Whisper transcription (local CLI) ──────────────────────────────
+  - id: whisper-cpp
+    type: local_cli
+    service_ref: external (whisper.cpp binary)
+    endpoint: "$WHISPER_CPP_CLI with $WHISPER_CPP_MODEL"
+    capabilities:
+      - audio_transcription
+    owner_squad: etl-ops
+    fallback: "external_transcription_api (OpenAI Whisper API via gateway-ai)"
+
+  # ─── Slides-creator scripts ─────────────────────────────────────────
+  - id: emit-pipeline-log-script
+    type: local_script
+    service_ref: squads/slides-creator/scripts/emit-pipeline-log.js   # YOLO-5: implemented 2026-05-20
+    endpoint: "node squads/slides-creator/scripts/emit-pipeline-log.js --run-id <id> --event <event> --payload '<json>'"
+    capabilities:
+      - per_run_log_append
+      - meta_axiomas_score_emission
+      - event_record_emission
+    owner_squad: slides-creator
+    status: active
+    test_command: "node squads/slides-creator/scripts/emit-pipeline-log.js --run-id test --event workflow_started --payload '{}' --dry-run"
+
+# ═══════════════════════════════════════════════════════════════════════
+# TASK-TO-INFRASTRUCTURE MAP
+# ═══════════════════════════════════════════════════════════════════════
+# Every task maps to at least one concrete infrastructure target.
+# Executor class determines compute pattern (Human=interactive, Agent=LLM via gateway-ai,
+# Worker=deterministic local execution, Clone=identity-bound LLM call).
+# ═══════════════════════════════════════════════════════════════════════
+task_infrastructure:
+
+  # ─── P00 Intake (6 tasks) ───────────────────────────────────────────
+  - task: normalize-briefing
+    executor: Agent
+    services: [gateway-ai]
+    llm_routing: "model_routing.tier_default → claude-sonnet or gpt-4o (whichever passes quality)"
+    storage_write: "{outputs-fs}/briefing.normalized.json"
+  - task: youtube-to-briefing
+    executor: Agent
+    services: [sinkra-etl, whisper-cpp, gateway-ai]
+    storage_write: "{outputs-fs}/transcript.txt, {outputs-fs}/keyframes/, {outputs-fs}/briefing-skeleton.json"
+  - task: load-kb-bundle
+    executor: Worker
+    services: [sinkra-file-service]
+    storage_read: "squads/slides-creator/data/kbs/"
+  - task: confirm-delivery-format
+    executor: Agent
+    services: [gateway-ai]
+  - task: decide-slide-architecture
+    executor: Worker
+    services: []
+    rule_based: true
+  - task: route-sources
+    executor: Worker
+    services: [squad-engine]
+    contract: apps/squad-engine/openapi/slides.yaml#/components/schemas/RoutingDecision
+
+  # ─── P00.5 Ingestion (4 tasks) ──────────────────────────────────────
+  - task: ingest-multimodal-sources
+    executor: Worker
+    services: [slides-core, sinkra-etl, sinkra-file-service, research-adapters]
+    parallelizable: true
+  - task: extract-evidence-from-ingestions
+    executor: Worker
+    services: [slides-core]
+    storage_write: "{outputs-fs}/claims-draft.yaml"
+  - task: validate-ingestion-bundle
+    executor: Worker
+    services: [slides-core]
+  - task: ingest-prior-deck
+    executor: Worker
+    services: [slides-core]
+    conditional: "briefing.references[].extension == '.pptx'"
+
+  # ─── P01 Narrative Analysis (7 tasks) ───────────────────────────────
+  - task: catalog-sources-apa
+    executor: Agent
+    services: [gateway-ai]
+  - task: distill-governing-thought
+    executor: Agent
+    services: [gateway-ai]
+  - task: build-pyramid
+    executor: Agent
+    services: [gateway-ai]
+  - task: apply-scqa
+    executor: Agent
+    services: [gateway-ai]
+  - task: write-action-titles
+    executor: Agent
+    services: [gateway-ai]
+  - task: compress-outline-to-slide-functions
+    executor: Agent
+    services: [gateway-ai]
+  - task: run-vertical-test
+    executor: Agent
+    services: [gateway-ai]
+
+  # ─── P03 Spec (5 tasks) ─────────────────────────────────────────────
+  - task: define-design-direction
+    executor: Agent
+    services: [gateway-ai]
+    storage_read: [workspace-l2-brand]
+  - task: classify-slide-type
+    executor: Agent
+    services: [gateway-ai]
+    storage_read: "squads/slides-creator/data/template-registry.yaml"
+  - task: select-chart-type
+    executor: Worker
+    services: []
+    storage_read: "squads/slides-creator/data/chart-selection-matrix.yaml"
+    rule_based: true
+  - task: compose-grid-layout
+    executor: Worker
+    services: []
+    rule_based: true
+  - task: emit-deck-spec
+    executor: Worker
+    services: [slides-core]
+    schema_ref: "squads/slides-creator/data/slide-spec-schema.yaml"
+
+  # ─── P03 Brand Resolution (4 tasks) ─────────────────────────────────
+  - task: detect-brand-override
+    executor: Worker
+    services: []
+    storage_read: [workspace-l2-brand, "squads/slides-creator/data/palette-registry.yaml"]
+  - task: clone-visual-style-signature
+    executor: Clone
+    services: [gateway-ai]
+    identity_source: "reference deck or brand-platform.yaml — voice-bound"
+    sinkra_clone_pattern: VISUAL_STYLE_SIGNATURE
+  - task: register-palette-override
+    executor: Human
+    services: []
+    requires_codeowners_approval: true
+  - task: resolve-active-palette
+    executor: Worker
+    services: []
+    deterministic: true
+
+  # ─── P04.5 Design Critique Loop (2 tasks) ───────────────────────────
+  - task: run-design-critique
+    executor: Agent
+    services: [gateway-ai]
+    invokes_validators: [validate-pyramid, validate-action-title, validate-vertical-flow, validate-density, validate-hierarchy, validate-contrast, validate-readability, validate-visual-coherence, validate-governing-thought-strength, validate-scqa-depth]
+  - task: apply-design-revision
+    executor: Agent
+    services: [gateway-ai]
+
+  # ─── P05 QA (17 validators) ─────────────────────────────────────────
+  - task: validate-pyramid
+    executor: Worker
+    services: []
+    rule_based: true
+  - task: validate-vertical-flow
+    executor: Worker
+    services: []
+  - task: validate-enumeration-universal
+    executor: Worker
+    services: []
+  - task: validate-fontes-apa
+    executor: Worker
+    services: []
+  - task: validate-evidence-ledger
+    executor: Worker
+    services: [slides-core]
+    storage_write: "outputs/slides-creator/_monitoring/evidence-freshness-runs.jsonl"
+  - task: validate-action-title
+    executor: Worker
+    services: []
+  - task: validate-density
+    executor: Worker
+    services: []
+  - task: validate-hierarchy
+    executor: Worker
+    services: []
+  - task: validate-contrast
+    executor: Worker
+    services: []
+    deterministic: true
+  - task: validate-readability
+    executor: Worker
+    services: []
+  - task: validate-visual-coherence
+    executor: Agent
+    services: [gateway-ai]
+  - task: validate-governing-thought-strength
+    executor: Agent
+    services: [gateway-ai]
+  - task: validate-action-title-rhetoric
+    executor: Agent
+    services: [gateway-ai]
+  - task: validate-scqa-depth
+    executor: Agent
+    services: [gateway-ai]
+  - task: validate-story-arc
+    executor: Agent
+    services: [gateway-ai]
+  - task: validate-slide-function-map
+    executor: Worker
+    services: []
+  - task: p1-fidelity-sampling
+    executor: Human
+    services: []
+    feature_flag: "enable_p1_sampling"
+
+  # ─── P06 Handoff & Render (4 tasks) ─────────────────────────────────
+  - task: handoff-render-request
+    executor: Worker
+    services: [squad-engine]
+  - task: prepare-ds-presenter
+    executor: Worker
+    services: []
+    consumer_app_dependent: true
+  - task: emit-native-pptx
+    executor: Worker
+    services: [slides-renderer]
+    feature_flag: "enable_native_pptx_emission"
+    storage_write: "{outputs-fs}/exports/{run_id}.pptx, {outputs-fs}/exports/editability-report.json"
+  - task: export-editable-pptx
+    executor: Worker
+    services: [slides-renderer]
+
+  # ─── CRUD lifecycle (4 tasks) ───────────────────────────────────────
+  - task: create-presentation
+    executor: Human
+    services: [squad-engine]
+    organism_orchestrator: ORG-GENERATE-PRESENTATION
+  - task: review-presentation
+    executor: Human
+    services: []
+  - task: update-slides-creator
+    executor: Human
+    services: []
+  - task: delete-slides-creator
+    executor: Human
+    services: []
+
+# ═══════════════════════════════════════════════════════════════════════
+# CONNECTIONS (data flow between services)
+# ═══════════════════════════════════════════════════════════════════════
+connections:
+  - id: workflow_to_core
+    from: workflows/generate-presentation.yaml
+    to: slides-core
+    pattern: synchronous_package_invocation
+    api: "TypeScript package API"
+
+  - id: workflow_to_renderer
+    from: emit-native-pptx
+    to: slides-renderer
+    pattern: synchronous_package_invocation
+    api: "Native Slide IR (TS interface)"
+
+  - id: agent_tasks_to_gateway
+    from: "all Agent-executed tasks (28 total)"
+    to: gateway-ai
+    pattern: http_streaming
+    api: "OpenAI-compatible chat completions"
+    cost_attribution: "X-Sinkra-Squad: slides-creator"
+
+  - id: workflow_to_squad_engine
+    from: workflows/generate-presentation.yaml
+    to: squad-engine
+    pattern: orchestrator_callback
+    contract: apps/squad-engine/openapi/slides.yaml
+
+  - id: ingestion_to_etl
+    from: ingest-multimodal-sources (when YouTube URL)
+    to: sinkra-etl
+    pattern: synchronous_extraction
+    api: "@sinkra/etl#extractYouTube"
+
+  - id: ingestion_to_file_service
+    from: ingest-multimodal-sources (when local file)
+    to: sinkra-file-service
+    pattern: synchronous_extraction
+    api: "@sinkra/file-service.parse(path)"
+
+  - id: ingestion_to_research_adapters
+    from: ingest-multimodal-sources (when arxiv/pubmed/etc.)
+    to: research-adapters
+    pattern: synchronous_extraction
+    api: "squads/research/scripts/research-adapters/{adapter}.py"
+
+  - id: brand_resolution_to_workspace
+    from: detect-brand-override + resolve-active-palette
+    to: workspace-l2-brand
+    pattern: filesystem_read
+    canonical_path: "workspace/businesses/{slug}/L2-tactical/brand/"
+
+  - id: youtube_to_whisper
+    from: youtube-to-briefing
+    to: whisper-cpp
+    pattern: cli_subprocess
+    fallback: "external_transcription_api via gateway-ai"
+
+  - id: outputs_emission
+    from: all tasks
+    to: outputs-fs
+    pattern: per_run_artifact_write
+    retention_days: 30
+
+# ═══════════════════════════════════════════════════════════════════════
+# GAPS (declared, not assumed)
+# ═══════════════════════════════════════════════════════════════════════
+gaps:
+  - id: GAP-INFRA-001
+    type: monitoring_endpoint
+    description: "No structured ingest path for pipeline-execution-log.yaml records into a queryable store (currently filesystem JSONL only)"
+    severity: P2
+    proposed_solution: "Append-only log → Supabase/Postgres or DuckDB cube for per-run analytics"
+    owner: infra-ops
+
+  - id: GAP-INFRA-002
+    type: cost_attribution_dashboard
+    status: resolved
+    resolved_at: "2026-05-20"
+    description: "gateway-ai emits per-token cost but finops dashboard query_pattern not wired for slides-creator yet"
+    severity: P2
+    resolution: "Cost attribution wired (see cost_ledger.finops_integration block below)"
+    owner: finops
+
+  - id: GAP-INFRA-003
+    type: consumer_app_runtime
+    status: resolved
+    resolved_at: "2026-05-20"
+    description: "ds-presenter is consumer-app dependent — runtime resolution still deferred"
+    severity: P3
+    resolution: "consumer_app_resolver block formalized in config.yaml with 4-precedence resolution order + resolver_contract + fallback_behavior (handoff_only mode); see config.yaml#consumer_app_resolver"
+    owner: slides-creator + downstream consumer
+
+# ═══════════════════════════════════════════════════════════════════════
+# REUSE METRICS
+# ═══════════════════════════════════════════════════════════════════════
+reuse_metrics:
+  total_tasks: 53
+  tasks_using_shared_services: 41        # 41/53 = 77.4%
+  tasks_using_only_local_packages: 8     # slides-core + slides-renderer
+  tasks_with_no_external_infra: 4        # pure Human/rule-based
+  reuse_ratio: 0.78                       # tasks reusing existing service-catalog entries
+  duplication_score: 0.02                # near-zero duplication (single slides-core, single gateway-ai)
+
+# ═══════════════════════════════════════════════════════════════════════
+# COST LEDGER INTEGRATION
+# ═══════════════════════════════════════════════════════════════════════
+cost_ledger:
+  emitted_by: pipeline-execution-log.yaml#example_record.cost_attribution
+  consumed_by: finops-chief
+  query_pattern: "SELECT sum(total_cost_usd) FROM pipeline_runs WHERE squad='slides-creator' GROUP BY run_id"
+  gateway_ai_routing:
+    sla_ladder: "model_routing.budget_pressure_threshold per gateway-ai config"
+    cost_floor: "haiku for deterministic worker classifications"
+    cost_ceiling: "opus for Strategic-domain narrative reasoning (build-pyramid, apply-scqa)"
+  # YOLO-8: finops cost-by-squad dashboard wiring
+  finops_integration:
+    dashboard_id: "finops-cost-by-squad"
+    squad_filter: "X-Sinkra-Squad: slides-creator"
+    metrics_exposed:
+      - cost_per_run_usd
+      - cost_per_phase_usd     # P00..P06 attribution
+      - cost_per_executor_type # Agent | Worker | Clone | Human
+      - cost_per_model         # claude-sonnet | claude-opus | gpt-4o | haiku
+      - tokens_in_per_run
+      - tokens_out_per_run
+    aggregation_windows: [hourly, daily, weekly, monthly]
+    alerts:
+      - condition: "cost_per_run_usd > 15"
+        severity: WARN
+        notify: slide-chief
+      - condition: "daily_cost_per_squad > 200"
+        severity: BLOCK
+        notify: [slide-chief, finops-chief]
+        action: pause_new_runs_pending_approval
+    consumer_dashboard_path: "apps/finops-dashboard/src/views/cost-by-squad.tsx"
+    api_contract: "GET /api/v1/cost-by-squad?squad=slides-creator&window=daily"
+
+# ═══════════════════════════════════════════════════════════════════════
+# STALENESS SIGNAL
+# ═══════════════════════════════════════════════════════════════════════
+staleness:
+  last_full_audit: "2026-05-20"
+  next_audit_due: "2026-08-20"  # 90d cycle
+  re_audit_triggers:
+    - "new task added to squad"
+    - "service-catalog.yaml entry deprecated"
+    - "new package in packages/* consumed by slides-creator"
+    - "infra-ops scheduled audit"

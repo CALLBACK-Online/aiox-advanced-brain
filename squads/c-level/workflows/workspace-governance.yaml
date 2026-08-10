@@ -1,0 +1,353 @@
+# =============================================================================
+# WORKSPACE GOVERNANCE WORKFLOW
+# =============================================================================
+# Workflow de governança do workspace executado pelo COO.
+# Garante saúde, consistência e compliance do workspace.
+# =============================================================================
+
+name: workspace-governance
+version: "1.0.0"
+owner: coo-orchestrator
+squad: c-level
+
+description: |
+  Workflow de governança que o COO executa para manter a saúde do workspace.
+  Inclui auditorias periódicas, validações automáticas e auto-fix quando possível.
+
+# =============================================================================
+# TRIGGERS
+# =============================================================================
+
+triggers:
+  scheduled:
+    - name: weekly_health_check
+      schedule: "0 9 * * 1"  # Segunda-feira 9h
+      action: full_audit
+
+    - name: daily_quick_check
+      schedule: "0 8 * * 2-5"  # Ter-Sex 8h
+      action: quick_validation
+
+  manual:
+    - command: "*health-check"
+      action: full_audit
+
+    - command: "*quick-check"
+      action: quick_validation
+
+    - command: "*fix-workspace"
+      action: auto_fix
+
+  event:
+    - on: file.created
+      path: "workspace/**"
+      action: incremental_validation
+
+    - on: file.modified
+      path: "workspace/*.yaml"
+      action: schema_validation
+
+registry_bindings:
+  quality_gates_file: squads/c-level/data/quality-gates.yaml
+  token_registry_file: squads/c-level/data/token-registry.yaml
+  execution_log_file: squads/c-level/data/pipeline-execution-log.yaml
+  consumed_gates:
+    - workspace-preflight
+    - workspace-governance-health
+  consumed_tokens:
+    - TK-CL-006
+    - TK-CL-007
+    - TK-CL-008
+    - TK-CL-009
+    - TK-CL-010
+    - TK-CL-013
+
+# =============================================================================
+# ACTIONS
+# =============================================================================
+
+actions:
+
+  # ---------------------------------------------------------------------------
+  # QUICK VALIDATION (Daily)
+  # ---------------------------------------------------------------------------
+  quick_validation:
+    description: "Validação rápida diária"
+    gate_id: workspace-governance-health
+    threshold_source: data/quality-gates.yaml#quality_gates[workspace-governance-health].threshold
+    token_ids: [TK-CL-006, TK-CL-007, TK-CL-009, TK-CL-010, TK-CL-013]
+    verdict_model: PASS|REVIEW|FAIL
+    steps:
+      - id: validate_c_level_essentials
+        description: "Validar contrato workspace-first do squad C-Level"
+        gate_id: workspace-preflight
+        token_ids: [TK-CL-007, TK-CL-013]
+        command: "bash squads/c-level/scripts/validate-c-level-essentials.sh"
+        on_failure: notify_coo
+
+      - id: run_structure_validation
+        description: "Executar validate-structure.sh"
+        command: "bash squads/c-level/scripts/validate-structure.sh"
+        on_failure: notify_coo
+
+      - id: validate_workflow_integrity_quick
+        description: "Executar teste de integridade de workflows"
+        command: "npm test -- squads/c-level/scripts/workflow-integrity.test.js"
+        on_failure: notify_coo
+
+      - id: check_yaml_syntax
+        description: "Validar sintaxe YAML"
+        command: |
+          find workspace -name "*.yaml" -exec yq e '.' {} \; > /dev/null 2>&1
+        on_failure: notify_coo
+
+      - id: report_quick
+        description: "Relatório rápido"
+        condition: "all_passed"
+        output: "console"
+        format: |
+          ✅ Quick Check PASSED ({timestamp})
+          - Structure: OK
+          - Workflow Integrity: OK
+          - YAML Syntax: OK
+
+  # ---------------------------------------------------------------------------
+  # FULL AUDIT (Weekly)
+  # ---------------------------------------------------------------------------
+  full_audit:
+    description: "Auditoria completa semanal"
+    gate_id: workspace-governance-health
+    threshold_source: data/quality-gates.yaml#quality_gates[workspace-governance-health].threshold
+    token_ids: [TK-CL-006, TK-CL-007, TK-CL-008, TK-CL-009, TK-CL-010, TK-CL-013]
+    verdict_model: PASS|REVIEW|FAIL
+    steps:
+      # Fase 1: Estrutura
+      - id: validate_c_level_essentials
+        description: "Validar contrato workspace-first do squad C-Level"
+        checklist: "workspace-health-checklist.md#1"
+        gate_id: workspace-preflight
+        token_ids: [TK-CL-007, TK-CL-013]
+        command: "bash squads/c-level/scripts/validate-c-level-essentials.sh"
+        gate: true
+
+      - id: validate_structure
+        description: "Validar estrutura básica"
+        checklist: "workspace-health-checklist.md#1"
+        gate_id: workspace-preflight
+        token_ids: [TK-CL-006, TK-CL-007, TK-CL-013]
+        command: "bash squads/c-level/scripts/validate-structure.sh"
+        gate: true
+
+      # Fase 2: Integridade de Workflows
+      - id: validate_workflow_integrity
+        description: "Executar testes de integridade dos workflows"
+        checklist: "workspace-health-checklist.md#11"
+        command: "npm test -- squads/c-level/scripts/workflow-integrity.test.js"
+        gate: true
+
+      # Fase 3: Camadas (5-Layer)
+      - id: validate_layers
+        description: "Validar camadas vs document-registry.yaml"
+        checklist: "workspace-health-checklist.md#2"
+        logic: |
+          registry = load_yaml("workspace/{spoke}/document-registry.yaml")
+          assert exists("workspace/{spoke}/L0-identity/")
+          assert exists("workspace/{spoke}/L1-strategy/")
+          assert exists("workspace/{spoke}/L2-tactical/")
+          assert exists("workspace/{spoke}/L3-product/")
+          assert exists("workspace/{spoke}/L4-operational/")
+          for entry in registry.documents:
+            assert exists(entry.path)
+
+      # Fase 4: Integrações (Services)
+      - id: validate_services
+        description: "Validar services/"
+        checklist: "workspace-health-checklist.md#3"
+        logic: |
+          services = glob("services/*/")
+          for service in services:
+            assert exists("{service}/config.yaml") or exists("{service}/index.ts")
+
+      # Fase 5: Document Registry
+      - id: validate_registry
+        description: "Validar document-registry.yaml"
+        checklist: "workspace-health-checklist.md#4"
+        logic: |
+          registry = load_yaml("workspace/{spoke}/document-registry.yaml")
+          for entry in registry.documents:
+            assert exists(entry.path)
+            assert entry.state in ["PLACEHOLDER","DRAFT","POPULATED","VALIDATED","APPROVED","STALE","ARCHIVED"]
+            assert entry.owner is not empty
+
+      # Fase 6: YAML/JSON Syntax
+      - id: validate_syntax
+        description: "Validar sintaxe de todos os arquivos"
+        checklist: "workspace-health-checklist.md#6"
+        command: |
+          find workspace -name "*.yaml" -exec yq e '.' {} \; > /dev/null 2>&1
+          find workspace -name "*.json" -exec jq '.' {} \; > /dev/null 2>&1
+
+      # Fase 7: Design System (se existir)
+      - id: validate_design_system
+        description: "Validar Design System"
+        condition: "exists('packages/ds/') or exists('packages/tokens/')"
+        checklist: "workspace-health-checklist.md#5"
+        logic: |
+          if exists("packages/ds/"):
+            assert exists("packages/ds/package.json")
+            assert exists("packages/ds/src/")
+          if exists("packages/tokens/"):
+            assert exists("packages/tokens/package.json")
+          if exists("packages/tailwind-config/"):
+            assert exists("packages/tailwind-config/package.json")
+
+      # Fase 8: Sagas
+      - id: validate_sagas
+        description: "Validar compensatory actions"
+        checklist: "workspace-health-checklist.md#9"
+        logic: |
+          workflows = glob("squads/*/workflows/*.yaml")
+          for wf_file in workflows:
+            wf = load_yaml(wf_file)
+            for workflow in wf.workflows:
+              if has_mutations(workflow):
+                assert workflow.on_failure exists
+                for step in workflow.steps:
+                  if is_mutation(step):
+                    assert step.compensation exists
+
+      # Fase 9: Padrões Proibidos
+      - id: check_forbidden_patterns
+        description: "Verificar padrões proibidos"
+        checklist: "workspace-health-checklist.md#7"
+        command: |
+          forbidden=$(find workspace -type f \
+            \( -name "*_backup" -o -name "*_old" -o -name "*_v2" \
+            -o -name "*_v3" -o -name "test_*" -o -name "temp_*" \
+            -o -name "TODO_*" -o -name "*~" \) 2>/dev/null | wc -l)
+          [ "$forbidden" -eq 0 ]
+
+      # Fase 10: Gerar Relatório
+      - id: generate_report
+        description: "Gerar relatório de auditoria"
+        output_path: "docs/qa/workspace-health/{date}-health-report.md"
+        template: |
+          # Workspace Health Report
+
+          **Data:** {date}
+          **Auditor:** COO (coo-orchestrator)
+          **Status:** {gate_decision}
+
+          ## Resumo Executivo
+
+          | Categoria | Status | Issues |
+          |-----------|--------|--------|
+          | Estrutura | {validate_structure.status} | {validate_structure.issues} |
+          | Workflow Integrity | {validate_workflow_integrity.status} | {validate_workflow_integrity.issues} |
+          | Camadas (5-Layer) | {validate_layers.status} | {validate_layers.issues} |
+          | Integrações (Services) | {validate_services.status} | {validate_services.issues} |
+          | Document Registry | {validate_registry.status} | {validate_registry.issues} |
+          | Sintaxe | {validate_syntax.status} | {validate_syntax.issues} |
+          | Design System | {validate_design_system.status} | {validate_design_system.issues} |
+          | Sagas | {validate_sagas.status} | {validate_sagas.issues} |
+          | Padrões | {check_forbidden_patterns.status} | {check_forbidden_patterns.issues} |
+
+          ## Issues Encontrados
+
+          {issues_by_severity}
+
+          ## Recomendações
+
+          {recommendations}
+
+          ---
+          *Gerado automaticamente pelo COO - Squad C-Level*
+
+  # ---------------------------------------------------------------------------
+  # AUTO FIX
+  # ---------------------------------------------------------------------------
+  auto_fix:
+    description: "Corrigir issues conhecidos automaticamente"
+    steps:
+      - id: fix_missing_registry
+        description: "Criar document-registry.yaml se não existir"
+        condition: "not exists('workspace/{spoke}/document-registry.yaml')"
+        action: "create_document_registry"
+
+      - id: fix_forbidden_patterns
+        description: "Listar arquivos proibidos para remoção manual"
+        action: "list_forbidden_files"
+        output: "console"
+
+      - id: fix_missing_layers
+        description: "Criar diretórios L0-L4 faltantes"
+        action: "scaffold_missing_layers"
+
+      - id: report_fixes
+        description: "Relatório de correções"
+        output: "console"
+
+  # ---------------------------------------------------------------------------
+  # INCREMENTAL VALIDATION
+  # ---------------------------------------------------------------------------
+  incremental_validation:
+    description: "Validação incremental após mudanças"
+    steps:
+      - id: validate_changed_file
+        description: "Validar arquivo modificado"
+        logic: |
+          file = event.path
+          if file.endswith(".yaml"):
+            validate_yaml_syntax(file)
+          if file.startswith("workspace/{spoke}/"):
+            validate_layer_structure(file)
+            validate_registry_entry(file)
+
+      - id: notify_if_invalid
+        description: "Notificar se inválido"
+        condition: "validation_failed"
+        action: "notify_coo"
+
+# =============================================================================
+# NOTIFICATIONS
+# =============================================================================
+
+notifications:
+  notify_coo:
+    channel: "system"
+    template: |
+      ⚠️ Workspace Health Alert
+
+      **Issue:** {issue_description}
+      **File:** {file_path}
+      **Severity:** {severity}
+
+      Run `*health-check` for full audit.
+
+# =============================================================================
+# OUTPUTS
+# =============================================================================
+
+outputs:
+  health_report:
+    path: "docs/qa/workspace-health/{date}-health-report.md"
+    retention: "90 days"
+
+  quick_check_log:
+    path: ".logs/workspace-health/{date}-quick.log"
+    retention: "7 days"
+
+# =============================================================================
+# INTEGRATION
+# =============================================================================
+
+integration:
+  ci_cd:
+    github_actions:
+      workflow: ".github/workflows/squad-validation.yml"
+      trigger: "pull_request"
+      note: "Guardrail provisório até existir workflow dedicado de workspace health."
+
+    pre_commit:
+      hook: ".claude/hooks/structure-validation.py"
+      blocking: true

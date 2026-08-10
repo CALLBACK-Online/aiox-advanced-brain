@@ -1,0 +1,79 @@
+version: "1.0.0"
+artifact: journey-log
+template: journey-log-tmpl.yaml
+squad: runner-ops
+
+# Journey Log — Runner Ops Squad
+# Tracks all significant decisions, handoffs, and state transitions
+# in runner lifecycle operations.
+
+instance:
+  id: "{{instance_id}}"               # e.g. "runner-ops-2026-04-03-001"
+  mode: "{{CRIAR|VALIDAR|GERENCIAR|CONFIGURAR}}"
+  subject: "{{runner_name}}"          # e.g. "copy-runner"
+  subject_path: "{{runner_path}}"     # e.g. "squads/copy/scripts/copy-runner.sh"
+  started_at: "{{ISO8601}}"
+  status: "{{CRIADA|EM_EXECUCAO|COMPLETA|PAUSADA|BLOQUEADA|CANCELADA|ARQUIVADA}}"
+  initiated_by: "{{agent_or_human}}"  # e.g. "runner-chief" or "Human:oalanicolas"
+
+events:
+  - seq: 1
+    ts: "{{ISO8601}}"
+    event_type: "{{INITIATED|DELEGATED|CHECKPOINT|HANDOFF|DECISION|BLOCKER|RESOLVED|COMPLETED|FAILED}}"
+    actor: "{{agent_id}}"             # e.g. "runner-chief", "runner-integrator"
+    description: "{{what happened}}"
+    data:
+      # Free-form — include relevant context
+      from_agent: "{{agent_id}}"
+      to_agent: "{{agent_id}}"
+      artifact_produced: "{{path or null}}"
+      score_before: "{{N or null}}"
+      score_after: "{{N or null}}"
+      violation_codes: []
+      decision: "{{text or null}}"
+      blocker: "{{text or null}}"
+
+  # Additional events follow same schema:
+  # - seq: N
+  #   ts: ...
+  #   event_type: ...
+  #   actor: ...
+  #   description: ...
+  #   data: {}
+
+handoffs:
+  - seq: "{{seq_from_events}}"
+    from: "{{agent_id}}"
+    to: "{{agent_id}}"
+    condition: "{{what triggered the handoff}}"
+    artifacts_passed:
+      - "{{path}}"
+
+checkpoints:
+  - seq: "{{seq_from_events}}"
+    checkpoint: "{{checkpoint_id}}"   # e.g. "COMPLIANCE_GATE"
+    result: "{{PASS|FAIL|WARN}}"
+    score: "{{N/100}}"
+    violations: []
+    action_taken: "{{proceed|rollback|escalate}}"
+
+blockers:
+  # Log VETOs and blockers that paused the operation
+  - seq: "{{seq_from_events}}"
+    type: "{{VETO|EXTERNAL|DEPENDENCY|BUDGET}}"
+    description: "{{what blocked}}"
+    blocking_agent: "{{agent_id}}"
+    resolution: "{{how it was resolved or null if active}}"
+    resolved_at: "{{ISO8601 or null}}"
+
+summary:
+  total_events: "{{N}}"
+  total_handoffs: "{{N}}"
+  total_blockers: "{{N}}"
+  blockers_resolved: "{{N}}"
+  duration_minutes: "{{N}}"
+  outcome: "{{SUCCESS|FAIL|PARTIAL}}"
+  final_score: "{{N/100 or null}}"
+  artifacts_produced:
+    - "{{path}}"
+  notes: "{{free text summary}}"

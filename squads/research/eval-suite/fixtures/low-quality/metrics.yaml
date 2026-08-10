@@ -1,0 +1,16 @@
+schema: sinkra.research-core.metrics.v1
+runtime: research-core
+engine: mock
+started_at: "2026-05-19T15:41:06.005Z"
+completed_at: "2026-05-19T15:41:06.007Z"
+completion_reason: natural
+query: "Validate research-core launcher persistence"
+files_emitted: 13
+sources: 1
+claims: 2
+invalid_citations: 1
+graph_nodes: 12
+graph_edges: 15
+coverage_score: 0
+integrity_score: 40
+status: smoke

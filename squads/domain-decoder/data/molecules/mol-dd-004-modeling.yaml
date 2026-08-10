@@ -1,0 +1,86 @@
+molecule:
+  molecule_id: "MOL-DD-004"
+  name: "Modeling"
+  mode: "CRIAR"
+  pattern: "sequential"
+  phase: 3
+  reusable: false
+  used_in_variants: ["extraction"]
+  agents_primary: ["barbara-von-halle", "james-taylor"]
+  tokens_molecule:
+    - "TK-DD-MOD-004"
+    - "TK-DD-ACC-001"
+    - "TK-DD-PRI-001"
+
+atoms:
+  - atom_id: "ATM-DD-020"
+    name: "Identify Business Decisions"
+    executor_type: Agent
+    executor_id: barbara-von-halle
+    mode: CRIAR
+    inputs:
+      - { name: "fact_model", type: "yaml", source: "ATM-DD-018" }
+    outputs:
+      - { name: "business_decisions", type: "yaml", artifact: true }
+    tokens_bound: []
+    completion_criteria:
+      - "Decisions identified format DEC-{CONTEXT}-{NNN}"
+
+  - atom_id: "ATM-DD-021"
+    name: "Create Rule Families"
+    executor_type: Agent
+    executor_id: barbara-von-halle
+    mode: CRIAR
+    inputs:
+      - { name: "business_decisions", type: "yaml", source: "ATM-DD-020" }
+    outputs:
+      - { name: "rule_families", type: "yaml", artifact: true }
+    tokens_bound: []
+    completion_criteria:
+      - "Rule families created using Von Halle Decision Model structure"
+
+  - atom_id: "ATM-DD-022"
+    name: "Build Decision Tables (DMN)"
+    executor_type: Agent
+    executor_id: james-taylor
+    mode: CRIAR
+    inputs:
+      - { name: "rule_families", type: "yaml", source: "ATM-DD-021" }
+    outputs:
+      - { name: "decision_tables", type: "yaml", artifact: true }
+    tokens_bound:
+      - "TK-DD-TAX-007"
+      - "TK-DD-CAP-005"
+      - "TK-DD-CAP-006"
+    completion_criteria:
+      - "Decision tables built with valid Hit Policies"
+
+  - atom_id: "ATM-DD-023"
+    name: "Create Decision Requirements Diagrams"
+    executor_type: Agent
+    executor_id: james-taylor
+    mode: CRIAR
+    inputs:
+      - { name: "decision_tables", type: "yaml", source: "ATM-DD-022" }
+    outputs:
+      - { name: "drds", type: "yaml", artifact: true }
+    tokens_bound: []
+    completion_criteria:
+      - "DRD per bounded context in Mermaid format"
+
+  - atom_id: "ATM-DD-024"
+    name: "Validate Completeness & Consistency"
+    executor_type: Agent
+    executor_id: barbara-von-halle
+    mode: VALIDAR
+    inputs:
+      - { name: "drds", type: "yaml", source: "ATM-DD-023" }
+      - { name: "decision_tables", type: "yaml", source: "ATM-DD-022" }
+    outputs:
+      - { name: "modeling_validation", type: "yaml", artifact: true }
+    tokens_bound:
+      - "TK-DD-THR-013"
+    completion_criteria:
+      - "Orphaned rules flagged"
+      - "Empty decisions handled"
+      - "Fact model completeness check passes"

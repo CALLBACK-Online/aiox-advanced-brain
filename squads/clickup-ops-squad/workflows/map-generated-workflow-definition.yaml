@@ -1,0 +1,691 @@
+metadata:
+  phase: 4
+  process_slug: clickup-ops-squad
+  process_name: clickup-ops-squad
+  pipeline_mode: brownfield
+  generated_by: composition-engineer
+  generated_at: '2026-03-28T10:21:29-03:00'
+  version: 1.0.0
+  checkpoint: PV_PM_001
+  expected_output: workflow_definition.yaml
+  references:
+    previous_phase:
+    - architecture.yaml
+    - executor_matrix.yaml
+    - raci_matrix.yaml
+    - capability_gaps.yaml
+    - phase-3-handoff.yaml
+    repository_evidence:
+    - services/clickup/materialize-mission.js
+    - services/clickup/structures.js
+    - services/clickup/tasks.js
+    - services/clickup/custom-fields.js
+    - services/clickup/checklists.js
+    - services/clickup/dependencies.js
+    - services/clickup/views.js
+  assumptions:
+  - A frequência real ainda não tem baseline mensurado; a recorrência foi inferida
+    como operacional recorrente por Mission.
+  - CG-001, CG-002, CG-003, CG-004 e CG-005 permanecem gaps de capacidade, não de
+    desenho.
+  - O workflow preserva o Mission Lead como único gate humano de go/no-go e de fallback
+    final.
+workflow_definition:
+  template_id: tpl_clickup_mission_materialization_v2
+  template_name: ClickUp Mission Materialization Template v2
+  instance_id: inst_clickup_mission_runtime
+  workflow_policy:
+    cli_first: true
+    logging_mandatory: true
+    schema_validation_mandatory: true
+    silent_failure_forbidden: true
+    domain_handoffs_required: true
+    accountable_human: Mission Lead
+  quality_thresholds:
+  - gate: contract_validation
+    threshold: 1.0
+  - gate: field_coverage
+    threshold: 0.9
+  - gate: automation_health
+    threshold: 0.8
+  - gate: publish_readiness
+    threshold: 0.85
+  workflows:
+  - workflow_id: wf_contract_governance
+    name: Contrato e Readiness da Mission
+    organism_id: org_admission_control
+    trigger: 'artifact: mission-clickup-handoff.yaml recebido pelo clickup-ops-squad'
+    frequency: Por Mission
+    handoff_in:
+      from_domain: Tático
+      artifact: mission-clickup-handoff.yaml
+    handoff_out:
+      to_domain: Operacional
+      artifact: approved_preflight_bundle
+    steps:
+    - step_id: step_01_ingest_handoff
+      task_id: atm_ingest_handoff
+      executor_type: Agent
+      action: Ler o handoff, identificar versão, registrar recebimento e normalizar
+        contexto mínimo da Mission.
+      inputs:
+      - mission-clickup-handoff.yaml
+      - contexto do sinkra-squad
+      outputs:
+      - handoff_normalizado
+      - receipt_log
+      guardrails:
+        pre_conditions:
+        - Arquivo do handoff existe e é legível
+        - mission.id e mission.name estão presentes no payload bruto
+        post_conditions:
+        - handoff_normalizado preserva versionamento do artefato
+        - receipt_log contém timestamp e accountable humano
+        error_handling:
+          strategy: fallback
+          max_retries: 1
+          fallback: Escalar para Mission Lead com o artefato bruto e erro de parsing
+    - step_id: step_02_validate_contract
+      task_id: atm_validate_contract
+      executor_type: Worker
+      action: Validar campos obrigatórios, referências do DAG e accountable humano
+        antes de qualquer chamada de API.
+      inputs:
+      - handoff_normalizado
+      - schema do contrato de Mission
+      outputs:
+      - contract_validation_result
+      - contract_errors
+      guardrails:
+        pre_conditions:
+        - handoff_normalizado foi produzido no step_01
+        - Schema do contrato está disponível no runtime
+        post_conditions:
+        - contract_validation_result.status é PASS ou FAIL
+        - Se FAIL, contract_errors contém lista não vazia de violações
+        error_handling:
+          strategy: abort
+          max_retries: 0
+          fallback: Bloquear o workflow e notificar Mission Lead
+    - step_id: step_03_build_preflight
+      task_id: atm_build_preflight
+      executor_type: Agent
+      action: Gerar plano de materialização com entidades alvo, riscos estruturais,
+        gaps conhecidos e requisitos de execução.
+      inputs:
+      - handoff_normalizado
+      - contract_validation_result
+      - capability_gaps.yaml
+      outputs:
+      - materialization_preflight
+      - risk_summary
+      guardrails:
+        pre_conditions:
+        - contract_validation_result.status = PASS
+        - Todos os atoms do TO-BE estão resolvidos no executor_matrix
+        post_conditions:
+        - materialization_preflight enumera space, folder, listas, views, gates e
+          sync
+        - risk_summary classifica pelo menos risco estrutural, risco de automação
+          e risco de sync
+        error_handling:
+          strategy: fallback
+          max_retries: 1
+          fallback: Mission Lead revisa o preflight manualmente
+    - step_id: step_04_authorize_execution
+      task_id: atm_authorize_execution
+      executor_type: Human
+      action: Emitir o go/no-go formal e assumir accountability explícita pela execução
+        da instância.
+      inputs:
+      - materialization_preflight
+      - risk_summary
+      outputs:
+      - execution_decision
+      - approved_preflight_bundle
+      guardrails:
+        pre_conditions:
+        - materialization_preflight existe
+        - Mission Lead identificado no handoff
+        post_conditions:
+        - execution_decision é GO ou NO_GO
+        - Se GO, approved_preflight_bundle contém referência do accountable e timestamp
+        error_handling:
+          strategy: abort
+          max_retries: 0
+          fallback: Sem fallback automatizado; ausência de decisão mantém bloqueio
+    conditionals:
+    - condition: contract_validation_result.status = FAIL
+      then: Encerrar o workflow com bloqueio formal, registrar contract_errors e impedir
+        qualquer materialização
+      else: Avançar para materialization_preflight
+    - condition: risk_summary.structural_risk IN ['alto', 'crítico']
+      then: Exigir revisão explícita do Mission Lead antes do GO
+      else: Permitir decisão direta do Mission Lead com base no preflight
+    - condition: execution_decision = GO
+      then: Entregar approved_preflight_bundle para wf_topology_provisioning
+      else: Fechar a instância como NO_GO com trilha auditável
+    error_handling:
+      global_fallback: Mission Lead
+      alert_channels:
+      - stdout estruturado
+      - materialization report
+      on_failure: Bloqueio do runtime; nenhum Worker operacional inicia sem GO explícito
+  - workflow_id: wf_topology_provisioning
+    name: Provisionamento de Topologia e Schema
+    organism_id: org_topology_provisioning
+    trigger: 'artifact: approved_preflight_bundle'
+    frequency: Por Mission
+    handoff_in:
+      from_domain: Tático
+      artifact: approved_preflight_bundle
+    handoff_out:
+      to_domain: Operacional
+      artifact: topology_bundle
+    steps:
+    - step_id: step_05_resolve_space
+      task_id: atm_resolve_space
+      executor_type: Worker
+      action: Resolver ou criar o Space Missions de forma idempotente.
+      inputs:
+      - approved_preflight_bundle
+      - workspace ClickUp
+      outputs:
+      - space_resolution
+      guardrails:
+        pre_conditions:
+        - execution_decision = GO
+        - Credenciais do ClickUp válidas e com permissão de escrita
+        post_conditions:
+        - space_resolution.id existe
+        - space_resolution.created informa se houve criação ou reaproveitamento
+        error_handling:
+          strategy: retry
+          max_retries: 2
+          fallback: Escalar para Mission Lead com erro de credencial ou workspace
+    - step_id: step_06_create_folder
+      task_id: atm_create_folder
+      executor_type: Worker
+      action: Criar a Folder da Mission com nomenclatura determinística baseada em
+        mission.id e mission.name.
+      inputs:
+      - space_resolution
+      - approved_preflight_bundle
+      outputs:
+      - folder_resolution
+      guardrails:
+        pre_conditions:
+        - space_resolution.id existe
+        - mission.id e mission.name estão normalizados
+        post_conditions:
+        - folder_resolution.id existe
+        - folder_resolution.name segue o padrão MSN-{YYYY}-{NNN} — Nome
+        error_handling:
+          strategy: retry
+          max_retries: 2
+          fallback: Escalar para Mission Lead e bloquear steps seguintes
+    - step_id: step_07_provision_lists
+      task_id: atm_provision_lists
+      executor_type: Worker
+      action: Provisionar as listas Mission Board e Gates com statuses padronizados.
+      inputs:
+      - folder_resolution
+      - template de statuses
+      outputs:
+      - list_bundle
+      guardrails:
+        pre_conditions:
+        - folder_resolution.id existe
+        - Template de statuses do board e gates está disponível
+        post_conditions:
+        - list_bundle.mission_board_id existe
+        - list_bundle.gates_list_id existe
+        error_handling:
+          strategy: retry
+          max_retries: 2
+          fallback: Escalar para Mission Lead e abortar bootstrap
+    - step_id: step_08_provision_fields
+      task_id: atm_provision_fields
+      executor_type: Worker
+      action: Criar ou reutilizar os custom fields críticos e devolver o field_map
+        utilizável.
+      inputs:
+      - list_bundle
+      - catálogo de custom fields
+      outputs:
+      - field_map
+      - critical_field_status
+      guardrails:
+        pre_conditions:
+        - list_bundle.mission_board_id existe
+        - Catálogo de campos inclui Mission ID, Phase, Ponto A e Ponto B
+        post_conditions:
+        - field_map contém pelo menos os campos críticos do runtime
+        - critical_field_status = PASS quando todos os campos críticos foram resolvidos
+        error_handling:
+          strategy: retry
+          max_retries: 2
+          fallback: Escalar para Mission Lead; bloquear wf_graph_materialization se
+            campo crítico faltar
+    conditionals:
+    - condition: space_resolution.created = false
+      then: Reutilizar Space existente e registrar created=false no topology_bundle
+      else: Registrar a criação do novo Space e seguir com a Folder
+    - condition: critical_field_status = FAIL
+      then: Interromper o bootstrap antes de criar tasks do DAG
+      else: Entregar topology_bundle com space_id, folder_id, list_ids e field_map
+    error_handling:
+      global_fallback: Mission Lead
+      alert_channels:
+      - stdout estruturado
+      - materialization report
+      on_failure: Parar o fluxo antes de board population para evitar runtime parcial
+  - workflow_id: wf_graph_materialization
+    name: Materialização do Grafo Executável
+    organism_id: org_execution_graph
+    trigger: 'artifact: topology_bundle'
+    frequency: Por Mission
+    handoff_in:
+      from_domain: Operacional
+      artifact: topology_bundle
+    handoff_out:
+      to_domain: Operacional
+      artifact: execution_graph_bundle
+    steps:
+    - step_id: step_09_create_dag_tasks
+      task_id: atm_create_dag_tasks
+      executor_type: Worker
+      action: Materializar cada node do DAG como task do ClickUp e montar task_id_map.
+      inputs:
+      - topology_bundle
+      - dag_tasks do handoff
+      outputs:
+      - task_id_map
+      - task_creation_summary
+      guardrails:
+        pre_conditions:
+        - field_map disponível e validado
+        - dag_tasks não está vazio
+        post_conditions:
+        - task_id_map contém uma entrada por dag_task criada
+        - task_creation_summary.expected_count = task_creation_summary.created_count
+        error_handling:
+          strategy: retry
+          max_retries: 2
+          fallback: Escalar para Mission Lead e impedir binding de dependências
+    - step_id: step_10_enrich_metadata
+      task_id: atm_enrich_task_metadata
+      executor_type: Worker
+      action: Aplicar metadata SINKRA nas tasks usando field_map e bindings do handoff.
+      inputs:
+      - task_id_map
+      - field_map
+      - dag_tasks do handoff
+      outputs:
+      - metadata_enrichment_status
+      guardrails:
+        pre_conditions:
+        - task_id_map existe
+        - Campos Mission ID, Phase, Ponto A e Ponto B estão resolvidos
+        post_conditions:
+        - Todas as tasks criadas receberam Mission ID
+        - Tasks com phase, ponto_a e ponto_b no handoff receberam os bindings correspondentes
+        error_handling:
+          strategy: retry
+          max_retries: 2
+          fallback: Registrar erro crítico e bloquear governança runtime
+    - step_id: step_11_create_checklists
+      task_id: atm_create_checklists
+      executor_type: Worker
+      action: Transformar tokens declarados em checklist executável em cada task do
+        DAG.
+      inputs:
+      - task_id_map
+      - checklists declarados no handoff
+      outputs:
+      - checklist_status
+      guardrails:
+        pre_conditions:
+        - task_id_map existe
+        - O runtime conhece o checklist associado a cada dag_task
+        post_conditions:
+        - Tasks com tokens receberam checklist Tokens
+        - Falhas parciais foram logadas com task_id e item afetado
+        error_handling:
+          strategy: retry
+          max_retries: 1
+          fallback: Continuar com warning estruturado e abrir follow-up no report
+    - step_id: step_12_bind_dependencies
+      task_id: atm_bind_dependencies
+      executor_type: Worker
+      action: Aplicar waiting_on nativo do ClickUp a partir do DAG já materializado.
+      inputs:
+      - task_id_map
+      - dependencies do handoff
+      outputs:
+      - dependency_status
+      - critical_path_trace
+      guardrails:
+        pre_conditions:
+        - task_id_map expected_count = created_count
+        - Todas as referências do DAG foram aprovadas no step_02
+        post_conditions:
+        - dependency_status.created_count cobre todas as dependências válidas
+        - critical_path_trace foi registrado para observabilidade
+        error_handling:
+          strategy: retry
+          max_retries: 2
+          fallback: Escalar para Mission Lead e impedir runtime_governance
+    conditionals:
+    - condition: task_creation_summary.expected_count != task_creation_summary.created_count
+      then: Bloquear metadata, checklists e dependências até que o mismatch seja resolvido
+      else: Permitir enriquecimento e binding do grafo
+    - condition: checklist_status.partial_failure = true
+      then: Seguir com warning estruturado, sem silêncio operacional
+      else: Registrar graph binding completo
+    error_handling:
+      global_fallback: Mission Lead
+      alert_channels:
+      - stdout estruturado
+      - execution log
+      on_failure: Não avançar para gates, automações ou views sem grafo íntegro
+  - workflow_id: wf_runtime_governance
+    name: Ativação de Governança Runtime
+    organism_id: org_runtime_governance
+    trigger: 'artifact: execution_graph_bundle'
+    frequency: Por Mission
+    handoff_in:
+      from_domain: Operacional
+      artifact: execution_graph_bundle
+    handoff_out:
+      to_domain: Tático
+      artifact: runtime_activation_bundle
+    steps:
+    - step_id: step_13_create_gate_tasks
+      task_id: atm_create_gate_tasks
+      executor_type: Worker
+      action: Criar gate tasks auditáveis na lista Gates.
+      inputs:
+      - execution_graph_bundle
+      - gate_tasks do handoff
+      outputs:
+      - gate_task_bundle
+      guardrails:
+        pre_conditions:
+        - gates_list_id existe
+        - gate_tasks não está vazio
+        post_conditions:
+        - gate_task_bundle.created_count = quantidade de gates declarados
+        - Cada gate recebeu status inicial compatível com a policy
+        error_handling:
+          strategy: retry
+          max_retries: 2
+          fallback: Escalar para Mission Lead e bloquear transição de fase
+    - step_id: step_14_attach_gate_criteria
+      task_id: atm_attach_gate_criteria
+      executor_type: Worker
+      action: Anexar critérios de aprovação, registrar min_score e amarrar a transição
+        entre fases.
+      inputs:
+      - gate_task_bundle
+      - criteria_checklist
+      - policy pack de gates
+      outputs:
+      - gate_criteria_status
+      guardrails:
+        pre_conditions:
+        - gate_task_bundle existe
+        - Cada gate possui criteria_checklist definido
+        post_conditions:
+        - Todos os gates receberam checklist Critérios
+        - min_score e transição de fase foram registrados
+        error_handling:
+          strategy: retry
+          max_retries: 2
+          fallback: Escalar para Mission Lead e impedir ativação de runtime
+    - step_id: step_15_activate_automations
+      task_id: atm_activate_automations
+      executor_type: Worker
+      action: Ativar as automações críticas da Mission por runner dedicado, com fallback
+        humano assistido e não silencioso.
+      inputs:
+      - execution_graph_bundle
+      - receita de automações
+      outputs:
+      - automation_activation_status
+      guardrails:
+        pre_conditions:
+        - gate_criteria_status = PASS
+        - Receita de automações declarativa disponível
+        post_conditions:
+        - Automações phase_complete_notification, appetite_deadline_alert e mission_complete
+          foram tentadas
+        - Toda falha produziu log estruturado e rota de fallback explícita
+        error_handling:
+          strategy: retry
+          max_retries: 1
+          fallback: Acionar runner assistido por humano e abrir follow-up crítico
+    - step_id: step_16_activate_circuit_breaker
+      task_id: atm_activate_circuit_breaker
+      executor_type: Worker
+      action: Ativar a automação de circuit breaker com monitoramento e notificação
+        parametrizada.
+      inputs:
+      - automation_activation_status
+      - policy pack de circuit breaker
+      outputs:
+      - circuit_breaker_status
+      guardrails:
+        pre_conditions:
+        - Receita de circuit breaker está definida
+        - Mission possui appetite.deadline válido
+        post_conditions:
+        - Monitoramento e notificação foram tentados com trilha auditável
+        - Se não ativado, circuit_breaker_status registra fallback humano obrigatório
+        error_handling:
+          strategy: retry
+          max_retries: 1
+          fallback: Acionar operação assistida e sinalizar CG-001
+    - step_id: step_17_create_execution_views
+      task_id: atm_create_execution_views
+      executor_type: Worker
+      action: Criar DAG View e Board View para execução visual consistente.
+      inputs:
+      - execution_graph_bundle
+      - mission_board_id
+      outputs:
+      - execution_views_status
+      guardrails:
+        pre_conditions:
+        - mission_board_id existe
+        - Tipos de view gantt e board estão suportados
+        post_conditions:
+        - DAG View e Board foram criadas ou registradas como reaproveitadas
+        - execution_views_status.created_count >= 2
+        error_handling:
+          strategy: retry
+          max_retries: 2
+          fallback: Continuar com warning estruturado e notificar Mission Lead
+    - step_id: step_18_create_health_view
+      task_id: atm_create_health_view
+      executor_type: Worker
+      action: Criar a Mission Health view ou registrar degradação observável quando
+        o serviço ainda não estiver maduro.
+      inputs:
+      - execution_graph_bundle
+      - policy de observabilidade
+      outputs:
+      - health_view_status
+      guardrails:
+        pre_conditions:
+        - Mission Board já existe
+        - Métricas blocked_tasks e days_remaining estão definidas no contrato
+        post_conditions:
+        - Se criada, health_view_status.mode = automated
+        - Se não criada, health_view_status.mode = degraded e follow-up obrigatório
+          é aberto
+        error_handling:
+          strategy: fallback
+          max_retries: 1
+          fallback: Registrar operação degradada, alertar Mission Lead e manter CG-002
+            visível
+    conditionals:
+    - condition: automation_runner.available = false
+      then: Executar fallback humano assistido, registrar CG-001 e impedir fechamento
+        silencioso da etapa
+      else: Ativar automações no runner dedicado
+    - condition: health_view_status.mode = degraded
+      then: Prosseguir para close-loop com aviso explícito e follow-up obrigatório
+      else: Marcar runtime_activation_bundle como completo
+    error_handling:
+      global_fallback: Mission Lead
+      alert_channels:
+      - stdout estruturado
+      - execution log
+      - materialization report
+      on_failure: Não encerrar a Mission como pronta sem gates, views e automações
+        auditadas
+  - workflow_id: wf_close_loop_sync
+    name: Sincronização e Observabilidade de Fechamento
+    organism_id: org_close_loop_sync
+    trigger: 'artifact: runtime_activation_bundle'
+    frequency: Por Mission
+    handoff_in:
+      from_domain: Tático
+      artifact: runtime_activation_bundle
+    handoff_out:
+      to_domain: Tático
+      artifact: materialization_close_loop_bundle
+    steps:
+    - step_id: step_19_assemble_registry
+      task_id: atm_assemble_registry
+      executor_type: Worker
+      action: Consolidar IDs, views, gates e contagens em registry persistível.
+      inputs:
+      - runtime_activation_bundle
+      - ids gerados durante a execução
+      outputs:
+      - materialization_registry
+      guardrails:
+        pre_conditions:
+        - space_id, folder_id, list_ids e task_id_map existem
+        - runtime_activation_bundle foi finalizado
+        post_conditions:
+        - materialization_registry contém ids, contagens e views
+        - Registry está serializável para writeback
+        error_handling:
+          strategy: retry
+          max_retries: 2
+          fallback: Escalar para Mission Lead e impedir sync upstream
+    - step_id: step_20_sync_upstream_registry
+      task_id: atm_sync_upstream_registry
+      executor_type: Worker
+      action: Sincronizar o registry em store upstream com versionamento e confirmação
+        de writeback.
+      inputs:
+      - materialization_registry
+      - store upstream
+      outputs:
+      - registry_sync_status
+      guardrails:
+        pre_conditions:
+        - materialization_registry válido
+        - Store upstream configurada e autenticada
+        post_conditions:
+        - registry_sync_status.state = synced ou degraded
+        - Toda falha registra tentativa, erro e destino não atualizado
+        error_handling:
+          strategy: retry
+          max_retries: 2
+          fallback: Escalar para Mission Lead e manter CG-003 aberto no report
+    - step_id: step_21_emit_execution_log
+      task_id: atm_emit_execution_log
+      executor_type: Worker
+      action: Emitir telemetria estruturada com duração, falhas e pass/fail por etapa.
+      inputs:
+      - resultados dos workflows anteriores
+      outputs:
+      - execution_log
+      guardrails:
+        pre_conditions:
+        - Workflow mantém steps e timestamps disponíveis
+        - Schema de observabilidade definido
+        post_conditions:
+        - execution_log contém duração, falhas, warnings e estado final por etapa
+        - Nenhuma falha operacional fica só em texto solto
+        error_handling:
+          strategy: retry
+          max_retries: 1
+          fallback: Gerar log degradado local e marcar CG-005
+    - step_id: step_22_publish_materialization_report
+      task_id: atm_publish_materialization_report
+      executor_type: Agent
+      action: Publicar report consumível pelo sinkra-squad com resumo, falhas, gaps
+        e follow-ups.
+      inputs:
+      - materialization_registry
+      - registry_sync_status
+      - execution_log
+      outputs:
+      - materialization_report
+      - followup_actions
+      guardrails:
+        pre_conditions:
+        - execution_log existe
+        - Schema do report está definido
+        post_conditions:
+        - materialization_report resume status, gaps e próximos passos
+        - Se houver degradação, followup_actions não fica vazio
+        error_handling:
+          strategy: fallback
+          max_retries: 1
+          fallback: Mission Lead valida e publica versão humana do report
+    conditionals:
+    - condition: registry_sync_status.state = degraded
+      then: Publicar report com bloqueio explícito de fechamento pleno e follow-up
+        para infra-ops
+      else: Fechar o loop como synced
+    - condition: execution_log.schema_valid = false
+      then: Publicar report em modo degradado e manter CG-005 aberto
+      else: Encerrar a instância com observabilidade mínima atendida
+    error_handling:
+      global_fallback: Mission Lead
+      alert_channels:
+      - stdout estruturado
+      - materialization report
+      on_failure: Nenhuma Mission é considerada fechada sem registry, log e report
+        auditáveis
+  cross_workflow_handoffs:
+  - from_workflow: wf_contract_governance
+    to_workflow: wf_topology_provisioning
+    artifact: approved_preflight_bundle
+    reason: Nenhum Worker de ClickUp provisiona estrutura sem decisão GO do Mission
+      Lead
+  - from_workflow: wf_topology_provisioning
+    to_workflow: wf_graph_materialization
+    artifact: topology_bundle
+    reason: Tasks, metadata e dependências exigem space, folder, listas e field_map
+      resolvidos
+  - from_workflow: wf_graph_materialization
+    to_workflow: wf_runtime_governance
+    artifact: execution_graph_bundle
+    reason: Gates, automações e views só fazem sentido sobre o grafo já materializado
+  - from_workflow: wf_runtime_governance
+    to_workflow: wf_close_loop_sync
+    artifact: runtime_activation_bundle
+    reason: Registry e observabilidade precisam refletir o estado real do runtime
+      ativado
+  validation:
+    executable: true
+    undefined_steps: 0
+    workflows_count: 5
+    tasks_covered: 22
+    explicit_branching: true
+    cross_domain_handoffs_explicit: true
+    findings:
+    - Todas as 22 tasks do executor_matrix foram alocadas exatamente uma vez em workflows
+      executáveis.
+    - O antigo passo manual task_05_03 ficou fora do TO-BE e foi substituído por mol_automation_enablement
+      com fallback assistido.
+    - Os gaps CG-001, CG-002, CG-003 e CG-005 foram convertidos em branches degradados
+      observáveis, não em falhas silenciosas.

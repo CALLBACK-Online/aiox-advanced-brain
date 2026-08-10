@@ -1,0 +1,25 @@
+---
+workflow_version: "tech-research-v2.0.0"
+coverage_score: 78
+integrity_score: 0.92
+citation_verified: true
+stop_reason: coverage_sufficient
+rubrics:
+  information_recall:
+    passed: 4
+    total: 5
+  analysis:
+    passed: 4
+    total: 5
+  presentation:
+    passed: 5
+    total: 5
+runtime_contract:
+  elapsed_minutes: 12
+  waves: 2
+
+# STORY-RA-F.3 AC-A2: mandatory_additions also visible here for cross-check
+mandatory_additions:
+  - "job_crafting — Wrzesniewski & Dutton 2001, evidence base"
+  - "self_determination_theory — Deci & Ryan 1985, evidence base"
+  - "flow_theory — Csikszentmihalyi 1990, evidence base"

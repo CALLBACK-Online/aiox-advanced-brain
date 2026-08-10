@@ -1,0 +1,17 @@
+run_id: control-run-3
+fixture: F1
+arm: control
+mode: persona-inline
+timestamp: "2026-05-19T10:30:00Z"
+synthetic: true
+cost:
+  input_tokens: 4100
+  output_tokens: 780
+  total_tokens: 4880
+  cost_usd_estimate: 0.017
+latency:
+  wall_clock_ms: 4100
+  p50_ms: 3900
+  p95_ms: 5000
+spawn_overhead_tokens: 0
+spawn_overhead_percent: 0.0

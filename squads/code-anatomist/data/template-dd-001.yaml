@@ -1,0 +1,81 @@
+template:
+  id: TPL-DD-001
+  name: "Business Rule Extraction Pipeline Template"
+  version: "1.0.0"
+  
+  parameters:
+    identity:
+      - name: "project_name"
+        type: "string"
+        description: "Nome do projeto/instância (ex: 'forefy-prep-ahead-v2')"
+      - name: "system_name"
+        type: "string"
+        description: "Nome do sistema sendo analisado (ex: 'Forefy Prep Ahead')"
+      - name: "extraction_date"
+        type: "string"
+        description: "Data de início da extração (ISO 8601 date)"
+      - name: "owner_name"
+        type: "string"
+        description: "Nome do responsável humano pela instância"
+      - name: "pipeline_id"
+        type: "string"
+        description: "ID único da instância (gerado automaticamente)"
+
+    executor:
+      - name: "variant_mode"
+        type: "enum"
+        valid_values: ["extraction", "standardization"]
+        description: "Determina o fluxo de estados da state machine"
+      - name: "primary_language"
+        type: "enum"
+        valid_values: ["pt-BR", "en-US", "es"]
+        description: "Idioma principal do sistema e outputs"
+      - name: "accountable_human"
+        type: "string"
+        description: "Accountability Token — quem supervisiona o pipeline"
+
+    threshold:
+      - name: "sbvr_score_min"
+        type: "integer"
+        default: 85
+        description: "Score mínimo SBVR para VALIDATION passar (0-100)"
+      - name: "quality_score_min"
+        type: "integer"
+        default: 85
+        description: "Score mínimo de qualidade de extração (0-100)"
+      - name: "stakeholder_review_pct"
+        type: "integer"
+        default: 10
+        description: "% mínimo de regras revisadas por stakeholder (Phase 4 checkpoint)"
+      - name: "cold_reader_score"
+        type: "integer"
+        default: 8
+        description: "Score mínimo cold-reader test para expressão sem ambiguidade (0-10)"
+      - name: "decision_table_max_rows"
+        type: "integer"
+        default: 20
+        description: "Máximo de linhas por decision table DMN antes de decompor"
+      - name: "test_coverage_min"
+        type: "integer"
+        default: 80
+        description: "% mínimo de contextos cobertos por characterization tests"
+      - name: "fact_model_min"
+        type: "integer"
+        default: 50
+        description: "Número mínimo de termos no fact model (Phase 2 checkpoint)"
+
+    context:
+      - name: "source_location"
+        type: "string"
+        description: "Path ou URL do repositório/sistema fonte"
+      - name: "primary_domain"
+        type: "string"
+        description: "Domínio de negócio principal (ex: 'EdTech/Study Platform')"
+      - name: "delivery_format"
+        type: "enum"
+        valid_values: ["yaml", "md", "pdf"]
+        description: "Formato preferido dos outputs finais"
+      - name: "target_audience"
+        type: "enum"
+        valid_values: ["analysts", "compliance", "developers", "all"]
+        description: "Audiência alvo dos entregáveis"

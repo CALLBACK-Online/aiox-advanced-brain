@@ -1,0 +1,201 @@
+# Gate de Admissibilidade Heurística (GAH) — Audit Template
+#
+# One file per candidate. Generated in Phase 1.5 of /extract-session-heuristics.
+# Output location: outputs/minds/gah-audits/{owner_slug}/{candidate_id-or-slug}-{YYYYMMDD}.yaml
+#
+# Mode v1: FLAG only — gate calculates verdict, does NOT block persistence.
+# All candidates flow to Phase 2; this audit is advisory.
+#
+# Source heuristics being filtered against:
+#   • OVERLAP raso (Phase 3 era performativo) → Test 1 + Test 2 force agnostic vocab + cross-domain
+#   • Inflação de cards específicos → Test 3 catches "only useful with this session's context"
+#   • Tautologias disfarçadas de heurísticas → Test 4 forces real systemic tension
+
+schema_version: "1.1.0"
+gah_version: "1.1.0"
+mode: "FLAG"  # FLAG | BLOCK
+
+# ── Candidate identity ────────────────────────────────────────────
+candidate:
+  id: "<AN_KE_NNN | candidate-slug-if-pre-formalize>"
+  source_session: "<sessão de origem, [SOURCE: ...]>"
+  proposed_zone: "<genialidade | excelencia | impacto>"
+  proposed_name: "<nome proposto>"
+  rule_original: |
+    <rule completo, exatamente como escrito na candidata bruta>
+  trigger_original: |
+    <trigger original>
+
+# ── Test 1: Vocabulary Strip ──────────────────────────────────────
+# Goal: heurística sobrevive sem vocabulário stack-específico?
+test_1_vocabulary_strip:
+  step_1_extract_specific_vocab:
+    description: "List all stack/tool/format-specific terms in rule"
+    output:
+      stack_specific_terms: []  # ex: ["node_modules", "tailwind", ".btn", "src/", "tsx"]
+
+  step_2_rewrite_with_placeholders:
+    description: "Rewrite rule replacing each term from step 1 with [GENERIC-PLACEHOLDER]"
+    output:
+      rewritten_rule: |
+        <rule reescrito com placeholders>
+      placeholder_mapping:
+        # original_term → placeholder
+        # ex: node_modules: "[DEPENDENCY-REGISTRY]"
+
+  step_3_evaluate:
+    description: "Compare original vs rewritten — coherent? actionable? stack-locked?"
+    output:
+      coherent_after_rewrite: null   # yes | no
+      information_preserved: null    # yes | low | no
+      stack_locked: null             # yes | no  — "term essencial pro princípio (não pode virar placeholder)"
+      justification: ""
+
+  verdict: null   # PASS | FAIL
+  fail_reason: null
+  # Possible fail reasons:
+  #   stack_locked → REJECT como heurística → ARCHIVE ou TASK
+  #   not_coherent → REJECT — rule é só sequência de comandos → vira TASK
+  #   not_actionable → REJECT — rule é trivialmente verdadeira → ARCHIVE
+  #   info_low_subset_of_existing → REJECT → pipeline_instance em card existente
+
+# ── Test 2: Cross-Domain Instances ────────────────────────────────
+# Goal: rule aplica em ≥3 domínios sem reescrita?
+test_2_cross_domain:
+  step_1_propose_instances:
+    description: "For each domain, generate ONE concrete instance where rule applies"
+    domains_evaluated:
+      - domain: "UI"
+        instance: ""           # 1-sentence concrete instance OR "N/A"
+        applies_literally: null # yes | no
+        needs_rewrite: ""      # if applies_literally=no, what rewrite would be needed
+      - domain: "API"
+        instance: ""
+        applies_literally: null
+        needs_rewrite: ""
+      - domain: "DB"
+        instance: ""
+        applies_literally: null
+        needs_rewrite: ""
+      - domain: "Security"
+        instance: ""
+        applies_literally: null
+        needs_rewrite: ""
+      - domain: "DevOps"
+        instance: ""
+        applies_literally: null
+        needs_rewrite: ""
+      - domain: "Content/Copy"
+        instance: ""
+        applies_literally: null
+        needs_rewrite: ""
+      - domain: "Process/Workflow"
+        instance: ""
+        applies_literally: null
+        needs_rewrite: ""
+      - domain: "Negotiation/Communication"
+        instance: ""
+        applies_literally: null
+        needs_rewrite: ""
+
+  step_2_count_literal_matches:
+    literal_matches: 0      # int — count where applies_literally=yes AND needs_rewrite=""
+
+  verdict: null   # PASS (>=3) | FLAG (==2) | FAIL (<2)
+  justification: ""
+
+# ── Test 3: Other-Human Test ──────────────────────────────────────
+# Goal: outro humano em outro projeto encontra valor sem o contexto desta sessão?
+test_3_other_human:
+  step_1_strip_context:
+    description: "Rewrite card removing ALL session-specific references"
+    output:
+      stripped_version_rule: |
+        <rule sem [SOURCE: project-X], sem nomes de empresa, sem paths>
+      stripped_version_evidence: |
+        <evidence reescrita com [SOURCE: <generic example>], [PRODUCT-X], [FILE-Y]>
+
+  step_2_simulate_outside_reader:
+    description: "LLM imagina ser dev/PM/designer em projeto NUNCA visto. Lê só stripped version."
+    output:
+      first_impression: ""       # 1-sentence reaction
+      utility_score: null        # 1-10 (1=trivial/óbvio, 10=mind-blowing)
+      applicable_to_my_work: null # yes | no
+      if_yes_example: ""         # concrete example in hypothetical project
+      if_no_why_not: ""
+
+  step_3_self_critic:
+    description: "Is the example in step 2 coherent with original rule OR forced/generic?"
+    output:
+      example_coherence: null    # coherent | forced | n/a
+
+  verdict: null   # PASS (utility>=6 AND applicable=yes AND example=coherent) | FLAG (utility==5 OR forced) | FAIL (utility<5 OR applicable=no)
+  justification: ""
+
+# ── Test 4: Anti-Test ─────────────────────────────────────────────
+# Goal: existe contexto onde fazer o oposto é certo? (= heurística tem tensão real, não é tautologia)
+test_4_anti_test:
+  step_1_generate_anti_rule:
+    description: "Generate the anti-rule: SE <trigger original> → ENTÃO NÃO <ação original>"
+    output:
+      anti_rule: |
+        <SE ... → ENTÃO NÃO ...>
+
+  step_2_search_legitimate_anti_context:
+    description: |
+      Existe contexto real onde anti-rule é a escolha CORRETA?
+      (Não 'mau uso do rule original'. Contexto onde o oposto é genuinamente certo.)
+    output:
+      anti_context_exists: null  # yes | no
+      anti_context_description: ""
+      anti_context_evidence: ""  # concrete example OR reference
+
+  step_3_classify_tension:
+    description: "If anti_context_exists=yes, name the systemic tension"
+    output:
+      tension_axis: ""           # ex: "speed vs thoroughness", "autonomy vs coordination"
+      resolution_principle: ""   # when rule wins vs when anti-rule wins
+
+  verdict: null   # PASS (anti_exists=yes AND tension named AND resolution articulable) | FLAG (anti=yes but vague) | FAIL (anti=no → tautologia)
+  justification: ""
+
+# ── Aggregate verdict ─────────────────────────────────────────────
+aggregate:
+  pass_count: 0
+  flag_count: 0
+  fail_count: 0
+
+  # Decision matrix:
+  #   pass=4, flag=0, fail=0          → ADMIT
+  #   pass=3, flag=1, fail=0          → ADMIT_WITH_REWRITE_LIGHT
+  #   pass=2, flag=1-2, fail=0-1      → REWRITE_REQUIRED
+  #   pass=0-2, flag=0-2, fail=2-4    → REJECT
+  final_verdict: null   # ADMIT | ADMIT_WITH_REWRITE_LIGHT | REWRITE_REQUIRED | REJECT
+
+  # If REJECT, classify destination:
+  destination_if_reject: null
+  # Options:
+  #   pipeline_instance  — subset of existing heuristic, add as instance
+  #   task               — mechanical sequence, becomes squads/*/tasks/
+  #   checklist          — point-by-point validation, becomes squads/*/checklists/
+  #   rule               — repo convention
+  #   archive            — none of the above
+
+  # If REWRITE_REQUIRED or ADMIT_WITH_REWRITE_LIGHT, name target field:
+  rewrite_target_field: null
+  # Options: rule, trigger, name, evidence, zone
+
+  # Free-form summary
+  summary: ""
+
+# ── Metadata ──────────────────────────────────────────────────────
+metadata:
+  generated_at: "<ISO-8601>"
+  generated_by: "/extract-session-heuristics Phase 1.5 GAH"
+  owner_slug: ""
+  owner_handle: ""
+  source_session_slug: ""
+  audit_mode: "FLAG"   # FLAG | BLOCK
+  reviewed_by_human: false
+  human_decision: null  # accept_verdict | override_to_admit | override_to_reject | needs_more_info
+  human_notes: ""

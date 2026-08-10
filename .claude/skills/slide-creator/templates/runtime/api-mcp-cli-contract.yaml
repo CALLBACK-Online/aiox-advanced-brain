@@ -1,0 +1,588 @@
+version: 9
+name: api-mcp-cli-contract
+purpose: >
+  Define a self-contained automation surface for slide-creator so deck
+  generation, critique, edit, export, and ingestion can be exposed via CLI,
+  REST-style API, and MCP tools with the same job-state semantics. This
+  contract documents the shipping runtime; fields not yet implemented are
+  marked status: deferred per extraction-no-fallbacks.
+
+changelog:
+  - version: 9
+    date: 2026-05-19
+    summary: >
+      PR-W3e — batch + regression job types (GAP-RT-014). Safety rule
+      "Batch jobs must be resumable or fail with structured errors"
+      promoted from status: deferred → status: implemented. runBatch()
+      checkpoint-resumable; runRegression() enforces block_if_missing.
+    references:
+      - packages/slides-core/src/batch/index.ts
+      - .claude/skills/slide-creator/templates/runtime/jobs.yaml
+    changes:
+      - "safety_rules: 'Batch jobs must be resumable' promoted deferred → implemented (GAP-RT-014)"
+      - "All safety_rules deferred bucket now closed (every rule enforced or split with explicit Wave-target gap_ref)"
+  - version: 8
+    date: 2026-05-19
+    summary: >
+      PR-W3d — provider routing DECISION ENGINE (GAP-RT-011, partial). The
+      audit classified GAP-RT-011 as a multi-story epic; this PR closes the
+      routing engine (classify → select text/image/vision/research → declare
+      missing env → fallbacks → record decisions) over the contract's
+      capability_matrix. Concrete per-modality provider ADAPTERS remain
+      Wave-4+ scoped (only 'codex' has a concrete adapter today — declared
+      honestly per extraction-no-fallbacks).
+    references:
+      - packages/slides-core/src/provider-routing/index.ts
+      - .claude/skills/slide-creator/templates/runtime/provider-routing.yaml
+    changes:
+      - "GAP-RT-011: routing engine implemented; provider adapters tracked as Wave-4+ per-modality stories (not a single fix per audit)"
+  - version: 7
+    date: 2026-05-19
+    summary: >
+      PR-W3c — edit-intelligence (GAP-RT-008+009; GAP-RT-010 partial).
+      editSlide() now
+      classifies intent into 1 of 8 diff_types, tags change_type, and records
+      the qa_rerun advisory gate set per storyboard-edit-contract.yaml.
+      GAP-RT-010 gate execution remains deferred to QA pipeline integration
+      in Wave 4. History merge (rapid same-slide ≤300ms) + identity dedup
+      logic available via edit-intel module.
+    references:
+      - packages/slides-core/src/edit-intel/index.ts
+      - packages/slides-core/src/pipeline.ts#editSlide (classifyEditIntent wired)
+      - packages/slides-core/src/types/index.ts (EditOperation +diff_type/change_type/qa_rerun)
+    changes:
+      - "quality_gates.pass_if: +every_edit_records_diff_type_and_qa_rerun_set (GAP-RT-009 closed; GAP-RT-010 partial, classification done and gate execution deferred to QA pipeline integration in Wave 4)"
+      - "quality_gates.pass_if: +generate_writes_delivery_manifest_and_stage_artifacts (GAP-RT-004+005, retroactive)"
+      - "EditOperation: +diff_type, +change_type, +qa_rerun fields"
+  - version: 6
+    date: 2026-05-19
+    summary: >
+      PR-W3b — packaging stage (GAP-RT-004+005). Lifecycle gains `packaging`
+      state (promoted from deferred); `package_assembled` event promoted from
+      deferred_event_types to event_types. Runtime derives story-arc.yaml /
+      slide-function-map.yaml / design-direction.yaml from DeckSpec and writes
+      the 11-field delivery-manifest.yaml.
+    references:
+      - packages/slides-core/src/packaging/derive.ts
+      - packages/slides-core/src/packaging/package.ts
+      - packages/slides-core/src/packaging/types.ts
+      - packages/slides-core/src/pipeline.ts#generate (packaging stage before done)
+    changes:
+      - "shared_job_lifecycle.states: +packaging (was deferred per GAP-RT-004)"
+      - "event_types: +package_assembled (promoted from deferred_event_types; bucket now empty)"
+      - "JobState.artifacts: +delivery_manifest_path, +story_arc_path, +slide_function_map_path, +design_direction_path"
+  - version: 5
+    date: 2026-05-19
+    summary: >
+      PR-W3f — naming/versioning contract. Adds canonical runtime-info surface
+      shared by CLI, REST, and MCP; introduces `slides-cli version`,
+      `GET /slides/version`, and `slides.version`. Updates job-state schema
+      contract to v3 now that required governance fields and render-lock/export
+      artifact paths are implemented.
+    references:
+      - packages/slides-core/src/runtime-info.ts
+      - scripts/sinkra/slides-cli.mjs#cmdVersion
+      - apps/squad-engine/src/routes/rest/slides.route.ts#/slides/version
+      - packages/slides-mcp/src/server.ts#slides.version
+      - .claude/skills/slide-creator/templates/runtime/job-state.schema.yaml
+    changes:
+      - "canonical_capability.versioning added"
+      - "cli_commands: slides version added"
+      - "api_routes: GET /slides/version added"
+      - "api_routes: edit history/undo/redo added for CLI parity"
+      - "mcp_tools: slides.version + edit history/undo/redo added"
+      - "GAP-RT-015+016 marked implemented in runtime-info"
+  - version: 4
+    date: 2026-05-19
+    summary: >
+      Wave 3 PR-W3a — Render-lock module wired (GAP-RT-013). Safety rule
+      "MCP tools cannot bypass render-lock" promoted from status: deferred
+      → status: implemented. All Wave 2 safety_rules deferred bucket is now
+      closed (only Wave-3 GAPs remain deferred — GAP-RT-004/005/008..016).
+    references:
+      - packages/slides-core/src/render-lock/enforce.ts
+      - packages/slides-core/src/render-lock/types.ts
+      - packages/slides-core/src/render-lock/index.ts
+      - packages/slides-core/src/pipeline.ts#generate (writeRenderLock at run init)
+      - packages/slides-core/src/pipeline.ts#editSlide (enforceRenderLock pre-mutation)
+      - packages/slides-core/src/pipeline.ts#exportPptx (enforceRenderLock pre-render)
+    changes:
+      - "safety_rules: render-lock half of split rule promoted to status: implemented per GAP-RT-013"
+      - "JobState.artifacts.render_lock_path: new optional field documenting render-lock.yaml location per run"
+  - version: 3
+    date: 2026-05-19
+    summary: >
+      Promote deferred → implemented for fields/safety rules closed by Wave 2
+      PR-4b GAP-RT bundle. JobState now persists command/mode/inputs/source_of_truth_policy
+      (GAP-RT-001+002). SOT policy enforced at edit/export gates (GAP-RT-012).
+      Export verification gate active (GAP-RT-003). Forbidden-prefix extends
+      to audience_movement (GAP-RT-006). function field is zod enum (GAP-RT-007).
+    references:
+      - packages/slides-core/src/evidence/source-of-truth.ts
+      - packages/slides-core/src/export/verify.ts
+      - packages/slides-core/src/types/index.ts
+      - packages/slides-core/src/deckspec/index.ts
+      - apps/squad-engine/src/routes/rest/slides.route.ts
+    changes:
+      - "required_job_fields: command/mode/inputs/source_of_truth_policy promoted from deferred_fields → required_fields per GAP-RT-001+002 implementation"
+      - "safety_rules: SOT-policy half of 'MCP tools cannot bypass source-of-truth policy or render-lock' promoted to status: implemented per GAP-RT-012 (render-lock half remains deferred per GAP-RT-013, Wave 3)"
+      - "safety_rules: export verification gate (existsSync + size + readable) promoted to status: implemented per GAP-RT-003"
+      - "validation_rules: forbidden-prefix gating extended from action_title to audience_movement per GAP-RT-006"
+      - "validation_rules: DeckSpecSlide.function field is now zod enum constrained to function-library.yaml IDs per GAP-RT-007"
+  - version: 2
+    date: 2026-05-19
+    summary: >
+      Realign contract to shipping runtime (Decision #1 Option B, UNANIMOUS
+      6/6). Source: docs/architecture/roundtable-slide-creator-alignment-2026-05-19.md.
+    references:
+      - docs/architecture/roundtable-slide-creator-alignment-2026-05-19.md
+      - docs/architecture/ADR-SLDC-CT-001-contract-alignment.md
+      - docs/audits/slide-creator-runtime-audit-2026-05.md
+      - packages/slides-core/src/types/index.ts
+      - packages/slides-mcp/src/server.ts
+      - apps/squad-engine/src/routes/rest/slides.route.ts
+      - scripts/sinkra/slides-cli.mjs
+    changes:
+      - "cli_commands: realigned to runtime — plan/draft/critique/package → generate/review/export/edit/edit:history/edit:undo/edit:redo/show (per scripts/sinkra/slides-cli.mjs lines 188-215)"
+      - "api_routes: realigned — /v1/decks/* → /slides/* (no /v1/ versioning prefix; resource is 'slides' not 'decks'; per apps/squad-engine/src/routes/rest/slides.route.ts)"
+      - "mcp_tools: realigned — plan_deck/draft_deck_spec/critique_deck_package/edit_deck_package/validate_deck_package/export_deck → slides.generate/slides.review/slides.export/slides.edit/slides.show (per packages/slides-mcp/src/server.ts lines 19-25)"
+      - "shared_job_lifecycle.states: collapsed planning+drafting → running; renamed reviewing → reflecting; removed packaging (deferred per GAP-RT-004); per packages/slides-core/src/types/index.ts lines 8-15"
+      - "required_job_fields: command/mode/inputs/source_of_truth_policy moved to deferred_fields per GAP-RT-002 (constitutional Art IX, governance finding GF-02)"
+      - "safety_rules: rules referencing render-lock and SOT policy marked status: deferred per @cso GF-04 (extraction-no-fallbacks)"
+      - "quality_gates: realigned to gates achievable against current runtime; aspirational gates marked status: deferred"
+  - version: 1
+    date: 2026-04
+    summary: >
+      Original aspirational design-time contract (plan/draft/critique/package
+      verbs). Superseded by v2 after runtime audit revealed 80% surface
+      divergence (audit 2026-05; roundtable 2026-05-19).
+
+# Capability ownership note (per @cso GF-03):
+# This contract documents the squad-owned slide-creator capability projected
+# across three surfaces (CLI/REST/MCP). Per Constitution Art XI
+# (Squad-First Portability), the squad owns the canonical behaviour;
+# CLI/REST/MCP are projections of that single capability, not competing APIs.
+canonical_capability:
+  squad: slide-creator
+  capability: deck_generation_and_edit_pipeline
+  versioning:
+    runtime_version: 0.1.0
+    job_state_schema_version: 1.0.0
+    api_mcp_cli_contract_version: 5
+    runtime_info_ref: packages/slides-core/src/runtime-info.ts
+  projections:
+    - surface: cli
+      entrypoint: scripts/sinkra/slides-cli.mjs
+    - surface: rest
+      entrypoint: apps/squad-engine/src/routes/rest/slides.route.ts
+    - surface: mcp
+      entrypoint: packages/slides-mcp/src/server.ts
+
+shared_job_lifecycle:
+  states:
+    - queued
+    - running
+    - reflecting
+    - rendering
+    - packaging  # GAP-RT-004+005 (PR-W3b) — delivery package assembly stage
+    - completed
+    - failed
+    - cancelled
+  notes:
+    - >
+      State 'running' represents collapsed planning+drafting from v1. To
+      regain phase-level granularity, the runtime emits stage_started events
+      with phase substrings (normalize_briefing / compose_deck_spec /
+      critique_loop / compile_native_ir) at each pipeline boundary. See
+      packages/slides-core/src/pipeline.ts.
+    - >
+      State 'packaging' implemented in PR-W3b (Wave 3). The runtime derives
+      story-arc.yaml / slide-function-map.yaml / design-direction.yaml from
+      DeckSpec and writes the 11-field delivery-manifest.yaml. See
+      packages/slides-core/src/packaging/. Non-fatal: missing required files
+      are reported in the manifest, not thrown.
+  required_job_fields:
+    - schema_version
+    - run_id
+    - status
+    - created_at
+    - updated_at
+    - provider
+    - artifacts
+    - progress
+    - errors
+    - reflection_iterations
+    # Promoted from deferred_fields per Wave 2 PR-4b (GAP-RT-001+002 + GAP-RT-012):
+    - command  # GAP-RT-002 — see packages/slides-core/src/types/index.ts
+    - mode  # GAP-RT-002
+    - inputs  # GAP-RT-002 — enables deterministic replay
+    - source_of_truth_policy  # GAP-RT-012 — wired at edit/export gates
+  deferred_fields: []
+    # All v2 deferred fields (command, mode, inputs, source_of_truth_policy)
+    # promoted to required_job_fields in v3 (PR-4b Wave 2):
+    #   - command, mode, inputs: GAP-RT-001+002 closed
+    #   - source_of_truth_policy: GAP-RT-012 closed (SOT gate wired at edit/export)
+    # Next deferred bucket would track render-lock (GAP-RT-013, Wave 3).
+  event_types:
+    - job_created
+    - stage_started
+    - artifact_written
+    - validation_passed
+    - validation_failed
+    - export_verified
+    - package_assembled  # GAP-RT-004 (PR-W3b) — emitted after delivery-manifest write
+    - job_completed
+    - job_failed
+  deferred_event_types: []
+    # package_assembled promoted to event_types in PR-W3b (Wave 3).
+    # No remaining deferred event types.
+
+cli_commands:
+  - id: slides version
+    purpose: >
+      Return canonical runtime identity, semantic version, contract version,
+      and registered CLI/REST/MCP surfaces.
+    runtime_ref: scripts/sinkra/slides-cli.mjs#cmdVersion
+    required_inputs: []
+    required_outputs: [runtime_info]
+  - id: slides generate
+    purpose: >
+      Run the full SINKRA slides pipeline: briefing → DeckSpec → reflection →
+      Native IR → PPTX. Produces a run_id and artifact paths.
+    runtime_ref: scripts/sinkra/slides-cli.mjs#cmdGenerate
+    required_inputs: [prompt, audience, objective]
+    optional_inputs: [slide_count, delivery_format, provider_mode, provider_model]
+    required_outputs: [job_state, deck_spec, native_ir, pptx]
+  - id: slides review
+    purpose: >
+      Run one or more critique loop iterations on an existing run's DeckSpec.
+    runtime_ref: scripts/sinkra/slides-cli.mjs#cmdReview
+    required_inputs: [run_id]
+    optional_inputs: [iterations]
+    required_outputs: [job_state, critique_report]
+  - id: slides export
+    purpose: >
+      Re-emit PPTX from the cached Native IR for a given run_id.
+    runtime_ref: scripts/sinkra/slides-cli.mjs#cmdExport
+    required_inputs: [run_id]
+    optional_inputs: [format]
+    required_outputs: [export_artifact_path]
+  - id: slides edit
+    purpose: >
+      Apply a scoped prompt-to-edit on a slide (or region/element). Returns
+      the diff; the operation is recorded in edit-operations.jsonl.
+    runtime_ref: scripts/sinkra/slides-cli.mjs#cmdEdit
+    required_inputs: [run_id, slide_id, intent]
+    optional_inputs: [region, node_id]
+    required_outputs: [edit_operation, edit_history_entry]
+  - id: slides edit:history
+    aliases: [edit-history]
+    purpose: >
+      List the edit history for a run_id (chronological operation log).
+    runtime_ref: scripts/sinkra/slides-cli.mjs#cmdEditHistory
+    required_inputs: [run_id]
+    required_outputs: [edit_history]
+  - id: slides edit:undo
+    aliases: [edit-undo]
+    purpose: >
+      Undo the most recent edit operation for a run_id.
+    runtime_ref: scripts/sinkra/slides-cli.mjs#cmdEditUndo
+    required_inputs: [run_id]
+    required_outputs: [undone_operation]
+  - id: slides edit:redo
+    aliases: [edit-redo]
+    purpose: >
+      Re-apply the most recently undone edit operation.
+    runtime_ref: scripts/sinkra/slides-cli.mjs#cmdEditRedo
+    required_inputs: [run_id]
+    required_outputs: [redone_operation]
+  - id: slides show
+    purpose: >
+      Return the job-state snapshot for a run_id, including artifact paths.
+    runtime_ref: scripts/sinkra/slides-cli.mjs#cmdShow
+    required_inputs: [run_id]
+    required_outputs: [job_state]
+
+deferred_cli_commands:
+  - id: slides ingest
+    status: deferred
+    gap_ref: GAP-RT-EXTRA-001
+    rationale: >
+      REST surface exposes POST /slides/ingest (apps/squad-engine/src/routes/rest/slides.route.ts:323),
+      but the CLI does not yet route this subcommand. Closing parity is a
+      Wave-2 follow-up (low effort — wire scripts/sinkra/slides-cli.mjs to
+      core.ingest).
+  - id: slides plan
+    status: deferred
+    gap_ref: GAP-RT-001
+    rationale: >
+      v1 verb. Phase boundaries within 'generate' (normalize_briefing /
+      compose_deck_spec) emit stage_started events; a separate plan command
+      will be reintroduced only if the planning artifacts are needed
+      out-of-band (Wave 3, paired with GAP-RT-005).
+  - id: slides package
+    status: deferred
+    gap_ref: GAP-RT-004
+    rationale: >
+      Awaits delivery-package-contract implementation (Wave 3).
+
+api_routes:
+  - method: GET
+    path: /slides/version
+    runtime_ref: apps/squad-engine/src/routes/rest/slides.route.ts
+    command_equivalent: slides version
+    response_artifacts: [runtime_info]
+  - method: POST
+    path: /slides/generate
+    runtime_ref: apps/squad-engine/src/routes/rest/slides.route.ts:92
+    command_equivalent: slides generate
+    response_artifacts: [job_state]
+  - method: POST
+    path: /slides/review
+    runtime_ref: apps/squad-engine/src/routes/rest/slides.route.ts:114
+    command_equivalent: slides review
+    response_artifacts: [job_state]
+  - method: POST
+    path: /slides/export
+    runtime_ref: apps/squad-engine/src/routes/rest/slides.route.ts:131
+    command_equivalent: slides export
+    response_artifacts: [export_artifact_path]
+  - method: POST
+    path: /slides/edit
+    runtime_ref: apps/squad-engine/src/routes/rest/slides.route.ts:151
+    command_equivalent: slides edit
+    response_artifacts: [edit_operation]
+  - method: GET
+    path: /slides/runs/{run_id}/edit-history
+    runtime_ref: apps/squad-engine/src/routes/rest/slides.route.ts
+    command_equivalent: slides edit:history
+    response_artifacts: [edit_history]
+  - method: POST
+    path: /slides/edit/undo
+    runtime_ref: apps/squad-engine/src/routes/rest/slides.route.ts
+    command_equivalent: slides edit:undo
+    response_artifacts: [undone_operation]
+  - method: POST
+    path: /slides/edit/redo
+    runtime_ref: apps/squad-engine/src/routes/rest/slides.route.ts
+    command_equivalent: slides edit:redo
+    response_artifacts: [redone_operation]
+  - method: GET
+    path: /slides/runs/{run_id}
+    runtime_ref: apps/squad-engine/src/routes/rest/slides.route.ts:168
+    command_equivalent: slides show
+    response_artifacts: [job_state]
+  - method: POST
+    path: /slides/jobs
+    runtime_ref: apps/squad-engine/src/routes/rest/slides.route.ts:181
+    command_equivalent: (queue-mode submission)
+    response_artifacts: [job_state]
+  - method: GET
+    path: /slides/jobs/{run_id}
+    runtime_ref: apps/squad-engine/src/routes/rest/slides.route.ts:222
+    command_equivalent: (queue-mode status read)
+    response_artifacts: [job_state]
+  - method: POST
+    path: /slides/evidence/validate
+    runtime_ref: apps/squad-engine/src/routes/rest/slides.route.ts:247
+    command_equivalent: (evidence ledger validation; pre-wiring for GAP-RT-012)
+    response_artifacts: [evidence_report]
+  - method: POST
+    path: /slides/sources/route
+    runtime_ref: apps/squad-engine/src/routes/rest/slides.route.ts:299
+    command_equivalent: (source provider routing decision)
+    response_artifacts: [provider_routing_decision]
+  - method: POST
+    path: /slides/ingest
+    runtime_ref: apps/squad-engine/src/routes/rest/slides.route.ts:323
+    command_equivalent: (ingestion — CLI parity deferred; see deferred_cli_commands.slides ingest)
+    response_artifacts: [ingestion_result]
+
+deferred_api_routes:
+  - path: /v1/decks/*
+    status: deferred
+    gap_ref: GAP-RT-016
+    rationale: >
+      v1 contract declared OpenAPI-style /v1/decks/{plan|draft|...} routes.
+      Runtime ships unversioned /slides/* action-oriented routes. Wave 2
+      governance call resolved (Decision #1) to keep runtime; /v1/decks/*
+      paths intentionally not implemented. Re-introduce only if a future
+      ADR explicitly chooses OpenAPI-style alignment.
+
+mcp_tools:
+  - id: slides.version
+    runtime_ref: packages/slides-mcp/src/server.ts
+    purpose: >
+      Return canonical runtime identity, semantic version, contract version,
+      and registered CLI/REST/MCP surfaces.
+    safety_boundary: Read-only; no provider input and no workspace reads.
+    required_artifacts: [runtime_info]
+  - id: slides.generate
+    runtime_ref: packages/slides-mcp/src/server.ts:32
+    purpose: >
+      Run the full SINKRA slides pipeline: briefing → DeckSpec → reflection →
+      Native IR → PPTX. Produces a run_id and artifact paths.
+    safety_boundary: >
+      Never reads or echoes secrets. Provider credentials are read by
+      slides-core from environment, never from tool arguments.
+    required_artifacts: [job_state]
+  - id: slides.review
+    runtime_ref: packages/slides-mcp/src/server.ts:83
+    purpose: Run one or more critique loop iterations on an existing run's DeckSpec.
+    safety_boundary: Read-only over the DeckSpec; emits critique report only.
+    required_artifacts: [job_state]
+  - id: slides.export
+    runtime_ref: packages/slides-mcp/src/server.ts:110
+    purpose: Re-emit PPTX from the cached Native IR for a given run_id.
+    safety_boundary: >
+      Cannot claim success without writing an export artifact path that
+      slides-core can readback. NOTE: export verification gate
+      (existsSync + size check + thumbnail) is GAP-RT-003, status: deferred.
+    required_artifacts: [export_artifact_path]
+  - id: slides.edit
+    runtime_ref: packages/slides-mcp/src/server.ts:128
+    purpose: >
+      Apply a scoped prompt-to-edit on a slide (or region/element). Returns
+      the diff; the operation is recorded in edit-operations.jsonl.
+    safety_boundary: >
+      Cannot bypass source-of-truth policy or render-lock — see
+      safety_rules. Both are status: deferred per GF-04 until GAP-RT-012
+      and GAP-RT-013 close.
+    required_artifacts: [edit_operation]
+  - id: slides.edit.history
+    runtime_ref: packages/slides-mcp/src/server.ts
+    purpose: Return chronological edit history for an existing run_id.
+    safety_boundary: Read-only over edit-operations.jsonl.
+    required_artifacts: [edit_history]
+  - id: slides.edit.undo
+    runtime_ref: packages/slides-mcp/src/server.ts
+    purpose: Undo the most recent applied edit and recompile Native IR when present.
+    safety_boundary: Mutates only deck-spec snapshot state and derived Native IR for the target run.
+    required_artifacts: [undone_operation]
+  - id: slides.edit.redo
+    runtime_ref: packages/slides-mcp/src/server.ts
+    purpose: Redo the most recently undone edit and recompile Native IR when present.
+    safety_boundary: Mutates only deck-spec snapshot state and derived Native IR for the target run.
+    required_artifacts: [redone_operation]
+  - id: slides.show
+    runtime_ref: packages/slides-mcp/src/server.ts:151
+    purpose: Return the job-state snapshot for a run_id, including artifact paths.
+    safety_boundary: Read-only.
+    required_artifacts: [job_state]
+
+deferred_mcp_tools:
+  - id: slides.plan
+    status: deferred
+    gap_ref: GAP-RT-001
+    rationale: Awaiting lifecycle granularity (see deferred_cli_commands.slides plan).
+  - id: slides.package
+    status: deferred
+    gap_ref: GAP-RT-004
+    rationale: Awaiting delivery-package-contract.
+  - id: slides.validate
+    status: deferred
+    gap_ref: GAP-RT-004
+    rationale: Awaiting package-validation-report writer.
+
+safety_rules:
+  - rule: CLI, API, and MCP must write the same job-state schema.
+    enforced: true
+    rationale: Single canonical capability projected across three surfaces (per Constitution Art XI).
+  - rule: Edit commands must preserve unselected regions and produce before/after diffs.
+    enforced: true
+    rationale: editSlide emits EditOperation with diff_summary per packages/slides-core/src/types/index.ts:96-106.
+  - rule: API responses must distinguish generated artifact, verified artifact, and planned artifact.
+    enforced: true
+    rationale: Artifacts carry status enum [planned, created, verified, failed] in job-state.
+  - rule: MCP tools cannot read or echo provider secrets.
+    enforced: true
+    rationale: Provider credentials are read from env by slides-core, never from tool arguments (packages/slides-mcp/src/server.ts safety boundary).
+  - rule: MCP tools cannot bypass source-of-truth policy.
+    enforced: true
+    gap_ref: GAP-RT-012
+    runtime_ref:
+      - packages/slides-core/src/evidence/source-of-truth.ts
+      - packages/slides-core/src/pipeline.ts#editSlide
+      - packages/slides-core/src/pipeline.ts#exportPptx
+      - apps/squad-engine/src/routes/rest/slides.route.ts  # 422 on SourceOfTruthViolation
+    rationale: >
+      SOT policy gate (enforceSourceOfTruth) reads JobState.source_of_truth_policy
+      and rejects data-driven claims (stat/trend/comparison/quote) without
+      evidence_refs when policy=evidence_required. Wired at edit and export
+      boundaries (PR-4b GAP-RT-012). REST surface returns 422
+      SourceOfTruthViolation; MCP surface throws structured error.
+  - rule: MCP tools cannot bypass render-lock.
+    enforced: partial
+    gap_ref: GAP-RT-013
+    runtime_ref:
+      - packages/slides-core/src/render-lock/enforce.ts
+      - packages/slides-core/src/render-lock/types.ts
+      - packages/slides-core/src/pipeline.ts#editSlide
+      - packages/slides-core/src/pipeline.ts#generate
+    rationale: >
+      Render-lock module wired at generate() (writes render-lock.yaml),
+      editSlide() (consults before mutation) and exportPptx() (final
+      defense before render). enforceRenderLock throws RenderLockViolation
+      on theme/typography drift and textual forbidden-feature matches. REST
+      surface returns 412 Precondition Failed; MCP surface throws structured
+      tool error with code "render_lock_violation". Scope is partial:
+      forbidden-token textual detection is implemented; per-slot override
+      checks and deep PPTX validation remain deferred to renderer integration
+      in Wave 4.
+  - rule: Export commands must return a blocker when verification fails.
+    enforced: true
+    gap_ref: GAP-RT-003
+    runtime_ref:
+      - packages/slides-core/src/export/verify.ts
+      - packages/slides-core/src/pipeline.ts#exportPptx
+    rationale: >
+      packages/slides-core/src/export/verify.ts verifies existence, non-zero
+      size, readable header, and PPTX (zip) signature post-render and emits
+      `export-report.yaml` atomically (tmp → rename per
+      concurrent-writer-atomic-write rule). exportPptx() throws
+      ExportVerificationError on any failed check; generate() records the
+      failure into JobState.errors and omits export_report_path so callers
+      can detect partial success without surfacing a fake "completed" job.
+  - rule: Batch jobs must be resumable or fail with structured errors.
+    enforced: true
+    gap_ref: GAP-RT-014
+    runtime_ref:
+      - packages/slides-core/src/batch/index.ts
+    rationale: >
+      runBatch() persists a per-sub-job checkpoint atomically after every
+      state change; re-running the same batch_id skips terminal sub-jobs
+      (completed → skipped_resumed). Failures aggregate into structured
+      errors[] (code+message+sub_id) and the batch continues
+      (continue_on_error per jobs.yaml). runRegression() enforces
+      block_if_missing:[failure_modes] with a structured
+      regression_missing_failure_modes error (continue_on_error:false).
+      Closed in PR-W3e (Wave 3).
+
+quality_gates:
+  pass_if:
+    - every_api_route_maps_to_cli_or_mcp_runtime
+    - every_mcp_tool_has_safety_boundary
+    - shared_job_lifecycle_has_terminal_states
+    - each_command_declares_required_inputs_and_outputs
+    - every_deferred_field_or_route_references_a_gap_id
+    - export_success_writes_verified_export_report   # GAP-RT-003 closed in PR-4b
+    - every_edit_records_diff_type_and_qa_rerun_set   # GAP-RT-009 closed; GAP-RT-010 partial (classification done; gate execution deferred to QA pipeline integration, Wave 4)
+    - generate_writes_delivery_manifest_and_stage_artifacts   # GAP-RT-004+005 closed in PR-W3b
+  block_if:
+    - automation_surface_without_job_state
+    - write_tool_without_safety_boundary
+    - api_route_without_runtime_ref
+    - deferred_item_without_gap_ref
+    - safety_rule_marked_enforced_without_runtime_backing
+
+deferred_quality_gates:
+  - gate: api_route_without_cli_equivalent
+    status: deferred
+    gap_ref: GAP-RT-EXTRA-001
+    rationale: >
+      /slides/ingest exists in REST but not CLI; pursuing strict parity is
+      Wave-2 follow-up. Until then, allowed asymmetry is documented in
+      deferred_cli_commands.
+  # GAP-RT-003 closed in PR-4b (Wave 2). The export verification gate is now
+  # enforced via packages/slides-core/src/export/verify.ts and emits an
+  # export-report.yaml sidecar per export. Gate promoted to active list.

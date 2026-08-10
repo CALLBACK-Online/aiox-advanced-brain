@@ -1,0 +1,24 @@
+sources:
+  - url: "https://arxiv.org/abs/2605.01234"
+    title: "Multi-Agent Research Coordination: DeerFlow Architecture"
+    authors: "Chen et al."
+    pub_date: "2026-05"
+    credibility: HIGH
+    retrieved: "2026-05-18"
+    claim_ids: ["claim-001", "claim-003", "claim-007"]
+
+  - url: "https://github.com/bytedance/deer-flow/blob/main/README.md"
+    title: "DeerFlow — Deep Research with Multi-Agent Flows"
+    authors: "Li & Wang"
+    pub_date: "2026"
+    credibility: HIGH
+    retrieved: "2026-05-18"
+    claim_ids: ["claim-002", "claim-005"]
+
+  - url: "https://blog.langchain.dev/citation-eval"
+    title: "Citation Evaluation in LangChain Pipelines"
+    authors: "Park"
+    pub_date: "2025-03"
+    credibility: MEDIUM
+    retrieved: "2026-03-10"
+    claim_ids: ["claim-004"]

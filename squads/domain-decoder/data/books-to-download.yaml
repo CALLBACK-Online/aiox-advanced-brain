@@ -1,0 +1,148 @@
+# Books to Download — Rules Extractor Squad
+# Usar com: python3 scripts/books/telegram-book-downloader.py --batch squads/domain-decoder/data/books-to-download.yaml
+
+books:
+  # TIER 0 — Fundacao & Diagnostico
+  - title: "Principles of the Business Rule Approach"
+    author: "Ronald G. Ross"
+    year: 2003
+    isbn: "978-0201788938"
+    tier: "0"
+    priority: 1
+
+  - title: "Building Business Solutions Business Analysis with Business Rules"
+    author: "Ronald G. Ross, Gladys S.W. Lam"
+    year: 2015
+    isbn: "978-0941049153"
+    tier: "0"
+    priority: 2
+
+  - title: "Business Rule Concepts Getting to the Point of Knowledge"
+    author: "Ronald G. Ross"
+    year: 2013
+    isbn: "978-0941049146"
+    tier: "0"
+    priority: 3
+
+  - title: "Business Knowledge Blueprints Enabling Your Data to Speak the Language of the Business"
+    author: "Ronald G. Ross"
+    year: 2020
+    isbn: "978-0941049177"
+    tier: "0"
+    priority: 4
+
+  - title: "Domain-Driven Design Tackling Complexity in the Heart of Software"
+    author: "Eric Evans"
+    year: 2003
+    isbn: "978-0321125217"
+    tier: "0"
+    priority: 5
+
+  # TIER 1 — Masters
+  - title: "Working Effectively with Legacy Code"
+    author: "Michael Feathers"
+    year: 2004
+    isbn: "978-0131177055"
+    tier: "1"
+    priority: 6
+
+  - title: "The Decision Model A Business Logic Framework Linking Business and Technology"
+    author: "Barbara von Halle, Larry Goldberg"
+    year: 2009
+    isbn: "978-1420082814"
+    tier: "1"
+    priority: 7
+
+  - title: "Business Rules Applied Building Better Systems Using the Business Rules Approach"
+    author: "Barbara von Halle"
+    year: 2001
+    isbn: "978-0471412939"
+    tier: "1"
+    priority: 8
+
+  # TIER 2 — Systematizers
+  - title: "Real-World Decision Modeling with DMN"
+    author: "James Taylor, Jan Purchase"
+    year: 2023
+    isbn: "978-8218234669"
+    tier: "2"
+    priority: 9
+
+  - title: "Decision Management Systems A Practical Guide to Using Business Rules and Predictive Analytics"
+    author: "James Taylor"
+    year: 2011
+    isbn: "978-0132884389"
+    tier: "2"
+    priority: 10
+
+  - title: "Patterns of Enterprise Application Architecture"
+    author: "Martin Fowler"
+    year: 2002
+    isbn: "978-0321127426"
+    tier: "2"
+    priority: 11
+
+  - title: "Analysis Patterns Reusable Object Models"
+    author: "Martin Fowler"
+    year: 1996
+    isbn: "978-0201895421"
+    tier: "2"
+    priority: 12
+
+  - title: "Refactoring Improving the Design of Existing Code"
+    author: "Martin Fowler"
+    year: 2018
+    isbn: "978-0134757599"
+    tier: "2"
+    priority: 13
+
+  # TIER 3 — Specialist
+  - title: "Writing Effective Business Rules"
+    author: "Graham Witt"
+    year: 2012
+    isbn: "978-0123850515"
+    tier: "3"
+    priority: 14
+
+  # BONUS — Alta prioridade (apareceram em 2+ pesquisas)
+  - title: "DMN Method and Style"
+    author: "Bruce Silver"
+    year: 2024
+    isbn: "979-8218313302"
+    tier: "bonus"
+    priority: 15
+
+  - title: "Architecture Modernization"
+    author: "Nick Tune"
+    year: 2024
+    isbn: "978-1633438156"
+    tier: "bonus"
+    priority: 16
+
+  - title: "Learning Domain-Driven Design"
+    author: "Vlad Khononov"
+    year: 2021
+    isbn: "978-1098100131"
+    tier: "bonus"
+    priority: 17
+
+  - title: "Your Code as a Crime Scene"
+    author: "Adam Tornhill"
+    year: 2024
+    isbn: "979-8888650325"
+    tier: "bonus"
+    priority: 18
+
+  - title: "Knowledge Automation How to Implement Decision Management in Business Processes"
+    author: "Alan Fish"
+    year: 2012
+    isbn: "978-1118094761"
+    tier: "bonus"
+    priority: 19
+
+  - title: "Domain Storytelling A Collaborative Visual and Agile Way to Build Domain-Driven Software"
+    author: "Stefan Hofer, Henning Schwentner"
+    year: 2022
+    isbn: "978-0137458912"
+    tier: "bonus"
+    priority: 20

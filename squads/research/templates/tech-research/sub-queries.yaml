@@ -1,0 +1,73 @@
+# sub-queries.yaml — Sub-query template with gap-targeting metadata
+# Story: STORY-RA-B.2 | Created: 2026-05-19
+#
+# PURPOSE:
+#   Template for the sub-queries list produced by Phase 1.5 decompose (Wave 1)
+#   and gap-driven re-decompose (Wave 2+). Each sub-query may carry targets_gaps
+#   metadata pointing to open gaps from gaps.yaml (STORY-RA-B.1).
+#
+# WAVE SEMANTICS (STORY-RA-B.2 D2):
+#   Wave 1: targets_gaps is optional (gaps.yaml not yet populated at decompose time).
+#   Wave 2+: targets_gaps is EXPECTED on ≥ 60% of sub-queries.
+#             Queries without targets_gaps count as unaligned in gap_alignment_check.py.
+#
+# CONSUMED BY:
+#   - Phase 3 (phase-3-execute-research.yaml): worker dispatch
+#   - gap_alignment_check.py: alignment_ratio computation (RA-B.2)
+#
+# GAP-DRIVEN DECOMPOSE (Wave 2+):
+#   Orchestrator reads gaps.yaml before decompose and uses open gaps as primary input.
+#   Each sub-query should map to one or more open gap IDs (G{NNN} format).
+#   Fallback queries (broader sweep, no specific gap) are allowed but should be ≤ 40%.
+#
+# PRODUCT-DISCOVERY MODE:
+#   Same structure — decomposition targets JTBD/Villain/WTP instead of scope angles.
+#   targets_gaps field is identical; alignment threshold is identical (0.60).
+
+schema_version: "1.0"
+story_ref: STORY-RA-B.2
+wave: {wave_num}                    # populated by orchestrator (1-based)
+mode: {mode}                        # research | product_discovery
+decompose_strategy: {strategy}      # scope_angles | gap_driven | jtbd_villain_wtp
+pipeline_id: "{pipeline_id}"        # populated by orchestrator
+
+# ─── Sub-queries Array ────────────────────────────────────────────────────────
+# Each entry is a research sub-query with optional gap-targeting metadata.
+# Wave 1: targets_gaps may be omitted.
+# Wave 2+: targets_gaps SHOULD be populated for ≥ 60% of queries.
+sub_queries: []
+
+# ─── Template Entry (reference — NOT part of runtime file) ───────────────────
+#
+# sub_queries:
+#   - id: sq001
+#     wave: 1                           # wave this query belongs to
+#     query: "pgvector performance at 10M vectors — benchmarks and HNSW tuning"
+#     inferred_context:
+#       domain: database
+#       focus: performance
+#     targets_gaps: []                  # empty on Wave 1 (no gaps yet)
+#     source_hint: academic-paper       # preferred source type (informational)
+#
+#   - id: sq002
+#     wave: 2
+#     query: "pgvector vs pinecone pricing model for enterprise workloads"
+#     inferred_context:
+#       domain: database
+#       focus: cost
+#     targets_gaps:
+#       - G001                          # open gap: performance overhead at scale
+#       - G003                          # open gap: cost model for cloud vector DBs
+#     source_hint: enterprise-postmortem
+#
+#   - id: sq003
+#     wave: 2
+#     query: "JTBD gap: what drives enterprise decisions to move off Pinecone"
+#     inferred_context:
+#       domain: product_discovery
+#       focus: jtbd
+#     targets_gaps:
+#       - G002                          # open gap: enterprise adoption patterns
+#     source_hint: enterprise-postmortem
+#     # Note: product-discovery mode uses JTBD/Villain/WTP decomposition.
+#     # targets_gaps mechanism and alignment threshold are identical.

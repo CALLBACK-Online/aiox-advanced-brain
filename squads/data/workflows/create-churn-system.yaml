@@ -1,0 +1,109 @@
+workflow:
+  id: create-churn-system
+  name: "Create Churn Alert & Prevention System"
+  version: "1.0"
+  primary_agent: nick-mehta
+  tier_flow: [0, 1, 2]
+  phases: 3
+  estimated_duration: "2-3 weeks"
+  agents_involved:
+    - nick-mehta
+    - peter-fader
+    - david-spinks
+    - wes-kao
+  state_machine:
+    states: [preflight, signal-design, interventions, complete]
+    transitions:
+      - trigger: preflight_complete
+        source: preflight
+        dest: signal-design
+      - trigger: signals_defined
+        source: signal-design
+        dest: interventions
+      - trigger: playbooks_ready
+        source: interventions
+        dest: complete
+  task_ref:
+    primary:
+      - predict-churn
+    supporting:
+      - design-health-score
+      - calculate-clv
+      - measure-community
+      - design-learning-outcomes
+  views_required:
+    - v_churn_risk_scores
+    - v_churn_leading_indicators
+    - v_customer_health_composite
+    - v_customer_lifetime_value
+  templates_used:
+    - churn-alert-tmpl.yaml
+    - health-score-report-tmpl.yaml
+  checklists_used:
+    - health-score-checklist.md
+    - pre-implementation-checklist.md
+  deliverables:
+    - Churn risk scoring system
+    - Leading indicator detection
+    - Alert triggers
+    - Playbooks by signal type
+    - Escalation paths
+
+workspace_execution_contract:
+  preflight:
+    - "*workspace-preflight (executa bootstrap-data-workspace.sh + validate-data-essentials.sh)"
+    - "*workspace-context {slug}"
+    - "Confirmar templates necessários em workspace/_templates/analytics/"
+  output_routing:
+    canonical:
+      - "workspace/businesses/{slug}/analytics/churn-alert.yaml"
+      - "workspace/businesses/{slug}/analytics/health-score-report.yaml"
+      - "workspace/businesses/{slug}/analytics/executive-report.yaml"
+    custom:
+      - "docs/data/{slug}/create-churn-system-{date}.md"
+  hard_rules:
+    - "Proibido gravar em workspace/businesses/{slug}/analytics/ sem template correspondente em workspace/_templates/analytics/."
+    - "Relatórios em docs/data/{slug}/ são complementares e não substituem artefatos canônicos."
+
+notes: |
+  ## Objetivo
+  Identificar clientes em risco antes do churn e acionar intervenção apropriada.
+
+  > "Customer Success é quando seus clientes atingem o resultado desejado através das interações com sua empresa." — Nick Mehta
+
+  ## Regra de Ouro
+  Priorizar por valor, não por volume.
+  - Clientes de alto CLV = prioridade máxima
+  - Clientes de baixo CLV = prioridade menor (automação)
+
+  ## Fases
+  - FASE 1: DEFINIR SINAIS (Nick Mehta + Fader) - Tier 0
+    Mapear leading indicators (login drop >50%, support ticket crítico, champion deixou empresa, community drop >60% MoM, course stall >7 dias). Priorizar por CLV. Definir severidade (Critical/High/Medium/Low).
+  - FASE 2: CRIAR ALERTAS (Nick Mehta + Especialistas) - Tier 1
+    Alertas: INACTIVITY (14d sem login), HEALTH_DROP (queda >20pts em 30d), MEETING_RISK (renewal <30d + health <50), COMMUNITY_DROP (Spinks), LEARNING_STALL (Kao, 7+d sem progresso), STREAK_BROKEN.
+  - FASE 3: PLAYBOOKS DE AÇÃO (Nick Mehta) - Tier 2
+    Playbooks: Inactivity Response, Health Drop Response, Meeting Risk Prep, Community Re-engagement, Learning Nudge. Métricas de efetividade (% alertas→ação, $ saved, SLA).
+
+  ## Matriz de Severidade
+  | Signal Count | CLV Tier | Severidade | SLA |
+  |--------------|----------|------------|-----|
+  | 3+ | Platinum/Gold | Critical | <4h |
+  | 2+ | Platinum/Gold | High | <24h |
+  | 3+ | Silver/Bronze | High | <24h |
+  | 2+ | Silver/Bronze | Medium | <48h |
+  | 1 | Any | Low | <7d |
+
+  ## Queries de Monitoramento (SQL)
+  - Clientes de maior risco (v_churn_leading_indicators, score >= 60)
+  - Distribuição de risco (v_churn_risk_scores)
+  - Alertas críticos com CLV (join com v_customer_lifetime_value)
+
+  ## Referências
+  - Nick Mehta: DEAR Framework, Churn Signals, Customer Success
+  - Peter Fader: CLV-based prioritization
+  - David Spinks: Community engagement signals
+  - Wes Kao: Learning completion signals
+  - Template: templates/churn-alert-tmpl.yaml
+
+  Data Intelligence Pack - Workflow v1.0
+  Primary Agent: @nick-mehta

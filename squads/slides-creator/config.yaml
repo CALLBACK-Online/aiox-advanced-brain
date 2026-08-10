@@ -1,0 +1,1019 @@
+pack:
+  name: slides-creator
+  version: "9.1.0"
+  description: >-
+    Squad de agents especializados que automatizam o ciclo completo de geracao
+    de slide decks profissionais: do briefing a entrega validada. Brand-agnostic
+    por design -- gera slides para qualquer marca via {{handlebars}} e CSS variables.
+    Baseado em SOP-SLIDES-003 (brand-agnostic), PPTEval (Design, Content, Coherence, GAD)
+    e absorção v9 da disciplina narrativa McKinsey (Pyramid + SCQA + Action Titles + APA).
+
+absorption_source: .aiox/squad-runtime/sinkra-squad/criacao-slides-ia/
+
+squad:
+  name: slides-creator
+  version: 9.1.0
+  short-title: Slides Creator Squad
+  description: >-
+    Squad de agents especializados que automatizam o ciclo completo de geracao
+    de slide decks profissionais: do briefing a entrega validada. Brand-agnostic
+    por design -- gera slides para qualquer marca via {{handlebars}} e CSS variables.
+    Baseado em SOP-SLIDES-003 (brand-agnostic) e PPTEval (Design, Content, Coherence, GAD).
+  author: AIOX Community
+  icon: "SC"
+  entry_agent: slide-chief
+  slashPrefix: SlidesCreator
+  tested: true
+
+metadata:
+  # Canonical single-block metadata (MIGRATION-SCHEMA-001 legacy comment removed; collapsed duplicates)
+  name: slides-creator
+  status: active
+  domain: slides-creator
+  quality_score:
+    value: 8.9
+    scale: 0-10
+    rubric: "internal AIOX assessment pre-upgrade"
+    scored_at: "2026-04-18"
+  # absorption_source removed (duplicate — canonical declaration at top-level line 11)
+
+workspace_integration:
+  level: controlled_runtime_consumer
+  rationale: >-
+    Slides Creator consumes brand context from the workspace and targets a consumer
+    TSX application (resolved per deployment via config.yaml#render_targets). The squad
+    does not own any specific app; readiness + handoff are gated by the operator.
+    Designed portable — may ship into any repo without hard refs.
+  read_paths:
+    - workspace/_system/config.yaml
+    - workspace/businesses/
+  write_paths: []
+  template_namespace: slides
+  owner: "operator"
+  execution_mode: "contract_based"   # consumer apps implement the contract; squad emits spec
+  readiness_owner: "operator"
+  delivery_targets: "resolved via config.yaml#render_targets at runtime"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# INVARIANTS (P1-P7) — absorbed from /sinkra-map-process criacao-slides-ia
+# ═══════════════════════════════════════════════════════════════════════════════
+# Canonical summary: data/principios-invioláveis.md
+# Canonical source:  .aiox/squad-runtime/sinkra-squad/criacao-slides-ia/architecture.yaml#invariants
+invariants:
+  reference: data/principios-invioláveis.md
+  items:
+    - id: P1
+      name: Fidelidade aos dados
+      enforcement_level: code
+      failure_mode: "Qualquer número/citação não rastreável à fonte = QA FAIL"
+    - id: P2
+      name: Especificação obsessiva
+      enforcement_level: schema
+      failure_mode: "SlideSpec sem hex/grid_coord/pt_size = schema validation FAIL"
+    - id: P3
+      name: Pyramid Principle + MECE
+      enforcement_level: validator
+      failure_mode: "Vertical test falha OU MECE violado = QA FAIL"
+    - id: P4
+      name: Action titles obrigatórios
+      enforcement_level: validator
+      failure_mode: "Título descritivo (ex: 'Análise de market share') = QA FAIL"
+    - id: P5
+      name: Enumeração universal
+      enforcement_level: validator
+      failure_mode: "Qualquer visual sem ID (Gráfico N, Tabela N.M) = QA FAIL"
+    - id: P6
+      name: Citação completa APA
+      enforcement_level: schema
+      failure_mode: "Citação sem {org, title, date, url, access_date} = schema FAIL"
+    - id: P7
+      name: Prompts de IA completos (10 componentes)
+      enforcement_level: schema
+      failure_mode: "Prompt IA com <10 componentes = schema FAIL"
+
+# Pattern Library (SC-xxx)
+pattern_library:
+  prefix: SC
+  naming_convention:
+    format: "{PREFIX}-{CATEGORY}-{NUMBER}"
+    example: "SC-TP-001"
+  categories:
+    - id: TP
+      name: "Task Patterns"
+      description: "Patterns for slide generation task structure"
+    - id: EP
+      name: "Executor Patterns"
+      description: "Patterns for executor types and selection"
+    - id: PP
+      name: "Process Patterns"
+      description: "Patterns for presentation workflow processes"
+    - id: IP
+      name: "Integration Patterns"
+      description: "Patterns for brand config and template integration"
+    - id: AP
+      name: "Automation Patterns"
+      description: "Patterns for automated slide generation"
+    - id: DP
+      name: "Documentation Patterns"
+      description: "Patterns for slide documentation and SOPs"
+  patterns: []
+
+# Task Standards (SC-TP-001) — aligned 2026-05-20 (Wave W3-04) to actual task file structure
+task_standards:
+  enforce_anatomy: true
+  validator: "SC-TP-001"
+  # SINKRA canonical 8 fields per Mandamento 1+2 (matches actual squads/slides-creator/tasks/*.md)
+  required_fields:
+    - task                # canonical task slug
+    - atomic_layer        # Atom | Molecule | Organism
+    - responsavel_type    # Human | Agent | Worker | Clone
+    - Inputs              # array of {name, type, source, schema_ref}
+    - Outputs             # array of {name, type, destination, lifecycle}
+    - Pre_conditions      # array of preconditions
+    - Post_conditions     # array of postconditions
+    - Acceptance_criteria # array of completion predicates (Mandamento 2)
+  required_when_automated:
+    - Performance         # required when responsavel_type ∈ {Agent, Worker, Clone}
+    - Error_handling      # required when responsavel_type ∈ {Agent, Worker, Clone}
+  optional_fields:
+    - Domain              # Strategic | Tactical | Operational (declared via HTML comment OR standalone)
+    - session             # SESSION-* binding
+    - bounded_context     # BC-* binding
+    - invariants_enforced # P1-P7 list
+    - phase               # P00..P06
+    - duration            # qualitative range
+    - handoff_token       # outbound handoff identifier
+    - schema_ref          # external schema reference
+    - feature_flag        # feature_flags gate
+    - conditional         # conditional execution rule
+    - conditional_on      # legacy alias for conditional
+  # Legacy fields (pre-2026-05-20) — retained in some tasks; not enforced
+  legacy_fields_alias:
+    task_name: "→ task (slug form)"
+    status: "moved to deviation-registry.yaml lifecycle (active/deprecated)"
+    responsible_executor: "→ responsavel_type"
+    execution_type: "→ responsavel_type"
+    input: "→ Inputs"
+    output: "→ Outputs"
+    action_items: "→ Pre_conditions + Post_conditions"
+    acceptance_criteria: "→ Acceptance_criteria (canonical capitalization)"
+    estimated_time: "→ Performance.duration_target"
+    dependencies: "→ Pre_conditions"
+    templates: "moved to composition_mapping.templates"
+    quality_gate: "moved to data/qa-rubric.yaml#release_criteria"
+    handoff: "→ handoff_token"
+
+# Executor Types
+executor_types:
+  human:
+    id: "SC-EP-001"
+    name: "Human Executor"
+    characteristics:
+      - judgment
+      - creativity
+      - brand_alignment
+    cost: "$$$"
+    speed: slow
+    use_for:
+      - "Brand config definition"
+      - "Briefing creation"
+      - "Final visual approval"
+  agent:
+    id: "SC-EP-002"
+    name: "Agent Executor (AI)"
+    characteristics:
+      - analysis
+      - generation
+      - pattern_recognition
+    cost: "$$$$"
+    speed: fast
+    use_for:
+      - "Outline generation"
+      - "TSX component generation"
+      - "Quality evaluation"
+      - "Template matching"
+  hybrid:
+    id: "SC-EP-003"
+    name: "Hybrid Executor"
+    status: deprecated   # Mandamento 1 — exactly 1 canonical executor per task. Migrate to sequential Agent+Worker or single Agent.
+    deprecated_at: "2026-05-20"
+    deprecation_rationale: "Violates SINKRA Mandamento 1 (one executor per task). Replaced by sequential composition (Worker structural check + Agent reasoning) or single Agent if reasoning subsumes structural validation."
+    characteristics:
+      - ai_assisted
+      - human_validated
+    cost: "$$"
+    speed: moderate
+    use_for:
+      - "Content review (LEGACY — use Agent)"
+      - "Visual QA (LEGACY — use Agent)"
+      - "Brand compliance check (LEGACY — use Agent)"
+  worker:
+    id: "SC-EP-004"
+    name: "Worker Executor"
+    characteristics:
+      - deterministic
+      - api_integration
+      - file_operations
+    cost: "$"
+    speed: very_fast
+    use_for:
+      - "Image search and validation"
+      - "WCAG contrast calculation"
+      - "Lint and typecheck execution"
+
+executor_selection:
+  requires_creativity: human
+  requires_judgment: [human, agent]      # hybrid removed (deprecated)
+  requires_speed: [agent, worker]
+  requires_consistency: worker
+  requires_validation: agent             # hybrid → agent (Mandamento 1)
+  requires_learning: agent
+
+# Workflow Configuration
+workflow_config:
+  checkpoint_policy: always_active
+  checkpoint_modes:
+    always_active: "Every checkpoint MUST pass"
+    skip_on_override: "Can skip with manual approval"
+    advisory: "Only alerts, doesn't block"
+  fail_fast: true
+  allow_manual_override: false
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# QUALITY GATES (Numeric Thresholds)
+# ═══════════════════════════════════════════════════════════════════════════════
+# SOT: PPTEval composite + sub-dimension thresholds = data/qa-rubric.yaml#release_criteria
+# This block defines pipeline-stage gates (Worker-executable). PPTEval scoring is owned by qa-rubric.yaml.
+# ═══════════════════════════════════════════════════════════════════════════════
+quality_gates:
+  - name: brand-token-compliance
+    executor: Worker
+    threshold: "token_usage >= 95% AND 0 custom violations"
+    description: "Validates design token usage against brand config"
+  - name: visual-regression
+    executor: Worker
+    threshold: "< 2% pixel diff from reference"
+    description: "Pixel-level comparison with reference renders"
+  - name: accessibility
+    executor: Worker
+    threshold: "0 WCAG AA violations"
+    description: "Automated WCAG AA compliance scan"
+  - name: ppteval-composite
+    executor: Agent
+    threshold: "Design >= 7, Content >= 7, Coherence >= 7, GAD >= 7"
+    description: "PPTEval 4-dimension quality gate (existing slides-creator standard)"
+  - name: human-visual-approval
+    executor: Human
+    threshold: "Explicit approval"
+    required_for: "external-facing artifacts only"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# HANDOFF CONTRACT
+# ═══════════════════════════════════════════════════════════════════════════════
+handoff_contract:
+  imports:
+    - source: "workspace/businesses/{slug}/L2-tactical/brand/"
+      provides: "Brand config (colors, fonts, spacing, logo)"
+    - source: "data/template-registry.yaml"
+      provides: "56 canonical slide templates with provenance"
+    - source: "data/SOP-SLIDES-003.md"
+      provides: "Brand-agnostic generation rules"
+  exports:
+    - "Rendered slide deck (TSX/HTML)"
+    - "QA report (PPTEval scores)"
+    - "Normalized briefing (JSON)"
+
+settings:
+  model_routing:
+    default: sonnet
+    creative_tasks: opus
+    worker_tasks: haiku
+  activation:
+    show_context_report: true
+    show_greeting: true
+    show_quick_commands: true
+    quick_commands_limit: 6
+  preload:
+    max_shared_files: 4
+    max_brand_files: 4
+
+tier_system:
+  tier_0:
+    description: Entry point and delivery gate
+    agents:
+      - slide-chief
+  tier_1:
+    description: Narrative, grounding, and template decisions
+    agents:
+      - content-architect
+      - template-curator
+  tier_2:
+    description: Rendering, asset resolution, and critique orchestration
+    agents:
+      - design-renderer
+      - visual-scout
+      - design-planner  # MSN-2026 addition
+  tier_3:
+    description: Quality scoring and release veto
+    agents:
+      - qa-inspector
+
+agents:
+  - id: slide-chief
+    status: active
+    title: "Squad Chief & Entry Gate"
+    tier: tier_0
+    phases: [P00, P01, P02, P03, P04, P05, P06]
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: "orchestrator"
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["intake", "orchestration", "release"]
+      can_review: [content-architect, template-curator, design-renderer, visual-scout, qa-inspector]
+
+  - id: content-architect
+    status: active
+    title: "Narrative & Pyramid Architect"
+    tier: tier_1
+    phases: [P01, P02, P04]
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "pyramid-tree.yaml, scqa-map.yaml, sources-apa.yaml, action-titles"
+      story_role: "executor"
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["narrative", "sources", "action_titles"]
+      session: SESSION-NARR
+      can_review: []
+
+  - id: template-curator
+    status: active
+    title: "Template & Slide-Type Curator"
+    tier: tier_1
+    phases: [P00, P03]
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "slide-type classification, template-selection-summary.md, chart-type mapping"
+      story_role: "executor"
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["template_selection", "chart_selection", "reference_induction"]
+      session: SESSION-SPEC
+      can_review: []
+
+  - id: design-renderer
+    status: active
+    title: "Grid, Spec & Handoff Renderer"
+    tier: tier_2
+    phases: [P03, P04, P06]
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "grid-layouts.yaml, deck-spec.yaml, render-request.yaml"
+      story_role: "executor"
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["grid_composition", "spec_emission", "handoff"]
+      session: SESSION-SPEC
+      can_review: []
+
+  - id: visual-scout
+    status: active
+    title: "Brand Palette & Asset Resolver"
+    tier: tier_2
+    phases: [P03]
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "active-palette.yaml, asset-resolution.json"
+      story_role: "executor"
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["brand_override_detection", "palette_resolution", "asset_search"]
+      session: SESSION-SPEC
+      can_review: []
+
+  - id: qa-inspector
+    status: active
+    title: "Quality Gate & Invariant Validator"
+    tier: tier_3
+    phases: [P02, P05]
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "qa-report.json, vertical-test-result.yaml, validator outputs"
+      story_role: "reviewer"
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["validation", "ppteval", "vertical_test", "invariant_enforcement"]
+      session: SESSION-QA
+      can_review: [content-architect, design-renderer, template-curator, design-planner]
+
+  - id: design-planner
+    status: active
+    title: "Design Critique Planner & Critique Loop Orchestrator"
+    tier: tier_2
+    phases: [P04_5]
+    mission_origin: "MSN-2026-SLIDES-NARRATIVE-DESIGN (T-015)"
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "critique-report.yaml, planning-reflection.jsonl entries"
+      story_role: "reviewer"
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["critique_orchestration", "design_routing", "iteration_management"]
+      session: SESSION-DESIGN-CRITIQUE
+      can_review: [design-renderer, visual-scout]
+
+tasks:
+  # Pre-existing
+  - create-presentation
+  - confirm-delivery-format
+  - decide-slide-architecture
+  - normalize-briefing
+  - prepare-ds-presenter
+  - review-presentation
+  - update-slides-creator
+  - delete-slides-creator
+  - youtube-to-briefing
+  # Absorbed v9 — narrative discipline
+  - catalog-sources-apa
+  - distill-governing-thought
+  - build-pyramid
+  - apply-scqa
+  - write-action-titles
+  - run-vertical-test
+  - classify-slide-type
+  - select-chart-type
+  - compose-grid-layout
+  - detect-brand-override
+  - clone-visual-style-signature
+  - register-palette-override
+  - resolve-active-palette
+  - validate-pyramid
+  - validate-vertical-flow
+  - validate-enumeration-universal
+  - validate-fontes-apa
+  - validate-evidence-ledger
+  - validate-action-title
+  - p1-fidelity-sampling
+  - load-kb-bundle
+  - route-sources
+  - ingest-multimodal-sources
+  - extract-evidence-from-ingestions
+  - validate-ingestion-bundle
+  - ingest-prior-deck
+  - emit-deck-spec
+  - handoff-render-request
+  - emit-native-pptx
+  - export-editable-pptx
+  # MSN-2026-SLIDES-NARRATIVE-DESIGN — Phase 2+3 validators (10)
+  - validate-density
+  - validate-hierarchy
+  - validate-contrast
+  - validate-readability
+  - validate-visual-coherence
+  - validate-governing-thought-strength
+  - validate-action-title-rhetoric
+  - validate-scqa-depth
+  - validate-story-arc
+  - validate-slide-function-map
+  # MSN-2026 — Phase 4 critique loop (4)
+  - compress-outline-to-slide-functions
+  - define-design-direction
+  - run-design-critique
+  - apply-design-revision
+
+workflows:
+  - generate-presentation  # v2.0.0 (absorbed v9 narrative discipline)
+
+checklists:
+  - presentation-readiness-checklist
+
+templates:
+  - README
+
+# Dependencies
+dependencies:
+  frameworks:
+    - name: "React"
+      version: ">=18.0.0"
+      purpose: "TSX component rendering"
+    - name: "Framer Motion"
+      version: ">=10.0.0"
+      purpose: "Animation presets (7 presets)"
+    - name: "TypeScript"
+      version: ">=5.0.0"
+      purpose: "Type safety for slide components"
+    - name: "Next.js"
+      version: ">=16.0.0"
+      purpose: "ds app surface integration"
+  mcp_servers:
+    - name: "exa"
+      purpose: "Image search for visual-scout agent"
+  data:
+    - name: "Template Registry"
+      purpose: "Canonical mirror of the 56 implemented ds slide templates with provenance"
+      location: "data/template-registry.yaml"
+    - name: "Asset Resolution"
+      purpose: "Fallback chain, degraded policy, and blocked visual anti-patterns"
+      location: "data/asset-resolution.yaml"
+    - name: "SOP-SLIDES-003"
+      purpose: "Core brand-agnostic reference for slide generation"
+      location: "data/SOP-SLIDES-003.md"
+    - name: "SOP-SLIDES-001"
+      purpose: "Rules and quality gates reference"
+      location: "data/SOP-SLIDES-001.md"
+  app_surfaces:
+    - name: "consumer_tsx_app"
+      purpose: "Any consumer React/Next.js app conforming to tech_discipline in slide-component-vocabulary.yaml"
+      resolution: "runtime-declared via config.yaml#render_targets"
+      status: "contract_based"
+
+# SINKRA v3.2 — Artifact Contracts (Wave 3 — expanded for 16 workflow outputs)
+# Each contract: producer/consumer/lifecycle + transition rules
+artifact_contracts:
+  # === Canonical existing contracts ===
+  - artifact_id: normalized-briefing
+    template_path: templates/briefing.normalized.json
+    lifecycle_states: [draft, validated, approved]
+    producer: normalize-briefing
+    consumer: [catalog-sources-apa, distill-governing-thought, build-pyramid]
+    transition_rules:
+      draft_to_validated: "schema valid + all required fields present"
+      validated_to_approved: "P00 gate implicit (no rework)"
+
+  - artifact_id: deck-manifest
+    template_path: templates/deck-manifest.json
+    lifecycle_states: [draft, validated, approved]
+    producer: create-presentation
+    consumer: [Human reviewer]
+    transition_rules:
+      draft_to_validated: "qa_verdict == PASS"
+      validated_to_approved: "Human review verdict == APPROVED"
+
+  - artifact_id: qa-report
+    template_path: templates/qa-report.json
+    lifecycle_states: [draft, validated, approved]
+    producer: qa-inspector
+    consumer: [qa_verdict gate, dimension_router, Human reviewer]
+    transition_rules:
+      draft_to_validated: "all 6 validators emitted"
+      validated_to_approved: "qa_verdict gate PASS"
+
+  # === Narrative outputs (P01-P02) ===
+  - artifact_id: sources-apa
+    template_path: templates/artifacts/sources-apa.yaml
+    lifecycle_states: [draft, validated, approved]
+    producer: catalog-sources-apa
+    consumer: [validate-fontes-apa, p1-fidelity-sampling]
+    schema_ref: "APA schema: {org, title, date, url, access_date}"
+
+  - artifact_id: governing-thought
+    template_path: templates/artifacts/governing-thought.yaml
+    lifecycle_states: [draft, validated, approved]
+    producer: distill-governing-thought
+    consumer: [build-pyramid]
+
+  - artifact_id: pyramid-tree
+    template_path: templates/artifacts/pyramid-tree.yaml
+    lifecycle_states: [draft, validated, approved]
+    producer: build-pyramid
+    consumer: [write-action-titles, classify-slide-type, validate-pyramid, emit-deck-spec]
+    schema_ref: data/checkpoint-schema.yaml
+    invariant_enforced: [P3]
+
+  - artifact_id: scqa-map
+    template_path: templates/artifacts/scqa-map.yaml
+    lifecycle_states: [draft, validated, approved]
+    producer: apply-scqa
+    consumer: [write-action-titles, validate-vertical-flow]
+
+  - artifact_id: vertical-test-result
+    template_path: templates/artifacts/vertical-test-result.yaml
+    lifecycle_states: [draft, validated, approved]
+    producer: run-vertical-test
+    consumer: [D02_gate]
+    cross_session: true
+
+  # === Spec outputs (P03-P04) ===
+  - artifact_id: grid-layouts
+    template_path: templates/artifacts/grid-layouts.yaml
+    lifecycle_states: [draft, validated, approved]
+    producer: compose-grid-layout
+    consumer: [emit-deck-spec]
+
+  - artifact_id: active-palette
+    template_path: templates/artifacts/active-palette.yaml
+    lifecycle_states: [draft, validated, approved]
+    producer: resolve-active-palette
+    consumer: [compose-grid-layout, emit-deck-spec, handoff-render-request]
+    co_sign_on_override: STK-10
+
+  - artifact_id: deck-spec
+    template_path: templates/artifacts/deck-spec.yaml
+    lifecycle_states: [draft, validated, approved]
+    producer: emit-deck-spec
+    consumer: [P05 validators, handoff-render-request, create-presentation]
+    invariant_enforced: [P2, P5]
+    schema_ref: "hex/grid_coord/pt_size required per slide"
+
+  # === Release outputs (P06) ===
+  - artifact_id: render-request
+    template_path: templates/artifacts/render-request.yaml
+    lifecycle_states: [draft, validated, approved]
+    producer: handoff-render-request
+    consumer: ["consumer_tsx_app (resolved per render_targets); LLM-direct fallback"]
+    handoff_token: BC-08_RENDER_REQUEST
+
+  - artifact_id: slide-specifications
+    template_path: templates/artifacts/slide-specifications.md
+    lifecycle_states: [draft, validated, approved]
+    producer: create-presentation
+    consumer: [Human reviewer, audience]
+
+  - artifact_id: design-system-doc
+    template_path: templates/artifacts/design-system-doc.md
+    lifecycle_states: [draft, validated, approved]
+    producer: create-presentation
+    consumer: [Human reviewer]
+
+  - artifact_id: references-bibliography
+    template_path: templates/artifacts/references-bibliography.md
+    lifecycle_states: [draft, validated, approved]
+    producer: catalog-sources-apa + create-presentation
+    consumer: [Human reviewer, audience]
+    invariant_enforced: [P6]
+
+  - artifact_id: ai-image-prompts
+    template_path: templates/artifacts/ai-image-prompts.md
+    lifecycle_states: [draft, validated, approved]
+    producer: create-presentation
+    consumer: [visual-scout, Human reviewer]
+    invariant_enforced: [P7]
+
+  - artifact_id: version-history
+    template_path: templates/artifacts/version-history.md
+    lifecycle_states: [draft, validated, approved]
+    producer: create-presentation
+    consumer: [Human reviewer]
+
+bu_mapping: "hub-framework"
+
+domain_model:
+  Estrategico:
+    alias_for: Strategic
+    scope: "Alias sem acento para validadores determinísticos legados."
+  Strategic:
+    scope: "Narrativa, tese, SCQA, Pyramid Principle e decisão de design."
+  Tactical:
+    scope: "Template, render, ingestão, PPTX, handoff e runtime."
+  Operational:
+    scope: "QA, validação, execução, governança de blockers e revisão."
+
+metrics:
+  tracking_enabled: true
+  kpis:
+    - name: qa_pass_score
+      threshold: 85
+    - name: evidence_gap_ratio
+      threshold: 0.5
+    - name: editability_pass_rate
+      threshold: 0.95
+
+logging:
+  audit_trail: true
+  error_handling: "Every worker emits explicit blocker records; silent fallback is forbidden."
+
+quality_gate_veto_conditions:
+  - id: evidence_fabrication_veto
+    threshold: 0
+    veto: "Any fabricated or untraceable claim blocks release."
+  - id: design_density_veto
+    threshold: 1
+    veto: "Any unreadable slide density blocks premium delivery."
+
+supported_modes:
+  - CRIAR
+  - VALIDAR
+  - RESOLVER
+
+sessions:
+  - id: SESSION-NARR
+    owner: content-architect
+    scope: narrative_reasoning
+    kb_bundle_ref: SESSION-NARR
+  - id: SESSION-SPEC
+    owner: design-renderer
+    scope: slide_specification_and_design_direction
+    kb_bundle_ref: SESSION-SPEC
+  - id: SESSION-QA
+    owner: qa-inspector
+    scope: independent_quality_gate
+    kb_bundle_ref: SESSION-QA
+  - id: SESSION-DESIGN-CRITIQUE
+    owner: design-planner
+    scope: critique_loop_and_revision_governance
+    kb_bundle_ref: SESSION-DESIGN-CRITIQUE
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# COMPOSITION MAPPING (SINKRA v3.2 — GAP-003 closure)
+# ═══════════════════════════════════════════════════════════════════════════════
+composition_mapping:
+  # Wave W4-05 — Token level added for SINKRA hierarchy traceability (Token → Atom → Molecule → Organism)
+  tokens:
+    registry_ref: "squads/slides-creator/data/token-registry.yaml"
+    canonical_families:
+      - Time          # SLA, duration
+      - Capacity      # parallel, iteration_cap
+      - Threshold     # numeric gates
+      - Priority      # P0..P3
+      - Permission    # human approval, codeowners
+      - Taxonomy      # domain, atomic_layer, executor enums
+      - Behavior      # routing rules, error strategies
+      - Accountability # producer/consumer/approver
+      - Mode          # briefing|youtube|operator-driven
+    note: "Tokens declared via token-registry.yaml#token_definitions; this section enables Token→Atom traceability for validators."
+  atoms:
+    narrative:
+      - tasks/catalog-sources-apa.md
+      - tasks/distill-governing-thought.md
+      - tasks/build-pyramid.md
+      - tasks/apply-scqa.md
+      - tasks/write-action-titles.md
+      - tasks/compress-outline-to-slide-functions.md
+      - tasks/run-vertical-test.md
+    spec:
+      - tasks/define-design-direction.md
+      - tasks/classify-slide-type.md
+      - tasks/select-chart-type.md
+      - tasks/compose-grid-layout.md
+      - tasks/emit-deck-spec.md
+    brand:
+      - tasks/detect-brand-override.md
+      - tasks/clone-visual-style-signature.md
+      - tasks/register-palette-override.md
+      - tasks/resolve-active-palette.md
+    qa:
+      - tasks/validate-pyramid.md
+      - tasks/validate-vertical-flow.md
+      - tasks/validate-enumeration-universal.md
+      - tasks/validate-fontes-apa.md
+      - tasks/validate-evidence-ledger.md
+      - tasks/validate-action-title.md
+      - tasks/validate-density.md
+      - tasks/validate-hierarchy.md
+      - tasks/validate-contrast.md
+      - tasks/validate-readability.md
+      - tasks/validate-visual-coherence.md
+      - tasks/validate-governing-thought-strength.md
+      - tasks/validate-action-title-rhetoric.md
+      - tasks/validate-scqa-depth.md
+      - tasks/validate-story-arc.md
+      - tasks/validate-slide-function-map.md
+      - tasks/p1-fidelity-sampling.md
+    intake:
+      - tasks/load-kb-bundle.md
+      - tasks/youtube-to-briefing.md
+      - tasks/confirm-delivery-format.md
+      - tasks/decide-slide-architecture.md
+      - tasks/normalize-briefing.md
+      - tasks/route-sources.md
+    ingestion:
+      - tasks/ingest-multimodal-sources.md
+      - tasks/extract-evidence-from-ingestions.md
+      - tasks/validate-ingestion-bundle.md
+      - tasks/ingest-prior-deck.md
+    handoff:
+      - tasks/handoff-render-request.md
+      - tasks/prepare-ds-presenter.md
+    render:
+      - tasks/emit-native-pptx.md
+      - tasks/export-editable-pptx.md
+    critique:
+      # Note: run-design-critique is a Molecule (orchestrates 10 sub-validators + aggregates verdict).
+      # Listed here only as filesystem reference. Authoritative placement is composition_mapping.molecules.MOL-DESIGN-CRITIQUE below.
+      # Resolved 2026-05-20 via /sinkra-upgrade-squad R3 polish (Atom/Molecule duality eliminated).
+      - tasks/apply-design-revision.md
+    crud:
+      # Note: create-presentation is an Organism entry-point (atomic_layer: Organism in task).
+      # Listed here as user-facing CRUD operation; the actual Organism is ORG-GENERATE-PRESENTATION (workflows/generate-presentation.yaml).
+      - tasks/create-presentation.md  # Organism alias — orchestrator atom
+      - tasks/review-presentation.md
+      - tasks/update-slides-creator.md
+      - tasks/delete-slides-creator.md
+  molecules:
+    - { id: MOL-NARR-PYRAMID, atoms: [catalog-sources-apa, distill-governing-thought, build-pyramid, apply-scqa, write-action-titles, compress-outline-to-slide-functions] }
+    - { id: MOL-INTAKE-ROUTING, atoms: [load-kb-bundle, youtube-to-briefing, confirm-delivery-format, decide-slide-architecture, normalize-briefing, route-sources] }
+    - { id: MOL-INGESTION, atoms: [route-sources, ingest-multimodal-sources, extract-evidence-from-ingestions, validate-ingestion-bundle, ingest-prior-deck] }
+    - { id: MOL-SPEC-EMISSION, atoms: [define-design-direction, classify-slide-type, select-chart-type, compose-grid-layout, emit-deck-spec] }
+    - { id: MOL-BRAND-RESOLUTION, atoms: [detect-brand-override, clone-visual-style-signature, register-palette-override, resolve-active-palette] }
+    - { id: MOL-QA-NARRATIVE, atoms: [validate-pyramid, validate-vertical-flow, validate-enumeration-universal, validate-fontes-apa, validate-evidence-ledger, validate-action-title, validate-density, validate-hierarchy, validate-contrast, validate-readability, validate-visual-coherence, validate-governing-thought-strength, validate-action-title-rhetoric, validate-scqa-depth, validate-story-arc, validate-slide-function-map, p1-fidelity-sampling, run-vertical-test] }
+    # MOL-DESIGN-CRITIQUE: run-design-critique IS this molecule (orchestrating layer); apply-design-revision is its sole composed Atom. Updated 2026-05-20 R3.
+    - { id: MOL-DESIGN-CRITIQUE, orchestrator: run-design-critique, atoms: [apply-design-revision] }
+    - { id: MOL-HANDOFF, atoms: [handoff-render-request, prepare-ds-presenter] }
+    - { id: MOL-RENDER-NATIVE, atoms: [emit-native-pptx, export-editable-pptx] }
+  organisms:
+    - { id: ORG-GENERATE-PRESENTATION, path: workflows/generate-presentation.yaml, molecules: [MOL-INTAKE-ROUTING, MOL-INGESTION, MOL-NARR-PYRAMID, MOL-SPEC-EMISSION, MOL-BRAND-RESOLUTION, MOL-DESIGN-CRITIQUE, MOL-QA-NARRATIVE, MOL-HANDOFF, MOL-RENDER-NATIVE] }
+  templates:
+    - templates/briefing.normalized.json
+    - templates/deck-manifest.json
+    - templates/qa-report.json
+    - templates/README.md
+    - templates/slide-archetypes/  # 7 archetypal spec templates (Wave B absorption)
+    - data/template-registry.yaml
+  instances:
+    location: "outputs/slides-creator/{run_id}/"
+    retention_days: 30
+    pattern: "Per-execution instances indexed by correlation_id"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SINKRA-NATIVE REFERENCES (v3.2)
+# ═══════════════════════════════════════════════════════════════════════════════
+sinkra_refs:
+  token_registry: data/token-registry.yaml
+  pipeline_execution_log: data/pipeline-execution-log.yaml
+  checkpoint_schema: data/checkpoint-schema.yaml
+  slide_spec_schema: data/slide-spec-schema.yaml  # Wave A: P2 Especificação obsessiva SOT
+  context_adaptations: data/context-adaptations.yaml  # Wave D: language × culture × audience lookup
+  edge_case_decisions: data/edge-case-decisions.yaml  # Wave D: 5 edge-case decision protocols
+  analise_material_template: templates/analise-material.template.md  # Wave D: Phase 1 output schema
+  slide_component_vocabulary: data/slide-component-vocabulary.yaml   # v3.0 brand/repo-agnostic contract
+  slide_layout_patterns: data/slide-layout-patterns.yaml              # 10 LP-* patterns cross-archetype
+  slide_component_skeleton: templates/slide-component.tsx.hbs         # parametric TSX skeleton (placeholder resolution)
+  domain_handoff_contracts: data/domain-handoff-contracts.yaml         # YOLO-4: Mandamento 9 inter-domain handoffs (5 contracts: S→T, T→O, O→O-QA, T→S-feedback, O→S-escalation)
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# RENDER TARGETS (brand-agnostic — consumer app contract, not specific paths)
+# ═══════════════════════════════════════════════════════════════════════════════
+# YOLO-9: consumer_app resolver formalized 2026-05-20
+# Resolution order: explicit briefing.delivery_target → workspace_integration default
+#   → handoff_only fallback. resolver_contract defines the exact lookup algorithm.
+consumer_app_resolver:
+  resolution_order:
+    - source: briefing.delivery_target.consumer_app
+      precedence: 1
+      pattern: "operator-declared per run"
+    - source: "workspace/businesses/{business}/L4-operational/slide-rendering/default-consumer-app.yaml"
+      precedence: 2
+      pattern: "business-default declared in workspace L4 (TTL 7d)"
+    - source: "workspace/_system/config.yaml#default_render_consumer"
+      precedence: 3
+      pattern: "hub-wide default (last-resort)"
+    - source: "render_target: llm_direct (FALLBACK)"
+      precedence: 4
+      pattern: "no consumer_app available — emit markdown + deck-spec.yaml only"
+  resolver_contract:
+    inputs: [briefing.normalized.json, business_slug, run_id]
+    output:
+      consumer_app_id: "string | null"
+      resolution_source: "briefing | workspace_default | hub_default | fallback"
+      consumer_root: "absolute path | null"
+      slides_dir: "string (e.g. apps/{app}/src/slides) | null"
+    fallback_behavior:
+      when_no_consumer: "emit-deck-spec proceeds; prepare-ds-presenter marks status blocked_runtime_missing; pipeline does NOT halt"
+      log_to: "deviation-registry.yaml"
+      log_severity: P3
+      log_deviation_type: gate_bypass
+      log_mitigation: "consumer-agnostic handoff_only mode"
+  runtime_check:
+    when: pre_P06_handoff
+    validator: "prepare-ds-presenter pre_conditions check"
+    block_if: "consumer_app resolved=true AND consumer_root path inaccessible"
+
+render_targets:
+  - id: consumer_tsx_app
+    status: ACTIVE
+    contract: "Consumer React/Next.js app conforming to tech_discipline in slide-component-vocabulary.yaml"
+    output_pattern: "{consumer_root}/{consumer_slides_dir}/{slide-id}.tsx"
+    stack_required: "React 18+ / Tailwind v4 / shadcn/ui new-york baseline / cssVariables: true"
+    canvas: "1920×1080 via consumer-implemented SlideFrame equivalent"
+    chrome: "consumer-implemented chrome_atom per chrome_atom_contract"
+    skeleton: templates/slide-component.tsx.hbs
+    brand_resolution: "via CSS var prefix declared in consumer globals.css + resolve-active-palette.yaml mapping"
+    consumer_inputs_required:
+      - "chrome_atom implementation path"
+      - "motion library import path (Framer Motion OR equivalent with useReducedMotion)"
+      - "class-merge utility path (cn() equivalent)"
+      - "motion presets module path"
+      - "brand.css_var_prefix (eg: 'bb', 'rp', 'acme')"
+      - "brand token mappings (background, fg, accent, dim, display_font)"
+
+  - id: llm_direct
+    status: FALLBACK
+    output: "markdown + deck-spec.yaml (no TSX emission)"
+    contract: "Used when no consumer TSX app is wired; produces human-readable deliverables only"
+
+  - id: native_pptx
+    status: ACTIVE
+    contract: "Native editable .pptx via slides-renderer consuming Native Slide IR"
+    output_pattern: "outputs/slides-creator/{run_id}/exports/{run_id}.pptx"
+    schema_ref: "packages/slides-renderer/src/ir/native-slide-ir.schema.json"
+    consumer_packages:
+      - "slides-renderer"
+      - "slides-core"
+      - "slides-mcp"
+    surfaces:
+      - cli: "scripts/sinkra/slides-cli.mjs"
+      - api: "apps/squad-engine /api/v1/slides/*"
+      - mcp: "slides-mcp"
+    quality_gates:
+      - "editability-report.json verdict == PASS"
+      - "design-mastery-report.yaml verdict == DESIGN_100 when premium required"
+      - "validate_runtime_parity.py verdict == PASS in CI"
+    absorption_provenance:
+      patterns_from: ["../bench/ppt-master", "../bench/powerpoint-skill"]
+      runtime_from: ["../bench/Presenton (Apache-2.0) — API/MCP scaffold"]
+      forbidden: ["../bench/banana-slides (AGPL-3.0)"]
+
+sinkra_native: true
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# FEATURE FLAGS (Wave C — standalone render + motion + direction advisor)
+# ═══════════════════════════════════════════════════════════════════════════════
+# All default false for backward-compat. Setting true activates new render modes
+# and commands. Existing TSX+ds flow remains untouched when all flags are false.
+feature_flags:
+  enable_native_pptx_emission:
+    default: false
+    description: >-
+      Activate emit-native-pptx task in P06. When true, deck-spec.yaml drives
+      packages/slides-renderer Native IR consumer to produce editable .pptx.
+      Default false at v4.0.0. Flip only after: (1) PoC PASS on 5 deck-spec
+      inputs from outputs/slides-creator/01krya* run_ids; (2) 10 production
+      runs without editability false positives. Tracked by future ADR-054
+      amendment-2.
+    consumers:
+      - squads/slides-creator/tasks/emit-native-pptx.md
+      - squads/slides-creator/workflows/generate-presentation.yaml (P06.tasks[])
+
+  ENABLE_HTML_STANDALONE_RENDER:
+    default: false
+    description: >-
+      Unlock standalone HTML render modes (multi-file composer OR single-file
+      web-component deck). When true, design-renderer reads data/render-modes.yaml
+      and chooses mode via selection_rules. Enables PDF/PPTX/MP4 exports without
+      dependency on apps/ds runtime.
+    consumers:
+      - agents/design-renderer.md (*render-standalone command)
+      - data/render-modes.yaml (mode selection)
+      # planned: render-html-standalone task (not yet implemented; tracked as future work, not a composition_mapping ref)
+    unblocks:
+      - tasks/export-editable-pptx.md
+      - tasks/decide-slide-architecture.md
+      - data/shadow-dom-pdf-troubleshooting.md
+
+  ENABLE_MOTION_NARRATIVE:
+    default: false
+    description: >-
+      Activate Slow-Fast-Boom-Stop narrative pacing for animated slides,
+      motion graphics, and MP4 export. When delivery_format.primary == "D"
+      (MP4/GIF), design-renderer applies structure from data/narrative-pacing.md.
+    consumers:
+      - agents/design-renderer.md (when delivery is motion-bound)
+      - data/narrative-pacing.md
+      - scripts/render-video.mjs (when implemented)
+
+  ENABLE_DESIGN_DIRECTION_ADVISOR:
+    default: false
+    description: >-
+      Route briefs with vague visual requirement through a 3-philosophy advisor
+      using data/design-philosophies.md (5 schools × 4 philosophies). Triggered
+      when briefing.design_context.status == "absent" AND no reference material
+      was provided.
+    consumers:
+      - agents/slide-chief.md (routing when brief is vague)
+      # planned: advise-design-direction task (not yet implemented; tracked as future work, not a composition_mapping ref)
+      - data/design-philosophies.md
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# SLIDE ARCHETYPES (Wave B absorption — McKinsey PPT Architect 2026-04-20)
+# ═══════════════════════════════════════════════════════════════════════════════
+slide_archetypes:
+  location: templates/slide-archetypes/
+  total: 7
+  catalog:
+    - { id: title,             path: templates/slide-archetypes/title.md,             slide_type: cover }
+    - { id: executive_summary, path: templates/slide-archetypes/executive-summary.md, slide_type: summary }
+    - { id: framework,         path: templates/slide-archetypes/framework.md,         slide_type: conceptual }
+    - { id: data,              path: templates/slide-archetypes/data.md,              slide_type: quantitative }
+    - { id: timeline_roadmap,  path: templates/slide-archetypes/timeline-roadmap.md,  slide_type: temporal }
+    - { id: financial,         path: templates/slide-archetypes/financial.md,         slide_type: financial }
+    - { id: appendix,          path: templates/slide-archetypes/appendix.md,          slide_type: backup }
+  consumer_tasks: [classify-slide-type, compose-grid-layout, emit-deck-spec]
+  enforcement: "emit-deck-spec MUST conform to per-archetype schema + slide-spec-schema.yaml"
+
+slide_spec_reference:
+  gold_standard: examples/gold-standard-slide-spec.md
+  mental_model: docs/mckinsey-architect-mental-model.md
+  absorbed_from: "ATHENA v2.0 McKinsey PPT Architect Elite (2026-04-20)"
+
+# --- Auto-added schema fields (validate:squad-schema) ---
+capabilities:
+  - slides-creator

@@ -1,0 +1,8 @@
+# SINKRA Runner Hooks for Domain Decoder
+# Story: 101.4 (Decoder Integration)
+
+hooks:
+  on_failure:
+    - action: reload
+      description: "Retry failed phase with fallback logic"
+      condition: "true"

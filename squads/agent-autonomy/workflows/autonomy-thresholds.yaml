@@ -1,0 +1,15 @@
+workflow_thresholds:
+  audit_optimize_cycle:
+    evidence_queries:
+      threshold: 3.0
+    autonomy_checklist_score:
+      threshold: 0.72
+    measurable_fix_ratio:
+      threshold: 0.75
+  create_agent_flow:
+    aci_compliance:
+      threshold: 1.0
+    architecture_confidence:
+      threshold: 0.8
+    validation_score:
+      threshold: 0.72

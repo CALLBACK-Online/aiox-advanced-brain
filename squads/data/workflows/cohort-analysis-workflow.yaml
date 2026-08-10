@@ -1,0 +1,109 @@
+workflow:
+  id: cohort-analysis-workflow
+  name: "Cohort Analysis Completo"
+  version: "1.0"
+  primary_agent: peter-fader
+  tier_flow: [0, 0, 1, 2]
+  phases: 4
+  estimated_duration: "1-2 weeks"
+  agents_involved:
+    - peter-fader
+    - sean-ellis
+    - wes-kao
+    - avinash-kaushik
+  state_machine:
+    states: [preflight, cohort-definition, synthesis, complete]
+    transitions:
+      - trigger: preflight_complete
+        source: preflight
+        dest: cohort-definition
+      - trigger: cohort_analysis_complete
+        source: cohort-definition
+        dest: synthesis
+      - trigger: report_complete
+        source: synthesis
+        dest: complete
+  task_ref:
+    primary:
+      - analyze-cohort
+    supporting:
+      - calculate-clv
+      - segment-rfm
+      - design-learning-outcomes
+      - create-dashboard
+  views_required:
+    - v_clv_cohort_comparison
+    - v_rfm_segments
+    - v_customer_lifetime_value
+    - v_customer_health_composite
+  templates_used:
+    - cohort-analysis-tmpl.yaml
+    - executive-report-tmpl.yaml
+  checklists_used:
+    - pre-implementation-checklist.md
+    - so-what-checklist.md
+  deliverables:
+    - Cohort retention matrix
+    - CLV by cohort comparison
+    - Acquisition channel analysis
+    - Growth recommendations
+    - Executive cohort report
+
+workspace_execution_contract:
+  preflight:
+    - "*workspace-preflight (executa bootstrap-data-workspace.sh + validate-data-essentials.sh)"
+    - "*workspace-context {slug}"
+    - "Confirmar templates necessários em workspace/_templates/analytics/"
+  output_routing:
+    canonical:
+      - "workspace/businesses/{slug}/analytics/cohort-analysis.yaml"
+      - "workspace/businesses/{slug}/analytics/executive-report.yaml"
+    custom:
+      - "docs/data/{slug}/cohort-analysis-{date}.md"
+  hard_rules:
+    - "Proibido gravar em workspace/businesses/{slug}/analytics/ sem template correspondente em workspace/_templates/analytics/."
+    - "Relatórios em docs/data/{slug}/ são complementares e não substituem artefatos canônicos."
+
+notes: |
+  ## Objetivo
+  Analisar performance de diferentes cohorts para identificar padrões de retenção, valor e comportamento ao longo do tempo.
+
+  > "Cohort analysis is the only way to truly understand customer behavior over time. Averages lie - cohorts reveal truth."
+  > — Inspirado em Peter Fader
+
+  ## Regra de Ouro
+  Nunca analise cohorts sem responder:
+  1. Qual cohort tem maior CLV? (Valor)
+  2. Qual canal de aquisição traz melhores clientes? (Origem)
+  3. Qual cohort retém melhor ao longo do tempo? (Retenção)
+  4. O que diferencia os cohorts vencedores? (Padrões)
+
+  ## Fases
+  - FASE 1: DEFINIÇÃO DE COHORTS (Peter Fader) - Tier 0
+    Definir critérios (mês/canal/produto/valor de aquisição), período de análise, mapear métricas por cohort (CLV médio e mediano, número de clientes, receita), criar segmentação de valor por cohort.
+    Gate: critérios documentados, período definido, view v_clv_cohort_comparison populada, métricas base calculadas.
+  - FASE 2: ANÁLISE DE CRESCIMENTO (Sean Ellis) - Tier 0
+    Calcular retention por cohort (M1-M12), analisar canais de aquisição, medir viral coefficient, identificar activation milestones.
+    Gate: retention matrix, canais rankeados, viral coefficient, milestones.
+  - FASE 3: COHORT DE APRENDIZADO (Wes Kao) - Tier 1
+    Analisar completion rate por cohort, engagement patterns, learning outcomes, correlacionar aprendizado com valor.
+    Gate: completion, engagement, outcomes, correlações documentadas.
+  - FASE 4: REPORT E AÇÃO (Avinash Kaushik) - Tier 2
+    Criar Cohort Dashboard, aplicar So What Framework, gerar recomendações acionáveis, definir monitoramento contínuo.
+    Gate: dashboard criado, So What aplicado, recomendações priorizadas, monitoramento configurado.
+
+  ## Queries de Validação (SQL)
+  - CLV por cohort de aquisição (v_clv_cohort_comparison)
+  - Retention matrix (cohort_activity CTE sobre transactions)
+  - Distribuição de segmentos por cohort (v_clv_cohort_comparison JOIN v_rfm_customer_classification)
+
+  ## Referências
+  - Peter Fader: Cohort-based CLV analysis, Customer Centricity
+  - Sean Ellis: Growth accounting, Retention analysis
+  - Wes Kao: Learning cohort analysis, Completion metrics
+  - Avinash Kaushik: So What Framework, Data Storytelling
+  - Template: templates/cohort-analysis-tmpl.yaml
+  - Checklist: checklists/pre-implementation-checklist.md
+
+  Data Intelligence Pack - Workflow v1.0
+  Primary Agent: @peter-fader | Secondary: @sean-ellis, @wes-kao, @avinash-kaushik

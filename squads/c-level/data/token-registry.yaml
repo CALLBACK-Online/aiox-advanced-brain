@@ -1,0 +1,161 @@
+version: "2.0.0"
+squad: c-level
+description: >
+  SINKRA Token Registry for c-level squad. Tokens govern execution parameters,
+  permissions, and behavioral constraints across all 5 processes.
+
+tokens:
+  - token_id: TK-CL-001
+    token_name: execution-window
+    family: Time
+    description: Janela maxima para cada ciclo de elicitacao executiva.
+    value: "90min"
+    producer: coo-orchestrator
+    consumers: [vision-chief, cmo-architect, cto-architect, cio-engineer, caio-architect]
+    bound_atoms: [elicit-vision, elicit-icp-yaml, elicit-brand-yaml, elicit-pricing-strategy]
+    bound_organisms: [business-profile-pipeline]
+
+  - token_id: TK-CL-002
+    token_name: squad-capacity
+    family: Capacity
+    description: Capacidade maxima de sessoes paralelas por business.
+    value: 1
+    producer: coo-orchestrator
+    consumers: [etl-batch-runner]
+    bound_atoms: [etl-batch-runner]
+    bound_organisms: [etl-deep-pass-pipeline]
+
+  - token_id: TK-CL-003
+    token_name: completeness-threshold
+    family: Threshold
+    description: Threshold minimo de completude para avancar de fase.
+    value: 85
+    producer: coo-orchestrator
+    consumers: [workspace-chief, cso]
+    bound_atoms: [setup-business-profile, etl-deep-pass, workspace-health-check]
+    bound_organisms: [business-profile-pipeline, etl-deep-pass-pipeline, workspace-governance]
+    bound_gates: [business-profile-completeness, workspace-governance-health]
+
+  - token_id: TK-CL-004
+    token_name: priority-route
+    family: Priority
+    description: Ordem de priorizacao para bootstrap, profile e governanca.
+    value: "bootstrap > profile > governance"
+    producer: coo-orchestrator
+    consumers: [workspace-chief]
+    bound_atoms: [bootstrap, setup-business-profile, workspace-health-check]
+
+  - token_id: TK-CL-005
+    token_name: permission-workspace-write
+    family: Permission
+    description: Permite escrita apenas em paths aprovados do workspace.
+    value: "workspace/businesses/{slug}/**"
+    producer: cso
+    consumers: [coo-orchestrator, vision-chief, cmo-architect]
+    bound_atoms: [elicit-vision, elicit-founder-dna, elicit-icp-yaml, elicit-brand-yaml, add-product]
+
+  - token_id: TK-CL-006
+    token_name: taxonomy-business-layer
+    family: Taxonomy
+    description: Classifica artefatos nas camadas L0-L4 do business.
+    value: "L0-identity, L1-strategy, L2-tactical, L3-product, L4-operational"
+    producer: cso
+    consumers: [coo-orchestrator, workspace-chief]
+    bound_atoms: [scaffold-templates, workspace-health-check]
+    bound_organisms: [workspace-governance]
+
+  - token_id: TK-CL-007
+    token_name: behavior-fail-fast
+    family: Behavior
+    description: Bloqueia handoff quando gate estrutural falha.
+    value: true
+    producer: cso
+    consumers: [coo-orchestrator, workspace-chief]
+    bound_atoms: [bootstrap, workspace-health-check]
+    bound_organisms: [workspace-governance]
+    bound_gates: [workspace-preflight]
+
+  - token_id: TK-CL-008
+    token_name: accountability-token
+    family: Accountability
+    description: Define o accountable explicito por decisao executiva.
+    value: "coo-orchestrator (operational), vision-chief (strategic)"
+    producer: cso
+    consumers: [coo-orchestrator, vision-chief, workspace-chief]
+    bound_atoms: [diagnose-business, growth-levers]
+
+  - token_id: TK-CL-009
+    token_name: mode-token
+    family: Mode
+    description: Declara o modo ativo entre PLANEJAR, VALIDAR, GERENCIAR e ENTENDER.
+    value: "PLANEJAR"
+    producer: coo-orchestrator
+    consumers: [vision-chief, cmo-architect, workspace-chief]
+    bound_atoms: [setup-workspace, diagnose-business, workspace-health-check, render-context]
+
+  - token_id: TK-CL-010
+    token_name: escalation-mode
+    family: Mode
+    description: Ativa escalonamento humano quando risco estrategico aumenta.
+    value: "auto"
+    producer: coo-orchestrator
+    consumers: [workspace-chief, cso]
+    bound_atoms: [diagnose-business, workspace-health-check]
+
+  - token_id: TK-CL-011
+    token_name: operator-identity
+    family: Identity
+    description: Identidade do operador ativo resolvida via .aiox/active-operator.yaml.
+    value: "runtime-resolved"
+    producer: system
+    consumers: [coo-orchestrator, vision-chief]
+    bound_atoms: [bootstrap, setup-business-profile]
+
+  - token_id: TK-CL-012
+    token_name: pipeline-sequence
+    family: Sequence
+    description: Ordem de execucao das fases dentro de cada pipeline.
+    value: "sequential-with-gates"
+    producer: coo-orchestrator
+    consumers: [vision-chief, cmo-architect]
+    bound_organisms: [business-profile-pipeline, etl-deep-pass-pipeline]
+
+  - token_id: TK-CL-013
+    token_name: workspace-integrity-min
+    family: Threshold
+    description: Threshold minimo para liberar preflight e escrita canonica no workspace.
+    value: 90
+    producer: cso
+    consumers: [coo-orchestrator, cso]
+    bound_organisms: [business-profile-pipeline, workspace-governance]
+    bound_gates: [workspace-preflight]
+
+  - token_id: TK-CL-014
+    token_name: etl-baseline-completeness-min
+    family: Threshold
+    description: Threshold minimo de completude apos a layer local do ETL.
+    value: 70
+    producer: coo-orchestrator
+    consumers: [coo-orchestrator]
+    bound_organisms: [etl-deep-pass-pipeline]
+    bound_gates: [etl-baseline-completeness]
+
+  - token_id: TK-CL-015
+    token_name: verified-sources-min
+    family: Threshold
+    description: Quantidade minima de fontes verificadas antes de seguir sem revisão manual.
+    value: 1
+    producer: coo-orchestrator
+    consumers: [coo-orchestrator]
+    bound_organisms: [etl-deep-pass-pipeline]
+    bound_gates: [etl-verified-sources]
+
+  - token_id: TK-CL-016
+    token_name: evidence-coverage-min
+    family: Threshold
+    description: Cobertura mínima de evidência para liberar artefatos gerados a partir de pesquisa externa.
+    value: 0.8
+    producer: coo-orchestrator
+    consumers: [coo-orchestrator]
+    bound_organisms: [etl-deep-pass-pipeline]
+    bound_gates: [etl-evidence-coverage]

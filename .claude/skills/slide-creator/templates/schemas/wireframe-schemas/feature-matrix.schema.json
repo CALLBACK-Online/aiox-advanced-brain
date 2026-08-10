@@ -1,0 +1,98 @@
+{
+  "$id": "sinkra://slide-creator/wireframes/feature-matrix.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "Multiple players are compared across multiple dimensions.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "feature_1": {
+      "type": "string"
+    },
+    "feature_2": {
+      "type": "string"
+    },
+    "feature_3": {
+      "type": "string"
+    },
+    "p1_f1": {
+      "type": "string"
+    },
+    "p1_f2": {
+      "type": "string"
+    },
+    "p1_f3": {
+      "type": "string"
+    },
+    "p2_f1": {
+      "type": "string"
+    },
+    "p2_f2": {
+      "type": "string"
+    },
+    "p2_f3": {
+      "type": "string"
+    },
+    "p3_f1": {
+      "type": "string"
+    },
+    "p3_f2": {
+      "type": "string"
+    },
+    "p3_f3": {
+      "type": "string"
+    },
+    "p4_f1": {
+      "type": "string"
+    },
+    "p4_f2": {
+      "type": "string"
+    },
+    "p4_f3": {
+      "type": "string"
+    },
+    "plan_1": {
+      "type": "string"
+    },
+    "plan_2": {
+      "type": "string"
+    },
+    "plan_3": {
+      "type": "string"
+    },
+    "plan_4": {
+      "type": "string"
+    }
+  },
+  "title": "feature-matrix",
+  "type": "object",
+  "x-sinkra": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "comparison_matrix",
+    "slot_count": 20,
+    "warnings": [
+      "action_title",
+      "plan_1",
+      "plan_2",
+      "plan_3",
+      "plan_4",
+      "feature_1",
+      "p1_f1",
+      "p2_f1",
+      "p3_f1",
+      "p4_f1",
+      "feature_2",
+      "p1_f2",
+      "p2_f2",
+      "p3_f2",
+      "p4_f2",
+      "feature_3",
+      "p1_f3",
+      "p2_f3",
+      "p3_f3",
+      "p4_f3"
+    ],
+    "wireframe_ref": "templates/wireframes/feature-matrix.html"
+  }
+}

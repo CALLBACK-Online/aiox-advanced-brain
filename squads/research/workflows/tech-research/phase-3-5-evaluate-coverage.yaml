@@ -1,0 +1,117 @@
+workflow:
+  phases:
+    3_5_evaluate_coverage:
+      name: "Coverage Evaluation"
+      # MODEL TIER: MAIN MODEL orchestration + deterministic worker scripts.
+      # RA-A.1: Stop decisions now driven by heartbeat-policy.yaml (multi-signal).
+      # quality-gates.yaml is the macro SOT; heartbeat-policy.yaml is specialization.
+      description: |
+        Avalia se a pesquisa está completa. Decide: continuar buscando ou parar.
+        Loop: Phase 3 (search) → Phase 3.5 (evaluate) → CONTINUE/STOP/REPLAN
+        Stop decisions driven by heartbeat-policy.yaml (7 signals + 3 replan signals).
+        Hardcoded single-signal coverage >= 70 replaced by policy file.
+
+      # RA-A.1: Policy file to load at phase start
+      policy_file: squads/research/data/heartbeat-policy.yaml
+
+      execution: |
+        0. Load heartbeat policy (RA-A.1):
+           ```
+           Read("squads/research/data/heartbeat-policy.yaml")
+           ```
+           Extract stop_when_any signals (priority-ordered) and replan_when_any signals.
+           governed_by field confirms quality-gates.yaml is macro SOT — both apply.
+
+        1. Load prompts/evaluate.md for scoring framework
+
+        2. Calculate metrics for this wave using Worker scripts:
+
+           a. coverage_score — USE WORKER:
+              ```bash
+              echo '{"fundamentals":0.9,"implementation":0.7,"comparison":0.8,"best_practices":0.75,"real_world":0.6,"current_state":0.85}' | python3 squads/research/scripts/tech-research/coverage_calculator.py coverage
+              ```
+              Returns coverage_score + coverage_breakdown (6 dimensions, 0-100 each).
+              IMPORTANT (Q1): Pass coverage_breakdown to Phase 5 for README metadata.
+
+           b. source_quality — USE WORKER:
+              ```bash
+              echo '[{"url":"...","title":"...","pub_date":"..."}]' | python3 squads/research/scripts/tech-research/credibility_scorer.py --stdin
+              ```
+              Returns HIGH/MEDIUM/LOW counts + average_multiplier.
+              Also count sources WITH pub_date vs WITHOUT (Q2 freshness).
+
+           c. new_info_ratio — USE WORKER:
+              ```bash
+              python3 squads/research/scripts/tech-research/coverage_calculator.py newinfo --new {N} --total {M}
+              ```
+              - New facts = specific data points, techniques, perspectives NOT seen before
+              - NOT new = same fact rephrased, same fact from different source
+
+           d. heartbeat metrics — collect from cost_tracker.py (RA-A.1):
+              - token_budget_used: fraction (0.0–1.0) of run's token budget consumed
+              - cost_usd_used: cumulative USD spent this run
+              - cost_max: run-level cap from pipeline-state.yaml or RESEARCH_COST_MAX_USD env
+              - wallclock_used: elapsed seconds since run start
+              - timeout_sec: run-level wall-clock cap from pipeline-state.yaml
+              - wave_num: current wave number (1-indexed)
+
+        3. Apply STOPPING RULES from heartbeat-policy.yaml (RA-A.1):
+           Evaluate stop_when_any signals in priority order (1→7).
+           First match fires → STOP with matched_signal + stop_reason_category.
+
+           Priority order (from policy file):
+           1. wave_max_with_low_coverage:  wave_num == 3 AND coverage_score < 50
+           2. token_budget:                token_budget_used > 0.85
+           3. cost_usd:                    cost_usd_used > cost_max
+           4. wallclock:                   wallclock_used > timeout_sec
+           5. coverage_score:              coverage_score >= 70
+           6. gap_convergence:             gap_set.is_empty()  [always false until RA-B.1]
+           7. new_information_ratio:       new_information_ratio < 0.05
+
+           If no stop signal fires:
+           - Evaluate all replan_when_any signals (independent, all-matching):
+             R1. source_contradiction_detected → inject contradiction resolution sub-query
+             R2. wave_returned_low_signal     → pivot query phrasing
+             R3. unsupported_claim_top_tier > 20% → inject citation recovery sub-query
+           - Emit CONTINUE + any replan_actions
+
+        4. IF CONTINUE:
+           - Generate 2-4 targeted queries for specific gaps (not generic re-searches)
+           - Use alternative phrasings if previous queries for same gap failed
+           - Add specificity (versions, years, frameworks)
+
+        5. IF STOP:
+           - Document final coverage_score and any remaining gaps
+           - Note if SOFT STOP (add caveat to final report)
+           - Emit a concrete stop_reason using one of these categories:
+             saturation, decision_sufficiency, max_waves, budget_limit,
+             source_unavailable, authority_handoff, human_decision_required
+           - Do not use vague stop reasons such as "complete" or "enough"
+
+        6. UPDATE curiosity queue:
+           - Add every high-impact unresolved gap to curiosity_queue.yaml
+           - Mark questions resolved when this wave answered them
+           - Mark questions discarded only with an explicit reason
+
+        7. SCORE binary rubrics (minimum viable):
+           - information_recall: facts/sources required by the scope
+           - analysis: comparisons, trade-offs, counterevidence, implications
+           - presentation: TL;DR, metadata, source traceability, next steps
+           - Output passed/total counts for Phase 5 metadata
+
+      output: |
+        {
+          "decision": "CONTINUE|STOP",
+          "coverage_score": 0-100,
+          "new_info_ratio": 0.0-1.0,
+          "high_credibility_sources": N,
+          "stop_reason": "reason if STOP",
+          "stop_reason_category": "saturation|decision_sufficiency|max_waves|budget_limit|source_unavailable|authority_handoff|human_decision_required",
+          "rubrics": {
+            "information_recall": {"passed": N, "total": N},
+            "analysis": {"passed": N, "total": N},
+            "presentation": {"passed": N, "total": N}
+          },
+          "gaps": [...],
+          "next_queries": [...] (if CONTINUE)
+        }

@@ -1,0 +1,14 @@
+schema:
+  artifact: approval_decision
+  version: 1.0.0
+  required:
+  - mission_id
+  - decision
+  - accountable_human
+  - decided_at
+  properties:
+    mission_id: string
+    decision: enum[GO, NO_GO]
+    accountable_human: string
+    decided_at: datetime
+    rationale: string

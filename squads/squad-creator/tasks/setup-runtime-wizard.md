@@ -1,0 +1,90 @@
+# Task: Setup Runtime — Guided Wizard
+
+## Task Anatomy
+
+| Field | Value |
+|-------|-------|
+| **Task ID** | `setup-runtime-wizard` |
+| **Version** | `1.0.0` |
+| **Status** | `active` |
+| **Responsible Executor** | `squad-chief` |
+| **Execution Type** | `Hybrid` |
+
+## Metadata
+
+```yaml
+id: setup-runtime-wizard
+name: "Setup Runtime — Guided Wizard"
+category: runtime
+agent: squad-chief
+elicit: true
+autonomous: false
+description: "Conduz o usuário pela coleta de credenciais e parâmetros de conexão."
+accountability:
+  human: squad-operator
+  scope: full
+domain: Tactical
+
+```
+
+
+<!-- SINKRA_CONTRACT -->
+Domain: `Tactical`
+atomic_layer: Atom
+Input: request::setup_runtime_wizard
+Output: artifact::setup_runtime_wizard
+pre_condition: setup-runtime-requirements completed com APIs classificadas e contrato normalizado
+post_condition: credenciais, URLs e parâmetros coletados para cada API via guided wizard
+performance: < 15 min (Hybrid — interactive credential collection), escalate se credencial obrigatória não fornecida
+Completion Criteria: todas APIs critical com credenciais coletadas AND parâmetros de conexão definidos
+error_handling: escalate to squad-chief on failure, persist error context
+## Purpose
+
+Executar a etapa interativa de coleta de credenciais, URLs, IDs e parâmetros
+necessários para cada API configurada.
+
+## Inputs
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `squad_name` | string | Yes | Squad alvo |
+| `runtime_requirements` | object | Yes | Saída de `setup-runtime-requirements` |
+
+## Workflow
+
+### Step 1: Apresentar overview
+
+Mostrar APIs detectadas, prioridade e impacto operacional.
+
+### Step 2: Coletar credenciais por API
+
+Executar o wizard de coleta, respeitando máscara para segredos e permitindo
+skip apenas em APIs não críticas.
+
+### Step 3: Consolidar payload
+
+## Output
+
+```yaml
+runtime_credentials:
+  configured_apis: []
+  skipped_apis: []
+  captured_variables: []
+```
+
+
+## Veto Conditions
+
+- User cancels the interactive wizard before completing required fields -> ABORT
+- Wizard output contains empty values for required API credentials -> BLOCK
+
+## Acceptance Criteria
+
+- [ ] Overview interativo apresentado
+- [ ] Credenciais coletadas para APIs críticas
+- [ ] Skips registrados com motivo
+- [ ] Payload consolidado emitido
+
+---
+
+_Task Version: 1.0.0_

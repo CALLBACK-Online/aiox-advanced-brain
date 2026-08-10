@@ -1,0 +1,73 @@
+# Runner-Ops Squad — Runner Registry Reference
+# Owner: runner-ops
+# Version: 1.0.0
+# Created: 2026-04-13
+#
+# IMPORTANT: This file is a REFERENCE POINTER, not the canonical state.
+# Canonical source of truth for runner discovery, scores, and metadata:
+#   infrastructure/scripts/runner-lib/runner-registry.yaml
+#
+# This file exists to make the runner-ops squad self-documenting and to
+# allow the squad to operate as an installable, self-contained pack.
+# Any reads/writes to runner state MUST target the canonical path above.
+
+canonical_registry:
+  path: "infrastructure/scripts/runner-lib/runner-registry.yaml"
+  relationship: "canonical state"
+  owner: runner-ops
+  note: >
+    Runner-Ops governa este registry como framework owner, mas os runners
+    continuam apontando para ele diretamente. Não duplicar estado aqui.
+
+# Runner ecosystem snapshot (informational — always read canonical for live data)
+ecosystem_snapshot:
+  total_runners: 8
+  last_governance_review: "2026-04-13"
+  golden_master: "mmos"
+  runners:
+    - id: mmos
+      squad: mmos
+      type: pipeline
+      integration_score: full
+      path: "squads/mmos/scripts/mmos.sh"
+    - id: books
+      squad: books
+      type: pipeline
+      integration_score: partial
+      path: "squads/books/scripts/books.sh"
+    - id: copy
+      squad: copy
+      type: pipeline
+      integration_score: partial
+      path: "squads/copy/scripts/copy.sh"
+    - id: decoder
+      squad: domain-decoder
+      type: pipeline
+      integration_score: partial
+      path: "squads/domain-decoder/scripts/decoder.sh"
+    - id: sinkra-map
+      squad: sinkra-squad
+      type: pipeline
+      integration_score: partial
+      path: "squads/sinkra-squad/scripts/sinkra-map.sh"
+    - id: sinkra-validate
+      squad: sinkra-squad
+      type: validator
+      integration_score: minimal
+      path: "squads/sinkra-squad/scripts/sinkra-validate.sh"
+    - id: validate-skill
+      squad: sinkra-squad
+      type: validator
+      integration_score: minimal
+      path: "squads/sinkra-squad/scripts/validate-skill.sh"
+    - id: validate-squad
+      squad: squad-creator
+      type: validator
+      integration_score: minimal
+      path: "squads/squad-creator/scripts/validate-squad.sh"
+
+# Governance
+governance:
+  framework_path: "infrastructure/scripts/runner-lib/"
+  adr_reference: "docs/architecture/adrs/ADR-046-RUNNER-SWARM-HYBRID-ARCHITECTURE.md"
+  epic_reference: "docs/stories/epic-104/EPIC-104-RUNNER-OPS-SQUAD.md"

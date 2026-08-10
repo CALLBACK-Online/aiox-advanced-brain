@@ -1,0 +1,31 @@
+{
+  "extraction": "thiago-roas-interviews",
+  "extractedAt": "2026-03-11T23:36:11.848537",
+  "query": "Thiago Roas entrevistas YouTube (íntegras, sem cortes)",
+  "method": "whisper-base (YouTube subtitle API was IP-blocked)",
+  "videoCount": 2,
+  "totalWords": 23146,
+  "totalChars": 122263,
+  "videos": [
+    {
+      "videoId": "hnw1pGcc3_A",
+      "slug": "kiwicast-213",
+      "channel": "Kiwify",
+      "segments": 2180,
+      "chars": 83552,
+      "words": 15686,
+      "status": "success",
+      "method": "whisper-base"
+    },
+    {
+      "videoId": "RENU3kEns0E",
+      "slug": "hotmart-cast",
+      "channel": "Hotmart",
+      "segments": 1185,
+      "chars": 38711,
+      "words": 7460,
+      "status": "success",
+      "method": "whisper-base"
+    }
+  ]
+}

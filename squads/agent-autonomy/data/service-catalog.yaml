@@ -1,0 +1,13 @@
+services:
+  agent-autonomy-output-store:
+    kind: filesystem
+    service_ref: ".aiox/squad-runtime/sinkra-squad/agent-autonomy/"
+    owner: agent-autonomy
+  agent-autonomy-template-store:
+    kind: filesystem
+    service_ref: "squads/agent-autonomy/templates/"
+    owner: agent-autonomy
+  agent-autonomy-evidence-search:
+    kind: mcp
+    service_ref: "mcp__exa__web_search_exa"
+    owner: hub-framework

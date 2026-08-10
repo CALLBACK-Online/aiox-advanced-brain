@@ -1,0 +1,55 @@
+# Data Squad Deviation Registry v1.0
+# Registra desvios formais de processo (MAND-007).
+# Cada entry documenta o desvio, justificativa, aprovador e resolucao.
+
+_dependents_declaration:
+  registry_id: data-deviation-registry
+  dag_role: leaf
+  upstream:
+    - registry: "squads/data/data/governance-rules-registry.yaml"
+
+version: "1.0.0"
+squad: data
+description: "Desvios de processo formalizados para squad data. Garante auditabilidade."
+
+schema:
+  fields_per_entry:
+    - id: "DEV-YYYY-NNN (sequencial dentro do ano)"
+    - date: "YYYY-MM-DD"
+    - rule_violated: "id do mandamento ou golden rule"
+    - context: "descricao do cenario"
+    - justification: "por que o desvio foi necessario"
+    - approved_by: "@agent ou @human identifier"
+    - resolution: "acao tomada para mitigar"
+    - follow_up: "acao futura para remover necessidade do desvio"
+    - status: "open|resolved|accepted-permanent"
+
+entries:
+  - id: DEV-2026-001
+    date: "2026-01-23"
+    rule_violated: MAND-007
+    related_mandamento: "Squad composition integrity"
+    context: |
+      Wave 1 do framework data tinha um ghost-agent chamado 'cohorts-specialist'
+      listado em config.yaml agents[] mas sem arquivo .md correspondente em
+      squads/data/agents/. Descoberto durante audit de squad-validation.
+    justification: |
+      Resquicio de iteracao anterior onde cohort analysis era delegado a um agent
+      dedicado. Consolidado em peter-fader (Tier 0) que absorveu a responsabilidade
+      matematica de cohort analysis.
+    approved_by: "@data-chief"
+    resolution: |
+      Ghost-agent removido de config.yaml agents[].
+      Responsabilidade de cohort analysis migrada para peter-fader.
+      Task analyze-cohort passou a ter responsavel_type=Clone com agent_ref=peter-fader.
+    follow_up: "Audit automatico de agents[] vs filesystem em ecosystem-sync"
+    status: resolved
+    resolved_at: "2026-01-23"
+
+meta:
+  total_entries: 1
+  open: 0
+  resolved: 1
+  accepted_permanent: 0
+  last_updated: "2026-04-15"
+  owner: data-chief

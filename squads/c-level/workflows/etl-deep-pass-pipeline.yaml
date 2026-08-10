@@ -1,0 +1,243 @@
+workflow:
+  id: etl-deep-pass-pipeline
+  name: "ETL Deep Pass Pipeline"
+  version: "1.0.0"
+  description: |
+    4-layer pipeline: local extract -> web scrape -> web research -> generate artifacts.
+    Enriches business workspace from ~55% to ~95% completeness.
+  type: pipeline
+  orchestrator: coo-orchestrator
+  registry_bindings:
+    quality_gates_file: squads/c-level/data/quality-gates.yaml
+    token_registry_file: squads/c-level/data/token-registry.yaml
+    execution_log_file: squads/c-level/data/pipeline-execution-log.yaml
+    consumed_gates:
+      - workspace-preflight
+      - etl-baseline-completeness
+      - etl-verified-sources
+      - etl-artifact-completeness
+    consumed_tokens:
+      - TK-CL-003
+      - TK-CL-005
+      - TK-CL-012
+      - TK-CL-013
+      - TK-CL-014
+      - TK-CL-015
+
+  sequence:
+    - step: preflight
+      id: preflight
+      phase: 1
+      phase_name: Pre-Flight
+      agent: coo-orchestrator
+      task: load-workspace-context
+      action: validate_slug_and_load_context
+      depends_on: []
+      gate_id: workspace-preflight
+      token_ids: [TK-CL-013, TK-CL-005]
+      outputs:
+        - L4-operational/evidence/completeness-manifest.yaml (baseline)
+        - L4-operational/evidence/etl-run-envelope.yaml (initialized)
+      next: local-extract
+      on_failure:
+        action: halt
+        message: "Business slug not found or workspace not bootstrapped."
+
+    - step: local-extract
+      id: local-extract
+      phase: 2
+      phase_name: Layer 1 - Local Extract
+      agent: coo-orchestrator
+      task: etl-local-extract
+      action: extract_from_local_sources
+      depends_on:
+        - preflight
+      checkpoint:
+        gate_id: etl-baseline-completeness
+        metric: completeness_percentage
+        threshold: 70
+        threshold_source: data/quality-gates.yaml#thresholds.etl_baseline_completeness_min
+        token_ids: [TK-CL-014, TK-CL-012]
+        verdict_model: PASS|REVIEW|FAIL
+        on_below: warn_and_continue
+      outputs:
+        - L0-identity/*.yaml (updated)
+        - L1-strategy/*.yaml (updated)
+        - L2-tactical/brand/*.yaml (updated)
+        - L4-operational/evidence/source-registry.yaml
+        - L4-operational/evidence/completeness-manifest.yaml
+      next: web-scrape
+      on_failure:
+        action: halt
+        message: "Local extract failed. Check source files availability."
+
+    - step: web-scrape
+      id: web-scrape
+      phase: 3
+      phase_name: Layer 2 - Web Scrape
+      agent: coo-orchestrator
+      task: etl-web-scrape
+      action: scrape_website
+      depends_on:
+        - local-extract
+      skip_condition:
+        field: website_url
+        value: null
+        status: SKIPPED_NO_URL
+      outputs:
+        - L2-tactical/brand/brandbook.yaml (enriched from website)
+        - .firecrawl/{slug}/*.md
+        - L4-operational/evidence/etl-run-envelope.yaml (layer 2 metrics)
+      next: web-research
+      on_failure:
+        action: log_and_continue
+        message: "Web scrape failed. Continuing without web data."
+
+    - step: web-research
+      id: web-research
+      phase: 4
+      phase_name: Layer 3 - Web Research
+      agent: coo-orchestrator
+      task: etl-web-research
+      action: research_web_sources
+      depends_on:
+        - local-extract
+      checkpoint:
+        gate_id: etl-verified-sources
+        metric: verified_sources_count
+        threshold: 1
+        threshold_source: data/quality-gates.yaml#thresholds.verified_sources_min
+        token_ids: [TK-CL-015, TK-CL-016, TK-CL-012]
+        secondary_gate_id: etl-evidence-coverage
+        secondary_metric: evidence_coverage_ratio
+        secondary_threshold_source: data/quality-gates.yaml#thresholds.evidence_coverage_min
+        verdict_model: PASS|REVIEW|FAIL
+        on_below: warn_and_continue
+      outputs:
+        - L0-identity/credentials.yaml (media coverage)
+        - L0-identity/authority-story.yaml (third-party evidence synthesis)
+        - L3-product/*/proof.yaml (third-party evidence)
+        - L3-product/*/testimonials.yaml (UGC)
+        - L4-operational/evidence/etl-run-envelope.yaml (layer 3 metrics)
+      next: generate-artifacts
+      on_failure:
+        action: log_and_continue
+        message: "Web research failed. Continuing with local data only."
+
+    - step: generate-artifacts
+      id: generate-artifacts
+      phase: 5
+      phase_name: Layer 4 - Generate Artifacts
+      agent: coo-orchestrator
+      task: etl-generate-artifacts
+      action: generate_consolidated_artifacts
+      depends_on:
+        - local-extract
+        - web-research
+      checkpoint:
+        gate_id: etl-artifact-completeness
+        metric: completeness_percentage
+        threshold: 85
+        threshold_source: data/quality-gates.yaml#thresholds.completeness_min
+        token_ids: [TK-CL-003, TK-CL-012]
+        verdict_model: PASS|REVIEW|FAIL
+        on_below: warn_if_no_website
+      outputs:
+        - L2-tactical/brand/brandbook.yaml
+        - L2-tactical/brand/domain-decision.yaml
+        - L3-product/*/proof.yaml (consolidated)
+        - L3-product/*/testimonials.yaml (consolidated)
+        - L3-product/*/narrative/*.yaml
+        - L2-tactical/movement/*.yaml
+      next: quality-gate
+      on_failure:
+        action: halt
+        message: "Artifact generation failed. Review input data quality."
+
+    - step: quality-gate
+      id: quality-gate
+      phase: 6
+      phase_name: Quality Gate
+      agent: coo-orchestrator
+      checklist: etl-deep-pass-checklist
+      gate_id: etl-artifact-completeness
+      token_ids: [TK-CL-003, TK-CL-012]
+      action: run_quality_checklist
+      depends_on:
+        - generate-artifacts
+      human_review: true
+      outputs:
+        - L4-operational/evidence/etl-run-envelope.yaml (final metrics)
+        - L4-operational/evidence/completeness-manifest.yaml (final)
+      on_failure:
+        action: report_gaps
+        message: "Quality gate did not pass. Review checklist for gaps."
+
+    - workflow_end:
+        id: complete
+        action: workflow_complete
+
+  handoff_prompts:
+    preflight_to_local_extract: |
+      Pre-flight complete. Slug validated, baseline completeness recorded.
+      Proceeding to Layer 1 local extract.
+    local_extract_to_web_scrape: |
+      Layer 1 complete. Website URL: {website_url}. Completeness: {completeness}%.
+      Proceeding to Layer 2 web scrape.
+    web_scrape_to_web_research: |
+      Layer 2 complete (or skipped). Design tokens extracted: {tokens_count}.
+      Proceeding to Layer 3 web research.
+    web_research_to_generate_artifacts: |
+      Layer 3 complete. Verified sources: {sources_count}. Claims tagged.
+      Proceeding to Layer 4 artifact generation.
+    generate_artifacts_to_quality_gate: |
+      Layer 4 complete. Artifacts generated: {artifacts_count}.
+      Proceeding to quality gate checklist.
+
+config:
+  completeness_gate: 85
+  completeness_gate_no_website: 75
+  pause_resume: true
+  max_layers: 4
+  target_templates:
+    L0-identity:
+      - company-dna.yaml
+      - founder-dna.yaml
+      - credentials.yaml
+      - authority-story.yaml
+    L1-strategy:
+      - icp.yaml
+      - offerbook.yaml
+      - pricing-strategy.yaml
+      - team-structure.yaml
+      - diagnosis.yaml
+    L2-tactical:
+      - brand/brandbook.yaml
+      - brand/domain-decision.yaml
+      - movement/biblia-movimento.yaml
+      - movement/cosmology.yaml
+      - movement/doctrines.yaml
+    L3-product:
+      - "{product}/offerbook.yaml"
+      - "{product}/proof.yaml"
+      - "{product}/testimonials.yaml"
+      - "{product}/narrative/brandscript.yaml"
+      - "{product}/narrative/product-story.yaml"
+      - "{product}/narrative/pitch-narrative.yaml"
+      - "{product}/narrative/objection-destroyers.yaml"
+    L4-operational:
+      - evidence/completeness-manifest.yaml
+      - evidence/source-registry.yaml
+      - evidence/etl-run-envelope.yaml
+
+dependencies:
+  tasks:
+    - load-workspace-context
+    - etl-local-extract
+    - etl-web-scrape
+    - etl-web-research
+    - etl-generate-artifacts
+  checklists:
+    - etl-deep-pass-checklist
+  agents:
+    - coo-orchestrator

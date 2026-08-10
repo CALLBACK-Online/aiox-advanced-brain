@@ -1,0 +1,197 @@
+name: board-meeting
+version: "1.0"
+description: Orchestrates complete advisory board meeting session
+id: wf-board-meeting
+type: legacy
+trigger:
+  command: /advisory-board:board-meeting
+inputs:
+  required:
+    - name: topic
+      type: string
+      description: Central topic for the session
+    - name: type
+      type: enum
+      values:
+        - strategic_review
+        - issue_processing
+        - opportunity_eval
+        - crisis_advisory
+      description: Type of session
+  optional:
+    - name: advisors
+      type: list
+      description: Specific advisors to convene (auto-select if omitted)
+    - name: time_constraint
+      type: string
+      description: Urgency level
+    - name: context
+      type: string
+      description: Additional context
+    - name: prior_decisions
+      type: list
+      description: Related previous decisions
+phases:
+  - name: preload_context
+    agent: board-chair
+    steps:
+      - action: resolve_local_context
+        task: load-advisory-context
+        description: Resolve founder profile and latest advisory session before convening the board
+        output: advisory_context_brief
+  - name: session_setup
+    agent: board-chair
+    steps:
+      - action: analyze_topic
+        description: Analyze topic to determine relevant advisors
+      - action: select_advisors
+        description: Select 3-5 advisors based on topic
+        rules:
+          - min_advisors: 3
+          - max_advisors: 5
+          - include_complementary: true
+          - assign_devils_advocate: true
+      - action: establish_ground_rules
+        description: Set session ground rules
+        output: session_setup_doc
+  - name: issue_presentation
+    agent: user
+    steps:
+      - action: present_situation
+        template: issue-brief-tmpl
+        description: User presents the situation
+      - action: state_desired_outcome
+        description: What user wants from session
+  - name: clarifying_questions
+    agent: all_advisors
+    steps:
+      - action: questions_round
+        rules:
+          - questions_only: true
+          - no_advice: true
+          - one_at_a_time: true
+        description: Each advisor asks clarifying questions
+      - action: synthesize_themes
+        agent: board-chair
+        description: Identify emerging themes from questions
+  - name: perspective_sharing
+    agent: each_advisor
+    steps:
+      - action: share_perspective
+        description: Each advisor shares view through their lens
+        includes:
+          - framework_application
+          - key_insight
+          - challenge_question
+      - action: track_divergence
+        agent: board-chair
+        description: Note where perspectives diverge
+  - name: devils_advocate
+    agent: assigned_advocate
+    steps:
+      - action: challenge_consensus
+        task: devils-advocate
+        description: Challenge emerging consensus
+      - action: reframe_requirement
+        description: Issues that must be addressed
+  - name: synthesis
+    agent: board-chair
+    steps:
+      - action: identify_convergence
+        description: Where advisors agree
+      - action: identify_tensions
+        description: Where advisors productively disagree
+      - action: formulate_recommendation
+        description: Synthesize board recommendation
+      - action: establish_accountability
+        description: Assign owner, checkpoint, metrics
+outputs:
+  - name: advisory_context_brief
+    description: Deterministic local continuity context used before session setup
+  - name: meeting_minutes
+    template: meeting-minutes-tmpl
+    path: outputs/advisory-board/sessions/{date}-{topic_slug}.md
+  - name: decision_record
+    description: Formal decision documentation
+  - name: action_items
+    description: Assigned tasks with dates
+quality_gates:
+  - check: all_advisors_spoke
+    description: Every convened advisor contributed
+  - check: devils_advocate_activated
+    description: DA challenged consensus
+  - check: accountability_assigned
+    description: Owner and checkpoint defined
+anti_groupthink:
+  triggers:
+    - condition: unanimous_too_fast
+      intervention: Let's steelman the opposite
+    - condition: single_voice_dominates
+      intervention: We haven't heard from {advisor}
+    - condition: comfort_seeking
+      intervention: What's the bold version?
+metadata:
+  category: session
+  duration_estimate: 45-60min
+  complexity: high
+workflow:
+  id: wf-board-meeting
+  name: board-meeting
+  version: "1.0"
+  description: Orchestrates complete advisory board meeting session
+  type: legacy
+  sequence:
+    - step: preload-context
+      id: preload-context
+      phase: 0
+      phase_name: preload_context
+      agent: board-chair
+      action: execute_preload-context
+      next: session-setup
+    - step: session-setup
+      id: session-setup
+      phase: 1
+      phase_name: session_setup
+      agent: board-chair
+      action: execute_session-setup
+      next: issue-presentation
+    - step: issue-presentation
+      id: issue-presentation
+      phase: 2
+      phase_name: issue_presentation
+      agent: aiox-master
+      action: execute_issue-presentation
+      next: clarifying-questions
+    - step: clarifying-questions
+      id: clarifying-questions
+      phase: 3
+      phase_name: clarifying_questions
+      agent: aiox-master
+      action: execute_clarifying-questions
+      next: perspective-sharing
+    - step: perspective-sharing
+      id: perspective-sharing
+      phase: 4
+      phase_name: perspective_sharing
+      agent: aiox-master
+      action: execute_perspective-sharing
+      next: devils-advocate
+    - step: devils-advocate
+      id: devils-advocate
+      phase: 5
+      phase_name: devils_advocate
+      agent: aiox-master
+      action: execute_devils-advocate
+      next: synthesis
+    - step: synthesis
+      id: synthesis
+      phase: 6
+      phase_name: synthesis
+      agent: board-chair
+      action: execute_synthesis
+    - workflow_end:
+        id: complete
+        action: workflow_complete
+  handoff_prompts:
+    board-chair_to_aiox-master: Handoff context from board-chair to aiox-master. Preserve outputs, risks, and open decisions.
+    aiox-master_to_board-chair: Handoff context from aiox-master to board-chair. Preserve outputs, risks, and open decisions.

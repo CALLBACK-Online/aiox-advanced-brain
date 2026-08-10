@@ -1,0 +1,165 @@
+name: wf-positioning
+id: wf-positioning
+description: Workflow completo de posicionamento — Bio Imperial + CLC + StoryAds + Sistema 21 Dias
+version: "2.0"
+type: legacy
+phases:
+  - id: diagnostico
+    name: Diagnostico de Posicionamento
+    agent: positioning-expert
+    description: Avaliar posicionamento atual e coletar informacoes para reposicionamento
+    elicit: true
+    steps:
+      - Coletar nicho e mercado de atuacao
+      - Identificar avatar (ou rodar task diagnose-avatar)
+      - Avaliar bio/perfil atual (se existir)
+      - Identificar gaps de posicionamento
+      - Definir direcao do reposicionamento
+    outputs:
+      - nicho
+      - avatar
+      - diagnostico_atual
+      - direcao_posicionamento
+    checkpoint: Diagnostico completo com direcao definida
+    veto_condition: Nicho ou avatar indefinidos — nao prosseguir sem diagnostico completo
+  - id: bio_imperial
+    name: Bio Imperial
+    agent: positioning-expert
+    description: Criar Bio Imperial completa em 3 fases
+    depends_on:
+      - diagnostico
+    elicit: true
+    task: create-bio
+    steps:
+      - Coletar 6 perguntas (uma por vez)
+      - Construir Fase 1 — Inversao de Poder
+      - Construir Fase 2 — Desafio da Realidade
+      - Construir Fase 3 — Redefinicao
+      - Gerar Frase de Dominio + Frase da Bio
+      - Apresentar 3 variacoes para escolha
+    outputs:
+      - frase_dominio
+      - frase_bio
+    checkpoint: Bio aprovada pelo usuario
+    veto_condition: Bio sem Frase de Dominio clara — reescrever antes de aprovar
+  - id: clc
+    name: Carrossel de Lavagem Cerebral
+    agent: carousel-creator
+    description: Criar primeiro CLC de 10 slides baseado no posicionamento
+    depends_on:
+      - bio_imperial
+    elicit: true
+    task: create-clc
+    steps:
+      - Definir crenca a destruir (baseada no diagnostico)
+      - Definir novo paradigma (baseado na bio)
+      - Criar 10 slides CLC
+      - Validar pelo oraculo
+    outputs:
+      - carrossel_clc
+      - caption
+    checkpoint: CLC aprovado com score >= 80%
+    veto_condition: CLC com score < 80% no oraculo — reescrever antes de prosseguir
+  - id: storyadds
+    name: StoryAds de Manipulacao Subliminar
+    agent: stories-strategist
+    description: Criar batch de StoryAds para sustentar posicionamento
+    depends_on:
+      - bio_imperial
+    elicit: true
+    task: create-storyadd
+    steps:
+      - Adaptar templates universais pro nicho
+      - Gerar 10 StoryAds (batch inicial para 5-7 dias)
+      - Sugerir imagens e horarios
+      - Definir ritual de publicacao
+    outputs:
+      - batch_storyadds
+      - ritual_publicacao
+    checkpoint: 10 StoryAds prontos com ritual definido
+    veto_condition: Menos de 10 StoryAds ou sem ritual de publicacao — completar antes de validar
+  - id: sistema_21_dias
+    name: Sistema 21 Dias
+    agent: content-planner
+    description: Montar cronograma completo de 21 dias de dominacao
+    depends_on:
+      - bio_imperial
+      - clc
+      - storyadds
+    elicit: true
+    steps:
+      - Montar Fase 1 (Dias 1-7) — Reposicionamento Cerebral
+      - Montar Fase 2 (Dias 8-21) — Amplificacao de Autoridade
+      - Planejar Fase 3 (Dias 22-60) — Extracao Continua
+      - Definir metricas de acompanhamento
+      - Entregar cronograma dia-a-dia
+    outputs:
+      - cronograma_21_dias
+      - metricas_acompanhamento
+    checkpoint: Cronograma completo aprovado pelo usuario
+    veto_condition: Cronograma sem metricas de acompanhamento — definir metricas antes de aprovar
+workflow:
+  id: wf-positioning
+  name: wf-positioning
+  version: "2.0"
+  description: Workflow completo de posicionamento — Bio Imperial + CLC + StoryAds + Sistema 21 Dias
+  type: legacy
+  sequence:
+    - step: diagnostico
+      id: diagnostico
+      phase: 1
+      phase_name: Diagnostico de Posicionamento
+      agent: positioning-expert
+      action: execute_avaliar-posicionamento-atual-e-coletar-informacoes-para-reposici
+      outputs:
+        - nicho
+        - avatar
+        - diagnostico_atual
+        - direcao_posicionamento
+      next: bio-imperial
+    - step: bio-imperial
+      id: bio-imperial
+      phase: 2
+      phase_name: Bio Imperial
+      agent: positioning-expert
+      action: create-bio
+      outputs:
+        - frase_dominio
+        - frase_bio
+      next: clc
+    - step: clc
+      id: clc
+      phase: 3
+      phase_name: Carrossel de Lavagem Cerebral
+      agent: carousel-creator
+      action: create-clc
+      outputs:
+        - carrossel_clc
+        - caption
+      next: storyadds
+    - step: storyadds
+      id: storyadds
+      phase: 4
+      phase_name: StoryAds de Manipulacao Subliminar
+      agent: stories-strategist
+      action: create-storyadd
+      outputs:
+        - batch_storyadds
+        - ritual_publicacao
+      next: sistema-21-dias
+    - step: sistema-21-dias
+      id: sistema-21-dias
+      phase: 5
+      phase_name: Sistema 21 Dias
+      agent: content-planner
+      action: execute_montar-cronograma-completo-de-21-dias-de-dominacao
+      outputs:
+        - cronograma_21_dias
+        - metricas_acompanhamento
+    - workflow_end:
+        id: complete
+        action: workflow_complete
+  handoff_prompts:
+    positioning-expert_to_carousel-creator: Handoff context from positioning-expert to carousel-creator. Preserve outputs, risks, and open decisions.
+    carousel-creator_to_stories-strategist: Handoff context from carousel-creator to stories-strategist. Preserve outputs, risks, and open decisions.
+    stories-strategist_to_content-planner: Handoff context from stories-strategist to content-planner. Preserve outputs, risks, and open decisions.

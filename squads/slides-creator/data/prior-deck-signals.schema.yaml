@@ -1,0 +1,63 @@
+schema_version: "1.0.0"
+artifact: prior_deck_signals
+description: "PPTX reverse-parser signals consumed as advisory input by define-design-direction."
+required:
+  - signal_authority
+  - source_path
+  - extraction_status
+  - dominant_motif
+  - chart_patterns
+  - layout_inventory
+  - palette_extracted
+  - typography_extracted
+properties:
+  signal_authority:
+    type: boolean
+    const: false
+    rationale: "K7 boundary: informs define-design-direction, never substitutes it."
+  source_path:
+    type: string
+  extraction_status:
+    enum: [complete, partial, gap]
+  gap_reason:
+    type: string
+    optional: true
+  recoverable_sections:
+    type: array
+    optional: true
+  dominant_motif:
+    nullable: true
+    required_when: "extraction_status != gap"
+    properties:
+      name: { type: string }
+      rationale: { type: string }
+      evidence:
+        properties:
+          layout_types_observed: { type: array }
+          shape_vocabulary: { type: array }
+          theme_name: { type: string, optional: true }
+  chart_patterns:
+    type: array
+    item:
+      properties:
+        type: { type: string }
+        count: { type: number }
+        representative_title: { type: string, optional: true }
+  layout_inventory:
+    type: array
+    item:
+      properties:
+        name: { type: string, optional: true }
+        layout_type: { type: string, optional: true }
+        placeholder_count: { type: number }
+  palette_extracted:
+    type: array
+    item:
+      properties:
+        hex: { type: string, pattern: "^#[0-9a-fA-F]{6}$" }
+        role: { type: string }
+  typography_extracted:
+    properties:
+      major_font: { type: string, optional: true }
+      minor_font: { type: string, optional: true }
+      sampled_run_fonts: { type: array, optional: true }

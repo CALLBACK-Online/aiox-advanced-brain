@@ -1,0 +1,58 @@
+time:
+  - audit_review_ttl
+capacity:
+  - max_iteration_budget
+threshold:
+  - autonomy_quality_gate
+priority:
+  - remediation_priority
+permission:
+  - steward_approval_required
+taxonomy:
+  - autonomy_failure_taxonomy
+behavior:
+  - fail_loud_autonomy
+accountability:
+  - autonomy_steward
+mode:
+  - VALIDAR
+  - RESOLVER
+  - ENTENDER
+
+tokens:
+  - token_name: audit_review_ttl
+    family: Time
+    semantic: "Janela máxima para reavaliar auditorias e recomendações"
+  - token_name: max_iteration_budget
+    family: Capacity
+    semantic: "Número máximo de iterações de audit-optimize permitidas"
+  - token_name: autonomy_quality_gate
+    family: Threshold
+    semantic: "Threshold mínimo para aprovar uma recomendação ou redesign"
+  - token_name: remediation_priority
+    family: Priority
+    semantic: "Prioridade operacional das correções propostas"
+  - token_name: steward_approval_required
+    family: Permission
+    semantic: "Mudanças em agentes reais exigem aprovação de steward humano"
+  - token_name: autonomy_failure_taxonomy
+    family: Taxonomy
+    semantic: "Taxonomia dos failure modes e pilares de autonomia"
+  - token_name: fail_loud_autonomy
+    family: Behavior
+    semantic: "Falha explícita diante de ausência de evidência ou conflito de score"
+  - token_name: autonomy_steward
+    family: Accountability
+    semantic: "Responsável humano final por aprovar recomendações do squad"
+  - token_name: VALIDAR
+    family: Mode
+    semantic: "Modo de auditoria e verificação"
+  - token_name: RESOLVER
+    family: Mode
+    semantic: "Modo de diagnóstico e otimização"
+  - token_name: ENTENDER
+    family: Mode
+    semantic: "Modo de explicação e ensino de patterns"
+  - token_name: evidence_required
+    family: Permission
+    semantic: "Nenhuma recomendação sobe de status sem evidência externa documentada"

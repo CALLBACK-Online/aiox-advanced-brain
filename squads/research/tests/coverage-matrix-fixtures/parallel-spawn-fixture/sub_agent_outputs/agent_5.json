@@ -1,0 +1,14 @@
+{
+  "candidate_id": "claude_code",
+  "agent_id": "general-purpose-5",
+  "started_at": "2026-05-19T17:38:20Z",
+  "completed_at": "2026-05-19T17:39:06Z",
+  "schema_version": "sub-agent-output.v1",
+  "dimensions": [
+    {"dimension_id": "agentic_planning",  "status": "confirmed", "score": 2.0, "confidence": "high"},
+    {"dimension_id": "tool_runtime",      "status": "confirmed", "score": 2.0, "confidence": "high"},
+    {"dimension_id": "multi_agent",       "status": "confirmed", "score": 2.0, "confidence": "high"},
+    {"dimension_id": "evidence_fidelity", "status": "partial",   "score": 1.0, "confidence": "medium"},
+    {"dimension_id": "ux_control",        "status": "confirmed", "score": 2.0, "confidence": "high"}
+  ]
+}

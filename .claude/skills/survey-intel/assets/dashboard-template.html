@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<!--
+  Survey Intel · Dashboard Template (editorial dark default)
+
+  Como usar:
+    1. Substituir placeholders {NOME_DA_ANALISE}, {N_TOTAL}, {KPIs}, etc.
+    2. Se houver brandbook do usuário, sobrescrever apenas tokens em :root.
+       A estrutura semântica das seções permanece igual.
+    3. Adicionar/remover <section> conforme o caso (vide
+       references/dashboard-design.md § Estrutura canônica).
+    4. Para Chart.js, inicializar no <script> ao final.
+
+  Referência viva: examples/aiox-fundamentals-dashboard.html
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{NOME_DA_ANALISE} · INTEL BRIEFING · {N_TOTAL}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;1,400&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+
+  <style>
+    :root {
+      /* ============ TOKENS — editorial dark default ============ */
+      /* Sobrescrever quando houver brandbook do usuário */
+      --bg:           #0F0E0C;
+      --bg-soft:      #1A1815;
+      --bg-card:      #232019;
+      --ink:          #F5F1E8;
+      --ink-soft:     #B8B0A0;
+      --ink-mute:     #7A7466;
+      --accent:       #E8A33D;   /* amber editorial */
+      --accent-soft:  rgba(232, 163, 61, 0.15);
+      --hot:          #D85A30;
+      --cool:         #5D9B8C;
+      --line:         rgba(245, 241, 232, 0.08);
+      --line-strong:  rgba(245, 241, 232, 0.18);
+
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-sans:    'Manrope', system-ui, sans-serif;
+      --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+
+      --gutter: max(1.5rem, calc((100% - 1280px) / 2 + 1.5rem));
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 var(--gutter); }
+
+    /* ============ UTILS ============ */
+    .hud {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--ink-mute);
+    }
+    .accent { color: var(--accent); }
+    .display { font-family: var(--font-display); font-style: italic; letter-spacing: -0.03em; }
+
+    /* ============ TOP NAV ============ */
+    .top-nav {
+      border-bottom: 1px solid var(--line);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      background: rgba(15, 14, 12, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+    .top-nav-inner { display: flex; justify-content: space-between; align-items: center; gap: 2rem; }
+    .nav-brand { display: flex; align-items: center; gap: 12px; }
+    .nav-glyph {
+      width: 28px; height: 28px; background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 700; color: var(--bg); font-size: 14px;
+    }
+    .nav-title { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; }
+    .toc { display: flex; gap: 1.5rem; }
+    .toc a { color: var(--ink-mute); font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; }
+    .toc a:hover { color: var(--accent); }
+
+    /* ============ HERO ============ */
+    .hero { padding: 4rem 0 3rem; border-bottom: 1px solid var(--line); }
+    .hero-tag { display: inline-block; padding: 6px 12px; border: 1px solid var(--line-strong); font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 400; letter-spacing: -0.03em; line-height: 1.05; max-width: 900px; }
+    .hero-sub { color: var(--ink-soft); margin-top: 1rem; font-size: 1.1rem; max-width: 700px; }
+
+    .hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+    .stat-num { font-family: var(--font-display); font-size: 2.4rem; line-height: 1; }
+    .stat-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mute); margin-top: 0.5rem; }
+
+    /* ============ SECTIONS ============ */
+    section { padding: 4rem 0; border-bottom: 1px solid var(--line); }
+    .section-num { font-family: var(--font-mono); color: var(--ink-mute); font-size: 0.7rem; letter-spacing: 0.18em; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem); margin-top: 0.5rem; max-width: 800px; }
+    .section-intro { color: var(--ink-soft); margin-top: 0.75rem; max-width: 700px; }
+
+    /* KPI grid */
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .kpi { background: var(--bg-card); border: 1px solid var(--line); padding: 1.5rem; }
+    .kpi-num { font-family: var(--font-display); font-size: 2rem; line-height: 1; }
+    .kpi-label { margin-top: 0.5rem; }
+
+    /* Chart cards */
+    .charts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .chart-card { background: var(--bg-card); border: 1px solid var(--line); padding: 1.75rem; }
+    .chart-card h3 { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.25rem; }
+    .chart-card .sub { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 1rem; }
+    .chart-wrap { height: 280px; }
+
+    /* Heatmap */
+    .heatmap { display: grid; gap: 1px; background: var(--line); margin-top: 1rem; overflow-x: auto; }
+    .heatmap-cell { background: var(--bg-card); padding: 0.85rem 1rem; font-family: var(--font-mono); font-size: 0.85rem; }
+    .heatmap-cell.head { background: var(--bg-soft); color: var(--ink-mute); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    .heatmap-cell.hot  { background: rgba(232, 163, 61, 0.35); color: var(--ink); font-weight: 600; }
+    .heatmap-cell.warm { background: rgba(232, 163, 61, 0.18); }
+    .heatmap-cell.cool { background: rgba(232, 163, 61, 0.06); }
+
+    /* Avatar card */
+    .avatar-card { background: var(--bg-card); border: 1px solid var(--accent); border-left-width: 3px; padding: 2rem; margin-top: 2rem; }
+    .avatar-tag { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+    .avatar-name { font-family: var(--font-display); font-size: 2rem; margin-top: 0.5rem; }
+    .avatar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+
+    /* Quotes */
+    .quote { font-family: var(--font-display); font-style: italic; font-size: 1.15rem; line-height: 1.5; padding-left: 1rem; border-left: 2px solid var(--accent); margin-top: 1rem; max-width: 700px; }
+    .quote-tag { display: block; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); margin-top: 0.5rem; }
+
+    /* Footer */
+    footer { padding: 5rem 0 3rem; }
+    .footer-quote { font-family: var(--font-display); font-style: italic; font-size: clamp(1.5rem, 3vw, 2.2rem); max-width: 900px; }
+    .footer-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+    .footer-meta div { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); }
+    .footer-meta strong { display: block; color: var(--ink); font-weight: 500; margin-top: 0.25rem; }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 900px) {
+      .hero-stats, .kpi-grid, .avatar-grid, .footer-meta { grid-template-columns: repeat(2, 1fr); }
+      .charts { grid-template-columns: 1fr; }
+      .toc { display: none; }
+    }
+
+    /* ============ PRINT ============ */
+    @media print {
+      body { background: white; color: black; }
+      .top-nav { position: relative; background: white; }
+      section { page-break-inside: avoid; padding: 30px 0; border-color: #ddd; }
+      .kpi, .chart-card, .avatar-card, .heatmap-cell { background: white; border-color: #ddd; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ TOP NAV ============ -->
+  <nav class="top-nav">
+    <div class="container top-nav-inner">
+      <div class="nav-brand">
+        <div class="nav-glyph">S</div>
+        <div class="nav-title">{NOME_DA_ANALISE} · INTEL</div>
+      </div>
+      <div class="toc">
+        <a href="#overview">01 Overview</a>
+        <a href="#cruzamentos">02 Cruzamentos</a>
+        <a href="#segmentos">03 Segmentos</a>
+        <a href="#avatar">04 Avatar</a>
+        <a href="#linguagem">05 Linguagem</a>
+      </div>
+      <div class="hud">N = {N_TOTAL} · LIVE</div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="container">
+      <span class="hero-tag">INTEL BRIEFING · v{VERSAO}</span>
+      <h1 class="hero-title">{HEADLINE_PRINCIPAL_3_LINHAS}</h1>
+      <p class="hero-sub">{SUBTITULO_1_2_LINHAS}</p>
+
+      <div class="hero-stats">
+        <div><div class="stat-num">{N_TOTAL}</div><div class="stat-label">Respostas</div></div>
+        <div><div class="stat-num">{PCT}%</div><div class="stat-label">{KPI_2_LABEL}</div></div>
+        <div><div class="stat-num">{N_AVATAR}</div><div class="stat-label">Avatar primário</div></div>
+        <div><div class="stat-num">{N_SEGMENTOS}</div><div class="stat-label">Segmentos</div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ 01 OVERVIEW ============ -->
+  <section id="overview">
+    <div class="container">
+      <div class="section-num">01</div>
+      <h2 class="section-title">Overview</h2>
+      <p class="section-intro">{INTRO_DA_SECAO}</p>
+
+      <div class="kpi-grid">
+        <div class="kpi"><div class="kpi-num">{N}</div><div class="kpi-label hud">{LABEL_1}</div></div>
+        <div class="kpi"><div class="kpi-num">{N}</div><div class="kpi-label hud">{LABEL_2}</div></div>
+        <div class="kpi"><div class="kpi-num">{N}</div><div class="kpi-label hud">{LABEL_3}</div></div>
+        <div class="kpi"><div class="kpi-num">{N}</div><div class="kpi-label hud">{LABEL_4}</div></div>
+      </div>
+
+      <div class="charts">
+        <div class="chart-card">
+          <h3>{TITULO_GRAFICO_1}</h3>
+          <div class="sub">{SUBTITULO_MONO}</div>
+          <div class="chart-wrap"><canvas id="chart-perfil"></canvas></div>
+        </div>
+        <div class="chart-card">
+          <h3>{TITULO_GRAFICO_2}</h3>
+          <div class="sub">{SUBTITULO_MONO}</div>
+          <div class="chart-wrap"><canvas id="chart-problema"></canvas></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 CRUZAMENTOS ============ -->
+  <section id="cruzamentos">
+    <div class="container">
+      <div class="section-num">02</div>
+      <h2 class="section-title">Cruzamentos</h2>
+      <p class="section-intro">{INTRO — destaca célula quente se houver}</p>
+
+      <div class="heatmap" style="grid-template-columns: 200px repeat({N_COLS}, 1fr);">
+        <div class="heatmap-cell head"></div>
+        <div class="heatmap-cell head">{COL_1}</div>
+        <div class="heatmap-cell head">{COL_2}</div>
+        <div class="heatmap-cell head">{COL_3}</div>
+
+        <div class="heatmap-cell head">{LINHA_1}</div>
+        <div class="heatmap-cell hot">{N} ({PCT}%)</div>
+        <div class="heatmap-cell warm">{N} ({PCT}%)</div>
+        <div class="heatmap-cell cool">{N} ({PCT}%)</div>
+
+        <div class="heatmap-cell head">{LINHA_2}</div>
+        <div class="heatmap-cell warm">{N} ({PCT}%)</div>
+        <div class="heatmap-cell cool">{N} ({PCT}%)</div>
+        <div class="heatmap-cell cool">{N} ({PCT}%)</div>
+      </div>
+      <p class="hud" style="margin-top:1rem">CÉLULA QUENTE: {LINHA × COLUNA} = {N} ({PCT}%) → candidata a avatar primário.</p>
+    </div>
+  </section>
+
+  <!-- ============ 03 SEGMENTOS ============ -->
+  <section id="segmentos">
+    <div class="container">
+      <div class="section-num">03</div>
+      <h2 class="section-title">Segmentos acionáveis</h2>
+      <p class="section-intro">{INTRO}</p>
+
+      <div class="charts" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="chart-card">
+          <div class="hud accent">AV_PRIMARIO</div>
+          <h3 style="margin-top:0.5rem">{NOME}</h3>
+          <div class="sub">{N} alunos · {PCT}%</div>
+          <p style="font-family:var(--font-mono);font-size:0.75rem;color:var(--ink-mute);margin-bottom:0.5rem">{CRITERIO_SQL_LIKE}</p>
+          <p>{ABORDAGEM_COMERCIAL}</p>
+        </div>
+        <!-- repetir card por segmento -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 AVATAR ============ -->
+  <section id="avatar">
+    <div class="container">
+      <div class="section-num">04</div>
+      <h2 class="section-title">Avatar primário</h2>
+
+      <div class="avatar-card">
+        <div class="avatar-tag">AVATAR PRIMÁRIO · {ID}</div>
+        <div class="avatar-name">{NOME_PRÓPRIO}, {IDADE}</div>
+        <p style="color:var(--ink-soft);margin-top:0.5rem">{OCUPACAO} · {CIDADE} · {STATUS_EMOCIONAL}</p>
+
+        <div class="quote">
+          {FALA_CANONICA}
+          <span class="quote-tag">#avatar_primario</span>
+        </div>
+
+        <div class="avatar-grid">
+          <div><div class="hud">QUER</div><p style="margin-top:0.5rem">{ITEM_1}<br>{ITEM_2}</p></div>
+          <div><div class="hud">TRAVA</div><p style="margin-top:0.5rem">{ITEM_1}<br>{ITEM_2}</p></div>
+          <div><div class="hud">GATILHO</div><p style="margin-top:0.5rem">{ITEM_1}</p></div>
+          <div><div class="hud">OBJEÇÃO</div><p style="margin-top:0.5rem">{ITEM_1}</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 05 LINGUAGEM ============ -->
+  <section id="linguagem">
+    <div class="container">
+      <div class="section-num">05</div>
+      <h2 class="section-title">Linguagem que vende vs afasta</h2>
+
+      <div class="charts">
+        <div class="chart-card">
+          <div class="hud" style="color:var(--cool)">QUE VENDE</div>
+          <ul style="margin-top:1rem;list-style:none">
+            <li style="padding:0.5rem 0;border-bottom:1px solid var(--line)">"{TERMO_1}"</li>
+            <li style="padding:0.5rem 0;border-bottom:1px solid var(--line)">"{TERMO_2}"</li>
+            <li style="padding:0.5rem 0;border-bottom:1px solid var(--line)">"{TERMO_3}"</li>
+          </ul>
+        </div>
+        <div class="chart-card">
+          <div class="hud" style="color:var(--hot)">QUE AFASTA</div>
+          <ul style="margin-top:1rem;list-style:none">
+            <li style="padding:0.5rem 0;border-bottom:1px solid var(--line)">"{TERMO_1}"</li>
+            <li style="padding:0.5rem 0;border-bottom:1px solid var(--line)">"{TERMO_2}"</li>
+            <li style="padding:0.5rem 0;border-bottom:1px solid var(--line)">"{TERMO_3}"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="container">
+      <p class="footer-quote">"{CITACAO_OURO_FINAL}"</p>
+      <div class="footer-meta">
+        <div>N TOTAL <strong>{N_TOTAL}</strong></div>
+        <div>VERSÃO <strong>v{VERSAO}</strong></div>
+        <div>DATA <strong>{YYYY-MM-DD}</strong></div>
+        <div>PREPARADO PARA <strong>{USUARIO}</strong></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      Chart.defaults.font.family = "'Manrope', system-ui, sans-serif";
+      Chart.defaults.font.size = 11;
+      Chart.defaults.color = '#B8B0A0';
+
+      const css = getComputedStyle(document.documentElement);
+      const accent = css.getPropertyValue('--accent').trim();
+      const ink    = css.getPropertyValue('--ink').trim();
+
+      const baseGrid = { color: 'rgba(245, 241, 232, 0.05)', drawBorder: false };
+      const baseTooltip = {
+        backgroundColor: '#1A1815',
+        borderColor: 'rgba(245,241,232,0.1)',
+        borderWidth: 1,
+        padding: 12,
+        titleFont: { family: "'JetBrains Mono', monospace", size: 10 },
+        bodyFont: { family: "'JetBrains Mono', monospace", size: 11 }
+      };
+
+      // Exemplo · gráfico 1 (perfil)
+      // Adapte data + labels ao dataset real.
+      new Chart(document.getElementById('chart-perfil'), {
+        type: 'bar',
+        data: {
+          labels: ['{CAT_1}', '{CAT_2}', '{CAT_3}', '{CAT_4}'],
+          datasets: [{ data: [0, 0, 0, 0], backgroundColor: accent, borderRadius: 0 }]
+        },
+        options: {
+          indexAxis: 'y',
+          plugins: { legend: { display: false }, tooltip: baseTooltip },
+          scales: { x: { grid: baseGrid }, y: { grid: { display: false } } },
+          maintainAspectRatio: false
+        }
+      });
+
+      // Exemplo · gráfico 2 (problema)
+      new Chart(document.getElementById('chart-problema'), {
+        type: 'doughnut',
+        data: {
+          labels: ['{CAT_1}', '{CAT_2}', '{CAT_3}'],
+          datasets: [{
+            data: [0, 0, 0],
+            backgroundColor: [accent, 'rgba(232,163,61,0.5)', 'rgba(232,163,61,0.2)'],
+            borderColor: '#0F0E0C',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          cutout: '60%',
+          plugins: { legend: { position: 'bottom', labels: { color: ink, font: { family: "'JetBrains Mono', monospace", size: 10 } } }, tooltip: baseTooltip },
+          maintainAspectRatio: false
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

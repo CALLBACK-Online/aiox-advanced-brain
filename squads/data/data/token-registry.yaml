@@ -1,0 +1,123 @@
+# Data Squad Token Registry v1.0
+# Vocabulario controlado para executores de analytics/data
+# Referencia: SINKRA-v3.md, Capitulo 5 (9 familias de tokens)
+# Escopo: data squad (Tier 0/1/2 analytics clones)
+
+_dependents_declaration:
+  registry_id: data-token-registry
+  dag_role: leaf
+  upstream:
+    - registry: "squads/sinkra-squad/data/token-registry.yaml"
+      field: "parent_registry"
+  dependents:
+    - "squads/data/data/composition-rules.yaml"
+    - "squads/data/data/governance-rules-registry.yaml"
+  schema_ref: "squads/sinkra-squad/data/registry-base-schema.yaml"
+
+version: "1.0.0"
+squad: data
+description: |
+  Registry dos 9 tipos de tokens SINKRA aplicados ao dominio de Data Intelligence.
+  Cobre Tier 0 (Fader, Ellis), Tier 1 (Mehta, Spinks, Kao) e Tier 2 (Kaushik).
+  Tokens sao unidades parametricas indivisiveis. Um valor. Zero ambiguidade.
+
+indivisibility_criteria:
+  - "Nao pode ser decomposto mais"
+  - "Nao tem comportamento proprio"
+  - "Tem dominio finito/mensuravel"
+
+tokens:
+  Time:
+    family: temporal
+    definition: "Parametros temporais para analytics pipelines, cohorts e freshness"
+    examples:
+      - { name: completion_window_days, id: TK-DATA-TIME-001, domain: "integer >= 1", example: 30, note: "janela para calcular completion rate" }
+      - { name: freshness_ttl_days, id: TK-DATA-TIME-002, domain: "integer >= 1", example: 7, note: "TTL de dashboards antes de stale" }
+      - { name: cohort_period, id: TK-DATA-TIME-003, domain: "enum: daily|weekly|monthly|quarterly", example: "monthly" }
+      - { name: churn_observation_window, id: TK-DATA-TIME-004, domain: "integer days", example: 90 }
+    validation: "Must be positive integer or valid enum"
+
+  Capacity:
+    family: operational
+    definition: "Limites de volume para batch jobs, cohorts e amostras"
+    examples:
+      - { name: min_cohort_size, id: TK-DATA-CAP-001, domain: "integer >= 30", example: 100, note: "minimo para significancia estatistica" }
+      - { name: max_segments_per_report, id: TK-DATA-CAP-002, domain: "integer 1-20", example: 10 }
+      - { name: sample_size_min, id: TK-DATA-CAP-003, domain: "integer >= 30", example: 384, note: "95% confidence, 5% margin" }
+      - { name: batch_size, id: TK-DATA-CAP-004, domain: "integer >= 1", example: 1000 }
+    validation: "Must be positive integer"
+
+  Threshold:
+    family: operational
+    definition: "Valores de corte numericos para decisoes data-driven"
+    examples:
+      - { name: health_score_min, id: TK-DATA-THR-001, domain: "float 0-100", example: 70.0, note: "health score >= 70 = healthy" }
+      - { name: churn_risk_max, id: TK-DATA-THR-002, domain: "float 0-100", example: 30.0, note: "churn risk <= 30 = safe" }
+      - { name: pmf_score_min, id: TK-DATA-THR-003, domain: "float 0-100", example: 40.0, note: "Sean Ellis PMF >= 40%" }
+      - { name: statistical_significance, id: TK-DATA-THR-004, domain: "float 0-1", example: 0.95, note: "p-value threshold" }
+      - { name: clv_cac_ratio_min, id: TK-DATA-THR-005, domain: "float >= 1", example: 3.0 }
+      - { name: k_factor_viral_min, id: TK-DATA-THR-006, domain: "float >= 0", example: 1.0, note: "K >= 1 = viral loop" }
+    validation: "Must be numeric with defined range"
+
+  Priority:
+    family: semantic
+    definition: "Parametros de ordenacao e hierarquia de decisao"
+    examples:
+      - { name: tier_0_first, id: TK-DATA-PRI-001, domain: "enum: tier_0|tier_1|tier_2", example: "tier_0", note: "Regra de Ouro: Tier 0 (fundamentadores) antes de Tier 1/2" }
+      - { name: metric_importance, id: TK-DATA-PRI-002, domain: "enum: north_star|primary|secondary|vanity", example: "north_star" }
+      - { name: experiment_priority, id: TK-DATA-PRI-003, domain: "enum: P0|P1|P2|P3", example: "P0" }
+    validation: "Must be one of allowed values"
+
+  Permission:
+    family: governance
+    definition: "Niveis de autorizacao para acesso e modificacao de dados"
+    examples:
+      - { name: pii_access_level, id: TK-DATA-PERM-001, domain: "enum: none|masked|full", example: "masked" }
+      - { name: dashboard_publish_role, id: TK-DATA-PERM-002, domain: "enum: viewer|analyst|admin", example: "analyst" }
+      - { name: metric_definition_authority, id: TK-DATA-PERM-003, domain: "enum: data-chief|tier-0|tier-1", example: "data-chief" }
+    validation: "Must be one of enum values"
+
+  Taxonomy:
+    family: classification
+    definition: "Classificacoes controladas do dominio de analytics"
+    examples:
+      - { name: clone_tier, id: TK-DATA-TAX-001, domain: "enum: 0|1|2|orchestrator", example: 0, note: "0=fundamentadores, 1=operacionalizadores, 2=comunicadores" }
+      - { name: domain, id: TK-DATA-TAX-002, domain: "enum: Strategic|Tactical|Operational", example: "Strategic" }
+      - { name: atomic_layer, id: TK-DATA-TAX-003, domain: "enum: Atom|Molecule|Organism", example: "Organism" }
+      - { name: metric_type, id: TK-DATA-TAX-004, domain: "enum: counter|gauge|histogram|ratio", example: "ratio" }
+      - { name: segment_type, id: TK-DATA-TAX-005, domain: "enum: rfm|behavioral|demographic|lifecycle", example: "rfm" }
+
+  Behavior:
+    family: operational
+    definition: "Parametros de comportamento para pipelines e alertas"
+    examples:
+      - { name: on_stale_data, id: TK-DATA-BEH-001, domain: "enum: warn|fail|refresh", example: "refresh" }
+      - { name: on_missing_baseline, id: TK-DATA-BEH-002, domain: "enum: abort|estimate|proceed_with_warning", example: "abort" }
+      - { name: cascade_policy, id: TK-DATA-BEH-003, domain: "enum: strict|permissive", example: "strict" }
+    validation: "Must be one of enum values"
+
+  Accountability:
+    family: governance
+    definition: "Responsabilidade de execucao por task"
+    examples:
+      - { name: responsavel_type, id: TK-DATA-ACC-001, domain: "enum: Worker|Agent|Clone|Human", example: "Clone", note: "Clone = um dos 7 agents tier 0/1/2" }
+      - { name: review_authority, id: TK-DATA-ACC-002, domain: "enum: data-chief|peer-clone|human", example: "data-chief" }
+      - { name: sign_off_role, id: TK-DATA-ACC-003, domain: "enum: founder|coo|data-chief", example: "data-chief" }
+    validation: "Must match SINKRA responsavel_type canonical enum"
+
+  Mode:
+    family: operational
+    definition: "Modo de operacao de squad/task (SINKRA 8 modes subset supported by data)"
+    examples:
+      - { name: mode, id: TK-DATA-MODE-001, domain: "enum: ENTENDER|RESOLVER|EXPLORAR|VALIDAR", example: "ENTENDER", note: "supported_modes do config.yaml" }
+      - { name: ENTENDER, id: TK-DATA-MODE-002, purpose: "diagnose current state (cohorts, PMF score, health)" }
+      - { name: RESOLVER, id: TK-DATA-MODE-003, purpose: "fix known problem (low completion, churn spike)" }
+      - { name: EXPLORAR, id: TK-DATA-MODE-004, purpose: "discover pattern (segment exploration)" }
+      - { name: VALIDAR, id: TK-DATA-MODE-005, purpose: "confirm hypothesis (A/B test, PMF validation)" }
+    validation: "Must be in squad supported_modes"
+
+meta:
+  total_tokens: 33
+  families: 9
+  last_updated: "2026-04-15"
+  owner: data-chief

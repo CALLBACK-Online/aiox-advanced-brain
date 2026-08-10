@@ -1,0 +1,52 @@
+# Squad IO Contract — agent-autonomy
+# Story: 55.15 | Date: 2026-03-24
+
+inputs:
+  - "Agent config.yaml or persona .md"
+  - "Squad config.yaml"
+  - "Autonomy failure symptoms"
+
+outputs:
+  - "Autonomy audit report"
+  - "Agent optimization plan"
+  - "Tool suggestions"
+  - "Ecosystem scouting results"
+  - "Cross-domain handoff"
+
+triggers:
+  - "Manual activation via @autonomy-chief"
+  - "Agent failure diagnosis request"
+  - "Autonomy audit request"
+
+dependencies: []
+
+artifacts_produced:
+  - "autonomy-audit-report"
+  - "agent-optimization-plan"
+  - "cross-domain-handoff"
+
+artifacts_consumed:
+  - "Squad configs and agent definitions"
+
+data_sources:
+  - "squads/agent-autonomy/data/agent-autonomy-kb.md"
+  - "squads/agent-autonomy/data/token-registry.yaml"
+  - "squads/agent-autonomy/data/quality-gates.yaml"
+
+integrations:
+  - squad: kaizen
+    type: sibling
+    purpose: "Ecosystem health feeds autonomy analysis"
+  - squad: squad-creator-pro
+    type: downstream
+    purpose: "Optimization recommendations applied to agents"
+  - service: outputs
+    type: runtime
+    purpose: "Persistência de auditorias, relatórios e handoffs tipados"
+  - service: exa-search
+    type: evidence
+    purpose: "Validação externa de recomendações e patterns"
+
+observability:
+  quality_gates: 7
+  autonomy_levels: "L1 (Assisted), L2 (Semi-Autonomous), L3 (Autonomous)"

@@ -1,0 +1,492 @@
+workflow:
+  type: legacy
+  name: Business Rules Extraction
+  id: wf-extract-rules
+  version: 1.0.0
+  description: Workflow completo de extração de regras de negócio de um sistema legado. Cobre diagnóstico, caracterização, extração, modelagem, expressão e validação.
+  squad: domain-decoder
+  orchestrator: decoder-chief
+  command: "*extract-full"
+  estimated_duration: varies (days to weeks depending on system size)
+  sequence:
+    - step: phase-0-discovery
+      id: phase-0-discovery
+      phase: 1
+      phase_name: Discovery & Domain Mapping
+      agent: eric-evans
+      action: execute_establish-the-domain-model-and-rule-taxonomy-before-touching-cod
+      next: phase-1-characterization
+    - step: phase-1-characterization
+      id: phase-1-characterization
+      phase: 2
+      phase_name: Legacy Code Characterization
+      agent: michael-feathers
+      action: execute_create-a-safety-net-before-reading-the-code-in-depth
+      next: phase-2-extraction
+    - step: phase-2-extraction
+      id: phase-2-extraction
+      phase: 3
+      phase_name: Rule Extraction & Classification
+      agent: ronald-ross
+      action: execute_extract-raw-rules-from-identified-locations-and-classify-each-on
+      next: phase-3-modeling
+    - step: phase-3-modeling
+      id: phase-3-modeling
+      phase: 4
+      phase_name: Decision Modeling
+      agent: barbara-von-halle
+      action: execute_organize-extracted-rules-into-a-formal-decision-model-and-expres
+      next: phase-4-expression
+    - step: phase-4-expression
+      id: phase-4-expression
+      phase: 5
+      phase_name: Rule Expression & Standardization
+      agent: graham-witt
+      action: execute_express-every-rule-in-structured-unambiguous-natural-language-th
+      next: phase-5-validation
+    - step: phase-5-validation
+      id: phase-5-validation
+      phase: 6
+      phase_name: Validation & Delivery
+      agent: decoder-chief
+      action: execute_final-validation-against-standards-generation-of-deliverables-an
+    - workflow_end:
+        id: complete
+        action: workflow_complete
+  handoff_prompts:
+    eric-evans_to_michael-feathers: Handoff context from eric-evans to michael-feathers. Preserve outputs, risks, and open decisions.
+    michael-feathers_to_ronald-ross: Handoff context from michael-feathers to ronald-ross. Preserve outputs, risks, and open decisions.
+    ronald-ross_to_barbara-von-halle: Handoff context from ronald-ross to barbara-von-halle. Preserve outputs, risks, and open decisions.
+    barbara-von-halle_to_graham-witt: Handoff context from barbara-von-halle to graham-witt. Preserve outputs, risks, and open decisions.
+    graham-witt_to_decoder-chief: Handoff context from graham-witt to decoder-chief. Preserve outputs, risks, and open decisions.
+inputs:
+  required:
+    - name: system_name
+      description: Name of the legacy system being analyzed
+      example: OrderManagement v2.3
+    - name: source_location
+      description: Path or repository URL of the legacy codebase
+      example: /repos/order-mgmt
+    - name: primary_domain
+      description: Main business domain of the system
+      example: Sales & Order Processing
+  optional:
+    - name: known_rule_areas
+      description: Business areas suspected to contain rules (speeds up scoping)
+      example:
+        - pricing
+        - credit approval
+        - shipping eligibility
+    - name: stakeholders
+      description: Business stakeholders available for validation
+    - name: existing_docs
+      description: Any existing documentation (functional specs, process maps)
+    - name: delivery_format
+      description: Preferred output format
+      default: markdown catalog + YAML rules
+phases:
+  phase_0_discovery:
+    name: Discovery & Domain Mapping
+    order: 0
+    tier: 0
+    agents:
+      - eric-evans
+      - ronald-ross
+    tasks:
+      - map-domain.md
+      - classify-rules.md
+    mandatory: true
+    description: Establish the domain model and rule taxonomy BEFORE touching code. This phase cannot be skipped.
+    actions:
+      - id: "0.1"
+        agent: eric-evans
+        action: Map bounded contexts in the legacy landscape
+        output: Context Map — named contexts with relationships
+        guidance: Interview stakeholders, read module names, look at database schemas for context clues
+      - id: "0.2"
+        agent: eric-evans
+        action: Create ubiquitous language glossary (minimum 15 terms per major context)
+        output: Glossary draft — term, definition, context, source
+        guidance: Listen for terms used differently by different teams — those are context boundaries
+      - id: "0.3"
+        agent: ronald-ross
+        action: Classify expected rule types present in the system
+        output: Rule type inventory — which Ross categories are expected and in what proportion
+        guidance: Sample 10-20 code files or documents before classifying. Do not classify blindly.
+      - id: "0.4"
+        agent: eric-evans
+        action: Identify source systems and map them to bounded contexts
+        output: "Source-to-context map: which files/modules belong to which context"
+        guidance: If one module spans multiple contexts, note the anti-corruption layer needed
+    checkpoint:
+      name: Domain map approved, glossary started
+      criteria:
+        - All major bounded contexts named and mapped
+        - Glossary has at least 10 terms defined
+        - Rule type inventory complete (even if approximate)
+        - Source systems mapped to contexts
+      gate: Orchestrator (decoder-chief) approves before Phase 1
+      blocker: Do NOT start Phase 1 without this checkpoint. Extracting rules from unmapped domains creates chaos.
+  phase_1_characterization:
+    name: Legacy Code Characterization
+    order: 1
+    tier: 1
+    agents:
+      - michael-feathers
+      - martin-fowler
+    tasks:
+      - characterize-legacy.md
+    mandatory: true
+    depends_on: phase_0_discovery
+    description: Create a safety net before reading the code in depth. Characterization tests lock current behavior so rules can be extracted without fear.
+    actions:
+      - id: "1.1"
+        agent: martin-fowler
+        action: Identify architecture pattern (Transaction Script, Domain Model, Table Module, Service Layer, Active Record, etc.)
+        output: Architecture classification with evidence from code
+        guidance: Look at how data flows, where decisions are made, how the database is accessed. Pattern determines where rules hide.
+      - id: "1.2"
+        agent: michael-feathers
+        action: Write characterization tests for critical paths
+        output: Passing characterization tests (minimum 5 per bounded context)
+        guidance: Characterization tests document CURRENT behavior — not desired behavior. They prevent regressions during extraction.
+      - id: "1.3"
+        agent: michael-feathers
+        action: Find seams and identify rule locations in the code
+        output: "Seam map: list of files, classes, methods containing business logic"
+        guidance: Seams are where the code can be split without full rewrite. God Classes and large methods are prime rule locations.
+      - id: "1.4"
+        agent: martin-fowler
+        action: Map code smells to business rule candidates
+        output: Code smell → rule candidate mapping
+        guidance: |
+          Common mappings:
+          - Feature Envy → rule about another domain leaking into wrong place
+          - Switch Statements → decision rule (likely a decision table candidate)
+          - Parallel Inheritance → structural rule about hierarchy
+          - Long Method → multiple rules bundled in one method — decompose
+    checkpoint:
+      name: Rule locations mapped, characterization tests passing
+      criteria:
+        - Architecture pattern documented with evidence
+        - Characterization tests passing (all green)
+        - Seam map complete — every significant rule location listed
+        - Code smell → rule candidate mapping complete
+      gate: Orchestrator (decoder-chief) approves before Phase 2
+      blocker: Do NOT extract rules without characterization tests. You will break things and not know it.
+  phase_2_extraction:
+    name: Rule Extraction & Classification
+    order: 2
+    tier: 1
+    agents:
+      - ronald-ross
+      - michael-feathers
+    tasks:
+      - characterize-legacy.md
+      - classify-rules.md
+    mandatory: true
+    depends_on: phase_1_characterization
+    description: Extract raw rules from identified locations and classify each one using the Ross taxonomy.
+    actions:
+      - id: "2.1"
+        agent: michael-feathers
+        action: Extract raw rules from each identified seam
+        output: Raw rule list with source traceability (file, line, method)
+        guidance: |
+          For each rule found:
+          - Copy the code snippet verbatim
+          - Note: file path, line number, method name
+          - Write a first-pass English statement of what it does
+          - Tag with bounded context from Phase 0
+      - id: "2.2"
+        agent: ronald-ross
+        action: Classify each raw rule using Ross taxonomy
+        output: Classified rule list
+        guidance: |
+          Apply these Ross categories:
+          - CONSTRAINT: must always be true (validation, prohibition)
+          - COMPUTATION: derives a value (calculation, formula)
+          - INFERENCE: concludes a fact from other facts (if-then derivation)
+          - ACTION ENABLER: triggers an action when condition met
+          - BEHAVIORAL: governs how a process must be conducted
+      - id: "2.3"
+        agent: ronald-ross
+        action: Build fact model (terms → facts → rules)
+        output: "Fact model: terms as nodes, fact types as edges, rules as constraints on facts"
+        guidance: Start from the glossary. Add facts (relationships) discovered during extraction. Map each rule to the facts it constrains.
+      - id: "2.4"
+        agent: michael-feathers
+        action: Tag each rule with source code location
+        output: "Each rule has: id, source file, source line, source method, bounded context"
+        guidance: "Use format: RE-{DOMINIO}-{NNN}. Domain in UPPERCASE. Number starting from 001."
+    checkpoint:
+      name: All rules extracted and classified with traceability
+      criteria:
+        - Every rule has a unique ID (RE-{DOMINIO}-{NNN})
+        - Every rule has file + line traceability
+        - Every rule has a Ross classification
+        - Fact model created (even if incomplete)
+        - No rules exist without a bounded context assignment
+      gate: Orchestrator (decoder-chief) approves before Phase 3
+  phase_3_modeling:
+    name: Decision Modeling
+    order: 3
+    tier: 2
+    agents:
+      - barbara-von-halle
+      - james-taylor
+    tasks:
+      - model-decisions.md
+    mandatory: true
+    depends_on: phase_2_extraction
+    description: Organize extracted rules into a formal Decision Model and express computational rules as DMN decision tables.
+    actions:
+      - id: "3.1"
+        agent: barbara-von-halle
+        action: Create Decision Model — organize rules into rule families connected to business decisions
+        output: "Decision Model: named business decisions with their governing rule families"
+        guidance: |
+          Von Halle's Decision Model has 3 elements:
+          1. Business Decisions (the questions being answered)
+          2. Rule Families (groups of related rules answering each decision)
+          3. Rule Connections (how decision outputs feed into other decisions)
+      - id: "3.2"
+        agent: james-taylor
+        action: Build decision tables with hit policies for all computational and conditional rules
+        output: DMN decision tables — one per major decision point
+        guidance: |
+          Hit policy selection guide:
+          - U (Unique): exactly one row matches — use for non-overlapping conditions
+          - F (First): first matching row wins — use for priority-ordered rules
+          - P (Priority): output with highest declared priority — use for competing options
+          - A (Any): all matching rows must agree — use when redundancy is expected
+          - C (Collect): collect all matching outputs — use for multi-value results
+          - R (Rule order): outputs in rule order — use when sequence matters
+          - O (Output order): outputs in output priority — use for ranked lists
+      - id: "3.3"
+        agent: james-taylor
+        action: Create Decision Requirements Diagrams (DRDs)
+        output: DRD per bounded context showing decision dependencies
+        guidance: DRDs show WHAT decisions exist and HOW they depend on each other and on input data. Not HOW the decision is made (that's the table).
+      - id: "3.4"
+        agent: barbara-von-halle
+        action: Validate completeness and consistency of the decision model
+        output: "Validation report: gaps, contradictions, and orphaned rules"
+        guidance: |
+          Check for:
+          - Rules not assigned to any decision (orphaned)
+          - Decisions with no governing rules (empty)
+          - Two rules that cannot both be satisfied (contradiction)
+          - Decision tables with uncovered condition combinations (gap)
+    checkpoint:
+      name: Decision models complete, no contradictions
+      criteria:
+        - Decision Model created with all rule families assigned
+        - Decision tables created for all computational rules
+        - DRDs created for all major contexts
+        - No contradictions found (or contradictions documented with resolution)
+        - No orphaned rules
+      gate: Orchestrator (decoder-chief) approves before Phase 4
+  phase_4_expression:
+    name: Rule Expression & Standardization
+    order: 4
+    tier: 3
+    agents:
+      - graham-witt
+      - ronald-ross
+    tasks:
+      - express-rules.md
+    mandatory: true
+    depends_on: phase_3_modeling
+    description: Express every rule in structured, unambiguous natural language that both business and technical stakeholders can understand and act on.
+    actions:
+      - id: "4.1"
+        agent: graham-witt
+        action: Express all rules in structured natural language using RuleSpeak sentence patterns
+        output: All rules with final statement field filled
+        guidance: |
+          Witt's RuleSpeak core patterns:
+          - Obligation: "[Subject] MUST [verb phrase]."
+          - Prohibition: "[Subject] MUST NOT [verb phrase]."
+          - Permission: "[Subject] MAY [verb phrase]."
+          - Condition: "It is [required/prohibited/permitted] that [condition]."
+          - Derivation: "[Term] is [derived as] [expression]."
+      - id: "4.2"
+        agent: graham-witt
+        action: Eliminate ambiguity from every rule
+        output: Ambiguity review log — every vague term replaced with precise language
+        guidance: |
+          Banned words that signal ambiguity:
+          appropriate, reasonable, sufficient, timely, significant, adequate,
+          usually, generally, normally, often, sometimes, may impact, could affect
+      - id: "4.3"
+        agent: ronald-ross
+        action: Apply sentence patterns consistently across all rules
+        output: Pattern consistency review — all rules follow same structural format
+        guidance: One rule, one sentence. If it needs 'and', it is two rules. Split it.
+      - id: "4.4"
+        agent: graham-witt
+        action: Ensure all terms used in rule statements are in the glossary
+        output: "Cross-reference check: every term in every rule statement appears in glossary"
+        guidance: If a rule uses a term not in the glossary, either add the term or rewrite the rule to use a defined term.
+    checkpoint:
+      name: All rules pass quality checklist
+      criteria:
+        - Every rule has a final statement field
+        - No ambiguous qualifiers in any rule statement
+        - All terms in rule statements appear in glossary
+        - Pattern consistency confirmed
+        - At least one business stakeholder has reviewed a sample (minimum 10% of rules)
+      gate: Orchestrator (decoder-chief) approves before Phase 5
+  phase_5_validation:
+    name: Validation & Delivery
+    order: 5
+    tier: orchestrator
+    agents:
+      - decoder-chief
+    tools:
+      - sbvr-checklist
+      - extraction-quality
+    tasks: []
+    mandatory: true
+    depends_on: phase_4_expression
+    description: Final validation against standards, generation of deliverables, and packaging.
+    actions:
+      - id: "5.1"
+        agent: decoder-chief
+        tool: sbvr-validation.md
+        action: Run SBVR validation checklist
+        output: SBVR validation score (must be 85%+, all 5 criticals must pass)
+        guidance: Use checklist in squads/domain-decoder/checklists/sbvr-validation.md. Any failure returns to responsible agent.
+      - id: "5.2"
+        agent: decoder-chief
+        tool: extraction-quality.md
+        action: Run extraction quality checklist
+        output: Process quality score (must be 85%+, no auto-fail conditions)
+        guidance: Use checklist in squads/domain-decoder/checklists/extraction-quality.md
+      - id: "5.3"
+        agent: decoder-chief
+        action: Generate final rule catalog
+        output: Completed rule catalog from template (templates/rule-catalog-tmpl.md)
+        guidance: Use the template. Fill ALL sections. No empty tables.
+      - id: "5.4"
+        agent: decoder-chief
+        action: Create traceability matrix
+        output: "Traceability matrix: Rule ID → Source Code → Line → Module → SME → Policy"
+        guidance: Every rule must appear in this matrix. No exceptions.
+      - id: "5.5"
+        agent: decoder-chief
+        action: Package deliverables
+        output: "Final package containing: rule catalog, decision tables, DRDs, glossary, traceability matrix, validation scores"
+        guidance: "Compress or organize in a named folder: {system_name}-rules-{date}/"
+    checkpoint:
+      name: SBVR validation passed (85%+)
+      criteria:
+        - SBVR score 85%+ with all 5 criticals passing
+        - Extraction quality score 85%+ with no auto-fail conditions
+        - Rule catalog complete (no empty sections)
+        - Traceability matrix covers 100% of rules
+        - All deliverables packaged
+      gate: FINAL — delivery to stakeholders
+anti_patterns:
+  - Skipping Phase 0 (domain mapping) — creates uncontrolled extraction chaos
+  - Extracting rules without characterization tests — breaks production without knowing it
+  - Classifying rules before mapping domains — produces wrong classification
+  - Delivering decision tables without natural language equivalents
+  - Skipping SBVR validation — delivers unvalidated output that looks complete but isn't
+  - Using characterization tests as unit tests — they are documentation, not validation
+  - Mixing rules from different bounded contexts in one rule family
+enforcement_rules:
+  description: |
+    Regras de enforcement aprendidas em execuções reais do pipeline.
+    Cada regra tem root cause documentado. Violações são blocking.
+
+  E1_no_synthesizing:
+    rule: "Cada fase DEVE spawnar agente dedicado via Agent tool com arquivo do squad carregado. NUNCA sintetizar output de fase a partir de dados já no contexto."
+    root_cause: "Fases 3-5 para contexts secundários foram sintetizadas da memória, produzindo outputs nunca verificados contra código-fonte."
+    check: "Verificar que Agent tool foi chamado com subagent_type e prompt que inclui 'Read your agent file at squads/domain-decoder/agents/'"
+
+  E2_save_before_advance:
+    rule: "Cada fase DEVE gravar output em outputs/decoded/{slug}/ ANTES do Phase Gate rodar. Gate verifica existência do arquivo via ls."
+    root_cause: "3 fases de trabalho existiram apenas no contexto e quase foram perdidas."
+    check: "ls outputs/decoded/{slug}/{phase_dir}/ deve listar arquivos esperados"
+
+  E3_business_rules_only:
+    rule: |
+      Regra de negócio = constraint, cálculo, inferência ou definição que um domain expert reconheceria.
+      NÃO são regras de negócio: cores de UI, cache config, framework boilerplate, paginação default.
+      Teste: "Um PO se importaria se esta regra mudasse?" Se não, é detalhe de implementação.
+    root_cause: "Contagem inflada de ~90 regras reais para '160' incluindo detalhes de UI."
+    check: "Cada regra extraída DEVE ter tag business_rule: true/false. Contagem final usa apenas true."
+
+  E4_real_checklists:
+    rule: "Phase 5 DEVE aplicar checklist SBVR completa (45 itens) E checklist de qualidade (54 itens), item por item, com PASS/FAIL explícito."
+    root_cause: "Scores SBVR foram inventados (88-94%) sem aplicar nenhum item de checklist."
+    check: "Output de validação DEVE conter lista de 45+ itens com status individual."
+
+  E5_tests_are_deliverable:
+    rule: "Se Phase 1 executa, characterization tests DEVEM ser escritos em outputs/decoded/{slug}/characterization/tests/. Mínimo 5 por context major, 3 por minor."
+    root_cause: "--with-tests foi passado mas zero testes foram criados."
+    check: "ls outputs/decoded/{slug}/characterization/tests/ deve conter arquivos .md ou .ts"
+
+  E6_equal_treatment:
+    rule: "Se pipeline cobre N bounded contexts, cada context DEVE passar por todas as 6 fases com agentes reais. NÃO é aceitável rodar pipeline completo para 1 context e batchear o resto."
+    root_cause: "Redactia teve tratamento completo; 6 outros contexts receberam resumos sintetizados."
+    check: "Para cada context: verificar que outputs/decoded/{slug}/{phase_dir}/ contém arquivos específicos daquele context."
+
+  E7_explicit_dedup:
+    rule: "Quando regras existem em múltiplas camadas (FE + BE + DB), extração DEVE incluir matriz de deduplicação: Rule ID canônico -> FE source -> BE source -> SQL source."
+    root_cause: "Deduplicação foi estimada ('~160 após dedup'), não executada."
+    check: "Arquivo extraction/dedup-matrix.md DEVE existir com mapeamento explícito."
+
+  E8_correct_output_path:
+    rule: "Diretório de artefatos é outputs/decoded/{slug}/. Qualquer outro path viola o contrato do squad."
+    root_cause: "Outputs foram salvos em outputs/decoded/forefy-prep-ahead/ ao invés de outputs/decoded/forefy_prep_ahead/."
+    check: "ls outputs/decoded/{slug}/ deve existir. Nenhum output em outputs/decoded/."
+
+  E9_gates_with_commands:
+    rule: |
+      Phase Gate NÃO é checkbox mental. Para cada fase, rodar:
+      1. ls outputs/decoded/{slug}/{phase_dir}/ (deve listar arquivos)
+      2. wc -c outputs/decoded/{slug}/{phase_dir}/*.md (cada > 500 bytes)
+      3. grep -rl "VETO|BLOCKED|FAILED" outputs/decoded/{slug}/{phase_dir}/ (deve ser vazio)
+    root_cause: "Gates foram declarados 'COMPLETO' sem rodar nenhum comando de verificação."
+    check: "Output do Bash tool com resultados dos 3 comandos DEVE estar visível no contexto."
+
+  E10_input_collection_always:
+    rule: "Se usuário bypassa /domain-decoder com *diagnose ou *extract-rules, as 5 perguntas obrigatórias DEVEM ainda ser respondidas (inferir e confirmar)."
+    root_cause: "*diagnose bypassed input collection entirely."
+    check: "Antes de qualquer agente spawnar, Q1-Q5 devem estar resolvidos e confirmados."
+
+outputs:
+  primary:
+    - name: rule-catalog.md
+      template: templates/rule-catalog-tmpl.md
+      description: Complete business rules catalog with glossary, rules, decision tables, and traceability matrix
+  secondary:
+    - name: rule-list.yaml
+      description: Machine-readable list of all rules in canonical YAML format (one file per bounded context)
+    - name: decision-tables/
+      description: Folder with individual DMN decision tables
+    - name: context-map.md
+      description: Bounded context map from Eric Evans phase
+    - name: validation-scores.md
+      description: SBVR and extraction quality scores with evidence
+metadata:
+  created: "2026-02-18"
+  version: 1.0.0
+  squad: domain-decoder
+  related_workflow: wf-standardize-rules.yaml
+  related_checklists:
+    - checklists/sbvr-validation.md
+    - checklists/extraction-quality.md
+  related_template: templates/rule-catalog-tmpl.md
+  theoretical_framework:
+    - Michael Feathers — Working Effectively with Legacy Code (2004)
+    - Eric Evans — Domain-Driven Design (2003)
+    - Ronald Ross — Business Rule Concepts 4th ed.
+    - Barbara von Halle & Larry Goldberg — Business Rule Revolution (2009)
+    - James Taylor & Jan Purchase — Real-World Decision Modeling with DMN (2016)
+    - Martin Fowler — Patterns of Enterprise Application Architecture (2002)
+    - Graham Witt — Writing Effective Business Rules (2012)
+    - OMG SBVR 1.5 Standard

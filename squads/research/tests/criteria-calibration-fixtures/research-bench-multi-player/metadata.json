@@ -1,0 +1,10 @@
+{
+  "schema_version": "bench-metadata.v1",
+  "slug": "2026-05-19-research-bench-multi-player-fixture",
+  "date": "2026-05-19",
+  "profile": "gold_absorption",
+  "anchor": "aiox_research",
+  "players": ["aiox_research", "openhands", "claude_code", "aider", "cline"],
+  "players_count": 5,
+  "comparison_pattern": "multi_player"
+}

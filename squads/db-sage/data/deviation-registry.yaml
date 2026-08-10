@@ -1,0 +1,34 @@
+# Deviation Registry — DB Sage Squad
+# Tracks formal deviations from SINKRA methodology (Mandamento 7)
+# Created: 2026-04-12
+# Owner: db-sage squad
+
+schema_version: "1.0.0"
+squad: db-sage
+created: "2026-04-12"
+updated: "2026-04-12"
+
+deviations:
+  - id: DEV-DBS-001
+    type: workspace_integration
+    description: "workspace_integration level set to 'none' — db-sage operates on code/database/infrastructure, not canonical business artifacts"
+    rationale: "Database operations are technical infrastructure, not business-layer L0-L4 workspace artifacts"
+    status: accepted
+    approved_by: "config.yaml workspace_integration declaration"
+    created: "2026-04-12"
+
+  - id: DEV-DBS-002
+    type: shared_atom
+    description: "db-explain atom appears in both mol-performance-tune and mol-query-ops molecules"
+    rationale: "EXPLAIN is both a query investigation tool and a performance tuning tool — dual usage is intentional"
+    status: accepted
+    approved_by: "upgrade-squad composition review 2026-04-12"
+    created: "2026-04-12"
+
+  - id: DEV-DBS-003
+    type: duplicate_scripts
+    description: "Two parallel script directories: scripts/db-ops/ and scripts/database-operations/ with overlapping functionality"
+    rationale: "Legacy migration — scripts/database-operations/ is the original set, scripts/db-ops/ is the refactored canonical set. Consolidation deferred."
+    status: accepted
+    approved_by: "upgrade-squad assessment 2026-04-12"
+    created: "2026-04-12"

@@ -1,0 +1,38 @@
+{
+  "$id": "sinkra://slide-creator/wireframes/contact-next-step.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "The slide needs to make the offer legible and valuable.",
+  "properties": {
+    "contact_1": {
+      "type": "string"
+    },
+    "contact_2": {
+      "type": "string"
+    },
+    "next_action": {
+      "type": "string"
+    },
+    "owner_or_date": {
+      "type": "string"
+    },
+    "qr_or_link": {
+      "type": "string"
+    }
+  },
+  "title": "contact-next-step",
+  "type": "object",
+  "x-sinkra": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "offer_stack",
+    "slot_count": 5,
+    "warnings": [
+      "next_action",
+      "contact_1",
+      "contact_2",
+      "owner_or_date",
+      "qr_or_link"
+    ],
+    "wireframe_ref": "templates/wireframes/contact-next-step.html"
+  }
+}

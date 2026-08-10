@@ -1,0 +1,96 @@
+# Quality Gates — DB Sage Squad
+# SINKRA v3.2 Quality Gate definitions with numeric thresholds
+# Created: 2026-04-12
+# Owner: db-sage squad
+
+schema_version: "1.0.0"
+squad: db-sage
+created: "2026-04-12"
+updated: "2026-04-12"
+
+quality_gates:
+  schema_design:
+    kiss_gate:
+      threshold: 1.0
+      description: "All KISS checklist steps pass before schema work"
+      checklist: "checklists/db-kiss-validation-checklist.md"
+      verdict: [PASS, WARN, FAIL]
+      workflow_binding: kiss-gate
+
+  pre_deploy:
+    critical_stops_cleared:
+      threshold: 1.0
+      description: "Zero of 8 hard stops triggered"
+      checklist: "checklists/dba-predeploy-checklist.md"
+      verdict: [PASS, FAIL]
+      workflow_binding: modify-schema
+
+    rls_coverage:
+      threshold: 1.0
+      description: "RLS enabled on all user-facing tables"
+      verdict: [PASS, FAIL]
+      workflow_binding: modify-schema
+
+    staging_tested:
+      threshold: 1.0
+      description: "Migration tested in staging/dry-run environment"
+      verdict: [PASS, FAIL]
+      workflow_binding: modify-schema
+
+    rollback_readiness:
+      threshold: 1.0
+      description: "Backup < 24h and rollback script prepared"
+      checklist: "checklists/dba-rollback-checklist.md"
+      verdict: [PASS, FAIL]
+      workflow_binding: backup-restore
+
+  migration_execution:
+    migration_integrity:
+      threshold: 1.0
+      description: "Instance count match, zero corruption patterns"
+      checklist: "checklists/migration-validation-checklist.md"
+      verdict: [PASS, FAIL]
+      workflow_binding: modify-schema
+
+    documentation_updated:
+      threshold: 1.0
+      description: "Database docs updated post-migration"
+      checklist: "checklists/database-migration-documentation-checklist.md"
+      verdict: [PASS, WARN, FAIL]
+      workflow_binding: modify-schema
+
+  resource_health:
+    cpu_utilization_ceiling:
+      threshold: 0.8
+      description: "CPU under 80% during operations"
+      verdict: [PASS, WARN, FAIL]
+      workflow_binding: performance-tuning
+
+    connection_pool_ceiling:
+      threshold: 0.8
+      description: "Connection pool under 80% capacity"
+      verdict: [PASS, WARN, FAIL]
+      workflow_binding: performance-tuning
+
+    disk_free_floor:
+      threshold: 0.2
+      description: "At least 20% disk space free"
+      verdict: [PASS, WARN, FAIL]
+      workflow_binding: modify-schema
+
+veto_conditions:
+  - id: DB_QG_001
+    condition: "rls_coverage < 1.0"
+    action: "Bloquear deploy — RLS ausente em tabelas user-facing"
+  - id: DB_QG_002
+    condition: "staging_tested < 1.0"
+    action: "Bloquear deploy — migração não testada em staging"
+  - id: DB_QG_003
+    condition: "kiss_gate < 1.0"
+    action: "Bloquear schema design — validação KISS incompleta"
+  - id: DB_QG_004
+    condition: "migration_integrity < 1.0"
+    action: "Bloquear commit — corrupção detectada na migração"
+  - id: DB_QG_005
+    condition: "rollback_readiness < 1.0"
+    action: "Bloquear deploy — backup ou rollback script ausente"

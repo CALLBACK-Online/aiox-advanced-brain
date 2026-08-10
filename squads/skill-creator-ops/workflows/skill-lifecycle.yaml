@@ -1,0 +1,155 @@
+## Skill Lifecycle Pipeline
+## Orquestra o ciclo completo: INIT → DEVELOP → VALIDATE → TEST → PACKAGE
+
+name: skill-lifecycle
+version: "2.0.0"
+description: "Main pipeline: INIT → DEVELOP → VALIDATE (schema) → PROMPT_QUALITY (4.7 calibration) → TEST → PACKAGE → REGISTER. Migration and retirement are separate flows invoked on demand."
+owner_squad: skill-creator-ops
+orchestrator: skill-ops-chief
+
+phases:
+  - id: init
+    name: "Scaffold"
+    agent: skill-ops-chief
+    task: tasks/init-skill.md
+    description: "Criar estrutura inicial da skill com SKILL.md e dirs padrão"
+    inputs:
+      - skill_name  # kebab-case
+      - owner_squad
+      - sinkra_tier  # Tier1 | Tier2 | Tier3
+    outputs:
+      - skill_path  # .claude/skills/{skill_name}/
+    veto_conditions:
+      - "Skill com mesmo nome já existe em skill-registry.yaml"
+      - "Nome não segue kebab-case"
+    checkpoint:
+      gate: "Estrutura criada e SKILL.md com frontmatter válido"
+      auto_advance: true
+
+  - id: develop
+    name: "Develop"
+    agent: null  # Executado pelo desenvolvedor (humano ou agent externo)
+    task: null  # Sem task fixa — desenvolvimento livre
+    description: "Implementar conteúdo da skill (SKILL.md body, scripts, references, assets)"
+    inputs:
+      - skill_path
+    outputs:
+      - skill_path  # com conteúdo implementado
+    veto_conditions:
+      - "SKILL.md body vazio (apenas frontmatter)"
+    checkpoint:
+      gate: "Desenvolvedor declara skill pronta para validação"
+      auto_advance: false  # requer sinal explícito
+
+  - id: validate
+    name: "Validate"
+    agent: skill-validator
+    task: tasks/validate-skill.md
+    description: "Validar skill contra 12-check schema (frontmatter, estrutura, registry)"
+    inputs:
+      - skill_path
+    outputs:
+      - validation_report  # templates/validation-report-tmpl.yaml
+    veto_conditions:
+      - "Score < 50% → FAIL estrutural, não avança"
+      - "Campo required ausente no frontmatter"
+    checkpoint:
+      gate: "Score >= 70% (PASS ou PASS_WITH_WARNINGS)"
+      auto_advance: true
+      on_fail: "Devolver para fase develop com relatório de findings"
+
+  - id: prompt_quality
+    name: "Prompt Quality (4.7 calibration)"
+    agent: skill-validator
+    task: tasks/validate-skill-prompt-quality.md
+    description: "Validate the skill's prompt against 4.7 patterns — description routing, severity calibration, scaffolding density, canonical pattern adoption"
+    inputs:
+      - skill_path
+      - mode           # advisory | blocking (default advisory in Sprint 1)
+      - threshold      # minimum weighted score to pass in blocking mode (default 80)
+    outputs:
+      - prompt_quality_report   # appended to validation_report under prompt_quality section
+    veto_conditions:
+      - "skill_path does not exist"
+      - "/prompt-47-migrator slash skill not discoverable"
+    checkpoint:
+      gate: "mode=advisory: always advance (report metrics only) | mode=blocking: weighted score >= threshold"
+      auto_advance: true
+      on_fail: "Return to develop with prompt-quality findings and suggested patterns from anthropic-patterns.yaml"
+
+  - id: test
+    name: "Test"
+    agent: skill-tester
+    task: tasks/test-skill.md
+    description: "Testar skill em sandbox isolado (smoke → functional → integration → regression)"
+    inputs:
+      - skill_path
+      - validation_report
+    outputs:
+      - test_result  # templates/test-result-tmpl.yaml
+    veto_conditions:
+      - "Smoke tests falham → não avança para functional"
+      - "Skill não executa em sandbox isolado"
+    checkpoint:
+      gate: "Todos smoke tests passam + score >= 60%"
+      auto_advance: true
+      on_fail: "Devolver para fase develop com test results"
+
+  - id: package
+    name: "Package"
+    agent: skill-ops-chief
+    task: tasks/package-skill.md
+    description: "Empacotar skill validada em .zip para distribuição"
+    inputs:
+      - skill_path
+      - validation_report
+      - test_result
+    outputs:
+      - package_path  # dist/{skill-name}.zip
+    veto_conditions:
+      - "Validation score < 70%"
+      - "Test score < 60%"
+    checkpoint:
+      gate: "Package gerado com manifest válido"
+      auto_advance: true
+
+flow_direction: unidirectional  # Never back — fail returns to develop
+max_iterations: 3  # develop → validate → prompt_quality → test can cycle up to 3x
+
+# Auxiliary flows (invoked on demand, not part of the default pipeline)
+auxiliary_flows:
+  - id: migrate-to-47
+    description: "Migrate an existing skill's prompt content to 4.7 conventions"
+    task: tasks/migrate-skill-to-47.md
+    agent: skill-ops-chief
+    trigger: manual
+    preview_first: true
+    notes: "Wraps /prompt-47-migrator with approval gate. Never mutates source without explicit yes."
+
+  - id: deprecate
+    description: "Transition a skill from active to deprecated state"
+    task: tasks/retire-skill.md
+    action: deprecate
+    agent: skill-ops-chief
+    trigger: manual
+    requires_inputs: [skill_name, migration_target]
+
+  - id: retire
+    description: "Transition a skill from deprecated to retired state (archive + remove)"
+    task: tasks/retire-skill.md
+    action: retire
+    agent: skill-ops-chief
+    trigger: manual
+    requires_inputs: [skill_name, migration_story_ref]
+    gates:
+      - "Skill is currently deprecated"
+      - "Zero invocations in last 90d (or force: true with @architect signoff)"
+
+  - id: lifecycle-audit
+    description: "Monthly audit to surface deprecation / retirement candidates"
+    task: tasks/audit-registry.md
+    agent: skill-ops-chief
+    trigger: scheduled
+    cadence: monthly
+    produces:
+      - outputs/skill-creator-ops/lifecycle-audit-{timestamp}.md

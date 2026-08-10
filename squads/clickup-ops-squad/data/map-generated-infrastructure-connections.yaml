@@ -1,0 +1,447 @@
+metadata:
+  phase: 7
+  process_slug: clickup-ops-squad
+  process_name: clickup-ops-squad
+  pipeline_mode: brownfield
+  generated_by: infrastructure-mapper
+  generated_at: '2026-03-28T10:57:16-03:00'
+  version: 1.0.0
+  expected_output: infrastructure_connections.yaml
+  source_registry:
+    requested_service_catalog: squads/infra-ops-squad/data/service-catalog.yaml
+    requested_service_catalog_status: missing_in_repo
+    authoritative_registry_used: squads/sinkra-squad/data/infrastructure-map.yaml
+    notes:
+    - O caminho solicitado pela task não existe neste checkout; usei o registry brownfield
+      disponível.
+infrastructure:
+  clickup:
+    resources:
+    - resource_name: Mission materialization pipeline
+      components:
+      - services/clickup/materialize-mission.js
+      - services/clickup/preflight.js
+      - services/clickup/validation-gate.js
+      task_ids:
+      - atm_ingest_handoff
+      - atm_validate_contract
+      - atm_build_preflight
+      - atm_authorize_execution
+      status: existing
+      justification: Já implementa o fluxo de contrato, pré-flight e gate humano sem
+        criar novas entidades.
+    - resource_name: Workspace topology provisioning
+      components:
+      - services/clickup/structures.js
+      - services/clickup/custom-fields.js
+      - squads/sinkra-squad/data/clickup-tokenization.yaml
+      task_ids:
+      - atm_resolve_space
+      - atm_create_folder
+      - atm_provision_lists
+      - atm_provision_fields
+      status: existing
+      justification: Space, Folder, Lists e Tokens já são suportados pela API e pela
+        tokenização existente.
+    - resource_name: Graph materialization
+      components:
+      - services/clickup/tasks.js
+      - services/clickup/checklists.js
+      - services/clickup/dependencies.js
+      task_ids:
+      - atm_create_dag_tasks
+      - atm_enrich_task_metadata
+      - atm_create_checklists
+      - atm_bind_dependencies
+      - atm_create_gate_tasks
+      - atm_attach_gate_criteria
+      status: existing
+      justification: O grafo executável já é materializado por APIs e helpers dedicados.
+    - resource_name: Runtime governance views
+      components:
+      - services/clickup/views.js
+      - services/google-workspace/monitoring/health-dashboard.js
+      task_ids:
+      - atm_create_execution_views
+      - atm_create_health_view
+      status: existing
+      justification: Views de execução e health view já têm suporte nas camadas existentes.
+    - resource_name: Automation runner
+      components:
+      - services/clickup/playwright/create-automation.js
+      task_ids:
+      - atm_activate_automations
+      - atm_activate_circuit_breaker
+      status: existing
+      justification: ClickUp automations são UI-only; o runner Playwright já cobre
+        o caminho oficial.
+    - resource_name: Sync command and preflight
+      components:
+      - services/clickup/sync-command.js
+      - services/clickup/preflight.js
+      task_ids:
+      - atm_sync_upstream_registry
+      status: existing_with_gap
+      justification: O sync CLI já existe; o componente faltante é o endpoint versionado
+        de writeback upstream.
+    - resource_name: Execution report publication
+      components:
+      - services/google-workspace/governance/audit-trail.js
+      - services/google-drive/docs.js
+      - services/google-drive/files.js
+      task_ids:
+      - atm_emit_execution_log
+      - atm_publish_materialization_report
+      status: existing
+      justification: Há adapter de audit trail e APIs de Docs/Drive para publicação
+        do relatório em formato Markdown.
+  supabase:
+    tables:
+    - table_name: public.journey_logs
+      components:
+      - services/journey-log/supabase-journey-log.ts
+      task_ids:
+      - atm_assemble_registry
+      - atm_emit_execution_log
+      status: existing
+      justification: Rastro append-only já existe e atende o histórico operacional
+        da fase 7.
+    - table_name: task_sync
+      components:
+      - services/clickup/sync-command.js
+      - services/clickup/preflight.js
+      task_ids:
+      - atm_sync_upstream_registry
+      status: gap_doc
+      justification: O runtime de sync o usa, mas a tabela não está declarada no registry
+        brownfield consultado.
+    - table_name: projects / creators / proposals
+      components:
+      - squads/sinkra-squad/data/infrastructure-map.yaml
+      task_ids: []
+      status: existing_supporting
+      justification: São tabelas já registradas para o ecossistema ClickUp-Supabase,
+        mas não são novas criações da fase 7.
+    functions:
+    - function_name: registry_store_upstream
+      task_ids:
+      - atm_sync_upstream_registry
+      status: new
+      justification: Não foi encontrado um endpoint versionado existente para publicar
+        materialization_registry upstream.
+    rls_policies:
+    - policy_name: journey_logs_append_only
+      task_ids:
+      - atm_emit_execution_log
+      status: existing
+      justification: A imutabilidade do rastro já está implícita no serviço de journey
+        log.
+  n8n:
+    workflows:
+    - workflow_name: N8N workflow inventory
+      task_ids:
+      - atm_activate_automations
+      - atm_activate_circuit_breaker
+      status: gap
+      spec_needed:
+        trigger: Export do inventário via API ou registro compartilhado
+        output: workflow_id, trigger, actions, error handlers, logging
+      justification: O registry confirma que o N8N existe, mas o inventário consultável
+        não está disponível neste checkout.
+  google_drive:
+    folders:
+    - folder_path: Drive root / project folders
+      task_ids:
+      - atm_publish_materialization_report
+      status: existing
+      justification: A árvore de pastas e o adapter já existem; a fase 7 apenas consome
+        esse suporte.
+    - folder_path: Drive folder taxonomy
+      task_ids:
+      - atm_publish_materialization_report
+      status: gap
+      justification: A taxonomia segue sem documentação formal, então não deve ser
+        inventada nesta fase.
+    docs:
+    - doc_pattern: Materialization report export
+      task_ids:
+      - atm_publish_materialization_report
+      status: existing
+      components:
+      - services/google-drive/docs.js
+      - services/google-drive/files.js
+  apis:
+  - api_name: ClickUp REST API
+    task_ids:
+    - atm_resolve_space
+    - atm_create_folder
+    - atm_provision_lists
+    - atm_provision_fields
+    - atm_create_dag_tasks
+    - atm_enrich_task_metadata
+    - atm_create_checklists
+    - atm_bind_dependencies
+    - atm_create_gate_tasks
+    - atm_attach_gate_criteria
+    - atm_create_execution_views
+    - atm_create_health_view
+    status: existing
+    components:
+    - services/clickup/structures.js
+    - services/clickup/tasks.js
+    - services/clickup/custom-fields.js
+    - services/clickup/checklists.js
+    - services/clickup/dependencies.js
+    - services/clickup/views.js
+  - api_name: Supabase JS / PostgREST
+    task_ids:
+    - atm_assemble_registry
+    - atm_sync_upstream_registry
+    - atm_emit_execution_log
+    status: existing
+    components:
+    - services/journey-log/supabase-journey-log.ts
+    - services/clickup/sync-command.js
+  - api_name: Google Drive / Docs API
+    task_ids:
+    - atm_publish_materialization_report
+    status: existing
+    components:
+    - services/google-drive/docs.js
+    - services/google-drive/files.js
+  - api_name: Google Workspace audit trail
+    task_ids:
+    - atm_emit_execution_log
+    - atm_publish_materialization_report
+    status: existing
+    components:
+    - services/google-workspace/governance/audit-trail.js
+    - services/google-workspace/monitoring/health-dashboard.js
+  other:
+  - resource_name: CLI-first orchestration
+    task_ids:
+    - atm_ingest_handoff
+    - atm_validate_contract
+    - atm_build_preflight
+    - atm_authorize_execution
+    - atm_sync_upstream_registry
+    status: existing
+    components:
+    - services/clickup/preflight.js
+    - services/clickup/sync-command.js
+    - services/clickup/validation-gate.js
+task_mappings:
+- task_id: atm_ingest_handoff
+  executor_type: Agent
+  infra_layer: agent
+  status: existing
+  model: Agent LLM estruturado
+  tools:
+  - services/clickup/materialize-mission.js
+  - services/google-workspace/governance/audit-trail.js
+  note: Normaliza o handoff, preserva versionamento e registra receipt_log.
+- task_id: atm_validate_contract
+  executor_type: Worker
+  infra_layer: automation
+  status: existing
+  automation_tool: services/clickup/materialize-mission.js
+  tools:
+  - services/clickup/materialize-mission.js
+  - services/clickup/preflight.js
+  note: Valida schema, referências do DAG e accountable antes de qualquer API call.
+- task_id: atm_build_preflight
+  executor_type: Agent
+  infra_layer: agent
+  status: existing
+  model: Agent LLM estruturado
+  tools:
+  - services/clickup/preflight.js
+  - services/clickup/validation-gate.js
+  note: Sintetiza riscos, gaps conhecidos e bundle de materialização.
+- task_id: atm_authorize_execution
+  executor_type: Human
+  infra_layer: human
+  status: existing
+  tools:
+  - services/clickup/validation-gate.js
+  note: Gate go/no-go permanece manual e auditável.
+- task_id: atm_resolve_space
+  executor_type: Worker
+  infra_layer: management
+  status: existing
+  automation_tool: services/clickup/structures.js
+  tools:
+  - services/clickup/structures.js
+  note: Resolve ou cria o Space Missions de forma idempotente.
+- task_id: atm_create_folder
+  executor_type: Worker
+  infra_layer: management
+  status: existing
+  automation_tool: services/clickup/structures.js
+  tools:
+  - services/clickup/structures.js
+  note: Cria a Folder da Mission com nomenclatura determinística.
+- task_id: atm_provision_lists
+  executor_type: Worker
+  infra_layer: management
+  status: existing
+  automation_tool: services/clickup/structures.js
+  tools:
+  - services/clickup/structures.js
+  note: Provisiona Mission Board e Gates com statuses padronizados.
+- task_id: atm_provision_fields
+  executor_type: Worker
+  infra_layer: management
+  status: existing
+  automation_tool: services/clickup/custom-fields.js
+  tools:
+  - services/clickup/custom-fields.js
+  - squads/sinkra-squad/data/clickup-tokenization.yaml
+  note: Resolve ou reutiliza Mission ID, Phase, Ponto A e Ponto B.
+- task_id: atm_create_dag_tasks
+  executor_type: Worker
+  infra_layer: management
+  status: existing
+  automation_tool: services/clickup/tasks.js
+  tools:
+  - services/clickup/tasks.js
+  note: Materializa cada node do DAG como task ClickUp.
+- task_id: atm_enrich_task_metadata
+  executor_type: Worker
+  infra_layer: management
+  status: existing
+  automation_tool: services/clickup/custom-fields.js
+  tools:
+  - services/clickup/custom-fields.js
+  - services/clickup/materialize-mission.js
+  note: Aplica metadata SINKRA e bindings estruturais.
+- task_id: atm_create_checklists
+  executor_type: Worker
+  infra_layer: management
+  status: existing
+  automation_tool: services/clickup/checklists.js
+  tools:
+  - services/clickup/checklists.js
+  note: Transforma tokens declarados em checklist executável.
+- task_id: atm_bind_dependencies
+  executor_type: Worker
+  infra_layer: management
+  status: existing
+  automation_tool: services/clickup/dependencies.js
+  tools:
+  - services/clickup/dependencies.js
+  note: Aplica waiting_on nativo do ClickUp a partir do DAG.
+- task_id: atm_create_gate_tasks
+  executor_type: Worker
+  infra_layer: management
+  status: existing
+  automation_tool: services/clickup/tasks.js
+  tools:
+  - services/clickup/tasks.js
+  note: Cria gate tasks auditáveis na lista Gates.
+- task_id: atm_attach_gate_criteria
+  executor_type: Worker
+  infra_layer: management
+  status: existing
+  automation_tool: services/clickup/checklists.js
+  tools:
+  - services/clickup/checklists.js
+  - services/clickup/custom-fields.js
+  note: Anexa critérios de aprovação, min_score e transição de fase.
+- task_id: atm_activate_automations
+  executor_type: Worker
+  infra_layer: automation
+  status: existing
+  automation_tool: services/clickup/playwright/create-automation.js
+  tools:
+  - services/clickup/playwright/create-automation.js
+  note: Ativa automações críticas via Playwright porque ClickUp não expõe API para
+    isso.
+- task_id: atm_activate_circuit_breaker
+  executor_type: Worker
+  infra_layer: automation
+  status: existing
+  automation_tool: services/clickup/playwright/create-automation.js
+  tools:
+  - services/clickup/playwright/create-automation.js
+  note: Configura o circuit breaker com fallback humano assistido.
+- task_id: atm_create_execution_views
+  executor_type: Worker
+  infra_layer: management
+  status: existing
+  automation_tool: services/clickup/views.js
+  tools:
+  - services/clickup/views.js
+  note: Cria ou reaproveita DAG View e Board View.
+- task_id: atm_create_health_view
+  executor_type: Worker
+  infra_layer: management
+  status: existing
+  automation_tool: services/clickup/views.js
+  tools:
+  - services/clickup/views.js
+  - services/google-workspace/monitoring/health-dashboard.js
+  note: Cria a health view ou registra modo degradado.
+- task_id: atm_assemble_registry
+  executor_type: Worker
+  infra_layer: database
+  status: existing
+  automation_tool: services/journey-log/supabase-journey-log.ts
+  tools:
+  - services/clickup/materialize-mission.js
+  - services/journey-log/supabase-journey-log.ts
+  note: Consolida ids, contagens, gates e views em registry serializável.
+- task_id: atm_sync_upstream_registry
+  executor_type: Worker
+  infra_layer: integration
+  status: existing_with_gap
+  automation_tool: services/clickup/sync-command.js
+  tools:
+  - services/clickup/sync-command.js
+  - services/clickup/preflight.js
+  gap: registry_store_upstream endpoint não formalizado
+  note: O sync CLI existe; falta apenas o writeback versionado upstream.
+- task_id: atm_emit_execution_log
+  executor_type: Worker
+  infra_layer: database
+  status: existing
+  automation_tool: services/journey-log/supabase-journey-log.ts
+  tools:
+  - services/journey-log/supabase-journey-log.ts
+  - services/google-workspace/governance/audit-trail.js
+  note: Emite o log estruturado e mantém o rastro de execução auditável.
+- task_id: atm_publish_materialization_report
+  executor_type: Agent
+  infra_layer: integration
+  status: existing
+  model: Agent LLM estruturado
+  tools:
+  - services/google-workspace/governance/audit-trail.js
+  - services/google-drive/docs.js
+  - services/google-drive/files.js
+  note: Publica o report final em Markdown e, se necessário, em Google Drive.
+summary:
+  total_tasks_mapped: 22
+  total_existing_resources_reused: 22
+  total_new_components_proposed: 1
+  total_documentation_gaps: 3
+  reuse_ratio: 0.9565
+  note: O ratio considera componentes, não apenas tasks. Os gaps de documentação não
+    contam como novo recurso.
+runtime_connections:
+- connection: clickup_rest_materialization
+  integration: clickup
+  endpoint: services/clickup/materialize-mission.js
+  service_ref: services/clickup/materialize-mission.js
+- connection: clickup_topology_bootstrap
+  integration: clickup
+  endpoint: services/clickup/structures.js
+  service_ref: services/clickup/structures.js
+- connection: registry_sync_upstream
+  integration: supabase
+  endpoint: services/clickup/sync-command.js
+  service_ref: services/clickup/sync-command.js
+- connection: materialization_report_publication
+  integration: google_drive
+  endpoint: services/google-drive/docs.js
+  service_ref: services/google-drive/docs.js

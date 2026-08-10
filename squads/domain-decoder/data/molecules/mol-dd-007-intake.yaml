@@ -1,0 +1,54 @@
+molecule:
+  molecule_id: "MOL-DD-007"
+  name: "Intake"
+  mode: "ENTENDER"
+  pattern: "sequential"
+  phase: 0
+  reusable: false
+  used_in_variants: ["standardization"]
+  agents_primary: ["decoder-chief", "eric-evans"]
+  tokens_molecule:
+    - "TK-DD-MOD-001"  # ENTENDER mode — consistent with extraction molecules pattern
+    - "TK-DD-ACC-001"
+    - "TK-DD-PRI-001"
+
+atoms:
+  - atom_id: "ATM-DD-035"
+    name: "Intake: Assess Existing Rules Catalog"
+    executor_type: Agent
+    executor_id: decoder-chief
+    mode: ENTENDER
+    inputs:
+      - { name: "legacy_rule_catalog", type: "document", source: "external" }
+    outputs:
+      - { name: "catalog_assessment", type: "yaml", artifact: true }
+    tokens_bound: []
+    completion_criteria:
+      - "Existing catalog evaluated before reprocessing"
+
+  - atom_id: "ATM-DD-036"
+    name: "Intake: Map Existing to SBVR Structure"
+    executor_type: Agent
+    executor_id: ronald-ross
+    mode: ENTENDER
+    inputs:
+      - { name: "legacy_rule_catalog", type: "document", source: "external" }
+    outputs:
+      - { name: "sbvr_mapping_report", type: "yaml", artifact: true }
+    tokens_bound: []
+    completion_criteria:
+      - "Legacy rules mapped against SBVR standards"
+
+  - atom_id: "ATM-DD-037"
+    name: "Intake: Identify Gaps vs New Pipeline"
+    executor_type: Agent
+    executor_id: decoder-chief
+    mode: ENTENDER
+    inputs:
+      - { name: "catalog_assessment", type: "yaml", source: "ATM-DD-035" }
+      - { name: "sbvr_mapping_report", type: "yaml", source: "ATM-DD-036" }
+    outputs:
+      - { name: "pipeline_gaps", type: "yaml", artifact: true }
+    tokens_bound: []
+    completion_criteria:
+      - "Phases identified for re-execution vs reuse"

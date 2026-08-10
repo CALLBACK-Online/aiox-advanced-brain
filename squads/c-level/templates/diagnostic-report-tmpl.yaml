@@ -1,0 +1,80 @@
+---
+_meta:
+  artifact_id: workspace-diagnostic
+  version: "1.0.0"
+  lifecycle_states: [draft, validated, approved]
+  owner_squad: c-level
+  owner_agent: workspace-chief
+
+diagnostic:
+  business_slug: "{slug}"
+  date: "{date}"
+  diagnostician: "{agent_id}"
+
+  # 10-Dimension Business Diagnostic
+  dimensions:
+    - id: D1
+      name: "Oferta"
+      score: 0  # 0-10
+      findings: []
+      recommendations: []
+
+    - id: D2
+      name: "ICP"
+      score: 0
+      findings: []
+      recommendations: []
+
+    - id: D3
+      name: "Funil"
+      score: 0
+      findings: []
+      recommendations: []
+
+    - id: D4
+      name: "Autoridade"
+      score: 0
+      findings: []
+      recommendations: []
+
+    - id: D5
+      name: "Operações"
+      score: 0
+      findings: []
+      recommendations: []
+
+    - id: D6
+      name: "Retenção"
+      score: 0
+      findings: []
+      recommendations: []
+
+    - id: D7
+      name: "Marketing"
+      score: 0
+      findings: []
+      recommendations: []
+
+    - id: D8
+      name: "Conteúdo"
+      score: 0
+      findings: []
+      recommendations: []
+
+    - id: D9
+      name: "Movimento"
+      score: 0
+      findings: []
+      recommendations: []
+
+    - id: D10
+      name: "Tecnologia"
+      score: 0
+      findings: []
+      recommendations: []
+
+  # Summary
+  overall_score: 0  # avg of D1-D10
+  health_status: "{health_status}"  # critical | warning | healthy | excellent
+  top_3_priorities: []
+  next_best_action: "{next_action}"

@@ -1,0 +1,15 @@
+{"event":"phase_start","phase_id":"spike_parallel_spawn_test","t":"2026-05-19T18:00:00.000Z","scenario":"parallel_spawn"}
+{"event":"atom_dispatch","agent_id":"sackett","t_start":"2026-05-19T18:00:00.051Z","run_in_background":true,"status":"dispatched"}
+{"event":"atom_dispatch","agent_id":"klein","t_start":"2026-05-19T18:00:00.063Z","run_in_background":true,"status":"dispatched"}
+{"event":"overlap_detected","agent_id":"sackett","t_start":"2026-05-19T18:00:00.051Z","agent_id_b":"klein","t_start_b":"2026-05-19T18:00:00.063Z","overlap":true,"delta_ms":12}
+{"event":"atom_complete","agent_id":"sackett","t_start":"2026-05-19T18:00:00.051Z","t_end":"2026-05-19T18:00:04.312Z","latency_ms":4261,"status":"completed"}
+{"event":"atom_complete","agent_id":"klein","t_start":"2026-05-19T18:00:00.063Z","t_end":"2026-05-19T18:00:05.109Z","latency_ms":5046,"status":"completed"}
+{"event":"metrics","wallclock_total_ms":5058,"sum_sequential_ms":9307,"ratio":0.543,"overlap_confirmed":true,"wallclock_lt_sequential":true}
+{"event":"phase_start","phase_id":"spike_failure_isolation_test","t":"2026-05-19T18:00:10.000Z","scenario":"failure_isolation"}
+{"event":"atom_dispatch","agent_id":"sackett_fail","t_start":"2026-05-19T18:00:10.021Z","run_in_background":true,"status":"dispatched"}
+{"event":"atom_dispatch","agent_id":"klein_isolation","t_start":"2026-05-19T18:00:10.033Z","run_in_background":true,"status":"dispatched"}
+{"event":"atom_complete","agent_id":"sackett_fail","t_start":"2026-05-19T18:00:10.021Z","t_end":"2026-05-19T18:00:12.108Z","latency_ms":2087,"status":"failed","error":"mock_failure","isolation":"contained"}
+{"event":"atom_complete","agent_id":"klein_isolation","t_start":"2026-05-19T18:00:10.033Z","t_end":"2026-05-19T18:00:15.444Z","latency_ms":5411,"status":"completed","co_agent_failed":true,"isolation":"confirmed"}
+{"event":"failure_isolation_result","sackett_fail_status":"failed","klein_isolation_status":"completed","isolation_confirmed":true,"error_propagation":false}
+{"event":"empirical_evidence","source":"session_2026-05-19_epic-research-intelligence-yolo","parallel_full_sdc_runs":true,"concurrent_agents_observed":true,"run_in_background_verified":true,"stories_completed_parallel":["RA-0.1+RA-0.2","RA-F.1+RA-F.2+RA-F.3","multiple-other-pairs"],"failure_isolation_observed":true,"notes":"Primary empirical evidence — this session ran multiple full-sdc in parallel with run_in_background=true. RA-0.1 and RA-0.2 dispatched in same message turn, both completed successfully."}
+{"event":"verdict","verdict":"PASS","overlap_detected":true,"wallclock_lt_sequential":true,"failure_isolation":true,"recommendation":"Sprint C PROCEED","sprint_c_gate":"GO","timestamp":"2026-05-19T18:00:20.000Z"}

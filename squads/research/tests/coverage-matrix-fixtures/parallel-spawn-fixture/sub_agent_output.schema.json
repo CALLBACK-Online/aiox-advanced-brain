@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ParallelSubAgentOutput",
+  "description": "Canonical envelope each parallel sub-agent MUST emit (Story RA-F.2 AC-3). Consolidation script merges N of these into matrices.yaml.",
+  "type": "object",
+  "required": [
+    "candidate_id",
+    "agent_id",
+    "started_at",
+    "completed_at",
+    "schema_version",
+    "dimensions"
+  ],
+  "properties": {
+    "candidate_id": {
+      "type": "string",
+      "description": "Stable key matching matrices.yaml#rows[].cells.{candidate_id}"
+    },
+    "agent_id": {
+      "type": "string",
+      "description": "Sub-agent identifier (e.g. general-purpose-1, general-purpose-2)"
+    },
+    "started_at": { "type": "string", "format": "date-time" },
+    "completed_at": { "type": "string", "format": "date-time" },
+    "schema_version": { "const": "sub-agent-output.v1" },
+    "dimensions": {
+      "type": "array",
+      "description": "One entry per dimension; status MUST be from 4-level enum.",
+      "items": {
+        "type": "object",
+        "required": ["dimension_id", "status", "confidence"],
+        "properties": {
+          "dimension_id": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["confirmed", "partial", "uncertain", "not_present"]
+          },
+          "score": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 2.0,
+            "description": "Maps from status: confirmed=2.0, partial=1.0, uncertain=0.5, not_present=0.0"
+          },
+          "confidence": {
+            "type": "string",
+            "enum": ["high", "medium", "low"]
+          },
+          "evidence_url": {
+            "type": "string",
+            "description": "Optional citation; uncertain status SHOULD include this"
+          }
+        }
+      },
+      "minItems": 1
+    }
+  }
+}

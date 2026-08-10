@@ -1,0 +1,19 @@
+rubric:
+  name: rule-precision
+  threshold: 0.7
+  weight: 2
+  max_tokens: 150
+
+prompt: |
+  You are evaluating the output of an AI pipeline phase.
+
+  Task: {{task_description}}
+  Expected fields: {{expected_fields}}
+
+  Output (first 2000 chars):
+  {{output_preview}}
+
+  Score 0-100 on RULE PRECISION: Are extracted rules accurate, unambiguous,
+  and traceable to the source material? Check that rules follow Ross classification
+  (structural, operative, decision) and use precise domain vocabulary.
+  Respond with JSON only: {"score": N, "reason": "one line"}

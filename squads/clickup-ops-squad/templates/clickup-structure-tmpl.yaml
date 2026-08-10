@@ -1,0 +1,17 @@
+template:
+  artifact_id: clickup-mission-structure
+  version: 1.0.0
+  lifecycle: [draft, validated, approved]
+  schema:
+    mission_id: string
+    mission_name: string
+    clickup_space_id: string
+    clickup_folder_id: string
+    mission_board_id: string
+    gates_list_id: string
+    execution_views: list
+    health_view: string
+    status: string
+  publication:
+    producer_task: atm_publish_materialization_report
+    validation_gate: data/quality-gates.yaml

@@ -1,0 +1,67 @@
+# Data Squad Pipeline Execution Log v1.0
+# Log canonico de execucoes de workflows (MAND-010 observabilidade e2e).
+# Entries sao appended per execucao; nao editar manualmente entries existentes.
+
+_dependents_declaration:
+  registry_id: data-pipeline-execution-log
+  dag_role: leaf
+  upstream:
+    - registry: "squads/data/data/process-registry.yaml"
+    - registry: "squads/data/data/governance-rules-registry.yaml"
+
+schema_version: "1.0"
+squad: data
+description: "Log e-2-e de execucoes de workflows data squad. Populado pelo runner."
+
+executions: []
+
+schema_reference:
+  fields_per_execution:
+    - execution_id
+    - workflow_id
+    - started_at
+    - completed_at
+    - status  # success|failure|partial
+    - meta_axiomas_overall  # number 0-10
+    - phases_executed  # count
+    - checkpoints_passed  # count
+    - checkpoints_failed  # count
+    - artifacts_produced  # list
+  optional_fields:
+    - triggered_by  # agent or human
+    - business_slug
+    - mode  # ENTENDER|RESOLVER|EXPLORAR|VALIDAR
+    - deviations_raised  # list of DEV-YYYY-NNN
+    - tier_0_agents_involved  # list (for golden-rule audit)
+    - duration_seconds
+
+example_entry:
+  execution_id: EXEC-DATA-2026-0001
+  workflow_id: PROC-DATA-006
+  started_at: "2026-04-15T14:00:00-03:00"
+  completed_at: "2026-04-15T16:30:00-03:00"
+  status: success
+  meta_axiomas_overall: 8.2
+  phases_executed: 4
+  checkpoints_passed: 4
+  checkpoints_failed: 0
+  artifacts_produced:
+    - workspace/businesses/aiox/L1-strategy/analytics/customer-360-schema.yaml
+    - workspace/businesses/aiox/L1-strategy/analytics/clv-model.yaml
+    - workspace/businesses/aiox/L1-strategy/analytics/rfm-segments.yaml
+    - outputs/data/aiox/customer-360-dashboard.yaml
+  triggered_by: "@data-chief"
+  business_slug: aiox
+  mode: RESOLVER
+  deviations_raised: []
+  tier_0_agents_involved:
+    - peter-fader
+  duration_seconds: 9000
+
+meta:
+  total_executions: 0
+  success: 0
+  failure: 0
+  partial: 0
+  last_updated: "2026-04-15"
+  owner: data-chief

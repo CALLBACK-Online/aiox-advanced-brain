@@ -1,0 +1,106 @@
+{
+  "$id": "sinkra://slide-creator/wireframes/user-story-map.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "The story depends on where users stall, churn, or lose confidence.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "activity_1": {
+      "type": "string"
+    },
+    "activity_2": {
+      "type": "string"
+    },
+    "activity_3": {
+      "type": "string"
+    },
+    "activity_4": {
+      "type": "string"
+    },
+    "activity_5": {
+      "type": "string"
+    },
+    "release_slice": {
+      "type": "string"
+    },
+    "story_1a": {
+      "type": "string"
+    },
+    "story_1b": {
+      "type": "string"
+    },
+    "story_1c": {
+      "type": "string"
+    },
+    "story_2a": {
+      "type": "string"
+    },
+    "story_2b": {
+      "type": "string"
+    },
+    "story_2c": {
+      "type": "string"
+    },
+    "story_3a": {
+      "type": "string"
+    },
+    "story_3b": {
+      "type": "string"
+    },
+    "story_3c": {
+      "type": "string"
+    },
+    "story_4a": {
+      "type": "string"
+    },
+    "story_4b": {
+      "type": "string"
+    },
+    "story_4c": {
+      "type": "string"
+    },
+    "story_5a": {
+      "type": "string"
+    },
+    "story_5b": {
+      "type": "string"
+    },
+    "story_5c": {
+      "type": "string"
+    }
+  },
+  "title": "user-story-map",
+  "type": "object",
+  "x-sinkra": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "customer_journey_gap",
+    "slot_count": 22,
+    "warnings": [
+      "action_title",
+      "activity_1",
+      "story_1a",
+      "story_1b",
+      "story_1c",
+      "activity_2",
+      "story_2a",
+      "story_2b",
+      "story_2c",
+      "activity_3",
+      "story_3a",
+      "story_3b",
+      "story_3c",
+      "activity_4",
+      "story_4a",
+      "story_4b",
+      "story_4c",
+      "activity_5",
+      "story_5a",
+      "story_5b",
+      "story_5c",
+      "release_slice"
+    ],
+    "wireframe_ref": "templates/wireframes/user-story-map.html"
+  }
+}

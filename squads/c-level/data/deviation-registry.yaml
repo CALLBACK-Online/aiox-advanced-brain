@@ -1,0 +1,30 @@
+version: "1.0.0"
+deviations:
+  - id: DEV-2026-001
+    phase: phase_3_mapping
+    checkpoint: PV_BS_001
+    score_achieved: 67
+    threshold_required: 80
+    justification: >
+      Mapping is comprehensive (5 processes, 10 agents, 37 tasks, 3 organisms decomposed).
+      The 67 score reflects the squad's existing structural gaps (stale squad-io.yaml missing
+      3 agents + 23 tasks, 105 dialect violations, unbound token layer) — NOT mapping inaccuracy.
+      These gaps are the exact targets of the upgrade pipeline (Phases 4-7). Blocking here would
+      prevent the fix. Approved to proceed with upgrade execution.
+    approved_by: Human
+    date: "2026-04-13"
+
+  - id: DEV-2026-002
+    phase: composition_mapping
+    checkpoint: D2_compositional_hierarchy
+    score_achieved: 83
+    threshold_required: 85
+    justification: >
+      3 tasks (etl-deep-pass, diagnose-business, elicit-culture) declare atomic_layer=Molecule
+      but reside in tasks/ directory which composition_mapping maps to atom. This is intentional:
+      these tasks orchestrate multiple sub-tasks (Molecule semantics) but share the tasks/
+      filesystem location for simplicity. Creating a separate molecules/ directory would
+      fragment the task surface without functional benefit. Documented in composition_mapping
+      under molecule.co_located_in_tasks.
+    approved_by: Human
+    date: "2026-04-13"

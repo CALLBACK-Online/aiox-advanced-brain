@@ -1,0 +1,118 @@
+workflow:
+  id: optimize-community-workflow
+  name: "Otimizar Comunidade"
+  version: "1.0"
+  primary_agent: david-spinks
+  tier_flow: [1, 1, 1, 2]
+  phases: 4
+  estimated_duration: "2-3 weeks"
+  agents_involved:
+    - david-spinks
+    - nick-mehta
+    - wes-kao
+    - avinash-kaushik
+  state_machine:
+    states: [preflight, diagnosis, programs, complete]
+    transitions:
+      - trigger: preflight_complete
+        source: preflight
+        dest: diagnosis
+      - trigger: diagnosis_complete
+        source: diagnosis
+        dest: programs
+      - trigger: community_plan_ready
+        source: programs
+        dest: complete
+  task_ref:
+    primary:
+      - measure-community
+    supporting:
+      - design-health-score
+      - design-learning-outcomes
+      - create-dashboard
+  views_required:
+    - v_community_stats
+    - v_community_members
+    - v_community_ranking
+    - v_customer_health_composite
+  templates_used:
+    - community-health-tmpl.yaml
+    - executive-report-tmpl.yaml
+  checklists_used:
+    - community-health-checklist.md
+    - so-what-checklist.md
+  deliverables:
+    - SPACES assessment
+    - Community health score
+    - Engagement programs
+    - ROI metrics
+    - Action plan
+
+workspace_execution_contract:
+  preflight:
+    - "*workspace-preflight (executa bootstrap-data-workspace.sh + validate-data-essentials.sh)"
+    - "*workspace-context {slug}"
+    - "Confirmar templates necessários em workspace/_templates/analytics/"
+  output_routing:
+    canonical:
+      - "workspace/businesses/{slug}/analytics/community-health.yaml"
+      - "workspace/businesses/{slug}/analytics/executive-report.yaml"
+    custom:
+      - "docs/data/{slug}/optimize-community-{date}.md"
+  hard_rules:
+    - "Proibido gravar em workspace/businesses/{slug}/analytics/ sem template correspondente em workspace/_templates/analytics/."
+    - "Relatórios em docs/data/{slug}/ são complementares e não substituem artefatos canônicos."
+
+spaces_assessment_template:
+  date: "YYYY-MM-DD"
+  assessor: "@david-spinks"
+  dimensions:
+    support: { score: null, evidence: [], gap: "", action: "" }
+    product: { score: null, evidence: [], gap: "", action: "" }
+    acquisition: { score: null, evidence: [], gap: "", action: "" }
+    contribution: { score: null, evidence: [], gap: "", action: "" }
+    engagement: { score: null, evidence: [], gap: "", action: "" }
+    success: { score: null, evidence: [], gap: "", action: "" }
+  total_score: null
+  priority_gaps: []
+
+notes: |
+  ## Objetivo
+  Diagnosticar saúde da comunidade e criar plano de otimização para aumentar engajamento, pertencimento e valor entregue aos membros.
+
+  > "Community is not about transactions - it's about transformation. Members should feel they belong to something bigger than themselves." — David Spinks, The Business of Belonging
+
+  ## Regra de Ouro
+  Nunca otimize comunidade sem responder:
+  1. Por que membros deveriam participar? (Proposta de valor)
+  2. Como medimos se a comunidade está saudável? (Métricas)
+  3. Que comportamentos queremos incentivar? (Programas)
+  4. Qual o ROI de investir em comunidade? (Negócio)
+
+  ## Fases
+  - FASE 1: DIAGNÓSTICO SPACES (David Spinks) - Tier 1
+    Avaliar 6 dimensões (Support, Product, Acquisition, Contribution, Engagement, Success) com scores /10, evidências e gaps.
+  - FASE 2: INTEGRAÇÃO COM HEALTH (Nick Mehta) - Tier 1
+    Correlacionar community engagement com Health Score, definir Community Health Score (Participation 30%, Contribution 25%, Response 20%, Event 15%, Referral 10%), alertas de community churn, playbooks por estágio.
+  - FASE 3: PROGRAMAS DE ENGAJAMENTO (Wes Kao) - Tier 1
+    Onboarding (first 7 days, buddy, quick wins), calendar de programação, gamification (badges, leaderboards, streaks), path de membro (Newcomer→Active→Contributor→Ambassador).
+  - FASE 4: ROI E REPORT (Avinash Kaushik) - Tier 2
+    Calcular ROI (support deflection, acquisition, retention, content, product), dashboard, So What Framework, OKRs (DAU/MAU >30%, NPS >50, 20% ativos).
+
+  ## Queries de Validação (SQL)
+  - Community stats (total, active 7d/30d, stickiness) em v_community_members
+  - Top contributors (v_community_ranking)
+  - Correlação community → health
+  - Event attendance trends (events table)
+
+  ## Referências
+  - David Spinks: "The Business of Belonging", SPACES Model
+  - Nick Mehta: Community as CS channel, Health Score integration
+  - Wes Kao: Cohort community design
+  - Avinash Kaushik: So What Framework, ROI measurement
+  - CMX: Community Industry Report
+  - Template: templates/community-health-tmpl.yaml
+  - Checklist: checklists/community-health-checklist.md
+
+  Data Intelligence Pack - Workflow v1.0
+  Primary Agent: @david-spinks | Secondary: @nick-mehta, @wes-kao, @avinash-kaushik

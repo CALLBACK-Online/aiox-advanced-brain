@@ -1,0 +1,70 @@
+schema_version: "research-matrices.v1"
+comparison_pattern: "multi_player"
+
+meta:
+  scoring_calibration:
+    type: hybrid
+    scale: "0-2"
+    baseline: "Status code helper canonical map (coverage_matrix_helper.py)"
+    calibrated_by: "@aiox-dev single-pass"
+    disclaimer: "Hybrid scores from 4-level enum; per-cell status maps to confirmed=2.0/partial=1.0/uncertain=0.5/not_present=0.0."
+    reproducibility: high
+
+weights:
+  agentic_planning: 0.30
+  tool_runtime: 0.25
+  multi_agent: 0.20
+  evidence_fidelity: 0.15
+  ux_control: 0.10
+
+dimensions:
+  - id: agentic_planning
+    label: "Agentic Planning & Control"
+  - id: tool_runtime
+    label: "Tool Runtime Integration"
+  - id: multi_agent
+    label: "Multi-Agent Orchestration"
+  - id: evidence_fidelity
+    label: "Evidence Fidelity"
+  - id: ux_control
+    label: "UX Operator Control"
+
+# Every cell carries `status` per AC-1 4-level enum.
+# Status values: confirmed | partial | uncertain | not_present
+# Helper maps to score (2.0/1.0/0.5/0.0) and symbol (✅/◐/?/—).
+rows:
+  - dimension: agentic_planning
+    cells:
+      claude_code: { status: confirmed, score: 2.0, symbol: "✅", confidence: high }
+      aider:       { status: partial,   score: 1.0, symbol: "◐", confidence: high }
+      cline:       { status: confirmed, score: 2.0, symbol: "✅", confidence: medium }
+      openhands:   { status: partial,   score: 1.0, symbol: "◐", confidence: medium }
+      cursor:      { status: uncertain, score: 0.5, symbol: "?", confidence: medium }
+  - dimension: tool_runtime
+    cells:
+      claude_code: { status: confirmed, score: 2.0, symbol: "✅", confidence: high }
+      aider:       { status: partial,   score: 1.0, symbol: "◐", confidence: high }
+      cline:       { status: confirmed, score: 2.0, symbol: "✅", confidence: high }
+      openhands:   { status: confirmed, score: 2.0, symbol: "✅", confidence: medium }
+      cursor:      { status: partial,   score: 1.0, symbol: "◐", confidence: medium }
+  - dimension: multi_agent
+    cells:
+      claude_code: { status: confirmed,   score: 2.0, symbol: "✅", confidence: high }
+      aider:       { status: not_present, score: 0.0, symbol: "—", confidence: high }
+      cline:       { status: uncertain,   score: 0.5, symbol: "?", confidence: medium }
+      openhands:   { status: partial,     score: 1.0, symbol: "◐", confidence: medium }
+      cursor:      { status: not_present, score: 0.0, symbol: "—", confidence: medium }
+  - dimension: evidence_fidelity
+    cells:
+      claude_code: { status: partial,   score: 1.0, symbol: "◐", confidence: medium }
+      aider:       { status: partial,   score: 1.0, symbol: "◐", confidence: medium }
+      cline:       { status: uncertain, score: 0.5, symbol: "?", confidence: medium }
+      openhands:   { status: partial,   score: 1.0, symbol: "◐", confidence: medium }
+      cursor:      { status: uncertain, score: 0.5, symbol: "?", confidence: medium }
+  - dimension: ux_control
+    cells:
+      claude_code: { status: confirmed, score: 2.0, symbol: "✅", confidence: high }
+      aider:       { status: partial,   score: 1.0, symbol: "◐", confidence: high }
+      cline:       { status: partial,   score: 1.0, symbol: "◐", confidence: high }
+      openhands:   { status: uncertain, score: 0.5, symbol: "?", confidence: medium }
+      cursor:      { status: partial,   score: 1.0, symbol: "◐", confidence: high }

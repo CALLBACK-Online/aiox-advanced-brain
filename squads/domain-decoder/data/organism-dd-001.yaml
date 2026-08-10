@@ -1,0 +1,85 @@
+organism:
+  id: ORG-DD-001
+  name: "Business Rule Extraction Pipeline"
+  version: "1.0.0"
+  squad: domain-decoder
+
+  molecules:
+    extraction: [MOL-DD-001, MOL-DD-002, MOL-DD-003, MOL-DD-004, MOL-DD-005, MOL-DD-006]
+    # Note: standardization skips MOL-DD-002 (Characterization) and MOL-DD-003 (Extraction).
+    # MOL-DD-004 (Modeling/DMN) is OPTIONAL in standardization (only if has_computational_rules).
+    # MOL-DD-007 (Intake) replaces MOL-DD-001 (Discovery) for standardization input handling.
+    standardization: [MOL-DD-007, MOL-DD-008, MOL-DD-005, MOL-DD-006]
+    standardization_optional: [MOL-DD-004]  # included only if has_computational_rules == true
+
+  state_machine:
+    states:
+      - INTAKE
+      - DISCOVERY
+      - CHARACTERIZATION
+      - EXTRACTION
+      - RESTRUCTURE
+      - FORMALIZE
+      - MODELING
+      - EXPRESSION
+      - VALIDATION
+      - DELIVERED
+      - BLOCKED
+      - SBVR_RETRY
+
+    initial: INTAKE
+    terminal: [DELIVERED, BLOCKED]
+
+    transitions:
+      - { from: INTAKE, to: DISCOVERY, condition: null }
+      - { from: DISCOVERY, to: CHARACTERIZATION, condition: "variant_mode == extraction" }
+      - { from: DISCOVERY, to: RESTRUCTURE, condition: "variant_mode == standardization" }
+      - { from: CHARACTERIZATION, to: EXTRACTION, condition: "gate GATE_1 PASS" }
+      - { from: EXTRACTION, to: MODELING, condition: "gate GATE_2 PASS" }
+      - { from: RESTRUCTURE, to: FORMALIZE, condition: "has_computational_rules == true" }
+      - { from: RESTRUCTURE, to: EXPRESSION, condition: "has_computational_rules == false" }
+      - { from: FORMALIZE, to: EXPRESSION, condition: "gate GATE_2b PASS" }
+      - { from: MODELING, to: EXPRESSION, condition: "gate GATE_3 PASS" }
+      - { from: MODELING, to: BLOCKED, condition: "contradiction irresolvable" }
+      - { from: EXPRESSION, to: VALIDATION, condition: "gate GATE_4 PASS" }
+      - { from: VALIDATION, to: DELIVERED, condition: "sbvr_score >= sbvr_score_min AND quality_score >= quality_score_min" }
+      - { from: VALIDATION, to: SBVR_RETRY, condition: "sbvr_score < sbvr_score_min AND retry_count < 2" }
+      - { from: SBVR_RETRY, to: EXPRESSION, condition: "retry_count < 2" }
+      - { from: SBVR_RETRY, to: BLOCKED, condition: "retry_count >= 2" }
+
+  phase_gates:
+    - id: GATE_0
+      between: [DISCOVERY, CHARACTERIZATION]
+      type: phase-gate-validator
+      script: squads/domain-decoder/scripts/phase-gate-validator.js
+      phase_dir: "outputs/decoded/{slug}/discovery/"
+
+    - id: GATE_1
+      between: [CHARACTERIZATION, EXTRACTION]
+      type: phase-gate-validator
+      script: squads/domain-decoder/scripts/phase-gate-validator.js
+      phase_dir: "outputs/decoded/{slug}/characterization/"
+
+    - id: GATE_2
+      between: [EXTRACTION, MODELING]
+      type: phase-gate-validator
+      script: squads/domain-decoder/scripts/phase-gate-validator.js
+      phase_dir: "outputs/decoded/{slug}/extraction/"
+
+    - id: GATE_2b
+      between: [FORMALIZE, EXPRESSION]
+      type: phase-gate-validator
+      script: squads/domain-decoder/scripts/phase-gate-validator.js
+      phase_dir: "outputs/decoded/{slug}/formalize/"
+
+    - id: GATE_3
+      between: [MODELING, EXPRESSION]
+      type: phase-gate-validator
+      script: squads/domain-decoder/scripts/phase-gate-validator.js
+      phase_dir: "outputs/decoded/{slug}/modeling/"
+
+    - id: GATE_4
+      between: [EXPRESSION, VALIDATION]
+      type: phase-gate-validator
+      script: squads/domain-decoder/scripts/phase-gate-validator.js
+      phase_dir: "outputs/decoded/{slug}/expression/"

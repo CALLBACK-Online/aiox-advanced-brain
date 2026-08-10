@@ -1,0 +1,200 @@
+# Data Squad Composition Rules v1.0
+# Regras de como atomos (tokens + skills) compoem molecules (tasks)
+# e como molecules compoem organisms (workflows).
+# Referencia: SINKRA-v3.md Capitulo 6 (Compositional Framework)
+
+_dependents_declaration:
+  registry_id: data-composition-rules
+  dag_role: internal
+  upstream:
+    - registry: "squads/data/data/token-registry.yaml"
+  dependents:
+    - "squads/data/data/process-registry.yaml"
+    - "squads/data/data/governance-rules-registry.yaml"
+
+version: "1.0.0"
+squad: data
+description: |
+  Regras compositivas para squad data. Define como tokens se agregam em skills,
+  skills em tasks (molecules) e tasks em workflows (organisms). Enforce meta-axiomas
+  (truth, completeness, coherence) em cada composicao.
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ATOMIC LAYERS
+# ─────────────────────────────────────────────────────────────────────────────
+
+atomic_layers:
+  Atom:
+    definition: "Unidade indivisivel — token parametrico ou skill singular"
+    examples:
+      - tokens (ver token-registry.yaml)
+      - skills canonicas (rfm-segmentation, cohort-analysis, health-scoring)
+    governance: "registry-enforced"
+
+  Molecule:
+    definition: "Task — combinacao de atomos que produz 1 output deterministico"
+    cardinality: "1 molecule = 1 responsavel_type + 1 criterio_conclusao"
+    examples:
+      - segment-rfm (tokens: min_cohort_size, segment_type)
+      - calculate-clv (tokens: cohort_period, clv_cac_ratio_min)
+      - predict-churn (tokens: churn_observation_window, churn_risk_max)
+
+  Organism:
+    definition: "Workflow — sequencia ordenada de molecules com checkpoints"
+    cardinality: "1 organism = 2+ molecules + state_machine + quality_gates"
+    examples:
+      - cohort-analysis-workflow (molecules: analyze-cohort -> segment-rfm -> create-dashboard)
+      - create-churn-system (molecules: predict-churn -> design-health-score -> create-dashboard)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# COMPOSITION MAPPING
+# ─────────────────────────────────────────────────────────────────────────────
+
+composition_mapping:
+  workflows_to_tasks:
+    cohort-analysis-workflow:
+      organism_type: diagnostic
+      molecules:
+        - load-workspace-context
+        - analyze-cohort
+        - segment-rfm
+        - create-dashboard
+      entry_mode: ENTENDER
+
+    cohorts-diagnostic:
+      organism_type: diagnostic
+      molecules:
+        - load-workspace-context
+        - analyze-cohort
+      entry_mode: ENTENDER
+
+    create-churn-system:
+      organism_type: system-build
+      molecules:
+        - design-health-score
+        - predict-churn
+        - create-dashboard
+      entry_mode: RESOLVER
+
+    fix-completion-rate:
+      organism_type: remediation
+      molecules:
+        - design-learning-outcomes
+        - run-growth-experiment
+        - create-dashboard
+      entry_mode: RESOLVER
+
+    implement-attribution:
+      organism_type: system-build
+      molecules:
+        - build-attribution
+        - create-dashboard
+      entry_mode: RESOLVER
+
+    implement-customer-360:
+      organism_type: system-build
+      molecules:
+        - calculate-clv
+        - segment-rfm
+        - design-health-score
+        - create-dashboard
+      entry_mode: RESOLVER
+
+    optimize-community-workflow:
+      organism_type: optimization
+      molecules:
+        - measure-community
+        - run-growth-experiment
+      entry_mode: EXPLORAR
+
+  tasks_to_tokens:
+    segment-rfm:
+      required_tokens:
+        - min_cohort_size
+        - segment_type
+        - responsavel_type
+      optional_tokens:
+        - cohort_period
+
+    calculate-clv:
+      required_tokens:
+        - cohort_period
+        - clv_cac_ratio_min
+        - responsavel_type
+
+    predict-churn:
+      required_tokens:
+        - churn_observation_window
+        - churn_risk_max
+        - responsavel_type
+
+    run-pmf-test:
+      required_tokens:
+        - pmf_score_min
+        - sample_size_min
+        - statistical_significance
+
+    design-health-score:
+      required_tokens:
+        - health_score_min
+        - responsavel_type
+
+    create-dashboard:
+      required_tokens:
+        - freshness_ttl_days
+        - dashboard_publish_role
+
+# ─────────────────────────────────────────────────────────────────────────────
+# META-AXIOMAS (SINKRA v3.2)
+# ─────────────────────────────────────────────────────────────────────────────
+
+meta_axiomas:
+  truth:
+    definition: "Dados refletem realidade (no fabricated metrics, no cherry-picking)"
+    threshold: 7.0
+    scoring_rubric:
+      10: "Source-of-truth linked, baseline documented, sample size adequate"
+      7:  "Acceptable lineage, minor gaps explained"
+      5:  "Some unverified assumptions"
+      0:  "Fabricated or unverifiable"
+
+  completeness:
+    definition: "Cobertura do caso de uso (all required dimensions measured)"
+    threshold: 7.0
+    scoring_rubric:
+      10: "All acceptance criteria met, all tokens populated"
+      7:  "Core AC met, edge cases documented"
+      5:  "Core AC met, gaps not documented"
+      0:  "Major AC missing"
+
+  coherence:
+    definition: "Consistencia interna (no contradictions across metrics/segments)"
+    threshold: 7.0
+    scoring_rubric:
+      10: "All metrics reconcile, definitions aligned across dashboards"
+      7:  "Minor discrepancies explained"
+      5:  "Discrepancies not explained"
+      0:  "Contradictions present"
+
+  enforcement:
+    gate: "All 3 axioms must score >= 7.0 to pass quality gate"
+    evaluator: data-chief
+    fallback: "Task returns to executor with deltas"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# GOLDEN RULE (Squad-specific)
+# ─────────────────────────────────────────────────────────────────────────────
+
+golden_rule:
+  id: GR-DATA-001
+  rule: "Nunca implementar metrica sem passar por pelo menos 1 fundamentador (Tier 0)"
+  tier_0_fundamentadores:
+    - peter-fader   # CLV, RFM, probabilistic models
+    - sean-ellis    # Viral/Referral, PMF
+  enforcement: "composition-rules validator blocks organism if no tier_0 agent touched the flow"
+  rationale: "Tier 1/2 operacionalizam e comunicam, mas fundamento matematico vem do Tier 0"
+
+meta:
+  last_updated: "2026-04-15"
+  owner: data-chief
+  version_parent: "sinkra-squad composition-rules v1.7"

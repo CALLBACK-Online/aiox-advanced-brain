@@ -1,0 +1,89 @@
+---
+schema_version: "1.0"
+research_slug: "fixture-multi-player-gap-analysis"
+generator: tech-research/comparison_matrix_extractor.py
+generated_at: "2026-05-19"
+
+comparison_pattern: multi_player
+candidates_count: 3
+
+matrices:
+  - id: m1
+    name: "feature-depth-by-candidate"
+    axes:
+      candidates:
+        - id: perplexity-deep-research
+          name: "Perplexity Deep Research"
+        - id: manus-deep-research
+          name: "Manus Deep Research"
+        - id: exa-research-api
+          name: "Exa Research API"
+      dimensions:
+        - id: source_grounding
+          name: "Source grounding & citation density"
+          weight: 0.25
+        - id: query_decomposition
+          name: "Sub-query decomposition strategy"
+          weight: 0.20
+        - id: extraction_robustness
+          name: "Extraction robustness (fallback ladder)"
+          weight: 0.20
+        - id: synthesis_quality
+          name: "Synthesis quality"
+          weight: 0.20
+        - id: api_ergonomics
+          name: "API ergonomics / SDK"
+          weight: 0.15
+    cells:
+      - candidate: perplexity-deep-research
+        dimension: source_grounding
+        score: 4
+      - candidate: perplexity-deep-research
+        dimension: query_decomposition
+        score: 3
+      - candidate: perplexity-deep-research
+        dimension: extraction_robustness
+        score: 3
+      - candidate: perplexity-deep-research
+        dimension: synthesis_quality
+        score: 4
+      - candidate: perplexity-deep-research
+        dimension: api_ergonomics
+        score: 4
+      - candidate: manus-deep-research
+        dimension: source_grounding
+        score: 5
+      - candidate: manus-deep-research
+        dimension: query_decomposition
+        score: 5
+      - candidate: manus-deep-research
+        dimension: extraction_robustness
+        score: 5
+      - candidate: manus-deep-research
+        dimension: synthesis_quality
+        score: 5
+      - candidate: manus-deep-research
+        dimension: api_ergonomics
+        score: 2
+      - candidate: exa-research-api
+        dimension: source_grounding
+        score: 4
+      - candidate: exa-research-api
+        dimension: query_decomposition
+        score: 3
+      - candidate: exa-research-api
+        dimension: extraction_robustness
+        score: 2
+      - candidate: exa-research-api
+        dimension: synthesis_quality
+        score: 3
+      - candidate: exa-research-api
+        dimension: api_ergonomics
+        score: 5
+
+scoring_calibration:
+  type: interpretive
+  scale: "1-5"
+  calibrated_by: "fixture@2026-05-19 single-pass"
+  disclaimer: "scores são analíticos, não medições empíricas controladas"
+  reproducibility: low

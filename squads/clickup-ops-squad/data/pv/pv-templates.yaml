@@ -1,0 +1,632 @@
+# Pedro Valerio - Operational Templates
+# Source: Gestao ClickUp Playbook (Allfluence), reuniões PV, meta-axiomas
+# Version: 1.0.0
+
+metadata:
+  source: "pedro_valerio/gestao_clickup"
+  methodology: "Sistema Allfluence"
+  principle: "Processos recorrentes devem ser documentados como templates"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# FORMULARIO MINIMO (Normalizar Input)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+formulario_minimo:
+  description: |
+    7 campos obrigatórios para normalizar QUALQUER input que entre no sistema.
+    Baseado no Gate 1 (Gate de Estrutura) e nos mandamentos M1, M2, M4.
+    Se o input não tem esses 7 campos, ele não pode virar tarefa.
+  source: "M1 + M2 + M4 + Gate System"
+
+  fields:
+    - order: 1
+      name: "O que precisa ser feito?"
+      maps_to: "task.name + task.description"
+      type: "text"
+      required: true
+      validation: "Mínimo 10 caracteres para nome, 50 para descricao"
+
+    - order: 2
+      name: "Quem e o responsável?"
+      maps_to: "task.assignee"
+      type: "person"
+      required: true
+      validation: "Exatamente 1 pessoa"
+
+    - order: 3
+      name: "Qual o prazo?"
+      maps_to: "task.due_date"
+      type: "date"
+      required: true
+      validation: "Data futura ou hoje"
+
+    - order: 4
+      name: "Qual a prioridade?"
+      maps_to: "custom_field.Priority"
+      type: "dropdown"
+      required: true
+      options: ["Baixa", "Media", "Alta", "Urgente"]
+
+    - order: 5
+      name: "Qual categoria de trabalho?"
+      maps_to: "custom_field.Work Category"
+      type: "dropdown"
+      required: true
+      options: ["SEO", "Midia Paga", "Dev Web", "Design", "Consultoria", "Inbound", "Outbound", "Conteúdo", "Social Media", "Interno"]
+
+    - order: 6
+      name: "Em qual lista/projeto?"
+      maps_to: "task.list"
+      type: "list_selector"
+      required: true
+      validation: "List existente no workspace"
+
+    - order: 7
+      name: "Contexto adicional (links, arquivos, referencias)"
+      maps_to: "custom_field.URL + task.attachments"
+      type: "text + file"
+      required: false
+      validation: "URLs válidas, arquivos < 50MB"
+
+  usage: |
+    Aplicar o Formulário Mínimo em:
+    - Formulários de intake (ClickUp Forms)
+    - Pedidos via chat (converter para tarefa com estes campos)
+    - Templates de tarefa (pre-preencher campos)
+    - Automações de criação (validar campos antes de salvar)
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CARTAO DE PROCESSO V2 (Documentacao Perpetua)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+cartao_de_processo_v2:
+  description: |
+    Template para documentar qualquer processo recorrente como um "cartao"
+    na Process Library. Cada cartao vive como uma Task com subtarefas-passo
+    e e a documentacao perpetua do processo.
+  source: "M7 + Gestao ClickUp Cap 5: Templates"
+
+  template:
+    task_name: "[PROCESSO] {nome_do_processo}"
+    task_description: |
+      ## Objetivo
+      {Por que este processo existe? Qual problema resolve?}
+
+      ## Responsável Padrão
+      {Quem normalmente executa este processo}
+
+      ## Frequência
+      {Diário / Semanal / Por demanda / etc}
+
+      ## Tempo Estimado
+      {Quanto tempo leva em media}
+
+      ## Inputs Necessários
+      {O que precisa estar pronto antes de iniciar}
+
+      ## Output Esperado
+      {O que deve ser entregue ao final}
+
+      ## Critérios de Qualidade
+      {Como saber se foi bem feito}
+
+    subtasks:
+      - "Passo 1: {descricao do primeiro passo}"
+      - "Passo 2: {descricao do segundo passo}"
+      - "Passo N: {descricao do ultimo passo}"
+
+    checklist:
+      name: "Validação de Qualidade"
+      items:
+        - "Output atende critérios de qualidade?"
+        - "Tempo ficou dentro do estimado?"
+        - "Alguma melhoria identificada para próxima execução?"
+
+    custom_fields:
+      - name: "Task Type"
+        value: "Documentacao"
+      - name: "Process Owner"
+        value: "{responsável}"
+      - name: "Last Reviewed"
+        value: "{data_ultima_revisao}"
+
+    location: "Process Library > SOPs > {area}"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CONVERSAO ASSINCRONA (Eliminar Reuniões)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+conversao_assincrona:
+  description: |
+    Framework para converter reuniões em comunicação assincrona via ClickUp.
+    Baseado na filosofia PV de "zero reuniões de alinhamento" e M5.
+    SE a reunião pode ser um comentario estruturado, NAO faca a reuniao.
+  source: "PV Meta-Axioma: Assincronia radical + M5"
+
+  decision_tree:
+    - question: "O assunto requer decisão em tempo real?"
+      yes: "Reunião justificada (max 30min, com pauta no ClickUp)"
+      no: "Prosseguir para próximo check"
+
+    - question: "O assunto requer brainstorm colaborativo?"
+      yes: "Reunião justificada (max 45min, com doc compartilhado)"
+      no: "Prosseguir para próximo check"
+
+    - question: "O assunto pode ser resolvido com informação escrita?"
+      yes: "CONVERTER para comentario estruturado na tarefa"
+      no: "Reunião justificada"
+
+  template_async_update:
+    format: |
+      ## Update Assincrono - {data}
+      **De:** {nome}
+      **Sobre:** {tarefa/projeto}
+
+      ### Situação Atual
+      {O que mudou desde ultimo update}
+
+      ### Bloqueios
+      {O que esta impedindo progresso, se houver}
+
+      ### Próximos Passos
+      {O que vai acontecer a seguir}
+
+      ### Preciso de
+      {Decisão, recurso, informação - ou "nada, apenas visibilidade"}
+
+    rules:
+      - "Postar como comentario na tarefa relevante"
+      - "Usar @mention para quem precisa ler"
+      - "Deadline para resposta: 24h uteis"
+      - "Se não respondido em 24h, escalar via tarefa"
+
+  conversion_map:
+    - from: "Reunião de alinhamento semanal"
+      to: "Task recorrente com update assincrono no template acima"
+    - from: "Status update de projeto"
+      to: "Dashboard no ClickUp + comentario semanal automatizado"
+    - from: "Aprovação de entrega"
+      to: "Tarefa com checklist de aprovação + status workflow"
+    - from: "1:1 de gestao"
+      to: "Manter como reunião (requer interacao humana)"
+    - from: "Brainstorm de campanha"
+      to: "Manter como reunião (requer colaboracao real-time)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# OPERACAO DE RESGATE (Destravar Tasks/Processos)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+operacao_resgate:
+  description: |
+    Protocolo para destravar tarefas e processos parados.
+    Ativado automaticamente quando tarefa atrasada 72h+ ou
+    manualmente quando gestor identifica bloqueio.
+  source: "H-DEL-03 + M3 + M6"
+
+  trigger_conditions:
+    - "Tarefa atrasada por 72h+ sem update"
+    - "Tarefa em 'IN PROGRESS' sem atividade por 48h+"
+    - "Sprint com 30%+ tarefas atrasadas"
+    - "Gestor identifica bloqueio e aciona manualmente"
+
+  protocol:
+    steps:
+      - order: 1
+        name: "Diagnóstico"
+        action: "Identificar causa raiz do bloqueio"
+        questions:
+          - "Falta de clareza no que fazer?"
+          - "Dependencia de outro time/pessoa?"
+          - "Falta de recurso (tempo, skill, ferramenta)?"
+          - "Escopo mudou e tarefa ficou obsoleta?"
+          - "Responsável sobrecarregado?"
+
+      - order: 2
+        name: "Classificacao"
+        action: "Classificar tipo de bloqueio"
+        types:
+          - "CLARITY: Falta informação → preencher Formulário Mínimo"
+          - "DEPENDENCY: Esperando algo → criar tarefa de dependencia"
+          - "CAPACITY: Sem capacidade → redistribuir ou renegociar prazo"
+          - "OBSOLETE: Não faz mais sentido → cancelar com justificativa"
+          - "SCOPE: Escopo mudou → reescrever tarefa"
+
+      - order: 3
+        name: "Ação"
+        action: "Executar resolucao baseada na classificacao"
+        max_time: "24h para resolver apos diagnóstico"
+
+      - order: 4
+        name: "Registro"
+        action: "Documentar causa e resolucao como comentario na tarefa"
+        format: |
+          ## Operação de Resgate - {data}
+          **Bloqueio:** {tipo}
+          **Causa:** {descricao}
+          **Resolucao:** {o que foi feito}
+          **Licao:** {o que preveniria este bloqueio no futuro}
+
+    escalation:
+      - "Se não resolvido em 24h → escalar para gestor direto"
+      - "Se não resolvido em 48h → escalar para lideranca"
+      - "Se recorrente (3+ vezes mesmo tipo) → criar melhoria de processo"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# FORMULA 1-3-5 (Framework de Implementação)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CHECKLISTS OPERACIONAIS (G4 - Habitos da Formula 1-3-5)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+operational_checklists:
+  description: |
+    4 checklists que implementam a chave "Habitos" da Formula 1-3-5.
+    Sem estes habitos, ferramentas e processos são abandonados em 30 dias.
+  source: "Gestao ClickUp Cap 9: Optimize + Cap 10: Melhores Práticas"
+
+  checklists:
+    - id: CK-01
+      name: "Daily Spot Check (Arquiteto ClickUp)"
+      frequency: "Diário"
+      duration: "10-30 min"
+      executor: "Arquiteto ClickUp"
+      items:
+        - "Revisar tarefas atrasadas (Filtro: Due Date < hoje + Status != Done)"
+        - "Verificar tarefas sem responsável (Filtro: Assignee = Not Set)"
+        - "Verificar tarefas sem due date (Filtro: Due Date = Not Set)"
+        - "Analisar 'Who is Behind' report"
+        - "Verificar discrepancias no rastreamento de tempo"
+        - "Documentar problemas ou tendencias observadas"
+      kpis_checked: ["KPI-L2", "KPI-L3", "KPI-G3"]
+
+    - id: CK-02
+      name: "Início do Dia (Individual)"
+      frequency: "Diário"
+      duration: "15 min"
+      executor: "Todo colaborador"
+      items:
+        - "Abrir 'My Tasks' e revisar prioridades do dia"
+        - "Verificar Inbox e processar notificacoes pendentes"
+        - "Atualizar estimativas de tarefas do dia"
+        - "Iniciar rastreamento de tempo na primeira tarefa"
+
+    - id: CK-03
+      name: "Final do Dia (Individual)"
+      frequency: "Diário"
+      duration: "10 min"
+      executor: "Todo colaborador"
+      items:
+        - "Marcar tarefas concluidas como Done"
+        - "Reagendar tarefas não concluidas (com justificativa no comentario)"
+        - "Deixar comentario de atualizacao nas tarefas em progresso"
+        - "Zerar Inbox"
+        - "Planejar top 3 tarefas do dia seguinte"
+
+    - id: CK-04
+      name: "Auditoria Mensal (Arquiteto ClickUp)"
+      frequency: "Mensal"
+      duration: "2h"
+      executor: "Arquiteto ClickUp"
+      items:
+        - "Verificar consistencia da hierarquia (Spaces/Folders/Lists conforme design)"
+        - "Auditar custom fields (remover não utilizados, consolidar duplicados)"
+        - "Revisar templates (atualizar desatualizados por 30+ dias)"
+        - "Analisar KPIs do mês vs metas"
+        - "Compilar feedback da equipe (formulário de 5 perguntas)"
+        - "Identificar top 3 melhorias a implementar no próximo mês"
+        - "Atualizar Biblioteca de Processos"
+      kpis_checked: ["KPI-G1", "KPI-G2", "KPI-G4", "KPI-G5"]
+      output: "Relatório mensal para lideranca"
+
+    - id: CK-05
+      name: "Troubleshooting (Sob Demanda)"
+      frequency: "Quando necessário"
+      executor: "Arquiteto ClickUp"
+      scenarios:
+        - problem: "Equipe não usa o ClickUp"
+          checks:
+            - "Treinamento foi suficiente?"
+            - "Mandamentos foram comunicados?"
+            - "Resistencia específica identificada?"
+          action: "Trabalhar individualmente com resistentes; reforcar mandamentos"
+        - problem: "Tarefas atrasadas em excesso"
+          checks:
+            - "Prazos são realistas?"
+            - "Workload esta distribuido?"
+            - "Workload View esta configurada?"
+          action: "Implementar Workload View; redistribuir carga"
+        - problem: "Dados inconsistentes nos relatórios"
+          checks:
+            - "Custom fields estão sendo usados corretamente?"
+            - "Templates estão sendo aplicados?"
+            - "Padrões de preenchimento foram comunicados?"
+          action: "Auditoria de campos; reforcar padrões; simplificar se necessário"
+        - problem: "Comunicação ainda fora do ClickUp"
+          checks:
+            - "M1 e M5 foram comunicados?"
+            - "Por que preferem canal externo?"
+            - "ClickUp tem mais friccao?"
+          action: "Resolver causa raiz; se friccao, simplificar workflow"
+
+    # ─── Novos Checklists Operacionais ─────────────────────────────────────────
+
+    - id: CK-06
+      name: "Weekly Leadership Sync (Assincrono)"
+      frequency: "Semanal"
+      duration: "20 min (escrita)"
+      executor: "Cada lider de area"
+      source: "[SOURCE: 03_onboarding_clickup.md + pv-templates.yaml conversao_assincrona]"
+      description: |
+        Update assincrono postado como comentario no Dashboard Master.
+        NAO e reunião — e escrita estruturada. Reunião de alinhamento não deveria existir.
+      items:
+        - "Postar 'Weekly Status Update' como comentario no ClickUp (formato: Situação Atual / Bloqueios / Próximos Passos / Preciso de)"
+        - "@mention stakeholders relevantes"
+        - "Declarar wins da semana (top 3: melhor criativo, maior NPS, novo WINNER)"
+        - "Declarar blockers (tasks em vermelho por 48h+)"
+        - "Compartilhar 1 learning da semana (teste falhado, root cause, prevencao)"
+        - "Deadline para resposta dos stakeholders: 24h uteis"
+      anti_pattern: "SE alguém propoe reunião para 'alinhar' → converter para este update assincrono."
+      reference: "conversao_assincrona"
+
+    - id: CK-07
+      name: "Template Pai Update (On-Discovery)"
+      frequency: "Quando gap descoberto durante execução"
+      duration: "15 min"
+      executor: "Quem descobriu o gap + Arquiteto ClickUp"
+      source: "[SOURCE: 08_clickup_lendario.md, Template Pai Update Rule + CASE-08]"
+      description: |
+        Triggered sempre que alguém encontra campo/etapa faltante durante execucao.
+        NAO corrigir só a instancia — atualizar o template-pai na Process Library.
+      items:
+        - "PARAR task atual ao encontrar gap no template"
+        - "Documentar o gap: qual campo/etapa falta e por que e necessário"
+        - "Abrir template-pai na Process Library"
+        - "Adicionar campo/etapa faltante no template-pai"
+        - "Documentar o 'por que' (que problema este campo resolve?)"
+        - "Notificar Arquiteto ClickUp via comentario na task do template"
+        - "Retomar task atual com o campo agora adicionado"
+      anti_pattern: "Adicionar campo só na instancia atual e seguir em frente = erro sistemico recorrente."
+      heuristica: "H-DES-06"
+
+    - id: CK-08
+      name: "Gestao de Depoimentos (Ritual Semanal)"
+      frequency: "Semanal (contínuo)"
+      duration: "30 min"
+      executor: "Time Marketing + Automação"
+      source: "[SOURCE: 07_mentoria_processos.md + PAT-04 + PAT-06]"
+      description: |
+        Ritual para manter pipeline de depoimentos saudavel.
+        Combina monitoramento automatizado com curadoria humana.
+      items_diario:
+        - "Monitorar WhatsApp/NPS para novos depoimentos (keywords: 'resultado', 'consegui', 'mudou', 'transformou')"
+        - "Gemini auto-classifica novos (Ruim/Bom/Lendario)"
+        - "Se Bom/Lendario → DM automatica pedindo video"
+      items_semanal:
+        - "Auditar acuracia da classificacao IA (spot-check 10% das classificacoes)"
+        - "Follow-up com tier Ruim (pedir mais detalhe de jornada antes/depois)"
+        - "Revisar pipeline: quantos em CAPTURADO, CLASSIFICADO, FOLLOW-UP, PRONTO?"
+        - "Distribuir Lendarios para grupos (mentoria/formacao/comunidade conforme regras)"
+        - "Enfileirar top Lendarios para Meta Ads como remarketing (1 semana alunos, depois prospect)"
+      kpis:
+        leading: "Depoimentos capturados por semana (target: >10)"
+        lagging: "Lendarios distribuidos por mês + depoimentos usados em criativos"
+      reference: "PAT-04, PAT-06, WF-AG-03"
+
+    - id: CK-09
+      name: "ETL Pipeline Health Check (Semanal)"
+      frequency: "Semanal"
+      duration: "20 min"
+      executor: "Arquiteto ClickUp ou Dev/N8N"
+      source: "[SOURCE: 06_allfluence_formacao_lendaria.md + 02_fabrica_de_criativos.md]"
+      description: |
+        Validar que automações ETL estão alimentando custom fields corretamente.
+        Se ETL quebra, time volta ao manual sem perceber.
+      items:
+        - "ETL Trends (PAT-02): top 50 referencias filtradas chegaram no Ideation Box esta semana?"
+        - "ETL Comentarios (PAT-03): top 50 comentarios carregados na List 'Dores do Publico'?"
+        - "ETL Briefing (AUT-19): se houve novo projeto, custom fields foram auto-preenchidos do PDF?"
+        - "ETL Depoimentos (PAT-04/06): novos depoimentos classificados em <1h apos captura?"
+        - "Trocador de Corpos (AUT-21): assignees estão rotacionando corretamente nas transicoes?"
+        - "SE algum ETL com latencia >4h → escalar para Dev/N8N"
+        - "Verificar logs de erro no N8N — qualquer execução falhada?"
+      alertas:
+        vermelho: "ETL fora do ar por 24h+ → impacto direto no time"
+        amarelo: "ETL com >50% de execucoes falhadas na semana"
+        verde: "Todas as pipelines com <5% de erro"
+      reference: "PAT-02, PAT-03, AUT-19, PAT-04, PAT-06"
+
+    - id: CK-10
+      name: "Brandbook e OfferBook Maintenance (Mensal)"
+      frequency: "Mensal"
+      duration: "1h"
+      executor: "Diretor Criativo + Account Manager"
+      source: "[SOURCE: 05_mentoria_offerbook.md]"
+      description: |
+        OfferBook e Brandbook são documentos vivos que alimentam copy e design.
+        Se desatualizados, time produz baseado em premissas velhas.
+      items:
+        - "OfferBook: revisar ICP + dores + angulos primordiais (Dinheiro/Relacionamento/Status)"
+        - "OfferBook: validar inventario de Hooks contra winners recentes (adicionar novos, retirar mortos)"
+        - "OfferBook: revisar restricoes de persona/tom de voz — algo mudou?"
+        - "Brandbook: paleta de cores, fonts, uso de logo consistentes com trabalho recente?"
+        - "Brandbook: algum novo Elemento Estetico emergindo? (novo estilo de B-Roll, Zoom, etc.)"
+        - "Notificar Copywriter + Designer das atualizacoes"
+        - "Arquivar versao antiga na pasta 'Histórico'"
+        - "Atualizar 'Last Reviewed' no custom field do cartao de processo"
+      anti_pattern: "OfferBook desatualizado por 60+ dias = time criando baseado em achismo."
+
+    - id: CK-11
+      name: "Dumping e Auditoria de Processos (Trimestral)"
+      frequency: "Trimestral"
+      duration: "4h (distribuido na semana)"
+      executor: "Arquiteto ClickUp + Lideranca"
+      source: "[SOURCE: 07_mentoria_processos.md Fase 1 + MSG-01 + H-DMP-01]"
+      description: |
+        Deep-dive periodico na realidade operacional vs processo documentado.
+        Previne drift entre o que o sistema diz e o que o time realmente faz.
+      items:
+        - "Selecionar 1-2 processos core para auditar"
+        - "Enviar Mensagem de Dumping (ref: MSG-01) para todos os executores do processo"
+        - "Coletar descricoes livres das etapas reais"
+        - "Identificar tipo de documentador de cada pessoa: Supervalorizador / Resumidor / Criterioso (ref: H-DMP-01)"
+        - "Calibrar interpretacao ANTES de redesenhar processo"
+        - "Mapear gaps entre processo documentado vs realidade operacional"
+        - "Desenhar micro-intervencoes (não mega-overhauls) para fechar gaps"
+        - "Testar 1-2 mudancas em modo piloto antes de rollout completo"
+        - "Atualizar Template Pai com aprendizados (ref: H-DES-06)"
+      anti_pattern: "Auditar processo sem calibrar tipo de documentador = redesenhar baseado em ficcao."
+      reference: "MSG-01, H-DMP-01, H-DMP-02, H-DMP-03, CASE-05"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# FORMULA 1-3-5 (Framework de Implementação)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+formula_1_3_5:
+  description: |
+    Framework central do Sistema Allfluence para implementar e otimizar
+    qualquer workspace ClickUp. Aplicavel tanto a setup inicial quanto
+    a melhorias incrementais.
+  source: "Gestao ClickUp Cap 1.5.3 + Cap 9"
+
+  objective:
+    count: 1
+    name: "Clareza"
+    description: "Clareza para individuos, equipes, lideres e clientes"
+
+  keys:
+    count: 3
+    items:
+      - name: "Ferramentas"
+        description: "ClickUp configurado corretamente como hub central"
+        checklist:
+          - "Hierarquia de Spaces/Folders/Lists definida"
+          - "Custom fields padronizados no nivel correto"
+          - "Visualizacoes configuradas por função"
+          - "Integracoes ativas (N8N, Drive, etc)"
+
+      - name: "Processos"
+        description: "SOPs documentados, templates criados, automações ativas"
+        checklist:
+          - "Process Library com SOPs por area"
+          - "Templates para tarefas recorrentes"
+          - "Automações de notificacao e escalacao"
+          - "Workflows de status definidos por contexto"
+
+      - name: "Habitos"
+        description: "10 Mandamentos internalizados, cultura de uso consistente"
+        checklist:
+          - "10 Mandamentos comunicados e aceitos pelo time"
+          - "Time usando ClickUp diariamente"
+          - "Due dates sendo cumpridas"
+          - "Comunicação nas tarefas, não fora"
+
+  stages:
+    count: 5
+    items:
+      - order: 1
+        name: "Design"
+        description: "Planejar e desenhar o sistema ideal"
+        deliverables:
+          - "Diagnóstico da situação atual"
+          - "Objetivos e métricas de sucesso"
+          - "Desenho da hierarquia"
+          - "Especificação de views, fields, automations"
+          - "Plano de implementação"
+
+      - order: 2
+        name: "Build"
+        description: "Construir o sistema no ClickUp"
+        deliverables:
+          - "Workspace configurado conforme design"
+          - "Process Library completa"
+          - "Templates criados e testados"
+          - "Automações configuradas"
+
+      - order: 3
+        name: "Train"
+        description: "Treinar a equipe"
+        deliverables:
+          - "Materiais de treinamento"
+          - "Sessoes de treinamento realizadas"
+          - "10 Mandamentos comunicados"
+          - "Equipe capacitada"
+
+      - order: 4
+        name: "Launch"
+        description: "Lancar o sistema"
+        deliverables:
+          - "Todo trabalho migrado para ClickUp"
+          - "Ferramentas antigas desativadas"
+          - "Suporte intensivo durante transicao"
+
+      - order: 5
+        name: "Optimize"
+        description: "Monitorar e melhorar continuamente"
+        deliverables:
+          - "Relatórios de desempenho mensais"
+          - "Feedback da equipe coletado"
+          - "Melhorias implementadas"
+          - "Ciclo reinicia"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# FRAMEWORK DE IMPLEMENTACAO 3 FASES (Timeline PV)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+implementation_3_phases:
+  description: |
+    Framework de implementação de workspace em 3 fases com timeline semanal.
+    Complementa a Formula 1-3-5 com etapas taticas e sequência temporal.
+    Cada fase tem prerequisito da anterior — não pular.
+  source: "[SOURCE: 08_clickup_lendario.md, Framework de Implementação 3 Fases]"
+
+  phases:
+    - phase: 1
+      name: "Dumping"
+      timeline: "Semana 1"
+      objetivo: "Extrair realidade operacional crua do time antes de estruturar qualquer coisa"
+      ações:
+        - "Enviar mensagem de dumping para cada membro do time (ref: MSG-01)"
+        - "Identificar tipo de documentador (Supervalorizador/Resumidor/Criterioso) ANTES de interpretar (ref: H-DMP-01)"
+        - "Mapear processos reais vs processos percebidos"
+        - "Identificar gargalo que gera mais dinheiro (ref: H-DMP-02)"
+        - "NAO estruturar nada ainda — apenas coletar"
+      output: "Mapa de realidade operacional calibrado por tipo de documentador"
+      anti_pattern: "Comecar a construir Spaces/Lists antes de entender o que o time realmente faz"
+      heuristica: "H-DMP-01, H-DMP-02"
+
+    - phase: 2
+      name: "Engenharia do Cabresto"
+      timeline: "Semana 2"
+      objetivo: "Configurar views filtradas e fluxo unidirecional. Time ve APENAS o que precisa."
+      ações:
+        - "Criar Spaces/Folders/Lists baseado no mapa da Fase 1"
+        - "Configurar My Tasks filtrado por pessoa — ninguém ve o workspace inteiro"
+        - "Definir status workflows unidirecionais (no backward status)"
+        - "Configurar Trocador de Corpos (PAT-01) nas esteiras"
+        - "Desabilitar Multiple Assignees"
+        - "Testar fluxo com 1-2 pessoas antes de lancar pra equipe"
+      output: "Workspace configurado com restricao cognitiva ativa"
+      anti_pattern: "Dar acesso total ao workspace e esperar que o time 'aprenda'"
+      princípio: "Omitir arquitetura. Dar to-do list magica e cega (My Tasks filtrado)."
+
+    - phase: 3
+      name: "Injecao ETL"
+      timeline: "Semana 3-4"
+      objetivo: "Conectar automações (Langflow/N8N) e preencher custom fields automaticamente"
+      ações:
+        - "Configurar automações nativas do ClickUp primeiro (ref: H-AUT-03)"
+        - "Conectar N8N para automações complexas (ref: H-AUT-04)"
+        - "Implementar ETL de Briefing (AUT-19) se aplicavel"
+        - "Implementar ETL de Trends (PAT-02) e ETL de Comentarios (PAT-03)"
+        - "Configurar alertas de due date e escalacao (AUT-05, AUT-06, AUT-07)"
+        - "Testar cada automação com cenario real antes de ativar"
+      output: "Workspace com automações ativas, custom fields auto-preenchidos"
+      anti_pattern: "Automatizar processo que ainda não rodou manual (ref: H-DES-02)"
+      prerequisito: "Fase 2 completa e validada com o time por pelo menos 1 semana"
+
+  regra_geral: |
+    NAO pular fases. Dumping sem Cabresto = caos organizado.
+    Cabresto sem ETL = funciona mas e manual. ETL sem Cabresto = automação
+    alimentando workspace que ninguém usa. A sequência importa.

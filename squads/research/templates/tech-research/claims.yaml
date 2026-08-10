@@ -1,0 +1,100 @@
+# claims.yaml — Per-claim citation verification output template
+# Story: STORY-RA-D.1 — Per-claim citation_verifier with archive.org + rewrite-claim
+# Story: STORY-RA-D.2 — claims.yaml schema (rewritten + original_claim) + confidence_distribution
+# Schema version: claims.v3 (extends claims.v2 with RA-D.2 confidence_distribution aggregate)
+#
+# Lifecycle: produced by citation_verifier.py during Phase 4-5 (Verify Citations)
+#            enriched by claims_aggregator.py (confidence_distribution aggregate)
+# Consumer: Phase 5 Document, Observatory, RA-RESCORE.1
+
+schema_version: claims.v3
+story: STORY-RA-D.2
+produced_by: citation_verifier.py + claims_aggregator.py
+
+# --- confidence_distribution aggregate (RA-D.2 AC-2) ---
+# Placed at top for fast scan by Observatory adapter (Decision D3).
+# Produced by claims_aggregator.py BEFORE the final write in Phase 5.
+confidence_distribution:
+  total: 0
+  supported: "0 (0%)"
+  unsupported: "0 (0%)"
+  unknown: "0 (0%)"
+  ambiguous: "0 (0%)"
+  rewritten: "0 (0%)"
+  by_grade:          # populated only when Sackett ran (sackett_available: true)
+    1a: 0
+    1b: 0
+    2a: 0
+    2b: 0
+    3: 0
+    4: 0
+    5: 0
+
+# --- Aggregation (from aggregate_claims — RA-D.1 fields preserved) ---
+aggregation:
+  verdict: "APPROVE | APPROVE_WITH_CONFIDENCE | VETO"
+  unsupported_ratio: 0.0          # float 0-1
+  unsupported_top_tier_ratio: 0.0 # float 0-1 (Sackett grades 1a/1b/2a only)
+  confidence_distribution:
+    high: 0
+    medium: 0
+    low: 0
+    none: 0
+  total: 0
+  counts:
+    supported: 0
+    unsupported: 0
+    unknown: 0
+    ambiguous: 0
+  sackett_available: false        # true if Sackett integration ran
+
+# --- Per-claim list ---
+claims:
+  - claim_id: "C001"              # stable identifier C001..CNNN
+    text: "<claim text — rewritten if ambiguous>"
+    original_claim: null          # null unless rewritten: true
+    rewritten: false              # true when citation_verifier rewrote the claim
+    rewrite_rationale: null       # set when rewritten: true
+
+    type: "statistic | numeric | comparison | benchmark | ranking | market | count"
+    has_confidence_tag: false     # true if [HIGH|MEDIA|LOW — ...] present in original
+
+    # Classification (AC-2)
+    status: "supported | unsupported | unknown | ambiguous"
+    confidence: "high | medium | low | none"
+
+    # Sackett evidence grade (AC-5) — null if Sackett DEFERRED
+    evidence_grade: null          # "1a" | "1b" | "2a" | "2b" | "3" | "4" | "5" | null
+
+    # Archive.org fallback (AC-1)
+    archive_url: null             # snapshot URL if dead URL was recovered
+
+    # Sources
+    matched_sources:
+      - url: "https://example.com/source"
+        match_score: 2.5
+    live_sources:
+      - url: "https://example.com/source"
+        match_score: 2.5
+    archive_sources: []           # [{url: snapshot_url, original_url: ..., via: archive.org}]
+
+    # RA-D.2 AC-1: additional fields per AC-1 full schema
+    wave_introduced: 1             # int — wave where this claim was first introduced
+    sources:                       # RA-D.2 AC-1 canonical shape (mirrors matched_sources)
+      - url: "https://example.com/source"
+        archive_url: null          # null if live URL was accessible
+        retrieved_at: null         # ISO-8601 date or null
+
+  # Additional claims follow same schema...
+
+# --- Gold Rule 9 mirror (RA-D.2 AC-4) ---
+# claims.yaml is a YAML audit sidecar.  User-facing values are mirrored into
+# 02-research-report.md (Citations & Confidence section) and metrics.yaml
+# so the Observatory adapter can render them without re-parsing YAML.
+# This block records the mirror target for traceability.
+gold_rule_9_mirror:
+  mirrored_to: "02-research-report.md#citations-confidence"
+  mirror_fields:
+    - confidence_distribution
+    - rewritten_claims_count
+  note: "Per research-bench-gold Rule 9 — YAML sidecars are audit artifacts; visual values live in MD/JSON."

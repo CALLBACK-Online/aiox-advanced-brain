@@ -1,0 +1,177 @@
+---
+schema_version: "2.0"
+last_updated: "2026-05-20"
+
+# ═══════════════════════════════════════════════════════════════════════
+# FUNDAMENTAL
+# ═══════════════════════════════════════════════════════════════════════
+fundamental: "Composition is a DAG: Token -> Atom -> Molecule -> Organism. Organisms cannot consume raw atoms directly when a molecule boundary exists."
+
+# ═══════════════════════════════════════════════════════════════════════
+# CONTAINMENT MATRIX
+# ═══════════════════════════════════════════════════════════════════════
+containment_matrix:
+  Token:
+    may_contain: []
+  Atom:
+    may_contain: [Token]
+  Molecule:
+    may_contain: [Atom]
+  Organism:
+    may_contain: [Molecule]
+
+# ═══════════════════════════════════════════════════════════════════════
+# RULES
+# ═══════════════════════════════════════════════════════════════════════
+rules:
+  - id: no_level_skipping
+    severity: blocking
+    condition: "Organism references molecules; molecules reference atoms; atoms reference token/artifact contracts."
+  - id: no_cycles
+    severity: blocking
+    condition: "Task dependencies must remain acyclic across workflow phases."
+
+# ═══════════════════════════════════════════════════════════════════════
+# META-AXIOMS (Wave W3-02 — Mandamento 8 expansion)
+# ═══════════════════════════════════════════════════════════════════════
+# Three meta-axioms govern the semantic integrity of the entire composition.
+# Unlike invariants P1-P7 (which check pipeline outputs), meta-axioms check
+# the framework itself: does the composition tell the truth, cover everything
+# it claims, and stay internally consistent?
+#
+# Score range: 0-100 per meta-axiom. Composite emitted as meta_axiomas_overall
+# in pipeline-execution-log.yaml#example_record.compliance.
+# ═══════════════════════════════════════════════════════════════════════
+meta_axioms:
+  truth:
+    name: "Truth — claims are evidence-based and traceable"
+    threshold_floor: 70
+    threshold_target: 85
+    threshold_ceiling: 95
+    scoring:
+      - signal: "Every factual claim has a source_ref in evidence-ledger.final.yaml"
+        weight: 0.30
+      - signal: "principios-invioláveis.md references concrete enforcement_level (code/schema/validator)"
+        weight: 0.20
+      - signal: "Composition mapping reflects actual files (no phantom refs)"
+        weight: 0.20
+      - signal: "Token registry families resolve to populated tokens (no empty declarations)"
+        weight: 0.15
+      - signal: "Workflow gates reference defined thresholds (no phantom gates like D04 pre-fix)"
+        weight: 0.15
+    enforcement_consumers:
+      - validate-evidence-ledger
+      - validate-fontes-apa
+      - composition_lint (proposed CI check)
+
+  completeness:
+    name: "Completeness — declared mappings cover the actual surface"
+    threshold_floor: 70
+    threshold_target: 85
+    threshold_ceiling: 95
+    scoring:
+      - signal: "100% of tasks declare all 8 SINKRA mandatory fields (task, atomic_layer, responsavel_type, Inputs, Outputs, Pre_conditions, Post_conditions, Acceptance_criteria, Performance, Error_handling)"
+        weight: 0.30
+      - signal: "100% of tasks placed in composition_mapping.atoms (no orphan tasks)"
+        weight: 0.20
+      - signal: "All 4 gates referenced in workflow phases have definitions with numeric thresholds"
+        weight: 0.20
+      - signal: "infrastructure-map.yaml maps 100% of automated (Worker+Agent) tasks to concrete infrastructure"
+        weight: 0.15
+      - signal: "deviation-registry.yaml exists with schema (Mandamento 7)"
+        weight: 0.15
+    enforcement_consumers:
+      - validate-squad-structure
+      - sinkra-validate-squad (Tier 2 scoring)
+
+  coherence:
+    name: "Coherence — declarations across files agree"
+    threshold_floor: 70
+    threshold_target: 85
+    threshold_ceiling: 95
+    scoring:
+      - signal: "task atomic_layer matches composition_mapping placement"
+        weight: 0.25
+      - signal: "task Domain (HTML comment + standalone) match when both present"
+        weight: 0.20
+      - signal: "PPTEval threshold SOT (qa-rubric.yaml) is referenced by config.yaml#quality_gates + workflow#qa_verdict"
+        weight: 0.20
+      - signal: "Token registry quality_gate entries match config.yaml#quality_gates entries"
+        weight: 0.15
+      - signal: "executor declared in task matches infrastructure-map.task_infrastructure.executor"
+        weight: 0.10
+      - signal: "principios-invioláveis.md P1-P7 sections align with config.yaml#invariants section names"
+        weight: 0.10
+    enforcement_consumers:
+      - sinkra-validate-squad (cross-ref scoring)
+      - composition_lint (proposed CI check)
+
+# ═══════════════════════════════════════════════════════════════════════
+# META-AXIOM AGGREGATION
+# ═══════════════════════════════════════════════════════════════════════
+meta_axiomas_overall:
+  formula: "weighted_mean(truth, completeness, coherence)"
+  weights:
+    truth: 0.40         # most important — falsehood corrupts downstream
+    completeness: 0.35  # gaps are recoverable; falsehood isn't
+    coherence: 0.25     # inconsistency is fixable via SOT declaration
+  scale: "0-100"
+  precision: 1
+  release_floor: 75
+  release_target: 85
+  emission_consumer: pipeline-execution-log.yaml#example_record.compliance.meta_axiomas_overall
+
+# ═══════════════════════════════════════════════════════════════════════
+# COMPOSITION EXCLUSIVITY RULE (Wave W2-05 reinforcement)
+# ═══════════════════════════════════════════════════════════════════════
+exclusivity:
+  rule: "An atom listed in composition_mapping.atoms.{domain} SHOULD NOT also appear as a top-level member in composition_mapping.molecules[].atoms unless the molecule explicitly imports it via reference."
+  severity: advisory
+  rationale: "Without exclusivity, atoms read as living at both levels. Molecule.atoms[] is a composition reference, not a level relocation."
+
+# ═══════════════════════════════════════════════════════════════════════
+# DOMAIN DECLARATION SOT (Wave W4-03 anchor)
+# ═══════════════════════════════════════════════════════════════════════
+domain_declaration:
+  sot_mechanism: "HTML_comment + standalone_line (both present and matching)"
+  rationale: "HTML comment is human-readable inline; standalone line is machine-parseable. Dual presence enables both surfaces (operator skim + LLM scan + validator regex)."
+  validator_rule: "When both are present, they MUST match (string equality on enum value). When only one is present, no conflict."
+  enum: [Strategic, Tactical, Operational]
+
+# ═══════════════════════════════════════════════════════════════════════
+# DECISION REGISTER (Wave W4-01, W4-02)
+# ═══════════════════════════════════════════════════════════════════════
+decisions:
+  - id: DEC-CLONE-USAGE-2026-05-20
+    topic: "Clone executor utilization in SESSION-NARR tasks"
+    candidates: [apply-scqa, distill-governing-thought, write-action-titles]
+    decision: "Keep as Agent (NOT Clone)"
+    rationale: |
+      Clone executor binds to a specific identity (person + voice DNA). SESSION-NARR
+      tasks operate on briefing-derived content where the voice is OPERATOR-determined
+      per run, not framework-determined. A persistent Clone profile would lock voice
+      to one identity. Agent + briefing.voice_directives is the correct pattern.
+    only_clone_task: clone-visual-style-signature  # legitimately voice-bound to reference deck
+    revisit_when: "Multiple briefs share a recurring voice profile (e.g., 'founder X always writes in style Y')"
+
+  - id: DEC-INLINE-ANNOTATIONS-2026-05-20
+    topic: "responsavel_type inline annotations (e.g., 'Agent#content-architect@SESSION-NARR')"
+    decision: "Document as COMMENT-ONLY convention (not parsed sub-fields)"
+    rationale: |
+      Validators MUST split responsavel_type on whitespace and consume only the first
+      token as the canonical executor. Inline annotations after '#' and '@' are
+      authoring hints for humans, not machine-parsed.
+    enforcement_consumer: sinkra-validate-squad (Tier 2 four_executors scoring)
+    parser_rule: "executor = responsavel_type.split(/[\\s#@]/)[0]"
+
+  - id: DEC-COMPRESS-OUTLINE-ATOM-2026-05-20
+    topic: "compress-outline-to-slide-functions atomic_layer classification"
+    candidates: [Atom, Molecule]
+    decision: "Atom (canonical) — placed in composition_mapping.atoms.narrative"
+    rationale: |
+      Task produces 2 coupled output artifacts (story_arc.yaml + slide-function-map.yaml)
+      from a single invocation. In SINKRA grammar, Molecule requires 2+ invocable
+      sub-Atoms. Here the 2 outputs are bundled emission within one atomic operation,
+      not invocable separately. Bundled outputs is a Performance characteristic, not
+      a hierarchy escalation.
+    counter_pattern: "If consumers ever need to invoke story_arc emission OR slide-function-map emission separately, split into 2 atoms (e.g., emit-story-arc + emit-slide-function-map) and re-classify the parent as Molecule."

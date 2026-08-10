@@ -1,0 +1,74 @@
+{
+  "$id": "sinkra://slide-creator/wireframes/portfolio-allocation.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "A claim needs multiple compact proof points and source traceability.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "cat_1": {
+      "type": "string"
+    },
+    "cat_2": {
+      "type": "string"
+    },
+    "cat_3": {
+      "type": "string"
+    },
+    "cat_4": {
+      "type": "string"
+    },
+    "pct_1": {
+      "type": "string"
+    },
+    "pct_2": {
+      "type": "string"
+    },
+    "pct_3": {
+      "type": "string"
+    },
+    "pct_4": {
+      "type": "string"
+    },
+    "tradeoff_note": {
+      "type": "string"
+    },
+    "why_1": {
+      "type": "string"
+    },
+    "why_2": {
+      "type": "string"
+    },
+    "why_3": {
+      "type": "string"
+    },
+    "why_4": {
+      "type": "string"
+    }
+  },
+  "title": "portfolio-allocation",
+  "type": "object",
+  "x-sinkra": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "evidence_stack",
+    "slot_count": 14,
+    "warnings": [
+      "action_title",
+      "pct_1",
+      "pct_2",
+      "pct_3",
+      "pct_4",
+      "cat_1",
+      "why_1",
+      "cat_2",
+      "why_2",
+      "cat_3",
+      "why_3",
+      "cat_4",
+      "why_4",
+      "tradeoff_note"
+    ],
+    "wireframe_ref": "templates/wireframes/portfolio-allocation.html"
+  }
+}

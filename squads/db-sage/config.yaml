@@ -1,0 +1,317 @@
+pack:
+  name: db-sage
+  version: "1.3.0"
+  description: "Expert database agent for PostgreSQL and Supabase - schema design, migrations, RLS policies, performance tuning"
+
+name: db-sage
+version: "1.3.0"
+entry_agent: db-sage
+slashPrefix: db-sage
+title: "Database Architect & Operations Engineer"
+description: "Expert database agent for PostgreSQL and Supabase - schema design, migrations, RLS policies, performance tuning"
+author: "AIOX Team"
+icon: "🗄️"
+type: specialist
+
+# Canonical manifest for db-sage runtime inventory.
+
+# IMPORTANT: External Dependencies
+dependencies:
+  required:
+    - name: PostgreSQL
+      version: ">=13.0"
+      description: "Database server"
+      install: "https://www.postgresql.org/download/"
+    - name: Supabase CLI
+      version: ">=1.0"
+      description: "For Supabase projects (optional if using raw PostgreSQL)"
+      install: "npm install -g supabase"
+  optional:
+    - name: psql
+      description: "PostgreSQL command-line client"
+    - name: pg_dump
+      description: "Database backup utility"
+
+metadata:
+  # MIGRATION-SCHEMA-001 backfill
+  status: active
+  domain: db-sage
+  version: "1.3.0"
+  score: 8.5
+
+workspace_integration:
+  level: none
+  rationale: >-
+    Db Sage depende de código, banco e infraestrutura, não de artefatos
+    canônicos de negócio/produto em `workspace/`.
+
+# Environment variables
+environment:
+  connection_requirement: >-
+    Set at least one connection string before activation: SUPABASE_DB_URL or
+    DATABASE_URL. DB Sage accepts either and resolves them in priority order at
+    runtime.
+  required:
+    - name: SUPABASE_DB_URL
+      description: "Primary Supabase/PostgreSQL connection string when using the hosted runtime"
+      example: "postgresql://postgres:pass@db.xxx.supabase.co:5432/postgres"
+  optional:
+    - name: DATABASE_URL
+      description: "Alternative PostgreSQL connection string for local or remote deployments"
+      example: "postgresql://user:pass@host:5432/dbname"
+    - name: SUPABASE_PROJECT_REF
+      description: "Supabase project reference ID"
+
+agents:
+  - id: db-sage
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: "executor"
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+
+tasks:
+  - db-analyze-hotpaths
+  - db-apply-migration
+  - db-best-practices-audit
+  - db-bootstrap
+  - db-dry-run
+  - db-env-check
+  - db-squad-integration
+  - db-explain
+  - db-impersonate
+  - db-load-csv
+  - db-policy-apply
+  - db-rls-audit
+  - db-rollback
+  - db-run-sql
+  - db-seed
+  - db-smoke-test
+  - db-snapshot
+  - db-verify-order
+  - domain-modeling
+  - create-doc
+  - execute-checklist
+  - kiss
+  - query-optimization
+  - schema-audit
+  - supabase-setup
+
+templates:
+  - db-analysis-template
+  - index-strategy-tmpl
+  - migration-plan-tmpl
+  - rls-policies-tmpl
+  - schema-design-tmpl
+  - migration.sql.tmpl
+  - rollback.sql.tmpl
+  - backup-metadata.json.tmpl
+
+checklists:
+  - database-design-checklist
+  - database-migration-documentation-checklist
+  - db-kiss-validation-checklist
+  - dba-predeploy-checklist
+  - dba-rollback-checklist
+  - migration-validation-checklist
+  - supabase-best-practices-audit
+
+workflows:
+  - analyze-data-workflow
+  - backup-restore-workflow
+  - kiss-gate-workflow
+  - modify-schema-workflow
+  - performance-tuning-workflow
+  - query-database-workflow
+  - setup-database-workflow
+
+tags:
+  - database
+  - postgresql
+  - supabase
+  - migrations
+  - rls
+  - security
+  - dba
+
+independence: false
+independence_reason: "Requires PostgreSQL database and optionally Supabase"
+
+# SINKRA v3.1
+artifact_contracts:
+  - artifact_id: "schema-design"
+    template_path: "templates/schema-design-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "migration-plan"
+    template_path: "templates/migration-plan-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved, superseded]
+  - artifact_id: "rls-policies"
+    template_path: "templates/rls-policies-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "db-analysis"
+    template_path: "templates/db-analysis-template.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "index-strategy"
+    template_path: "templates/index-strategy-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+
+bu_mapping: "hub-framework"
+
+sinkra_refs:
+  token_registry: "data/token-registry.yaml"
+  quality_gates: "data/quality-gates.yaml"
+  deviation_registry: "data/deviation-registry.yaml"
+  pipeline_execution_log: "data/pipeline-execution-log.yaml"
+  infrastructure_map: "data/infrastructure-map.yaml"
+
+process_token_contract:
+  path: "data/token-registry.yaml"
+  scope: "db-sage-core"
+  tokens_declared: 17
+
+composition_mapping:
+  tokens:
+    source: "data/token-registry.yaml"
+    count: 17
+    description: "Tokens que governam migração, segurança, performance e operações de banco."
+  atoms:
+    description: "Tasks atômicas de operação, migração, segurança e design de banco"
+    mapping:
+      - pattern: "tasks/db-*.md"
+        role: database-operations
+      - pattern: "tasks/kiss.md"
+        role: design-gate
+      - pattern: "tasks/domain-modeling.md"
+        role: schema-design
+      - pattern: "tasks/query-optimization.md"
+        role: performance
+      - pattern: "tasks/schema-audit.md"
+        role: quality
+      - pattern: "tasks/supabase-setup.md"
+        role: infrastructure
+      - pattern: "tasks/create-doc.md"
+        role: documentation
+      - pattern: "tasks/execute-checklist.md"
+        role: governance
+    count: 25
+  molecules:
+    description: "Agrupamentos recorrentes de 2+ atoms"
+    declared:
+      - id: mol-migration-safe
+        atoms: [db-verify-order, db-dry-run, db-snapshot, db-apply-migration, db-smoke-test]
+      - id: mol-security-audit
+        atoms: [db-rls-audit, db-policy-apply, db-impersonate]
+      - id: mol-performance-tune
+        atoms: [db-explain, db-analyze-hotpaths, query-optimization]
+      - id: mol-schema-design
+        atoms: [kiss, domain-modeling, schema-audit, create-doc]
+      - id: mol-data-ops
+        atoms: [db-load-csv, db-seed]
+      - id: mol-ops-foundation
+        atoms: [db-env-check, db-bootstrap, supabase-setup]
+      - id: mol-backup-restore
+        atoms: [db-snapshot, db-rollback]
+      - id: mol-query-ops
+        atoms: [db-run-sql, db-explain]
+      - id: mol-governance
+        atoms: [db-best-practices-audit, execute-checklist, db-squad-integration]
+  organisms:
+    description: "Workflow completo com state machine"
+    mapping:
+      - id: org-modify-schema
+        workflow: modify-schema-workflow
+        molecules: [mol-migration-safe]
+        state_machine: true
+        phases: 18  # 13 functional + 5 quality_gate_check phases (W2-05)
+      - id: org-setup-database
+        workflow: setup-database-workflow
+        molecules: [mol-ops-foundation]
+        state_machine: true
+        phases: 6
+      - id: org-performance-tuning
+        workflow: performance-tuning-workflow
+        molecules: [mol-performance-tune]
+        state_machine: true
+        phases: 9  # 7 functional + 2 quality_gate_check phases (W2-05)
+      - id: org-backup-restore
+        workflow: backup-restore-workflow
+        molecules: [mol-backup-restore]
+        state_machine: true
+        phases: 8  # 7 functional + 1 quality_gate_check phase (W2-05 rollback_readiness)
+      - id: org-kiss-gate
+        workflow: kiss-gate-workflow
+        molecules: [mol-schema-design]
+        state_machine: true
+        phases: 5
+      - id: org-query-database
+        workflow: query-database-workflow
+        molecules: [mol-query-ops]
+        state_machine: true
+        phases: 12
+      - id: org-analyze-data
+        workflow: analyze-data-workflow
+        molecules: [mol-data-ops]
+        state_machine: true
+        phases: 12
+  templates:
+    description: "Templates de schema, migração e análise"
+    source: "templates/"
+  instances:
+    description: "Execuções persistidas em supabase/snapshots e supabase/migrations"
+    persistence: "supabase/"
+    lifecycle: [draft, validated, approved, applied, rolled_back]
+
+mandamento_enforcement:
+  M1_one_executor: enforced
+  M2_completion_criteria: enforced
+  M3_logging: enforced
+  M3_implementation: "All tasks require error_handling section with condition→action table"
+  M4_output_schema: enforced
+  M4_implementation: "Tasks define outputs via ## Output or ## Success Output sections; artifact_contracts enforce lifecycle_states"
+  M5_quality_gates: declared  # Downgraded from enforced — gates ↔ workflows are unidirectional; runtime enforcement pending W2-05 (embed gate-check phases in workflows)
+  M5_implementation: "data/quality-gates.yaml declares 10 gates + 5 veto_conditions; runtime enforcement at workflow level pending"
+  M6_executor_types: enforced
+  M7_deviations: enforced
+  M8_sequential: enforced
+  M9_handoff: enforced
+  M9_implementation: "modify-schema-workflow phase handoff_to_devops for production delegation"
+  M10_observability: declared  # Schema exists at data/pipeline-execution-log.yaml; executions:[] empty pending first real run with logging hook
+  M10_implementation: "data/pipeline-execution-log.yaml schema valid; executions[] population deferred to Wave 4 (W4-01)"
+
+domains:
+  strategic:
+    description: "Schema design and architecture decisions"
+    tasks: [kiss, domain-modeling, schema-audit, supabase-setup]
+  tactical:
+    description: "Migration planning, security policies, performance tuning"
+    tasks: [db-apply-migration, db-dry-run, db-verify-order, db-rollback, db-rls-audit, db-policy-apply, db-analyze-hotpaths, query-optimization, db-explain, db-best-practices-audit, db-squad-integration]
+  operational:
+    description: "Day-to-day operations, data loading, execution"
+    tasks: [db-env-check, db-bootstrap, db-run-sql, db-snapshot, db-smoke-test, db-impersonate, db-seed, db-load-csv, create-doc, execute-checklist]
+
+supported_modes:
+  - CONFIGURAR
+  - RESOLVER
+  - VALIDAR
+  - ENTENDER
+
+executor_profile:
+  supportedTaskTypes:
+    - schema-design
+    - migrate
+    - performance-opt
+    - security-audit
+  work_contexts: []
+  can_review: []
+  confidence_weight: 1.0
+
+# Production evidence: squad has been executed in real scenarios
+tested: true
+
+# --- Auto-added schema fields (validate:squad-schema) ---
+capabilities:
+  - db-sage

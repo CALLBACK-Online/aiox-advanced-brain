@@ -1,0 +1,231 @@
+workflow:
+  name: Multi-Project Comparison & Architecture Synthesis
+  id: wf-multi-compare
+  version: 1.0.0
+  description: |
+    Compara múltiplos projetos extraídos contra o baseline AllFluence,
+    agrupa por módulo alvo, resolve conflitos entre referências divergentes,
+    e gera proposta unificada de arquitetura com C4 before/after.
+    Baseado em RT-ARCH-BRIDGE-001.
+  squad: code-anatomist
+  orchestrator: decoder-chief
+  command: "*multi-compare"
+  estimated_duration: "2-4 horas por sessão"
+
+  # ─────────────────────────────────────────────────────────────────
+  # INPUT: Comparison Groups
+  # ─────────────────────────────────────────────────────────────────
+  input:
+    baseline: "allfluence"
+    groups:
+      description: |
+        Cada grupo mapeia módulos AllFluence → projetos de referência.
+        O usuário define os grupos na elicitation.
+      schema:
+        - group_id: "G1"
+          name: "Group name"
+          target_modules: ["apps/module1", "services/module2"]
+          references: ["slug1", "slug2"]
+          dimensions: ["architecture", "dependencies", "api"]
+          objective: "What to learn from these references"
+
+  # ─────────────────────────────────────────────────────────────────
+  # ELICITATION (before pipeline starts)
+  # ─────────────────────────────────────────────────────────────────
+  elicitation:
+    elicit: true
+    questions:
+      - Q1: "Quais grupos de comparação? (módulos AllFluence → projetos referência)"
+      - Q2: "Qual o objetivo de cada grupo? (feature inspiration, refactor, pattern adoption)"
+      - Q3: "Prioridade entre grupos? (qual resolver primeiro se houver conflito)"
+      - Q4: "Constraint de esforço? (S/M/L/XL máximo por adoção)"
+      - Q5: "Baseline AllFluence está atualizado? (< 90 dias?)"
+
+  # ─────────────────────────────────────────────────────────────────
+  # PHASES
+  # ─────────────────────────────────────────────────────────────────
+  phases:
+
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 1: VALIDATE BASELINES
+    # ═══════════════════════════════════════════════════════════════
+    - id: phase-1-validate
+      name: "Validate Baselines"
+      pattern: sequential
+      agent: decoder-chief
+      description: |
+        Verificar que todas as extrações necessárias existem e estão completas.
+        Baseline AllFluence deve ter < 90 dias (TTL check).
+      steps:
+        - "Verificar outputs/decoded/allfluence/ existe com 9 fases"
+        - "Verificar cada referência em outputs/decoded/{slug}/ tem ≥ 5 fases"
+        - "Verificar comparability_score entre baseline e cada referência"
+        - "Se baseline > 90 dias → WARN, recomendar re-extração"
+      gate:
+        id: G-VALIDATE
+        type: auto
+        criteria: "Baseline exists + all references exist + all have ≥ 5 phases"
+      veto_conditions:
+        - "Baseline AllFluence não existe → HALT"
+        - "Referência com < 3 fases completas → EXCLUDE da comparação com WARN"
+
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 2: PARALLEL COMPARISONS (Fan-Out)
+    # ═══════════════════════════════════════════════════════════════
+    - id: phase-2-compare
+      name: "Parallel Comparisons"
+      pattern: fan-out
+      agent: rick-kazman
+      assisted_by: [simon-brown, data-specialist, michael-feathers, eric-evans, ronald-ross]
+      description: |
+        Executa *compare para cada par (allfluence × referência).
+        Todas as comparações rodam em paralelo por grupo.
+        Cada compare produz um delta-report.yaml.
+      steps:
+        - "Para cada grupo G, para cada referência R:"
+        - "  Executar: *compare allfluence {R} --dim {G.dimensions}"
+        - "  Output: outputs/decoded/allfluence/comparisons/{R}/delta-report.yaml"
+      agent_routing_by_dimension:
+        architecture: rick-kazman
+        dependencies: [data-specialist, michael-feathers]
+        domain: [eric-evans, ronald-ross]
+        data: data-specialist
+        api: simon-brown
+        infra: rick-kazman
+      gate:
+        id: G-COMPARE
+        type: auto
+        criteria: "All delta-reports generated, each > 500 bytes"
+      veto_conditions:
+        - "Comparação produz 0 deltas → WARN (projetos muito diferentes)"
+        - "comparability_score < 0.3 → EXCLUDE com justificativa"
+
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 3: GROUP CONSOLIDATION
+    # ═══════════════════════════════════════════════════════════════
+    - id: phase-3-consolidate
+      name: "Group Consolidation"
+      pattern: sequential
+      agent: rick-kazman
+      description: |
+        Para cada grupo, consolida os delta-reports das referências em
+        um único group-report. Agrupa por módulo AllFluence alvo.
+        Identifica padrões convergentes (2+ referências recomendam o mesmo).
+      steps:
+        - "Ler todos delta-reports do grupo"
+        - "Agrupar PATTERN_IN_B_NOT_A por módulo AllFluence alvo"
+        - "Identificar convergências: padrão recomendado por 2+ referências"
+        - "Identificar divergências: referências recomendam abordagens diferentes"
+        - "Rankear por impacto × esforço"
+      output:
+        file: "outputs/decoded/allfluence/multi-compare/{group_id}/group-report.yaml"
+        template: "templates/group-report-tmpl.yaml"
+      gate:
+        id: G-CONSOLIDATE
+        type: auto
+        criteria: "All group-reports generated with convergences + divergences"
+
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 4: CONFLICT RESOLUTION
+    # ═══════════════════════════════════════════════════════════════
+    - id: phase-4-conflicts
+      name: "Conflict Resolution"
+      pattern: sequential
+      agent: rick-kazman
+      assisted_by: [gail-murphy, simon-brown]
+      description: |
+        Resolve conflitos onde referências divergem para o mesmo concern.
+        Usa ATAM trade-off analysis para decidir qual abordagem adotar.
+        Conflitos inter-grupo (G1 vs G3 para o mesmo módulo) têm prioridade.
+      steps:
+        - "Listar TODOS conflitos (intra-grupo + inter-grupo)"
+        - "Para cada conflito:"
+        - "  1. Identificar quality attributes afetados (ATAM)"
+        - "  2. Comparar trade-offs de cada abordagem"
+        - "  3. Considerar esforço de implementação"
+        - "  4. Considerar compatibilidade com stack AllFluence"
+        - "  5. Decidir: abordagem A, abordagem B, ou híbrido"
+        - "Gerar conflict-resolution.yaml com decisão + justificativa"
+      output:
+        file: "outputs/decoded/allfluence/multi-compare/conflict-resolution.yaml"
+      gate:
+        id: G-CONFLICTS
+        type: auto
+        criteria: "All conflicts resolved or escalated to human"
+      veto_conditions:
+        - "Conflito afeta segurança (auth, RLS) → ESCALATE para humano obrigatório"
+        - "Conflito envolve breaking change em 3+ módulos → ESCALATE para humano"
+
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 5: ARCHITECTURE SYNTHESIS
+    # ═══════════════════════════════════════════════════════════════
+    - id: phase-5-synthesis
+      name: "Architecture Synthesis"
+      pattern: sequential
+      agent: simon-brown
+      assisted_by: [rick-kazman]
+      description: |
+        Gera a proposta unificada de arquitetura: C4 diagrams before/after,
+        lista de adoções priorizadas, e roadmap de implementação.
+      steps:
+        - "Ler group-reports + conflict-resolution"
+        - "Gerar C4 Container BEFORE (estado atual do AllFluence)"
+        - "Gerar C4 Container AFTER (com todas adoções aplicadas)"
+        - "Gerar C4 Component BEFORE/AFTER para cada módulo afetado"
+        - "Listar adoções priorizadas por impacto/esforço"
+        - "Estimar esforço total e roadmap em waves"
+        - "Gerar ADR drafts para decisões arquiteturais significativas"
+      output:
+        file: "outputs/decoded/allfluence/multi-compare/unified-proposal.yaml"
+        template: "templates/unified-proposal-tmpl.yaml"
+        artifact_id: "unified-proposal"
+        lifecycle_state: draft
+      gate:
+        id: G-SYNTHESIS
+        type: HUMAN-BLOCKING
+        criteria: "Unified proposal reviewed by Pedro. C4 before/after validated."
+
+    # ═══════════════════════════════════════════════════════════════
+    # PHASE 6: HANDOFF
+    # ═══════════════════════════════════════════════════════════════
+    - id: phase-6-handoff
+      name: "Handoff to Pipeline"
+      pattern: sequential
+      agent: decoder-chief
+      description: |
+        Gera inter-BU handoff com adoption proposals para @architect.
+        Inclui story candidates derivadas das adoções aprovadas.
+      steps:
+        - "Gerar adoption-proposal.yaml por adoção aprovada"
+        - "Gerar story candidates no formato @po"
+        - "Gerar handoff inter-BU com signoff humano"
+        - "Apresentar resumo executivo ao usuário"
+      output:
+        file: "outputs/decoded/allfluence/multi-compare/handoff-to-architect.yaml"
+        artifacts:
+          - artifact_id: "adoption-proposal"
+            template: "templates/adoption-proposal-tmpl.yaml"
+            lifecycle_state: draft
+            per_adoption: true  # 1 artifact per approved adoption
+      handoff:
+        to: "@architect"
+        scope: inter_bu
+        signoff:
+          required: true
+          approver: "Pedro Valério"
+
+  # ─────────────────────────────────────────────────────────────────
+  # SUMMARY
+  # ─────────────────────────────────────────────────────────────────
+  summary:
+    total_phases: 6
+    total_gates: 6
+    human_blocking: [G-SYNTHESIS]
+    parallel_phases: [phase-2-compare]
+    estimated_outputs:
+      - "N delta-reports (1 per reference project)"
+      - "M group-reports (1 per comparison group)"
+      - "1 conflict-resolution.yaml"
+      - "1 unified-proposal.yaml (C4 before/after + roadmap)"
+      - "N adoption-proposals (1 per approved adoption)"
+      - "1 handoff-to-architect.yaml"

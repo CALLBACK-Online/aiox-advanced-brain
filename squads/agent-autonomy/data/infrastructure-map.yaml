@@ -1,0 +1,27 @@
+service_catalog:
+  autonomy_outputs:
+    service_ref: ".aiox/squad-runtime/sinkra-squad/agent-autonomy/"
+    connection: ".aiox/squad-runtime/sinkra-squad/agent-autonomy/"
+    integration: "Persistência de relatórios, auditorias e handoffs do squad"
+  autonomy_templates:
+    service_ref: "squads/agent-autonomy/templates/"
+    connection: "squads/agent-autonomy/templates/"
+    integration: "Templates tipados de report, plano e handoff"
+  evidence_search:
+    service_ref: "mcp__exa__web_search_exa"
+    connection: "mcp"
+    integration: "Pesquisa externa para validação de recomendações"
+
+integrations:
+  - name: autonomy_output_store
+    connection: ".aiox/squad-runtime/sinkra-squad/agent-autonomy/"
+    endpoint: filesystem
+    mode: read_write
+  - name: evidence_search_api
+    connection: "mcp__exa__web_search_exa"
+    endpoint: mcp
+    mode: read_only
+  - name: template_registry
+    connection: "squads/agent-autonomy/templates/"
+    endpoint: filesystem
+    mode: read_write

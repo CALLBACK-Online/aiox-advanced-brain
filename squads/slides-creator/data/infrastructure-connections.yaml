@@ -1,0 +1,17 @@
+schema_version: "1.0"
+service_catalog:
+  - id: slides-core
+    service_ref: packages/slides-core
+    integration: ingestion_evidence_and_pptx_reverse
+    endpoint: local_package
+  - id: slides-renderer
+    service_ref: packages/slides-renderer
+    integration: native_pptx_render
+    endpoint: local_package
+connections:
+  - id: workflow_to_core
+    connection: "generate-presentation -> slides-core"
+    api: "TypeScript package API"
+  - id: workflow_to_renderer
+    connection: "emit-native-pptx -> slides-renderer"
+    api: "Native Slide IR"

@@ -1,0 +1,97 @@
+molecule:
+  molecule_id: "MOL-DD-006"
+  name: "Validation"
+  mode: "VALIDAR"
+  pattern: "sequential"
+  phase: 5
+  reusable: true
+  used_in_variants: ["extraction", "standardization"]
+  agents_primary: ["decoder-chief"]
+  tokens_molecule:
+    - "TK-DD-MOD-006"
+    - "TK-DD-ACC-001"
+    - "TK-DD-PRI-001"
+
+atoms:
+  - atom_id: "ATM-DD-030"
+    name: "Run SBVR Validation Checklist"
+    executor_type: Agent
+    executor_id: decoder-chief
+    mode: VALIDAR
+    inputs:
+      - { name: "reviewed_rules", type: "yaml", source: "ATM-DD-029" }
+    outputs:
+      - { name: "sbvr_report", type: "yaml", artifact: true }
+    tokens_bound:
+      - "TK-DD-THR-001"
+      - "TK-DD-THR-003"
+      - "TK-DD-THR-005"
+      - "TK-DD-CAP-007"
+    completion_criteria:
+      - "Pass threshold 38/45 items met"
+      - "All 5 CRITICAL items pass"
+
+  - atom_id: "ATM-DD-031"
+    name: "Run Extraction Quality Checklist"
+    executor_type: Agent
+    executor_id: decoder-chief
+    mode: VALIDAR
+    inputs:
+      - { name: "reviewed_rules", type: "yaml", source: "ATM-DD-029" }
+    outputs:
+      - { name: "quality_report", type: "yaml", artifact: true }
+    tokens_bound:
+      - "TK-DD-THR-002"
+      - "TK-DD-THR-004"
+      - "TK-DD-THR-006"
+      - "TK-DD-CAP-008"
+      - "TK-DD-CAP-009"
+    completion_criteria:
+      - "Pass threshold 46/54 items met"
+      - "Zero auto-fail conditions triggered"
+
+  - atom_id: "ATM-DD-032"
+    name: "Generate Final Rule Catalog"
+    executor_type: Agent
+    executor_id: decoder-chief
+    mode: CRIAR
+    inputs:
+      - { name: "reviewed_rules", type: "yaml", source: "ATM-DD-029" }
+      - { name: "sbvr_report", type: "yaml", source: "ATM-DD-030" }
+      - { name: "quality_report", type: "yaml", source: "ATM-DD-031" }
+    outputs:
+      - { name: "final_rule_catalog", type: "md", artifact: true }
+    tokens_bound: []
+    completion_criteria:
+      - "Templates generated from rule-catalog-tmpl.md"
+      - "All extracted rules cataloged appropriately"
+
+  - atom_id: "ATM-DD-033"
+    name: "Create Traceability Matrix"
+    executor_type: Worker
+    executor_id: traceability-generator
+    mode: CRIAR
+    inputs:
+      - { name: "final_rule_catalog", type: "md", source: "ATM-DD-032" }
+    outputs:
+      - { name: "traceability_matrix", type: "csv", artifact: true }
+    tokens_bound: []
+    completion_criteria:
+      - "Matrix traces Rule ID to Source Code, Line, Module, SME, and Policy"
+
+  - atom_id: "ATM-DD-034"
+    name: "Final Acceptance & Package Deliverables"
+    executor_type: Human
+    executor_id: "Human:process_owner"
+    mode: VALIDAR
+    inputs:
+      - { name: "final_rule_catalog", type: "md", source: "ATM-DD-032" }
+      - { name: "traceability_matrix", type: "csv", source: "ATM-DD-033" }
+    outputs:
+      - { name: "final_delivery_package", type: "zip", artifact: true }
+    tokens_bound:
+      - "TK-DD-ACC-001"
+    hitl_id: "HITL-005"
+    completion_criteria:
+      - "Process owner provides formal sign-off"
+      - "Deliverable package sealed and published"

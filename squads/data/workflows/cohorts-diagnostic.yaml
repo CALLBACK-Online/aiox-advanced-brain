@@ -1,0 +1,95 @@
+workflow:
+  id: cohorts-diagnostic
+  name: "Diagnostico Integrado de Cohorts"
+  version: "1.0"
+  category: cohort-analytics
+  primary_agent: data-chief
+  tier_flow: [0, 1, 2]
+  phases: 3
+  agents_involved:
+    - data-chief
+    - peter-fader
+    - wes-kao
+    - david-spinks
+    - nick-mehta
+    - avinash-kaushik
+  state_machine:
+    states: [preflight, specialist-execution, synthesis, complete]
+    transitions:
+      - trigger: preflight_complete
+        source: preflight
+        dest: specialist-execution
+      - trigger: specialist_outputs_ready
+        source: specialist-execution
+        dest: synthesis
+      - trigger: executive_summary_ready
+        source: synthesis
+        dest: complete
+  task_ref:
+    primary:
+      - segment-rfm
+      - design-learning-outcomes
+      - measure-community
+      - design-health-score
+    supporting:
+      - analyze-cohort
+      - create-dashboard
+  views_required: []
+  templates_used:
+    - analytics-template-v1
+  checklists_used: []
+  deliverables:
+    - segmentation-rfm.yaml
+    - learning-journey.yaml
+    - community-health.yaml
+    - student-health-score.yaml
+    - icp-deep-analysis.yaml
+    - executive-summary.yaml
+
+workspace_execution_contract:
+  preflight:
+    - "*workspace-preflight (executa bootstrap-data-workspace.sh + validate-data-essentials.sh)"
+    - "*workspace-context {slug}"
+    - "Confirmar templates em squads/data/templates/cohorts/"
+  output_routing:
+    canonical:
+      - "workspace/businesses/{slug}/L1-strategy/analytics/cohorts/segmentation-rfm.yaml"
+      - "workspace/businesses/{slug}/L1-strategy/analytics/cohorts/learning-journey.yaml"
+      - "workspace/businesses/{slug}/L1-strategy/analytics/cohorts/community-health.yaml"
+      - "workspace/businesses/{slug}/L1-strategy/analytics/cohorts/student-health-score.yaml"
+      - "workspace/businesses/{slug}/L1-strategy/analytics/cohorts/icp-deep-analysis.yaml"
+      - "workspace/businesses/{slug}/L1-strategy/analytics/cohorts/executive-summary.yaml"
+    custom:
+      - "outputs/data/{slug}/cohorts-diagnostic-{date}.md"
+  hard_rules:
+    - "Proibido gravar em workspace/businesses/{slug}/L1-strategy/analytics/cohorts/ sem template correspondente em squads/data/templates/cohorts/."
+    - "Relatorios em outputs/data/{slug}/ sao complementares e nao substituem artefatos canonicos."
+
+governance:
+  ownership:
+    owner: data-chief
+    owner_notes: |
+      Original draft listed `marketing-lead` (executivo) and `narrative-strategist` (copy) as
+      cross-squad collaborators; removed in upgrade Wave 1 because they did not exist in the squad
+      nor were declared as cross_squad_contracts. Re-introduce ONLY via workspace/_system/config.yaml
+      cross_squad_contracts[] when the consuming squads are confirmed.
+
+specialist_execution:
+  - agent: peter-fader
+    produces: segmentation-rfm.yaml
+  - agent: wes-kao
+    produces: learning-journey.yaml
+  - agent: david-spinks
+    produces: community-health.yaml
+  - agent: nick-mehta
+    produces: student-health-score.yaml
+  - agent: data-chief
+    produces: icp-deep-analysis.yaml
+  - agent: avinash-kaushik
+    produces: executive-summary.yaml
+
+completion_checklist:
+  - "Todos os 6 artefatos canonicos foram gerados em analytics/cohorts/."
+  - "Todos os artefatos usam o padrao analytics-template-v1."
+  - "executive-summary.yaml referencia os 5 artefatos de base."
+  - "Ownership (data-chief) registrado."

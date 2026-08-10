@@ -1,0 +1,19 @@
+workflow_version: "research-output.v2"
+coverage_score: 88
+integrity_score: 92
+citation_verified: true
+stop_reason: "coverage_gate_passed"
+runtime_contract:
+  workflow_version: "research-output.v2"
+  schema_version: "research-output.v2"
+  skill_version: "tech-research-v2.0"
+rubrics:
+  information_recall:
+    passed: 8
+    total: 10
+  analysis:
+    passed: 9
+    total: 10
+  presentation:
+    passed: 10
+    total: 10

@@ -1,0 +1,96 @@
+quality_gates:
+  benchmark_pipeline:
+    type_detection_confidence:
+      threshold: 0.8
+    source_verification_rate:
+      threshold: 1.0
+    matrix_completeness:
+      threshold: 0.9
+    scorecard_integrity:
+      threshold: 1.0
+  deep_research:
+    corpus_selection_quality:
+      threshold: 0.85
+    transcript_coverage:
+      threshold: 0.8
+    pattern_recurrence_min:
+      threshold: 3
+    comment_signal_density:
+      threshold: 0.7
+  reporting:
+    executive_summary_quality:
+      threshold: 0.85
+    recommendation_specificity:
+      threshold: 0.8
+    artifact_publish_success:
+      threshold: 1.0
+    battle_card_readiness:
+      threshold: 0.9
+  governance:
+    evidence_traceability:
+      threshold: 1.0
+    domain_coverage:
+      threshold: 1.0
+    token_family_coverage:
+      threshold: 1.0
+    handoff_completeness:
+      threshold: 0.9
+
+veto_conditions:
+  - id: RESEARCH_QG_001
+    condition: "source_verification_rate < 1.0"
+    action: "Bloquear benchmark"
+  - id: RESEARCH_QG_002
+    condition: "artifact_publish_success < 1.0"
+    action: "Bloquear publish"
+  - id: RESEARCH_QG_003
+    condition: "evidence_traceability < 1.0"
+    action: "Emitir revisão obrigatória"
+  # RA-D.1 — per-claim adaptive veto (replaces binary verified_ratio < 0.85)
+  - id: CITATION_QG_001
+    condition: "unsupported_top_tier_ratio > 0.20"
+    action: "VETO — mais de 20% de claims top-tier sem suporte"
+    story: "STORY-RA-D.1"
+  - id: CITATION_QG_002
+    condition: "unsupported_ratio > 0.05 AND unsupported_top_tier_ratio <= 0.20"
+    action: "APPROVE_WITH_CONFIDENCE — registrar confidence_distribution no relatório"
+    story: "STORY-RA-D.1"
+  - id: CITATION_QG_003
+    condition: "unsupported_ratio <= 0.05"
+    action: "APPROVE — menos de 5% de claims sem suporte"
+    story: "STORY-RA-D.1"
+
+# ─── Stop Signal Governance (RA-A.1) ─────────────────────────────────────────
+# quality-gates.yaml is the SOT macro for all gate thresholds.
+# heartbeat-policy.yaml declares run-level stop signals as specializations.
+#
+# Precedence (conflict resolution):
+#   IF any threshold declared in quality-gates.yaml conflicts with a signal
+#   in heartbeat-policy.yaml, quality-gates.yaml WINS.
+#   Example: if quality-gates sets source_verification_rate threshold and
+#   heartbeat-policy references a coverage_score >= 70 stop, both apply
+#   independently — heartbeat stops the search wave; QG gates the final output.
+#
+# Separation of concerns:
+#   heartbeat-policy.yaml  → mid-run economic/epistemic STOP/CONTINUE/REPLAN
+#   quality-gates.yaml     → final output quality PASS/VETO gates
+#
+# Signal priority order (when both systems evaluate the same metric):
+#   1. quality-gates.yaml veto_conditions (BLOCK publish / final gate)
+#   2. heartbeat-policy.yaml stop_when_any (STOP search wave mid-run)
+
+stop_signal_governance:
+  sot: quality-gates.yaml
+  specialization: heartbeat-policy.yaml
+  conflict_resolution: quality-gates-wins
+  story: STORY-RA-A.1
+
+citation_gate:
+  # RA-D.1: replaces binary CITATION_GATE (verified_ratio < 0.85 → 2 fix attempts → VETO)
+  mode: per_claim_adaptive
+  thresholds:
+    approve_clean: 0.05          # < 5% unsupported → APPROVE
+    approve_with_confidence: 0.20  # 5-20% → APPROVE_WITH_CONFIDENCE
+    veto: 0.20                   # > 20% unsupported_top_tier → VETO
+  top_tier_sackett_grades: ["1a", "1b", "2a"]
+  fallback_mode: standalone      # if Sackett unavailable, use claim metadata only

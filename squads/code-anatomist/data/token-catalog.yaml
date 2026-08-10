@@ -1,0 +1,258 @@
+# Code Anatomist Token Catalog
+# Local index of 58 TK-DD-* tokens registered in hub tokens registry
+# Generated: 2026-03-31
+# Source: workspace/businesses/sinkra-hub/registries/tokens.json → domain_decoder_tokens
+
+version: 1.0.0
+squad: code-anatomist
+registry_ref: workspace/businesses/sinkra-hub/registries/tokens.json
+registry_key: domain_decoder_tokens
+total_tokens: 58
+families:
+  Accountability:
+    count: 1
+    tokens:
+      - ref: TK-DD-ACC-001
+        name: pipeline_accountability
+        value:
+          accountable_id: Human:Process_Owner
+          accountability_scope: full
+          escalation_priority: high
+        overridable: true
+  Behavior:
+    count: 4
+    tokens:
+      - ref: TK-DD-BEH-001
+        name: banned_words_list
+        value: 23
+        overridable: true
+      - ref: TK-DD-BEH-002
+        name: compound_annotation_format
+        value: <!-- compound:intentional reason="..." -->
+        overridable: true
+      - ref: TK-DD-BEH-003
+        name: contradiction_annotation_format
+        value: <!-- contradiction:RS-XXX resolved:scope_boundary ref:RS-YYY -->
+        overridable: true
+      - ref: TK-DD-BEH-005
+        name: modal_verbs_allowed
+        value:
+          - MUST
+          - MUST_NOT
+          - MAY
+        overridable: true
+  Capacity:
+    count: 14
+    tokens:
+      - ref: TK-DD-CAP-001
+        name: glossary_terms_per_context_min
+        value: 15
+        overridable: true
+      - ref: TK-DD-CAP-002
+        name: characterization_tests_major_context
+        value: 5
+        overridable: true
+      - ref: TK-DD-CAP-003
+        name: characterization_tests_minor_context
+        value: 3
+        overridable: true
+      - ref: TK-DD-CAP-004
+        name: source_sample_min_files
+        value: 10
+        overridable: true
+      - ref: TK-DD-CAP-005
+        name: decision_table_max_rows
+        value: 20
+        overridable: true
+      - ref: TK-DD-CAP-006
+        name: decision_table_split_threshold
+        value: 50
+        overridable: true
+      - ref: TK-DD-CAP-007
+        name: sbvr_critical_items
+        value: 5
+        overridable: false
+      - ref: TK-DD-CAP-008
+        name: auto_fail_conditions_extraction
+        value: 6
+        overridable: false
+      - ref: TK-DD-CAP-009
+        name: auto_fail_conditions_enforcement
+        value: 6
+        overridable: false
+      - ref: TK-DD-CAP-010
+        name: enforcement_rules_count
+        value: 10
+        overridable: false
+      - ref: TK-DD-CAP-011
+        name: context_references_minor_rule_threshold
+        value: 2
+        overridable: true
+      - ref: TK-DD-CAP-012
+        name: cold_reader_rules_sample
+        value: 10
+        overridable: true
+      - ref: TK-DD-CAP-013
+        name: cold_reader_pass_threshold
+        value: 8
+        overridable: true
+      - ref: TK-DD-CAP-014
+        name: sbvr_veto_max_retries
+        value: 2
+        overridable: true
+  Mode:
+    count: 6
+    tokens:
+      - ref: TK-DD-MOD-001
+        name: mol_discovery_mode
+        value: ENTENDER
+        overridable: true
+      - ref: TK-DD-MOD-002
+        name: mol_characterization_mode
+        value: ENTENDER
+        overridable: true
+      - ref: TK-DD-MOD-003
+        name: mol_extraction_mode
+        value: EXPLORAR
+        overridable: true
+      - ref: TK-DD-MOD-004
+        name: mol_modeling_mode
+        value: CRIAR
+        overridable: true
+      - ref: TK-DD-MOD-005
+        name: mol_expression_mode
+        value: CRIAR
+        overridable: true
+      - ref: TK-DD-MOD-006
+        name: mol_validation_mode
+        value: VALIDAR
+        overridable: true
+  Priority:
+    count: 1
+    tokens:
+      - ref: TK-DD-PRI-001
+        name: atom_priority_default
+        value: P2
+        overridable: true
+  Taxonomy:
+    count: 15
+    tokens:
+      - ref: TK-DD-TAX-001
+        name: ross_rule_types
+        overridable: true
+      - ref: TK-DD-TAX-002
+        name: characterization_test_status
+        overridable: true
+      - ref: TK-DD-TAX-003
+        name: seam_types
+        overridable: true
+      - ref: TK-DD-TAX-004
+        name: risk_level_values
+        overridable: true
+      - ref: TK-DD-TAX-005
+        name: architecture_patterns
+        overridable: true
+      - ref: TK-DD-TAX-006
+        name: context_relationship_types
+        overridable: true
+      - ref: TK-DD-TAX-007
+        name: dmn_hit_policies
+        overridable: true
+      - ref: TK-DD-TAX-008
+        name: rulespeak_patterns
+        overridable: true
+      - ref: TK-DD-TAX-009
+        name: contradiction_resolution_statuses
+        overridable: true
+      - ref: TK-DD-TAX-010
+        name: glossary_validation_statuses
+        overridable: true
+      - ref: TK-DD-TAX-011
+        name: stakeholder_review_statuses
+        overridable: true
+      - ref: TK-DD-TAX-012
+        name: code_smell_types
+        overridable: true
+      - ref: TK-DD-TAX-013
+        name: modal_verbs_allowed
+        overridable: true
+      - ref: TK-DD-TAX-014
+        name: rule_priority_types
+        overridable: true
+      - ref: TK-DD-TAX-015
+        name: system_source_types
+        overridable: true
+  Threshold:
+    count: 15
+    tokens:
+      - ref: TK-DD-THR-001
+        name: sbvr_score_min
+        value: 85
+        overridable: true
+      - ref: TK-DD-THR-002
+        name: extraction_quality_score_min
+        value: 85
+        overridable: true
+      - ref: TK-DD-THR-003
+        name: sbvr_checklist_items_total
+        value: 45
+        overridable: false
+      - ref: TK-DD-THR-004
+        name: extraction_quality_items_total
+        value: 54
+        overridable: false
+      - ref: TK-DD-THR-005
+        name: sbvr_pass_items_min
+        value: 38
+        overridable: true
+      - ref: TK-DD-THR-006
+        name: extraction_pass_items_min
+        value: 46
+        overridable: true
+      - ref: TK-DD-THR-007
+        name: source_files_sample_min
+        value: 10
+        overridable: true
+      - ref: TK-DD-THR-008
+        name: source_files_sample_max
+        value: 20
+        overridable: true
+      - ref: TK-DD-THR-009
+        name: glossary_terms_per_context_min
+        value: 15
+        overridable: true
+      - ref: TK-DD-THR-010
+        name: characterization_tests_per_major_context_min
+        value: 5
+        overridable: true
+      - ref: TK-DD-THR-011
+        name: characterization_tests_per_minor_context_min
+        value: 3
+        overridable: true
+      - ref: TK-DD-THR-012
+        name: rule_location_coverage_min
+        value: 80
+        overridable: true
+      - ref: TK-DD-THR-013
+        name: fact_model_completeness_min
+        value: 50
+        overridable: true
+      - ref: TK-DD-THR-014
+        name: stakeholder_review_sample_min
+        value: 10
+        overridable: true
+      - ref: TK-DD-THR-015
+        name: extraction_completeness_source_min
+        value: 90
+        overridable: true
+  Time:
+    count: 2
+    tokens:
+      - ref: TK-DD-TIME-001
+        name: stakeholder_review_timeout
+        value: 48
+        overridable: true
+      - ref: TK-DD-TIME-002
+        name: cold_reader_comprehension_timeout
+        value: 30
+        overridable: true

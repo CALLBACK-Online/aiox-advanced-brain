@@ -1,0 +1,48 @@
+---
+schema_version: "1.0"
+generator: "tech-research/sources_extractor.py"
+research_slug: "extraction-ladder-blocked-url"
+generated_at: "2026-05-19"
+sources:
+  - id: src-001
+    url: "https://example.com/public"
+    title: "Public reference"
+    date: "2026"
+    credibility: MEDIUM
+    multiplier: 1.0
+    first_seen_in: "02-research-report.md"
+    first_seen_section: "## 1. Sources"
+    # Full-quality extraction (step 1 succeeded)
+    extraction_method: "websearch_snippet"
+    extraction_quality: "full"
+    extraction_attempts: 1
+
+  - id: src-002
+    url: "https://blocked.example.com/paywall"
+    title: "blocked.example.com"
+    date: "date_unknown"
+    credibility: LOW
+    multiplier: 0.6
+    first_seen_in: "02-research-report.md"
+    first_seen_section: "## 1. Sources"
+    # STORY-RA-F.3 AC-B2: blocked URL — ladder exhausted, notes preserved
+    extraction_method: "extraction_blocked"
+    extraction_quality: "blocked_fallback_used"
+    extraction_attempts: 4
+    extraction_ladder_steps_tried:
+      - "websearch_snippet"
+      - "webfetch"
+      - "etl_adapter"
+      - "playwright"
+      - "mark_blocked"
+    extraction_notes: "All ladder steps exhausted (websearch_snippet, webfetch, etl_adapter, playwright). Source URL inaccessible (Cloudflare challenge)."
+
+totals:
+  total: 2
+  by_credibility:
+    HIGH: 0
+    MEDIUM: 1
+    LOW: 1
+  with_date: 1
+  date_unknown: 1
+  date_coverage_ratio: 0.5

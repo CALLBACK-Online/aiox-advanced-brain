@@ -1,0 +1,41 @@
+# Squad IO Contract — clickup-ops-squad
+# Status: scaffold | IMP-012 | Date: 2026-03-27
+
+inputs:
+  - "mission-clickup-handoff.yaml (from sinkra-squad, mode=mission, Phase 7)"
+  - "ClickUp API credentials (via services/clickup/)"
+
+outputs:
+  - "ClickUp Space/Folder/Lists structure (created via API)"
+  - "DAG View, Board, Dashboard view configurations"
+  - "Materialization report (success/failure per component)"
+
+triggers:
+  - "sinkra-squad Phase 7 completion (mode=mission)"
+  - "Manual activation via /clickup-ops:clickup-chief"
+
+dependencies:
+  - "squads/sinkra-squad/ (upstream — produces mission handoff)"
+  - "services/clickup/ (API adapter)"
+
+upstream:
+  - squad: sinkra-squad
+    mode: mission
+    artifact: "mission-clickup-handoff.yaml"
+    schema_fields:
+      - mission_id
+      - space_name
+      - folders
+      - lists
+      - views
+      - custom_fields
+      - automations
+
+artifact_contracts:
+  - artifact_id: "clickup-mission-structure"
+    template_path: "templates/clickup-structure-tmpl.yaml"
+    producer_task: "materialize"  # scaffold — task not yet created
+    lifecycle_states: [draft, validated, approved]
+    schema:
+      required_fields: [mission_id, space_id, folders, lists]
+      optional_fields: [views, custom_fields, automations, dashboard]

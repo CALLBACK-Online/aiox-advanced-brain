@@ -1,0 +1,82 @@
+quality_gates:
+  - id: QG-DD-E1
+    name: "No Synthesizing"
+    description: "Cada fase DEVE spawnar agente dedicado via Agent tool. NUNCA sintetizar output a partir de dados em contexto."
+    check: "Agent tool subagent_type and prompt includes 'Read your agent file at squads/domain-decoder/agents/'"
+    blocking: true
+
+  - id: QG-DD-E2
+    name: "Save Before Advance"
+    description: "Cada fase DEVE gravar output em path predeterminado ANTES do Phase Gate rodar."
+    check: "outputs/decoded/{slug}/{phase_dir}/ listing check via phase gate script"
+    blocking: true
+
+  - id: QG-DD-E3
+    name: "Business Rules Only"
+    description: "Só aceita regras que interessam ao negócio/PO, nunca UI/cache/framework configs."
+    check: "business_rule: true tag enforcement on final count"
+    blocking: true
+
+  - id: QG-DD-E4
+    name: "Real Checklists"
+    description: "Phase 5 DEVE aplicar checklist SBVR (45 itens) e Extraction Quality (54 itens) detalhadamente."
+    check: "Validation outputs show row-by-row PASS/FAIL status."
+    blocking: true
+
+  - id: QG-DD-E5
+    name: "Tests Are Deliverable"
+    description: "Phase 1 requires files in characterization/tests/."
+    check: "Verify minimum 5/3 tests exist via ls check"
+    blocking: true
+
+  - id: QG-DD-E6
+    name: "Equal Treatment"
+    description: "Cada context DEVE passar por todas as fases, não apenas sumarizações em lote."
+    check: "outputs per context directory are symmetrical"
+    blocking: true
+
+  - id: QG-DD-E7
+    name: "Explicit Dedup"
+    description: "Extração DEVE incluir matriz de deduplicação real para regras duplicadas."
+    check: "dedup-matrix.md exists"
+    blocking: true
+
+  - id: QG-DD-E8
+    name: "Correct Output Path"
+    description: "Tudo deve ir para outputs/decoded/{slug}/."
+    check: "No outputs in legacy outputs/domain-decoder/ dir"
+    blocking: true
+
+  - id: QG-DD-E9
+    name: "Gates With Commands"
+    description: "Phase Gate obrigatoriamente roda scripts phase-gate-validator.js sem mental shortcuts."
+    check: "Bash tool output must be explicitly seen for phase-gate-validator.js"
+    blocking: true
+
+  - id: QG-DD-E10
+    name: "Input Collection Always"
+    description: "Sem bypasses para perguntas essenciais."
+    check: "Q1-Q5 are answered before agent spawn"
+    blocking: true
+
+  # Input Veto Checks (from wf-standardize-rules.yaml)
+  - id: QG-DD-IV1
+    name: "Rules Source Exists"
+    description: "rules_source DEVE existir, não ser vazio, e o path deve existir no filesystem."
+    check: "input-validator.js validates rules_source is non-empty and path exists"
+    blocking: true
+    script: squads/domain-decoder/scripts/input-validator.js
+
+  - id: QG-DD-IV2
+    name: "Source Format Valid"
+    description: "source_format DEVE ser um dos 6 valores válidos: spreadsheet, document, wiki, pdf, email, mixed."
+    check: "input-validator.js validates source_format against enum [spreadsheet, document, wiki, pdf, email, mixed]"
+    blocking: true
+    script: squads/domain-decoder/scripts/input-validator.js
+
+  - id: QG-DD-IV3
+    name: "Domain Not Empty"
+    description: "domain DEVE existir, não ser vazio nem conter apenas whitespace."
+    check: "input-validator.js validates domain is non-empty after trim()"
+    blocking: true
+    script: squads/domain-decoder/scripts/input-validator.js

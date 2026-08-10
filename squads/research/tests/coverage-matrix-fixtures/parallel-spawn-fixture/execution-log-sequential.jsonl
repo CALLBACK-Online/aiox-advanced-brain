@@ -1,0 +1,12 @@
+{"event": "spawn_init",   "spawn_mode": "sequential_fallback", "candidates_count": 5, "reason": "--no-parallel flag OR Agent tool unavailable", "timestamp": "2026-05-19T17:38:20Z"}
+{"event": "candidate_started",  "candidate_id": "claude_code", "timestamp": "2026-05-19T17:38:20Z"}
+{"event": "candidate_done",     "candidate_id": "claude_code", "duration_s": 45, "timestamp": "2026-05-19T17:39:05Z"}
+{"event": "candidate_started",  "candidate_id": "aider",       "timestamp": "2026-05-19T17:39:05Z"}
+{"event": "candidate_done",     "candidate_id": "aider",       "duration_s": 48, "timestamp": "2026-05-19T17:39:53Z"}
+{"event": "candidate_started",  "candidate_id": "cline",       "timestamp": "2026-05-19T17:39:53Z"}
+{"event": "candidate_done",     "candidate_id": "cline",       "duration_s": 42, "timestamp": "2026-05-19T17:40:35Z"}
+{"event": "candidate_started",  "candidate_id": "openhands",   "timestamp": "2026-05-19T17:40:35Z"}
+{"event": "candidate_done",     "candidate_id": "openhands",   "duration_s": 51, "timestamp": "2026-05-19T17:41:26Z"}
+{"event": "candidate_started",  "candidate_id": "cursor",      "timestamp": "2026-05-19T17:41:26Z"}
+{"event": "candidate_done",     "candidate_id": "cursor",      "duration_s": 46, "timestamp": "2026-05-19T17:42:12Z"}
+{"event": "consolidation", "candidates_done": 5, "merged_into": "matrices.yaml", "wallclock_s": 232, "timestamp": "2026-05-19T17:42:12Z"}

@@ -1,0 +1,50 @@
+{
+  "$id": "sinkra://slide-creator/wireframes/business-challenges.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "The audience sees symptoms but not root causes.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "challenge_1": {
+      "type": "string"
+    },
+    "challenge_2": {
+      "type": "string"
+    },
+    "challenge_3": {
+      "type": "string"
+    },
+    "impact_1": {
+      "type": "string"
+    },
+    "impact_2": {
+      "type": "string"
+    },
+    "impact_3": {
+      "type": "string"
+    },
+    "solution_bridge": {
+      "type": "string"
+    }
+  },
+  "title": "business-challenges",
+  "type": "object",
+  "x-sinkra": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "diagnosis_fishbone",
+    "slot_count": 8,
+    "warnings": [
+      "action_title",
+      "challenge_1",
+      "impact_1",
+      "challenge_2",
+      "impact_2",
+      "challenge_3",
+      "impact_3",
+      "solution_bridge"
+    ],
+    "wireframe_ref": "templates/wireframes/business-challenges.html"
+  }
+}

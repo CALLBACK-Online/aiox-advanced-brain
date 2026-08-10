@@ -1,0 +1,193 @@
+pack:
+  name: skill-creator-ops
+  version: "2.0.0"
+  description: "Skill lifecycle ops — create, validate (schema + 4.7 prompt quality), test, migrate, package, deprecate, retire. Linked to /skill-creator and /prompt-47-migrator slash skills. Empirically calibrated against Claude Opus 4.7 production patterns."
+  icon: "🔧"
+
+ide_sync:
+  enabled: false
+  rationale: "A skill vinculada é a superfície de ativação; este pack é operacional"
+
+workspace_integration:
+  level: none
+  rationale: >-
+    Skill-Creator-Ops governa lifecycle de skills em .claude/skills/; não lê nem
+    escreve em workspace/businesses/.
+
+agents:
+  - id: skill-ops-chief
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    methodology: "SINKRA + skill-creator pipeline"
+    specialty: "Orquestra lifecycle completo de skills: init → develop → validate → test → package"
+
+  - id: skill-validator
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    methodology: "Programmatic validation + AllFluence skill-standards"
+    specialty: "Validação automatizada de skills contra frontmatter schema, estrutura, naming, registry"
+
+  - id: skill-tester
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    methodology: "Golden inputs/outputs pattern (Epic 99)"
+    specialty: "Testa skills em sandbox isolado — verifica execução end-to-end e compara vs expected"
+
+capabilities:
+  - "skill-creation"
+  - "skill-validation-schema"
+  - "skill-validation-prompt-quality"
+  - "skill-testing"
+  - "skill-packaging"
+  - "skill-registry-governance"
+  - "skill-scaffolding"
+  - "skill-migration-to-4-7"
+  - "skill-lifecycle-deprecation"
+  - "skill-lifecycle-retirement"
+  - "skill-lifecycle-audit"
+
+activation:
+  shortcuts:
+    - "/skill-creator-ops:skill-ops-chief"
+    - "/skill-creator-ops:skill-validator"
+    - "/skill-creator-ops:skill-tester"
+
+# SINKRA v3.1
+artifact_contracts:
+  - artifact_id: "skill-validation-report"
+    template_path: "templates/validation-report-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "skill-test-result"
+    template_path: "templates/test-result-tmpl.yaml"
+    lifecycle_states: [draft, validated]
+  - artifact_id: "skill-package"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "skill-prompt-quality-report"
+    template_path: "templates/validation-report-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+    notes: "Uses the same validation-report template with a prompt_quality section extension"
+  - artifact_id: "skill-migration-preview"
+    lifecycle_states: [draft, approved, rejected]
+    notes: "Output of migrate-skill-to-47 task. Preview-first contract — never applies without approval."
+  - artifact_id: "skill-lifecycle-log"
+    lifecycle_states: [active]
+    notes: "Append-only log of deprecate / retire / revert-deprecation events."
+
+# Skill lifecycle states (governed by retire-skill.md task)
+skill_lifecycle:
+  states:
+    - id: active
+      description: "Fully available, recommended"
+      router_priority: normal
+    - id: deprecated
+      description: "Invocable but router deprioritizes; migration_target required"
+      router_priority: deprioritized
+      requires: ["deprecated_at", "migration_target"]
+    - id: retired
+      description: "Removed from registry and filesystem; archived"
+      router_priority: unlisted
+      requires: ["retired_at", "migration_story_ref", "archive_path"]
+  transitions:
+    - from: active
+      to: deprecated
+      task: tasks/retire-skill.md
+      action: deprecate
+    - from: deprecated
+      to: retired
+      task: tasks/retire-skill.md
+      action: retire
+      gates: ["zero_invocations_90d OR force+architect_signoff", "migration_story_ref exists"]
+    - from: deprecated
+      to: active
+      task: tasks/retire-skill.md
+      action: revert-deprecation
+      gates: ["revert_rationale with ADR reference"]
+
+bu_mapping: "hub-framework"
+supported_modes: [CRIAR, VALIDAR, CONFIGURAR]
+
+# SINKRA v3.2
+sinkra_tier: "Core"
+
+# SINKRA v3.2 — Entity Bindings
+entity_bindings:
+  tier: "Core"
+  entities_owned: []
+  entities_consumed:
+    - entity_ref: "skill"
+      role: "maintainer"
+    - entity_ref: "skill-registry"
+      role: "consumer"
+  domain_model_ref: "squads/sinkra-squad/data/domain-model.yaml"
+
+# Linked skills
+linked_skills:
+  - id: "skill-creator"
+    path: ".claude/skills/skill-creator/SKILL.md"
+    relationship: "operational-owner"
+    purpose: "Canonical skill authoring surface. This squad extends it with lifecycle governance."
+  - id: "prompt-47-migrator"
+    path: ".claude/skills/prompt-47-migrator/SKILL.md"
+    relationship: "tooling-consumer"
+    purpose: "Consumed by tasks/migrate-skill-to-47.md and tasks/validate-skill-prompt-quality.md"
+
+# Legacy field (kept for backwards compatibility with consumers reading config.yaml)
+linked_skill:
+  id: "skill-creator"
+  path: ".claude/skills/skill-creator/SKILL.md"
+  relationship: "operational-owner"
+
+# Scripts — extended versions of .claude/skills/skill-creator/scripts/
+# Original scripts remain untouched in skill-creator skill
+scripts:
+  - id: quick-validate
+    base: ".claude/skills/skill-creator/scripts/quick_validate.py"
+    extended: true
+    extension_notes: "Added checks for optional fields: version, owner_squad, sinkra_tier, context, agent, user-invocable"
+
+  - id: init-skill
+    base: ".claude/skills/skill-creator/scripts/init_skill.py"
+    extended: true
+    extension_notes: "Template includes optional extended frontmatter fields"
+
+  - id: package-skill
+    base: ".claude/skills/skill-creator/scripts/package_skill.py"
+    extended: false
+    extension_notes: "Used as-is from skill-creator"
+
+
+# --- MIGRATION-SCHEMA-001 (auto-backfill, refine domain & capabilities) ---
+metadata:
+  name: skill-creator-ops
+  status: active
+  domain: skill-creator-ops
+# --- /MIGRATION-SCHEMA-001 ---
+
+
+# --- MIGRATION-SCHEMA-001 (top-level schema backfill) ---
+workflows: {}
+# --- /MIGRATION-SCHEMA-001 ---
+
+# Production evidence: squad has been executed in real scenarios
+tested: true

@@ -1,0 +1,95 @@
+# Phase YAML Isolada — SPIKE-RA-C.0 Parallel Spawn Test
+# Proposito: fixture sintetico para provar que Task tool spawn paralelo e valido no runtime
+# NAO EXECUTAR em producao — apenas referencia de arquitetura para RA-C.2/C.3
+
+phase:
+  id: spike_parallel_spawn_test
+  version: "1.0.0"
+  description: "Spike isolado — prova de conceito para spawn paralelo via Task tool"
+  spike_ref: SPIKE-RA-C.0
+  isolation: true
+  production_safe: false
+
+atoms:
+  - id: spawn_sackett
+    description: "Mock specialist — Evidence Analyst (Sackett schema)"
+    executor: Task
+    tool_args:
+      description: "spike: collect parallel execution timestamp evidence — return {agent_id: 'sackett', t_start: <iso>, t_end: <iso>, status: 'completed'}"
+      subagent_type: general
+    run_in_background: true
+    timeout_ms: 30000
+    on_failure: isolate
+    metadata:
+      specialist: sackett
+      role: evidence_analyst
+      schema_ref: RA-E.2
+
+  - id: spawn_klein
+    description: "Mock specialist — Naturalistic Decision Researcher (Klein schema)"
+    executor: Task
+    tool_args:
+      description: "spike: test failure isolation — return {agent_id: 'klein', t_start: <iso>, t_end: <iso>, status: 'completed'}"
+      subagent_type: general
+    run_in_background: true
+    timeout_ms: 30000
+    on_failure: isolate
+    metadata:
+      specialist: klein
+      role: decision_researcher
+      schema_ref: RA-E.2
+
+  - id: spawn_sackett_fail_mock
+    description: "Mock failure scenario — Sackett configured to fail (invalid tool_args)"
+    executor: Task
+    tool_args:
+      description: "spike-failure-mock: intentionally produce failure signal — return {agent_id: 'sackett_fail', status: 'failed', error: 'mock_failure'}"
+      subagent_type: general
+    run_in_background: true
+    timeout_ms: 5000
+    on_failure: isolate
+    metadata:
+      scenario: failure_isolation_test
+      expected_outcome: failed
+
+  - id: spawn_klein_after_fail
+    description: "Klein continues after Sackett failure — tests isolation"
+    executor: Task
+    tool_args:
+      description: "spike-isolation: confirm completion despite co-agent failure — return {agent_id: 'klein_isolation', status: 'completed', co_agent_failed: true}"
+      subagent_type: general
+    run_in_background: true
+    timeout_ms: 30000
+    on_failure: isolate
+    metadata:
+      scenario: failure_isolation_test
+      expected_outcome: completed
+
+wait_for_all: true
+
+collect_results:
+  format: jsonl
+  output_path: "squads/research/spike-experiments/spike-ra-c-0-parallel-spawn/execution-log.jsonl"
+  fields:
+    - agent_id
+    - t_start
+    - t_end
+    - status
+    - error
+
+metrics:
+  overlap_detection:
+    formula: "t_klein_start < t_sackett_end"
+    pass_condition: true
+  wallclock_comparison:
+    formula: "wallclock_total < latency_sackett + latency_klein"
+    pass_condition: true
+  failure_isolation:
+    formula: "klein_isolation.status == 'completed' AND sackett_fail.status == 'failed'"
+    pass_condition: true
+
+verdict_mapping:
+  all_pass: "PASS — Sprint C PROCEED"
+  overlap_false: "FAIL — sem paralelismo real, Sprint C DEFERRED"
+  isolation_false: "FAIL — erro propaga, Sprint C DEFERRED"
+  runtime_error: "REQUIRES_RUNTIME_CHANGE — escalar para @aiox-architect"

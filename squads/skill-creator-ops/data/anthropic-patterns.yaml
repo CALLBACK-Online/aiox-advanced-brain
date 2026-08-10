@@ -1,0 +1,256 @@
+# Anthropic Prompt Patterns — Empirical Reference Catalog
+# Source of truth: observed usage in Claude Opus 4.7 production system prompt.
+# This catalog is used by skill-validator and prompt-47-migrator as the canonical
+# reference for what "correctly written" looks like in production.
+#
+# Principle: the source code is ground truth; documentation is narrative about it.
+# When adding a new pattern, cite the exact section of the 4.7 system prompt where
+# it appears. Documentation-only patterns do not belong here.
+
+version: "1.0.0"
+owner_squad: skill-creator-ops
+evidence_source: "Claude Opus 4.7 system prompt (observed April 2026)"
+
+patterns:
+
+  - id: decision-tree-stop-at-first-match
+    category: routing-logic
+    evidence: "4.7 system prompt, request_evaluation_checklist section"
+    shape: |
+      Before producing any <artifact>, walk these steps in order, stopping at the first match.
+
+      Step 0 — <first discriminator question>
+      Step 1 — <second discriminator question>
+      Step 2 — <third discriminator question>
+      Step 3 — <default path>
+    when_to_use: "Routing logic with multiple mutually exclusive output modes"
+    when_not_to_use: "Flat conditional lists where order does not matter"
+    anti_patterns:
+      - "Conditional prose that allows multiple branches to fire"
+      - "Numbered list without explicit 'stopping at first match' clause"
+
+  - id: category-match-not-style
+    category: routing-logic
+    evidence: "4.7 system prompt, Visualizer Step 1"
+    shape: |
+      'Fit' means category match, not style preference. If a connected tool says
+      'X' and the person asked for X, the tool is a fit. Do not subdivide into
+      subcategories ('that tool makes flowcharts but this needs something more
+      illustrative') to rationalize picking a different option — such subdivision
+      is a style opinion, not a category mismatch.
+    when_to_use: "Preempting over-subdivision when the model has a preferred tool"
+    anti_patterns:
+      - "Letting the model rationalize sub-category mismatches"
+
+  - id: triggering-three-tier
+    category: capability-triggering
+    evidence: "4.7 system prompt, Visualizer triggers section"
+    shape: |
+      # Explicit triggers
+      <phrases the user says that map directly>
+
+      # Proactive triggers (no explicit ask)
+      <situations where the capability aids understanding more than text alone>
+
+      # Specification triggers (noun phrase is the request)
+      <cases where the user hands a spec describing the artifact, not a verb>
+    when_to_use: "Capability triggering where user intent varies between explicit, implicit, and spec-based"
+    anti_patterns:
+      - "Binary triggering (only explicit OR only proactive)"
+
+  - id: anti-narration
+    category: output-discipline
+    evidence: "4.7 system prompt, Visualizer Step 3 and L560"
+    shape: |
+      <Agent/Skill> does not narrate routing or tool selection. Do not say
+      'I will now delegate to X', 'per my guidelines', 'as the instructions
+      above direct', or offer the unchosen option. Select and act; the action
+      is the signal.
+    when_to_use: "Any agent or skill that routes, selects a tool, or delegates"
+    anti_patterns:
+      - '"I will now..." preambles'
+      - '"Per the protocol..." justifications'
+      - "Offering unchosen options after picking one"
+
+  - id: reference-not-quote
+    category: tool-result-handling
+    evidence: "4.7 system prompt, past_chats_tools L251"
+    shape: |
+      Results arrive as snippets in <X> tags. These are reference material for
+      <agent>, not text to quote back — synthesize naturally.
+    when_to_use: "Any agent that consumes tool results for synthesis (search results, file contents, past context)"
+    anti_patterns:
+      - "Verbatim copy of tool output"
+      - "Re-emitting filenames or paths as conversational text"
+
+  - id: cost-framing
+    category: tool-mental-model
+    evidence: "4.7 system prompt, tool_discovery L144"
+    shape: |
+      <agent/skill> does not need to ask for permission to use <tool> and should
+      treat <tool> as essentially free; it's fine to use <tool> and to respond
+      normally if nothing relevant is found.
+    when_to_use: "Cheap, high-value tools that tend to be under-used due to perceived cost"
+    anti_patterns:
+      - "Requiring permission for read-only operations"
+      - "Asking user before every search"
+
+  - id: severity-for-workflow-preference
+    category: severity-calibration
+    evidence: "4.7 system prompt, L503-507 (SKILL.md invocation)"
+    shape: |
+      When <doing X>, ALWAYS <specific binary high-frequency action> before
+      <next step>. <One-sentence rationale of output impact.>
+    worked_examples:
+      - text: "When creating presentations, ALWAYS call `view` on /mnt/skills/public/pptx/SKILL.md before starting to make the presentation."
+        four_criteria:
+          specific: true
+          binary: true
+          high_frequency: true
+          consequential: "output-breaking"
+      - text: "When creating a Supabase migration, ALWAYS run the db-sage dry-run before executing it in production."
+        four_criteria:
+          specific: true
+          binary: true
+          high_frequency: true
+          consequential: "output-breaking + data-loss"
+    when_to_use: "Specific + binary + high-frequency + consequential workflow instructions"
+    when_not_to_use: "Attitudinal dispositions (be thorough, be humble) or generic gradients"
+
+  - id: severity-for-real-stakes
+    category: severity-calibration
+    evidence: "4.7 system prompt, critical_child_safety, copyright, harmful_content sections"
+    shape: |
+      NEVER <specific action> <when condition> — <one-sentence why this causes real harm>.
+    worked_examples:
+      - text: "NEVER push to the main branch without @devops approval."
+        stake: "unauthorized deploy, governance breach"
+      - text: "NEVER reproduce song lyrics, poems, or haikus in ANY form."
+        stake: "copyright violation"
+    when_to_use: "Violations cause real harm (legal, safety, privacy, data loss, governance)"
+
+  - id: self-check-qa-loop
+    category: pre-response-gate
+    evidence: "4.7 system prompt, self_check_before_responding L699-708"
+    shape: |
+      Before <taking action X>, <agent> asks internally:
+
+      - <Concrete binary question>
+      - <Concrete binary question>
+      - <Concrete binary question>
+    when_to_use: "Agents with high-stakes actions that benefit from pre-flight verification"
+    anti_patterns:
+      - "Vague checklists without binary questions"
+      - "Post-hoc self-checks after the action was taken"
+
+  - id: triplet-user-response-rationale
+    category: example-format
+    evidence: "4.7 system prompt, copyright_examples, search_examples, visualizer_examples"
+    shape: |
+      {example}
+        {user}<verbatim user input>{/user}
+        {response}<exemplary response>{/response}
+        {rationale}<one or two sentences explaining why this response is correct —
+                   the principle the model should generalize from this case>{/rationale}
+      {/example}
+    when_to_use: "Any example block in a skill, task, or rule"
+    anti_patterns:
+      - "User/Response pairs without rationale"
+      - "Rationale that restates the response instead of teaching the principle"
+
+  - id: arrow-notation-decision-flow
+    category: example-format
+    evidence: "4.7 system prompt, computer_use examples L486-499"
+    shape: |
+      Request: <user query>
+      → <discriminator observation> → <action taken>
+
+      Request: <different user query>
+      → <different observation> → <different action>
+    when_to_use: "Teaching compact decision flow — much denser than prose"
+    anti_patterns:
+      - "Prose decision logic across paragraphs when arrow notation would fit"
+
+  - id: priority-numbered-tool-list
+    category: tool-mental-model
+    evidence: "4.7 system prompt, search_instructions L624"
+    shape: |
+      Tool priority:
+      (1) <highest priority — for what>
+      (2) <second priority — for what>
+      (3) <combined approach — when applicable>
+    when_to_use: "Agent has access to multiple overlapping tools with clear priority order"
+    anti_patterns:
+      - "Unordered tool list with conditional prose"
+
+  - id: section-tagged-structure
+    category: prompt-structure
+    evidence: "4.7 system prompt, entire structure uses {section_name}...{/section_name}"
+    shape: |
+      {section_name}
+      <section content>
+      {/section_name}
+    when_to_use: "Any multi-section prompt artifact (skill, agent, rule, CLAUDE.md)"
+    benefit: |
+      Semantic parsing — model recognizes boundaries.
+      Dynamic composition — blocks can be enabled/disabled per context.
+      Maintainability — clear section identity reduces edit ambiguity.
+
+  - id: description-routing-format
+    category: skill-description
+    evidence: "observed across Vercel, Anthropic, and production skills with high invocation rates"
+    shape: |
+      Use when <specific trigger condition 1>, <trigger 2>, <trigger 3>,
+      or <trigger N>. <Optional: SKIP when...> <Optional: not for...>
+    worked_examples:
+      - text: "Use when initializing shadcn, adding components, composing product UI, building custom registries, configuring themes, or troubleshooting component issues."
+        routing_quality:
+          explicit_triggers: 6
+          has_use_when_clause: true
+          has_skip_clause: false
+          concrete_domain_nouns: ["shadcn", "components", "UI", "registries", "themes"]
+      - text: "TRIGGER when: code imports `anthropic`/`@anthropic-ai/sdk`; user asks for the Claude API, Anthropic SDK, or Managed Agents; user adds/modifies/tunes a Claude feature. SKIP: file imports `openai`/other-provider SDK, filename like `*-openai.py`, provider-neutral code, general programming/ML."
+        routing_quality:
+          explicit_triggers: 5
+          has_use_when_clause: true
+          has_skip_clause: true
+          concrete_domain_nouns: ["anthropic", "SDK", "Claude API", "Managed Agents"]
+    when_to_use: "All skill descriptions, especially user-invocable skills"
+    anti_patterns:
+      - '"Helps with stuff" — no trigger conditions'
+      - '"Handles X-related tasks" — no concrete triggers'
+      - "Descriptions < 50 characters"
+      - "Migrated/legacy descriptions inherited from old commands without refactor"
+
+# Usage guide for skill-validator
+validator_integration:
+  - pattern_id: description-routing-format
+    check: CHK-13
+    rubric:
+      blocking:
+        - has_use_when_or_trigger_when_clause
+        - min_length: 50
+      advisory:
+        - has_skip_clause
+        - concrete_domain_nouns_count: 5
+
+  - pattern_id: severity-for-workflow-preference
+  - pattern_id: severity-for-real-stakes
+    check: CHK-14
+    rubric:
+      blocking:
+        - all_severity_uses_pass_four_criterion_test
+      advisory:
+        - attitudinal_severity_count: 0  # warn if any 'be thorough', 'be proactive' etc
+
+  - pattern_id: anti-narration
+    check: CHK-15
+    rubric:
+      advisory:
+        - narration_phrase_count: 0  # warn on 'I will now', 'per my guidelines', etc
+
+  - pattern_id: section-tagged-structure
+    check: CHK-16
+    rubric:
+      advisory:
+        - if_multi_section_agent_file: uses_xml_tagged_sections

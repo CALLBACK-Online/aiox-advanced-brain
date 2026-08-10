@@ -1,0 +1,82 @@
+# Deviation Register — squad-creator
+# Mandamento 7: Desvios formalizados
+# Created: 2026-04-12 (validation remediation Wave 2)
+schema_version: "1.0.0"
+squad: "squad-creator"
+description: >
+  Registry of formalized deviations from SINKRA methodology.
+  Every deviation must be documented here with justification,
+  impact assessment, and resolution plan.
+
+deviations:
+  - id: DEV-SC-001
+    date: "2026-04-12"
+    category: "executor_type"
+    description: >
+      Squad uses Hybrid executor type (31 tasks) combining AI-generates + human-validates.
+      This is not one of the 4 canonical SINKRA types (Human, Agent, Worker, Clone).
+      Hybrid is a squad-scoped extension formalized in executor-matrix-framework.md.
+    justification: >
+      squad-creator is a meta-squad with many human-in-the-loop workflows (elicitation,
+      design decisions, confirmation gates). Hybrid captures the AI+human pattern
+      more precisely than either Agent or Human alone.
+    impact: "MEDIUM — breaks 4-type canonical taxonomy but is functionally appropriate"
+    status: "accepted"
+    resolution: "Formalized as squad-scoped extension in data/executor-matrix-framework.md"
+    resolved_at: "2026-04-12"
+
+  - id: DEV-SC-002
+    date: "2026-04-12"
+    category: "executor_type"
+    description: >
+      Squad uses Composed executor type (15 tasks) for orchestrator tasks that
+      delegate to 2-6 sub-tasks. This is not one of the 4 canonical SINKRA types.
+      Composed tasks are now classified as atomic_layer: Molecule (not Atom).
+    justification: >
+      Composed captures the orchestrator pattern where a parent task coordinates
+      multiple atomic sub-tasks in sequence. This is distinct from Agent (single
+      reasoning task) and Worker (single deterministic task).
+    impact: "MEDIUM — extends taxonomy to 6 types (Human, Agent, Worker, Clone, Hybrid, Composed)"
+    status: "accepted"
+    resolution: "Formalized in executor-matrix-framework.md. Tasks reclassified as Molecule."
+    resolved_at: "2026-04-12"
+
+  - id: DEV-SC-003
+    date: "2026-04-12"
+    category: "field_naming"
+    description: >
+      139/140 tasks use 'Execution Type' in Task Anatomy table instead of the
+      canonical SINKRA field name 'responsavel_type'. The squad's internal template
+      (task-tmpl.md) standardizes on 'Execution Type'.
+    justification: >
+      'Execution Type' is more descriptive and consistent with the squad's template-driven
+      creation pipeline. Migrating 139 tasks would be high-cost with no functional benefit.
+    impact: "LOW — field naming only; the executor value is always present and unambiguous"
+    status: "accepted"
+    resolution: "Accepted as squad-scoped naming convention. Template uses 'Execution Type'."
+    resolved_at: "2026-04-12"
+
+  - id: DEV-SC-004
+    date: "2026-04-12"
+    category: "executor_type"
+    description: >
+      Human and Clone canonical executor types are unused (0/140 tasks).
+      Human-judgment tasks are classified as Hybrid instead.
+    justification: >
+      squad-creator tasks always involve AI assistance even in human-judgment workflows.
+      Pure Human (no AI) and Clone (calibrated voice reproduction) patterns do not
+      apply to a meta-squad focused on squad scaffolding.
+    impact: "LOW — 2 of 4 canonical types unused but covered by squad extensions"
+    status: "accepted"
+    resolution: "Documented as intentional. Hybrid covers human-judgment use cases."
+    resolved_at: "2026-04-12"
+
+metadata:
+  created_at: "2026-04-12"
+  last_updated: "2026-04-12"
+  total_deviations: 4
+  by_status:
+    open: 0
+    resolved: 0
+    accepted: 4
+    rejected: 0

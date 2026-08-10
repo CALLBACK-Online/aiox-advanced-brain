@@ -1,0 +1,46 @@
+{
+  "$id": "sinkra://slide-creator/wireframes/mission-vision.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "The audience must immediately understand the central claim or promise.",
+  "properties": {
+    "action_title": {
+      "description": "claim",
+      "maxLength": 90,
+      "type": "string"
+    },
+    "mission": {
+      "type": "string"
+    },
+    "principle_1": {
+      "type": "string"
+    },
+    "principle_2": {
+      "type": "string"
+    },
+    "principle_3": {
+      "type": "string"
+    },
+    "vision": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "action_title"
+  ],
+  "title": "mission-vision",
+  "type": "object",
+  "x-sinkra": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "hook_hero_claim",
+    "slot_count": 6,
+    "warnings": [
+      "mission",
+      "vision",
+      "principle_1",
+      "principle_2",
+      "principle_3"
+    ],
+    "wireframe_ref": "templates/wireframes/mission-vision.html"
+  }
+}

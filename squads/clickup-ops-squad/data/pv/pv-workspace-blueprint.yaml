@@ -1,0 +1,747 @@
+# Pedro Valerio - Workspace Blueprint
+# Source: Gestao ClickUp Playbook (Allfluence), reuniões PV
+# Version: 1.0.0
+
+metadata:
+  source: "pedro_valerio/gestao_clickup"
+  methodology: "Sistema Allfluence"
+  formula: "1-3-5 (1 Objetivo: Clareza, 3 Chaves: Ferramentas+Processos+Habitos, 5 Etapas: Design-Build-Train-Launch-Optimize)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# WORKSPACE HIERARCHY
+# ═══════════════════════════════════════════════════════════════════════════════
+
+workspace_hierarchy:
+  description: |
+    Estrutura recomendada pelo Sistema Allfluence.
+    Spaces representam areas da empresa (NAO clientes/equipes).
+    Folders agrupam Lists por contexto. Lists contem Tasks.
+  levels:
+    - "Workspace (empresa)"
+    - "Space (area da empresa)"
+    - "Folder (agrupamento)"
+    - "List (projeto/processo)"
+    - "Task (unidade de trabalho)"
+    - "Subtask (subdivisao)"
+    - "Checklist (passos)"
+
+  recommended_spaces:
+    - name: "Growth"
+      icon: "GR"
+      purpose: "Marketing, vendas, aquisicao, retencao"
+      folders:
+        - "Marketing"
+        - "Sales"
+        - "Brand"
+        - "Campaigns"
+      example_lists:
+        - "Campanhas Ativas"
+        - "Content Calendar"
+        - "Lead Pipeline"
+
+    - name: "Delivery"
+      icon: "DL"
+      purpose: "Execução de projetos e entregas para clientes"
+      folders:
+        - "{Client Name} (1 folder per client)"
+      example_lists:
+        - "Projeto X"
+        - "Contrato Y"
+        - "Sprint N"
+
+    - name: "Operations"
+      icon: "OP"
+      purpose: "Trabalho interno: RH, financeiro, administrativo, TI"
+      folders:
+        - "RH"
+        - "Financeiro"
+        - "TI"
+        - "Administrativo"
+      example_lists:
+        - "Custos Fixos"
+        - "Contratacoes"
+        - "Infra TI"
+
+    - name: "People"
+      icon: "PP"
+      purpose: "RH como CRM de Pessoas no ClickUp. Tasks = colaboradores, custom fields = atributos."
+      source: "[SOURCE: 08_clickup_lendario.md, ClickUp como CRM de Pessoas]"
+      folders:
+        - "Gestao de Pessoas"
+        - "Pagamentos PJ"
+        - "Onboarding"
+      example_lists:
+        - "Equipe (CRM de Pessoas)"
+        - "Pagamentos Mensais"
+        - "Onboarding Novos"
+      reference: "pv-hr-people.yaml"
+
+    - name: "Process Library"
+      icon: "PL"
+      purpose: "Biblioteca de processos, templates, SOPs, documentacao perpetua"
+      folders:
+        - "Templates"
+        - "SOPs"
+        - "Playbooks"
+      example_lists:
+        - "Templates de Projeto"
+        - "SOPs por Area"
+        - "Cartoes de Processo"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# LIST TYPES (G2)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+list_types:
+  description: |
+    3 tipos fundamentais de List no ClickUp. Toda list deve ser classificada
+    em um destes tipos ANTES de ser criada. O tipo determina campos, views e
+    workflows aplicaveis.
+  source: "Gestao ClickUp Cap 3: Tipos de Lista"
+
+  types:
+    - name: "Gestao de Projeto"
+      when: "Objetivo definido, prazo, multi-equipe, tem início e fim"
+      examples: ["Lançamento de Produto", "Campanha Q4", "Redesign do Site"]
+      recommended_views: ["Gantt", "Board", "Date Remap"]
+      recommended_workflow: "general ou campaigns"
+      key_fields: ["Budget", "Actual Cost", "Estimated Hours", "Tracked Hours", "Project Status"]
+
+    - name: "Por Processo"
+      when: "Fluxo recorrente e continuo, sem fim definido"
+      examples: ["CRM Pipeline", "Onboarding", "Contas a Pagar", "Produção de Conteúdo"]
+      recommended_views: ["Board", "Calendar", "Table"]
+      recommended_workflow: "content_creation, payment, ou custom"
+      key_fields: ["Role", "Work Category", "Task Type"]
+
+    - name: "Banco de Dados"
+      when: "Armazenamento estruturado de informações, não execução"
+      examples: ["Casting de Influencers", "Catalogo de Servicos", "Process Library"]
+      recommended_views: ["Table", "List"]
+      recommended_workflow: "general (simplificado)"
+      key_fields: ["Labels", "URL", "Client"]
+
+  decision_rule: |
+    SE tem prazo e fim definido → Gestao de Projeto
+    SE se repete regularmente → Por Processo
+    SE armazena informações sem execução → Banco de Dados
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# RECOMMENDED VIEWS (G1)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+recommended_views:
+  description: |
+    8 views essenciais mapeadas por situação operacional.
+    Configurar TODAS durante fase Build da Formula 1-3-5.
+  source: "Gestao ClickUp Cap 4: Visualizacoes"
+
+  views:
+    - name: "My Tasks"
+      type: "List"
+      situation: "Ver minhas tarefas do dia"
+      audience: "Todo colaborador (individual)"
+      config:
+        filter: "Assignee = is me (Me Mode)"
+        filter_2: "Status != Closed"
+        group_by: "Due Date"
+        sort: "Priority (desc) → Due Date (asc)"
+        show_subtasks: "Expand All"
+        columns: ["Due Date", "Priority", "Time Estimate", "Time Tracked", "Task Location"]
+      setup: "Privada, Fixada no topo, Favoritos"
+      priority: critical
+
+    - name: "Board (Kanban)"
+      type: "Board"
+      situation: "Gerenciar fluxo de trabalho por etapas"
+      audience: "Gestores e equipe de execução"
+      config:
+        group_by: "Status"
+        sort: "Priority (desc)"
+      priority: critical
+
+    - name: "Calendar"
+      type: "Calendar"
+      situation: "Ver prazos e calendario de entregas"
+      audience: "Gestores e individual contributors"
+      config:
+        show: "Due dates"
+        color_by: "Priority"
+      priority: high
+
+    - name: "Gantt"
+      type: "Gantt"
+      situation: "Projetos complexos com dependencias"
+      audience: "Project Managers"
+      config:
+        show_dependencies: true
+        show_milestones: true
+      priority: high
+
+    - name: "Date Remap"
+      type: "Gantt (configurado)"
+      situation: "Reagendar com dependencias em cascata"
+      audience: "Project Managers"
+      config:
+        reschedule_dependencies: true
+        note: "Ao mover uma tarefa, dependentes são reagendadas automaticamente"
+      priority: medium
+
+    - name: "Workload"
+      type: "Workload"
+      situation: "Gerenciar capacidade da equipe"
+      audience: "Gestores e Arquiteto ClickUp"
+      config:
+        capacity_source: "Time Estimates"
+        group_by: "Assignee"
+      priority: high
+
+    - name: "Assignee View"
+      type: "List"
+      situation: "Atribuir tarefas por funcao/pessoa"
+      audience: "Gestores"
+      config:
+        group_by: "Assignee"
+        sort: "Due Date (asc)"
+        columns: ["Role", "Priority", "Due Date", "Status"]
+      priority: medium
+
+    - name: "Table View"
+      type: "Table"
+      situation: "Dados estruturados como planilha (listas tipo Banco de Dados)"
+      audience: "Analistas e gestores"
+      config:
+        columns: "Todos os custom fields relevantes"
+        sort: "Configuravel pelo usuário"
+      priority: medium
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# REQUIRED CLICKAPPS (G5 parcial)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+required_clickapps:
+  description: |
+    ClickApps que DEVEM estar ativados para o Sistema Allfluence funcionar.
+    Validar durante *setup-workspace antes de qualquer configuracao.
+  source: "Gestao ClickUp Cap 2: Configuração Inicial"
+
+  mandatory:
+    - name: "Time Tracking"
+      reason: "Base para calculo de lucratividade por projeto (Estimated vs Tracked Hours)"
+      mandamento: "M9"
+    - name: "Time Estimates"
+      reason: "Alimenta Workload view e planejamento de capacidade"
+      mandamento: "M9"
+    - name: "Custom Fields"
+      reason: "Campos padronizados são a espinha dorsal do sistema (M8)"
+      mandamento: "M8"
+    - name: "Task Dependencies"
+      reason: "Gantt e Date Remap dependem de dependencias para funcionar"
+    - name: "Automations"
+      reason: "Prevention rules e automações operacionais requerem este ClickApp"
+    - name: "Multiple Assignees"
+      reason: "Deve estar DESATIVADO - viola M4 (Uma tarefa, um responsável)"
+      expected_state: "DISABLED"
+      mandamento: "M4"
+
+  recommended:
+    - name: "Checklists"
+      reason: "Subtarefas com checklist inline para processos"
+    - name: "Tags"
+      reason: "Categorizacao complementar aos custom fields"
+    - name: "Milestones"
+      reason: "Marcos em projetos complexos (Gantt view)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# ARCHITECT ROLE (G8)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+architect_role:
+  description: |
+    O Arquiteto ClickUp e o guardiao do sistema. Sem este papel designado,
+    o workspace decai em 90 dias. E estrutural, não opcional.
+  source: "Gestao ClickUp Cap 9.4: O Papel do Arquiteto"
+
+  definition:
+    title: "Arquiteto ClickUp"
+    type: "Papel permanente (não projeto)"
+    time_allocation:
+      first_90_days: "20% da carga de trabalho"
+      after_stabilization: "10% da carga de trabalho"
+      minimum: "10-30 min/dia para Daily Spot Check"
+
+  responsibilities:
+    daily:
+      - "Daily Spot Check (10-30 min)"
+      - "Resolver duvidas da equipe sobre uso do ClickUp"
+      - "Monitorar tarefas atrasadas e sem responsável"
+    weekly:
+      - "Weekly Roundup para lideranca"
+      - "Revisar adesao aos 10 Mandamentos"
+    monthly:
+      - "Auditoria mensal completa (*audit-hygiene)"
+      - "Compilar feedback da equipe"
+      - "Implementar top 3 melhorias"
+    quarterly:
+      - "Revisão de lucratividade por projeto/cliente"
+      - "Avaliar ROI da implementação"
+      - "Planejar próximos 90 dias de otimizacao"
+
+  prerequisites:
+    - "Autonomia para tomar decisoes sobre o workspace"
+    - "Acesso admin ao ClickUp"
+    - "Conhecimento dos 10 Mandamentos"
+    - "Treinamento nas ferramentas de automação (nativo + N8N)"
+
+  veto_conditions:
+    - "SE Arquiteto não designado → VETO no início da implementação"
+    - "SE Arquiteto sem autonomia → VETO (role será ineficaz)"
+    - "SE Arquiteto com menos de 10% de tempo dedicado → FLAG para gestao"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DECISION TREES (G6)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+decision_trees:
+  description: |
+    Árvores de decisão para as 4 escolhas estruturais mais comuns
+    na configuração de um workspace ClickUp.
+  source: "Gestao ClickUp Cap 3 + Cap 9"
+
+  trees:
+    - id: DT-01
+      name: "Como organizar Spaces?"
+      decisions:
+        - condition: "Empresa tem departamentos distintos (Marketing, Vendas, Ops)"
+          action: "Criar Spaces por departamento/area"
+          reason: "Visibilidade cross-departamental e permissoes adequadas"
+        - condition: "Agência com multiplos clientes"
+          action: "Spaces por area (Growth, Delivery, Operations) + Folders por cliente dentro de Delivery"
+          reason: "Escala - 50 clientes não viram 50 Spaces"
+        - condition: "Grande projeto multi-equipe temporario"
+          action: "Space específico TEMPORARIO (monitorar para não proliferar)"
+          reason: "Isolamento com data de expiracao"
+      anti_pattern: "NUNCA criar Space por cliente — inescalavel e perde visibilidade cross-cliente"
+
+    - id: DT-02
+      name: "Qual tipo de Lista criar?"
+      decisions:
+        - condition: "Trabalho tem objetivo, prazo e fim claro"
+          action: "Lista de Gestao de Projeto"
+        - condition: "Trabalho se repete regularmente (semanal/mensal)"
+          action: "Lista de Processo"
+        - condition: "Objetivo e armazenar informações estruturadas"
+          action: "Lista de Banco de Dados"
+      reference: "list_types"
+
+    - id: DT-03
+      name: "Como estruturar uma tarefa?"
+      decisions:
+        - condition: "Tarefa envolve multiplas pessoas e etapas"
+          action: "Tarefa Pai + Subtarefas (cada subtarefa com 1 responsável)"
+          reason: "Atribuição multipla em tarefa única = ninguém e responsável (M4)"
+        - condition: "Tarefa tem passos simples e sequenciais"
+          action: "Tarefa com Checklist interno"
+        - condition: "Tarefa vaga demais para ser executada"
+          action: "NAO criar — definir primeiro: objetivo, critério de conclusão, prazo"
+          reason: "Formulário Mínimo exige 7 campos. Se não tem, não e tarefa ainda"
+
+    - id: DT-04
+      name: "Qual tipo de comunicação usar?"
+      decisions:
+        - condition: "Discussao específica de uma tarefa"
+          action: "Comentario na tarefa com @mencao"
+        - condition: "Conversa rápida e informal (não decisão)"
+          action: "Chat do ClickUp"
+        - condition: "Decisão importante que precisa ser documentada"
+          action: "Comentario na tarefa (registra histórico)"
+        - condition: "Passagem de tarefa ou instrucao de processo"
+          action: "NAO use WhatsApp/audio — crie tarefa com descricao completa"
+          reason: "M1 + M5: Se não esta no ClickUp, não existe"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# STATUS DESIGN PRINCIPLES
+# ═══════════════════════════════════════════════════════════════════════════════
+
+status_design_principles:
+  description: |
+    Principios para desenhar status sets corretos em qualquer List.
+    Aplicar durante *design-workspace (Fase 3) e *setup-workspace.
+  source: "Agente Config ClickUp + Gestao ClickUp Cap 5"
+
+  rules:
+    - "Status reflete ONDE o trabalho esta no fluxo real"
+    - "Status NAO reflete prioridade (isso e campo Priority)"
+    - "Status NAO reflete quem esta com a tarefa (isso e Assignee)"
+    - "SE status nunca gera uma ação → provavelmente não e necessário"
+    - "Fluxo SEMPRE unidirecional — nada volta (ref: PREV-01, AUT-17)"
+    - "Terminal states (ex: CANCELADO) devem ter allowed_from explicito"
+
+  standard_structure:
+    - "A Fazer (open) — entrada padrão"
+    - "[Etapa específica do processo] (active) — 1 ou mais etapas"
+    - "Em Revisão / Aguardando (active) — gate antes de fechar"
+    - "Concluido (closed) — estado final positivo"
+    - "Cancelado (closed) — estado final negativo (terminal state)"
+
+  max_statuses: "7-8 por List. Mais que isso indica processo mal definido"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# WORKSPACE DESIGN PRINCIPLES (Avançados)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+workspace_design_advanced:
+  description: |
+    Principios avançados de design de workspace extraidos das mentorias PV.
+    Complementam a estrutura basica com estratégias de vinculacao, embedding e UX.
+  source: "[SOURCE: 08_clickup_lendario.md, Principios Avançados]"
+
+  cascade_architecture:
+    name: "Cascade Architecture (Vinculacao Relacional)"
+    description: |
+      Cadeia de vinculacao hierarquica: Projeto → Produto → Campanha → Criativo.
+      Cada nivel aponta para o nivel acima via relationships ou custom fields.
+      Permite rastrear ROI do criativo até o projeto que o originou.
+    source: "[SOURCE: 08_clickup_lendario.md, Cascade Architecture]"
+    chain:
+      - level: "Projeto"
+        contains: "Produtos"
+        example: "Lançamento Q1 2025"
+      - level: "Produto"
+        contains: "Campanhas"
+        example: "Curso de IA Aplicada"
+      - level: "Campanha"
+        contains: "Criativos"
+        example: "Campanha Black Friday"
+      - level: "Criativo"
+        terminal: true
+        example: "Video depoimento 30s - Meta Ads"
+    implementation: |
+      Usar ClickUp Relationships ou Custom Field 'Projeto Pai' (dropdown)
+      para vincular cada nivel ao anterior. Dashboards agregam métricas
+      por nivel para visão de ROI cascata.
+    beneficio: "Responde: 'Qual projeto gerou mais ROI?' rastreando do criativo ao projeto."
+
+  embed_iframe_strategy:
+    name: "Embed/Iframe Strategy"
+    description: |
+      Embedar ferramentas externas DENTRO do ClickUp para manter o time
+      na mesma tela. Reduz context-switching e reforça M1.
+    source: "[SOURCE: 08_clickup_lendario.md, Embed/Iframe Strategy]"
+    tools_embeddable:
+      - name: "Miro"
+        method: "iframe embed em Doc ou Custom Field URL"
+        use_case: "Brainstorms, mind maps, user journeys"
+      - name: "Looker Studio"
+        method: "iframe embed em Dashboard"
+        use_case: "Dashboards de analytics, métricas de trafego"
+      - name: "Agente IA"
+        method: "iframe embed ou link em Doc"
+        use_case: "Assistente IA contextual dentro do workspace"
+    princípio: "Se o time precisa sair do ClickUp pra consultar, embed a ferramenta. M1 aplicado."
+
+  pinned_tasks_rule:
+    name: "3 Pinned Tasks Rule"
+    description: |
+      Configurar Home view com exatamente 3 tasks fixadas (pinned) no topo.
+      Representam as 3 prioridades do dia. Apos concluir, substituir.
+    source: "[SOURCE: 08_clickup_lendario.md, 3 Pinned Tasks Rule]"
+    config:
+      location: "Home view (pessoal)"
+      max_pinned: 3
+      regra: "SE mais de 3 tasks pinadas ENTAO escolher as 3 mais importantes e despinar as demais"
+    beneficio: "Foco absoluto. Ninguém consegue fazer mais de 3 coisas importantes por dia."
+
+  break_the_system_phase:
+    name: "Break the System Phase"
+    description: |
+      Etapa recomendada APOS o Launch da Formula 1-3-5.
+      Pedir para o time tentar 'quebrar' o sistema intencionalmente.
+      Gaps encontrados viram melhorias antes de estabilizar.
+    source: "[SOURCE: 08_clickup_lendario.md, Break the System Phase]"
+    quando: "Semana 1-2 apos Launch"
+    como:
+      - "Pedir para cada membro tentar criar tarefa sem seguir o fluxo"
+      - "Tentar mover status para tras"
+      - "Tentar executar sem preencher campos obrigatórios"
+      - "Tentar se comunicar fora do ClickUp e ver se o sistema 'deixa'"
+    output: "Lista de gaps encontrados → viram tasks de melhoria no Space Operations"
+    princípio: "Melhor o time quebrar durante teste controlado do que em produção real."
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# CUSTOM FIELDS CATALOG
+# ═══════════════════════════════════════════════════════════════════════════════
+
+custom_fields:
+  description: |
+    Catalogo de custom fields recomendados pelo Sistema Allfluence.
+    Criar no nivel do Space para consistencia. Evitar duplicatas.
+    REGRA: Max 7-8 campos por List (ref: H-DES-01).
+
+  fields:
+    - name: "Role"
+      type: dropdown
+      options: ["Estrategista", "Redator", "Designer", "Desenvolvedor", "Gerente de Projetos", "Gerente de Contas", "Analista"]
+      applies_to: "Space level (all)"
+      purpose: "Define função responsável pela execução"
+      pv_mandamento: "M4"
+
+    - name: "Work Category"
+      type: dropdown
+      options: ["SEO", "Midia Paga", "Dev Web", "Design", "Consultoria", "Inbound", "Outbound", "Conteúdo", "Social Media"]
+      applies_to: "Space level (Growth, Delivery)"
+      purpose: "Segmenta trabalho por categoria de serviço"
+
+    - name: "Task Type"
+      type: dropdown
+      options: ["Tarefa", "Reunião", "Documentacao", "Registro", "Aprovação", "Revisão", "Ideia"]
+      applies_to: "Space level (all)"
+      purpose: "Diferencia natureza da tarefa"
+
+    - name: "Account Manager"
+      type: dropdown
+      options: ["(nomes dos gerentes de conta)"]
+      applies_to: "Space level (Delivery)"
+      purpose: "Gerente de contas responsável pelo cliente"
+
+    - name: "Client"
+      type: dropdown
+      options: ["(nomes dos clientes)"]
+      applies_to: "Space level (Delivery, Growth)"
+      purpose: "Cliente associado a tarefa"
+
+    - name: "Project Status"
+      type: dropdown
+      options: ["Planejamento", "Em Andamento", "Em Revisão", "Aguardando Aprovação", "Concluido", "Atrasado", "Cancelado"]
+      applies_to: "Space level (Delivery)"
+      purpose: "Status geral do projeto (diferente do status da tarefa)"
+
+    - name: "Priority"
+      type: dropdown
+      options: ["Baixa", "Media", "Alta", "Urgente"]
+      applies_to: "Space level (all)"
+      purpose: "Prioridade da tarefa"
+
+    - name: "URL"
+      type: text
+      applies_to: "Space level (all)"
+      purpose: "Links relevantes (briefing, referência, documento)"
+
+    - name: "Labels"
+      type: labels
+      options: ["Estratégia", "Conteúdo", "Design", "Dev", "Revisão", "Urgente", "Bloqueado"]
+      applies_to: "Space level (all)"
+      purpose: "Categorizacao flexivel com cores"
+
+    - name: "Budget"
+      type: currency
+      applies_to: "Space level (Delivery)"
+      purpose: "Orcamento previsto do projeto"
+
+    - name: "Actual Cost"
+      type: currency
+      applies_to: "Space level (Delivery)"
+      purpose: "Custo real para calculo de lucratividade"
+
+    - name: "Estimated Hours"
+      type: number
+      applies_to: "Space level (all)"
+      purpose: "Horas estimadas para planejamento e Workload view"
+
+    - name: "Tracked Hours"
+      type: number
+      applies_to: "Space level (all)"
+      purpose: "Horas efetivas para produtividade e precificacao"
+
+    - name: "Process Owner"
+      type: dropdown
+      options: ["(nomes dos responsáveis por processos)"]
+      applies_to: "Space level (Process Library)"
+      purpose: "Responsável perpetuo pelo processo documentado"
+      pv_mandamento: "M4"
+
+    - name: "Last Reviewed"
+      type: date
+      applies_to: "Space level (Process Library)"
+      purpose: "Data da ultima revisão do cartao de processo. Usado para auditoria M10"
+      pv_mandamento: "M10"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# STATUS WORKFLOWS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+status_workflows:
+  description: |
+    6 workflows de status para diferentes contextos operacionais.
+    Regra fundamental: NO BACKWARD STATUS - fluxo sempre para frente.
+
+  workflows:
+    - name: "general"
+      display_name: "Workflow Geral"
+      applies_to: "Default para maioria das lists"
+      sequence:
+        - status: "OPEN"
+          color: "#d3d3d3"
+          description: "Tarefa criada, aguardando início"
+        - status: "IN PROGRESS"
+          color: "#4194f6"
+          description: "Em execução pelo responsável"
+        - status: "REVIEW"
+          color: "#a142f4"
+          description: "Aguardando revisao/aprovacao"
+        - status: "DONE"
+          color: "#6bc950"
+          description: "Concluída"
+
+    - name: "content_creation"
+      display_name: "Produção de Conteúdo"
+      applies_to: "Lists de conteúdo (Instagram, Blog, YouTube)"
+      sequence:
+        - status: "BRIEFING"
+          color: "#d3d3d3"
+          description: "Briefing recebido/criado"
+        - status: "REDACAO"
+          color: "#4194f6"
+          description: "Texto sendo escrito"
+        - status: "DESIGN"
+          color: "#f4c542"
+          description: "Criação visual"
+        - status: "REVISAO"
+          color: "#a142f4"
+          description: "Revisão de qualidade"
+        - status: "APROVACAO"
+          color: "#f49e42"
+          description: "Aguardando aprovação do cliente/gestor"
+        - status: "AGENDADO"
+          color: "#42b5f4"
+          description: "Aprovado e agendado para publicacao"
+        - status: "PUBLICADO"
+          color: "#6bc950"
+          description: "Publicado e entregue"
+
+    - name: "campaigns"
+      display_name: "Campanhas de Marketing"
+      applies_to: "Lists de campanhas e lançamentos"
+      sequence:
+        - status: "PLANEJAMENTO"
+          color: "#d3d3d3"
+          description: "Fase de planejamento estratégico"
+        - status: "PRODUCAO"
+          color: "#4194f6"
+          description: "Produção de materiais"
+        - status: "REVISAO"
+          color: "#a142f4"
+          description: "Revisão interna"
+        - status: "APROVADO"
+          color: "#f4c542"
+          description: "Aprovado para lançamento"
+        - status: "ATIVO"
+          color: "#42b5f4"
+          description: "Campanha ativa/no ar"
+        - status: "OTIMIZANDO"
+          color: "#f49e42"
+          description: "Análise e otimizacao"
+        - status: "CONCLUIDO"
+          color: "#6bc950"
+          description: "Campanha finalizada"
+
+    - name: "ads_creative"
+      display_name: "Criativos de Ads"
+      applies_to: "Lists de produção de criativos"
+      sequence:
+        - status: "REFERENCIA"
+          color: "#d3d3d3"
+          description: "Coleta de referencias e benchmarks"
+        - status: "ROTEIRO"
+          color: "#4194f6"
+          description: "Roteiro/conceito sendo criado"
+        - status: "PRODUCAO"
+          color: "#f4c542"
+          description: "Gravacao/design em andamento"
+        - status: "EDICAO"
+          color: "#a142f4"
+          description: "Edicao e finalizacao"
+        - status: "APROVACAO"
+          color: "#f49e42"
+          description: "Aprovação final"
+        - status: "SUBINDO"
+          color: "#42b5f4"
+          description: "Upload para plataforma de ads"
+        - status: "ATIVO"
+          color: "#6bc950"
+          description: "Criativo rodando"
+
+    - name: "payment"
+      display_name: "Pagamentos e Financeiro"
+      applies_to: "Lists financeiras"
+      sequence:
+        - status: "PENDENTE"
+          color: "#d3d3d3"
+          description: "Pagamento pendente"
+        - status: "APROVADO"
+          color: "#4194f6"
+          description: "Pagamento aprovado"
+        - status: "PROCESSANDO"
+          color: "#f4c542"
+          description: "Em processamento"
+        - status: "PAGO"
+          color: "#6bc950"
+          description: "Pagamento efetuado"
+      terminal_states:
+        - status: "CANCELADO"
+          color: "#f44242"
+          description: "Pagamento cancelado (estado terminal, acessivel de PENDENTE ou APROVADO)"
+          allowed_from: ["PENDENTE", "APROVADO"]
+          not_allowed_from: ["PROCESSANDO", "PAGO"]
+          note: "Pagamento em processamento não pode ser cancelado no sistema - requer estorno separado"
+
+    - name: "testimonial_management"
+      display_name: "Gestao de Depoimentos"
+      applies_to: "Lists de banco de dados de depoimentos"
+      sequence:
+        - status: "CAPTURADO"
+          color: "#d3d3d3"
+          description: "Depoimento recebido (manual ou automatizado)"
+        - status: "EXTRAINDO"
+          color: "#4194f6"
+          description: "IA extraindo texto de imagem/audio/video"
+        - status: "CLASSIFICADO"
+          color: "#f4c542"
+          description: "Classificado como Ruim/Bom/Lendario"
+        - status: "FOLLOW-UP"
+          color: "#a142f4"
+          description: "Aguardando resposta do follow-up (video, mais detalhes)"
+        - status: "PRONTO"
+          color: "#42b5f4"
+          description: "Depoimento completo, pronto para uso"
+        - status: "DISTRIBUIDO"
+          color: "#6bc950"
+          description: "Enviado para grupos e/ou marketing"
+      terminal_states:
+        - status: "DESCARTADO"
+          color: "#f44242"
+          description: "Depoimento sem valor apos follow-up (estado terminal)"
+          allowed_from: ["CLASSIFICADO", "FOLLOW-UP"]
+
+    - name: "status_ideation"
+      display_name: "Status Ideation (Legacy)"
+      applies_to: "Fluxo original de ideacao do workspace"
+      sequence:
+        - status: "PENDENTE"
+          color: "#d3d3d3"
+          description: "Estado inicial"
+        - status: "BENCHMARKING"
+          color: "#4194f6"
+          description: "Fase de pesquisa"
+        - status: "MATRIZ"
+          color: "#f4c542"
+          description: "Criação de matriz"
+        - status: "INSIGHTS"
+          color: "#a142f4"
+          description: "Geracao de insights"
+        - status: "PROPOSTA"
+          color: "#f49e42"
+          description: "Criação de proposta"
+        - status: "DONE"
+          color: "#6bc950"
+          description: "Completo"

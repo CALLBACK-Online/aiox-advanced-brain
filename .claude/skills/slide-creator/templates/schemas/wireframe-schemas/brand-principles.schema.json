@@ -1,0 +1,58 @@
+{
+  "$id": "sinkra://slide-creator/wireframes/brand-principles.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "The audience must learn a repeatable method.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "avoid_1": {
+      "type": "string"
+    },
+    "avoid_2": {
+      "type": "string"
+    },
+    "avoid_3": {
+      "type": "string"
+    },
+    "principle_1": {
+      "type": "string"
+    },
+    "principle_2": {
+      "type": "string"
+    },
+    "principle_3": {
+      "type": "string"
+    },
+    "rule_1": {
+      "type": "string"
+    },
+    "rule_2": {
+      "type": "string"
+    },
+    "rule_3": {
+      "type": "string"
+    }
+  },
+  "title": "brand-principles",
+  "type": "object",
+  "x-sinkra": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "teaching_framework",
+    "slot_count": 10,
+    "warnings": [
+      "action_title",
+      "principle_1",
+      "rule_1",
+      "avoid_1",
+      "principle_2",
+      "rule_2",
+      "avoid_2",
+      "principle_3",
+      "rule_3",
+      "avoid_3"
+    ],
+    "wireframe_ref": "templates/wireframes/brand-principles.html"
+  }
+}

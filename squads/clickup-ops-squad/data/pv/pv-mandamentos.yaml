@@ -1,0 +1,483 @@
+# Pedro Valerio - 10 Mandamentos do ClickUp + Heuristicas + Gate System
+# Source: Gestao ClickUp Playbook (Allfluence), reuniões PV, meta-axiomas
+# Version: 1.0.0
+
+metadata:
+  source: "pedro_valerio/gestao_clickup"
+  methodology: "Sistema Allfluence"
+  principle: "Se não esta no ClickUp, não existe"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# 10 MANDAMENTOS DO CLICKUP
+# ═══════════════════════════════════════════════════════════════════════════════
+
+mandamentos:
+  - id: M1
+    name: "Se não esta no ClickUp, não existe"
+    rule: "Toda tarefa, decisão, pedido e comunicação operacional deve estar registrada no ClickUp. Nenhum canal externo (WhatsApp, email, corredor) substitui o sistema."
+    check: "Zero tarefas criadas fora do ClickUp na ultima semana"
+    violation: "Tarefa ou decisão tomada via WhatsApp/email sem registro no ClickUp"
+    severity: critical
+
+  - id: M2
+    name: "Toda tarefa tem dono e prazo"
+    rule: "Cada tarefa deve ter exatamente 1 responsável (assignee) e 1 due date. Sem dono = sem accountability. Sem prazo = sem urgencia."
+    check: "0% de tarefas sem assignee E 0% de tarefas sem due date"
+    violation: "Tarefa criada sem responsável ou sem data de entrega"
+    severity: critical
+
+  - id: M3
+    name: "Due dates importam"
+    rule: "Prazos são compromissos, não sugestoes. A cultura de cumprir prazos e a base da confianca operacional. Se não pode cumprir, renegocia ANTES."
+    check: ">=90% de tarefas concluidas no prazo ou renegociadas antecipadamente"
+    violation: "Tarefa atrasada sem comunicação previa ou renegociacao"
+    severity: high
+
+  - id: M4
+    name: "Uma tarefa, um responsável"
+    rule: "Nunca atribuir tarefa a multiplas pessoas. Se precisa de multiplos executores, use subtarefas com responsáveis individuais."
+    check: "0% de tarefas com multiplos assignees"
+    violation: "Tarefa com 2+ responsáveis sem subtarefas individuais"
+    severity: high
+
+  - id: M5
+    name: "Comunicação nas tarefas, não fora delas"
+    rule: "Comentarios, atualizacoes e decisoes sobre uma tarefa devem ser registrados como comentarios na própria tarefa. Não em chats externos."
+    check: "Toda decisão relevante tem comentario na tarefa correspondente"
+    violation: "Decisão tomada em reunião ou chat sem registro no ClickUp"
+    severity: medium
+
+  - id: M6
+    name: "Status reflete realidade"
+    rule: "O status de cada tarefa deve refletir seu estado real. Mover status e responsabilidade de quem executa, não de quem gerencia."
+    check: "Auditoria visual: status correspondem ao que esta acontecendo de fato"
+    violation: "Tarefa marcada como 'Em Andamento' quando parada há dias"
+    severity: high
+
+  - id: M7
+    name: "Processos documentados como templates"
+    rule: "Processos recorrentes devem ser documentados como templates/SOPs no ClickUp. Se fez 2x manual, na 3a vez deve existir template."
+    check: "Todo processo recorrente tem template associado na Process Library"
+    violation: "Processo repetido 3+ vezes sem template documentado"
+    severity: medium
+
+  - id: M8
+    name: "Custom fields padronizados"
+    rule: "Custom fields devem ser criados no nivel mais alto aplicavel (Space), com nomenclatura padronizada e tipos corretos. Sem duplicatas."
+    check: "0 campos duplicados, todos no nivel correto da hierarquia"
+    violation: "Campo criado no nivel errado ou com nome inconsistente"
+    severity: medium
+
+  - id: M9
+    name: "Dashboards como fonte de verdade gerencial"
+    rule: "Decisoes gerenciais devem ser baseadas em dashboards do ClickUp, não em percepcoes ou planilhas paralelas."
+    check: "Dashboards atualizados e usados em reuniões de gestao"
+    violation: "Relatório gerencial baseado em dados fora do ClickUp"
+    severity: low
+
+  - id: M10
+    name: "Melhoria continua: Optimize nunca para"
+    rule: "O sistema deve ser auditado e melhorado continuamente. O ciclo Design-Build-Train-Launch-Optimize não tem fim."
+    check: "Pelo menos 1 melhoria de processo implementada por mês"
+    violation: "Workspace estagnado por 30+ dias sem otimizacao"
+    severity: low
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# HEURISTICAS OPERACIONAIS (SE/ENTAO)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+heuristics:
+  automation:
+    - id: H-AUT-01
+      rule: "SE processo repetido 2+ vezes ENTAO documentar e automatizar"
+      source: "Meta-Axioma Nivel 0: Regra do Não Duas Vezes"
+    - id: H-AUT-02
+      rule: "SE tarefa manual feita 3+ vezes ENTAO falha do sistema, automatizar imediatamente"
+      source: "Sistema Imunologico Cognitivo: Horror visceral a repeticao"
+    - id: H-AUT-03
+      rule: "SE automação possível via ClickUp nativo ENTAO usar nativo antes de N8N/Make"
+      source: "Princípio de simplicidade operacional"
+    - id: H-AUT-04
+      rule: "SE automação requer lógica complexa ENTAO usar N8N com webhook do ClickUp"
+      source: "Gestao ClickUp Cap 8: Automação Avançada"
+
+  accountability:
+    - id: H-ACC-01
+      rule: "SE tarefa sem assignee ENTAO bloquear criação até ter dono"
+      source: "M2: Toda tarefa tem dono e prazo"
+    - id: H-ACC-02
+      rule: "SE tarefa sem due date ENTAO bloquear criação até ter prazo"
+      source: "M2 + M3: Due dates importam"
+    - id: H-ACC-03
+      rule: "SE tarefa atrasada ENTAO notificar responsável + gestor automaticamente"
+      source: "M3: Due dates importam"
+    - id: H-ACC-04
+      rule: "SE responsável não atualiza status em 48h ENTAO escalar para gestor"
+      source: "M6: Status reflete realidade"
+
+  quality:
+    - id: H-QUA-01
+      rule: "SE tarefa criada sem descricao ENTAO rejeitar e exigir contexto mínimo"
+      source: "Gestao ClickUp: Tarefas Mal Definidas"
+    - id: H-QUA-02
+      rule: "SE dashboard desatualizado por 7+ dias ENTAO alertar Arquiteto ClickUp"
+      source: "M9: Dashboards como fonte de verdade"
+    - id: H-QUA-03
+      rule: "SE custom field duplicado detectado ENTAO consolidar no nivel mais alto"
+      source: "M8: Custom fields padronizados"
+    - id: H-QUA-04
+      rule: "SE template desatualizado por 30+ dias ENTAO revisar na Process Library"
+      source: "M7 + M10: Templates + Melhoria continua"
+
+  async:
+    - id: H-ASY-01
+      rule: "SE reunião pode ser substituida por tarefa estruturada ENTAO não fazer reunião"
+      source: "PV: Zero reuniões de alinhamento na Allfluence"
+    - id: H-ASY-02
+      rule: "SE comunicação não esta no ClickUp ENTAO não existe operacionalmente"
+      source: "M1 + M5: Centralizar tudo no ClickUp"
+    - id: H-ASY-03
+      rule: "SE pedido via WhatsApp ENTAO converter para tarefa no ClickUp antes de agir"
+      source: "M1: Se não esta no ClickUp, não existe"
+    - id: H-ASY-04
+      rule: "SE decisão tomada em call ENTAO registrar como comentario na tarefa em 24h"
+      source: "M5: Comunicação nas tarefas"
+
+  testimonial:
+    - id: H-DEP-01
+      rule: "SE depoimento generico sem jornada ENTAO classificar como RUIM e acionar follow-up pedindo mais detalhes"
+      source: "MentorIA Processos Dec 19: AN @33:00-35:00"
+    - id: H-DEP-02
+      rule: "SE depoimento lendario sem video ENTAO solicitar video/audio via WhatsApp com script de orientação"
+      source: "MentorIA Processos Dec 19: AN @45:00-48:00"
+    - id: H-DEP-03
+      rule: "SE distribuindo depoimento ENTAO enviar para grupo do MESMO nivel ou UM abaixo. NUNCA enviar depoimento de nivel muito inferior para grupo de alto nivel"
+      source: "MentorIA Processos Dec 19: AN @37:00-40:00"
+    - id: H-DEP-04
+      rule: "SE depoimento lendario com NPS alto recente ENTAO candidato para remarketing automatico e contato de referência para vendas"
+      source: "MentorIA Processos Dec 19: AN @57:00-59:00"
+    - id: H-DEP-05
+      rule: "SE NPS do aluno caiu recentemente ENTAO NAO usar como referência para prospects, mesmo que depoimento anterior fosse lendario"
+      source: "MentorIA Processos Dec 19: AN @58:00-59:00"
+
+  process_dumping:
+    - id: H-DMP-01
+      rule: "SE pedindo dump de processos ao time ENTAO identificar tipo de documentador (Supervalorizador/Resumidor/Criterioso) ANTES de interpretar o dump"
+      source: "MentorIA Processos Dec 19: PV @2:25:00-2:27:00"
+      types:
+        supervalorizador: "Descreve tudo como difícil e demorado. Desafiar tempos com dados reais."
+        resumidor: "Blocos grandes, só marcos, não divide em tarefas. Pedir detalhamento."
+        criterioso: "Retrata realidade exata, super documenta. Ideal — dar autonomia."
+    - id: H-DMP-02
+      rule: "SE decidindo por onde comecar a estruturar processos ENTAO comecar pelo gargalo que gera mais dinheiro, NAO pela cultura ou RH"
+      source: "MentorIA Processos Dec 19: PV @1:55:00-1:56:00"
+    - id: H-DMP-03
+      rule: "SE processo novo criado ENTAO rodar manual por 2-4 semanas antes. Só automatizar apos caminho feliz SIM funcionar"
+      source: "MentorIA Processos Dec 19: AN @26:00-28:00 + PV @1:52:00"
+
+  design:
+    - id: H-DES-01
+      rule: "SE usuário quer mais de 7-8 campos por List ENTAO perguntar 'qual você usaria toda semana?' e remover os que não passam no teste"
+      source: "Agente Config ClickUp: Heuristica do Campo Mínimo"
+      threshold: "max 7-8 campos por List. Campo que ninguém preencheria = ruido"
+    - id: H-DES-02
+      rule: "SE processo ainda não esta estavel (menos de 1 mês rodando manual) ENTAO não automatizar. Executar manual por 2-4 semanas antes"
+      source: "Agente Config ClickUp: Heuristica da Automação Prematura"
+      threshold: "processo estavel há >1 mês = candidato para automação"
+    - id: H-DES-03
+      rule: "SE problema reportado no workspace ENTAO diagnosticar se e CONFIGURACAO (view/campo/filtro errado) ou COMPORTAMENTO (equipe não usa). Maioria pos-launch e comportamento"
+      source: "Agente Config ClickUp: Heuristica Config vs Comportamento"
+      diagnostic: "config = ajustar sistema | comportamento = revisitar treinamento e mandamentos"
+    - id: H-DES-04
+      rule: "SE entidade (Space/Folder/List) pode virar 50+ unidades ENTAO rebaixar nivel hierarquico. Space→Folder, Folder→List, List→Task"
+      source: "Agente Config ClickUp: Heuristica da Escalabilidade"
+      test: "'Se isso virar 50 unidades, ainda funciona?'"
+    - id: H-DES-05
+      rule: "SE implementando workspace novo ENTAO seguir 3 fases: Dumping (Semana 1) → Engenharia do Cabresto (Semana 2) → Injecao ETL (Semana 3-4). NAO pular fases."
+      source: "[SOURCE: 08_clickup_lendario.md, Framework de Implementação 3 Fases]"
+      reference: "pv-templates.yaml > implementation_3_phases"
+    - id: H-DES-06
+      rule: "SE encontrou gap durante execução ENTAO atualizar Template Pai, não só corrigir instancia. Correcao pontual sem update do template = erro sistemico recorrente."
+      source: "[SOURCE: 08_clickup_lendario.md, Template Pai Update Rule]"
+      reference: "CASE-08"
+    - id: H-DES-07
+      rule: "SE vertical de RH no escopo ENTAO usar ClickUp como CRM de Pessoas (tasks = colaboradores, custom fields = cargo/salario/estrato cognitivo/estilo social)"
+      source: "[SOURCE: 08_clickup_lendario.md, ClickUp como CRM de Pessoas]"
+      reference: "pv-hr-people.yaml"
+
+  approval:
+    - id: H-APR-01
+      rule: "SE tarefa precisa aprovação cross-departamento ENTAO Custom Field 'Aprovação {Departamento}' obrigatório antes de avancar status. Sistema barra execução sem intervencao humana."
+      source: "[SOURCE: 08_clickup_lendario.md, Approval Flow Cross-Departamento]"
+      reference: "AUT-22"
+      example: "Status não avanca para 'PUBLICAR' sem Custom Field 'Aprovação Financeiro' = checked"
+
+  delivery:
+    - id: H-DEL-01
+      rule: "SE status movido para backward ENTAO bloquear (no backward status)"
+      source: "Princípio de fluxo unidirecional"
+    - id: H-DEL-02
+      rule: "SE todas subtarefas concluidas ENTAO mover tarefa pai para próximo status"
+      source: "Automação nativa recomendada"
+    - id: H-DEL-03
+      rule: "SE tarefa bloqueada por 72h+ ENTAO escalar para gestor com contexto"
+      source: "Operação de Resgate: Destravar tasks"
+    - id: H-DEL-04
+      rule: "SE sprint com 30%+ tarefas atrasadas ENTAO acionar revisão de escopo"
+      source: "Gestao ClickUp: Optimize"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# 7 GATE SYSTEM (SISTEMA IMUNOLOGICO COGNITIVO OPERACIONAL)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+gate_system:
+  description: |
+    Sistema de 7 portoes (gates) que todo input operacional deve atravessar
+    antes de consumir recursos do time. Baseado no Sistema Imunologico Cognitivo
+    do Pedro Valerio, adaptado para contexto ClickUp/operacional.
+  source: "SISTEMA_IMUNOLOGICO_COGNITIVO_PEDRO_VALERIO_LOPEZ.md"
+
+  gates:
+    - gate: 1
+      name: "Gate de Estrutura"
+      question: "O input tem estrutura minima? (responsável, prazo, descricao)"
+      pass: "Input tem os 3 elementos"
+      fail: "Rejeitar - exigir Formulário Mínimo"
+      auto_rule: "Bloquear criação de tarefa sem assignee + due date + descricao"
+
+    - gate: 2
+      name: "Gate de Proposito"
+      question: "O input esta alinhado com um objetivo ou OKR existente?"
+      pass: "Conectado a objetivo mensuravel"
+      fail: "Questionar necessidade - pode ser ruido"
+      auto_rule: "Exigir campo 'Objetivo' ou tag de OKR"
+
+    - gate: 3
+      name: "Gate de Duplicidade"
+      question: "Já existe tarefa similar ativa no ClickUp?"
+      pass: "Nenhuma duplicata encontrada"
+      fail: "Consolidar com tarefa existente"
+      auto_rule: "Buscar por nome similar antes de criar"
+
+    - gate: 4
+      name: "Gate de Prioridade"
+      question: "Qual a prioridade real vs urgência percebida?"
+      pass: "Prioridade justificada por impacto"
+      fail: "Rebaixar prioridade e agendar adequadamente"
+      auto_rule: "Classificar urgente apenas com justificativa"
+
+    - gate: 5
+      name: "Gate de Processo"
+      question: "Existe template/SOP para este tipo de tarefa?"
+      pass: "Template aplicado"
+      fail: "Criar tarefa sem template (flag para documentar depois)"
+      auto_rule: "Sugerir template quando tipo de tarefa e reconhecido"
+
+    - gate: 6
+      name: "Gate de Capacidade"
+      question: "O responsável tem capacidade para assumir esta tarefa?"
+      pass: "Workload permite"
+      fail: "Redistribuir ou renegociar prazo"
+      auto_rule: "Verificar Workload view antes de atribuir"
+
+    - gate: 7
+      name: "Gate de Automação"
+      question: "Esta tarefa pode ser automatizada em vez de executada manualmente?"
+      pass: "Não - requer execução humana"
+      fail: "Sim - criar automação antes de executar manual"
+      auto_rule: "Flag tarefas repetitivas para automação"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# METRICAS E KPIs (G3)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+metrics_kpis:
+  description: |
+    Sistema de medicao do Sistema Allfluence. Leading indicators medem
+    comportamento (input), lagging indicators medem resultado (output).
+    Usado pelo *audit-hygiene e pelo Arquiteto ClickUp.
+  source: "Gestao ClickUp Cap 9: Optimize"
+
+  leading_indicators:
+    - id: KPI-L1
+      name: "Adesao ao ClickUp"
+      metric: "% da equipe que acessou o ClickUp nos ultimos 7 dias"
+      target: ">= 90%"
+      frequency: "semanal"
+      mandamento: "M1"
+    - id: KPI-L2
+      name: "Tarefas com responsável"
+      metric: "% de tarefas com assignee definido"
+      target: "100%"
+      frequency: "diário (spot check)"
+      mandamento: "M2, M4"
+    - id: KPI-L3
+      name: "Tarefas com prazo"
+      metric: "% de tarefas com due date definido"
+      target: "100%"
+      frequency: "diário (spot check)"
+      mandamento: "M2, M3"
+    - id: KPI-L4
+      name: "Rastreamento de tempo"
+      metric: "% de tarefas com tempo rastreado vs estimado"
+      target: ">= 80%"
+      frequency: "semanal"
+      mandamento: "M9"
+    - id: KPI-L5
+      name: "Inbox zerada"
+      metric: "% da equipe com inbox processada semanalmente"
+      target: ">= 80%"
+      frequency: "semanal"
+
+  lagging_indicators:
+    - id: KPI-G1
+      name: "Conclusão no prazo"
+      metric: "% de tarefas concluidas no prazo ou renegociadas antecipadamente"
+      target: ">= 90%"
+      benchmarks:
+        excelente: ">= 90%"
+        bom: "75-89%"
+        medio: "60-74%"
+        ruim: "< 60%"
+      frequency: "semanal"
+      mandamento: "M3"
+    - id: KPI-G2
+      name: "Tempo medio de conclusão"
+      metric: "Tempo medio de conclusão de tarefas por tipo"
+      target: "Tendencia decrescente"
+      frequency: "mensal"
+    - id: KPI-G3
+      name: "Tarefas atrasadas"
+      metric: "Numero absoluto de tarefas atrasadas (tendencia)"
+      target: "Tendencia decrescente"
+      frequency: "semanal"
+    - id: KPI-G4
+      name: "Lucratividade por projeto"
+      metric: "Receita - (Horas Reais × Custo/hora)"
+      target: "Margem positiva por projeto"
+      frequency: "mensal"
+      requires: "Time Tracking ativo"
+    - id: KPI-G5
+      name: "Tempo não faturavel"
+      metric: "% de horas em tarefas não faturaveis"
+      target: "Tendencia decrescente"
+      frequency: "mensal"
+
+  measurement_cadence:
+    daily: "Daily Spot Check pelo Arquiteto ClickUp (KPI-L2, KPI-L3)"
+    weekly: "Weekly Roundup com métricas consolidadas (KPI-L1, KPI-L4, KPI-L5, KPI-G1, KPI-G3)"
+    monthly: "Análise de tendencias e ajustes (KPI-G2, KPI-G4, KPI-G5)"
+    quarterly: "Revisão de lucratividade e OKRs (todos)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# TOP 10 ERROS FATAIS (G7)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+anti_patterns:
+  description: |
+    10 erros fatais mais comuns em implementacoes de ClickUp.
+    Baseado em 3.000+ empresas implementadas pelo Sistema Allfluence.
+    Agents devem ALERTAR quando detectar qualquer destes padroes.
+  source: "Gestao ClickUp Cap 10: Erros Fatais"
+
+  errors:
+    - id: ERR-01
+      name: "Comecar sem plano"
+      how_it_happens: "Empolgacao inicial sem estratégia — configura ClickUp sem Design aprovado"
+      how_to_avoid: "Fase 1 (Design) e obrigatória — mesmo que leve apenas 1 semana"
+      detection: "Workspace sem hierarquia documentada"
+
+    - id: ERR-02
+      name: "Não designar Arquiteto ClickUp"
+      how_it_happens: "Todos acham que e responsabilidade de outro"
+      how_to_avoid: "Designar ANTES de comecar o Build"
+      detection: "Nenhuma pessoa com papel de Arquiteto definido"
+
+    - id: ERR-03
+      name: "Importar dados via CSV"
+      how_it_happens: "Pressa para 'ter tudo no ClickUp rapidamente'"
+      how_to_avoid: "Migrar APENAS projetos ativos, manualmente, usando templates corretos"
+      detection: "Tasks importadas sem campos padronizados"
+
+    - id: ERR-04
+      name: "Criar Spaces por cliente"
+      how_it_happens: "Parece lógico no início ('1 cliente = 1 Space')"
+      how_to_avoid: "Spaces por area da empresa; Folders por cliente dentro de Delivery"
+      detection: "Workspace com 10+ Spaces nomeados como clientes"
+
+    - id: ERR-05
+      name: "Atribuir tarefas a multiplas pessoas"
+      how_it_happens: "'Todo mundo precisa saber' = confundir visibilidade com accountability"
+      how_to_avoid: "1 tarefa = 1 responsavel. Para multiplos, criar subtarefas"
+      detection: "Tarefas com 2+ assignees"
+      mandamento: "M4"
+
+    - id: ERR-06
+      name: "Custom fields em excesso"
+      how_it_happens: "Entusiasmo de capturar tudo desde o dia 1"
+      how_to_avoid: "Comecar com o minimo. Adicionar apenas quando sentir falta"
+      detection: "Space com 20+ custom fields dos quais 50%+ vazios"
+
+    - id: ERR-07
+      name: "Treinamento único sem reforco"
+      how_it_happens: "Treinamento de lançamento e nunca mais"
+      how_to_avoid: "Reforcos semanais nos primeiros 30 dias + Arquiteto disponivel"
+      detection: "Adesao caindo apos semana 3"
+
+    - id: ERR-08
+      name: "Não zerar Inbox"
+      how_it_happens: "Falta de habito. Notificacoes acumulam e equipe para de confiar"
+      how_to_avoid: "Horário fixo diário para processar Inbox"
+      detection: "Inbox com 100+ notificacoes não lidas"
+
+    - id: ERR-09
+      name: "Manter ferramentas paralelas ativas"
+      how_it_happens: "'Por enquanto deixa o WhatsApp também' — equipe usa o mais fácil"
+      how_to_avoid: "No Launch, comunicar desativacao de ferramentas paralelas para gestao"
+      detection: "Decisoes e tarefas ainda sendo criadas fora do ClickUp"
+      mandamento: "M1"
+
+    - id: ERR-10
+      name: "Não fazer Daily Spot Check"
+      how_it_happens: "Arquiteto ClickUp fica 'sem tempo'"
+      how_to_avoid: "10-30 min reservados no calendario como tarefa nao-negociavel"
+      detection: "Workspace com tarefas atrasadas não detectadas por 7+ dias"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# HEALTH SIGNALS (G9)
+# ═══════════════════════════════════════════════════════════════════════════════
+
+health_signals:
+  description: |
+    Sinais de saúde do workspace por timeframe. Complementa KPIs numericos
+    com indicadores qualitativos observaveis. Usado pelo Arquiteto ClickUp.
+  source: "Gestao ClickUp Cap 10: Sinais de Funcionamento"
+
+  healthy:
+    first_24h:
+      - "Colaboradores abrindo o ClickUp sem ser solicitados"
+      - "Menos mensagens de WhatsApp sobre status de tarefas"
+    first_week:
+      - "My Tasks sendo usada diariamente pela equipe"
+      - "Tarefas sendo criadas com prazo e responsável"
+    first_month:
+      - "CEO consegue responder status de qualquer projeto olhando apenas ClickUp"
+      - "Reuniões de alinhamento diminuindo"
+      - "Tempo rastreado em >70% das tarefas"
+
+  unhealthy:
+    - signal: "Equipe ainda manda tarefa por WhatsApp"
+      diagnosis: "Treinamento insuficiente ou ClickUp tem mais friccao que WhatsApp"
+      action: "Reforcar M1; identificar causa raiz da friccao"
+    - signal: "Muitas tarefas sem prazo ou responsável"
+      diagnosis: "Daily Spot Check não esta sendo feito"
+      action: "Reforcar habito do Arquiteto; implementar automação de alerta"
+    - signal: "Templates não estão sendo usados"
+      diagnosis: "Treinamento insuficiente ou templates muito complexos"
+      action: "Simplificar templates; reforcar M7"
+    - signal: "Dados inconsistentes nos relatórios"
+      diagnosis: "Custom fields não estão sendo preenchidos corretamente"
+      action: "Auditoria de campos (M8); reforcar padrões"
+    - signal: "Equipe pulou rastreamento de tempo"
+      diagnosis: "Equipe não entendeu o proposito (lucratividade, não controle)"
+      action: "Mostrar dados concretos de impacto; reconectar com M9"

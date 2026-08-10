@@ -1,0 +1,185 @@
+name: issue-processing
+version: "1.0"
+description: Structured problem-solving using Vistage 5-Stage Model
+id: wf-issue-processing
+type: legacy
+trigger:
+  command: /advisory-board:issue-processing
+inputs:
+  required:
+    - name: issue
+      type: string
+      description: The problem/issue to process
+  optional:
+    - name: owner
+      type: string
+      description: Decision owner
+    - name: deadline
+      type: date
+      description: Decision deadline
+    - name: constraints
+      type: list
+      description: Known limitations
+    - name: prior_attempts
+      type: list
+      description: What has been tried
+phases:
+  - name: stage_1_presentation
+    duration: 5min
+    agent: user
+    steps:
+      - action: present_issue
+        description: State issue clearly
+        format:
+          - issue_statement: one sentence
+          - background: max 3 paragraphs
+          - tried: list with results
+          - current_thinking: what I think I should do
+          - want: what I want from session
+      - action: chair_validation
+        agent: board-chair
+        checks:
+          - issue_clear: true
+          - no_advice_given: true
+          - time_respected: true
+  - name: stage_2_clarifying
+    duration: 10min
+    agent: all_advisors
+    rules:
+      - type: questions_only
+        description: No statements disguised as questions
+      - type: one_at_a_time
+        description: Single questions, not compound
+      - type: understand_not_advise
+        description: Purpose is understanding
+    steps:
+      - action: question_round
+        format: "Q: {question} → A: {answer}"
+      - action: surface_new_info
+        agent: board-chair
+        description: Summarize new information surfaced
+  - name: stage_3_experience
+    duration: 15min
+    agent: each_advisor
+    rules:
+      - type: share_experience
+        description: Stories, not solutions
+      - type: equal_time
+        description: Each advisor gets same time
+    steps:
+      - action: share_relevant_experience
+        format:
+          - experience: When I faced similar...
+          - lesson: What I learned
+  - name: stage_4_suggestions
+    duration: 15min
+    agent: all_advisors
+    rules:
+      - type: advice_welcome
+        description: Now specific advice is appropriate
+      - type: be_specific
+        description: Actionable recommendations
+      - type: acknowledge_tradeoffs
+        description: Name what you'd give up
+    steps:
+      - action: offer_suggestions
+        format:
+          - suggestion: specific recommendation
+          - rationale: why
+          - tradeoff: what you'd be giving up
+      - action: devils_advocate_challenge
+        agent: assigned_advocate
+        description: Final challenge before commitment
+  - name: stage_5_commitment
+    duration: 5min
+    agent: user
+    rules:
+      - type: specific_actions
+        description: Presenter commits to specifics
+      - type: not_consensus
+        description: Presenter decides, not the group
+      - type: accountability
+        description: Checkpoint established
+    steps:
+      - action: commit_to_actions
+        format:
+          - action: specific action
+          - by_when: date
+      - action: state_rejections
+        description: Options explicitly rejected and why
+      - action: set_accountability
+        format:
+          - check_in_date: date
+          - with_whom: person
+          - success_looks_like: metrics
+      - action: reflect
+        description: What was most valuable
+outputs:
+  - name: issue_record
+    description: Full session documentation
+  - name: action_items
+    description: List of commitments with dates
+  - name: follow_up
+    description: Scheduled accountability check
+time_management:
+  total: 45-50min
+  stage_1: 5min
+  stage_2: 10min
+  stage_3: 15min
+  stage_4: 15min
+  stage_5: 5min
+chair_responsibilities:
+  - keep_time: Enforce stage durations
+  - enforce_rules: Questions only in Stage 2
+  - manage_flow: Ensure equal participation
+  - surface_patterns: Identify themes
+  - prevent_premature_advice: Block advice before Stage 4
+metadata:
+  category: problem-solving
+  model: Vistage Issue Processing
+  duration_estimate: 45-60min
+  complexity: medium
+workflow:
+  id: wf-issue-processing
+  name: issue-processing
+  version: "1.0"
+  description: Structured problem-solving using Vistage 5-Stage Model
+  type: legacy
+  sequence:
+    - step: stage-1-presentation
+      id: stage-1-presentation
+      phase: 1
+      phase_name: stage_1_presentation
+      agent: aiox-master
+      action: execute_stage-1-presentation
+      next: stage-2-clarifying
+    - step: stage-2-clarifying
+      id: stage-2-clarifying
+      phase: 2
+      phase_name: stage_2_clarifying
+      agent: aiox-master
+      action: execute_stage-2-clarifying
+      next: stage-3-experience
+    - step: stage-3-experience
+      id: stage-3-experience
+      phase: 3
+      phase_name: stage_3_experience
+      agent: aiox-master
+      action: execute_stage-3-experience
+      next: stage-4-suggestions
+    - step: stage-4-suggestions
+      id: stage-4-suggestions
+      phase: 4
+      phase_name: stage_4_suggestions
+      agent: aiox-master
+      action: execute_stage-4-suggestions
+      next: stage-5-commitment
+    - step: stage-5-commitment
+      id: stage-5-commitment
+      phase: 5
+      phase_name: stage_5_commitment
+      agent: aiox-master
+      action: execute_stage-5-commitment
+    - workflow_end:
+        id: complete
+        action: workflow_complete

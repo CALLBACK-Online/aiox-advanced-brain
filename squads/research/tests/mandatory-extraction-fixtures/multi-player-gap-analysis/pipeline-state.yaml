@@ -1,0 +1,25 @@
+---
+pipeline_id: "fixture-multi-player-gap-analysis"
+status: completed
+stop_reason: coverage_sufficient
+phase: p5b_finalize
+inferred_pattern: multi_player
+comparison_pattern: multi_player
+
+# STORY-RA-F.3 AC-C1: gap-analysis.md atom is MANDATORY when comparison_pattern == multi_player
+gap_analysis_emitted: true
+gap_analysis_path: "gap-analysis.md"
+
+scope_declaration:
+  patterns: [multi_player]
+  candidates_count: 3
+  candidates:
+    - perplexity-deep-research
+    - manus-deep-research
+    - exa-research-api
+
+domain_inferred:
+  - research_tooling
+  - llm_agents
+
+phases_completed: 7

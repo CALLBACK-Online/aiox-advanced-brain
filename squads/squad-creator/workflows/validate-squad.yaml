@@ -1,0 +1,171 @@
+workflow:
+  id: validate-squad
+  name: Squad Validation Pipeline (Base)
+  version: 1.0.0
+  description: Base validation pipeline for AIOX squads. Covers structural integrity, coverage analysis, and basic quality scoring. For advanced validation (axioma, heuristics, veto-conditions), install squad-creator-pro.
+  type: validation
+  agent_mapping:
+    agents:
+      squad-chief: validator
+    phase_ownership:
+      type_detection: squad-chief
+      structure: squad-chief
+      coverage: squad-chief
+      quality: squad-chief
+      report: squad-chief
+  state_machine:
+    states:
+      - init
+      - type_detection
+      - structure
+      - coverage
+      - quality
+      - report
+      - complete
+      - failed
+    transitions:
+      - trigger: start
+        source: init
+        dest: type_detection
+      - trigger: type_detected
+        source: type_detection
+        dest: structure
+      - trigger: structure_passed
+        source: structure
+        dest: coverage
+      - trigger: structure_failed
+        source: structure
+        dest: failed
+      - trigger: coverage_passed
+        source: coverage
+        dest: quality
+      - trigger: coverage_failed
+        source: coverage
+        dest: failed
+      - trigger: quality_scored
+        source: quality
+        dest: report
+      - trigger: report_generated
+        source: report
+        dest: complete
+      - trigger: fail
+        source: "*"
+        dest: failed
+  sequence:
+    - phase: type_detection
+      agent: squad-chief
+      task: detect-squad-type
+      action: detect_squad_type
+      description: Detect squad type (Expert / Pipeline / Hybrid / Operational)
+      inputs:
+        - squad_name
+      outputs:
+        - squad_type
+        - type_requirements
+      scripts:
+        - scripts/inventory.py
+    - phase: structure
+      agent: squad-chief
+      task: validate-structure
+      action: validate_structure
+      description: Validate structural integrity -- config, agents, references
+      blocking: true
+      checks:
+        - config_yaml_exists
+        - entry_agent_defined
+        - workspace_integration_level_defined
+        - workspace_integration_level_valid
+        - coo_handoff_declared_for_workspace_write
+        - all_referenced_files_exist
+        - naming_conventions
+        - no_external_references
+      scripts:
+        - scripts/validate-squad-structure.py
+        - scripts/naming_validator.py
+        - scripts/dependency_check.py
+      on_pass:
+        trigger: structure_passed
+      on_fail:
+        trigger: structure_failed
+        output: structure_errors
+    - phase: coverage
+      agent: squad-chief
+      task: validate-coverage
+      action: validate_coverage
+      description: Validate component coverage and completeness
+      checks:
+        - checklist_coverage_gte_30pct
+        - orphan_tasks_max_2
+        - data_file_usage_gte_50pct
+        - workspace_references_present_when_required
+        - workspace_write_delegates_to_coo
+        - workspace_first_has_bootstrap_and_essentials_validator
+        - required_docs_exist
+      scripts:
+        - scripts/checklist_validator.py
+      on_pass:
+        trigger: coverage_passed
+      on_fail:
+        trigger: coverage_failed
+        output: coverage_gaps
+    - phase: quality
+      agent: squad-chief
+      task: score-quality
+      action: score_quality
+      description: Score squad quality across 5 dimensions
+      dimensions:
+        prompt_quality: 20
+        pipeline_coherence: 20
+        checklist_actionability: 20
+        documentation: 20
+        structural_completeness: 20
+      scoring:
+        max_score: 10
+        threshold: 7
+        weights_sum_to: 100
+      scripts:
+        - scripts/validate-squad.sh
+      on_complete:
+        trigger: quality_scored
+        output: quality_scores
+    - phase: report
+      agent: squad-chief
+      task: generate-report
+      action: generate_validation_report
+      description: Generate validation report with scores and recommendations
+      inputs:
+        - structure_errors
+        - coverage_gaps
+        - quality_scores
+      outputs:
+        - validation_report_md
+        - quality_score
+        - pass_fail_verdict
+      report_sections:
+        - summary
+        - structure_results
+        - coverage_results
+        - quality_breakdown
+        - recommendations
+      on_complete:
+        trigger: report_generated
+      pro_suggestion: |
+        For advanced validation (axioma assessment, veto-condition engine,
+        heuristic coherence), install squad-creator-pro.
+  error_handling:
+    on_error:
+      - save_state
+      - log_error
+    recovery:
+      enabled: true
+      strategy: resume_from_last_complete
+  resume:
+    state_file: .aiox/squad-runtime/validate-squad/{squad_name}/state.json
+    supported: true
+    preserve_outputs: true
+    allowed_phases:
+      - type_detection
+      - structure
+      - coverage
+      - quality
+      - report

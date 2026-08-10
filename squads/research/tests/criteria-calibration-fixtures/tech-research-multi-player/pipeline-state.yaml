@@ -1,0 +1,12 @@
+pipeline_id: "tech-research-fixture-RA-F.1-2026-05-19"
+status: "completed"
+stop_reason: "coverage_gate_passed"
+phases:
+  p0_auto_clarify: completed
+  p1_strategic_brief: completed
+  p15_decompose: completed
+  p2_prompt: completed
+  p3_research: completed
+  p4_synthesize: completed
+  p45_verify_citations: completed
+  p5_document: completed

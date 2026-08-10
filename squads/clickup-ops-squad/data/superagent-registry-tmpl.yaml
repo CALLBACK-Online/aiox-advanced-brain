@@ -1,0 +1,127 @@
+# SuperAgent Registry — Template
+# SOT para todos os ClickUp AI Agents (SuperAgents) em produção
+# Owner: clickup-ops-squad
+# Usage: Copy this template per spoke and fill in spoke-specific IDs and list references
+# Version: 1.0.0
+
+version: "1.0.0"
+last_updated: "{YYYY-MM-DD}"
+owner_squad: clickup-ops-squad
+spoke: "{spoke-slug}"  # e.g., allfluence, academia-lendaria, billion
+total_superagents: 0
+
+superagents: []
+  # Template entry — copy and fill per SuperAgent:
+  #
+  # - id: "SA-{NNN}"
+  #   name: "{SuperAgent Name}"
+  #   description: "{O que este SuperAgent faz}"
+  #   lists:
+  #     - list_id: "{clickup_list_id}"
+  #       list_name: "{List Name}"
+  #       space: "{Space Name}"
+  #       folder: "{Folder Name}"
+  #   triggers:
+  #     - type: status_change
+  #       automation_name: "{Automation Name}"
+  #       condition: "{Trigger Condition}"
+  #     - type: mention
+  #     - type: direct_message
+  #     - type: task_assignment
+  #   task_types: ["{type1}", "{type2}"]
+  #   digest_template: "{template_name}"  # Reference digest_templates below
+  #   log_format: "bullet"  # - **TS** — texto (agent)
+  #   digest_trigger: "status → done"
+  #   instruction_version: "1.0"
+  #   tools:
+  #     - "ClickUp (1 ferramenta)"
+  #   memory:
+  #     recent: true
+  #     preferences: true
+  #     intelligence: true
+  #   external_search: false
+  #   status: draft  # draft | active | deprecated
+
+# ─── Digest Templates ─────────────────────────────────────────────────────
+# Referência para as instructions dos SuperAgents
+digest_templates:
+  creative:
+    sections:
+      - "Linha do tempo principal"
+      - "Desempenho do post (ER, Views, Plays, Interações)"
+      - "Creator e plataforma"
+      - "Ocorrências (erros, rejeições, bloqueios)"
+      - "Aprendizados"
+      - "Links principais"
+
+  ops:
+    sections:
+      - "Linha do tempo principal"
+      - "Resultado (serviços afetados, testes, deploys)"
+      - "Decisões tomadas"
+      - "Tempo estimado vs real"
+      - "Aprendizados"
+      - "Links principais"
+
+  mission:
+    sections:
+      - "Linha do tempo principal"
+      - "Tasks concluídas / Gates passed"
+      - "Blockers resolvidos"
+      - "Decisões tomadas"
+      - "Próximos passos"
+      - "Aprendizados"
+
+  legal:
+    sections:
+      - "Linha do tempo principal"
+      - "Documentos assinados / Providers"
+      - "Compliance status"
+      - "Decisões tomadas"
+      - "Aprendizados"
+
+  student:
+    sections:
+      - "Linha do tempo principal"
+      - "Status matrícula e pagamento"
+      - "Onboarding (ClickUp access, templates deployed)"
+      - "Progresso no curso"
+      - "Ocorrências (suporte, churn risk)"
+      - "Aprendizados"
+
+  course_content:
+    sections:
+      - "Linha do tempo principal"
+      - "Tipo de conteúdo e módulo"
+      - "Pipeline de produção (copy → filmagem → edição)"
+      - "Handoffs cross-BU realizados"
+      - "Decisões tomadas"
+      - "Aprendizados"
+
+  generic:
+    sections:
+      - "Linha do tempo principal"
+      - "O que foi feito"
+      - "Decisões tomadas"
+      - "Aprendizados"
+
+# ─── Description Contract Reference ──────────────────────────────────────
+description_contract:
+  version: "3.0"
+  zones:
+    zone_1:
+      name: "Body"
+      writer: "Claude Code helpers (updateTaskDescriptionSafe)"
+      rule: "NUNCA tocado por SuperAgent"
+    zone_2:
+      name: "Journey Log"
+      header: "## Journey Log"
+      writer: "Claude Code + SuperAgent"
+      format: "- **YYYY-MM-DD HH:MM** — {evento} ({agent/autor})"
+      rule: "APENAS append, NUNCA rewrite"
+    zone_3:
+      name: "Task Digest"
+      header: "## Task Digest"
+      writer: "SuperAgent exclusivo"
+      trigger: "status → done"
+      rule: "1 geração por task_type template, nunca atualizado"

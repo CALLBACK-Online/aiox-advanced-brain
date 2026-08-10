@@ -1,0 +1,228 @@
+version: "2.0.0"
+last_updated: "2026-04-13"
+updated_by: "sinkra-upgrade-squad"
+squad: c-level
+
+service_catalog: data/c-level-service-catalog.yaml
+
+infrastructure_connections:
+  # ─── Workspace Integration ─────────────────────────────────────────
+  - id: workspace-registry
+    connection: workspace/businesses/{slug}/document-registry.yaml
+    integration: registry_sync
+    service_ref: workspace-service
+    consumed_by_tasks: [workspace-health-check, load-workspace-context]
+    consumed_by_agents: [cso, coo-orchestrator]
+
+  - id: workspace-system-config
+    connection: workspace/_system/config.yaml
+    integration: config_read
+    service_ref: workspace-service
+    consumed_by_tasks: [bootstrap, load-workspace-context]
+    consumed_by_agents: [coo-orchestrator]
+
+  - id: workspace-templates
+    connection: workspace/_templates/business-template/
+    integration: template_scaffold
+    service_ref: workspace-service
+    consumed_by_tasks: [scaffold-templates, add-business]
+    consumed_by_agents: [coo-orchestrator]
+
+  # ─── QA & Governance ───────────────────────────────────────────────
+  - id: qa-health-report
+    connection: docs/qa/workspace-health/
+    integration: audit_publish
+    service_ref: qa-service
+    consumed_by_tasks: [workspace-health-check]
+    consumed_by_agents: [coo-orchestrator, cso]
+
+  - id: diagnostics-output
+    connection: docs/diagnostics/
+    integration: diagnostic_publish
+    service_ref: qa-service
+    consumed_by_tasks: [diagnose-business, diagnose-offer, growth-levers, progress-check]
+    consumed_by_agents: [workspace-chief, cmo-architect]
+
+  # ─── Scripts: Bootstrap ────────────────────────────────────────────
+  - id: bootstrap-c-level
+    connection: squads/c-level/scripts/bootstrap-c-level-workspace.sh
+    integration: bootstrap_runtime
+    service_ref: workspace-service
+    consumed_by_tasks: [bootstrap]
+    consumed_by_agents: [coo-orchestrator]
+    trigger: manual
+
+  - id: bootstrap-aiox
+    connection: squads/c-level/scripts/bootstrap-aiox-workspace.sh
+    integration: bootstrap_runtime
+    service_ref: workspace-service
+    consumed_by_tasks: [bootstrap]
+    consumed_by_agents: [coo-orchestrator]
+    trigger: manual
+
+  - id: bootstrap-generic
+    connection: squads/c-level/scripts/bootstrap-workspace.sh
+    integration: bootstrap_runtime
+    service_ref: workspace-service
+    status: legacy
+    note: "May be superseded by bootstrap-c-level-workspace.sh"
+
+  # ─── Scripts: Validation ───────────────────────────────────────────
+  - id: validate-c-level-essentials
+    connection: squads/c-level/scripts/validate-c-level-essentials.sh
+    integration: preflight_validation
+    service_ref: qa-service
+    consumed_by_tasks: [bootstrap, workspace-health-check]
+    consumed_by_agents: [coo-orchestrator]
+    trigger: manual + scheduled
+
+  - id: validate-structure
+    connection: squads/c-level/scripts/validate-structure.sh
+    integration: structure_validation
+    service_ref: qa-service
+    consumed_by_tasks: [workspace-health-check]
+    consumed_by_agents: [coo-orchestrator]
+    trigger: manual + scheduled
+
+  - id: validate-product
+    connection: squads/c-level/scripts/validate-product.sh
+    integration: product_validation
+    service_ref: qa-service
+    consumed_by_tasks: [add-product]
+    consumed_by_agents: [cmo-architect]
+
+  - id: validate-workspace-essentials
+    connection: squads/c-level/scripts/validate-workspace-essentials.sh
+    integration: workspace_validation
+    service_ref: qa-service
+    status: legacy
+    note: "May be superseded by validate-c-level-essentials.sh"
+
+  - id: workflow-integrity-test
+    connection: squads/c-level/scripts/workflow-integrity.test.js
+    integration: test_runner
+    service_ref: qa-service
+    consumed_by_tasks: [workspace-health-check]
+    trigger: manual + scheduled
+
+  # ─── Scripts: Runtime Helpers ──────────────────────────────────────
+  - id: check-bootstrap
+    connection: squads/c-level/scripts/check-bootstrap.cjs
+    integration: preflight_check
+    service_ref: workspace-service
+    consumed_by_tasks: [bootstrap]
+
+  - id: resolve-squad-workspace-readiness
+    connection: squads/c-level/scripts/resolve-squad-workspace-readiness.cjs
+    integration: readiness_resolver
+    service_ref: workspace-service
+    consumed_by_tasks: [resolve-squad-workspace-readiness, classify-squad-workspace-fit]
+
+  - id: resolve-product-readiness
+    connection: squads/c-level/scripts/resolve-product-readiness.cjs
+    integration: readiness_resolver
+    service_ref: workspace-service
+    consumed_by_tasks: [add-product]
+
+  - id: scan-diagnostic-backlog
+    connection: squads/c-level/scripts/scan-diagnostic-backlog.cjs
+    integration: backlog_scanner
+    service_ref: qa-service
+    consumed_by_tasks: [diagnose-business, next-best-action]
+
+  - id: generate-c-level-greeting
+    connection: squads/c-level/scripts/generate-c-level-greeting.cjs
+    integration: greeting_generator
+    service_ref: workspace-service
+    consumed_by_tasks: [bootstrap]
+
+  - id: generate-aiox-greeting
+    connection: squads/c-level/scripts/generate-aiox-workspace-greeting.cjs
+    integration: greeting_generator
+    service_ref: workspace-service
+    consumed_by_tasks: [bootstrap]
+
+  # ─── Workflows ─────────────────────────────────────────────────────
+  - id: wf-workspace-governance
+    connection: squads/c-level/workflows/workspace-governance.yaml
+    integration: scheduled_governance
+    service_ref: qa-service
+    trigger: "scheduled (weekly full + daily quick) + manual + event"
+    consumed_by_tasks: [workspace-health-check]
+
+  - id: wf-business-profile-pipeline
+    connection: squads/c-level/workflows/business-profile-pipeline.yaml
+    integration: elicitation_pipeline
+    service_ref: workspace-service
+    trigger: manual
+    consumed_by_tasks: [setup-business-profile]
+
+  - id: wf-etl-deep-pass-pipeline
+    connection: squads/c-level/workflows/etl-deep-pass-pipeline.yaml
+    integration: etl_enrichment
+    service_ref: workspace-service
+    trigger: manual
+    consumed_by_tasks: [etl-deep-pass, etl-batch-runner]
+
+  # ─── Automation Triggers ───────────────────────────────────────────
+  - id: trigger-weekly-health
+    connection: "cron: 0 9 * * 1"
+    integration: scheduled_trigger
+    service_ref: qa-service
+    consumed_by_tasks: [workspace-health-check]
+    note: "Weekly full audit, Monday 9h"
+
+  - id: trigger-daily-quick
+    connection: "cron: 0 8 * * 2-5"
+    integration: scheduled_trigger
+    service_ref: qa-service
+    consumed_by_tasks: [workspace-health-check]
+    note: "Daily quick validation, Tue-Fri 8h"
+
+  - id: trigger-file-created
+    connection: "event: file.created in workspace/**"
+    integration: event_trigger
+    service_ref: workspace-service
+    consumed_by_tasks: [workspace-health-check]
+    note: "Incremental validation on new workspace files"
+
+  - id: trigger-yaml-modified
+    connection: "event: file.modified in workspace/*.yaml"
+    integration: event_trigger
+    service_ref: workspace-service
+    consumed_by_tasks: [workspace-health-check]
+    note: "Schema validation on modified YAML"
+
+  # ─── Data Files ────────────────────────────────────────────────────
+  - id: data-token-registry
+    connection: squads/c-level/data/token-registry.yaml
+    integration: token_governance
+    service_ref: governance-service
+    consumed_by_tasks: [all pipelines via token bindings]
+
+  - id: data-quality-gates
+    connection: squads/c-level/data/quality-gates.yaml
+    integration: gate_evaluation
+    service_ref: qa-service
+    consumed_by_tasks: [all pipelines via gate bindings]
+
+  - id: data-pipeline-execution-log
+    connection: squads/c-level/data/pipeline-execution-log.yaml
+    integration: observability
+    service_ref: qa-service
+    consumed_by_tasks: [all pipelines post-execution]
+
+  - id: data-deviation-registry
+    connection: squads/c-level/data/deviation-registry.yaml
+    integration: deviation_tracking
+    service_ref: governance-service
+
+summary:
+  total_connections: 30
+  scripts: 14
+  workflows: 3
+  automation_triggers: 4
+  data_files: 4
+  workspace_integrations: 3
+  output_targets: 2
+  coverage_estimate: "95%+"

@@ -1,0 +1,175 @@
+# Phase 3.4 — Reflect and Gap Detect
+# Story: STORY-RA-B.1 | Created: 2026-05-19
+# Inserted between P3.2 (deep-read) and P3.5 (coverage gate).
+# Persona: coverage-evaluator (inline)
+# Molecule: M4 (Execute Research)
+#
+# SEMANTICS: APPEND-ONLY
+#   - gaps.yaml is the persistent state artifact for gap tracking across waves
+#   - Wave N never removes gaps from previous waves; only transitions status
+#   - gap_detector.py enforces APPEND-ONLY via crash-safe atomic write
+#   - pipeline-state.yaml references gaps by ID for recovery determinism
+#
+# PREREQUISITE: RA-B.1 (this phase)
+# CONSUMED BY:
+#   - P3.5 (evaluate-coverage.yaml) reads gap_set.is_empty() signal
+#   - heartbeat-policy.yaml signal gap_convergence (priority 6)
+#   - gap_detector.py (script driver)
+
+schema_version: "1.0"
+id: P3.4
+name: Reflect and Gap Detect
+phase_number: 3.4
+
+# ─── Position in pipeline ────────────────────────────────────────────────────
+position:
+  after: P3.2   # deep-read (supplemental, conditional)
+  before: P3.5  # coverage gate (mandatory)
+  # When P3.2 is skipped (execution: conditional), P3.4 still runs after P3.
+  fallback_after: P3
+
+# ─── Persona ─────────────────────────────────────────────────────────────────
+persona: coverage-evaluator
+execution: always_after_wave   # runs once per wave, not conditional
+
+# ─── Inputs ──────────────────────────────────────────────────────────────────
+inputs:
+  - wave_N_summary           # wave-{N}-summary.md from P3.6 of prior wave (or raw results for W1)
+  - enriched_results         # from P3.2 when executed
+  - pipeline_state           # pipeline-state.yaml — for wave number, mode, current gaps ref
+  - existing_gaps_yaml       # gaps.yaml from prior wave (null/empty for Wave 1)
+
+# ─── Outputs ─────────────────────────────────────────────────────────────────
+outputs:
+  - gaps_yaml                # squads/research/templates/tech-research/gaps.yaml (template)
+                             # runtime: docs/research/{date}-{slug}/gaps.yaml
+  - gap_detect_summary       # inline text (appended to wave summary context)
+
+# ─── Script Driver ───────────────────────────────────────────────────────────
+script:
+  path: squads/research/scripts/tech-research/gap_detector.py
+  invocation: |
+    python gap_detector.py \
+      --output-dir  {output_dir} \
+      --wave        {wave_num} \
+      --mode        {pipeline_mode}   # research | product_discovery
+  # The script APPENDS new gaps and transitions existing ones.
+  # It NEVER deletes entries (APPEND-ONLY semantic).
+  # On crash mid-write: atomic write via tempfile+mv guarantees last-good state.
+
+# ─── Protocol ────────────────────────────────────────────────────────────────
+protocol:
+  step_1_load_state:
+    description: |
+      Load existing gaps.yaml (if present). If absent (Wave 1), initialize empty gaps list.
+      Read pipeline-state.yaml to confirm wave_num and mode.
+    halt_if: gaps.yaml present but not parseable (corruption — halt with error)
+
+  step_2_reflect_on_wave:
+    description: |
+      Analyze wave summary + enriched results:
+        - Identify questions NOT answered by this wave's sources
+        - Identify topic areas with low source coverage (< 2 credible sources)
+        - Identify claims that remain unsubstantiated after citation check
+      Product-discovery mode: also look for JTBD, competitor, and WTP gaps.
+    output: gap_candidates — list of {question, source_hint, priority}
+
+  step_3_transition_closed_gaps:
+    description: |
+      For each existing gap with status=open:
+        - Check if this wave's sources close it (source answers the gap question)
+        - If YES: transition status open → closed, set closed_in_wave, closed_by_source
+        - If NO: increment attempts, keep status=open
+      NEVER remove a gap entry. Transition only.
+    output: updated gap entries with status transitions
+
+  step_4_append_new_gaps:
+    description: |
+      For each gap_candidate not already in gaps.yaml (check by question similarity):
+        - Assign next available ID (G{NNN} zero-padded to 3 digits)
+        - Set opened_in_wave = current wave_num
+        - Set status = open, attempts = 0
+        - Append to gaps list (AFTER all existing entries)
+      NEVER re-order existing entries.
+    output: new gap entries appended to gaps list
+
+  step_5_atomic_write:
+    description: |
+      Write gaps.yaml using atomic pattern:
+        1. Write to gaps.yaml.tmp
+        2. Validate: YAML parseable + all required keys present + no entries removed
+        3. On validation pass: mv gaps.yaml.tmp gaps.yaml
+        4. On validation fail: delete .tmp, emit error, keep last-good gaps.yaml intact
+      Update pipeline-state.yaml#gaps_yaml_ref with current gaps.yaml path.
+    crash_recovery: |
+      On pipeline restart: read last-good gaps.yaml + last-good pipeline-state.yaml.
+      gaps_yaml_ref in pipeline-state.yaml points to the committed last-good version.
+      Any .tmp file from a prior crashed write is ignored (not gaps.yaml itself).
+    output: gaps.yaml committed to disk, pipeline-state.yaml updated
+
+  step_6_emit_gap_convergence_signal:
+    description: |
+      Compute gap_set.is_empty():
+        - True if all gaps have status != "open" (all closed or abandoned)
+        - False if any gap has status == "open"
+      Write gap_convergence signal to pipeline-state.yaml for Phase 3.5 to read.
+    output: pipeline-state.yaml#gap_convergence_signal (bool)
+
+  step_7_gap_detect_summary:
+    description: |
+      Emit inline summary for wave context:
+        - N_open, N_closed, N_abandoned, N_new_this_wave
+        - Top 3 open gaps by priority
+        - gap_set.is_empty() value
+      Append to wave summary context so P3.5 has full picture.
+
+# ─── Gap Schema Reference ──────────────────────────────────────────────────
+gap_schema:
+  # See squads/research/templates/tech-research/gaps.yaml for full template
+  required_keys_per_entry:
+    - id              # G{NNN} — stable, never reassigned
+    - question        # the unanswered question
+    - source_hint     # academic-paper | enterprise-postmortem | general-web | any
+    - priority        # high | medium | low
+    - attempts        # int — incremented each wave gap remains open
+    - status          # open | closed | abandoned
+    - opened_in_wave  # int — wave number when gap was detected
+    - closed_in_wave  # int | null — populated when status transitions to closed
+    - closed_by_source # source_id | null — populated when status transitions to closed
+
+# ─── Failure Modes ───────────────────────────────────────────────────────────
+failure_modes:
+  gaps_yaml_corrupt:
+    action: halt_with_error
+    message: "gaps.yaml is present but not parseable — APPEND-ONLY integrity at risk. Manual inspection required."
+  gaps_yaml_missing_wave1:
+    action: initialize_empty
+    message: "Wave 1: no existing gaps.yaml — initializing fresh gaps list."
+  script_not_found:
+    action: warn_and_continue
+    message: "gap_detector.py not found — gap detection skipped this wave. gap_convergence signal defaults to false."
+    gap_convergence_default: false
+
+# ─── Integration Points ──────────────────────────────────────────────────────
+integration:
+  heartbeat_policy:
+    file: squads/research/data/heartbeat-policy.yaml
+    signal: gap_convergence
+    priority: 6
+    condition: "gap_set.is_empty()"
+    note: "Phase 3.5 reads gap_convergence from pipeline-state.yaml (populated by step_6 above)"
+
+  pipeline_state_fields_written:
+    - gap_convergence_signal   # bool — consumed by heartbeat-policy signal #6
+    - gaps_yaml_ref            # path to committed gaps.yaml (for crash recovery)
+    - gaps_open_count          # int — advisory, visible in Observatory
+    - gaps_closed_count        # int — advisory
+    - gaps_total_count         # int — advisory
+
+  output_validator:
+    hook: check_gaps_schema
+    file: squads/research/scripts/tech-research/output_validator.py
+    validates:
+      - gaps.yaml schema correctness (all required keys)
+      - APPEND-ONLY invariant (no entries deleted between waves)
+      - gap_convergence_signal present in pipeline-state.yaml when gaps.yaml exists

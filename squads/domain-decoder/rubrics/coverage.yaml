@@ -1,0 +1,19 @@
+rubric:
+  name: coverage
+  threshold: 0.7
+  weight: 1
+  max_tokens: 150
+
+prompt: |
+  You are evaluating the output of an AI pipeline phase.
+
+  Task: {{task_description}}
+  Expected fields: {{expected_fields}}
+
+  Output (first 2000 chars):
+  {{output_preview}}
+
+  Score 0-100 on COVERAGE: Does the output cover all expected domains, bounded
+  contexts, and rule categories? Are there obvious gaps or missing sections
+  relative to the expected fields?
+  Respond with JSON only: {"score": N, "reason": "one line"}

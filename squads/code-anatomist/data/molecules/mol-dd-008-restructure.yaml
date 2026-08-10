@@ -1,0 +1,55 @@
+molecule:
+  molecule_id: "MOL-DD-008"
+  name: "Restructure"
+  mode: "CRIAR"
+  pattern: "sequential"
+  phase: 1
+  reusable: false
+  used_in_variants: ["standardization"]
+  agents_primary: ["graham-witt", "barbara-von-halle"]
+  tokens_molecule:
+    - "TK-DD-MOD-004"  # CRIAR mode — consistent with extraction molecules pattern
+    - "TK-DD-ACC-001"
+    - "TK-DD-PRI-001"
+
+atoms:
+  - atom_id: "ATM-DD-038"
+    name: "Restructure: Rewrite Non-Compliant Statements"
+    executor_type: Agent
+    executor_id: graham-witt
+    mode: CRIAR
+    inputs:
+      - { name: "sbvr_mapping_report", type: "yaml", source: "ATM-DD-036" }
+      - { name: "pipeline_gaps", type: "yaml", source: "ATM-DD-037" }
+    outputs:
+      - { name: "compliant_statements", type: "yaml", artifact: true }
+    tokens_bound: []
+    completion_criteria:
+      - "Rules rewritten into RuleSpeak compliant format"
+
+  - atom_id: "ATM-DD-039"
+    name: "Restructure: Normalize Decision Model"
+    executor_type: Agent
+    executor_id: barbara-von-halle
+    mode: CRIAR
+    inputs:
+      - { name: "compliant_statements", type: "yaml", source: "ATM-DD-038" }
+    outputs:
+      - { name: "normalized_decisions", type: "yaml", artifact: true }
+    tokens_bound: []
+    completion_criteria:
+      - "Existing families and decisions normalized"
+
+  - atom_id: "ATM-DD-040"
+    name: "Restructure: Validate Against Original Source"
+    executor_type: Agent
+    executor_id: michael-feathers
+    mode: VALIDAR
+    inputs:
+      - { name: "normalized_decisions", type: "yaml", source: "ATM-DD-039" }
+      - { name: "compliant_statements", type: "yaml", source: "ATM-DD-038" }
+    outputs:
+      - { name: "source_validation_report", type: "yaml", artifact: true }
+    tokens_bound: []
+    completion_criteria:
+      - "Rewritten logic semantic matches original exactly"

@@ -1,0 +1,85 @@
+version: "2.0.0"
+squad: c-level
+verdict_model: ternary
+verdict_states:
+  PASS: "Score >= threshold. Proceed."
+  REVIEW: "Score >= threshold * 0.85. Human decides."
+  FAIL: "Score < threshold * 0.85. Blocked."
+
+thresholds:
+  completeness_min: 85
+  workspace_integrity_min: 90
+  evidence_coverage_min: 0.8
+  verified_sources_min: 1
+  etl_baseline_completeness_min: 70
+
+quality_gates:
+  - id: workspace-preflight
+    threshold: 90
+    metric: workspace_integrity_score
+    veto: true
+    owner: coo-orchestrator
+    verdict_ranges:
+      PASS: ">= 90"
+      REVIEW: ">= 77 and < 90"
+      FAIL: "< 77"
+
+  - id: business-profile-completeness
+    threshold: 85
+    metric: completeness_percentage
+    veto: true
+    owner: vision-chief
+    verdict_ranges:
+      PASS: ">= 85"
+      REVIEW: ">= 72 and < 85"
+      FAIL: "< 72"
+
+  - id: etl-evidence-coverage
+    threshold: 0.8
+    metric: evidence_coverage_ratio
+    veto: false
+    owner: coo-orchestrator
+    verdict_ranges:
+      PASS: ">= 0.8"
+      REVIEW: ">= 0.68 and < 0.8"
+      FAIL: "< 0.68"
+
+  - id: etl-verified-sources
+    threshold: 1
+    metric: verified_sources_count
+    veto: false
+    owner: coo-orchestrator
+    verdict_ranges:
+      PASS: ">= 1"
+      REVIEW: "== 0 with documented fallback evidence"
+      FAIL: "== 0 without fallback evidence"
+
+  - id: etl-baseline-completeness
+    threshold: 70
+    metric: completeness_percentage
+    veto: false
+    owner: coo-orchestrator
+    verdict_ranges:
+      PASS: ">= 70"
+      REVIEW: ">= 60 and < 70"
+      FAIL: "< 60"
+
+  - id: etl-artifact-completeness
+    threshold: 85
+    metric: completeness_percentage
+    veto: false
+    owner: coo-orchestrator
+    verdict_ranges:
+      PASS: ">= 85"
+      REVIEW: ">= 75 and < 85"
+      FAIL: "< 75"
+
+  - id: workspace-governance-health
+    threshold: 85
+    metric: governance_health_score
+    veto: true
+    owner: cso
+    verdict_ranges:
+      PASS: ">= 85"
+      REVIEW: ">= 72 and < 85"
+      FAIL: "< 72"

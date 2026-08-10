@@ -1,0 +1,164 @@
+# =============================================================================
+# Phase Emit Matrix — Skill mirror of squad workflow phase_emit_matrix (M10)
+# =============================================================================
+# Self-contained declarative emission spec for the slide-creator skill workflow.
+# Codex/external consumers MUST emit one record per phase boundary + per gate verdict
+# to outputs/slides-creator/{run_id}/pipeline-execution-log.yaml.
+#
+# Squad parity: squads/slides-creator/workflows/generate-presentation.yaml#phase_emit_matrix
+# Squad emitter: squads/slides-creator/scripts/emit-pipeline-log.js (Node, when available)
+# Skill emitter: .claude/skills/slide-creator/scripts/validate_pipeline_emission.py (Python validator)
+#
+# When the squad runtime is unavailable (Codex/external), emit YAML directly per
+# references/pipeline-log-emission.md schema, then validate via Python validator.
+# =============================================================================
+
+schema_version: "1.0.0"
+mirror_of: "squads/slides-creator/workflows/generate-presentation.yaml#phase_emit_matrix"
+mirror_version: "4.1.0"
+log_path: "outputs/slides-creator/{run_id}/pipeline-execution-log.yaml"
+
+valid_events:
+  - workflow_started
+  - phase_transition
+  - gate_verdict
+  - meta_axiom_breach
+  - deviation_logged
+  - killer_item_fired
+  - workflow_completion
+
+# Skill workflow is the 12-step sequence in SKILL.md (briefing → thesis → story arc →
+# slide-function map → design direction → deck spec → critique → revision → QA).
+# Map step boundaries onto the squad phase IDs for SOT parity.
+phases:
+  P00_briefing:
+    skill_step: "1. Normalize briefing"
+    on_enter: { event: workflow_started,  payload: { phase: P00_briefing, workflow_mode: "<quick|full|brand-fidelity|...>" } }
+    on_exit:  { event: phase_transition,  payload: { from: P00_briefing, to: P01_belief_shift } }
+
+  P01_belief_shift:
+    skill_step: "2. Define belief shift"
+    on_enter: { event: phase_transition,  payload: { from: P00_briefing, to: P01_belief_shift } }
+    on_exit:  { event: phase_transition,  payload: { from: P01_belief_shift, to: P02_story_arc } }
+
+  P02_story_arc:
+    skill_step: "3. Build story arc"
+    on_enter: { event: phase_transition,  payload: { from: P01_belief_shift, to: P02_story_arc } }
+    on_exit:  { event: phase_transition,  payload: { from: P02_story_arc, to: P03_slide_function_map } }
+
+  P03_slide_function_map:
+    skill_step: "4. Create slide-function map"
+    on_enter: { event: phase_transition,  payload: { from: P02_story_arc, to: P03_slide_function_map } }
+    on_exit:  { event: phase_transition,  payload: { from: P03_slide_function_map, to: P04_template_selection } }
+
+  P04_template_selection:
+    skill_step: "5. Select canonical templates"
+    on_enter: { event: phase_transition,  payload: { from: P03_slide_function_map, to: P04_template_selection } }
+    on_exit:  { event: phase_transition,  payload: { from: P04_template_selection, to: P05_bench_capabilities } }
+
+  P05_bench_capabilities:
+    skill_step: "6. Apply bench-derived capabilities"
+    on_enter: { event: phase_transition,  payload: { from: P04_template_selection, to: P05_bench_capabilities } }
+    on_exit:  { event: phase_transition,  payload: { from: P05_bench_capabilities, to: P06_design_direction } }
+
+  P06_design_direction:
+    skill_step: "7. Define design direction"
+    on_enter: { event: phase_transition,  payload: { from: P05_bench_capabilities, to: P06_design_direction } }
+    on_exit:  { event: phase_transition,  payload: { from: P06_design_direction, to: P07_lock_execution } }
+
+  P07_lock_execution:
+    skill_step: "7.5. Lock execution (render-lock.yaml)"
+    on_enter: { event: phase_transition,  payload: { from: P06_design_direction, to: P07_lock_execution } }
+    on_exit:  { event: phase_transition,  payload: { from: P07_lock_execution, to: P08_deck_spec } }
+
+  P08_deck_spec:
+    skill_step: "8. Draft deck spec"
+    on_enter: { event: phase_transition,  payload: { from: P07_lock_execution, to: P08_deck_spec } }
+    on_exit:  { event: phase_transition,  payload: { from: P08_deck_spec, to: P09_key_slide_gate } }
+
+  P09_key_slide_gate:
+    skill_step: "9. Run key-slide gate"
+    on_enter: { event: phase_transition,  payload: { from: P08_deck_spec, to: P09_key_slide_gate } }
+    on_exit:  { event: phase_transition,  payload: { from: P09_key_slide_gate, to: P10_critique } }
+
+  P10_critique:
+    skill_step: "10. Critique before delivery"
+    on_enter: { event: phase_transition,  payload: { from: P09_key_slide_gate, to: P10_critique } }
+    on_exit:  { event: phase_transition,  payload: { from: P10_critique, to: P11_package } }
+
+  P11_package:
+    skill_step: "11. Package + emit pipeline log"
+    on_enter: { event: phase_transition,  payload: { from: P10_critique, to: P11_package } }
+    on_exit:  { event: workflow_completion, payload: { phase: P11_package, qa_verdict: "<PASS|CONCERNS|FAIL>", meta_axiomas_overall: "<0-100>" } }
+
+# Skill gates are inline narrative + visual + technical checks at specific steps.
+# Each gate verdict MUST emit a gate_verdict event.
+gates:
+  key_slide_gate:
+    at_step: 9
+    verdict_enum: [PASS, FAIL, REVISE]
+    on_verdict:
+      event: gate_verdict
+      payload_template: { gate: key_slide_gate, verdict: "{verdict}", slides_checked: [cover, reframe, mechanism, proof, cta], iteration: "{iteration}" }
+
+  narrative_critique_gate:
+    at_step: 10
+    verdict_enum: [PASS, CONCERNS, FAIL]
+    on_verdict:
+      event: gate_verdict
+      payload_template: { gate: narrative_critique_gate, verdict: "{verdict}", dim: narrative }
+
+  design_critique_gate:
+    at_step: 10
+    verdict_enum: [PASS, CONCERNS, FAIL]
+    on_verdict:
+      event: gate_verdict
+      payload_template: { gate: design_critique_gate, verdict: "{verdict}", dim: design, ai_slop_score: "{score}" }
+
+  qa_final_gate:
+    at_step: 11
+    verdict_enum: [PASS, CONCERNS, FAIL]
+    on_verdict:
+      event: gate_verdict
+      payload_template: { gate: qa_final_gate, verdict: "{verdict}", composite_score: "{score}", killer_items_fired: "{ki_list}" }
+
+# Conditional events — emit when triggered, not on every run.
+conditional_events:
+  meta_axiom_breach:
+    trigger: "validate_design_100_runtime.py composite < 75 OR run-design-critique verdict REVISE at iteration_cap"
+    payload_template: { dim: "{dim_failed}", score: "{score}", threshold: 75 }
+
+  deviation_logged:
+    trigger: "gate_mode advisory bypass with deviation_id"
+    payload_template: { deviation_id: "{DEV-ID}", phase: "{phase}", gate: "{gate}", justification: "{text}" }
+
+  killer_item_fired:
+    trigger: "any KI-01..KI-15 failure during validation steps"
+    payload_template: { ki_id: "{KI-NN}", phase: "{phase}", task: "{validator}" }
+
+# CI validation contract
+ci_gate:
+  validator: ".claude/skills/slide-creator/scripts/validate_pipeline_emission.py"
+  rule: "Every completed run MUST have outputs/slides-creator/{run_id}/pipeline-execution-log.yaml with >= 3 records (workflow_started + 1+ gate_verdict + workflow_completion). Full mode: >= 8 records."
+  min_records_quick: 3
+  min_records_full: 8
+  fail_workflow_if_missing: true
+  invocation:
+    full_scan: "python3 .claude/skills/slide-creator/scripts/validate_pipeline_emission.py"
+    single_run: "python3 .claude/skills/slide-creator/scripts/validate_pipeline_emission.py --run-id <id>"
+    strict: "python3 .claude/skills/slide-creator/scripts/validate_pipeline_emission.py --strict"
+
+# Cross-runtime parity matrix (squad ↔ skill)
+parity:
+  squad_runtime:
+    emitter: "node squads/slides-creator/scripts/emit-pipeline-log.js"
+    validator: "node squads/slides-creator/scripts/validate-pipeline-emission.js"
+    declarative_matrix: "squads/slides-creator/workflows/generate-presentation.yaml#phase_emit_matrix"
+  skill_runtime:
+    emitter: "Direct YAML write per references/pipeline-log-emission.md (Path 2)"
+    validator: ".claude/skills/slide-creator/scripts/validate_pipeline_emission.py"
+    declarative_matrix: ".claude/skills/slide-creator/templates/runtime/phase-emit-matrix.yaml (this file)"
+  schema_authority:
+    source_of_truth: "squads/slides-creator/data/pipeline-execution-log.yaml"
+    consumed_by_both: true
+    note: "Both runtimes emit records into the same log path with the same event schema. The schema lives in the squad; the skill is a self-contained consumer that mirrors the declarative matrix and provides a Python validator for Codex/external contexts."

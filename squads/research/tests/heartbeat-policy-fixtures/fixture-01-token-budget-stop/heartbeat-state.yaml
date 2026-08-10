@@ -1,0 +1,28 @@
+# Fixture 01 — Synthetic heartbeat state for token_budget stop test
+# Used by: check_heartbeat_policy regression + manual Phase 3.5 simulation
+schema_version: "1.0"
+fixture_id: "heartbeat-fixture-01-token-budget-stop"
+story: STORY-RA-A.1
+description: "Wave 1, token budget 91% consumed. Expected: STOP (token_budget signal priority 2)."
+
+heartbeat_state:
+  wave_num: 1
+  coverage_score: 42
+  token_budget_used: 0.91       # fires: > 0.85
+  cost_usd_used: 0.18
+  cost_max: 5.00
+  wallclock_used: 180
+  timeout_sec: 900
+  new_information_ratio: 0.42
+  gap_set_is_empty: false
+  source_contradiction_detected: false
+  wave_returned_low_signal: false
+  unsupported_claim_top_tier_ratio: 0.24
+
+expected_evaluation:
+  decision: STOP
+  matched_signal: token_budget
+  stop_reason_category: budget_limit
+  # Replan fires but STOP takes precedence
+  replan_signals_fired: [unsupported_claim_top_tier]
+  signals_NOT_fired: [wave_max_with_low_coverage, cost_usd, wallclock, coverage_score, gap_convergence, new_information_ratio]

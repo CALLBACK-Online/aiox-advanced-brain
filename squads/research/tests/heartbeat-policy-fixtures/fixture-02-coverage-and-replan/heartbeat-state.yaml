@@ -1,0 +1,26 @@
+# Fixture 02 — Coverage Score Stop + Wave Low Signal Replan
+schema_version: "1.0"
+fixture_id: "heartbeat-fixture-02-coverage-and-replan"
+story: STORY-RA-A.1
+description: "Wave 2, coverage 74% (>= 70). Budget healthy. wave_returned_low_signal replan also fires."
+
+heartbeat_state:
+  wave_num: 2
+  coverage_score: 74            # fires: >= 70 (priority 5 stop)
+  token_budget_used: 0.52
+  cost_usd_used: 0.82
+  cost_max: 5.00
+  wallclock_used: 340
+  timeout_sec: 900
+  new_information_ratio: 0.18
+  gap_set_is_empty: false
+  source_contradiction_detected: false
+  wave_returned_low_signal: true  # fires: replan R2
+  unsupported_claim_top_tier_ratio: 0.08
+
+expected_evaluation:
+  decision: STOP
+  matched_signal: coverage_score
+  stop_reason_category: decision_sufficiency
+  replan_signals_fired: [wave_returned_low_signal]
+  signals_NOT_fired: [wave_max_with_low_coverage, token_budget, cost_usd, wallclock, gap_convergence, new_information_ratio]

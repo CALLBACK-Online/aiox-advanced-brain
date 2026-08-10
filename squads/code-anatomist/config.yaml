@@ -1,0 +1,416 @@
+pack:
+  name: code-anatomist
+  version: "3.0.0"
+  entry_agent: decoder-chief
+  description: "Squad especializado em engenharia reversa completa de software — extrai arquitetura (C4/Arc42), domínio (DDD/SBVR), dados (ER/schema), API (OpenAPI), dependências e infraestrutura de qualquer codebase, com pipeline de 9 fases e mapeamento para SINKRA Tokens"
+  icon: "🧬"
+
+activation:
+  shortcuts:
+    - "/code-anatomist:decoder-chief"
+    - "/code-anatomist:eric-evans"
+    - "/code-anatomist:ronald-ross"
+    - "/code-anatomist:michael-feathers"
+    - "/code-anatomist:barbara-von-halle"
+    - "/code-anatomist:james-taylor"
+    - "/code-anatomist:martin-fowler"
+    - "/code-anatomist:graham-witt"
+    - "/code-anatomist:rick-kazman"
+    - "/code-anatomist:simon-brown"
+    - "/code-anatomist:gail-murphy"
+    - "/code-anatomist:data-specialist"
+  commands:
+    - "*extract-full"
+    - "*extract-full-v2"
+    - "*extract-arch"
+    - "*extract-deps"
+    - "*scoping"
+    - "*domain-only"
+    - "*standardize"
+    - "*diagnose"
+    - "*classify-rules"
+    - "*map-domain"
+    - "*extract-rules"
+    - "*characterize-legacy"
+    - "*model-decisions"
+    - "*formalize-dmn"
+    - "*express-rules"
+    - "*validate-sbvr"
+
+squad:
+  name: code-anatomist
+  title: "Code Anatomist Squad"
+  version: "3.0.0"
+  description: "Squad especializado em engenharia reversa completa de software — extrai arquitetura (C4/Arc42), domínio (DDD/SBVR), dados (ER/schema), API (OpenAPI), dependências e infraestrutura de qualquer codebase, com pipeline de 9 fases e mapeamento para SINKRA Tokens"
+  domain: software-reverse-engineering
+  author: "AIOX Squad Creator"
+  score: 7.5
+  status: active
+  created_at: "2026-02-18"
+  last_updated: "2026-03-31"
+
+capabilities:
+  - "Extração de regras de negócio de sistemas brownfield (SBVR, DMN)"
+  - "Mapeamento de domínios e bounded contexts (DDD)"
+  - "Classificação de regras com taxonomia Ross (5 tipos)"
+  - "Modelagem de decisões com Decision Model e DMN tables"
+  - "Expressão de regras em RuleSpeak (zero ambiguidade)"
+  - "Caracterização de código legado com testes de caracterização"
+  - "Padronização de regras existentes (docs, spreadsheets, wiki)"
+  - "Validação SBVR (45 itens) e qualidade de extração (54 itens)"
+  - "Mapeamento de regras extraídas para SINKRA Tokens"
+  - "Architecture recovery and C4 diagramming (Arc42, Horseshoe Model)"
+  - "Dependency graph extraction and module boundary detection"
+  - "Data model extraction (ER diagrams, schema introspection)"
+  - "API surface extraction (OpenAPI, GraphQL, gRPC contracts)"
+  - "Infrastructure blueprint (Docker, CI/CD, env vars, deploy targets)"
+  - "Conformance checking and architectural drift detection (Reflexion Models)"
+
+workspace_integration:
+  level: read_only
+  rationale: >-
+    Code Anatomist lê outputs/decoded/allfluence/ como baseline canônico
+    para operações de compare, audit e adopt (RT-ARCH-BRIDGE-001).
+    Self-extraction TTL: 90 dias. Re-extração obrigatória pós-Epic major.
+
+tier_system:
+  orchestrator: decoder-chief
+  tier_0:
+    - ronald-ross
+    - eric-evans
+  tier_1:
+    - michael-feathers
+    - barbara-von-halle
+    - simon-brown
+    - data-specialist
+  tier_2:
+    - james-taylor
+    - martin-fowler
+    - rick-kazman
+  tier_3:
+    - graham-witt
+    - gail-murphy
+  tools:
+    - sbvr-checklist
+
+agents:
+  - id: decoder-chief
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/decoder-chief.md
+    tier: orchestrator
+    role: "Orquestrador do squad — decodifica regras, taxonomia e modelo de negócio"
+
+  - id: ronald-ross
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/ronald-ross.md
+    tier: 0
+    role: "Taxonomia e classificação de regras de negócio"
+
+  - id: eric-evans
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/eric-evans.md
+    tier: 0
+    role: "Mapeamento de domínios e ubiquitous language"
+
+  - id: michael-feathers
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/michael-feathers.md
+    tier: 1
+    role: "Entrada segura em código legado"
+
+  - id: barbara-von-halle
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/barbara-von-halle.md
+    tier: 1
+    role: "Modelagem de lógica de negócio (Decision Model)"
+
+  - id: james-taylor
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/james-taylor.md
+    tier: 2
+    role: "Formalização em DMN e decision tables"
+
+  - id: martin-fowler
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/martin-fowler.md
+    tier: 2
+    role: "Padrões arquiteturais e localização de regras"
+
+  - id: graham-witt
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/graham-witt.md
+    tier: 3
+    role: "Expressão de regras em linguagem natural sem ambiguidade"
+
+  - id: rick-kazman
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/rick-kazman.md
+    tier: 2
+    role: "Architecture reconstruction via Horseshoe Model, ATAM analysis, view fusion"
+
+  - id: simon-brown
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: false
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/simon-brown.md
+    tier: 1
+    role: "C4 Model diagramming, Structurizr DSL, Arc42 documentation"
+
+  - id: gail-murphy
+    executor_profile:
+      sinkra_type: Agent
+      human_in_the_loop: true
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/gail-murphy.md
+    tier: 3
+    role: "Conformance checking via Reflexion Models, drift analysis"
+
+  - id: data-specialist
+    executor_profile:
+      sinkra_type: Worker
+      human_in_the_loop: false
+      output_schema: "deliverable definido pela task ativa"
+      story_role: executor
+      can_execute: true
+      core_replaces: null
+      work_contexts: ["general"]
+      can_review: []
+    file: agents/data-specialist.md
+    tier: 1
+    role: "Data model recovery — ER diagrams, schema introspection, DBML generation"
+
+workflows:
+  - id: extract-rules
+    file: workflows/wf-extract-rules.yaml
+    description: "Workflow completo de extração de regras de um sistema legado"
+
+  - id: standardize-rules
+    file: workflows/wf-standardize-rules.yaml
+    description: "Workflow de padronização de regras já extraídas"
+
+  - id: multi-compare
+    file: workflows/wf-multi-compare.yaml
+    description: "Multi-project comparison with architecture synthesis and conflict resolution (RT-ARCH-BRIDGE-001)"
+
+tasks:
+  - id: classify-rules
+    file: tasks/classify-rules.md
+  - id: map-domain
+    file: tasks/map-domain.md
+  - id: characterize-legacy
+    file: tasks/characterize-legacy.md
+  - id: model-decisions
+    file: tasks/model-decisions.md
+  - id: express-rules
+    file: tasks/express-rules.md
+  - id: extract-rules
+    file: tasks/extract-rules.md
+  - id: compare
+    file: tasks/compare.md
+  - id: audit
+    file: tasks/audit.md
+  - id: adopt
+    file: tasks/adopt.md
+  - id: multi-compare
+    file: tasks/multi-compare.md
+
+checklists:
+  - id: sbvr-validation
+    file: checklists/sbvr-validation.md
+  - id: extraction-quality
+    file: checklists/extraction-quality.md
+
+keywords:
+  - software reverse engineering
+  - architecture recovery
+  - domain decoding
+  - business rules
+  - taxonomy extraction
+  - business model reverse engineering
+  - legacy systems
+  - brownfield analysis
+  - open source analysis
+  - reverse engineering
+  - decision model
+  - DMN
+  - SBVR
+  - domain driven design
+  - characterization tests
+  - modernization
+  - C4 model
+  - Arc42
+  - dependency graph
+  - data model extraction
+  - ER diagram
+  - API surface
+  - conformance checking
+  - architecture drift
+  - Horseshoe Model
+  - Reflexion Models
+  - ATAM
+
+# SINKRA v3.1
+artifact_contracts:
+  - artifact_id: "rule-catalog"
+    template_path: "templates/rule-catalog-tmpl.md"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "enforcement-gap-report"
+    template_path: "templates/enforcement-gap-report-tmpl.md"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "domain-map"
+    template_path: "templates/domain-map-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "decision-model"
+    template_path: "templates/decision-model-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "sinkra-token-map"
+    template_path: "templates/sinkra-token-map-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "sinkra-composition-proposal"
+    template_path: "templates/sinkra-composition-proposal-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "scope-document"
+    template_path: "templates/scope-document-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "context-diagram"
+    template_path: "templates/c4-context-tmpl.md"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "static-fact-database"
+    template_path: "templates/fact-database-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "arc42-architecture-doc"
+    template_path: "templates/arc42-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "conformance-report"
+    template_path: "templates/conformance-report-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "adr-library"
+    template_path: "templates/adr-library-tmpl.md"
+    lifecycle_states: [draft, validated, approved]
+  # M2-Analyze artifacts (RT-ARCH-BRIDGE-001)
+  - artifact_id: "delta-report"
+    template_path: "templates/delta-report-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  - artifact_id: "conformance-delta"
+    template_path: "templates/conformance-delta-tmpl.yaml"
+    lifecycle_states: [draft, validated, approved]
+  # M3-Adopt artifacts (RT-ARCH-BRIDGE-001)
+  - artifact_id: "adoption-proposal"
+    template_path: "templates/adoption-proposal-tmpl.yaml"
+    lifecycle_states: [draft, proposed, approved, implementing, completed, rejected]
+    handoff_scope: inter_bu
+
+bu_mapping: "hub-framework"
+
+# SINKRA v3.2 (RT-ARCH-BRIDGE-001 + SINKRA audit 2026-04-04)
+sinkra_tier: "Pro"
+process_id: SP-CODE-ANATOMIST-001
+
+entity_bindings:
+  tier: "Pro"
+  entities_owned: []  # code-anatomist does not own domain entities — it extracts them
+  entities_consumed:
+    - entity_ref: "outputs/decoded/{slug}/"
+      role: "reader"
+      description: "Reads extraction outputs as baseline for compare/audit/adopt operations"
+  domain_model_ref: "squads/sinkra-squad/data/domain-model.yaml"
+
+supported_modes:
+  - ENTENDER
+  - EXPLORAR
+  - RESOLVER
+  - PLANEJAR
+  - VALIDAR
+  - CRIAR
+
+# Production evidence: squad has been executed in real scenarios
+tested: true
+
+# --- Auto-added schema fields (validate:squad-schema) ---
+name: "code-anatomist"
+domain: "code-anatomist"
+metadata:
+  status: active

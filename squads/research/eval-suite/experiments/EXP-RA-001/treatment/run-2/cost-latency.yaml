@@ -1,0 +1,24 @@
+run_id: treatment-run-2
+fixture: F2
+arm: treatment
+mode: spawn-adhoc
+timestamp: "2026-05-19T11:30:00Z"
+synthetic: true
+cost:
+  input_tokens: 9200
+  output_tokens: 980
+  total_tokens: 10180
+  cost_usd_estimate: 0.039
+latency:
+  wall_clock_ms: 9200
+  p50_ms: 8900
+  p95_ms: 10500
+spawn_overhead_tokens: 5680
+spawn_overhead_percent: 249.0
+specialists_spawned:
+  - id: klein
+    phase: P4.5
+    tokens: 3580
+  - id: sackett
+    phase: P4
+    tokens: 2100

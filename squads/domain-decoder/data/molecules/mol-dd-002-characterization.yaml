@@ -1,0 +1,108 @@
+molecule:
+  molecule_id: "MOL-DD-002"
+  name: "Characterization"
+  mode: "ENTENDER"
+  pattern: "sequential"
+  phase: 1
+  reusable: false
+  used_in_variants: ["extraction"]
+  agents_primary: ["michael-feathers", "martin-fowler"]
+  tokens_molecule:
+    - "TK-DD-MOD-002"
+    - "TK-DD-ACC-001"
+    - "TK-DD-PRI-001"
+
+atoms:
+  - atom_id: "ATM-DD-010"
+    name: "Identify Architecture Pattern"
+    executor_type: Agent
+    executor_id: martin-fowler
+    mode: ENTENDER
+    inputs:
+      - { name: "context_map", type: "yaml", source: "ATM-DD-001" }
+    outputs:
+      - { name: "architecture_pattern", type: "yaml", artifact: true }
+    tokens_bound:
+      - "TK-DD-TAX-005"
+    completion_criteria:
+      - "Architecture pattern identified using TK-DD-TAX-005 vocabulary"
+
+  - atom_id: "ATM-DD-011"
+    name: "Write Characterization Tests"
+    executor_type: Agent
+    executor_id: michael-feathers
+    mode: ENTENDER
+    inputs:
+      - { name: "system_code", type: "directory_path", source: "external" }
+      - { name: "context_map", type: "yaml", source: "ATM-DD-001" }
+    outputs:
+      - { name: "characterization_tests", type: "yaml", artifact: true }
+    tokens_bound:
+      - "TK-DD-THR-010"
+      - "TK-DD-THR-011"
+      - "TK-DD-CAP-002"
+      - "TK-DD-CAP-003"
+    completion_criteria:
+      - "Minimum tests written per major context"
+      - "Minimum tests written per minor context"
+
+  - atom_id: "ATM-DD-012"
+    name: "Find Seams"
+    executor_type: Agent
+    executor_id: michael-feathers
+    mode: ENTENDER
+    inputs:
+      - { name: "system_code", type: "directory_path", source: "external" }
+    outputs:
+      - { name: "seams_map", type: "yaml", artifact: true }
+    tokens_bound:
+      - "TK-DD-TAX-003"
+    completion_criteria:
+      - "Seams identified and mapped"
+
+  - atom_id: "ATM-DD-013"
+    name: "Map Code Smells to Rule Candidates"
+    executor_type: Agent
+    executor_id: martin-fowler
+    mode: ENTENDER
+    inputs:
+      - { name: "system_code", type: "directory_path", source: "external" }
+    outputs:
+      - { name: "smells_to_rules", type: "yaml", artifact: true }
+    tokens_bound:
+      - "TK-DD-TAX-012"
+    completion_criteria:
+      - "Code smells mapped using valid taxonomy"
+
+  - atom_id: "ATM-DD-014"
+    name: "Minor Context Threshold Review"
+    executor_type: Agent
+    executor_id: michael-feathers
+    mode: ENTENDER
+    inputs:
+      - { name: "context_map", type: "yaml", source: "ATM-DD-001" }
+    outputs:
+      - { name: "minor_context_review", type: "yaml", artifact: true }
+    tokens_bound:
+      - "TK-DD-CAP-011"
+    completion_criteria:
+      - "Minor contexts evaluated for escalation"
+
+  - atom_id: "ATM-DD-015"
+    name: "Checkpoint: Rule Locations Mapped Tests Passing"
+    executor_type: Worker
+    executor_id: checkpoint-validator
+    mode: VALIDAR
+    inputs:
+      - { name: "architecture_pattern", type: "yaml", source: "ATM-DD-010" }
+      - { name: "characterization_tests", type: "yaml", source: "ATM-DD-011" }
+      - { name: "seams_map", type: "yaml", source: "ATM-DD-012" }
+    outputs:
+      - { name: "checkpoint_result", type: "enum[APPROVE, REVIEW, VETO]", artifact: false }
+    tokens_bound:
+      - "TK-DD-THR-012"
+    completion_criteria:
+      - "checkpoint_result = APPROVE"
+      - "Architecture documented"
+      - "Tests green"
+      - "Seam map complete"

@@ -1,0 +1,138 @@
+pack:
+  name: sales
+  title: "Sales Squad - Elite Sales Methodology Agents"
+  version: "1.0.0"
+  author: "Squad Architect"
+  created: "2026-03-29"
+  slash_prefix: "Sales"
+  pattern_prefix: "SL"
+  entry_agent: "sales-chief"
+  description: |
+    Squad de vendas baseado em elite minds reais com frameworks documentados.
+    Cobre o funil completo: diagnostico, qualificacao, negociacao, prospecting, closing e escala.
+
+metadata:
+  name: sales
+  status: active
+  domain: sales
+  keywords:
+    - sales
+    - vendas
+    - closing
+    - prospecting
+    - negotiation
+    - qualification
+    - B2B
+    - enterprise
+    - outbound
+  score: 0
+  research_date: "2026-03-29"
+  minds_researched: 18
+  minds_selected: 8
+  mode: YOLO
+
+settings:
+  activation:
+    show_context_report: false
+  workspace_integration:
+    level: none
+
+capabilities:
+  - deal-diagnosis
+  - prospect-qualification
+  - cold-outreach
+  - negotiation-support
+  - closing-support
+  - sales-sequence-creation
+
+workflows: []
+
+tiers:
+  orchestrator:
+    agent: "sales-chief"
+    role: "Coordena o squad, diagnostica situacao e roteia para o especialista certo"
+  tier_0_diagnosis:
+    agents:
+      - neil-rackham
+    role: "Diagnostico via questioning antes de qualquer acao de venda"
+  tier_1_masters:
+    agents:
+      - david-sandler
+      - keenan
+      - chris-voss
+    role: "Execucao principal - metodologias completas battle-tested"
+  tier_2_systematizers:
+    agents:
+      - challenger-sale
+      - jeb-blount
+      - chet-holmes
+    role: "Frameworks estruturados e ensinaveis"
+  tier_3_specialists:
+    agents:
+      - aaron-ross
+    role: "Especialistas em nichos (outbound engine, escala)"
+
+agents:
+  - id: sales-chief
+    file: agents/sales-chief.md
+    role: "Coordena o squad e roteia para o especialista correto"
+    status: active
+  - id: neil-rackham
+    file: agents/neil-rackham.md
+    role: "Diagnóstico e SPIN Selling"
+    status: active
+  - id: david-sandler
+    file: agents/david-sandler.md
+    role: "Venda consultiva e qualificação"
+    status: active
+  - id: keenan
+    file: agents/keenan.md
+    role: "Gap Selling e diagnóstico de problema"
+    status: active
+  - id: chris-voss
+    file: agents/chris-voss.md
+    role: "Negociação tática"
+    status: active
+  - id: challenger-sale
+    file: agents/challenger-sale.md
+    role: "Venda Challenger"
+    status: active
+  - id: jeb-blount
+    file: agents/jeb-blount.md
+    role: "Prospecção outbound"
+    status: active
+  - id: chet-holmes
+    file: agents/chet-holmes.md
+    role: "Máquina comercial e educação de mercado"
+    status: active
+  - id: aaron-ross
+    file: agents/aaron-ross.md
+    role: "Predictable Revenue e escala outbound"
+    status: active
+
+components:
+  agents:
+    - sales-chief.md
+    - neil-rackham.md
+    - david-sandler.md
+    - keenan.md
+    - chris-voss.md
+    - challenger-sale.md
+    - jeb-blount.md
+    - chet-holmes.md
+    - aaron-ross.md
+  tasks:
+    - diagnose-deal.md
+    - qualify-prospect.md
+    - create-cold-outreach.md
+    - negotiate-deal.md
+    - close-deal.md
+    - create-followup-sequence.md
+    - create-email-sequences.md
+    - create-sales-copy.md
+    - create-sales-scripts.md
+  workflows: []
+  templates: []
+  checklists:
+    - deal-qualification-checklist.md
+    - discovery-quality-checklist.md

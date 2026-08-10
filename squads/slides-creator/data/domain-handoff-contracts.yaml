@@ -1,0 +1,190 @@
+---
+# ═══════════════════════════════════════════════════════════════════════
+# DOMAIN HANDOFF CONTRACTS — slides-creator (Mandamento 9)
+# ═══════════════════════════════════════════════════════════════════════
+# Inter-domain handoff contracts between Strategic, Tactical, Operational
+# layers per SINKRA Mandamento 9. Each contract specifies producer/consumer
+# domains, artifact, validation gate, accountability, and rollback.
+#
+# Owner: slide-chief (with composition-rules.yaml#domain_declaration as enum SOT)
+# Schema version: 1.0.0
+# Consumed by: workflow phase transitions, qa-inspector domain coherence checks
+# ═══════════════════════════════════════════════════════════════════════
+
+schema_version: "1.0.0"
+squad: slides-creator
+mandamento_ref: M9
+domain_enum: [Strategic, Tactical, Operational]
+
+# ═══════════════════════════════════════════════════════════════════════
+# SCHEMA — fields required per handoff contract
+# ═══════════════════════════════════════════════════════════════════════
+schema:
+  contract_id:    { type: string, pattern: "HOC-SC-{NN}", required: true }
+  producer_domain: { type: enum, values: [Strategic, Tactical, Operational], required: true }
+  consumer_domain: { type: enum, values: [Strategic, Tactical, Operational], required: true }
+  producer_tasks: { type: array, required: true }
+  consumer_tasks: { type: array, required: true }
+  artifact:       { type: string, required: true }
+  validation_gate: { type: string, required: true }
+  accountability: { type: object, required: true }
+  rollback_protocol: { type: string, required: true }
+
+# ═══════════════════════════════════════════════════════════════════════
+# CONTRACTS — declared 2026-05-20 (YOLO mode)
+# ═══════════════════════════════════════════════════════════════════════
+contracts:
+
+  # ─── Strategic → Tactical ──────────────────────────────────────────
+  - contract_id: HOC-SC-01
+    name: "Strategic Narrative → Tactical Spec"
+    producer_domain: Strategic
+    consumer_domain: Tactical
+    producer_tasks:
+      - decide-slide-architecture
+      - distill-governing-thought
+      - build-pyramid
+      - write-action-titles
+    consumer_tasks:
+      - define-design-direction
+      - emit-deck-spec
+      - classify-slide-type
+    artifact: "{output_dir}/story-arc.yaml + slide-function-map.yaml + governing-thought.md"
+    schema_ref: "squads/slides-creator/data/story-arc.schema.yaml"
+    validation_gate: "D02 (vertical-test PASS + cliente aprova estrutura)"
+    accountability:
+      producer_owner: content-architect (Agent)
+      consumer_owner: visual-scout (Agent)
+      approver_human: STK-10 (senior consultant) on D02
+    rollback_protocol: "If D02 rejected, return to P01 narrative refinement via dimension_router.narrative"
+    invariants_enforced: [P3, P4]
+
+  # ─── Tactical → Operational ────────────────────────────────────────
+  - contract_id: HOC-SC-02
+    name: "Tactical Spec → Operational Render"
+    producer_domain: Tactical
+    consumer_domain: Operational
+    producer_tasks:
+      - emit-deck-spec
+      - define-design-direction
+      - resolve-active-palette
+      - compose-grid-layout
+    consumer_tasks:
+      - apply-design-revision
+      - emit-native-pptx
+      - export-editable-pptx
+      - prepare-ds-presenter
+    artifact: "{output_dir}/deck-spec.yaml (lifecycle: approved)"
+    schema_ref: "squads/slides-creator/data/slide-spec-schema.yaml"
+    validation_gate: "D03 (cliente aprova Design Overview) + D04 (Design Critique Loop PASS)"
+    accountability:
+      producer_owner: design-planner (Agent)
+      consumer_owner: design-renderer (Agent)
+      approver_human: STK-10 on D03 (co-sign on brand override)
+    rollback_protocol: "If D04 ESCALATE after 2 iterations, escalate to Human reviewer; if D03 rejected, return to P03 via dimension_router.spec"
+    invariants_enforced: [P2, P5, P7]
+
+  # ─── Operational → QA (Operational sub-domain) ─────────────────────
+  - contract_id: HOC-SC-03
+    name: "Operational Render → Operational QA"
+    producer_domain: Operational
+    consumer_domain: Operational    # same-domain handoff but cross-bounded-context
+    producer_tasks:
+      - emit-native-pptx
+      - export-editable-pptx
+      - apply-design-revision
+    consumer_tasks:
+      - review-presentation
+      - validate-pyramid
+      - validate-action-title
+      - validate-evidence-ledger
+      - p1-fidelity-sampling
+    artifact: "{output_dir}/exports/{run_id}.pptx + qa-report.json"
+    schema_ref: "qa-rubric.yaml#release_criteria"
+    validation_gate: "qa_verdict (verdict == PASS AND narrative_dim >= 7 AND ppteval_composite >= 7)"
+    accountability:
+      producer_owner: design-renderer (Agent)
+      consumer_owner: qa-inspector (Agent)
+      approver_human: STK-10 on KI-06 (briefing scope check)
+    rollback_protocol: "If qa_verdict FAIL, route to dimension_router; max 2 refinement iterations before Human escalation"
+    invariants_enforced: [P1, P3, P4, P6]
+    killer_items_enforced: [KI-01, KI-02, KI-03, KI-04, KI-05, KI-06, KI-07, KI-11]
+
+  # ─── Tactical → Strategic (back-flow for evidence) ─────────────────
+  - contract_id: HOC-SC-04
+    name: "Tactical Evidence Feedback → Strategic Refinement"
+    producer_domain: Tactical
+    consumer_domain: Strategic
+    direction: feedback
+    producer_tasks:
+      - catalog-sources-apa
+      - extract-evidence-from-ingestions
+      - validate-evidence-ledger
+    consumer_tasks:
+      - build-pyramid           # may need re-MECE if evidence contradicts
+      - apply-scqa              # may need re-narrative if evidence gap
+      - distill-governing-thought  # may need re-distill if governing thought lacks evidence
+    artifact: "{output_dir}/evidence-ledger.final.yaml (verdict CONCERNS or FAIL)"
+    validation_gate: "qa_verdict + KI-11 (contradicting_evidence_count > 0 fires re-route)"
+    accountability:
+      producer_owner: qa-inspector (Agent)
+      consumer_owner: content-architect (Agent)
+      approver_human: none (automated feedback loop)
+    rollback_protocol: "If KI-11 fires, dimension_router.evidence routes back to P01 catalog-sources-apa + build-pyramid"
+    invariants_enforced: [P1, P6]
+
+  # ─── Operational → Strategic (escalation) ──────────────────────────
+  - contract_id: HOC-SC-05
+    name: "Operational Render Failure → Strategic Re-Architecture"
+    producer_domain: Operational
+    consumer_domain: Strategic
+    direction: escalation
+    trigger: "qa_verdict FAIL after 2 refinement iterations OR KI-06 briefing scope violation"
+    producer_tasks: [review-presentation, qa-inspector]
+    consumer_tasks: [decide-slide-architecture, distill-governing-thought]
+    artifact: "{output_dir}/qa-report.json + escalation-record.md"
+    validation_gate: "Human reviewer (STK-10) confirms re-architecture vs. WAIVED deviation"
+    accountability:
+      producer_owner: qa-inspector (Agent)
+      consumer_owner: content-architect (Agent)
+      approver_human: STK-10 (mandatory)
+    rollback_protocol: "Human writes deviation-registry.yaml entry OR resets pipeline to P01 with refined briefing"
+    invariants_enforced: [P3]
+
+# ═══════════════════════════════════════════════════════════════════════
+# CROSS-CONTRACT INVARIANTS
+# ═══════════════════════════════════════════════════════════════════════
+cross_contract_rules:
+  - rule: "Every domain transition MUST have an explicit contract"
+    enforcement: "validate:domain-handoff-coverage (proposed CI check)"
+    current_coverage: "5/5 transitions covered (S→T, T→O, O→O-QA, T→S-feedback, O→S-escalation)"
+
+  - rule: "Bidirectional flows (feedback/escalation) MUST declare direction explicitly"
+    enforcement: "schema validation in this file"
+
+  - rule: "Each contract's validation_gate MUST reference a defined gate in workflows/generate-presentation.yaml#gates"
+    enforcement: "cross-ref check against workflow.gates: [D01, D02, D03, D04, qa_verdict]"
+    current_coverage: "all 5 contracts reference defined gates"
+
+# ═══════════════════════════════════════════════════════════════════════
+# AUDIT TRAIL
+# ═══════════════════════════════════════════════════════════════════════
+audit:
+  total_contracts: 5
+  by_direction:
+    forward: 3       # S→T, T→O, O→O-QA
+    feedback: 1      # T→S
+    escalation: 1    # O→S
+  last_updated: "2026-05-20"
+  last_review_date: "2026-05-20"
+
+# ═══════════════════════════════════════════════════════════════════════
+# REFERENCES
+# ═══════════════════════════════════════════════════════════════════════
+references:
+  mandamento: "M9 — formalize inter-domain handoff contracts"
+  related_artifacts:
+    - "squads/slides-creator/data/composition-rules.yaml#domain_declaration"
+    - "squads/slides-creator/workflows/generate-presentation.yaml#gates"
+    - "squads/slides-creator/data/qa-rubric.yaml#killer_items"
+    - "squads/slides-creator/data/deviation-registry.yaml (rollback escalations)"

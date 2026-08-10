@@ -1,0 +1,207 @@
+quality_gates:
+- gate_id: QG-001
+  name: Completude Contratual do Handoff
+  position: atm_ingest_handoff -> atm_validate_contract
+  type: entrada
+  executor: Worker (clickup-materializer / schema-validator)
+  threshold: 100
+  threshold_unit: percent
+  criteria:
+  - required_fields_completeness_pct >= 100
+  - contract_errors_count = 0
+  - dag_reference_integrity_pct >= 100
+  escalation_path: Mission Lead
+  veto_power: true
+  mandamento_enforced:
+  - 1
+  - 2
+  - 5
+  current_readiness: PASS
+  rationale: Sem contrato íntegro, qualquer execução posterior compromete Verdade,
+    Coerência e rastreabilidade.
+- gate_id: QG-002
+  name: Prontidão do Preflight
+  position: atm_validate_contract -> atm_build_preflight -> atm_authorize_execution
+  type: transição
+  executor: Agent (preflight-planner)
+  threshold: 90
+  threshold_unit: points
+  criteria:
+  - preflight_completeness_score >= 90
+  - known_gaps_acknowledged_pct >= 100
+  - structural_risks_classified_count >= 3
+  escalation_path: Mission Lead
+  veto_power: false
+  mandamento_enforced:
+  - 2
+  - 4
+  - 5
+  - 7
+  current_readiness: PASS
+  rationale: O preflight só é liberado quando cobre entidades, gaps e riscos estruturais
+    mínimos do runtime.
+- gate_id: QG-003
+  name: Go/No-Go Auditável
+  position: atm_authorize_execution -> atm_resolve_space
+  type: transição
+  executor: Human (Mission Lead)
+  threshold: 100
+  threshold_unit: percent
+  criteria:
+  - approval_artifact_completeness_pct >= 100
+  - execution_decision_valid_pct >= 100
+  - approval_sla_hours <= 24
+  escalation_path: Mission Lead -> sinkra-squad
+  veto_power: true
+  mandamento_enforced:
+  - 1
+  - 2
+  - 5
+  - 9
+  current_readiness: REVIEW
+  rationale: O gate humano existe no desenho, mas CG-004 mostra que o acoplamento
+    ao runtime ainda precisa ser formalizado.
+- gate_id: QG-004
+  name: Integridade de Topologia e Schema
+  position: atm_provision_fields -> atm_create_dag_tasks
+  type: transição
+  executor: Worker (space-resolver + folder-provisioner + field-bootstrapper)
+  threshold: 100
+  threshold_unit: percent
+  criteria:
+  - topology_bootstrap_success_pct >= 100
+  - field_binding_success_pct >= 100
+  - schema_resolution_error_count = 0
+  escalation_path: Mission Lead
+  veto_power: true
+  mandamento_enforced:
+  - 2
+  - 3
+  - 5
+  - 8
+  current_readiness: PASS
+  rationale: O board só pode receber tasks quando a topologia e o schema estiverem
+    íntegros e idempotentes.
+- gate_id: QG-005
+  name: Integridade do DAG e dos Gates Operacionais
+  position: atm_bind_dependencies -> atm_create_gate_tasks -> atm_attach_gate_criteria
+  type: transição
+  executor: Worker (dag-materializer / dependency-binder)
+  threshold: 100
+  threshold_unit: percent
+  criteria:
+  - dependency_binding_success_pct >= 100
+  - orphan_task_count = 0
+  - gate_criteria_attachment_pct >= 100
+  escalation_path: Mission Lead
+  veto_power: true
+  mandamento_enforced:
+  - 2
+  - 5
+  - 8
+  - 9
+  current_readiness: PASS
+  rationale: Sem DAG íntegro e critérios anexados, o runtime perde causalidade e os
+    gates viram decoração.
+- gate_id: QG-006
+  name: Ativação de Automações e Circuit Breaker
+  position: atm_attach_gate_criteria -> atm_activate_automations -> atm_activate_circuit_breaker
+  type: transição
+  executor: Worker (automation-runner)
+  threshold: 100
+  threshold_unit: percent
+  criteria:
+  - critical_automation_activation_pct >= 100
+  - circuit_breaker_activation_pct >= 100
+  - fallback_auditability_pct >= 100
+  escalation_path: Mission Lead -> infra-ops
+  veto_power: true
+  mandamento_enforced:
+  - 3
+  - 5
+  - 8
+  current_readiness: FAIL
+  rationale: CG-001 mantém o runner crítico fora do estado operacional maduro; em
+    produção, gate falho precisa bloquear release.
+- gate_id: QG-007
+  name: Completude de Observabilidade de Views
+  position: atm_create_execution_views -> atm_create_health_view
+  type: saída
+  executor: Worker (views-provisioner)
+  threshold: 100
+  threshold_unit: percent
+  criteria:
+  - execution_view_coverage_pct >= 100
+  - health_view_mode_automated_pct >= 100
+  - observability_gap_count = 0
+  escalation_path: Mission Lead
+  veto_power: false
+  mandamento_enforced:
+  - 3
+  - 5
+  - 8
+  current_readiness: FAIL
+  rationale: CG-002 impede fechamento observável do runtime porque a health view ainda
+    depende de capacidade não operacionalizada.
+- gate_id: QG-008
+  name: Confiabilidade de Sync do Registry
+  position: atm_assemble_registry -> atm_sync_upstream_registry
+  type: transição
+  executor: Worker (registry-sync-worker)
+  threshold: 100
+  threshold_unit: percent
+  criteria:
+  - registry_sync_success_pct >= 100
+  - registered_service_ownership_pct >= 100
+  - writeback_error_count = 0
+  escalation_path: Mission Lead -> infra-ops
+  veto_power: false
+  mandamento_enforced:
+  - 3
+  - 5
+  - 8
+  - 10
+  current_readiness: FAIL
+  rationale: CG-003 permanece aberto porque o registry ainda não tem serviço formal
+    nem catálogo operacional preenchido.
+- gate_id: QG-009
+  name: Contrato do Log e do Report Final
+  position: atm_sync_upstream_registry -> atm_emit_execution_log -> atm_publish_materialization_report
+  type: saída
+  executor: Worker + Agent (observability-worker / materialization-reporter)
+  threshold: 100
+  threshold_unit: percent
+  criteria:
+  - execution_log_schema_completeness_pct >= 100
+  - report_contract_completeness_pct >= 100
+  - followup_actions_presence_pct >= 100 quando degraded_mode = true
+  escalation_path: Mission Lead -> sinkra-squad
+  veto_power: false
+  mandamento_enforced:
+  - 3
+  - 4
+  - 5
+  - 8
+  current_readiness: FAIL
+  rationale: CG-005 registra que o contrato do report e a persistência observável
+    ainda são parciais.
+- gate_id: QG-010
+  name: Gate Axiomático de Release
+  position: saída final do processo
+  type: axiomática
+  executor: Agent (quality-gatekeeper) + Human (Mission Lead)
+  threshold: 80
+  threshold_unit: score_0_100
+  criteria:
+  - truthfulness_score >= 7.0
+  - coherence_score >= 6.0
+  - overall_meta_axiomas_score >= 7.0
+  - compliance_score >= 80
+  escalation_path: Mission Lead -> sinkra-chief
+  veto_power: true
+  mandamento_enforced:
+  - 5
+  - 6
+  current_readiness: FAIL
+  rationale: O processo não pode entrar em produção sem baseline factual e sem fechamento
+    mínimo dos gaps críticos.

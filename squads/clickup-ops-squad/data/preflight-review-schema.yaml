@@ -1,0 +1,14 @@
+schema:
+  artifact: preflight_review
+  version: 1.0.0
+  required:
+  - mission_id
+  - coherence_score
+  - reviewer
+  - reviewed_at
+  properties:
+    mission_id: string
+    coherence_score: number
+    reviewer: string
+    reviewed_at: datetime
+    recommendations: list

@@ -1,0 +1,358 @@
+Time:
+  description: Janela operacional, SLA e deadlines por Mission.
+  examples:
+  - mission_due_at
+  - gate_deadline
+Capacity:
+  description: Limites de throughput e paralelismo dos runners.
+  examples:
+  - max_parallel_lists
+  - runner_capacity
+Threshold:
+  description: Thresholds numéricos usados por gates e readiness.
+  examples:
+  - gate_score_min
+  - health_signal_min
+Priority:
+  description: Priorização operacional e ordenação do DAG.
+  examples:
+  - critical_path
+  - execution_priority
+Permission:
+  description: Permissões necessárias para escrita no ClickUp e sistemas adjacentes.
+  examples:
+  - clickup_write_scope
+  - drive_publish_scope
+Taxonomy:
+  description: Convenções de nomenclatura e classificação de entidades.
+  examples:
+  - mission_phase
+  - list_kind
+Behavior:
+  description: Comportamentos esperados dos automations e fallbacks.
+  examples:
+  - retry_policy
+  - fallback_route
+Accountability:
+  description: Accountability humana explícita por atom e gate.
+Mode:
+  description: Modos canônicos SINKRA suportados pelo squad.
+  allowed_values:
+  - CRIAR
+  - RESOLVER
+  - GERENCIAR
+  - ENTENDER
+  - VALIDAR
+  - CONFIGURAR
+  - PLANEJAR
+  - EXPLORAR
+tokens:
+- token_type: data
+  token_name: handoffNormalizadoPronto
+  token_value: handoff_normalizado disponível
+  produced_by: atm_ingest_handoff
+  consumed_by:
+  - atm_validate_contract
+  - atm_build_preflight
+  domain: Operacional
+  family: Taxonomy  # remapped: Data → Taxonomy [HUB-003]
+- token_type: control
+  token_name: contratoValidado
+  token_value: contract_validation_result PASS/FAIL registrado
+  produced_by: atm_validate_contract
+  consumed_by:
+  - atm_build_preflight
+  domain: Operacional
+  family: Behavior  # remapped: Control → Behavior [HUB-003]
+- token_type: data
+  token_name: preflightGerado
+  token_value: materialization_preflight pronto para gate humano
+  produced_by: atm_build_preflight
+  consumed_by:
+  - atm_authorize_execution
+  domain: Operacional
+  family: Taxonomy  # remapped: Data → Taxonomy [HUB-003]
+- token_type: control
+  token_name: execucaoAutorizada
+  token_value: approved_preflight_bundle emitido pelo Mission Lead
+  produced_by: atm_authorize_execution
+  consumed_by:
+  - atm_resolve_space
+  domain: Operacional
+  family: Behavior  # remapped: Control → Behavior [HUB-003]
+- token_type: identity
+  token_name: spaceResolvido
+  token_value: space_id resolvido ou criado
+  produced_by: atm_resolve_space
+  consumed_by:
+  - atm_create_folder
+  domain: Operacional
+  family: Taxonomy  # remapped: Identity → Taxonomy [HUB-003]
+- token_type: identity
+  token_name: folderProvisionada
+  token_value: folder_id provisionado para a Mission
+  produced_by: atm_create_folder
+  consumed_by:
+  - atm_provision_lists
+  domain: Operacional
+  family: Taxonomy  # remapped: Identity → Taxonomy [HUB-003]
+- token_type: identity
+  token_name: listasProvisionadas
+  token_value: mission_board_id e gates_list_id disponíveis
+  produced_by: atm_provision_lists
+  consumed_by:
+  - atm_provision_fields
+  domain: Operacional
+  family: Taxonomy  # remapped: Identity → Taxonomy [HUB-003]
+- token_type: data
+  token_name: camposCriticosResolvidos
+  token_value: field_map crítico disponível
+  produced_by: atm_provision_fields
+  consumed_by:
+  - atm_create_dag_tasks
+  - atm_enrich_task_metadata
+  domain: Operacional
+  family: Taxonomy  # remapped: Data → Taxonomy [HUB-003]
+- token_type: identity
+  token_name: dagMaterializado
+  token_value: task_id_map completo para o DAG
+  produced_by: atm_create_dag_tasks
+  consumed_by:
+  - atm_enrich_task_metadata
+  - atm_create_checklists
+  - atm_bind_dependencies
+  - atm_assemble_registry
+  domain: Operacional
+  family: Taxonomy  # remapped: Identity → Taxonomy [HUB-003]
+- token_type: data
+  token_name: metadataAplicada
+  token_value: metadata_enrichment_status PASS
+  produced_by: atm_enrich_task_metadata
+  consumed_by:
+  - atm_create_gate_tasks
+  domain: Operacional
+  family: Taxonomy  # remapped: Data → Taxonomy [HUB-003]
+- token_type: status
+  token_name: checklistsCriados
+  token_value: checklist_status produzido
+  produced_by: atm_create_checklists
+  consumed_by:
+  - atm_bind_dependencies
+  - atm_create_gate_tasks
+  domain: Operacional
+  family: Status
+- token_type: control
+  token_name: dependenciasVinculadas
+  token_value: dependency_status e critical_path_trace registrados
+  produced_by: atm_bind_dependencies
+  consumed_by:
+  - atm_create_gate_tasks
+  - atm_create_execution_views
+  - atm_publish_materialization_report
+  domain: Operacional
+  family: Behavior  # remapped: Control → Behavior [HUB-003]
+- token_type: identity
+  token_name: gatesCriados
+  token_value: gate_task_bundle disponível
+  produced_by: atm_create_gate_tasks
+  consumed_by:
+  - atm_attach_gate_criteria
+  domain: Operacional
+  family: Taxonomy  # remapped: Identity → Taxonomy [HUB-003]
+- token_type: control
+  token_name: criteriosAnexados
+  token_value: gate_criteria_status PASS
+  produced_by: atm_attach_gate_criteria
+  consumed_by:
+  - atm_activate_automations
+  domain: Operacional
+  family: Behavior  # remapped: Control → Behavior [HUB-003]
+- token_type: control
+  token_name: automacoesAtivadas
+  token_value: automation_activation_status auditável
+  produced_by: atm_activate_automations
+  consumed_by:
+  - atm_activate_circuit_breaker
+  - atm_emit_execution_log
+  domain: Operacional
+  family: Behavior  # remapped: Control → Behavior [HUB-003]
+- token_type: control
+  token_name: circuitBreakerAtivado
+  token_value: circuit_breaker_status emitido
+  produced_by: atm_activate_circuit_breaker
+  consumed_by:
+  - atm_create_execution_views
+  - atm_emit_execution_log
+  domain: Operacional
+  family: Behavior  # remapped: Control → Behavior [HUB-003]
+- token_type: status
+  token_name: viewsExecucaoDisponiveis
+  token_value: execution_views_status disponível
+  produced_by: atm_create_execution_views
+  consumed_by:
+  - atm_create_health_view
+  - atm_assemble_registry
+  domain: Operacional
+  family: Status
+- token_type: status
+  token_name: healthViewResolvida
+  token_value: health_view_status automated ou degraded
+  produced_by: atm_create_health_view
+  consumed_by:
+  - atm_assemble_registry
+  - atm_publish_materialization_report
+  domain: Operacional
+  family: Status
+- token_type: data
+  token_name: registryMontado
+  token_value: materialization_registry serializado
+  produced_by: atm_assemble_registry
+  consumed_by:
+  - atm_sync_upstream_registry
+  - atm_publish_materialization_report
+  domain: Operacional
+  family: Taxonomy  # remapped: Data → Taxonomy [HUB-003]
+- token_type: status
+  token_name: registrySincronizado
+  token_value: registry_sync_status synced ou degraded
+  produced_by: atm_sync_upstream_registry
+  consumed_by:
+  - atm_emit_execution_log
+  - atm_publish_materialization_report
+  domain: Operacional
+  family: Status
+- token_type: status
+  token_name: execucaoLogada
+  token_value: execution_log schema_valid publicado
+  produced_by: atm_emit_execution_log
+  consumed_by:
+  - atm_publish_materialization_report
+  domain: Operacional
+  family: Status
+- token_type: status
+  token_name: reportPublicado
+  token_value: materialization_report publicado com followups
+  produced_by: atm_publish_materialization_report
+  consumed_by: []
+  domain: Operacional
+  family: Status
+- family: Accountability
+  token_name: acc_atm-ingest-handoff
+  produced_by: atm_ingest_handoff
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-validate-contract
+  produced_by: atm_validate_contract
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-build-preflight
+  produced_by: atm_build_preflight
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-authorize-execution
+  produced_by: atm_authorize_execution
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-resolve-space
+  produced_by: atm_resolve_space
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-create-folder
+  produced_by: atm_create_folder
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-provision-lists
+  produced_by: atm_provision_lists
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-provision-fields
+  produced_by: atm_provision_fields
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-create-dag-tasks
+  produced_by: atm_create_dag_tasks
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-enrich-task-metadata
+  produced_by: atm_enrich_task_metadata
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-create-checklists
+  produced_by: atm_create_checklists
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-bind-dependencies
+  produced_by: atm_bind_dependencies
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-create-gate-tasks
+  produced_by: atm_create_gate_tasks
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-attach-gate-criteria
+  produced_by: atm_attach_gate_criteria
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-activate-automations
+  produced_by: atm_activate_automations
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-activate-circuit-breaker
+  produced_by: atm_activate_circuit_breaker
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-create-execution-views
+  produced_by: atm_create_execution_views
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-create-health-view
+  produced_by: atm_create_health_view
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-assemble-registry
+  produced_by: atm_assemble_registry
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-sync-upstream-registry
+  produced_by: atm_sync_upstream_registry
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-emit-execution-log
+  produced_by: atm_emit_execution_log
+  value: Mission Lead
+- family: Accountability
+  token_name: acc_atm-publish-materialization-report
+  produced_by: atm_publish_materialization_report
+  value: Mission Lead
+- family: Time
+  token_name: time_gate_deadline
+  produced_by: atm_build_preflight
+  value: gate_deadline
+- family: Capacity
+  token_name: cap_runner_parallelism
+  produced_by: atm_build_preflight
+  value: runner_capacity
+- family: Threshold
+  token_name: thr_gate_score
+  produced_by: atm_attach_gate_criteria
+  value: gate_score_min
+- family: Priority
+  token_name: pri_critical_path
+  produced_by: atm_bind_dependencies
+  value: critical_path
+- family: Permission
+  token_name: perm_clickup_write
+  produced_by: atm_authorize_execution
+  value: clickup_write_scope
+- family: Taxonomy
+  token_name: tax_mission_phase
+  produced_by: atm_enrich_task_metadata
+  value: mission_phase
+- family: Behavior
+  token_name: beh_retry_policy
+  produced_by: atm_activate_circuit_breaker
+  value: retry_policy
+- family: Mode
+  token_name: mode_materialize
+  produced_by: atm_ingest_handoff
+  value: CRIAR

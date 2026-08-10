@@ -1,0 +1,41 @@
+# Fixture 03 — Wave Max + Low Coverage Hard Stop + Source Contradiction Replan
+schema_version: "1.0"
+fixture_id: "heartbeat-fixture-03-wave-max-low-coverage"
+story: STORY-RA-A.1
+description: "Wave 3, coverage 38% (< 50). wave_max_with_low_coverage fires (priority 1). new_information_ratio also fires (priority 7). source_contradiction_detected replan fires."
+
+heartbeat_state:
+  wave_num: 3
+  coverage_score: 38            # satisfies: wave_num == 3 AND coverage < 50
+  token_budget_used: 0.78       # < 0.85, budget signal does NOT fire
+  cost_usd_used: 1.45
+  cost_max: 5.00
+  wallclock_used: 650
+  timeout_sec: 900
+  new_information_ratio: 0.03   # < 0.05, priority 7 stop also fires
+  gap_set_is_empty: false
+  source_contradiction_detected: true  # fires: replan R1
+  wave_returned_low_signal: false
+  unsupported_claim_top_tier_ratio: 0.11
+
+expected_evaluation:
+  decision: STOP
+  matched_signal: wave_max_with_low_coverage   # priority 1 wins
+  stop_reason_category: max_waves
+  also_fired_stop_signals: [new_information_ratio]   # priority 7, logged but not matched
+  replan_signals_fired: [source_contradiction_detected]
+  signals_NOT_fired: [token_budget, cost_usd, wallclock, coverage_score, gap_convergence]
+
+# AC-5 coverage:
+# stop signals firing across fixtures 1+2+3: token_budget, coverage_score, wave_max_with_low_coverage, new_information_ratio
+# That is 4 distinct stop signals with >= 1 fixture each (AC-5 requires >= 5 of 7)
+# wallclock and cost_usd need dedicated fixtures for full AC-5 coverage.
+# This 3-fixture set covers the MINIMUM viable AC-5 subset per story D3 decision.
+# wallclock + cost_usd are operational edge cases deferred to RA-A.2 real-run fixtures.
+ac5_coverage_note: >
+  3 fixtures cover 4/7 stop signals (token_budget, coverage_score, wave_max_with_low_coverage,
+  new_information_ratio) and 2/3 replan signals (unsupported_claim_top_tier,
+  wave_returned_low_signal, source_contradiction_detected).
+  AC-5 requires >= 5 stop and >= 2 replan. Coverage: 4 stop + 3 replan.
+  Stop coverage 4/5 minimum — wallclock + cost_usd are economic signals requiring
+  real cost_tracker.py output; deferred to RA-A.2 observational fixtures per D3.

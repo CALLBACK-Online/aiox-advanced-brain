@@ -1,0 +1,226 @@
+# =============================================================================
+# BUSINESS PROFILE PIPELINE WORKFLOW
+# =============================================================================
+# Pipeline de 7 fases para elicitação completa do perfil de negócio.
+# Popula os 7 YAMLs core no workspace/{spoke}/ (single-business model).
+# =============================================================================
+
+name: business-profile-pipeline
+version: "1.0.0"
+owner: coo-orchestrator
+squad: c-level
+
+description: |
+  Pipeline sequencial de 7 fases para elicitar e popular os 7 templates YAML
+  core do negócio {spoke_name} (single-business model, 5-layer workspace).
+  Orquestrado pelo COO, delega para Vision Chief e CMO conforme o domínio.
+
+# =============================================================================
+# TRIGGERS
+# =============================================================================
+
+triggers:
+  manual:
+    - command: "*setup-business-profile {slug}"
+      action: full_pipeline
+      task: setup-business-profile.md
+
+registry_bindings:
+  quality_gates_file: squads/c-level/data/quality-gates.yaml
+  token_registry_file: squads/c-level/data/token-registry.yaml
+  execution_log_file: squads/c-level/data/pipeline-execution-log.yaml
+  consumed_gates:
+    - workspace-preflight
+    - business-profile-completeness
+  consumed_tokens:
+    - TK-CL-003
+    - TK-CL-005
+    - TK-CL-012
+    - TK-CL-013
+
+# =============================================================================
+# PIPELINE PHASES
+# =============================================================================
+
+phases:
+  - id: phase_0
+    name: "Pre-Flight"
+    agent: coo-orchestrator
+    tasks:
+      - workspace-preflight (bootstrap + essentials validation)
+      - load-workspace-context
+      - scaffold-templates
+    gate:
+      gate_id: workspace-preflight
+      condition: "workspace preflight PASS and YAML templates exist in workspace/{spoke}/"
+      threshold: 90
+      threshold_source: data/quality-gates.yaml#thresholds.workspace_integrity_min
+      token_ids: [TK-CL-013, TK-CL-005]
+      verdict_model: PASS|REVIEW|FAIL
+      veto: true
+      type: file_check
+    outputs:
+      - workspace/{spoke}/L4-operational/evidence/workspace-context-summary.yaml
+
+  - id: phase_1
+    name: "Formulário Básico"
+    agent: coo-orchestrator
+    method: formulario
+    tasks:
+      - elicit-company-profile (partial - phases 1-2 only)
+    gate:
+      gate_id: business-profile-completeness
+      condition: "company_essence.status == COMPLETE"
+      threshold_source: data/quality-gates.yaml#thresholds.completeness_min
+      token_ids: [TK-CL-003, TK-CL-012]
+      verdict_model: PASS|REVIEW|FAIL
+      type: section_check
+      target: workspace/{spoke}/L0-identity/company-dna.yaml
+    outputs:
+      - workspace/{spoke}/L0-identity/company-dna.yaml (partial)
+
+  - id: phase_2
+    name: "Deep Dive Fundador"
+    agent: vision-chief
+    method: entrevista
+    tasks:
+      - elicit-founder-dna
+      - elicit-credentials
+    gate:
+      gate_id: business-profile-completeness
+      condition: "completeness_percentage >= 85"
+      threshold_source: data/quality-gates.yaml#thresholds.completeness_min
+      token_ids: [TK-CL-003, TK-CL-012]
+      verdict_model: PASS|REVIEW|FAIL
+      type: completeness_check
+      target: workspace/{spoke}/L0-identity/founder-dna.yaml
+    outputs:
+      - workspace/{spoke}/L0-identity/founder-dna.yaml
+      - workspace/{spoke}/L0-identity/credentials.yaml
+
+  - id: phase_3
+    name: "Empresa + Time"
+    agent: coo-orchestrator
+    method: entrevista + formulario
+    tasks:
+      - elicit-company-profile (remaining phases 3-8)
+      - elicit-team-structure
+    gate:
+      gate_id: business-profile-completeness
+      condition: "completeness_percentage >= 85"
+      threshold_source: data/quality-gates.yaml#thresholds.completeness_min
+      token_ids: [TK-CL-003, TK-CL-012]
+      verdict_model: PASS|REVIEW|FAIL
+      type: completeness_check
+      target: workspace/{spoke}/L0-identity/company-dna.yaml
+    outputs:
+      - workspace/{spoke}/L0-identity/company-dna.yaml (complete)
+      - workspace/{spoke}/L1-strategy/team-structure.yaml
+
+  - id: phase_4
+    name: "ICP Completo"
+    agent: cmo-architect
+    method: entrevista
+    tasks:
+      - elicit-icp-yaml
+    gate:
+      gate_id: business-profile-completeness
+      condition: "completeness_percentage >= 85"
+      threshold_source: data/quality-gates.yaml#thresholds.completeness_min
+      token_ids: [TK-CL-003, TK-CL-012]
+      verdict_model: PASS|REVIEW|FAIL
+      type: completeness_check
+      target: workspace/{spoke}/L1-strategy/icp.yaml
+    outputs:
+      - workspace/{spoke}/L1-strategy/icp.yaml
+      - workspace/{spoke}/L1-strategy/diagnosis.yaml (if filled during gate)
+
+  - id: phase_5
+    name: "Brand + Pricing"
+    agent: cmo-architect
+    method: entrevista + formulario
+    tasks:
+      - elicit-brand-yaml
+      - elicit-pricing-strategy
+    gate:
+      gate_id: business-profile-completeness
+      condition: "completeness_percentage >= 85"
+      threshold_source: data/quality-gates.yaml#thresholds.completeness_min
+      token_ids: [TK-CL-003, TK-CL-012]
+      verdict_model: PASS|REVIEW|FAIL
+      type: completeness_check
+      target: workspace/{spoke}/L2-tactical/brand/brandbook.yaml
+    outputs:
+      - workspace/{spoke}/L2-tactical/brand/brandbook.yaml
+      - workspace/{spoke}/L1-strategy/pricing-strategy.yaml
+
+  - id: phase_6
+    name: "Enriquecimento + Validação"
+    agent: coo-orchestrator
+    method: sintetizado
+    tasks:
+      - cross-reference-validation
+      - authority-story-synthesis
+      - completeness-report
+    gate:
+      gate_id: business-profile-completeness
+      condition: "all 7 YAMLs >= 85%"
+      threshold_source: data/quality-gates.yaml#thresholds.completeness_min
+      token_ids: [TK-CL-003, TK-CL-012]
+      verdict_model: PASS|REVIEW|FAIL
+      type: aggregate_check
+    outputs:
+      - workspace/{spoke}/L0-identity/authority-story.yaml
+      - workspace/{spoke}/L4-operational/evidence/cross-reference-validation.yaml
+      - workspace/{spoke}/L4-operational/evidence/completeness-report.md
+
+# =============================================================================
+# DEPENDENCIES
+# =============================================================================
+
+dependencies:
+  tasks:
+    - load-workspace-context
+    - scaffold-templates
+    - elicit-company-profile
+    - elicit-founder-dna
+    - elicit-credentials
+    - elicit-team-structure
+    - elicit-icp-yaml
+    - elicit-brand-yaml
+    - elicit-pricing-strategy
+    - cross-reference-validation
+    - authority-story-synthesis
+    - completeness-report
+    - setup-business-profile
+  agents:
+    - coo-orchestrator
+    - vision-chief
+    - cmo-architect
+
+# =============================================================================
+# CONFIGURATION
+# =============================================================================
+
+config:
+  workspace_preflight:
+    required: true
+    bootstrap_script: squads/c-level/scripts/bootstrap-c-level-workspace.sh  # ASPIRATIONAL — script not implemented [Story 119.4]
+    essentials_validator: squads/c-level/scripts/validate-c-level-essentials.sh
+  completeness_gate: 85
+  pause_resume: true
+  max_questions_per_session: 50
+  estimated_total_questions: 210
+  target_templates:
+    L0-identity:
+      - company-dna.yaml
+      - founder-dna.yaml
+      - credentials.yaml
+      - authority-story.yaml
+    L1-strategy:
+      - icp.yaml
+      - diagnosis.yaml
+      - pricing-strategy.yaml
+      - team-structure.yaml
+    L2-tactical:
+      - brand/brandbook.yaml

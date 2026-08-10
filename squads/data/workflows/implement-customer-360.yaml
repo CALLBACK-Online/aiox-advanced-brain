@@ -1,0 +1,100 @@
+workflow:
+  id: implement-customer-360
+  name: "Implement Customer 360 View"
+  version: "1.0"
+  primary_agent: peter-fader
+  tier_flow: [0, 1, 2]
+  phases: 3
+  estimated_duration: "2-4 weeks"
+  agents_involved:
+    - peter-fader
+    - nick-mehta
+    - avinash-kaushik
+  state_machine:
+    states: [preflight, value-modeling, delivery, complete]
+    transitions:
+      - trigger: preflight_complete
+        source: preflight
+        dest: value-modeling
+      - trigger: segmentation_ready
+        source: value-modeling
+        dest: delivery
+      - trigger: reports_ready
+        source: delivery
+        dest: complete
+  task_ref:
+    primary:
+      - calculate-clv
+      - segment-rfm
+    supporting:
+      - design-health-score
+      - create-dashboard
+  views_required:
+    - v_customer_lifetime_value
+    - v_rfm_segments
+    - v_rfm_customer_classification
+    - v_customer_health_composite
+    - v_health_components_breakdown
+  templates_used:
+    - health-score-report-tmpl.yaml
+    - executive-report-tmpl.yaml
+  checklists_used:
+    - customer-360-checklist.md
+    - pre-implementation-checklist.md
+  deliverables:
+    - Customer 360 database views
+    - Health Score calculation
+    - Segmentation rules
+    - Report template
+    - Playbooks by segment
+
+workspace_execution_contract:
+  preflight:
+    - "*workspace-preflight (executa bootstrap-data-workspace.sh + validate-data-essentials.sh)"
+    - "*workspace-context {slug}"
+    - "Confirmar templates necessários em workspace/_templates/analytics/"
+  output_routing:
+    canonical:
+      - "workspace/businesses/{slug}/analytics/customer-360.yaml"
+      - "workspace/businesses/{slug}/analytics/health-score-report.yaml"
+      - "workspace/businesses/{slug}/analytics/executive-report.yaml"
+    custom:
+      - "docs/data/{slug}/implement-customer-360-{date}.md"
+  hard_rules:
+    - "Proibido gravar em workspace/businesses/{slug}/analytics/ sem template correspondente em workspace/_templates/analytics/."
+    - "Relatórios em docs/data/{slug}/ são complementares e não substituem artefatos canônicos."
+
+notes: |
+  ## Objetivo
+  Criar visão unificada do cliente com todos os dados relevantes para decisão.
+
+  > "Customer 360 não é sobre coletar mais dados - é sobre criar uma visão acionável que permite tratar cada cliente proporcionalmente ao seu valor." — Inspirado em Peter Fader
+
+  ## Regra de Ouro
+  Nunca implemente Customer 360 sem responder:
+  1. Quem são nossos melhores clientes? (CLV)
+  2. Como identificamos quem está em risco? (Health Score)
+  3. Que ação tomamos com cada segmento? (Playbooks)
+
+  ## Fases
+  - FASE 1: FUNDAMENTAÇÃO (Peter Fader) - Tier 0
+    Definir critérios de "bom cliente", mapear dados disponíveis, segmentação inicial (RFM/produto/cohort), perguntas-chave.
+  - FASE 2: OPERACIONALIZAÇÃO (Nick Mehta) - Tier 1
+    Componentes do Health Score (Product 30%, Engagement 25%, Support 20%, Community 15%, Contract 10%), thresholds (Verde 70-100, Amarelo 40-69, Vermelho 0-39), ações por status, DEAR Framework.
+  - FASE 3: COMUNICAÇÃO (Avinash Kaushik) - Tier 2
+    Output visual, formato So What, cadência de uso (dashboard diário CS, report semanal liderança), DMMM mapping.
+
+  ## Queries de Validação (SQL)
+  - Distribuição RFM (v_rfm_customer_classification)
+  - Distribuição Health Score (v_customer_health_composite)
+  - Top 10 CLV (v_customer_lifetime_value)
+
+  ## Referências
+  - Peter Fader: "Customer Centricity", "The Customer Centricity Playbook"
+  - Nick Mehta: "Customer Success", "The Customer Success Economy"
+  - Avinash Kaushik: DMMM Framework, So What Framework
+  - Checklist: checklists/customer-360-checklist.md
+  - Template: templates/health-score-report-tmpl.yaml
+
+  Data Intelligence Pack - Workflow v1.0
+  Primary Agent: @peter-fader | Secondary: @nick-mehta, @avinash-kaushik

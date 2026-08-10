@@ -1,0 +1,12 @@
+{"event": "spawn_init",       "spawn_mode": "parallel",   "candidates_count": 5, "max_candidates_parallel": 8, "timestamp": "2026-05-19T17:38:20Z"}
+{"event": "subagent_spawned", "agent_id": "general-purpose-1", "candidate_id": "claude_code", "timestamp": "2026-05-19T17:38:20Z"}
+{"event": "subagent_spawned", "agent_id": "general-purpose-2", "candidate_id": "aider",       "timestamp": "2026-05-19T17:38:20Z"}
+{"event": "subagent_spawned", "agent_id": "general-purpose-3", "candidate_id": "cline",       "timestamp": "2026-05-19T17:38:20Z"}
+{"event": "subagent_spawned", "agent_id": "general-purpose-4", "candidate_id": "openhands",   "timestamp": "2026-05-19T17:38:20Z"}
+{"event": "subagent_spawned", "agent_id": "general-purpose-5", "candidate_id": "cursor",      "timestamp": "2026-05-19T17:38:20Z"}
+{"event": "subagent_done",    "agent_id": "general-purpose-3", "candidate_id": "cline",       "duration_s": 42, "timestamp": "2026-05-19T17:39:02Z"}
+{"event": "subagent_done",    "agent_id": "general-purpose-1", "candidate_id": "claude_code", "duration_s": 45, "timestamp": "2026-05-19T17:39:05Z"}
+{"event": "subagent_done",    "agent_id": "general-purpose-5", "candidate_id": "cursor",      "duration_s": 46, "timestamp": "2026-05-19T17:39:06Z"}
+{"event": "subagent_done",    "agent_id": "general-purpose-2", "candidate_id": "aider",       "duration_s": 48, "timestamp": "2026-05-19T17:39:08Z"}
+{"event": "subagent_done",    "agent_id": "general-purpose-4", "candidate_id": "openhands",   "duration_s": 51, "timestamp": "2026-05-19T17:39:11Z"}
+{"event": "consolidation",    "candidates_done": 5, "merged_into": "matrices.yaml", "wallclock_s": 51, "timestamp": "2026-05-19T17:39:11Z"}

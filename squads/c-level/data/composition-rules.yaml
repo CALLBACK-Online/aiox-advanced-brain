@@ -1,0 +1,31 @@
+version: "1.0.0"
+squad: c-level
+updated_at: "2026-04-13"
+updated_by: "sinkra-upgrade-squad"
+
+fundamental:
+  - "Hierarchy is a DAG: Token -> Atom -> Molecule -> Organism -> Template -> Instance."
+  - "Organisms do not consume Atoms directly when a Molecule boundary exists."
+  - "Templates declare structure; Instances materialize it in workspace/{spoke}."
+
+containment_matrix:
+  Token:
+    can_govern: [Atom, Molecule, Organism]
+  Atom:
+    can_compose_into: [Molecule]
+  Molecule:
+    can_compose_into: [Organism]
+  Organism:
+    can_bind: [Template, Instance]
+  Template:
+    can_materialize_as: [Instance]
+  Instance:
+    terminal: true
+
+anti_patterns:
+  - id: AP01
+    name: level-skipping
+    description: "Proíbe salto Atom -> Organism sem boundary declarada."
+  - id: AP03
+    name: circular-dependencies
+    description: "Toda composição deve respeitar DAG sem loops entre workflow/task/template."

@@ -1,0 +1,14 @@
+{
+  "name": "aiox-advanced-skills-squads",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Biblioteca educacional de skills e squads citados nas turmas AIOX Advanced",
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-library.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
+

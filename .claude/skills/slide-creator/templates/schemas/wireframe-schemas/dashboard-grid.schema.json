@@ -1,0 +1,94 @@
+{
+  "$id": "sinkra://slide-creator/wireframes/dashboard-grid.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "additionalProperties": false,
+  "description": "Executives need the answer, status, and decision signal before details.",
+  "properties": {
+    "action_title": {
+      "type": "string"
+    },
+    "m1_label": {
+      "type": "string"
+    },
+    "m1_note": {
+      "type": "string"
+    },
+    "m1_value": {
+      "type": "string"
+    },
+    "m2_label": {
+      "type": "string"
+    },
+    "m2_note": {
+      "type": "string"
+    },
+    "m2_value": {
+      "type": "string"
+    },
+    "m3_label": {
+      "type": "string"
+    },
+    "m3_note": {
+      "type": "string"
+    },
+    "m3_value": {
+      "type": "string"
+    },
+    "m4_label": {
+      "type": "string"
+    },
+    "m4_note": {
+      "type": "string"
+    },
+    "m4_value": {
+      "type": "string"
+    },
+    "m5_label": {
+      "type": "string"
+    },
+    "m5_note": {
+      "type": "string"
+    },
+    "m5_value": {
+      "type": "string"
+    },
+    "m6_label": {
+      "type": "string"
+    },
+    "m6_note": {
+      "type": "string"
+    },
+    "m6_value": {
+      "type": "string"
+    }
+  },
+  "title": "dashboard-grid",
+  "type": "object",
+  "x-sinkra": {
+    "absorbed_pattern_from": "presenton (Apache-2.0)",
+    "function_ref": "executive_summary_kpi",
+    "slot_count": 19,
+    "warnings": [
+      "action_title",
+      "m1_label",
+      "m1_value",
+      "m1_note",
+      "m2_label",
+      "m2_value",
+      "m2_note",
+      "m3_label",
+      "m3_value",
+      "m3_note",
+      "m4_label",
+      "m4_value",
+      "m4_note",
+      "m5_label",
+      "m5_value",
+      "m5_note",
+      "m6_label",
+      "m6_value",
+      "m6_note"
+    ],
+    "wireframe_ref": "templates/wireframes/dashboard-grid.html"
+  }
+}

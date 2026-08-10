@@ -1,0 +1,205 @@
+version: 1
+name: design-direction-contract
+purpose: >
+  Self-contained visual direction contract for making design a deck-level
+  operating system instead of a late-stage skin.
+
+independence_rule: >
+  This contract is bundled in the skill and must work without SINKRA squad
+  files, brand workspace paths, or design-renderer agents.
+
+required_output:
+  file: design-direction.yaml
+  root_key: design_direction
+  required_fields:
+    - deck_id
+    - visual_reference
+    - dominant_motif
+    - density_limits
+    - variation_rules
+    - composition_rules
+    - audience_context
+
+visual_reference:
+  type_enum:
+    - provided_brand
+    - provided_screenshot
+    - imported_pptx
+    - existing_design_system
+    - bundled_theme
+    - design_philosophy_fallback
+  required_fields:
+    - type
+    - rationale
+  optional_fields:
+    - paths
+    - notes
+    - must_follow
+    - must_avoid
+
+density_limits:
+  required_fields:
+    - max_governing_claims_per_slide
+    - max_supporting_claims_per_slide
+    - max_visible_words_default
+    - max_visual_elements
+    - forbidden_patterns
+  defaults:
+    max_governing_claims_per_slide: 1
+    max_supporting_claims_per_slide: 3
+    max_visible_words_default: 45
+    max_visual_elements: 5
+    forbidden_patterns:
+      - dense_bullet_wall
+      - decorative_card_stack
+      - repeated_two_column_monotony
+      - identity_as_skin
+
+variation_rules:
+  required_fields:
+    - layout_count_min
+    - layout_repetition_max
+    - quiet_slide_ratio_min
+    - accent_color_density
+    - motion_policy
+  defaults:
+    layout_count_min: 5
+    layout_repetition_max: 2
+    quiet_slide_ratio_min: 0.15
+    accent_color_density: "sparse"
+    motion_policy: "none unless output is web/native motion"
+
+composition_rules:
+  required_fields:
+    - grid_columns
+    - baseline_padding_pt
+    - title_anchor
+    - footer_policy
+    - slide_number_policy
+    - safe_area_pct
+  defaults:
+    grid_columns: 12
+    baseline_padding_pt: 32
+    title_anchor: "top_left_or_deliberately_centered"
+    footer_policy: "source/provenance only when it adds trust"
+    slide_number_policy: "subtle, never primary"
+    safe_area_pct: 6
+
+audience_context:
+  required_fields:
+    - audience
+    - viewing_context
+    - expected_reading_mode
+  examples:
+    - audience: "executive committee"
+      viewing_context: "live 20-minute decision meeting"
+      expected_reading_mode: "scan first, detail second"
+    - audience: "webinar attendees"
+      viewing_context: "screen-share with speaker narration"
+      expected_reading_mode: "big idea first, notes carry nuance"
+
+validation:
+  block_if:
+    - design_direction_missing
+    - visual_reference_missing
+    - density_limits_missing
+    - composition_rules_missing
+    - identity_as_skin_without_stage_specific_motif
+    - no_layout_variation_rule
+  warn_if:
+    - no_visual_reference_paths_when_type_is_provided_brand_or_imported_pptx
+    - quiet_slide_ratio_below_10_percent
+    - accent_color_density_unspecified
+
+# ─────────────────────────────────────────────────────────────────────────
+# Tasteskill Dials — Composition knobs (absorbed 2026-05-19)
+# Authority: docs/bench/2026-05-18-impeccable-vs-sinkra-design-stack/ + tasteskill.dev v2
+# Three dials drive layout variance, motion intensity, and visual density.
+# Each accepts an integer 1-10 with concrete behavior anchors.
+# ─────────────────────────────────────────────────────────────────────────
+tasteskill_dials:
+  authority: tasteskill.dev v2 Sections 1+6
+  schema:
+    DESIGN_VARIANCE:
+      range: [1, 10]
+      default: 5
+      anchors:
+        "1-3":
+          label: Predictable
+          rules: Flexbox justify-center, strict 12-column symmetrical grid, equal paddings
+          when_to_use: executive board updates, legal/compliance decks
+        "4-7":
+          label: Offset
+          rules: Margin overlapping, varied aspect ratios (4:3 next to 16:9), left-aligned headers over center data
+          when_to_use: product strategy decks, dashboard reviews, default mid-fi
+        "8-10":
+          label: Asymmetric
+          rules: Masonry layouts, CSS Grid fractional units (2fr 1fr 1fr), massive empty zones, padding-left 20vw
+          when_to_use: brand pitch decks, marketing campaigns, hero brand moments
+      mobile_override:
+        rule: For levels 4-10, asymmetric layouts MUST fall back to strict single-column on viewports < 768px
+        reason: prevent horizontal scroll + layout breakage
+    MOTION_INTENSITY:
+      range: [1, 10]
+      default: 4
+      anchors:
+        "1-3":
+          label: Static
+          rules: No automatic animations. Only :hover and :active states. PPTX exports default here.
+          when_to_use: PPTX export decks, board updates, legal
+        "4-7":
+          label: Fluid CSS
+          rules: transition all 0.3s cubic-bezier(0.16, 1, 0.3, 1) + animation-delay cascades + transform/opacity only
+          when_to_use: web-rendered decks, demo recordings
+        "8-10":
+          label: Advanced Choreography
+          rules: Complex scroll-triggered reveals, parallax, Framer Motion useScroll. NEVER window.addEventListener('scroll')
+          when_to_use: brand storytelling, immersive presentations, VSLs
+          forbidden_in_pptx: true
+      spring_physics_specs:
+        when: "MOTION_INTENSITY >= 5 AND output_target is web/HTML"
+        framer_motion_default: { type: spring, stiffness: 100, damping: 20 }
+        rationale: "Premium weighty feel, no linear easing"
+    VISUAL_DENSITY:
+      range: [1, 10]
+      default: 5
+      anchors:
+        "1-3":
+          label: Art Gallery
+          rules: Huge whitespace, generous section gaps, expensive feel
+          when_to_use: brand pitch covers, manifesto slides, key inflection points
+        "4-7":
+          label: Daily App
+          rules: Normal spacing for standard web apps + standard decks
+          when_to_use: default product decks, education, course content
+        "8-10":
+          label: Cockpit
+          rules: Tiny paddings, no card boxes (1px lines separate data), font-mono for all numbers
+          when_to_use: dashboards, data-heavy review slides, financial decks, observability
+
+  per_workflow_mode_defaults:
+    # When workflow_mode is selected, dials default here unless explicitly overridden
+    executive_brief:        { DESIGN_VARIANCE: 3, MOTION_INTENSITY: 2, VISUAL_DENSITY: 4 }
+    board_update:           { DESIGN_VARIANCE: 3, MOTION_INTENSITY: 2, VISUAL_DENSITY: 5 }
+    product_strategy:       { DESIGN_VARIANCE: 5, MOTION_INTENSITY: 3, VISUAL_DENSITY: 5 }
+    dashboard_review:       { DESIGN_VARIANCE: 4, MOTION_INTENSITY: 3, VISUAL_DENSITY: 8 }
+    financial_deck:         { DESIGN_VARIANCE: 4, MOTION_INTENSITY: 2, VISUAL_DENSITY: 8 }
+    sales_pitch:            { DESIGN_VARIANCE: 7, MOTION_INTENSITY: 6, VISUAL_DENSITY: 4 }
+    brand_pitch:            { DESIGN_VARIANCE: 8, MOTION_INTENSITY: 7, VISUAL_DENSITY: 3 }
+    marketing_campaign:     { DESIGN_VARIANCE: 9, MOTION_INTENSITY: 8, VISUAL_DENSITY: 2 }
+    webinar:                { DESIGN_VARIANCE: 6, MOTION_INTENSITY: 5, VISUAL_DENSITY: 4 }
+    educational_course:     { DESIGN_VARIANCE: 5, MOTION_INTENSITY: 4, VISUAL_DENSITY: 6 }
+    benchmark_deck:         { DESIGN_VARIANCE: 5, MOTION_INTENSITY: 3, VISUAL_DENSITY: 7 }
+
+  consumption:
+    by_design_direction:
+      - density_limits.max_visible_words_default scales inversely with VISUAL_DENSITY (low density → fewer words)
+      - composition_rules.layout_count_min scales with DESIGN_VARIANCE (high variance → more layouts)
+      - motion specs in render-lock.yaml gated by MOTION_INTENSITY (only enable advanced specs if >= 5)
+    by_validators:
+      - scripts/validate_design_capability.py checks dial-to-output coherence
+      - DESIGN_VARIANCE >= 8 + center-aligned hero = anti-pattern (violates Layout Diversification)
+      - MOTION_INTENSITY >= 5 + PPTX export = warning (motion will not render)
+    override_per_slide:
+      - any slide can override dials in deck-spec via slide.dials_override: { DESIGN_VARIANCE: N, ... }
+      - useful for: 1 cockpit-density slide in a brand pitch, 1 art-gallery slide in a dashboard review

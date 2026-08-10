@@ -1,0 +1,236 @@
+## Skill Validation Schema
+## Reference for checks executed by skill-validator.
+## Base source: data/anthropic-patterns.yaml
+##
+## Two layers:
+##   - Schema checks (CHK-01 to CHK-12): structural / frontmatter / registry
+##   - Prompt-quality checks (CHK-13 to CHK-16): cognitive / 4.7 calibration
+##
+## Prompt-quality checks are executed by validate-skill-prompt-quality.md and are
+## advisory by default until Sprint 2.
+
+version: "2.0.0"
+owner_squad: skill-creator-ops
+
+required_frontmatter_fields:
+  - field: name
+    type: string
+    pattern: "^[a-z][a-z0-9-]*$"  # kebab-case
+    description: "Nome da skill, deve corresponder ao nome do diretório"
+
+  - field: description
+    type: string
+    min_length: 10
+    max_length: 200
+    description: "Descrição clara e concisa da skill"
+
+  - field: version
+    type: string
+    pattern: "^\\d+\\.\\d+\\.\\d+$"  # semver
+    description: "Versão semântica (major.minor.patch)"
+
+  # FORBIDDEN in skills (Frontmatter Purity Rule):
+  # - owner_squad (belongs in tasks only)
+  # - sinkra_tier (belongs in tasks only)
+  # - context (omit for inline; only 'fork' if user explicitly requests)
+
+  - field: agent
+    type: string
+    default: "general-purpose"
+    description: "Tipo de agent executor"
+
+  - field: user-invocable
+    type: boolean
+    description: "Se o usuário pode invocar diretamente via /skill-name"
+
+optional_frontmatter_fields:
+  - field: depends_on
+    type: array
+    description: "Dependências cross-skill"
+
+  - field: invokes
+    type: array
+    description: "Skills invocadas durante execução"
+
+  - field: license
+    type: string
+    description: "Para skills third-party ou forked"
+
+  - field: argument-hint
+    type: string
+    description: "Hint para uso via CLI"
+
+  - field: status
+    type: enum
+    values: ["active", "aiox-core-only", "vendored", "deprecated", "retired"]
+    default: "active"
+    description: |
+      Lifecycle state. Transitions: active → deprecated → retired.
+      - active:    fully available, recommended
+      - deprecated: invocable but router deprioritizes; requires migration_target
+      - retired:   removed from registry and filesystem; archived in outputs/
+
+  - field: deprecated_at
+    type: string
+    format: "ISO-8601 datetime"
+    description: "Timestamp when status moved to deprecated. Required if status=deprecated."
+
+  - field: migration_target
+    type: string
+    description: |
+      Skill name or path that consumers should migrate to.
+      Required if status=deprecated. Format: 'skill-name' or '.claude/skills/skill-name'.
+
+  - field: retired_at
+    type: string
+    format: "ISO-8601 datetime"
+    description: "Timestamp when status moved to retired. Required if status=retired."
+
+  - field: migration_story_ref
+    type: string
+    description: |
+      Story ID in docs/stories/ documenting the retirement rationale.
+      Required if status=retired. Example: 'STORY-125.3-RETIRE-LEGACY-FOO'.
+
+# 12-Check Validation
+checks:
+  # Frontmatter (6 checks)
+  - id: CHK-01
+    category: frontmatter
+    name: "name field present and valid"
+    severity: blocking
+
+  - id: CHK-02
+    category: frontmatter
+    name: "description field present"
+    severity: blocking
+
+  - id: CHK-03
+    category: frontmatter
+    name: "version field valid semver"
+    severity: blocking
+
+  - id: CHK-04
+    category: frontmatter
+    name: "owner_squad field valid"
+    severity: blocking
+
+  - id: CHK-05
+    category: frontmatter
+    name: "sinkra_tier field valid"
+    severity: blocking
+
+  - id: CHK-06
+    category: frontmatter
+    name: "context field valid (conversation|fork)"
+    severity: blocking
+
+  # Structure (4 checks)
+  - id: CHK-07
+    category: structure
+    name: "SKILL.md exists"
+    severity: blocking
+
+  - id: CHK-08
+    category: structure
+    name: "Directory name matches frontmatter name"
+    severity: blocking
+
+  - id: CHK-09
+    category: structure
+    name: "Tier-required directories present"
+    severity: warning
+    tier_rules:
+      Tier1: []  # Apenas SKILL.md
+      Tier2: ["config.yaml"]
+      Tier3: ["config.yaml", "templates/", "checklists/", "data/"]
+
+  - id: CHK-10
+    category: structure
+    name: "No forbidden files (.env, credentials, secrets)"
+    severity: blocking
+
+  # Registry (2 checks)
+  - id: CHK-11
+    category: registry
+    name: "Skill registered in skill-registry.yaml"
+    severity: warning
+
+  - id: CHK-12
+    category: registry
+    name: "Version in SKILL.md matches registry version"
+    severity: warning
+
+  # Prompt Quality (4 checks — 4.7 calibration)
+  # Executed by validate-skill-prompt-quality.md (advisory by default).
+  # Reference: data/anthropic-patterns.yaml
+
+  - id: CHK-13
+    category: prompt-quality
+    name: "Description routing quality"
+    severity: advisory
+    sub_rubric:
+      - "Has 'Use when...' or 'TRIGGER when...' clause"
+      - "Has 'SKIP when...' clause (optional for narrow skills)"
+      - "Names >= 5 concrete trigger nouns / verbs / domain objects"
+      - "Length calibrated to tier (Tier1>=50, Tier2>=100, Tier3>=150 chars)"
+      - "No filler phrases ('stuff', 'things', 'helps with X')"
+    pattern_ref: "data/anthropic-patterns.yaml#description-routing-format"
+
+  - id: CHK-14
+    category: prompt-quality
+    name: "Severity calibration"
+    severity: advisory
+    sub_rubric:
+      - "Every NEVER/ALWAYS/CRITICAL/MUST NOT/SEVERE/NON-NEGOTIABLE passes the four-criterion test"
+      - "four-criterion test: specific AND binary AND high-frequency AND (real-stakes OR output-breaking)"
+      - "Attitudinal severity count = 0 (no 'ALWAYS be thorough', 'NEVER be lazy')"
+    pattern_ref: "data/anthropic-patterns.yaml#severity-for-workflow-preference"
+
+  - id: CHK-15
+    category: prompt-quality
+    name: "Scaffolding density (internalized-behavior redundancy)"
+    severity: advisory
+    sub_rubric:
+      - "No anti-laziness scaffolding (be thorough, be proactive, go above and beyond)"
+      - "No search-first scaffolding (if unsure search)"
+      - "No apologetic humility (be humble, acknowledge mistakes)"
+      - "No conciseness directives (be concise, be brief)"
+      - "No progress forcing (after every N tool calls)"
+      - "No clarification-first (ask for clarification before)"
+      - "No blanket thinking-forcing (think step by step on every response)"
+    pattern_ref: "data/anthropic-patterns.yaml (implicit — patterns deliberately absent from 4.7)"
+
+  - id: CHK-16
+    category: prompt-quality
+    name: "Canonical pattern adoption"
+    severity: advisory
+    sub_rubric:
+      - "Decision logic > 3 conditions uses decision-tree-stop-at-first-match or arrow-notation"
+      - "Example blocks use User-Response-Rationale triplet"
+      - "Tool list > 3 tools uses priority-numbered or cost-framing"
+      - "Multi-section agent/skill uses section-tagged-structure"
+    pattern_ref: "data/anthropic-patterns.yaml (multiple patterns)"
+
+# Scoring
+scoring:
+  # Schema checks (CHK-01 to CHK-12)
+  schema:
+    pass: 90           # >= 90% = PASS
+    concerns: 80       # 80-89% = CONCERNS (fixable)
+    fail: 0            # < 80% = FAIL
+
+  # Prompt-quality checks (CHK-13 to CHK-16), weighted
+  prompt_quality:
+    weighted_formula: "0.30 * CHK13 + 0.25 * CHK14 + 0.25 * CHK15 + 0.20 * CHK16"
+    pass: 80           # >= 80% = PASS
+    concerns: 70       # 70-79% = CONCERNS
+    fail: 0            # < 70% = FAIL (blocking mode only)
+    mode_default: advisory  # Sprint 1 = advisory, Sprint 2 = blocking
+    threshold_default: 80
+
+  # Legacy (deprecated, kept for backward-compat with existing reports)
+  pass: 90
+  warning: 70
+  fail_fixable: 50
+  fail_structural: 0

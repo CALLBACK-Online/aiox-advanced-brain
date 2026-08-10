@@ -1,0 +1,88 @@
+# SINKRA Composition Template
+# Use this template to define a process for materialization in ClickUp.
+# Fill in all fields and run: node services/clickup materialize <this-file.yaml>
+#
+# Reference: squads/sinkra-squad/data/clickup-composition-rules.yaml
+# Owner: clickup-ops-squad
+
+composition:
+  # Domain determines which Space to use (REUSE existing Space)
+  # Valid domains: ai_automation, operations, sales, administration,
+  #   engineering, client_delivery, people, marketing, campaigns, subsidiary, personal
+  domain: operations
+
+  # Squad that owns this process
+  owner_squad: editing-squad
+
+  # Organism = Folder in ClickUp
+  organism:
+    # Folder name. Use "[BU] Name" prefix for business units.
+    name: "[BU] Example Process"
+
+    # State machine defines the status workflow for all Lists in this Folder
+    # At least 2 states required. First = open, last = closed.
+    state_machine:
+      states:
+        - Novo
+        - "Em Produção"
+        - Revisão
+        - Entregue
+
+    # Molecules = Lists inside the Folder
+    molecules:
+      - name: "Pipeline Example"
+        # default_view: board | calendar | table | list (optional, defaults to board)
+        default_view: board
+
+        # Tokens = Custom Fields on the List
+        # Each token needs: name, family, and optionally subtype and shared flag
+        #
+        # Valid families:
+        #   Time        → date field
+        #   Capacity    → number field
+        #   Threshold   → number/currency (use subtype: financial for BRL currency)
+        #   Priority    → dropdown (P0-P3)
+        #   Permission  → users/checkbox (use subtype: user or flag)
+        #   Taxonomy    → dropdown/labels (use subtype: small or large)
+        #   Behavior    → checkbox (use subtype: trigger for automations)
+        #   Accountability → users field
+        #
+        # Set shared: true for fields that already exist (e.g., Cliente dropdown)
+        tokens:
+          - { name: "Cliente", family: Taxonomy, shared: true }
+          - { name: "Prazo", family: Time }
+          - { name: "Responsável", family: Accountability }
+          - { name: "Valor", family: Threshold, subtype: financial }
+          - { name: "Prioridade", family: Priority }
+
+      - name: "Backlog Example"
+        default_view: list
+        tokens:
+          - { name: "Processo", family: Taxonomy }
+          - { name: "Aprovado", family: Behavior, subtype: trigger }
+          - { name: "Capacidade", family: Capacity }
+
+# =============================================================================
+# POC 40.6 Example (real materialization):
+#
+#   composition:
+#     domain: ai_automation
+#     owner_squad: sinkra-squad
+#     organism:
+#       name: "Mapeamento de Processos"
+#       state_machine:
+#         states: [Backlog, Discovery, Architecture, Executors, Composition, "QA Gates", Handoff, Concluído]
+#       molecules:
+#         - name: "Pipeline SINKRA"
+#           default_view: board
+#           tokens:
+#             - { name: "Cliente", family: Taxonomy, shared: true }
+#             - { name: "Squad Solicitante", family: Taxonomy }
+#             - { name: "Prazo", family: Time }
+#             - { name: "Prioridade", family: Priority }
+#             - { name: "Responsável", family: Accountability }
+#
+# Run:
+#   node services/clickup materialize <this-file.yaml> --dry-run    # Validate
+#   node services/clickup materialize <this-file.yaml> --verbose    # Execute
+# =============================================================================

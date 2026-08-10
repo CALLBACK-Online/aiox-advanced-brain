@@ -1,0 +1,90 @@
+# Materialization Pipeline Workflow
+# Fluxo completo: SINKRA composition → ClickUp structure
+
+version: "1.0.0"
+name: materialization-pipeline
+type: main
+squad: clickup-ops-squad
+
+description: |
+  Pipeline sequencial para materializar processo SINKRA no ClickUp.
+  Orquestrado pelo clickup-chief.
+
+trigger:
+  - "Novo processo mapeado pelo sinkra-squad"
+  - "Comando *materialize {path}"
+
+steps:
+  - id: validate
+    name: "Validar Composição SINKRA"
+    agent: clickup-chief
+    checklist: "checklists/pre-materialization.md"
+    on_fail: BLOCK
+    output: validation_result
+
+  - id: check_api
+    name: "Verificar Readiness de APIs"
+    agent: clickup-chief
+    action: "Comparar receita necessária vs api_implementation_gaps"
+    on_fail:
+      action: "Rotear para api-builder"
+      blocker: true
+
+  - id: fill_gaps
+    name: "Preencher API Gaps (se necessário)"
+    agent: api-builder
+    condition: "check_api.on_fail == true"
+    task: "tasks/fill-api-gaps.md"
+    output: apis_ready
+
+  - id: create_structure
+    name: "Criar Estrutura (Folder + Lists + Fields)"
+    agent: materializer
+    requires: [validate, check_api]
+    actions:
+      - resolve_space
+      - create_folder
+      - create_lists
+      - create_custom_fields
+      - create_views
+    output: structure_ids
+
+  - id: create_automations
+    name: "Criar Automações (Playwright)"
+    agent: playwright-ops
+    condition: "composition has automation atoms"
+    requires: [create_structure]
+    actions:
+      - create_automation_rules
+      - screenshot_confirmations
+    output: automation_ids
+
+  - id: update_registry
+    name: "Atualizar Tokenization Registry"
+    agent: materializer
+    requires: [create_structure, create_automations]
+    actions:
+      - update_clickup_tokenization_yaml
+      - update_statistics
+      - add_changelog_entry
+    output: registry_updated
+
+  - id: audit
+    name: "Auditar Resultado"
+    agent: auditor
+    requires: [update_registry]
+    checklist: "checklists/post-materialization.md"
+    on_fail: WARN
+    output: audit_report
+
+  - id: report
+    name: "Gerar Relatório Final"
+    agent: clickup-chief
+    requires: [audit]
+    output: materialization_report
+
+completion_criteria:
+  - "Todas entidades criadas no ClickUp"
+  - "Tokenization atualizado com IDs"
+  - "Audit passou (ou WARNs documentados)"
+  - "Relatório gerado"

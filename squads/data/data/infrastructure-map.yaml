@@ -1,0 +1,205 @@
+# Data Squad Infrastructure Map v1.0
+# Mapeia tasks automatizadas -> infraestrutura de suporte (scripts, templates, services).
+# Destaca gaps de automacao.
+
+_dependents_declaration:
+  registry_id: data-infrastructure-map
+  dag_role: leaf
+  upstream:
+    - registry: "squads/data/data/process-registry.yaml"
+
+version: "1.0.0"
+squad: data
+description: "Mapa de infraestrutura suportando os 13 tasks / 7 workflows da squad data."
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SCRIPTS (automation entrypoints)
+# ─────────────────────────────────────────────────────────────────────────────
+
+scripts:
+  - id: SCRIPT-DATA-001
+    name: bootstrap-data-workspace.sh
+    path: "squads/data/scripts/bootstrap-data-workspace.sh"
+    purpose: "Bootstrap workspace analytics dirs + seed templates for a business"
+    triggered_by: "squad activation (workspace_integration.bootstrap.required=true)"
+    inputs:
+      - business_slug
+    outputs:
+      - workspace/businesses/{slug}/L1-strategy/analytics/ directory tree
+    status: active
+
+  - id: SCRIPT-DATA-002
+    name: validate-data-essentials.sh
+    path: "squads/data/scripts/validate-data-essentials.sh"
+    purpose: "Validate minimum required artifacts exist for data ops in a business"
+    triggered_by: "workspace_integration.essentials_validation.required=true"
+    inputs:
+      - business_slug
+    outputs:
+      - validation report (pass|fail with gaps)
+    status: active
+
+# ─────────────────────────────────────────────────────────────────────────────
+# TEMPLATES (artifact infrastructure)
+# ─────────────────────────────────────────────────────────────────────────────
+
+templates:
+  location: "squads/data/templates/"
+  total_count: 16
+  namespace: analytics
+  canonical_outputs_root: "workspace/businesses/{slug}/L1-strategy/analytics/"
+  custom_outputs_root: "outputs/data/{slug}/"
+  governance: "document-registry.yaml per business binds templates to workspace layer"
+  categories:
+    - cohort-analysis (retention curves, cohort matrix)
+    - clv (customer lifetime value models)
+    - rfm (segmentation reports)
+    - health-score (model + scorecard)
+    - churn (prediction spec + dashboard)
+    - attribution (model + dashboard)
+    - pmf (survey + score report)
+    - community (health + engagement)
+    - learning (outcomes + completion)
+    - north-star (metric definition + tree)
+    - dashboard (generic dashboard spec)
+    - experiment (test plan + results)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CHECKLISTS (quality infrastructure)
+# ─────────────────────────────────────────────────────────────────────────────
+
+checklists:
+  location: "squads/data/checklists/"
+  total_count: 7
+  purpose: "Pre/post execution quality checks per task category"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# TASK -> INFRASTRUCTURE BINDINGS
+# ─────────────────────────────────────────────────────────────────────────────
+
+task_infrastructure:
+  load-workspace-context:
+    scripts: [SCRIPT-DATA-001]
+    templates: []
+    external_services: []
+
+  analyze-cohort:
+    scripts: []
+    templates: [cohort-analysis-template]
+    external_services: []
+    gap: "no-analytics-warehouse-connector"
+
+  calculate-clv:
+    scripts: []
+    templates: [clv-template]
+    external_services: []
+    gap: "no-probabilistic-model-runtime"
+
+  segment-rfm:
+    scripts: []
+    templates: [rfm-template]
+
+  predict-churn:
+    scripts: []
+    templates: [churn-template]
+    gap: "no-ml-serving-infra"
+
+  design-health-score:
+    scripts: []
+    templates: [health-score-template]
+
+  build-attribution:
+    scripts: []
+    templates: [attribution-template]
+    gap: "no-channel-data-pipeline"
+
+  create-dashboard:
+    scripts: []
+    templates: [dashboard-template]
+    gap: "no-automated-dashboard-tooling"
+
+  define-north-star:
+    scripts: []
+    templates: [north-star-template]
+
+  measure-community:
+    scripts: []
+    templates: [community-template]
+
+  design-learning-outcomes:
+    scripts: []
+    templates: [learning-outcomes-template]
+
+  run-pmf-test:
+    scripts: []
+    templates: [pmf-template]
+    gap: "no-survey-distribution-service"
+
+  run-growth-experiment:
+    scripts: []
+    templates: [experiment-template]
+    gap: "no-ab-test-platform-integration"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# WORKSPACE INTEGRATION (from config.yaml)
+# ─────────────────────────────────────────────────────────────────────────────
+
+workspace_integration:
+  level: workspace_first
+  read_paths:
+    - workspace/businesses/
+    - workspace/_templates/business-template/
+    - workspace/_templates/business-template-v3/
+  write_paths:
+    - workspace/businesses/{slug}/L1-strategy/analytics/
+    - outputs/data/{slug}/
+  governance_handoff: "squads/c-level"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# GAPS (infra debt — priorizar roadmap)
+# ─────────────────────────────────────────────────────────────────────────────
+
+gaps:
+  - id: GAP-DATA-001
+    title: "No analytics warehouse connector"
+    impact: "analyze-cohort, calculate-clv, segment-rfm depend on manual data export"
+    severity: high
+    proposed_solution: "Build services/analytics-warehouse adapter (Supabase + dbt or DuckDB)"
+
+  - id: GAP-DATA-002
+    title: "No automated dashboard tooling"
+    impact: "create-dashboard produces yaml spec only; no auto-render to Metabase/Superset"
+    severity: high
+    proposed_solution: "Adapter for Metabase API in services/metabase-adapter"
+
+  - id: GAP-DATA-003
+    title: "No ML serving infrastructure for churn prediction"
+    impact: "predict-churn outputs model spec but no deployment path"
+    severity: medium
+    proposed_solution: "Supabase Edge Functions + ONNX runtime OR Railway ML service"
+
+  - id: GAP-DATA-004
+    title: "No A/B test platform integration"
+    impact: "run-growth-experiment produces test plan only; execution is manual"
+    severity: medium
+    proposed_solution: "GrowthBook or custom Supabase-backed experiments service"
+
+  - id: GAP-DATA-005
+    title: "No survey distribution service for PMF tests"
+    impact: "run-pmf-test depends on manual Typeform/Google Forms distribution"
+    severity: low
+    proposed_solution: "Integrate Typeform API or build lightweight survey service"
+
+  - id: GAP-DATA-006
+    title: "No channel data pipeline for attribution"
+    impact: "build-attribution requires manual data aggregation from ads platforms"
+    severity: medium
+    proposed_solution: "Integrate services/etl-ops with Meta/Google Ads APIs"
+
+meta:
+  total_scripts: 2
+  total_templates: 16
+  total_checklists: 7
+  total_gaps: 6
+  last_updated: "2026-04-15"
+  owner: data-chief

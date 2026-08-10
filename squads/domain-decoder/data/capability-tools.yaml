@@ -1,0 +1,625 @@
+# Capability-Tools Mapping: Domain Decoder Squad
+# Generated: 2026-02-18
+# Updated: 2026-02-18 (Deep Research Pass - verified GitHub stats via API)
+# Updated by: deep-researcher agent
+
+version: "2.0"
+domain: "domain-reverse-engineering"
+squad: "domain-decoder"
+stats_verified: "2026-02-18 via gh api"
+
+# Capability -> Tool mapping for each gap identified
+
+capabilities:
+
+  ast_parsing:
+    priority: 9.5
+    description: "Parse code into AST for structural analysis"
+    tools:
+      primary:
+        - name: ast-grep
+          type: cli
+          install: "cargo install ast-grep"
+          alt_install: "npm i -g @ast-grep/napi"
+          output: ["json", "text", "sarif"]
+          languages: "200+ via tree-sitter"
+          usage: "ast-grep -p '$PATTERN' --lang js /path/to/code"
+
+        - name: tree-sitter
+          type: cli
+          github: "tree-sitter/tree-sitter"
+          stars: 23834
+          last_commit: "2026-02-18"
+          license: MIT
+          install: "cargo install tree-sitter-cli"
+          alt_install: "npm install tree-sitter-cli"
+          usage: "tree-sitter parse file.js"
+
+      advanced:
+        - name: joern
+          type: cli
+          github: "joernio/joern"
+          stars: 2947
+          last_commit: "2026-02-18"
+          license: Apache-2.0
+          install: "Download from github.com/joernio/joern/releases"
+          requires: "JDK 17"
+          usage: "joern --script analysis.sc"
+          note: "Code Property Graph - combines AST + CFG + PDG"
+
+        - name: ts-morph
+          type: library
+          github: "dsherret/ts-morph"
+          stars: 5944
+          last_commit: "2025-10-12"
+          license: MIT
+          install: "npm install ts-morph"
+          language: typescript
+          features: ["typescript_ast", "type_analysis", "code_manipulation"]
+          note: "TypeScript Compiler API wrapper. 9M+ npm downloads. Perfect for TS/JS codebases."
+
+      mcp:
+        - name: MCP_CodeAnalysis
+          type: mcp
+          source: "github.com/0xjcf/MCP_CodeAnalysis"
+          status: "not_installed"
+
+        - name: tree-sitter-analyzer
+          type: mcp
+          source: "pypi.org/project/tree-sitter-analyzer"
+          status: "not_installed"
+
+  dependency_graph:
+    priority: 9.0
+    description: "Map module dependencies and generate visual graphs"
+    tools:
+      primary:
+        - name: dependency-cruiser
+          type: cli
+          github: "sverweij/dependency-cruiser"
+          stars: 6391
+          last_commit: "2026-02-08"
+          license: MIT
+          install: "npm i -g dependency-cruiser"
+          languages: ["javascript", "typescript", "coffeescript"]
+          output: ["dot", "svg", "json", "html", "mermaid", "csv"]
+          features: ["validation_rules", "circular_detection", "orphan_detection"]
+          usage: "npx depcruise src --output-type dot | dot -T svg > deps.svg"
+
+        - name: madge
+          type: cli
+          github: "pahen/madge"
+          stars: 9977
+          last_commit: "2026-01-21"
+          license: MIT
+          install: "npm i -g madge"
+          languages: ["javascript", "typescript", "css"]
+          output: ["svg", "png", "json"]
+          features: ["circular_detection", "dead_code_detection"]
+          usage: "madge src/main.ts --ts-config tsconfig.json --image deps.svg"
+
+      call_graph:
+        - name: jelly
+          type: cli
+          github: "cs-au-dk/jelly"
+          stars: 417
+          last_commit: "2026-02-10"
+          license: BSD-3-Clause
+          install: "from source"
+          languages: ["javascript", "typescript"]
+          features: ["call_graph", "library_analysis", "vulnerability_exposure"]
+          note: "Modern JS/TS call graph builder from Aarhus University. Actively maintained."
+
+        - name: js-callgraph
+          type: cli
+          github: "Persper/js-callgraph"
+          stars: 198
+          last_commit: "2022-12-08"
+          license: EPL-2.0
+          install: "npm install -g @persper/js-callgraph"
+          languages: ["javascript", "typescript"]
+          features: ["call_graph", "pessimistic_optimistic_strategies"]
+          note: "Not actively maintained. Use jelly or joern instead."
+
+      alternative:
+        - name: skott
+          type: cli
+          install: "npm install skott"
+          note: "Modern alternative with web UI"
+
+      mcp:
+        - name: mcp-code-graph
+          type: mcp
+          source: "github.com/JudiniLabs/mcp-code-graph"
+          status: "not_installed"
+
+        - name: dependency-mcp
+          type: mcp
+          source: "github.com/mkearl/dependency-mcp"
+          status: "not_installed"
+
+  git_history_analysis:
+    priority: 8.5
+    description: "Mine git history for hotspots, coupling, and evolution patterns"
+    tools:
+      primary:
+        - name: code-maat
+          type: cli
+          github: "adamtornhill/code-maat"
+          stars: 2551
+          last_commit: "2025-07-03"
+          license: GPL-3.0
+          install: "Download JAR from github.com/adamtornhill/code-maat"
+          requires: "Java 8+"
+          output: ["csv"]
+          features: ["hotspots", "temporal_coupling", "author_analysis", "code_age", "entity_ownership", "fragmentation"]
+          analyses: ["revisions", "coupling", "age", "abs-churn", "author-churn", "authors", "communication", "entity-churn", "entity-effort", "entity-ownership", "fragmentation", "main-dev", "soc", "summary"]
+          usage: |
+            git log --pretty=format:'[%h] %an %ad %s' --date=short --numstat > project.log
+            java -jar code-maat.jar -l project.log -c git -a revisions
+            java -jar code-maat.jar -l project.log -c git -a coupling
+
+      alternative:
+        - name: code-forensics
+          type: cli
+          github: "smontanari/code-forensics"
+          stars: 403
+          last_commit: "2023-01-06"
+          install: "npm install code-forensics"
+          note: "HTML visualization built on code-maat concepts. Not maintained since 2023."
+
+        - name: gilot
+          type: cli
+          github: "hirokidaichi/gilot"
+          stars: 210
+          last_commit: "2025-05-19"
+          license: MIT
+          install: "pip install gilot"
+          features: ["hotspot_detection", "file_network_visualization"]
+          note: "Lightweight alternative. 'hotgraph' visualizes hidden file connections."
+
+        - name: gitinspector
+          type: cli
+          github: "ejwa/gitinspector"
+          stars: 2499
+          last_commit: "2024-04-30"
+          license: GPL-3.0
+          install: "pip install gitinspector"
+          output: ["html", "json", "xml", "text"]
+          features: ["author_statistics", "code_contribution_analysis", "timeline"]
+          note: "Easy to use. Good for understanding knowledge distribution."
+
+      native:
+        - name: "git log + bash"
+          usage: |
+            git log --format='%H' --since='6 months ago' | wc -l
+            git log --pretty=format: --name-only --since='6 months ago' | sort | uniq -c | sort -rn | head -20
+
+      mcp:
+        - name: git-forensics-mcp
+          type: mcp
+          source: "github.com/davidorex/git-forensics-mcp"
+          status: "not_installed"
+          note: "MCP server for deep git investigation. Direct Claude Code integration."
+
+  code_complexity:
+    priority: 8.0
+    description: "Measure cyclomatic complexity, SLOC, and maintainability"
+    tools:
+      primary:
+        - name: scc
+          type: cli
+          install: "brew install scc"
+          output: ["json", "csv", "html", "text"]
+          features: ["sloc", "complexity", "cocomo_estimates"]
+          languages: "200+"
+          usage: "scc --format json /path/to/code"
+
+        - name: lizard
+          type: cli
+          github: "terryyin/lizard"
+          stars: 2272
+          last_commit: "2026-02-03"
+          install: "pip install lizard"
+          output: ["csv", "xml", "html"]
+          features: ["cyclomatic_complexity", "function_level", "nloc", "code_duplication"]
+          languages: ["c", "cpp", "java", "python", "javascript", "typescript", "csharp", "go", "php", "ruby", "swift", "kotlin", "scala", "lua"]
+          usage: "lizard /path/to/code --csv > complexity.csv"
+
+      javascript_specific:
+        - name: plato
+          type: cli
+          github: "es-analysis/plato"
+          stars: 4565
+          last_commit: "2022-02-11"
+          license: MIT
+          install: "npm install -g es6-plato"
+          output: ["html"]
+          features: ["complexity_visualization", "maintainability_index", "interactive_reports"]
+          note: "Use the-simian/es6-plato or upgradejs/upjs-plato forks for ES6 support."
+
+      python_specific:
+        - name: radon
+          type: cli
+          install: "pip install radon"
+          features: ["cyclomatic_complexity", "maintainability_index", "halstead_metrics"]
+          usage: "radon cc /path/to/code -a -nc"
+
+  erd_schema:
+    priority: 7.5
+    description: "Generate Entity-Relationship diagrams from database schemas"
+    tools:
+      primary:
+        - name: SchemaSpy
+          type: cli
+          github: "schemaspy/schemaspy"
+          stars: 3539
+          last_commit: "2026-01-26"
+          license: LGPL-3.0
+          install: "Download JAR from github.com/schemaspy/schemaspy"
+          requires: "Java 8+, JDBC driver"
+          output: ["html", "svg"]
+          features: ["interactive_html", "erd_diagrams", "constraint_docs", "anomaly_detection"]
+          usage: "java -jar schemaspy.jar -t pgsql11 -db mydb -host localhost -u user -p pass -o ./docs"
+
+        - name: DBML
+          type: cli
+          github: "holistics/dbml"
+          stars: 3519
+          last_commit: "2026-02-13"
+          license: Apache-2.0
+          install: "npm install @dbml/core"
+          output: ["dbml", "sql", "diagram"]
+          features: ["schema_definition", "sql_conversion", "database_agnostic"]
+          usage: |
+            sql2dbml --postgres schema.sql -o schema.dbml
+            dbml2sql schema.dbml --postgres -o output.sql
+
+      alternative:
+        - name: ChartDB
+          type: web
+          github: "chartdb/chartdb"
+          stars: 21272
+          last_commit: "2026-02-11"
+          license: AGPL-3.0
+          features: ["web_based_editor", "smart_query", "ai_ddl_export"]
+          note: "21K+ stars. Web UI only, not scriptable."
+
+        - name: Azimutt
+          type: web
+          github: "azimuttapp/azimutt"
+          stars: 2050
+          last_commit: "2025-07-07"
+          license: MIT
+          features: ["large_schema_exploration", "advanced_filtering", "relationship_tracking"]
+          note: "Built for messy real-world databases with 100+ tables."
+
+        - name: ERAlchemy
+          type: cli
+          install: "pip install eralchemy"
+          output: ["dot", "mermaid", "png", "svg"]
+          features: ["sqlalchemy_models", "live_database"]
+          usage: "eralchemy -i 'postgresql://user:pass@localhost/db' -o erd.png"
+
+  dmn_tooling:
+    priority: 7.0
+    description: "Create, edit, and validate DMN decision tables"
+    tools:
+      primary:
+        - name: dmn-js
+          type: library
+          github: "bpmn-io/dmn-js"
+          stars: 344
+          last_commit: "2026-02-18"
+          install: "npm install dmn-js"
+          language: javascript
+          features: ["dmn_1.3", "decision_tables", "drd", "literal_expressions"]
+          note: "By Camunda. Industry standard. Actively maintained."
+
+        - name: dmn-moddle
+          type: library
+          install: "npm install dmn-moddle"
+          language: javascript
+          features: ["read_write_dmn_xml"]
+          note: "Programmatic DMN manipulation"
+
+      execution:
+        - name: dmn-eval-js
+          type: library
+          github: "HBTGmbH/dmn-eval-js"
+          stars: 22
+          last_commit: "2022-06-02"
+          install: "npm install @hbtgmbh/dmn-eval-js"
+          language: javascript
+          features: ["dmn_execution", "sfeel", "hit_policies"]
+          note: "Execute DMN decision tables in Node.js. FIRST, UNIQUE, RULE ORDER, COLLECT."
+
+        - name: pyDMNrules
+          type: library
+          install: "pip install pyDMNrules"
+          language: python
+          features: ["dmn_execution", "decision_tables"]
+          note: "Can validate extracted rules by executing them"
+
+        - name: gorules-zen
+          type: library
+          install: "npm install @gorules/zen-engine"
+          languages: ["rust", "nodejs", "python", "go", "java"]
+          features: ["business_rules_engine", "decision_tables"]
+
+  architecture_diagrams:
+    priority: 6.5
+    description: "Generate architectural diagrams from analysis results"
+    tools:
+      primary:
+        - name: mermaid-cli
+          type: cli
+          github: "mermaid-js/mermaid"
+          stars: 86132
+          last_commit: "2026-02-18"
+          license: MIT
+          install: "npm i -g @mermaid-js/mermaid-cli"
+          output: ["svg", "png", "pdf"]
+          features: ["flowcharts", "sequence", "class", "er", "architecture", "c4", "gantt"]
+          usage: "mmdc -i diagram.mmd -o diagram.svg"
+
+        - name: graphviz
+          type: cli
+          install: "brew install graphviz"
+          output: ["svg", "png", "pdf"]
+          usage: "dot -Tsvg input.dot -o output.svg"
+          note: "Foundation for most graph tools. Required by madge, dependency-cruiser."
+
+        - name: plantuml
+          type: cli
+          install: "brew install plantuml"
+          output: ["svg", "png"]
+          usage: "plantuml diagram.puml"
+
+      ai_powered:
+        - name: swark
+          type: cli
+          github: "swark-io/swark"
+          stars: 1614
+          last_commit: "2025-03-21"
+          license: AGPL-3.0
+          features: ["code_to_mermaid", "legacy_visualization", "dependency_graph"]
+          note: "Auto-generates Mermaid architecture diagrams from code using LLMs."
+
+      c4_model:
+        - name: structurizr
+          type: cli
+          github: "structurizr"
+          stars: 1100
+          license: Apache-2.0
+          features: ["c4_diagrams", "dsl", "multi_view"]
+          note: "C4 model (Context, Containers, Components, Code). ThoughtWorks Tech Radar."
+
+      cloud_architecture:
+        - name: diagrams
+          type: library
+          github: "mingrammer/diagrams"
+          stars: 42015
+          last_commit: "2026-02-07"
+          license: MIT
+          install: "pip install diagrams"
+          requires: "graphviz"
+          language: python
+          features: ["cloud_icons", "aws", "azure", "gcp", "k8s"]
+
+      existing:
+        - name: MermaidDiagram
+          type: component
+          path: "app/components/ops/components/MermaidDiagram.tsx"
+          note: "Already exists in the app for rendering Mermaid diagrams"
+
+# -------------------------------------------------------------------
+# Integration Order (Wave-Based Rollout)
+# -------------------------------------------------------------------
+integration_order:
+  - wave: 1
+    label: "Immediate - Internal foundation + AST search"
+    tools:
+      - domain-decoder:map-domain
+      - domain-decoder:classify-rules
+      - domain-decoder:characterize-legacy
+      - domain-decoder:model-decisions
+      - domain-decoder:express-rules
+      - script:codebase-mapper
+      - script:pattern-extractor
+      - script:dependency-analyzer
+      - script:framework-analyzer
+      - cli:ast-grep
+  - wave: 2
+    label: "Short-Term - Pattern detection + traceability matrix"
+    tools:
+      - cli:semgrep
+      - cli:scc
+      - cli:dependency-cruiser
+      - cli:madge
+      - cli:lizard
+      - cli:code-maat
+  - wave: 3
+    label: "Medium-Term - Deep analysis + specialized tooling"
+    tools:
+      - cpg:joern
+      - library:tree-sitter
+      - library:ts-morph
+      - library:dmn-js
+      - cli:comby
+
+# -------------------------------------------------------------------
+# Governance Check
+# -------------------------------------------------------------------
+governance_check:
+  protocol: squads/squad-creator/protocols/ai-first-governance.md
+  policy: internal-first
+  canonical_sources_checked:
+    - path: squads/domain-decoder/workflows/wf-extract-rules.yaml
+      status: implemented
+    - path: squads/domain-decoder/docs/tool-discovery-report.md
+      status: implemented
+    - path: squads/domain-decoder/docs/tool-integration-plan.md
+      status: implemented
+    - path: squads/domain-decoder/data/capability-tools.yaml
+      status: implemented
+  rules:
+    - "Internal capabilities ALWAYS take priority over external tools"
+    - "External tools are gap-only — never duplicate what internal tasks already cover"
+    - "Every external tool must have a fallback (internal or simpler alternative)"
+    - "Focus is code -> business model extraction, NOT DNS/domain intelligence"
+
+# -------------------------------------------------------------------
+# Decision Matrix (Impact vs Effort)
+# -------------------------------------------------------------------
+decision_matrix:
+  quick_wins:
+    description: "High Impact, Low Effort - Implement now"
+    tools:
+      - { name: "domain-decoder tasks", impact: 10, effort: 2 }
+      - { name: "ast-grep", impact: 9, effort: 3 }
+      - { name: "scc", impact: 7, effort: 1 }
+      - { name: "dependency-cruiser", impact: 8, effort: 3 }
+      - { name: "madge", impact: 7, effort: 2 }
+      - { name: "mermaid-cli", impact: 7, effort: 1 }
+      - { name: "lizard", impact: 7, effort: 2 }
+  strategic:
+    description: "High Impact, High Effort - Plan for"
+    tools:
+      - { name: "semgrep", impact: 9, effort: 4 }
+      - { name: "joern", impact: 8, effort: 7 }
+      - { name: "CodeQL", impact: 9, effort: 7 }
+      - { name: "SchemaSpy", impact: 7, effort: 5 }
+      - { name: "code-maat", impact: 8, effort: 4 }
+  fill_ins:
+    description: "Low Impact, Low Effort - Nice to have"
+    tools:
+      - { name: "ts-morph", impact: 6, effort: 3 }
+      - { name: "DBML", impact: 5, effort: 2 }
+      - { name: "gitinspector", impact: 5, effort: 2 }
+      - { name: "SeaGOAT", impact: 5, effort: 3 }
+      - { name: "comby", impact: 5, effort: 2 }
+  backlog:
+    description: "Low Impact, High Effort - Low priority"
+    tools:
+      - { name: "Structurizr", impact: 4, effort: 5 }
+      - { name: "jelly", impact: 4, effort: 5 }
+
+# -------------------------------------------------------------------
+# Capabilities (continued)
+# -------------------------------------------------------------------
+
+  semantic_code_search:
+    priority: 6.0
+    description: "Search code by structural patterns, not just text"
+    tools:
+      primary:
+        - name: ast-grep
+          type: cli
+          note: "Already listed in ast_parsing. Dual-purpose tool."
+          usage: "ast-grep -p 'if ($COND) { return $VAL; }' --lang js"
+
+        - name: semgrep
+          type: cli
+          github: "semgrep/semgrep"
+          stars: 14174
+          last_commit: "2026-02-19"
+          license: LGPL-2.1
+          install: "pip install semgrep"
+          languages: "30+"
+          features: ["pattern_matching", "taint_analysis", "supply_chain", "custom_rules"]
+          usage: "semgrep --config auto /path/to/code"
+
+      advanced:
+        - name: CodeQL
+          type: cli
+          github: "github/codeql"
+          stars: 9246
+          last_commit: "2026-02-18"
+          license: MIT
+          install: "Download from github.com/github/codeql-cli-binaries"
+          features: ["semantic_analysis", "data_flow", "taint_tracking", "variant_analysis"]
+          note: "Most powerful semantic search. Free for open-source/research. Commercial license for closed-source."
+
+      ai_powered:
+        - name: SeaGOAT
+          type: cli
+          github: "kantord/SeaGOAT"
+          stars: 1265
+          last_commit: "2026-02-18"
+          license: MIT
+          install: "pip install seagoat"
+          features: ["natural_language_query", "vector_embeddings", "local_first"]
+          note: "Search code with natural language. 100% local."
+
+      alternative:
+        - name: comby
+          type: cli
+          install: "brew install comby"
+          features: ["structural_search", "structural_replace"]
+          usage: "comby 'if :[cond] { :[body] }' '' -match-only /path/to/code"
+
+# Squad Phase -> Tool Integration
+phase_integration:
+  phase_0_discovery:
+    agent: ["eric-evans", "ronald-ross"]
+    pre_analysis:
+      - tool: scc
+        purpose: "Codebase overview (languages, SLOC, complexity)"
+        command: "scc --format json {source_path}"
+      - tool: madge
+        purpose: "Quick dependency visualization"
+        command: "madge {source_path}/src --image deps.svg"
+      - tool: ast-grep
+        purpose: "Discover patterns and rule candidates"
+        command: "ast-grep -p 'if ($COND) { throw $ERR }' --lang ts {source_path}"
+
+  phase_1_characterization:
+    agent: ["martin-fowler", "michael-feathers"]
+    pre_analysis:
+      - tool: code-maat
+        purpose: "Identify hotspots and temporal coupling"
+        command: "java -jar code-maat.jar -l project.log -c git -a revisions"
+      - tool: lizard
+        purpose: "Function-level complexity"
+        command: "lizard {source_path} --csv > complexity.csv"
+      - tool: dependency-cruiser
+        purpose: "Architectural rule validation"
+        command: "npx depcruise {source_path}/src --output-type dot | dot -T svg > arch.svg"
+      - tool: gitinspector
+        purpose: "Knowledge distribution across team"
+        command: "gitinspector {source_path} --format json"
+
+  phase_2_extraction:
+    agent: ["michael-feathers", "ronald-ross"]
+    pre_analysis:
+      - tool: ast-grep
+        purpose: "Extract rule patterns from code"
+        command: "ast-grep -p 'validate($ARGS)' --json {source_path}"
+      - tool: semgrep
+        purpose: "Find complex rule patterns with taint analysis"
+        command: "semgrep --pattern 'if ($COND1) { ... } else if ($COND2) { ... }' {source_path}"
+      - tool: joern
+        purpose: "Deep data flow analysis for complex rules"
+        command: "joern --script extract-rules.sc"
+        note: "Optional - for complex codebases only"
+
+  phase_3_modeling:
+    agent: ["barbara-von-halle", "james-taylor"]
+    tools:
+      - tool: dmn-js
+        purpose: "Render and validate DMN decision tables"
+      - tool: dmn-moddle
+        purpose: "Generate DMN 1.3 XML from extracted rules"
+      - tool: dmn-eval-js
+        purpose: "Execute decision tables with test data in Node.js"
+
+  phase_5_validation:
+    agent: ["decoder-chief"]
+    tools:
+      - tool: pyDMNrules
+        purpose: "Execute decision tables with test data"
+      - tool: ast-grep
+        purpose: "Verify rule patterns against source"
+      - tool: semgrep
+        purpose: "Validate pattern coverage across codebase"

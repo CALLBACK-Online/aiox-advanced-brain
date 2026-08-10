@@ -1,0 +1,133 @@
+---
+# extraction-policy.yaml — Extraction Fallback Ladder
+#
+# Purpose: Declares the ordered fallback ladder used when primary extraction
+# of web content fails or yields insufficient quality. Consumed by:
+#   - squads/research/scripts/tech-research/extraction_escalator.py
+#   - squads/research/scripts/tech-research/output_validator.py (check_extraction_ladder)
+#   - .claude/skills/tech-research/SKILL.md Phase 1.5 (sources strategy)
+#
+# Rules (per story RA-F.3 and .claude/rules/extraction-no-fallbacks.md):
+#   - Ladder is ordered: each step tried IN ORDER on failure/low quality
+#   - Ladder is BOUNDED: step 5 (mark_blocked) is always the terminal step
+#   - step 1 is NEVER skipped (websearch_snippet is always attempted first)
+#   - No infinite-loop: bounded by 5 steps + per-step timeout
+#   - Failures are recorded, NEVER silenced
+#   - Fields mark_blocked: register in caveats; do not retry
+#
+# Schema version: 1.0
+# Source: STORY-RA-F.3 (Wave 14, Sprint F, 2026-05-19)
+# Evidence: Manus sessions 2/2 — explicit visual navigation fallback when
+#           text extraction failed. Anti-pattern: silent snippet truncation.
+
+schema_version: "1.0"
+generator: "squads/research/data/extraction-policy.yaml"
+created_at: "2026-05-19"
+
+# Per-step and total ladder timeouts (seconds)
+timeouts:
+  per_step_seconds: 15
+  total_ladder_seconds: 60
+
+# snippet_quality threshold: ratio [0.0 – 1.0] above which step 2+ is skipped
+snippet_quality_threshold: 0.7
+
+extraction_ladder:
+
+  - step: 1
+    method: websearch_snippet
+    label: "WebSearch snippet"
+    cost: low
+    when_skip: never
+    description: >
+      Always attempted first. Uses WebSearch MCP to retrieve the snippet/abstract
+      for the URL. Fast and cheap. Sufficient when snippet_quality >= threshold.
+    quality_indicators:
+      - snippet_length_chars_min: 200
+      - has_substantive_content: true
+    on_success: return_result
+    on_failure: escalate_to_step_2
+
+  - step: 2
+    method: webfetch
+    label: "WebFetch full-page"
+    cost: medium
+    when_skip: "snippet_quality >= 0.7 OR no_url_available"
+    description: >
+      Full-page fetch via WebFetch MCP. Retrieves rendered HTML/text content.
+      Skipped when step 1 snippet already meets quality threshold OR URL is not
+      available (DOI-only academic, paywalled, etc.).
+    quality_indicators:
+      - content_length_chars_min: 500
+      - not_blocked_by_cloudflare: true
+    on_success: return_result
+    on_failure: escalate_to_step_3
+
+  - step: 3
+    method: etl_adapter
+    label: "ETL Adapter (YouTube/PDF/arXiv)"
+    cost: medium
+    when_skip: "content_type not in [youtube, pdf, arxiv, pubmed, semantic_scholar]"
+    description: >
+      Uses services/etl adapters for structured content types: YouTube (transcript),
+      PDF (text extraction), arXiv (abstract+body via API), PubMed, Semantic Scholar.
+      Only triggered when content_type is in the supported adapter list.
+    supported_content_types:
+      - youtube
+      - pdf
+      - arxiv
+      - pubmed
+      - semantic_scholar
+    on_success: return_result
+    on_failure: escalate_to_step_4
+
+  - step: 4
+    method: playwright
+    label: "Playwright browser (JS-rendered)"
+    cost: high
+    when_skip: "playwright_mcp_unavailable OR webfetch_succeeded"
+    description: >
+      Full browser rendering via Playwright MCP for JavaScript-heavy pages (SPAs,
+      Cloudflare-protected, dynamically loaded content). Only attempted when:
+      - Playwright MCP is available in current session
+      - Steps 1-3 all failed or yielded blocked_fallback
+      This step corresponds to "visual navigation" pattern observed in Manus sessions.
+    on_success: return_result
+    on_failure: escalate_to_step_5
+
+  - step: 5
+    method: mark_blocked
+    label: "Mark as blocked"
+    cost: zero
+    when_skip: never
+    description: >
+      Terminal step. Source is registered as extraction_blocked in sources.yaml
+      and noted in the research caveats section. No further retry is performed.
+      The source remains in the manifest with extraction_quality: blocked_fallback_used
+      so downstream analysis knows coverage is incomplete for this URL.
+    action: "register in caveats; do not retry"
+    output_schema:
+      extraction_method: extraction_blocked
+      extraction_quality: blocked_fallback_used
+      extraction_notes: "All ladder steps exhausted. Source URL inaccessible."
+
+# Quality assessment thresholds
+quality_assessment:
+  full:
+    min_chars: 800
+    has_substantive_content: true
+    not_blocked: true
+  snippet_only:
+    min_chars: 150
+    max_chars: 799
+    note: "Partial content — may miss detail but usable for context"
+  blocked_fallback_used:
+    chars: 0
+    note: "No content extracted — all ladder steps failed"
+
+# Caveats template for mark_blocked sources
+caveats_template: >
+  Source {url} was inaccessible after exhausting all extraction steps
+  (websearch_snippet → webfetch → etl_adapter → playwright). Content was NOT
+  included in analysis. This may affect coverage of {domain_context}.
+  Recommended: manual review or alternative source search.
