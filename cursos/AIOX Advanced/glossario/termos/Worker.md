@@ -24,7 +24,7 @@ Use **Worker** para delegar uma operação previsível e delimitada, como varrer
 
 **Exemplo prático:** nas aulas [[15-quatro-executores]] e [[30-runner-executavel-deterministico]], entregue ao **Worker** uma pasta e regras de normalização; ele processa os arquivos, produz o relatório e encaminha casos fora do padrão para revisão.
 
-**Não confunda:** **Worker** não escolhe o escopo nem resolve ambiguidade de negócio: ele executa o procedimento delimitado; Agent raciocina sobre exceções e Humano mantém a decisão final.
+**Não confunda:** **Worker** não escolhe o escopo nem resolve ambiguidade de negócio: ele executa o procedimento delimitado; Agent raciocina sobre exceções e Humano mantém a decisão final. O reflexo caro é o inverso — jogar IA em tarefa mecânica que pedia um **Worker**: o worker determinístico é mais barato, mais rápido e sem variância onde você queria garantia.
 
 **Frequência nos cursos:** **79** menções (AIOX Advanced: 78 · AIOX Advanced Squads: 1).
 

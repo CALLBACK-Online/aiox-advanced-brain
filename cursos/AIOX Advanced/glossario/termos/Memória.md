@@ -24,7 +24,7 @@ Use **Memória** para persistir decisões, restrições e contexto que o próxim
 
 **Exemplo prático:** na aula [[14-anatomia-do-agente]], depois de decidir a estratégia de migração, registre a decisão, as restrições e as pendências no artefato de handoff; o próximo agente lê esse contexto antes de continuar.
 
-**Não confunda:** **Memória** não é a janela inteira de contexto nem substitui a fonte de verdade; informação antiga ou não registrada pode induzir o próximo turno ao erro.
+**Não confunda:** **Memória** não é a janela inteira de contexto nem substitui a fonte de verdade; informação antiga ou não registrada pode induzir o próximo turno ao erro. Quando o agente não faz o esperado, o diagnóstico da aula é abrir o arquivo e conferir as 4 camadas — memória desatualizada é causa tão comum quanto persona genérica ou autoridade faltando.
 
 **Frequência nos cursos:** **102** menções (AIOX Advanced: 100 · AIOX Advanced Squads: 2).
 
