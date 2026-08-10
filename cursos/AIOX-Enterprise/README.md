@@ -53,7 +53,7 @@ Ao final, você conseguirá:
 
 ## Pré-requisito real
 
-Esta trilha faz sentido depois do **AIOX Advanced**, de preferência com o Capstone concluído. Você também precisa de uma execução real no seu negócio ou para um cliente. O requisito não é colecionar aulas. É ter operação suficiente para comparar dois cenários:
+Esta trilha faz sentido depois do **AIOX Advanced**, de preferência com o Capstone concluído. Você também precisa de uma execução real no seu negócio ou para um cliente e de um gargalo recorrente de integração, governança ou observabilidade. O requisito não é colecionar aulas. É ter operação suficiente para comparar dois cenários:
 
 - o que você já consegue construir;
 - o que ainda precisa remontar para continuar construindo.

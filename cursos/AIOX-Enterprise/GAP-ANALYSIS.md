@@ -41,4 +41,11 @@ O curso possuía apenas um README que anunciava sete aulas inexistentes. O posic
 - Aulas de squads com conexão canônica ao workspace: 14/14 com delta Enterprise.
 - Navegação, catálogo, links e validação global do acervo: zero erros.
 
+### Evidência de validação
+
+- Data: 2026-08-10.
+- Comando: `npm run validate`.
+- Resultado: exit code 0; 8 cursos formativos + 1 preview, 244 paths, 24/24 rotas e 14/14 deltas Enterprise conectados ao workspace, todos sem erros.
+- Integridade do diff: `git diff --check` com exit code 0.
+
 **Progresso: 100%.**
