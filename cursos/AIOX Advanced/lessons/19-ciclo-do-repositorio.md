@@ -25,13 +25,13 @@ module: M3
 sequence: M3.5
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Ciclo do repositório: Detect Repo, GitHub, CodeRabbit, CI/CD
 
-← [[06-code-rabbit-boost|Code Rabbit Boost]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[20-determinismo-progressivo|Determinismo Progressivo: 30, 60, 90]]
+← [[06-code-rabbit-boost|Code Rabbit Boost]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[20-determinismo-progressivo|Determinismo Progressivo: 30, 60, 90]]
 
 ## Conceitos
 
@@ -480,4 +480,4 @@ Os termos desta aula em uma frase cada.
 
 ## Navegação
 
-← [[06-code-rabbit-boost|Code Rabbit Boost]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[20-determinismo-progressivo|Determinismo Progressivo: 30, 60, 90]]
+← [[06-code-rabbit-boost|Code Rabbit Boost]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[20-determinismo-progressivo|Determinismo Progressivo: 30, 60, 90]]

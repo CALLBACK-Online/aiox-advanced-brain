@@ -24,13 +24,13 @@ module: M2
 sequence: M2.1
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Local, Staging, Production
 
-← [[15-quatro-executores|4 executores: humano, agent, clone, worker]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[16-janela-de-contexto|Janela de contexto: o limite real e a degradação acima de 40K]]
+← [[15-quatro-executores|4 executores: humano, agent, clone, worker]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[16-janela-de-contexto|Janela de contexto: o limite real e a degradação acima de 40K]]
 
 ## Conceitos
 
@@ -568,4 +568,4 @@ production:
 
 ## Navegação
 
-← [[15-quatro-executores|4 executores: humano, agent, clone, worker]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[16-janela-de-contexto|Janela de contexto: o limite real e a degradação acima de 40K]]
+← [[15-quatro-executores|4 executores: humano, agent, clone, worker]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[16-janela-de-contexto|Janela de contexto: o limite real e a degradação acima de 40K]]

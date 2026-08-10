@@ -24,13 +24,13 @@ module: MC
 sequence: MC.1
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Método S2S: converter sinais em sistemas
 
-← [[73-prontidao-de-producao|Prontidão de produção: checklist final]] · ↑ [[modulos/Módulo C - Capstone|MC]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[74-caso-integrado-end-to-end|Caso integrado end-to-end: do briefing ao deploy em 90 minutos]]
+← [[73-prontidao-de-producao|Prontidão de produção: checklist final]] · ↑ [[modulos/Módulo C - Capstone|MC]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[74-caso-integrado-end-to-end|Caso integrado end-to-end: do briefing ao deploy em 90 minutos]]
 
 ## Conceitos
 
@@ -597,4 +597,4 @@ Tradução dos termos técnicos para alguém que está vendo o Método S2S pela 
 
 ## Navegação
 
-← [[73-prontidao-de-producao|Prontidão de produção: checklist final]] · ↑ [[modulos/Módulo C - Capstone|MC]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[74-caso-integrado-end-to-end|Caso integrado end-to-end: do briefing ao deploy em 90 minutos]]
+← [[73-prontidao-de-producao|Prontidão de produção: checklist final]] · ↑ [[modulos/Módulo C - Capstone|MC]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[74-caso-integrado-end-to-end|Caso integrado end-to-end: do briefing ao deploy em 90 minutos]]

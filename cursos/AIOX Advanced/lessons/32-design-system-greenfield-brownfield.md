@@ -24,13 +24,13 @@ module: M6
 sequence: M6.4
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Design System: greenfield versus brownfield
 
-← [[53-brownfield-enhancement|Brownfield Enhancement: como adicionar feature em código legado]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[54-reuse-adapt-create-heuristica|REUSE > ADAPT > CREATE: a heurística antes de criar nada]]
+← [[53-brownfield-enhancement|Brownfield Enhancement: como adicionar feature em código legado]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[54-reuse-adapt-create-heuristica|REUSE > ADAPT > CREATE: a heurística antes de criar nada]]
 
 ## Conceitos
 
@@ -484,4 +484,4 @@ Tradução dos termos para alguém que está vendo a distinção greenfield vers
 
 ## Navegação
 
-← [[53-brownfield-enhancement|Brownfield Enhancement: como adicionar feature em código legado]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[54-reuse-adapt-create-heuristica|REUSE > ADAPT > CREATE: a heurística antes de criar nada]]
+← [[53-brownfield-enhancement|Brownfield Enhancement: como adicionar feature em código legado]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[54-reuse-adapt-create-heuristica|REUSE > ADAPT > CREATE: a heurística antes de criar nada]]

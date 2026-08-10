@@ -23,13 +23,13 @@ module: M10
 sequence: M10.3
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Routing de modelos: Codex para QA, [[Gemini]] para pesquisa, Claude para o resto
 
-← [[59-quando-paralelizar-vs-sequencial|Quando paralelizar vs sequencial: decisão antes do speedup]] · ↑ [[modulos/Módulo 10 - Escala e Tokens|M10]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[61-wave-execute|Wave Execute: orquestração avançada com waves paralelas]]
+← [[59-quando-paralelizar-vs-sequencial|Quando paralelizar vs sequencial: decisão antes do speedup]] · ↑ [[modulos/Módulo 10 - Escala e Tokens|M10]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[61-wave-execute|Wave Execute: orquestração avançada com waves paralelas]]
 
 ## Mapa desta aula
 
@@ -405,4 +405,4 @@ A IA é a seta. O X é seu — inclusive **qual cérebro** segura a ferramenta.
 
 ## Navegação
 
-← [[59-quando-paralelizar-vs-sequencial|Quando paralelizar vs sequencial: decisão antes do speedup]] · ↑ [[modulos/Módulo 10 - Escala e Tokens|M10]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[61-wave-execute|Wave Execute: orquestração avançada com waves paralelas]]
+← [[59-quando-paralelizar-vs-sequencial|Quando paralelizar vs sequencial: decisão antes do speedup]] · ↑ [[modulos/Módulo 10 - Escala e Tokens|M10]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[61-wave-execute|Wave Execute: orquestração avançada com waves paralelas]]

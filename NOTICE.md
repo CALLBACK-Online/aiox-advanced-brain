@@ -9,7 +9,7 @@ Frameworks e “minds” de terceiros (copy, hormozi, sales, etc.) são material
 ## Proveniência
 
 - Skills e squads: curados neste repositório e inventariados em `catalog.json`.
-- Curso: `Cursos/AIOX Advanced` (autocontido).
+- Curso: `cursos/AIOX Advanced` (autocontido).
 
 ## Fora deste acervo
 

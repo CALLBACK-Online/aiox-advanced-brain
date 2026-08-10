@@ -6,7 +6,7 @@ lesson_id: do-estudo-a-execucao
 lesson_position: 6
 title: "Do estudo à execução"
 status: canonical
-canonical_scope: Cursos/Obsidian-IA
+canonical_scope: cursos/Obsidian-IA
 reading_minutes: 12
 tags: [curso/obsidian-ia, segundo-cerebro]
 maturity: study
@@ -43,7 +43,7 @@ Missão multi-agente   → squads/<nome> + curso Squads + agent-router
 4. `cp -R` para o **seu** projeto.
 5. Briefing + evidência (não “rodei o chat”).
 
-Para squads em linguagem natural: curso `Cursos/AIOX-Advanced-Squads/` + `AGENT-GUIDE.md` + `agent-router.json` (paths no repo).
+Para squads em linguagem natural: curso `cursos/AIOX-Advanced-Squads/` + `AGENT-GUIDE.md` + `agent-router.json` (paths no repo).
 
 ## Runtime honesto
 

@@ -24,13 +24,13 @@ module: M1
 sequence: M1.1
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # AIOX não é ferramenta
 
-← [[26-nao-delegar-pensar|Nao delegue o pensar: repertorio contra zumbi]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[03-claude-md-leis-da-fisica|CLAUDE.md é a lei da física do seu projeto]]
+← [[26-nao-delegar-pensar|Nao delegue o pensar: repertorio contra zumbi]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[03-claude-md-leis-da-fisica|CLAUDE.md é a lei da física do seu projeto]]
 
 ## Conceitos
 
@@ -539,4 +539,4 @@ critério: "Está pronto quando..."
 
 ## Navegação
 
-← [[26-nao-delegar-pensar|Nao delegue o pensar: repertorio contra zumbi]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[03-claude-md-leis-da-fisica|CLAUDE.md é a lei da física do seu projeto]]
+← [[26-nao-delegar-pensar|Nao delegue o pensar: repertorio contra zumbi]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[03-claude-md-leis-da-fisica|CLAUDE.md é a lei da física do seu projeto]]

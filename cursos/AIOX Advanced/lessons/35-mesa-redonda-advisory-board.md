@@ -24,13 +24,13 @@ module: M7
 sequence: M7.5
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Mesa-redonda]] e [[Advisory Board]]: decidir com clones em vez de um prompt só
 
-← [[55-triagem-de-squad-novo|Triagem de Squad novo: fase-zero de prior-art + research loop]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[36-tech-research-multi-fonte|Tech Research: pesquisa profunda multi-fonte]]
+← [[55-triagem-de-squad-novo|Triagem de Squad novo: fase-zero de prior-art + research loop]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[36-tech-research-multi-fonte|Tech Research: pesquisa profunda multi-fonte]]
 
 ## Conceitos
 
@@ -498,4 +498,4 @@ Tradução dos termos para alguém que está vendo a distinção prompt único v
 
 ## Navegação
 
-← [[55-triagem-de-squad-novo|Triagem de Squad novo: fase-zero de prior-art + research loop]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[36-tech-research-multi-fonte|Tech Research: pesquisa profunda multi-fonte]]
+← [[55-triagem-de-squad-novo|Triagem de Squad novo: fase-zero de prior-art + research loop]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[36-tech-research-multi-fonte|Tech Research: pesquisa profunda multi-fonte]]

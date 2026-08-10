@@ -26,13 +26,13 @@ sequence: M3.L2
 track: legacy
 status: superseded
 superseded_by: 47-ciclo-de-vida-do-story
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Ciclo de vida do [[Story]]
 
-↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[47-ciclo-de-vida-do-story|Versão atual]]
+↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[47-ciclo-de-vida-do-story|Versão atual]]
 
 > [!warning] Versão substituída
 > Esta aula permanece como referência histórica. A rota atual continua em [[47-ciclo-de-vida-do-story]].
@@ -449,4 +449,4 @@ Os termos do ciclo do Story, traduzidos para quem está vendo pela primeira vez.
 
 ## Navegação
 
-↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[47-ciclo-de-vida-do-story|Versão atual]]
+↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[47-ciclo-de-vida-do-story|Versão atual]]

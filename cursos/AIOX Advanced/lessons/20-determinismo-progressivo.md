@@ -24,13 +24,13 @@ module: M4
 sequence: M4.1
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Determinismo Progressivo: 30, 60, 90
 
-← [[19-ciclo-do-repositorio|Ciclo do repositório: Detect Repo, GitHub, CodeRabbit, CI/CD]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro, LLM só onde gera ouro]]
+← [[19-ciclo-do-repositorio|Ciclo do repositório: Detect Repo, GitHub, CodeRabbit, CI/CD]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro, LLM só onde gera ouro]]
 
 ## Conceitos
 
@@ -457,4 +457,4 @@ Os termos desta aula em uma frase cada.
 
 ## Navegação
 
-← [[19-ciclo-do-repositorio|Ciclo do repositório: Detect Repo, GitHub, CodeRabbit, CI/CD]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro, LLM só onde gera ouro]]
+← [[19-ciclo-do-repositorio|Ciclo do repositório: Detect Repo, GitHub, CodeRabbit, CI/CD]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro, LLM só onde gera ouro]]

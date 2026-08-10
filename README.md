@@ -66,15 +66,15 @@ Estudar (Obsidian)  →  Escolher skill/squad  →  Copiar ao projeto  →  Exec
 |--------|----------------------------------------|
 | **Skills** | **66** em [`skills/`](skills/): base AIOX, entradas de squad, roteador `aiox-squads` e 4 de vault de estudo |
 | **Squads** | **24** canônicos em [`squads/`](squads/) |
-| **Curso método** | [AIOX Advanced](Cursos/AIOX%20Advanced/README.md) — **75 aulas**, **14 módulos**, **14 quizzes**, **62 questões** |
+| **Curso método** | [AIOX Advanced](cursos/AIOX%20Advanced/README.md) — **75 aulas**, **14 módulos**, **14 quizzes**, **62 questões** |
 | **Grafo** | **2.004** wikilinks internos no curso principal |
-| **Curso squads** | [AIOX Advanced Squads](Cursos/AIOX-Advanced-Squads/README.md) — **25 aulas** (intro + 1 por squad), **6 módulos**, **6 quizzes**, **24 questões** |
-| **Mini Obsidian+IA** | [Obsidian + IA](Cursos/Obsidian-IA/README.md) — **8 aulas**, ~60–90 min, vault + agent + captura |
+| **Curso squads** | [AIOX Advanced Squads](cursos/AIOX-Advanced-Squads/README.md) — **25 aulas** (intro + 1 por squad), **6 módulos**, **6 quizzes**, **24 questões** |
+| **Mini Obsidian+IA** | [Obsidian + IA](cursos/Obsidian-IA/README.md) — **8 aulas**, ~60–90 min, vault + agent + captura |
 | **Operação** | Mapas de decisão, briefings copiáveis, exemplos de ativação, exercícios, critérios de evidência |
-| **Agents (versionados)** | [AGENTS.md](AGENTS.md) (professor-especialista do segundo cérebro) · [CLAUDE.md](CLAUDE.md) · [AGENT-GUIDE](Cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md) · [agent-router.json](Cursos/AIOX-Advanced-Squads/agent-router.json) |
+| **Agents (versionados)** | [AGENTS.md](AGENTS.md) (professor-especialista do segundo cérebro) · [CLAUDE.md](CLAUDE.md) · [AGENT-GUIDE](cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md) · [agent-router.json](cursos/AIOX-Advanced-Squads/agent-router.json) |
 | **Manifesto** | [`catalog.json`](catalog.json) — contagens, maturidade, aliases, proveniência |
 
-**Integridade do curso (última hardening registrada):** 0 links quebrados / ambíguos / para fora de `Cursos/`; sem paths absolutos de máquina na distribuição pública.
+**Integridade do curso (última hardening registrada):** 0 links quebrados / ambíguos / para fora de `cursos/`; sem paths absolutos de máquina na distribuição pública.
 
 ---
 
@@ -83,12 +83,12 @@ Estudar (Obsidian)  →  Escolher skill/squad  →  Copiar ao projeto  →  Exec
 | Min | Faça |
 |-----|------|
 | 0–2 | [Baixe](#baixar-o-material) o repositório (Git ou ZIP). |
-| 2–5 | Abra `Cursos/AIOX Advanced/` como **vault no Obsidian**. |
-| 5–10 | Leia o [README do curso](Cursos/AIOX%20Advanced/README.md) e entre na **Rota Essencial** (32 aulas → sistema entregue). |
-| 10–12 | Abra o [hub das trilhas](Cursos/README.md) e o [Mapa de decisão dos squads](Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md). |
+| 2–5 | Abra `cursos/AIOX Advanced/` como **vault no Obsidian**. |
+| 5–10 | Leia o [README do curso](cursos/AIOX%20Advanced/README.md) e entre na **Rota Essencial** (32 aulas → sistema entregue). |
+| 10–12 | Abra o [hub das trilhas](cursos/README.md) e o [Mapa de decisão dos squads](cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md). |
 | 12–15 | Na pasta aberta pelo agent, use o [prompt de roteamento](#prompt-pronto) e peça o squad certo para uma missão real sua. |
 
-Se só tiver a pasta `Cursos/`, o conteúdo pedagógico já é navegável — abra-a no Obsidian da mesma forma.
+Se só tiver a pasta `cursos/`, o conteúdo pedagógico já é navegável — abra-a no Obsidian da mesma forma.
 
 ---
 
@@ -140,9 +140,9 @@ Os cursos usam **Markdown + wikilinks** (`[[Nome da nota]]`) — o formato nativ
 
 | Vault | Quando usar |
 |-------|-------------|
-| `Cursos/AIOX Advanced/` | **Padrão recomendado** — estudar o método com grafo limpo (~2.000 links) |
-| `Cursos/AIOX-Advanced-Squads/` | Estudar o curso 1:1 dos squads |
-| `Cursos/` | Hub das duas trilhas |
+| `cursos/AIOX Advanced/` | **Padrão recomendado** — estudar o método com grafo limpo (~2.000 links) |
+| `cursos/AIOX-Advanced-Squads/` | Estudar o curso 1:1 dos squads |
+| `cursos/` | Hub das duas trilhas |
 | Raiz do repositório | Estudo + `skills/` + `squads/` no mesmo vault (índice mais pesado) |
 
 5. Abra o `README.md` do curso e navegue pelos links.
@@ -174,7 +174,7 @@ Abra a **raiz deste repositório** como vault. O Graph já vem com filtros por p
 
 - **Tema:** padrão do Obsidian, sem dependência de tema de terceiros
 - **Home:** [`00-HOME.md`](00-HOME.md)
-- **Mapas:** [`Cursos/MOC-Acervo-AIOX.md`](Cursos/MOC-Acervo-AIOX.md) · [Skills](Cursos/MOC-Skills.md) · [Squads](Cursos/MOC-Squads.md)
+- **Mapas:** [`cursos/MOC-Acervo-AIOX.md`](cursos/MOC-Acervo-AIOX.md) · [Skills](cursos/MOC-Skills.md) · [Squads](cursos/MOC-Squads.md)
 - **Explorer colorido:** snippet `aiox-brain-folders` (Appearance → CSS snippets)
 - **Orphans off** no Graph = some o anel de arquivos soltos; **on** = auditoria
 
@@ -189,9 +189,9 @@ O acervo já é um vault de estudo. Para o agent **cuidar do grafo de aprendizad
 | [`course-moc`](skills/course-moc/SKILL.md) | Mapas de conteúdo / hubs (LYT-light) |
 | [`study-capture`](skills/study-capture/SKILL.md) | Capturar insight **sem** editar aulas canônicas |
 
-- **Canônico:** `Cursos/**/lessons/`, `aulas/`, `modulos/` — material da turma.
-- **Pessoal:** `Cursos/_notas-pessoais/` (só o README é versionado; suas notas ficam no clone).
-- **Operação AIOX:** continue com `skills/` + `squads/` e o [roteador de squads](Cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md).
+- **Canônico:** `cursos/**/lessons/`, `aulas/`, `modulos/` — material da turma.
+- **Pessoal:** `notas/` (só o README é versionado; suas notas ficam no clone).
+- **Operação AIOX:** continue com `skills/` + `squads/` e o [roteador de squads](cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md).
 
 Isto **não** substitui um vault de vida/livros pessoal: é o segundo cérebro do **método e da operação AIOX**.
 
@@ -199,7 +199,7 @@ Isto **não** substitui um vault de vida/livros pessoal: é o segundo cérebro d
 
 ## Trilhas de estudo
 
-Ordem sugerida (detalhe no [hub `Cursos/`](Cursos/README.md)):
+Ordem sugerida (detalhe no [hub `cursos/`](cursos/README.md)):
 
 ```text
 AIOX Advanced (Rota Essencial)
@@ -213,11 +213,11 @@ Capstone / Projeto Integrador (método + squads escolhidos)
 
 | Trilha | Para quê | Comece em |
 |--------|----------|-----------|
-| **AIOX Advanced** | Mindset, SDC, taxonomia, determinismo, design system, deploy | [Cursos/AIOX Advanced/README.md](Cursos/AIOX%20Advanced/README.md) — use a **Rota Essencial** na 1ª passagem |
-| **AIOX Advanced Squads** | Quando usar cada squad, briefing, ativação, evidência | [Cursos/AIOX-Advanced-Squads/README.md](Cursos/AIOX-Advanced-Squads/README.md) · [Mapa de decisão](Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md) |
+| **AIOX Advanced** | Mindset, SDC, taxonomia, determinismo, design system, deploy | [cursos/AIOX Advanced/README.md](cursos/AIOX%20Advanced/README.md) — use a **Rota Essencial** na 1ª passagem |
+| **AIOX Advanced Squads** | Quando usar cada squad, briefing, ativação, evidência | [cursos/AIOX-Advanced-Squads/README.md](cursos/AIOX-Advanced-Squads/README.md) · [Mapa de decisão](cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md) |
 
 **Ponte método ↔ squads:**
-[`Cursos/AIOX Advanced/ponte/`](Cursos/AIOX%20Advanced/ponte/) · [`Cursos/AIOX-Advanced-Squads/ponte/`](Cursos/AIOX-Advanced-Squads/ponte/) · inventário em `catalog.json`.
+[`cursos/AIOX Advanced/ponte/`](cursos/AIOX%20Advanced/ponte/) · [`cursos/AIOX-Advanced-Squads/ponte/`](cursos/AIOX-Advanced-Squads/ponte/) · inventário em `catalog.json`.
 
 Cada módulo do Advanced fecha com **evidência + quiz**. O curso não termina quando você “lê tudo” — termina quando o artefato funciona.
 
@@ -231,7 +231,7 @@ Este repo **não** usa `.claude/`, `.codex/` ou `.agents/` como layout canônico
 |-------|----------|----------------|
 | `skills/` | `SKILL.md` + recursos | `.claude/skills/`, `.codex/skills/` ou path da IDE |
 | `squads/` | `config.yaml`, agents, tasks, workflows | `squads/` (ou path do monorepo AIOX) |
-| `Cursos/…` | Material pedagógico | Permanece no vault de estudo |
+| `cursos/…` | Material pedagógico | Permanece no vault de estudo |
 
 ```bash
 # exemplos
@@ -240,7 +240,7 @@ cp -R squads/research /caminho/do/seu-projeto/squads/
 ```
 
 Guia operacional completo (superfícies `$skill`, `@agent`, `*comando`, `/comando` e quando **não** inventar sintaxe):
-[Cursos/AIOX-Advanced-Squads/Guia-de-execucao.md](Cursos/AIOX-Advanced-Squads/Guia-de-execucao.md).
+[cursos/AIOX-Advanced-Squads/Guia-de-execucao.md](cursos/AIOX-Advanced-Squads/Guia-de-execucao.md).
 
 ---
 
@@ -291,8 +291,8 @@ O curso de squads e os bootstraps deste repo foram feitos para **humans e agents
 Depois de abrir o repositório no agent:
 
 ```text
-Consulte Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md e
-Cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md + agent-router.json.
+Consulte cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md e
+cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md + agent-router.json.
 Escolha o squad mais adequado para esta missão, confirme o anti-escopo
 na aula correspondente, diga a maturidade, peça só o briefing que faltar
 e me oriente com evidência de conclusão — sem inventar comandos do runtime.
@@ -303,7 +303,7 @@ Missão: {descreva o que precisa acontecer}
 Versão mais curta:
 
 ```text
-Consulte Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md, escolha o squad
+Consulte cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md, escolha o squad
 mais adequado para esta missão e use a aula correspondente para me orientar.
 ```
 
@@ -321,11 +321,11 @@ mais adequado para esta missão e use a aula correspondente para me orientar.
 |---------|----------------------|---------|
 | **Claude Code** | [CLAUDE.md](CLAUDE.md) → [AGENTS.md](AGENTS.md) | Só use `$skill` / `@agent` / `*comando` / `/comando` se existirem no **seu** projeto |
 | **Codex** | [AGENTS.md](AGENTS.md) | Não assuma superfícies `@` / `*` / `/` |
-| **Outro** | [AGENTS.md](AGENTS.md) + [AGENT-GUIDE](Cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md) | Use o `generic_prompt` de cada rota em `agent-router.json` |
+| **Outro** | [AGENTS.md](AGENTS.md) + [AGENT-GUIDE](cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md) | Use o `generic_prompt` de cada rota em `agent-router.json` |
 
 **Contrato:** `AGENTS.md` e `CLAUDE.md` são **guias públicos versionados** (não ficam no `.gitignore`). Eles pedem ao agent atuar como **professor-especialista**: localizar material, conduzir estudo, rotear missões e exigir evidência. Overrides só em `AGENTS.local.md` / `CLAUDE.local.md`.
 
-Referências: [Mapa de decisão](Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md) · [Guia de execução](Cursos/AIOX-Advanced-Squads/Guia-de-execucao.md) · [agent-router.json](Cursos/AIOX-Advanced-Squads/agent-router.json).
+Referências: [Mapa de decisão](cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md) · [Guia de execução](cursos/AIOX-Advanced-Squads/Guia-de-execucao.md) · [agent-router.json](cursos/AIOX-Advanced-Squads/agent-router.json).
 
 ---
 
@@ -348,7 +348,7 @@ Referências: [Mapa de decisão](Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md)
 | Agente em loop / pouco autônomo | squad `agent-autonomy` |
 | Processo → ClickUp | squad `clickup-ops-squad` (depois do processo validado) |
 
-Aula por squad: pasta [`Cursos/AIOX-Advanced-Squads/aulas/`](Cursos/AIOX-Advanced-Squads/aulas/).
+Aula por squad: pasta [`cursos/AIOX-Advanced-Squads/aulas/`](cursos/AIOX-Advanced-Squads/aulas/).
 
 ---
 
@@ -356,17 +356,22 @@ Aula por squad: pasta [`Cursos/AIOX-Advanced-Squads/aulas/`](Cursos/AIOX-Advance
 
 ```text
 .
-├── skills/                         # 66 skills: AIOX + vault de estudo + entradas de squad
-├── squads/                         # 24 squads canônicos
-├── Cursos/
-│   ├── README.md                   # Hub das trilhas
-│   ├── AIOX Advanced/              # Curso método (75 aulas) — vault Obsidian ideal
-│   └── AIOX-Advanced-Squads/       # Curso 1:1 dos squads + agent-router
-├── catalog.json                    # Manifesto da biblioteca (v2)
-├── package.json                    # validate
-├── AGENTS.md / CLAUDE.md           # Guias versionados: professor-especialista do acervo
+├── 00-HOME.md                 # Dashboard do vault Obsidian
+├── cursos/                    # Trilhas canônicas (minúsculo)
+│   ├── README.md
+│   ├── AIOX Advanced/         # Método (75 aulas)
+│   ├── AIOX-Advanced-Squads/  # Operação + agent-router
+│   ├── Obsidian-IA/           # Mini vault + agent
+│   └── MOC-*.md               # Hubs do Graph
+├── notas/                     # Anotações dos alunos (âmbar; pessoal gitignored)
+├── skills/                    # Skills (verde no Graph)
+├── squads/                    # Squads (laranja)
+├── .obsidian/                 # Graph limpo + snippet próprio
+├── catalog.json
+├── package.json
+├── AGENTS.md / CLAUDE.md
 ├── CHANGELOG.md · NOTICE.md · LICENSE
-└── .github/workflows/              # CI de validação
+└── .github/workflows/
 ```
 
 ---
@@ -378,9 +383,9 @@ Inventário canônico = lista `skills` em `catalog.json`. Abaixo, o “use quand
 ### Segundo cérebro (vault de estudo)
 
 - [`aiox-brain`](skills/aiox-brain/SKILL.md) — Meta: usar este repo como segundo cérebro. **Use quando:** onboarding de estudo, Obsidian vs agent, ou dúvida de onde capturar notas.
-- [`obsidian-course-vault`](skills/obsidian-course-vault/SKILL.md) — Operar `Cursos/` no Obsidian. **Use quando:** abrir vault, achar aula, Graph, trilha.
+- [`obsidian-course-vault`](skills/obsidian-course-vault/SKILL.md) — Operar `cursos/` no Obsidian. **Use quando:** abrir vault, achar aula, Graph, trilha.
 - [`course-moc`](skills/course-moc/SKILL.md) — Mapas de conteúdo / hubs (LYT-light). **Use quando:** “como se conecta X e Y?” ou índice por dor/módulo.
-- [`study-capture`](skills/study-capture/SKILL.md) — Captura pessoal ligada à aula. **Use quando:** anotar aprendizado sem editar o canônico (`Cursos/_notas-pessoais/`).
+- [`study-capture`](skills/study-capture/SKILL.md) — Captura pessoal ligada à aula. **Use quando:** anotar aprendizado sem editar o canônico (`notas/`).
 
 ### Agentes fundamentais do AIOX
 
@@ -466,7 +471,7 @@ Inventário canônico = lista `skills` em `catalog.json`. Abaixo, o “use quand
 
 ## Guia dos 24 squads
 
-Cada squad tem **aula 1:1** em `Cursos/AIOX-Advanced-Squads/aulas/` (ver [índice](Cursos/AIOX-Advanced-Squads/README.md)). Confira maturidade em `catalog.json` antes de executar.
+Cada squad tem **aula 1:1** em `cursos/AIOX-Advanced-Squads/aulas/` (ver [índice](cursos/AIOX-Advanced-Squads/README.md)). Confira maturidade em `catalog.json` antes de executar.
 
 - [`advisory-board`](squads/advisory-board/config.yaml) — Conselho estratégico com perspectivas alinhadas e complementares, devil's advocate e accountability. **Use quando:** precisa tomar uma decisão pessoal ou empresarial importante e quer reduzir vieses e groupthink.
 - [`agent-autonomy`](squads/agent-autonomy/config.yaml) — Audita, cria, diagnostica e otimiza agentes autônomos com frameworks de autonomia real. **Use quando:** um agente depende demais de intervenção humana, entra em loops ou não sabe avaliar seu próprio progresso.
@@ -546,7 +551,7 @@ Siga [NOTICE.md](NOTICE.md) e o combinado da turma. Frameworks/“minds” de te
 
 | Documento | Função |
 |-----------|--------|
-| [Cursos/README.md](Cursos/README.md) | Hub das trilhas |
+| [cursos/README.md](cursos/README.md) | Hub das trilhas |
 | [NOTICE.md](NOTICE.md) | Proveniência e o que **não** está no pacote |
 | [CHANGELOG.md](CHANGELOG.md) | Histórico da biblioteca |
 | [catalog.json](catalog.json) | Manifesto máquina (contagens, maturidade, aliases) |

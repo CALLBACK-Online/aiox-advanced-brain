@@ -5,59 +5,60 @@ aliases: [Home, Início, AIOX Brain Home]
 
 # AIOX Advanced Brain — Home
 
-> Dashboard do vault. Abra o **Graph** com as cores do acervo (cursos · skills · squads).
+> Dashboard do vault. Pastas no padrão minúsculo: `cursos/` · `skills/` · `squads/` · `notas/`.
+
+## Pastas
+
+| Pasta | Cor no Graph | Conteúdo |
+|-------|--------------|----------|
+| `cursos/` | azul / roxo / ciano | Material canônico das trilhas |
+| `skills/` | verde | Skills portáveis |
+| `squads/` | laranja | Pacotes multi-agente |
+| `notas/` | âmbar | **Suas** anotações sobre as aulas |
+| `#hub` | rosa | Este Home + MOCs |
 
 ## Como ler o Graph
 
-| Cor | Pasta / query |
-|-----|----------------|
-| 🔵 Azul | `Cursos/AIOX Advanced` — método |
-| 🟣 Roxo | `Cursos/AIOX-Advanced-Squads` — operação |
-| 🩵 Ciano | `Cursos/Obsidian-IA` — mini vault+IA |
-| 🟢 Verde | `skills/` |
-| 🟠 Laranja | `squads/` |
-| 🟡 Âmbar | `Cursos/_notas-pessoais/` |
-| 🩷 Rosa | tags `#hub` / estes mapas |
+1. **Orphans off** (padrão neste vault) → some o anel de pontos soltos; sobra o miolo conectado.
+2. Filtro de busca já exclui `.obsidian`, `scripts`, `docs`, yaml/json/css…
+3. Auditoria (ver tudo): copie `.obsidian/graph.aiox-brain.audit.json` → `graph.json`.
 
-**Dica:** desligue *Orphans* para ver só o que tem link; ligue de novo para auditar o anel de arquivos soltos.
+**Tema:** padrão do Obsidian, com o snippet próprio `aiox-brain-folders` para destacar as pastas.
 
-**Tema:** o vault vem com **PLN** (mesmo do mentelendaria). Appearance → Theme → **PLN**.
-
-Se as cores do Graph sumirem (Obsidian às vezes sobrescreve `graph.json`):
+Se o Graph voltar cinza:
 
 ```bash
 cp .obsidian/graph.aiox-brain.json .obsidian/graph.json
 ```
 
-Detalhes: `.obsidian/README.md`. Snippet de pastas: Appearance → CSS snippets → `aiox-brain-folders`.
-
 ## Entradas
 
-- [[Cursos/README|Hub de trilhas]]
-- [[Cursos/MOC-Acervo-AIOX|MOC · Acervo completo]]
-- [[Cursos/MOC-Skills|MOC · Skills]]
-- [[Cursos/MOC-Squads|MOC · Squads]]
-- [[Cursos/Obsidian-IA/README|Mini-curso Obsidian + IA]]
-- [[Cursos/AIOX Advanced/README|AIOX Advanced (método)]]
-- [[Cursos/AIOX-Advanced-Squads/README|AIOX Advanced Squads]]
+- [[cursos/README|Hub de trilhas]]
+- [[cursos/MOC-Acervo-AIOX|MOC · Acervo]]
+- [[cursos/MOC-Skills|MOC · Skills]]
+- [[cursos/MOC-Squads|MOC · Squads]]
+- [[cursos/Obsidian-IA/README|Mini-curso Obsidian + IA]]
+- [[cursos/AIOX Advanced/README|AIOX Advanced (método)]]
+- [[cursos/AIOX-Advanced-Squads/README|AIOX Advanced Squads]]
+- [[notas/README|notas — anotações dos alunos]]
 - [[AGENTS|Contrato dos agents]]
 - [[README|README do repositório]]
 
 ## Loop
 
 ```text
-Estudar (Obsidian) → Capturar (_notas-pessoais) → Skill/Squad → Projeto real → Evidência
+Estudar (cursos/) → Anotar (notas/) → Skill/Squad → Projeto real → Evidência
 ```
 
 ## Skills de vault
 
-- [[skills/aiox-brain/SKILL|aiox-brain]] · `#skill`
-- [[skills/aiox-squads/SKILL|aiox-squads]] · `#skill`
-- [[skills/course-moc/SKILL|course-moc]] · `#skill`
-- [[skills/obsidian-course-vault/SKILL|obsidian-course-vault]] · `#skill`
-- [[skills/study-capture/SKILL|study-capture]] · `#skill`
+- [[skills/aiox-brain/SKILL|aiox-brain]]
+- [[skills/obsidian-course-vault/SKILL|obsidian-course-vault]]
+- [[skills/course-moc/SKILL|course-moc]]
+- [[skills/study-capture/SKILL|study-capture]]
+- [[skills/aiox-squads/SKILL|aiox-squads]]
 
-## Captura local
+## Captura
 
-Notas novas (config do vault): `Cursos/_notas-pessoais/inbox/`
-Skill: [[skills/study-capture/SKILL|study-capture]]
+Novas notas do Obsidian → `notas/inbox/`.
+Não reescreva aulas em `cursos/`.

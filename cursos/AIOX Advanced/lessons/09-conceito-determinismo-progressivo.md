@@ -26,13 +26,13 @@ sequence: M4.L1
 track: legacy
 status: superseded
 superseded_by: 20-determinismo-progressivo
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Determinismo Progressivo (30 → 60 → 90)
 
-↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[20-determinismo-progressivo|Versão atual]]
+↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[20-determinismo-progressivo|Versão atual]]
 
 > [!warning] Versão substituída
 > Esta aula permanece como referência histórica. A rota atual continua em [[20-determinismo-progressivo]].
@@ -488,4 +488,4 @@ Determinismo progressivo, em uma frase que você consegue repetir amanhã.
 
 ## Navegação
 
-↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[20-determinismo-progressivo|Versão atual]]
+↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[20-determinismo-progressivo|Versão atual]]

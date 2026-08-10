@@ -17,21 +17,24 @@ outputs/
 artifacts/
 .state/
 
-# Overrides locais opcionais — AGENTS.md e CLAUDE.md canônicos SÃO versionados
+# Overrides locais
 AGENTS.local.md
 CLAUDE.local.md
 .obsidian/*space*.json
 .obsidian/themes/
 
-# Captura de estudo do aluno (só README versionado)
-Cursos/_notas-pessoais/**
-!Cursos/_notas-pessoais/README.md
+# Anotações dos alunos (só README versionado)
+notas/**
+!notas/README.md
 
-# Root-only library tooling — never publish
+# legacy path if recreated
+cursos/_notas-pessoais/**
+
+# Root-only library tooling
 /scripts/
 /docs/
 
-# IDE runtime projections (this repo is a distribution library, not a live project)
+# IDE runtime projections
 .claude/
 .codex/
 .agents/

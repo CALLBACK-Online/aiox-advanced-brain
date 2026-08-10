@@ -24,13 +24,13 @@ module: M7
 sequence: M7.3
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Squad Creator passo a passo: criar um squad do zero
 
-← [[33-anatomia-de-um-squad|Anatomia de um Squad AIOX]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[55-triagem-de-squad-novo|Triagem de Squad novo: fase-zero de prior-art + research loop]]
+← [[33-anatomia-de-um-squad|Anatomia de um Squad AIOX]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[55-triagem-de-squad-novo|Triagem de Squad novo: fase-zero de prior-art + research loop]]
 
 ## Conceitos
 
@@ -518,4 +518,4 @@ Tradução dos termos para alguém que está vendo a criação de squad pela pri
 
 ## Navegação
 
-← [[33-anatomia-de-um-squad|Anatomia de um Squad AIOX]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[55-triagem-de-squad-novo|Triagem de Squad novo: fase-zero de prior-art + research loop]]
+← [[33-anatomia-de-um-squad|Anatomia de um Squad AIOX]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[55-triagem-de-squad-novo|Triagem de Squad novo: fase-zero de prior-art + research loop]]

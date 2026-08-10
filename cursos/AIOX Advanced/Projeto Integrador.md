@@ -6,7 +6,7 @@ track: essential
 module: MC
 timebox_minutes: 90
 source_version: 1.0.0
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 tags: [curso/aiox-advanced, projeto]
 ---
 
@@ -87,4 +87,4 @@ Eu avalio a entrega pela [[Rubrica]].
 
 ## Navegação
 
-← [[modulos/Módulo C - Capstone|Capstone]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[Rubrica]]
+← [[modulos/Módulo C - Capstone|Capstone]] · ↑ [[cursos/AIOX Advanced/README|Curso]] · → [[Rubrica]]

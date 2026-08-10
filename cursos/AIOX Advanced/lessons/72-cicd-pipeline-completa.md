@@ -23,13 +23,13 @@ module: M12
 sequence: M12.4
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[CI-CD|CI/CD]] Pipeline completa: GitHub Actions + Quality Gate pré-[[Merge|merge]]
 
-← [[71-vercel-deploy|Vercel Deploy: do localhost ao mundo]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[73-prontidao-de-producao|Prontidão de produção: checklist final]]
+← [[71-vercel-deploy|Vercel Deploy: do localhost ao mundo]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[73-prontidao-de-producao|Prontidão de produção: checklist final]]
 
 ## Mapa desta aula
 
@@ -425,4 +425,4 @@ A IA é a seta. O X é seu — inclusive recusar merge vermelho "só dessa vez".
 
 ## Navegação
 
-← [[71-vercel-deploy|Vercel Deploy: do localhost ao mundo]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[73-prontidao-de-producao|Prontidão de produção: checklist final]]
+← [[71-vercel-deploy|Vercel Deploy: do localhost ao mundo]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[73-prontidao-de-producao|Prontidão de produção: checklist final]]

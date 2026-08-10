@@ -24,13 +24,13 @@ module: M9
 sequence: M9.1
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Design System]] é decisão, não estética
 
-← [[40-pipeline-canonico-prd|Pipeline canônico: do nada ao PRD com stories prontas]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[42-design-atomico-brad-frost|Design atomico: a interface se monta de peca pequena pra peca grande]]
+← [[40-pipeline-canonico-prd|Pipeline canônico: do nada ao PRD com stories prontas]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[42-design-atomico-brad-frost|Design atomico: a interface se monta de peca pequena pra peca grande]]
 
 ## Conceitos
 
@@ -522,4 +522,4 @@ Tradução dos termos para alguém que está vendo a diferença decidir uma vez 
 
 ## Navegação
 
-← [[40-pipeline-canonico-prd|Pipeline canônico: do nada ao PRD com stories prontas]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[42-design-atomico-brad-frost|Design atomico: a interface se monta de peca pequena pra peca grande]]
+← [[40-pipeline-canonico-prd|Pipeline canônico: do nada ao PRD com stories prontas]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[42-design-atomico-brad-frost|Design atomico: a interface se monta de peca pequena pra peca grande]]

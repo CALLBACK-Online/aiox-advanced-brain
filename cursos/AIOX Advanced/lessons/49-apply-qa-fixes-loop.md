@@ -23,13 +23,13 @@ module: M3
 sequence: M3.4
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Apply QA Fixes]] Loop: QA volta para Dev sem perder estado
 
-← [[48-quality-gate-completo|Quality Gate: QA + Apply QA Fixes + CodeRabbit]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[06-code-rabbit-boost|Code Rabbit Boost]]
+← [[48-quality-gate-completo|Quality Gate: QA + Apply QA Fixes + CodeRabbit]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[06-code-rabbit-boost|Code Rabbit Boost]]
 
 ## Mapa desta aula
 
@@ -392,4 +392,4 @@ A IA é a seta. O X é seu — inclusive **não abrir limbo** só pra board fica
 
 ## Navegação
 
-← [[48-quality-gate-completo|Quality Gate: QA + Apply QA Fixes + CodeRabbit]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[06-code-rabbit-boost|Code Rabbit Boost]]
+← [[48-quality-gate-completo|Quality Gate: QA + Apply QA Fixes + CodeRabbit]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[06-code-rabbit-boost|Code Rabbit Boost]]

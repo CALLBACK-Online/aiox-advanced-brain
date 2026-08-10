@@ -26,13 +26,13 @@ sequence: M1.L1
 track: legacy
 status: superseded
 superseded_by: 45-doze-agentes-orbitais
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Agentes Orbitais do AIOX
 
-↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[45-doze-agentes-orbitais|Versão atual]]
+↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[45-doze-agentes-orbitais|Versão atual]]
 
 > [!warning] Versão substituída
 > Esta aula permanece como referência histórica. A rota atual continua em [[45-doze-agentes-orbitais]].
@@ -520,4 +520,4 @@ Sete termos pra fixar antes da próxima aula.
 
 ## Navegação
 
-↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[45-doze-agentes-orbitais|Versão atual]]
+↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[45-doze-agentes-orbitais|Versão atual]]

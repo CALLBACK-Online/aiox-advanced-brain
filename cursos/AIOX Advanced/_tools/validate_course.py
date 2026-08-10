@@ -10,7 +10,7 @@ import yaml
 
 COURSE = Path(__file__).resolve().parents[1]
 VAULT = COURSE.parents[1]
-COURSES = VAULT / "Cursos"
+COURSES = VAULT / "cursos"
 WIKILINK = re.compile(r"!?(?:\[\[)([^\]]+)(?:\]\])")
 
 
@@ -81,7 +81,7 @@ for path in lesson_files:
             metadata_errors.append((path, field))
     if data.get("manual") is not True:
         metadata_errors.append((path, "manual=true"))
-    if "⌂ [[Cursos/AIOX Advanced/README|Curso]]" not in text:
+    if "⌂ [[cursos/AIOX Advanced/README|Curso]]" not in text:
         metadata_errors.append((path, "navegação editorial"))
     lesson_tracks[data.get("track")] += 1
     lesson_modules[data.get("module")] += 1
@@ -157,8 +157,8 @@ print(f"questões curadas: {question_total}")
 print(f"gabarito por posição: {dict(sorted(answer_positions.items()))}")
 print(f"trilhas: {dict(sorted(lesson_tracks.items()))}")
 print(f"wikilinks verificados: {wikilinks}")
-print(f"links não resolvidos dentro de /Cursos: {len(unresolved)}")
-print(f"links ambíguos dentro de /Cursos: {len(ambiguous)}")
+print(f"links não resolvidos dentro de /cursos: {len(unresolved)}")
+print(f"links ambíguos dentro de /cursos: {len(ambiguous)}")
 print(f"links fora da pasta do curso: {len(outside_course)}")
 print(f"erros de metadados/navegação: {len(metadata_errors)}")
 

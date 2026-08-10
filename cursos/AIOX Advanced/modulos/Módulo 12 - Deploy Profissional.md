@@ -4,7 +4,7 @@ course: aiox-advanced
 module: M12
 sequence: 12
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 source_version: 1.0.0
 tags: [curso/aiox-advanced, modulo]
 ---
@@ -38,4 +38,4 @@ Eu recupero os conceitos no [[avaliacoes/Quiz M12 - Deploy Profissional|Quiz do 
 
 ## Navegação
 
-← [[modulos/Módulo 11 - Produtivização|M11]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo C - Capstone|MC]]
+← [[modulos/Módulo 11 - Produtivização|M11]] · ↑ [[cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo C - Capstone|MC]]

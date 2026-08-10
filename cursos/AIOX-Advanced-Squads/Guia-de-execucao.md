@@ -2,7 +2,7 @@
 type: course-guide
 course: aiox-advanced-squads
 status: canonical
-canonical_scope: Cursos/AIOX-Advanced-Squads
+canonical_scope: cursos/AIOX-Advanced-Squads
 ---
 
 # Guia de execução
@@ -15,7 +15,7 @@ canonical_scope: Cursos/AIOX-Advanced-Squads
 cp -R squads/<nome-do-squad> /seu-projeto/squads/
 ```
 
-Este curso vive em `Cursos/`; os pacotes executáveis vivem em `squads/` (e skills opcionais em `skills/`).
+Este curso vive em `cursos/`; os pacotes executáveis vivem em `squads/` (e skills opcionais em `skills/`).
 
 ## As quatro superfícies de uso
 

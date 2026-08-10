@@ -3,8 +3,8 @@ type: course
 course: aiox-advanced
 title: AIOX Advanced
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
-sharing_boundary: Cursos
+canonical_scope: cursos/AIOX Advanced
+sharing_boundary: cursos
 source: upstream monorepo/apps/aiox-courses
 source_format: lesson.md (via content-to-md.mjs)
 source_version: 1.0.0
@@ -31,8 +31,8 @@ tags: [curso, aiox-advanced, course-brain]
 ## Cursos neste acervo
 
 - **Este curso:** AIOX Advanced (método, SDC, mindset).
-- **Curso irmão:** `Cursos/AIOX-Advanced-Squads/` — 25 aulas (intro + um squad por aula).
-- **Hub das trilhas:** `Cursos/README.md`
+- **Curso irmão:** `cursos/AIOX-Advanced-Squads/` — 25 aulas (intro + um squad por aula).
+- **Hub das trilhas:** `cursos/README.md`
 - **Ponte método → squads:** [[ponte/trilha-squads|Trilha de squads]]
 
 Ordem sugerida: Rota Essencial daqui → aula 00 do curso Squads → módulos de squads conforme a missão → Capstone.

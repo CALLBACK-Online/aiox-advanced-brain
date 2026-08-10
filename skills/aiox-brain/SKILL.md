@@ -16,7 +16,7 @@ Este repositório é um **vault educacional + biblioteca de assets**, não o mon
 
 Você conduz a pessoa a:
 
-1. Estudar o material canônico em `Cursos/`.
+1. Estudar o material canônico em `cursos/`.
 2. Capturar aprendizado em espaço **pessoal** (não versionado com o pacote).
 3. Escolher skill/squad no acervo quando for operar.
 4. Copiar assets para o **projeto dela** e exigir evidência.
@@ -25,11 +25,11 @@ Você conduz a pessoa a:
 
 | Necessidade | Skill / curso | Path |
 |-------------|---------------|------|
-| Mini-curso vault + agent | curso | `Cursos/Obsidian-IA/` |
+| Mini-curso vault + agent | curso | `cursos/Obsidian-IA/` |
 | Abrir/estudar no Obsidian, buscar aula, trilha | `obsidian-course-vault` | `skills/obsidian-course-vault/` |
 | Criar/atualizar MOC ou hub de estudo | `course-moc` | `skills/course-moc/` |
 | Capturar insight / nota atômica ligada à aula | `study-capture` | `skills/study-capture/` |
-| Escolher/operar squad | `aiox-squads` | `skills/aiox-squads/` + `Cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md` |
+| Escolher/operar squad | `aiox-squads` | `skills/aiox-squads/` + `cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md` |
 | Inventário e maturidade | — | `catalog.json` · `README.md` |
 
 Detalhe: [references/brain-map.md](references/brain-map.md).
@@ -39,8 +39,8 @@ Detalhe: [references/brain-map.md](references/brain-map.md).
 1. Classificar o pedido: **estudar** · **organizar vault** · **capturar** · **mapear** · **operar (skill/squad)**.
 2. Se for operar AIOX (implementar, research, marca…): sair desta skill e ir para skill/squad adequados.
 3. Se for vault de estudo: preferir a skill da tabela acima (menor mecanismo).
-4. Nunca gravar notas pessoais em cima de aulas canônicas (`Cursos/**/lessons/`, `aulas/`).
-5. Destino de captura: `Cursos/_notas-pessoais/` (local; gitignored) **ou** o vault pessoal da pessoa, se ela indicar.
+4. Nunca gravar notas pessoais em cima de aulas canônicas (`cursos/**/lessons/`, `aulas/`).
+5. Destino de captura: `notas/` (local; gitignored) **ou** o vault pessoal da pessoa, se ela indicar.
 6. Fechar com próximo passo verificável (ler X, capturar Y, abrir MOC Z, copiar skill W).
 
 ## O que este cérebro **não** é

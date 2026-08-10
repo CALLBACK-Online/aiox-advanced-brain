@@ -6,7 +6,7 @@ lesson_id: abrir-o-vault
 lesson_position: 1
 title: "Abrir o vault e o mapa"
 status: canonical
-canonical_scope: Cursos/Obsidian-IA
+canonical_scope: cursos/Obsidian-IA
 reading_minutes: 10
 tags: [curso/obsidian-ia, segundo-cerebro]
 maturity: study
@@ -30,10 +30,10 @@ Escolher a **raiz do vault** certa e abrir o arquivo de entrada sem se perder.
 
 | Vault root | Quando |
 |------------|--------|
-| `Cursos/AIOX Advanced/` | Estudar o método (grafo grande) |
-| `Cursos/AIOX-Advanced-Squads/` | Operação 1:1 dos squads |
-| `Cursos/` | Hub das trilhas |
-| `Cursos/Obsidian-IA/` | **Este mini-curso** |
+| `cursos/AIOX Advanced/` | Estudar o método (grafo grande) |
+| `cursos/AIOX-Advanced-Squads/` | Operação 1:1 dos squads |
+| `cursos/` | Hub das trilhas |
+| `cursos/Obsidian-IA/` | **Este mini-curso** |
 | **Raiz do repo** | **Recomendado para Graph colorido** (cursos + skills + squads) |
 
 No Obsidian: **Open folder as vault** → escolha uma linha da tabela.
@@ -42,16 +42,16 @@ Para filtros coloridos (azul/roxo/verde/laranja) e hubs `00-HOME` / MOCs, use a 
 
 ## Mapa mental do acervo
 
-- Hub: `Cursos/README.md` (path no repo; entre cursos use monoespaçado).
-- Método: pasta `Cursos/AIOX Advanced/`.
-- Squads: pasta `Cursos/AIOX-Advanced-Squads/`.
-- Captura local: `Cursos/_notas-pessoais/` (só README versionado).
+- Hub: `cursos/README.md` (path no repo; entre cursos use monoespaçado).
+- Método: pasta `cursos/AIOX Advanced/`.
+- Squads: pasta `cursos/AIOX-Advanced-Squads/`.
+- Captura local: `notas/` (só README versionado).
 
 Com o agent no repo, a skill `obsidian-course-vault` formaliza esse onboarding.
 
 ## Prática
 
-1. Abra o vault `Cursos/Obsidian-IA/`.
+1. Abra o vault `cursos/Obsidian-IA/`.
 2. Abra este README do curso e a aula 00.
 3. Anote qual vault usará para o AIOX Advanced nos próximos 7 dias.
 

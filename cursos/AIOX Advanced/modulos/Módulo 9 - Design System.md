@@ -4,7 +4,7 @@ course: aiox-advanced
 module: M9
 sequence: 9
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 source_version: 1.0.0
 tags: [curso/aiox-advanced, modulo]
 ---
@@ -42,8 +42,8 @@ Eu recupero os conceitos no [[avaliacoes/Quiz M9 - Design System|Quiz do M9]] e 
 >
 > Construir vs governar: `aulas/14-design-system.md` e `aulas/15-design-ops.md` no curso Squads. Pacotes: `squads/design-system/`, `squads/design-ops/`.
 >
-> Índice da trilha: `ponte/trilha-squads.md` · Hub: `Cursos/README.md` · Pasta do curso: `Cursos/AIOX-Advanced-Squads/`
+> Índice da trilha: `ponte/trilha-squads.md` · Hub: `cursos/README.md` · Pasta do curso: `cursos/AIOX-Advanced-Squads/`
 
 ## Navegação
 
-← [[modulos/Módulo 8 - Pipeline de Research|M8]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 10 - Escala e Tokens|M10]]
+← [[modulos/Módulo 8 - Pipeline de Research|M8]] · ↑ [[cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 10 - Escala e Tokens|M10]]

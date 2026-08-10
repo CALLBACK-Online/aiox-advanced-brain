@@ -6,7 +6,7 @@
   "files": [
     "skills/",
     "squads/",
-    "Cursos/",
+    "cursos/",
     "00-HOME.md",
     ".obsidian/app.json",
     ".obsidian/appearance.json",
@@ -20,10 +20,12 @@
     "catalog.json",
     "README.md",
     "NOTICE.md",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "notas/",
+    ".obsidian/graph.aiox-brain.audit.json"
   ],
   "scripts": {
-    "validate": "python3 \"Cursos/AIOX Advanced/_tools/validate_course.py\" && python3 \"Cursos/AIOX-Advanced-Squads/_tools/validate_course.py\" && python3 \"Cursos/Obsidian-IA/_tools/validate_course.py\" && node \"Cursos/AIOX-Advanced-Squads/_tools/validate-agent-routing.mjs\"",
-    "smoke:routing:runtimes": "node \"Cursos/AIOX-Advanced-Squads/_tools/smoke-agent-runtimes.mjs\""
+    "validate": "python3 \"cursos/AIOX Advanced/_tools/validate_course.py\" && python3 \"cursos/AIOX-Advanced-Squads/_tools/validate_course.py\" && python3 \"cursos/Obsidian-IA/_tools/validate_course.py\" && node \"cursos/AIOX-Advanced-Squads/_tools/validate-agent-routing.mjs\"",
+    "smoke:routing:runtimes": "node \"cursos/AIOX-Advanced-Squads/_tools/smoke-agent-runtimes.mjs\""
   }
 }

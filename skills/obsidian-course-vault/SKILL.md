@@ -17,12 +17,12 @@ Vault de **estudo AIOX** neste repositório. Não assume plugins pagos. Não con
 
 | Raiz | Quando |
 |------|--------|
-| `Cursos/AIOX Advanced/` | Foco no método (grafo ~1.6k links) |
-| `Cursos/AIOX-Advanced-Squads/` | Foco em squads 1:1 |
-| `Cursos/` | Ver as duas trilhas (hub) |
+| `cursos/AIOX Advanced/` | Foco no método (grafo ~1.6k links) |
+| `cursos/AIOX-Advanced-Squads/` | Foco em squads 1:1 |
+| `cursos/` | Ver as duas trilhas (hub) |
 | Raiz do repo | Estudo + `skills/` + `squads/` (índice mais pesado) |
 
-Instruções humanas: `README.md` (seção Obsidian) e `Cursos/README.md`.
+Instruções humanas: `README.md` (seção Obsidian) e `cursos/README.md`.
 
 ## Onboarding (primeiros minutos)
 
@@ -37,11 +37,11 @@ Instruções humanas: `README.md` (seção Obsidian) e `Cursos/README.md`.
 Sempre paths relativos ao repo:
 
 ```text
-Cursos/AIOX Advanced/lessons/
-Cursos/AIOX Advanced/modulos/
-Cursos/AIOX-Advanced-Squads/aulas/
-Cursos/AIOX-Advanced-Squads/modulos/
-Cursos/README.md
+cursos/AIOX Advanced/lessons/
+cursos/AIOX Advanced/modulos/
+cursos/AIOX-Advanced-Squads/aulas/
+cursos/AIOX-Advanced-Squads/modulos/
+cursos/README.md
 ```
 
 Busca: pelo nome da aula no frontmatter/`title`, tags `curso/…`, ou palavra da missão.

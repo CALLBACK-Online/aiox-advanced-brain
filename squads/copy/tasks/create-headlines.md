@@ -1248,7 +1248,7 @@ output_example:
 
 ## FASE 5: 50+ HEADLINES ANALISADOS (REFERÊNCIA)
 
-### Headlines de Cursos/Info-produtos
+### Headlines de cursos/Info-produtos
 
 ```yaml
 analyzed_headlines:

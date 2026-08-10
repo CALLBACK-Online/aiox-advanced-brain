@@ -7,7 +7,7 @@ tags:
 - course-brain
 updated: '2026-08-10'
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 freq_meta:
   counted_at: '2026-08-10'
   corpus: >
@@ -29,7 +29,7 @@ Inventário: **22 conceitos canônicos** + **158 termos** de referência (P0+P1+
 |-------|-------------|
 | **`N×` / total** | Menções no AIOX Advanced + AIOX Advanced Squads |
 | **A** | Só AIOX Advanced — aulas, módulos, avaliações, pontes (sem o próprio glossário) |
-| **S** | Só AIOX Advanced Squads (`Cursos/AIOX-Advanced-Squads/`) |
+| **S** | Só AIOX Advanced Squads (`cursos/AIOX-Advanced-Squads/`) |
 
 - Variantes: título, plurais e aliases (ex.: `CLAUDE.md`, `CI/CD`, `wave-execute`, skill/skills).
 - Tokens só-MAIÚSCULOS de domínio (`PRD`, `REUSE`, `PASS`, `RLS`…) na forma canônica.
@@ -261,13 +261,13 @@ Inventário: **22 conceitos canônicos** + **158 termos** de referência (P0+P1+
 - [[Vercel]] — Plataforma de deploy web (preview + production) usada no curso como degrau prático do localhost ao mundo. · **`38`×** (A38/S0)
 - [[WAIVED]] — Veredito do Quality Gate: finding conscientemente relevado com dono e motivo — exceção documentada, não esquecimento. · **`7`×** (A7/S0)
 - [[Wave Execute]] — Orquestração avançada em waves paralelas com partição de ownership e fan-in. Usar quando a decisão de paralelizar já … · **`29`×** (A29/S0)
-- [[Wikilink]] — Link interno entre notas Markdown no estilo Obsidian (colchetes duplos em volta do nome da nota). O grafo do curso depende de wikilinks resolvíveis dentro de `Cursos/`. · **`1`×** (A1/S0)
+- [[Wikilink]] — Link interno entre notas Markdown no estilo Obsidian (colchetes duplos em volta do nome da nota). O grafo do curso depende de wikilinks resolvíveis dentro de `cursos/`. · **`1`×** (A1/S0)
 - [[Worker]] — Executor focado em trabalho mecânico/repetível na taxonomia dos Quatro Executores. Diferente do Agent (raciocínio abe… · **`79`×** (A78/S1)
 - [[Workflow]] — Sequência orquestrada de tasks/agentes para um resultado. Pode virar Runner quando o processo precisa repetir com mín… · **`455`×** (A346/S109)
 - [[Épico]] — Fatia grande de valor no PRD. Agrupa Stories relacionadas; o SM quebra o épico em unidades executáveis com aceite tes… · **`100`×** (A100/S0)
 
 ## Navegação
 
-- [[Cursos/AIOX Advanced/README|AIOX Advanced]]
+- [[cursos/AIOX Advanced/README|AIOX Advanced]]
 - [[Mapa do AIOX]]
-- Curso irmão (coluna **S** da frequência): `Cursos/AIOX-Advanced-Squads/`
+- Curso irmão (coluna **S** da frequência): `cursos/AIOX-Advanced-Squads/`

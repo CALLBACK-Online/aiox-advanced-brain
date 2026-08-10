@@ -23,13 +23,13 @@ module: MC
 sequence: MC.2
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Caso integrado end-to-end: do briefing ao deploy em 90 minutos
 
-← [[44-metodo-s2s|Método S2S: converter sinais em sistemas]] · ↑ [[modulos/Módulo C - Capstone|MC]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[75-faq-cohort-campo|FAQ de campo: o que a turma Advanced realmente pergunta]]
+← [[44-metodo-s2s|Método S2S: converter sinais em sistemas]] · ↑ [[modulos/Módulo C - Capstone|MC]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[75-faq-cohort-campo|FAQ de campo: o que a turma Advanced realmente pergunta]]
 
 ## Mapa desta aula
 
@@ -452,4 +452,4 @@ seu — inclusive apertar o cronômetro de novo na semana que vem.
 
 ## Navegação
 
-← [[44-metodo-s2s|Método S2S: converter sinais em sistemas]] · ↑ [[modulos/Módulo C - Capstone|MC]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[75-faq-cohort-campo|FAQ de campo: o que a turma Advanced realmente pergunta]]
+← [[44-metodo-s2s|Método S2S: converter sinais em sistemas]] · ↑ [[modulos/Módulo C - Capstone|MC]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[75-faq-cohort-campo|FAQ de campo: o que a turma Advanced realmente pergunta]]

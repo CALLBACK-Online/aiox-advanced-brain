@@ -1,27 +1,26 @@
 # Configuração Obsidian — aiox-advanced-brain
 
-Personalização versionada do vault na raiz do repositório.
+Pastas do vault (minúsculas): `cursos/` · `skills/` · `squads/` · `notas/`.
 
 | Arquivo | Função |
 |---------|--------|
-| `appearance.json` | Tema padrão do Obsidian + snippet de pastas |
-| `graph.json` | Color groups ativos no Graph |
-| `graph.aiox-brain.json` | **Cópia canônica** do Graph — restaure se o Obsidian sobrescrever |
-| `snippets/aiox-brain-folders.css` | Cores no explorador de pastas |
-| `app.json` | Notas novas → `_notas-pessoais/inbox` |
+| `appearance.json` | Tema padrão + snippet próprio de pastas |
+| `graph.json` | Graph **limpo** (orphans off + cores) |
+| `graph.aiox-brain.json` | Backup do Graph limpo |
+| `graph.aiox-brain.audit.json` | Graph com orphans on (auditoria) |
+| `snippets/aiox-brain-folders.css` | Cores no explorador |
+| `app.json` | Novas notas → `notas/inbox` |
 
-O arquivo de estado local da interface do Obsidian **não** é versionado.
-
-## Restaurar cores do Graph
-
-Se o Graph voltar cinza:
+## Restaurar Graph limpo
 
 ```bash
 cp .obsidian/graph.aiox-brain.json .obsidian/graph.json
 ```
 
-Feche e reabra o Graph no Obsidian (ou recarregue o app).
+## Auditoria (anel de órfãos)
 
-## Vault root
+```bash
+cp .obsidian/graph.aiox-brain.audit.json .obsidian/graph.json
+```
 
-Abra a **raiz do repositório** como vault para ver cursos + skills + squads no mesmo grafo.
+Abra a **raiz do repositório** como vault.

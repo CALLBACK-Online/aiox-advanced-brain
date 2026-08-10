@@ -24,13 +24,13 @@ module: M2
 sequence: M2.5
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # YAML, Markdown, JSON: o sweet spot para LLM
 
-← [[27-otimizacao-claude-md|Otimização do CLAUDE.md: 40% mais magro, mesma capacidade]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[46-etapas-de-desenvolvimento|Briefing, PRD, Stories: as 3 etapas antes do código]]
+← [[27-otimizacao-claude-md|Otimização do CLAUDE.md: 40% mais magro, mesma capacidade]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[46-etapas-de-desenvolvimento|Briefing, PRD, Stories: as 3 etapas antes do código]]
 
 ## Conceitos
 
@@ -441,4 +441,4 @@ Os termos desta aula em uma frase cada.
 
 ## Navegação
 
-← [[27-otimizacao-claude-md|Otimização do CLAUDE.md: 40% mais magro, mesma capacidade]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[46-etapas-de-desenvolvimento|Briefing, PRD, Stories: as 3 etapas antes do código]]
+← [[27-otimizacao-claude-md|Otimização do CLAUDE.md: 40% mais magro, mesma capacidade]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[46-etapas-de-desenvolvimento|Briefing, PRD, Stories: as 3 etapas antes do código]]

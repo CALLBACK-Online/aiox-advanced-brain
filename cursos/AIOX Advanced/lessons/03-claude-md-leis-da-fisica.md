@@ -24,13 +24,13 @@ module: M1
 sequence: M1.2
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[CLAUDE md|CLAUDE.md]] é a lei da física do seu projeto
 
-← [[02-aiox-nao-e-ferramenta|AIOX não é ferramenta]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[25-core-config-leis-sociais|core-config: as leis sociais do projeto]]
+← [[02-aiox-nao-e-ferramenta|AIOX não é ferramenta]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[25-core-config-leis-sociais|core-config: as leis sociais do projeto]]
 
 ## Conceitos
 
@@ -602,4 +602,4 @@ Sem checagem, o CLAUDE.md vira decoração. Estas métricas separam lei viva de 
 
 ## Navegação
 
-← [[02-aiox-nao-e-ferramenta|AIOX não é ferramenta]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[25-core-config-leis-sociais|core-config: as leis sociais do projeto]]
+← [[02-aiox-nao-e-ferramenta|AIOX não é ferramenta]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[25-core-config-leis-sociais|core-config: as leis sociais do projeto]]

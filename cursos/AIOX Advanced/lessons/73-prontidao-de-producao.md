@@ -23,13 +23,13 @@ module: M12
 sequence: M12.5
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Prontidão de produção: checklist final
 
-← [[72-cicd-pipeline-completa|CI/CD Pipeline completa: GitHub Actions + Quality Gate pré-merge]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[44-metodo-s2s|Método S2S: converter sinais em sistemas]]
+← [[72-cicd-pipeline-completa|CI/CD Pipeline completa: GitHub Actions + Quality Gate pré-merge]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[44-metodo-s2s|Método S2S: converter sinais em sistemas]]
 
 ## Mapa desta aula
 
@@ -413,4 +413,4 @@ A IA é a seta. O X é seu — inclusive dizer NO-GO.
 
 ## Navegação
 
-← [[72-cicd-pipeline-completa|CI/CD Pipeline completa: GitHub Actions + Quality Gate pré-merge]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[44-metodo-s2s|Método S2S: converter sinais em sistemas]]
+← [[72-cicd-pipeline-completa|CI/CD Pipeline completa: GitHub Actions + Quality Gate pré-merge]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[44-metodo-s2s|Método S2S: converter sinais em sistemas]]

@@ -23,13 +23,13 @@ module: M9
 sequence: M9.2
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Design atomico: a interface se monta de peca pequena pra peca grande
 
-← [[41-design-system-e-decisao|Design system é decisão, não estética]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[56-tailwind-shadcn-storybook|Tailwind + ShadCN + Storybook: stack canonical para IA]]
+← [[41-design-system-e-decisao|Design system é decisão, não estética]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[56-tailwind-shadcn-storybook|Tailwind + ShadCN + Storybook: stack canonical para IA]]
 
 ## Mapa desta aula
 
@@ -515,4 +515,4 @@ Traducao dos termos para alguem que esta vendo a hierarquia atomo -> molecula ->
 
 ## Navegação
 
-← [[41-design-system-e-decisao|Design system é decisão, não estética]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[56-tailwind-shadcn-storybook|Tailwind + ShadCN + Storybook: stack canonical para IA]]
+← [[41-design-system-e-decisao|Design system é decisão, não estética]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[56-tailwind-shadcn-storybook|Tailwind + ShadCN + Storybook: stack canonical para IA]]

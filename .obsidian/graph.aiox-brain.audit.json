@@ -1,0 +1,79 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": true,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "tag:#hub",
+      "color": {
+        "a": 1,
+        "rgb": 11823615
+      }
+    },
+    {
+      "query": "path:skills",
+      "color": {
+        "a": 1,
+        "rgb": 7055360
+      }
+    },
+    {
+      "query": "path:squads",
+      "color": {
+        "a": 1,
+        "rgb": 36095
+      }
+    },
+    {
+      "query": "path:notas",
+      "color": {
+        "a": 1,
+        "rgb": 508415
+      }
+    },
+    {
+      "query": "path:\"cursos/AIOX-Advanced-Squads\"",
+      "color": {
+        "a": 1,
+        "rgb": 11950491
+      }
+    },
+    {
+      "query": "path:\"cursos/Obsidian-IA\"",
+      "color": {
+        "a": 1,
+        "rgb": 10271770
+      }
+    },
+    {
+      "query": "path:\"cursos/AIOX Advanced\"",
+      "color": {
+        "a": 1,
+        "rgb": 16091980
+      }
+    },
+    {
+      "query": "path:cursos",
+      "color": {
+        "a": 1,
+        "rgb": 10921365
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": -0.8,
+  "nodeSizeMultiplier": 1.05,
+  "lineSizeMultiplier": 1.1,
+  "collapse-forces": false,
+  "centerStrength": 0.32,
+  "repelStrength": 15,
+  "linkStrength": 1,
+  "linkDistance": 130,
+  "scale": 0.12,
+  "close": false
+}

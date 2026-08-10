@@ -25,13 +25,13 @@ module: M4
 sequence: M4.3
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Goal vs Loop]]
 
-← [[21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro, LLM só onde gera ouro]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[50-rider-modo-elicitacao|Rider: quando o operador é o piloto]]
+← [[21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro, LLM só onde gera ouro]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[50-rider-modo-elicitacao|Rider: quando o operador é o piloto]]
 
 
 > **Nota deste acervo:** comandos e squads de produção de curso (`course-creator`) vivem no monorepo `../upstream-monorepo`. Este repositório traz o curso materializado e a biblioteca de skills/squads citados na turma.
@@ -1008,4 +1008,4 @@ A anatomia de um goal verificável, para o aluno converter meta fraca em contrat
 
 ## Navegação
 
-← [[21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro, LLM só onde gera ouro]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[50-rider-modo-elicitacao|Rider: quando o operador é o piloto]]
+← [[21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro, LLM só onde gera ouro]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[50-rider-modo-elicitacao|Rider: quando o operador é o piloto]]

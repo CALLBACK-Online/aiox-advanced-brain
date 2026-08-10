@@ -23,13 +23,13 @@ module: M9
 sequence: M9.5
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Storybook]] para derivar e testar variantes (a11y, dark mode, responsivo)
 
-← [[43-design-md-novo-contrato|DESIGN.md: o novo contrato que a IA lê antes de gerar tela]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[58-ralph-paralelizacao|Ralph: paralelização de múltiplos agentes]]
+← [[43-design-md-novo-contrato|DESIGN.md: o novo contrato que a IA lê antes de gerar tela]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[58-ralph-paralelizacao|Ralph: paralelização de múltiplos agentes]]
 
 ## Mapa desta aula
 
@@ -402,4 +402,4 @@ barata de verdade antes da produção.
 
 ## Navegação
 
-← [[43-design-md-novo-contrato|DESIGN.md: o novo contrato que a IA lê antes de gerar tela]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[58-ralph-paralelizacao|Ralph: paralelização de múltiplos agentes]]
+← [[43-design-md-novo-contrato|DESIGN.md: o novo contrato que a IA lê antes de gerar tela]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[58-ralph-paralelizacao|Ralph: paralelização de múltiplos agentes]]

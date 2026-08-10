@@ -23,13 +23,13 @@ module: M11
 sequence: M11.3
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Vender pela [[Dor|dor]] e [[ROI]], não pela tecnologia
 
-← [[63-distribuicao-vs-produto|Distribuição > Produto (10/90)]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[65-tres-caminhos-de-produto|Três caminhos de produto: Consultoria → App Web → SaaS]]
+← [[63-distribuicao-vs-produto|Distribuição > Produto (10/90)]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[65-tres-caminhos-de-produto|Três caminhos de produto: Consultoria → App Web → SaaS]]
 
 ## Mapa desta aula
 
@@ -392,4 +392,4 @@ A IA é a seta. O X é seu — inclusive **o que você escolhe dizer primeiro**.
 
 ## Navegação
 
-← [[63-distribuicao-vs-produto|Distribuição > Produto (10/90)]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[65-tres-caminhos-de-produto|Três caminhos de produto: Consultoria → App Web → SaaS]]
+← [[63-distribuicao-vs-produto|Distribuição > Produto (10/90)]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[65-tres-caminhos-de-produto|Três caminhos de produto: Consultoria → App Web → SaaS]]

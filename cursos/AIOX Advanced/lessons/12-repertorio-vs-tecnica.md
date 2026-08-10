@@ -24,13 +24,13 @@ module: M0
 sequence: M0.3
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Repertório vence técnica
 
-← [[08-principio-processo-certo|Respeite o processo: dê comando, não converse]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[13-pensamento-estruturado-antes-do-terminal|Desenhe fora da ferramenta antes de codar]]
+← [[08-principio-processo-certo|Respeite o processo: dê comando, não converse]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[13-pensamento-estruturado-antes-do-terminal|Desenhe fora da ferramenta antes de codar]]
 
 ## Conceitos
 
@@ -603,4 +603,4 @@ Os termos centrais com definição operacional. Use como referência rápida em 
 
 ## Navegação
 
-← [[08-principio-processo-certo|Respeite o processo: dê comando, não converse]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[13-pensamento-estruturado-antes-do-terminal|Desenhe fora da ferramenta antes de codar]]
+← [[08-principio-processo-certo|Respeite o processo: dê comando, não converse]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[13-pensamento-estruturado-antes-do-terminal|Desenhe fora da ferramenta antes de codar]]

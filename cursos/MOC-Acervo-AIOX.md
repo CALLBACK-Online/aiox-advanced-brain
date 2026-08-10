@@ -3,43 +3,30 @@ tags: [hub, aiox-brain, moc]
 aliases: [MOC Acervo, Mapa do acervo]
 ---
 
-# MOC — Acervo AIOX (cursos × skills × squads)
+# MOC — Acervo AIOX
 
-> Propósito: ver **como as três camadas se conectam** no Graph colorido.
+> Como **cursos × skills × squads × notas** se conectam no Graph.
 
-## Camada cursos
+## Pastas
 
-- [[Cursos/AIOX Advanced/README|AIOX Advanced]] — método (`#curso/metodo`)
-- [[Cursos/AIOX-Advanced-Squads/README|AIOX Advanced Squads]] — 24 squads (`#curso/squads`)
-- [[Cursos/Obsidian-IA/README|Obsidian + IA]] — vault + agent (`#curso/obsidian-ia`)
-- [[Cursos/README|Hub Cursos]]
+- [[cursos/README|cursos/]] — canônico
+- [[skills/aiox-brain/SKILL|skills/]] — procedimentos
+- `squads/` — pacotes
+- [[notas/README|notas/]] — anotações dos alunos
 
-## Camada skills
+## Trilhas
 
-Mapa detalhado: [[Cursos/MOC-Skills|MOC · Skills]]
-Pasta: `skills/` (verde no Graph)
+- [[cursos/AIOX Advanced/README|AIOX Advanced]] — método
+- [[cursos/AIOX-Advanced-Squads/README|AIOX Advanced Squads]] — operação
+- [[cursos/Obsidian-IA/README|Obsidian + IA]] — vault + agent
 
-## Camada squads
+## Mapas
 
-Mapa detalhado: [[Cursos/MOC-Squads|MOC · Squads]]
-Pasta: `squads/` (laranja no Graph)
-Router: [[Cursos/AIOX-Advanced-Squads/AGENT-GUIDE|AGENT-GUIDE]] · `agent-router.json`
+- [[cursos/MOC-Skills|MOC · Skills]]
+- [[cursos/MOC-Squads|MOC · Squads]]
+- [[00-HOME|Home]]
 
-## Pontes método ↔ operação
+## Evidência
 
-Use o hub `Cursos/README.md` (matriz). Exemplos de trilha:
-
-| Dor / tema | Método (Advanced) | Operação (Squads) | Skill de entrada |
-|------------|-------------------|-------------------|------------------|
-| Decisão multi-perspectiva | mesa-redonda / advisory | aula advisory-board | `skills/advisory-board` |
-| Research | tech research / spy | aula research | `skills/research` |
-| Brownfield regras | domain decoder | aula domain-decoder | `skills/domain-decoder` |
-| Design system | design system lessons | design-system + design-ops | `skills/design-system` |
-| Criar squad | squad creator lessons | squad-creator (+ pro) | `skills/squad-creator` |
-
-Links diretos: [[skills/advisory-board/SKILL|advisory-board]] · [[skills/research/SKILL|research]] · [[skills/domain-decoder/SKILL|domain-decoder]] · [[skills/design-system/SKILL|design-system]] · [[skills/squad-creator/SKILL|squad-creator]]
-
-## Evidência de navegação
-
-- [ ] Graph com orphans off mostra cluster azul + roxo + hubs rosa
-- [ ] Clicar um squad laranja leva à aula roxa e/ou skill verde
+- [ ] Graph com orphans **off** mostra miolo colorido (sem anel azul)
+- [ ] skills verdes e squads laranja ligados aos hubs rosa

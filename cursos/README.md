@@ -7,9 +7,9 @@ Hub das trilhas educacionais deste repositório. Cada curso é **autocontido** (
 Os cursos usam Markdown com **wikilinks entre notas**. A forma recomendada de estudar é abrir esta pasta (ou um curso específico) como **vault no [Obsidian](https://obsidian.md)**:
 
 1. Instale o Obsidian.
-2. **Open folder as vault** → para o **Graph colorido completo** (cursos + skills + squads), abra a **raiz do repositório**. Alternativas: `Cursos/`, `Cursos/AIOX Advanced/`, `Cursos/AIOX-Advanced-Squads/` ou `Cursos/Obsidian-IA/`.
+2. **Open folder as vault** → para o **Graph colorido completo** (cursos + skills + squads), abra a **raiz do repositório**. Alternativas: `cursos/`, `cursos/AIOX Advanced/`, `cursos/AIOX-Advanced-Squads/` ou `cursos/Obsidian-IA/`.
 3. Comece por `00-HOME.md` (raiz) ou pelo `README.md` do curso; use Graph view com as cores do acervo.
-4. Mapas: `Cursos/MOC-Acervo-AIOX.md`, `Cursos/MOC-Skills.md`, `Cursos/MOC-Squads.md`.
+4. Mapas: `cursos/MOC-Acervo-AIOX.md`, `cursos/MOC-Skills.md`, `cursos/MOC-Squads.md`.
 
 No GitHub ou em editores genéricos os arquivos abrem, mas o grafo de ~2.000 links do AIOX Advanced funciona melhor no Obsidian. Instruções completas: README na raiz do repositório.
 
@@ -17,9 +17,9 @@ No GitHub ou em editores genéricos os arquivos abrem, mas o grafo de ~2.000 lin
 
 | Curso | Para quê | Comece em |
 |-------|----------|-----------|
-| **Obsidian + IA** | Mini: vault, wikilinks, agent professor, captura e MOCs | `Cursos/Obsidian-IA/README.md` |
-| **AIOX Advanced** | Método: mindset, SDC, taxonomia, determinismo, deploy | `Cursos/AIOX Advanced/README.md` |
-| **AIOX Advanced Squads** | Operação: um squad por aula, briefing e evidência | `Cursos/AIOX-Advanced-Squads/README.md` |
+| **Obsidian + IA** | Mini: vault, wikilinks, agent professor, captura e MOCs | `cursos/Obsidian-IA/README.md` |
+| **AIOX Advanced** | Método: mindset, SDC, taxonomia, determinismo, deploy | `cursos/AIOX Advanced/README.md` |
+| **AIOX Advanced Squads** | Operação: um squad por aula, briefing e evidência | `cursos/AIOX-Advanced-Squads/README.md` |
 
 ## Ordem sugerida
 
@@ -44,7 +44,7 @@ No GitHub ou em editores genéricos os arquivos abrem, mas o grafo de ~2.000 lin
 | Skills lifecycle | `28-…` | `22-skill-creator-ops.md` |
 
 Matriz completa e pontes:  
-`Cursos/AIOX Advanced/ponte/trilha-squads.md` · `Cursos/AIOX-Advanced-Squads/ponte/pre-requisitos-advanced.md`
+`cursos/AIOX Advanced/ponte/trilha-squads.md` · `cursos/AIOX-Advanced-Squads/ponte/pre-requisitos-advanced.md`
 
 ## Layout do acervo
 
@@ -52,7 +52,7 @@ Matriz completa e pontes:
 |-------|-----|
 | `skills/` | Skills para copiar à IDE do projeto (inclui vault de estudo: `aiox-brain`, `obsidian-course-vault`, `course-moc`, `study-capture`) |
 | `squads/` | Squads para copiar ao projeto |
-| `Cursos/` | Cursos navegáveis (esta pasta) |
-| `Cursos/_notas-pessoais/` | Captura local do aluno (não polui aulas canônicas) |
+| `cursos/` | Cursos navegáveis (esta pasta) |
+| `notas/` | Captura local do aluno (não polui aulas canônicas) |
 
 Não há runtime AIOX completo neste repositório: estude aqui, execute no seu projeto. Segundo cérebro do acervo: `skills/aiox-brain/SKILL.md`.

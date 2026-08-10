@@ -23,13 +23,13 @@ module: M11
 sequence: M11.1
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Service-as-Software]]: a era do serviço produtivado
 
-← [[61-wave-execute|Wave Execute: orquestração avançada com waves paralelas]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[63-distribuicao-vs-produto|Distribuição > Produto (10/90)]]
+← [[61-wave-execute|Wave Execute: orquestração avançada com waves paralelas]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[63-distribuicao-vs-produto|Distribuição > Produto (10/90)]]
 
 ## Mapa desta aula
 
@@ -414,4 +414,4 @@ A IA é a seta. O X é seu — inclusive escolher **o que merece** virar softwar
 
 ## Navegação
 
-← [[61-wave-execute|Wave Execute: orquestração avançada com waves paralelas]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[63-distribuicao-vs-produto|Distribuição > Produto (10/90)]]
+← [[61-wave-execute|Wave Execute: orquestração avançada com waves paralelas]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[63-distribuicao-vs-produto|Distribuição > Produto (10/90)]]

@@ -11,18 +11,20 @@ description: >
 
 ## Regra de ouro
 
-**Aulas e módulos em `Cursos/` são canônicos.**
+
+
+**Aulas e módulos em `cursos/` são canônicos.**
 Captura da pessoa vai para espaço pessoal:
 
 | Preferência | Path |
 |-------------|------|
-| Neste clone (local) | `Cursos/_notas-pessoais/` |
+| Neste clone (local) | `notas/` |
 | Vault pessoal | path que a pessoa indicar (nunca inventar iCloud/Users) |
 
 Estrutura sugerida (local):
 
 ```text
-Cursos/_notas-pessoais/
+notas/
   README.md                 # explicação (versionado)
   inbox/                    # captura rápida
   notes/                    # notas destiladas
@@ -96,7 +98,7 @@ Copiar para o projeto: só quando for executar
 ```markdown
 ---
 type: study-note
-source: "Cursos/…/….md"
+source: "cursos/…/….md"
 created: YYYY-MM-DD
 tags: [estudo, aiox]
 ---

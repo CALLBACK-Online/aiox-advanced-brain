@@ -23,13 +23,13 @@ module: M11
 sequence: M11.2
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Distribuição > Produto (10/90)
 
-← [[62-service-as-software|Service-as-Software: a era do serviço produtivado]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[64-vender-pela-dor-e-roi|Vender pela DOR e ROI, não pela tecnologia]]
+← [[62-service-as-software|Service-as-Software: a era do serviço produtivado]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[64-vender-pela-dor-e-roi|Vender pela DOR e ROI, não pela tecnologia]]
 
 ## Mapa desta aula
 
@@ -378,4 +378,4 @@ A IA é a seta. O X é seu — inclusive **sair do repo** e falar com humano.
 
 ## Navegação
 
-← [[62-service-as-software|Service-as-Software: a era do serviço produtivado]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[64-vender-pela-dor-e-roi|Vender pela DOR e ROI, não pela tecnologia]]
+← [[62-service-as-software|Service-as-Software: a era do serviço produtivado]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[64-vender-pela-dor-e-roi|Vender pela DOR e ROI, não pela tecnologia]]

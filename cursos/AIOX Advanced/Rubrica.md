@@ -3,7 +3,7 @@ type: assessment-rubric
 course: aiox-advanced
 status: canonical
 source_version: 1.0.0
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 tags: [curso/aiox-advanced, avaliacao]
 ---
 
@@ -50,4 +50,4 @@ Eu avalio evidência, não eloquência. Cada critério vale 20 pontos. A entrega
 
 ## Navegação
 
-← [[Projeto Integrador]] · ↑ [[Cursos/AIOX Advanced/README|Curso]]
+← [[Projeto Integrador]] · ↑ [[cursos/AIOX Advanced/README|Curso]]

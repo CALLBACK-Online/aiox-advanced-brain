@@ -23,13 +23,13 @@ module: M7
 sequence: M7.1
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[REUSE]] > [[ADAPT]] > [[CREATE]]: a heurística antes de criar nada
 
-← [[32-design-system-greenfield-brownfield|Design System: greenfield versus brownfield]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[33-anatomia-de-um-squad|Anatomia de um Squad AIOX]]
+← [[32-design-system-greenfield-brownfield|Design System: greenfield versus brownfield]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[33-anatomia-de-um-squad|Anatomia de um Squad AIOX]]
 
 ## Mapa desta aula
 
@@ -405,4 +405,4 @@ A IA é a seta. O X é seu — inclusive engolir o ego e apontar pro path que j�
 
 ## Navegação
 
-← [[32-design-system-greenfield-brownfield|Design System: greenfield versus brownfield]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[33-anatomia-de-um-squad|Anatomia de um Squad AIOX]]
+← [[32-design-system-greenfield-brownfield|Design System: greenfield versus brownfield]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[33-anatomia-de-um-squad|Anatomia de um Squad AIOX]]

@@ -4,11 +4,12 @@
 
 ### Added
 
-- Mini-curso `Cursos/Obsidian-IA/` (8 aulas: vault, wikilinks, agent professor, captura, MOCs, execução).
+- Mini-curso `cursos/Obsidian-IA/` (8 aulas: vault, wikilinks, agent professor, captura, MOCs, execução).
 - Skills de **vault de estudo** (segundo cérebro do acervo): `aiox-brain`, `obsidian-course-vault`, `course-moc`, `study-capture`.
-- Pasta local `Cursos/_notas-pessoais/` (README versionado; captura do aluno gitignored).
+- Pasta local `notas/` (README versionado; captura do aluno gitignored).
 - Wiring em `AGENTS.md` / `CLAUDE.md` / README para curadoria de estudo sem poluir o canônico.
-- **Vault Obsidian personalizado:** tema **PLN** (igual mentelendaria), `.obsidian/graph.json` com color groups (cursos/skills/squads), snippet CSS de pastas, `00-HOME.md` + MOCs de conexão.
+- Layout vault: pasta `cursos/` (minúsculo, alinhado a `skills/`/`squads/`), pasta `notas/` para anotações dos alunos, Graph limpo (orphans off).
+- **Vault Obsidian personalizado:** tema padrão, `.obsidian/graph.json` com grupos de cores (cursos/skills/squads), snippet CSS próprio, `00-HOME.md` + MOCs de conexão.
 - Glossário ampliado para 235 arquivos Markdown e **2.004 wikilinks** verificados no curso principal.
 
 ## 0.5.0 — 2026-08-10
@@ -46,7 +47,7 @@
 
 - `npm run gate:enterprise` e enforce em `npm run validate`.
 - `scripts/sync-from-source.mjs --write` copia com filtro + gate antes de manter o asset.
-- Curso `Cursos/AIOX-Advanced-Squads/`: 24 aulas práticas, 6 módulos, 6 quizzes, mapa de decisão, projeto integrador e validador próprio.
+- Curso `cursos/AIOX-Advanced-Squads/`: 24 aulas práticas, 6 módulos, 6 quizzes, mapa de decisão, projeto integrador e validador próprio.
 
 ### Preserved
 

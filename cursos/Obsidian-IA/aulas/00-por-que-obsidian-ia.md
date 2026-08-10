@@ -6,7 +6,7 @@ lesson_id: por-que-obsidian-ia
 lesson_position: 0
 title: "Por que Obsidian + IA neste acervo"
 status: canonical
-canonical_scope: Cursos/Obsidian-IA
+canonical_scope: cursos/Obsidian-IA
 reading_minutes: 8
 tags: [curso/obsidian-ia, segundo-cerebro]
 maturity: study

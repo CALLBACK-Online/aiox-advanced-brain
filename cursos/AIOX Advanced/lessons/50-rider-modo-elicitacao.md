@@ -23,13 +23,13 @@ module: M4
 sequence: M4.4
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Rider: quando o operador é o piloto
 
-← [[11-goal-vs-loop|Goal vs Loop]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[22-pipeline-etl-com-agentes|Pipeline ETL com agentes: hierarquia de camadas]]
+← [[11-goal-vs-loop|Goal vs Loop]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[22-pipeline-etl-com-agentes|Pipeline ETL com agentes: hierarquia de camadas]]
 
 ## Mapa desta aula
 
@@ -406,4 +406,4 @@ A IA é a seta. O X é seu — inclusive puxar o freio no precipício e soltar n
 
 ## Navegação
 
-← [[11-goal-vs-loop|Goal vs Loop]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[22-pipeline-etl-com-agentes|Pipeline ETL com agentes: hierarquia de camadas]]
+← [[11-goal-vs-loop|Goal vs Loop]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[22-pipeline-etl-com-agentes|Pipeline ETL com agentes: hierarquia de camadas]]

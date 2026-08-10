@@ -20,7 +20,7 @@ Inspiração: Linking Your Thinking (hubs/MOCs). Implementação: Markdown + wik
 | Tipo | Destino | Versionar no git do brain? |
 |------|---------|----------------------------|
 | MOC **canônico** do pacote (raro) | Só se for melhoria do curso acordada | Sim, com validate |
-| MOC de **estudo do aluno** | `Cursos/_notas-pessoais/MOCs/` | Não (gitignored) |
+| MOC de **estudo do aluno** | `notas/MOCs/` | Não (gitignored) |
 | MOC no vault pessoal | Vault da pessoa | Fora deste repo |
 
 Padrão de nome: `MOC - {Tema}.md` ou `hub-{slug}.md`.
@@ -67,14 +67,14 @@ Padrão de nome: `MOC - {Tema}.md` ou `hub-{slug}.md`.
 - …
 ```
 
-Se o vault for só `Cursos/AIOX Advanced/`, use wikilinks pelo título da nota. Se o agent estiver no repo, cite **paths relativos** para não ambiguidade.
+Se o vault for só `cursos/AIOX Advanced/`, use wikilinks pelo título da nota. Se o agent estiver no repo, cite **paths relativos** para não ambiguidade.
 
 ## Fontes canônicas para montar hubs
 
-- `Cursos/README.md` — matriz método ↔ squads
-- `Cursos/AIOX Advanced/README.md` — módulos e rotas
-- `Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md`
-- `Cursos/AIOX-Advanced-Squads/agent-router.json` — sinais por squad
+- `cursos/README.md` — matriz método ↔ squads
+- `cursos/AIOX Advanced/README.md` — módulos e rotas
+- `cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md`
+- `cursos/AIOX-Advanced-Squads/agent-router.json` — sinais por squad
 - `catalog.json` — existência e maturidade
 
 ## Guardrails

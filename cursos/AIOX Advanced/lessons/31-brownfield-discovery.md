@@ -24,13 +24,13 @@ module: M6
 sequence: M6.2
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Brownfield Discovery]]: entrar num projeto que já existe
 
-← [[52-workflow-vs-comando-manual|Workflow pronto vs comando manual: bicicleta com rodinha]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[53-brownfield-enhancement|Brownfield Enhancement: como adicionar feature em código legado]]
+← [[52-workflow-vs-comando-manual|Workflow pronto vs comando manual: bicicleta com rodinha]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[53-brownfield-enhancement|Brownfield Enhancement: como adicionar feature em código legado]]
 
 ## Conceitos
 
@@ -498,4 +498,4 @@ Tradução dos termos para alguém que está vendo a distinção greenfield vers
 
 ## Navegação
 
-← [[52-workflow-vs-comando-manual|Workflow pronto vs comando manual: bicicleta com rodinha]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[53-brownfield-enhancement|Brownfield Enhancement: como adicionar feature em código legado]]
+← [[52-workflow-vs-comando-manual|Workflow pronto vs comando manual: bicicleta com rodinha]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[53-brownfield-enhancement|Brownfield Enhancement: como adicionar feature em código legado]]

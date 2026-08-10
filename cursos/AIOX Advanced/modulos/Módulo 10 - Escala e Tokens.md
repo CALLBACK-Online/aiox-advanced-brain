@@ -4,7 +4,7 @@ course: aiox-advanced
 module: M10
 sequence: 10
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 source_version: 1.0.0
 tags: [curso/aiox-advanced, modulo]
 ---
@@ -37,4 +37,4 @@ Eu recupero os conceitos no [[avaliacoes/Quiz M10 - Escala e Tokens|Quiz do M10]
 
 ## Navegação
 
-← [[modulos/Módulo 9 - Design System|M9]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 11 - Produtivização|M11]]
+← [[modulos/Módulo 9 - Design System|M9]] · ↑ [[cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 11 - Produtivização|M11]]

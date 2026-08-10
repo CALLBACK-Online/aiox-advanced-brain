@@ -23,13 +23,13 @@ module: M3
 sequence: M3.2
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Ciclo de vida do Story: [[Draft]] → [[Ready]] → in progress → in review → [[Done]]
 
-← [[46-etapas-de-desenvolvimento|Briefing, PRD, Stories: as 3 etapas antes do código]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[48-quality-gate-completo|Quality Gate: QA + Apply QA Fixes + CodeRabbit]]
+← [[46-etapas-de-desenvolvimento|Briefing, PRD, Stories: as 3 etapas antes do código]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[48-quality-gate-completo|Quality Gate: QA + Apply QA Fixes + CodeRabbit]]
 
 ## Mapa desta aula
 
@@ -396,4 +396,4 @@ A IA é a seta. O X é seu — inclusive **passar o bastão** sem sumir com o co
 
 ## Navegação
 
-← [[46-etapas-de-desenvolvimento|Briefing, PRD, Stories: as 3 etapas antes do código]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[48-quality-gate-completo|Quality Gate: QA + Apply QA Fixes + CodeRabbit]]
+← [[46-etapas-de-desenvolvimento|Briefing, PRD, Stories: as 3 etapas antes do código]] · ↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[48-quality-gate-completo|Quality Gate: QA + Apply QA Fixes + CodeRabbit]]

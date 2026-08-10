@@ -4,7 +4,7 @@ course: aiox-advanced
 module: M7
 sequence: 7
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 source_version: 1.0.0
 tags: [curso/aiox-advanced, modulo]
 ---
@@ -42,8 +42,8 @@ Eu recupero os conceitos no [[avaliacoes/Quiz M7 - Criar Squad|Quiz do M7]] e co
 >
 > Anatomia e criação: no curso Squads use `aulas/23-squad-creator.md` e `aulas/24-squad-creator-pro.md`. Pacotes em `squads/squad-creator/` e `squads/squad-creator-pro/`.
 >
-> Índice da trilha: `ponte/trilha-squads.md` · Hub: `Cursos/README.md` · Pasta do curso: `Cursos/AIOX-Advanced-Squads/`
+> Índice da trilha: `ponte/trilha-squads.md` · Hub: `cursos/README.md` · Pasta do curso: `cursos/AIOX-Advanced-Squads/`
 
 ## Navegação
 
-← [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 8 - Pipeline de Research|M8]]
+← [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ↑ [[cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 8 - Pipeline de Research|M8]]

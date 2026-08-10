@@ -12,7 +12,7 @@ workflows: 26
 module: M5
 sequence: M5.2
 status: canonical
-canonical_scope: Cursos/AIOX-Advanced-Squads
+canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 14
 tags: [curso/aiox-advanced-squads, squad, squad-creator]
 maturity: partial
@@ -24,13 +24,13 @@ maturity: partial
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `Cursos/AIOX Advanced/lessons/`) revise: `33-anatomia-de-um-squad; 34-squad-creator-passo-a-passo; 55-triagem-de-squad-novo` — criar capacidade.
+Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `33-anatomia-de-um-squad; 34-squad-creator-passo-a-passo; 55-triagem-de-squad-novo` — criar capacidade.
 
-Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `Cursos/README.md`.
+Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 
 ## Onde está neste repositório
 
-Este acervo é uma **biblioteca de distribuição**. O squad **não** roda “dentro” da pasta `Cursos/`; você estuda aqui e **copia** o pacote para o seu projeto.
+Este acervo é uma **biblioteca de distribuição**. O squad **não** roda “dentro” da pasta `cursos/`; você estuda aqui e **copia** o pacote para o seu projeto.
 
 - pasta do squad: `squads/squad-creator/`
 - config: `squads/squad-creator/config.yaml`

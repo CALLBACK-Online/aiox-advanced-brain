@@ -24,13 +24,13 @@ module: M8
 sequence: M8.3
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Code Anatomy]]: engenharia reversa de código com /code-anatomist
 
-← [[37-spy-bench-comparativo|Spy/Bench: comparação profunda entre dois projetos]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[39-pasta-os-curadoria-local|Pasta OS: curadoria local de open-source para o agente]]
+← [[37-spy-bench-comparativo|Spy/Bench: comparação profunda entre dois projetos]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[39-pasta-os-curadoria-local|Pasta OS: curadoria local de open-source para o agente]]
 
 ## Conceitos
 
@@ -501,4 +501,4 @@ Tradução dos termos para alguém que está vendo a distinção ler no olho ver
 
 ## Navegação
 
-← [[37-spy-bench-comparativo|Spy/Bench: comparação profunda entre dois projetos]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[39-pasta-os-curadoria-local|Pasta OS: curadoria local de open-source para o agente]]
+← [[37-spy-bench-comparativo|Spy/Bench: comparação profunda entre dois projetos]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[39-pasta-os-curadoria-local|Pasta OS: curadoria local de open-source para o agente]]

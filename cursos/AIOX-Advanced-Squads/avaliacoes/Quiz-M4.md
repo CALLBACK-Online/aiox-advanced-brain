@@ -3,7 +3,7 @@ type: module-quiz
 course: aiox-advanced-squads
 module: M4
 status: canonical
-canonical_scope: Cursos/AIOX-Advanced-Squads
+canonical_scope: cursos/AIOX-Advanced-Squads
 passing_score: 80
 question_count: 4
 ---

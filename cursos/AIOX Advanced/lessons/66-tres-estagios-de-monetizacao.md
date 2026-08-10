@@ -23,13 +23,13 @@ module: M11
 sequence: M11.5
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Três estágios de monetização: interno → cliente → produto
 
-← [[65-tres-caminhos-de-produto|Três caminhos de produto: Consultoria → App Web → SaaS]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[67-harness-ambiente-execucao|Harness: ambiente de execução do agente fora do Claude Code]]
+← [[65-tres-caminhos-de-produto|Três caminhos de produto: Consultoria → App Web → SaaS]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[67-harness-ambiente-execucao|Harness: ambiente de execução do agente fora do Claude Code]]
 
 ## Mapa desta aula
 
@@ -390,4 +390,4 @@ A IA é a seta. O X é seu — inclusive **admitir em qual degrau** você está.
 
 ## Navegação
 
-← [[65-tres-caminhos-de-produto|Três caminhos de produto: Consultoria → App Web → SaaS]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[67-harness-ambiente-execucao|Harness: ambiente de execução do agente fora do Claude Code]]
+← [[65-tres-caminhos-de-produto|Três caminhos de produto: Consultoria → App Web → SaaS]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[67-harness-ambiente-execucao|Harness: ambiente de execução do agente fora do Claude Code]]

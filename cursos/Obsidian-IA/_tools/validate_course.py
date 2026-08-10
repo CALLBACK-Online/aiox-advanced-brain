@@ -56,7 +56,7 @@ for position, path in enumerate(lesson_files):
         errors.append(f"{path.name}: frontmatter inválido")
     if data.get("status") != "canonical":
         errors.append(f"{path.name}: status deve ser canonical")
-    if data.get("canonical_scope") != "Cursos/Obsidian-IA":
+    if data.get("canonical_scope") != "cursos/Obsidian-IA":
         errors.append(f"{path.name}: canonical_scope incorreto")
     if data.get("lesson_position") != str(position):
         errors.append(f"{path.name}: lesson_position={data.get('lesson_position')!r}")

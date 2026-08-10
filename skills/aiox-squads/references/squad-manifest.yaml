@@ -1,10 +1,10 @@
 schema_version: 1
 router_skill: aiox-squads
-course_root: Cursos/AIOX-Advanced-Squads
-agent_guide: Cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md
-decision_map: Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md
-execution_guide: Cursos/AIOX-Advanced-Squads/Guia-de-execucao.md
-intro_lesson: Cursos/AIOX-Advanced-Squads/aulas/00-como-usar-este-curso.md
+course_root: cursos/AIOX-Advanced-Squads
+agent_guide: cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md
+decision_map: cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md
+execution_guide: cursos/AIOX-Advanced-Squads/Guia-de-execucao.md
+intro_lesson: cursos/AIOX-Advanced-Squads/aulas/00-como-usar-este-curso.md
 library_layout:
   skills: skills/
   squads: squads/
@@ -40,7 +40,7 @@ routing_procedure:
 - 7. Require evidence checklist before claiming done.
 squads:
 - id: advisory-board
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/01-advisory-board.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/01-advisory-board.md
   lesson_id: 01-advisory-board
   maturity: partial
   agents_count: 11
@@ -75,7 +75,7 @@ squads:
   if_not_installed:
   - Copy squads/advisory-board/ into the target project squads/ directory.
   - Optionally copy skill(s) ['advisory-board'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/01-advisory-board.md for briefing
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/01-advisory-board.md for briefing
     template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -96,7 +96,7 @@ squads:
   skill: advisory-board
   skill_optional: true
 - id: research
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/02-research.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/02-research.md
   lesson_id: 02-research
   maturity: study
   agents_count: 14
@@ -133,7 +133,7 @@ squads:
   if_not_installed:
   - Copy squads/research/ into the target project squads/ directory.
   - Optionally copy skill(s) ['research'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/02-research.md for briefing
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/02-research.md for briefing
     template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -155,7 +155,7 @@ squads:
   skill: research
   skill_optional: true
 - id: code-anatomist
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/03-code-anatomist.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/03-code-anatomist.md
   lesson_id: 03-code-anatomist
   maturity: partial
   agents_count: 12
@@ -188,7 +188,7 @@ squads:
   if_not_installed:
   - Copy squads/code-anatomist/ into the target project squads/ directory.
   - Optionally copy skill(s) ['code-anatomist'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/03-code-anatomist.md for briefing
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/03-code-anatomist.md for briefing
     template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -207,7 +207,7 @@ squads:
   skill: code-anatomist
   skill_optional: true
 - id: domain-decoder
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/04-domain-decoder.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/04-domain-decoder.md
   lesson_id: 04-domain-decoder
   maturity: partial
   agents_count: 8
@@ -241,7 +241,7 @@ squads:
   if_not_installed:
   - Copy squads/domain-decoder/ into the target project squads/ directory.
   - Optionally copy skill(s) ['decoder-chief'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/04-domain-decoder.md for briefing
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/04-domain-decoder.md for briefing
     template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -261,7 +261,7 @@ squads:
   skill: domain-decoder
   skill_optional: true
 - id: agent-autonomy
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/05-agent-autonomy.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/05-agent-autonomy.md
   lesson_id: 05-agent-autonomy
   maturity: partial
   agents_count: 6
@@ -295,7 +295,7 @@ squads:
   if_not_installed:
   - Copy squads/agent-autonomy/ into the target project squads/ directory.
   - Optionally copy skill(s) ['(none — use agent file)'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/05-agent-autonomy.md for briefing
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/05-agent-autonomy.md for briefing
     template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -314,7 +314,7 @@ squads:
   skill: agent-autonomy
   skill_optional: true
 - id: claude-code-mastery
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/06-claude-code-mastery.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/06-claude-code-mastery.md
   lesson_id: 06-claude-code-mastery
   maturity: study
   agents_count: 8
@@ -348,7 +348,7 @@ squads:
   if_not_installed:
   - Copy squads/claude-code-mastery/ into the target project squads/ directory.
   - Optionally copy skill(s) ['claude-code-mastery'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/06-claude-code-mastery.md for
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/06-claude-code-mastery.md for
     briefing template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -368,7 +368,7 @@ squads:
   skill: claude-code-mastery
   skill_optional: true
 - id: aiox-sop
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/07-aiox-sop.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/07-aiox-sop.md
   lesson_id: 07-aiox-sop
   maturity: partial
   agents_count: 6
@@ -400,7 +400,7 @@ squads:
   if_not_installed:
   - Copy squads/aiox-sop/ into the target project squads/ directory.
   - Optionally copy skill(s) ['(none — use agent file)'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/07-aiox-sop.md for briefing
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/07-aiox-sop.md for briefing
     template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -419,7 +419,7 @@ squads:
   skill: aiox-sop
   skill_optional: true
 - id: etl-ops
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/08-etl-ops.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/08-etl-ops.md
   lesson_id: 08-etl-ops
   maturity: partial
   agents_count: 4
@@ -451,7 +451,7 @@ squads:
   if_not_installed:
   - Copy squads/etl-ops/ into the target project squads/ directory.
   - Optionally copy skill(s) ['(none — use agent file)'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/08-etl-ops.md for briefing template
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/08-etl-ops.md for briefing template
     and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -470,7 +470,7 @@ squads:
   skill: etl-ops
   skill_optional: true
 - id: runner-ops
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/09-runner-ops.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/09-runner-ops.md
   lesson_id: 09-runner-ops
   maturity: partial
   agents_count: 5
@@ -503,7 +503,7 @@ squads:
   if_not_installed:
   - Copy squads/runner-ops/ into the target project squads/ directory.
   - Optionally copy skill(s) ['(none — use agent file)'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/09-runner-ops.md for briefing
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/09-runner-ops.md for briefing
     template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -522,7 +522,7 @@ squads:
   skill: runner-ops
   skill_optional: true
 - id: data
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/10-data.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/10-data.md
   lesson_id: 10-data
   maturity: partial
   agents_count: 7
@@ -556,7 +556,7 @@ squads:
   if_not_installed:
   - Copy squads/data/ into the target project squads/ directory.
   - Optionally copy skill(s) ['data'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/10-data.md for briefing template
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/10-data.md for briefing template
     and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -576,7 +576,7 @@ squads:
   skill: data
   skill_optional: true
 - id: db-sage
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/11-db-sage.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/11-db-sage.md
   lesson_id: 11-db-sage
   maturity: partial
   agents_count: 1
@@ -610,7 +610,7 @@ squads:
   if_not_installed:
   - Copy squads/db-sage/ into the target project squads/ directory.
   - Optionally copy skill(s) ['db-sage'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/11-db-sage.md for briefing template
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/11-db-sage.md for briefing template
     and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -631,7 +631,7 @@ squads:
   skill: db-sage
   skill_optional: true
 - id: clickup-ops-squad
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/12-clickup-ops-squad.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/12-clickup-ops-squad.md
   lesson_id: 12-clickup-ops-squad
   maturity: partial
   agents_count: 5
@@ -664,7 +664,7 @@ squads:
   if_not_installed:
   - Copy squads/clickup-ops-squad/ into the target project squads/ directory.
   - Optionally copy skill(s) ['(none — use agent file)'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/12-clickup-ops-squad.md for
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/12-clickup-ops-squad.md for
     briefing template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -683,7 +683,7 @@ squads:
   skill: clickup-ops-squad
   skill_optional: true
 - id: brand
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/13-brand.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/13-brand.md
   lesson_id: 13-brand
   maturity: partial
   agents_count: 16
@@ -715,7 +715,7 @@ squads:
   if_not_installed:
   - Copy squads/brand/ into the target project squads/ directory.
   - Optionally copy skill(s) ['brand'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/13-brand.md for briefing template
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/13-brand.md for briefing template
     and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -733,7 +733,7 @@ squads:
   skill: brand
   skill_optional: true
 - id: design-system
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/14-design-system.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/14-design-system.md
   lesson_id: 14-design-system
   maturity: partial
   agents_count: 11
@@ -768,7 +768,7 @@ squads:
   - Copy squads/design-system/ into the target project squads/ directory.
   - Optionally copy skill(s) ['design-system', 'design-chief'] into the IDE skills
     path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/14-design-system.md for briefing
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/14-design-system.md for briefing
     template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -788,7 +788,7 @@ squads:
   skill: design-system
   skill_optional: true
 - id: design-ops
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/15-design-ops.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/15-design-ops.md
   lesson_id: 15-design-ops
   maturity: partial
   agents_count: 2
@@ -825,7 +825,7 @@ squads:
   - Copy squads/design-ops/ into the target project squads/ directory.
   - Optionally copy skill(s) ['design-chief', 'design-system'] into the IDE skills
     path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/15-design-ops.md for briefing
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/15-design-ops.md for briefing
     template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -847,7 +847,7 @@ squads:
   skill: design-ops
   skill_optional: true
 - id: storytelling
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/16-storytelling.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/16-storytelling.md
   lesson_id: 16-storytelling
   maturity: partial
   agents_count: 13
@@ -880,7 +880,7 @@ squads:
   if_not_installed:
   - Copy squads/storytelling/ into the target project squads/ directory.
   - Optionally copy skill(s) ['(none — use agent file)'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/16-storytelling.md for briefing
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/16-storytelling.md for briefing
     template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -898,7 +898,7 @@ squads:
   skill: storytelling
   skill_optional: true
 - id: slides-creator
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/17-slides-creator.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/17-slides-creator.md
   lesson_id: 17-slides-creator
   maturity: partial
   agents_count: 7
@@ -932,7 +932,7 @@ squads:
   if_not_installed:
   - Copy squads/slides-creator/ into the target project squads/ directory.
   - Optionally copy skill(s) ['slide-creator'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/17-slides-creator.md for briefing
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/17-slides-creator.md for briefing
     template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -952,7 +952,7 @@ squads:
   skill: slides-creator
   skill_optional: true
 - id: conteudo
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/18-conteudo.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/18-conteudo.md
   lesson_id: 18-conteudo
   maturity: study
   agents_count: 10
@@ -986,7 +986,7 @@ squads:
   if_not_installed:
   - Copy squads/conteudo/ into the target project squads/ directory.
   - Optionally copy skill(s) ['conteudo'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/18-conteudo.md for briefing
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/18-conteudo.md for briefing
     template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -1005,7 +1005,7 @@ squads:
   skill: conteudo
   skill_optional: true
 - id: copy
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/19-copy.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/19-copy.md
   lesson_id: 19-copy
   maturity: partial
   agents_count: 27
@@ -1038,7 +1038,7 @@ squads:
   if_not_installed:
   - Copy squads/copy/ into the target project squads/ directory.
   - Optionally copy skill(s) ['copy'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/19-copy.md for briefing template
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/19-copy.md for briefing template
     and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -1057,7 +1057,7 @@ squads:
   skill: copy
   skill_optional: true
 - id: sales
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/20-sales.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/20-sales.md
   lesson_id: 20-sales
   maturity: partial
   agents_count: 9
@@ -1091,7 +1091,7 @@ squads:
   if_not_installed:
   - Copy squads/sales/ into the target project squads/ directory.
   - Optionally copy skill(s) ['sales'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/20-sales.md for briefing template
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/20-sales.md for briefing template
     and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -1111,7 +1111,7 @@ squads:
   skill: sales
   skill_optional: true
 - id: hormozi
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/21-hormozi.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/21-hormozi.md
   lesson_id: 21-hormozi
   maturity: partial
   agents_count: 16
@@ -1146,7 +1146,7 @@ squads:
   if_not_installed:
   - Copy squads/hormozi/ into the target project squads/ directory.
   - Optionally copy skill(s) ['hormozi'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/21-hormozi.md for briefing template
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/21-hormozi.md for briefing template
     and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -1166,7 +1166,7 @@ squads:
   skill: hormozi
   skill_optional: true
 - id: skill-creator-ops
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/22-skill-creator-ops.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/22-skill-creator-ops.md
   lesson_id: 22-skill-creator-ops
   maturity: partial
   agents_count: 3
@@ -1199,7 +1199,7 @@ squads:
   if_not_installed:
   - Copy squads/skill-creator-ops/ into the target project squads/ directory.
   - Optionally copy skill(s) ['(none — use agent file)'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/22-skill-creator-ops.md for
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/22-skill-creator-ops.md for
     briefing template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -1218,7 +1218,7 @@ squads:
   skill: skill-creator-ops
   skill_optional: true
 - id: squad-creator
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/23-squad-creator.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/23-squad-creator.md
   lesson_id: 23-squad-creator
   maturity: partial
   agents_count: 1
@@ -1251,7 +1251,7 @@ squads:
   if_not_installed:
   - Copy squads/squad-creator/ into the target project squads/ directory.
   - Optionally copy skill(s) ['squad-chief'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/23-squad-creator.md for briefing
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/23-squad-creator.md for briefing
     template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:
@@ -1271,7 +1271,7 @@ squads:
   skill: squad-creator
   skill_optional: true
 - id: squad-creator-pro
-  lesson: Cursos/AIOX-Advanced-Squads/aulas/24-squad-creator-pro.md
+  lesson: cursos/AIOX-Advanced-Squads/aulas/24-squad-creator-pro.md
   lesson_id: 24-squad-creator-pro
   maturity: partial
   agents_count: 6
@@ -1305,7 +1305,7 @@ squads:
   if_not_installed:
   - Copy squads/squad-creator-pro/ into the target project squads/ directory.
   - Optionally copy skill(s) ['squad-chief'] into the IDE skills path.
-  - Open the lesson Cursos/AIOX-Advanced-Squads/aulas/24-squad-creator-pro.md for
+  - Open the lesson cursos/AIOX-Advanced-Squads/aulas/24-squad-creator-pro.md for
     briefing template and evidence checklist.
   - Do not fabricate slash commands that are not registered in the runtime.
   aliases:

@@ -26,13 +26,13 @@ module: M1
 sequence: M1.5
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Anatomia de um agente: [[Persona]], skills, [[Autoridade]], [[Memória]]
 
-← [[45-doze-agentes-orbitais|Os 12 agentes orbitais do AIOX]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[15-quatro-executores|4 executores: humano, agent, clone, worker]]
+← [[45-doze-agentes-orbitais|Os 12 agentes orbitais do AIOX]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[15-quatro-executores|4 executores: humano, agent, clone, worker]]
 
 ## Conceitos
 
@@ -472,4 +472,4 @@ Os termos desta aula em uma frase cada.
 
 ## Navegação
 
-← [[45-doze-agentes-orbitais|Os 12 agentes orbitais do AIOX]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[15-quatro-executores|4 executores: humano, agent, clone, worker]]
+← [[45-doze-agentes-orbitais|Os 12 agentes orbitais do AIOX]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[15-quatro-executores|4 executores: humano, agent, clone, worker]]

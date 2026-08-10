@@ -24,13 +24,13 @@ module: M0
 sequence: M0.1
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Token Economy Mindset
 
-↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[08-principio-processo-certo|Respeite o processo: dê comando, não converse]]
+↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[08-principio-processo-certo|Respeite o processo: dê comando, não converse]]
 
 ## Conceitos
 
@@ -546,4 +546,4 @@ motivo: "economizar token aqui custa mais do que usar bem"
 
 ## Navegação
 
-↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[08-principio-processo-certo|Respeite o processo: dê comando, não converse]]
+↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[08-principio-processo-certo|Respeite o processo: dê comando, não converse]]

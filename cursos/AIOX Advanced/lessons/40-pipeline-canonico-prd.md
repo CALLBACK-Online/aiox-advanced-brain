@@ -24,13 +24,13 @@ module: M8
 sequence: M8.5
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Pipeline canônico|pipeline canônico]]: do nada ao [[PRD]] com stories prontas
 
-← [[39-pasta-os-curadoria-local|Pasta OS: curadoria local de open-source para o agente]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[41-design-system-e-decisao|Design system é decisão, não estética]]
+← [[39-pasta-os-curadoria-local|Pasta OS: curadoria local de open-source para o agente]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[41-design-system-e-decisao|Design system é decisão, não estética]]
 
 ## Conceitos
 
@@ -501,4 +501,4 @@ Tradução dos termos para alguém que está vendo a sequência pesquisar antes 
 
 ## Navegação
 
-← [[39-pasta-os-curadoria-local|Pasta OS: curadoria local de open-source para o agente]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[41-design-system-e-decisao|Design system é decisão, não estética]]
+← [[39-pasta-os-curadoria-local|Pasta OS: curadoria local de open-source para o agente]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[41-design-system-e-decisao|Design system é decisão, não estética]]

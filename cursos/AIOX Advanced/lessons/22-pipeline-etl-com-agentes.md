@@ -23,13 +23,13 @@ module: M4
 sequence: M4.5
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Pipeline [[ETL]] com agentes: hierarquia de camadas
 
-← [[50-rider-modo-elicitacao|Rider: quando o operador é o piloto]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]]
+← [[50-rider-modo-elicitacao|Rider: quando o operador é o piloto]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]]
 
 ## Mapa desta aula
 
@@ -430,4 +430,4 @@ Os termos desta aula em uma frase cada.
 
 ## Navegação
 
-← [[50-rider-modo-elicitacao|Rider: quando o operador é o piloto]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]]
+← [[50-rider-modo-elicitacao|Rider: quando o operador é o piloto]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]]

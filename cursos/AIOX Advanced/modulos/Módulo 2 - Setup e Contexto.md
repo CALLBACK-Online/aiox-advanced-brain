@@ -4,7 +4,7 @@ course: aiox-advanced
 module: M2
 sequence: 2
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 source_version: 1.0.0
 tags: [curso/aiox-advanced, modulo]
 ---
@@ -38,4 +38,4 @@ Eu recupero os conceitos no [[avaliacoes/Quiz M2 - Setup e Contexto|Quiz do M2]]
 
 ## Navegação
 
-← [[modulos/Módulo 1 - Sistema AIOX|M1]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 3 - Ciclo SDC|M3]]
+← [[modulos/Módulo 1 - Sistema AIOX|M1]] · ↑ [[cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 3 - Ciclo SDC|M3]]

@@ -23,13 +23,13 @@ module: M8
 sequence: M8.1
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Tech Research]]: pesquisa profunda multi-fonte
 
-← [[35-mesa-redonda-advisory-board|Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[37-spy-bench-comparativo|Spy/Bench: comparação profunda entre dois projetos]]
+← [[35-mesa-redonda-advisory-board|Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[37-spy-bench-comparativo|Spy/Bench: comparação profunda entre dois projetos]]
 
 ## Mapa desta aula
 
@@ -496,4 +496,4 @@ Tradução dos termos para alguém que está vendo a distinção busca rasa vers
 
 ## Navegação
 
-← [[35-mesa-redonda-advisory-board|Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[37-spy-bench-comparativo|Spy/Bench: comparação profunda entre dois projetos]]
+← [[35-mesa-redonda-advisory-board|Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[37-spy-bench-comparativo|Spy/Bench: comparação profunda entre dois projetos]]

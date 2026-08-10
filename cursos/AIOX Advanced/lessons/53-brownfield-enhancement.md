@@ -23,13 +23,13 @@ module: M6
 sequence: M6.3
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Brownfield Enhancement]]: como adicionar feature em código legado
 
-← [[31-brownfield-discovery|Brownfield Discovery: entrar num projeto que já existe]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[32-design-system-greenfield-brownfield|Design System: greenfield versus brownfield]]
+← [[31-brownfield-discovery|Brownfield Discovery: entrar num projeto que já existe]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[32-design-system-greenfield-brownfield|Design System: greenfield versus brownfield]]
 
 ## Mapa desta aula
 
@@ -409,4 +409,4 @@ A IA é a seta. O X é seu — inclusive recusar o big bang e exigir o checklist
 
 ## Navegação
 
-← [[31-brownfield-discovery|Brownfield Discovery: entrar num projeto que já existe]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[32-design-system-greenfield-brownfield|Design System: greenfield versus brownfield]]
+← [[31-brownfield-discovery|Brownfield Discovery: entrar num projeto que já existe]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[32-design-system-greenfield-brownfield|Design System: greenfield versus brownfield]]

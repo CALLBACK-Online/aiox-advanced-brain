@@ -4,7 +4,7 @@ course: aiox-advanced
 module: M6
 sequence: 6
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 source_version: 1.0.0
 tags: [curso/aiox-advanced, modulo]
 ---
@@ -37,4 +37,4 @@ Eu recupero os conceitos no [[avaliacoes/Quiz M6 - Brownfield e Greenfield|Quiz 
 
 ## Navegação
 
-← [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 7 - Criar Squad|M7]]
+← [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ↑ [[cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 7 - Criar Squad|M7]]

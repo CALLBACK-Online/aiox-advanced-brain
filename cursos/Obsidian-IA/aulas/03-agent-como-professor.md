@@ -6,7 +6,7 @@ lesson_id: agent-como-professor
 lesson_position: 3
 title: "O agent como professor-especialista"
 status: canonical
-canonical_scope: Cursos/Obsidian-IA
+canonical_scope: cursos/Obsidian-IA
 reading_minutes: 12
 tags: [curso/obsidian-ia, segundo-cerebro]
 maturity: study
@@ -30,7 +30,7 @@ Usar o agent como **condutor do segundo cérebro**, não como autocomplete de op
 
 Neste repositório o agent deve:
 
-1. Localizar material em `Cursos/`, `skills/`, `squads/`.
+1. Localizar material em `cursos/`, `skills/`, `squads/`.
 2. Ensinar com profundidade calibrada.
 3. Rotear squads via manifesto quando a missão for operacional.
 4. Exigir evidência.

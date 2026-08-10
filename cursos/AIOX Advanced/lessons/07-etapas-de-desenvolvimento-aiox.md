@@ -24,14 +24,14 @@ sequence: M3.L1
 track: legacy
 status: superseded
 superseded_by: 46-etapas-de-desenvolvimento
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 bloom: apply
 ---
 
 # Etapas de Desenvolvimento AIOX
 
-↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[46-etapas-de-desenvolvimento|Versão atual]]
+↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[46-etapas-de-desenvolvimento|Versão atual]]
 
 > [!warning] Versão substituída
 > Esta aula permanece como referência histórica. A rota atual continua em [[46-etapas-de-desenvolvimento]].
@@ -556,4 +556,4 @@ Os pontos que sustentam tudo: a fundação contra o puxadinho.
 
 ## Navegação
 
-↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[46-etapas-de-desenvolvimento|Versão atual]]
+↑ [[modulos/Módulo 3 - Ciclo SDC|M3]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[46-etapas-de-desenvolvimento|Versão atual]]

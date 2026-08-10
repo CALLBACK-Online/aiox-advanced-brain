@@ -24,13 +24,13 @@ module: M1
 sequence: M1.3
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # core-config: as leis sociais do projeto
 
-← [[03-claude-md-leis-da-fisica|CLAUDE.md é a lei da física do seu projeto]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[45-doze-agentes-orbitais|Os 12 agentes orbitais do AIOX]]
+← [[03-claude-md-leis-da-fisica|CLAUDE.md é a lei da física do seu projeto]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[45-doze-agentes-orbitais|Os 12 agentes orbitais do AIOX]]
 
 ## Conceitos
 
@@ -647,4 +647,4 @@ Traducao dos termos para alguem que esta vendo as leis sociais do projeto pela p
 
 ## Navegação
 
-← [[03-claude-md-leis-da-fisica|CLAUDE.md é a lei da física do seu projeto]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[45-doze-agentes-orbitais|Os 12 agentes orbitais do AIOX]]
+← [[03-claude-md-leis-da-fisica|CLAUDE.md é a lei da física do seu projeto]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[45-doze-agentes-orbitais|Os 12 agentes orbitais do AIOX]]

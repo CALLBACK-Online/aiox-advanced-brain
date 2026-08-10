@@ -3,13 +3,13 @@ type: moc
 course: aiox-advanced
 stage: 2
 status: canonical
-sharing_boundary: Cursos
+sharing_boundary: cursos
 tags: [curso/aiox-advanced, moc, aiox]
 ---
 
 # Mapa do AIOX
 
-Eu uso este mapa quando quero compreender o sistema por relações, não pela ordem das aulas. Para estudar em sequência, volto ao [[Cursos/AIOX Advanced/README|curso]].
+Eu uso este mapa quando quero compreender o sistema por relações, não pela ordem das aulas. Para estudar em sequência, volto ao [[cursos/AIOX Advanced/README|curso]].
 
 ```mermaid
 flowchart TB
@@ -61,11 +61,11 @@ flowchart TB
 
 ## Percursos
 
-- **Aprender em sequência:** [[Cursos/AIOX Advanced/README|Rota do curso]]
+- **Aprender em sequência:** [[cursos/AIOX Advanced/README|Rota do curso]]
 - **Consultar termos:** [[Glossário AIOX Advanced]]
 - **Construir:** [[Projeto Integrador]]
 - **Tirar dúvidas:** [[support/README|Central de suporte]]
 
 ## Navegação
 
-↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 0 - Mindset e Princípios|Começar pelo Módulo 0]]
+↑ [[cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 0 - Mindset e Princípios|Começar pelo Módulo 0]]

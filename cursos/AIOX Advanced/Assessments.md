@@ -2,7 +2,7 @@
 type: course-assessment-index
 course: aiox-advanced
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 source_version: 1.0.0
 tags: [curso/aiox-advanced, avaliacao]
 ---
@@ -38,4 +38,4 @@ O [[Projeto Integrador]] vale a conclusão do curso. A [[Rubrica]] exige 80 pont
 
 ## Navegação
 
-↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[Projeto Integrador]] · [[validation-report|Validação do curso]]
+↑ [[cursos/AIOX Advanced/README|Curso]] · → [[Projeto Integrador]] · [[validation-report|Validação do curso]]

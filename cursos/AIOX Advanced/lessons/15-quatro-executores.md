@@ -25,13 +25,13 @@ module: M1
 sequence: M1.6
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # 4 executores: [[Humano]], [[Agent]], [[Clone]], [[Worker]]
 
-← [[14-anatomia-do-agente|Anatomia de um agente: persona, skills, autoridade, memória]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[05-ambientes-local-staging-production|Local, Staging, Production]]
+← [[14-anatomia-do-agente|Anatomia de um agente: persona, skills, autoridade, memória]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[05-ambientes-local-staging-production|Local, Staging, Production]]
 
 ## Conceitos
 
@@ -489,4 +489,4 @@ Os termos desta aula em uma frase cada.
 
 ## Navegação
 
-← [[14-anatomia-do-agente|Anatomia de um agente: persona, skills, autoridade, memória]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[05-ambientes-local-staging-production|Local, Staging, Production]]
+← [[14-anatomia-do-agente|Anatomia de um agente: persona, skills, autoridade, memória]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[05-ambientes-local-staging-production|Local, Staging, Production]]

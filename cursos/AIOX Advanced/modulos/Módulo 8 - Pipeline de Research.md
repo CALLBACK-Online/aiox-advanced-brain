@@ -4,7 +4,7 @@ course: aiox-advanced
 module: M8
 sequence: 8
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 source_version: 1.0.0
 tags: [curso/aiox-advanced, modulo]
 ---
@@ -40,10 +40,10 @@ Eu recupero os conceitos no [[avaliacoes/Quiz M8 - Pipeline de Research|Quiz do 
 
 > **Depois deste módulo no método**, aprofunde a operação dos squads no curso irmão.
 >
-> Operação do squad unificado de research: `Cursos/AIOX-Advanced-Squads/aulas/02-research.md`. Pacote: `squads/research/`. Skill opcional: `skills/research/`.
+> Operação do squad unificado de research: `cursos/AIOX-Advanced-Squads/aulas/02-research.md`. Pacote: `squads/research/`. Skill opcional: `skills/research/`.
 >
-> Índice da trilha: `ponte/trilha-squads.md` · Hub: `Cursos/README.md` · Pasta do curso: `Cursos/AIOX-Advanced-Squads/`
+> Índice da trilha: `ponte/trilha-squads.md` · Hub: `cursos/README.md` · Pasta do curso: `cursos/AIOX-Advanced-Squads/`
 
 ## Navegação
 
-← [[modulos/Módulo 7 - Criar Squad|M7]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 9 - Design System|M9]]
+← [[modulos/Módulo 7 - Criar Squad|M7]] · ↑ [[cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 9 - Design System|M9]]

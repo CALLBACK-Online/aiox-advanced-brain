@@ -24,13 +24,13 @@ module: M7
 sequence: M7.2
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Anatomia de um [[Squad]] AIOX
 
-← [[54-reuse-adapt-create-heuristica|REUSE > ADAPT > CREATE: a heurística antes de criar nada]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[34-squad-creator-passo-a-passo|Squad Creator passo a passo: criar um squad do zero]]
+← [[54-reuse-adapt-create-heuristica|REUSE > ADAPT > CREATE: a heurística antes de criar nada]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[34-squad-creator-passo-a-passo|Squad Creator passo a passo: criar um squad do zero]]
 
 ## Conceitos
 
@@ -512,4 +512,4 @@ Tradução dos termos para alguém que está abrindo a caixa de um squad pela pr
 
 ## Navegação
 
-← [[54-reuse-adapt-create-heuristica|REUSE > ADAPT > CREATE: a heurística antes de criar nada]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[34-squad-creator-passo-a-passo|Squad Creator passo a passo: criar um squad do zero]]
+← [[54-reuse-adapt-create-heuristica|REUSE > ADAPT > CREATE: a heurística antes de criar nada]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[34-squad-creator-passo-a-passo|Squad Creator passo a passo: criar um squad do zero]]

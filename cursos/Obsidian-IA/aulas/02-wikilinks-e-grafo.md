@@ -6,7 +6,7 @@ lesson_id: wikilinks-e-grafo
 lesson_position: 2
 title: "Wikilinks, backlinks e Graph"
 status: canonical
-canonical_scope: Cursos/Obsidian-IA
+canonical_scope: cursos/Obsidian-IA
 reading_minutes: 12
 tags: [curso/obsidian-ia, segundo-cerebro]
 maturity: study
@@ -46,12 +46,12 @@ Fora do Obsidian (GitHub, agent), traduza wikilink → **path relativo**.
 
 | Cor | Query / pasta |
 |-----|----------------|
-| Azul | `Cursos/AIOX Advanced` — método |
-| Roxo | `Cursos/AIOX-Advanced-Squads` — aulas de squad |
-| Ciano | `Cursos/Obsidian-IA` — este mini |
+| Azul | `cursos/AIOX Advanced` — método |
+| Roxo | `cursos/AIOX-Advanced-Squads` — aulas de squad |
+| Ciano | `cursos/Obsidian-IA` — este mini |
 | Verde | `skills/` |
 | Laranja | `squads/` |
-| Âmbar | `Cursos/_notas-pessoais/` |
+| Âmbar | `notas/` |
 | Rosa | tags `#hub` (Home + MOCs) |
 
 Para ver **skills e squads** no mesmo Graph, abra a **raiz do repositório** como vault (não só esta pasta).
@@ -61,7 +61,7 @@ Para ver **skills e squads** no mesmo Graph, abra a **raiz do repositório** com
 1. **Orphans off** — some o anel de arquivos soltos; sobra o que tem link.
 2. **Orphans on** — audita o que ainda não está no cérebro (ainda colorido por pasta).
 3. Filtro: `path:skills` ou `path:squads/brand` para zoom.
-4. Hubs de conexão (paths no repo): `00-HOME.md`, `Cursos/MOC-Acervo-AIOX.md`, `Cursos/MOC-Skills.md`, `Cursos/MOC-Squads.md`.
+4. Hubs de conexão (paths no repo): `00-HOME.md`, `cursos/MOC-Acervo-AIOX.md`, `cursos/MOC-Skills.md`, `cursos/MOC-Squads.md`.
 
 Perguntas boas no Graph:
 

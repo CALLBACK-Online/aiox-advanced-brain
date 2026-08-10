@@ -23,13 +23,13 @@ module: M12
 sequence: M12.1
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Escada Progressiva]]: Script → Squad → Workflow → Runner → API → App → [[SaaS]]
 
-← [[68-squad-fora-do-claude-code|Extrair Squad do Claude Code para API própria]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[70-supabase-via-data-engineer|Supabase: setup via @data-engineer]]
+← [[68-squad-fora-do-claude-code|Extrair Squad do Claude Code para API própria]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[70-supabase-via-data-engineer|Supabase: setup via @data-engineer]]
 
 ## Mapa desta aula
 
@@ -390,4 +390,4 @@ A IA é a seta. O X é seu — inclusive escolher **não** pular o degrau chato.
 
 ## Navegação
 
-← [[68-squad-fora-do-claude-code|Extrair Squad do Claude Code para API própria]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[70-supabase-via-data-engineer|Supabase: setup via @data-engineer]]
+← [[68-squad-fora-do-claude-code|Extrair Squad do Claude Code para API própria]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[70-supabase-via-data-engineer|Supabase: setup via @data-engineer]]

@@ -30,4 +30,4 @@ Antes de pedir ajuda, eu registro o objetivo, o passo atual, a evidência observ
 
 ## Navegação
 
-↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[Projeto Integrador]]
+↑ [[cursos/AIOX Advanced/README|Curso]] · → [[Projeto Integrador]]

@@ -7,7 +7,7 @@ tags:
 - course-brain
 updated: '2026-08-10'
 status: reference
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 freq:
   aiox_advanced: 1
   aiox_advanced_squads: 0
@@ -16,7 +16,7 @@ freq:
 ---
 # Wikilink
 
-Link interno entre notas Markdown no estilo Obsidian (colchetes duplos em volta do nome da nota). O grafo do curso depende de wikilinks resolvíveis dentro de `Cursos/`.
+Link interno entre notas Markdown no estilo Obsidian (colchetes duplos em volta do nome da nota). O grafo do curso depende de wikilinks resolvíveis dentro de `cursos/`.
 
 **Frequência nos cursos:** **1** menções (AIOX Advanced: 1 · AIOX Advanced Squads: 0).
 

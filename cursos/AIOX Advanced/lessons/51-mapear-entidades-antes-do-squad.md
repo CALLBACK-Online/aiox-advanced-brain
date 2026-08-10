@@ -23,13 +23,13 @@ module: M5
 sequence: M5.6
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Mapear entidades antes do Squad: 5 perguntas + ciclo de vida
 
-← [[30-runner-executavel-deterministico|Runner: o executável determinístico do Workflow]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[52-workflow-vs-comando-manual|Workflow pronto vs comando manual: bicicleta com rodinha]]
+← [[30-runner-executavel-deterministico|Runner: o executável determinístico do Workflow]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[52-workflow-vs-comando-manual|Workflow pronto vs comando manual: bicicleta com rodinha]]
 
 ## Mapa desta aula
 
@@ -408,4 +408,4 @@ A IA é a seta. O X é seu — inclusive recusar o creator até o quadro estar c
 
 ## Navegação
 
-← [[30-runner-executavel-deterministico|Runner: o executável determinístico do Workflow]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[52-workflow-vs-comando-manual|Workflow pronto vs comando manual: bicicleta com rodinha]]
+← [[30-runner-executavel-deterministico|Runner: o executável determinístico do Workflow]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[52-workflow-vs-comando-manual|Workflow pronto vs comando manual: bicicleta com rodinha]]

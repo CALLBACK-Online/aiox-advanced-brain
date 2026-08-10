@@ -11,7 +11,7 @@ source_version: 1.0.0
 updated: 2026-08-09
 tags: [course-brain, aiox-advanced]
 status: reference
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 ---
 
 # CURRICULUM-GAP — AIOX Advanced
@@ -28,4 +28,4 @@ O curriculum-v2 da fonte define a trilha ativa. O vault preserva material adicio
 
 ## Navegação
 
-↑ [[Cursos/AIOX Advanced/README|Curso]] · [[Assessments|Avaliações]]
+↑ [[cursos/AIOX Advanced/README|Curso]] · [[Assessments|Avaliações]]

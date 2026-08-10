@@ -23,13 +23,13 @@ module: SUP
 sequence: SUP.1
 track: support
 status: support
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # FAQ de campo: o que a turma Advanced realmente pergunta
 
-← [[74-caso-integrado-end-to-end|Caso integrado end-to-end: do briefing ao deploy em 90 minutos]] · ↑ [[support/README|Suporte]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]]
+← [[74-caso-integrado-end-to-end|Caso integrado end-to-end: do briefing ao deploy em 90 minutos]] · ↑ [[support/README|Suporte]] · ⌂ [[cursos/AIOX Advanced/README|Curso]]
 
 ## Mapa desta aula
 
@@ -401,4 +401,4 @@ trabalha a favor do curso.
 
 ## Navegação
 
-← [[74-caso-integrado-end-to-end|Caso integrado end-to-end: do briefing ao deploy em 90 minutos]] · ↑ [[support/README|Suporte]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]]
+← [[74-caso-integrado-end-to-end|Caso integrado end-to-end: do briefing ao deploy em 90 minutos]] · ↑ [[support/README|Suporte]] · ⌂ [[cursos/AIOX Advanced/README|Curso]]

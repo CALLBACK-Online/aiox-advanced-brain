@@ -23,13 +23,13 @@ module: M1
 sequence: M1.4
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Os 12 agentes orbitais do AIOX
 
-← [[25-core-config-leis-sociais|core-config: as leis sociais do projeto]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[14-anatomia-do-agente|Anatomia de um agente: persona, skills, autoridade, memória]]
+← [[25-core-config-leis-sociais|core-config: as leis sociais do projeto]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[14-anatomia-do-agente|Anatomia de um agente: persona, skills, autoridade, memória]]
 
 ## Mapa desta aula
 
@@ -428,4 +428,4 @@ A IA é a seta. O X é seu — inclusive escolher **quem** segura a ferramenta.
 
 ## Navegação
 
-← [[25-core-config-leis-sociais|core-config: as leis sociais do projeto]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[14-anatomia-do-agente|Anatomia de um agente: persona, skills, autoridade, memória]]
+← [[25-core-config-leis-sociais|core-config: as leis sociais do projeto]] · ↑ [[modulos/Módulo 1 - Sistema AIOX|M1]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[14-anatomia-do-agente|Anatomia de um agente: persona, skills, autoridade, memória]]

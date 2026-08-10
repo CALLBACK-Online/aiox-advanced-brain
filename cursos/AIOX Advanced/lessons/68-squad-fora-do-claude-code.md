@@ -23,13 +23,13 @@ module: M11
 sequence: M11.7
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Extrair Squad do [[Claude Code]] para API própria
 
-← [[67-harness-ambiente-execucao|Harness: ambiente de execução do agente fora do Claude Code]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[69-escada-progressiva-script-a-saas|Escada Progressiva: Script → Squad → Workflow → Runner → API → App → SaaS]]
+← [[67-harness-ambiente-execucao|Harness: ambiente de execução do agente fora do Claude Code]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[69-escada-progressiva-script-a-saas|Escada Progressiva: Script → Squad → Workflow → Runner → API → App → SaaS]]
 
 ## Mapa desta aula
 
@@ -392,4 +392,4 @@ A IA é a seta. O X é seu — inclusive **o que você se recusa a extrair cedo*
 
 ## Navegação
 
-← [[67-harness-ambiente-execucao|Harness: ambiente de execução do agente fora do Claude Code]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[69-escada-progressiva-script-a-saas|Escada Progressiva: Script → Squad → Workflow → Runner → API → App → SaaS]]
+← [[67-harness-ambiente-execucao|Harness: ambiente de execução do agente fora do Claude Code]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[69-escada-progressiva-script-a-saas|Escada Progressiva: Script → Squad → Workflow → Runner → API → App → SaaS]]

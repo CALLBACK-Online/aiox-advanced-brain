@@ -24,13 +24,13 @@ module: M9
 sequence: M9.4
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[DESIGN md|DESIGN.md]]: o novo contrato que a IA lê antes de gerar tela
 
-← [[56-tailwind-shadcn-storybook|Tailwind + ShadCN + Storybook: stack canonical para IA]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[57-storybook-para-variantes|Storybook para derivar e testar variantes (a11y, dark mode, responsivo)]]
+← [[56-tailwind-shadcn-storybook|Tailwind + ShadCN + Storybook: stack canonical para IA]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[57-storybook-para-variantes|Storybook para derivar e testar variantes (a11y, dark mode, responsivo)]]
 
 ## Conceitos
 
@@ -519,4 +519,4 @@ Tradução dos termos para alguém que está vendo a diferença a IA ler o contr
 
 ## Navegação
 
-← [[56-tailwind-shadcn-storybook|Tailwind + ShadCN + Storybook: stack canonical para IA]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[57-storybook-para-variantes|Storybook para derivar e testar variantes (a11y, dark mode, responsivo)]]
+← [[56-tailwind-shadcn-storybook|Tailwind + ShadCN + Storybook: stack canonical para IA]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[57-storybook-para-variantes|Storybook para derivar e testar variantes (a11y, dark mode, responsivo)]]

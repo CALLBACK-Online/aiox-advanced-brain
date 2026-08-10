@@ -6,7 +6,7 @@ lesson_id: captura-sem-poluir
 lesson_position: 4
 title: "Captura sem poluir o canônico"
 status: canonical
-canonical_scope: Cursos/Obsidian-IA
+canonical_scope: cursos/Obsidian-IA
 reading_minutes: 12
 tags: [curso/obsidian-ia, segundo-cerebro]
 maturity: study
@@ -30,8 +30,8 @@ Capturar aprendizado em espaço **pessoal**, sempre ligado à aula canônica.
 
 | Destino | Uso |
 |---------|-----|
-| `Cursos/_notas-pessoais/inbox/` | Captura rápida (local, gitignored) |
-| `Cursos/_notas-pessoais/notes/` | Notas destiladas |
+| `notas/inbox/` | Captura rápida (local, gitignored) |
+| `notas/notes/` | Notas destiladas |
 | Vault pessoal | Depois de destilar, se quiser PARA/LYT da sua vida |
 
 Skill: `study-capture` no repositório (`skills/study-capture/SKILL.md`).
@@ -55,7 +55,7 @@ Skill: `study-capture` no repositório (`skills/study-capture/SKILL.md`).
 ## Prática
 
 1. Escolha **uma** aula que você já leu (Advanced ou Squads).
-2. Crie uma nota em `_notas-pessoais/inbox/` (ou peça ao agent com `study-capture`).
+2. Crie uma nota em `notas/inbox/` (ou peça ao agent com `study-capture`).
 3. Linke a fonte com path ou wikilink.
 
 ## Evidência de conclusão

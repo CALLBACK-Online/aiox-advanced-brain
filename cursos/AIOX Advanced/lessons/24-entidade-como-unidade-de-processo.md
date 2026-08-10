@@ -24,13 +24,13 @@ module: M5
 sequence: M5.2
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Entidade]] como unidade de processo: nasce, vive, morre
 
-← [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]]
+← [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]]
 
 ## Conceitos
 
@@ -441,4 +441,4 @@ Os termos desta aula em uma frase cada.
 
 ## Navegação
 
-← [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]]
+← [[23-o-que-e-um-squad|O que é um Squad (e por que ele vem antes do App)]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]]

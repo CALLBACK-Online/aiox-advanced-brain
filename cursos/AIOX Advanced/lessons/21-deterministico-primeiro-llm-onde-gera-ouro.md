@@ -24,13 +24,13 @@ module: M4
 sequence: M4.2
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Determinismo Progressivo|determinístico]] primeiro, [[LLM]] só onde gera ouro
 
-← [[20-determinismo-progressivo|Determinismo Progressivo: 30, 60, 90]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[11-goal-vs-loop|Goal vs Loop]]
+← [[20-determinismo-progressivo|Determinismo Progressivo: 30, 60, 90]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[11-goal-vs-loop|Goal vs Loop]]
 
 ## Conceitos
 
@@ -454,4 +454,4 @@ Os termos desta aula em uma frase cada.
 
 ## Navegação
 
-← [[20-determinismo-progressivo|Determinismo Progressivo: 30, 60, 90]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[11-goal-vs-loop|Goal vs Loop]]
+← [[20-determinismo-progressivo|Determinismo Progressivo: 30, 60, 90]] · ↑ [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[11-goal-vs-loop|Goal vs Loop]]

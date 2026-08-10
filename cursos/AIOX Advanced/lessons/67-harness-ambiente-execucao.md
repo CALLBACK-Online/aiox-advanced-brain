@@ -23,13 +23,13 @@ module: M11
 sequence: M11.6
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Harness]]: ambiente de execução do agente fora do Claude Code
 
-← [[66-tres-estagios-de-monetizacao|Três estágios de monetização: interno → cliente → produto]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[68-squad-fora-do-claude-code|Extrair Squad do Claude Code para API própria]]
+← [[66-tres-estagios-de-monetizacao|Três estágios de monetização: interno → cliente → produto]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[68-squad-fora-do-claude-code|Extrair Squad do Claude Code para API própria]]
 
 ## Mapa desta aula
 
@@ -385,4 +385,4 @@ A IA é a seta. O X é seu — inclusive **onde** o agente tem permissão de viv
 
 ## Navegação
 
-← [[66-tres-estagios-de-monetizacao|Três estágios de monetização: interno → cliente → produto]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[68-squad-fora-do-claude-code|Extrair Squad do Claude Code para API própria]]
+← [[66-tres-estagios-de-monetizacao|Três estágios de monetização: interno → cliente → produto]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[68-squad-fora-do-claude-code|Extrair Squad do Claude Code para API própria]]

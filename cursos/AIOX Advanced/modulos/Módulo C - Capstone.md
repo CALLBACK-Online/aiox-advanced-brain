@@ -4,7 +4,7 @@ course: aiox-advanced
 module: MC
 sequence: 13
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 source_version: 1.0.0
 tags: [curso/aiox-advanced, modulo]
 ---
@@ -32,4 +32,4 @@ Eu recupero os conceitos no [[avaliacoes/Quiz MC - Capstone|Quiz do MC]] e confi
 
 ## Navegação
 
-← [[modulos/Módulo 12 - Deploy Profissional|M12]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[Projeto Integrador]]
+← [[modulos/Módulo 12 - Deploy Profissional|M12]] · ↑ [[cursos/AIOX Advanced/README|Curso]] · → [[Projeto Integrador]]

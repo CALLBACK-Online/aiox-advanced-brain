@@ -4,7 +4,7 @@ course: aiox-advanced
 module: M4
 sequence: 4
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 source_version: 1.0.0
 tags: [curso/aiox-advanced, modulo]
 ---
@@ -42,4 +42,4 @@ Eu recupero os conceitos no [[avaliacoes/Quiz M4 - Determinismo e Comando|Quiz d
 
 ## Navegação
 
-← [[modulos/Módulo 3 - Ciclo SDC|M3]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 5 - Arquitetura AIOX|M5]]
+← [[modulos/Módulo 3 - Ciclo SDC|M3]] · ↑ [[cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 5 - Arquitetura AIOX|M5]]

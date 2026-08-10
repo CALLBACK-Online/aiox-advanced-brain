@@ -4,7 +4,7 @@ course: aiox-advanced
 module: M3
 sequence: 3
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 source_version: 1.0.0
 tags: [curso/aiox-advanced, modulo]
 ---
@@ -47,4 +47,4 @@ Eu recupero os conceitos no [[avaliacoes/Quiz M3 - Ciclo SDC|Quiz do M3]] e conf
 
 ## Navegação
 
-← [[modulos/Módulo 2 - Setup e Contexto|M2]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 4 - Determinismo e Comando|M4]]
+← [[modulos/Módulo 2 - Setup e Contexto|M2]] · ↑ [[cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 4 - Determinismo e Comando|M4]]

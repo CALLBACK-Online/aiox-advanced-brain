@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "router_skill": "aiox-squads",
-  "course_root": "Cursos/AIOX-Advanced-Squads",
-  "agent_guide": "Cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md",
-  "decision_map": "Cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md",
-  "execution_guide": "Cursos/AIOX-Advanced-Squads/Guia-de-execucao.md",
-  "intro_lesson": "Cursos/AIOX-Advanced-Squads/aulas/00-como-usar-este-curso.md",
+  "course_root": "cursos/AIOX-Advanced-Squads",
+  "agent_guide": "cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md",
+  "decision_map": "cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md",
+  "execution_guide": "cursos/AIOX-Advanced-Squads/Guia-de-execucao.md",
+  "intro_lesson": "cursos/AIOX-Advanced-Squads/aulas/00-como-usar-este-curso.md",
   "library_layout": {
     "skills": "skills/",
     "squads": "squads/",
@@ -43,7 +43,7 @@
   "squads": [
     {
       "id": "advisory-board",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/01-advisory-board.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/01-advisory-board.md",
       "lesson_id": "01-advisory-board",
       "maturity": "partial",
       "agents_count": 11,
@@ -103,7 +103,7 @@
     },
     {
       "id": "research",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/02-research.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/02-research.md",
       "lesson_id": "02-research",
       "maturity": "study",
       "agents_count": 14,
@@ -167,7 +167,7 @@
     },
     {
       "id": "code-anatomist",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/03-code-anatomist.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/03-code-anatomist.md",
       "lesson_id": "03-code-anatomist",
       "maturity": "partial",
       "agents_count": 12,
@@ -227,7 +227,7 @@
     },
     {
       "id": "domain-decoder",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/04-domain-decoder.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/04-domain-decoder.md",
       "lesson_id": "04-domain-decoder",
       "maturity": "partial",
       "agents_count": 8,
@@ -289,7 +289,7 @@
     },
     {
       "id": "agent-autonomy",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/05-agent-autonomy.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/05-agent-autonomy.md",
       "lesson_id": "05-agent-autonomy",
       "maturity": "partial",
       "agents_count": 6,
@@ -349,7 +349,7 @@
     },
     {
       "id": "claude-code-mastery",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/06-claude-code-mastery.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/06-claude-code-mastery.md",
       "lesson_id": "06-claude-code-mastery",
       "maturity": "study",
       "agents_count": 8,
@@ -413,7 +413,7 @@
     },
     {
       "id": "aiox-sop",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/07-aiox-sop.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/07-aiox-sop.md",
       "lesson_id": "07-aiox-sop",
       "maturity": "partial",
       "agents_count": 6,
@@ -473,7 +473,7 @@
     },
     {
       "id": "etl-ops",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/08-etl-ops.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/08-etl-ops.md",
       "lesson_id": "08-etl-ops",
       "maturity": "partial",
       "agents_count": 4,
@@ -535,7 +535,7 @@
     },
     {
       "id": "runner-ops",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/09-runner-ops.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/09-runner-ops.md",
       "lesson_id": "09-runner-ops",
       "maturity": "partial",
       "agents_count": 5,
@@ -595,7 +595,7 @@
     },
     {
       "id": "data",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/10-data.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/10-data.md",
       "lesson_id": "10-data",
       "maturity": "partial",
       "agents_count": 7,
@@ -659,7 +659,7 @@
     },
     {
       "id": "db-sage",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/11-db-sage.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/11-db-sage.md",
       "lesson_id": "11-db-sage",
       "maturity": "partial",
       "agents_count": 1,
@@ -723,7 +723,7 @@
     },
     {
       "id": "clickup-ops-squad",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/12-clickup-ops-squad.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/12-clickup-ops-squad.md",
       "lesson_id": "12-clickup-ops-squad",
       "maturity": "partial",
       "agents_count": 5,
@@ -781,7 +781,7 @@
     },
     {
       "id": "brand",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/13-brand.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/13-brand.md",
       "lesson_id": "13-brand",
       "maturity": "partial",
       "agents_count": 16,
@@ -843,7 +843,7 @@
     },
     {
       "id": "design-system",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/14-design-system.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/14-design-system.md",
       "lesson_id": "14-design-system",
       "maturity": "partial",
       "agents_count": 11,
@@ -907,7 +907,7 @@
     },
     {
       "id": "design-ops",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/15-design-ops.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/15-design-ops.md",
       "lesson_id": "15-design-ops",
       "maturity": "partial",
       "agents_count": 2,
@@ -977,7 +977,7 @@
     },
     {
       "id": "storytelling",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/16-storytelling.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/16-storytelling.md",
       "lesson_id": "16-storytelling",
       "maturity": "partial",
       "agents_count": 13,
@@ -1039,7 +1039,7 @@
     },
     {
       "id": "slides-creator",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/17-slides-creator.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/17-slides-creator.md",
       "lesson_id": "17-slides-creator",
       "maturity": "partial",
       "agents_count": 7,
@@ -1105,7 +1105,7 @@
     },
     {
       "id": "conteudo",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/18-conteudo.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/18-conteudo.md",
       "lesson_id": "18-conteudo",
       "maturity": "study",
       "agents_count": 10,
@@ -1171,7 +1171,7 @@
     },
     {
       "id": "copy",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/19-copy.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/19-copy.md",
       "lesson_id": "19-copy",
       "maturity": "partial",
       "agents_count": 27,
@@ -1235,7 +1235,7 @@
     },
     {
       "id": "sales",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/20-sales.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/20-sales.md",
       "lesson_id": "20-sales",
       "maturity": "partial",
       "agents_count": 9,
@@ -1301,7 +1301,7 @@
     },
     {
       "id": "hormozi",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/21-hormozi.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/21-hormozi.md",
       "lesson_id": "21-hormozi",
       "maturity": "partial",
       "agents_count": 16,
@@ -1365,7 +1365,7 @@
     },
     {
       "id": "skill-creator-ops",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/22-skill-creator-ops.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/22-skill-creator-ops.md",
       "lesson_id": "22-skill-creator-ops",
       "maturity": "partial",
       "agents_count": 3,
@@ -1425,7 +1425,7 @@
     },
     {
       "id": "squad-creator",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/23-squad-creator.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/23-squad-creator.md",
       "lesson_id": "23-squad-creator",
       "maturity": "partial",
       "agents_count": 1,
@@ -1487,7 +1487,7 @@
     },
     {
       "id": "squad-creator-pro",
-      "lesson": "Cursos/AIOX-Advanced-Squads/aulas/24-squad-creator-pro.md",
+      "lesson": "cursos/AIOX-Advanced-Squads/aulas/24-squad-creator-pro.md",
       "lesson_id": "24-squad-creator-pro",
       "maturity": "partial",
       "agents_count": 6,

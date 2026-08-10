@@ -25,13 +25,13 @@ module: M2
 sequence: M2.3
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Engenharia de contexto: limpar comandos, skills e MCPs
 
-← [[16-janela-de-contexto|Janela de contexto: o limite real e a degradação acima de 40K]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[27-otimizacao-claude-md|Otimização do CLAUDE.md: 40% mais magro, mesma capacidade]]
+← [[16-janela-de-contexto|Janela de contexto: o limite real e a degradação acima de 40K]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[27-otimizacao-claude-md|Otimização do CLAUDE.md: 40% mais magro, mesma capacidade]]
 
 ## Conceitos
 
@@ -492,4 +492,4 @@ Os termos desta aula em uma frase cada.
 
 ## Navegação
 
-← [[16-janela-de-contexto|Janela de contexto: o limite real e a degradação acima de 40K]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[27-otimizacao-claude-md|Otimização do CLAUDE.md: 40% mais magro, mesma capacidade]]
+← [[16-janela-de-contexto|Janela de contexto: o limite real e a degradação acima de 40K]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[27-otimizacao-claude-md|Otimização do CLAUDE.md: 40% mais magro, mesma capacidade]]

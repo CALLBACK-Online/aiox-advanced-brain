@@ -23,13 +23,13 @@ module: M12
 sequence: M12.3
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Vercel]] Deploy: do localhost ao mundo
 
-← [[70-supabase-via-data-engineer|Supabase: setup via @data-engineer]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[72-cicd-pipeline-completa|CI/CD Pipeline completa: GitHub Actions + Quality Gate pré-merge]]
+← [[70-supabase-via-data-engineer|Supabase: setup via @data-engineer]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[72-cicd-pipeline-completa|CI/CD Pipeline completa: GitHub Actions + Quality Gate pré-merge]]
 
 ## Mapa desta aula
 
@@ -416,4 +416,4 @@ A IA é a seta. O X é seu — inclusive não promover no feeling.
 
 ## Navegação
 
-← [[70-supabase-via-data-engineer|Supabase: setup via @data-engineer]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[72-cicd-pipeline-completa|CI/CD Pipeline completa: GitHub Actions + Quality Gate pré-merge]]
+← [[70-supabase-via-data-engineer|Supabase: setup via @data-engineer]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[72-cicd-pipeline-completa|CI/CD Pipeline completa: GitHub Actions + Quality Gate pré-merge]]

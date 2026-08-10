@@ -7,7 +7,7 @@ lesson_position: 0
 lesson_kind: intro
 title: "Como usar este curso e o acervo"
 status: canonical
-canonical_scope: Cursos/AIOX-Advanced-Squads
+canonical_scope: cursos/AIOX-Advanced-Squads
 reading_minutes: 12
 maturity: study
 tags: [curso/aiox-advanced-squads, intro]
@@ -49,7 +49,7 @@ Se a superfície não existir, use o briefing da aula e peça para carregar o pa
 
 ## Execução guiada
 
-1. Abra `Cursos/README.md` (hub das trilhas).
+1. Abra `cursos/README.md` (hub das trilhas).
 2. Confirme o pré-requisito do Advanced em `ponte/pre-requisitos-advanced.md`.
 3. Escolha o squad no [Mapa de decisão](../Mapa-de-decisao.md).
 4. Abra a aula `01`–`24` correspondente.

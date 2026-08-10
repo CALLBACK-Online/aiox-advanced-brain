@@ -23,13 +23,13 @@ module: M11
 sequence: M11.4
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Três caminhos de produto: Consultoria → App Web → SaaS
 
-← [[64-vender-pela-dor-e-roi|Vender pela DOR e ROI, não pela tecnologia]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[66-tres-estagios-de-monetizacao|Três estágios de monetização: interno → cliente → produto]]
+← [[64-vender-pela-dor-e-roi|Vender pela DOR e ROI, não pela tecnologia]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[66-tres-estagios-de-monetizacao|Três estágios de monetização: interno → cliente → produto]]
 
 ## Mapa desta aula
 
@@ -380,4 +380,4 @@ A IA é a seta. O X é seu — inclusive **em qual pista** você corre este trim
 
 ## Navegação
 
-← [[64-vender-pela-dor-e-roi|Vender pela DOR e ROI, não pela tecnologia]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[66-tres-estagios-de-monetizacao|Três estágios de monetização: interno → cliente → produto]]
+← [[64-vender-pela-dor-e-roi|Vender pela DOR e ROI, não pela tecnologia]] · ↑ [[modulos/Módulo 11 - Produtivização|M11]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[66-tres-estagios-de-monetizacao|Três estágios de monetização: interno → cliente → produto]]

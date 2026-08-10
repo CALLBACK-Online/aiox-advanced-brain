@@ -1058,7 +1058,7 @@ ogilvy_40_hooks:
       formula: "[Levou] + [X tempo longo] + [para descobrir] + [segredos valiosos]"
       resultado: "Valoriza o conhecimento compartilhado"
       como_adaptar: "It took me 10 startups to learn these fundraising truths"
-      melhor_para: ["Cursos", "mentorias", "conhecimento especializado"]
+      melhor_para: ["cursos", "mentorias", "conhecimento especializado"]
 
     - id: "OG_027"
       texto: "Don't be vague. Ask for Haig"

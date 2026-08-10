@@ -23,13 +23,13 @@ module: M8
 sequence: M8.4
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Pasta OS]]: curadoria local de open-source para o agente
 
-← [[38-code-anatomy-domain-decoder|Code Anatomy: engenharia reversa de código com /code-anatomist]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[40-pipeline-canonico-prd|Pipeline canônico: do nada ao PRD com stories prontas]]
+← [[38-code-anatomy-domain-decoder|Code Anatomy: engenharia reversa de código com /code-anatomist]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[40-pipeline-canonico-prd|Pipeline canônico: do nada ao PRD com stories prontas]]
 
 ## Mapa desta aula
 
@@ -493,4 +493,4 @@ Tradução dos termos para alguém que está vendo a distinção buscar na web v
 
 ## Navegação
 
-← [[38-code-anatomy-domain-decoder|Code Anatomy: engenharia reversa de código com /code-anatomist]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[40-pipeline-canonico-prd|Pipeline canônico: do nada ao PRD com stories prontas]]
+← [[38-code-anatomy-domain-decoder|Code Anatomy: engenharia reversa de código com /code-anatomist]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[40-pipeline-canonico-prd|Pipeline canônico: do nada ao PRD com stories prontas]]

@@ -4,7 +4,7 @@ course: aiox-advanced
 status: pass
 validated_at: 2026-08-09
 source_version: 1.0.0
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 tags: [curso/aiox-advanced, validacao]
 ---
 
@@ -35,7 +35,7 @@ tags: [curso/aiox-advanced, validacao]
 - 1.624 wikilinks verificados.
 - 0 links não resolvidos.
 - 0 links ambíguos.
-- 0 links para fora de `Cursos/AIOX Advanced`.
+- 0 links para fora de `cursos/AIOX Advanced`.
 - 0 erros de metadados ou navegação.
 - 75/75 aulas com mapa Mermaid e navegação editorial.
 
@@ -45,8 +45,8 @@ O [[Projeto Integrador]] exige uma fatia vertical em 90 minutos, com brief, PRD 
 
 ## Comando de verificação
 
-`python3 "Cursos/AIOX Advanced/_tools/validate_course.py"`
+`python3 "cursos/AIOX Advanced/_tools/validate_course.py"`
 
 ## Navegação
 
-↑ [[Cursos/AIOX Advanced/README|Curso]] · [[Assessments|Avaliações]] · [[CURRICULUM-GAP|Cobertura curricular]]
+↑ [[cursos/AIOX Advanced/README|Curso]] · [[Assessments|Avaliações]] · [[CURRICULUM-GAP|Cobertura curricular]]

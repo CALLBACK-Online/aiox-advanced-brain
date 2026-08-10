@@ -24,13 +24,13 @@ module: M0
 sequence: M0.4
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Desenhe fora da ferramenta antes de codar
 
-← [[12-repertorio-vs-tecnica|Repertório vence técnica]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[26-nao-delegar-pensar|Nao delegue o pensar: repertorio contra zumbi]]
+← [[12-repertorio-vs-tecnica|Repertório vence técnica]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[26-nao-delegar-pensar|Nao delegue o pensar: repertorio contra zumbi]]
 
 ## Conceitos
 
@@ -455,4 +455,4 @@ Os termos desta aula em uma frase cada.
 
 ## Navegação
 
-← [[12-repertorio-vs-tecnica|Repertório vence técnica]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[26-nao-delegar-pensar|Nao delegue o pensar: repertorio contra zumbi]]
+← [[12-repertorio-vs-tecnica|Repertório vence técnica]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[26-nao-delegar-pensar|Nao delegue o pensar: repertorio contra zumbi]]

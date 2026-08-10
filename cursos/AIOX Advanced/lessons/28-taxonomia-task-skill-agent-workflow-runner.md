@@ -25,13 +25,13 @@ module: M5
 sequence: M5.3
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Taxonomia AIOX]]: [[Task]], [[Skill]], Agente, [[Workflow]] e [[Runner]]
 
-← [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[29-sub-agents-vs-swarm-agents|Sub-agents versus Swarm-agents: isolado ou em rede]]
+← [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[29-sub-agents-vs-swarm-agents|Sub-agents versus Swarm-agents: isolado ou em rede]]
 
 ## Conceitos
 
@@ -495,4 +495,4 @@ Tradução dos cinco termos para alguém que está vendo a taxonomia AIOX pela p
 
 ## Navegação
 
-← [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[29-sub-agents-vs-swarm-agents|Sub-agents versus Swarm-agents: isolado ou em rede]]
+← [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[29-sub-agents-vs-swarm-agents|Sub-agents versus Swarm-agents: isolado ou em rede]]

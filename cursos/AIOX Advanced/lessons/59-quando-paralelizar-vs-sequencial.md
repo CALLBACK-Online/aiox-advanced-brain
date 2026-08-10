@@ -23,13 +23,13 @@ module: M10
 sequence: M10.2
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Quando [[Paralelização|paralelizar]] vs sequencial: decisão antes do speedup
 
-← [[58-ralph-paralelizacao|Ralph: paralelização de múltiplos agentes]] · ↑ [[modulos/Módulo 10 - Escala e Tokens|M10]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[60-routing-modelos|Routing de modelos: Codex para QA, Gemini para pesquisa, Claude para o resto]]
+← [[58-ralph-paralelizacao|Ralph: paralelização de múltiplos agentes]] · ↑ [[modulos/Módulo 10 - Escala e Tokens|M10]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[60-routing-modelos|Routing de modelos: Codex para QA, Gemini para pesquisa, Claude para o resto]]
 
 ## Mapa desta aula
 
@@ -391,4 +391,4 @@ Grafo primeiro. Turbo depois. Wall-clock no fim — ou é só história.
 
 ## Navegação
 
-← [[58-ralph-paralelizacao|Ralph: paralelização de múltiplos agentes]] · ↑ [[modulos/Módulo 10 - Escala e Tokens|M10]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[60-routing-modelos|Routing de modelos: Codex para QA, Gemini para pesquisa, Claude para o resto]]
+← [[58-ralph-paralelizacao|Ralph: paralelização de múltiplos agentes]] · ↑ [[modulos/Módulo 10 - Escala e Tokens|M10]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[60-routing-modelos|Routing de modelos: Codex para QA, Gemini para pesquisa, Claude para o resto]]

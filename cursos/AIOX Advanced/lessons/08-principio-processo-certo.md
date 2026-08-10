@@ -24,13 +24,13 @@ module: M0
 sequence: M0.2
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Respeite o processo: dê comando, não converse
 
-← [[01-token-economy-mindset|Token Economy Mindset]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[12-repertorio-vs-tecnica|Repertório vence técnica]]
+← [[01-token-economy-mindset|Token Economy Mindset]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[12-repertorio-vs-tecnica|Repertório vence técnica]]
 
 ## Conceitos
 
@@ -401,4 +401,4 @@ Tradução dos termos para quem está vendo o princípio pela primeira vez.
 
 ## Navegação
 
-← [[01-token-economy-mindset|Token Economy Mindset]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[12-repertorio-vs-tecnica|Repertório vence técnica]]
+← [[01-token-economy-mindset|Token Economy Mindset]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[12-repertorio-vs-tecnica|Repertório vence técnica]]

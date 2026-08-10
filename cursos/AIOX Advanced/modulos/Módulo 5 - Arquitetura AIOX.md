@@ -4,7 +4,7 @@ course: aiox-advanced
 module: M5
 sequence: 5
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 source_version: 1.0.0
 tags: [curso/aiox-advanced, modulo]
 ---
@@ -41,10 +41,10 @@ Eu recupero os conceitos no [[avaliacoes/Quiz M5 - Arquitetura AIOX|Quiz do M5]]
 
 > **Depois deste módulo no método**, aprofunde a operação dos squads no curso irmão.
 >
-> Com a taxonomia em mãos, abra `Cursos/AIOX-Advanced-Squads/aulas/00-como-usar-este-curso.md` e o mapa de decisão. Runner e operações: `aulas/09-runner-ops.md`.
+> Com a taxonomia em mãos, abra `cursos/AIOX-Advanced-Squads/aulas/00-como-usar-este-curso.md` e o mapa de decisão. Runner e operações: `aulas/09-runner-ops.md`.
 >
-> Índice da trilha: `ponte/trilha-squads.md` · Hub: `Cursos/README.md` · Pasta do curso: `Cursos/AIOX-Advanced-Squads/`
+> Índice da trilha: `ponte/trilha-squads.md` · Hub: `cursos/README.md` · Pasta do curso: `cursos/AIOX-Advanced-Squads/`
 
 ## Navegação
 
-← [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 6 - Brownfield e Greenfield|M6]]
+← [[modulos/Módulo 4 - Determinismo e Comando|M4]] · ↑ [[cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 6 - Brownfield e Greenfield|M6]]

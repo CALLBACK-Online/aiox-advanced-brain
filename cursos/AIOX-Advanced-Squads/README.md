@@ -3,8 +3,8 @@ type: course
 course: aiox-advanced-squads
 title: AIOX Advanced Squads
 status: canonical
-canonical_scope: Cursos/AIOX-Advanced-Squads
-sharing_boundary: Cursos
+canonical_scope: cursos/AIOX-Advanced-Squads
+sharing_boundary: cursos
 source: squads/ + skills/ + catalog.json
 source_version: 1.2.0
 curriculum_modules: 6
@@ -32,7 +32,7 @@ Este curso ensina a **usar os 24 squads** publicados neste acervo (`squads/`). C
 
 ## Pré-requisito
 
-Curso método: pasta `Cursos/AIOX Advanced/`. Ponte: [Pré-requisitos no AIOX Advanced](ponte/pre-requisitos-advanced.md). Hub: `Cursos/README.md`.
+Curso método: pasta `cursos/AIOX Advanced/`. Ponte: [Pré-requisitos no AIOX Advanced](ponte/pre-requisitos-advanced.md). Hub: `cursos/README.md`.
 
 Comece por [00 — Como usar este curso](aulas/00-como-usar-este-curso.md).
 
@@ -53,7 +53,7 @@ Este repositório é **biblioteca de distribuição**, não runtime:
 |-------|-----|
 | `squads/` | Fonte canônica dos 24 squads |
 | `skills/` | Skills de entrada (quando existirem) para copiar à IDE |
-| `Cursos/AIOX-Advanced-Squads/` | Este curso (navegável e autocontido em `Cursos/`) |
+| `cursos/AIOX-Advanced-Squads/` | Este curso (navegável e autocontido em `cursos/`) |
 
 ```bash
 cp -R squads/research /caminho/do/seu-projeto/squads/

@@ -7,12 +7,12 @@ description: Descobre, compara, instala e orienta o uso dos 24 squads do acervo 
 
 ## Rotear a missão
 
-1. Ler `references/router.json` (espelho de `Cursos/AIOX-Advanced-Squads/agent-router.json`) antes de escolher.
+1. Ler `references/router.json` (espelho de `cursos/AIOX-Advanced-Squads/agent-router.json`) antes de escolher.
 2. Extrair da fala do usuário o verbo principal, o objeto, o estado atual e a entrega desejada.
 3. Comparar os sinais positivos e negativos das rotas candidatas.
 4. Preferir o menor mecanismo suficiente. Não indicar squad se uma skill isolada resolver claramente.
 5. Se duas rotas continuarem plausíveis e a diferença alterar a entrega, fazer uma única pergunta curta. Caso contrário, escolher e declarar a hipótese.
-6. Abrir a aula indicada pela rota quando `Cursos/AIOX-Advanced-Squads/` estiver disponível.
+6. Abrir a aula indicada pela rota quando `cursos/AIOX-Advanced-Squads/` estiver disponível.
 
 ## Responder antes de executar
 

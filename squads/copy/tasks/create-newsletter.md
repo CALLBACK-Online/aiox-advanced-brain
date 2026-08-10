@@ -267,7 +267,7 @@ format_3_tutorial:
 
   best_for:
     - "Negócios educacionais"
-    - "Cursos/coaching"
+    - "cursos/coaching"
     - "SaaS"
 
   production_time: "Médio (2-3 horas)"

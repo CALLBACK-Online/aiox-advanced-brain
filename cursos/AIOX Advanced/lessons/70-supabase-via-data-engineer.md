@@ -23,13 +23,13 @@ module: M12
 sequence: M12.2
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Supabase]]: setup via @data-engineer
 
-← [[69-escada-progressiva-script-a-saas|Escada Progressiva: Script → Squad → Workflow → Runner → API → App → SaaS]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[71-vercel-deploy|Vercel Deploy: do localhost ao mundo]]
+← [[69-escada-progressiva-script-a-saas|Escada Progressiva: Script → Squad → Workflow → Runner → API → App → SaaS]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[71-vercel-deploy|Vercel Deploy: do localhost ao mundo]]
 
 ## Mapa desta aula
 
@@ -414,4 +414,4 @@ A IA é a seta. O X é seu — inclusive recusar service role no browser.
 
 ## Navegação
 
-← [[69-escada-progressiva-script-a-saas|Escada Progressiva: Script → Squad → Workflow → Runner → API → App → SaaS]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[71-vercel-deploy|Vercel Deploy: do localhost ao mundo]]
+← [[69-escada-progressiva-script-a-saas|Escada Progressiva: Script → Squad → Workflow → Runner → API → App → SaaS]] · ↑ [[modulos/Módulo 12 - Deploy Profissional|M12]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[71-vercel-deploy|Vercel Deploy: do localhost ao mundo]]

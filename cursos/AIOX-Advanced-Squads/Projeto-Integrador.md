@@ -2,7 +2,7 @@
 type: capstone
 course: aiox-advanced-squads
 status: canonical
-canonical_scope: Cursos/AIOX-Advanced-Squads
+canonical_scope: cursos/AIOX-Advanced-Squads
 ---
 
 # Projeto integrador — uma missão, três squads

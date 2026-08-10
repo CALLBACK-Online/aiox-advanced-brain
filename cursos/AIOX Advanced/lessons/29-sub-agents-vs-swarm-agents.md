@@ -23,13 +23,13 @@ module: M5
 sequence: M5.4
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Sub-agents versus [[Swarm]]-agents: isolado ou em rede
 
-← [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[30-runner-executavel-deterministico|Runner: o executável determinístico do Workflow]]
+← [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[30-runner-executavel-deterministico|Runner: o executável determinístico do Workflow]]
 
 ## Mapa desta aula
 
@@ -479,4 +479,4 @@ Tradução dos termos para alguém que está vendo a distinção sub versus swar
 
 ## Navegação
 
-← [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[30-runner-executavel-deterministico|Runner: o executável determinístico do Workflow]]
+← [[28-taxonomia-task-skill-agent-workflow-runner|Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[30-runner-executavel-deterministico|Runner: o executável determinístico do Workflow]]

@@ -23,13 +23,13 @@ module: M8
 sequence: M8.2
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Spy]]/Bench: comparação profunda entre dois projetos
 
-← [[36-tech-research-multi-fonte|Tech Research: pesquisa profunda multi-fonte]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[38-code-anatomy-domain-decoder|Code Anatomy: engenharia reversa de código com /code-anatomist]]
+← [[36-tech-research-multi-fonte|Tech Research: pesquisa profunda multi-fonte]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[38-code-anatomy-domain-decoder|Code Anatomy: engenharia reversa de código com /code-anatomist]]
 
 ## Mapa desta aula
 
@@ -496,4 +496,4 @@ Tradução dos termos para alguém que está vendo a distinção comparar no olh
 
 ## Navegação
 
-← [[36-tech-research-multi-fonte|Tech Research: pesquisa profunda multi-fonte]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[38-code-anatomy-domain-decoder|Code Anatomy: engenharia reversa de código com /code-anatomist]]
+← [[36-tech-research-multi-fonte|Tech Research: pesquisa profunda multi-fonte]] · ↑ [[modulos/Módulo 8 - Pipeline de Research|M8]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[38-code-anatomy-domain-decoder|Code Anatomy: engenharia reversa de código com /code-anatomist]]

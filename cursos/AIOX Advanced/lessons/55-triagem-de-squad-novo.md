@@ -23,13 +23,13 @@ module: M7
 sequence: M7.4
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Triagem de Squad novo: fase-zero de prior-art + research loop
 
-← [[34-squad-creator-passo-a-passo|Squad Creator passo a passo: criar um squad do zero]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[35-mesa-redonda-advisory-board|Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só]]
+← [[34-squad-creator-passo-a-passo|Squad Creator passo a passo: criar um squad do zero]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[35-mesa-redonda-advisory-board|Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só]]
 
 ## Mapa desta aula
 
@@ -410,4 +410,4 @@ A IA é a seta. O X é seu — inclusive fechar a porta do scaffold com elegânc
 
 ## Navegação
 
-← [[34-squad-creator-passo-a-passo|Squad Creator passo a passo: criar um squad do zero]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[35-mesa-redonda-advisory-board|Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só]]
+← [[34-squad-creator-passo-a-passo|Squad Creator passo a passo: criar um squad do zero]] · ↑ [[modulos/Módulo 7 - Criar Squad|M7]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[35-mesa-redonda-advisory-board|Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só]]

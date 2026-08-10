@@ -25,13 +25,13 @@ module: M2
 sequence: M2.2
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Janela de contexto: o limite real e a degradação acima de 40K
 
-← [[05-ambientes-local-staging-production|Local, Staging, Production]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[17-engenharia-de-contexto|Engenharia de contexto: limpar comandos, skills e MCPs]]
+← [[05-ambientes-local-staging-production|Local, Staging, Production]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[17-engenharia-de-contexto|Engenharia de contexto: limpar comandos, skills e MCPs]]
 
 ## Conceitos
 
@@ -460,4 +460,4 @@ Os termos desta aula em uma frase cada.
 
 ## Navegação
 
-← [[05-ambientes-local-staging-production|Local, Staging, Production]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[17-engenharia-de-contexto|Engenharia de contexto: limpar comandos, skills e MCPs]]
+← [[05-ambientes-local-staging-production|Local, Staging, Production]] · ↑ [[modulos/Módulo 2 - Setup e Contexto|M2]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[17-engenharia-de-contexto|Engenharia de contexto: limpar comandos, skills e MCPs]]

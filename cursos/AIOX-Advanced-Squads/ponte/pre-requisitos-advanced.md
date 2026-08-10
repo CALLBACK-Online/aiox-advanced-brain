@@ -2,7 +2,7 @@
 type: course-bridge
 course: aiox-advanced-squads
 status: canonical
-canonical_scope: Cursos/AIOX-Advanced-Squads
+canonical_scope: cursos/AIOX-Advanced-Squads
 tags: [curso/aiox-advanced-squads, ponte]
 ---
 
@@ -14,7 +14,7 @@ O curso **AIOX Advanced** ensina o método (SDC, taxonomia, determinismo, gates)
 
 Pasta do método no repositório (abra no explorer; cada curso é isolado para links):
 
-`Cursos/AIOX Advanced/`
+`cursos/AIOX Advanced/`
 
 ## Mínimo recomendado antes da aula 00
 
@@ -61,4 +61,4 @@ Pasta do método no repositório (abra no explorer; cada curso é isolado para l
 3. Módulos M0–M5 deste curso conforme a missão.
 4. Capstone / Projeto Integrador do Advanced com squads já escolhidos.
 
-Hub: `Cursos/README.md`
+Hub: `cursos/README.md`

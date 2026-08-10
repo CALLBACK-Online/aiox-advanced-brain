@@ -4,7 +4,7 @@ course: aiox-advanced
 module: M0
 sequence: 0
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 source_version: 1.0.0
 tags: [curso/aiox-advanced, modulo]
 ---
@@ -38,4 +38,4 @@ Eu recupero os conceitos no [[avaliacoes/Quiz M0 - Mindset e Princípios|Quiz do
 
 ## Navegação
 
-↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 1 - Sistema AIOX|M1]]
+↑ [[cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 1 - Sistema AIOX|M1]]

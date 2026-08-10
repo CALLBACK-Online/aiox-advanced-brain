@@ -4,7 +4,7 @@ course: aiox-advanced
 module: M11
 sequence: 11
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 source_version: 1.0.0
 tags: [curso/aiox-advanced, modulo]
 ---
@@ -40,4 +40,4 @@ Eu recupero os conceitos no [[avaliacoes/Quiz M11 - Produtivização|Quiz do M11
 
 ## Navegação
 
-← [[modulos/Módulo 10 - Escala e Tokens|M10]] · ↑ [[Cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 12 - Deploy Profissional|M12]]
+← [[modulos/Módulo 10 - Escala e Tokens|M10]] · ↑ [[cursos/AIOX Advanced/README|Curso]] · → [[modulos/Módulo 12 - Deploy Profissional|M12]]

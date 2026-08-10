@@ -23,13 +23,13 @@ module: M10
 sequence: M10.4
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # [[Wave Execute]]: orquestração avançada com waves paralelas
 
-← [[60-routing-modelos|Routing de modelos: Codex para QA, Gemini para pesquisa, Claude para o resto]] · ↑ [[modulos/Módulo 10 - Escala e Tokens|M10]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[62-service-as-software|Service-as-Software: a era do serviço produtivado]]
+← [[60-routing-modelos|Routing de modelos: Codex para QA, Gemini para pesquisa, Claude para o resto]] · ↑ [[modulos/Módulo 10 - Escala e Tokens|M10]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[62-service-as-software|Service-as-Software: a era do serviço produtivado]]
 
 ## Mapa desta aula
 
@@ -394,4 +394,4 @@ A IA é a seta. O X é seu — inclusive o **ritmo das ondas** que disparam.
 
 ## Navegação
 
-← [[60-routing-modelos|Routing de modelos: Codex para QA, Gemini para pesquisa, Claude para o resto]] · ↑ [[modulos/Módulo 10 - Escala e Tokens|M10]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[62-service-as-software|Service-as-Software: a era do serviço produtivado]]
+← [[60-routing-modelos|Routing de modelos: Codex para QA, Gemini para pesquisa, Claude para o resto]] · ↑ [[modulos/Módulo 10 - Escala e Tokens|M10]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[62-service-as-software|Service-as-Software: a era do serviço produtivado]]

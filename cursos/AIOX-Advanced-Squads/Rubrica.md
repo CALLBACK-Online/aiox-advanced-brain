@@ -2,7 +2,7 @@
 type: rubric
 course: aiox-advanced-squads
 status: canonical
-canonical_scope: Cursos/AIOX-Advanced-Squads
+canonical_scope: cursos/AIOX-Advanced-Squads
 total_points: 100
 passing_score: 80
 ---

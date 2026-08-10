@@ -3,7 +3,7 @@ type: module-quiz
 course: aiox-advanced
 module: M10
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 passing_score: 80
 question_count: 4
 source_version: 1.0.0

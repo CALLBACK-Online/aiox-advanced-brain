@@ -2,7 +2,7 @@
 type: assessments-index
 course: aiox-advanced-squads
 status: canonical
-canonical_scope: Cursos/AIOX-Advanced-Squads
+canonical_scope: cursos/AIOX-Advanced-Squads
 passing_score: 80
 ---
 

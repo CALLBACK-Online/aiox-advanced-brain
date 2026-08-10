@@ -23,13 +23,13 @@ module: M6
 sequence: M6.1
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Workflow pronto vs comando manual: bicicleta com rodinha
 
-← [[51-mapear-entidades-antes-do-squad|Mapear entidades antes do Squad: 5 perguntas + ciclo de vida]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[31-brownfield-discovery|Brownfield Discovery: entrar num projeto que já existe]]
+← [[51-mapear-entidades-antes-do-squad|Mapear entidades antes do Squad: 5 perguntas + ciclo de vida]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[31-brownfield-discovery|Brownfield Discovery: entrar num projeto que já existe]]
 
 ## Mapa desta aula
 
@@ -413,4 +413,4 @@ A IA é a seta. O X é seu — inclusive recusar automação precoce e recusar c
 
 ## Navegação
 
-← [[51-mapear-entidades-antes-do-squad|Mapear entidades antes do Squad: 5 perguntas + ciclo de vida]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[31-brownfield-discovery|Brownfield Discovery: entrar num projeto que já existe]]
+← [[51-mapear-entidades-antes-do-squad|Mapear entidades antes do Squad: 5 perguntas + ciclo de vida]] · ↑ [[modulos/Módulo 6 - Brownfield e Greenfield|M6]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[31-brownfield-discovery|Brownfield Discovery: entrar num projeto que já existe]]

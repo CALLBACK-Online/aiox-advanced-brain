@@ -26,13 +26,13 @@ module: M5
 sequence: M5.1
 track: essential
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # O que é um Squad (e por que ele vem antes do App)
 
-← [[22-pipeline-etl-com-agentes|Pipeline ETL com agentes: hierarquia de camadas]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]]
+← [[22-pipeline-etl-com-agentes|Pipeline ETL com agentes: hierarquia de camadas]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]]
 
 ## Conceitos
 
@@ -468,4 +468,4 @@ Os termos desta aula em uma frase cada.
 
 ## Navegação
 
-← [[22-pipeline-etl-com-agentes|Pipeline ETL com agentes: hierarquia de camadas]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]]
+← [[22-pipeline-etl-com-agentes|Pipeline ETL com agentes: hierarquia de camadas]] · ↑ [[modulos/Módulo 5 - Arquitetura AIOX|M5]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo: nasce, vive, morre]]

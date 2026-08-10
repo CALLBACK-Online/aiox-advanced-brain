@@ -25,13 +25,13 @@ module: M0
 sequence: M0.5
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Nao delegue o pensar: repertorio contra zumbi
 
-← [[13-pensamento-estruturado-antes-do-terminal|Desenhe fora da ferramenta antes de codar]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[02-aiox-nao-e-ferramenta|AIOX não é ferramenta]]
+← [[13-pensamento-estruturado-antes-do-terminal|Desenhe fora da ferramenta antes de codar]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[02-aiox-nao-e-ferramenta|AIOX não é ferramenta]]
 
 ## Conceitos
 
@@ -557,4 +557,4 @@ Traducao dos termos pra quem esta vendo a tese pela primeira vez.
 
 ## Navegação
 
-← [[13-pensamento-estruturado-antes-do-terminal|Desenhe fora da ferramenta antes de codar]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[02-aiox-nao-e-ferramenta|AIOX não é ferramenta]]
+← [[13-pensamento-estruturado-antes-do-terminal|Desenhe fora da ferramenta antes de codar]] · ↑ [[modulos/Módulo 0 - Mindset e Princípios|M0]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[02-aiox-nao-e-ferramenta|AIOX não é ferramenta]]

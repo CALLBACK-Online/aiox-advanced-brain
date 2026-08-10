@@ -102,7 +102,7 @@ for position, path in enumerate(squad_lesson_files, 1):
         "course": "aiox-advanced-squads",
         "lesson_position": str(position),
         "status": "canonical",
-        "canonical_scope": "Cursos/AIOX-Advanced-Squads",
+        "canonical_scope": "cursos/AIOX-Advanced-Squads",
     }
     for key, expected in required.items():
         if data.get(key) != expected:

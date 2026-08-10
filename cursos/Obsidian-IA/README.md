@@ -3,8 +3,8 @@ type: course
 course: obsidian-ia
 title: Obsidian + IA
 status: canonical
-canonical_scope: Cursos/Obsidian-IA
-sharing_boundary: Cursos
+canonical_scope: cursos/Obsidian-IA
+sharing_boundary: cursos
 source: skills/aiox-brain + vault de estudo
 source_version: 1.0.0
 curriculum_modules: 1
@@ -41,7 +41,7 @@ Ao terminar você consegue:
 
 ## Como estudar
 
-1. Abra **esta pasta** (`Cursos/Obsidian-IA/`) ou `Cursos/` como vault no Obsidian.
+1. Abra **esta pasta** (`cursos/Obsidian-IA/`) ou `cursos/` como vault no Obsidian.
 2. Siga as aulas em ordem (00 → 07).
 3. Faça os exercícios curtos; use as skills de vault quando o agent estiver no repo.
 
@@ -52,7 +52,7 @@ Ao terminar você consegue:
 | MOCs | `skills/course-moc/SKILL.md` |
 | Captura | `skills/study-capture/SKILL.md` |
 
-Entre cursos, os paths monoespaçados apontam para o hub: `Cursos/README.md`.
+Entre cursos, os paths monoespaçados apontam para o hub: `cursos/README.md`.
 
 ## Aulas
 
@@ -88,5 +88,5 @@ Você “passou” no mini-curso se entregar:
 ## Validação
 
 ```bash
-python3 "Cursos/Obsidian-IA/_tools/validate_course.py"
+python3 "cursos/Obsidian-IA/_tools/validate_course.py"
 ```

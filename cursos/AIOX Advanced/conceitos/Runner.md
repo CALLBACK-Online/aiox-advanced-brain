@@ -14,7 +14,7 @@ tags:
 - course-brain
 updated: '2026-08-10'
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 freq:
   aiox_advanced: 398
   aiox_advanced_squads: 36

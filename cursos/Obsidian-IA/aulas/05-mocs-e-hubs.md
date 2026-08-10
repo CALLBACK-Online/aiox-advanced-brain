@@ -6,7 +6,7 @@ lesson_id: mocs-e-hubs
 lesson_position: 5
 title: "MOCs e hubs de estudo"
 status: canonical
-canonical_scope: Cursos/Obsidian-IA
+canonical_scope: cursos/Obsidian-IA
 reading_minutes: 12
 tags: [curso/obsidian-ia, segundo-cerebro]
 maturity: study
@@ -32,7 +32,7 @@ MOC = propósito em uma frase + seções + links com meia linha de “por quê�
 
 Skill: `course-moc` (`skills/course-moc/SKILL.md`).
 
-Destino pessoal: `Cursos/_notas-pessoais/MOCs/MOC - {Tema}.md`.
+Destino pessoal: `notas/MOCs/MOC - {Tema}.md`.
 
 ## Tipos úteis
 

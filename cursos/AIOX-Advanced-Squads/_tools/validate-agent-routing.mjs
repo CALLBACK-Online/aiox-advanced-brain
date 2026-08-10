@@ -46,9 +46,9 @@ function scoreRoute(prompt, route) {
   return score;
 }
 
-const courseRouterPath = "Cursos/AIOX-Advanced-Squads/agent-router.json";
+const courseRouterPath = "cursos/AIOX-Advanced-Squads/agent-router.json";
 const skillRouterPath = "skills/aiox-squads/references/router.json";
-const evalsPath = "Cursos/AIOX-Advanced-Squads/_tools/routing-evals.json";
+const evalsPath = "cursos/AIOX-Advanced-Squads/_tools/routing-evals.json";
 
 const [courseRouterText, skillRouterText, evalsText, catalogText] = await Promise.all([
   read(courseRouterPath),
@@ -112,10 +112,10 @@ for (const route of router.routes) {
   if (!(await exists(route.entry_agent_path))) {
     errors.push(`${route.id}: agente de entrada ausente em ${route.entry_agent_path}`);
   }
-  if (!(await exists(`Cursos/AIOX-Advanced-Squads/${route.lesson}`))) {
+  if (!(await exists(`cursos/AIOX-Advanced-Squads/${route.lesson}`))) {
     errors.push(`${route.id}: aula ausente em ${route.lesson}`);
   } else {
-    const lesson = await read(`Cursos/AIOX-Advanced-Squads/${route.lesson}`);
+    const lesson = await read(`cursos/AIOX-Advanced-Squads/${route.lesson}`);
     if (!new RegExp(`^squad:\\s*${route.id}\\s*$`, "m").test(lesson)) {
       errors.push(`${route.id}: frontmatter da aula não confirma o squad`);
     }
@@ -194,7 +194,7 @@ if (JSON.stringify(actualSkills) !== JSON.stringify([...catalog.skills].sort()))
 }
 
 const supplemental = catalog.supplemental_courses?.find(
-  (item) => item.path === "Cursos/AIOX-Advanced-Squads",
+  (item) => item.path === "cursos/AIOX-Advanced-Squads",
 );
 const markdownFiles = [];
 async function collectMarkdown(directory) {

@@ -23,13 +23,13 @@ module: M9
 sequence: M9.3
 track: complete
 status: canonical
-canonical_scope: Cursos/AIOX Advanced
+canonical_scope: cursos/AIOX Advanced
 curated_at: '2026-08-09'
 ---
 
 # Tailwind + ShadCN + [[Storybook]]: stack canonical para IA
 
-← [[42-design-atomico-brad-frost|Design atomico: a interface se monta de peca pequena pra peca grande]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[43-design-md-novo-contrato|DESIGN.md: o novo contrato que a IA lê antes de gerar tela]]
+← [[42-design-atomico-brad-frost|Design atomico: a interface se monta de peca pequena pra peca grande]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[43-design-md-novo-contrato|DESIGN.md: o novo contrato que a IA lê antes de gerar tela]]
 
 ## Mapa desta aula
 
@@ -409,4 +409,4 @@ A IA é a seta. O X é seu — inclusive decidir **o que** pode ser inventado.
 
 ## Navegação
 
-← [[42-design-atomico-brad-frost|Design atomico: a interface se monta de peca pequena pra peca grande]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[Cursos/AIOX Advanced/README|Curso]] · → [[43-design-md-novo-contrato|DESIGN.md: o novo contrato que a IA lê antes de gerar tela]]
+← [[42-design-atomico-brad-frost|Design atomico: a interface se monta de peca pequena pra peca grande]] · ↑ [[modulos/Módulo 9 - Design System|M9]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[43-design-md-novo-contrato|DESIGN.md: o novo contrato que a IA lê antes de gerar tela]]
