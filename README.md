@@ -1,4 +1,4 @@
-# AIOX Advanced — Guia Oficial do Aluno
+# AIOX Advanced Brain — Guia Oficial do Aluno
 
 > **Material exclusivo dos alunos AIOX Advanced.** Uso educacional dentro da turma. Não redistribua publicamente este acervo.
 
