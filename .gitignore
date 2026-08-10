@@ -36,6 +36,7 @@ cursos/_notas-pessoais/**
 # Root-only library tooling
 /scripts/
 /docs/
+/dev/
 
 # IDE runtime projections
 .claude/

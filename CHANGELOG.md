@@ -21,6 +21,8 @@
 
 ### Changed
 
+- `dev/` passa a ser bastidor local gitignored, como `docs/`; validadores,
+  reports e `course-library-ops` deixam de integrar o clone público.
 - AIOX Advanced 2.0 reduz a progressão ativa de 75 para **28 aulas** e de 14 para **6 módulos**; suas avaliações passam a somar **48 questões**; 42 aulas migradas, 4 versões legacy e 1 FAQ permanecem preservados fora da contagem ativa.
 - Hubs, catálogo, bootstraps e jornada passam a separar método, Agent Engineering, Design, Productização e operação de squads por responsabilidade curricular.
 - Fundamentos antes dispersos no AIOX Advanced passam a ter fonte curricular canônica no novo curso; as aulas antigas permanecem como extensões aplicadas ao método AIOX, preservando o grafo existente.

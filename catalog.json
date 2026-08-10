@@ -77,7 +77,6 @@
       "links_outside_course": 0,
       "agent_guide": "cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md",
       "router_manifest": "cursos/AIOX-Advanced-Squads/agent-router.json",
-      "routing_evals": "dev/courses/aiox-advanced-squads/routing-evals.json",
       "supported_runtimes": [
         "claude-code",
         "codex",

@@ -91,4 +91,5 @@ Próximo passo: {1 ação}
 - Não misturar curadoria de vault pessoal com material da biblioteca sem pedido explícito.
 - Não executar uma missão do projeto dentro deste repositório de distribuição.
 - Não declarar o loop concluído sem artefato validado e nota de retorno.
-- `npm run validate` após mudanças estruturais no acervo (não após nota pessoal).
+- Com o bastidor local `dev/` instalado, `npm run validate` após mudanças
+  estruturais no acervo; sem o harness, não declarar a mudança pronta.

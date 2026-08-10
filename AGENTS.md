@@ -252,23 +252,26 @@ Tabela ampliada: `cursos/AIOX-Advanced-Squads/Guia-de-execucao.md`.
 - Mudanças importadas de fontes externas atualizam `catalog.json` e a proveniência.
 - Ao citar assets no curso, use exemplos **presentes neste repo**.
 - Não publique nem faça push sem solicitação explícita do usuário.
-- Antes de concluir mudanças estruturais no acervo: `npm run validate`.
+- Antes de concluir mudanças estruturais no acervo: usar o gate local
+  `npm run validate` quando o bastidor `dev/` estiver instalado. Sem o harness,
+  reportar o gate como bloqueado e não declarar a mudança pronta.
 
 ### Superfície do aluno vs maintainer (KISS)
 
 Teste único: **o aluno precisa disto para estudar ou copiar um asset?**
 
 - **Sim** → `cursos/` · `skills/` · `squads/` · pack root (`README`, `AGENTS`, `catalog`, …). Sem `_tools/`, sem `*.py` de gate, sem brief/gap/report de produção.
-- **Não, mas prova o acervo** → `dev/` (versionado; fora do npm). Entrada: `npm run validate` / `dev/validate.py`.
+- **Não, mas prova o acervo** → `dev/` (bastidor local, gitignored e fora do npm). Entrada: `npm run validate` / `dev/validate.py` quando instalado.
 - **Não, é rascunho editorial ou scratch** → `docs/` ou `scripts/` (gitignore). Briefs, gaps, deviations, CURRICULUM-* ficam em `docs/producao-cursos/<id>/`.
 - **Nota pessoal do aluno** → `notas/` (só `README` versionado).
 
-Gate: `npm run validate` começa em surface check — vazar tooling/bastidor em `cursos/` falha fechado.
+Gate local: `npm run validate` começa em surface check — vazar tooling/bastidor em `cursos/` falha fechado.
 
 ### Ops de time (não aluno)
 
 Criar/recriar acervo ou curso, upgrade brownfield, improve didático, doctor e pack:
-skill operacional **`course-library-ops`** em `dev/ops/course-library-ops/` (SoT).
+skill operacional local **`course-library-ops`** em `dev/ops/course-library-ops/`.
+`dev/` é gitignored: não faz parte do clone, ZIP ou pacote dos alunos.
 
 - Instalar runtime: `bash dev/ops/course-library-ops/scripts/install.sh --target both`
 - Contrato: `dev/ops/course-library-ops/SKILL.md` (7 modos)
@@ -322,4 +325,4 @@ skill operacional **`course-library-ops`** em `dev/ops/course-library-ops/` (SoT
 - Squads (agents): `cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md`
 - Router: `cursos/AIOX-Advanced-Squads/agent-router.json`
 - Manifesto: `catalog.json`
-- Validação: `npm run validate`
+- Validação local de maintainer: `npm run validate` (requer `dev/` instalado)

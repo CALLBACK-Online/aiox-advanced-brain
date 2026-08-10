@@ -1,5 +1,0 @@
-# Descoberta do harness (política de validação vive em checks.py / catalog.json)
-id: <slug>
-path: "cursos/<Nome-Do-Curso>"
-title: "<Título>"
-scan_links: false

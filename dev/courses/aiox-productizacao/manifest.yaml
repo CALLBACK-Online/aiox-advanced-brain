@@ -1,5 +1,0 @@
-# Descoberta do harness (política de validação vive em checks.py / catalog.json)
-id: aiox-productizacao
-path: "cursos/AIOX-Productizacao"
-title: "AIOX Productização"
-scan_links: false

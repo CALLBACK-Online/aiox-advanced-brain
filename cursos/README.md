@@ -20,7 +20,7 @@ Todos os cursos usam a mesma convenção:
 | `avaliacoes/` | Quizzes e projeto (não `assessments/`) |
 | `ponte/` | Pontes para outros cursos/assets |
 
-Tooling de maintainer: `dev/` (não em `cursos/`). Regra: `AGENTS.md` § Superfície do aluno vs maintainer.
+Tooling local de maintainer: `dev/` (gitignored; não distribuído em `cursos/`). Regra: `AGENTS.md` § Superfície do aluno vs maintainer.
 
 **Não sabe qual rota seguir?** Abra [Como estudar o acervo — trilhas por caso](COMO-ESTUDAR.md).
 

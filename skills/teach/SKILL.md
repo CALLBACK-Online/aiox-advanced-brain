@@ -19,7 +19,9 @@ e por isso nunca improvisa. Toda rodada segue o ciclo completo:
 
 **baseline → auditoria → priorização → edição em lote pequeno → validação → evidência**
 
-Sem `npm run validate` verde no fim, a rodada não terminou.
+O gate estrutural vive no bastidor local gitignored. Sem `dev/validate.py` e um
+`npm run validate` verde no fim, a rodada pode produzir uma proposta, mas não
+pode ser declarada pronta.
 
 ## Quando usar (e quando não)
 
@@ -47,24 +49,26 @@ Sem `npm run validate` verde no fim, a rodada não terminou.
 
 ## Algoritmo da rodada
 
-1. **Baseline** — rodar `npm run validate`; se já houver erro, corrigir antes de
-   melhorar (nunca empilhar melhoria sobre estrutura quebrada).
+1. **Baseline** — confirmar que `dev/validate.py` está instalado e rodar
+   `npm run validate`; se o harness estiver ausente, registrar o gate bloqueado
+   antes de editar; se já houver erro, corrigir antes de melhorar.
 2. **Auditar** — amostrar aulas de cada curso contra a rubrica acima; registrar
    achados com path concreto (aula + item da rubrica que falha).
 3. **Priorizar** — ordenar por impacto didático × esforço; preferir correções
    sistemáticas (um padrão aplicado a N aulas) a retoques isolados.
 4. **Aplicar em lote pequeno** — editar poucas aulas por vez, preservando
    frontmatter, tags e convenções de navegação do curso; validar entre lotes.
-5. **Validar** — `npm run validate` cobre wikilinks, metadados, navegação,
-   quizzes e roteamento; um curso alterado sem validação não está pronto.
+5. **Validar** — com o bastidor local instalado, `npm run validate` cobre
+   wikilinks, metadados, navegação, quizzes e roteamento; um curso alterado sem
+   essa evidência não está pronto.
 6. **Evidenciar** — fechar com: o que mudou (paths), qual item da rubrica cada
    mudança atende e a saída do validador.
 
 ## Guardrails (herdam as regras de biblioteca do `AGENTS.md`)
 
 - Cursos são **autocontidos**: links de um curso resolvem dentro da própria pasta.
-- **Não mover nem renomear** aulas canônicas sem atualizar os validadores em
-  `dev/courses/` — os contadores de aulas/módulos são verificados.
+- **Não mover nem renomear** aulas canônicas sem atualizar o harness local em
+  `dev/courses/`, quando instalado — os contadores de aulas/módulos são verificados.
 - Quizzes têm gabarito **balanceado por posição** (o validador confere); ao criar
   questões, distribuir as respostas corretas entre A/B/C/D.
 - Sem paths absolutos de máquina; exemplos usam paths relativos deste repo.
@@ -76,6 +80,6 @@ Sem `npm run validate` verde no fim, a rodada não terminou.
 
 - Regras de biblioteca: `AGENTS.md`
 - Hub de trilhas e matriz método ↔ squads: `cursos/README.md`
-- Validadores: `dev/validate.py` + `dev/courses/<slug>/{manifest.yaml,checks.py}` via `npm run validate`
+- Validadores locais de maintainer: `dev/validate.py` + `dev/courses/<slug>/{manifest.yaml,checks.py}` via `npm run validate`
 - Existência e maturidade de assets citados: `catalog.json`
 - Pontes: `cursos/AIOX Advanced/ponte/` · `cursos/AIOX-Advanced-Squads/ponte/`

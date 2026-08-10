@@ -136,17 +136,19 @@ cd aiox-advanced-brain
 2. **Code → Download ZIP**.
 3. Extraia a pasta e **abra no Obsidian** (estudo) e/ou no seu agent (execução).
 
-### Validar o acervo (opcional)
+### Validação de maintainer
 
-Requer Python 3 e Node:
+O clone público contém somente a biblioteca de estudo. O bastidor `dev/`, assim
+como `docs/`, é local e gitignored. Maintainers com esse kit instalado podem rodar:
 
 ```bash
 npm run validate
 ```
 
-Valida todos os cursos e o roteamento de agents (`agent-router.json` + paridade skill/squad/aula).
+O gate valida todos os cursos e o roteamento de agents. Ele não é requisito para
+estudar ou copiar os assets distribuídos.
 
-Para a prova comportamental opcional em sessões limpas de Claude Code e Codex:
+Com o mesmo bastidor local, a prova comportamental em sessões limpas usa:
 
 ```bash
 npm run smoke:routing:runtimes

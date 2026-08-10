@@ -1,4 +1,0 @@
-interface:
-  display_name: "Course Library Ops"
-  short_description: "Crie, melhore e modernize cursos verificáveis"
-  default_prompt: "Use $course-library-ops para criar, melhorar ou modernizar um curso canônico com gates humanos e validação."
