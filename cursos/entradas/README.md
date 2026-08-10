@@ -6,8 +6,12 @@ tags: [hub, layer/skill, layer/squad]
 
 Notas **leves** (não são runtime). Ligam skill ↔ squad ↔ aula sem poluir agents/tasks.
 
-- Skills: **66** pontes
-- Squads: **24** pontes
+- Skills: **67** pontes — arquivo `skill-<id>.md` (se o id já começa com `skill-`, o nome fica `skill-skill-…`; isso é prefixo + id, não duplicata de produto)
+- Squads: **24** pontes — `squad-<id>.md` (idem para `squad-creator` → `squad-squad-creator.md`)
+
+Mapa de uso e anti-duplicação: [[cursos/MAPA-SKILLS|MAPA-SKILLS]] · [[cursos/MOC-Skills]] · [[cursos/MOC-Squads]]
+
+Core AIOX (orbitais + SDC): detalhado em [[cursos/AIOX-Fundamentals/README|AIOX Fundamentals]] e [[cursos/AIOX-Fundamentals/references/core-skills-runtime|core-skills-runtime]].
 
 ## Skills
 
@@ -61,13 +65,13 @@ Notas **leves** (não são runtime). Ligam skill ↔ squad ↔ aula sem poluir a
 - [[cursos/entradas/skill-roundtable|roundtable]]
 - [[cursos/entradas/skill-runner-ops|runner-ops]]
 - [[cursos/entradas/skill-sales|sales]]
-- [[cursos/entradas/skill-skill-creator-ops|creator-ops]]
-- [[cursos/entradas/skill-skill-creator|creator]]
+- [[cursos/entradas/skill-skill-creator|skill-creator]]
+- [[cursos/entradas/skill-skill-creator-ops|skill-creator-ops]]
 - [[cursos/entradas/skill-slide-creator|slide-creator]]
 - [[cursos/entradas/skill-slides-creator|slides-creator]]
 - [[cursos/entradas/skill-squad-chief|squad-chief]]
-- [[cursos/entradas/skill-squad-creator-pro|squad-creator-pro]]
 - [[cursos/entradas/skill-squad-creator|squad-creator]]
+- [[cursos/entradas/skill-squad-creator-pro|squad-creator-pro]]
 - [[cursos/entradas/skill-storytelling|storytelling]]
 - [[cursos/entradas/skill-study-capture|study-capture]]
 - [[cursos/entradas/skill-survey-intel|survey-intel]]
@@ -102,14 +106,6 @@ Notas **leves** (não são runtime). Ligam skill ↔ squad ↔ aula sem poluir a
 - [[cursos/entradas/squad-sales|sales]]
 - [[cursos/entradas/squad-skill-creator-ops|skill-creator-ops]]
 - [[cursos/entradas/squad-slides-creator|slides-creator]]
-- [[cursos/entradas/squad-squad-creator-pro|creator-pro]]
-- [[cursos/entradas/squad-squad-creator|creator]]
+- [[cursos/entradas/squad-squad-creator|squad-creator]]
+- [[cursos/entradas/squad-squad-creator-pro|squad-creator-pro]]
 - [[cursos/entradas/squad-storytelling|storytelling]]
-
-## Mapas
-
-- [[cursos/MOC-Skills]]
-- [[cursos/MOC-Squads]]
-- [[cursos/AIOX Advanced/MOC-Todas-Aulas]]
-- [[00-HOME]]
-

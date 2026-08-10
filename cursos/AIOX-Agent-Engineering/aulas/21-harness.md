@@ -7,7 +7,7 @@ module: M4
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 67
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/67-harness-ambiente-execucao.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/67-harness-ambiente-execucao.md"
 source_version: 1.0.0
 ---
 # Harness: ambiente de execução do agente fora do Claude Code

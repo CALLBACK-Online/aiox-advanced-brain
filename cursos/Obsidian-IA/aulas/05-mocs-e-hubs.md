@@ -36,7 +36,7 @@ Destino pessoal: `notas/MOCs/MOC - {Tema}.md`.
 
 ## Tipos úteis
 
-1. Por **etapa da jornada** (Obsidian, Arquitetura, Core, método ou Squads)
+1. Por **posição na jornada** (núcleo comum ou rota de aplicação)
 2. Por **módulo** de um curso
 3. Por **dor** (“agente em loop”, “design system drift”)
 4. Por **squad** (aula + pré-requisito + skill)

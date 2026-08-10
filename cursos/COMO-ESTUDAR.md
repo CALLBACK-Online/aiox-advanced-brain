@@ -5,7 +5,7 @@ aliases: [Como estudar, Trilhas de estudo por caso]
 
 # Como estudar o acervo AIOX — trilhas por caso
 
-> Use a formação comum para construir base; use diagnósticos para não repetir o que já domina; use especializações laterais somente quando uma missão revelar esse gargalo.
+> Construa o núcleo comum, use diagnósticos para não repetir o que já domina e escolha uma rota de aplicação pelo resultado que a missão exige.
 
 [⌂ Hub dos cursos](README.md) · [Jornada AIOX](../JORNADA-AIOX.md) · [MOC do acervo](MOC-Acervo-AIOX.md)
 
@@ -18,24 +18,33 @@ Você não “pula” uma competência porque reconhece o vocabulário. Para cad
 
 Arquitetura e AIOX Fundamentals continuam separados: a primeira prova que você **entende sistemas**; o segundo prova que você **opera o `aiox-core`**.
 
-## A espinha comum
+## O mapa completo dos cursos
 
 ```mermaid
 flowchart LR
     O["Obsidian + IA<br/>estudar o acervo"] --> A["Introdução à Arquitetura<br/>entender sistemas"]
     A --> F["AIOX Fundamentals<br/>operar o Core"]
     F --> X["AIOX Advanced<br/>aplicar o método"]
-    X --> S["AIOX Advanced Squads<br/>operar especialistas"]
-    X -. "lacuna agentic" .-> E["Agent Engineering"]
-    X -. "lacuna visual" .-> D["AIOX Design"]
-    X -. "capacidade comprovada" .-> P["AIOX Productização"]
-    E -. "capacidade pronta" .-> P
-    E -. "retomar missão" .-> S
-    D -. "retomar missão" .-> S
-    P -. "retomar missão" .-> S
+    X -->|"operar pacote publicado"| S["AIOX Advanced Squads<br/>especialistas publicados"]
+    X -->|"construir capacidade"| E["AIOX Agent Engineering<br/>capacidade agentic"]
+    X -->|"sistema visual"| D["AIOX Design<br/>contrato + Storybook"]
+    X -->|"capacidade já comprovada"| P["AIOX Productização<br/>oferta + mercado"]
+    E -->|"levar ao mercado"| P
+    E -->|"operar especialistas"| S
+    D -->|"operar especialistas"| S
+    P -->|"squads comerciais"| S
+    S -->|"operação real + gargalo recorrente"| Q["AIOX Enterprise<br/>vitrine de prontidão"]
 ```
 
-As setas contínuas são a jornada canônica. As pontilhadas são aprofundamentos laterais do quarto degrau — não novos pré-requisitos universais.
+As quatro primeiras caixas formam o **núcleo comum**. Depois do Advanced, Squads, Agent Engineering, Design e Productização são **rotas de aplicação canônicas**. A vitrine AIOX Enterprise vem depois de operação real: ela diagnostica continuidade, não entrega o runtime proprietário.
+
+| Resultado que você precisa | Rota de aplicação |
+|----------------------------|-------------------|
+| Escolher e operar um especialista já publicado | AIOX Advanced Squads |
+| Construir, orquestrar ou publicar uma capacidade própria | AIOX Agent Engineering |
+| Materializar contrato visual e impedir deriva | AIOX Design |
+| Transformar uma capacidade comprovada em oferta | AIOX Productização |
+| Decidir se a operação já pede infraestrutura mantida | AIOX Enterprise — vitrine diagnóstica |
 
 ## Contrato de cada etapa
 
@@ -46,12 +55,16 @@ As setas contínuas são a jornada canônica. As pontilhadas são aprofundamento
 | [AIOX Fundamentals](AIOX-Fundamentals/README.md) | ainda não instala/audita o Core nem escolhe o agent e o mecanismo corretos | projeto final: context pack + story + evidências + handoff reproduzível |
 | [AIOX Advanced](AIOX%20Advanced/README.md) | a execução ainda improvisa problema, contexto, SDC, gates, determinismo ou brownfield | Capstone: fatia funcional, auditável e reproduzível |
 | [AIOX Advanced Squads](AIOX-Advanced-Squads/README.md) | precisa escolher, ativar ou compor especialistas publicados | routing decision + briefings + artefatos + validation report + retrospectiva |
+| [AIOX Agent Engineering](AIOX-Agent-Engineering/README.md) | precisa construir ou operar uma capacidade que o catálogo publicado não resolve | capacidade executável com contrato, gates, runtime ou bloqueio diagnosticado |
+| [AIOX Design](AIOX-Design/README.md) | precisa transformar direção visual em contrato e componentes governáveis | `DESIGN.md` + catálogo + Storybook rodando + ciclo visual |
+| [AIOX Productização](AIOX-Productizacao/README.md) | já possui capacidade executável e precisa decidir oferta, canal ou monetização | decision pack + experimento com hipótese, métrica e critério de parada |
+| [AIOX Enterprise — vitrine](AIOX-Enterprise/README.md) | já operou squad real e o gargalo virou integração, governança ou observabilidade recorrente | decisão de prontidão sustentada por evidência + próximo passo explícito |
 
 ## Escolha sua trilha pelo caso
 
 ### Caso 1 — “Estou começando do zero e a linguagem técnica me trava”
 
-**Percurso:** Obsidian + IA → Introdução à Arquitetura completa → AIOX Fundamentals → AIOX Advanced → AIOX Advanced Squads.
+**Percurso:** Obsidian + IA → Introdução à Arquitetura completa → AIOX Fundamentals → AIOX Advanced → escolha uma rota de aplicação pela missão.
 
 **Não pule:** o projeto de Arquitetura. Reconhecer termos não prova que você consegue seguir o fluxo de um sistema ou discutir trade-offs.
 
@@ -59,7 +72,7 @@ As setas contínuas são a jornada canônica. As pontilhadas são aprofundamento
 
 ### Caso 2 — “Já sou técnico, mas nunca usei AIOX”
 
-**Percurso:** gate de Obsidian + IA → capstone diagnóstico de Arquitetura → AIOX Fundamentals → AIOX Advanced → AIOX Advanced Squads.
+**Percurso:** gate de Obsidian + IA → capstone diagnóstico de Arquitetura → AIOX Fundamentals → AIOX Advanced → rota de aplicação adequada.
 
 **Aceleração segura:** se o diagnóstico de Arquitetura passar, não repita as 24 aulas. Entre no Fundamentals, porque conhecer sistemas não prova domínio do Core.
 
@@ -67,7 +80,7 @@ As setas contínuas são a jornada canônica. As pontilhadas são aprofundamento
 
 ### Caso 3 — “Já opero o Core, mas meu trabalho ainda depende de improviso”
 
-**Percurso:** valide os gates de Obsidian, Arquitetura e Fundamentals → AIOX Advanced completo → AIOX Advanced Squads.
+**Percurso:** valide os gates de Obsidian, Arquitetura e Fundamentals → AIOX Advanced completo → escolha entre Squads, Agent Engineering, Design ou Productização.
 
 **Foco:** problema antes da ferramenta, contexto, SDC, quality gates, determinismo proporcional ao risco e brownfield.
 
@@ -83,15 +96,15 @@ As setas contínuas são a jornada canônica. As pontilhadas são aprofundamento
 
 ### Caso 5 — “Quero construir meu próprio agent, workflow, runner ou squad”
 
-**Percurso:** formação comum até AIOX Advanced → [AIOX Agent Engineering](AIOX-Agent-Engineering/README.md) → retomar AIOX Advanced Squads quando a missão pedir operação de especialistas publicados.
+**Percurso:** núcleo comum até AIOX Advanced → [AIOX Agent Engineering](AIOX-Agent-Engineering/README.md) → AIOX Advanced Squads para especialistas publicados ou Productização quando a capacidade estiver comprovada.
 
-**Foco lateral:** taxonomia da capacidade, research, REUSE > ADAPT > CREATE, orquestração, harness e produção.
+**Foco da rota:** taxonomia da capacidade, research, REUSE > ADAPT > CREATE, orquestração, harness e produção.
 
 **Primeira evidência:** uma capacidade mínima com contrato de execução, gates, runtime ou bloqueio diagnosticado e limites conhecidos.
 
 ### Caso 6 — “Minha dor é interface, design system ou AI slop”
 
-**Percurso:** formação comum até o SDC do Advanced → [AIOX Design](AIOX-Design/README.md) → Squads 13–15 conforme a missão.
+**Percurso:** núcleo comum até o Advanced → [AIOX Design](AIOX-Design/README.md) → Squads 13–15 conforme a missão.
 
 **Não use Design para:** substituir briefing, story, aceite ou quality gate do método.
 
@@ -99,7 +112,7 @@ As setas contínuas são a jornada canônica. As pontilhadas são aprofundamento
 
 ### Caso 7 — “Já tenho uma capacidade; quero oferta, distribuição ou monetização”
 
-**Percurso:** prove que a capacidade funciona → [AIOX Productização](AIOX-Productizacao/README.md) → Squads 19–21 para executar copy, sales ou oferta.
+**Percurso:** núcleo comum → prove que a capacidade funciona → [AIOX Productização](AIOX-Productizacao/README.md) → Squads 19–21 para executar copy, sales ou oferta. Se a capacidade ainda precisa ser construída, passe antes por Agent Engineering.
 
 Se a capacidade ainda depende da IDE, não tem contrato de execução ou não produz valor observável, faça antes AIOX Agent Engineering. Productização não corrige uma capacidade técnica inexistente.
 
@@ -115,7 +128,7 @@ Se a capacidade ainda depende da IDE, não tem contrato de execução ou não pr
 
 ### Caso 9 — “Já executo várias missões; o problema virou manter a operação”
 
-**Percurso:** conclua uma execução real no Advanced Squads, repita-a e registre o atrito. Depois use o [diagnóstico Enterprise](../JORNADA-AIOX.md#teste-de-prontidão-para-o-enterprise).
+**Percurso:** conclua uma execução real no Advanced Squads, repita-a e registre o atrito. Depois faça a [vitrine diagnóstica AIOX Enterprise](AIOX-Enterprise/README.md) e compare com o [teste de prontidão](../JORNADA-AIOX.md#teste-de-prontidão-para-o-enterprise).
 
 Mais conteúdo não resolve automaticamente fragmentação de contexto, integrações, governança e observabilidade. A evidência aqui é o custo recorrente da operação, não uma preferência por uma oferta mais avançada.
 
@@ -146,8 +159,9 @@ Se você não consegue explicar sem o texto aberto, ainda está reconhecendo, n�
 - Tratar Introdução à Arquitetura como sinônimo de AIOX Fundamentals.
 - Fazer Agent Engineering para toda missão que uma skill ou squad publicado já resolve.
 - Entrar em Productização antes de existir capacidade e evidência de valor.
-- Consumir todas as especializações como uma fila obrigatória.
+- Consumir todas as rotas de aplicação como uma fila obrigatória.
 - Declarar Squads concluído depois de ler o catálogo, sem execução real.
+- Entrar na vitrine Enterprise antes de existir operação real para diagnosticar.
 
 ## Próximo passo agora
 

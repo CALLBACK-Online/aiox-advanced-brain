@@ -47,7 +47,7 @@ Ao concluir, você consegue transformar uma missão em quatro decisões explíci
 3. o modo de ativação no **seu** projeto (depois de copiar `squads/{nome}`);
 4. a evidência que prova que o squad entregou valor.
 
-**Saída da jornada:** routing decision + briefings + artefatos + validation report + retrospectiva. Esse pacote prova que o método aprendido no Advanced virou operação especializada reproduzível; ele é a base para repetir a missão ou governá-la como operação recorrente.
+**Saída da rota:** routing decision + briefings + artefatos + validation report + retrospectiva. Esse pacote prova que o método aprendido no Advanced virou operação especializada reproduzível; ele é a base para repetir a missão ou governá-la como operação recorrente.
 
 ## O próximo gargalo
 
@@ -55,7 +55,7 @@ Uma execução validada prova que você sabe operar um squad. Antes de buscar ma
 
 Quando vários squads, projetos e fontes de contexto exigem montagem e manutenção recorrentes, o problema muda. O desafio deixa de ser escolher o especialista e passa a ser governar a operação. Esse é o momento de comparar o acervo adaptável do Advanced com o ambiente mantido do **AIOX Enterprise**.
 
-Diagnóstico completo da jornada: `JORNADA-AIOX.md` na raiz do repositório.
+Vitrine diagnóstica: `cursos/AIOX-Enterprise/README.md`. Comparação completa: `JORNADA-AIOX.md` na raiz do repositório.
 
 ### Como ler a sinalização Enterprise nas aulas
 

@@ -7,7 +7,7 @@ module: M4
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 68
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/68-squad-fora-do-claude-code.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/68-squad-fora-do-claude-code.md"
 source_version: 1.0.0
 ---
 # Extrair Squad do Claude Code para API própria

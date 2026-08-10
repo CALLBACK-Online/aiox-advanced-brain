@@ -9,6 +9,7 @@ canonical_scope: cursos/AIOX-Design
 
 | Termo | Definição de trabalho |
 |-------|----------------------|
+| **Atomic Design (Brad Frost)** | Taxonomia átomo → molécula → organismo → template → página; base da aula 10 |
 | **Token** | Decisão visual registrada como valor reutilizável |
 | **DESIGN.md** | Contrato visual lido pela IA antes de gerar UI |
 | **Repertório** | Conjunto curado de referências + proibições |

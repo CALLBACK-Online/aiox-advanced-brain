@@ -11,18 +11,18 @@ SCOPE = "cursos/AIOX-Fundamentals"
 SOURCE_COMMIT = "a68bd88f45e560f606e9bdc8a0f663570bdcef88"
 
 EXPECTED_LESSONS = [
-    ("lessons/01-fundamentos/1.1-o-que-e-aiox.md", "M1", "o-que-e-aiox"),
-    ("lessons/01-fundamentos/1.2-cli-first-e-duas-fases.md", "M1", "cli-first-e-duas-fases"),
-    ("lessons/01-fundamentos/1.3-anatomia-do-framework.md", "M1", "anatomia-do-framework"),
-    ("lessons/01-fundamentos/1.4-instalacao-e-primeiro-valor.md", "M1", "instalacao-e-primeiro-valor"),
-    ("lessons/02-sinais-e-contexto/2.1-ler-o-contexto-antes-de-agir.md", "M2", "ler-o-contexto-antes-de-agir"),
-    ("lessons/02-sinais-e-contexto/2.2-escolher-o-agente-certo.md", "M2", "escolher-o-agente-certo"),
-    ("lessons/02-sinais-e-contexto/2.3-task-skill-workflow-ou-squad.md", "M2", "task-skill-workflow-ou-squad"),
-    ("lessons/02-sinais-e-contexto/2.4-greenfield-brownfield-e-story.md", "M2", "greenfield-brownfield-e-story"),
-    ("lessons/03-validacao-basica/3.1-qualidade-em-tres-camadas.md", "M3", "qualidade-em-tres-camadas"),
-    ("lessons/03-validacao-basica/3.2-autoridade-e-permissoes.md", "M3", "autoridade-e-permissoes"),
-    ("lessons/03-validacao-basica/3.3-ciclo-da-story-na-pratica.md", "M3", "ciclo-da-story-na-pratica"),
-    ("lessons/03-validacao-basica/3.4-evidencia-doctor-e-handoff.md", "M3", "evidencia-doctor-e-handoff"),
+    ("aulas/01-fundamentos/1.1-o-que-e-aiox.md", "M1", "o-que-e-aiox"),
+    ("aulas/01-fundamentos/1.2-cli-first-e-duas-fases.md", "M1", "cli-first-e-duas-fases"),
+    ("aulas/01-fundamentos/1.3-anatomia-do-framework.md", "M1", "anatomia-do-framework"),
+    ("aulas/01-fundamentos/1.4-instalacao-e-primeiro-valor.md", "M1", "instalacao-e-primeiro-valor"),
+    ("aulas/02-sinais-e-contexto/2.1-ler-o-contexto-antes-de-agir.md", "M2", "ler-o-contexto-antes-de-agir"),
+    ("aulas/02-sinais-e-contexto/2.2-escolher-o-agente-certo.md", "M2", "escolher-o-agente-certo"),
+    ("aulas/02-sinais-e-contexto/2.3-task-skill-workflow-ou-squad.md", "M2", "task-skill-workflow-ou-squad"),
+    ("aulas/02-sinais-e-contexto/2.4-greenfield-brownfield-e-story.md", "M2", "greenfield-brownfield-e-story"),
+    ("aulas/03-validacao-basica/3.1-qualidade-em-tres-camadas.md", "M3", "qualidade-em-tres-camadas"),
+    ("aulas/03-validacao-basica/3.2-autoridade-e-permissoes.md", "M3", "autoridade-e-permissoes"),
+    ("aulas/03-validacao-basica/3.3-ciclo-da-story-na-pratica.md", "M3", "ciclo-da-story-na-pratica"),
+    ("aulas/03-validacao-basica/3.4-evidencia-doctor-e-handoff.md", "M3", "evidencia-doctor-e-handoff"),
 ]
 REQUIRED_SECTIONS = [
     "## Objetivo",
@@ -47,8 +47,8 @@ REQUIRED_ROOT_FILES = [
     "FONTES.md",
     "PROVENIENCIA.md",
     "sources/SOURCE-MANIFEST.yaml",
-    "assessments/final-project.md",
-    "assessments/final-project-rubric.md",
+    "avaliacoes/final-project.md",
+    "avaliacoes/final-project-rubric.md",
 ]
 EXPECTED_AGENTS = [
     "@aiox-master",
@@ -96,7 +96,7 @@ if metadata.get("source", {}).get("commit") != SOURCE_COMMIT:
 if metadata.get("curriculum", {}).get("lessons") != 12:
     errors.append(".metadata.json: contagem de aulas divergente")
 
-lesson_files = sorted(path.relative_to(COURSE).as_posix() for path in (COURSE / "lessons").rglob("*.md"))
+lesson_files = sorted(path.relative_to(COURSE).as_posix() for path in (COURSE / "aulas").rglob("*.md"))
 expected_paths = [item[0] for item in EXPECTED_LESSONS]
 if lesson_files != expected_paths:
     errors.append(f"paths de aula divergentes: {lesson_files}")
@@ -131,7 +131,7 @@ for agent in EXPECTED_AGENTS:
     if agent not in agent_lesson:
         errors.append(f"aula de agents: falta {agent}")
 
-quiz_files = sorted((COURSE / "assessments").glob("quiz-module-*.yaml"))
+quiz_files = sorted((COURSE / "avaliacoes").glob("quiz-module-*.yaml"))
 if len(quiz_files) != 3:
     errors.append(f"esperados 3 quizzes; encontrados {len(quiz_files)}")
 question_count = 0

@@ -45,7 +45,7 @@ def frontmatter(path: Path) -> tuple[dict, str]:
 
 
 errors: list[str] = []
-lessons = list((COURSE / "lessons").glob("*.md"))
+lessons = list((COURSE / "aulas").glob("*.md"))
 lesson_records: list[tuple[int, str]] = []
 module_counts: Counter[str] = Counter()
 
@@ -111,8 +111,8 @@ if question_total != 48:
 if answer_positions and max(answer_positions.values()) - min(answer_positions.values()) > 1:
     errors.append(f"gabarito desbalanceado: {dict(answer_positions)}")
 
-migrated = list((COURSE / "archive/migrated/lessons").glob("*.md"))
-legacy = list((COURSE / "archive/legacy/lessons").glob("*.md"))
+migrated = list((COURSE / "archive/migrated/aulas").glob("*.md"))
+legacy = list((COURSE / "archive/legacy/aulas").glob("*.md"))
 if len(migrated) != 42:
     errors.append(f"esperadas 42 aulas migradas; encontradas {len(migrated)}")
 if len(legacy) != 4:

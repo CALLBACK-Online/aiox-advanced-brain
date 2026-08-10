@@ -57,7 +57,7 @@ Uma competência por aula · prática curta · evidência verificável · navega
 7. [Anti-AI-look e exploração](aulas/07-anti-ai-look-e-exploracao.md)
 8. [DESIGN.md](aulas/08-design-md-contrato.md)
 9. [Tokens e anti-drift](aulas/09-tokens-componentes-anti-drift.md)
-10. [Taxonomia atômica](aulas/10-taxonomia-atomica.md)
+10. [Design atômico (Brad Frost) / taxonomia](aulas/10-taxonomia-atomica.md)
 11. [Storybook como SoT](aulas/11-storybook-fonte-da-verdade.md)
 12. [Stack canônica](aulas/12-stack-tailwind-shadcn-storybook.md)
 13. [Install e stories](aulas/13-storybook-install-e-stories.md)

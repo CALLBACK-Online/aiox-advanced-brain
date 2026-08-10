@@ -7,7 +7,7 @@ module: M1
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 38
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/38-code-anatomy-domain-decoder.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/38-code-anatomy-domain-decoder.md"
 source_version: 1.0.0
 ---
 # Code Anatomy: engenharia reversa de código com /code-anatomist

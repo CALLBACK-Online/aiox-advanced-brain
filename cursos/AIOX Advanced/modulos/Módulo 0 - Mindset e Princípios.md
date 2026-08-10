@@ -16,11 +16,11 @@ Pensar em processos e evidência antes de abrir a ferramenta ou delegar julgamen
 
 ## Aulas
 
-1. [[lessons/01-token-economy-mindset|Token Economy Mindset]]
-2. [[lessons/08-principio-processo-certo|Respeite o processo]]
-3. [[lessons/12-repertorio-vs-tecnica|Repertório vence técnica]]
-4. [[lessons/13-pensamento-estruturado-antes-do-terminal|Desenhe antes de codar]]
-5. [[lessons/26-nao-delegar-pensar|Não delegue o pensar]]
+1. [[aulas/01-token-economy-mindset|Token Economy Mindset]]
+2. [[aulas/08-principio-processo-certo|Respeite o processo]]
+3. [[aulas/12-repertorio-vs-tecnica|Repertório vence técnica]]
+4. [[aulas/13-pensamento-estruturado-antes-do-terminal|Desenhe antes de codar]]
+5. [[aulas/26-nao-delegar-pensar|Não delegue o pensar]]
 
 ## Evidência de conclusão
 

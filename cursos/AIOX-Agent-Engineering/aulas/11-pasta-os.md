@@ -7,7 +7,7 @@ module: M1
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 39
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/39-pasta-os-curadoria-local.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/39-pasta-os-curadoria-local.md"
 source_version: 1.0.0
 ---
 # Pasta OS: curadoria local de open-source para o agente

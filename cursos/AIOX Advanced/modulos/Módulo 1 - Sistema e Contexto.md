@@ -16,14 +16,14 @@ Projetar as leis locais, o ambiente, os executores e o orçamento de contexto de
 
 ## Aulas
 
-1. [[lessons/03-claude-md-leis-da-fisica|CLAUDE.md como lei da física]]
-2. [[lessons/05-ambientes-local-staging-production|Local, staging e production]]
-3. [[lessons/15-quatro-executores|Quatro executores]]
-4. [[lessons/16-janela-de-contexto|Janela de contexto]]
-5. [[lessons/17-engenharia-de-contexto|Engenharia de contexto]]
-6. [[lessons/18-yaml-markdown-json-sweet-spot|YAML, Markdown e JSON]]
-7. [[lessons/25-core-config-leis-sociais|core-config]]
-8. [[lessons/27-otimizacao-claude-md|Otimização do CLAUDE.md]]
+1. [[aulas/03-claude-md-leis-da-fisica|CLAUDE.md como lei da física]]
+2. [[aulas/05-ambientes-local-staging-production|Local, staging e production]]
+3. [[aulas/15-quatro-executores|Quatro executores]]
+4. [[aulas/16-janela-de-contexto|Janela de contexto]]
+5. [[aulas/17-engenharia-de-contexto|Engenharia de contexto]]
+6. [[aulas/18-yaml-markdown-json-sweet-spot|YAML, Markdown e JSON]]
+7. [[aulas/25-core-config-leis-sociais|core-config]]
+8. [[aulas/27-otimizacao-claude-md|Otimização do CLAUDE.md]]
 
 ## Evidência de conclusão
 

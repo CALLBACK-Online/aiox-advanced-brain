@@ -156,7 +156,12 @@ python3 "cursos/Introducao-a-Arquitetura-de-Sistemas/_tools/validate_course.py"
 ## Ordem com as outras trilhas
 
 ```text
-Obsidian + IA → Introdução à Arquitetura de Sistemas → AIOX Fundamentals → AIOX Advanced → AIOX Advanced Squads
+Obsidian + IA → Introdução à Arquitetura de Sistemas → AIOX Fundamentals → AIOX Advanced
+                                                                    ├─ Advanced Squads
+                                                                    ├─ Agent Engineering
+                                                                    ├─ Design
+                                                                    └─ Productização
+Advanced Squads + operação real → AIOX Enterprise (vitrine de prontidão)
 ```
 
 Alunos experientes podem usar o diagnóstico e entrar direto no AIOX Fundamentals; quem já opera o Core pode seguir ao Advanced. Próximo curso canônico: `cursos/AIOX-Fundamentals/README.md`. Hub geral: `cursos/README.md`.

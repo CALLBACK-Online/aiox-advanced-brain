@@ -12,7 +12,7 @@ tags: [curso/aiox-advanced, validacao]
 
 ## Resultado
 
-**PASS.** A progressão ativa está autocontida, navegável e separada das especializações.
+**PASS.** A progressão ativa está autocontida, navegável e separada das rotas de aplicação.
 
 ## Estrutura ativa
 

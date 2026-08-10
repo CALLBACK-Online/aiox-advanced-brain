@@ -7,7 +7,7 @@ module: M5
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 73
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/73-prontidao-de-producao.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/73-prontidao-de-producao.md"
 source_version: 1.0.0
 ---
 # Prontidão de produção: checklist final

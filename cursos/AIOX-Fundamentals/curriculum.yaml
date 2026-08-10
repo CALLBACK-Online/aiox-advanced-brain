@@ -61,7 +61,7 @@ modules:
         lesson_number: "Aula 1.1"
         lesson_title: "O que é AIOX"
         lesson_description: "Framework, problema que resolve e limite do que ele não é."
-        file_path: "lessons/01-fundamentos/1.1-o-que-e-aiox.md"
+        file_path: "aulas/01-fundamentos/1.1-o-que-e-aiox.md"
         duration_minutes: 30
         learning_objectives:
           - "Definir AIOX como framework de orquestração."
@@ -76,7 +76,7 @@ modules:
         lesson_number: "Aula 1.2"
         lesson_title: "CLI First e as duas fases"
         lesson_description: "Por que a execução nasce na CLI e como planejamento vira contexto de engenharia."
-        file_path: "lessons/01-fundamentos/1.2-cli-first-e-duas-fases.md"
+        file_path: "aulas/01-fundamentos/1.2-cli-first-e-duas-fases.md"
         duration_minutes: 30
         learning_objectives:
           - "Explicar CLI First sem interpretar como rejeição de UI."
@@ -91,7 +91,7 @@ modules:
         lesson_number: "Aula 1.3"
         lesson_title: "Anatomia do framework"
         lesson_description: "Agents, tasks, templates, checklists, workflows e configuração."
-        file_path: "lessons/01-fundamentos/1.3-anatomia-do-framework.md"
+        file_path: "aulas/01-fundamentos/1.3-anatomia-do-framework.md"
         duration_minutes: 30
         learning_objectives:
           - "Identificar as peças principais do AIOX."
@@ -106,7 +106,7 @@ modules:
         lesson_number: "Aula 1.4"
         lesson_title: "Instalação e primeiro valor"
         lesson_description: "Instalação greenfield/brownfield, ativação por IDE e diagnóstico inicial."
-        file_path: "lessons/01-fundamentos/1.4-instalacao-e-primeiro-valor.md"
+        file_path: "aulas/01-fundamentos/1.4-instalacao-e-primeiro-valor.md"
         duration_minutes: 30
         learning_objectives:
           - "Executar a instalação adequada ao tipo de projeto."
@@ -134,7 +134,7 @@ modules:
         lesson_number: "Aula 2.1"
         lesson_title: "Ler o contexto antes de agir"
         lesson_description: "AGENTS.md, configuração, docs, stories e evidência do repositório."
-        file_path: "lessons/02-sinais-e-contexto/2.1-ler-o-contexto-antes-de-agir.md"
+        file_path: "aulas/02-sinais-e-contexto/2.1-ler-o-contexto-antes-de-agir.md"
         duration_minutes: 30
         learning_objectives:
           - "Priorizar fontes de contexto locais."
@@ -149,7 +149,7 @@ modules:
         lesson_number: "Aula 2.2"
         lesson_title: "Escolher o agent certo"
         lesson_description: "Papéis core, autoridade e sinais de seleção."
-        file_path: "lessons/02-sinais-e-contexto/2.2-escolher-o-agente-certo.md"
+        file_path: "aulas/02-sinais-e-contexto/2.2-escolher-o-agente-certo.md"
         duration_minutes: 30
         learning_objectives:
           - "Relacionar tipo de trabalho ao agent responsável."
@@ -164,7 +164,7 @@ modules:
         lesson_number: "Aula 2.3"
         lesson_title: "Task, skill, workflow ou squad"
         lesson_description: "Granularidade, reuso e composição sem criar complexidade fantasma."
-        file_path: "lessons/02-sinais-e-contexto/2.3-task-skill-workflow-ou-squad.md"
+        file_path: "aulas/02-sinais-e-contexto/2.3-task-skill-workflow-ou-squad.md"
         duration_minutes: 30
         learning_objectives:
           - "Comparar as unidades de execução do AIOX."
@@ -179,7 +179,7 @@ modules:
         lesson_number: "Aula 2.4"
         lesson_title: "Greenfield, brownfield e story"
         lesson_description: "Como o estado do projeto muda descoberta, risco e documentação."
-        file_path: "lessons/02-sinais-e-contexto/2.4-greenfield-brownfield-e-story.md"
+        file_path: "aulas/02-sinais-e-contexto/2.4-greenfield-brownfield-e-story.md"
         duration_minutes: 30
         learning_objectives:
           - "Distinguir rotas greenfield e brownfield."
@@ -207,7 +207,7 @@ modules:
         lesson_number: "Aula 3.1"
         lesson_title: "Qualidade em três camadas"
         lesson_description: "Checks locais, automação de PR e revisão humana."
-        file_path: "lessons/03-validacao-basica/3.1-qualidade-em-tres-camadas.md"
+        file_path: "aulas/03-validacao-basica/3.1-qualidade-em-tres-camadas.md"
         duration_minutes: 30
         learning_objectives:
           - "Explicar as três camadas de quality gate."
@@ -222,7 +222,7 @@ modules:
         lesson_number: "Aula 3.2"
         lesson_title: "Autoridade e permissões"
         lesson_description: "Modos de permissão, operações destrutivas e limites de papel."
-        file_path: "lessons/03-validacao-basica/3.2-autoridade-e-permissoes.md"
+        file_path: "aulas/03-validacao-basica/3.2-autoridade-e-permissoes.md"
         duration_minutes: 30
         learning_objectives:
           - "Classificar operações por risco e autoridade."
@@ -237,7 +237,7 @@ modules:
         lesson_number: "Aula 3.3"
         lesson_title: "Ciclo da story na prática"
         lesson_description: "SM, PO, Dev e QA do draft ao fechamento."
-        file_path: "lessons/03-validacao-basica/3.3-ciclo-da-story-na-pratica.md"
+        file_path: "aulas/03-validacao-basica/3.3-ciclo-da-story-na-pratica.md"
         duration_minutes: 30
         learning_objectives:
           - "Sequenciar as fases do Story Development Cycle."
@@ -252,7 +252,7 @@ modules:
         lesson_number: "Aula 3.4"
         lesson_title: "Evidência, doctor e handoff"
         lesson_description: "Como provar estado, registrar limitações e entregar continuidade."
-        file_path: "lessons/03-validacao-basica/3.4-evidencia-doctor-e-handoff.md"
+        file_path: "aulas/03-validacao-basica/3.4-evidencia-doctor-e-handoff.md"
         duration_minutes: 30
         learning_objectives:
           - "Produzir evidência reproduzível de uma entrega."
@@ -269,7 +269,7 @@ assessments:
     type: quiz
     title: "Quiz: Fundamentos"
     module: fundamentos
-    file_path: "assessments/quiz-module-1.yaml"
+    file_path: "avaliacoes/quiz-module-1.yaml"
     duration_minutes: 15
     num_questions: 5
     passing_score: 70
@@ -277,7 +277,7 @@ assessments:
     type: quiz
     title: "Quiz: Sinais e contexto"
     module: sinais-e-contexto
-    file_path: "assessments/quiz-module-2.yaml"
+    file_path: "avaliacoes/quiz-module-2.yaml"
     duration_minutes: 15
     num_questions: 5
     passing_score: 70
@@ -285,7 +285,7 @@ assessments:
     type: quiz
     title: "Quiz: Validação básica"
     module: validacao-basica
-    file_path: "assessments/quiz-module-3.yaml"
+    file_path: "avaliacoes/quiz-module-3.yaml"
     duration_minutes: 15
     num_questions: 5
     passing_score: 70
@@ -293,7 +293,7 @@ assessments:
     type: project
     title: "Primeiro ciclo AIOX com evidência"
     module: final
-    file_path: "assessments/final-project.md"
+    file_path: "avaliacoes/final-project.md"
     duration_minutes: 60
     deliverable: "Story pequena, rota de execução, validações e handoff."
 

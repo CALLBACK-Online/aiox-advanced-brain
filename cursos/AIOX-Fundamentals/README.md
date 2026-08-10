@@ -38,32 +38,32 @@ O curso contém 12 aulas, três quizzes e um projeto final. A duração estimada
 
 ### Módulo 1 — Fundamentos
 
-1. [O que é AIOX](lessons/01-fundamentos/1.1-o-que-e-aiox.md)
-2. [CLI First e as duas fases](lessons/01-fundamentos/1.2-cli-first-e-duas-fases.md)
-3. [Anatomia do framework](lessons/01-fundamentos/1.3-anatomia-do-framework.md)
-4. [Instalação e primeiro valor](lessons/01-fundamentos/1.4-instalacao-e-primeiro-valor.md)
+1. [O que é AIOX](aulas/01-fundamentos/1.1-o-que-e-aiox.md)
+2. [CLI First e as duas fases](aulas/01-fundamentos/1.2-cli-first-e-duas-fases.md)
+3. [Anatomia do framework](aulas/01-fundamentos/1.3-anatomia-do-framework.md)
+4. [Instalação e primeiro valor](aulas/01-fundamentos/1.4-instalacao-e-primeiro-valor.md)
 
 ### Módulo 2 — Sinais e contexto
 
-1. [Ler o contexto antes de agir](lessons/02-sinais-e-contexto/2.1-ler-o-contexto-antes-de-agir.md)
-2. [Escolher o agent certo](lessons/02-sinais-e-contexto/2.2-escolher-o-agente-certo.md)
-3. [Task, skill, workflow ou squad](lessons/02-sinais-e-contexto/2.3-task-skill-workflow-ou-squad.md)
-4. [Greenfield, brownfield e story](lessons/02-sinais-e-contexto/2.4-greenfield-brownfield-e-story.md)
+1. [Ler o contexto antes de agir](aulas/02-sinais-e-contexto/2.1-ler-o-contexto-antes-de-agir.md)
+2. [Escolher o agent certo](aulas/02-sinais-e-contexto/2.2-escolher-o-agente-certo.md)
+3. [Task, skill, workflow ou squad](aulas/02-sinais-e-contexto/2.3-task-skill-workflow-ou-squad.md)
+4. [Greenfield, brownfield e story](aulas/02-sinais-e-contexto/2.4-greenfield-brownfield-e-story.md)
 
 ### Módulo 3 — Validação básica
 
-1. [Qualidade em três camadas](lessons/03-validacao-basica/3.1-qualidade-em-tres-camadas.md)
-2. [Autoridade e permissões](lessons/03-validacao-basica/3.2-autoridade-e-permissoes.md)
-3. [Ciclo da story na prática](lessons/03-validacao-basica/3.3-ciclo-da-story-na-pratica.md)
-4. [Evidência, doctor e handoff](lessons/03-validacao-basica/3.4-evidencia-doctor-e-handoff.md)
+1. [Qualidade em três camadas](aulas/03-validacao-basica/3.1-qualidade-em-tres-camadas.md)
+2. [Autoridade e permissões](aulas/03-validacao-basica/3.2-autoridade-e-permissoes.md)
+3. [Ciclo da story na prática](aulas/03-validacao-basica/3.3-ciclo-da-story-na-pratica.md)
+4. [Evidência, doctor e handoff](aulas/03-validacao-basica/3.4-evidencia-doctor-e-handoff.md)
 
 ### Avaliações
 
-- [Quiz do Módulo 1](assessments/quiz-module-1.yaml)
-- [Quiz do Módulo 2](assessments/quiz-module-2.yaml)
-- [Quiz do Módulo 3](assessments/quiz-module-3.yaml)
-- [Projeto final — Primeiro ciclo AIOX com evidência](assessments/final-project.md)
-- [Rubrica do projeto](assessments/final-project-rubric.md)
+- [Quiz do Módulo 1](avaliacoes/quiz-module-1.yaml)
+- [Quiz do Módulo 2](avaliacoes/quiz-module-2.yaml)
+- [Quiz do Módulo 3](avaliacoes/quiz-module-3.yaml)
+- [Projeto final — Primeiro ciclo AIOX com evidência](avaliacoes/final-project.md)
+- [Rubrica do projeto](avaliacoes/final-project-rubric.md)
 
 ## Fonte canônica
 
@@ -75,12 +75,24 @@ A seleção exata de arquivos e seus hashes está em [sources/SOURCE-MANIFEST.ya
 
 Cada aula segue Goal → Position → Steps, inclui um exercício executável e fecha com prática de recuperação sem assistência de IA. Faça as aulas em ordem; o Módulo 2 assume o vocabulário do Módulo 1 e o Módulo 3 usa os artefatos criados nos dois primeiros.
 
+## Skills core do AIOX (obrigatório neste curso)
+
+As skills **runtime** do core (orbitais `aiox-*` + ciclo SDC: `validate-story-draft` … `close-story`, `full-sdc`, etc.) são explicadas em detalhe em:
+
+- [references/core-skills-runtime.md](references/core-skills-runtime.md) — mapa agent × skill, ordem SDC, ativação
+- Aulas [2.2](aulas/02-sinais-e-contexto/2.2-escolher-o-agente-certo.md) · [2.3](aulas/02-sinais-e-contexto/2.3-task-skill-workflow-ou-squad.md) · [3.3](aulas/03-validacao-basica/3.3-ciclo-da-story-na-pratica.md)
+
+Inventário de **todas** as skills do acervo (67) e anti-duplicação (`slide-creator` vs `slides-creator`, etc.): arquivo `cursos/MAPA-SKILLS.md` no hub de cursos.
+
+Os **24 squads** têm “como usar” em `cursos/AIOX-Advanced-Squads/` (1 aula por squad) — não neste curso.
+
 ## Arquivos principais
 
 - `COURSE-BRIEF.md` — público, transformação, limites e aprovação curricular.
 - `curriculum.yaml` — identidade estável das aulas, objetivos de Bloom e paths.
-- `lessons/` — conteúdo didático.
-- `assessments/` — quizzes e projeto final.
+- `aulas/` — conteúdo didático.
+- `references/core-skills-runtime.md` — skills core em detalhe.
+- `avaliacoes/` — quizzes e projeto final.
 - `validation-report.md` — resultado consolidado dos gates.
 - `deviations.yaml` — decisões conscientes tomadas durante o upgrade.
 - `FONTES.md` e `PROVENIENCIA.md` — rastreabilidade sem importar paths de máquina.
@@ -93,12 +105,16 @@ Também não substitui **Introdução à Arquitetura de Sistemas**. Arquitetura 
 
 ## Posição no acervo
 
-`Obsidian + IA → Introdução à Arquitetura de Sistemas → AIOX Fundamentals → AIOX Advanced → AIOX Advanced Squads`
+`Obsidian + IA → Introdução à Arquitetura de Sistemas → AIOX Fundamentals → AIOX Advanced → rota de aplicação`
+
+Depois do núcleo comum, a rota pode ser Advanced Squads, Agent Engineering, Design ou Productização conforme o resultado exigido.
+
+Depois de operação real com Squads, a vitrine AIOX Enterprise diagnostica se o próximo gargalo já é infraestrutura mantida.
 
 ## Próximo passo
 
 Não avance apenas porque terminou as 12 aulas. Vá para o **AIOX Advanced** quando conseguir instalar ou auditar o Core, escolher o mecanismo correto e fechar uma mudança local com evidência reproduzível.
 
-Se ainda precisa seguir a receita para concluir esse ciclo, repita o [projeto final](assessments/final-project.md) com uma segunda mudança pequena. Se já consegue explicar cada decisão sem depender da receita, o Advanced passa a aprofundar o que hoje ainda é improvisado.
+Se ainda precisa seguir a receita para concluir esse ciclo, repita o [projeto final](avaliacoes/final-project.md) com uma segunda mudança pequena. Se já consegue explicar cada decisão sem depender da receita, o Advanced passa a aprofundar o que hoje ainda é improvisado.
 
 Jornada completa (Fundamentals, Advanced e Enterprise): arquivo `JORNADA-AIOX.md` na raiz do repositório.

@@ -1623,7 +1623,7 @@ INPUT METRICS TREE:
    New  Ret  React      Daily  Streak       Finish  Engage
 
 VALIDATION:
-- Users completing 7+ lessons/week convert to paid 4.1x
+- Users completing 7+ aulas/week convert to paid 4.1x
 - 30-day retention 2.8x higher for high-completers
 - Gamification increases completion without gaming metric
 - Product, Growth, and Content teams can all impact

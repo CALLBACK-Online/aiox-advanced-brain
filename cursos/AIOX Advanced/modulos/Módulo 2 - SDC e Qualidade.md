@@ -16,11 +16,11 @@ Transformar briefing em stories executáveis e fechar o ciclo com gates e corre�
 
 ## Aulas
 
-1. [[lessons/06-code-rabbit-boost|CodeRabbit Boost]]
-2. [[lessons/19-ciclo-do-repositorio|Ciclo do repositório]]
-3. [[lessons/46-etapas-de-desenvolvimento|Briefing, PRD e stories]]
-4. [[lessons/48-quality-gate-completo|Quality Gate completo]]
-5. [[lessons/49-apply-qa-fixes-loop|Apply QA Fixes Loop]]
+1. [[aulas/06-code-rabbit-boost|CodeRabbit Boost]]
+2. [[aulas/19-ciclo-do-repositorio|Ciclo do repositório]]
+3. [[aulas/46-etapas-de-desenvolvimento|Briefing, PRD e stories]]
+4. [[aulas/48-quality-gate-completo|Quality Gate completo]]
+5. [[aulas/49-apply-qa-fixes-loop|Apply QA Fixes Loop]]
 
 ## Evidência de conclusão
 

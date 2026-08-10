@@ -1,9 +1,11 @@
 ---
 tags: [layer/squad, squad/squad-creator]
-aliases: [squad squad-creator]
+aliases: [squad-creator, squad squad-creator]
 ---
 
 # Squad · squad-creator
+
+> Arquivo `squad-squad-creator.md` = prefixo `squad-` + id `squad-creator`.
 
 - Pacote: [[squads/squad-creator/README|squad-creator]]
 - Skill: [[skills/squad-creator/SKILL|squad-creator]]

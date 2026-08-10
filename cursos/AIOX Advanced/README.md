@@ -70,49 +70,49 @@ Ao concluir, você consegue:
 
 ### M0 — Mindset e princípios
 
-1. [[lessons/01-token-economy-mindset|Token Economy Mindset]]
-2. [[lessons/08-principio-processo-certo|Respeite o processo]]
-3. [[lessons/12-repertorio-vs-tecnica|Repertório vence técnica]]
-4. [[lessons/13-pensamento-estruturado-antes-do-terminal|Desenhe antes de codar]]
-5. [[lessons/26-nao-delegar-pensar|Não delegue o pensar]]
+1. [[aulas/01-token-economy-mindset|Token Economy Mindset]]
+2. [[aulas/08-principio-processo-certo|Respeite o processo]]
+3. [[aulas/12-repertorio-vs-tecnica|Repertório vence técnica]]
+4. [[aulas/13-pensamento-estruturado-antes-do-terminal|Desenhe antes de codar]]
+5. [[aulas/26-nao-delegar-pensar|Não delegue o pensar]]
 
 ### M1 — Sistema e contexto
 
-6. [[lessons/03-claude-md-leis-da-fisica|CLAUDE.md como lei da física]]
-7. [[lessons/05-ambientes-local-staging-production|Local, staging e production]]
-8. [[lessons/15-quatro-executores|Quatro executores]]
-9. [[lessons/16-janela-de-contexto|Janela de contexto]]
-10. [[lessons/17-engenharia-de-contexto|Engenharia de contexto]]
-11. [[lessons/18-yaml-markdown-json-sweet-spot|YAML, Markdown e JSON]]
-12. [[lessons/25-core-config-leis-sociais|core-config]]
-13. [[lessons/27-otimizacao-claude-md|Otimização do CLAUDE.md]]
+6. [[aulas/03-claude-md-leis-da-fisica|CLAUDE.md como lei da física]]
+7. [[aulas/05-ambientes-local-staging-production|Local, staging e production]]
+8. [[aulas/15-quatro-executores|Quatro executores]]
+9. [[aulas/16-janela-de-contexto|Janela de contexto]]
+10. [[aulas/17-engenharia-de-contexto|Engenharia de contexto]]
+11. [[aulas/18-yaml-markdown-json-sweet-spot|YAML, Markdown e JSON]]
+12. [[aulas/25-core-config-leis-sociais|core-config]]
+13. [[aulas/27-otimizacao-claude-md|Otimização do CLAUDE.md]]
 
 ### M2 — SDC e qualidade
 
-14. [[lessons/06-code-rabbit-boost|CodeRabbit Boost]]
-15. [[lessons/19-ciclo-do-repositorio|Ciclo do repositório]]
-16. [[lessons/46-etapas-de-desenvolvimento|Briefing, PRD e stories]]
-17. [[lessons/48-quality-gate-completo|Quality Gate completo]]
-18. [[lessons/49-apply-qa-fixes-loop|Apply QA Fixes Loop]]
+14. [[aulas/06-code-rabbit-boost|CodeRabbit Boost]]
+15. [[aulas/19-ciclo-do-repositorio|Ciclo do repositório]]
+16. [[aulas/46-etapas-de-desenvolvimento|Briefing, PRD e stories]]
+17. [[aulas/48-quality-gate-completo|Quality Gate completo]]
+18. [[aulas/49-apply-qa-fixes-loop|Apply QA Fixes Loop]]
 
 ### M3 — Determinismo e comando
 
-19. [[lessons/11-goal-vs-loop|Goal vs Loop]]
-20. [[lessons/20-determinismo-progressivo|Determinismo progressivo]]
-21. [[lessons/21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro]]
-22. [[lessons/50-rider-modo-elicitacao|Rider: operador como piloto]]
+19. [[aulas/11-goal-vs-loop|Goal vs Loop]]
+20. [[aulas/20-determinismo-progressivo|Determinismo progressivo]]
+21. [[aulas/21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro]]
+22. [[aulas/50-rider-modo-elicitacao|Rider: operador como piloto]]
 
 ### M4 — Método e brownfield
 
-23. [[lessons/23-o-que-e-um-squad|O que é um squad]]
-24. [[lessons/24-entidade-como-unidade-de-processo|Entidade como unidade de processo]]
-25. [[lessons/31-brownfield-discovery|Brownfield Discovery]]
-26. [[lessons/53-brownfield-enhancement|Brownfield Enhancement]]
+23. [[aulas/23-o-que-e-um-squad|O que é um squad]]
+24. [[aulas/24-entidade-como-unidade-de-processo|Entidade como unidade de processo]]
+25. [[aulas/31-brownfield-discovery|Brownfield Discovery]]
+26. [[aulas/53-brownfield-enhancement|Brownfield Enhancement]]
 
 ### Capstone
 
-27. [[lessons/44-metodo-s2s|Método S2S]]
-28. [[lessons/74-caso-integrado-end-to-end|Caso integrado end-to-end]]
+27. [[aulas/44-metodo-s2s|Método S2S]]
+28. [[aulas/74-caso-integrado-end-to-end|Caso integrado end-to-end]]
 
 ## O que mudou na edição 2.0
 
@@ -126,9 +126,13 @@ Nada foi descartado. A rastreabilidade está em [[archive/README|archive/]] e no
 
 ## Depois do Advanced
 
-- Construa capacidades próprias em `cursos/AIOX-Agent-Engineering/`.
-- Aprofunde interface em `cursos/AIOX-Design/`.
-- Opere um pacote publicado em `cursos/AIOX-Advanced-Squads/`.
-- Productize uma capacidade comprovada em `cursos/AIOX-Productizacao/`.
+O Advanced encerra o núcleo comum. Escolha a próxima rota pelo resultado exigido pela missão:
+
+- construa capacidades próprias em `cursos/AIOX-Agent-Engineering/`;
+- materialize contrato visual em `cursos/AIOX-Design/`;
+- opere um pacote publicado em `cursos/AIOX-Advanced-Squads/`;
+- productize uma capacidade comprovada em `cursos/AIOX-Productizacao/`.
+
+Gate, artefato de passagem e combinações: [[ponte/trilhas-de-aplicacao|Rotas de aplicação depois do Advanced]].
 
 O curso termina com artefato funcionando e evidência verificável, não com consumo de conteúdo.

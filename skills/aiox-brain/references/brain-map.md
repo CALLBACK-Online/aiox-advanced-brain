@@ -25,7 +25,7 @@
                           └──────────────→ notas/retornos/
 ```
 
-## Trilhas canônicas
+## Núcleo comum e rotas de aplicação
 
 | Trilha | Entrada |
 |--------|---------|
@@ -34,11 +34,12 @@
 | Obsidian + IA (mini) | `cursos/Obsidian-IA/README.md` |
 | Introdução à Arquitetura de Sistemas | `cursos/Introducao-a-Arquitetura-de-Sistemas/README.md` |
 | AIOX Fundamentals | `cursos/AIOX-Fundamentals/README.md` |
-| Método | `cursos/AIOX Advanced/README.md` |
-| Agent Engineering (lateral) | `cursos/AIOX-Agent-Engineering/README.md` |
-| Design (lateral) | `cursos/AIOX-Design/README.md` |
-| Productização (lateral) | `cursos/AIOX-Productizacao/README.md` |
-| Squads | `cursos/AIOX-Advanced-Squads/README.md` |
+| AIOX Advanced — fim do núcleo comum | `cursos/AIOX Advanced/README.md` |
+| Squads — rota de aplicação | `cursos/AIOX-Advanced-Squads/README.md` |
+| Agent Engineering — rota de aplicação | `cursos/AIOX-Agent-Engineering/README.md` |
+| Design — rota de aplicação | `cursos/AIOX-Design/README.md` |
+| Productização — rota de aplicação | `cursos/AIOX-Productizacao/README.md` |
+| Enterprise — vitrine de continuidade | `cursos/AIOX-Enterprise/README.md` |
 | Router agents | `cursos/AIOX-Advanced-Squads/agent-router.json` |
 
 ## Skills de vault (Camada 1)

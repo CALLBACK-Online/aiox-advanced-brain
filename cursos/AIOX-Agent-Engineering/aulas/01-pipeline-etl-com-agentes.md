@@ -7,7 +7,7 @@ module: M0
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 22
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/22-pipeline-etl-com-agentes.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/22-pipeline-etl-com-agentes.md"
 source_version: 1.0.0
 ---
 # Pipeline ETL com agentes: hierarquia de camadas

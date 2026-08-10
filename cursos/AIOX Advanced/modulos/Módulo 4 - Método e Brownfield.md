@@ -16,10 +16,10 @@ Modelar a unidade de processo e aplicar o método em um sistema que já existe s
 
 ## Aulas
 
-1. [[lessons/23-o-que-e-um-squad|O que é um squad]]
-2. [[lessons/24-entidade-como-unidade-de-processo|Entidade como unidade de processo]]
-3. [[lessons/31-brownfield-discovery|Brownfield Discovery]]
-4. [[lessons/53-brownfield-enhancement|Brownfield Enhancement]]
+1. [[aulas/23-o-que-e-um-squad|O que é um squad]]
+2. [[aulas/24-entidade-como-unidade-de-processo|Entidade como unidade de processo]]
+3. [[aulas/31-brownfield-discovery|Brownfield Discovery]]
+4. [[aulas/53-brownfield-enhancement|Brownfield Enhancement]]
 
 ## Evidência de conclusão
 

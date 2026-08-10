@@ -26,7 +26,7 @@ maturity: study
 
 ## Pré-requisito no AIOX Advanced
 
-Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/lessons/`) revise: `03-claude-md-leis-da-fisica; 17-engenharia-de-contexto` — setup e contexto.
+Antes de operar este squad, no curso **AIOX Advanced** (pasta `cursos/AIOX Advanced/aulas/`) revise: `03-claude-md-leis-da-fisica; 17-engenharia-de-contexto` — setup e contexto.
 
 Mapa completo: `ponte/pre-requisitos-advanced.md`. Hub das trilhas: `cursos/README.md`.
 

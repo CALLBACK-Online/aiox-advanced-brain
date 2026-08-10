@@ -101,20 +101,21 @@ Se o YAML não fecha → **volte à engenharia**. Se fecha → comece Productiza
 | “Ninguém conhece meu produto” | Productização 03 |
 | “Uso interno já conta como produto?” | Productização 05 |
 | “Já decidi a oferta; quero copy/sales” | Squads 19–21 (`ponte/squads-comerciais.md`) |
-| “UI feia / DESIGN.md” | AIOX Design (outra especialização lateral) |
+| “UI feia / DESIGN.md” | AIOX Design (outra rota de aplicação) |
 
 ---
 
 ## Ordem na jornada do acervo
 
-Productização e Design são **especializações laterais**, não etapas da jornada canônica:
+Agent Engineering, Productização, Design e Squads são **rotas de aplicação canônicas** depois do núcleo comum:
 
 ```text
-Obsidian-IA → Arquitetura → Fundamentals → Advanced → Squads
-                              │
-                              ├─ (lateral) Agent Engineering — capacidade em produção
-                              ├─ (lateral) Design — contrato visual
-                              └─ (lateral) Productização — oferta e mercado
+Obsidian-IA → Arquitetura → Fundamentals → Advanced
+                              ├─ Squads — especialistas publicados
+                              ├─ Agent Engineering — capacidade em produção
+                              ├─ Design — contrato visual
+                              └─ Productização — oferta e mercado
+Squads + operação real → Enterprise — vitrine de prontidão
 ```
 
 Entrada típica em Productização: **depois** de ter capacidade + evidência (AE ou Advanced + prática real).

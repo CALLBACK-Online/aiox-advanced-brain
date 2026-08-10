@@ -229,7 +229,7 @@ industry_sops:
     sops:
       - id: SOP-IND-EDU-01
         name: "Content Production Pipeline"
-        description: "Full cycle: planning, recording, editing, publishing lessons/modules"
+        description: "Full cycle: planning, recording, editing, publishing aulas/modules"
         why: "Bottleneck #1 in EdTechs. No new content = product stagnates."
         executor: Hybrid
         complexity: high

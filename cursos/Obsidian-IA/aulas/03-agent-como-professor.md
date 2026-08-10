@@ -41,7 +41,7 @@ Arquivos de bootstrap (na raiz do repo): `AGENTS.md`, `CLAUDE.md`.
 ## Prompts que funcionam
 
 ```text
-Estou no aiox-advanced-brain. Descubra minha etapa na jornada canônica e me
+Estou no aiox-advanced-brain. Descubra se estou no núcleo comum ou em uma rota de aplicação e me
 ensine o próximo passo com 1 aula e 1 exercício — sem despejar o catálogo.
 ```
 

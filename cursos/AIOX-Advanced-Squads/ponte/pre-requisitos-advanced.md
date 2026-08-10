@@ -18,7 +18,7 @@ Pasta do método no repositório (abra no explorer; cada curso é isolado para l
 
 ## Mínimo recomendado antes da aula 00
 
-| Prioridade | Aulas do Advanced (`lessons/`) | Por quê |
+| Prioridade | Aulas do Advanced (`aulas/`) | Por quê |
 |------------|--------------------------------|---------|
 | Essencial | `08-principio-processo-certo`, `23-o-que-e-um-squad` | Método ≠ conversa solta; squad ≠ resposta para tudo |
 | Essencial | `46-etapas-de-desenvolvimento`, `48-quality-gate-completo` | Briefing e evidência antes da ativação |
@@ -26,7 +26,7 @@ Pasta do método no repositório (abra no explorer; cada curso é isolado para l
 
 ## Pré-requisito por squad
 
-| Squad | Aulas Advanced (`lessons/`) |
+| Squad | Aulas Advanced (`aulas/`) |
 |-------|----------------------------|
 | advisory-board | Agent Engineering M1 |
 | research | Agent Engineering M1 |
@@ -56,7 +56,7 @@ Pasta do método no repositório (abra no explorer; cada curso é isolado para l
 ## Ordem sugerida
 
 1. Advanced: sequência ativa + Capstone.
-2. Aprofundamento lateral somente se o briefing revelar essa lacuna.
+2. Outra rota de aplicação somente se o briefing revelar essa lacuna.
 3. Este curso: `aulas/00-como-usar-este-curso.md` + mapa de decisão.
 4. Aula do squad escolhido e projeto integrador deste curso.
 

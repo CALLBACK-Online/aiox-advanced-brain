@@ -21,10 +21,11 @@ Vault de **estudo AIOX** neste repositório. Não assume plugins pagos. Não con
 | `cursos/Introducao-a-Arquitetura-de-Sistemas/` | Entender sistemas e vocabulário técnico |
 | `cursos/AIOX-Fundamentals/` | Instalar e operar o Core |
 | `cursos/AIOX Advanced/` | Foco no método (grafo com milhares de links) |
-| `cursos/AIOX-Agent-Engineering/` | Aprofundar capacidades agentic |
-| `cursos/AIOX-Design/` | Aprofundar contrato visual |
-| `cursos/AIOX-Productizacao/` | Aprofundar oferta e mercado |
-| `cursos/AIOX-Advanced-Squads/` | Foco em squads 1:1 |
+| `cursos/AIOX-Advanced-Squads/` | Rota de aplicação: squads publicados 1:1 |
+| `cursos/AIOX-Agent-Engineering/` | Rota de aplicação: capacidades agentic |
+| `cursos/AIOX-Design/` | Rota de aplicação: contrato visual |
+| `cursos/AIOX-Productizacao/` | Rota de aplicação: oferta e mercado |
+| `cursos/AIOX-Enterprise/` | Vitrine de continuidade: prontidão operacional |
 | `cursos/` | Ver a jornada completa (hub) |
 | Raiz do repo | Estudo + `skills/` + `squads/` (índice mais pesado) |
 
@@ -43,15 +44,16 @@ Instruções humanas: `README.md` (seção Obsidian) e `cursos/README.md`.
 Sempre paths relativos ao repo:
 
 ```text
-cursos/AIOX Advanced/lessons/
+cursos/AIOX Advanced/aulas/
 cursos/AIOX Advanced/modulos/
 cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/
-cursos/AIOX-Fundamentals/lessons/
+cursos/AIOX-Fundamentals/aulas/
 cursos/AIOX-Agent-Engineering/aulas/
 cursos/AIOX-Design/aulas/
 cursos/AIOX-Productizacao/aulas/
 cursos/AIOX-Advanced-Squads/aulas/
 cursos/AIOX-Advanced-Squads/modulos/
+cursos/AIOX-Enterprise/aulas/
 cursos/README.md
 ```
 
@@ -96,6 +98,6 @@ Depois: {study-capture | course-moc | aiox-brain → Context Brief → skill/squ
 
 ```text
 Arquivo: {path relativo}
-Curso: {Obsidian + IA | Introdução à Arquitetura | Fundamentals | Advanced | Squads}
+Curso: {Obsidian + IA | Introdução à Arquitetura | Fundamentals | Advanced | Squads | Agent Engineering | Design | Productização | Enterprise}
 Ligue com: {1–2 vizinhos úteis}
 ```

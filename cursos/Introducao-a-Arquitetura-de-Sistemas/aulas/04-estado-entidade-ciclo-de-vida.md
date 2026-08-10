@@ -8,7 +8,7 @@ sequence: M2.1
 status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
-adapted_from: cursos/AIOX Advanced/lessons/24-entidade-como-unidade-de-processo.md
+adapted_from: cursos/AIOX Advanced/aulas/24-entidade-como-unidade-de-processo.md
 source_refs: [postgresql-tutorial]
 reading_minutes: 5
 ---

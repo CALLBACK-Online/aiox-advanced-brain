@@ -2,9 +2,9 @@
 
 O arquivo preserva rastreabilidade sem manter conteúdos redistribuídos na progressão ativa.
 
-- `migrated/lessons/`: 42 aulas com novo dono curricular ou ponte para as bases.
+- `migrated/aulas/`: 42 aulas com novo dono curricular ou ponte para as bases.
 - `migrated/modulos/` e `migrated/avaliacoes/`: estrutura da edição de 75 aulas.
-- `legacy/lessons/`: 4 versões históricas substituídas.
+- `legacy/aulas/`: 4 versões históricas substituídas.
 
 ## Novos donos
 

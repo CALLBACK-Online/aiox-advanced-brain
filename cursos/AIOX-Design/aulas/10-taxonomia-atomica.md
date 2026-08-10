@@ -14,13 +14,13 @@ seed: 42-design-atomico-brad-frost
 tags: [curso/aiox-design, lesson, layer/curso]
 ---
 
-# Taxonomia atômica: do token à página
+# Design atômico (Brad Frost): do token à página
 
 [⌂ Curso](../README.md) · [↑ M2](../modulos/M2.md) · [← Anterior](09-tokens-componentes-anti-drift.md) · [Próxima →](11-storybook-fonte-da-verdade.md)
 
 ## Resultado
 
-Você classifica elementos de interface por nível de composição e identifica onde uma mudança deve ser feita para propagar sem duplicação.
+Você classifica elementos de interface na taxonomia **atômica** (Brad Frost) e identifica onde uma mudança deve ser feita **uma vez** para propagar sem duplicação — inclusive quando a IA gera UI.
 
 ## Mapa visual
 
@@ -29,24 +29,32 @@ flowchart LR
   T["Token"] --> A["Átomo"]
   A --> M["Molécula"]
   M --> O["Organismo"]
-  O --> P["Página"]
-  P --> R["Rota ou fluxo"]
+  O --> Tp["Template"]
+  Tp --> P["Página"]
 ```
 
 ## Quando usar — e quando não usar
 
-**Use** para organizar catálogo, ownership e impacto de mudança antes de gerar novas telas.
+**Use** para organizar catálogo, ownership e impacto de mudança antes de gerar novas telas ou stories no Storybook.
 
 **Não use** como dogma de nomes. A taxonomia serve para localizar responsabilidade e reuso; um projeto pequeno pode combinar níveis sem perder clareza.
 
+## Proveniência
+
+Modelo clássico: **Brad Frost — Atomic Design** (átomos → moléculas → organismos → templates → páginas).
+Neste curso somamos **token** (decisão de valor) antes do átomo, porque a IA precisa de contrato semântico, não só de peças de UI.
+
+Seed histórico do método: Advanced `42-design-atomico-brad-frost` (track complete / M9).
+
 ## Os níveis como decisão de manutenção
 
-- **Token:** valor semântico compartilhado, como `color.primary`.
+- **Token:** valor semântico compartilhado, como `color.primary` (camada AIOX antes do átomo).
 - **Átomo:** unidade mínima interativa ou visual, como Button ou Icon.
 - **Molécula:** combinação pequena com uma função, como SearchField.
 - **Organismo:** seção autônoma, como Header ou PricingTable.
+- **Template:** estrutura de página sem conteúdo final (opcional em apps densos).
 - **Página:** composição ligada a uma intenção do usuário.
-- **Fluxo:** sequência de páginas e estados que entrega um resultado.
+- **Fluxo:** sequência de páginas e estados que entrega um resultado (operacional AIOX).
 
 Pergunta operacional: **se isto mudar, onde altero uma vez para que todos os consumidores corretos herdem?**
 

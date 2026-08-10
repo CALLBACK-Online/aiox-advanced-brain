@@ -10,7 +10,7 @@ status: canonical
 canonical_scope: cursos/AIOX-Productizacao
 curriculum_role: canonical-owner
 source_lesson_id: 63
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/63-distribuicao-vs-produto.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/63-distribuicao-vs-produto.md"
 source_version: 1.0.0
 ---
 # Distribuição > Produto (10/90)

@@ -44,14 +44,14 @@ Se já consegue explicar os pares com um exemplo próprio, avance para o AIOX Fu
 
 | Extensão aplicada no Advanced | Base canônica no novo curso |
 |---|---|
-| [[archive/migrated/lessons/14-anatomia-do-agente|Anatomia de um agente (histórico)]] e [[16-janela-de-contexto|Janela de contexto]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/22-modelo-contexto-memoria-tool-skill.md` |
+| [[archive/migrated/aulas/14-anatomia-do-agente|Anatomia de um agente (histórico)]] e [[16-janela-de-contexto|Janela de contexto]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/22-modelo-contexto-memoria-tool-skill.md` |
 | [[18-yaml-markdown-json-sweet-spot|YAML, Markdown e JSON para LLM]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/07-json-yaml-markdown-contratos.md` |
 | [[24-entidade-como-unidade-de-processo|Entidade como unidade de processo]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/04-estado-entidade-ciclo-de-vida.md` |
-| [[archive/migrated/lessons/52-workflow-vs-comando-manual|Workflow vs comando manual (histórico)]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/11-workflow-pipeline-batch-stream.md` |
-| [[archive/migrated/lessons/58-ralph-paralelizacao|Ralph e paralelização (histórico)]] e [[archive/migrated/lessons/59-quando-paralelizar-vs-sequencial|Paralelizar vs sequencial (histórico)]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/12-concorrencia-paralelismo-fanout-fanin.md` |
-| [[archive/migrated/lessons/67-harness-ambiente-execucao|Harness do agente (histórico)]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/17-runtime-harness-ambiente-container.md` |
-| [[archive/migrated/lessons/71-vercel-deploy|Deploy na Vercel (histórico)]] e [[archive/migrated/lessons/72-cicd-pipeline-completa|CI/CD completa (histórico)]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/18-cicd-deploy-rollback.md` |
-| [[archive/migrated/lessons/73-prontidao-de-producao|Prontidão de produção (histórico)]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/24-capstone-arquitetura-agentic.md` |
+| [[archive/migrated/aulas/52-workflow-vs-comando-manual|Workflow vs comando manual (histórico)]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/11-workflow-pipeline-batch-stream.md` |
+| [[archive/migrated/aulas/58-ralph-paralelizacao|Ralph e paralelização (histórico)]] e [[archive/migrated/aulas/59-quando-paralelizar-vs-sequencial|Paralelizar vs sequencial (histórico)]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/12-concorrencia-paralelismo-fanout-fanin.md` |
+| [[archive/migrated/aulas/67-harness-ambiente-execucao|Harness do agente (histórico)]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/17-runtime-harness-ambiente-container.md` |
+| [[archive/migrated/aulas/71-vercel-deploy|Deploy na Vercel (histórico)]] e [[archive/migrated/aulas/72-cicd-pipeline-completa|CI/CD completa (histórico)]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/18-cicd-deploy-rollback.md` |
+| [[archive/migrated/aulas/73-prontidao-de-producao|Prontidão de produção (histórico)]] | `cursos/Introducao-a-Arquitetura-de-Sistemas/aulas/24-capstone-arquitetura-agentic.md` |
 
 “Base canônica” significa: o novo curso ensina o conceito sem exigir AIOX. As aulas redistribuídas permanecem no arquivo histórico do Advanced e, quando aplicável, ganharam progressão própria em Agent Engineering.
 
@@ -68,9 +68,9 @@ Para entrar no Advanced sem fazer as 24 aulas, estude estas seis na Introdução
 
 Depois, no AIOX Fundamentals, confirme ao menos:
 
-1. `cursos/AIOX-Fundamentals/lessons/01-fundamentos/1.4-instalacao-e-primeiro-valor.md`
-2. `cursos/AIOX-Fundamentals/lessons/02-sinais-e-contexto/2.2-escolher-o-agente-certo.md`
-3. `cursos/AIOX-Fundamentals/lessons/03-validacao-basica/3.4-evidencia-doctor-e-handoff.md`
+1. `cursos/AIOX-Fundamentals/aulas/01-fundamentos/1.4-instalacao-e-primeiro-valor.md`
+2. `cursos/AIOX-Fundamentals/aulas/02-sinais-e-contexto/2.2-escolher-o-agente-certo.md`
+3. `cursos/AIOX-Fundamentals/aulas/03-validacao-basica/3.4-evidencia-doctor-e-handoff.md`
 
 ## Pergunte ao seu agente
 

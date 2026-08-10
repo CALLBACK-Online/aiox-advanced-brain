@@ -8,7 +8,7 @@ sequence: M6.3
 status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
-adapted_from: cursos/AIOX Advanced/archive/migrated/lessons/71-vercel-deploy.md + cursos/AIOX Advanced/archive/migrated/lessons/72-cicd-pipeline-completa.md
+adapted_from: cursos/AIOX Advanced/archive/migrated/aulas/71-vercel-deploy.md + cursos/AIOX Advanced/archive/migrated/aulas/72-cicd-pipeline-completa.md
 source_refs: [github-ci, github-environments]
 reading_minutes: 5
 ---

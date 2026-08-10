@@ -7,7 +7,7 @@ module: M1
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 40
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/40-pipeline-canonico-prd.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/40-pipeline-canonico-prd.md"
 source_version: 1.0.0
 ---
 # pipeline canônico: do nada ao PRD com stories prontas

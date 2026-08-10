@@ -7,7 +7,7 @@ module: M2
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 34
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/34-squad-creator-passo-a-passo.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/34-squad-creator-passo-a-passo.md"
 source_version: 1.0.0
 ---
 # Squad Creator passo a passo: criar um squad do zero

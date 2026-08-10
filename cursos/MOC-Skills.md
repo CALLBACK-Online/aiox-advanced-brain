@@ -9,6 +9,9 @@ Home: [[00-HOME]] · Acervo: [[cursos/MOC-Acervo-AIOX]] · Squads: [[cursos/MOC-
 
 As notas em [[cursos/entradas/README|cursos/entradas/]] ligam cada skill de domínio a squad + aula (Graph), sem poluir o `SKILL.md` de runtime.
 
+**Mapa canônico de uso / anti-duplicação / skills sem squad:** [[cursos/MAPA-SKILLS|MAPA-SKILLS]]
+**Core runtime (orbitais + SDC) em detalhe:** [[cursos/AIOX-Fundamentals/references/core-skills-runtime|Fundamentals · core-skills-runtime]]
+
 ## Vault / segundo cérebro
 - [[skills/aiox-brain/SKILL|aiox-brain]]
 - [[skills/aiox-squads/SKILL|aiox-squads]]

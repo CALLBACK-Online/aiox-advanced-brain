@@ -433,7 +433,7 @@ Say it once and reach everyone. Build a growing warm audience that compounds ove
    - "3 Steps to Create a Great Hook"
    - "The Morning Routine That Doubled My Productivity"
 
-3. **Stories:** Events (real or imagined) with lessons/conclusions
+3. **Stories:** Events (real or imagined) with aulas/conclusions
    - "My journey from sleeping under a gym to a 5-star penthouse"
 
 #### Step 2.4: Reward Completely

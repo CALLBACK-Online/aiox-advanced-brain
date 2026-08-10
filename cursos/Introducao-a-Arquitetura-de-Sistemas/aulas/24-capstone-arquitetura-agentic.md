@@ -8,7 +8,7 @@ sequence: M8.3
 status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
-adapted_from: cursos/AIOX Advanced/archive/migrated/lessons/73-prontidao-de-producao.md
+adapted_from: cursos/AIOX Advanced/archive/migrated/aulas/73-prontidao-de-producao.md
 source_refs: [all-course-sources]
 reading_minutes: 5
 ---

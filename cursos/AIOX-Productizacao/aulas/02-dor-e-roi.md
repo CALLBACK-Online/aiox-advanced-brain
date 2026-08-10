@@ -10,7 +10,7 @@ status: canonical
 canonical_scope: cursos/AIOX-Productizacao
 curriculum_role: canonical-owner
 source_lesson_id: 64
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/64-vender-pela-dor-e-roi.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/64-vender-pela-dor-e-roi.md"
 source_version: 1.0.0
 ---
 # Vender pela dor e ROI, não pela tecnologia

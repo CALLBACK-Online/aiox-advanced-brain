@@ -8,7 +8,7 @@ sequence: M3.1
 status: canonical
 canonical_scope: cursos/Introducao-a-Arquitetura-de-Sistemas
 difficulty: foundation
-adapted_from: cursos/AIOX Advanced/lessons/18-yaml-markdown-json-sweet-spot.md
+adapted_from: cursos/AIOX Advanced/aulas/18-yaml-markdown-json-sweet-spot.md
 source_refs: [openapi, mcp]
 reading_minutes: 5
 ---

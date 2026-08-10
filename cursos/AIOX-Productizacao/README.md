@@ -99,14 +99,14 @@ Dúvida: {wedge, oferta, distribuição, formato ou estágio}
 ## Ordem no acervo
 
 ```text
-AIOX Fundamentals → AIOX Advanced / Agent Engineering
-                              ↓ capacidade funcionando
-                    AIOX Productização
-                              ↓ missão especializada
-                    squads de copy, sales ou Hormozi
+Obsidian + IA → Arquitetura → Fundamentals → Advanced
+                                              ↓ capacidade comprovada
+                         Agent Engineering ──→ Productização
+                                              ↓ missão especializada
+                                  squads de copy, sales ou Hormozi
 ```
 
-Paths das trilhas irmãs aparecem como texto para preservar o curso autocontido: `cursos/AIOX-Agent-Engineering/`, `cursos/AIOX Advanced/` e `cursos/AIOX-Advanced-Squads/`.
+Quem já chega do Advanced com capacidade executável e evidência de valor pode entrar direto. Quem ainda precisa construí-la passa antes por Agent Engineering. Paths das trilhas irmãs aparecem como texto para preservar o curso autocontido: `cursos/AIOX-Agent-Engineering/`, `cursos/AIOX Advanced/` e `cursos/AIOX-Advanced-Squads/`.
 
 ## Validação
 

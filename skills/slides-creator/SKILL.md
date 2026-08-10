@@ -7,6 +7,24 @@ description: |
 
 # slides-creator
 
+
+## Quando usar
+
+- Use esta skill como **porta de entrada** do squad `slides-creator` quando a missão for a dor coberta pela aula do curso.
+- **Não use** como substituto do mapa de decisão se a intenção for ambígua entre vários squads — use `aiox-squads` primeiro.
+
+## Quando não usar
+
+- Missão de outro domínio (escolha outro squad/skill).
+- Só quer estudar anatomia sem copiar o pacote: leia a aula e o `squads/slides-creator/` sem ativar runtime.
+
+## Aula do curso (como usar de verdade)
+
+`cursos/AIOX-Advanced-Squads/aulas/17-slides-creator.md`
+
+Lá estão: quando usar/evitar, briefing, ativação, evidência e limites de maturidade.
+
+
 ## Squad
 
 `squads/slides-creator/` · entry agent: `slide-chief`
@@ -25,3 +43,10 @@ Se a missão for escolha entre vários squads, use a skill `aiox-squads` e o man
 2. Se o squad não estiver no projeto ativo: `cp -R squads/slides-creator <projeto>/squads/`
 3. Siga o briefing da aula; não invente comandos de runtime
 4. Guia agent-readable: `cursos/AIOX-Advanced-Squads/AGENT-GUIDE.md`
+
+## Relação com slide-creator
+
+- **`slides-creator`**: entrada do squad + aula 17.
+- **`slide-creator`**: skill portable de deck sem squad.
+
+Não são a mesma coisa; não apague uma pela outra.

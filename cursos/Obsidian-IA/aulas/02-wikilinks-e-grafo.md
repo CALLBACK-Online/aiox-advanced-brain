@@ -66,7 +66,7 @@ Para ver **skills e squads** no mesmo Graph, abra a **raiz do repositório** com
 
 Perguntas boas no Graph:
 
-1. Os cinco cursos da jornada aparecem ligados pelos hubs, com método e squads em clusters separados?
+1. Os nove cursos aparecem ligados pelos hubs, com núcleo comum, rotas de aplicação e vitrine Enterprise distinguíveis?
 2. Os hubs rosa puxam arestas para verde/laranja?
 3. Quais pastas ainda são só órfãs?
 

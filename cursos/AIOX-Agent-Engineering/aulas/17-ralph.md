@@ -7,7 +7,7 @@ module: M3
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 58
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/58-ralph-paralelizacao.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/58-ralph-paralelizacao.md"
 source_version: 1.0.0
 ---
 # Ralph: paralelização de múltiplos agentes

@@ -16,8 +16,8 @@ Integrar mindset, contexto, SDC, determinismo e método em uma fatia funcional d
 
 ## Aulas
 
-1. [[lessons/44-metodo-s2s|Método S2S]]
-2. [[lessons/74-caso-integrado-end-to-end|Caso integrado end-to-end]]
+1. [[aulas/44-metodo-s2s|Método S2S]]
+2. [[aulas/74-caso-integrado-end-to-end|Caso integrado end-to-end]]
 
 ## Evidência de conclusão
 

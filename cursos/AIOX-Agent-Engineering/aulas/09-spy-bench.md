@@ -7,7 +7,7 @@ module: M1
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 37
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/37-spy-bench-comparativo.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/37-spy-bench-comparativo.md"
 source_version: 1.0.0
 ---
 # Spy/Bench: comparação profunda entre dois projetos

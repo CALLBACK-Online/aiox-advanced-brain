@@ -1,0 +1,51 @@
+schema_version: "1.0"
+course_id: aiox-enterprise
+title: "AIOX Enterprise — Visão Operacional e Prontidão"
+kind: preview
+status: approved
+approval: user-approved-in-thread
+duration_minutes: 30
+audience: "Operadores pós-Advanced com ao menos uma execução real"
+promise: "Diagnosticar se o próximo gargalo é aprendizagem ou operação mantida"
+implementation_boundary: "Descrever a experiência sem entregar acesso, arquivos, comandos ou arquitetura reproduzível"
+lessons:
+  - position: 0
+    id: o-que-esta-trilha-e
+    title: "O que esta trilha é — e o que ela protege"
+    reading_minutes: 4
+    bloom: understand
+  - position: 1
+    id: o-teto-invisivel-depois-do-advanced
+    title: "O teto invisível depois do Advanced"
+    reading_minutes: 5
+    bloom: analyze
+  - position: 2
+    id: do-contexto-remontado-ao-contexto-operacional
+    title: "Do contexto remontado ao contexto operacional"
+    reading_minutes: 5
+    bloom: analyze
+  - position: 3
+    id: quando-os-squads-operam-como-sistema
+    title: "Quando os squads passam a operar como sistema"
+    reading_minutes: 4
+    bloom: analyze
+  - position: 4
+    id: o-que-voce-deixa-de-reconstruir
+    title: "O que você deixa de reconstruir toda semana"
+    reading_minutes: 4
+    bloom: evaluate
+  - position: 5
+    id: prontidao-evidencia-antes-de-pressa
+    title: "Prontidão: evidência antes de pressa"
+    reading_minutes: 5
+    bloom: evaluate
+  - position: 6
+    id: o-primeiro-passo-se-houver-fit
+    title: "O primeiro passo, se houver fit"
+    reading_minutes: 3
+    bloom: decide
+assessment: avaliacoes/diagnostico-de-prontidao.md
+official_conditions_url: "https://lp.aioxsquad.ai/enterprise"
+deviations:
+  - rule: "formative-course lesson count"
+    decision: "seven lessons approved because this is a preview and readiness trail"

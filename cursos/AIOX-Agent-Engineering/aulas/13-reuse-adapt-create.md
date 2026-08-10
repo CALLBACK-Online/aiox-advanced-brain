@@ -7,7 +7,7 @@ module: M2
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 54
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/54-reuse-adapt-create-heuristica.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/54-reuse-adapt-create-heuristica.md"
 source_version: 1.0.0
 ---
 # REUSE > ADAPT > CREATE: a heurística antes de criar nada

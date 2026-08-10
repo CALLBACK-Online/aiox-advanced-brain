@@ -7,7 +7,7 @@ module: M5
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 70
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/70-supabase-via-data-engineer.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/70-supabase-via-data-engineer.md"
 source_version: 1.0.0
 ---
 # Supabase: setup via @data-engineer

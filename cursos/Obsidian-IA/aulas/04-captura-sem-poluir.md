@@ -24,7 +24,7 @@ Capturar aprendizado em espaço **pessoal**, sempre ligado à aula canônica.
 
 **Use** depois de cada bloco de estudo de 25–50 minutos.
 
-**Não** edite `lessons/` ou `aulas/` oficiais para “ficar do seu jeito”.
+**Não** edite `aulas/` ou `aulas/` oficiais para “ficar do seu jeito”.
 
 ## Onde gravar
 
@@ -57,7 +57,7 @@ Depois de operar no projeto, capture também **resultado → decisão → aprend
 
 ## Prática
 
-1. Escolha **uma** aula que você já leu em qualquer uma das cinco etapas da jornada.
+1. Escolha **uma** aula que você já leu no núcleo comum ou em uma rota de aplicação.
 2. Crie uma nota em `notas/inbox/` (ou peça ao agent com `study-capture`).
 3. Linke a fonte com path ou wikilink.
 

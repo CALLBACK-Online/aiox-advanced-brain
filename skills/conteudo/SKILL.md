@@ -7,6 +7,24 @@ description: |
 
 # Conteúdo Squad
 
+
+## Quando usar
+
+- Use esta skill como **porta de entrada** do squad `conteudo` quando a missão for a dor coberta pela aula do curso.
+- **Não use** como substituto do mapa de decisão se a intenção for ambígua entre vários squads — use `aiox-squads` primeiro.
+
+## Quando não usar
+
+- Missão de outro domínio (escolha outro squad/skill).
+- Só quer estudar anatomia sem copiar o pacote: leia a aula e o `squads/conteudo/` sem ativar runtime.
+
+## Aula do curso (como usar de verdade)
+
+`cursos/AIOX-Advanced-Squads/aulas/18-conteudo.md`
+
+Lá estão: quando usar/evitar, briefing, ativação, evidência e limites de maturidade.
+
+
 Squad com **10 agentes** especializados.
 
 > **Maturidade neste acervo:** `study` — ver `docs/runtime-dependencies.md`.

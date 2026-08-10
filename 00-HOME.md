@@ -43,6 +43,7 @@ Assim só entra a camada de conhecimento: cursos, READMEs, entradas, skills, not
 - [[cursos/COMO-ESTUDAR|Como estudar · trilhas por caso]]
 - [[cursos/MOC-Acervo-AIOX|MOC · Acervo]]
 - [[cursos/MOC-Skills|MOC · Skills]]
+- [[cursos/MAPA-SKILLS|MAPA-SKILLS · inventário e anti-duplicação]]
 - [[cursos/MOC-Squads|MOC · Squads]]
 - [[cursos/AIOX Advanced/MOC-Todas-Aulas|MOC · Todas as aulas (método)]]
 - [[cursos/entradas/README|entradas skill/squad]]
@@ -50,14 +51,18 @@ Assim só entra a camada de conhecimento: cursos, READMEs, entradas, skills, not
 - [[cursos/Introducao-a-Arquitetura-de-Sistemas/README|Introdução à Arquitetura de Sistemas]]
 - [[cursos/AIOX-Fundamentals/README|AIOX Fundamentals — Core básico]]
 - [[cursos/AIOX Advanced/README|AIOX Advanced (método)]]
+
+### Rotas de aplicação depois do Advanced
+
 - [[cursos/AIOX-Advanced-Squads/README|AIOX Advanced Squads]]
-
-### Especializações laterais do Advanced
-
 - [[cursos/AIOX-Agent-Engineering/README|AIOX Agent Engineering]]
 - [[cursos/AIOX-Design/README|AIOX Design (contrato visual / DS)]]
 - [[cursos/AIOX-Productizacao/README|AIOX Productização (oferta / mercado)]]
 - [[cursos/MOC-Agent-Engineering-vs-Productizacao|MOC · AE × Productização]]
+
+### Continuidade
+
+- [[cursos/AIOX-Enterprise/README|AIOX Enterprise — vitrine de prontidão]]
 
 ### Apoio do vault
 
@@ -71,11 +76,12 @@ Assim só entra a camada de conhecimento: cursos, READMEs, entradas, skills, not
 2. [[cursos/Introducao-a-Arquitetura-de-Sistemas/README|Introdução à Arquitetura de Sistemas]] — entender sistemas.
 3. [[cursos/AIOX-Fundamentals/README|AIOX Fundamentals]] — instalar e operar o Core.
 4. [[cursos/AIOX Advanced/README|AIOX Advanced]] — aplicar o método.
-5. [[cursos/AIOX-Advanced-Squads/README|AIOX Advanced Squads]] — operar os especialistas.
 
 Arquitetura e AIOX Fundamentals são etapas diferentes: linguagem técnica universal primeiro; framework AIOX depois.
 
-Depois do Advanced, avance para Squads. Se a missão revelar uma lacuna específica, insira [[cursos/AIOX-Agent-Engineering/README|Agent Engineering]] para construir capacidades, [[cursos/AIOX-Design/README|Design]] para interface ou [[cursos/AIOX-Productizacao/README|Productização]] para mercado; depois retome a operação do especialista.
+Depois do Advanced, escolha a rota pelo resultado: [[cursos/AIOX-Advanced-Squads/README|Squads]] para especialistas publicados, [[cursos/AIOX-Agent-Engineering/README|Agent Engineering]] para capacidade própria, [[cursos/AIOX-Design/README|Design]] para sistema visual ou [[cursos/AIOX-Productizacao/README|Productização]] para mercado. As rotas podem ser combinadas; não formam uma fila obrigatória.
+
+Depois de operação real com Squads, use [[cursos/AIOX-Enterprise/README|AIOX Enterprise — vitrine]] para diagnosticar se o gargalo já pede infraestrutura mantida.
 
 ## Loop
 

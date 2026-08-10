@@ -7,7 +7,7 @@ module: M5
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 72
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/72-cicd-pipeline-completa.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/72-cicd-pipeline-completa.md"
 source_version: 1.0.0
 ---
 # CI/CD Pipeline completa: GitHub Actions + Quality Gate pré-merge

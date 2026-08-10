@@ -16,10 +16,10 @@ Escolher o nível certo de autonomia e operar loops com estado, gates e interven
 
 ## Aulas
 
-1. [[lessons/11-goal-vs-loop|Goal vs Loop]]
-2. [[lessons/20-determinismo-progressivo|Determinismo progressivo]]
-3. [[lessons/21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro]]
-4. [[lessons/50-rider-modo-elicitacao|Rider: operador como piloto]]
+1. [[aulas/11-goal-vs-loop|Goal vs Loop]]
+2. [[aulas/20-determinismo-progressivo|Determinismo progressivo]]
+3. [[aulas/21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro]]
+4. [[aulas/50-rider-modo-elicitacao|Rider: operador como piloto]]
 
 ## Evidência de conclusão
 

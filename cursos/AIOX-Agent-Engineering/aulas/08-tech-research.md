@@ -7,7 +7,7 @@ module: M1
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 36
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/36-tech-research-multi-fonte.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/36-tech-research-multi-fonte.md"
 source_version: 1.0.0
 ---
 # Tech Research: pesquisa profunda multi-fonte

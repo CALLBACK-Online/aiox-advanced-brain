@@ -31,7 +31,7 @@ Essa é a promessa única do curso. Research reduz incerteza; arquitetura e cons
 
 ## Para quem
 
-- Quem já concluiu o AIOX Fundamentals e sabe operar uma story com evidência.
+- Quem já concluiu o núcleo comum até o AIOX Advanced — ou prova o mesmo gate com uma story fechada por método e evidência.
 - Quem precisa criar ou adaptar agents, squads, workflows e runners.
 - Quem quer tirar uma capacidade da IDE e operá-la por harness, API ou pipeline.
 

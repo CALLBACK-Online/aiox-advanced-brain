@@ -10,7 +10,7 @@ status: canonical
 canonical_scope: cursos/AIOX-Productizacao
 curriculum_role: canonical-owner
 source_lesson_id: 62
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/62-service-as-software.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/62-service-as-software.md"
 source_version: 1.0.0
 ---
 # Service-as-Software: a era do serviço produtivado

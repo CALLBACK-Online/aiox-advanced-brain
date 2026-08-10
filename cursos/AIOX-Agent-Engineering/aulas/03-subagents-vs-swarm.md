@@ -7,7 +7,7 @@ module: M0
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 29
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/29-sub-agents-vs-swarm-agents.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/29-sub-agents-vs-swarm-agents.md"
 source_version: 1.0.0
 ---
 # Sub-agents versus Swarm-agents: isolado ou em rede

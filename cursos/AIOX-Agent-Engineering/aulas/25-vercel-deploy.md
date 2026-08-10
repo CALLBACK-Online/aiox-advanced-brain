@@ -7,7 +7,7 @@ module: M5
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 71
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/71-vercel-deploy.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/71-vercel-deploy.md"
 source_version: 1.0.0
 ---
 # Vercel Deploy: do localhost ao mundo

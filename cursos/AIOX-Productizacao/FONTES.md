@@ -13,11 +13,11 @@ O curso deriva de cinco aulas do AIOX Advanced:
 
 | Tema | Fonte histórica |
 |------|-----------------|
-| Service-as-Software | `cursos/AIOX Advanced/archive/migrated/lessons/62-service-as-software.md` |
-| Distribuição > Produto | `cursos/AIOX Advanced/archive/migrated/lessons/63-distribuicao-vs-produto.md` |
-| Dor e ROI | `cursos/AIOX Advanced/archive/migrated/lessons/64-vender-pela-dor-e-roi.md` |
-| Consultoria → App → SaaS | `cursos/AIOX Advanced/archive/migrated/lessons/65-tres-caminhos-de-produto.md` |
-| Interno → Cliente → Produto | `cursos/AIOX Advanced/archive/migrated/lessons/66-tres-estagios-de-monetizacao.md` |
+| Service-as-Software | `cursos/AIOX Advanced/archive/migrated/aulas/62-service-as-software.md` |
+| Distribuição > Produto | `cursos/AIOX Advanced/archive/migrated/aulas/63-distribuicao-vs-produto.md` |
+| Dor e ROI | `cursos/AIOX Advanced/archive/migrated/aulas/64-vender-pela-dor-e-roi.md` |
+| Consultoria → App → SaaS | `cursos/AIOX Advanced/archive/migrated/aulas/65-tres-caminhos-de-produto.md` |
+| Interno → Cliente → Produto | `cursos/AIOX Advanced/archive/migrated/aulas/66-tres-estagios-de-monetizacao.md` |
 
 Os paths aparecem como texto porque cursos devem permanecer autocontidos.
 

@@ -385,3 +385,10 @@ When returning work to the user, keep it concise:
 - Mention design direction.
 - Mention QA score and the main remaining risk.
 - Provide the generated artifact or file path when files were created.
+
+## Relação com slides-creator
+
+- **`slide-creator`** (portable): deck narrative-first **standalone**, sem depender do squad.
+- **`slides-creator`** (study): porta de entrada do **squad** `slides-creator` + aula `17-slides-creator`.
+
+Se a missão é operar o pacote multi-agente de slides do acervo, use `slides-creator` / curso Squads. Se só precisa de um deck autocontido no Codex/Claude, use `slide-creator`.

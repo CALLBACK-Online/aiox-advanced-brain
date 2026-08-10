@@ -7,7 +7,7 @@ module: M0
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 28
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/28-taxonomia-task-skill-agent-workflow-runner.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/28-taxonomia-task-skill-agent-workflow-runner.md"
 source_version: 1.0.0
 ---
 # Taxonomia AIOX: Task, Skill, Agente, Workflow e Runner

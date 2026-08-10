@@ -7,7 +7,7 @@ module: M2
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 33
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/33-anatomia-de-um-squad.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/33-anatomia-de-um-squad.md"
 source_version: 1.0.0
 ---
 # Anatomia de um Squad AIOX

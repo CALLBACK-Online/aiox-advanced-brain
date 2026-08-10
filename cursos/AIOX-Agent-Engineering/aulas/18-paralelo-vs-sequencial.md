@@ -7,7 +7,7 @@ module: M3
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 59
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/59-quando-paralelizar-vs-sequencial.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/59-quando-paralelizar-vs-sequencial.md"
 source_version: 1.0.0
 ---
 # Quando paralelizar vs sequencial: decisão antes do speedup

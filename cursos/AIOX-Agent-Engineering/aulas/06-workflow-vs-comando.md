@@ -7,7 +7,7 @@ module: M0
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 52
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/52-workflow-vs-comando-manual.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/52-workflow-vs-comando-manual.md"
 source_version: 1.0.0
 ---
 # Workflow pronto vs comando manual: bicicleta com rodinha

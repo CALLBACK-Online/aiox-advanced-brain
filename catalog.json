@@ -138,6 +138,17 @@
       "unresolved_links": 0,
       "links_outside_course": 0,
       "agent_guide": "cursos/AIOX-Productizacao/AGENT-GUIDE.md"
+    },
+    {
+      "path": "cursos/AIOX-Enterprise",
+      "source_repository": "this-library",
+      "source_assets": "public Enterprise positioning + readiness diagnosis",
+      "created_at": "2026-08-10",
+      "markdown_files": 1,
+      "lessons": 7,
+      "kind": "preview",
+      "title": "AIOX Enterprise — vitrine do próximo contexto",
+      "agent_guide": "cursos/AIOX-Enterprise/AGENT-GUIDE.md"
     }
   ],
   "counts": {
@@ -976,21 +987,25 @@
     "personal_notes": "notas/"
   },
   "learning_journey": {
-    "canonical_order": [
+    "model": "common-core-plus-application-routes-and-continuity-preview",
+    "common_core": [
       "obsidian-ia",
       "introducao-arquitetura-sistemas",
       "aiox-fundamentals",
-      "aiox-advanced",
-      "aiox-advanced-squads"
+      "aiox-advanced"
     ],
     "responsibilities": {
       "obsidian-ia": "estudar o acervo",
       "introducao-arquitetura-sistemas": "entender sistemas",
       "aiox-fundamentals": "instalar e operar o aiox-core",
       "aiox-advanced": "aplicar o método",
-      "aiox-advanced-squads": "operar os especialistas"
+      "aiox-advanced-squads": "operar especialistas publicados",
+      "aiox-agent-engineering": "construir e operar capacidades agentic",
+      "aiox-design": "estabelecer contrato e qualidade visual",
+      "aiox-productizacao": "transformar capacidade comprovada em oferta e experimento de mercado",
+      "aiox-enterprise": "diagnosticar prontidão para operação mantida"
     },
-    "transitions": [
+    "core_transitions": [
       {
         "from": "obsidian-ia",
         "to": "introducao-arquitetura-sistemas",
@@ -1004,18 +1019,68 @@
       {
         "from": "aiox-fundamentals",
         "to": "aiox-advanced",
-        "bridge": "cursos/AIOX-Fundamentals/assessments/final-project.md"
-      },
-      {
-        "from": "aiox-advanced",
-        "to": "aiox-advanced-squads",
-        "bridge": "cursos/AIOX Advanced/ponte/trilha-squads.md"
+        "bridge": "cursos/AIOX-Fundamentals/avaliacoes/final-project.md"
       }
     ],
-    "specializations": {
-      "aiox-agent-engineering": "construir e operar capacidades agentic",
-      "aiox-design": "estabelecer contrato e qualidade visual",
-      "aiox-productizacao": "transformar capacidade comprovada em oferta e experimento de mercado"
+    "application_routes": {
+      "published-specialists": {
+        "entry_from": "aiox-advanced",
+        "courses": [
+          "aiox-advanced-squads"
+        ],
+        "bridge": "cursos/AIOX Advanced/ponte/trilhas-de-aplicacao.md"
+      },
+      "agentic-capability": {
+        "entry_from": "aiox-advanced",
+        "courses": [
+          "aiox-agent-engineering"
+        ],
+        "bridge": "cursos/AIOX Advanced/ponte/trilhas-de-aplicacao.md"
+      },
+      "visual-system": {
+        "entry_from": "aiox-advanced",
+        "courses": [
+          "aiox-design"
+        ],
+        "bridge": "cursos/AIOX Advanced/ponte/trilhas-de-aplicacao.md"
+      },
+      "market": {
+        "entry_from": "aiox-advanced",
+        "entry_gate": "capacidade executável com saída observável e evidência de valor",
+        "courses": [
+          "aiox-productizacao"
+        ],
+        "bridge": "cursos/AIOX Advanced/ponte/trilhas-de-aplicacao.md"
+      }
+    },
+    "cross_route_transitions": [
+      {
+        "from": "aiox-agent-engineering",
+        "to": "aiox-productizacao",
+        "bridge": "cursos/AIOX-Agent-Engineering/ponte/saida-para-productizacao.md"
+      },
+      {
+        "from": "aiox-agent-engineering",
+        "to": "aiox-advanced-squads",
+        "bridge": "cursos/AIOX Advanced/ponte/trilhas-de-aplicacao.md"
+      },
+      {
+        "from": "aiox-design",
+        "to": "aiox-advanced-squads",
+        "bridge": "cursos/AIOX-Design/ponte/trilha-squads-design.md"
+      },
+      {
+        "from": "aiox-productizacao",
+        "to": "aiox-advanced-squads",
+        "bridge": "cursos/AIOX-Productizacao/ponte/squads-comerciais.md"
+      }
+    ],
+    "continuity_preview": {
+      "course": "aiox-enterprise",
+      "kind": "preview",
+      "entry_from": "aiox-advanced-squads",
+      "entry_gate": "ao menos uma execução real com squad e gargalo recorrente de integração, governança ou observabilidade",
+      "bridge": "cursos/AIOX-Advanced-Squads/README.md"
     }
   },
   "courses": {
@@ -1065,7 +1130,7 @@
       "foundation_prerequisites": "cursos/AIOX Advanced/ponte/pre-requisitos-arquitetura.md",
       "core_prerequisite": "cursos/AIOX-Fundamentals/README.md",
       "bridge_to_squads": "cursos/AIOX Advanced/ponte/trilha-squads.md",
-      "next_course": "cursos/AIOX-Advanced-Squads/README.md",
+      "next_step": "cursos/AIOX Advanced/ponte/trilhas-de-aplicacao.md",
       "hub": "cursos/README.md",
       "modules": 6,
       "quizzes": 6,
@@ -1073,7 +1138,8 @@
       "archived_migrated_lessons": 42,
       "archived_legacy_lessons": 4,
       "support_lessons": 1,
-      "specializations": [
+      "application_routes": [
+        "cursos/AIOX-Advanced-Squads/README.md",
         "cursos/AIOX-Agent-Engineering/README.md",
         "cursos/AIOX-Design/README.md",
         "cursos/AIOX-Productizacao/README.md"
@@ -1088,8 +1154,10 @@
       "hub": "cursos/README.md",
       "agent_guide": "cursos/AIOX-Agent-Engineering/AGENT-GUIDE.md",
       "prerequisite": "cursos/AIOX Advanced/README.md",
-      "next_course": "cursos/AIOX-Advanced-Squads/README.md",
-      "optional_next_course": "cursos/AIOX-Productizacao/README.md"
+      "next_steps": [
+        "cursos/AIOX-Advanced-Squads/README.md",
+        "cursos/AIOX-Productizacao/README.md"
+      ]
     },
     "aiox-design": {
       "path": "cursos/AIOX-Design",
@@ -1110,7 +1178,12 @@
       "questions": 8,
       "hub": "cursos/README.md",
       "agent_guide": "cursos/AIOX-Productizacao/AGENT-GUIDE.md",
-      "prerequisite": "cursos/AIOX-Agent-Engineering/README.md"
+      "prerequisite_gate": "capacidade executável com saída observável e evidência de valor",
+      "recommended_preparation": [
+        "cursos/AIOX Advanced/README.md",
+        "cursos/AIOX-Agent-Engineering/README.md"
+      ],
+      "bridge_to_squads": "cursos/AIOX-Productizacao/ponte/squads-comerciais.md"
     },
     "aiox-advanced-squads": {
       "path": "cursos/AIOX-Advanced-Squads",
@@ -1119,7 +1192,18 @@
       "squads_covered": 24,
       "hub": "cursos/README.md",
       "prerequisite": "cursos/AIOX Advanced/README.md",
+      "optional_next_course": "cursos/AIOX-Enterprise/README.md",
       "bridge_from_advanced": "cursos/AIOX-Advanced-Squads/ponte/pre-requisitos-advanced.md"
+    },
+    "aiox-enterprise": {
+      "path": "cursos/AIOX-Enterprise",
+      "kind": "preview",
+      "lessons": 7,
+      "duration_minutes": 30,
+      "hub": "cursos/README.md",
+      "prerequisite": "cursos/AIOX-Advanced-Squads/README.md",
+      "agent_guide": "cursos/AIOX-Enterprise/AGENT-GUIDE.md",
+      "entry_gate": "ao menos uma execução real com squad e gargalo recorrente de integração, governança ou observabilidade"
     }
   }
 }

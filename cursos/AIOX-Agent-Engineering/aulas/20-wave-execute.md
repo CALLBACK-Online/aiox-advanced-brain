@@ -7,7 +7,7 @@ module: M3
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 61
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/61-wave-execute.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/61-wave-execute.md"
 source_version: 1.0.0
 ---
 # Wave Execute: orquestração avançada com waves paralelas

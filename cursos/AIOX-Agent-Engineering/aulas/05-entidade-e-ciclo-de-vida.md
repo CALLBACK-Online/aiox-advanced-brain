@@ -7,7 +7,7 @@ module: M0
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 51
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/51-mapear-entidades-antes-do-squad.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/51-mapear-entidades-antes-do-squad.md"
 source_version: 1.0.0
 ---
 # Mapear entidades antes do Squad: 5 perguntas + ciclo de vida

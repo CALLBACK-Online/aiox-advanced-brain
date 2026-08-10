@@ -6,7 +6,7 @@ lesson_id: faq-cohort-campo
 lesson_position: 75
 title: 'FAQ de campo: o que a turma Advanced realmente pergunta'
 source: upstream monorepo/apps/aiox-courses
-source_path: content/courses/aiox-advanced/lessons/75-faq-cohort-campo/lesson.md
+source_path: content/courses/aiox-advanced/aulas/75-faq-cohort-campo/lesson.md
 source_format: lesson.md
 synced_at: '2026-08-09'
 manual: true

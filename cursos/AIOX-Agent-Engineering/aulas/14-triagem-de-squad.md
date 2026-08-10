@@ -7,7 +7,7 @@ module: M2
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 55
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/55-triagem-de-squad-novo.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/55-triagem-de-squad-novo.md"
 source_version: 1.0.0
 ---
 # Triagem de Squad novo: fase-zero de prior-art + research loop

@@ -7,7 +7,7 @@ module: M0
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 30
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/30-runner-executavel-deterministico.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/30-runner-executavel-deterministico.md"
 source_version: 1.0.0
 ---
 # Runner: o executável determinístico do Workflow

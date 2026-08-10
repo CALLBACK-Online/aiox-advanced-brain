@@ -7,7 +7,7 @@ module: M3
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 60
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/60-routing-modelos.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/60-routing-modelos.md"
 source_version: 1.0.0
 ---
 # Routing de modelos: fitness, custo, qualidade e fallback

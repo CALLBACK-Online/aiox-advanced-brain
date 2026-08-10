@@ -7,7 +7,7 @@ module: M1
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 35
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/35-mesa-redonda-advisory-board.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/35-mesa-redonda-advisory-board.md"
 source_version: 1.0.0
 ---
 # Mesa-redonda e Advisory Board: decidir com clones em vez de um prompt só

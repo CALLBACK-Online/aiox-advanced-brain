@@ -10,7 +10,7 @@ status: canonical
 canonical_scope: cursos/AIOX-Productizacao
 curriculum_role: canonical-owner
 source_lesson_id: 66
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/66-tres-estagios-de-monetizacao.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/66-tres-estagios-de-monetizacao.md"
 source_version: 1.0.0
 ---
 # Três estágios de monetização: interno → cliente → produto

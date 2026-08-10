@@ -77,9 +77,11 @@ Se o vault for só `cursos/AIOX Advanced/`, use wikilinks pelo título da nota. 
 - `cursos/Introducao-a-Arquitetura-de-Sistemas/README.md` — base técnica
 - `cursos/AIOX-Fundamentals/README.md` — Core e primeiro ciclo
 - `cursos/AIOX Advanced/README.md` — módulos e rotas
-- `cursos/AIOX-Agent-Engineering/README.md` — capacidade agentic (lateral)
-- `cursos/AIOX-Design/README.md` — contrato visual (lateral)
-- `cursos/AIOX-Productizacao/README.md` — oferta e mercado (lateral)
+- `cursos/AIOX-Advanced-Squads/README.md` — especialistas publicados (rota de aplicação)
+- `cursos/AIOX-Agent-Engineering/README.md` — capacidade agentic (rota de aplicação)
+- `cursos/AIOX-Design/README.md` — contrato visual (rota de aplicação)
+- `cursos/AIOX-Productizacao/README.md` — oferta e mercado (rota de aplicação)
+- `cursos/AIOX-Enterprise/README.md` — prontidão para operação mantida (vitrine)
 - `cursos/AIOX-Advanced-Squads/Mapa-de-decisao.md`
 - `cursos/AIOX-Advanced-Squads/agent-router.json` — sinais por squad
 - `catalog.json` — existência e maturidade

@@ -13,7 +13,7 @@ Análise dos grupos WhatsApp **AIOX Cohort Advanced T1 e T2**.
 
 ## Aula dedicada
 
-- `lessons/75-faq-cohort-campo.md` — FAQ de campo + §00 findability
+- `aulas/75-faq-cohort-campo.md` — FAQ de campo + §00 findability
 
 ## Aulas com seção `cohort-campo`
 

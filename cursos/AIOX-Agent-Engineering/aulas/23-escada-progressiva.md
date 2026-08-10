@@ -7,7 +7,7 @@ module: M4
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 source_lesson_id: 69
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/69-escada-progressiva-script-a-saas.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/69-escada-progressiva-script-a-saas.md"
 source_version: 1.0.0
 ---
 # Escada Progressiva: Script → Squad → Workflow → Runner → API → App → SaaS

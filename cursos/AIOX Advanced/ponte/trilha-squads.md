@@ -18,7 +18,7 @@ Abra o arquivo `README.md` dessa pasta no explorer do repositório (não é wiki
 
 ## Como o Advanced prepara a entrada em Squads
 
-Na jornada canônica, conclua a sequência ativa e o Capstone do Advanced antes da aula 00 de Squads. O `mission brief`, os critérios de aceite e as evidências atravessam esta ponte; não leve apenas uma intenção solta.
+Na rota de aplicação Squads, conclua a sequência ativa e o Capstone do Advanced antes da aula 00. O `mission brief`, os critérios de aceite e as evidências atravessam esta ponte; não leve apenas uma intenção solta.
 
 | Seu gargalo | Preparação | Abra no curso Squads… |
 |--------------|------------|------------------------|

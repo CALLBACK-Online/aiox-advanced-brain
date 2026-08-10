@@ -10,7 +10,7 @@ status: canonical
 canonical_scope: cursos/AIOX-Productizacao
 curriculum_role: canonical-owner
 source_lesson_id: 65
-source_path: "cursos/AIOX Advanced/archive/migrated/lessons/65-tres-caminhos-de-produto.md"
+source_path: "cursos/AIOX Advanced/archive/migrated/aulas/65-tres-caminhos-de-produto.md"
 source_version: 1.0.0
 ---
 # Três caminhos de produto: Consultoria → App Web → SaaS

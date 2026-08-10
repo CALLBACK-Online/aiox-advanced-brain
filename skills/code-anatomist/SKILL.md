@@ -5,6 +5,24 @@ description: "Complete software reverse engineering pipeline — 9 phases coveri
 
 # Code Anatomist — Complete Software Reverse Engineering Pipeline
 
+
+## Quando usar
+
+- Use esta skill como **porta de entrada** do squad `code-anatomist` quando a missão for a dor coberta pela aula do curso.
+- **Não use** como substituto do mapa de decisão se a intenção for ambígua entre vários squads — use `aiox-squads` primeiro.
+
+## Quando não usar
+
+- Missão de outro domínio (escolha outro squad/skill).
+- Só quer estudar anatomia sem copiar o pacote: leia a aula e o `squads/code-anatomist/` sem ativar runtime.
+
+## Aula do curso (como usar de verdade)
+
+`cursos/AIOX-Advanced-Squads/aulas/03-code-anatomist.md`
+
+Lá estão: quando usar/evitar, briefing, ativação, evidência e limites de maturidade.
+
+
 Squad: `squads/code-anatomist/` · entry agent: `decoder-chief` em `squads/code-anatomist/agents/decoder-chief.md`.
 
 ## PURPOSE
