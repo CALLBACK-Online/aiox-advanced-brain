@@ -17,7 +17,7 @@ Depois do critério (este curso), opere no curso Squads:
 | Aulas 01–05 (contrato) | `aulas/14-design-system.md` se for **construir** biblioteca |
 | Aulas 05, 07, 08 (drift/prova) | `aulas/15-design-ops.md` se for **governar** |
 | Missão de marca/identidade | `aulas/13-brand.md` |
-| Aula 09 | mapa skill vs squad (revisão) |
+| Aula 19 | mapa skill vs squad (revisão) |
 
 Pacotes:
 

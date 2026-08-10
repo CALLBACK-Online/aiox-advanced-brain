@@ -81,7 +81,7 @@ Não precisa compilar nada — precisa ser **legível e acionável**.
 ## Pergunte ao seu agente
 
 ```text
-Audite este DESIGN.md. Aponte ambiguidades que fariam um agente inventar UI. Sugira só cortes e cláusulas faltantes. Não reescreva o arquivo inteiro sem eu pedir. Não adicione tokens "por while".
+Audite este DESIGN.md. Aponte ambiguidades que fariam um agente inventar UI. Sugira só cortes e cláusulas faltantes. Não reescreva o arquivo inteiro sem eu pedir. Não adicione tokens "por via das dúvidas".
 ```
 
 ## Evidência de conclusão

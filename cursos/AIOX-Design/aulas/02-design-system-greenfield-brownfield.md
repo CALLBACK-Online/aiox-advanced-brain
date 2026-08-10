@@ -31,9 +31,9 @@ flowchart TD
   B -->|Sim| C{"Há tokens/componentes\nnomeados?"}
   C -->|Não| I["Brownfield implícito\ninventariar padrões"]
   C -->|Sim| L["Brownfield com DS\nauditar drift"]
-  G --> X["Aula 03: DESIGN.md"]
+  G --> X["Aula 08: DESIGN.md"]
   I --> X
-  L --> Y["Aulas 05 e 08: anti-drift"]
+  L --> Y["Aula 09: anti-drift"]
 ```
 
 ## Quando usar — e quando não usar
@@ -61,7 +61,7 @@ SaaS com 40 telas e botões de 6 alturas diferentes. Porta: **implícito**. Inve
 
 ## Âncora no acervo
 
-`squads/design-system/` (construir) vs `squads/design-ops/` (governar) — detalhe na aula 09.
+`squads/design-system/` (construir) vs `squads/design-ops/` (governar) — detalhe na aula 19.
 
 ## Prática
 
