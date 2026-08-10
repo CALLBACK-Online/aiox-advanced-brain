@@ -20,8 +20,11 @@ artifacts/
 # Overrides locais
 AGENTS.local.md
 CLAUDE.local.md
-.obsidian/*space*.json
-.obsidian/themes/
+
+# Obsidian: vault config versionada (alunos abrem a raiz como vault).
+# Só lixo regenerável fica de fora — não ignore themes/workspace/graph.
+.obsidian/cache
+.obsidian/workspace-mobile.json
 
 # Anotações dos alunos (só README versionado)
 notas/**

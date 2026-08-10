@@ -1,114 +1,22 @@
 {
   "collapse-filter": false,
-  "search": "-path:.obsidian -path:node_modules -path:scripts -path:docs -path:tasks -path:agents -path:workflows -path:templates -path:checklists -path:data -path:references -path:assets -file:.yaml -file:.yml -file:.json -file:.css -file:.js -file:.cjs -file:.mjs -file:.sh -file:.py -file:CHANGELOG -file:ATTRIBUTION",
-  "showTags": true,
+  "search": "",
+  "showTags": false,
   "showAttachments": false,
-  "hideUnresolved": true,
-  "showOrphans": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
   "collapse-color-groups": false,
-  "colorGroups": [
-    {
-      "query": "tag:#hub",
-      "color": {
-        "a": 1,
-        "rgb": 11823615
-      }
-    },
-    {
-      "query": "tag:#layer/skill",
-      "color": {
-        "a": 1,
-        "rgb": 7457838
-      }
-    },
-    {
-      "query": "tag:#layer/squad",
-      "color": {
-        "a": 1,
-        "rgb": 36095
-      }
-    },
-    {
-      "query": "tag:#layer/nota",
-      "color": {
-        "a": 1,
-        "rgb": 1033457
-      }
-    },
-    {
-      "query": "tag:#layer/curso",
-      "color": {
-        "a": 1,
-        "rgb": 14391348
-      }
-    },
-    {
-      "query": "path:skills",
-      "color": {
-        "a": 1,
-        "rgb": 7457838
-      }
-    },
-    {
-      "query": "path:squads",
-      "color": {
-        "a": 1,
-        "rgb": 36095
-      }
-    },
-    {
-      "query": "path:notas",
-      "color": {
-        "a": 1,
-        "rgb": 1033457
-      }
-    },
-    {
-      "query": "path:entradas",
-      "color": {
-        "a": 1,
-        "rgb": 6336039
-      }
-    },
-    {
-      "query": "path:\"cursos/AIOX-Advanced-Squads\"",
-      "color": {
-        "a": 1,
-        "rgb": 11950491
-      }
-    },
-    {
-      "query": "path:\"cursos/Obsidian-IA\"",
-      "color": {
-        "a": 1,
-        "rgb": 10271770
-      }
-    },
-    {
-      "query": "path:\"cursos/AIOX Advanced\"",
-      "color": {
-        "a": 1,
-        "rgb": 14391348
-      }
-    },
-    {
-      "query": "path:cursos",
-      "color": {
-        "a": 1,
-        "rgb": 10921365
-      }
-    }
-  ],
+  "colorGroups": [],
   "collapse-display": false,
   "showArrow": false,
-  "textFadeMultiplier": -0.8,
-  "nodeSizeMultiplier": 1.05,
-  "lineSizeMultiplier": 1.15,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
   "collapse-forces": false,
-  "centerStrength": 0.28,
-  "repelStrength": 16,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
   "linkStrength": 1,
-  "linkDistance": 120,
-  "scale": 0.15,
+  "linkDistance": 250,
+  "scale": 0.13352957264476153,
   "close": false
 }

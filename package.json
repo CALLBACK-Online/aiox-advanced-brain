@@ -8,21 +8,14 @@
     "squads/",
     "cursos/",
     "00-HOME.md",
-    ".obsidian/app.json",
-    ".obsidian/appearance.json",
-    ".obsidian/core-plugins.json",
-    ".obsidian/README.md",
-    ".obsidian/graph.aiox-brain.json",
-    ".obsidian/graph.json",
-    ".obsidian/snippets/aiox-brain-folders.css",
+    ".obsidian/",
     "AGENTS.md",
     "CLAUDE.md",
     "catalog.json",
     "README.md",
     "NOTICE.md",
     "CHANGELOG.md",
-    "notas/",
-    ".obsidian/graph.aiox-brain.audit.json"
+    "notas/"
   ],
   "scripts": {
     "validate": "python3 dev/validate.py",

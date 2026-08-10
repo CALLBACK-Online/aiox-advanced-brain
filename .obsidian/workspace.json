@@ -1,0 +1,223 @@
+{
+  "main": {
+    "id": "f8fe3cc6f948c9de",
+    "type": "split",
+    "children": [
+      {
+        "id": "9817bddeccabd0ed",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dfc34c375a1af4b5",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Visualização em gráfico"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "85233d45cea41c6d",
+    "type": "split",
+    "children": [
+      {
+        "id": "7db88c23a04854a8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e09f45f754362f95",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de arquivos"
+            }
+          },
+          {
+            "id": "9152a938de0506e4",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "2eacf6e391756673",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "6fb66a65a9ee64ba",
+    "type": "split",
+    "children": [
+      {
+        "id": "c980b5b63f2b8f0b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "214a215a625ea90a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos"
+            }
+          },
+          {
+            "id": "12ca20ea14665293",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links de saída"
+            }
+          },
+          {
+            "id": "312dc9f315190e26",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "a1e4f6c8089ea707",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "b0ed551ad2ace063",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Sumário"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false
+    }
+  },
+  "active": "dfc34c375a1af4b5",
+  "lastOpenFiles": [
+    "cursos/AIOX-Design/COURSE-BRIEF.md",
+    "cursos/_tools_test_leak/evil.py",
+    "cursos/_tools_test_leak",
+    "dev/courses/aiox-enterprise/__pycache__/checks.cpython-314.pyc",
+    "dev/courses/aiox-enterprise/__pycache__",
+    "dev/courses/obsidian-ia/__pycache__/checks.cpython-314.pyc",
+    "dev/courses/obsidian-ia/__pycache__",
+    "dev/courses/aiox-advanced-squads/__pycache__/checks.cpython-314.pyc",
+    "dev/courses/aiox-advanced-squads/__pycache__",
+    "dev/courses/aiox-productizacao/__pycache__/checks.cpython-314.pyc",
+    "dev/courses/aiox-productizacao/__pycache__",
+    "dev/README.md",
+    "docs/producao-cursos/README.md",
+    "docs/producao-cursos/aiox-productizacao/COURSE-BRIEF.md",
+    "docs/producao-cursos/aiox-fundamentals/validation-report.md",
+    "docs/producao-cursos/aiox-fundamentals/reformed-brief-validation-report.md",
+    "docs/producao-cursos/aiox-fundamentals/gap-analysis.md",
+    "docs/producao-cursos/aiox-fundamentals/course-outline.md",
+    "docs/producao-cursos/aiox-fundamentals/COURSE-BRIEF.md",
+    "docs/producao-cursos/aiox-enterprise/GAP-ANALYSIS.md",
+    "docs/producao-cursos/aiox-enterprise/COURSE-BRIEF.md",
+    "docs/producao-cursos/aiox-design/course-outline.md",
+    "docs/producao-cursos/aiox-design/CURRICULUM-EXPANSION.md",
+    "docs/producao-cursos/aiox-design/COURSE-BRIEF.md",
+    "docs/producao-cursos/aiox-agent-engineering/COURSE-BRIEF.md",
+    "docs/producao-cursos/aiox-advanced/validation-report.md",
+    "docs/producao-cursos/aiox-advanced/CURRICULUM-GAP.md",
+    "cursos/AIOX-Enterprise/templates/mapa-custo-reconstrucao.md",
+    "cursos/AIOX-Enterprise/RECURSOS.md",
+    "cursos/AIOX-Enterprise/modulos/03-prontidao-e-decisao.md",
+    "cursos/AIOX-Enterprise/modulos/02-operacao-como-sistema.md",
+    "cursos/AIOX-Enterprise/modulos/01-da-competencia-ao-gargalo.md",
+    "cursos/AIOX-Enterprise/aulas/06-o-primeiro-passo-se-houver-fit.md",
+    "cursos/AIOX-Enterprise/aulas/05-prontidao-evidencia-antes-de-pressa.md",
+    "cursos/AIOX-Enterprise/aulas/04-o-que-voce-deixa-de-reconstruir.md",
+    "cursos/AIOX-Enterprise/aulas/03-quando-os-squads-operam-como-sistema.md"
+  ]
+}
