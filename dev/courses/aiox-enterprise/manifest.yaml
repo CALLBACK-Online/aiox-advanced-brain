@@ -1,7 +1,5 @@
-# Manifesto do validador — aiox-enterprise
+# Descoberta do harness (política de validação vive em checks.py / catalog.json)
 id: aiox-enterprise
 path: "cursos/AIOX-Enterprise"
 title: "AIOX Enterprise (preview)"
 scan_links: false
-
-# Checagens específicas: checks.py (run(ctx))

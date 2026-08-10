@@ -137,7 +137,7 @@ def run(ctx: Context) -> str | None:
     if not curriculum_path.exists():
         print("Erros: 1")
         print("ERROR curriculum.yaml ausente")
-        sys.exit(1)
+        return None  # was sys.exit — harness aggregates ctx.errors
     curriculum = parse_curriculum(curriculum_path)
     if len(curriculum) != 7:
         errors.append(f"curriculum.yaml: esperadas 7 aulas; encontradas {len(curriculum)}")

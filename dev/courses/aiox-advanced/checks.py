@@ -5,6 +5,8 @@ Carregado por dev/validate.py. Preferir lib.* para utilitários novos.
 from __future__ import annotations
 
 from lib.context import Context
+from lib.frontmatter import parse_frontmatter_yaml
+from lib.links import has_absolute_machine_path
 
 
 def run(ctx: Context) -> str | None:
@@ -15,11 +17,6 @@ def run(ctx: Context) -> str | None:
     from collections import Counter, defaultdict
     from pathlib import Path
     from urllib.parse import unquote
-
-    try:
-        import yaml
-    except ImportError:
-        yaml = None  # type: ignore
 
     ROOT = ctx.root
     COURSE = ctx.course
@@ -32,8 +29,6 @@ def run(ctx: Context) -> str | None:
     import sys
     from collections import Counter, defaultdict
     from pathlib import Path
-
-    import yaml
 
     COURSE_ID = "aiox-advanced"
     SCOPE = "cursos/AIOX Advanced"
@@ -63,9 +58,7 @@ def run(ctx: Context) -> str | None:
 
 
     def frontmatter(path: Path) -> tuple[dict, str]:
-        text = path.read_text(encoding="utf-8")
-        match = re.match(r"^---\n(.*?)\n---\n", text, re.S)
-        return (yaml.safe_load(match.group(1)) or {}, text) if match else ({}, text)
+        return parse_frontmatter_yaml(path)
 
 
     errors = ctx.errors  # shared list

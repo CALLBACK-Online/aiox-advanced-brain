@@ -1,7 +1,5 @@
-# Manifesto do validador — aiox-advanced-squads
+# Descoberta do harness (política de validação vive em checks.py / catalog.json)
 id: aiox-advanced-squads
 path: "cursos/AIOX-Advanced-Squads"
 title: "AIOX Advanced Squads"
 scan_links: false
-
-# Checagens específicas: checks.py (run(ctx))

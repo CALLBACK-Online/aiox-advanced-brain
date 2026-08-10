@@ -6,14 +6,13 @@ on:
   pull_request:
 
 jobs:
-  validate-course:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Install PyYAML
-        run: pip install pyyaml
-      - name: Validate course package
-        run: npm run validate:course
+      # PyYAML opcional: harness e Advanced rodam sem ele (fallback + lib.frontmatter).
+      - name: Validate library (surface → courses → journey → routing)
+        run: npm run validate
