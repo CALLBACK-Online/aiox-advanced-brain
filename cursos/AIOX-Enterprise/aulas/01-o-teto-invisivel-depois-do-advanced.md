@@ -58,6 +58,8 @@ No acervo público, você estuda e adapta ativos ao próprio projeto. Isso prese
 
 O desejo correto não é ter “mais IA”. É recuperar atenção que hoje fica presa ao trabalho de cola.
 
+As três próximas aulas percorrem uma carga por vez: contexto (aula 02), coordenação (aula 03) e manutenção (aula 04).
+
 ## O que não muda
 
 O sistema não escolhe seu objetivo de negócio nem determina sozinho o que é uma boa decisão. Quanto mais importante a operação, mais necessária continua sendo a responsabilidade do operador.

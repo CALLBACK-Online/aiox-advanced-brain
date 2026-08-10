@@ -36,7 +36,7 @@ Se o YAML não fecha, volte ao brand squad ou complete repertório (Pinterest/re
 
 1. Promove decisões a **tokens** e proibições no DESIGN.md.
 2. Classifica componentes na taxonomia.
-3. Materializa prova no Storybook (meta da expansão curricular — ver `CURRICULUM-EXPANSION.md`).
+3. Materializa prova no Storybook (aulas 11–14 + capstone 20).
 4. Define governança: quem altera token vs quem só compõe tela.
 
 ## O que **não** misturar
@@ -45,7 +45,6 @@ Se o YAML não fecha, volte ao brand squad ou complete repertório (Pinterest/re
 - Orquestração/harness → Agent Engineering.
 - Brand book sem tokens → ainda não é contrato legível por agente.
 
-## Expansão
+## Onde isso vive na trilha
 
-A recuperação completa do processo Brand Book → DS das lives está planejada em
-[`CURRICULUM-EXPANSION.md`](../CURRICULUM-EXPANSION.md) (módulos M0–M2 + capstone executável).
+Brand Book → tokens → Storybook percorre **M0–M3** e fecha no capstone executável (aula 20 + [Rubrica](../Rubrica.md)).

@@ -9,14 +9,12 @@ canonical_scope: cursos/AIOX-Fundamentals
 
 ## Desenho curricular
 
-O ponto de partida foi o desenho aprovado de **AIOX Fundamentals** fornecido pelo usuário:
+O ponto de partida foi o desenho aprovado de **AIOX Fundamentals** fornecido pelo usuário: brief do curso, outline, gap analysis, deviations de gate e relatório do brief — **bastidor de produção editorial**, mantido fora do pacote distribuído (localmente em `docs/producao-cursos/aiox-fundamentals/`, gitignored).
 
-- `COURSE-BRIEF.md`;
-- `course-outline.md`;
-- `curriculum.yaml`;
-- `gap-analysis.md`;
-- `deviations.yaml`;
-- relatório do gate do brief.
+No pacote do aluno permanece a estrutura canônica:
+
+- `curriculum.yaml` — mapa máquina-legível de módulos, aulas e avaliações;
+- `sources/SOURCE-MANIFEST.yaml` + `FONTES.md` — trilha auditável até o snapshot do Core.
 
 Esse desenho definiu três módulos, 12 aulas, três quizzes, um projeto final, duração de 7h45 e a transformação “de pedidos isolados para execução por contexto, story e evidência”.
 

@@ -254,10 +254,20 @@ Tabela ampliada: `cursos/AIOX-Advanced-Squads/Guia-de-execucao.md`.
 - Não publique nem faça push sem solicitação explícita do usuário.
 - Antes de concluir mudanças estruturais no acervo: `npm run validate`.
 
+### Superfície do aluno vs maintainer (KISS)
+
+Teste único: **o aluno precisa disto para estudar ou copiar um asset?**
+
+- **Sim** → `cursos/` · `skills/` · `squads/` · pack root (`README`, `AGENTS`, `catalog`, …). Sem `_tools/`, sem `*.py` de gate, sem brief/gap/report de produção.
+- **Não, mas prova o acervo** → `dev/` (versionado; fora do npm). Entrada: `npm run validate` / `dev/validate.py`.
+- **Não, é rascunho editorial ou scratch** → `docs/` ou `scripts/` (gitignore). Briefs, gaps, deviations, CURRICULUM-* ficam em `docs/producao-cursos/<id>/`.
+- **Nota pessoal do aluno** → `notas/` (só `README` versionado).
+
+Gate: `npm run validate` começa em surface check — vazar tooling/bastidor em `cursos/` falha fechado.
+
 ### O que não versionar / não inventar
 
-- Projeções de IDE: `.claude/`, `.codex/`, `.agents/` (este repo distribui em `skills/` e `squads/`).
-- Ferramentas locais: `scripts/`, `docs/` (se ignorados no publish).
+- Projeções de IDE: `.claude/`, `.codex/`, `.agents/` (distribuição canônica em `skills/` e `squads/`).
 - Um runtime AIOX completo “escondido” aqui — não existe neste pacote.
 
 ---

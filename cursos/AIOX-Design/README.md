@@ -22,7 +22,6 @@ Curso de **design system para IA**: decisão, referências, Brand Book→tokens,
 
 **Aulas:** 20 · **Módulos:** 6 · **Quizzes:** 5 · **Questões:** 20 · **Capstone:** Storybook obrigatório
 
-- [Brief](COURSE-BRIEF.md) · [Outline](course-outline.md) · [Expansão / proveniência](CURRICULUM-EXPANSION.md)
 - [Casos live](casos-live-cohort.md)
 - [Avaliações](Assessments.md) · [Rubrica](Rubrica.md) · [Projeto integrador](Projeto-Integrador.md)
 - [Glossário](Glossario.md) · [Fontes](FONTES.md) · [AGENT-GUIDE](AGENT-GUIDE.md)

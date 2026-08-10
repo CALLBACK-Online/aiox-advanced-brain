@@ -476,6 +476,8 @@ seu — inclusive apertar o cronômetro de novo na semana que vem.
 
 ---
 
+> **Sinal de continuidade**: você acabou de provar que constrói de ponta a ponta. Se o gargalo agora é sustentar — contexto remontado, integrações refeitas e governança na mão a cada ciclo —, há uma trilha de 30 minutos para diagnosticar o próximo contexto: `cursos/AIOX-Enterprise/README.md`.
+
 ## Navegação
 
 ← [[aulas/44-metodo-s2s|Método S2S: converter sinais em sistemas]] · ↑ [[modulos/Módulo C - Capstone|MC — Capstone]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · fim

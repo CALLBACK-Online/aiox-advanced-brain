@@ -124,7 +124,7 @@ Entrada típica em Productização: **depois** de ter capacidade + evidência (A
 
 ## Links rápidos
 
-- Productização: `cursos/AIOX-Productizacao/README.md` · brief: `COURSE-BRIEF.md`
+- Productização: `cursos/AIOX-Productizacao/README.md`
 - FAQ de campo (cohort): `cursos/AIOX-Productizacao/FAQ-campo-cohort.md`
 - Personas de capstone: `cursos/AIOX-Productizacao/personas-capstone.md`
 - Agent Engineering: `cursos/AIOX-Agent-Engineering/README.md`

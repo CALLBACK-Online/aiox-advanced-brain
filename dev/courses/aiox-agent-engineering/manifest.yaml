@@ -1,0 +1,7 @@
+# Manifesto do validador — aiox-agent-engineering
+id: aiox-agent-engineering
+path: "cursos/AIOX-Agent-Engineering"
+title: "AIOX Agent Engineering"
+scan_links: false
+
+# Checagens específicas: checks.py (run(ctx))

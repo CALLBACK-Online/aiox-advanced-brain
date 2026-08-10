@@ -1,0 +1,7 @@
+# Manifesto do validador — introducao-arquitetura
+id: introducao-arquitetura-sistemas
+path: "cursos/Introducao-a-Arquitetura-de-Sistemas"
+title: "Introdução à Arquitetura de Sistemas"
+scan_links: false
+
+# Checagens específicas: checks.py (run(ctx))

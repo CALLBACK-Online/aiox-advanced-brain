@@ -66,7 +66,7 @@ Depois pergunte:
 - ela acontece por exceção ou por padrão?
 - quem fica impedido de avançar enquanto ela não termina?
 
-Esse registro é o seu **Mapa do Custo de Reconstrução** — a leitura mais confiável do valor potencial de uma base mantida. Leve-o para o [diagnóstico de prontidão](../avaliacoes/diagnostico-de-prontidao.md).
+Esse registro é o seu **Mapa do Custo de Reconstrução** — a leitura mais confiável do valor potencial de uma base mantida. Transforme-o em número mensal com a [calculadora](../templates/mapa-custo-reconstrucao.md) e leve-o para o [diagnóstico de prontidão](../avaliacoes/diagnostico-de-prontidao.md).
 
 ## Navegação
 

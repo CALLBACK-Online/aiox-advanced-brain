@@ -1,0 +1,7 @@
+# Manifesto do validador — aiox-advanced
+id: aiox-advanced
+path: "cursos/AIOX Advanced"
+title: "AIOX Advanced"
+scan_links: false
+
+# Checagens específicas: checks.py (run(ctx))

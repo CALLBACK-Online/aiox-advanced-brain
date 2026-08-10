@@ -26,6 +26,8 @@ Use esta trilha quando a pessoa perguntar:
 | Entender workspace e continuidade | [Aula 02](aulas/02-do-contexto-remontado-ao-contexto-operacional.md) |
 | Entender integração entre squads | [Aula 03](aulas/03-quando-os-squads-operam-como-sistema.md) |
 | Nomear o custo de sustentação | [Aula 04](aulas/04-o-que-voce-deixa-de-reconstruir.md) |
+| Avaliar sinais de prontidão (ou de que é cedo) | [Aula 05](aulas/05-prontidao-evidencia-antes-de-pressa.md) |
+| Decidir o próximo passo | [Aula 06](aulas/06-o-primeiro-passo-se-houver-fit.md) |
 | Verificar fit | [Diagnóstico](avaliacoes/diagnostico-de-prontidao.md) |
 | Responder objeções | [FAQ](FAQ.md) |
 

@@ -88,14 +88,12 @@ Os **24 squads** têm “como usar” em `cursos/AIOX-Advanced-Squads/` (1 aula 
 
 ## Arquivos principais
 
-- `COURSE-BRIEF.md` — público, transformação, limites e aprovação curricular.
 - `curriculum.yaml` — identidade estável das aulas, objetivos de Bloom e paths.
 - `aulas/` — conteúdo didático.
 - `references/core-skills-runtime.md` — skills core em detalhe.
 - `avaliacoes/` — quizzes e projeto final.
-- `validation-report.md` — resultado consolidado dos gates.
-- `deviations.yaml` — decisões conscientes tomadas durante o upgrade.
 - `FONTES.md` e `PROVENIENCIA.md` — rastreabilidade sem importar paths de máquina.
+- `sources/SOURCE-MANIFEST.yaml` — hashes do snapshot do Core usado como fonte.
 
 ## Escopo
 

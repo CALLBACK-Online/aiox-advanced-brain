@@ -1,0 +1,7 @@
+# Manifesto do validador — aiox-fundamentals
+id: aiox-fundamentals
+path: "cursos/AIOX-Fundamentals"
+title: "AIOX Fundamentals"
+scan_links: false
+
+# Checagens específicas: checks.py (run(ctx))

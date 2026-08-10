@@ -23,7 +23,7 @@ Proveniência no monorepo irmão, fora da distribuição deste curso:
 
 As transcrições combinam aproximadamente 84,6 mil palavras. O curso contém curadoria pedagógica e casos sintetizados; elas não são dependência de estudo nem são copiadas integralmente para este repositório.
 
-Síntese pedagógica: [casos-live-cohort.md](casos-live-cohort.md) · plano: [CURRICULUM-EXPANSION.md](CURRICULUM-EXPANSION.md)
+Síntese pedagógica: [casos-live-cohort.md](casos-live-cohort.md). O plano editorial de expansão (bastidor de produção) não faz parte do pacote do aluno.
 
 ## Assets do acervo
 

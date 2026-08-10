@@ -1,0 +1,7 @@
+# Manifesto do validador — aiox-productizacao
+id: aiox-productizacao
+path: "cursos/AIOX-Productizacao"
+title: "AIOX Productização"
+scan_links: false
+
+# Checagens específicas: checks.py (run(ctx))

@@ -163,6 +163,8 @@ recuse aprovação se o próximo passo for apenas construir mais. Termine com
 um experimento de até 14 dias e um veto explícito.
 ```
 
+> **Sinal de continuidade**: você decidiu o que productizar — e toda oferta que escala vira operação recorrente. Se sustentar essa operação virou o gargalo, há uma trilha de 30 minutos para diagnosticar o próximo contexto: `cursos/AIOX-Enterprise/README.md`.
+
 ## Navegação
 
 [← Aula anterior](05-estagios-de-monetizacao.md) · [Capstone](../modulos/MC-capstone.md) · [Curso](../README.md) · [Projeto Integrador](../Projeto-Integrador.md)

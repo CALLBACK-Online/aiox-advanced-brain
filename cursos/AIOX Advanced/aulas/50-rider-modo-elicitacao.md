@@ -151,6 +151,18 @@ breaker. Aqui a gente instancia **onde o humano segura o volante** sem matar o r
 A metáfora que cola: rédeas, não chicote. Rédea puxa no momento certo. Chicote
 cospe a cada metro. O loop precisa de velocidade **e** freio seletivo.
 
+Um aviso honesto de fonte: nas gravações da cohort o apelido "rider" não aparece.
+O que aparece, com todas as letras, é o **modo de elicitação** — o mesmo mecanismo
+com o crachá do método: um estado declarado do fluxo em que a conversa existe para
+extrair decisão sua, separado do modo comando em que o determinismo executa.
+
+> **Alan (aula-01 L2969)**: Toda vez que começar a conversar muito com a IA, sendo que você não está no modo de elicitação, no modo de chat, está errado.
+
+> **Alan (aula-01 L2971)**: Daí eu vou lá e fico conversando com ela no meio do processo. Cara, tá errado. Por quê? Porque tu vai fazer com que a LLM saia daquele papel, das coisas que foram todas estruturadas, do determinismo por trás. E ela começa a criar as próprias formas de fazer aquilo que você quer fazer.
+
+Guarda essa régua para o resto da aula: conversa solta fora do modo de elicitação
+é vazamento de determinismo. Elicitação é um estado do workflow, não um bate-papo.
+
 - **3**: tipos de gate de ouro
 - **1**: piloto por decisão crítica
 - **0**: espaço pra elicit de óbvio
@@ -199,6 +211,18 @@ que você nunca aprovaria de olhos abertos.
 Olha só: rider não é "eu desconfio da IA". Rider é "eu sei **onde** o julgamento
 humano ainda é o ouro do processo".
 
+Foi exatamente esse critério que apareceu ao vivo quando a cohort decidiu onde o
+workflow de Brownfield Discovery **não** se aplica: projeto novo do zero é puro
+trade-off, não tem código para auditar, então o agente precisa tirar de você o
+que o repositório não tem.
+
+> **Pedro (aula-01 L1587)**: Não vale, porque tem muita coisa ali de decisão que requer elicitação. Requer que o agente tire informação de você para ter resposta, já que a gente não é técnico suficiente para trazer. Qual é a tech stack que ele precisa.
+
+E o custo de pular a rédea também foi dito sem anestesia, sobre quem chama o
+squad "no papo" em vez de acionar a task que já carrega a entrevista embutida:
+
+> **Pedro (aula-06 L3903)**: Se você chama o Squad e só vai conversando com ele aleatório e não usa o Squad Creator, tu tá perdendo a elicitação dele.
+
 - **1. Risco**: Irreversível, caro, público, legal, prod. [freio]
 - **2. Trade-off**: Duas rotas válidas; gosto e estratégia importam. [escolha]
 - **3. Mecânico**: Reversível, testeável, scriptável — sem elicit. [silêncio]
@@ -231,6 +255,25 @@ Pontos clássicos de **silêncio** (sem elicit):
 Regra prática em cinco segundos: **é irreversível, caro ou de gosto estratégico?**
 Elicit. **É mecânico e reversível?** Roda. **Não sei?** Trate como elicit até
 provar o contrário uma vez — e depois documente o silêncio.
+
+Esse dial já existe pronto no Dev do método, demonstrado ao vivo na cohort como
+três níveis de rédea escolhidos por passo. Yolo solta tudo, Interactive puxa no
+meio, Preflight puxa antes de largar:
+
+> **Pedro (aula-01 L2161)**: O Interactive, no meio do desenvolvimento, ele vai te perguntando coisas.
+
+> **Pedro (aula-01 L2163)**: E o Yolo vai sozinho.
+
+> **Pedro (aula-01 L2167-2169)**: O Preflight é o quê? Ele olha o Story e faz umas perguntas para você para ele iniciar contextualizado com a sua cabeça.
+
+Traduzindo pro mapa desta aula: **Yolo** é silêncio operacional (passo mecânico
+com QG forte cobrindo a saída), **Interactive** é elicit espalhado no percurso
+(útil quando o aceite é ambíguo), **Preflight** é elicit concentrado no gate de
+entrada, antes do primeiro token de execução. O critério do Preflight, na voz de
+quem o usa: "coisas que precisam de muito contexto específico... um contexto
+específico do seu conhecimento da sua área" (aula-01 L2167). Ou seja: onde o ouro
+está na sua cabeça, a rédea vem antes do galope. [SOURCE: transcricoesT1 aula-01
+L2123-2169, demo do fluxo Dev com Yolo/Interactive/Preflight]
 
 **Atalho de decisão**
 
@@ -286,6 +329,63 @@ errado de um dev cansado. Rider é engenharia de freio, não paranoia.
 - Confirmação com nome do ambiente
 - Elicit só no precipício
 - Eco de contexto antes do OK
+
+---
+
+## Casos de campo: a elicitação rodando ao vivo
+
+Dois momentos reais das gravações, sem retoque de roteiro.
+
+**A entrevista do arquiteto.** Na demo de documentação de projeto, Pedro mostra o
+agente arquiteto que ele mesmo configurou para não aceitar pedido solto: o comando
+de analisar o projeto abre uma entrevista — qual feature entra, se precisa de API
+externa — e cada resposta curta redireciona o documento inteiro.
+
+> **Pedro (aula-01 L3527)**: Ele vai te fazendo. Eu fiz ele de uma forma que é uma entrevista.
+
+> **Pedro (aula-01 L3533)**: Sim, não ou não sei. Porque essas respostinhas vão mudar completamente como tem que ser a documentação.
+
+> **Pedro (aula-01 L3535)**: Eu não seria capaz de gerar documentação tão boa.
+
+Repara no desenho: a pergunta existe porque **muda rota** (API externa sim/não
+bifurca a arquitetura), não para pedir permissão. É o elicit de trade-off desta
+aula, implementado como entrevista com opções fechadas. [SOURCE: transcricoesT1
+aula-01 L3505-3545, demo do arquiteto em modo entrevista]
+
+**"Meu Deus, eu estava fazendo errado."** Na aula de squads, Renata pergunta se
+não precisa explicar tudo o que quer antes de chamar o Create Squad. Pedro vira o
+jogo: quem conduz a conversa é a task, não ela.
+
+> **Pedro (aula-06 L3819)**: Sim, mas ele já está seguindo uma task. A task dele é te perguntar o que você precisa.
+
+> **Renata (aula-06 L3829)**: Meu Deus, eu estava fazendo errado. Eu estava colocando Create Squad e dizendo tudo aquilo que eu quero.
+
+O insight que ela verbaliza é o coração do rider: você não despeja contexto no
+agente; o agente **elicita** o contexto de você, na ordem certa, porque alguém
+desenhou as perguntas antes. Despejar tudo de uma vez parece produtivo — e joga
+fora a elicitação que o método já pagou para construir. [SOURCE: transcricoesT1
+aula-06 L3810-3830, diálogo ao vivo sobre Create Squad]
+
+### Quando o agente puxa a própria rédea: Auto-Clarify
+
+O rider também tem versão automática. No Tech Research, a primeira etapa é o
+Auto-Clarify: pega pedido vago (até áudio) e transforma em queries melhores; se
+a entrada é ruim demais, o próprio agente ativa o modo de elicitação e te devolve
+perguntas antes de gastar um token de pesquisa.
+
+> **Alan (t2-aula-5 L2845)**: Aqui não tem problema mandar um áudio, porque a primeira ferramenta que eu tenho aqui é o Auto-Clarify.
+
+> **Alan (t2-aula-5 L2849)**: Pegar tudo que tu escreveu, que não foi de uma forma às vezes muito direta, ou que tu falou, e transformar isso em queries melhores.
+
+> **Alan (aula-02 L4723)**: Se ele não entender, sua pergunta for muito muito bosta, ele vai ativar o modo de elicitação. Ele vai começar a te fazer um monte de pergunta. Minha pergunta aqui não foi tão bosta assim.
+
+> **Pedro (aula-06 L4731)**: O Tech Search faz uma coisa interessante, que é o Auto-Clarify, que é criar subqueries para tudo que você precisa.
+
+A régua é a mesma da aula: entrada ambígua é gate de aceite ambíguo, então
+elicita; entrada clara passa direto pro determinismo. A diferença é que aqui o
+detector de ambiguidade é o próprio agente — e o humano só entra quando a
+pergunta realmente muda rota. [SOURCE: TranscricaoT2 Aula5 L2841-2853 +
+transcricoesT1 aula-02 L4717-4723 + aula-06 L4731-4737]
 
 ---
 
@@ -375,6 +475,34 @@ goal/loop real da semana — mesmo pequeno.
 
 ---
 
+## Da cohort: a rédea na voz de quem opera
+
+Padrões que apareceram nas gravações, na voz dos operadores — não no slide.
+
+Pedro não começa squad nenhum sem inverter a seta da entrevista:
+
+> **Pedro (aula-02 L4331-4333)**: Eu abriria um story de investigação com arquiteto e pediria: faz uma entrevista comigo primeiro, para entender o meu processo.
+
+> **Pedro (aula-02 L4337)**: Eu não converso com a IA. Eu converso via documentos.
+
+Alan mostra o clone de ROI dentro do Squad Creator elicitando com consequência —
+pergunta que decide se o squad nasce ou não:
+
+> **Alan (aula-05 L5175)**: Mas por quê? Qual o problema que você vai resolver? Porque daí eu não preciso mais pagar meus advogados. Quanto é que tu paga hoje? Ah, tanto. Daí ele vai analisar lá tudo e vai dizer: olha, compensa, mas compensaria ainda mais isso aqui para um escritório de advocacia que pudesse fazer isso.
+
+E até o onboarding do time Sell Level foi desenhado como entrevista, não como
+formulário em branco:
+
+> **Alan (aula-03 L2423-2425)**: O CEO vai te entrevistar, e tu vai só jogar os arquivos da tua empresa ali.
+
+O padrão comum dos três: a elicitação vem **antes** da execução, é conduzida pelo
+agente seguindo perguntas desenhadas, e termina em documento aprovável — não em
+conversa infinita.
+
+- **meta**: fonte=transcricoesT1 aula-01/02/03/05/06 + TranscricaoT2 Aula5 (Auto-Clarify)
+
+---
+
 ## Glossário sem jargão de vaidade
 
 - **Rider**: Modo em que o operador atua como piloto nos gates de julgamento, não em cada passo.
@@ -383,6 +511,9 @@ goal/loop real da semana — mesmo pequeno.
 - **Silêncio operacional**: Ausência intencional de elicit em passos determinísticos e reversíveis.
 - **Bottleneck de rider**: Excesso de elicits que transforma o humano no gargalo do sistema.
 - **Confirmação não-trivial**: Resposta que prova atenção (ex.: digitar o nome do ambiente), não só 'y'.
+- **Modo de elicitação**: Nome do rider nas gravações da cohort: estado declarado em que o agente extrai decisão sua antes de executar, separado do modo comando.
+- **Auto-Clarify**: Primeira etapa do Tech Research: transforma pedido vago (até áudio) em queries melhores e, se a entrada é ruim demais, ativa o modo de elicitação sozinho.
+- **Yolo / Interactive / Preflight**: Os três níveis de rédea do Dev: sozinho até o fim, perguntando no meio, ou entrevistando antes de começar.
 
 ---
 

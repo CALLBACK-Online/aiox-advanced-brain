@@ -63,7 +63,7 @@ Mapeie uma missão com três colunas:
 - artefato que entrega;
 - capacidade ou pessoa que consome.
 
-Marque onde hoje você precisa traduzir, reformatar, conferir ou reenviar contexto. Esses pontos mostram se o gargalo está no especialista ou no sistema entre especialistas.
+Marque onde hoje você precisa traduzir, reformatar, conferir ou reenviar contexto. Esses pontos mostram se o gargalo está no especialista ou no sistema entre especialistas — e são a linha de coordenação do Mapa do Custo de Reconstrução (aula 04).
 
 ## Navegação
 

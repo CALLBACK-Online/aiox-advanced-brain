@@ -97,6 +97,7 @@ Greenfield é uma folha em branco. Brownfield é uma casa habitada: tem paredes,
 - **meta**: greenfield=comeca do zero
 - **meta**: brownfield=codigo que ja roda
 - **meta**: regra=decifra antes de propor
+- **meta**: fonte=aula-01 + t2-aula-1 + t2-aula-2 + aula-04
 - **ready**: ready to map
 
 **Legenda de cores**
@@ -179,6 +180,10 @@ A forma mais rápida de fixar a diferença: greenfield é terreno baldio onde vo
 - **Discovery = levantar a planta**: O ritual de mapear a casa antes da obra. Onde está cada cano, cada viga, cada decisão antiga. A planta evita derrubar a parede que segura o teto.
 - **Intervenção = a reforma certa**: Com a planta na mão, você reforma o que precisa sem quebrar o que sustenta. A mudança nasce do mapa, não do palpite.
 
+Na aula ao vivo, o Alan ancorou a mesma imagem no terreno que dá nome aos termos:
+
+> **Alan Nicolas (aula-01 L1133-1135)**: É esse campo marrom, né? Pensa num terreno: esse terreno está um espaço verde porque ninguém construiu ainda em cima. Então tu vai criar do zero: vai ser greenfield. Brownfield? Porque a maioria de vocês está vindo com algum projeto para o AIOX. Você já tem algum projeto que você criou e quer fazer essa migração.
+
 > **E quando misturar?**: Um projeto pode ter alas greenfield (módulos novos do zero) e alas brownfield (código legado herdado). O erro é tratar a ala habitada como terreno baldio e reformar sem planta. Discovery na parte herdada, liberdade na parte nova.
 
 ---
@@ -200,6 +205,12 @@ Esta é a confusão mais cara do início de projeto. Os dois falam de construir 
 - Discovery completo: você decifra tudo antes.
 
 > **A pergunta que separa**: Pergunte: existe código que já roda e que eu não escrevi? Se não, é greenfield: desenhe livre. Se sim, é brownfield: decifre antes de propor. Greenfield é a folha em branco; brownfield é o manuscrito alheio que você precisa ler antes de editar.
+
+Na primeira aula da T1, o Alan abriu exatamente por esse critério, porque ele descreve a situação da maioria da turma:
+
+> **Alan Nicolas (aula-01 L1107)**: Esquece o greenfield. O foco de hoje é o brownfield, que é pegar um projeto que já está em andamento. A maioria de vocês aqui tem um projeto em andamento.
+
+Na T2, o mesmo critério aparece como guia de seleção de workflow: "você está entrando num projeto existente sem documentação? Você vai executar isso aqui", com o Brownfield Discovery listado entre os quatro workflows que cobrem oitenta a vinte dos casos. [SOURCE: t2-aula-2 L2761, L2773-2777]
 
 - **Brownfield com greenfield**: Os dois constroem software, então parecem o mesmo trabalho.
 - **Discovery com refatoração**: Os dois tocam no código legado, então parecem a mesma etapa.
@@ -263,6 +274,26 @@ As fases ordenadas que decifram um código herdado antes de qualquer intervenç�
 - **5. Dependências**: Mapear o que o código consome e o que depende dele.
 - **6. Síntese**: Desenhar o mapa consolidado da estrutura real.
 
+### Caso de campo: o workflow rodou ao vivo nas duas turmas
+
+O número dez não é retórica de slide. Na T2, o Adriano abriu o workflow na tela e descreveu o que ele faz com um projeto herdado:
+
+> **Adriano de Marqui (t2-aula-1 L4789-4793)**: Ele vai pegar todo o seu projeto, que você trouxe de qualquer outro lugar, e vai fazer uma verificação de dez fases.
+
+Na T1, o Pedro percorreu o desenho fase a fase, ao vivo. O fluxo real: o arquiteto abre documentando o sistema e faz a primeira pergunta condicional, "tem banco de dados?". Se sim, chama o Data Engineer para a task de schema audit, a auditoria do banco. Depois o UX Design Expert gera o front-end spec pack. A fase quatro é a consolidação inicial: schema audit, documentação do projeto e front-end spec pack são os três documentos que entram como input para virar o draft do arquiteto. As fases cinco a sete são validação: o Data Engineer valida a seção de database, o UX Design Expert valida a seção de UX e o QA revisa tudo, num ciclo de Quality Gate. Aprovado, o arquiteto faz o assessment final e sai o Architecture.md, que vira input para o analista fazer o relatório executivo e criar o PRD, depois os épicos e os stories. "Aí, aqui a gente tem o Discovery completo." [SOURCE: aula-01 L1595-1653]
+
+Na T2, o Adriano refez o mesmo caminho em versão comprimida: fase um do arquiteto, ver se tem banco de dados e chamar o Data Engineer, depois o UX para ver as telas, aí o arquiteto de novo para consolidar. [SOURCE: t2-aula-2 L3389-3393]
+
+O final do pipeline é o que transforma leitura em plano de trabalho: o discovery entrega a lista do que está errado e o formato para corrigir.
+
+> **Adriano de Marqui (t2-aula-1 L4829-4833)**: Isso aqui é um workflow. Ele vai fazer várias etapas. E aí ele vai trazer todos os débitos técnicos do projeto, tudo que precisa ser corrigido.
+
+> **Adriano de Marqui (t2-aula-1 L4849-4853)**: Tudo que precisa ser feito vira épicos e stories. Story é a unidade menor que você diz para a IA: é isso aqui que você tem que corrigir. Eu vou saber que você fez e que fez bem se você atendeu esse critério de aceitação.
+
+E por que isso é um workflow, e não uma lista de comandos que você decora? O Pedro fechou a demo com o contrafactual:
+
+> **Pedro Valerio Lopez (aula-01 L1671-1689)**: Pensa: se não tivesse workflow, você ia chamar o arquiteto com o comando Brownfield Discovery, o arquiteto ia fazer o documento e ia voltar para você. Depois você ia chamar o Data Engineer, depois o UX Design Expert, depois o arquiteto de novo. O workflow é a dinâmica de fazer isso de forma automática, sem passar pelo usuário, porque a gente criou regras determinísticas suficientes para garantir a qualidade em cada uma delas.
+
 **discovery fecha antes da intervenção abrir**
 
 1. **Leitura**: O discovery lê o código herdado em camadas ordenadas, sem mudar nada.
@@ -320,6 +351,12 @@ flowchart TB
 
 > **Regra do critério único**: A escolha não é pela importância do projeto; é pelo legado vivo. Se existe código herdado que importa e você não entende, discovery completo é a peça. Se é greenfield ou legado morto, discovery completo é overengineering. Mexer em brownfield vivo sem discovery é refatorar no escuro, o erro mais caro do início.
 
+O mesmo critério foi enunciado ao vivo, com a lista de casos em que o discovery completo é recomendado:
+
+> **Pedro Valerio Lopez (aula-01 L1579-1583)**: Quando ele é usado? Principalmente para migração de projetos que você já tem ali no Lovable, Bolt, V0. Auditoria completa de codebase: você já tem um codebase, quer fazer auditoria completa e continuar a partir dali. Planejamento de modernização de alguma coisa antiga. Assessment pré-investimento, onboarding em projeto legado, due diligence técnica. Todas essas partes: sim, recomendado Brownfield Discovery.
+
+E os dois "não" da mesma fala confirmam a árvore acima: projeto novo do zero não vale, porque exige elicitação, o agente precisa tirar de você decisões que o código ainda não carrega, como a tech stack; e enhancement isolado também não, porque adicionar um épico novo num projeto que você já desenvolve tem outro workflow próprio. [SOURCE: aula-01 L1585-1593]
+
 ---
 
 ## Rotas de discovery
@@ -361,6 +398,12 @@ Use quando o brownfield é um processo recorrente sem mapa formal.
 Use quando a mudança é pontual e a região do código é conhecida.
 - `mapear região`: decifrar só a parte tocada e suas dependências diretas.
 - `validar fronteiras`: confirmar que a mudança não vaza para fora do mapeado.
+
+**O padrão se repete fora do backend.** O brownfield não é exclusividade de código de servidor: na aula de design system, o Alan mostrou a mesma lógica aplicada à interface. Pegar um projeto que já tem um design pronto e atomizá-lo é um discovery de UI: o `Sb Brownfield Scan` escaneia toda a aplicação primeiro, e só depois o `Sb Brownfield Migration` migra. Scan antes de migration é decifrar antes de propor, com outros nomes. [SOURCE: aula-04 L1663, L1871-1873]
+
+Há também a rota de produto: no PM do AIOX existe o comando de PRD reverso, que aplica o mesmo princípio ao documento de requisitos.
+
+> **Adriano de Marqui (t2-aula-1 L4309)**: Create brownfield PRD, ou seja, você pegar um projeto que já existe e criar um PRD dele.
 
 ---
 
@@ -432,6 +475,40 @@ A distinção ajuda mais quando você resiste ao reflexo de rodar discovery comp
 - É legado morto que pode ser descartado sem custo.
 - A mudança é pontual numa região que você já domina.
 - O custo do discovery completo supera o risco da mudança.
+
+O contrapeso da resistência é lembrar por que dominar brownfield vale o esforço. O Alan abriu o jogo sobre a estratégia de negócio por trás da habilidade:
+
+> **Alan Nicolas (aula-05 L2847)**: É pegar sistemas legados e transformar eles em sistemas atualizados com AI First. Daí eu vou fechar contrato de duzentos mil, de quinhentos mil, de um milhão, de dois milhões, de cinco milhões.
+
+Quem sabe decifrar um sistema que já roda cobra caro exatamente porque a maioria só sabe começar do zero.
+
+---
+
+## Da cohort: o workflow nasceu de uma reclamação da turma
+
+*T1 + T2 · aulas ao vivo*
+
+O Brownfield Discovery não nasceu pronto. Nasceu de alunos reclamando que o discovery manual era comando demais:
+
+> **Alan Nicolas (aula-01 L1109-1111)**: Eu comecei a dar uma aula sobre isso e a galera começou a dizer assim: mas é muito comando, Alan. Não tem isso, depois isso, depois isso, depois isso? Eu pensei: quer saber? Eu vou criar um workflow inteiro.
+
+O primeiro teste do fluxo completo foi num projeto de aluno de verdade: "foi ter criado um Brownfield Discovery, que era focado em fazer todo o descobrimento de um projeto inteiro para vocês. Eu fiz isso, por exemplo, para um de vocês aqui, que foi para o Toriani." [SOURCE: aula-01 L1529-1531]
+
+Na T2, o Adriano reconheceu que a primeira versão vivida pela turma do Fundamentos era outra coisa:
+
+> **Adriano de Marqui (t2-aula-1 L933-937)**: Lá no Fundamentos, nós fizemos uma migração de projeto com o Brownfield Discovery. Mas gente, o que a gente fez ali era muito cru, muito amador: era só colocar "vamos executar o Brownfield Discovery".
+
+**A fronteira que a turma testou.** O Igor Nemir perguntou se dava para usar o brownfield fora do território dele:
+
+> **Igor Nemir (t2-aula-2 L4329)**: Eu posso fazer um brownfield, ativar esse workflow para revisar esse squad que eu já criei? Faz sentido isso ou não faz nenhum sentido?
+
+A resposta do Adriano desenha a fronteira do primitivo: o Brownfield Discovery decifra stack e código de um projeto; para revisar um squad existe outro mecanismo, o Update Squad, "que vai pegar o seu squad, tentar dar uma tunada nele e pesquisar ferramentas". Brownfield é para código herdado, não para qualquer coisa que já existe. [SOURCE: t2-aula-2 L4465-4473]
+
+**O caso que valida o critério da aula.** A Cris França chegou com a dúvida exata que esta aula treina:
+
+> **Cris França (t2-aula-2 L5777-5789)**: Eu vinha do Fundamentos e criei um produto do zero, fiz esse passo a passo todo de story, de PRD, de squads. Ele não está no Lovable: está no GitHub, estou usando Supabase e Vercel. Eu utilizo o Brownfield para fazer essa análise?
+
+Repare que o projeto dela não é de terceiro: ela mesma escreveu, com processo. Mas ao querer uma revisão de estrutura completa sobre um código que já roda, a pergunta que ela faz é a pergunta desta aula: existe estrutura viva que precisa ser decifrada antes da próxima intervenção? A turma inteira orbitou esse mesmo dilema.
 
 ---
 

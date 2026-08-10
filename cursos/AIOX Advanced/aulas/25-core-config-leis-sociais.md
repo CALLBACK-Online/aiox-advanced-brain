@@ -97,6 +97,7 @@ Se o CLAUDE.md e a lei da fisica, o core-config e a Constitution sao as leis soc
 - **meta**: fisica=claude_md, social=core-config
 - **meta**: constituicao=6 artigos
 - **meta**: valvula=waiver registrado
+- **meta**: fonte=t2-aula-2 + aula-01 + aula-02
 - **ready**: ready to govern
 
 **Legenda de cores**
@@ -128,6 +129,16 @@ O CLAUDE.md ja te deu a fisica do projeto: quem o agente e e o que ele lembra. A
 - Qual rito o time segue antes de mergear.
 - O que e nao-negociavel mesmo sob pressao de prazo.
 - Mexe na convivencia entre humano, agente e time.
+
+**Da transcrição: onde o nome nasceu**
+
+A metáfora das leis sociais não é figura de linguagem desta apostila. Ela nasceu ao vivo, na primeira aula da T1, quando Pedro abriu o core-config na tela e explicou a diferença para o CLAUDE.md:
+
+> **Pedro Valerio Lopez (aula-01 L853)**: Se CLAUDE.md são as regras gerais, são as leis da física, dentro desse ambiente o core-config são as configurações desse projeto, dessa sociedade.
+
+> **Pedro Valerio Lopez (aula-01 L855-857)**: No planeta Terra, as regras sociais do Japão e da China são completamente diferentes das do Brasil e dos Estados Unidos. Então o core-config são as regras sociais daquele projeto, que são muito mais variáveis do que as leis da física.
+
+A pergunta seguinte dele fecha o raciocínio: nas regras sociais você pode ter variação; nas leis da física, não. É exatamente o critério de jurisdição que esta aula ensina. [SOURCE: aula-01 L853-L859]
 
 > **Como decidir onde escrever**: Se a regra descreve o mundo do projeto, vai pro CLAUDE.md. Se a regra governa comportamento de quem opera, vai pra Constitution. Se a regra liga ou desliga uma extensao do framework, vai pro core-config. Tres arquivos, tres jurisdicoes.
 
@@ -240,6 +251,14 @@ Toda regra de um projeto AIOX cai em um destes tres lugares. Saber qual evita es
 - **core-config, o painel**: Liga e desliga extensoes e composicoes do framework neste projeto. E onde o time configura quais capacidades sociais estao ativas.
 - **Constitution, o contrato**: Fixa os 6 artigos nao-negociaveis. E o que o time combina que vale mesmo quando o prazo aperta e a tentacao de pular etapa cresce.
 
+**Caso real: o painel aberto ao vivo**
+
+Na T1, o core-config não foi explicado em slide: foi aberto na tela. Pedro mostrou que dentro das leis sociais existe a integração do CodeRabbit controlada por um simples enable true ou false, e que essa escolha se propaga sozinha: o template de story passa a exigir teste com CodeRabbit, a validação do QA ganha review automático e os quality gates de Dev, QA, GitHub e DevOps passam todos pelo mesmo revisor, declarados no próprio core-config. [SOURCE: aula-01 L861-L867, L923-L927]
+
+> **Pedro Valerio Lopez (aula-01 L929)**: Tem vários testes no AIOX que já usam o CodeRabbit silenciosamente. Isso é o self-healing, o autocura. Então os códigos já estão saindo melhores sem vocês saberem.
+
+É o retrato de uma lei social bem escrita: uma linha de configuração no painel liga um comportamento que o time inteiro herda sem precisar lembrar.
+
 **Funcionou se:**
 
 - O aluno aponta o arquivo certo para uma regra dada.
@@ -261,6 +280,18 @@ A Constitution do AIOX tem 6 artigos nao-negociaveis. Cada um governa um comport
 6. **Absolute Imports**: Import absoluto com alias, nunca caminho relativo longo. Reduz acoplamento.
 
 > **Por que so 6 sao nao-negociaveis**: Existem outros artigos no repo que cobrem temas avancados como scheduling e governanca de modelo. Mas os 6 primeiros sao o nucleo que vale para qualquer projeto AIOX desde o dia um. Comece por eles.
+
+**O capô aberto na T2**
+
+Na segunda turma, Adriano abriu o arquivo Constitution na tela ("eu quero mostrar o capô para vocês") e percorreu os artigos um a um, do CLI First ao Absolute Imports. A moldura que ele deu antes de ler qualquer artigo é a tese desta aula:
+
+> **Adriano De Marqui (t2-aula-2 L2149-2153)**: Você tem que ter regras, leis. E o AIOX tem leis para te proteger e para te ajudar. Quais são essas leis? Os artigos da constituição, do Constitution.
+
+> **Adriano De Marqui (t2-aula-2 L2233)**: As leis estão aqui, no arquivo Constitution. Dava para falar isso no Fundamentos? Nem pensar. Mas aqui, agora, você tem que saber que tem leis. Primeira lei, CLI First.
+
+E o fechamento do bloco explica por que vale a pena conhecer os artigos em vez de reinventá-los:
+
+> **Adriano De Marqui (t2-aula-2 L2449-2453)**: Quantos semestres a gente precisava para ensinar essas coisas? Vocês começam a ter noção do quanto isso já está embutido dentro desse framework. Vocês vão ter só que atentar aos princípios, conhecer as leis, conhecer todo esse ambiente para usar bem a IA.
 
 ---
 
@@ -288,6 +319,12 @@ Os dois primeiros artigos sao os mais rigidos. Os dois sao NON-NEGOTIABLE: onde 
 - **1. CLI First**: O CLI e a fonte da verdade. Toda funcionalidade funciona via linha de comando antes de existir tela. A hierarquia e CLI, depois observabilidade, depois UI. A tela so olha, nunca decide. [NON-NEGOTIABLE, CLI > obs > UI]
 - **2. Agent Authority**: Cada agente tem autoridade exclusiva. So o devops executa push, abre PR e cria release. Story nasce com sm ou po. Decisao de arquitetura e do architect. Ninguem assume papel alheio. [NON-NEGOTIABLE, devops=push]
 
+Na T2, o artigo primeiro foi ensinado com o pedido que todo iniciante faz:
+
+> **Adriano De Marqui (t2-aula-2 L2237-2241)**: "Eu quero só fazer uma tela, me dê uma tela com botões." Não. Não dá para ser rastreável, não dá para entender quando mudou o botão. Tem que ser CLI First. Segundo: não é negociável o princípio de ter uma autoridade delimitada.
+
+E a autoridade delimitada veio com dever de casa junto: desenhar no papel de pão, no caderno, no Figma ou no Miro o que cada um pode e não pode fazer, antes de escrever qualquer artigo. [SOURCE: t2-aula-2 L2245-2249]
+
 > **O erro classico de autoridade**: O aluno empolgado pede pro agente fazer push direto. O agente nao pode. Ele delega pro devops. Isso nao e burocracia, e a separacao que impede um agente de comprometer o repo inteiro sem o rito de revisao.
 
 ---
@@ -301,6 +338,12 @@ O terceiro e o quarto artigo sao MUST. Eles amarram o trabalho a um pedido real 
 
 - **story com tarefa solta**: Tarefa solta e um pedido sem criterio.
 - **derivar com inventar**: Derivar parte de um requisito existente.
+
+O No Invention ganhou na T2 o exemplo mais citado da aula: o export que veio com penetra.
+
+> **Adriano De Marqui (t2-aula-2 L2269-2273)**: Qual outra lei? No Invention. Não pode inventar: toda story tem que ter requisito funcional, não funcional ou constraint, aquilo que não pode ser feito.
+
+> **Adriano De Marqui (t2-aula-2 L2301-2325)**: Todo requisito tem que estar amarrado no PRD. Você pediu assim: "eu quero ter a opção de exportar os dados". E aí vem o repertório: o que a ferramenta vai poder fazer? Exportar CSV, exportar PDF... Mas isso foi pedido? No Invention. Não inventa. Eu pedi para exportar CSV. Acabou.
 
 ---
 
@@ -322,6 +365,12 @@ import { useStore } from "../../../stores/feature/store";
 ```
 *A regra parece estetica, mas o ganho e real: quando voce move um arquivo, o import absoluto nao quebra.*
 
+O Quality First ganhou na T2 a formulação que derruba a desculpa clássica do prazo:
+
+> **Adriano De Marqui (t2-aula-2 L2329-2333)**: Não invente funcionalidade. Esse é o princípio do artigo quatro. Artigo cinco, Quality First: ou seja, primeiro qualidade. Não velocidade, não economia de token.
+
+No AIOX, economizar token ou correr nunca justifica pular gate. E o Absolute Imports entrou no mesmo bloco já com a severidade certa na voz do professor: "mas isso aqui é só uma recomendação". [SOURCE: t2-aula-2 L2341]
+
 ---
 
 ## MUST, SHOULD, NON-NEGOTIABLE
@@ -331,6 +380,12 @@ Nem todo artigo tem o mesmo peso. A severidade diz o que acontece quando alguem 
 - **NON-NEGOTIABLE**: Nao cede nunca, nem sob prazo. CLI First e Agent Authority vivem aqui. Quebrar e comprometer o frame inteiro.
 - **MUST**: Obrigatorio, mas com waiver registrado em casos raros. Story-Driven, No Invention e Quality First sao MUST.
 - **SHOULD**: Forte recomendacao com excecao explicita. Absolute Imports e SHOULD: dentro do modulo o relativo passa.
+
+A escala de severidade não é invenção desta apostila: ela está no próprio arquivo que Adriano leu na tela da T2.
+
+> **Adriano De Marqui (t2-aula-2 L2341-2349)**: Níveis de severidade: você tem ali em cima o não negociável, que deve acontecer. Outros são sugeridos a acontecer, não bloqueiam. E esses aqui que têm MUST, para passar, precisa ter um waiver.
+
+É a ponte exata entre esta seção e a válvula de escape: a severidade define quem pode ceder, e o waiver é o único caminho legal de ceder.
 
 **Funcionou se:**
 
@@ -354,6 +409,10 @@ Um artigo escrito sem gate e so um pedido educado. O gate e o check que falha qu
 - Quality First: Lint, type, test e build passam? | Pre-push BLOCK se qualquer check falha. | Merge entra com check vermelho ignorado.
 - Absolute Imports: Os imports usam alias? | Regra de lint sinaliza relativo longo. | Acoplamento cresce sem ninguem ver.
 
+Os gates da tabela não são hipotéticos. Na T2, Adriano listou os que o framework carrega de fábrica e amarrou todos na mesma lei:
+
+> **Adriano De Marqui (t2-aula-2 L2437-2445)**: Os gates no AIOX sempre vão respeitar esses tipos aqui: gate de criação de story, gate de validação do PO, gate de autoridade... Todos esses níveis de validação de qualidade. Por quê? Porque uma das leis é Quality First, ou seja, eu preciso ter validação de qualidade.
+
 ---
 
 ## O waiver: excecao honesta
@@ -369,6 +428,34 @@ Lei boa tem valvula de escape. O waiver e como o time quebra uma regra sem menti
 **Faça**
 
 > **A regra do waiver**: Quebrar uma lei social as vezes e necessario. O que nunca pode e quebrar em silencio. Registra a excecao, diz o porque, aponta o dono e define quando revisar. Excecao documentada e disciplina. Excecao escondida e divida tecnica que volta pior.
+
+### Caso real: o waiver nasceu de uma pergunta de aluna
+
+O bloco do waiver não estava planejado como capítulo da aula. Ele ganhou corpo quando a aluna Janara mandou uma pergunta no chat, no meio do passeio pelos níveis de severidade, e Adriano parou a explicação para responder com um exemplo construído na hora. Primeiro ele tinha dado só a definição seca: "O que é um waiver? Eu preciso documentar. Se estava no No Invention e surgiu uma coisa que não deveria estar, só vai para frente se tiver uma documentação" [SOURCE: t2-aula-2 L2349-2365]. A pergunta dela chegou por escrito e não ficou no áudio, mas a resposta virou a melhor cena de waiver do curso:
+
+> **Adriano De Marqui (t2-aula-2 L2385-2401)**: Veja só, Janara. Essa parte aqui do waiver é o seguinte: imagina que, na hora de olhar se isso tudo aqui foi respeitado, ele vai dizer o seguinte: olha, tem uma lei lá dizendo que não é para inventar uma funcionalidade. E você pediu para exportar CSV, só que veio junto exportar PDF. Vai travar na hora de passar no gate.
+
+> **Adriano De Marqui (t2-aula-2 L2421)**: Você pode permitir passar, mas você tem que dar uma justificativa. Isso se chama waiver.
+
+> **Adriano De Marqui (t2-aula-2 L2429-2433)**: Ele vai documentar isso. E num determinado momento, se precisar voltar, todo mundo vai saber o porquê que tem o PDF junto ali: porque foi documentado. Não tem uma coisa larga, solta lá, que não foi respeitada. Seria uma exceção? Isso aí mesmo, uma exceção: tá aqui, eu abro uma exceção, pode passar, mas tem que ter documentação.
+
+Repare na sequência: a regra existia (No Invention), o gate travou (PDF que ninguém pediu) e o waiver foi a saída honesta: passa, mas com justificativa escrita que qualquer pessoa encontra depois. E há um limite que ele deixou claro na mesma resposta: se o item está como não negociável, "não adianta, vai ter que corrigir". [SOURCE: t2-aula-2 L2405] O waiver é privilégio exclusivo do MUST.
+
+---
+
+## Da cohort: a lei que carrega sozinha
+
+*T1 aulas 01 e 02 · ao vivo*
+
+Dois momentos da T1 mostram as leis sociais funcionando por baixo do capô, sem ninguém pedir.
+
+No mergulho de engenharia da aula 02, Pedro abriu o carregador de domínios que monta o contexto de cada sessão, e o Constitution aparece com tratamento especial:
+
+> **Pedro Valerio Lopez (aula-02 L5853-5855)**: Uma coisa é o Constitution, que é não negociável. Então vai ter coisas que são não negociáveis, relacionadas ao projeto e ao AIOX, e sempre vai entrar.
+
+Ou seja: enquanto memória, comando e domínio entram no contexto sob demanda, a lei entra sempre. É a diferença técnica entre um documento que o time deveria ler e uma lei que o sistema carrega em toda sessão.
+
+E na aula 01, ao abrir a task do QA gate, o waiver apareceu como campo do processo, não como teoria: item marcado como waived não morre nem passa escondido, é jogado "para um outro wave de desenvolvimento, não é agora", com rastro. [SOURCE: aula-01 L2327]
 
 ---
 

@@ -50,5 +50,4 @@ Ao adicionar ou remover um squad em `squads/`, atualize:
 
 1. a aula correspondente em `aulas/`;
 2. o módulo em `modulos/`;
-3. este FONTES.md e o README;
-4. o validador ` _tools/validate_course.py `.
+3. este FONTES.md e o README.

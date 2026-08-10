@@ -1,0 +1,25 @@
+# Manifesto do validador — aiox-design
+id: aiox-design
+path: "cursos/AIOX-Design"
+title: "AIOX Design"
+
+# Regras genéricas (dev/lib/generic.py)
+scan_links: false  # checks.py já varre (mantém mensagens específicas)
+required_root:
+  - README.md
+  - AGENT-GUIDE.md
+  - Assessments.md
+  - Rubrica.md
+  - Glossario.md
+  - FONTES.md
+  - Projeto-Integrador.md
+catalog:
+  bucket: courses
+  key: aiox-design
+  expect:
+    lessons: 20
+    modules: 6
+    quizzes: 5
+    questions: 20
+
+# Checagens específicas: checks.py (run(ctx))

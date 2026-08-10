@@ -102,6 +102,14 @@ A regra geral é simples. Se o erro pode quebrar alguma coisa real, ele
 precisa ter passado por Staging antes. Se o erro só quebra o teu
 computador, é só restart. Local é onde tu compra coragem barata.
 
+Essa filosofia está literal na gravação. Quando o Pedro apresentou o
+@devops pela primeira vez na aula-01, a definição de Local já veio com a
+licença para errar embutida [SOURCE: aula-01 L705-713]:
+
+> **Pedro Valério (aula-01 L709)**: Você tem o ambiente local, que é o laboratório onde você faz as coisas, pode errar. Por isso que é tão bom você errar quando você não tem consequência.
+
+> **Pedro Valério (aula-01 L713)**: Sempre a pessoa que erra mais vezes e mais rápido aprende mais do que a pessoa que tenta fazer uma coisa perfeita.
+
 - **3**: ambientes para proteger o aprendizado
 - **0**: usuários reais no Local
 - **1**: guardião do deploy: @devops
@@ -110,6 +118,7 @@ computador, é só restart. Local é onde tu compra coragem barata.
 - **meta**: operador=alan_nicolas
 - **meta**: aula=05 ambientes
 - **meta**: regra=local->staging->production
+- **meta**: fonte=aula-01 + aula-05 + aula-06 + aula-07
 - **ready**: ready to isolate
 
 **Legenda de cores**
@@ -160,6 +169,19 @@ de Beta Testers. Eles entram, jogam, reportam bugs. Quando o jogo aguenta
 a galera de beta, aí sim ele abre pra todo mundo. Staging é isso.
 Production é todo mundo.
 
+A definição de campo veio em uma tacada só, quando o Pedro apresentou os
+ambientes na aula-01. Production: "É tudo que vocês usam na Internet.
+Tudo que vocês usam, que vocês fazem login, acessam, usam aquela
+ferramenta, aquele software, tudo isso é ambiente de produção"
+[SOURCE: aula-01 L719]. Staging: "é o ambiente de teste. É um ambiente
+que as maluquices do ambiente local são jogadas para o Staging. Ele está
+com as mesmas regras de produção. Deu certo no Staging, legal. Aí sobe
+pra produção" [SOURCE: aula-01 L725]. E a analogia do beta não é enfeite
+desta apostila: foi o Alan quem trouxe, ao vivo, traduzindo pra turma
+[SOURCE: aula-01 L2569-2575]:
+
+> **Alan Nicolas (aula-01 L2571-2573)**: Os jogos fazem isso. Eles jogam o release para os Beta Testers. Eles podem logar no jogo e ficar jogando lá no jogo antes de mandar para todo mundo. Então a gente tem usuários, a gente, nosso time, e vai ter outras pessoas que podem testar nesse ambiente de Staging, que é o ambiente de teste.
+
 - **1. Local**: Laboratório no seu computador. Serve para quebrar, aprender, reiniciar e repetir sem usuário, dinheiro ou reputação em jogo. [LAB, baixo risco]
 - **2. Staging**: Ensaio parecido com Production. Serve para validar fluxo, dado realista e comportamento antes de expor o usuário. [REHEARSAL, gate]
 - **3. Production**: Ambiente do usuário. Serve para entregar valor real, com banco isolado, deploy governado e rollback pensado antes. [LIVE, @devops]
@@ -167,6 +189,12 @@ Production é todo mundo.
 - **Local não é descuido** -> É liberdade controlada. Pode quebrar porque ninguém de fora depende disso.
 - **Staging não é enfeite** -> É a única chance honesta de ver o comportamento real antes do público.
 - **Production não é laboratório** -> É o palco. Quem testa no palco transforma plateia em cobaia.
+
+E não é só você que precisa saber em qual mundo está pisando. O próprio
+@dev consulta o git config detector antes de codar: "um Dev que está
+começando a desenvolver um Story, é completamente diferente ele entender
+se aquilo que ele está desenvolvendo é para ambiente Local, é para
+Staging, é pra Production" [SOURCE: aula-01 L1313].
 
 ---
 
@@ -218,6 +246,13 @@ junto. Banco de dados segue a mesma lógica que o código. Dev tem banco
 próprio, staging tem banco próprio, production tem banco próprio. Nunca
 compartilhe.
 
+Essa regra entrou na aula-01 pela voz do Alan, logo depois de explicar
+Staging pra turma [SOURCE: aula-01 L2577-2581]:
+
+> **Alan Nicolas (aula-01 L2577)**: O melhor, se você for trabalhar com banco de dados, é que você tenha o código dentro de Staging, que é o de teste, e o banco de dados também.
+
+> **Alan Nicolas (aula-01 L2581)**: Para que, se alguém invadiu ou você fez alguma coisa errada, não prejudique os seus usuários. Isso é uma boa prática de desenvolvimento de empresas sérias de software.
+
 Se tu está usando Supabase, que é o stack que a gente recomenda muito no
 AIOX, o Supabase tem essa função de Branch. Usa. Cada branch é um banco
 isolado, com schema próprio, dados próprios, RLS próprio. Tu consegue dar
@@ -266,6 +301,12 @@ Rota para mudar schema sem nunca tocar Production por acidente.
 
 > **Pedro Valério (co-founder AIOX)**: Com Branch, tu literalmente não consegue rodar em prod sem mudar de branch consciente. O erro do rodei sem querer some porque o caminho fácil deixou de existir.
 
+Na gravação, a recomendação nasceu curta e no momento exato: o Alan tinha
+acabado de defender banco separado por ambiente, e o Pedro completou
+apontando a ferramenta [SOURCE: aula-01 L2585-2587]:
+
+> **Pedro Valério (aula-01 L2585-2587)**: É o Supabase. Tem essa função de Branch também. E você consegue fazer essa separação.
+
 ---
 
 ## Cada banco tem dono, e o dono não é você
@@ -303,6 +344,13 @@ só o último número, de 1.1.2 pra 1.1.3, tu está dizendo: consertei bug,
 comportamento é o mesmo. Quando muda o do meio, de 1.1.2 pra 1.2.0:
 adicionei feature, nada quebra. Quando muda o primeiro, de 1.x.y pra
 2.0.0: mudei coisa séria, prepare-se.
+
+A história está literal na transcrição, com direito ao desabafo
+[SOURCE: aula-01 L2591-2599]:
+
+> **Pedro Valério (aula-01 L2593-2595)**: Eu ficava numa dúvida do caceta de fazer versionamento. Caraca, isso aqui é 2.0? Isso é 2.0.1? Aí depois eu fui entender que existe toda uma metodologia para versionamento. E sempre são três números, sempre tipo 1.1.2. Quando são coisas muito pequenininhas que mudaram, você só muda o último número. Você adicionou uma feature, teve algum incremento? Você muda o do meio.
+
+> **Pedro Valério (aula-01 L2597-2599)**: Você fez uma mudança agressiva no código? Aí você muda a versão do 2 pro 3. Aí você vai começar no 3.0.
 
 **Quando cada número muda**
 
@@ -345,6 +393,15 @@ empilhados, cada um adicionando ou consertando sem quebrar quem já estava
 dentro. O @devops cuida desse versionamento via comando version-check
 antes do release.
 
+Os dois registros estão na mesma sequência da aula-01. O salto, na voz do
+Alan:
+
+> **Alan Nicolas (aula-01 L2601-2603)**: O AIOX tava no 2.3. Agora a gente tá falando do professor na 3.11, eu acho. Teve essa mudança muito grande que foi feita.
+
+E o comando que governa o número: "o version-check, exatamente, é para
+isso. É para você fazer esse versionamento. Push, Setup GitHub, Cleanup:
+são todas as operações de GitHub" [SOURCE: aula-01 L2611].
+
 **Como ler o salto 2.3 para 3.11**
 
 1. **2 para 3 foi major**: Contrato mudou. Adaptação obrigatória pra quem estava na 2.x.
@@ -378,6 +435,15 @@ Por isso, quando tu roda o environment-bootstrap, uma das obrigatoriedades
 é Docker Desktop instalado. E não basta instalado, precisa estar aberto.
 Se tu esquece de abrir, o build falha sem explicação óbvia.
 
+O encadeamento foi mostrado na tela durante a aula-01: no push, o agente
+"executa um teste de lint. Passou? Não? Aí fica nesses ciclos: executar
+testes unitários, passou? Não? Verificar tipos. Build de verificação:
+ele faz uns runs ali de tentar fazer um build local"
+[SOURCE: aula-01 L2617-2619]. E o Docker entra exatamente aí: "ele
+realmente cria um container no Docker Desktop para fazer teste. Por isso
+que lá no environment-bootstrap uma das obrigatoriedades que ele vai te
+falar para ter é o Docker Desktop" [SOURCE: aula-01 L2623].
+
 **O que o @devops roda antes do push**
 Toda vez que uma mudança vai sair do Local rumo a Staging ou Production.
 - `docker`
@@ -391,7 +457,7 @@ Toda vez que uma mudança vai sair do Local rumo a Staging ou Production.
 - `tests`: Unit tests rodam no container que simula Production.
 - `build`: Se o build passa, a entrega está pronta pro gate de QA.
 
-> **Pedro Valério (co-founder AIOX)**: Ele tem que estar com o Docker aberto no computador para que o agente possa ir lá e fazer os testes sem nem você saber.
+> **Pedro Valério (aula-01 L2635)**: Eles têm que estar com ele aberto no computador para que o agente possa ir lá e fazer os testes sem nem você saber. Ele vai fazer teste e vai voltar com o resultado.
 
 ---
 
@@ -405,6 +471,14 @@ separação tem a mesma lógica de ter @db-sage pra banco e @architect pra
 arquitetura. Cada agente tem autoridade exclusiva sobre o que governa. Push
 pertence ao @devops, ponto.
 
+A autoridade vem da definição original do papel, na aula-01: "você
+concorda que quando você vai subir alguma coisa para o repositório do
+GitHub, você está saindo de um ambiente e indo para outro? Quem faz isso?
+Devops" [SOURCE: aula-01 L729]. Mais tarde, na mesma aula, o fechamento:
+"o Devops, vocês já entenderam que ele é o guardião do ambiente: do
+ambiente Local, do ambiente de Staging, do ambiente de Production, do
+repositório do GitHub" [SOURCE: aula-01 L2561].
+
 **o que acontece antes do push**
 
 1. **Docker aberto**: Permite simular parte do ambiente real no computador.
@@ -415,6 +489,17 @@ pertence ao @devops, ponto.
 - **Local**: restart (quebra só a sua máquina, é só reiniciar.)
 - **Staging**: ajuste (quebra o ensaio, ainda sem usuário real.)
 - **Production**: incidente (quebra com usuário, dado e dinheiro do outro lado.)
+
+Na aula-06, quando o Rodrigo perguntou por que rodar Setup GitHub se o
+environment-bootstrap já configura coisas do Git, o Pedro traçou a
+fronteira entre os dois mundos [SOURCE: aula-06 L443-457]:
+
+> **Pedro Valério (aula-06 L447-455)**: Não, o env: ele configura o seu ambiente local. O que ele vai ver de GitHub? Se você tem o GitHub CLI instalado na sua máquina, se você tem o Git. Essas coisas são ambiente local. Então environment-bootstrap é ambiente local, Setup GitHub é ambiente remoto. O ambiente remoto é onde a gente vai começar a trabalhar tudo que é deploy.
+
+E quando a esteira automatiza a promoção, os nomes têm dono
+[SOURCE: aula-01 L2725-2729]:
+
+> **Pedro Valério (aula-01 L2725-2729)**: A entrega contínua, de Delivery, é esse processo de você colocar código na nuvem, mas com intervenção humana. Já o Deployment é você colocar código na nuvem automaticamente, direto para a produção, passando por toda essa jornada de CI/CD. Ele vai fazer todo o ciclo: desde o pull request, passar automaticamente em todas as fases, testar no Staging, fazer a produção e já ir para fazer o deploy em Production.
 
 > **Sinal de alerta**: Se o seu fluxo atual permite subir direto para Production sem Staging, sem banco isolado e sem @devops, você não tem velocidade. Você tem sorte temporária.
 
@@ -435,9 +520,40 @@ serviço.
 dev. Serviço erra no Squad. Em todos, o princípio é idêntico: o erro nasce
 onde é barato e só promove depois de provar que aguenta.
 
+A frase não nasceu em slide. Nasceu ao vivo na aula-07, quando o Alan
+destrinchou por que o squad dele rodava perfeito na CLI e ainda não era
+um serviço [SOURCE: aula-07 L2451-2459]:
+
+> **Alan Nicolas (aula-07 L2451)**: O Squad, gente, ele é o rascunho de uma aplicação. O Squad é magnífico para funcionar. Ele é criado para funcionar na CLI.
+
+> **Alan Nicolas (aula-07 L2453-2455)**: Tu botou uma task lá pra ele fazer, ele não encontrou a pasta certa. O que ele ia fazer? Opa, deixa eu ir para outro lugar procurar. Deixa eu usar o Grep, deixa eu usar o Read, deixa eu ver se não tem um MCP perdido nesse computador aqui. Daí ele vai lá e consegue dar um jeito de fazer. Se isso acontece no servidor, vai quebrar. Vai dar erro.
+
+O Rodrigo devolveu, na hora, a síntese que dá nome a esta seção
+[SOURCE: aula-07 L2461-2463]:
+
+> **Rodrigo Faerman (aula-07 L2461)**: Você acabou de dizer: cara, ainda é rascunho. É um draft, é um MVP da vida. É o que a gente está fazendo ali até a coisa ficar muito clara, a gente entender todas as variáveis que estão envolvidas e estabilizar esse processo a ponto dele ficar super determinístico. E aí sim eu consigo replicar num servidor.
+
+O Pedro já tinha pago pra ver na aula-05, com o gerador de propostas
+dele. No Claude Code, o agente trabalha num sandbox com o projeto inteiro
+à disposição: não achou o arquivo, ele faz fallback, usa Grep, usa Read,
+"pesquisa em outros arquivos que você não estava vendo". Fora dali, essa
+folga some: "pensa que é um N8N: no N8N a gente só tem a informação que
+tá ali. Não é um sandbox cheio de arquivo"
+[SOURCE: aula-05 L4019-4035]. O resultado ele resume sem retoque: "eu vi
+que, quando eu botei no pipeline, o meu gerador de proposta, que
+funcionava manualmente, estava validado. Agora eu precisava de uma
+arquitetura melhor só para executar ele" [SOURCE: aula-05 L4037-4039].
+
 - **1. Código no Local**: O computador é o laboratório do código. Quebra, reinicia, repete. [código]
 - **2. Schema no banco de dev**: A Branch é o laboratório do banco. Migration quebra longe do usuário. [banco]
 - **3. Serviço no Squad**: O Squad é o laboratório do serviço. Time de agentes erra, ajusta e só depois vira produto. [serviço]
+
+E quando o rascunho vai virar serviço, a régua aperta
+[SOURCE: aula-07 L2591-2595]:
+
+> **Pedro Valério (aula-07 L2591)**: Não tem isso. Ou ele vai ou ele quebra.
+
+> **Alan Nicolas (aula-07 L2593-2595)**: Tu criou o Squad, ele vai funcionar. Agora, quando a gente tá indo para o serviço online, mesmo usando LLM, tu precisa de muitas etapas predeterminísticas para garantir com guard rails que tu vai chegar no output específico.
 
 > **A régua que se repete**: Local, banco de dev e Squad são a mesma ideia em três camadas: o erro nasce onde é barato e só promove depois de provar que aguenta.
 
@@ -538,6 +654,32 @@ Você vai produzir uma ficha com Local, Staging e Production de um projeto real 
 - **Gap encontrado**: o founder publica direto do laptop; primeira correção é atribuir o push ao @devops e documentar o caminho de rollback.
 
 > **Teste rápido**: se alguma linha da ficha ficou em branco (banco compartilhado, Staging inexistente, deploy sem dono), você achou o gap; ficha completa sem gap é setup pronto.
+
+---
+
+## Da cohort: a frustração é o deploy, não o código
+
+*T1 · aula-01 + aula-06*
+
+Realidade do grupo Advanced. Não é slide, é cicatriz.
+
+Na aula-06, o Pedro nomeou a dor coletiva da turma: "E onde que está a
+frustração de vocês? A frustração está: como é que eu faço deploy fora
+disso aqui? Como eu saio dessa arquitetura e vou para deploy?" A resposta
+dele foi processo, não mágica: rodar o Setup GitHub, "que é para fazer o
+setup completo de um repositório CI/CD", porque "a primeira coisa para
+vocês avançarem um passo a mais e sair do ambiente Claude Code é vocês
+conectarem com o repositório no GitHub" [SOURCE: aula-06 L299-309].
+
+Na aula-01, o José Carlos Amorim trouxe o desenho que traduziu isso pro
+grupo: instalar o AIOX e sair criando squad é como botar um monte de
+pedreiro com marreta e carrinho de mão pra construir um prédio de doze
+andares sem o ambiente adequado. "O Devops é o que cria o ambiente. É
+como se a gente tivesse um mestre de obras: ele analisa o terreno antes
+de construir. No nosso caso, o Devops escaneia o nosso ambiente e
+configura tudo" [SOURCE: aula-01 L765-775].
+
+> **Âncora de campo**: A dor da cohort nunca foi escrever código no Local. Foi atravessar a fronteira: sair do laboratório e chegar em Production sem quebrar.
 
 ---
 

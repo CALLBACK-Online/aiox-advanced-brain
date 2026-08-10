@@ -151,3 +151,7 @@ Um consultor sênior de precificação sai da empresa em 60 dias e nada do crit�
 **Erro comum neste squad:** extrair de fontes rasas (uma entrevista, dois posts) e obter um clone que imita o vocabulário mas erra as decisões. Detecte cedo: se a avaliação de fontes reprovar em volume ou diversidade, pare antes de montar o clone.
 
 > **Teste rápido**: dê ao clone um caso que o especialista já resolveu — vocabulário parecido com decisão diferente é reprovação.
+
+---
+
+> **Sinal de continuidade**: este era o último squad do catálogo — você agora sabe escolher, operar e criar especialistas. Se o gargalo virou sustentar todos eles em operação — contexto, handoffs e governança a cada missão —, há uma trilha de 30 minutos para diagnosticar o próximo contexto: `cursos/AIOX-Enterprise/README.md`.

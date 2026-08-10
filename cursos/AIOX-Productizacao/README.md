@@ -20,7 +20,6 @@ Mini-curso para transformar uma capacidade agentic validada em wedge, oferta, ex
 
 **Aulas:** 6 · **Módulos:** 2 + Capstone · **Quizzes:** 2 · **Questões:** 8
 
-- [Brief do curso](COURSE-BRIEF.md)
 - [Avaliações](Assessments.md)
 - [Projeto integrador](Projeto-Integrador.md) · [Personas de capstone](personas-capstone.md)
 - [FAQ de campo (cohort)](FAQ-campo-cohort.md) · [Casos live](casos-live-cohort.md)
@@ -107,12 +106,6 @@ Obsidian + IA → Arquitetura → Fundamentals → Advanced
 ```
 
 Quem já chega do Advanced com capacidade executável e evidência de valor pode entrar direto. Quem ainda precisa construí-la passa antes por Agent Engineering. Paths das trilhas irmãs aparecem como texto para preservar o curso autocontido: `cursos/AIOX-Agent-Engineering/`, `cursos/AIOX Advanced/` e `cursos/AIOX-Advanced-Squads/`.
-
-## Validação
-
-```bash
-python3 "cursos/AIOX-Productizacao/_tools/validate_course.py"
-```
 
 ## Evidência de conclusão
 

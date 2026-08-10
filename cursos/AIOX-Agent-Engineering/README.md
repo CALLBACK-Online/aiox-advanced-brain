@@ -22,7 +22,6 @@ Essa é a promessa única do curso. Research reduz incerteza; arquitetura e cons
 
 **Aulas:** 28 · **Módulos:** 6 + Capstone · **Quizzes:** 6 · **Questões:** 24
 
-- [Brief do curso](COURSE-BRIEF.md)
 - [Avaliações](Assessments.md)
 - [Projeto integrador](Projeto-Integrador.md)
 - [Rubrica](Rubrica.md)

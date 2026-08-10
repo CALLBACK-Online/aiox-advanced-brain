@@ -1,0 +1,7 @@
+# Manifesto do validador — aiox-advanced-squads
+id: aiox-advanced-squads
+path: "cursos/AIOX-Advanced-Squads"
+title: "AIOX Advanced Squads"
+scan_links: false
+
+# Checagens específicas: checks.py (run(ctx))

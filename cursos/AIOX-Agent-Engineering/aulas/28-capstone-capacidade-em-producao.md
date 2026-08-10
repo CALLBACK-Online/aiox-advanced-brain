@@ -46,6 +46,8 @@ Atue como revisor do capstone de Agent Engineering. Avalie meu pacote pela Rubri
 
 Pacote completo avaliado com pelo menos 80/100 e sem risco crítico omitido.
 
+> **Sinal de continuidade**: sua capacidade está em produção — e agora alguém precisa mantê-la. Se sustentar contexto, integrações e governança virou o custo recorrente, há uma trilha de 30 minutos para diagnosticar o próximo contexto: `cursos/AIOX-Enterprise/README.md`.
+
 ## Navegação
 
 [← Aula anterior](27-prontidao-de-producao.md) · [↑ MC](../modulos/MC-capstone.md) · [Curso](../README.md) · [Projeto](../Projeto-Integrador.md)

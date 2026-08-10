@@ -154,6 +154,20 @@ implementação na fatia → evidência de não-regressão → merge/canary.
 Metáfora: reforma de prédio ocupado. Você não derruba a estrutura pra trocar
 a pia. Você corta água do banheiro certo, troca, testa, devolve a chave.
 
+Isso não é teoria de slide. Na cohort, o Pedro nomeou exatamente essa
+fronteira quando alguém perguntou se o Brownfield Discovery servia para tudo:
+
+> **Pedro Valério (aula-01 L1589)**: E enhancement isolado também? Não, porque enhancement isolado tem um outro workflow. E o que é o enhancement isolado?
+
+> **Pedro Valério (aula-01 L1591-1593)**: Você tem um projeto que já está desenvolvendo. E você quer fazer um novo épico naquele mesmo projeto.
+
+Discovery serve pra migração de projeto que veio do Lovable, Bolt ou V0 e
+pra auditoria completa de codebase [SOURCE: aula-01 L1579-1581]. Enhancement
+isolado adiciona um épico novo num projeto que você já conhece. Dois
+workflows, duas rodinhas — e o Alan mostrou os dois rodando ao vivo na mesma
+aula: "é um processo de Brownfield Discovery, é um processo de Brownfield
+Enhancement" [SOURCE: aula-01 L1713].
+
 - **2**: fases (discovery → enhance)
 - **1**: menor diff que vale
 - **0**: espaço pra fé no merge
@@ -161,6 +175,7 @@ a pia. Você corta água do banheiro certo, troca, testa, devolve a chave.
 - **status**: brownfield enhance
 - **meta**: discovery→plano→diff
 - **meta**: prova=nao-regressao
+- **meta**: fonte=aula-01 + aula-02 + aula-06 + t2-aula-4
 - **ready**: ready to map
 
 **Legenda de cores**
@@ -201,6 +216,24 @@ Olha só: discovery não precisa ser monografia. Pode ser meia manhã. Precisa
 ser **antes** do primeiro commit da feature — ou o commit admite que é
 exploração e não entrega.
 
+E onde entra o PRD nisso? A cohort tropeçou exatamente aqui. O instinto de
+quem chega é criar um PRD novo para cada feature — e o Pedro cortou esse
+hábito na raiz:
+
+> **Pedro Valério (aula-01 L3407-3409)**: Normalmente isso é uma versão um pouco errada. Você não fica criando PRD toda hora. Você cria um grande PRD de início, e depois você vai fazendo enhancement naquilo.
+
+> **Pedro Valério (aula-01 L3411-3413)**: E normalmente os enhancements são divididos em algumas variáveis. Podem ser uma new feature, alguma coisa nova que vai se acoplar naquele projeto. Um enhancement, uma melhoria de algo que já existe. Ou é um bug fix, alguma coisa que está quebrada.
+
+O próprio Alan admitiu no ar que operava errado — e que o erro nem doía na
+hora:
+
+> **Alan Nicolas (aula-01 L1749-1751)**: Eu erroneamente, até hoje, fazia muitos PRDs para features. E funciona. O mais louco é isso. Funciona. Só que daí eu descobri: não é a melhor forma, porque daí eu não crio o backlog de dados. Eu não estava criando os históricos da forma correta para o Bob ficar trabalhando sem parar.
+
+Guarda essa: PRD demais funciona hoje e cobra caro depois. Um grande PRD de
+início vira a constituição do produto; cada enhancement entra como new
+feature, melhoria ou bug fix — com o histórico ligado no backlog, não num
+documento órfão.
+
 - **1. Mapa**: Módulos, deps, fluxos críticos, donos de risco. [discovery]
 - **2. Plano**: Fatia, superfície, flag, critérios de aceite. [design]
 - **3. Prova**: Testes, checklist, canary, rollback mental. [merge]
@@ -231,6 +264,24 @@ Evidência de não-regressão (escolha o kit, não a fé):
 
 Sem pelo menos um item honesto na lista, merge é torcida. Cara, torcida não
 é processo.
+
+Na operação da cohort, essa classificação de toque começa numa pergunta que
+o próprio workflow faz na elicitação: essa feature precisa de mudança no
+banco de dados? Se sim, chama o Data Engineer; se precisa de API, chama o
+DevOps [SOURCE: aula-01 L3547-3549]. O agente não adivinha o blast radius —
+ele pergunta e analisa:
+
+> **Pedro Valério (aula-06 L1743)**: Ele vai analisar o projeto e vai fazer exatamente o que você perguntou, que é uma análise de desenvolvimento incremental: entender tudo que existe e qual é o próximo passo que ele tem que dar. Ou ele tem que atualizar alguma coisa que já existe, ou criar uma coisa nova.
+
+E quando o sistema já tem gente usando, a prova de não-regressão ganha um
+degrau físico: a branch. O Klaus descreveu isso na mentoria, com um sistema
+dele que roda em produção:
+
+> **Klaus Deor (t2-aula-4 L2641)**: Ele está em desenvolvimento, ele está em produção, o pessoal já utiliza. E toda vez que eu quero subir uma atualização para ele, o ideal seria subir para uma branch, porque ele não vai fazer o deploy automático. Ele só vai atualizar quando eu fizer o merge, quando juntar uma na outra.
+
+Branch mais merge manual é a versão artesanal do dark launch: o código novo
+existe, versiona, é revisável — e o usuário só encontra quando você decide
+juntar.
 
 **Risco × kit mínimo**
 
@@ -271,6 +322,19 @@ Diff ainda era pequeno. A diferença foi o **mapa**. Não o talento do Dev.
 Então o que acontece no big bang? O time propõe "reescrever o módulo de
 tickets". Três meses. Feature de prioridade ainda não existe. Cliente foi
 embora. Fatia vertical batia big bang.
+
+Esse caso é didático — mas a cohort viveu a versão em miniatura dele ao
+vivo, e ficou registrado. O Alan pulou o processo de story numa mudança
+"pequena", fez um handoff informal, e a regressão apareceu pelo grupo:
+
+> **Alan Nicolas (aula-02 L2985)**: Teve alguém que mandou uma mensagem lá no grupo e falou: Alan, tu deixou o README com os agentes antigos. Se eu tivesse feito um story, não tinha acontecido aquilo. Dá pra ver que ficou aquele erro lá porque eu não fiz um story. Eu fiz um handoff.
+
+Mesma anatomia do endpoint da sexta: mudança pequena, atalho no processo,
+consumidor esquecido — só que aqui o consumidor era o README e quem pagou
+foi a documentação, não o billing. O Pedro fechou o princípio na mesma
+conversa: sempre que sentir falta de alguma coisa no processo, é porque está
+faltando uma task, um workflow, um checklist — cria uma vez e nunca mais faz
+na mão, igual botão que vira componente [SOURCE: aula-02 L2979-2981].
 
 **Enhancement com mapa**
 
@@ -331,6 +395,21 @@ flowchart TB
   → _Bloqueio de merge até checklist/teste existir._
   Ex.: PR verde só no caminho novo.
 
+Quem dimensiona a fatia na cohort não é o Dev empolgado — é o PM. Mais de
+oito tasks já não cabe num story; mudancinha entra como story num épico que
+já existe; tema sem épico nenhum ganha épico novo. "Quem faz essa decisão é
+o PM" [SOURCE: aula-02 L3173-3193]. O Pedro descreveu a regra viva:
+
+> **Pedro Valério (aula-02 L3183)**: Então eu engordo um pouquinho o story para ele fazer em um só e não precisar criar um épico, e ele adicionar aquele story num épico já existente.
+
+E quando você ainda não sabe o que a mudança toca, existe um tipo de story
+exatamente para isso:
+
+> **Pedro Valério (aula-02 L2961-2965)**: Eu até criei tipos de stories diferentes. Tem story de feature, tem story de desenvolvimento. Brownfield tem stories de investigação. Então tem tipos de stories diferentes que ele vai usar templates diferentes também. Por exemplo, stories de investigação de documentação não precisam de CodeRabbit.
+
+Story de investigação é o discovery com label, do jeito que esta aula pediu:
+exploração declarada, template próprio, sem fingir que é entrega.
+
 **Gate:** Você nomeia módulos tocados e a prova de não-regressão em uma frase cada? — _Se não nomeia, ainda é 'só mais um endpoint'._
 
 #### Seguro (núcleo)
@@ -386,6 +465,42 @@ colocaria (ou colocou) em legado.
 - **Não-regressão**: Evidência de que comportamentos antigos críticos seguem válidos.
 - **Fatia vertical**: Entrega fina end-to-end em vez de rewrite horizontal total.
 - **Blast radius**: Alcance do dano se a mudança falhar em produção.
+
+---
+
+## Da cohort: enhancement é rotina, não evento
+
+*T1 · aula-01 + aula-02 + aula-06 · T2 · t2-aula-4*
+
+Na operação real do grupo, enhancement não é cerimônia especial — é o jeito
+default de tocar um sistema vivo, épico após épico:
+
+> **Pedro Valério (aula-06 L1761-1763)**: Se você for olhar aqui nos meus épicos, só nesse projeto, eu estou no épico quarenta. Por quê? Eu não faço nada sem ele.
+
+A sequência que ele descreveu na aula-06 é a rota desta aula com nome de
+agente: depois do Brownfield PRD, dos code standards e dos invariantes,
+todo enhancement entra por Analyze Project → épico → PM → SM → stories
+[SOURCE: aula-06 L1751-1759]. E o mapa não serve só pra reagir a pedido de
+cliente — dá pra minerar enhancement no próprio repo:
+
+> **Pedro Valério (aula-01 L3555)**: Ele vai fazer a análise geral, pegando todos os documentos principais, e tentar reconhecer novas features e enhancements que esse projeto precisa. Então às vezes até vale fazer esse scan — vai que você não está nem olhando para uma coisa que poderia ser melhorada.
+
+> **Pedro Valério (aula-01 L3451)**: Então, aqui no Analyze Project, ele vai estar analisando toda essa estrutura para entender como eu adiciono uma coisa nisso, ou como eu faço uma melhoria nisso.
+
+O ritmo é Kaizen, não big bang — quando um aluno trouxe a ideia de
+transformação total, a resposta foi:
+
+> **Pedro Valério (aula-06 L4155)**: Isso aí, Carlos. Em transformação incremental. Uma melhoria por vez.
+
+E sobre automatizar o ciclo inteiro: o Alan mostrou uma skill que roda
+story → valid draft → Dev → QA sozinha, com loop de correção — e o Pedro
+vetou distribuir na hora: "vocês têm que passar um pouco pelos comandos
+primeiro", porque sem conhecer cada etapa "vocês não vão conseguir reparar
+se ele realmente está executando todas as etapas numa skill"
+[SOURCE: aula-02 L2743-2765]. Prova de não-regressão vale também pro seu
+processo: só automatize o portão que você sabe fiscalizar.
+
+> **Nota de curadoria**: "Brownfield Enhancement" como nome de processo aparece uma única vez nas transcrições, na demo ao vivo do Alan [SOURCE: aula-01 L1713]; o lastro operacional desta aula vem do workflow de "enhancement isolado" e da disciplina PRD + enhancements. O caso do endpoint que apagou o corredor e a régua local/núcleo/transversal são elaborações didáticas do curso, sem âncora direta de transcrição.
 
 ---
 

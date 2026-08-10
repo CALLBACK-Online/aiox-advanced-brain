@@ -52,7 +52,7 @@ Decisões, artefatos e evidências podem permanecer ligados à operação. Isso 
 
 A base mantida recebe atualizações durante o acesso. O participante não entra apenas para copiar uma fotografia estática; entra numa relação de adoção e acompanhamento, conforme a oferta vigente.
 
-Pense na diferença entre carregar uma mala para cada viagem e ter uma base onde o necessário já está organizado. A mala ainda exige escolhas. A base reduz a reconstrução anterior a cada partida.
+Pense na diferença entre fazer a mala do zero para cada viagem e ter uma base onde o essencial já está organizado. Você continua escolhendo o que levar; deixa de refazer tudo a cada partida.
 
 ## O que não muda
 
@@ -71,7 +71,7 @@ Pegue uma missão recorrente e responda:
 - o que acontece quando duas fontes entram em conflito;
 - onde a decisão final fica registrada.
 
-Se as respostas dependem de uma pessoa lembrar “onde ficou”, você identificou um problema de contexto operacional.
+Se as respostas dependem de uma pessoa lembrar “onde ficou”, você identificou um problema de contexto operacional. Guarde o registro: ele vira a linha de contexto do Mapa do Custo de Reconstrução (aula 04).
 
 ## Navegação
 

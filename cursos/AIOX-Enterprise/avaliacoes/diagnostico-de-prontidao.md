@@ -64,14 +64,14 @@ Já há entrega real, mas a repetição, o impacto ou o resultado desejado ainda
 
 Há operação real, repetição, múltiplas partes, custo de fragmentação e um resultado de negócio claro. Próximo passo: levar essas evidências à conversa oficial e confirmar escopo e condições vigentes.
 
-## Decision memo
+## Dossiê Enterprise-Ready (decision memo)
 
-Complete em uma página:
+Quem chega à conversa oficial com este dossiê completo conversa sobre a própria operação; quem chega sem ele conversa sobre promessas. Complete em uma página:
 
 - **Operação atual:**
 - **Resultado que preciso sustentar:**
 - **O que já consigo construir com o Advanced:**
-- **O que preciso reconstruir a cada ciclo** (Mapa do Custo de Reconstrução, aula 04):
+- **O que preciso reconstruir a cada ciclo** (Mapa do Custo de Reconstrução, aula 04) — total da [calculadora](../templates/mapa-custo-reconstrucao.md): R$ ___/mês:
 - **Evidência do impacto dessa fragmentação:**
 - **O que espero validar numa conversa Enterprise:**
 - **Decisão agora:** continuar construindo / preparar evidência / avaliar fit.

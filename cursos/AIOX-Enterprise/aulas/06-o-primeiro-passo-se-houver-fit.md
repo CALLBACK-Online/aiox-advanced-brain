@@ -45,7 +45,7 @@ Use quando já existe entrega, mas o gargalo ainda parece ocasional. Opere outro
 
 ### Avaliar o fit
 
-Use quando operação, recorrência, fragmentação e resultado estão claros. Leve seu decision memo para a conversa oficial. Assim, você avalia o Enterprise pelo problema que precisa resolver, não pela curiosidade sobre o que existe dentro.
+Use quando operação, recorrência, fragmentação e resultado estão claros. Leve seu Dossiê Enterprise-Ready — o decision memo do diagnóstico — para a conversa oficial. Assim, você avalia o Enterprise pelo problema que precisa resolver, não pela curiosidade sobre o que existe dentro.
 
 ## O que não muda
 

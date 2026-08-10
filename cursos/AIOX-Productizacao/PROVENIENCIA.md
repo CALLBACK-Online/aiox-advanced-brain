@@ -37,4 +37,4 @@ AIOX Productização assume a propriedade canônica dos fundamentos comerciais a
 - O curso termina em experimento de mercado, não em backlog de software.
 - Agentes recebem anti-sinais para não responder questão comercial com engenharia.
 
-[Voltar ao curso](README.md) · [Brief](COURSE-BRIEF.md)
+[Voltar ao curso](README.md)

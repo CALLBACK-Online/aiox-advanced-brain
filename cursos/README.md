@@ -19,7 +19,8 @@ Todos os cursos usam a mesma convenção:
 | `modulos/` | Índices de módulo (quando houver) |
 | `avaliacoes/` | Quizzes e projeto (não `assessments/`) |
 | `ponte/` | Pontes para outros cursos/assets |
-| `_tools/` | Validadores do curso |
+
+Tooling de maintainer: `dev/` (não em `cursos/`). Regra: `AGENTS.md` § Superfície do aluno vs maintainer.
 
 **Não sabe qual rota seguir?** Abra [Como estudar o acervo — trilhas por caso](COMO-ESTUDAR.md).
 

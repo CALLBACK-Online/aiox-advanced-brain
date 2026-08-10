@@ -64,7 +64,7 @@ Sem `npm run validate` verde no fim, a rodada não terminou.
 
 - Cursos são **autocontidos**: links de um curso resolvem dentro da própria pasta.
 - **Não mover nem renomear** aulas canônicas sem atualizar os validadores em
-  `cursos/*/_tools/` — os contadores de aulas/módulos são verificados.
+  `dev/courses/` — os contadores de aulas/módulos são verificados.
 - Quizzes têm gabarito **balanceado por posição** (o validador confere); ao criar
   questões, distribuir as respostas corretas entre A/B/C/D.
 - Sem paths absolutos de máquina; exemplos usam paths relativos deste repo.
@@ -76,7 +76,6 @@ Sem `npm run validate` verde no fim, a rodada não terminou.
 
 - Regras de biblioteca: `AGENTS.md`
 - Hub de trilhas e matriz método ↔ squads: `cursos/README.md`
-- Validadores: `cursos/AIOX Advanced/_tools/validate_course.py` (e equivalentes
-  por curso) via `npm run validate`
+- Validadores: `dev/validate.py` + `dev/courses/<slug>/{manifest.yaml,checks.py}` via `npm run validate`
 - Existência e maturidade de assets citados: `catalog.json`
 - Pontes: `cursos/AIOX Advanced/ponte/` · `cursos/AIOX-Advanced-Squads/ponte/`

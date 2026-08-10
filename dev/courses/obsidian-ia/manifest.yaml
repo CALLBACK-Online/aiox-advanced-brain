@@ -1,0 +1,7 @@
+# Manifesto do validador — obsidian-ia
+id: obsidian-ia
+path: "cursos/Obsidian-IA"
+title: "Obsidian + IA"
+scan_links: false
+
+# Checagens específicas: checks.py (run(ctx))

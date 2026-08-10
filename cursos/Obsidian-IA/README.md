@@ -101,9 +101,3 @@ Depois de AIOX Fundamentals ou Advanced, volte para o gate operacional:
 - 1 nota de retorno com resultado, decisão e aprendizado reutilizável.
 
 Para conferir os conceitos das 8 aulas, feche com o [Quiz final](avaliacoes/Quiz-final.md).
-
-## Validação
-
-```bash
-python3 "cursos/Obsidian-IA/_tools/validate_course.py"
-```

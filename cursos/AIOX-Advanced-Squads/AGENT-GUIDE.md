@@ -77,4 +77,4 @@ Missão: {descreva a necessidade}
 - “Quero criar tokens e componentes.” → `design-system`.
 - “O design system já existe e preciso impedir drift.” → `design-ops`.
 
-Esses casos e a cobertura 1:1 estão em `_tools/routing-evals.json` e são verificados por `npm run validate` (validador estrutural + `validate-agent-routing.mjs`). A prova opcional em sessões limpas dos runtimes é executada, na raiz do repositório, com `npm run smoke:routing:runtimes`.
+A cobertura comportamental deve permanecer 1:1 para as 24 rotas. Essa prova pertence aos gates de manutenção do repositório, não ao pacote pedagógico.

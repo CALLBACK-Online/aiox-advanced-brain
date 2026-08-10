@@ -147,12 +147,6 @@ Termo ou dúvida: {escreva aqui}
 
 Você passa quando entrega o [Projeto Integrador](Projeto-Integrador.md): um diagrama de sistema, fluxo de uma operação crítica, decisões de dados/comunicação/confiabilidade/segurança, arquitetura agentic e três trade-offs defendidos pela [Rubrica](Rubrica.md).
 
-## Validação
-
-```bash
-python3 "cursos/Introducao-a-Arquitetura-de-Sistemas/_tools/validate_course.py"
-```
-
 ## Ordem com as outras trilhas
 
 ```text
