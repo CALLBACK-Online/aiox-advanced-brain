@@ -265,6 +265,16 @@ Teste único: **o aluno precisa disto para estudar ou copiar um asset?**
 
 Gate: `npm run validate` começa em surface check — vazar tooling/bastidor em `cursos/` falha fechado.
 
+### Ops de time (não aluno)
+
+Criar/recriar acervo ou curso, upgrade brownfield, improve didático, doctor e pack:
+skill operacional **`course-library-ops`** em `dev/ops/course-library-ops/` (SoT).
+
+- Instalar runtime: `bash dev/ops/course-library-ops/scripts/install.sh --target both`
+- Contrato: `dev/ops/course-library-ops/SKILL.md` (7 modos)
+- **Não** entra em `skills/` do catálogo aluno nem no npm pack
+- Qualidade didática: `skills/teach` canônica; fallback no pack se ausente
+
 ### O que não versionar / não inventar
 
 - Projeções de IDE: `.claude/`, `.codex/`, `.agents/` (distribuição canônica em `skills/` e `squads/`).

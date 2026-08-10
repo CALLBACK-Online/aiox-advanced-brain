@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "library_version": "0.1.0",
+  "library": {
+    "id": "{{LIBRARY_SLUG}}",
+    "title": "{{LIBRARY_TITLE}}"
+  },
+  "courses": {},
+  "learning_journey": {
+    "model": "common-core-plus-application-routes-and-continuity-preview",
+    "common_core": [],
+    "responsibilities": {},
+    "core_transitions": [],
+    "application_routes": {},
+    "cross_route_transitions": []
+  }
+}

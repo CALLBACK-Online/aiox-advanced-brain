@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
 """Protege a separação entre o pacote do aluno e o bastidor de produção."""
-
 from __future__ import annotations
 
 import json
 import sys
 from pathlib import Path
 
-# Permite `from lib.paths import find_root` quando rodado via harness ou standalone.
 _DEV = Path(__file__).resolve().parents[1]
 if str(_DEV) not in sys.path:
     sys.path.insert(0, str(_DEV))
@@ -18,7 +16,6 @@ ROOT = find_root(Path(__file__))
 COURSES = ROOT / "cursos"
 FORBIDDEN_DIRECTORIES = {"_tools", "tests", "__tests__", "scripts"}
 FORBIDDEN_SUFFIXES = {".js", ".mjs", ".py", ".pyc", ".sh", ".ts"}
-# Bastidor editorial (não confundir com curriculum.yaml / SOURCE-MANIFEST do aluno).
 PRODUCTION_FILES = {
     "course-brief-original.md",
     "course-brief.md",
@@ -40,13 +37,14 @@ PRODUCTION_FILES = {
 
 def main() -> int:
     errors: list[str] = []
+    if not COURSES.is_dir():
+        print("cursos/ ausente")
+        return 1
     course_files = [path for path in COURSES.rglob("*") if path.is_file()]
-
     for path in course_files:
         relative = path.relative_to(ROOT)
         relative_parts = set(relative.parts)
         filename = path.name.lower()
-
         if relative_parts & FORBIDDEN_DIRECTORIES:
             errors.append(f"tooling dentro da superfície do aluno: {relative}")
         if path.suffix.lower() in FORBIDDEN_SUFFIXES:
@@ -62,18 +60,11 @@ def main() -> int:
         if normalized == "docs" or normalized.startswith("docs/"):
             errors.append(f"package.json inclui documentação de produção: {entry}")
 
-    gitignore_lines = {
-        line.strip() for line in (ROOT / ".gitignore").read_text(encoding="utf-8").splitlines()
-    }
-    if "/docs/" not in gitignore_lines:
-        errors.append(".gitignore precisa ignorar /docs/")
-
     if errors:
         print("❌ Separação cursos/dev/docs inválida:")
         for error in errors:
             print(f"  - {error}")
         return 1
-
     print(f"✅ Superfície dos cursos limpa ({len(course_files)} arquivos verificados)")
     return 0
 

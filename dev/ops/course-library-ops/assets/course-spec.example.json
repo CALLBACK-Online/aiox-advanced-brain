@@ -1,0 +1,32 @@
+{
+  "course_id": "aiox-exemplo",
+  "title": "AIOX Exemplo",
+  "path": "cursos/AIOX-Exemplo",
+  "profile": "decisorio-aplicado",
+  "creation_mode": "create",
+  "capstone": true,
+  "optional_artifacts": [
+    "AGENT-GUIDE.md",
+    "Glossario.md",
+    "Mapa-de-decisao.md"
+  ],
+  "approval_artifacts": {
+    "brief": "docs/producao-cursos/aiox-exemplo/COURSE-BRIEF.md",
+    "outline": "docs/producao-cursos/aiox-exemplo/course-outline.md"
+  },
+  "modules": [
+    {
+      "id": "M0",
+      "title": "Decisão inicial",
+      "evidence": "Artefato intermediário verificável",
+      "quiz": true,
+      "lessons": [
+        {
+          "id": "primeira-decisao",
+          "title": "Primeira decisão",
+          "reading_minutes": 10
+        }
+      ]
+    }
+  ]
+}
