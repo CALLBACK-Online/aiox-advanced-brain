@@ -244,6 +244,8 @@ Tabela ampliada: `cursos/AIOX-Advanced-Squads/Guia-de-execucao.md`.
 - Preserve `skills/` e `squads/` como fontes canônicas deste acervo.
 - Preserve `cursos/Introducao-a-Arquitetura-de-Sistemas/`, `cursos/AIOX-Fundamentals/`, `cursos/AIOX Advanced/`, `cursos/AIOX-Agent-Engineering/`, `cursos/AIOX-Design/`, `cursos/AIOX-Productizacao/`, `cursos/AIOX-Advanced-Squads/` e `cursos/AIOX-Enterprise/` como unidades autocontidas (links de cada curso resolvem **dentro da própria pasta do curso**).
 - Links e dependências documentais resolvem **dentro deste repositório**.
+- Preserve `.obsidian/` integralmente como configuração versionada do vault;
+  nenhum arquivo ou subdiretório dessa pasta entra no `.gitignore`.
 - **Nunca** commit paths absolutos de máquina (`/Users/…`, `/home/…`, `C:\Users\…`).
 - **Não** importe componentes multi-tenant exclusivos do AIOX Enterprise.
 - **Não** reintroduza nomes de monorepos internos ou marcas de runtime legado.

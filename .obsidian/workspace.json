@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "9817bddeccabd0ed",
+        "id": "2baf98d93a579b9c",
         "type": "tabs",
         "children": [
           {
-            "id": "dfc34c375a1af4b5",
+            "id": "e48cfd1ffa392519",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Visualização em gráfico"
+              "type": "markdown",
+              "state": {
+                "file": "cursos/AIOX Advanced/aulas/44-metodo-s2s.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "44-metodo-s2s"
             }
           }
         ]
@@ -181,43 +185,43 @@
       "bases:Criar nova base": false
     }
   },
-  "active": "dfc34c375a1af4b5",
+  "active": "e48cfd1ffa392519",
   "lastOpenFiles": [
-    "dev/selftest.py",
-    "cursos/AIOX-Design/COURSE-BRIEF.md",
-    "cursos/_leak_test/x.py",
-    "cursos/_leak_test",
-    "dev/__pycache__/validate.cpython-314.pyc",
-    "dev/__pycache__",
-    "dev/lib/__pycache__/manifest.cpython-314.pyc",
-    "dev/lib/__pycache__/quizzes.cpython-314.pyc",
-    "dev/lib/__pycache__/frontmatter.cpython-314.pyc",
-    "dev/lib/manifest.py",
-    "cursos/_tools_test_leak/evil.py",
-    "cursos/_tools_test_leak",
-    "dev/README.md",
-    "docs/producao-cursos/README.md",
-    "docs/producao-cursos/aiox-productizacao/COURSE-BRIEF.md",
-    "docs/producao-cursos/aiox-fundamentals/validation-report.md",
-    "docs/producao-cursos/aiox-fundamentals/reformed-brief-validation-report.md",
-    "docs/producao-cursos/aiox-fundamentals/gap-analysis.md",
-    "docs/producao-cursos/aiox-fundamentals/course-outline.md",
-    "docs/producao-cursos/aiox-fundamentals/COURSE-BRIEF.md",
-    "docs/producao-cursos/aiox-enterprise/GAP-ANALYSIS.md",
-    "docs/producao-cursos/aiox-enterprise/COURSE-BRIEF.md",
-    "docs/producao-cursos/aiox-design/course-outline.md",
-    "docs/producao-cursos/aiox-design/CURRICULUM-EXPANSION.md",
-    "docs/producao-cursos/aiox-design/COURSE-BRIEF.md",
-    "docs/producao-cursos/aiox-agent-engineering/COURSE-BRIEF.md",
-    "docs/producao-cursos/aiox-advanced/validation-report.md",
-    "docs/producao-cursos/aiox-advanced/CURRICULUM-GAP.md",
-    "cursos/AIOX-Enterprise/templates/mapa-custo-reconstrucao.md",
-    "cursos/AIOX-Enterprise/RECURSOS.md",
-    "cursos/AIOX-Enterprise/modulos/03-prontidao-e-decisao.md",
-    "cursos/AIOX-Enterprise/modulos/02-operacao-como-sistema.md",
-    "cursos/AIOX-Enterprise/modulos/01-da-competencia-ao-gargalo.md",
-    "cursos/AIOX-Enterprise/aulas/06-o-primeiro-passo-se-houver-fit.md",
-    "cursos/AIOX-Enterprise/aulas/05-prontidao-evidencia-antes-de-pressa.md",
-    "cursos/AIOX-Enterprise/aulas/04-o-que-voce-deixa-de-reconstruir.md"
+    "dev/ops/course-library-ops/dist/course-library-ops-1.2.5.zip.backup.20260810194149",
+    "dev/ops/course-library-ops/dist/course-library-ops-1.2.5.zip",
+    "dev/ops/course-library-ops/dist/course-library-ops-1.2.4.zip",
+    "dev/ops/course-library-ops/dist/zi6MGbk5",
+    "docs/producao-cursos/obsidian-ia/course-dna.md",
+    "docs/producao-cursos/introducao-arquitetura-sistemas/course-dna.md",
+    "docs/producao-cursos/aiox-productizacao/course-dna.md",
+    "docs/producao-cursos/aiox-fundamentals/course-dna.md",
+    "docs/producao-cursos/aiox-enterprise/course-dna.md",
+    "docs/producao-cursos/aiox-design/course-dna.md",
+    "docs/producao-cursos/aiox-agent-engineering/course-dna.md",
+    "docs/producao-cursos/aiox-advanced-squads/course-dna.md",
+    "docs/producao-cursos/aiox-advanced/course-dna.md",
+    "docs/producao-cursos/aiox-productizacao/vault-links.md",
+    "docs/producao-cursos/aiox-agent-engineering/vault-links.md",
+    "docs/producao-cursos/aiox-advanced-squads/vault-links.md",
+    "docs/producao-cursos/aiox-advanced/vault-links.md",
+    "docs/producao-cursos/introducao-arquitetura-sistemas/vault-links.md",
+    "docs/producao-cursos/aiox-fundamentals/vault-links.md",
+    "docs/producao-cursos/aiox-design/vault-links.md",
+    "docs/producao-cursos/aiox-enterprise/vault-links.md",
+    "docs/producao-cursos/obsidian-ia/vault-links.md",
+    "dev/ops/course-library-ops/scripts/__pycache__/audit_vault_links.cpython-314.pyc",
+    "docs/producao-cursos/vault-links.md",
+    "dev/ops/course-library-ops/scripts/audit_vault_links.py",
+    "dev/ops/course-library-ops/dist/course-library-ops-1.2.2.zip.backup.20260810183802",
+    "docs/producao-cursos/COVERAGE-MOTOR.md",
+    "dev/ops/course-library-ops/dist/course-library-ops-1.2.2.zip.backup.20260810183728",
+    "docs/producao-cursos/aiox-agent-engineering/retrospective.md",
+    "docs/producao-cursos/aiox-agent-engineering/didactic-audit.md",
+    "docs/producao-cursos/aiox-advanced/retrospective.md",
+    "docs/producao-cursos/aiox-advanced/didactic-audit.md",
+    "docs/producao-cursos/aiox-advanced-squads/didactic-audit.md",
+    "docs/producao-cursos/aiox-advanced-squads",
+    "docs/producao-cursos/introducao-arquitetura-sistemas",
+    "dev/ops/course-library-ops/dist/course-library-ops-1.2.2.zip"
   ]
 }

@@ -21,10 +21,8 @@ artifacts/
 AGENTS.local.md
 CLAUDE.local.md
 
-# Obsidian: vault config versionada (alunos abrem a raiz como vault).
-# Só lixo regenerável fica de fora — não ignore themes/workspace/graph.
-.obsidian/cache
-.obsidian/workspace-mobile.json
+# Obsidian: toda a configuração do vault é versionada.
+# Não adicione regras para .obsidian/ neste arquivo.
 
 # Anotações dos alunos (só README versionado)
 notas/**
@@ -44,3 +42,36 @@ cursos/_notas-pessoais/**
 .codex/
 .agents/
 .aiox/
+
+# Python local
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Editores
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Outputs gerados na raiz
+/dist/
+/build/
+/tmp/
+/temp/
+*.tgz
+npm-debug.log*
+
+# Resíduos de merge, patch e backup
+*.orig
+*.rej
+*.backup.*
+
+# Obsidian é canônico por inteiro; sobrescreve todas as regras genéricas acima.
+!/.obsidian/
+!/.obsidian/**

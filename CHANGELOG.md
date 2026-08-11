@@ -21,6 +21,10 @@
 
 ### Changed
 
+- `.obsidian/` passa a ser integralmente versionada; caches, workspace desktop
+  e workspace mobile do vault permanecem na superfície compartilhada.
+- `.gitignore` cobre ambientes e caches Python, editores locais, outputs de
+  build na raiz, pacotes npm gerados e resíduos de merge/backup.
 - `dev/` passa a ser bastidor local gitignored, como `docs/`; validadores,
   reports e `course-library-ops` deixam de integrar o clone público.
 - `.github/` passa a ser configuração operacional local gitignored e deixa de
