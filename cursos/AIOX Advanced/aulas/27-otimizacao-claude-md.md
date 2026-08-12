@@ -544,4 +544,4 @@ Tradução dos termos para quem está otimizando um CLAUDE.md pela primeira vez.
 
 ## Navegação
 
-← [[aulas/25-core-config-leis-sociais|core-config: as leis sociais do projeto]] · ↑ [[modulos/Módulo 1 - Sistema e Contexto|M1 — Sistema e contexto]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[aulas/06-code-rabbit-boost|Code Rabbit Boost]]
+← [[aulas/25-core-config-leis-sociais|core-config: as leis sociais do projeto]] · ↑ [[modulos/Módulo 1 - Sistema e Contexto|M1 — Sistema e contexto]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[aulas/76-orientacao-do-agente|Orientação do agente]]

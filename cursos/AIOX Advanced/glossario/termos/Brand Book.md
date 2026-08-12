@@ -24,7 +24,7 @@ Use **Brand Book** como fonte primária ao montar design system em brownfield: e
 
 **Exemplo prático:** na aula [[32-design-system-greenfield-brownfield]], extraia os tokens do **Brand Book** em vez de inventar paleta nova; o design system preserva a identidade já usada pela empresa.
 
-**Não confunda:** Brand Book não é design system: ele define a identidade da marca; os tokens e componentes operacionais são derivados dele, não substituídos por ele.
+**Não confunda:** Brand Book não é design system: ele define a identidade da marca; os tokens e componentes operacionais são derivados dele, não substituídos por ele. Também não é [[Brand Card]]: o cartão é o tom verbal de uma tela para o agente; o livro é a fonte visual.
 
 **Frequência nos cursos:** **34** menções (AIOX Advanced: 34 · AIOX Advanced Squads: 0).
 

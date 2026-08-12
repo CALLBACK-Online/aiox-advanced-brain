@@ -29,6 +29,7 @@ Uma entrada real atravessa um processo explícito, produz uma saída útil, pass
 - leis locais e fontes canônicas;
 - ambiente e executores;
 - orçamento de contexto;
+- mapa de trabalho no disco (Brand Card, ledger, regra de escopo) com prova de retomada;
 - entrada, saída e fronteiras de autoridade.
 
 ## Gate 3 — SDC e qualidade

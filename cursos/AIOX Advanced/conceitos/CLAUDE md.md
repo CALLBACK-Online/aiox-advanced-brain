@@ -34,10 +34,12 @@ Contrato de leis do projeto que o agente lê antes de agir. Define o que é perm
 - [[03-claude-md-leis-da-fisica]]
 - [[27-otimizacao-claude-md]]
 - [[25-core-config-leis-sociais]]
+- [[76-orientacao-do-agente]]
 
 ## Relacionados
 
 - [[Engenharia de Contexto]]
+- [[Orientação do Agente]]
 - [[Janela de Contexto]]
 - [[Local Staging Production]]
 - [[Mapa do AIOX]]

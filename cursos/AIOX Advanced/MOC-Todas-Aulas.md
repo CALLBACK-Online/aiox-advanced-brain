@@ -5,7 +5,7 @@ aliases: [MOC Aulas Advanced, Todas as aulas]
 
 # MOC — Todas as aulas (AIOX Advanced)
 
-> Mapa histórico da edição de 75 aulas. A progressão ativa de 28 aulas está no README do curso; os demais nós resolvem para o arquivo curricular.
+> Mapa histórico da edição de 75 aulas. A progressão ativa de 29 aulas está no README do curso; os demais nós resolvem para o arquivo curricular.
 
 Curso: abra `cursos/AIOX Advanced/README.md` · mapa: [[Mapa do AIOX]]
 
@@ -97,6 +97,7 @@ Hubs do vault (paths): `00-HOME.md` · `cursos/MOC-Acervo-AIOX.md` · `cursos/en
 - [[73-prontidao-de-producao]]
 - [[74-caso-integrado-end-to-end]]
 - [[75-faq-cohort-campo]]
+- [[76-orientacao-do-agente]]
 
 ## Depois do método
 

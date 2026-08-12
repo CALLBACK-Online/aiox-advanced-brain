@@ -2,7 +2,7 @@
 type: lesson
 course: aiox-agent-engineering
 title: "Routing de modelos: fitness, custo, qualidade e fallback"
-lesson_position: 19
+lesson_position: 24
 module: M3
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering

@@ -2,7 +2,7 @@
 type: lesson
 course: aiox-agent-engineering
 title: "Squad Creator passo a passo: criar um squad do zero"
-lesson_position: 16
+lesson_position: 21
 module: M2
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering

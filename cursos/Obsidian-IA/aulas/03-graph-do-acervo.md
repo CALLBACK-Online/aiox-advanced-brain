@@ -127,6 +127,8 @@ Modo auditoria (órfãos ON): copie `graph.aiox-brain.audit.json` sobre `graph.j
 
 O agent **não** enxerga o canvas do Graph. Você usa o mapa para *intuir*; o agent para *trilha e evidência*. Combinar: “Vi no Graph o cluster de squads roxos; me ensine a aula 00 de Squads com path.”
 
+O Graph colorido mostra o **acervo para o humano**. Não é o índice de relações da capacidade (pessoa–empresa, story–arquivo). Um é navegação de estudo; o outro, se existir, vive no projeto e exige recibo — ver `cursos/AIOX-Agent-Engineering/aulas/12d-grafo-projecao-nao-oraculo.md`.
+
 ## Anti-padrões (depois do uau)
 
 1. **Scroll infinito** no Graph sem abrir um arquivo.

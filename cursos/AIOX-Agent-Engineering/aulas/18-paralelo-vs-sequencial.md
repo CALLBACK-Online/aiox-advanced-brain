@@ -2,7 +2,7 @@
 type: lesson
 course: aiox-agent-engineering
 title: "Quando paralelizar vs sequencial: decisão antes do speedup"
-lesson_position: 18
+lesson_position: 23
 module: M3
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering

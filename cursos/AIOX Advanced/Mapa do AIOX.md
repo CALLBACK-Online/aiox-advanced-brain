@@ -35,6 +35,7 @@ flowchart TB
 - [[CLAUDE md|CLAUDE.md]]
 - [[Janela de Contexto]]
 - [[Engenharia de Contexto]]
+- [[Orientação do Agente]]
 - [[Local Staging Production]]
 - [[DESIGN md|DESIGN.md]]
 

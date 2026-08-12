@@ -2,7 +2,7 @@
 type: lesson
 course: aiox-agent-engineering
 title: "Triagem de Squad novo: fase-zero de prior-art + research loop"
-lesson_position: 14
+lesson_position: 19
 module: M2
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering

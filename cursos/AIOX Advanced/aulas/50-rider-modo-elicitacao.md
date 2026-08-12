@@ -20,7 +20,7 @@ reading_minutes: 14
 has_mermaid_map: true
 map_source: auto-decision_graph
 module: M3
-sequence: 22
+sequence: 23
 track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced

@@ -56,7 +56,7 @@ No GitHub ou em editores genéricos os arquivos abrem, mas o grafo de ~2.000 lin
 1. **Obsidian + IA** — faça o onboarding completo se o vault for novo; quem já domina Obsidian pode usar a evidência de entrada como diagnóstico.
 2. **Introdução à Arquitetura de Sistemas** — faça completo se os termos técnicos ainda travam; use o mapa de termos para revisão seletiva.
 3. **AIOX Fundamentals** — instale/audite o Core, conheça os agents e conclua o primeiro ciclo local.
-4. **AIOX Advanced — 28 aulas / 6 módulos (5 de conteúdo + Capstone)** para dominar método, contexto, SDC, determinismo e brownfield.
+4. **AIOX Advanced — 29 aulas / 6 módulos (5 de conteúdo + Capstone)** para dominar método, contexto, SDC, determinismo e brownfield.
 
 Depois do núcleo comum, escolha uma ou combine rotas de aplicação:
 

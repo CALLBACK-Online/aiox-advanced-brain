@@ -26,4 +26,4 @@ Faça o [Quiz M2](../avaliacoes/Quiz-M2-construcao-de-capacidade.md).
 
 ## Navegação
 
-[← M1](M1-discovery-e-research.md) · [Curso](../README.md) · [Próximo módulo →](M3-orquestracao-e-escala.md)
+[← M1b](M1b-memoria-e-grafo-da-capacidade.md) · [Curso](../README.md) · [Próximo módulo →](M3-orquestracao-e-escala.md)

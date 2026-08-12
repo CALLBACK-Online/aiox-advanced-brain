@@ -2,7 +2,7 @@
 type: lesson
 course: aiox-agent-engineering
 title: "Escada Progressiva: Script → Squad → Workflow → Runner → API → App → SaaS"
-lesson_position: 23
+lesson_position: 29
 module: M4
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
@@ -330,7 +330,7 @@ Papel, vault ou board — mas escrito.
 
 Vamos lá. Sem isso a aula vira podcast de maturidade. Cronometra quinze minutos.
 
-- 1. **Lista**: Escreva os 7 degraus de memória. Confira só depois.
+- 1. **Lista**: Escreva os 7 degraus da escada (script até entrega contínua). Confira só depois. Não são camadas de memória persistente.
 - 2. **Posição**: Marque o degrau atual do teu produto/automação principal.
 - 3. **Prova**: Uma evidência verificável (comando, log, handoff, N runs).
 - 4. **Próximo**: Um degrau acima + critério de subida em uma linha.

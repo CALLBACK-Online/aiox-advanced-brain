@@ -33,6 +33,7 @@ Use **Compaction** como mecanismo de continuidade, não como fonte de verdade. A
 - [[11-goal-vs-loop]]
 - [[16-janela-de-contexto]]
 - [[17-engenharia-de-contexto]]
+- [[76-orientacao-do-agente]]
 
 ## Ver também
 

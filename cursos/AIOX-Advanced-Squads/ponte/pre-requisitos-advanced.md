@@ -22,7 +22,7 @@ Pasta do método no repositório (abra no explorer; cada curso é isolado para l
 |------------|--------------------------------|---------|
 | Essencial | `08-principio-processo-certo`, `23-o-que-e-um-squad` | Método ≠ conversa solta; squad ≠ resposta para tudo |
 | Essencial | `46-etapas-de-desenvolvimento`, `48-quality-gate-completo` | Briefing e evidência antes da ativação |
-| Gate canônico | 28 aulas ativas + Capstone do Advanced | Método transferível antes da operação especializada |
+| Gate canônico | 29 aulas ativas + Capstone do Advanced | Método transferível antes da operação especializada |
 
 ## Pré-requisito por squad
 
@@ -33,7 +33,7 @@ Pasta do método no repositório (abra no explorer; cada curso é isolado para l
 | code-anatomist | Advanced `31-brownfield-discovery` + Agent Engineering M1 |
 | domain-decoder | Agent Engineering M1 |
 | agent-autonomy | Advanced `11-goal-vs-loop` + Agent Engineering M0/M3 |
-| claude-code-mastery | `03-claude-md-leis-da-fisica`, `17-engenharia-de-contexto` |
+| claude-code-mastery | `03-claude-md-leis-da-fisica`, `17-engenharia-de-contexto`, `76-orientacao-do-agente` |
 | aiox-sop | Agent Engineering M0 |
 | etl-ops | Agent Engineering M0 |
 | runner-ops | Agent Engineering M0/M4 |

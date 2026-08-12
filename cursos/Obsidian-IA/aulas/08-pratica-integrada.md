@@ -165,7 +165,7 @@ Antes de declarar “feito”, releia o checklist do modo que você escolheu e m
 
 1. Introdução à Arquitetura de Sistemas (`cursos/Introducao-a-Arquitetura-de-Sistemas/`).
 2. AIOX Fundamentals (`cursos/AIOX-Fundamentals/`).
-3. As 28 aulas ativas do AIOX Advanced (`cursos/AIOX Advanced/`).
+3. As 29 aulas ativas do AIOX Advanced (`cursos/AIOX Advanced/`).
 4. Aula 00 do curso de Squads (`cursos/AIOX-Advanced-Squads/`).
 5. Repetir o loop Context Brief → execução → retorno em cada missão que exigir contexto do acervo.
 

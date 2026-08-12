@@ -36,7 +36,7 @@ Instruções humanas: `README.md` (seção Obsidian) e `cursos/README.md`.
 1. Confirmar que a pessoa tem o material clonado/extraído.
 2. Indicar **Open folder as vault** na raiz escolhida.
 3. Abrir o `README.md` do curso.
-4. Sugerir a entrada da etapa atual; no método, a sequência ativa de 28 aulas; em Squads, aula `00-como-usar-este-curso`.
+4. Sugerir a entrada da etapa atual; no método, a sequência ativa de 29 aulas; em Squads, aula `00-como-usar-este-curso`.
 5. Explicar: agent ensina/roteia; Obsidian navega o grafo.
 
 ## Localizar material

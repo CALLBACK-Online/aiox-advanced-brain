@@ -11,8 +11,10 @@ canonical_scope: cursos/AIOX-Agent-Engineering
 
 - Pipeline, unidade de execução, entidade, workflow ou runner → M0.
 - Incerteza, prior art, research ou engenharia reversa → M1.
+- “Cérebro”, memória persistente, grafo da capacidade, o que lembrar → M1b (aulas 12b–12f).
 - Criar, reutilizar ou adaptar capacidade/squad → M2.
 - Paralelismo, routing ou waves → M3.
+- O agente esquece a wave → aula 20b (job 4, depois do M1b).
 - Harness, API ou execução fora da IDE → M4.
 - Banco, deploy, CI/CD ou readiness → M5.
 

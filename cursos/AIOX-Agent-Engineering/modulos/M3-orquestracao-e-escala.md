@@ -16,7 +16,7 @@ Plano de execução com dependências, routing e wall-clock observáveis.
 
 ## Aulas
 
-[17](../aulas/17-ralph.md) · [18](../aulas/18-paralelo-vs-sequencial.md) · [19](../aulas/19-routing-de-modelos.md) · [20](../aulas/20-wave-execute.md)
+[17](../aulas/17-ralph.md) · [18](../aulas/18-paralelo-vs-sequencial.md) · [19](../aulas/19-routing-de-modelos.md) · [20](../aulas/20-wave-execute.md) · [20b](../aulas/20b-grafo-codigo-e-memoria-de-processo.md)
 
 ## Checkpoint
 

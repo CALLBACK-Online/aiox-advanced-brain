@@ -2,7 +2,7 @@
 type: lesson
 course: aiox-agent-engineering
 title: "Ralph: paralelização de múltiplos agentes"
-lesson_position: 17
+lesson_position: 22
 module: M3
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering

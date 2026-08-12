@@ -1,5 +1,45 @@
 # Changelog — AIOX Advanced library
 
+## 0.6.3 — 2026-08-12
+
+### Added
+
+- Módulo **M1b — Memória persistente e grafo da capacidade** no Agent Engineering (aulas 12b–12f + quiz): quatro jobs, arquivo vs síntese, grafo como projeção, identidade/tempo/isolamento, menor cérebro suficiente. Evidência só em `sources/78`–`82`.
+- Ponte no Obsidian-IA aula 03: Graph do vault ≠ índice da capacidade.
+
+### Changed
+
+- Agent Engineering: **34 aulas**, **8 módulos**, **7 quizzes**, **28 questões**.
+- Aula 20b permanece no M3 (resíduo da wave). Jobs vivem no M1b, depois do PRD.
+- Rascunhos `11b` e `20c` removidos.
+- Aulas rascunho `11b` e `20c` saíram; o conteúdo vive no M1b.
+- Aula 23: “7 degraus de memória” → degraus da escada de produto.
+
+## 0.6.2 — 2026-08-12
+
+### Added
+
+- Aula **Grafo de código e memória de processo** no AIOX Agent Engineering M3 (`aulas/20b-grafo-codigo-e-memoria-de-processo.md`), depois de Wave Execute: três grafos (trabalho / processo / conhecimento), peers (gbrain, mempalace, memori, gsd-2, LifeOS, mem0), cartão de processo da wave. Evidência só em `sources/77-grafo-codigo-e-memoria-de-processo.md`.
+- Fonte autocontida `sources/77-grafo-codigo-e-memoria-de-processo.md`.
+- Quiz M3 Q3 reescrita para memória de processo (gabarito C preservado).
+
+### Changed
+
+- Agent Engineering: **28 → 29 aulas**; `lesson_position` de harness→capstone incrementado (filenames 21–28 preservados).
+
+## 0.6.1 — 2026-08-12
+
+### Added
+
+- Aula canônica **Orientação do agente** no AIOX Advanced M1 (`aulas/76-orientacao-do-agente.md`): mapa de trabalho no disco (Brand Card, ledger, regra de escopo), GPS vs grafo de conhecimento, prova de retomada em sessão nova.
+- Conceito `Orientação do Agente` e termos `Brand Card` e `Mapa de trabalho`.
+- Questão 4 do Quiz M1 reescrita para o job de orientação (gabarito D preservado).
+
+### Changed
+
+- Progressão ativa do Advanced: **28 → 29 aulas**; M1 passa de 8 para 9 aulas.
+- Navegação M1→M2 agora atravessa a aula 76 antes de CodeRabbit.
+
 ## 0.6.0 — 2026-08-10
 
 - Adiciona **AIOX Fundamentals** como trilha própria entre Introdução à Arquitetura de Sistemas e AIOX Advanced: 3 módulos, 12 aulas, 3 quizzes, projeto final e guia para agents.

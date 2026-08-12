@@ -33,11 +33,13 @@ Disciplina de curar o que entra na janela: CLAUDE.md magro, skills certas, MCPs 
 - [[17-engenharia-de-contexto]]
 - [[16-janela-de-contexto]]
 - [[18-yaml-markdown-json-sweet-spot]]
+- [[76-orientacao-do-agente]]
 
 ## Relacionados
 
 - [[Janela de Contexto]]
 - [[CLAUDE md]]
+- [[Orientação do Agente]]
 - [[Token Economy]]
 - [[Mapa do AIOX]]
 - [[Glossário AIOX Advanced]]

@@ -2,7 +2,7 @@
 type: lesson
 course: aiox-agent-engineering
 title: "Extrair Squad do Claude Code para API própria"
-lesson_position: 22
+lesson_position: 28
 module: M4
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering

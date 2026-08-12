@@ -89,8 +89,8 @@ Na jornada educacional, [Introdução à Arquitetura de Sistemas](cursos/Introdu
 |--------|----------------------------------------|
 | **Skills** | **67** em [`skills/`](skills/): base AIOX, entradas de squad, roteador `aiox-squads` e skills de vault/ensino |
 | **Squads** | **24** canônicos em [`squads/`](squads/) |
-| **Curso método** | [AIOX Advanced](cursos/AIOX%20Advanced/README.md) — **28 aulas**, **6 módulos**, **6 quizzes**, **48 questões** |
-| **Curso Agent Engineering** | [AIOX Agent Engineering](cursos/AIOX-Agent-Engineering/README.md) — **28 aulas**, **7 módulos**, **6 quizzes**, **24 questões**, capstone |
+| **Curso método** | [AIOX Advanced](cursos/AIOX%20Advanced/README.md) — **29 aulas**, **6 módulos**, **6 quizzes**, **48 questões** |
+| **Curso Agent Engineering** | [AIOX Agent Engineering](cursos/AIOX-Agent-Engineering/README.md) — **34 aulas**, **8 módulos**, **7 quizzes**, **28 questões**, capstone |
 | **Grafo** | Milhares de wikilinks entre cursos, conceitos, skills e squads |
 | **Curso arquitetura** | [Introdução à Arquitetura de Sistemas](cursos/Introducao-a-Arquitetura-de-Sistemas/README.md) — **24 aulas**, **8 módulos**, **8 quizzes**, **32 questões** |
 | **Curso AIOX Fundamentals** | [AIOX Fundamentals](cursos/AIOX-Fundamentals/README.md) — **12 aulas**, **3 módulos**, **3 quizzes**, **15 questões**, projeto final |
@@ -247,7 +247,7 @@ Introdução à Arquitetura de Sistemas
         ↓
 AIOX Fundamentals (Core, instalação e agents)
         ↓
-AIOX Advanced (28 aulas de método)
+AIOX Advanced (29 aulas de método)
         ├─ AIOX Advanced Squads — operar especialistas publicados
         ├─ AIOX Agent Engineering — construir capacidade agentic
         ├─ AIOX Design — materializar sistema visual
@@ -418,8 +418,8 @@ Aula por squad: pasta [`cursos/AIOX-Advanced-Squads/aulas/`](cursos/AIOX-Advance
 │   ├── README.md
 │   ├── Introducao-a-Arquitetura-de-Sistemas/ # Base técnica (24 aulas)
 │   ├── AIOX-Fundamentals/      # AIOX Core básico (12 aulas)
-│   ├── AIOX Advanced/         # Método (28 aulas ativas)
-│   ├── AIOX-Agent-Engineering/ # Capacidades agentic (28 aulas)
+│   ├── AIOX Advanced/         # Método (29 aulas ativas)
+│   ├── AIOX-Agent-Engineering/ # Capacidades agentic (34 aulas)
 │   ├── AIOX-Design/           # Contrato visual (20 aulas, Storybook)
 │   ├── AIOX-Productizacao/    # Oferta e mercado (6 aulas)
 │   ├── AIOX-Advanced-Squads/  # Operação + agent-router

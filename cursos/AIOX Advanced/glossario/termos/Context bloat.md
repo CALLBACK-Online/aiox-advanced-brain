@@ -33,6 +33,7 @@ Use **Context bloat** para nomear o problema operacional antes de escolher a cor
 - [[16-janela-de-contexto]]
 - [[17-engenharia-de-contexto]]
 - [[11-goal-vs-loop]]
+- [[76-orientacao-do-agente]]
 
 ## Ver também
 

@@ -32,6 +32,7 @@ Goal é o resultado desejado; Loop é o ciclo de execução autônoma com gates.
 
 - [[11-goal-vs-loop]]
 - [[08-principio-processo-certo]]
+- [[76-orientacao-do-agente]]
 
 ## Relacionados
 

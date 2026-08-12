@@ -2,7 +2,7 @@
 type: lesson
 course: aiox-agent-engineering
 title: "Anatomia de um Squad AIOX"
-lesson_position: 15
+lesson_position: 20
 module: M2
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering

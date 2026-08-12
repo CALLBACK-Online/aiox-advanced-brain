@@ -2,7 +2,7 @@
 type: lesson
 course: aiox-agent-engineering
 title: "Supabase: setup via @data-engineer"
-lesson_position: 24
+lesson_position: 30
 module: M5
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering

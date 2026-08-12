@@ -150,7 +150,7 @@ Você transforma uma intenção em sistema entregue. A evidência é um artefato
 
 ### Próximo passo
 
-Conclua as 28 aulas e o Capstone. Depois, escolha **Squads**, **Agent Engineering**, **Design** ou **Productização** pelo gate da missão.
+Conclua as 29 aulas e o Capstone. Depois, escolha **Squads**, **Agent Engineering**, **Design** ou **Productização** pelo gate da missão.
 
 Se a operação se repete e o gargalo vira infraestrutura mantida, faça o preview [AIOX Enterprise — Visão Operacional e Prontidão](cursos/AIOX-Enterprise/README.md).
 

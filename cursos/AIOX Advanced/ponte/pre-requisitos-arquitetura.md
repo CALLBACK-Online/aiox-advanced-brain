@@ -38,7 +38,7 @@ Use a trilha de Introdução à Arquitetura primeiro se você ainda confunde doi
 - runtime × harness;
 - deploy × release × rollback.
 
-Se já consegue explicar os pares com um exemplo próprio, avance para o AIOX Fundamentals. Se também já instala o Core, escolhe agents e fecha uma story com evidência, pode entrar direto nas 28 aulas ativas do Advanced.
+Se já consegue explicar os pares com um exemplo próprio, avance para o AIOX Fundamentals. Se também já instala o Core, escolhe agents e fecha uma story com evidência, pode entrar direto nas 29 aulas ativas do Advanced.
 
 ## O que foi reaproveitado e reposicionado
 

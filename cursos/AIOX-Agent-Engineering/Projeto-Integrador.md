@@ -21,11 +21,12 @@ Escolha uma unidade real de processo e entregue:
 
 1. **M0 — Arquitetura:** entidade, estados, pipeline, unidade por etapa e contratos.
 2. **M1 — Research:** dossiê de decisão e prior art que termina em PRD executável.
-3. **M2 — Capacidade:** squad mínimo — reutilizado, adaptado ou criado — executando uma unidade real de processo.
-4. **M3 — Orquestração:** dependências, sequência/paralelismo, routing, fan-in e wall-clock medidos.
-5. **M4 — Runtime:** runner, harness ou API com schema, logs e smoke reproduzível.
-6. **M5 — Produção:** URL funcional, pipeline, readiness e rollback; ou bloqueio externo diagnosticado sem declaração falsa de deploy.
-7. **Pacote de evidências:** decision log, comandos/execuções relevantes, resultados dos gates, limitações e handoff.
+3. **M1b — Memória:** job nomeado, recusa ou veto escrito; córtex só com fronteira.
+4. **M2 — Capacidade:** squad mínimo — reutilizado, adaptado ou criado — executando uma unidade real de processo.
+5. **M3 — Orquestração:** dependências, sequência/paralelismo, routing, fan-in, wall-clock medidos e memória de processo da wave no disco.
+6. **M4 — Runtime:** runner, harness ou API com schema, logs e smoke reproduzível.
+7. **M5 — Produção:** URL funcional, pipeline, readiness e rollback; ou bloqueio externo diagnosticado sem declaração falsa de deploy.
+8. **Pacote de evidências:** decision log, comandos/execuções relevantes, resultados dos gates, limitações e handoff.
 
 ## Restrições
 

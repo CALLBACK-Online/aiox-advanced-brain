@@ -23,7 +23,7 @@ canonical_scope: cursos/AIOX-Agent-Engineering
 
 - 0: paralelismo ou múltiplos modelos sem justificativa.
 - 10: execução funciona, mas dependências e limites não estão explícitos.
-- 20: DAG, routing, concorrência, stop rules e baseline estão registrados.
+- 20: DAG, routing, concorrência, stop rules, baseline e memória de processo da wave estão registrados.
 
 ## 4. Runtime e produção — 20
 

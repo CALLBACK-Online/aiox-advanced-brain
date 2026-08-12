@@ -2,7 +2,7 @@
 type: lesson
 course: aiox-agent-engineering
 title: "Harness: ambiente de execução do agente fora do Claude Code"
-lesson_position: 21
+lesson_position: 27
 module: M4
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
@@ -376,4 +376,4 @@ Adaptação autocontida da aula 67 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](20-wave-execute.md) · [↑ M4](../modulos/M4-runtime-fora-da-ide.md) · [Curso](../README.md) · [Próxima aula →](22-squad-fora-da-ide.md)
+[← Aula anterior](20b-grafo-codigo-e-memoria-de-processo.md) · [↑ M4](../modulos/M4-runtime-fora-da-ide.md) · [Curso](../README.md) · [Próxima aula →](22-squad-fora-da-ide.md)

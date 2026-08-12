@@ -25,12 +25,12 @@ B. Sempre o modelo mais caro
 C. Apenas velocidade
 D. Quantidade de fornecedores
 
-### 3. Qual pré-condição torna uma wave segura?
+### 3. A wave já tem DAG. O agente ainda se perde no fan-in. O que entra no hot path?
 
-A. Prompts idênticos
-B. Uma branch compartilhada sem ownership
-C. Histórias independentes, contratos claros e fan-in definido
-D. Ausência de testes
+A. Grafo de conhecimento da empresa (pessoas, deals, wiki)
+B. Sidecar [Neo4j](https://github.com/neo4j/neo4j) / banco de grafos “para lembrar”
+C. Cartão de processo no disco (o que rodou, raio, o que não repetir) com atribuição
+D. Colar o plano da wave de novo no chat
 
 ### 4. Um loop Ralph não converge. Qual correção vem primeiro?
 
@@ -44,11 +44,11 @@ D. Tornar estado, critério de parada e feedback observáveis
 
 1. **B.** Dependência e colisão anulam o ganho do paralelismo.
 2. **A.** Routing é decisão econômica e de risco por tarefa.
-3. **C.** Independência e fan-in são o contrato da wave.
+3. **C.** Depois do DAG, a wave precisa de memória de processo no disco — não de cérebro da empresa nem de grafo sidecar.
 4. **D.** Loop autônomo precisa saber onde está e quando terminou.
 
 </details>
 
 ## Transferência
 
-Desenhe uma wave de três tarefas e marque dependências, ownership e fan-in.
+Desenhe uma wave de três tarefas, marque dependências, ownership e fan-in, e escreva o cartão de processo (feito / raio / não fazer) que a próxima sessão deve ler. Se o briefing também pedir “quem é o cliente”, escreva o veto (aula 12c): córtex é outro sistema, fora do dispatch.

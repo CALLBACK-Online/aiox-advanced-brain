@@ -21,7 +21,7 @@ reading_minutes: 28
 has_mermaid_map: true
 map_source: auto-decision_graph
 module: M2
-sequence: 14
+sequence: 15
 track: core
 status: canonical
 canonical_scope: cursos/AIOX Advanced
@@ -705,4 +705,4 @@ Confiança na entrega é função dos portões atravessados, e você precisa sab
 
 ## Navegação
 
-← [[aulas/27-otimizacao-claude-md|Otimização do CLAUDE.md: 40% mais magro, mesma capacidade]] · ↑ [[modulos/Módulo 2 - SDC e Qualidade|M2 — SDC e qualidade]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[aulas/19-ciclo-do-repositorio|Ciclo do repositório: Detect Repo, GitHub, CodeRabbit, CI/CD]]
+← [[aulas/76-orientacao-do-agente|Orientação do agente: mapa de trabalho, não grafo de conhecimento]] · ↑ [[modulos/Módulo 2 - SDC e Qualidade|M2 — SDC e qualidade]] · ⌂ [[cursos/AIOX Advanced/README|Curso]] · → [[aulas/19-ciclo-do-repositorio|Ciclo do repositório: Detect Repo, GitHub, CodeRabbit, CI/CD]]

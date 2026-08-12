@@ -2,7 +2,7 @@
 type: lesson
 course: aiox-agent-engineering
 title: "REUSE > ADAPT > CREATE: a heurística antes de criar nada"
-lesson_position: 13
+lesson_position: 18
 module: M2
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
@@ -317,7 +317,7 @@ flowchart TB
 Antes de código.
 1. **Core: Skills/agentes/runners instalados.
 2. **Repo: Pastas locais e monorepo.
-3. **OSS/prior-art: Se domínio for novo.
+3. **Prior art: Se domínio for novo.
 4. **Decisão: R/A/C com prova.
 
 #### ADAPT mínimo
@@ -391,4 +391,4 @@ Adaptação autocontida da aula 54 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](12-research-ao-prd.md) · [↑ M2](../modulos/M2-construcao-de-capacidade.md) · [Curso](../README.md) · [Próxima aula →](14-triagem-de-squad.md)
+[← Aula anterior](12f-menor-cerebro-suficiente.md) · [↑ M2](../modulos/M2-construcao-de-capacidade.md) · [Curso](../README.md) · [Próxima aula →](14-triagem-de-squad.md)

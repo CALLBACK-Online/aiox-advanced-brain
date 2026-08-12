@@ -27,11 +27,11 @@ B. Menos mensagens
 C. Respostas perdem restrições e decisões antigas
 D. O build fica mais rápido
 
-### 4. Como reduzir drift no contexto?
-A. Adicionar todas as conversas
-B. Apagar critérios de aceite
-C. Usar apenas memória do modelo
-D. Manter instruções curtas, hierárquicas e fontes canônicas
+### 4. O agente esquece o tom da marca e, no mesmo pedido, roda a suíte inteira para mudar uma letra. Qual é o próximo passo certo?
+A. Instalar um grafo de conhecimento (clientes, deals, evidência)
+B. Trocar o modelo e colar o Brand Book no CLAUDE.md
+C. Apagar o CLAUDE.md para “dar espaço”
+D. Montar o mapa de trabalho no disco (Brand Card + ledger + regra de escopo)
 
 ### 5. Toda manhã uma task converte um CSV em JSON com regra fixa e saída sempre igual. Hoje um agent de IA faz isso. Qual é o executor certo?
 A. Agent: a IA é a ferramenta mais capaz disponível
@@ -63,4 +63,4 @@ D. Apagar a tabela: detalhe não pertence ao contexto do projeto
 </details>
 
 ## Transferência
-Audite uma instrução local e remova redundância sem perder invariantes.
+Audite uma instrução local e remova redundância sem perder invariantes. Depois, prove que o agente retoma em sessão nova com Brand Card, ledger e regra de escopo no disco — sem instalar grafo de conhecimento.

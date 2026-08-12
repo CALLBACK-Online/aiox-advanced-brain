@@ -33,6 +33,7 @@ Limite real de tokens que o modelo usa com qualidade. Acima de certos limiares a
 - [[16-janela-de-contexto]]
 - [[17-engenharia-de-contexto]]
 - [[27-otimizacao-claude-md]]
+- [[76-orientacao-do-agente]]
 
 ## Relacionados
 

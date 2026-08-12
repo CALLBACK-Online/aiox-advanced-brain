@@ -2,7 +2,7 @@
 type: lesson
 course: aiox-agent-engineering
 title: "Wave Execute: orquestração avançada com waves paralelas"
-lesson_position: 20
+lesson_position: 25
 module: M3
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
@@ -380,4 +380,4 @@ Adaptação autocontida da aula 61 do AIOX Advanced. A fonte histórica permanec
 
 ## Navegação
 
-[← Aula anterior](19-routing-de-modelos.md) · [↑ M3](../modulos/M3-orquestracao-e-escala.md) · [Curso](../README.md) · [Próxima aula →](21-harness.md)
+[← Aula anterior](19-routing-de-modelos.md) · [↑ M3](../modulos/M3-orquestracao-e-escala.md) · [Curso](../README.md) · [Próxima aula →](20b-grafo-codigo-e-memoria-de-processo.md)

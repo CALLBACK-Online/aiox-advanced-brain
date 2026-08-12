@@ -11,7 +11,7 @@ source_version: 2.0.0
 source_status: ready_to_ship
 synced_at: 2026-08-10
 curriculum_modules: 6
-lessons: 28
+lessons: 29
 quizzes: 6
 questions: 48
 tags: [curso, aiox-advanced, metodo, sdc, determinismo, layer/curso]
@@ -23,7 +23,7 @@ tags: [curso, aiox-advanced, metodo, sdc, determinismo, layer/curso]
 
 O Advanced volta a ter uma promessa única. Ele ensina **como conduzir o trabalho com AIOX**. Construção de capacidades agentic, design e monetização possuem cursos próprios.
 
-**Aulas ativas:** 28 · **Módulos:** 5 + Capstone · **Quizzes:** 6 · **Questões:** 48
+**Aulas ativas:** 29 · **Módulos:** 5 + Capstone · **Quizzes:** 6 · **Questões:** 48
 
 - Avaliações: [[Assessments|6 checkpoints e 48 questões]]
 - Conclusão: [[Projeto Integrador]] · [[Rubrica]]
@@ -53,15 +53,16 @@ Ao concluir, você consegue:
 
 1. estruturar o problema antes de delegar;
 2. manter leis, contexto e ambientes sob controle;
-3. transformar briefing em stories e fechar o SDC com quality gates;
-4. escolher determinismo e autonomia proporcionais ao risco;
-5. atuar em brownfield com evidência do sistema real;
-6. entregar uma fatia funcional, auditável e reproduzível.
+3. manter o agente orientado no disco (mapa de trabalho, Brand Card, ledger e regra de escopo);
+4. transformar briefing em stories e fechar o SDC com quality gates;
+5. escolher determinismo e autonomia proporcionais ao risco;
+6. atuar em brownfield com evidência do sistema real;
+7. entregar uma fatia funcional, auditável e reproduzível.
 
 ## Módulos
 
 1. [[modulos/Módulo 0 - Mindset e Princípios|M0 — Mindset e princípios]] — 5 aulas
-2. [[modulos/Módulo 1 - Sistema e Contexto|M1 — Sistema e contexto]] — 8 aulas
+2. [[modulos/Módulo 1 - Sistema e Contexto|M1 — Sistema e contexto]] — 9 aulas
 3. [[modulos/Módulo 2 - SDC e Qualidade|M2 — SDC e qualidade]] — 5 aulas
 4. [[modulos/Módulo 3 - Determinismo e Comando|M3 — Determinismo e comando]] — 4 aulas
 5. [[modulos/Módulo 4 - Método e Brownfield|M4 — Método e brownfield]] — 4 aulas
@@ -87,33 +88,34 @@ Ao concluir, você consegue:
 11. [[aulas/18-yaml-markdown-json-sweet-spot|YAML, Markdown e JSON]]
 12. [[aulas/25-core-config-leis-sociais|core-config]]
 13. [[aulas/27-otimizacao-claude-md|Otimização do CLAUDE.md]]
+14. [[aulas/76-orientacao-do-agente|Orientação do agente]]
 
 ### M2 — SDC e qualidade
 
-14. [[aulas/06-code-rabbit-boost|CodeRabbit Boost]]
-15. [[aulas/19-ciclo-do-repositorio|Ciclo do repositório]]
-16. [[aulas/46-etapas-de-desenvolvimento|Briefing, PRD e stories]]
-17. [[aulas/48-quality-gate-completo|Quality Gate completo]]
-18. [[aulas/49-apply-qa-fixes-loop|Apply QA Fixes Loop]]
+15. [[aulas/06-code-rabbit-boost|CodeRabbit Boost]]
+16. [[aulas/19-ciclo-do-repositorio|Ciclo do repositório]]
+17. [[aulas/46-etapas-de-desenvolvimento|Briefing, PRD e stories]]
+18. [[aulas/48-quality-gate-completo|Quality Gate completo]]
+19. [[aulas/49-apply-qa-fixes-loop|Apply QA Fixes Loop]]
 
 ### M3 — Determinismo e comando
 
-19. [[aulas/11-goal-vs-loop|Goal vs Loop]]
-20. [[aulas/20-determinismo-progressivo|Determinismo progressivo]]
-21. [[aulas/21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro]]
-22. [[aulas/50-rider-modo-elicitacao|Rider: operador como piloto]]
+20. [[aulas/11-goal-vs-loop|Goal vs Loop]]
+21. [[aulas/20-determinismo-progressivo|Determinismo progressivo]]
+22. [[aulas/21-deterministico-primeiro-llm-onde-gera-ouro|Determinístico primeiro]]
+23. [[aulas/50-rider-modo-elicitacao|Rider: operador como piloto]]
 
 ### M4 — Método e brownfield
 
-23. [[aulas/23-o-que-e-um-squad|O que é um squad]]
-24. [[aulas/24-entidade-como-unidade-de-processo|Entidade como unidade de processo]]
-25. [[aulas/31-brownfield-discovery|Brownfield Discovery]]
-26. [[aulas/53-brownfield-enhancement|Brownfield Enhancement]]
+24. [[aulas/23-o-que-e-um-squad|O que é um squad]]
+25. [[aulas/24-entidade-como-unidade-de-processo|Entidade como unidade de processo]]
+26. [[aulas/31-brownfield-discovery|Brownfield Discovery]]
+27. [[aulas/53-brownfield-enhancement|Brownfield Enhancement]]
 
 ### Capstone
 
-27. [[aulas/44-metodo-s2s|Método S2S]]
-28. [[aulas/74-caso-integrado-end-to-end|Caso integrado end-to-end]]
+28. [[aulas/44-metodo-s2s|Método S2S]]
+29. [[aulas/74-caso-integrado-end-to-end|Caso integrado end-to-end]]
 
 ## O que mudou na edição 2.0
 

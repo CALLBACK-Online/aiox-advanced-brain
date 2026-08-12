@@ -164,7 +164,7 @@ Isto **não** é o vault pessoal mentelendaria: sem paths de máquina, sem curad
 1. `cursos/Obsidian-IA/README.md` — gate de estudo; quem já domina o vault pode usar a evidência de entrada como diagnóstico.
 2. `cursos/Introducao-a-Arquitetura-de-Sistemas/README.md` — base técnica; completo para iniciantes ou seletivo pelo mapa de termos.
 3. `cursos/AIOX-Fundamentals/README.md` — Core, instalação, agents e primeiro ciclo com evidência.
-4. `cursos/AIOX Advanced/README.md` — 28 aulas do método.
+4. `cursos/AIOX Advanced/README.md` — 29 aulas do método.
 5. Depois do Advanced, escolher uma rota de aplicação pelo artefato necessário:
    - `cursos/AIOX-Advanced-Squads/` — operar especialistas publicados;
    - `cursos/AIOX-Agent-Engineering/` — construir capacidade agentic própria;

@@ -12,7 +12,7 @@ source_version: 2.0.0
 
 ## Resultado
 
-Projetar as leis locais, o ambiente, os executores e o orçamento de contexto de um projeto AIOX.
+Projetar as leis locais, o ambiente, os executores, o orçamento de contexto e o mapa de trabalho que impede o agente de se perder.
 
 ## Aulas
 
@@ -24,10 +24,11 @@ Projetar as leis locais, o ambiente, os executores e o orçamento de contexto de
 6. [[aulas/18-yaml-markdown-json-sweet-spot|YAML, Markdown e JSON]]
 7. [[aulas/25-core-config-leis-sociais|core-config]]
 8. [[aulas/27-otimizacao-claude-md|Otimização do CLAUDE.md]]
+9. [[aulas/76-orientacao-do-agente|Orientação do agente]]
 
 ## Evidência de conclusão
 
-Contrato de contexto enxuto, com leis do projeto, executores e diferenças entre ambientes.
+Contrato de contexto enxuto, com leis do projeto, executores, diferenças entre ambientes e prova de retomada (Brand Card + ledger + regra de escopo).
 
 ## Checkpoint
 

@@ -2,7 +2,7 @@
 type: lesson
 course: aiox-agent-engineering
 title: "CI/CD Pipeline completa: GitHub Actions + Quality Gate pré-merge"
-lesson_position: 26
+lesson_position: 32
 module: M5
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering

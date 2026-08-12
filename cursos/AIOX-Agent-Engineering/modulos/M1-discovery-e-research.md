@@ -26,4 +26,4 @@ Faça o [Quiz M1](../avaliacoes/Quiz-M1-discovery-e-research.md).
 
 ## Navegação
 
-[← M0](M0-arquitetura-da-capacidade.md) · [Curso](../README.md) · [Próximo módulo →](M2-construcao-de-capacidade.md)
+[← M0](M0-arquitetura-da-capacidade.md) · [Curso](../README.md) · [Próximo módulo →](M1b-memoria-e-grafo-da-capacidade.md)

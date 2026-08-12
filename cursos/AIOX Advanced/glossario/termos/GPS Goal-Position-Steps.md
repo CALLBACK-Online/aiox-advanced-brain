@@ -32,6 +32,7 @@ Use **GPS Goal/Position/Steps** para dirigir (ou reancorar) um agente: declare o
 
 - [[11-goal-vs-loop]]
 - [[08-principio-processo-certo]]
+- [[76-orientacao-do-agente]]
 
 ## Ver também
 

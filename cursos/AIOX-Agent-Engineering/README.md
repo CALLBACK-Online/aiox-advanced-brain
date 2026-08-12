@@ -5,12 +5,12 @@ title: AIOX Agent Engineering
 status: canonical
 canonical_scope: cursos/AIOX-Agent-Engineering
 sharing_boundary: cursos
-source: curadoria de 27 aulas da edição 1 do AIOX Advanced + capstone novo
-source_version: 1.1.0
-curriculum_modules: 7
-lessons: 28
-quizzes: 6
-questions: 24
+source: curadoria de 27 aulas da edição 1 do AIOX Advanced + capstone + M1b memória/grafo
+source_version: 1.4.0
+curriculum_modules: 8
+lessons: 34
+quizzes: 7
+questions: 28
 tags: [curso, agentes, orquestracao, runtime, producao, layer/curso]
 ---
 
@@ -20,7 +20,7 @@ tags: [curso, agentes, orquestracao, runtime, producao, layer/curso]
 
 Essa é a promessa única do curso. Research reduz incerteza; arquitetura e construção materializam a capacidade; orquestração, runtime e produção provam que ela funciona fora da sessão do autor.
 
-**Aulas:** 28 · **Módulos:** 6 + Capstone · **Quizzes:** 6 · **Questões:** 24
+**Aulas:** 34 · **Módulos:** 7 + Capstone · **Quizzes:** 7 · **Questões:** 28
 
 - [Avaliações](Assessments.md)
 - [Projeto integrador](Projeto-Integrador.md)
@@ -66,16 +66,17 @@ A escada técnica deste curso (script → runner → API) **não** substitui a d
 
 1. [M0 — Arquitetura da capacidade](modulos/M0-arquitetura-da-capacidade.md) — aulas 01–06
 2. [M1 — Discovery e research](modulos/M1-discovery-e-research.md) — aulas 07–12
-3. [M2 — Construção de capacidade](modulos/M2-construcao-de-capacidade.md) — aulas 13–16
-4. [M3 — Orquestração e escala](modulos/M3-orquestracao-e-escala.md) — aulas 17–20
-5. [M4 — Runtime fora da IDE](modulos/M4-runtime-fora-da-ide.md) — aulas 21–23
-6. [M5 — Produção](modulos/M5-producao.md) — aulas 24–27
-7. [Capstone](modulos/MC-capstone.md) — aula 28
+3. [M1b — Memória persistente e grafo da capacidade](modulos/M1b-memoria-e-grafo-da-capacidade.md) — aulas 12b–12f
+4. [M2 — Construção de capacidade](modulos/M2-construcao-de-capacidade.md) — aulas 13–16
+5. [M3 — Orquestração e escala](modulos/M3-orquestracao-e-escala.md) — aulas 17–20b
+6. [M4 — Runtime fora da IDE](modulos/M4-runtime-fora-da-ide.md) — aulas 21–23
+7. [M5 — Produção](modulos/M5-producao.md) — aulas 24–27
+8. [Capstone](modulos/MC-capstone.md) — aula 28
 
 ## Sequência
 
 ```text
-arquitetura → research → construção → orquestração → runtime → produção → capstone
+arquitetura → research → memória da capacidade → construção → orquestração → runtime → produção → capstone
 ```
 
 O curso inteiro é a rota principal. Quem já possui uma capacidade pronta pode diagnosticar a entrada pelo checkpoint de cada módulo.
@@ -100,36 +101,45 @@ O curso inteiro é a rota principal. Quem já possui uma capacidade pronta pode 
 11. [Pasta OS](aulas/11-pasta-os.md)
 12. [Research ao PRD](aulas/12-research-ao-prd.md)
 
+### M1b — Memória persistente e grafo da capacidade
+
+13. [Quatro jobs, um store não](aulas/12b-quatro-jobs-um-store.md)
+14. [Arquivo fiel vs cérebro que sintetiza](aulas/12c-arquivo-fiel-vs-sintese.md)
+15. [Grafo é projeção, não oráculo](aulas/12d-grafo-projecao-nao-oraculo.md)
+16. [Identidade, tempo e isolamento](aulas/12e-identidade-tempo-isolamento.md)
+17. [O menor cérebro suficiente](aulas/12f-menor-cerebro-suficiente.md)
+
 ### M2 — Construção de capacidade
 
-13. [REUSE > ADAPT > CREATE](aulas/13-reuse-adapt-create.md)
-14. [Triagem de squad](aulas/14-triagem-de-squad.md)
-15. [Anatomia de squad](aulas/15-anatomia-de-squad.md)
-16. [Squad Creator](aulas/16-squad-creator.md)
+18. [REUSE > ADAPT > CREATE](aulas/13-reuse-adapt-create.md)
+19. [Triagem de squad](aulas/14-triagem-de-squad.md)
+20. [Anatomia de squad](aulas/15-anatomia-de-squad.md)
+21. [Squad Creator](aulas/16-squad-creator.md)
 
 ### M3 — Orquestração e escala
 
-17. [Ralph](aulas/17-ralph.md)
-18. [Paralelo vs sequencial](aulas/18-paralelo-vs-sequencial.md)
-19. [Routing de modelos](aulas/19-routing-de-modelos.md)
-20. [Wave Execute](aulas/20-wave-execute.md)
+22. [Ralph](aulas/17-ralph.md)
+23. [Paralelo vs sequencial](aulas/18-paralelo-vs-sequencial.md)
+24. [Routing de modelos](aulas/19-routing-de-modelos.md)
+25. [Wave Execute](aulas/20-wave-execute.md)
+26. [Grafo de código e memória de processo](aulas/20b-grafo-codigo-e-memoria-de-processo.md)
 
 ### M4 — Runtime fora da IDE
 
-21. [Harness](aulas/21-harness.md)
-22. [Squad fora da IDE](aulas/22-squad-fora-da-ide.md)
-23. [Escada progressiva](aulas/23-escada-progressiva.md)
+27. [Harness](aulas/21-harness.md)
+28. [Squad fora da IDE](aulas/22-squad-fora-da-ide.md)
+29. [Escada progressiva](aulas/23-escada-progressiva.md)
 
 ### M5 — Produção
 
-24. [Supabase via data engineer](aulas/24-supabase-via-data-engineer.md)
-25. [Vercel Deploy](aulas/25-vercel-deploy.md)
-26. [CI/CD](aulas/26-cicd.md)
-27. [Prontidão de produção](aulas/27-prontidao-de-producao.md)
+30. [Supabase via data engineer](aulas/24-supabase-via-data-engineer.md)
+31. [Vercel Deploy](aulas/25-vercel-deploy.md)
+32. [CI/CD](aulas/26-cicd.md)
+33. [Prontidão de produção](aulas/27-prontidao-de-producao.md)
 
 ### Capstone
 
-28. [Capstone: capacidade agentic em produção](aulas/28-capstone-capacidade-em-producao.md)
+34. [Capstone: capacidade agentic em produção](aulas/28-capstone-capacidade-em-producao.md)
 
 ## Evidência de conclusão
 

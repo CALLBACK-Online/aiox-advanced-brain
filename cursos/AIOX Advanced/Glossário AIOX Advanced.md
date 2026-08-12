@@ -21,7 +21,7 @@ freq_meta:
 
 Termos e conceitos do curso **AIOX Advanced** (course-brain), com **frequência de menção** nos dois cursos do acervo.
 
-Inventário: **22 conceitos canônicos** + **200 termos** de referência (P0+P1+P2).
+Inventário: **23 conceitos canônicos** + **202 termos** de referência (P0+P1+P2).
 
 ## Como estudar cada termo
 
@@ -101,6 +101,7 @@ Os exemplos são operacionais: não servem apenas para ilustrar vocabulário. Ao
 - [[Janela de Contexto]] — Limite real de tokens que o modelo usa com qualidade. Acima de certos limiares a qualidade degrada. · **`34`×** (A34/S0)
 - [[Local Staging Production]] — Três ambientes: local (exploração), staging (validação com gates), production (o que importa de verdade). · **`12`×** (A12/S0)
 - [[Mesa-redonda]] — Decidir com múltiplos clones/lentes em paralelo em vez de um único prompt monólogo. · **`54`×** (A54/S0)
+- [[Orientação do Agente]] — GPS do trabalho no disco: onde está, o que faz agora, o que já está decidido e o raio da mudança. · **`1`×** (A1/S0)
 - [[Método S2S]] — Converter sinais (dor, insight, oportunidade) em sistemas operáveis. · **`89`×** (A89/S0)
 - [[Quality Gate]] — Portão que só deixa passar o que tem qualidade suficiente. · **`98`×** (A98/S0)
 - [[Quatro Executores]] — Taxonomia de quem executa: humano, agent, clone e worker. · **`17`×** (A17/S0)
@@ -164,6 +165,7 @@ Os exemplos são operacionais: não servem apenas para ilustrar vocabulário. Ao
 - [[Bench]] — Comparar com referências fortes para saber o nível do mercado. · **`172`×** (A172/S0)
 - [[Brad Frost]] — Referência de Atomic Design (átomo → molécula → organismo → template → página) usada no curso de design system AIOX. · **`14`×** (A14/S0)
 - [[Brand Book]] — A fonte de extração de tokens da marca no brownfield. Os primitivos da identidade saem dele. · **`34`×** (A34/S0)
+- [[Brand Card]] — Cartão de uma tela com tom, recusas e exemplos; o agente lê por ponteiro, não o Brand Book inteiro. · **`1`×** (A1/S0)
 - [[Briefing]] — A formulação curta do problema, público, escopo e restrição antes do produto. · **`235`×** (A116/S119)
 - [[Brownfield Enhancement]] — Adicionar feature em código que já existe depois do Discovery: respeitar domínio, REUSE e risco de regressão. · **`11`×** (A11/S0)
 - [[Busca rasa]] — Uma busca única que aceita a primeira página do buscador, sem medir cobertura nem verificar citações. · **`33`×** (A33/S0)
@@ -211,6 +213,7 @@ Os exemplos são operacionais: não servem apenas para ilustrar vocabulário. Ao
 - [[In Progress]] — Story em implementação ativa. O Dev executa tarefas e critérios de aceite. · **`35`×** (A35/S0)
 - [[In Review]] — Implementação submetida ao Quality Gate / revisão. Pode voltar com findings (Apply QA Fixes). · **`38`×** (A38/S0)
 - [[LLM]] — Large Language Model. No AIOX: usar onde gera ouro; preferir determinístico (runner, hook, gate) onde a regra é estável. · **`173`×** (A173/S0)
+- [[Mapa de trabalho]] — GPS do projeto no disco: pedido → story → task → gate → evidência, com ledger de agora / feito / próximo. · **`1`×** (A1/S0)
 - [[Maturidade]] — Grau em que um asset executa de verdade no destino: study, portable, partial, runtime-aiox. Presença no acervo ≠ roda… · **`39`×** (A33/S6)
 - [[MCP]] — Model Context Protocol: conector de ferramentas/dados externos ao agente. Entra na janela de contexto — curar MCPs é … · **`60`×** (A58/S2)
 - [[Memória]] — Camada 4 da anatomia: o que o agente carrega entre turnos (histórico, padrões, contexto do squad). Sem memória, recom… · **`102`×** (A100/S2)
